@@ -7,7 +7,7 @@ export default defineConfig({
   // Served at the root on Cloudflare Pages — no `base` subpath.
   // IMPORTANT: set this to the real deployment URL after the first deploy —
   // it drives canonical URLs, the sitemap, and Open Graph image/URLs.
-  site: 'https://demo-victrix.pages.dev',
+  site: 'https://victrix-demo.pages.dev',
 
   // Fully static prototype.
   output: 'static',
