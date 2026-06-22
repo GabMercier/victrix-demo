@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -17,9 +17,47 @@ const { Content } = await render(post);
 // Format in UTC so a calendar date like 2026-05-28 isn't rolled back a day
 // when rendered in a timezone behind UTC (e.g. America/Montreal).
 const dateFmt = new Intl.DateTimeFormat('fr-CA', { dateStyle: 'long', timeZone: 'UTC' });
+
+// A 1200×630 JPEG derived from the cover → the social share card image, so a
+// shared link on LinkedIn/X/Facebook renders this article's own visual.
+const ogImage = await getImage({
+  src: post.data.coverImage,
+  width: 1200,
+  height: 630,
+  fit: 'cover',
+  position: 'center',
+  format: 'jpeg',
+});
+
+// Absolute, canonical URL used by the share buttons (drives off `site`).
+const shareUrl = new URL(`/ressources/${post.id}`, Astro.site).href;
+const shareLinks = [
+  {
+    name: 'LinkedIn',
+    label: 'Partager sur LinkedIn',
+    href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
+  },
+  {
+    name: 'X',
+    label: 'Partager sur X',
+    href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.data.title)}`,
+  },
+  {
+    name: 'Facebook',
+    label: 'Partager sur Facebook',
+    href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+  },
+];
 ---
 
-<BaseLayout title={post.data.title} description={post.data.excerpt}>
+<BaseLayout
+  title={post.data.title}
+  description={post.data.excerpt}
+  image={ogImage.src}
+  ogType="article"
+  publishedTime={post.data.date.toISOString()}
+  tags={post.data.tags}
+>
   <article class="article">
     <div class="container article__inner">
       <header class="article__head">
@@ -58,11 +96,74 @@ const dateFmt = new Intl.DateTimeFormat('fr-CA', { dateStyle: 'long', timeZone: 
       </div>
 
       <footer class="article__foot">
+        <div class="share">
+          <span class="share__label">Partager&nbsp;:</span>
+          <ul role="list" class="share__list">
+            {
+              shareLinks.map((l) => (
+                <li>
+                  <a
+                    class="share__link"
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={l.label}
+                  >
+                    {l.name === 'LinkedIn' && (
+                      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M6.94 7.5a1.94 1.94 0 1 1 0-3.88 1.94 1.94 0 0 1 0 3.88zM5.2 9h3.5v11H5.2V9zm5.6 0h3.35v1.5h.05c.47-.85 1.6-1.75 3.3-1.75 3.53 0 4.18 2.2 4.18 5.05V20h-3.5v-4.9c0-1.17-.02-2.67-1.7-2.67-1.7 0-1.96 1.28-1.96 2.59V20h-3.5V9z" />
+                      </svg>
+                    )}
+                    {l.name === 'X' && (
+                      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
+                      </svg>
+                    )}
+                    {l.name === 'Facebook' && (
+                      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M14 9h2.5V6H14c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v7h3v-7H16l.5-3h-3V9.5C13.5 9.2 13.7 9 14 9z" />
+                      </svg>
+                    )}
+                  </a>
+                </li>
+              ))
+            }
+            <li>
+              <button class="share__link" type="button" data-copy-link aria-label="Copier le lien">
+                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M3.9 12a3.1 3.1 0 0 1 3.1-3.1h3v-2h-3a5.1 5.1 0 0 0 0 10.2h3v-2h-3A3.1 3.1 0 0 1 3.9 12Zm4.1 1h8v-2H8v2Zm9-6h-3v2h3a3.1 3.1 0 0 1 0 6.2h-3v2h3a5.1 5.1 0 0 0 0-10.2Z" />
+                </svg>
+              </button>
+            </li>
+          </ul>
+          <span class="share__copied" data-copy-status role="status" aria-live="polite" hidden>
+            Lien copié&nbsp;!
+          </span>
+        </div>
+
         <a class="btn btn--outline" href="/ressources">← Retour aux ressources</a>
       </footer>
     </div>
   </article>
 </BaseLayout>
+
+<script define:vars={{ shareUrl }}>
+  const btn = document.querySelector('[data-copy-link]');
+  const status = document.querySelector('[data-copy-status]');
+  if (btn && status) {
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        status.hidden = false;
+        setTimeout(() => {
+          status.hidden = true;
+        }, 2000);
+      } catch {
+        /* clipboard unavailable — ignore */
+      }
+    });
+  }
+</script>
 
 <style>
   .article {
@@ -117,8 +218,56 @@ const dateFmt = new Intl.DateTimeFormat('fr-CA', { dateStyle: 'long', timeZone: 
     margin-bottom: var(--space-7);
   }
   .article__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
     margin-top: var(--space-8);
     padding-top: var(--space-6);
     border-top: 1px solid var(--color-border);
+  }
+
+  /* Share row */
+  .share {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .share__label {
+    font-weight: var(--fw-semibold);
+    color: var(--color-navy);
+    font-size: var(--fs-200);
+  }
+  .share__list {
+    display: flex;
+    gap: var(--space-2);
+    margin: 0;
+  }
+  .share__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-bg);
+    color: var(--color-navy);
+    cursor: pointer;
+  }
+  .share__link:hover {
+    background-color: var(--color-navy);
+    border-color: var(--color-navy);
+    color: var(--color-text-invert);
+  }
+  .share__copied {
+    font-size: var(--fs-200);
+    font-weight: var(--fw-medium);
+    color: var(--color-navy);
+  }
+  .share__copied[hidden] {
+    display: none;
   }
 </style>
