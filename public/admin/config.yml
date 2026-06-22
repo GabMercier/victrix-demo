@@ -13,6 +13,9 @@ backend:
   name: github
   repo: GabMercier/victrix-demo
   branch: main
+  # OAuth broker for editing on the DEPLOYED /admin (no path, no trailing slash;
+  # Sveltia appends /auth and /callback itself). Local editing ignores this.
+  base_url: https://sveltia-cms-auth.gabriel-mercier-blouin.workers.dev
 
 # Fallback media library for any field that doesn't override it (none do today).
 media_folder: "public/media"
