@@ -1,0 +1,21 @@
+{
+  "name": "demo-victrix",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static marketing-site prototype (Astro) reproducing the Victrix homepage + blog, content managed via Sveltia CMS, deployed to Cloudflare Pages.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "engines": {
+    "node": "18.20.8 || ^20.3.0 || >=22.0.0"
+  },
+  "dependencies": {
+    "astro": "^5.18.2",
+    "sharp": "^0.33.5"
+  }
+}

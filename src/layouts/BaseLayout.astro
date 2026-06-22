@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  /** Page title — appended with the site name. */
+  title?: string;
+  /** Meta description for SEO / social previews. */
+  description?: string;
+}
+
+const SITE_NAME = 'Victrix';
+const DEFAULT_DESCRIPTION =
+  'Victrix — services-conseils en TI et solutions de productivité pour les entreprises et les organisations publiques.';
+
+const { title, description = DEFAULT_DESCRIPTION } = Astro.props;
+
+// Build the <title>: "Page — Victrix", or just the site name on the home page.
+const fullTitle = title ? `${title} — ${SITE_NAME}` : SITE_NAME;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={Astro.url.href} />
+
+    {/* Hide the announcement bar before first paint if it was dismissed this
+        session — prevents a flash/layout jump on every navigation. */}
+    <script is:inline>
+      try {
+        if (sessionStorage.getItem('victrix-announce') === 'closed') {
+          document.documentElement.classList.add('announce-dismissed');
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+    <!-- Global header (a page can override it by filling the "header" slot). -->
+    <slot name="header"><Header /></slot>
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <!-- Global footer (a page can override it by filling the "footer" slot). -->
+    <slot name="footer"><Footer /></slot>
+  </body>
+</html>

@@ -1,0 +1,246 @@
+---
+import Logo from './Logo.astro';
+
+/**
+ * Global site footer: brand, link columns, address block, contact, social,
+ * and legal links. Matches the dark-grey footer in the screenshots.
+ */
+
+const columns = [
+  {
+    title: 'Expertises',
+    links: [
+      { label: 'Consultation stratégique', href: '/expertises/consultation-strategique' },
+      { label: 'Infonuagique', href: '/expertises/infonuagique' },
+      { label: 'Cybersécurité', href: '/expertises/cybersecurite' },
+      { label: 'Productivité', href: '/expertises/productivite' },
+      { label: 'Intelligence artificielle', href: '/expertises/intelligence-artificielle' },
+      { label: 'Services gérés', href: '/expertises/services-geres' },
+    ],
+  },
+  {
+    title: 'Produits',
+    links: [
+      { label: 'Licences et équipements', href: '/produits/licences-equipements' },
+      { label: 'Intranet — Plateforme d’expérience employé', href: '/produits/intranet' },
+      { label: 'Application de réservation de bureau', href: '/produits/reservation-bureau' },
+    ],
+  },
+  {
+    title: 'À propos',
+    links: [
+      { label: 'Carrières & Vie@Victrix', href: '/carrieres' },
+      { label: 'Blogue', href: '/ressources' },
+      { label: 'Tarification', href: '/tarification' },
+    ],
+  },
+];
+
+const year = 2026;
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <Logo variant="light" />
+    </div>
+
+    {
+      columns.map((col) => (
+        <nav class="footer-col" aria-label={col.title}>
+          <h2 class="footer-col__title">{col.title}</h2>
+          <ul role="list" class="footer-col__list">
+            {col.links.map((link) => (
+              <li>
+                <a class="footer-col__link" href={link.href}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))
+    }
+
+    <div class="footer-col footer-col--contact">
+      <h2 class="footer-col__title">Contact</h2>
+
+      <address class="footer-address">
+        <strong>Les Solutions Victrix</strong><br />
+        1100, boul. René-Lévesque Ouest, bureau 1900<br />
+        Montréal (Québec) H3B 4N4
+      </address>
+
+      <ul role="list" class="footer-contact">
+        <li>
+          <a href="mailto:contact@victrix.ca">contact@victrix.ca&nbsp;→</a>
+        </li>
+        <li>
+          <a href="tel:+15148791919">514&nbsp;879-1919&nbsp;→</a>
+        </li>
+      </ul>
+
+      <div class="footer-social">
+        <span class="footer-social__label">Suivez-nous&nbsp;:</span>
+        <ul role="list" class="footer-social__list">
+          <li>
+            <a href="#" class="footer-social__link" aria-label="Victrix sur Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M14 9h2.5V6H14c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v7h3v-7H16l.5-3h-3V9.5C13.5 9.2 13.7 9 14 9z"
+                ></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer-social__link" aria-label="Victrix sur LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M6.94 7.5a1.94 1.94 0 1 1 0-3.88 1.94 1.94 0 0 1 0 3.88zM5.2 9h3.5v11H5.2V9zm5.6 0h3.35v1.5h.05c.47-.85 1.6-1.75 3.3-1.75 3.53 0 4.18 2.2 4.18 5.05V20h-3.5v-4.9c0-1.17-.02-2.67-1.7-2.67-1.7 0-1.96 1.28-1.96 2.59V20h-3.5V9z"
+                ></path>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-footer__bottombar">
+    <div class="container site-footer__bottom">
+      <nav class="footer-legal" aria-label="Liens légaux">
+        <ul role="list">
+          <li><a href="/conditions-utilisation">Conditions d’utilisation</a></li>
+          <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
+        </ul>
+      </nav>
+      <p class="footer-copy">©{year} Victrix</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-grey-dark);
+    color: var(--color-grey-300);
+  }
+
+  .site-footer__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-7) var(--space-6);
+    padding-block: var(--space-8) var(--space-7);
+  }
+
+  .site-footer__brand {
+    --logo-height: 44px;
+  }
+
+  .footer-col__title {
+    color: var(--color-white);
+    font-size: var(--fs-300);
+    font-weight: var(--fw-bold);
+    margin-bottom: var(--space-4);
+  }
+
+  .footer-col__list,
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: 0;
+  }
+
+  .footer-col__link,
+  .footer-contact a,
+  .footer-legal a {
+    color: var(--color-grey-300);
+    text-decoration: none;
+  }
+  .footer-col__link:hover,
+  .footer-contact a:hover,
+  .footer-legal a:hover {
+    color: var(--color-white);
+    text-decoration: underline;
+  }
+
+  .footer-address {
+    font-style: normal;
+    line-height: var(--lh-normal);
+    margin-bottom: var(--space-5);
+    max-width: 32ch;
+  }
+  .footer-address strong {
+    color: var(--color-white);
+    font-weight: var(--fw-semibold);
+  }
+
+  .footer-social {
+    margin-top: var(--space-5);
+  }
+  .footer-social__label {
+    display: block;
+    color: var(--color-white);
+    font-weight: var(--fw-semibold);
+    margin-bottom: var(--space-3);
+  }
+  .footer-social__list {
+    display: flex;
+    gap: var(--space-3);
+    margin: 0;
+  }
+  .footer-social__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius-pill);
+    color: var(--color-white);
+  }
+  .footer-social__link:hover {
+    background-color: var(--color-accent-blue);
+    border-color: var(--color-accent-blue);
+  }
+
+  /* Bottom bar */
+  .site-footer__bottombar {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .site-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-block: var(--space-5);
+    font-size: var(--fs-200);
+  }
+  .footer-legal ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+    margin: 0;
+  }
+  .footer-copy {
+    margin: 0;
+  }
+
+  /* Tablet: two columns. */
+  @media (min-width: 640px) {
+    .site-footer__inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Desktop: brand + 4 link columns in one row. */
+  @media (min-width: 1024px) {
+    .site-footer__inner {
+      grid-template-columns: 1.4fr repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+  }
+</style>

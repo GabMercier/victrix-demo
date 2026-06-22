@@ -1,0 +1,490 @@
+---
+import Logo from './Logo.astro';
+
+/**
+ * Global site header: dismissible announcement bar, logo, primary navigation,
+ * FR/EN language switcher (placeholder), and an accessible mobile drawer menu.
+ * No UI framework — a small inline vanilla script drives the mobile menu and
+ * the announcement dismissal.
+ */
+
+const navItems = [
+  { label: 'Découvrir Victrix', href: '/decouvrir' },
+  { label: 'Expertises', href: '/expertises' },
+  { label: 'Produits', href: '/produits' },
+  { label: 'Carrières', href: '/carrieres' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Ressources', href: '/ressources' },
+];
+
+const portal = { label: 'Mon portail', href: '/portail' };
+
+// Normalize the current path (drop trailing slash) for active-state matching.
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const isCurrent = (href: string) =>
+  href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
+---
+
+<!-- Announcement bar (editable / dismissible) -->
+<div class="announcement" data-announcement>
+  <div class="container announcement__inner">
+    <p class="announcement__text">
+      Découvrez <strong>Ø Studio</strong>, notre catalogue d’applications et de
+      services pour accélérer votre productivité.
+      <a class="announcement__link" href="/produits">En savoir plus&nbsp;→</a>
+    </p>
+    <button
+      type="button"
+      class="announcement__close"
+      data-announce-close
+      aria-label="Fermer l’annonce"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <path
+          d="M2 2l12 12M14 2L2 14"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        ></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Victrix — Accueil">
+      <Logo variant="dark" />
+    </a>
+
+    <nav class="primary-nav" aria-label="Navigation principale">
+      <ul role="list" class="primary-nav__list">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                class="primary-nav__link"
+                href={item.href}
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="btn btn--primary site-header__portal" href={portal.href}>
+        {portal.label}
+      </a>
+
+      <div class="lang-switch" role="group" aria-label="Choix de la langue">
+        <a class="lang-switch__link is-active" href="#" aria-current="true" lang="fr">FR</a>
+        <span class="lang-switch__sep" aria-hidden="true">|</span>
+        <a class="lang-switch__link" href="#" lang="en">EN</a>
+      </div>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        data-nav-toggle
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Ouvrir le menu"
+      >
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
+  <div class="mobile-nav__backdrop" data-nav-close></div>
+  <nav class="mobile-nav__panel" aria-label="Navigation mobile">
+    <div class="mobile-nav__head">
+      <a class="site-header__brand" href="/" aria-label="Victrix — Accueil">
+        <Logo variant="dark" />
+      </a>
+      <button type="button" class="nav-close" data-nav-close aria-label="Fermer le menu">
+        <svg width="22" height="22" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path
+            d="M2 2l12 12M14 2L2 14"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          ></path>
+        </svg>
+      </button>
+    </div>
+
+    <ul role="list" class="mobile-nav__list">
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              class="mobile-nav__link"
+              href={item.href}
+              aria-current={isCurrent(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <a class="btn btn--primary mobile-nav__portal" href={portal.href}>{portal.label}</a>
+
+    <div class="lang-switch lang-switch--mobile" role="group" aria-label="Choix de la langue">
+      <a class="lang-switch__link is-active" href="#" aria-current="true" lang="fr">FR</a>
+      <span class="lang-switch__sep" aria-hidden="true">|</span>
+      <a class="lang-switch__link" href="#" lang="en">EN</a>
+    </div>
+  </nav>
+</div>
+
+<script>
+  // --- Mobile drawer ------------------------------------------------------
+  const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const drawer = document.querySelector<HTMLElement>('[data-mobile-nav]');
+
+  if (toggle && drawer) {
+    const getFocusable = () =>
+      Array.from(
+        drawer.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'),
+      );
+    let lastFocused: HTMLElement | null = null;
+
+    const onKeydown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        close();
+        return;
+      }
+      if (e.key === 'Tab') {
+        const f = getFocusable();
+        if (f.length === 0) return;
+        const first = f[0];
+        const last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    const open = () => {
+      lastFocused = document.activeElement as HTMLElement;
+      drawer.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('no-scroll');
+      getFocusable()[0]?.focus();
+      document.addEventListener('keydown', onKeydown);
+    };
+
+    const close = () => {
+      drawer.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('no-scroll');
+      document.removeEventListener('keydown', onKeydown);
+      lastFocused?.focus();
+    };
+
+    toggle.addEventListener('click', () => {
+      toggle.getAttribute('aria-expanded') === 'true' ? close() : open();
+    });
+    drawer
+      .querySelectorAll('[data-nav-close]')
+      .forEach((el) => el.addEventListener('click', close));
+    // Close (then navigate) when a drawer link is activated.
+    drawer
+      .querySelectorAll('.mobile-nav__link, .mobile-nav__portal')
+      .forEach((el) => el.addEventListener('click', close));
+    // Close if the viewport grows to desktop while the drawer is open.
+    window
+      .matchMedia('(min-width: 1024px)')
+      .addEventListener('change', (e) => {
+        if (e.matches && !drawer.hidden) close();
+      });
+  }
+
+  // --- Announcement bar dismissal ----------------------------------------
+  // The dismissed state is applied pre-paint by a blocking script in <head>
+  // (adds .announce-dismissed on <html>); here we only handle the close click.
+  const announceClose = document.querySelector<HTMLButtonElement>('[data-announce-close]');
+  if (announceClose) {
+    announceClose.addEventListener('click', () => {
+      document.documentElement.classList.add('announce-dismissed');
+      try {
+        sessionStorage.setItem('victrix-announce', 'closed');
+      } catch {
+        /* sessionStorage unavailable — banner still hides for this page view */
+      }
+    });
+  }
+</script>
+
+<style>
+  /* ---------- Announcement bar ---------- */
+  .announcement {
+    background-color: var(--color-accent-blue);
+    color: var(--color-white);
+    font-size: var(--fs-200);
+  }
+  .announcement__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    justify-content: center;
+    padding-block: var(--space-2);
+  }
+  .announcement__text {
+    margin: 0;
+    max-width: none;
+    text-align: center;
+  }
+  .announcement__link {
+    color: var(--color-white);
+    font-weight: var(--fw-semibold);
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+  .announcement__close {
+    flex-shrink: 0;
+    display: inline-flex;
+    padding: var(--space-1);
+    background: transparent;
+    border: 0;
+    color: var(--color-white);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+  }
+
+  /* ---------- Header bar ---------- */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    min-height: 76px;
+  }
+  .site-header__brand {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    --logo-height: 40px;
+  }
+
+  /* ---------- Primary (desktop) nav ---------- */
+  .primary-nav {
+    display: none;
+  }
+  .primary-nav__list {
+    display: flex;
+    align-items: center;
+    gap: clamp(var(--space-4), 2vw, var(--space-6));
+    margin: 0;
+  }
+  .primary-nav__link {
+    color: var(--color-navy);
+    font-weight: var(--fw-medium);
+    text-decoration: none;
+    padding-block: var(--space-2);
+    white-space: nowrap;
+  }
+  .primary-nav__link:hover {
+    color: var(--color-accent-blue);
+  }
+  .primary-nav__link[aria-current='page'] {
+    color: var(--color-accent-blue);
+    font-weight: var(--fw-semibold);
+    box-shadow: inset 0 -2px 0 0 var(--color-accent-blue);
+  }
+
+  /* ---------- Right-side actions ---------- */
+  .site-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  .site-header__portal {
+    display: none;
+  }
+
+  .lang-switch {
+    display: none;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-grey-600);
+    font-size: var(--fs-200);
+  }
+  .lang-switch__link {
+    color: var(--color-grey-600);
+    text-decoration: none;
+    text-transform: lowercase;
+    padding: var(--space-1);
+  }
+  .lang-switch__link.is-active {
+    color: var(--color-navy);
+    font-weight: var(--fw-semibold);
+  }
+  .lang-switch__link:hover {
+    color: var(--color-accent-blue);
+  }
+
+  /* ---------- Hamburger toggle ---------- */
+  .nav-toggle {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: var(--color-navy);
+  }
+  .nav-toggle__bars,
+  .nav-toggle__bars::before,
+  .nav-toggle__bars::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 2px;
+  }
+  .nav-toggle__bars {
+    position: relative;
+  }
+  .nav-toggle__bars::before {
+    position: absolute;
+    top: -7px;
+  }
+  .nav-toggle__bars::after {
+    position: absolute;
+    top: 7px;
+  }
+
+  /* ---------- Mobile drawer ---------- */
+  .mobile-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+  }
+  .mobile-nav[hidden] {
+    display: none;
+  }
+  .mobile-nav__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(8, 57, 87, 0.55);
+    animation: announce-fade 0.2s ease;
+  }
+  .mobile-nav__panel {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: 0;
+    width: min(86vw, 360px);
+    height: 100%;
+    overflow-y: auto;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    animation: drawer-in 0.25s ease;
+  }
+  .mobile-nav__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    --logo-height: 34px;
+  }
+  .nav-close {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: var(--color-navy);
+  }
+  .mobile-nav__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin: 0;
+  }
+  .mobile-nav__link {
+    display: block;
+    padding: var(--space-3) var(--space-2);
+    color: var(--color-navy);
+    font-weight: var(--fw-medium);
+    font-size: var(--fs-400);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+  }
+  .mobile-nav__link:hover {
+    background-color: var(--color-surface);
+    color: var(--color-accent-blue);
+  }
+  .mobile-nav__link[aria-current='page'] {
+    color: var(--color-accent-blue);
+    font-weight: var(--fw-semibold);
+  }
+  .mobile-nav__portal {
+    align-self: flex-start;
+  }
+  .lang-switch--mobile {
+    display: flex;
+    margin-top: auto;
+  }
+
+  @keyframes announce-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes drawer-in {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  /* ---------- Desktop breakpoint ---------- */
+  @media (min-width: 1024px) {
+    .primary-nav {
+      display: block;
+    }
+    .site-header__portal,
+    .lang-switch {
+      display: flex;
+    }
+    .nav-toggle {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,411 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogCard from '../components/BlogCard.astro';
+
+const entry = await getEntry('home', 'accueil');
+if (!entry) {
+  throw new Error("Contenu d'accueil introuvable : src/content/home/accueil.json");
+}
+const home = entry.data;
+const { hero, iso, expertises, solutions, partners, experts, articles } = home;
+
+// Latest 3 articles for the teaser.
+const latest = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title={undefined}
+  description="Victrix — services-conseils en TI : cybersécurité, infonuagique, intelligence artificielle, productivité et services gérés pour les entreprises et organisations publiques."
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__inner">
+        {hero.eyebrow && <p class="hero__eyebrow">{hero.eyebrow}</p>}
+        <h1 class="hero__title">{hero.title}</h1>
+        <p class="hero__subtitle">{hero.subtitle}</p>
+        <a class="btn hero__cta" href={hero.ctaHref}>{hero.ctaLabel}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ISO 27001 band -->
+  <section class="iso" aria-label={iso.title}>
+    <div class="container iso__inner">
+      <span class="iso__badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28">
+          <path
+            fill="currentColor"
+            d="M12 1 3 5v6c0 5 3.8 9.4 9 11 5.2-1.6 9-6 9-11V5l-9-4Zm-1.2 14.6-3.4-3.4 1.4-1.4 2 2 4.6-4.6 1.4 1.4-6 6Z"
+          ></path>
+        </svg>
+      </span>
+      <p class="iso__text">
+        <strong>{iso.title}</strong>
+        <span>{iso.subtitle}</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Expertises -->
+  <section class="expertises">
+    <div class="container">
+      <h2 class="section-title">{expertises.sectionTitle}</h2>
+      <ul role="list" class="expertises__grid">
+        {
+          expertises.items.map((item) => (
+            <li class="exp-card" style={`--accent:${item.accent}`}>
+              <p class="exp-card__num" aria-hidden="true">
+                {item.number}
+              </p>
+              <h3 class="exp-card__title">{item.title}</h3>
+              <p class="exp-card__desc">{item.description}</p>
+              <a class="btn btn--outline exp-card__cta" href={item.href}>
+                En savoir plus
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Core solution (SevOC) -->
+  <section class="solution">
+    <div class="container solution__inner">
+      <Image
+        class="solution__img"
+        src={solutions.image}
+        alt=""
+        widths={[400, 760]}
+        sizes="(min-width: 880px) 420px, 100vw"
+      />
+      <div class="solution__body">
+        <p class="eyebrow">{solutions.eyebrow}</p>
+        <h2 class="solution__title">{solutions.title}</h2>
+        <p class="solution__text">{solutions.body}</p>
+        <a class="btn btn--primary" href={solutions.ctaHref}>{solutions.ctaLabel}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="partners" aria-label={partners.title}>
+    <div class="container">
+      <h2 class="partners__title">{partners.title}</h2>
+      <ul role="list" class="partners__list">
+        {partners.names.map((name) => <li class="partners__item">{name}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Experts CTA -->
+  <section class="experts">
+    <div class="container experts__inner">
+      <div>
+        <h2 class="experts__title">{experts.title}</h2>
+        <p class="experts__subtitle">{experts.subtitle}</p>
+      </div>
+      <a class="btn experts__cta" href={experts.ctaHref}>{experts.ctaLabel}</a>
+    </div>
+  </section>
+
+  <!-- Latest articles -->
+  <section class="latest">
+    <div class="container">
+      <div class="latest__head">
+        <h2 class="section-title section-title--left">{articles.title}</h2>
+        <a class="latest__link" href={articles.ctaHref}>{articles.ctaLabel}&nbsp;→</a>
+      </div>
+      <ul role="list" class="latest__grid">
+        {
+          latest.map((post) => (
+            <li>
+              <BlogCard post={post} headingLevel="h3" />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Shared section heading */
+  .section-title {
+    text-align: center;
+    margin-bottom: var(--space-7);
+  }
+  .section-title--left {
+    text-align: left;
+    margin-bottom: 0;
+  }
+  .eyebrow {
+    color: var(--color-accent);
+    font-weight: var(--fw-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--fs-200);
+    margin-bottom: var(--space-3);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background:
+      radial-gradient(120% 140% at 85% 0%, var(--color-navy-700) 0%, transparent 55%),
+      linear-gradient(120deg, var(--color-navy-900) 0%, var(--color-navy) 70%);
+    color: var(--color-text-invert);
+  }
+  .hero__inner {
+    padding-block: var(--space-9);
+    max-width: 760px;
+  }
+  .hero__eyebrow {
+    color: var(--color-accent-green);
+    font-weight: var(--fw-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--fs-200);
+    margin-bottom: var(--space-4);
+  }
+  .hero__title {
+    color: var(--color-text-invert);
+    max-width: 18ch;
+  }
+  .hero__subtitle {
+    margin-top: var(--space-5);
+    max-width: 56ch;
+    font-size: var(--fs-400);
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .hero__cta {
+    margin-top: var(--space-6);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    color: var(--color-text-invert);
+  }
+  .hero__cta:hover {
+    background-color: var(--color-white);
+    color: var(--color-navy);
+  }
+
+  /* ---------- ISO band ---------- */
+  .iso {
+    background-color: var(--color-navy);
+    color: var(--color-text-invert);
+  }
+  .iso__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    padding-block: var(--space-5);
+    text-align: center;
+  }
+  .iso__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: var(--radius-pill);
+    background-color: rgba(36, 251, 142, 0.15);
+    color: var(--color-accent-green);
+  }
+  .iso__text {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-3);
+  }
+  .iso__text strong {
+    font-size: var(--fs-500);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.02em;
+  }
+  .iso__text span {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* ---------- Expertises ---------- */
+  .expertises {
+    padding-block: var(--space-9);
+  }
+  .expertises__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin: 0;
+  }
+  @media (min-width: 600px) {
+    .expertises__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 960px) {
+    .expertises__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .exp-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--accent);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg);
+  }
+  .exp-card__num {
+    font-size: var(--fs-500);
+    font-weight: var(--fw-extrabold);
+    color: var(--accent);
+    line-height: 1;
+  }
+  .exp-card__title {
+    color: var(--accent);
+    font-size: var(--fs-500);
+  }
+  .exp-card__desc {
+    color: var(--color-text-muted);
+    flex-grow: 1;
+  }
+  .exp-card__cta {
+    align-self: flex-start;
+    margin-top: var(--space-2);
+  }
+
+  /* ---------- Solution (SevOC) ---------- */
+  .solution {
+    padding-block: var(--space-8);
+    background-color: var(--color-surface);
+  }
+  .solution__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    align-items: center;
+  }
+  @media (min-width: 880px) {
+    .solution__inner {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: var(--space-8);
+    }
+  }
+  .solution__img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+  .solution__title {
+    color: var(--color-accent-green);
+    font-size: var(--fs-700);
+  }
+  .solution__text {
+    margin-block: var(--space-4) var(--space-6);
+    font-size: var(--fs-400);
+    color: var(--color-text-muted);
+  }
+
+  /* ---------- Partners ---------- */
+  .partners {
+    padding-block: var(--space-7);
+  }
+  .partners__title {
+    text-align: center;
+    font-size: var(--fs-500);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-5);
+  }
+  .partners__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-5) var(--space-8);
+    margin: 0;
+  }
+  .partners__item {
+    font-size: var(--fs-500);
+    font-weight: var(--fw-bold);
+    color: var(--color-grey-500);
+    letter-spacing: 0.01em;
+  }
+
+  /* ---------- Experts CTA ---------- */
+  .experts {
+    background-color: var(--color-navy);
+    color: var(--color-text-invert);
+  }
+  .experts__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    padding-block: var(--space-7);
+  }
+  .experts__title {
+    color: var(--color-text-invert);
+  }
+  .experts__subtitle {
+    margin-top: var(--space-2);
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .experts__cta {
+    background-color: var(--color-accent-green);
+    color: var(--color-navy);
+    font-weight: var(--fw-bold);
+  }
+  .experts__cta:hover {
+    background-color: var(--color-white);
+  }
+
+  /* ---------- Latest articles ---------- */
+  .latest {
+    padding-block: var(--space-9);
+  }
+  .latest__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+  .latest__link {
+    color: var(--color-link);
+    font-weight: var(--fw-semibold);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .latest__link:hover {
+    color: var(--color-accent-blue);
+    text-decoration: underline;
+  }
+  .latest__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin: 0;
+  }
+  @media (min-width: 640px) {
+    .latest__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1000px) {
+    .latest__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

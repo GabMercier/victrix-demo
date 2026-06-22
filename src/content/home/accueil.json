@@ -1,0 +1,83 @@
+{
+  "hero": {
+    "eyebrow": "Services-conseils en TI",
+    "title": "Victrix, votre partenaire de confiance en services-conseils et solutions TI",
+    "subtitle": "Renforcez votre cybersécurité et optimisez vos processus avec Victrix. Profitez de notre expertise de pointe en gestion des TI, en infonuagique et en gouvernance de l’IA pour propulser votre organisation et rester à l’avant-garde technologique de votre secteur.",
+    "ctaLabel": "Découvrir Victrix",
+    "ctaHref": "/decouvrir"
+  },
+  "iso": {
+    "title": "Certifié ISO 27001",
+    "subtitle": "La sécurité de l’information au cœur de toutes nos pratiques."
+  },
+  "expertises": {
+    "sectionTitle": "Nos expertises",
+    "items": [
+      {
+        "number": "01",
+        "title": "Cybersécurité",
+        "accent": "#B45309",
+        "description": "Audit, gouvernance, surveillance, gestion des identités (IAM), automatisation — SevOC.",
+        "href": "/expertises/cybersecurite"
+      },
+      {
+        "number": "02",
+        "title": "Infonuagique",
+        "accent": "#2350E0",
+        "description": "Feuille de route multinuage, étude d’opportunité (IaaS, PaaS, SaaS), analyse de la posture de sécurité, migration vers une plateforme infonuagique (AWS, Azure).",
+        "href": "/expertises/infonuagique"
+      },
+      {
+        "number": "03",
+        "title": "Productivité",
+        "accent": "#1F8A4C",
+        "description": "BI et Power BI, développement Microsoft 365, gestion et automatisation des processus.",
+        "href": "/expertises/productivite"
+      },
+      {
+        "number": "04",
+        "title": "Intelligence artificielle",
+        "accent": "#0E7C86",
+        "description": "Exploration et analyse des opportunités, développement d’agents et de solutions d’IA sur mesure, adoption sécurisée de l’IA générative.",
+        "href": "/expertises/intelligence-artificielle"
+      },
+      {
+        "number": "05",
+        "title": "Consultation stratégique",
+        "accent": "#5C6068",
+        "description": "Stratégie, feuille de route technologique, positionnement stratégique.",
+        "href": "/expertises/consultation-strategique"
+      },
+      {
+        "number": "06",
+        "title": "Services gérés",
+        "accent": "#C2410C",
+        "description": "Services gérés de sécurité et d’infonuagique.",
+        "href": "/expertises/services-geres"
+      }
+    ]
+  },
+  "solutions": {
+    "eyebrow": "Nos solutions phares",
+    "title": "SevOC",
+    "body": "Le SevOC prend en charge les opérations de sécurité de votre organisation. Contrairement à un SOC traditionnel, notre offre modulaire et évolutive vous permet de rester à l’avant-garde des technologies de sécurité.",
+    "ctaLabel": "Découvrir le SevOC",
+    "ctaHref": "/expertises/cybersecurite",
+    "image": "./sevoc.png"
+  },
+  "partners": {
+    "title": "Nos partenaires",
+    "names": ["Imprivata", "AlgoSec", "AWS", "OVHcloud", "ServiceNow"]
+  },
+  "experts": {
+    "title": "Rencontrez nos experts",
+    "subtitle": "N’hésitez pas à nous contacter pour discuter de vos projets.",
+    "ctaLabel": "Réserver une plage horaire",
+    "ctaHref": "/contact"
+  },
+  "articles": {
+    "title": "Nos derniers articles",
+    "ctaLabel": "Voir toutes les ressources",
+    "ctaHref": "/ressources"
+  }
+}

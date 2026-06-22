@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+
+// Newest first.
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<BaseLayout
+  title="Ressources"
+  description="Articles, analyses et conseils de Victrix sur l'infonuagique, la cybersécurité, l'intelligence artificielle et la productivité."
+>
+  <div class="container blog">
+    <header class="blog__head">
+      <p class="eyebrow">Ressources</p>
+      <h1>Le blogue Victrix</h1>
+      <p class="blog__intro">
+        Analyses, bonnes pratiques et points de vue de nos experts pour accompagner
+        la transformation numérique de votre organisation.
+      </p>
+    </header>
+
+    <ul role="list" class="blog__grid">
+      {
+        posts.map((post) => (
+          <li>
+            <BlogCard post={post} headingLevel="h2" />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .blog {
+    padding-block: var(--space-8) var(--space-9);
+  }
+  .blog__head {
+    max-width: 60ch;
+    margin-bottom: var(--space-7);
+  }
+  .eyebrow {
+    margin-bottom: var(--space-3);
+    color: var(--color-accent);
+    font-weight: var(--fw-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--fs-200);
+  }
+  .blog__intro {
+    margin-top: var(--space-4);
+    font-size: var(--fs-400);
+    color: var(--color-text-muted);
+  }
+
+  .blog__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin: 0;
+  }
+  @media (min-width: 640px) {
+    .blog__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1000px) {
+    .blog__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

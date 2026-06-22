@@ -1,0 +1,440 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const offices = [
+  {
+    city: 'Montréal',
+    lines: ['1100, boul. René-Lévesque Ouest, bureau 1900', 'Montréal (Québec) H3B 4N4'],
+    phone: '514 879-1919',
+    tel: '+15148791919',
+  },
+  {
+    city: 'Québec',
+    lines: ['330, rue Saint-Vallier Est, bureau 130', 'Québec (Québec) G1K 9C5'],
+    phone: '418 780-8181',
+    tel: '+14187808181',
+  },
+  {
+    city: 'Paris',
+    lines: ['France'],
+    phone: '+33 1 74 90 50 40',
+    tel: '+33174905040',
+  },
+];
+---
+
+<BaseLayout
+  title="Contact"
+  description="Communiquez avec Victrix : nos bureaux de Montréal, Québec et Paris, par téléphone, par courriel ou via notre formulaire."
+>
+  <!-- Hero -->
+  <section class="c-hero">
+    <div class="container">
+      <h1 class="c-hero__title">Contactez-nous</h1>
+      <p class="c-hero__sub">
+        Vous avez une question ou un projet&nbsp;? N’hésitez pas à nous écrire.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact card: coordinates + form -->
+  <section class="c-card-wrap">
+    <div class="container">
+      <div class="c-card">
+        <!-- Coordinates panel -->
+        <div class="c-info">
+          <h2 class="c-info__title">Nos coordonnées</h2>
+          <ul role="list" class="c-info__list">
+            <li><span>Montréal</span> <a href="tel:+15148791919">514 879-1919</a></li>
+            <li><span>Québec</span> <a href="tel:+14187808181">418 780-8181</a></li>
+            <li><span>Paris</span> <a href="tel:+33174905040">+33 1 74 90 50 40</a></li>
+            <li><span>Sans frais</span> <a href="tel:+18886808181">1 888 680-8181</a></li>
+          </ul>
+          <p class="c-info__email">
+            <a href="mailto:contact@victrix.ca">contact@victrix.ca</a>
+          </p>
+          <div class="c-info__social">
+            <a href="#" class="c-info__sociallink" aria-label="Victrix sur Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M14 9h2.5V6H14c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v7h3v-7H16l.5-3h-3V9.5C13.5 9.2 13.7 9 14 9z" />
+              </svg>
+            </a>
+            <a href="#" class="c-info__sociallink" aria-label="Victrix sur LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M6.94 7.5a1.94 1.94 0 1 1 0-3.88 1.94 1.94 0 0 1 0 3.88zM5.2 9h3.5v11H5.2V9zm5.6 0h3.35v1.5h.05c.47-.85 1.6-1.75 3.3-1.75 3.53 0 4.18 2.2 4.18 5.05V20h-3.5v-4.9c0-1.17-.02-2.67-1.7-2.67-1.7 0-1.96 1.28-1.96 2.59V20h-3.5V9z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="c-form">
+          <h2 class="c-form__title">Écrivez-nous</h2>
+          <p class="c-form__req" id="req-note">
+            Les champs marqués d’un astérisque (<span aria-hidden="true">*</span>) sont obligatoires.
+          </p>
+
+          <form class="form" aria-describedby="req-note" data-contact-form>
+            <div class="form__row">
+              <div class="field">
+                <label for="firstname">Prénom <span aria-hidden="true">*</span></label>
+                <input id="firstname" name="firstname" type="text" autocomplete="given-name" required />
+              </div>
+              <div class="field">
+                <label for="lastname">Nom <span aria-hidden="true">*</span></label>
+                <input id="lastname" name="lastname" type="text" autocomplete="family-name" required />
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div class="field">
+                <label for="email">Courriel <span aria-hidden="true">*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+              <div class="field">
+                <label for="phone">Téléphone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+            </div>
+
+            <fieldset class="field field--group">
+              <legend>Que souhaitez-vous aborder&nbsp;? <span aria-hidden="true">*</span></legend>
+              <div class="radio-row">
+                <label class="radio"><input type="radio" name="subject" value="projet" required /> Un projet</label>
+                <label class="radio"><input type="radio" name="subject" value="expertise" /> Une expertise</label>
+                <label class="radio"><input type="radio" name="subject" value="autre" /> Autre</label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="message">Message <span aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+
+            <div class="field field--check">
+              <label class="check">
+                <input type="checkbox" name="consent" required />
+                <span>
+                  En soumettant ce formulaire, je consens à recevoir des communications de Victrix
+                  et j’accepte sa <a href="/politique-confidentialite">politique de confidentialité</a>.
+                </span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn--primary form__submit">Envoyer le message</button>
+
+            <p class="form__status" data-form-status role="status" aria-live="polite" hidden></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offices -->
+  <section class="offices">
+    <div class="container">
+      <h2 class="offices__title">Nos bureaux</h2>
+      <div class="offices__map" role="img" aria-label="Carte de localisation des bureaux (espace réservé)">
+        <span class="offices__map-note">Carte interactive — espace réservé</span>
+      </div>
+      <ul role="list" class="offices__grid">
+        {
+          offices.map((o) => (
+            <li class="office">
+              <h3 class="office__city">{o.city}</h3>
+              <address class="office__addr">
+                {o.lines.map((l) => (
+                  <span>{l}</span>
+                ))}
+                <a href={`tel:${o.tel}`}>{o.phone}</a>
+              </address>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Demo-only submission: validate natively, then confirm inline (no backend).
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  const status = document.querySelector<HTMLParagraphElement>('[data-form-status]');
+  if (form && status) {
+    // With JS we drive validation ourselves; without JS, native validation
+    // still runs because the form carries no static `novalidate` attribute.
+    form.noValidate = true;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      status.hidden = false;
+      status.textContent =
+        'Merci ! Votre message a bien été reçu. (Formulaire de démonstration — aucun envoi réel.)';
+      form.reset();
+    });
+  }
+</script>
+
+<style>
+  /* ---------- Hero ---------- */
+  .c-hero {
+    background-color: var(--color-navy);
+    color: var(--color-text-invert);
+    text-align: center;
+    padding-block: var(--space-9) var(--space-10);
+  }
+  .c-hero__title {
+    /* White on navy (12:1) — accent-blue on navy fails WCAG AA contrast. */
+    color: var(--color-text-invert);
+  }
+  .c-hero__sub {
+    margin: var(--space-4) auto 0;
+    max-width: 46ch;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--fs-400);
+  }
+
+  /* ---------- Card (pulled up over hero) ---------- */
+  .c-card-wrap {
+    background: linear-gradient(var(--color-navy) 90px, var(--color-bg) 90px);
+  }
+  .c-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    background-color: var(--color-bg);
+  }
+  @media (min-width: 820px) {
+    .c-card {
+      grid-template-columns: 0.8fr 1.2fr;
+    }
+  }
+
+  .c-info {
+    background-color: var(--color-accent-blue);
+    color: var(--color-white);
+    padding: var(--space-7) var(--space-6);
+  }
+  .c-info__title {
+    color: var(--color-white);
+    font-size: var(--fs-500);
+    margin-bottom: var(--space-5);
+  }
+  .c-info__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: 0 0 var(--space-5);
+  }
+  .c-info__list li {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    padding-bottom: var(--space-3);
+  }
+  .c-info__list span {
+    font-weight: var(--fw-semibold);
+  }
+  .c-info__list a,
+  .c-info__email a {
+    color: var(--color-white);
+    text-decoration: none;
+  }
+  .c-info__list a:hover,
+  .c-info__email a:hover {
+    text-decoration: underline;
+  }
+  .c-info__email {
+    margin-bottom: var(--space-5);
+    font-weight: var(--fw-semibold);
+  }
+  .c-info__social {
+    display: flex;
+    gap: var(--space-3);
+  }
+  .c-info__sociallink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: var(--radius-pill);
+    color: var(--color-white);
+  }
+  .c-info__sociallink:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* ---------- Form ---------- */
+  .c-form {
+    padding: var(--space-7) var(--space-6);
+  }
+  .c-form__title {
+    font-size: var(--fs-500);
+  }
+  .c-form__req {
+    margin-top: var(--space-2);
+    color: var(--color-text-muted);
+    font-size: var(--fs-200);
+  }
+  .form {
+    margin-top: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+  .form__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  @media (min-width: 560px) {
+    .form__row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .field label,
+  .field legend {
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-200);
+    color: var(--color-navy);
+  }
+  /* Only the text fields (direct children) — not the nested radios/checkbox. */
+  .field > input,
+  .field > textarea {
+    width: 100%;
+    padding: 0.7em 0.9em;
+    /* grey-500 (~3.3:1 on white) meets WCAG 1.4.11 non-text contrast. */
+    border: 1px solid var(--color-grey-500);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg);
+  }
+  .field > input:focus-visible,
+  .field > textarea:focus-visible {
+    border-color: var(--color-accent-blue);
+  }
+  .field textarea {
+    resize: vertical;
+  }
+  .field--group {
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .radio-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+  }
+  .radio,
+  .check {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: var(--fw-regular);
+    color: var(--color-text);
+  }
+  .check {
+    align-items: flex-start;
+    font-size: var(--fs-200);
+  }
+  .check input {
+    margin-top: 0.2em;
+    flex-shrink: 0;
+  }
+  .form__submit {
+    align-self: flex-start;
+  }
+  .form__status {
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    background-color: rgba(36, 251, 142, 0.15);
+    border: 1px solid var(--color-accent-green);
+    color: var(--color-navy);
+    font-weight: var(--fw-medium);
+  }
+  .form__status[hidden] {
+    display: none;
+  }
+
+  /* ---------- Offices ---------- */
+  .offices {
+    padding-block: var(--space-9);
+  }
+  .offices__title {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+  .offices__map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+    border-radius: var(--radius-lg);
+    background:
+      repeating-linear-gradient(0deg, var(--color-grey-100) 0 39px, var(--color-grey-200) 39px 40px),
+      repeating-linear-gradient(90deg, var(--color-grey-100) 0 39px, var(--color-grey-200) 39px 40px);
+    border: 1px solid var(--color-border);
+    margin-bottom: var(--space-6);
+  }
+  .offices__map-note {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    padding: var(--space-2) var(--space-4);
+    color: var(--color-text-muted);
+    font-size: var(--fs-200);
+  }
+  .offices__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    margin: 0;
+  }
+  @media (min-width: 700px) {
+    .offices__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .office {
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent-blue);
+    border-radius: var(--radius-md);
+  }
+  .office__city {
+    font-size: var(--fs-500);
+    color: var(--color-navy);
+    margin-bottom: var(--space-3);
+  }
+  .office__addr {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    color: var(--color-text-muted);
+  }
+  .office__addr a {
+    margin-top: var(--space-2);
+    color: var(--color-link);
+    font-weight: var(--fw-semibold);
+    text-decoration: none;
+  }
+  .office__addr a:hover {
+    color: var(--color-accent-blue);
+  }
+</style>

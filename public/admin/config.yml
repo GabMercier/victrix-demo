@@ -1,0 +1,142 @@
+# Sveltia CMS configuration — Victrix prototype
+# Docs: https://github.com/sveltia/sveltia-cms (Decap/Netlify-CMS compatible)
+#
+# Local editing (recommended for this prototype): run `npm run dev`, open
+# http://localhost:<port>/admin/, click "Work with Local Repository", pick the
+# project root. Chromium only (Chrome/Edge/Brave). No auth, no proxy; you commit
+# changes yourself with Git.
+#
+# Production editing on the deployed /admin needs the GitHub backend below plus a
+# GitHub OAuth app (e.g. a small Cloudflare Worker authenticator).
+
+backend:
+  name: github
+  repo: GabMercier/victrix-demo
+  branch: main
+
+# Fallback media library for any field that doesn't override it (none do today).
+media_folder: "public/media"
+public_folder: "/media"
+
+collections:
+  # ---------------------------------------------------------------------------
+  # Blog — folder collection over src/content/blog/*.md
+  # Covers saved to src/content/blog/covers/ and written as "./covers/<file>"
+  # so Astro's image() schema helper can resolve them.
+  # ---------------------------------------------------------------------------
+  - name: blog
+    label: "Articles de blogue"
+    label_singular: "Article"
+    description: "Articles publiés dans la section Ressources."
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}} — {{date}}"
+    sortable_fields: [date, title]
+    extension: md
+    format: yaml-frontmatter
+    media_folder: "covers"
+    public_folder: "./covers"
+    fields:
+      - { name: title, label: "Titre", widget: string }
+      - name: date
+        label: "Date de publication"
+        widget: datetime
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        format: "YYYY-MM-DD"
+        picker_utc: false
+      - { name: excerpt, label: "Extrait", widget: text }
+      - { name: coverImage, label: "Image de couverture", widget: image }
+      - name: tags
+        label: "Étiquettes"
+        widget: list
+        required: false
+      - { name: body, label: "Contenu", widget: markdown }
+
+  # ---------------------------------------------------------------------------
+  # Page d'accueil — file (singleton) collection over src/content/home/accueil.json
+  # Images saved beside the JSON and written as "./<file>".
+  # ---------------------------------------------------------------------------
+  - name: home
+    label: "Page d’accueil"
+    description: "Textes modifiables de la page d’accueil."
+    media_folder: ""
+    public_folder: "."
+    files:
+      - name: accueil
+        label: "Accueil"
+        file: "src/content/home/accueil.json"
+        format: json
+        fields:
+          - name: hero
+            label: "Bannière (hero)"
+            widget: object
+            fields:
+              - { name: eyebrow, label: "Surtitre", widget: string, required: false }
+              - { name: title, label: "Titre", widget: string }
+              - { name: subtitle, label: "Sous-titre", widget: text }
+              - { name: ctaLabel, label: "Texte du bouton", widget: string }
+              - { name: ctaHref, label: "Lien du bouton", widget: string }
+
+          - name: iso
+            label: "Bandeau ISO 27001"
+            widget: object
+            fields:
+              - { name: title, label: "Titre", widget: string }
+              - { name: subtitle, label: "Sous-titre", widget: text }
+
+          - name: expertises
+            label: "Expertises"
+            widget: object
+            fields:
+              - { name: sectionTitle, label: "Titre de section", widget: string }
+              - name: items
+                label: "Cartes d’expertise"
+                label_singular: "Carte"
+                widget: list
+                summary: "{{fields.number}} — {{fields.title}}"
+                fields:
+                  - { name: number, label: "Numéro", widget: string }
+                  - { name: title, label: "Titre", widget: string }
+                  - { name: accent, label: "Couleur d’accent (hex)", widget: string, hint: "Ex. #B45309 — garder un bon contraste sur fond blanc" }
+                  - { name: description, label: "Description", widget: text }
+                  - { name: href, label: "Lien", widget: string }
+
+          - name: solutions
+            label: "Solution phare"
+            widget: object
+            fields:
+              - { name: eyebrow, label: "Surtitre", widget: string }
+              - { name: title, label: "Titre", widget: string }
+              - { name: body, label: "Texte", widget: text }
+              - { name: ctaLabel, label: "Texte du bouton", widget: string }
+              - { name: ctaHref, label: "Lien du bouton", widget: string }
+              - { name: image, label: "Image", widget: image }
+
+          - name: partners
+            label: "Partenaires"
+            widget: object
+            fields:
+              - { name: title, label: "Titre", widget: string }
+              - name: names
+                label: "Noms des partenaires"
+                widget: list
+
+          - name: experts
+            label: "Bandeau « experts »"
+            widget: object
+            fields:
+              - { name: title, label: "Titre", widget: string }
+              - { name: subtitle, label: "Sous-titre", widget: text }
+              - { name: ctaLabel, label: "Texte du bouton", widget: string }
+              - { name: ctaHref, label: "Lien du bouton", widget: string }
+
+          - name: articles
+            label: "Bloc « derniers articles »"
+            widget: object
+            fields:
+              - { name: title, label: "Titre", widget: string }
+              - { name: ctaLabel, label: "Texte du lien", widget: string }
+              - { name: ctaHref, label: "Lien", widget: string }
