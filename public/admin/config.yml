@@ -17,32 +17,44 @@ backend:
   # Sveltia appends /auth and /callback itself). Local editing ignores this.
   base_url: https://sveltia-cms-auth.gabriel-mercier-blouin.workers.dev
 
+# Bilingual content. Blog posts are edited in both languages side-by-side and
+# stored as src/content/blog/<locale>/<slug>.md (multiple_folders). Sveltia
+# offers a per-locale editor + optional machine-translation buttons.
+i18n:
+  structure: multiple_folders
+  locales: [fr, en]
+  default_locale: fr
+
 # Fallback media library for any field that doesn't override it (none do today).
 media_folder: "public/media"
 public_folder: "/media"
 
 collections:
   # ---------------------------------------------------------------------------
-  # Blog — folder collection over src/content/blog/*.md
-  # Covers saved to src/content/blog/covers/ and written as "./covers/<file>"
-  # so Astro's image() schema helper can resolve them.
+  # Blog — folder collection over src/content/blog/<locale>/*.md
+  # i18n side-by-side: a post shares one slug across fr/ and en/. Covers are
+  # shared (one image for both languages) and stored in src/content/blog/covers,
+  # written into the entry as "../covers/<file>" so Astro's image() resolves them.
   # ---------------------------------------------------------------------------
   - name: blog
     label: "Articles de blogue"
     label_singular: "Article"
-    description: "Articles publiés dans la section Ressources."
+    description: "Articles publiés dans la section Ressources (FR + EN)."
     folder: "src/content/blog"
     create: true
+    i18n: true
     slug: "{{slug}}"
     identifier_field: title
     summary: "{{title}} — {{date}}"
     sortable_fields: [date, title]
     extension: md
     format: yaml-frontmatter
-    media_folder: "covers"
-    public_folder: "./covers"
+    # Repo-root-absolute upload dir; the field stores a path relative to the
+    # post (which lives one level deeper, in /fr or /en).
+    media_folder: "/src/content/blog/covers"
+    public_folder: "../covers"
     fields:
-      - { name: title, label: "Titre", widget: string }
+      - { name: title, label: "Titre", widget: string, i18n: true }
       - name: date
         label: "Date de publication"
         widget: datetime
@@ -50,29 +62,31 @@ collections:
         time_format: false
         format: "YYYY-MM-DD"
         picker_utc: false
-      - { name: excerpt, label: "Extrait", widget: text }
-      - { name: coverImage, label: "Image de couverture", widget: image }
+        i18n: duplicate
+      - { name: excerpt, label: "Extrait", widget: text, i18n: true }
+      - { name: coverImage, label: "Image de couverture", widget: image, i18n: duplicate }
       - name: tags
         label: "Étiquettes"
         widget: list
         required: false
-      - { name: body, label: "Contenu", widget: markdown }
+        i18n: true
+      - { name: body, label: "Contenu", widget: markdown, i18n: true }
 
   # ---------------------------------------------------------------------------
-  # Page d'accueil — file (singleton) collection over src/content/home/accueil.json
-  # Images saved beside the JSON and written as "./<file>".
+  # Page d'accueil — two file entries (FR + EN). Images live beside the JSON's
+  # parent folder (src/content/home) and are written as "../<file>".
   # ---------------------------------------------------------------------------
   - name: home
     label: "Page d’accueil"
-    description: "Textes modifiables de la page d’accueil."
-    media_folder: ""
-    public_folder: "."
+    description: "Textes modifiables de la page d’accueil (FR + EN)."
+    media_folder: "/src/content/home"
+    public_folder: ".."
     files:
-      - name: accueil
-        label: "Accueil"
-        file: "src/content/home/accueil.json"
+      - name: accueil_fr
+        label: "Accueil (FR)"
+        file: "src/content/home/fr/accueil.json"
         format: json
-        fields:
+        fields: &home_fields
           - name: hero
             label: "Bannière (hero)"
             widget: object
@@ -82,14 +96,12 @@ collections:
               - { name: subtitle, label: "Sous-titre", widget: text }
               - { name: ctaLabel, label: "Texte du bouton", widget: string }
               - { name: ctaHref, label: "Lien du bouton", widget: string }
-
           - name: iso
             label: "Bandeau ISO 27001"
             widget: object
             fields:
               - { name: title, label: "Titre", widget: string }
               - { name: subtitle, label: "Sous-titre", widget: text }
-
           - name: expertises
             label: "Expertises"
             widget: object
@@ -106,7 +118,6 @@ collections:
                   - { name: accent, label: "Couleur d’accent (hex)", widget: string, hint: "Ex. #B45309 — garder un bon contraste sur fond blanc" }
                   - { name: description, label: "Description", widget: text }
                   - { name: href, label: "Lien", widget: string }
-
           - name: solutions
             label: "Solution phare"
             widget: object
@@ -117,7 +128,6 @@ collections:
               - { name: ctaLabel, label: "Texte du bouton", widget: string }
               - { name: ctaHref, label: "Lien du bouton", widget: string }
               - { name: image, label: "Image", widget: image }
-
           - name: partners
             label: "Partenaires"
             widget: object
@@ -126,7 +136,6 @@ collections:
               - name: names
                 label: "Noms des partenaires"
                 widget: list
-
           - name: experts
             label: "Bandeau « experts »"
             widget: object
@@ -135,7 +144,6 @@ collections:
               - { name: subtitle, label: "Sous-titre", widget: text }
               - { name: ctaLabel, label: "Texte du bouton", widget: string }
               - { name: ctaHref, label: "Lien du bouton", widget: string }
-
           - name: articles
             label: "Bloc « derniers articles »"
             widget: object
@@ -143,3 +151,8 @@ collections:
               - { name: title, label: "Titre", widget: string }
               - { name: ctaLabel, label: "Texte du lien", widget: string }
               - { name: ctaHref, label: "Lien", widget: string }
+      - name: accueil_en
+        label: "Home (EN)"
+        file: "src/content/home/en/accueil.json"
+        format: json
+        fields: *home_fields

@@ -1,39 +1,29 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { type Locale, localePaths, localizePath } from '../../i18n/config';
+import { contactContent } from '../../i18n/content/contact';
 
-const offices = [
-  {
-    city: 'Montréal',
-    lines: ['1100, boul. René-Lévesque Ouest, bureau 1900', 'Montréal (Québec) H3B 4N4'],
-    phone: '514 879-1919',
-    tel: '+15148791919',
-  },
-  {
-    city: 'Québec',
-    lines: ['330, rue Saint-Vallier Est, bureau 130', 'Québec (Québec) G1K 9C5'],
-    phone: '418 780-8181',
-    tel: '+14187808181',
-  },
-  {
-    city: 'Paris',
-    lines: ['France'],
-    phone: '+33 1 74 90 50 40',
-    tel: '+33174905040',
-  },
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props as { lang: Locale };
+const c = contactContent[lang];
+
+// Locale-neutral coordinates, zipped with the localized office cards by index.
+const officePhones = [
+  { phone: '514 879-1919', tel: '+15148791919' },
+  { phone: '418 780-8181', tel: '+14187808181' },
+  { phone: '+33 1 74 90 50 40', tel: '+33174905040' },
 ];
+
+const consentHtml = c.consentText.replace('{privacy}', localizePath('/politique-confidentialite', lang));
 ---
 
-<BaseLayout
-  title="Contact"
-  description="Communiquez avec Victrix : nos bureaux de Montréal, Québec et Paris, par téléphone, par courriel ou via notre formulaire."
->
+<BaseLayout lang={lang} title={c.metaTitle} description={c.metaDescription}>
   <!-- Hero -->
   <section class="c-hero">
     <div class="container">
-      <h1 class="c-hero__title">Contactez-nous</h1>
-      <p class="c-hero__sub">
-        Vous avez une question ou un projet&nbsp;? N’hésitez pas à nous écrire.
-      </p>
+      <h1 class="c-hero__title">{c.heroTitle}</h1>
+      <p class="c-hero__sub">{c.heroSub}</p>
     </div>
   </section>
 
@@ -43,23 +33,23 @@ const offices = [
       <div class="c-card">
         <!-- Coordinates panel -->
         <div class="c-info">
-          <h2 class="c-info__title">Nos coordonnées</h2>
+          <h2 class="c-info__title">{c.infoTitle}</h2>
           <ul role="list" class="c-info__list">
-            <li><span>Montréal</span> <a href="tel:+15148791919">514 879-1919</a></li>
-            <li><span>Québec</span> <a href="tel:+14187808181">418 780-8181</a></li>
-            <li><span>Paris</span> <a href="tel:+33174905040">+33 1 74 90 50 40</a></li>
-            <li><span>Sans frais</span> <a href="tel:+18886808181">1 888 680-8181</a></li>
+            <li><span>{c.infoLabels.montreal}</span> <a href="tel:+15148791919">514 879-1919</a></li>
+            <li><span>{c.infoLabels.quebec}</span> <a href="tel:+14187808181">418 780-8181</a></li>
+            <li><span>{c.infoLabels.paris}</span> <a href="tel:+33174905040">+33 1 74 90 50 40</a></li>
+            <li><span>{c.infoLabels.tollFree}</span> <a href="tel:+18886808181">1 888 680-8181</a></li>
           </ul>
           <p class="c-info__email">
             <a href="mailto:contact@victrix.ca">contact@victrix.ca</a>
           </p>
           <div class="c-info__social">
-            <a href="#" class="c-info__sociallink" aria-label="Victrix sur Facebook">
+            <a href="#" class="c-info__sociallink" aria-label={c.infoLabels.facebookAria}>
               <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path fill="currentColor" d="M14 9h2.5V6H14c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v7h3v-7H16l.5-3h-3V9.5C13.5 9.2 13.7 9 14 9z" />
               </svg>
             </a>
-            <a href="#" class="c-info__sociallink" aria-label="Victrix sur LinkedIn">
+            <a href="#" class="c-info__sociallink" aria-label={c.infoLabels.linkedinAria}>
               <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path fill="currentColor" d="M6.94 7.5a1.94 1.94 0 1 1 0-3.88 1.94 1.94 0 0 1 0 3.88zM5.2 9h3.5v11H5.2V9zm5.6 0h3.35v1.5h.05c.47-.85 1.6-1.75 3.3-1.75 3.53 0 4.18 2.2 4.18 5.05V20h-3.5v-4.9c0-1.17-.02-2.67-1.7-2.67-1.7 0-1.96 1.28-1.96 2.59V20h-3.5V9z" />
               </svg>
@@ -69,61 +59,56 @@ const offices = [
 
         <!-- Form -->
         <div class="c-form">
-          <h2 class="c-form__title">Écrivez-nous</h2>
-          <p class="c-form__req" id="req-note">
-            Les champs marqués d’un astérisque (<span aria-hidden="true">*</span>) sont obligatoires.
-          </p>
+          <h2 class="c-form__title">{c.formTitle}</h2>
+          <p class="c-form__req" id="req-note">{c.reqNote}</p>
 
           <form class="form" aria-describedby="req-note" data-contact-form>
             <div class="form__row">
               <div class="field">
-                <label for="firstname">Prénom <span aria-hidden="true">*</span></label>
+                <label for="firstname">{c.labels.firstName} <span aria-hidden="true">*</span></label>
                 <input id="firstname" name="firstname" type="text" autocomplete="given-name" required />
               </div>
               <div class="field">
-                <label for="lastname">Nom <span aria-hidden="true">*</span></label>
+                <label for="lastname">{c.labels.lastName} <span aria-hidden="true">*</span></label>
                 <input id="lastname" name="lastname" type="text" autocomplete="family-name" required />
               </div>
             </div>
 
             <div class="form__row">
               <div class="field">
-                <label for="email">Courriel <span aria-hidden="true">*</span></label>
+                <label for="email">{c.labels.email} <span aria-hidden="true">*</span></label>
                 <input id="email" name="email" type="email" autocomplete="email" required />
               </div>
               <div class="field">
-                <label for="phone">Téléphone</label>
+                <label for="phone">{c.labels.phone}</label>
                 <input id="phone" name="phone" type="tel" autocomplete="tel" />
               </div>
             </div>
 
             <fieldset class="field field--group">
-              <legend>Que souhaitez-vous aborder&nbsp;? <span aria-hidden="true">*</span></legend>
+              <legend>{c.labels.subjectLegend} <span aria-hidden="true">*</span></legend>
               <div class="radio-row">
-                <label class="radio"><input type="radio" name="subject" value="projet" required /> Un projet</label>
-                <label class="radio"><input type="radio" name="subject" value="expertise" /> Une expertise</label>
-                <label class="radio"><input type="radio" name="subject" value="autre" /> Autre</label>
+                <label class="radio"><input type="radio" name="subject" value="projet" required /> {c.labels.subjectProjet}</label>
+                <label class="radio"><input type="radio" name="subject" value="expertise" /> {c.labels.subjectExpertise}</label>
+                <label class="radio"><input type="radio" name="subject" value="autre" /> {c.labels.subjectAutre}</label>
               </div>
             </fieldset>
 
             <div class="field">
-              <label for="message">Message <span aria-hidden="true">*</span></label>
+              <label for="message">{c.labels.message} <span aria-hidden="true">*</span></label>
               <textarea id="message" name="message" rows="5" required></textarea>
             </div>
 
             <div class="field field--check">
               <label class="check">
                 <input type="checkbox" name="consent" required />
-                <span>
-                  En soumettant ce formulaire, je consens à recevoir des communications de Victrix
-                  et j’accepte sa <a href="/politique-confidentialite">politique de confidentialité</a>.
-                </span>
+                <span set:html={consentHtml} />
               </label>
             </div>
 
-            <button type="submit" class="btn btn--primary form__submit">Envoyer le message</button>
+            <button type="submit" class="btn btn--primary form__submit">{c.submit}</button>
 
-            <p class="form__status" data-form-status role="status" aria-live="polite" hidden></p>
+            <p class="form__status" data-form-status data-success={c.statusMessage} role="status" aria-live="polite" hidden></p>
           </form>
         </div>
       </div>
@@ -133,20 +118,20 @@ const offices = [
   <!-- Offices -->
   <section class="offices">
     <div class="container">
-      <h2 class="offices__title">Nos bureaux</h2>
-      <div class="offices__map" role="img" aria-label="Carte de localisation des bureaux (espace réservé)">
-        <span class="offices__map-note">Carte interactive — espace réservé</span>
+      <h2 class="offices__title">{c.officesTitle}</h2>
+      <div class="offices__map" role="img" aria-label={c.mapAria}>
+        <span class="offices__map-note">{c.mapNote}</span>
       </div>
       <ul role="list" class="offices__grid">
         {
-          offices.map((o) => (
+          c.offices.map((o, i) => (
             <li class="office">
               <h3 class="office__city">{o.city}</h3>
               <address class="office__addr">
                 {o.lines.map((l) => (
                   <span>{l}</span>
                 ))}
-                <a href={`tel:${o.tel}`}>{o.phone}</a>
+                {officePhones[i] && <a href={`tel:${officePhones[i].tel}`}>{officePhones[i].phone}</a>}
               </address>
             </li>
           ))
@@ -161,8 +146,6 @@ const offices = [
   const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
   const status = document.querySelector<HTMLParagraphElement>('[data-form-status]');
   if (form && status) {
-    // With JS we drive validation ourselves; without JS, native validation
-    // still runs because the form carries no static `novalidate` attribute.
     form.noValidate = true;
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -171,8 +154,7 @@ const offices = [
         return;
       }
       status.hidden = false;
-      status.textContent =
-        'Merci ! Votre message a bien été reçu. (Formulaire de démonstration — aucun envoi réel.)';
+      status.textContent = status.dataset.success ?? '';
       form.reset();
     });
   }
@@ -187,7 +169,6 @@ const offices = [
     padding-block: var(--space-9) var(--space-10);
   }
   .c-hero__title {
-    /* White on navy (12:1) — accent-blue on navy fails WCAG AA contrast. */
     color: var(--color-text-invert);
   }
   .c-hero__sub {
@@ -311,12 +292,10 @@ const offices = [
     font-size: var(--fs-200);
     color: var(--color-navy);
   }
-  /* Only the text fields (direct children) — not the nested radios/checkbox. */
   .field > input,
   .field > textarea {
     width: 100%;
     padding: 0.7em 0.9em;
-    /* grey-500 (~3.3:1 on white) meets WCAG 1.4.11 non-text contrast. */
     border: 1px solid var(--color-grey-500);
     border-radius: var(--radius-md);
     background-color: var(--color-bg);

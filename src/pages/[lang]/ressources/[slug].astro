@@ -1,25 +1,27 @@
 ---
 import { getCollection, render } from 'astro:content';
 import { Image, getImage } from 'astro:assets';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { type Locale, defaultLocale, htmlLang, localizePath } from '../../../i18n/config';
+import { useTranslations } from '../../../i18n/ui';
+import { postLocale, postSlug } from '../../../i18n/blog';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+  return posts.map((post) => {
+    const lang = postLocale(post) ?? defaultLocale;
+    return { params: { lang, slug: postSlug(post) }, props: { post, lang } };
+  });
 }
 
-const { post } = Astro.props;
+const { post, lang } = Astro.props;
+const t = useTranslations(lang);
 const { Content } = await render(post);
 
-// Format in UTC so a calendar date like 2026-05-28 isn't rolled back a day
-// when rendered in a timezone behind UTC (e.g. America/Montreal).
-const dateFmt = new Intl.DateTimeFormat('fr-CA', { dateStyle: 'long', timeZone: 'UTC' });
+// Format the calendar date in the page locale, in UTC (so 2026-05-28 doesn't
+// roll back a day in timezones behind UTC).
+const dateFmt = new Intl.DateTimeFormat(htmlLang[lang], { dateStyle: 'long', timeZone: 'UTC' });
 
-// A 1200×630 JPEG derived from the cover → the social share card image, so a
-// shared link on LinkedIn/X/Facebook renders this article's own visual.
 const ogImage = await getImage({
   src: post.data.coverImage,
   width: 1200,
@@ -29,28 +31,32 @@ const ogImage = await getImage({
   format: 'jpeg',
 });
 
-// Absolute, canonical URL used by the share buttons (drives off `site`).
-const shareUrl = new URL(`/ressources/${post.id}`, Astro.site).href;
+const ressourcesHref = localizePath('/ressources', lang);
+
+// Absolute canonical URL for the share buttons — keep the trailing slash so it
+// matches og:url (the no-slash form 308-redirects on Cloudflare Pages).
+const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
 const shareLinks = [
   {
     name: 'LinkedIn',
-    label: 'Partager sur LinkedIn',
+    label: t.article.shareLinkedin,
     href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
   },
   {
     name: 'X',
-    label: 'Partager sur X',
+    label: t.article.shareX,
     href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.data.title)}`,
   },
   {
     name: 'Facebook',
-    label: 'Partager sur Facebook',
+    label: t.article.shareFacebook,
     href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
   },
 ];
 ---
 
 <BaseLayout
+  lang={lang}
   title={post.data.title}
   description={post.data.excerpt}
   image={ogImage.src}
@@ -61,7 +67,7 @@ const shareLinks = [
   <article class="article">
     <div class="container article__inner">
       <header class="article__head">
-        <a class="article__back" href="/ressources">← Toutes les ressources</a>
+        <a class="article__back" href={ressourcesHref}>{t.article.back}</a>
 
         {
           post.data.tags.length > 0 && (
@@ -97,7 +103,7 @@ const shareLinks = [
 
       <footer class="article__foot">
         <div class="share">
-          <span class="share__label">Partager&nbsp;:</span>
+          <span class="share__label">{t.article.shareLabel}</span>
           <ul role="list" class="share__list">
             {
               shareLinks.map((l) => (
@@ -129,7 +135,7 @@ const shareLinks = [
               ))
             }
             <li>
-              <button class="share__link" type="button" data-copy-link aria-label="Copier le lien">
+              <button class="share__link" type="button" data-copy-link aria-label={t.article.copyLink}>
                 <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <path fill="currentColor" d="M3.9 12a3.1 3.1 0 0 1 3.1-3.1h3v-2h-3a5.1 5.1 0 0 0 0 10.2h3v-2h-3A3.1 3.1 0 0 1 3.9 12Zm4.1 1h8v-2H8v2Zm9-6h-3v2h3a3.1 3.1 0 0 1 0 6.2h-3v2h3a5.1 5.1 0 0 0 0-10.2Z" />
                 </svg>
@@ -137,11 +143,11 @@ const shareLinks = [
             </li>
           </ul>
           <span class="share__copied" data-copy-status role="status" aria-live="polite" hidden>
-            Lien copié&nbsp;!
+            {t.article.copied}
           </span>
         </div>
 
-        <a class="btn btn--outline" href="/ressources">← Retour aux ressources</a>
+        <a class="btn btn--outline" href={ressourcesHref}>{t.article.backBtn}</a>
       </footer>
     </div>
   </article>

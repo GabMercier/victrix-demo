@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PortalLogin from '../../components/PortalLogin.astro';
+import { auth } from '../../lib/auth';
+
+/** Client-portal login entry (FR). On-demand so it can read the session/query. */
+export const prerender = false;
+
+// Already signed in? Skip the login and go straight to the dashboard.
+const existing = await auth.getSession(Astro.request);
+if (existing) return Astro.redirect('/mon-portail/tableau-de-bord');
+
+const rawReturn = Astro.url.searchParams.get('returnTo');
+const returnTo =
+  rawReturn && rawReturn.startsWith('/') && !rawReturn.startsWith('//')
+    ? rawReturn
+    : '/mon-portail/tableau-de-bord';
+const redirected = Astro.url.searchParams.has('returnTo');
+const error = Astro.url.searchParams.has('error');
+---
+
+<BaseLayout
+  lang="fr"
+  altLocalePath="/en/customer-portal"
+  title="Mon portail"
+  description="Connectez-vous à votre portail client Victrix pour accéder à vos contrats, services et documents."
+>
+  <PortalLogin lang="fr" returnTo={returnTo} redirected={redirected} error={error} />
+</BaseLayout>

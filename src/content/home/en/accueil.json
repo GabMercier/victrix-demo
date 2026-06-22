@@ -1,0 +1,83 @@
+{
+  "hero": {
+    "eyebrow": "IT Consulting Services",
+    "title": "Victrix, your trusted partner in IT consulting services and solutions",
+    "subtitle": "Strengthen your cybersecurity and optimize your processes with Victrix. Leverage our leading-edge expertise in IT management, cloud computing, and AI governance to propel your organization forward and stay at the technological forefront of your industry.",
+    "ctaLabel": "Discover Victrix",
+    "ctaHref": "/decouvrir"
+  },
+  "iso": {
+    "title": "ISO 27001 Certified",
+    "subtitle": "Information security at the heart of all our practices."
+  },
+  "expertises": {
+    "sectionTitle": "Our areas of expertise",
+    "items": [
+      {
+        "number": "01",
+        "title": "Cybersecurity",
+        "accent": "#B45309",
+        "description": "Audit, governance, monitoring, identity and access management (IAM), automation — SevOC.",
+        "href": "/expertises/cybersecurite"
+      },
+      {
+        "number": "02",
+        "title": "Cloud Computing",
+        "accent": "#2350E0",
+        "description": "Multi-cloud roadmap, opportunity assessment (IaaS, PaaS, SaaS), security posture analysis, migration to a cloud platform (AWS, Azure).",
+        "href": "/expertises/infonuagique"
+      },
+      {
+        "number": "03",
+        "title": "Productivity",
+        "accent": "#1F8A4C",
+        "description": "BI and Power BI, Microsoft 365 development, process management and automation.",
+        "href": "/expertises/productivite"
+      },
+      {
+        "number": "04",
+        "title": "Artificial Intelligence",
+        "accent": "#0E7C86",
+        "description": "Opportunity exploration and analysis, development of custom AI agents and solutions, secure adoption of generative AI.",
+        "href": "/expertises/intelligence-artificielle"
+      },
+      {
+        "number": "05",
+        "title": "Strategic Consulting",
+        "accent": "#5C6068",
+        "description": "Strategy, technology roadmap, strategic positioning.",
+        "href": "/expertises/consultation-strategique"
+      },
+      {
+        "number": "06",
+        "title": "Managed Services",
+        "accent": "#C2410C",
+        "description": "Managed security and cloud computing services.",
+        "href": "/expertises/services-geres"
+      }
+    ]
+  },
+  "solutions": {
+    "eyebrow": "Our flagship solutions",
+    "title": "SevOC",
+    "body": "The SevOC takes charge of your organization’s security operations. Unlike a traditional SOC, our modular and scalable offering lets you stay at the forefront of security technologies.",
+    "ctaLabel": "Discover the SevOC",
+    "ctaHref": "/expertises/cybersecurite",
+    "image": "../sevoc.png"
+  },
+  "partners": {
+    "title": "Our partners",
+    "names": ["Imprivata", "AlgoSec", "AWS", "OVHcloud", "ServiceNow"]
+  },
+  "experts": {
+    "title": "Meet our experts",
+    "subtitle": "Don’t hesitate to contact us to discuss your projects.",
+    "ctaLabel": "Book a time slot",
+    "ctaHref": "/contact"
+  },
+  "articles": {
+    "title": "Our latest articles",
+    "ctaLabel": "View all resources",
+    "ctaHref": "/ressources"
+  }
+}

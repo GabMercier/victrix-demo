@@ -1,0 +1,335 @@
+---
+import Logo from './Logo.astro';
+
+/**
+ * Branded client-portal login card (shared by the FR and EN entry pages).
+ *
+ * It deliberately LOOKS like the legacy Victrix login (email + password fields,
+ * "forgot password" link, brand panel) — but the primary action starts the
+ * OIDC redirect to the identity provider. The credential fields carry NO `name`
+ * attribute, so nothing is ever posted to this domain; the form only submits a
+ * hidden `returnTo` to GET /auth/login, which hands off to the IdP (mock signs
+ * in instantly). See docs/portail-auth.md §3.
+ */
+
+interface Props {
+  lang: 'fr' | 'en';
+  /** Where to land after sign-in (already validated upstream). */
+  returnTo: string;
+  /** Show the "please sign in to continue" notice (came from the guard). */
+  redirected?: boolean;
+  /** Show an error notice (e.g. a failed callback bounced back here). */
+  error?: boolean;
+}
+
+const { lang, returnTo, redirected = false, error = false } = Astro.props;
+
+const t = {
+  fr: {
+    eyebrow: 'Espace client',
+    title: 'Mon portail',
+    intro:
+      'Accédez à vos contrats, services et documents en toute sécurité.',
+    redirected: 'Veuillez vous connecter pour accéder à votre portail.',
+    error:
+      'La connexion n’a pas pu être finalisée. Veuillez réessayer.',
+    emailLabel: 'Courriel',
+    passwordLabel: 'Mot de passe',
+    forgot: 'Mot de passe oublié ?',
+    submit: 'Se connecter',
+    secureNote:
+      'Connexion sécurisée : vous êtes authentifié chez notre fournisseur d’identité (Microsoft Entra). Aucun mot de passe n’est traité par ce site.',
+    demoNote:
+      'Démonstration : la connexion est simulée — vous serez connecté automatiquement.',
+    panelTitle: 'Un portail, tous vos services',
+    panelLead:
+      'Suivez vos contrats de cybersécurité, vos rapports et l’état de vos services Victrix au même endroit.',
+    panelPoints: [
+      'Vue d’ensemble de vos contrats et renouvellements',
+      'Accès sécurisé délégué à votre fournisseur d’identité',
+      'Aucune information sensible stockée sur ce site',
+    ],
+    altLangLabel: 'English',
+    altLangHref: '/en/customer-portal',
+    homeAria: 'Victrix — Accueil',
+  },
+  en: {
+    eyebrow: 'Client area',
+    title: 'My portal',
+    intro: 'Securely access your contracts, services and documents.',
+    redirected: 'Please sign in to access your portal.',
+    error: 'Sign-in could not be completed. Please try again.',
+    emailLabel: 'Email',
+    passwordLabel: 'Password',
+    forgot: 'Forgot your password?',
+    submit: 'Sign in',
+    secureNote:
+      'Secure sign-in: you authenticate with our identity provider (Microsoft Entra). No password is ever processed by this site.',
+    demoNote: 'Demo: sign-in is simulated — you will be logged in automatically.',
+    panelTitle: 'One portal, all your services',
+    panelLead:
+      'Track your cybersecurity contracts, reports and the status of your Victrix services in one place.',
+    panelPoints: [
+      'Overview of your contracts and renewals',
+      'Secure access delegated to your identity provider',
+      'No sensitive information stored on this site',
+    ],
+    altLangLabel: 'Français',
+    altLangHref: '/mon-portail',
+    homeAria: 'Victrix — Home',
+  },
+}[lang];
+
+const loginHref = `/auth/login?returnTo=${encodeURIComponent(returnTo)}`;
+const homeHref = lang === 'fr' ? '/fr' : '/en';
+---
+
+<section class="pl">
+  <div class="container pl__inner">
+    <div class="pl__card">
+      <!-- Brand panel -->
+      <aside class="pl__brandpanel">
+        <a class="pl__logo" href={homeHref} aria-label={t.homeAria}>
+          <Logo variant="light" />
+        </a>
+        <h2 class="pl__paneltitle">{t.panelTitle}</h2>
+        <p class="pl__panellead">{t.panelLead}</p>
+        <ul role="list" class="pl__points">
+          {t.panelPoints.map((p) => (
+            <li class="pl__point">
+              <svg class="pl__check" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                <path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span>{p}</span>
+            </li>
+          ))}
+        </ul>
+      </aside>
+
+      <!-- Sign-in -->
+      <div class="pl__form">
+        <p class="pl__eyebrow">{t.eyebrow}</p>
+        <h1 class="pl__title">{t.title}</h1>
+        <p class="pl__intro">{t.intro}</p>
+
+        {error && (
+          <p class="pl__alert pl__alert--error" role="alert">{t.error}</p>
+        )}
+        {!error && redirected && (
+          <p class="pl__alert pl__alert--info" role="status">{t.redirected}</p>
+        )}
+
+        {/*
+          GET → /auth/login. The credential inputs have NO `name`, so only the
+          hidden returnTo is submitted; the provider takes over from there.
+        */}
+        <form class="pl__fields" method="get" action="/auth/login" aria-describedby="pl-secure-note">
+          <input type="hidden" name="returnTo" value={returnTo} />
+
+          <div class="field">
+            <label for="pl-email">{t.emailLabel}</label>
+            <input id="pl-email" type="email" autocomplete="username" inputmode="email" />
+          </div>
+
+          <div class="field">
+            <label for="pl-password">{t.passwordLabel}</label>
+            <input id="pl-password" type="password" autocomplete="current-password" />
+          </div>
+
+          <div class="pl__row">
+            <a class="pl__forgot" href={loginHref}>{t.forgot}</a>
+          </div>
+
+          <button type="submit" class="btn btn--primary pl__submit">{t.submit}</button>
+
+          <p id="pl-secure-note" class="pl__note">
+            <svg width="15" height="15" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+              <path d="M10 2l6 2.5v4.2c0 3.8-2.6 6.6-6 8.3-3.4-1.7-6-4.5-6-8.3V4.5L10 2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+            </svg>
+            <span>{t.secureNote}</span>
+          </p>
+          <p class="pl__demo">{t.demoNote}</p>
+        </form>
+
+        <p class="pl__altlang">
+          <a href={t.altLangHref} lang={lang === 'fr' ? 'en' : 'fr'}>{t.altLangLabel}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pl {
+    background: linear-gradient(180deg, var(--color-navy) 0 220px, var(--color-surface) 220px);
+    padding-block: var(--space-8) var(--space-9);
+  }
+  .pl__inner {
+    display: flex;
+    justify-content: center;
+  }
+  .pl__card {
+    width: 100%;
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+    background-color: var(--color-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+  @media (min-width: 880px) {
+    .pl__card {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* ---------- Brand panel ---------- */
+  .pl__brandpanel {
+    background-color: var(--color-navy);
+    color: var(--color-white);
+    padding: var(--space-7) var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  .pl__logo {
+    --logo-height: 40px;
+    display: inline-flex;
+    align-self: flex-start;
+    margin-bottom: var(--space-4);
+  }
+  .pl__paneltitle {
+    color: var(--color-white);
+    font-size: var(--fs-500);
+  }
+  .pl__panellead {
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+  }
+  .pl__points {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: var(--space-2) 0 0;
+  }
+  .pl__point {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    color: rgba(255, 255, 255, 0.92);
+  }
+  .pl__check {
+    flex-shrink: 0;
+    margin-top: 0.15em;
+    color: var(--color-accent-green);
+  }
+
+  /* ---------- Sign-in ---------- */
+  .pl__form {
+    padding: var(--space-7) var(--space-6);
+  }
+  .pl__eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--fs-100);
+    font-weight: var(--fw-semibold);
+    color: var(--color-accent-blue);
+  }
+  .pl__title {
+    font-size: var(--fs-700);
+    margin-top: var(--space-1);
+  }
+  .pl__intro {
+    margin-top: var(--space-2);
+    color: var(--color-text-muted);
+  }
+
+  .pl__alert {
+    margin: var(--space-5) 0 0;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-200);
+    font-weight: var(--fw-medium);
+  }
+  .pl__alert--info {
+    background-color: rgba(51, 102, 255, 0.1);
+    border: 1px solid var(--color-accent-blue);
+    color: var(--color-navy);
+  }
+  .pl__alert--error {
+    background-color: rgba(214, 40, 40, 0.08);
+    border: 1px solid #d62828;
+    color: #9b1c1c;
+  }
+
+  .pl__fields {
+    margin-top: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+  /* Reuse the global .field text-input styling from contact.astro's pattern. */
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .field label {
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-200);
+    color: var(--color-navy);
+  }
+  .field > input {
+    width: 100%;
+    padding: 0.7em 0.9em;
+    border: 1px solid var(--color-grey-500);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg);
+  }
+  .field > input:focus-visible {
+    border-color: var(--color-accent-blue);
+  }
+
+  .pl__row {
+    margin-top: calc(var(--space-4) * -1 + var(--space-1));
+  }
+  .pl__forgot {
+    font-size: var(--fs-200);
+    color: var(--color-link);
+    font-weight: var(--fw-medium);
+  }
+  .pl__submit {
+    align-self: stretch;
+    width: 100%;
+    padding-block: 0.85em;
+  }
+
+  .pl__note,
+  .pl__demo {
+    margin: 0;
+    font-size: var(--fs-100);
+    color: var(--color-text-muted);
+  }
+  .pl__note {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .pl__note svg {
+    flex-shrink: 0;
+    margin-top: 0.15em;
+    color: var(--color-accent-green);
+  }
+  .pl__demo {
+    font-style: italic;
+  }
+
+  .pl__altlang {
+    margin-top: var(--space-6);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--fs-200);
+  }
+</style>

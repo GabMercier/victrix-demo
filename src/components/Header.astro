@@ -1,43 +1,63 @@
 ---
 import Logo from './Logo.astro';
+import { type Locale, defaultLocale, otherLocale, localizePath, swapLocale } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
 
 /**
  * Global site header: dismissible announcement bar, logo, primary navigation,
- * FR/EN language switcher (placeholder), and an accessible mobile drawer menu.
- * No UI framework — a small inline vanilla script drives the mobile menu and
- * the announcement dismissal.
+ * a working FR/EN language switcher, and an accessible mobile drawer menu.
+ * Locale-aware: labels come from the UI dictionary, internal hrefs are
+ * localized, and the language switch links to the equivalent page in the
+ * other locale (`altLocalePath`, provided by the layout).
  */
 
-const navItems = [
-  { label: 'Découvrir Victrix', href: '/decouvrir' },
-  { label: 'Expertises', href: '/expertises' },
-  { label: 'Produits', href: '/produits' },
-  { label: 'Carrières', href: '/carrieres' },
-  { label: 'Contact', href: '/contact' },
-  { label: 'Ressources', href: '/ressources' },
-];
+interface Props {
+  lang?: Locale;
+  /** Equivalent page path in the other locale (for the language switch). */
+  altLocalePath?: string;
+}
 
-const portal = { label: 'Mon portail', href: '/portail' };
+const { lang = defaultLocale, altLocalePath } = Astro.props;
+const t = useTranslations(lang);
 
-// Normalize the current path (drop trailing slash) for active-state matching.
+const navItems = t.nav.items.map((item) => ({
+  label: item.label,
+  href: localizePath(item.href, lang),
+}));
+
+// The portal keeps its own localized entry points (not under /fr|/en mirrors).
+const portal = {
+  label: t.nav.portal,
+  href: lang === 'fr' ? '/mon-portail' : '/en/customer-portal',
+};
+
+const announceLink = localizePath(t.announce.linkHref, lang);
+
+// Active-state matching against the localized current path.
 const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
-const isCurrent = (href: string) =>
-  href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
+const isCurrent = (href: string) => {
+  const h = href.replace(/\/+$/, '') || '/';
+  return h === '/' ? path === '/' : path === h || path.startsWith(h + '/');
+};
+
+// Language switch targets: current page stays put; the other links across.
+const alt = altLocalePath ?? swapLocale(Astro.url.pathname, otherLocale[lang]);
+const frHref = lang === 'fr' ? Astro.url.pathname : alt;
+const enHref = lang === 'en' ? Astro.url.pathname : alt;
 ---
 
 <!-- Announcement bar (editable / dismissible) -->
 <div class="announcement" data-announcement>
   <div class="container announcement__inner">
     <p class="announcement__text">
-      Découvrez <strong>Ø Studio</strong>, notre catalogue d’applications et de
-      services pour accélérer votre productivité.
-      <a class="announcement__link" href="/produits">En savoir plus&nbsp;→</a>
+      {t.announce.before}<strong>{t.announce.strong}</strong>{t.announce.after}
+      <a class="announcement__link" href={announceLink}>{t.announce.linkLabel}</a>
     </p>
     <button
       type="button"
       class="announcement__close"
       data-announce-close
-      aria-label="Fermer l’annonce"
+      aria-label={t.announce.close}
     >
       <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
         <path
@@ -53,11 +73,11 @@ const isCurrent = (href: string) =>
 
 <header class="site-header">
   <div class="container site-header__inner">
-    <a class="site-header__brand" href="/" aria-label="Victrix — Accueil">
+    <a class="site-header__brand" href={localizePath('/', lang)} aria-label={t.nav.brandAria}>
       <Logo variant="dark" />
     </a>
 
-    <nav class="primary-nav" aria-label="Navigation principale">
+    <nav class="primary-nav" aria-label="Navigation">
       <ul role="list" class="primary-nav__list">
         {
           navItems.map((item) => (
@@ -80,10 +100,10 @@ const isCurrent = (href: string) =>
         {portal.label}
       </a>
 
-      <div class="lang-switch" role="group" aria-label="Choix de la langue">
-        <a class="lang-switch__link is-active" href="#" aria-current="true" lang="fr">FR</a>
+      <div class="lang-switch" role="group" aria-label={t.nav.langGroupAria}>
+        <a class:list={['lang-switch__link', { 'is-active': lang === 'fr' }]} href={frHref} aria-current={lang === 'fr' ? 'true' : undefined} lang="fr">FR</a>
         <span class="lang-switch__sep" aria-hidden="true">|</span>
-        <a class="lang-switch__link" href="#" lang="en">EN</a>
+        <a class:list={['lang-switch__link', { 'is-active': lang === 'en' }]} href={enHref} aria-current={lang === 'en' ? 'true' : undefined} lang="en">EN</a>
       </div>
 
       <button
@@ -92,7 +112,7 @@ const isCurrent = (href: string) =>
         data-nav-toggle
         aria-expanded="false"
         aria-controls="mobile-nav"
-        aria-label="Ouvrir le menu"
+        aria-label={t.nav.openMenu}
       >
         <span class="nav-toggle__bars" aria-hidden="true"></span>
       </button>
@@ -103,12 +123,12 @@ const isCurrent = (href: string) =>
 <!-- Mobile drawer -->
 <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
   <div class="mobile-nav__backdrop" data-nav-close></div>
-  <nav class="mobile-nav__panel" aria-label="Navigation mobile">
+  <nav class="mobile-nav__panel" aria-label="Navigation">
     <div class="mobile-nav__head">
-      <a class="site-header__brand" href="/" aria-label="Victrix — Accueil">
+      <a class="site-header__brand" href={localizePath('/', lang)} aria-label={t.nav.brandAria}>
         <Logo variant="dark" />
       </a>
-      <button type="button" class="nav-close" data-nav-close aria-label="Fermer le menu">
+      <button type="button" class="nav-close" data-nav-close aria-label={t.nav.closeMenu}>
         <svg width="22" height="22" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
           <path
             d="M2 2l12 12M14 2L2 14"
@@ -138,10 +158,10 @@ const isCurrent = (href: string) =>
 
     <a class="btn btn--primary mobile-nav__portal" href={portal.href}>{portal.label}</a>
 
-    <div class="lang-switch lang-switch--mobile" role="group" aria-label="Choix de la langue">
-      <a class="lang-switch__link is-active" href="#" aria-current="true" lang="fr">FR</a>
+    <div class="lang-switch lang-switch--mobile" role="group" aria-label={t.nav.langGroupAria}>
+      <a class:list={['lang-switch__link', { 'is-active': lang === 'fr' }]} href={frHref} aria-current={lang === 'fr' ? 'true' : undefined} lang="fr">FR</a>
       <span class="lang-switch__sep" aria-hidden="true">|</span>
-      <a class="lang-switch__link" href="#" lang="en">EN</a>
+      <a class:list={['lang-switch__link', { 'is-active': lang === 'en' }]} href={enHref} aria-current={lang === 'en' ? 'true' : undefined} lang="en">EN</a>
     </div>
   </nav>
 </div>

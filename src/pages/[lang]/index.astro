@@ -1,26 +1,29 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import BlogCard from '../components/BlogCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { type Locale, localePaths, localizePath } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
+import { getPostsByLocale } from '../../i18n/blog';
 
-const entry = await getEntry('home', 'accueil');
-if (!entry) {
-  throw new Error("Contenu d'accueil introuvable : src/content/home/accueil.json");
-}
-const home = entry.data;
-const { hero, iso, expertises, solutions, partners, experts, articles } = home;
+export const getStaticPaths = localePaths;
 
-// Latest 3 articles for the teaser.
-const latest = (await getCollection('blog'))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
+const { lang } = Astro.props as { lang: Locale };
+const t = useTranslations(lang);
+const L = (href: string) => localizePath(href, lang);
+
+const entry = await getEntry('home', `${lang}/accueil`);
+if (!entry) throw new Error(`Contenu d'accueil introuvable : src/content/home/${lang}/accueil.json`);
+const { hero, iso, expertises, solutions, partners, experts, articles } = entry.data;
+
+// Latest 3 articles (this locale) for the teaser.
+const latest = (await getPostsByLocale(lang)).slice(0, 3);
 ---
 
-<BaseLayout
-  title={undefined}
-  description="Victrix — services-conseils en TI : cybersécurité, infonuagique, intelligence artificielle, productivité et services gérés pour les entreprises et organisations publiques."
->
+<BaseLayout lang={lang} description={lang === 'fr'
+  ? 'Victrix — services-conseils en TI : cybersécurité, infonuagique, intelligence artificielle, productivité et services gérés pour les entreprises et organisations publiques.'
+  : 'Victrix — IT consulting services: cybersecurity, cloud computing, artificial intelligence, productivity and managed services for businesses and public organizations.'}>
   <!-- Hero -->
   <section class="hero">
     <div class="container">
@@ -28,7 +31,7 @@ const latest = (await getCollection('blog'))
         {hero.eyebrow && <p class="hero__eyebrow">{hero.eyebrow}</p>}
         <h1 class="hero__title">{hero.title}</h1>
         <p class="hero__subtitle">{hero.subtitle}</p>
-        <a class="btn hero__cta" href={hero.ctaHref}>{hero.ctaLabel}</a>
+        <a class="btn hero__cta" href={L(hero.ctaHref)}>{hero.ctaLabel}</a>
       </div>
     </div>
   </section>
@@ -64,8 +67,8 @@ const latest = (await getCollection('blog'))
               </p>
               <h3 class="exp-card__title">{item.title}</h3>
               <p class="exp-card__desc">{item.description}</p>
-              <a class="btn btn--outline exp-card__cta" href={item.href}>
-                En savoir plus
+              <a class="btn btn--outline exp-card__cta" href={L(item.href)}>
+                {t.home.learnMore}
               </a>
             </li>
           ))
@@ -88,7 +91,7 @@ const latest = (await getCollection('blog'))
         <p class="eyebrow">{solutions.eyebrow}</p>
         <h2 class="solution__title">{solutions.title}</h2>
         <p class="solution__text">{solutions.body}</p>
-        <a class="btn btn--primary" href={solutions.ctaHref}>{solutions.ctaLabel}</a>
+        <a class="btn btn--primary" href={L(solutions.ctaHref)}>{solutions.ctaLabel}</a>
       </div>
     </div>
   </section>
@@ -110,7 +113,7 @@ const latest = (await getCollection('blog'))
         <h2 class="experts__title">{experts.title}</h2>
         <p class="experts__subtitle">{experts.subtitle}</p>
       </div>
-      <a class="btn experts__cta" href={experts.ctaHref}>{experts.ctaLabel}</a>
+      <a class="btn experts__cta" href={L(experts.ctaHref)}>{experts.ctaLabel}</a>
     </div>
   </section>
 
@@ -119,13 +122,13 @@ const latest = (await getCollection('blog'))
     <div class="container">
       <div class="latest__head">
         <h2 class="section-title section-title--left">{articles.title}</h2>
-        <a class="latest__link" href={articles.ctaHref}>{articles.ctaLabel}&nbsp;→</a>
+        <a class="latest__link" href={L(articles.ctaHref)}>{articles.ctaLabel}&nbsp;→</a>
       </div>
       <ul role="list" class="latest__grid">
         {
           latest.map((post) => (
             <li>
-              <BlogCard post={post} headingLevel="h3" />
+              <BlogCard post={post} lang={lang} headingLevel="h3" />
             </li>
           ))
         }

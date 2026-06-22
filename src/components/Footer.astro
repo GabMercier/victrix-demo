@@ -1,41 +1,20 @@
 ---
 import Logo from './Logo.astro';
+import { type Locale, defaultLocale, localizePath } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
 
 /**
  * Global site footer: brand, link columns, address block, contact, social,
- * and legal links. Matches the dark-grey footer in the screenshots.
+ * and legal links. Locale-aware: labels from the UI dictionary, internal hrefs
+ * localized. Email/phone are locale-neutral and stay literal.
  */
 
-const columns = [
-  {
-    title: 'Expertises',
-    links: [
-      { label: 'Consultation stratégique', href: '/expertises/consultation-strategique' },
-      { label: 'Infonuagique', href: '/expertises/infonuagique' },
-      { label: 'Cybersécurité', href: '/expertises/cybersecurite' },
-      { label: 'Productivité', href: '/expertises/productivite' },
-      { label: 'Intelligence artificielle', href: '/expertises/intelligence-artificielle' },
-      { label: 'Services gérés', href: '/expertises/services-geres' },
-    ],
-  },
-  {
-    title: 'Produits',
-    links: [
-      { label: 'Licences et équipements', href: '/produits/licences-equipements' },
-      { label: 'Intranet — Plateforme d’expérience employé', href: '/produits/intranet' },
-      { label: 'Application de réservation de bureau', href: '/produits/reservation-bureau' },
-    ],
-  },
-  {
-    title: 'À propos',
-    links: [
-      { label: 'Carrières & Vie@Victrix', href: '/carrieres' },
-      { label: 'Blogue', href: '/ressources' },
-      { label: 'Tarification', href: '/tarification' },
-    ],
-  },
-];
+interface Props {
+  lang?: Locale;
+}
 
+const { lang = defaultLocale } = Astro.props;
+const f = useTranslations(lang).footer;
 const year = 2026;
 ---
 
@@ -46,13 +25,13 @@ const year = 2026;
     </div>
 
     {
-      columns.map((col) => (
+      f.columns.map((col) => (
         <nav class="footer-col" aria-label={col.title}>
           <h2 class="footer-col__title">{col.title}</h2>
           <ul role="list" class="footer-col__list">
             {col.links.map((link) => (
               <li>
-                <a class="footer-col__link" href={link.href}>
+                <a class="footer-col__link" href={localizePath(link.href, lang)}>
                   {link.label}
                 </a>
               </li>
@@ -63,12 +42,12 @@ const year = 2026;
     }
 
     <div class="footer-col footer-col--contact">
-      <h2 class="footer-col__title">Contact</h2>
+      <h2 class="footer-col__title">{f.contactTitle}</h2>
 
       <address class="footer-address">
-        <strong>Les Solutions Victrix</strong><br />
-        1100, boul. René-Lévesque Ouest, bureau 1900<br />
-        Montréal (Québec) H3B 4N4
+        <strong>{f.addressName}</strong><br />
+        {f.addressLines[0]}<br />
+        {f.addressLines[1]}
       </address>
 
       <ul role="list" class="footer-contact">
@@ -81,10 +60,10 @@ const year = 2026;
       </ul>
 
       <div class="footer-social">
-        <span class="footer-social__label">Suivez-nous&nbsp;:</span>
+        <span class="footer-social__label">{f.socialLabel}</span>
         <ul role="list" class="footer-social__list">
           <li>
-            <a href="#" class="footer-social__link" aria-label="Victrix sur Facebook">
+            <a href="#" class="footer-social__link" aria-label={f.facebookAria}>
               <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path
                   fill="currentColor"
@@ -94,7 +73,7 @@ const year = 2026;
             </a>
           </li>
           <li>
-            <a href="#" class="footer-social__link" aria-label="Victrix sur LinkedIn">
+            <a href="#" class="footer-social__link" aria-label={f.linkedinAria}>
               <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path
                   fill="currentColor"
@@ -110,10 +89,15 @@ const year = 2026;
 
   <div class="site-footer__bottombar">
     <div class="container site-footer__bottom">
-      <nav class="footer-legal" aria-label="Liens légaux">
+      <nav class="footer-legal" aria-label={f.contactTitle}>
         <ul role="list">
-          <li><a href="/conditions-utilisation">Conditions d’utilisation</a></li>
-          <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
+          {
+            f.legal.map((item) => (
+              <li>
+                <a href={localizePath(item.href, lang)}>{item.label}</a>
+              </li>
+            ))
+          }
         </ul>
       </nav>
       <p class="footer-copy">©{year} Victrix</p>

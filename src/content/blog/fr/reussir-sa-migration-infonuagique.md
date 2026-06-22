@@ -2,7 +2,7 @@
 title: "Réussir sa migration vers l'infonuagique : un guide en quatre étapes"
 date: 2026-03-10
 excerpt: "Migrer vers le nuage ne se résume pas à déplacer des serveurs. Une démarche structurée en quatre étapes maximise les bénéfices et limite les surprises."
-coverImage: "./covers/migration-infonuagique.jpg"
+coverImage: "../covers/migration-infonuagique.jpg"
 tags:
   - Infonuagique
   - Stratégie

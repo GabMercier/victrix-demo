@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { auth } from '../../lib/auth';
+
+/**
+ * /auth/callback — the OIDC redirect target.
+ *
+ * On success we mint the session cookie and 302 to the dashboard (returning a
+ * Response from the frontmatter short-circuits rendering). On failure we render
+ * an accessible error state with a way back to the login.
+ */
+export const prerender = false;
+
+let errorMessage: string | null = null;
+
+// Surface an explicit IdP error (e.g. user cancelled) before doing any work.
+const idpError = Astro.url.searchParams.get('error');
+if (idpError) {
+  errorMessage =
+    'La connexion a été interrompue ou refusée par le fournisseur d’identité. Veuillez réessayer.';
+} else {
+  try {
+    const { setCookie, returnTo } = await auth.handleCallback(Astro.request);
+    return new Response(null, {
+      status: 302,
+      headers: new Headers({ Location: returnTo, 'Set-Cookie': setCookie }),
+    });
+  } catch (err) {
+    errorMessage =
+      'Nous n’avons pas pu finaliser la connexion. Le lien est peut-être expiré. Veuillez réessayer.';
+    // Detail stays server-side; never shown to the user.
+    console.error('[auth/callback]', err);
+  }
+}
+---
+
+<BaseLayout lang="fr" title="Connexion" description="Finalisation de la connexion au portail Victrix.">
+  <section class="cb">
+    <div class="container cb__inner">
+      <div class="cb__card" role="alert">
+        <h1 class="cb__title">Connexion impossible</h1>
+        <p class="cb__msg">{errorMessage}</p>
+        <a class="btn btn--primary" href="/mon-portail">Retour à la connexion</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cb {
+    padding-block: var(--space-9);
+    background-color: var(--color-surface);
+  }
+  .cb__inner {
+    display: flex;
+    justify-content: center;
+  }
+  .cb__card {
+    width: 100%;
+    max-width: 32rem;
+    text-align: center;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-top: 4px solid var(--color-accent-blue);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-7) var(--space-6);
+  }
+  .cb__title {
+    font-size: var(--fs-600);
+    margin-bottom: var(--space-3);
+  }
+  .cb__msg {
+    margin: 0 auto var(--space-5);
+    color: var(--color-text-muted);
+  }
+</style>

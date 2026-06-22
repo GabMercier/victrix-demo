@@ -2,7 +2,7 @@
 title: "Cinq pratiques essentielles en cybersécurité pour les PME"
 date: 2026-04-15
 excerpt: "Les petites et moyennes entreprises sont devenues des cibles de choix. Cinq mesures concrètes permettent pourtant de réduire considérablement le risque."
-coverImage: "./covers/cybersecurite-pme.png"
+coverImage: "../covers/cybersecurite-pme.png"
 tags:
   - Cybersécurité
   - PME

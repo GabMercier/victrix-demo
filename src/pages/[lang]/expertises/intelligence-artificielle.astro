@@ -1,96 +1,29 @@
 ---
 import { Image } from 'astro:assets';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import aiHero from '../../assets/ai-hero.png';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import aiHero from '../../../assets/ai-hero.png';
+import { type Locale, localePaths, localizePath } from '../../../i18n/config';
+import { aiContent } from '../../../i18n/content/ai';
 
-// --- Repeated content, kept in arrays for clean templating ----------------
-const interventions = [
-  {
-    n: '01',
-    title: 'Exploration et analyse des opportunités',
-    text: 'Repérez et priorisez les cas d’usage les plus prometteurs, puis élaborez une feuille de route claire pour lancer vos premières initiatives concrètes en IA.',
-  },
-  {
-    n: '02',
-    title: 'Développement d’agents et de solutions d’IA sur mesure',
-    text: 'Concevez et déployez des solutions précises pour automatiser ou optimiser vos processus prioritaires, avec un accompagnement complet, du prototype au déploiement.',
-  },
-  {
-    n: '03',
-    title: 'Adoption sécurisée de l’IA générative',
-    text: 'Structurez l’adoption de l’IA générative dans votre organisation grâce à un plan solide, du soutien aux utilisateurs et des formations ciblées, en mettant de l’avant les bonnes pratiques.',
-  },
-];
+export const getStaticPaths = localePaths;
 
-const collaboration = [
-  {
-    n: '01',
-    title: 'Expertise continue',
-    text: 'Nous mettons à votre disposition des experts en IA pour du conseil et du développement à long terme. Vous bénéficiez d’un accompagnement continu pour assurer le suivi, l’évolution et l’amélioration de vos projets.',
-    cta: 'Je choisis un accompagnement continu',
-  },
-  {
-    n: '02',
-    title: 'Expertise sur mesure',
-    text: 'Nous mobilisons nos experts pour vos projets spécifiques, en ajustant notre accompagnement selon vos priorités et vos échéances afin d’offrir une assistance ciblée qui garantit des résultats à la hauteur de vos attentes.',
-    cta: 'J’ai un projet spécifique',
-  },
-];
-
-const areas = [
-  'Agents personnalisés et interconnectés pour des processus standardisés',
-  'Personnalisation des grands modèles de langage (LLM) selon vos domaines ou vos données',
-  'Consultation stratégique, gouvernance et feuille de route',
-  'Gestion du changement et adoption de l’IA',
-  'Sécurité et conformité des données',
-];
-
-const experts = [
-  {
-    n: '01',
-    title: 'Consultation stratégique',
-    text: 'Des conseillers d’expérience issus de notre équipe, de notre écosystème mondial et de nos partenaires spécialisés en IA.',
-  },
-  {
-    n: '02',
-    title: 'Architecture technologique et d’affaires',
-    text: 'Des ingénieurs séniors reconnus comme experts en IA par nos clients.',
-  },
-  {
-    n: '03',
-    title: 'Expertise des solutions',
-    text: 'Des spécialistes capables d’intervenir en cybersécurité, en ERP/CRM, en gestion des données et en moteurs de recherche intelligents.',
-  },
-  {
-    n: '04',
-    title: 'Analyse, développement et gestion du changement',
-    text: 'Des experts qui vous accompagnent en analyse, en développement et en gestion du changement, forts d’une expérience concrète en projets d’IA et en preuves de concept.',
-  },
-];
+const { lang } = Astro.props as { lang: Locale };
+const ai = aiContent[lang];
+const contactHref = localizePath('/contact', lang);
 ---
 
-<BaseLayout
-  title="Intelligence artificielle"
-  description="Services-conseils et d’intégration en intelligence artificielle adaptés à votre organisation : stratégie, agents sur mesure, adoption sécurisée de l’IA générative."
->
+<BaseLayout lang={lang} title={ai.metaTitle} description={ai.metaDescription}>
   <!-- Hero -->
   <section class="hero">
     <div class="container hero__inner">
       <div class="hero__text">
-        <p class="hero__eyebrow">Intelligence artificielle</p>
+        <p class="hero__eyebrow">{ai.hero.eyebrow}</p>
         <h1 class="hero__title">
-          <span class="hero__title-accent">Services-conseils et d’intégration en IA</span>
-          adaptés à votre organisation
+          <span class="hero__title-accent">{ai.hero.titleAccent}</span>
+          {ai.hero.titleRest}
         </h1>
-        <p class="hero__lead">
-          Adoptez l’intelligence artificielle de façon sécuritaire et responsable, avec une
-          approche qui intègre les personnes, les processus et la gestion du changement à
-          chaque étape. Profitez de l’accompagnement de nos conseillers pour sélectionner et
-          adopter des solutions d’IA qui répondent à vos défis. Grâce à notre expertise
-          multitechnologique, nous assurons une <strong>mise en œuvre et une adoption
-          réussies</strong>, alignées sur vos objectifs d’affaires.
-        </p>
-        <a class="btn hero__cta" href="/contact">Parler à un expert en IA</a>
+        <p class="hero__lead" set:html={ai.hero.lead}></p>
+        <a class="btn hero__cta" href={contactHref}>{ai.hero.cta}</a>
       </div>
       <Image class="hero__img" src={aiHero} alt="" widths={[400, 760]} sizes="(min-width: 900px) 420px, 100vw" loading="eager" />
     </div>
@@ -99,20 +32,14 @@ const experts = [
   <!-- From strategy to adoption -->
   <section class="section">
     <div class="container">
-      <h2 class="block-title">
-        Mettez l’IA au service des entreprises et des organisations publiques
-      </h2>
+      <h2 class="block-title">{ai.fromStrategy.blockTitle}</h2>
       <div class="lead-card">
-        <h3>Avec Victrix, passez de la stratégie à l’adoption</h3>
-        <p>
-          Nos conseillers en intelligence artificielle peuvent intervenir à différentes
-          étapes, selon votre niveau de maturité ou d’adoption de l’IA. Voici ce que couvrent
-          nos interventions et services en IA.
-        </p>
+        <h3>{ai.fromStrategy.leadCardTitle}</h3>
+        <p>{ai.fromStrategy.leadCardText}</p>
       </div>
       <ul role="list" class="num-grid num-grid--3">
         {
-          interventions.map((c) => (
+          ai.interventions.map((c) => (
             <li class="num-card">
               <p class="num-card__n" aria-hidden="true">{c.n}</p>
               <h3 class="num-card__title">{c.title}</h3>
@@ -127,24 +54,16 @@ const experts = [
   <!-- How we work with your teams -->
   <section class="section section--tint">
     <div class="container">
-      <h2 class="s-head">
-        Comment Victrix travaille avec vos équipes pour une adoption fluide et sécuritaire de l’IA
-      </h2>
-      <p class="s-intro">
-        Que vous ayez un projet ciblé ou une initiative d’envergure, nous collaborons avec vos
-        équipes pour <strong>évaluer les besoins</strong>, <strong>définir les objectifs</strong>
-        et <strong>respecter vos échéances</strong>. Notre approche collaborative assure une
-        adoption fluide et sécuritaire de l’IA, tout en maximisant la valeur pour votre
-        organisation.
-      </p>
+      <h2 class="s-head">{ai.collaboration.sHead}</h2>
+      <p class="s-intro" set:html={ai.collaboration.sIntro}></p>
       <ul role="list" class="num-grid num-grid--2">
         {
-          collaboration.map((c) => (
+          ai.collaboration.items.map((c) => (
             <li class="num-card num-card--center">
               <p class="num-card__n" aria-hidden="true">{c.n}</p>
               <h3 class="num-card__title">{c.title}</h3>
               <p class="num-card__text">{c.text}</p>
-              <a class="btn btn--primary" href="/contact">{c.cta}</a>
+              <a class="btn btn--primary" href={contactHref}>{c.cta}</a>
             </li>
           ))
         }
@@ -156,9 +75,9 @@ const experts = [
   <section class="section">
     <div class="container">
       <div class="cta-box">
-        <h2>Des questions sur un projet en intelligence artificielle&nbsp;?</h2>
-        <p>Nos experts vous accompagnent à chaque étape pour assurer le succès de tous vos projets d’IA.</p>
-        <a class="btn btn--primary" href="/contact">Consulter un spécialiste</a>
+        <h2>{ai.cta1.title}</h2>
+        <p>{ai.cta1.text}</p>
+        <a class="btn btn--primary" href={contactHref}>{ai.cta1.cta}</a>
       </div>
     </div>
   </section>
@@ -166,10 +85,10 @@ const experts = [
   <!-- Expertise areas -->
   <section class="section section--tint">
     <div class="container">
-      <h2 class="s-head">Expertise en intelligence artificielle</h2>
-      <p class="s-sub">Nos domaines d’expertise en IA</p>
+      <h2 class="s-head">{ai.areas.sHead}</h2>
+      <p class="s-sub">{ai.areas.sSub}</p>
       <ul role="list" class="area-grid">
-        {areas.map((a) => <li class="area-box">{a}</li>)}
+        {ai.areas.items.map((a) => <li class="area-box">{a}</li>)}
       </ul>
     </div>
   </section>
@@ -177,10 +96,10 @@ const experts = [
   <!-- Multi-technology -->
   <section class="section">
     <div class="container">
-      <h2 class="s-head">Expertise multitechnologique</h2>
+      <h2 class="s-head">{ai.multiTech.sHead}</h2>
       <div class="tech-grid">
         <div class="tech-col">
-          <h3>Grands modèles de langage (LLM)</h3>
+          <h3>{ai.multiTech.col1Title}</h3>
           <ul role="list">
             <li>OpenAI</li>
             <li>Llama</li>
@@ -189,7 +108,7 @@ const experts = [
           </ul>
         </div>
         <div class="tech-col">
-          <h3>Agents intégrés</h3>
+          <h3>{ai.multiTech.col2Title}</h3>
           <ul role="list">
             <li>Copilot 365</li>
             <li>Copilot (Dynamics 365)</li>
@@ -198,13 +117,13 @@ const experts = [
           </ul>
         </div>
         <div class="tech-col">
-          <h3>Technologies et environnements de développement</h3>
+          <h3>{ai.multiTech.col3Title}</h3>
           <ul role="list">
             <li>Copilot Studio</li>
             <li>Azure AI Foundry</li>
             <li>ServiceNow AI Platform</li>
             <li>
-              Sources ouvertes et locales&nbsp;:
+              {ai.multiTech.openLocalLabel}
               <ul role="list">
                 <li>LangChain</li>
                 <li>Hugging Face</li>
@@ -222,8 +141,8 @@ const experts = [
   <section class="section">
     <div class="container">
       <div class="cta-box">
-        <h2>Prêt à démarrer votre projet d’intelligence artificielle&nbsp;?</h2>
-        <a class="btn btn--primary" href="/contact">Consulter nos experts</a>
+        <h2>{ai.cta2.title}</h2>
+        <a class="btn btn--primary" href={contactHref}>{ai.cta2.cta}</a>
       </div>
     </div>
   </section>
@@ -231,12 +150,10 @@ const experts = [
   <!-- Diverse pool of experts -->
   <section class="section section--tint">
     <div class="container">
-      <h2 class="s-head">
-        Interventions structurées et ciblées, soutenues par un bassin diversifié d’experts en IA
-      </h2>
+      <h2 class="s-head">{ai.expertsPanel.sHead}</h2>
       <ul role="list" class="num-grid num-grid--2">
         {
-          experts.map((c) => (
+          ai.expertsPanel.items.map((c) => (
             <li class="num-card num-card--center">
               <p class="num-card__n" aria-hidden="true">{c.n}</p>
               <h3 class="num-card__title">{c.title}</h3>
@@ -251,16 +168,9 @@ const experts = [
   <!-- Closing statement -->
   <section class="section">
     <div class="container closing">
-      <h2 class="block-title">Victrix accélère l’adoption de l’IA dans votre organisation</h2>
-      <p>
-        Porté par un <strong>écosystème d’expertise</strong> qui englobe la technologie, la
-        gouvernance des données, la cybersécurité et les services gérés, Victrix est votre
-        partenaire stratégique pour la gestion de vos projets d’IA.
-      </p>
-      <p>
-        Notre accompagnement en intelligence artificielle simplifie le déploiement, la stratégie
-        et votre <strong>feuille de route en IA</strong>, peu importe votre niveau de maturité.
-      </p>
+      <h2 class="block-title">{ai.closing.blockTitle}</h2>
+      <p set:html={ai.closing.p1}></p>
+      <p set:html={ai.closing.p2}></p>
     </div>
   </section>
 
@@ -268,13 +178,10 @@ const experts = [
   <section class="green-cta">
     <div class="container green-cta__inner">
       <div>
-        <h2>Rencontrez nos conseillers en IA</h2>
-        <p>
-          Profitez de l’expertise de nos spécialistes en intelligence artificielle pour ajouter
-          une réelle valeur à vos processus et accélérer l’atteinte de vos objectifs.
-        </p>
+        <h2>{ai.greenCta.title}</h2>
+        <p>{ai.greenCta.text}</p>
       </div>
-      <a class="btn btn--primary green-cta__btn" href="/contact">Adoptez l’IA avec Victrix</a>
+      <a class="btn btn--primary green-cta__btn" href={contactHref}>{ai.greenCta.cta}</a>
     </div>
   </section>
 </BaseLayout>
@@ -579,7 +486,6 @@ const experts = [
     color: color-mix(in srgb, var(--color-navy) 85%, transparent);
     max-width: 60ch;
   }
-  /* Colors/hover come from .btn--primary; only band-specific tweaks here. */
   .green-cta__btn {
     font-weight: var(--fw-bold);
     flex-shrink: 0;

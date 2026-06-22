@@ -1,0 +1,288 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Logo from '../../components/Logo.astro';
+import { auth } from '../../lib/auth';
+import { portalData, type ContractStatut } from '../../lib/data';
+
+/** Protected client dashboard. Guarded by src/middleware.ts; double-checked here. */
+export const prerender = false;
+
+const session = Astro.locals.session ?? (await auth.getSession(Astro.request));
+if (!session) {
+  return Astro.redirect('/mon-portail?returnTo=/mon-portail/tableau-de-bord');
+}
+
+const [profile, contracts] = await Promise.all([
+  portalData.getProfile(session.user.id),
+  portalData.getContracts(session.user.id),
+]);
+
+const dateFmt = new Intl.DateTimeFormat('fr-CA', { dateStyle: 'long' });
+const formatDate = (iso: string) => {
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime()) ? iso : dateFmt.format(d);
+};
+
+// Map a contract status to its badge modifier class.
+const statutClass: Record<ContractStatut, string> = {
+  Actif: 'badge--actif',
+  'En renouvellement': 'badge--renouvellement',
+  Expiré: 'badge--expire',
+};
+
+const firstName = profile.name.split(' ')[0];
+---
+
+<BaseLayout
+  lang="fr"
+  title="Tableau de bord"
+  description="Tableau de bord de votre portail client Victrix."
+>
+  {/* Authenticated portal bar replaces the marketing header. */}
+  <div slot="header">
+    <header class="pbar">
+      <div class="container pbar__inner">
+        <a class="pbar__brand" href="/mon-portail/tableau-de-bord" aria-label="Mon portail Victrix">
+          <Logo variant="dark" />
+          <span class="pbar__tag">Mon portail</span>
+        </a>
+        <div class="pbar__user">
+          <span class="pbar__name">
+            <span class="visually-hidden">Connecté en tant que </span>{profile.name}
+          </span>
+          <form method="post" action="/auth/logout" class="pbar__logout">
+            <button type="submit" class="btn btn--outline pbar__logout-btn">Se déconnecter</button>
+          </form>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <section class="dash">
+    <div class="container">
+      <header class="dash__head">
+        <p class="dash__eyebrow">Espace client</p>
+        <h1 class="dash__title">Bonjour, {firstName}</h1>
+        {profile.organisation && <p class="dash__org">{profile.organisation}</p>}
+      </header>
+
+      <section class="dash__panel" aria-labelledby="contrats-title">
+        <div class="dash__panelhead">
+          <h2 id="contrats-title" class="dash__paneltitle">Mes contrats</h2>
+          <p class="dash__count">{contracts.length} contrat{contracts.length > 1 ? 's' : ''}</p>
+        </div>
+
+        <div class="table-scroll" role="region" aria-labelledby="contrats-title" tabindex="0">
+          <table class="ctable">
+            <caption class="visually-hidden">
+              Liste de vos contrats Victrix, avec leur statut et leurs dates.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Numéro</th>
+                <th scope="col">Service</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Début</th>
+                <th scope="col">Renouvellement</th>
+              </tr>
+            </thead>
+            <tbody>
+              {contracts.map((c) => (
+                <tr>
+                  <td class="ctable__num">{c.numero}</td>
+                  <td>{c.service}</td>
+                  <td>
+                    <span class={`badge ${statutClass[c.statut]}`}>{c.statut}</span>
+                  </td>
+                  <td>{formatDate(c.dateDebut)}</td>
+                  <td>{formatDate(c.dateRenouvellement)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="dash__demo">
+          Démonstration — données fictives. En production, ces contrats
+          proviennent de votre source de données (ex.&nbsp;: Dataverse/Dynamics),
+          interrogée de façon sécurisée selon votre identité.
+        </p>
+      </section>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ---------- Authenticated portal bar ---------- */
+  .pbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .pbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 72px;
+  }
+  .pbar__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    --logo-height: 34px;
+    text-decoration: none;
+  }
+  .pbar__tag {
+    padding: 0.15em 0.6em;
+    border-left: 1px solid var(--color-border);
+    padding-left: var(--space-3);
+    color: var(--color-navy);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-200);
+  }
+  .pbar__user {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  .pbar__name {
+    display: none;
+    color: var(--color-text-muted);
+    font-size: var(--fs-200);
+    font-weight: var(--fw-medium);
+  }
+  .pbar__logout {
+    margin: 0;
+  }
+  .pbar__logout-btn {
+    padding-block: 0.5em;
+  }
+  @media (min-width: 560px) {
+    .pbar__name {
+      display: inline;
+    }
+  }
+
+  /* ---------- Dashboard ---------- */
+  .dash {
+    background-color: var(--color-surface);
+    min-height: 60vh;
+    padding-block: var(--space-8) var(--space-9);
+  }
+  .dash__head {
+    margin-bottom: var(--space-6);
+  }
+  .dash__eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--fs-100);
+    font-weight: var(--fw-semibold);
+    color: var(--color-accent-blue);
+  }
+  .dash__title {
+    margin-top: var(--space-1);
+  }
+  .dash__org {
+    margin-top: var(--space-2);
+    color: var(--color-text-muted);
+    font-weight: var(--fw-medium);
+  }
+
+  .dash__panel {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-6);
+  }
+  .dash__panelhead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-5);
+  }
+  .dash__paneltitle {
+    font-size: var(--fs-500);
+  }
+  .dash__count {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--fs-200);
+  }
+
+  /* Horizontal scroll on narrow screens, keyboard-focusable. */
+  .table-scroll {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+  }
+  .ctable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--fs-200);
+    min-width: 640px;
+  }
+  .ctable th,
+  .ctable td {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+  .ctable thead th {
+    color: var(--color-navy);
+    font-weight: var(--fw-semibold);
+    border-bottom: 2px solid var(--color-border);
+    white-space: nowrap;
+  }
+  .ctable tbody tr:hover {
+    background-color: var(--color-surface);
+  }
+  .ctable tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  .ctable__num {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    font-weight: var(--fw-semibold);
+    color: var(--color-navy);
+  }
+
+  /* ---------- Status badges ---------- */
+  .badge {
+    display: inline-block;
+    padding: 0.2em 0.7em;
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-100);
+    font-weight: var(--fw-semibold);
+    white-space: nowrap;
+    border: 1px solid transparent;
+  }
+  .badge--actif {
+    background-color: rgba(36, 251, 142, 0.16);
+    color: #0a6b3c;
+    border-color: rgba(10, 107, 60, 0.3);
+  }
+  .badge--renouvellement {
+    background-color: rgba(196, 132, 0, 0.12);
+    color: #8a5a00;
+    border-color: rgba(138, 90, 0, 0.3);
+  }
+  .badge--expire {
+    background-color: var(--color-grey-100);
+    color: var(--color-grey-700);
+    border-color: var(--color-grey-300);
+  }
+
+  .dash__demo {
+    margin: var(--space-5) 0 0;
+    font-size: var(--fs-100);
+    font-style: italic;
+    color: var(--color-text-muted);
+  }
+</style>

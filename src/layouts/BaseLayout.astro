@@ -2,8 +2,12 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { type Locale, defaultLocale, otherLocale, htmlLang, swapLocale } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
 
 interface Props {
+  /** Page locale. Required so chrome, <html lang>, and hreflang are correct. */
+  lang?: Locale;
   /** Page title — appended with the site name. */
   title?: string;
   /** Meta description for SEO / social previews. */
@@ -16,36 +20,55 @@ interface Props {
   publishedTime?: string;
   /** For articles: tags → article:tag. */
   tags?: string[];
+  /**
+   * Path of the equivalent page in the OTHER locale (for the language switch
+   * and hreflang). Defaults to swapping the URL's locale prefix — pages with
+   * non-mirrored paths (e.g. the portal) pass this explicitly.
+   */
+  altLocalePath?: string;
 }
 
-const SITE_NAME = 'Victrix';
-const DEFAULT_DESCRIPTION =
-  'Victrix — services-conseils en TI et solutions de productivité pour les entreprises et les organisations publiques.';
-
 const {
+  lang = defaultLocale,
   title,
-  description = DEFAULT_DESCRIPTION,
+  description,
   image = '/og-image.png',
   ogType = 'website',
   publishedTime,
   tags,
+  altLocalePath,
 } = Astro.props;
 
-// Build the <title>: "Page — Victrix", or just the site name on the home page.
-const fullTitle = title ? `${title} — ${SITE_NAME}` : SITE_NAME;
+const t = useTranslations(lang);
+const other = otherLocale[lang];
 
-// Absolute URLs (from `site` in astro.config) for canonical + social tags.
+const SITE_NAME = t.siteName;
+const fullTitle = title ? `${title} — ${SITE_NAME}` : SITE_NAME;
+const metaDescription = description ?? t.defaultDescription;
+
+// Canonical + per-locale alternates for hreflang and the language switch.
+const altPath = altLocalePath ?? swapLocale(Astro.url.pathname, other);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const altURL = new URL(altPath, Astro.site);
+const frURL = lang === 'fr' ? canonicalURL : altURL;
+const enURL = lang === 'en' ? canonicalURL : altURL;
 const ogImageURL = new URL(image, Astro.site);
+const ogLocale = lang === 'fr' ? 'fr_CA' : 'en_CA';
+const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={htmlLang[lang]}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL} />
+
+    {/* Language alternates */}
+    <link rel="alternate" hreflang="fr-CA" href={frURL} />
+    <link rel="alternate" hreflang="en-CA" href={enURL} />
+    <link rel="alternate" hreflang="x-default" href={frURL} />
 
     {/* Icons + theme — official Victrix favicon */}
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -58,14 +81,15 @@ const ogImageURL = new URL(image, Astro.site);
     <link rel="preload" href="/fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin />
 
     <title>{fullTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
 
     {/* Open Graph */}
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Victrix" />
-    <meta property="og:locale" content="fr_CA" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlt} />
     <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:image:width" content="1200" />
@@ -73,12 +97,12 @@ const ogImageURL = new URL(image, Astro.site);
     {ogType === 'article' && publishedTime && (
       <meta property="article:published_time" content={publishedTime} />
     )}
-    {ogType === 'article' && tags?.map((t) => <meta property="article:tag" content={t} />)}
+    {ogType === 'article' && tags?.map((tag) => <meta property="article:tag" content={tag} />)}
 
     {/* Twitter */}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageURL} />
 
     {/* Hide the announcement bar before first paint if it was dismissed this
@@ -92,16 +116,16 @@ const ogImageURL = new URL(image, Astro.site);
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+    <a class="skip-link" href="#main-content">{t.skipLink}</a>
 
     <!-- Global header (a page can override it by filling the "header" slot). -->
-    <slot name="header"><Header /></slot>
+    <slot name="header"><Header lang={lang} altLocalePath={altPath} /></slot>
 
     <main id="main-content">
       <slot />
     </main>
 
     <!-- Global footer (a page can override it by filling the "footer" slot). -->
-    <slot name="footer"><Footer /></slot>
+    <slot name="footer"><Footer lang={lang} /></slot>
   </body>
 </html>

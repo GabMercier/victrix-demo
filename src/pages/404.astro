@@ -1,18 +1,35 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ui } from '../i18n/ui';
+import { localizePath } from '../i18n/config';
 
-// Helpful destinations that already exist.
-const links = [
-  { label: 'Retour à l’accueil', href: '/', primary: true },
-  { label: 'Consulter le blogue', href: '/ressources' },
-  { label: 'Nous joindre', href: '/contact' },
-];
+/**
+ * Not-found page. A static site has a single 404.html that can be served for any
+ * path, so the locale isn't known at build time: we render French (the default)
+ * and a tiny client script swaps the copy + links to English when the requested
+ * path is under /en/.
+ */
+const fr = ui.fr.notFound;
+const en = ui.en.notFound;
+
+const links = fr.links.map((l, i) => ({
+  primary: l.primary,
+  label: l.label,
+  href: localizePath(l.href, 'fr'),
+  enLabel: en.links[i].label,
+  enHref: localizePath(en.links[i].href, 'en'),
+}));
+
+// EN strings handed to the client for the locale swap.
+const enData = {
+  title: en.title,
+  eyebrow: en.eyebrow,
+  text: en.text,
+  requestedLabel: en.requestedLabel,
+};
 ---
 
-<BaseLayout
-  title="Page en construction"
-  description="Cette section du site Victrix est en cours de construction. Découvrez les pages déjà en ligne."
->
+<BaseLayout lang="fr" title={fr.metaTitle} description={fr.metaDescription}>
   <section class="nf">
     <div class="container nf__inner">
       <span class="nf__badge" aria-hidden="true">
@@ -29,22 +46,24 @@ const links = [
         </svg>
       </span>
 
-      <p class="nf__eyebrow">Erreur 404</p>
-      <h1 class="nf__title">Page en construction</h1>
-      <p class="nf__text">
-        La page que vous cherchez n’est pas encore en ligne&nbsp;— ou n’existe pas.
-        Ce site est un prototype&nbsp;: plusieurs sections sont toujours en cours de
-        réalisation. Merci de votre patience&nbsp;!
-      </p>
+      <p class="nf__eyebrow" data-nf-eyebrow>{fr.eyebrow}</p>
+      <h1 class="nf__title" data-nf-title>{fr.title}</h1>
+      <p class="nf__text" data-nf-text>{fr.text}</p>
 
       <p class="nf__requested" data-requested hidden>
-        Adresse demandée&nbsp;: <code data-requested-path></code>
+        <span data-nf-requested-label>{fr.requestedLabel}</span> <code data-requested-path></code>
       </p>
 
-      <nav class="nf__actions" aria-label="Pages suggérées">
+      <nav class="nf__actions" aria-label="Pages">
         {
           links.map((l) => (
-            <a class={`btn ${l.primary ? 'btn--primary' : 'btn--outline'}`} href={l.href}>
+            <a
+              class={`btn ${l.primary ? 'btn--primary' : 'btn--outline'}`}
+              href={l.href}
+              data-nf-link
+              data-en-href={l.enHref}
+              data-en-label={l.enLabel}
+            >
               {l.label}
             </a>
           ))
@@ -54,12 +73,34 @@ const links = [
   </section>
 </BaseLayout>
 
-<script>
+<script define:vars={{ enData }}>
+  const path = window.location.pathname;
+  const isEn = path.startsWith('/en/') || path === '/en';
+
+  // Switch the page copy + links to English when the requested path is /en/*.
+  if (isEn) {
+    document.documentElement.lang = 'en-CA';
+    const set = (sel, text) => {
+      const el = document.querySelector(sel);
+      if (el) el.textContent = text;
+    };
+    set('[data-nf-eyebrow]', enData.eyebrow);
+    set('[data-nf-title]', enData.title);
+    set('[data-nf-text]', enData.text);
+    set('[data-nf-requested-label]', enData.requestedLabel);
+    document.title = enData.title + ' — Victrix';
+    document.querySelectorAll('[data-nf-link]').forEach((a) => {
+      const href = a.getAttribute('data-en-href');
+      const label = a.getAttribute('data-en-label');
+      if (href) a.setAttribute('href', href);
+      if (label) a.textContent = label;
+    });
+  }
+
   // Show the address the visitor actually requested (helps it feel like a real site).
-  const wrap = document.querySelector<HTMLElement>('[data-requested]');
-  const slot = document.querySelector<HTMLElement>('[data-requested-path]');
+  const wrap = document.querySelector('[data-requested]');
+  const slot = document.querySelector('[data-requested-path]');
   if (wrap && slot) {
-    const path = window.location.pathname;
     if (path && path !== '/404' && path !== '/404/') {
       slot.textContent = path;
       wrap.hidden = false;
