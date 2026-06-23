@@ -1,5 +1,6 @@
 ---
 title: "Artificial intelligence in service of organizational productivity"
+slug: ai-for-organizational-productivity
 date: 2026-05-28
 excerpt: "Beyond the hype, generative AI is concretely transforming the daily work of teams. Here's how to adopt it in a structured and responsible way."
 coverImage: "../covers/ia-productivite.png"

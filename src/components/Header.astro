@@ -25,10 +25,10 @@ const navItems = t.nav.items.map((item) => ({
   href: localizePath(item.href, lang),
 }));
 
-// The portal keeps its own localized entry points (not under /fr|/en mirrors).
+// The portal lives under the locale prefix, like every other page.
 const portal = {
   label: t.nav.portal,
-  href: lang === 'fr' ? '/mon-portail' : '/en/customer-portal',
+  href: localizePath('/portail', lang),
 };
 
 const announceLink = localizePath(t.announce.linkHref, lang);
@@ -216,7 +216,11 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
     };
 
     toggle.addEventListener('click', () => {
-      toggle.getAttribute('aria-expanded') === 'true' ? close() : open();
+      if (toggle.getAttribute('aria-expanded') === 'true') {
+        close();
+      } else {
+        open();
+      }
     });
     drawer
       .querySelectorAll('[data-nav-close]')

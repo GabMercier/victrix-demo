@@ -2,19 +2,30 @@
 import { getCollection, render } from 'astro:content';
 import { Image, getImage } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { type Locale, defaultLocale, htmlLang, localizePath } from '../../../i18n/config';
+import { defaultLocale, otherLocale, htmlLang, localizePath } from '../../../i18n/config';
 import { useTranslations } from '../../../i18n/ui';
-import { postLocale, postSlug } from '../../../i18n/blog';
+import { postLocale, postUrlSlug, findCounterpart } from '../../../i18n/blog';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map((post) => {
     const lang = postLocale(post) ?? defaultLocale;
-    return { params: { lang, slug: postSlug(post) }, props: { post, lang } };
+    const other = otherLocale[lang];
+    // Language switch / hreflang target: the translation's own localized URL.
+    // EN slugs differ from FR now, so we can't just swap the path prefix.
+    // Fall back to the other locale's Ressources index if there's no counterpart.
+    // Keep the trailing slash so the alternate points at the counterpart's
+    // canonical form (the no-slash URL 308-redirects on Cloudflare Pages).
+    const counterpart = findCounterpart(post, posts);
+    const altLocalePath = localizePath(
+      counterpart ? `/ressources/${postUrlSlug(counterpart)}/` : '/ressources/',
+      other,
+    );
+    return { params: { lang, slug: postUrlSlug(post) }, props: { post, lang, altLocalePath } };
   });
 }
 
-const { post, lang } = Astro.props;
+const { post, lang, altLocalePath } = Astro.props;
 const t = useTranslations(lang);
 const { Content } = await render(post);
 
@@ -63,6 +74,7 @@ const shareLinks = [
   ogType="article"
   publishedTime={post.data.date.toISOString()}
   tags={post.data.tags}
+  altLocalePath={altLocalePath}
 >
   <article class="article">
     <div class="container article__inner">

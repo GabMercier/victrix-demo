@@ -1,5 +1,6 @@
 ---
 title: "Succeeding at your cloud migration: a four-step guide"
+slug: cloud-migration-four-step-guide
 date: 2026-03-10
 excerpt: "Migrating to the cloud is about more than just moving servers. A structured four-step approach maximizes the benefits and limits surprises."
 coverImage: "../covers/migration-infonuagique.jpg"

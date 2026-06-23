@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Lint, type-check, test, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type-check
+        run: npm run type-check
+
+      - name: Unit tests
+        run: npm run test
+
+      - name: Build
+        run: npm run build
+
+      # Non-blocking for now: the current highs are transitive via wrangler
+      # (build-time tooling), and the fix requires the @astrojs/cloudflare v14 /
+      # Astro 7 jump. Tracked in the roadmap. Keep visible without failing CI.
+      - name: Dependency audit (report only)
+        run: npm audit --audit-level=high || true
+
+  # E2E runs separately because it installs browsers.
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: End-to-end tests
+        run: npm run test:e2e
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Deploy is intentionally NOT here yet. Today the site deploys via Cloudflare
+# Pages' Git integration. To switch to CI-driven deploys (per-PR previews +
+# decoupled from the dashboard), add a deploy job using cloudflare/wrangler-action
+# with CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID repo secrets. See docs/DEPLOYMENT.md.

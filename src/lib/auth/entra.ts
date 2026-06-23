@@ -63,7 +63,7 @@ export class EntraAuthProvider implements AuthProvider {
       codeVerifier,
       state,
       nonce,
-      returnTo: opts.returnTo ?? '/mon-portail/tableau-de-bord',
+      returnTo: opts.returnTo ?? '/fr/portail/tableau-de-bord',
     });
     const setCookie =
       `${PKCE_COOKIE}=${btoa(pkcePayload)}; Path=/; HttpOnly; SameSite=Lax; Max-Age=600; Secure`;
@@ -100,7 +100,7 @@ export class EntraAuthProvider implements AuthProvider {
     // TODO(real): optionally redirect to the Entra end-session endpoint with
     // post_logout_redirect_uri so the IdP session is cleared too.
     return {
-      redirectUrl: '/mon-portail',
+      redirectUrl: '/fr/portail',
       setCookie: clearSessionCookie(isSecureRequest(request)),
     };
   }

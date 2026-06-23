@@ -10,7 +10,16 @@ import { glob } from 'astro/loaders';
  */
 
 const blog = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  loader: glob({
+    pattern: '**/*.md',
+    base: './src/content/blog',
+    // Derive the entry id from the FILE PATH only ("<locale>/<filename>").
+    // Astro's default generateId uses a `slug` frontmatter field AS the id when
+    // present — which would strip the "<locale>/<filename>" pairing key the blog
+    // helpers depend on (postLocale, postKey, findCounterpart). Here `slug` is a
+    // URL-only field, so we ignore it for id generation. See src/i18n/blog.ts.
+    generateId: ({ entry }) => entry.replace(/\\/g, '/').replace(/\.[^/.]+$/, ''),
+  }),
   // Clean, Sveltia-friendly field names — mirror these in the CMS config.
   schema: ({ image }) =>
     z.object({
@@ -19,6 +28,10 @@ const blog = defineCollection({
       excerpt: z.string(),
       coverImage: image(),
       tags: z.array(z.string()).default([]),
+      // Optional per-locale URL slug (SEO). When unset the filename is used, so
+      // FR can keep its filename-based URLs while EN sets an English slug. The
+      // filename still pairs the FR/EN translations — see src/i18n/blog.ts.
+      slug: z.string().optional(),
     }),
 });
 

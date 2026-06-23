@@ -9,9 +9,11 @@ import { auth } from '../../lib/auth';
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request }) => {
-  const { redirectUrl, setCookie } = await auth.logout(request);
-  const headers = new Headers({ Location: redirectUrl });
+export const POST: APIRoute = async ({ request, url }) => {
+  const { setCookie } = await auth.logout(request);
+  // Return to the portal login in the user's language (dashboard form passes ?lang).
+  const lang = url.searchParams.get('lang') === 'en' ? 'en' : 'fr';
+  const headers = new Headers({ Location: `/${lang}/portail` });
   headers.append('Set-Cookie', setCookie);
   return new Response(null, { status: 302, headers });
 };

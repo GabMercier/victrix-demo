@@ -14,17 +14,22 @@ import { defineMiddleware } from 'astro:middleware';
 import { auth } from './lib/auth';
 
 export const onRequest = defineMiddleware(async (context, next) => {
-  // Normalize: drop a trailing slash so '/mon-portail/' matches the login entry.
+  // Normalize: drop a trailing slash.
   const path = context.url.pathname.replace(/\/+$/, '') || '/';
 
-  // The login entry is public; only its sub-routes require a session.
-  const isProtected = path.startsWith('/mon-portail/');
-  if (!isProtected) return next();
+  // Localized portal: /fr/portail (+ /en/portail). The login index is public;
+  // any sub-route (e.g. /fr/portail/tableau-de-bord) requires a session.
+  const match = path.match(/^\/(fr|en)\/portail(\/.+)?$/);
+  if (!match) return next();
+
+  const lang = match[1];
+  const sub = match[2]; // undefined on the login index itself → public
+  if (!sub) return next();
 
   const session = await auth.getSession(context.request);
   if (!session) {
     const returnTo = encodeURIComponent(context.url.pathname + context.url.search);
-    return context.redirect(`/mon-portail?returnTo=${returnTo}`);
+    return context.redirect(`/${lang}/portail?returnTo=${returnTo}`);
   }
 
   // Expose the session to the page so it doesn't re-read the cookie.

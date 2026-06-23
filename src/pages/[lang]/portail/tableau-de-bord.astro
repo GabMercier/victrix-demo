@@ -1,15 +1,18 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Logo from '../../components/Logo.astro';
-import { auth } from '../../lib/auth';
-import { portalData, type ContractStatut } from '../../lib/data';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Logo from '../../../components/Logo.astro';
+import { type Locale, isLocale, defaultLocale, htmlLang, localizePath } from '../../../i18n/config';
+import { auth } from '../../../lib/auth';
+import { portalData, type ContractStatut } from '../../../lib/data';
 
-/** Protected client dashboard. Guarded by src/middleware.ts; double-checked here. */
+/** Protected client dashboard, localized: /fr/portail/tableau-de-bord + /en/…. */
 export const prerender = false;
+
+const lang: Locale = isLocale(Astro.params.lang) ? Astro.params.lang : defaultLocale;
 
 const session = Astro.locals.session ?? (await auth.getSession(Astro.request));
 if (!session) {
-  return Astro.redirect('/mon-portail?returnTo=/mon-portail/tableau-de-bord');
+  return Astro.redirect(localizePath('/portail?returnTo=' + encodeURIComponent(Astro.url.pathname), lang));
 }
 
 const [profile, contracts] = await Promise.all([
@@ -17,41 +20,81 @@ const [profile, contracts] = await Promise.all([
   portalData.getContracts(session.user.id),
 ]);
 
-const dateFmt = new Intl.DateTimeFormat('fr-CA', { dateStyle: 'long' });
+const dateFmt = new Intl.DateTimeFormat(htmlLang[lang], { dateStyle: 'long' });
 const formatDate = (iso: string) => {
-  const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? iso : dateFmt.format(d);
+  const date = new Date(iso);
+  return Number.isNaN(date.getTime()) ? iso : dateFmt.format(date);
 };
 
-// Map a contract status to its badge modifier class.
 const statutClass: Record<ContractStatut, string> = {
   Actif: 'badge--actif',
   'En renouvellement': 'badge--renouvellement',
   Expiré: 'badge--expire',
 };
 
+// Localized labels (the mock contract data itself stays in French for the demo).
+const t =
+  lang === 'fr'
+    ? {
+        eyebrow: 'Espace client',
+        hello: 'Bonjour',
+        myContracts: 'Mes contrats',
+        count: (n: number) => `${n} contrat${n > 1 ? 's' : ''}`,
+        thNum: 'Numéro',
+        thService: 'Service',
+        thStatut: 'Statut',
+        thStart: 'Début',
+        thRenew: 'Renouvellement',
+        caption: 'Liste de vos contrats Victrix, avec leur statut et leurs dates.',
+        demo: 'Démonstration — données fictives. En production, ces contrats proviennent de votre source de données, interrogée de façon sécurisée selon votre identité.',
+        portalTag: 'Mon portail',
+        signedInAs: 'Connecté en tant que ',
+        signOut: 'Se déconnecter',
+        statut: { Actif: 'Actif', 'En renouvellement': 'En renouvellement', Expiré: 'Expiré' } as Record<ContractStatut, string>,
+      }
+    : {
+        eyebrow: 'Client area',
+        hello: 'Hello',
+        myContracts: 'My contracts',
+        count: (n: number) => `${n} contract${n > 1 ? 's' : ''}`,
+        thNum: 'Number',
+        thService: 'Service',
+        thStatut: 'Status',
+        thStart: 'Start',
+        thRenew: 'Renewal',
+        caption: 'List of your Victrix contracts, with their status and dates.',
+        demo: 'Demo — sample data. In production these contracts come from your data source, queried securely based on your identity.',
+        portalTag: 'My portal',
+        signedInAs: 'Signed in as ',
+        signOut: 'Sign out',
+        statut: { Actif: 'Active', 'En renouvellement': 'Renewing', Expiré: 'Expired' } as Record<ContractStatut, string>,
+      };
+
 const firstName = profile.name.split(' ')[0];
+const dashboardHome = localizePath('/portail/tableau-de-bord', lang);
+const logoutAction = `/auth/logout?lang=${lang}`;
 ---
 
 <BaseLayout
-  lang="fr"
-  title="Tableau de bord"
-  description="Tableau de bord de votre portail client Victrix."
+  lang={lang}
+  altLocalePath={localizePath('/portail/tableau-de-bord', lang === 'fr' ? 'en' : 'fr')}
+  title={t.myContracts}
+  description="Victrix"
 >
   {/* Authenticated portal bar replaces the marketing header. */}
   <div slot="header">
     <header class="pbar">
       <div class="container pbar__inner">
-        <a class="pbar__brand" href="/mon-portail/tableau-de-bord" aria-label="Mon portail Victrix">
+        <a class="pbar__brand" href={dashboardHome} aria-label={t.portalTag}>
           <Logo variant="dark" />
-          <span class="pbar__tag">Mon portail</span>
+          <span class="pbar__tag">{t.portalTag}</span>
         </a>
         <div class="pbar__user">
           <span class="pbar__name">
-            <span class="visually-hidden">Connecté en tant que </span>{profile.name}
+            <span class="visually-hidden">{t.signedInAs}</span>{profile.name}
           </span>
-          <form method="post" action="/auth/logout" class="pbar__logout">
-            <button type="submit" class="btn btn--outline pbar__logout-btn">Se déconnecter</button>
+          <form method="post" action={logoutAction} class="pbar__logout">
+            <button type="submit" class="btn btn--outline pbar__logout-btn">{t.signOut}</button>
           </form>
         </div>
       </div>
@@ -61,29 +104,27 @@ const firstName = profile.name.split(' ')[0];
   <section class="dash">
     <div class="container">
       <header class="dash__head">
-        <p class="dash__eyebrow">Espace client</p>
-        <h1 class="dash__title">Bonjour, {firstName}</h1>
+        <p class="dash__eyebrow">{t.eyebrow}</p>
+        <h1 class="dash__title">{t.hello}, {firstName}</h1>
         {profile.organisation && <p class="dash__org">{profile.organisation}</p>}
       </header>
 
       <section class="dash__panel" aria-labelledby="contrats-title">
         <div class="dash__panelhead">
-          <h2 id="contrats-title" class="dash__paneltitle">Mes contrats</h2>
-          <p class="dash__count">{contracts.length} contrat{contracts.length > 1 ? 's' : ''}</p>
+          <h2 id="contrats-title" class="dash__paneltitle">{t.myContracts}</h2>
+          <p class="dash__count">{t.count(contracts.length)}</p>
         </div>
 
         <div class="table-scroll" role="region" aria-labelledby="contrats-title" tabindex="0">
           <table class="ctable">
-            <caption class="visually-hidden">
-              Liste de vos contrats Victrix, avec leur statut et leurs dates.
-            </caption>
+            <caption class="visually-hidden">{t.caption}</caption>
             <thead>
               <tr>
-                <th scope="col">Numéro</th>
-                <th scope="col">Service</th>
-                <th scope="col">Statut</th>
-                <th scope="col">Début</th>
-                <th scope="col">Renouvellement</th>
+                <th scope="col">{t.thNum}</th>
+                <th scope="col">{t.thService}</th>
+                <th scope="col">{t.thStatut}</th>
+                <th scope="col">{t.thStart}</th>
+                <th scope="col">{t.thRenew}</th>
               </tr>
             </thead>
             <tbody>
@@ -92,7 +133,7 @@ const firstName = profile.name.split(' ')[0];
                   <td class="ctable__num">{c.numero}</td>
                   <td>{c.service}</td>
                   <td>
-                    <span class={`badge ${statutClass[c.statut]}`}>{c.statut}</span>
+                    <span class={`badge ${statutClass[c.statut]}`}>{t.statut[c.statut]}</span>
                   </td>
                   <td>{formatDate(c.dateDebut)}</td>
                   <td>{formatDate(c.dateRenouvellement)}</td>
@@ -102,11 +143,7 @@ const firstName = profile.name.split(' ')[0];
           </table>
         </div>
 
-        <p class="dash__demo">
-          Démonstration — données fictives. En production, ces contrats
-          proviennent de votre source de données (ex.&nbsp;: Dataverse/Dynamics),
-          interrogée de façon sécurisée selon votre identité.
-        </p>
+        <p class="dash__demo">{t.demo}</p>
       </section>
     </div>
   </section>
@@ -216,7 +253,6 @@ const firstName = profile.name.split(' ')[0];
     font-size: var(--fs-200);
   }
 
-  /* Horizontal scroll on narrow screens, keyboard-focusable. */
   .table-scroll {
     overflow-x: auto;
     border-radius: var(--radius-md);

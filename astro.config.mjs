@@ -52,6 +52,9 @@ export default defineConfig({
     '/ressources/ia-au-service-de-la-productivite': '/fr/ressources/ia-au-service-de-la-productivite',
     '/ressources/cinq-pratiques-cybersecurite-pme': '/fr/ressources/cinq-pratiques-cybersecurite-pme',
     '/ressources/reussir-sa-migration-infonuagique': '/fr/ressources/reussir-sa-migration-infonuagique',
+    // Portal moved under the locale prefix.
+    '/mon-portail': '/fr/portail',
+    '/en/customer-portal': '/en/portail',
   },
 
   integrations: [

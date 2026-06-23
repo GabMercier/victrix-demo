@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import { type Locale, htmlLang, localizePath } from '../i18n/config';
-import { postSlug } from '../i18n/blog';
+import { postUrlSlug } from '../i18n/blog';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -16,7 +16,7 @@ const { post, lang, headingLevel = 'h3' } = Astro.props;
 const Heading = headingLevel;
 // UTC so calendar dates don't roll back a day in timezones behind UTC.
 const dateFmt = new Intl.DateTimeFormat(htmlLang[lang], { dateStyle: 'long', timeZone: 'UTC' });
-const href = localizePath(`/ressources/${postSlug(post)}`, lang);
+const href = localizePath(`/ressources/${postUrlSlug(post)}`, lang);
 ---
 
 <article class="card">

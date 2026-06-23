@@ -55,6 +55,15 @@ collections:
     public_folder: "../covers"
     fields:
       - { name: title, label: "Titre", widget: string, i18n: true }
+      # Per-locale URL slug (SEO). The FILENAME still pairs FR/EN and is generated
+      # from the title ({{slug}}), unaffected by this field. Leave blank in FR to
+      # keep the filename-based URL; set an English slug in EN.
+      - name: slug
+        label: "Slug (URL)"
+        widget: string
+        required: false
+        i18n: true
+        hint: "Segment d’URL propre à la langue. Laisser vide pour réutiliser le nom de fichier (le cas du FR). Ex. EN : ai-for-organizational-productivity."
       - name: date
         label: "Date de publication"
         widget: datetime

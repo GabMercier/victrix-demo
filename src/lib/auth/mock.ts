@@ -29,7 +29,7 @@ const DEMO_USER = {
   email: 'camille.tremblay@ville-saint-aubin.qc.ca',
 } as const;
 
-const DASHBOARD = '/mon-portail/tableau-de-bord';
+const DASHBOARD = '/fr/portail/tableau-de-bord';
 
 /** Keep redirect targets local (open-redirect guard) — only same-site paths. */
 function safeReturnTo(value: string | null | undefined): string {
@@ -69,8 +69,10 @@ export class MockAuthProvider implements AuthProvider {
   }
 
   async logout(request: Request): Promise<{ redirectUrl: string; setCookie: string }> {
+    // The logout endpoint overrides the redirect with the user's locale; this is
+    // just the fallback.
     return {
-      redirectUrl: '/mon-portail',
+      redirectUrl: '/fr/portail',
       setCookie: clearSessionCookie(isSecureRequest(request)),
     };
   }

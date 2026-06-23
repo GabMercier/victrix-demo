@@ -1,5 +1,6 @@
 ---
 title: "Five essential cybersecurity practices for SMBs"
+slug: five-cybersecurity-practices-for-smbs
 date: 2026-04-15
 excerpt: "Small and medium-sized businesses have become prime targets. Yet five concrete measures can significantly reduce the risk."
 coverImage: "../covers/cybersecurite-pme.png"
