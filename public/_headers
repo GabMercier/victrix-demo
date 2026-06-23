@@ -7,16 +7,29 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), camera=(), microphone=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
-  # CSP for the static marketing + portal pages. style-src/script-src need
-  # 'unsafe-inline' because Astro inlines scoped component <style> and a few
-  # is:inline/define:vars scripts (announcement no-flash, 404 locale swap,
-  # article copy-link). HARDENING TODO: hash those inline scripts (or move them
-  # external) and drop 'unsafe-inline' from script-src. When real Entra login is
-  # wired, add the IdP/login domain to form-action + connect-src.
+
+# CSP for the static marketing + portal pages. Scoped to the locale-prefixed
+# routes (/fr/*, /en/*) on purpose — NOT /* — because Cloudflare Pages COMBINES
+# the CSP of every matching _headers rule into one comma-joined header (multiple
+# policies, ALL enforced as an intersection). If /* also set a CSP, /admin would
+# get this strict policy intersected with its own looser one below, and the
+# Sveltia bundle from unpkg would stay blocked. Every real page lives under /fr
+# or /en (prefixDefaultLocale: true), so this covers them all while leaving
+# /admin free to define its own policy.
+# style-src/script-src need 'unsafe-inline' because Astro inlines scoped component
+# <style> and a few is:inline/define:vars scripts (announcement no-flash, 404
+# locale swap, article copy-link). HARDENING TODO: hash those inline scripts (or
+# move them external) and drop 'unsafe-inline' from script-src. When real Entra
+# login is wired, add the IdP/login domain to form-action + connect-src.
+/fr/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; form-action 'self'; manifest-src 'self'
+/en/*
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; form-action 'self'; manifest-src 'self'
 
 # Sveltia CMS admin needs to load its bundle from unpkg and talk to GitHub +
-# the OAuth worker, so it gets its own (looser) CSP. It's noindex + auth-gated.
+# the OAuth worker, so it gets its own (looser) CSP. Because CSP is NOT set on /*
+# (see above), this is the ONLY policy applied here — nothing to intersect with.
+# It's noindex + auth-gated.
 /admin/*
   X-Robots-Tag: noindex
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: blob: https:; font-src 'self' data: https://unpkg.com; connect-src 'self' https://unpkg.com https://api.github.com https://raw.githubusercontent.com https://*.githubusercontent.com https://sveltia-cms-auth.gabriel-mercier-blouin.workers.dev; frame-src 'self';
