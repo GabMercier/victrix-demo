@@ -1,6 +1,6 @@
 {
   "hero": {
-    "eyebrow": "Services-conseils en TI",
+    "eyebrow": "Services-conseils en TI 2",
     "title": "Victrix, votre partenaire de confiance en services-conseils et solutions TI",
     "subtitle": "Renforcez votre cybersécurité et optimisez vos processus avec Victrix. Profitez de notre expertise de pointe en gestion des TI, en infonuagique et en gouvernance de l’IA pour propulser votre organisation et rester à l’avant-garde technologique de votre secteur.",
     "ctaLabel": "Découvrir Victrix",
@@ -67,7 +67,13 @@
   },
   "partners": {
     "title": "Nos partenaires",
-    "names": ["Imprivata", "AlgoSec", "AWS", "OVHcloud", "ServiceNow"]
+    "names": [
+      "Imprivata",
+      "AlgoSec",
+      "AWS",
+      "OVHcloud",
+      "ServiceNow"
+    ]
   },
   "experts": {
     "title": "Rencontrez nos experts",
