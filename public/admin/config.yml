@@ -17,6 +17,12 @@ backend:
   # Sveltia appends /auth and /callback itself). Local editing ignores this.
   base_url: https://sveltia-cms-auth.gabriel-mercier-blouin.workers.dev
 
+# Branding — Victrix logo on the sign-in screen (theme-aware standalone SVG,
+# see public/admin/victrix-logo.svg) + a link back to the live site in the UI.
+logo_url: /admin/victrix-logo.svg
+site_url: https://victrix-demo.pages.dev
+display_url: https://victrix-demo.pages.dev
+
 # Bilingual content. Blog posts are edited in both languages side-by-side and
 # stored as src/content/blog/<locale>/<slug>.md (multiple_folders). Sveltia
 # offers a per-locale editor + optional machine-translation buttons.
@@ -40,6 +46,7 @@ collections:
     label: "Articles de blogue"
     label_singular: "Article"
     description: "Articles publiés dans la section Ressources (FR + EN)."
+    icon: newspaper
     folder: "src/content/blog"
     create: true
     i18n: true
@@ -47,6 +54,8 @@ collections:
     identifier_field: title
     summary: "{{title}} — {{date}}"
     sortable_fields: [date, title]
+    # Show the cover as the entry thumbnail in the list view.
+    thumbnail: coverImage
     extension: md
     format: yaml-frontmatter
     # Repo-root-absolute upload dir; the field stores a path relative to the
@@ -88,6 +97,7 @@ collections:
   - name: home
     label: "Page d’accueil"
     description: "Textes modifiables de la page d’accueil (FR + EN)."
+    icon: home
     media_folder: "/src/content/home"
     public_folder: ".."
     files:

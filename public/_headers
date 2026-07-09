@@ -30,9 +30,13 @@
 # the OAuth worker, so it gets its own (looser) CSP. Because CSP is NOT set on /*
 # (see above), this is the ONLY policy applied here — nothing to intersect with.
 # It's noindex + auth-gated.
+# Sveltia also loads its UI fonts (Merriweather Sans, Noto Sans Mono) AND its icon
+# font (Material Symbols) from Google Fonts at runtime — without fonts.googleapis.com
+# in style-src and fonts.gstatic.com in font-src, every icon renders as raw ligature
+# text ("arrow_back", "more_vert", …).
 /admin/*
   X-Robots-Tag: noindex
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: blob: https:; font-src 'self' data: https://unpkg.com; connect-src 'self' https://unpkg.com https://api.github.com https://raw.githubusercontent.com https://*.githubusercontent.com https://sveltia-cms-auth.gabriel-mercier-blouin.workers.dev; frame-src 'self';
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' data: https://unpkg.com https://fonts.gstatic.com; connect-src 'self' https://unpkg.com https://api.github.com https://raw.githubusercontent.com https://*.githubusercontent.com https://sveltia-cms-auth.gabriel-mercier-blouin.workers.dev; frame-src 'self';
 
 # Keep auth endpoints out of search results.
 /auth/*
