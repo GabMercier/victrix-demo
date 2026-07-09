@@ -143,21 +143,25 @@ const consentHtml = c.consentText.replace('{privacy}', localizePath('/politique-
 
 <script>
   // Demo-only submission: validate natively, then confirm inline (no backend).
-  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
-  const status = document.querySelector<HTMLParagraphElement>('[data-form-status]');
-  if (form && status) {
-    form.noValidate = true;
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-      status.hidden = false;
-      status.textContent = status.dataset.success ?? '';
-      form.reset();
-    });
-  }
+  // Re-bound on astro:page-load — the DOM is swapped on each client-side
+  // navigation while this module executes only once per session.
+  document.addEventListener('astro:page-load', () => {
+    const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+    const status = document.querySelector<HTMLParagraphElement>('[data-form-status]');
+    if (form && status) {
+      form.noValidate = true;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        status.hidden = false;
+        status.textContent = status.dataset.success ?? '';
+        form.reset();
+      });
+    }
+  });
 </script>
 
 <style>

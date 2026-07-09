@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { type Locale, defaultLocale, otherLocale, htmlLang, swapLocale } from '../i18n/config';
@@ -105,14 +106,30 @@ const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageURL} />
 
+    {/* SPA-like navigation: swaps page content client-side with a crossfade,
+        persists across the site, respects prefers-reduced-motion. Inline
+        scripts below re-apply state on astro:after-swap; component scripts
+        re-bind on astro:page-load. */}
+    <ClientRouter />
+
     {/* Hide the announcement bar before first paint if it was dismissed this
-        session — prevents a flash/layout jump on every navigation. */}
+        session — prevents a flash/layout jump on every navigation. The swap
+        resets <html> attributes from the incoming static page, so the class is
+        re-applied on astro:after-swap (fires before the new page paints). This
+        script is identical on every page, so the router runs it only once —
+        the document-level listener never double-registers. */}
     <script is:inline>
-      try {
-        if (sessionStorage.getItem('victrix-announce') === 'closed') {
-          document.documentElement.classList.add('announce-dismissed');
-        }
-      } catch {}
+      (() => {
+        const applyDismissed = () => {
+          try {
+            if (sessionStorage.getItem('victrix-announce') === 'closed') {
+              document.documentElement.classList.add('announce-dismissed');
+            }
+          } catch {}
+        };
+        applyDismissed();
+        document.addEventListener('astro:after-swap', applyDismissed);
+      })();
     </script>
   </head>
   <body>

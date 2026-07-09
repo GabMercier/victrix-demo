@@ -167,9 +167,30 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
 </div>
 
 <script>
+  // With <ClientRouter /> this module executes ONCE per session while the DOM
+  // is swapped on every navigation — so all element bindings live in an
+  // astro:page-load handler (fires on initial load AND after each swap).
+  // Window/document-level listeners stay outside so they register only once.
+
+  /** Closes the currently-bound drawer, if any (refreshed on each page-load). */
+  let closeDrawer: (() => void) | null = null;
+
+  // Close if the viewport grows to desktop while the drawer is open.
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => {
+    if (e.matches) closeDrawer?.();
+  });
+
+  // Leaving the page with the drawer open: restore scroll + drop the focus trap.
+  document.addEventListener('astro:before-swap', () => closeDrawer?.());
+
+  document.addEventListener('astro:page-load', bindHeader);
+
+  function bindHeader() {
   // --- Mobile drawer ------------------------------------------------------
   const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
   const drawer = document.querySelector<HTMLElement>('[data-mobile-nav]');
+
+  closeDrawer = null;
 
   if (toggle && drawer) {
     const getFocusable = () =>
@@ -229,12 +250,10 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
     drawer
       .querySelectorAll('.mobile-nav__link, .mobile-nav__portal')
       .forEach((el) => el.addEventListener('click', close));
-    // Close if the viewport grows to desktop while the drawer is open.
-    window
-      .matchMedia('(min-width: 1024px)')
-      .addEventListener('change', (e) => {
-        if (e.matches && !drawer.hidden) close();
-      });
+
+    closeDrawer = () => {
+      if (!drawer.hidden) close();
+    };
   }
 
   // --- Announcement bar dismissal ----------------------------------------
@@ -250,6 +269,7 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
         /* sessionStorage unavailable — banner still hides for this page view */
       }
     });
+  }
   }
 </script>
 

@@ -165,7 +165,10 @@ const shareLinks = [
   </article>
 </BaseLayout>
 
-<script define:vars={{ shareUrl }}>
+{/* data-astro-rerun: inline scripts with identical content are otherwise
+    skipped by the client router — without it, revisiting the same article
+    after navigating away would leave the copy button unbound. */}
+<script is:inline data-astro-rerun define:vars={{ shareUrl }}>
   const btn = document.querySelector('[data-copy-link]');
   const status = document.querySelector('[data-copy-status]');
   if (btn && status) {

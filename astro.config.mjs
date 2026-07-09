@@ -29,6 +29,10 @@ export default defineConfig({
   // at build time so the worker never needs sharp at runtime.
   adapter: isBuild ? cloudflare({ imageService: 'compile' }) : undefined,
 
+  // Prefetch links on hover (default strategy) — near-instant navigation.
+  // Pairs with <ClientRouter /> in BaseLayout for SPA-like page transitions.
+  prefetch: true,
+
   // Bilingual site. FR + EN, both prefixed (/fr/…, /en/…). Pages live under
   // src/pages/[lang]/ and opt every locale in via getStaticPaths.
   i18n: {
