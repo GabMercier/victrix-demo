@@ -22,15 +22,75 @@ const fr = {
       { label: 'Découvrir Victrix', href: '/decouvrir' },
       { label: 'Expertises', href: '/expertises' },
       { label: 'Produits', href: '/produits' },
-      { label: 'Carrières', href: '/carrieres' },
+      { label: 'Carrière', href: '/carrieres' },
       { label: 'Contact', href: '/contact' },
       { label: 'Ressources', href: '/ressources' },
     ],
-    portal: 'Mon portail',
+    portal: 'Portail client',
     brandAria: 'Victrix — Accueil',
     openMenu: 'Ouvrir le menu',
     closeMenu: 'Fermer le menu',
     langGroupAria: 'Choix de la langue',
+    // Mega menu under "Expertises" (desktop) — mirrors victrix.ca's dropdown.
+    // `parentHref` matches the nav item above; `icon` keys map to the inline
+    // SVGs in Header.astro.
+    mega: {
+      parentHref: '/expertises',
+      ariaLabel: 'Sous-menu Expertises',
+      columns: [
+        {
+          title: 'Conseil stratégique',
+          href: '/expertises/consultation-strategique',
+          icon: 'strategy',
+          links: [
+            { label: 'Conformité Loi 25', href: '/expertises/consultation-strategique/conformite-loi-25' },
+          ],
+        },
+        {
+          title: 'Infonuagique',
+          href: '/expertises/infonuagique',
+          icon: 'cloud',
+          links: [
+            { label: 'Microsoft Azure', href: '/expertises/infonuagique/microsoft-azure' },
+            { label: 'Amazon Web Services', href: '/expertises/infonuagique/amazon-web-services' },
+          ],
+        },
+        {
+          title: 'Cybersécurité',
+          href: '/expertises/cybersecurite',
+          icon: 'security',
+          links: [
+            { label: 'Centre opérationnel de sécurité (SOC) évolutif', href: '/expertises/cybersecurite/soc-evolutif' },
+            { label: 'Tests d’intrusion', href: '/expertises/cybersecurite/tests-intrusion' },
+            { label: 'IoT et OT', href: '/expertises/cybersecurite/iot-ot' },
+          ],
+        },
+        {
+          title: 'Productivité',
+          href: '/expertises/productivite',
+          icon: 'productivity',
+          links: [
+            { label: 'Ø Studio', href: '/produits' },
+            { label: 'Intelligence artificielle', href: '/expertises/intelligence-artificielle' },
+            { label: 'Plateforme employé et intranet', href: '/produits/intranet' },
+            { label: 'ServiceNow', href: '/expertises/productivite/servicenow' },
+            { label: 'Dynamics 365 Field Service', href: '/expertises/productivite/dynamics-365-field-service' },
+            { label: 'Copilot pour Microsoft 365', href: '/expertises/productivite/copilot-microsoft-365' },
+            { label: 'Copilot Studio', href: '/expertises/productivite/copilot-studio' },
+            { label: 'O bureau', href: '/produits/reservation-bureau' },
+          ],
+        },
+        {
+          title: 'Services gérés',
+          href: '/expertises/services-geres',
+          icon: 'managed',
+          links: [
+            { label: 'Services TI gérés', href: '/expertises/services-geres/services-ti-geres' },
+            { label: 'Environnement Microsoft 365', href: '/expertises/services-geres/environnement-microsoft-365' },
+          ],
+        },
+      ],
+    },
   },
 
   announce: {
@@ -140,11 +200,68 @@ const en: UI = {
       { label: 'Contact', href: '/contact' },
       { label: 'Resources', href: '/ressources' },
     ],
-    portal: 'My portal',
+    portal: 'Client portal',
     brandAria: 'Victrix — Home',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     langGroupAria: 'Language',
+    mega: {
+      parentHref: '/expertises',
+      ariaLabel: 'Expertise submenu',
+      columns: [
+        {
+          title: 'Strategic consulting',
+          href: '/expertises/consultation-strategique',
+          icon: 'strategy',
+          links: [
+            { label: 'Law 25 compliance', href: '/expertises/consultation-strategique/conformite-loi-25' },
+          ],
+        },
+        {
+          title: 'Cloud computing',
+          href: '/expertises/infonuagique',
+          icon: 'cloud',
+          links: [
+            { label: 'Microsoft Azure', href: '/expertises/infonuagique/microsoft-azure' },
+            { label: 'Amazon Web Services', href: '/expertises/infonuagique/amazon-web-services' },
+          ],
+        },
+        {
+          title: 'Cybersecurity',
+          href: '/expertises/cybersecurite',
+          icon: 'security',
+          links: [
+            { label: 'Scalable Security Operations Centre (SOC)', href: '/expertises/cybersecurite/soc-evolutif' },
+            { label: 'Penetration testing', href: '/expertises/cybersecurite/tests-intrusion' },
+            { label: 'IoT and OT', href: '/expertises/cybersecurite/iot-ot' },
+          ],
+        },
+        {
+          title: 'Productivity',
+          href: '/expertises/productivite',
+          icon: 'productivity',
+          links: [
+            { label: 'Ø Studio', href: '/produits' },
+            { label: 'Artificial intelligence', href: '/expertises/intelligence-artificielle' },
+            { label: 'Employee platform and intranet', href: '/produits/intranet' },
+            { label: 'ServiceNow', href: '/expertises/productivite/servicenow' },
+            { label: 'Dynamics 365 Field Service', href: '/expertises/productivite/dynamics-365-field-service' },
+            { label: 'Copilot for Microsoft 365', href: '/expertises/productivite/copilot-microsoft-365' },
+            { label: 'Copilot Studio', href: '/expertises/productivite/copilot-studio' },
+            { label: 'O bureau', href: '/produits/reservation-bureau' },
+          ],
+        },
+        {
+          title: 'Managed services',
+          href: '/expertises/services-geres',
+          icon: 'managed',
+          links: [
+            { label: 'Managed IT services', href: '/expertises/services-geres/services-ti-geres' },
+            { label: 'Microsoft 365 environment', href: '/expertises/services-geres/environnement-microsoft-365' },
+          ],
+        },
+      ],
+    },
   },
 
   announce: {

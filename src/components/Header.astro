@@ -23,7 +23,24 @@ const t = useTranslations(lang);
 const navItems = t.nav.items.map((item) => ({
   label: item.label,
   href: localizePath(item.href, lang),
+  // The "Expertises" item carries the mega menu (desktop only).
+  mega: item.href === t.nav.mega.parentHref ? t.nav.mega : undefined,
 }));
+
+// Mega-menu column icons (24×24 stroke outlines, colored via currentColor) —
+// keyed by the `icon` names used in the ui dictionary.
+const megaIcons: Record<string, string> = {
+  strategy:
+    '<path d="M3 21h18M5 18h14M7 18v-7m3.5 7v-7m3 7v-7m3.5 7v-7M3.5 8L12 3l8.5 5h-17z"/>',
+  cloud:
+    '<path d="M7 18a4.5 4.5 0 1 1 .63-8.96A6 6 0 0 1 19.2 10.6 3.8 3.8 0 0 1 18 18H7z"/>',
+  security:
+    '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/>',
+  productivity:
+    '<path d="M5.5 14.5l4 4c5-2 8.5-5.2 9.5-10.7l.3-3.6-3.6.3C10.2 5.5 7 9 5.5 14.5z"/><circle cx="14" cy="10" r="1.7"/><path d="M5.5 14.5L3 21l6.5-2.5"/>',
+  managed:
+    '<circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3m0 13v3M2.5 12h3m13 0h3M5.2 5.2l2.1 2.1m9.4 9.4l2.1 2.1m0-13.6l-2.1 2.1M7.3 16.7l-2.1 2.1"/>',
+};
 
 // The portal lives under the locale prefix, like every other page.
 const portal = {
@@ -81,14 +98,51 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
       <ul role="list" class="primary-nav__list">
         {
           navItems.map((item) => (
-            <li>
+            <li class:list={[{ 'has-mega': !!item.mega }]} data-mega={item.mega ? '' : undefined}>
               <a
                 class="primary-nav__link"
                 href={item.href}
                 aria-current={isCurrent(item.href) ? 'page' : undefined}
+                aria-haspopup={item.mega ? 'true' : undefined}
+                aria-expanded={item.mega ? 'false' : undefined}
               >
                 {item.label}
               </a>
+              {item.mega && (
+                <div class="mega" aria-label={item.mega.ariaLabel}>
+                  <div class="container mega__grid">
+                    {item.mega.columns.map((col) => (
+                      <div class="mega__col">
+                        <a class="mega__title" href={localizePath(col.href, lang)}>
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            focusable="false"
+                            set:html={megaIcons[col.icon]}
+                          />
+                          <span>{col.title}</span>
+                        </a>
+                        <ul role="list" class="mega__list">
+                          {col.links.map((link) => (
+                            <li>
+                              <a class="mega__link" href={localizePath(link.href, lang)}>
+                                {link.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </li>
           ))
         }
@@ -256,6 +310,39 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
     };
   }
 
+  // --- Mega menu ----------------------------------------------------------
+  // Open/close is CSS-driven (:hover / :focus-within); JS only syncs
+  // aria-expanded and lets Escape close the panel (until pointer/focus leaves).
+  document.querySelectorAll<HTMLLIElement>('[data-mega]').forEach((li) => {
+    const trigger = li.querySelector<HTMLAnchorElement>('.primary-nav__link');
+    const setExpanded = (v: boolean) => trigger?.setAttribute('aria-expanded', String(v));
+    const reopenable = () => {
+      li.classList.remove('mega-closed');
+    };
+    li.addEventListener('mouseenter', () => setExpanded(true));
+    li.addEventListener('focusin', () => setExpanded(true));
+    li.addEventListener('mouseleave', () => {
+      setExpanded(false);
+      reopenable();
+    });
+    li.addEventListener('focusout', (e) => {
+      if (!li.contains(e.relatedTarget as Node)) {
+        setExpanded(false);
+        reopenable();
+      }
+    });
+    li.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        // Focus first: it fires focusin (→ expanded=true), which the two
+        // lines below then correct — the reverse order would leave
+        // aria-expanded="true" on a hidden panel.
+        trigger?.focus();
+        li.classList.add('mega-closed');
+        setExpanded(false);
+      }
+    });
+  });
+
   // --- Announcement bar dismissal ----------------------------------------
   // The dismissed state is applied pre-paint by a blocking script in <head>
   // (adds .announce-dismissed on <html>); here we only handle the close click.
@@ -357,6 +444,93 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
     box-shadow: inset 0 -2px 0 0 var(--color-accent-blue);
   }
 
+  /* ---------- Mega menu (desktop) ----------
+     The panel is a child of its nav <li>, so li:hover / :focus-within keeps it
+     open while the pointer or focus is inside. Negative margin + padding
+     stretch the li's hover area to the header's edges so the pointer never
+     crosses a "dead" gap on its way down to the panel. Positioned against
+     .site-header (sticky ⇒ containing block), spanning its full width. */
+  .has-mega {
+    padding-block: var(--space-5);
+    margin-block: calc(-1 * var(--space-5));
+  }
+  .mega {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-white);
+    border-top: 1px solid var(--color-border);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: 0 28px 48px -16px rgb(8 57 87 / 0.28);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition:
+      opacity 0.16s ease,
+      transform 0.16s ease,
+      visibility 0s linear 0.16s;
+  }
+  .has-mega:hover .mega,
+  .has-mega:focus-within .mega {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+  /* Escape closes the panel until the pointer/focus leaves the item. */
+  .has-mega.mega-closed .mega {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mega {
+      transition: none;
+      transform: none;
+    }
+  }
+  .mega__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-6);
+    padding-block: var(--space-7);
+  }
+  .mega__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-navy);
+    font-size: var(--fs-200);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .mega__title svg {
+    flex-shrink: 0;
+    color: var(--color-accent-blue);
+  }
+  .mega__title:hover span {
+    color: var(--color-accent-blue);
+  }
+  .mega__list {
+    margin: var(--space-4) 0 0;
+    padding-left: calc(24px + var(--space-3));
+    display: grid;
+    gap: var(--space-3);
+  }
+  .mega__link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: var(--fs-200);
+    line-height: 1.4;
+    display: inline-block;
+  }
+  .mega__link:hover {
+    color: var(--color-accent-blue);
+  }
+
   /* ---------- Right-side actions ---------- */
   .site-header__actions {
     display: flex;
@@ -365,6 +539,16 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
   }
   .site-header__portal {
     display: none;
+  }
+  /* The header portal button is accent blue on victrix.ca (the global
+     .btn--primary stays navy elsewhere). */
+  .site-header__portal,
+  .mobile-nav__portal {
+    background-color: var(--color-accent-blue);
+  }
+  .site-header__portal:hover,
+  .mobile-nav__portal:hover {
+    background-color: var(--color-accent-blue-600);
   }
 
   .lang-switch {
