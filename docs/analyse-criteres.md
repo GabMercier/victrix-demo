@@ -76,8 +76,10 @@ complète du site** (`https://<branche>.victrix-demo.pages.dev`) :
 
 À comparer : dans WordPress, un lien de prévisualisation exige une session
 connectée (ou un plugin de plus, type Public Post Preview). Un drapeau
-`brouillon` dans l'éditeur (exclu du build de production, visible en préversion)
-complète le flux — petit ajout au schéma.
+`brouillon` dans l'éditeur complète le flux : exclu du build de production,
+visible dans l'aperçu CloudCannon, et visible sur les préversions de branche
+**si** la variable de build `DRAFTS_VISIBLE` est posée sur l'environnement de
+préversion Cloudflare Pages (jamais en production — voir `.env.example`).
 
 ### 3) Facilité de créer différents types de contenus — ✅ natif
 
@@ -352,12 +354,13 @@ Points de repère et réserves :
 - **Déjà fait au prototype** (dé-risque l'estimation) : i18n FR/EN complet,
   slugs par langue + 301, CI, en-têtes de sécurité, éditeur configuré, 5–6
   gabarits en version fidèle au site actuel, portail maquetté.
-- **Le trou à combler avant d'annoncer un chiffre : les maquettes.** Le cahier
-  des charges inclut une phase design Figma (3–4 semaines côté agence); la
-  proposition la traite comme un intrant « à clarifier ». Si le design doit
-  être produit à l'interne, ajouter 5–10 jours ou un budget design externe.
-  C'est la première question que posera un sceptique — la trancher avant la
-  rencontre.
+- **Maquettes — tranché le 14 juillet : « fonctionnel d'abord ».** La v1 se
+  livre sur le design actuel (reproduit fidèlement); la refonte graphique
+  viendra ensuite comme « re-peau » via les design tokens, sans reconstruction.
+  L'estimation ci-dessus n'inclut donc PAS de phase design; si une refonte
+  graphique est commandée plus tard, la chiffrer à ce moment (intrant design
+  interne ou externe). Réponse au sceptique : c'est l'avantage structurel de la
+  pile — le visuel est une couche, pas une fondation.
 - L'effort reste réparti autour des mandats clients (calendrier ≠ effort),
   comme dans la proposition.
 
