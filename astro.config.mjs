@@ -145,9 +145,18 @@ if (staticOnly) {
  * already appended the astro.config `redirects` map (the pre-i18n URLs above)
  * into dist/_redirects. We only ever append after it — never overwrite. In
  * STATIC_ONLY builds (no adapter) the file doesn't exist yet and gets created.
- * Our entries miss the adapter's _routes.json exclusion pass (it ran first),
- * which is fine: they don't match the worker's include list, so Cloudflare
- * serves them from static-asset routing where `_redirects` applies.
+ * _routes.json: Cloudflare documents that `_redirects` rules are NOT applied
+ * to requests served by the Pages Function — and the worker's include list is
+ * "/*", so every redirect source WOULD hit the worker unless excluded. The
+ * adapter already excludes its own redirect sources (see /contact,
+ * /en/customer-portal in dist/_routes.json); we do the same for the CMS
+ * entries after appending to `_redirects`. Verified live (2026-07-14): without
+ * the exclusion, /demo-redirection was served as a 200 rewrite of /fr/ instead
+ * of a 301. STATIC_ONLY builds have no _routes.json — the pass is skipped.
+ *
+ * Destinations are normalized to the adapter's slash-less convention
+ * ("/fr", not "/fr/") — avoids a second normalization hop on pages.dev and
+ * keeps the file consistent. External https:// destinations pass through.
  */
 function redirectsFile() {
   return {
@@ -224,7 +233,13 @@ function redirectsFile() {
             fail(`« de » en double — chaque chemin source ne peut être redirigé qu’une seule fois.${badEntry}`);
           }
           seen.add(de);
-          lines.push(`${de} ${vers} ${codeNumber}`);
+          // Normalize internal destinations to the adapter's slash-less form
+          // ("/fr/" -> "/fr"); root "/" and external URLs are left as-is.
+          const versNormalise =
+            vers.startsWith('/') && vers.length > 1 && vers.endsWith('/')
+              ? vers.replace(/\/+$/, '')
+              : vers;
+          lines.push(`${de} ${versNormalise} ${codeNumber}`);
         }
 
         // Empty list: nothing to write — leave whatever the adapter produced
@@ -251,6 +266,42 @@ function redirectsFile() {
             : `${existing}${existing.endsWith('\n') ? '' : '\n'}${block}`;
         await fs.writeFile(target, content, 'utf-8');
         logger.info(`${lines.length} redirection(s) de src/data/redirects.json écrites dans _redirects`);
+
+        // _routes.json exclusion pass (normal Cloudflare build only — the file
+        // does not exist in STATIC_ONLY builds). Without it the worker (include
+        // "/*") swallows the request before `_redirects` is honoured — see the
+        // header comment. Cloudflare caps include+exclude at 100 combined
+        // rules; entries beyond the cap are dropped WITH A WARNING rather than
+        // failing the build (the redirect data itself is valid — consolidate
+        // into wildcard patterns if the site ever accumulates ~60+ redirects).
+        const routesTarget = new URL('./_routes.json', dir);
+        let routesRaw = null;
+        try {
+          routesRaw = await fs.readFile(routesTarget, 'utf-8');
+        } catch {
+          return; // STATIC_ONLY (or adapter-less) build — nothing to exclude.
+        }
+        /** @type {{ version: number, include: string[], exclude: string[] }} */
+        let routes;
+        try {
+          routes = JSON.parse(routesRaw);
+        } catch {
+          fail('dist/_routes.json existe mais ne contient pas du JSON valide (adaptateur Cloudflare).');
+        }
+        const exclude = Array.isArray(routes.exclude) ? routes.exclude : [];
+        const budget = 100 - (Array.isArray(routes.include) ? routes.include.length : 0) - exclude.length;
+        const manquants = [...seen].filter((de) => !exclude.includes(de));
+        const ajoutes = manquants.slice(0, Math.max(0, budget));
+        if (ajoutes.length < manquants.length) {
+          logger.warn(
+            `[victrix:redirects] limite Cloudflare de 100 règles _routes.json atteinte — ${manquants.length - ajoutes.length} source(s) de redirection non exclue(s) du worker : ${manquants.slice(ajoutes.length).join(', ')}`
+          );
+        }
+        if (ajoutes.length > 0) {
+          routes.exclude = [...exclude, ...ajoutes];
+          await fs.writeFile(routesTarget, JSON.stringify(routes, null, 2), 'utf-8');
+          logger.info(`${ajoutes.length} source(s) de redirection exclue(s) du worker dans _routes.json`);
+        }
       },
     },
   };
