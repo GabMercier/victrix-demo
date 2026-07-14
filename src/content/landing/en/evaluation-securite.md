@@ -9,7 +9,7 @@ sections:
   - _bookshop_name: hero
     type: hero
     eyebrow: Cybersecurity
-    title: Assess your security posture
+    title: Assess your security postures
     subtitle: >-
       Do you know where your vulnerabilities are? Our experts build a complete
       picture of your defences and deliver a prioritized action plan tailored to
@@ -68,8 +68,6 @@ sections:
     ctaHref: /en/contact
     variant: dark
 ---
-# ![](/uploads/yw3ziw8k83bh1.jpeg)
-
-# Test
+#
 
 &nbsp;
