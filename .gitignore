@@ -13,3 +13,8 @@ yarn-error.log*
 .env.production
 # macOS / editor
 .DS_Store
+# Playwright MCP session artifacts (screenshots/traces from browser-driven demos)
+.playwright-mcp/
+# Playwright test output
+test-results/
+playwright-report/
