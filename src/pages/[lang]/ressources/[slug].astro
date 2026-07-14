@@ -2,12 +2,18 @@
 import { getCollection, render } from 'astro:content';
 import { Image, getImage } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import JsonLd from '../../../components/JsonLd.astro';
 import { defaultLocale, otherLocale, htmlLang, localizePath } from '../../../i18n/config';
 import { useTranslations } from '../../../i18n/ui';
-import { postLocale, postUrlSlug, findCounterpart } from '../../../i18n/blog';
+import { postLocale, postUrlSlug, findCounterpart, filterPublished } from '../../../i18n/blog';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  // Drafts get NO route on the public build; the STATIC_ONLY (CloudCannon
+  // editing) build keeps them so editors can preview an unpublished article.
+  // Filtering the WHOLE list before mapping also keeps findCounterpart() from
+  // pairing with a draft translation — its language switch falls back to the
+  // other locale's Ressources index until the translation is published.
+  const posts = filterPublished(await getCollection('blog'));
   return posts.map((post) => {
     const lang = postLocale(post) ?? defaultLocale;
     const other = otherLocale[lang];
@@ -44,6 +50,23 @@ const ogImage = await getImage({
 
 const ressourcesHref = localizePath('/ressources', lang);
 
+// BlogPosting JSON-LD (via the frozen JsonLd contract — src/components/
+// JsonLd.astro). Search engines require ABSOLUTE URLs in structured data,
+// hence new URL(…, Astro.site): the image is the same 1200×630 derivative as
+// og:image above. Author and publisher are both the Organization — this blog
+// has no per-author bylines. This block is the one deliberate addition to the
+// public HTML of this page (JSON-LD is allowed by the workstream brief).
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  datePublished: post.data.date.toISOString(),
+  inLanguage: htmlLang[lang],
+  image: new URL(ogImage.src, Astro.site).href,
+  author: { '@type': 'Organization', name: 'Les Solutions Victrix' },
+  publisher: { '@type': 'Organization', name: 'Les Solutions Victrix' },
+};
+
 // Absolute canonical URL for the share buttons — keep the trailing slash so it
 // matches og:url (the no-slash form 308-redirects on Cloudflare Pages).
 const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
@@ -76,6 +99,7 @@ const shareLinks = [
   tags={post.data.tags}
   altLocalePath={altLocalePath}
 >
+  <JsonLd schema={articleSchema} />
   <article class="article">
     <div class="container article__inner">
       <header class="article__head">

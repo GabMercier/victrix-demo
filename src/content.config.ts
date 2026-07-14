@@ -39,6 +39,13 @@ const blog = defineCollection({
       // FR can keep its filename-based URLs while EN sets an English slug. The
       // filename still pairs the FR/EN translations — see src/i18n/blog.ts.
       slug: z.string().optional(),
+      // Draft flag (CloudCannon switch « Brouillon »). Drafts are EXCLUDED from
+      // routes/listings on the public site, but the STATIC_ONLY (CloudCannon
+      // editing) build keeps them so editors can preview before publishing —
+      // the single switch lives in filterPublished() (src/i18n/blog.ts).
+      // `.default(false)` keeps every existing post published without touching
+      // its frontmatter.
+      draft: z.boolean().default(false),
     }),
 });
 
@@ -175,6 +182,22 @@ const landing = defineCollection({
               label: z.string(),
               type: z.enum(['text', 'email', 'textarea']),
               required: z.boolean(),
+            }),
+          ),
+        }),
+        // « FAQ » — native <details>/<summary> accordion + FAQPage JSON-LD.
+        // Fields mirror the component's Props EXACTLY (frozen contract):
+        // component-library/src/components/faq/faq.astro + faq.bookshop.yml.
+        // Answers are plain text (no HTML) — they are reused verbatim in the
+        // JSON-LD. `_bookshop_name` (added by CloudCannon's visual editor) is
+        // stripped like on every other section — see the .strict() note above.
+        z.object({
+          type: z.literal('faq'),
+          title: z.string(),
+          items: z.array(
+            z.object({
+              question: z.string(),
+              answer: z.string(),
             }),
           ),
         }),

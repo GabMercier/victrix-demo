@@ -35,6 +35,15 @@ collections_config:
       langues ; le même nom de fichier dans les deux dossiers relie une
       traduction à l'autre.
     icon: post_add
+    # Editing interfaces. The FIRST value is the editor a file OPENS IN by
+    # default (documented in CloudCannon's "Set a default editing interface"
+    # article — the reference page for _enabled_editors only covers the
+    # enable/disable part). Listing values DISABLES every unlisted interface;
+    # the Source Editor can never be disabled. Blog = long-form writing →
+    # Content Editor first, Visual Editor second for an in-template preview.
+    _enabled_editors:
+      - content
+      - visual
     # Preview/output URL. [relative_base_path] = the path under the collection
     # folder, i.e. the locale segment ("fr" | "en"); {slug} is a DATA
     # placeholder (curly braces) reading the per-locale `slug` front matter.
@@ -82,6 +91,17 @@ collections_config:
         type: date
         label: Date de publication
         comment: Format AAAA-MM-JJ.
+      # Matches the `draft` field of the blog Zod schema (default false).
+      # Visibility rule lives in src/i18n/blog.ts (filterPublished): drafts
+      # are excluded from the public site but KEPT in STATIC_ONLY builds —
+      # i.e. exactly the CloudCannon editing build — so editors can preview.
+      draft:
+        type: switch
+        label: Brouillon
+        comment: >-
+          Activé : l'article n'apparaît que dans l'aperçu de l'éditeur
+          (build CloudCannon), jamais sur le site public — ni page, ni
+          listes. Désactiver pour publier.
       excerpt:
         type: textarea
         label: Extrait
@@ -119,6 +139,13 @@ collections_config:
     # in the VISUAL editor next to the real homepage (criterion 1), instead of
     # the bare data editor a disable_url data collection would get.
     url: /[relative_base_path]/
+    # First value = default editor (see the blog collection's comment for the
+    # doc reference). Visual first — GUARANTEES criterion 1 instead of relying
+    # on CloudCannon's heuristic; Data second as the flat-JSON fallback. No
+    # `content`: these are JSON files, there is no markdown body to edit.
+    _enabled_editors:
+      - visual
+      - data
     # French labels mirroring public/admin/config.yml. Inputs are keyed by
     # FIELD NAME and cascade into nested objects — shared names (title,
     # ctaLabel…) get ONE generic config on purpose.
@@ -214,6 +241,11 @@ collections_config:
     disable_file_actions: true
     # fr/intelligence-artificielle.json → /fr/expertises/intelligence-artificielle/
     url: /[relative_base_path]/expertises/[slug]/
+    # Same rationale as home: Visual by default (first value), Data as the
+    # flat-JSON fallback, no markdown body so no `content`.
+    _enabled_editors:
+      - visual
+      - data
     _inputs:
       metaTitle:
         type: text
@@ -331,6 +363,13 @@ collections_config:
       appel à l'action, formulaire). Les dossiers fr/ et en/ contiennent les
       deux langues ; le même nom de fichier relie une traduction à l'autre.
     icon: campaign
+    # First value = default editor (doc reference in the blog collection's
+    # comment). Campaign pages are section-built → Visual Editor first (live
+    # Bookshop rendering is the whole point of the spike); Content Editor
+    # second for quick front-matter/SEO edits without the preview.
+    _enabled_editors:
+      - visual
+      - content
     # Same [relative_base_path] trick as blog: the locale folder becomes the
     # URL prefix. Landing has no per-locale `slug` frontmatter (yet) — the
     # filename IS the URL slug in both locales, so this template is exact.
@@ -461,6 +500,82 @@ collections_config:
       required:
         type: switch
         label: Champ obligatoire
+      # FAQ section fields (cascade — only the FAQ items use these names).
+      question:
+        type: text
+        label: Question
+      answer:
+        type: textarea
+        label: Réponse
+        comment: >-
+          Texte simple, sans HTML — la réponse est aussi publiée en données
+          structurées FAQPage (JSON-LD) pour les moteurs de recherche.
+
+  # URL redirects — exposes src/data/redirects.json, which the inline
+  # 'victrix:redirects' integration in astro.config.mjs turns into
+  # dist/_redirects (Cloudflare Pages format) at build time. A COLLECTION on
+  # the data folder is the documented way to make a data file editable in the
+  # sidebar ("Data folders function as collections by setting their path to a
+  # data directory") — `data_config` would NOT work here: its only documented
+  # purpose is feeding Select/Multiselect options, it creates no sidebar entry.
+  redirects:
+    path: src/data
+    # Only redirects.json is editable — the glob hides any other data file
+    # that later lands in src/data/.
+    glob:
+      - redirects.json
+    name: Redirections
+    singular_name: Redirection
+    description: >-
+      Redirections d'URL (ex. anciennes adresses WordPress vers les nouvelles
+      pages). ATTENTION : une entrée invalide — chemin sans « / » initial,
+      destination vide, doublon, redirection vers soi-même — fait échouer le
+      build. C'est un garde-fou volontaire : l'erreur de build nomme l'entrée
+      à corriger, rien de cassé n'atteint le site.
+    icon: alt_route
+    # Single dev-owned file: no add/delete/rename, and no preview URL (the
+    # JSON is not a page).
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    disable_url: true
+    # Data Editor only (and it opens by default — first value). The file is a
+    # root-level JSON array: supported by the Data Editor, but the array has
+    # no field NAME, so no _inputs/_structures can target the array itself —
+    # only its item fields below. The Data Editor's "+" clones the shape of
+    # existing rows, so the seeded /demo-redirection entry doubles as the row
+    # template: never empty the file completely.
+    _enabled_editors:
+      - data
+    _inputs:
+      de:
+        type: text
+        label: Ancienne URL
+        comment: >-
+          Chemin commençant par « / » (ex. /demo-redirection), sans domaine.
+      vers:
+        type: text
+        label: Nouvelle destination
+        comment: >-
+          Chemin du site (ex. /fr/) ou URL complète (https://…).
+      code:
+        type: select
+        label: Type de redirection
+        comment: >-
+          301 = permanente (transfère le référencement) ; 302 = temporaire.
+        options:
+          # NUMERIC values on purpose: the redirects.json contract wants
+          # 301|302 as JSON numbers. CloudCannon's select docs only show
+          # string/object values, so the Data Editor MIGHT round-trip these as
+          # the strings "301"/"302" — the build validator (astro.config.mjs,
+          # 'victrix:redirects') accepts those two exact strings and
+          # normalizes them back to numbers, so a valid pick from this
+          # dropdown can never fail a save. Everything else (303, free text…)
+          # still fails the build loudly — that's the guardrail. Re-test the
+          # round-trip in-editor before the spike gate all the same.
+          values:
+            - 301
+            - 302
 
 _structures:
   # Section palette for the landing `sections` array. The VALUES are NOT
@@ -529,3 +644,25 @@ _structures:
                 - text
                 - email
                 - textarea
+
+  # FAQ items ({question, answer} pairs) for the « FAQ » Bookshop section.
+  # GOTCHA: the FAQ array is ALSO named `items` (frozen contract), and the
+  # collection-level `_inputs.items` above binds every `items` array to
+  # _structures.benefit_items — the WRONG shape here. faq.bookshop.yml must
+  # therefore re-point its own `items` at THIS structure via a spec-level
+  # `_inputs.items` (type: array + options.structures: _structures.faq_items):
+  # generate copies spec _inputs onto the palette entry, and that "containing
+  # structure" level outranks the collection's — the exact mechanism already
+  # used by form_fields to re-expose the field `type` select.
+  faq_items:
+    values:
+      - label: Question / réponse
+        icon: quiz
+        preview:
+          icon: quiz
+          text:
+            - key: question
+            - text: Question / réponse
+        value:
+          question: ''
+          answer: ''

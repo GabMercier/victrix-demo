@@ -3,14 +3,20 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import BlogCard from '../../../components/BlogCard.astro';
 import { type Locale, localePaths } from '../../../i18n/config';
 import { useTranslations } from '../../../i18n/ui';
-import { getPostsByLocale } from '../../../i18n/blog';
+import { getPostsByLocale, filterPublished } from '../../../i18n/blog';
 
 export const getStaticPaths = localePaths;
 
 const { lang } = Astro.props as { lang: Locale };
 const t = useTranslations(lang);
 
-const posts = await getPostsByLocale(lang);
+// Drafts never reach this listing on the public build; the STATIC_ONLY
+// (CloudCannon editing) build keeps them so editors can preview. Belt and
+// braces: getPostsByLocale already applies filterPublished internally (the
+// homepage's latest-articles strip relies on that), the explicit pass here
+// keeps this page's draft policy self-evident and survives a future
+// refactor of the shared helper.
+const posts = filterPublished(await getPostsByLocale(lang));
 ---
 
 <BaseLayout lang={lang} title={t.blog.title} description={t.blog.intro}>

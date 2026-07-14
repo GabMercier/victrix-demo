@@ -18,6 +18,59 @@ import { type Locale, otherLocale } from './config';
 
 export type BlogPost = CollectionEntry<'blog'>;
 
+/**
+ * STATIC_ONLY (the CloudCannon editing build — see astro.config.mjs) read ONCE
+ * at module scope, as a direct static member expression. GOTCHA: Astro only
+ * substitutes non-PUBLIC_ env vars for the exact `import.meta.env.NAME` form in
+ * server code — the bare `import.meta.env` object never carries them, so
+ * destructuring or passing the env object around would silently read
+ * `undefined` even with STATIC_ONLY=1 set. Under vitest the var is unset, so
+ * the default is `false` (production behaviour); tests inject the flag instead.
+ */
+const STATIC_ONLY_BUILD = Boolean(import.meta.env.STATIC_ONLY);
+
+/**
+ * DRAFTS_VISIBLE — same exact-member-expression gotcha as STATIC_ONLY above.
+ * Opt-in escape hatch for SHAREABLE draft previews: the STATIC_ONLY
+ * (CloudCannon) editing build shows drafts, but Cloudflare Pages branch
+ * previews build WITHOUT STATIC_ONLY, so a « Brouillon » article would 404 on
+ * the https://<branche>.victrix-demo.pages.dev link an editor shares for
+ * review. Set DRAFTS_VISIBLE=1 (any non-empty value) as a build variable on
+ * the Cloudflare Pages *Preview* environment ONLY — NEVER on Production, or
+ * drafts go public. Unset everywhere by default (see .env.example).
+ */
+const DRAFTS_VISIBLE_BUILD = Boolean(import.meta.env.DRAFTS_VISIBLE);
+
+/**
+ * Are draft posts visible in this build? True for the STATIC_ONLY
+ * (CloudCannon) editing build, so editors can preview a draft in the visual
+ * editor, and for builds that opt in via DRAFTS_VISIBLE (Cloudflare Pages
+ * Preview environment — see above); the public production build never routes
+ * or lists drafts. The parameters exist for unit tests (import.meta.env is
+ * baked at build/module load — it can't be flipped from inside a test).
+ */
+export function isDraftVisible(
+  staticOnly: boolean = STATIC_ONLY_BUILD,
+  draftsVisible: boolean = DRAFTS_VISIBLE_BUILD,
+): boolean {
+  return staticOnly || draftsVisible;
+}
+
+/**
+ * The publishable subset of `posts` — the ONE draft gate every surface that
+ * routes or lists posts goes through (ressources index + article routes via
+ * the pages, the homepage's latest-articles strip via getPostsByLocale below).
+ * In the STATIC_ONLY editing build (and in DRAFTS_VISIBLE opt-in builds) it
+ * is the identity function (drafts render so editors can preview them).
+ */
+export function filterPublished(
+  posts: BlogPost[],
+  staticOnly: boolean = STATIC_ONLY_BUILD,
+  draftsVisible: boolean = DRAFTS_VISIBLE_BUILD,
+): BlogPost[] {
+  return isDraftVisible(staticOnly, draftsVisible) ? posts : posts.filter((post) => !post.data.draft);
+}
+
 /** The locale segment of a post id, or null if malformed. */
 export function postLocale(entry: BlogPost): Locale | null {
   const seg = entry.id.split('/')[0];
@@ -47,10 +100,14 @@ export function postUrlSlug(entry: BlogPost): string {
   return entry.data.slug || postKey(entry);
 }
 
-/** All posts for a locale, newest first. */
+/**
+ * All publishable posts for a locale, newest first. Drafts are filtered HERE
+ * (see filterPublished) so every caller — the ressources index AND the
+ * homepage's latest-articles strip — gets the same draft policy for free.
+ */
 export async function getPostsByLocale(lang: Locale): Promise<BlogPost[]> {
   const all = await getCollection('blog');
-  return all
+  return filterPublished(all)
     .filter((p) => postLocale(p) === lang)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }

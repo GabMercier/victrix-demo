@@ -18,14 +18,14 @@ spec:
   structures:
     - sections
   label: "Formulaire"
-  description: "Formulaire de contact MAQUETTE (non fonctionnel) : champs, texte de consentement et bouton d'envoi désactivé — le branchement du backend est un chantier séparé."
+  description: "Formulaire de contact : maquette non fonctionnelle par défaut (bouton désactivé) ; devient un vrai formulaire (POST /api/forms, anti-pourriel, courriel) quand le site est construit avec PUBLIC_FORMS_ENABLED=1 — voir docs/formulaires.md."
   icon: edit_note
   # Les clés de `spec` sont recopiées telles quelles sur la valeur de structure
   # générée (structure-builder.js étale `spec`) — le polissage du sélecteur
   # CloudCannon vit donc ici, pas dans cloudcannon.config.yml.
   picker_preview:
     text: Formulaire
-    subtext: Maquette non fonctionnelle (backend à venir)
+    subtext: Maquette par défaut — fonctionnel si PUBLIC_FORMS_ENABLED=1
   preview:
     icon: edit_note
     text:
@@ -70,7 +70,10 @@ _inputs:
     # liaison à la structure partagée qui ré-expose le type de champ).
     type: array
     label: "Champs"
-    comment: "Champs du formulaire (maquette — aucun envoi réel pour l'instant)."
+    # Le `name` HTML de chaque champ dérive du libellé (slug sans accents) en
+    # mode fonctionnel : « Courriel » → "courriel" (validé comme courriel côté
+    # serveur). Éviter deux libellés identiques dans un même formulaire.
+    comment: "Champs du formulaire. Envoi réel seulement si le site est construit avec PUBLIC_FORMS_ENABLED=1 (sinon maquette)."
     options:
       structures: _structures.form_fields
   label:

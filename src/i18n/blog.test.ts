@@ -5,7 +5,15 @@ import { describe, it, expect, vi } from 'vitest';
 // unit-tested in a plain node environment (getPostsByLocale isn't exercised here).
 vi.mock('astro:content', () => ({ getCollection: async () => [] }));
 
-import { postLocale, postKey, postUrlSlug, findCounterpart, type BlogPost } from './blog';
+import {
+  postLocale,
+  postKey,
+  postUrlSlug,
+  findCounterpart,
+  isDraftVisible,
+  filterPublished,
+  type BlogPost,
+} from './blog';
 
 // Minimal stand-in for a content entry — only the fields the helpers read.
 function post(id: string, data: Partial<BlogPost['data']> = {}): BlogPost {
@@ -39,6 +47,41 @@ describe('postUrlSlug', () => {
   });
   it('falls back to the filename when slug is unset (FR keeps its URL)', () => {
     expect(postUrlSlug(post('fr/cinq-pratiques-cybersecurite-pme'))).toBe('cinq-pratiques-cybersecurite-pme');
+  });
+});
+
+describe('isDraftVisible / filterPublished', () => {
+  const published = post('fr/publie');
+  const explicitlyPublished = post('fr/publie-explicite', { draft: false });
+  const draft = post('fr/brouillon', { draft: true });
+  const all = [published, explicitlyPublished, draft];
+
+  it('hides drafts on the public build (STATIC_ONLY unset)', () => {
+    expect(isDraftVisible(false)).toBe(false);
+    expect(filterPublished(all, false)).toEqual([published, explicitlyPublished]);
+  });
+
+  it('shows drafts in the STATIC_ONLY (CloudCannon editing) build', () => {
+    expect(isDraftVisible(true)).toBe(true);
+    expect(filterPublished(all, true)).toEqual(all);
+  });
+
+  it('shows drafts when DRAFTS_VISIBLE opts a build in (CF Pages Preview env)', () => {
+    // The shareable-preview escape hatch: branch previews build WITHOUT
+    // STATIC_ONLY, so without this flag a shared draft link would 404.
+    expect(isDraftVisible(false, true)).toBe(true);
+    expect(filterPublished(all, false, true)).toEqual(all);
+  });
+
+  it('treats a post without the draft field as published (schema default: false)', () => {
+    // Zod supplies `draft: false` at build time; the helper must also cope with
+    // the field being absent (stand-in entries, historical data).
+    expect(filterPublished([published], false)).toEqual([published]);
+  });
+
+  it('reads the build environment by default (STATIC_ONLY is unset under vitest)', () => {
+    expect(isDraftVisible()).toBe(false);
+    expect(filterPublished(all)).toEqual([published, explicitlyPublished]);
   });
 });
 

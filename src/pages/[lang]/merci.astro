@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { type Locale, localePaths, localizePath } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
+
+/**
+ * /[lang]/merci — post-submission thank-you page (contrat « formulaires »).
+ *
+ * /api/forms 303-redirects here on success, demo mode, AND honeypot hits (bots
+ * must see the same success as humans). Reachable directly too, so the copy
+ * stands on its own.
+ *
+ * Search engines must never index it: `noindex` below (BaseLayout emits the
+ * robots meta) + the sitemap filter in astro.config.mjs excludes /merci (owned
+ * by the redirects/sitemap workstream, like the /campagnes/ exclusion).
+ */
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props as { lang: Locale };
+// GOTCHA Bookshop (STATIC_ONLY / CloudCannon editing build): the Bookshop Vite
+// plugin instruments COMPONENT props (here the <BaseLayout> call) with
+// data-binding paths by re-rooting each expression through its variable's
+// declaration. A declaration of the form `useTranslations(lang).merci` gets
+// re-rooted to `Astro.props.merci.…` in the compiled module — undefined at
+// render time, which CRASHES the editing build. Keep the bare-call pattern
+// (`useTranslations(lang)`) like the other [lang] pages and reach `t.merci.*`
+// at the use sites: those paths stay rooted at `t`, which is in scope.
+const t = useTranslations(lang);
+
+const links = t.merci.links.map((l) => ({ ...l, href: localizePath(l.href, lang) }));
+---
+
+<BaseLayout lang={lang} title={t.merci.metaTitle} description={t.merci.metaDescription} noindex>
+  <section class="merci">
+    <div class="container merci__inner">
+      <span class="merci__badge" aria-hidden="true">
+        {/* Checkmark in a circle — success, without shipping an icon font. */}
+        <svg viewBox="0 0 48 48" width="44" height="44" role="img">
+          <circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" stroke-width="3" opacity="0.35"></circle>
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 24.5l6.5 6.5L33 18"
+          ></path>
+        </svg>
+      </span>
+
+      <h1 class="merci__title">{t.merci.title}</h1>
+      <p class="merci__text">{t.merci.text}</p>
+
+      <nav class="merci__actions" aria-label="Pages">
+        {
+          links.map((l) => (
+            <a class={`btn ${l.primary ? 'btn--primary' : 'btn--outline'}`} href={l.href}>
+              {l.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Same quiet, centered layout as the 404 — this page is a full stop, not a
+     destination, so no extra chrome competing with the confirmation. */
+  .merci {
+    padding-block: var(--space-10);
+  }
+  .merci__inner {
+    max-width: 620px;
+    margin-inline: auto;
+    text-align: center;
+  }
+  .merci__badge {
+    display: inline-flex;
+    color: var(--color-accent-green);
+    margin-bottom: var(--space-4);
+  }
+  .merci__title {
+    margin-bottom: var(--space-4);
+  }
+  .merci__text {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-6);
+  }
+  .merci__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+</style>

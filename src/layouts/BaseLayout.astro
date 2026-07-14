@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import JsonLd from '../components/JsonLd.astro';
 import { type Locale, defaultLocale, otherLocale, htmlLang, swapLocale } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 
@@ -62,6 +63,19 @@ const enURL = lang === 'en' ? canonicalURL : altURL;
 const ogImageURL = new URL(image, Astro.site);
 const ogLocale = lang === 'fr' ? 'fr_CA' : 'en_CA';
 const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
+
+// Organization JSON-LD — the ONE sitewide structured-data block, emitted on
+// every page (frozen contract). Absolute URLs are required by schema.org
+// consumers, hence `new URL(..., Astro.site)` like the canonical/OG URLs above.
+// TODO: `logo` points at the 32×32 favicon as a PLACEHOLDER — swap it for a
+// proper brand asset under public/ (Google recommends ≥ 112×112) when one lands.
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Les Solutions Victrix',
+  url: new URL('/', Astro.site).href,
+  logo: new URL('/favicon-32x32.png', Astro.site).href,
+};
 ---
 
 <!doctype html>
@@ -113,6 +127,10 @@ const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageURL} />
+
+    {/* Organization structured data (JSON-LD) — see orgSchema above. Pages add
+        their own page-level schemas (e.g. BlogPosting) separately. */}
+    <JsonLd schema={orgSchema} />
 
     {/* SPA-like navigation: swaps page content client-side with a crossfade,
         persists across the site, respects prefers-reduced-motion. Inline

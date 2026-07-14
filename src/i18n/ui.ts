@@ -167,6 +167,19 @@ const fr = {
     learnMore: 'En savoir plus',
   },
 
+  // Page /merci — atterrissage après une soumission de formulaire réussie
+  // (redirection 303 de /api/forms, voir docs/formulaires.md). noindex.
+  merci: {
+    metaTitle: 'Merci',
+    metaDescription: 'Votre message a bien été envoyé à l’équipe Victrix.',
+    title: 'Merci !',
+    text: 'Votre message a été envoyé. Notre équipe vous répondra dans les meilleurs délais.',
+    links: [
+      { label: 'Retour à l’accueil', href: '/', primary: true },
+      { label: 'Consulter le blogue', href: '/ressources', primary: false },
+    ],
+  },
+
   notFound: {
     metaTitle: 'Page en construction',
     metaDescription:
@@ -335,6 +348,18 @@ const en: UI = {
 
   home: {
     learnMore: 'Learn more',
+  },
+
+  // /merci page — post-submission landing (303 redirect from /api/forms).
+  merci: {
+    metaTitle: 'Thank you',
+    metaDescription: 'Your message has been sent to the Victrix team.',
+    title: 'Thank you!',
+    text: 'Your message has been sent. Our team will get back to you as soon as possible.',
+    links: [
+      { label: 'Back to home', href: '/', primary: true },
+      { label: 'Visit the blog', href: '/ressources', primary: false },
+    ],
   },
 
   notFound: {

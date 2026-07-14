@@ -7,10 +7,40 @@
  * - `type` (au niveau section) est le discriminant du contrat landing ; il
  *   arrive via le spread {...section} et est volontairement ignoré ici.
  *
- * MAQUETTE NON FONCTIONNELLE — IMPORTANT :
- * - <form> sans attribut `action` et bouton d'envoi `disabled` : le backend
- *   de formulaires (envoi, anti-pourriel, stockage) est un chantier séparé,
- *   à venir. Rien n'est soumis ni collecté.
+ * DEUX MODES (contrat « formulaires » — voir docs/formulaires.md) :
+ * - Par défaut (PUBLIC_FORMS_ENABLED absente) : MAQUETTE NON FONCTIONNELLE —
+ *   <form> sans `action`, bouton d'envoi désactivé, rien n'est soumis ni
+ *   collecté. Le rendu reste celui d'avant le chantier : zéro changement
+ *   visuel (seuls d'éventuels espaces surnuméraires — expressions
+ *   conditionnelles vides après compressHTML — distinguent les octets).
+ * - PUBLIC_FORMS_ENABLED="1" : vrai <form method="POST" action="/api/forms">,
+ *   aucun JavaScript requis pour soumettre (POST natif), avec les champs
+ *   cachés du contrat de champs (docs/formulaires.md §4) : `lang`, `source`,
+ *   pot de miel `website`, plus `_requis` / `_courriels` (noms séparés par
+ *   des virgules) pour annoncer au serveur les champs requis et les champs
+ *   courriel. Deux compléments navigateur, dans ce mode SEULEMENT :
+ *   · `data-astro-reload` sur le <form> — sans lui, le routeur ClientRouter
+ *     (BaseLayout) intercepte la soumission et posterait le corps en
+ *     multipart/form-data (il ne passe en urlencoded que si l'ATTRIBUT
+ *     enctype est posé sur le <form> — vérifié dans node_modules/astro :
+ *     components/ClientRouter.astro + dist/transitions/router.js), format
+ *     que /api/forms (URLSearchParams) ne sait pas lire. L'attribut redonne
+ *     la main au navigateur : POST urlencoded natif, vrai suivi du 303.
+ *   · bannière d'erreur : /api/forms renvoie vers la page source avec
+ *     « ?erreur=1 » après un échec (validation ou Turnstile) ; un mini-script
+ *     is:inline révèle alors la bannière (sans lui, le visiteur verrait la
+ *     page se recharger sans explication, réponses perdues). Compatible CSP
+ *     GELÉE : le script-src de /fr/* et /en/* contient déjà 'unsafe-inline'
+ *     (public/_headers) — aucune modification de CSP requise. Texte FR/EN
+ *     codé en dur (plomberie du contrat, pas du contenu éditable).
+ * - PUBLIC_TURNSTILE_SITE_KEY définie EN PLUS : widget Cloudflare Turnstile
+ *   (script challenges.cloudflare.com/turnstile/v0/api.js). ATTENTION CSP :
+ *   public/_headers est GELÉ — activer Turnstile en production exige d'y
+ *   ajouter `script-src` + `frame-src https://challenges.cloudflare.com`
+ *   (modification documentée dans docs/formulaires.md §7, PAS appliquée).
+ * - NE PAS définir PUBLIC_FORMS_ENABLED dans l'environnement de build
+ *   CloudCannon (STATIC_ONLY) : /api/forms y est force-prérendu, un POST y
+ *   frapperait un fichier statique au lieu de la Pages Function.
  *
  * Contraintes / pièges :
  * - <h2> : le <h1> unique appartient au héros.
@@ -20,9 +50,36 @@
  *   des doublons — limite acceptée pour une maquette). Uniquement des
  *   opérations de chaînes : exécutable dans le navigateur (l'éditeur visuel
  *   CloudCannon rend les composants Bookshop côté client).
+ * - Les `name` des champs visibles (mode fonctionnel) dérivent du LIBELLÉ
+ *   (slug stable, accents retirés) : « Courriel » → "courriel", ce qui
+ *   déclenche aussi l'heuristique courriel du serveur (validation.ts). Deux
+ *   libellés identiques → même `name` ; le serveur joint alors les valeurs
+ *   par ", " (limite assumée, documentée dans docs/formulaires.md §5). En
+ *   mode maquette les champs gardent leurs `name` historiques (id) pour une
+ *   fidélité à l'octet près.
+ * - ÉDITEUR VISUEL CLOUDCANNON : son bundle (esbuild, @bookshop/astro-engine)
+ *   ne remplace que les expressions EXACTES `import.meta.env.PUBLIC_X` — le
+ *   bare `import.meta.env` y est undefined — et son globale Astro n'a pas de
+ *   `url`. D'où `import.meta.env ?? {}` et `Astro.url?.pathname` ci-dessous :
+ *   l'éditeur ne plante jamais et affiche TOUJOURS la maquette (aucun envoi
+ *   accidentel depuis l'éditeur ; le build STATIC_ONLY, lui, suit ses vraies
+ *   variables d'environnement).
+ * - Les deux commentaires HTML du gabarit se retrouvent tels quels dans le
+ *   HTML produit (le compilateur Astro conserve les commentaires, même avec
+ *   compressHTML) : ils décrivent le mode par défaut (maquette) et doivent
+ *   rester identiques à l'octet près — ne pas les reformuler, ne pas en
+ *   ajouter. Même logique pour le bouton : {submitLabel} reste COLLÉ aux
+ *   balises (un retour à la ligne créerait des nœuds texte absents de la
+ *   maquette d'origine).
  * - `fields = []` en secours pour ne pas planter l'éditeur pendant la saisie.
- * - Aucun script client ; var(--token, secours) reprend les valeurs de
- *   src/styles/tokens.css pour un rendu fidèle hors du site.
+ * - Aucun script client en mode maquette ; en mode fonctionnel, uniquement le
+ *   script Turnstile (optionnel) et le mini-script de la bannière d'erreur ;
+ *   var(--token, secours) reprend les valeurs de src/styles/tokens.css pour
+ *   un rendu fidèle hors du site. Le bloc <style> est inchangé : les seuls
+ *   styles nouveaux (pot de miel, bannière d'erreur, curseur du bouton actif)
+ *   sont des styles EN LIGNE conditionnels, pour que la feuille de style
+ *   paginée (et son URL hachée) reste identique quand les drapeaux sont
+ *   absents.
  */
 interface FormField {
   label: string;
@@ -47,6 +104,81 @@ const idBase =
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '') || 'champ');
+
+// --- Mode fonctionnel (drapeaux d'environnement — voir l'entête) ------------
+// `?? {}` : bare import.meta.env est undefined dans le bundle d'édition
+// CloudCannon (esbuild ne « define » que les expressions membres exactes).
+// Double `as` : ImportMetaEnv porte des booléens (DEV, PROD, SSR…) qui
+// bloquent l'assignation directe à Record<string, string | undefined>, et
+// l'union `ImportMetaEnv | {}` ferait échouer l'accès aux propriétés sous
+// `astro check` (tsconfig strict). Purement typage — effacé à l'exécution.
+const env = (import.meta.env ?? {}) as unknown as Record<string, string | undefined>;
+const formsEnabled = env.PUBLIC_FORMS_ENABLED === '1';
+// Le widget n'a de sens que si le formulaire soumet réellement quelque part.
+const turnstileSiteKey = formsEnabled ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+
+// Contexte de page pour les champs cachés `lang` / `source`. Astro.url est lié
+// à la requête dans le vrai build ; le moteur Bookshop n'en fournit pas →
+// enchaînement optionnel + valeurs neutres. Le serveur ré-assainit de toute
+// façon les deux champs (sanitizeLang / sanitizeSourcePath).
+const pagePath = Astro.url?.pathname ?? '';
+const formLang = pagePath.split('/')[1] === 'en' ? 'en' : 'fr';
+
+// `name` stable dérivé du libellé : accents décomposés puis retirés (NFD),
+// minuscules, tout le reste → tirets. Libellé vide → repli positionnel.
+// Uniquement des opérations de chaînes (compatibles navigateur — éditeur
+// visuel CloudCannon, cf. entête).
+// La plage des diacritiques (U+0300 à U+036F, détachés par NFD) est
+// construite via fromCharCode plutôt qu'écrite en littéral : des caractères
+// combinants invisibles dans la source seraient trop faciles à corrompre.
+const DIACRITIQUES = new RegExp(
+  `[${String.fromCharCode(0x0300)}-${String.fromCharCode(0x036f)}]`,
+  'g',
+);
+const fieldName = (label: string, index: number): string => {
+  const slug = (label ?? '')
+    .normalize('NFD')
+    .replace(DIACRITIQUES, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  return slug || `champ-${index + 1}`;
+};
+const fieldNames = fields.map((field, i) => fieldName(field.label, i));
+
+// Listes annoncées au serveur (contrat de champs §4) — vides ⇒ champ caché
+// non rendu ; le serveur garde alors ses filets (soumission non vide +
+// heuristique courriel sur le nom).
+const requiredNames = fields
+  .map((field, i) => (field.required ? fieldNames[i] : null))
+  .filter((name): name is string => name !== null)
+  .join(',');
+const emailNames = fields
+  .map((field, i) => (field.type === 'email' ? fieldNames[i] : null))
+  .filter((name): name is string => name !== null)
+  .join(',');
+
+// Pot de miel : idiome « visuellement masqué » EN LIGNE — pas display:none
+// (trop de robots l'ignorent), pas de classe CSS (feuille inchangée, cf.
+// entête). position:absolute le sort aussi du flux flex → aucun créneau de
+// `gap` fantôme. aria-hidden + tabindex=-1 le soustraient aux lecteurs
+// d'écran et à la tabulation : seuls les robots le remplissent.
+const honeypotStyle =
+  'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;';
+
+// Bannière d'erreur « ?erreur=1 » : même logique EN LIGNE que le pot de miel —
+// aucune classe nouvelle, la feuille de style paginée (et son URL hachée)
+// reste identique quand les drapeaux sont absents. Pas de jeton « erreur »
+// dans tokens.css → paire rouge littérale, contraste AA (texte #8c1d18 sur
+// fond #fdecea). Le display:none initial vient de l'attribut `hidden`.
+const errorBannerStyle =
+  'margin:0;padding:0.75rem 1rem;border:1px solid #b3261e;border-radius:var(--radius-md, 8px);background-color:#fdecea;color:#8c1d18;font-size:var(--fs-200, 0.9375rem);line-height:var(--lh-normal, 1.6);';
+// Texte volontairement NON éditable (plomberie du contrat « formulaires »,
+// pas du contenu de campagne) — langue calée sur la page, comme Turnstile.
+const errorMessage =
+  formLang === 'en'
+    ? 'Your message could not be sent. Please check your answers and try again.'
+    : 'Votre message n’a pas pu être envoyé. Vérifiez vos réponses, puis réessayez.';
 ---
 
 <section class="lp-form">
@@ -56,7 +188,55 @@ const idBase =
 
     <!-- Maquette : formulaire volontairement SANS `action` — le backend de
          formulaires est un chantier séparé (workstream ultérieur). -->
-    <form class="lp-form__form">
+    <form
+      class="lp-form__form"
+      method={formsEnabled ? 'POST' : undefined}
+      action={formsEnabled ? '/api/forms' : undefined}
+      data-astro-reload={formsEnabled ? '' : undefined}
+    >
+      {
+        formsEnabled && (
+          <>
+            {/* Bannière d'erreur + mini-script : FRÈRES ADJACENTS obligatoires
+                (le script se repère par previousElementSibling — pas d'id :
+                deux formulaires au même titre créeraient un doublon).
+                data-astro-rerun : lors d'une navigation du routeur
+                (retour/avance), les scripts déjà exécutés sont sautés sans
+                cet attribut (node_modules/astro/dist/transitions/
+                swap-functions.js) — la bannière ne s'afficherait pas. Le bloc
+                { } dans le script est essentiel : ré-exécuté dans le MÊME
+                contexte global, un `const` de premier niveau planterait en
+                redéclaration à la seconde exécution. */}
+            <p role="alert" hidden style={errorBannerStyle}>
+              {errorMessage}
+            </p>
+            <script is:inline data-astro-rerun>
+              // Révèle la bannière (l'élément précédent) au retour d'un échec
+              // d'envoi — /api/forms redirige vers la page source + ?erreur=1.
+              {
+                const s = document.currentScript;
+                const b = s && s.previousElementSibling;
+                if (b && /[?&]erreur=/.test(location.search)) b.removeAttribute('hidden');
+              }
+            </script>
+            <input type="hidden" name="lang" value={formLang} />
+            <input type="hidden" name="source" value={pagePath} />
+            {requiredNames && <input type="hidden" name="_requis" value={requiredNames} />}
+            {emailNames && <input type="hidden" name="_courriels" value={emailNames} />}
+            {/* Pot de miel `website` — voir honeypotStyle dans l'entête. */}
+            <div aria-hidden="true" style={honeypotStyle}>
+              <label for={`${idBase}-website`}>Site Web</label>
+              <input
+                id={`${idBase}-website`}
+                type="text"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+          </>
+        )
+      }
       {
         fields.map((field, i) => {
           const id = `${idBase}-${i}`;
@@ -74,7 +254,7 @@ const idBase =
                 <textarea
                   class="lp-form__input lp-form__input--textarea"
                   id={id}
-                  name={id}
+                  name={formsEnabled ? fieldNames[i] : id}
                   rows="5"
                   required={field.required}
                 />
@@ -82,7 +262,7 @@ const idBase =
                 <input
                   class="lp-form__input"
                   id={id}
-                  name={id}
+                  name={formsEnabled ? fieldNames[i] : id}
                   type={field.type}
                   required={field.required}
                 />
@@ -94,9 +274,28 @@ const idBase =
 
       {consentText && <p class="lp-form__consent">{consentText}</p>}
 
+      {
+        turnstileSiteKey && (
+          <>
+            {/* Widget Turnstile — data-language cale la langue du widget sur
+                celle de la page. Enfant flex direct : le `gap` du formulaire
+                l'espace tout seul, aucun style nouveau. RAPPEL CSP (gelée) :
+                script-src + frame-src https://challenges.cloudflare.com à
+                ajouter le jour de l'activation (docs/formulaires.md §7). */}
+            <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-language={formLang} />
+            <script
+              is:inline
+              async
+              defer
+              src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+            ></script>
+          </>
+        )
+      }
+
       <!-- Bouton volontairement désactivé : le backend de formulaires est un
            chantier séparé (workstream ultérieur) — cette maquette n'envoie rien. -->
-      <button class="lp-form__submit" type="submit" disabled>{submitLabel}</button>
+      <button class="lp-form__submit" type="submit" disabled={!formsEnabled} style={formsEnabled ? 'cursor:pointer' : undefined}>{submitLabel}</button>
     </form>
   </div>
 </section>

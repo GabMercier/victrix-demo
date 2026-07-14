@@ -1,4 +1,5 @@
 // @ts-check
+import { promises as fs } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
@@ -115,6 +116,146 @@ if (staticOnly) {
   }
 }
 
+/**
+ * Editor-managed redirects → Cloudflare Pages `_redirects` file.
+ *
+ * src/data/redirects.json is the editable source of truth (CloudCannon exposes
+ * it with French labels): an array of { de, vers, code } entries — `de` a path
+ * starting with "/", `vers` a path or absolute https URL, `code` 301
+ * (permanent) or 302 (temporary). This integration reads that file in
+ * `astro:build:done` and writes the entries into dist/_redirects in the
+ * Cloudflare Pages format ("/source /destination 301").
+ *
+ * Guardrails — this replaces WordPress's Redirection plugin, which silently
+ * accepts loops and duplicates; here bad data FAILS the build with a French
+ * message naming the offending entry: `de` must start with "/", `vers` must be
+ * non-empty, no self-redirect (de === vers), no duplicate `de`, `code` must be
+ * 301|302, and neither field may contain whitespace (a space would corrupt the
+ * space-separated `_redirects` line format).
+ *
+ * Runs in BOTH build modes. `_redirects` is Cloudflare-specific and inert in
+ * the STATIC_ONLY (CloudCannon) output, but generating it there too keeps the
+ * two builds consistent and — more useful — surfaces invalid entries to
+ * editors immediately: a bad save fails the CloudCannon build instead of
+ * shipping a broken redirect to production.
+ *
+ * APPEND semantics: Astro unshifts the adapter to the FRONT of the
+ * integrations list (node_modules/astro/dist/integrations/hooks.js), so the
+ * Cloudflare adapter's own `astro:build:done` runs before this one and has
+ * already appended the astro.config `redirects` map (the pre-i18n URLs above)
+ * into dist/_redirects. We only ever append after it — never overwrite. In
+ * STATIC_ONLY builds (no adapter) the file doesn't exist yet and gets created.
+ * Our entries miss the adapter's _routes.json exclusion pass (it ran first),
+ * which is fine: they don't match the worker's include list, so Cloudflare
+ * serves them from static-asset routing where `_redirects` applies.
+ */
+function redirectsFile() {
+  return {
+    name: 'victrix:redirects',
+    hooks: {
+      /** @param {{ dir: URL, logger: import('astro').AstroIntegrationLogger }} options */
+      'astro:build:done': async ({ dir, logger }) => {
+        // Every validation failure throws — an error in astro:build:done
+        // propagates and fails the whole build, which is the point.
+        /** @type {(raison: string) => never} */
+        const fail = (raison) => {
+          throw new Error(`[victrix:redirects] ${raison}`);
+        };
+
+        // Read the JSON FRESH from disk on every build. A JS `import` of the
+        // file would go through Node's module cache and could serve stale
+        // data if a rebuild ever reuses the process.
+        const source = new URL('./src/data/redirects.json', import.meta.url);
+        let raw;
+        try {
+          raw = await fs.readFile(source, 'utf-8');
+        } catch {
+          fail(
+            'src/data/redirects.json est introuvable ou illisible. Le fichier doit exister (au minimum un tableau vide : []).'
+          );
+        }
+        let entries;
+        try {
+          entries = JSON.parse(raw);
+        } catch {
+          fail('src/data/redirects.json ne contient pas du JSON valide.');
+        }
+        if (!Array.isArray(entries)) {
+          fail('src/data/redirects.json doit contenir un tableau d’entrées { "de", "vers", "code" }.');
+        }
+
+        const lines = [];
+        const seen = new Set();
+        for (const entry of entries) {
+          // Every message names the offending entry so an editor can fix it.
+          const badEntry = ` Entrée fautive : ${JSON.stringify(entry)}`;
+          if (typeof entry !== 'object' || entry === null || Array.isArray(entry)) {
+            fail(`chaque entrée doit être un objet { "de", "vers", "code" }.${badEntry}`);
+          }
+          const { de, vers, code } = entry;
+          if (typeof de !== 'string' || !de.startsWith('/')) {
+            fail(`« de » doit être un chemin commençant par « / ».${badEntry}`);
+          }
+          if (typeof vers !== 'string' || vers.length === 0) {
+            fail(`« vers » ne doit pas être vide (chemin ou URL https).${badEntry}`);
+          }
+          // `code`: JSON numbers 301|302 are the contract, but CloudCannon's
+          // Data-Editor select (cloudcannon.config.yml, collection
+          // « redirections ») may round-trip its numeric options as STRINGS
+          // ("301") — its docs only show string values, and the behaviour is
+          // unverified in-editor. A valid pick from the dropdown must NEVER
+          // fail the build, so the exact strings "301"/"302" are accepted and
+          // normalized back to numbers. Anything else (303, "301 ", true,
+          // null…) still fails loudly — that's the guardrail working.
+          /** @type {301 | 302 | null} */
+          let codeNumber = null;
+          if (code === 301 || code === '301') codeNumber = 301;
+          else if (code === 302 || code === '302') codeNumber = 302;
+          if (codeNumber === null) {
+            fail(`« code » doit être 301 (permanent) ou 302 (temporaire).${badEntry}`);
+          }
+          if (/\s/.test(de) || /\s/.test(vers)) {
+            fail(`« de » et « vers » ne doivent pas contenir d’espaces.${badEntry}`);
+          }
+          if (de === vers) {
+            fail(`redirection vers elle-même (boucle infinie).${badEntry}`);
+          }
+          if (seen.has(de)) {
+            fail(`« de » en double — chaque chemin source ne peut être redirigé qu’une seule fois.${badEntry}`);
+          }
+          seen.add(de);
+          lines.push(`${de} ${vers} ${codeNumber}`);
+        }
+
+        // Empty list: nothing to write — leave whatever the adapter produced
+        // (or didn't) untouched.
+        if (lines.length === 0) return;
+
+        // `dir` is the client output root — dist/ in BOTH modes here: with the
+        // adapter attached, buildOutput is "server" and dir = build.client,
+        // which the Cloudflare adapter points back at outDir (no `base`
+        // subpath); without the adapter (STATIC_ONLY) dir = outDir directly.
+        // That root is exactly where Cloudflare Pages looks for `_redirects`.
+        const target = new URL('./_redirects', dir);
+        let existing = '';
+        try {
+          existing = await fs.readFile(target, 'utf-8');
+        } catch {
+          // No file yet (STATIC_ONLY build, or nothing appended by the
+          // adapter) — created below.
+        }
+        const block = `${lines.join('\n')}\n`;
+        const content =
+          existing.length === 0
+            ? block
+            : `${existing}${existing.endsWith('\n') ? '' : '\n'}${block}`;
+        await fs.writeFile(target, content, 'utf-8');
+        logger.info(`${lines.length} redirection(s) de src/data/redirects.json écrites dans _redirects`);
+      },
+    },
+  };
+}
+
 // https://astro.build/config
 export default defineConfig({
   // Served at the root on Cloudflare Pages — no `base` subpath.
@@ -152,6 +293,8 @@ export default defineConfig({
 
   // Preserve the old (pre-i18n) root URLs by sending them to their /fr/ home.
   // `/` → `/fr`. The portal keeps its own localized entry points untouched.
+  // Developer-owned redirects only — editor-managed ones live in
+  // src/data/redirects.json (see the 'victrix:redirects' integration above).
   redirects: {
     '/': '/fr',
     '/contact': '/fr/contact',
@@ -181,10 +324,16 @@ export default defineConfig({
       },
       // Campaign landing pages (/{fr,en}/campagnes/…) are noindex by default —
       // listing them in the sitemap would contradict that and invite crawlers
-      // to URLs that exist only for paid/targeted traffic. `page` is the FULL
+      // to URLs that exist only for paid/targeted traffic. Same reasoning for
+      // the /{fr,en}/merci/ thank-you pages (noindex via BaseLayout): they
+      // only make sense right after a form submission. `page` is the FULL
       // URL (site domain included), so a substring check is enough.
-      filter: (page) => !page.includes('/campagnes/'),
+      filter: (page) => !page.includes('/campagnes/') && !page.includes('/merci/'),
     }),
+    // Editor-managed redirects (src/data/redirects.json) → dist/_redirects.
+    // Deliberately UNCONDITIONAL — both the production build and the
+    // STATIC_ONLY (CloudCannon) build run it; see the function's doc block.
+    redirectsFile(),
   ],
 
   // Image handling. Astro's built-in Sharp service optimizes images imported

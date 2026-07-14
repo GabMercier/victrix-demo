@@ -1,0 +1,173 @@
+---
+/**
+ * Section « FAQ » — composant Bookshop (contrat landing GELÉ).
+ *
+ * Props : { type: "faq", title, items: [{ question, answer }] }
+ * - `type` est le discriminant du contrat landing ; il arrive via le spread
+ *   {...section} depuis la page campagne et est volontairement ignoré ici.
+ *
+ * Contraintes / pièges :
+ * - <h2> de section : le <h1> unique appartient au héros.
+ * - Accordéon <details>/<summary> NATIF : ouverture/fermeture, clavier
+ *   (Entrée/Espace) et exposition aux lecteurs d'écran sont gérés par le
+ *   navigateur — aucun script client (l'éditeur visuel CloudCannon rend les
+ *   composants Bookshop dans le navigateur).
+ * - JSON-LD FAQPage émis via src/components/JsonLd.astro (contrat gelé — il
+ *   neutralise toute fermeture de balise script dans les réponses en échappant
+ *   le chevron ouvrant en séquence unicode u003c). GOTCHA compilateur Astro :
+ *   dans un commentaire de frontmatter, un chevron ouvrant isolé (non refermé
+ *   comme dans <h2>) avale le texte jusqu'au prochain chevron fermant et casse
+ *   la détection de l'interface Props — Astro.props devient Record<string, any>
+ *   et `astro check` échoue en ts(7006). D'où « chevron » en toutes lettres
+ *   dans ce bloc. L'import
+ *   relatif sort de component-library/ vers src/ : Vite le résout sans alias
+ *   (même mécanique, en sens inverse, que l'import des composants Bookshop
+ *   par la page campagne). JsonLd.astro doit rester compatible navigateur
+ *   (opérations de chaînes uniquement — pas d'i18n, pas d'astro:assets) pour
+ *   ne pas casser le bundle d'édition en direct de CloudCannon.
+ * - `items = []` en secours : pendant l'édition en direct, la liste peut être
+ *   momentanément absente — on évite de planter l'éditeur visuel. Le bloc
+ *   JSON-LD n'est émis que s'il reste au moins une question (une FAQPage à
+ *   `mainEntity` vide n'apporte rien aux moteurs de recherche).
+ * - Chaque var(--token, secours) embarque la valeur de src/styles/tokens.css :
+ *   le rendu reste fidèle même sans la feuille globale du site (cas de
+ *   l'éditeur visuel, où global.css n'est pas chargée).
+ */
+import JsonLd from '../../../../src/components/JsonLd.astro';
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  items: FaqItem[];
+}
+
+const { title, items = [] } = Astro.props;
+
+// Balisage schema.org FAQPage construit depuis les questions — permet aux
+// moteurs de recherche d'afficher les Q/R en résultats enrichis. Les réponses
+// sont du texte brut (aucun HTML attendu — voir faq.bookshop.yml).
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<section class="lp-faq">
+  <div class="lp-faq__container">
+    <h2 class="lp-faq__title">{title}</h2>
+    <div class="lp-faq__list">
+      {
+        items.map((item) => (
+          <details class="lp-faq__item">
+            <summary class="lp-faq__question">{item.question}</summary>
+            <p class="lp-faq__answer">{item.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+  {items.length > 0 && <JsonLd schema={faqSchema} />}
+</section>
+
+<style>
+  .lp-faq {
+    padding-block: var(--space-9, 6rem);
+    background-color: var(--color-bg, #ffffff);
+    color: var(--color-text, #1a1c20);
+    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
+  }
+
+  /* Conteneur répliqué localement (pas la classe globale .container) pour que
+     le composant reste autonome dans l'éditeur visuel. */
+  .lp-faq__container {
+    width: 100%;
+    max-width: var(--container-max, 1200px);
+    margin-inline: auto;
+    padding-inline: var(--container-pad, 1.5rem);
+  }
+
+  .lp-faq__title {
+    margin: 0;
+    text-align: center;
+    color: var(--color-navy, #083957);
+    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
+    font-weight: var(--fw-bold, 700);
+    line-height: var(--lh-tight, 1.15);
+    text-wrap: balance;
+  }
+
+  /* Colonne étroite centrée : une FAQ se lit mieux à ~70ch qu'en pleine
+     largeur de conteneur (1200px). */
+  .lp-faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3, 0.75rem);
+    max-width: 760px;
+    margin: var(--space-7, 3rem) auto 0;
+  }
+
+  .lp-faq__item {
+    border: 1px solid var(--color-border, #e2e4e8);
+    border-radius: var(--radius-md, 8px);
+    background-color: var(--color-bg, #ffffff);
+  }
+
+  .lp-faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4, 1rem);
+    padding: var(--space-4, 1rem) var(--space-5, 1.5rem);
+    color: var(--color-navy, #083957);
+    font-weight: var(--fw-semibold, 600);
+    line-height: var(--lh-snug, 1.3);
+    cursor: pointer;
+    /* Marqueur natif remplacé par le chevron ::after ci-dessous. */
+    list-style: none;
+  }
+  /* Safari expose encore le marqueur via ce pseudo-élément propriétaire. */
+  .lp-faq__question::-webkit-details-marker {
+    display: none;
+  }
+  .lp-faq__question:focus-visible {
+    outline: 3px solid var(--color-focus, #3366ff);
+    outline-offset: 2px;
+    border-radius: var(--radius-md, 8px);
+  }
+
+  /* Chevron en pur CSS (deux bordures pivotées) — pas d'image ni de script.
+     45° = pointe vers le bas (fermé) ; 225° = pointe vers le haut (ouvert). */
+  .lp-faq__question::after {
+    content: '';
+    flex: 0 0 auto;
+    width: 0.5em;
+    height: 0.5em;
+    border-right: 2px solid var(--color-accent-blue, #3366ff);
+    border-bottom: 2px solid var(--color-accent-blue, #3366ff);
+    transform: rotate(45deg);
+    transition: transform 0.15s ease;
+  }
+  .lp-faq__item[open] > .lp-faq__question::after {
+    transform: rotate(225deg);
+  }
+
+  .lp-faq__answer {
+    margin: 0;
+    padding: 0 var(--space-5, 1.5rem) var(--space-5, 1.5rem);
+    color: var(--color-text-muted, #4a4d54);
+    line-height: var(--lh-normal, 1.6);
+    text-wrap: pretty;
+  }
+</style>

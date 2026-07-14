@@ -8,6 +8,14 @@ export const getStaticPaths = localePaths;
 const { lang } = Astro.props as { lang: Locale };
 const c = contactContent[lang];
 
+// SUIVI PLANIFIÉ (docs/formulaires.md §10) : ce formulaire est encore la
+// maquette historique — aucun `action`, le script en bas de page simule la
+// confirmation (preventDefault sur le submit). Le backend /api/forms est prêt
+// et agnostique au formulaire ; le portage (POST /api/forms +
+// data-astro-reload + champs cachés du contrat §4, derrière
+// PUBLIC_FORMS_ENABLED) est un travail de gabarit seulement. Ne pas oublier de
+// débrancher la confirmation simulée dans ce mode.
+
 // Locale-neutral coordinates, zipped with the localized office cards by index.
 const officePhones = [
   { phone: '514 879-1919', tel: '+15148791919' },

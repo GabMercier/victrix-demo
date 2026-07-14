@@ -1,0 +1,56 @@
+# =============================================================================
+# Spec Bookshop — section « FAQ » (contrat landing GELÉ).
+# Voir hero.bookshop.yml pour les conventions communes (structures `sections`,
+# discriminant `type` masqué, libellés français pour la palette CloudCannon).
+# NOTE : en plus de l'accordéon visible, la section émet un balisage JSON-LD
+# FAQPage (schema.org) construit depuis les questions — via le composant gelé
+# src/components/JsonLd.astro.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "FAQ"
+  description: "Accordéon de questions-réponses (panneaux dépliables accessibles au clavier) avec balisage FAQPage (JSON-LD) pour les résultats enrichis des moteurs de recherche."
+  icon: quiz
+  # Polissage du sélecteur CloudCannon — voir hero.bookshop.yml (les clés de
+  # `spec` sont recopiées sur la valeur de structure générée).
+  picker_preview:
+    text: FAQ
+    subtext: Accordéon de questions-réponses (balisage FAQPage inclus)
+  preview:
+    icon: quiz
+    text:
+      - key: title
+      - text: FAQ
+
+blueprint:
+  type: faq
+  title: "Foire aux questions"
+  items:
+    - question: "Quelle est votre question la plus fréquente ?"
+      answer: "Rédigez ici une réponse claire et concise, en une ou deux phrases."
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat landing — ne pas modifier."
+  title:
+    label: "Titre"
+  items:
+    # `type: array` explicite : sans lui, `npx @bookshop/generate` fabriquerait
+    # une structure inline générique à partir du blueprint (et viderait la
+    # question d'exemple) — même bail-out que benefits.bookshop.yml.
+    # La palette _structures.faq_items est déclarée à la main dans
+    # cloudcannon.config.yml, comme _structures.benefit_items.
+    type: array
+    label: "Questions"
+    comment: "Chaque élément devient un panneau dépliable ET une entrée du balisage FAQPage."
+    options:
+      structures: _structures.faq_items
+  question:
+    label: "Question"
+  answer:
+    label: "Réponse"
+    comment: "Texte brut, sans HTML — repris tel quel dans le JSON-LD FAQPage."

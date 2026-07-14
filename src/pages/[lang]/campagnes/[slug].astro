@@ -9,6 +9,7 @@ import Hero from '../../../../component-library/src/components/hero/hero.astro';
 import Benefits from '../../../../component-library/src/components/benefits/benefits.astro';
 import Cta from '../../../../component-library/src/components/cta/cta.astro';
 import Form from '../../../../component-library/src/components/form/form.astro';
+import Faq from '../../../../component-library/src/components/faq/faq.astro';
 
 /**
  * Campaign landing pages ("campagnes") — one static route per entry in the
@@ -17,7 +18,8 @@ import Form from '../../../../component-library/src/components/form/form.astro';
  *  - the hero comes FIRST — it owns the page's single <h1>; every other
  *    section titles in <h2>;
  *  - the `form` section is a NON-FUNCTIONAL mock (no action, disabled submit)
- *    until the forms backend workstream lands;
+ *    by default; it becomes a real <form method="POST" action="/api/forms">
+ *    only when the build runs with PUBLIC_FORMS_ENABLED=1 (docs/formulaires.md);
  *  - entries default to noindex (campaign pages stay out of organic search).
  */
 export async function getStaticPaths() {
@@ -66,6 +68,8 @@ const { page, lang, altLocalePath } = Astro.props;
         <Benefits {...section} />
       ) : section.type === 'cta' ? (
         <Cta {...section} />
+      ) : section.type === 'faq' ? (
+        <Faq {...section} />
       ) : (
         <Form {...section} />
       ),
