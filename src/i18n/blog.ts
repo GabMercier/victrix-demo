@@ -36,11 +36,15 @@ export function postKey(entry: BlogPost): string {
 
 /**
  * The public URL slug: the CMS-editable `slug` frontmatter when set, else the
- * filename. FR typically omits it (slug = filename, URLs unchanged); EN sets an
- * English slug (e.g. "ai-for-organizational-productivity").
+ * filename. All seeded posts now set it explicitly (FR = the filename, EN = an
+ * English slug like "ai-for-organizational-productivity") so CloudCannon's
+ * `{slug}`-based preview URL template is exact for every entry.
  */
 export function postUrlSlug(entry: BlogPost): string {
-  return entry.data.slug ?? postKey(entry);
+  // `||`, not `??`: CloudCannon's blog schema seeds new posts with `slug: ""` —
+  // treat the empty string as "unset" so a fresh post keeps its filename URL
+  // (two fresh posts must not collide on the same empty slug in getStaticPaths).
+  return entry.data.slug || postKey(entry);
 }
 
 /** All posts for a locale, newest first. */

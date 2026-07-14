@@ -22,11 +22,15 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.13",
     "@astrojs/sitemap": "^3.7.3",
+    "@bookshop/astro-bookshop": "3.19.0-rc1",
     "astro": "^5.18.2",
     "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "@bookshop/astro-engine": "3.19.0-rc1",
+    "@bookshop/browser": "3.19.0-rc1",
+    "@bookshop/generate": "3.19.0-rc1",
     "@playwright/test": "^1.61.0",
     "eslint": "^9.39.4",
     "eslint-plugin-astro": "^1.7.0",

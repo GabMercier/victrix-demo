@@ -1,0 +1,531 @@
+# CloudCannon configuration — landing-pages ("campagnes") editing spike.
+#
+# Scope: makes this repo editable in CloudCannon (sidebar collections + the
+# visual editor for section-based campaign pages). Sveltia (public/admin/)
+# REMAINS the CMS for blog + home until the spike gate passes — do not remove
+# it. Editor-facing labels/comments below are French (FR-CA editors).
+#
+# Keep FOUR things in sync when the landing contract changes:
+#   1. the Zod schema in src/content.config.ts (frozen landing contract),
+#   2. the Bookshop components in component-library/src/components/,
+#   3. the per-component *.bookshop.yml specs (structures tag `sections` +
+#      blueprint = the palette entry; `npx @bookshop/generate` turns them into
+#      the `_structures.sections` values at build time — see _structures below),
+#   4. the schema templates in schemas/ (default front matter for new files).
+#
+# CloudCannon build settings (configured in the CloudCannon UI, NOT here):
+#   - build command runs with STATIC_ONLY=1 (adapter-less, fully static build);
+#   - `npx @bookshop/generate` runs as the postbuild step so the visual editor
+#     can render the Bookshop components live and populate the sections palette.
+
+# NO `source` key on purpose: the SSG source is the repo root (package.json +
+# astro.config.mjs live there), so CloudCannon's default (empty) Source Folder
+# is correct — same convention as CloudCannon's official Astro starter, where
+# collection paths carry the src/ prefix instead. A `source: src` would build
+# from a folder with no package.json and hide component-library/ (and the
+# bookshop.config.cjs glob of `npx @bookshop/generate`) from CloudCannon.
+
+collections_config:
+  blog:
+    path: src/content/blog
+    name: Blogue
+    singular_name: Article
+    description: >-
+      Articles du blogue. Les dossiers fr/ et en/ contiennent les deux
+      langues ; le même nom de fichier dans les deux dossiers relie une
+      traduction à l'autre.
+    icon: post_add
+    # Preview/output URL. [relative_base_path] = the path under the collection
+    # folder, i.e. the locale segment ("fr" | "en"); {slug} is a DATA
+    # placeholder (curly braces) reading the per-locale `slug` front matter.
+    # EVERY post now carries an explicit `slug` (FR = the filename, EN = the
+    # English slug — see src/i18n/blog.ts postUrlSlug), so this template is
+    # exact for both locales. New posts created from the schemas below start
+    # with slug: "" — their preview link is wrong until the editor fills it in
+    # (the schema comment says so); the built site falls back to the filename.
+    url: /[relative_base_path]/ressources/{slug}/
+    # "+ Ajouter" templates. One schema per locale so a new file ALWAYS lands
+    # inside fr/ or en/ (a root-level file would silently map to /fr/ in
+    # src/pages/[lang]/ressources/[slug].astro) and always starts with front
+    # matter that satisfies the Zod blog schema (an empty file would break the
+    # next build of the commit CloudCannon pushes). Translation pairing
+    # workflow: create (or Duplicate) the same filename in the other locale
+    # folder. Schema `path`s are relative to the repo root; `create.path`s are
+    # relative to the collection path.
+    schemas:
+      default:
+        name: Article (FR)
+        icon: post_add
+        path: schemas/blog-fr.md
+        create:
+          path: 'fr/{title|slugify}.md'
+      en:
+        name: Article (EN)
+        icon: post_add
+        path: schemas/blog-en.md
+        create:
+          path: 'en/{title|slugify}.md'
+    # French labels mirroring the Sveltia config (public/admin/config.yml —
+    # read-only reference), so CloudCannon is no step down from Sveltia.
+    _inputs:
+      title:
+        type: text
+        label: Titre
+      slug:
+        type: text
+        label: Slug (URL)
+        comment: >-
+          Segment d'URL propre à la langue. FR : reprendre le nom de fichier ;
+          EN : slug anglais (ex. ai-for-organizational-productivity). Requis
+          pour que le lien d'aperçu CloudCannon soit exact.
+      date:
+        type: date
+        label: Date de publication
+        comment: Format AAAA-MM-JJ.
+      excerpt:
+        type: textarea
+        label: Extrait
+      coverImage:
+        type: image
+        label: Image de couverture
+        comment: >-
+          Partagée entre les deux langues — téléverser une seule fois, le même
+          fichier sert au FR et à l'EN.
+        options:
+          paths:
+            # Covers live beside the locale folders; the SAVED value must stay
+            # relative to the article file ("../covers/<fichier>") so Astro's
+            # image() resolver keeps working — hence uploads_use_relative_path.
+            # First in-editor upload → build must be tested end-to-end before
+            # the spike gate (criterion 4).
+            uploads: /src/content/blog/covers
+            uploads_use_relative_path: true
+      tags:
+        type: array
+        label: Étiquettes
+
+  home:
+    path: src/content/home
+    name: Accueil
+    description: >-
+      Contenu de la page d'accueil (fichier unique — modifier seulement, ne
+      pas ajouter ni supprimer de fichier).
+    icon: home
+    # Singleton JSON: editors may only edit the existing file.
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    # fr/accueil.json → /fr/, en/accueil.json → /en/ — opening the file lands
+    # in the VISUAL editor next to the real homepage (criterion 1), instead of
+    # the bare data editor a disable_url data collection would get.
+    url: /[relative_base_path]/
+    # French labels mirroring public/admin/config.yml. Inputs are keyed by
+    # FIELD NAME and cascade into nested objects — shared names (title,
+    # ctaLabel…) get ONE generic config on purpose.
+    _inputs:
+      hero:
+        type: object
+        label: Bannière (hero)
+      iso:
+        type: object
+        label: Bandeau ISO 27001
+      expertises:
+        type: object
+        label: Expertises
+      sectionTitle:
+        type: text
+        label: Titre de section
+      items:
+        type: array
+        label: Cartes d'expertise
+      number:
+        type: text
+        label: Numéro
+      accent:
+        type: text
+        label: Couleur d'accent (hex)
+        # Quoted: an unquoted # would start a YAML comment mid-value.
+        comment: "Ex. #B45309 — garder un bon contraste sur fond blanc."
+      href:
+        type: text
+        label: Lien
+      solutions:
+        type: object
+        label: Solution phare
+      partners:
+        type: object
+        label: Partenaires
+      names:
+        type: array
+        label: Noms des partenaires
+      experts:
+        type: object
+        label: Bandeau « experts »
+      articles:
+        type: object
+        label: Bloc « derniers articles »
+      title:
+        type: text
+        label: Titre
+      subtitle:
+        type: textarea
+        label: Sous-titre
+      eyebrow:
+        type: text
+        label: Surtitre
+      description:
+        type: textarea
+        label: Description
+      body:
+        type: textarea
+        label: Texte
+      ctaLabel:
+        type: text
+        label: Texte du bouton
+      ctaHref:
+        type: text
+        label: Lien du bouton
+      image:
+        type: image
+        label: Image
+        options:
+          paths:
+            # Images live beside the locale folders (src/content/home); the
+            # SAVED value must stay relative to the JSON file ("../<fichier>")
+            # for Astro's image() resolver — hence uploads_use_relative_path.
+            uploads: /src/content/home
+            uploads_use_relative_path: true
+
+  # Expertise pages (per-locale JSON, like home) — src/content/expertises.
+  # Today: intelligence-artificielle only (migrated out of the old
+  # src/i18n/content/ai.ts so criterion 1's third target is editable here).
+  expertises:
+    path: src/content/expertises
+    name: Expertises
+    singular_name: Expertise
+    description: >-
+      Contenu des pages d'expertise (FR + EN). Modifier seulement — la mise en
+      page appartient au gabarit Astro correspondant.
+    icon: psychology
+    # The page template is hand-built per expertise — adding a JSON here does
+    # NOT create a page, so keep add/delete disabled.
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    # fr/intelligence-artificielle.json → /fr/expertises/intelligence-artificielle/
+    url: /[relative_base_path]/expertises/[slug]/
+    _inputs:
+      metaTitle:
+        type: text
+        label: Titre (SEO)
+      metaDescription:
+        type: textarea
+        label: Description (SEO)
+      hero:
+        type: object
+        label: Bannière (hero)
+      titleAccent:
+        type: text
+        label: Début du titre (accentué)
+      titleRest:
+        type: text
+        label: Suite du titre
+      lead:
+        type: textarea
+        label: Paragraphe d'introduction
+        comment: Peut contenir des <strong> (rendu HTML tel quel).
+      eyebrow:
+        type: text
+        label: Surtitre
+      cta:
+        type: text
+        label: Libellé du bouton
+      fromStrategy:
+        type: object
+        label: Bloc « de la stratégie à l'adoption »
+      blockTitle:
+        type: text
+        label: Titre du bloc
+      leadCardTitle:
+        type: text
+        label: Titre de la carte d'introduction
+      leadCardText:
+        type: textarea
+        label: Texte de la carte d'introduction
+      interventions:
+        type: array
+        label: Interventions
+      collaboration:
+        type: object
+        label: Bloc « collaboration »
+      expertsPanel:
+        type: object
+        label: Bloc « bassin d'experts »
+      areas:
+        type: object
+        label: Domaines d'expertise
+      multiTech:
+        type: object
+        label: Expertise multitechnologique
+      closing:
+        type: object
+        label: Bloc de conclusion
+      greenCta:
+        type: object
+        label: Bandeau vert (appel à l'action)
+      cta1:
+        type: object
+        label: Encadré d'appel à l'action 1
+      cta2:
+        type: object
+        label: Encadré d'appel à l'action 2
+      sHead:
+        type: text
+        label: Titre de section
+      sIntro:
+        type: textarea
+        label: Introduction de section
+        comment: Peut contenir des <strong> (rendu HTML tel quel).
+      sSub:
+        type: text
+        label: Sous-titre de section
+      items:
+        type: array
+        label: Éléments
+      n:
+        type: text
+        label: Numéro
+      title:
+        type: text
+        label: Titre
+      text:
+        type: textarea
+        label: Texte
+      p1:
+        type: textarea
+        label: Premier paragraphe
+        comment: Peut contenir des <strong> (rendu HTML tel quel).
+      p2:
+        type: textarea
+        label: Deuxième paragraphe
+        comment: Peut contenir des <strong> (rendu HTML tel quel).
+      col1Title:
+        type: text
+        label: Titre de la colonne 1
+      col2Title:
+        type: text
+        label: Titre de la colonne 2
+      col3Title:
+        type: text
+        label: Titre de la colonne 3
+      openLocalLabel:
+        type: text
+        label: Libellé « sources ouvertes et locales »
+
+  landing:
+    path: src/content/landing
+    name: Campagnes
+    singular_name: Campagne
+    description: >-
+      Pages d'atterrissage de campagne, bâties par sections (héros, bénéfices,
+      appel à l'action, formulaire). Les dossiers fr/ et en/ contiennent les
+      deux langues ; le même nom de fichier relie une traduction à l'autre.
+    icon: campaign
+    # Same [relative_base_path] trick as blog: the locale folder becomes the
+    # URL prefix. Landing has no per-locale `slug` frontmatter (yet) — the
+    # filename IS the URL slug in both locales, so this template is exact.
+    url: /[relative_base_path]/campagnes/[slug]/
+    # "+ Ajouter" templates — same rationale as blog: force the fr/ or en/
+    # folder (a root-level file would collide into /fr/ in the campagnes
+    # getStaticPaths) and start from front matter that SATISFIES the frozen
+    # landing contract (title + sections required — an empty file would break
+    # the build of the commit CloudCannon pushes). Translation pairing
+    # workflow: create (or Duplicate) the same filename in the other folder.
+    schemas:
+      default:
+        name: Campagne (FR)
+        icon: campaign
+        path: schemas/landing-fr.md
+        create:
+          path: 'fr/{title|slugify}.md'
+      en:
+        name: Campaign (EN)
+        icon: campaign
+        path: schemas/landing-en.md
+        create:
+          path: 'en/{title|slugify}.md'
+    # Collection card shown in the CloudCannon file browser.
+    preview:
+      icon: campaign
+      text:
+        - key: title
+        - text: Campagne sans titre
+      subtext:
+        - key: description
+    # Inputs are keyed by FIELD NAME and cascade into nested objects/arrays of
+    # this collection — a name shared across levels (title, description) gets
+    # ONE config, so those labels/comments stay generic on purpose.
+    _inputs:
+      title:
+        type: text
+        label: Titre
+        comment: >-
+          Titre de la page (onglet + SEO), d'une section ou d'une carte,
+          selon le contexte.
+      description:
+        type: textarea
+        label: Description
+        comment: >-
+          Au niveau de la page : description pour les moteurs de recherche et
+          les partages. Dans une carte « Bénéfices » : le texte de la carte.
+      noindex:
+        type: switch
+        label: Masquer des moteurs de recherche
+        comment: >-
+          Activé par défaut : les pages de campagne (trafic payant) restent
+          hors des résultats de recherche. Désactiver seulement si la page
+          doit être indexée.
+      sections:
+        type: array
+        label: Sections
+        comment: >-
+          La page est construite uniquement à partir de ces sections. Garder
+          le héros en PREMIÈRE position : il porte le seul <h1> de la page.
+        options:
+          structures: _structures.sections
+      # `type` is the section discriminator (set by the palette) — never
+      # hand-edited, so it cascades to hidden for every input named `type` in
+      # this collection. The INNER `type` of a form field is re-exposed at a
+      # MORE SPECIFIC cascade level: _structures.form_fields.values[0]._inputs
+      # below (the containing structure outranks collection-level _inputs).
+      # CloudCannon has NO bracketed path-key syntax ("fields[*].type" was
+      # inert config) — plain input names only.
+      type:
+        hidden: true
+      eyebrow:
+        type: text
+        label: Surtitre
+        comment: Petit libellé affiché au-dessus du titre du héros (optionnel).
+      subtitle:
+        type: textarea
+        label: Sous-titre
+      intro:
+        type: textarea
+        label: Introduction
+        comment: Court paragraphe sous le titre de la section (optionnel).
+      body:
+        type: textarea
+        label: Texte
+      ctaLabel:
+        type: text
+        label: Libellé du bouton
+      ctaHref:
+        type: text
+        label: Lien du bouton
+        comment: >-
+          URL finale, préfixe de langue inclus (ex. « /fr/contact ») — les
+          sections sont rendues telles quelles, sans ajout du préfixe.
+      variant:
+        type: select
+        label: Variante
+        comment: « light » = bande pâle ; « dark » = bande marine foncée.
+        options:
+          values:
+            - light
+            - dark
+      items:
+        type: array
+        label: Cartes
+        options:
+          structures: _structures.benefit_items
+      fields:
+        type: array
+        label: Champs du formulaire
+        comment: >-
+          Maquette non fonctionnelle : rien n'est envoyé ni collecté (le
+          backend de formulaires est un chantier séparé, à venir).
+        options:
+          structures: _structures.form_fields
+      submitLabel:
+        type: text
+        label: Libellé du bouton d'envoi
+      consentText:
+        type: textarea
+        label: Texte de consentement
+        comment: >-
+          Mention affichée sous les champs (ex. consentement Loi 25 sur la
+          protection des renseignements personnels).
+      label:
+        type: text
+        label: Libellé du champ
+      required:
+        type: switch
+        label: Champ obligatoire
+
+_structures:
+  # Section palette for the landing `sections` array. The VALUES are NOT
+  # written here: the CloudCannon postbuild `npx @bookshop/generate` appends
+  # one entry per component tagged `spec.structures: [sections]` in
+  # component-library/**/*.bookshop.yml, each carrying `_bookshop_name` as the
+  # matching key (generate hard-sets `id_key: _bookshop_name` and APPENDS to
+  # any existing values — verified in @bookshop/generate/lib/
+  # structure-connector.js — so hand-written values would only duplicate every
+  # palette entry under a mismatched id_key). Labels/descriptions/icons and
+  # picker polish live in the *.bookshop.yml specs; the seeded .md files carry
+  # `_bookshop_name` on each section so existing data matches the generated
+  # values. Only the keys below are OURS — generate preserves them.
+  sections:
+    # Card-picker modal when adding a section (nicer than a plain select).
+    style: modal
+    # CloudCannon's visual editor adds a `_bookshop_name` key to inserted
+    # components; the default remove_extra_inputs: true would strip it (and
+    # any future undeclared key) on edit — keep every key intact instead.
+    remove_extra_inputs: false
+
+  # Uniform sub-arrays: a single-value structure gives the "add" button the
+  # right shape even when the array starts empty. NOT tagged in any Bookshop
+  # spec, so generate leaves these untouched.
+  #
+  # Default values use EMPTY STRINGS ("") instead of blank YAML values: blank
+  # parses to null, and null fails the Zod `.optional()` string fields mid-edit.
+  benefit_items:
+    values:
+      - label: Carte bénéfice
+        icon: check_circle
+        preview:
+          icon: check_circle
+          text:
+            - key: title
+            - text: Carte bénéfice
+        value:
+          title: ''
+          description: ''
+
+  form_fields:
+    values:
+      - label: Champ de formulaire
+        icon: edit_note
+        preview:
+          icon: edit_note
+          text:
+            - key: label
+            - text: Champ de formulaire
+        value:
+          label: ''
+          type: text
+          required: true
+        # Structure values support their own _inputs, and the "containing
+        # structure" level outranks the landing collection's _inputs in the
+        # configuration cascade — this re-exposes the form-field `type` select
+        # that the collection-level `type: hidden` (section discriminator)
+        # would otherwise hide.
+        _inputs:
+          type:
+            type: select
+            label: Type de champ
+            comment: Champ texte, courriel ou zone de texte multiligne.
+            options:
+              values:
+                - text
+                - email
+                - textarea

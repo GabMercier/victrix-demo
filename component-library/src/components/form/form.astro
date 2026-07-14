@@ -1,0 +1,215 @@
+---
+/**
+ * Section « Formulaire » — composant Bookshop (contrat landing GELÉ).
+ *
+ * Props : { type: "form", title, intro?, submitLabel, consentText?,
+ *           fields: [{ label, type: "text"|"email"|"textarea", required }] }
+ * - `type` (au niveau section) est le discriminant du contrat landing ; il
+ *   arrive via le spread {...section} et est volontairement ignoré ici.
+ *
+ * MAQUETTE NON FONCTIONNELLE — IMPORTANT :
+ * - <form> sans attribut `action` et bouton d'envoi `disabled` : le backend
+ *   de formulaires (envoi, anti-pourriel, stockage) est un chantier séparé,
+ *   à venir. Rien n'est soumis ni collecté.
+ *
+ * Contraintes / pièges :
+ * - <h2> : le <h1> unique appartient au héros.
+ * - Chaque <label> est lié à son champ par for/id. La base d'identifiants est
+ *   dérivée du titre de la section pour rester unique si deux formulaires
+ *   cohabitent sur une page (deux formulaires au titre identique produiraient
+ *   des doublons — limite acceptée pour une maquette). Uniquement des
+ *   opérations de chaînes : exécutable dans le navigateur (l'éditeur visuel
+ *   CloudCannon rend les composants Bookshop côté client).
+ * - `fields = []` en secours pour ne pas planter l'éditeur pendant la saisie.
+ * - Aucun script client ; var(--token, secours) reprend les valeurs de
+ *   src/styles/tokens.css pour un rendu fidèle hors du site.
+ */
+interface FormField {
+  label: string;
+  type: 'text' | 'email' | 'textarea';
+  required: boolean;
+}
+
+interface Props {
+  title: string;
+  intro?: string;
+  submitLabel: string;
+  consentText?: string;
+  fields: FormField[];
+}
+
+const { title, intro, submitLabel, consentText, fields = [] } = Astro.props;
+
+// Base d'identifiants stables pour lier <label for> et <input id>.
+const idBase =
+  'lp-form-' +
+  ((title ?? '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'champ');
+---
+
+<section class="lp-form">
+  <div class="lp-form__container">
+    <h2 class="lp-form__title">{title}</h2>
+    {intro && <p class="lp-form__intro">{intro}</p>}
+
+    <!-- Maquette : formulaire volontairement SANS `action` — le backend de
+         formulaires est un chantier séparé (workstream ultérieur). -->
+    <form class="lp-form__form">
+      {
+        fields.map((field, i) => {
+          const id = `${idBase}-${i}`;
+          return (
+            <div class="lp-form__field">
+              <label class="lp-form__label" for={id}>
+                {field.label}
+                {field.required && (
+                  <span class="lp-form__req" aria-hidden="true">
+                    &nbsp;*
+                  </span>
+                )}
+              </label>
+              {field.type === 'textarea' ? (
+                <textarea
+                  class="lp-form__input lp-form__input--textarea"
+                  id={id}
+                  name={id}
+                  rows="5"
+                  required={field.required}
+                />
+              ) : (
+                <input
+                  class="lp-form__input"
+                  id={id}
+                  name={id}
+                  type={field.type}
+                  required={field.required}
+                />
+              )}
+            </div>
+          );
+        })
+      }
+
+      {consentText && <p class="lp-form__consent">{consentText}</p>}
+
+      <!-- Bouton volontairement désactivé : le backend de formulaires est un
+           chantier séparé (workstream ultérieur) — cette maquette n'envoie rien. -->
+      <button class="lp-form__submit" type="submit" disabled>{submitLabel}</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .lp-form {
+    padding-block: var(--space-9, 6rem);
+    background-color: var(--color-surface, #f6f7f8);
+    color: var(--color-text, #1a1c20);
+    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
+  }
+
+  /* Conteneur répliqué localement (pas la classe globale .container) pour que
+     le composant reste autonome dans l'éditeur visuel. */
+  .lp-form__container {
+    width: 100%;
+    max-width: var(--container-max, 1200px);
+    margin-inline: auto;
+    padding-inline: var(--container-pad, 1.5rem);
+  }
+
+  .lp-form__title {
+    margin: 0;
+    text-align: center;
+    color: var(--color-navy, #083957);
+    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
+    font-weight: var(--fw-bold, 700);
+    line-height: var(--lh-tight, 1.15);
+    text-wrap: balance;
+  }
+
+  .lp-form__intro {
+    margin: var(--space-4, 1rem) auto 0;
+    max-width: 60ch;
+    text-align: center;
+    color: var(--color-text-muted, #4a4d54);
+    font-size: var(--fs-400, clamp(1.125rem, 0.2vw + 1.05rem, 1.25rem));
+    line-height: var(--lh-normal, 1.6);
+    text-wrap: pretty;
+  }
+
+  .lp-form__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5, 1.5rem);
+    max-width: 640px;
+    margin: var(--space-7, 3rem) auto 0;
+    padding: var(--space-6, 2rem);
+    background-color: var(--color-bg, #ffffff);
+    border: 1px solid var(--color-border, #e2e4e8);
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: var(--shadow-sm, 0 1px 2px rgba(20, 33, 61, 0.08));
+  }
+
+  .lp-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2, 0.5rem);
+  }
+
+  .lp-form__label {
+    font-weight: var(--fw-semibold, 600);
+    color: var(--color-navy, #083957);
+  }
+
+  .lp-form__req {
+    color: var(--color-accent-blue, #3366ff);
+  }
+
+  .lp-form__input {
+    width: 100%;
+    padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+    border: 1px solid var(--color-grey-300, #cdd0d6);
+    border-radius: var(--radius-md, 8px);
+    background-color: var(--color-bg, #ffffff);
+    font: inherit;
+    color: inherit;
+    line-height: var(--lh-normal, 1.6);
+  }
+  .lp-form__input:focus-visible {
+    outline: 3px solid var(--color-focus, #3366ff);
+    outline-offset: 2px;
+  }
+
+  .lp-form__input--textarea {
+    resize: vertical;
+    min-height: 8rem;
+  }
+
+  .lp-form__consent {
+    margin: 0;
+    font-size: var(--fs-100, 0.8125rem);
+    color: var(--color-text-muted, #4a4d54);
+    line-height: var(--lh-normal, 1.6);
+  }
+
+  .lp-form__submit {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7em 1.5em;
+    border: 2px solid transparent;
+    border-radius: var(--radius-pill, 999px);
+    background-color: var(--color-navy, #083957);
+    color: var(--color-text-invert, #ffffff);
+    font-size: var(--fs-200, 0.9375rem);
+    font-weight: var(--fw-semibold, 600);
+    line-height: 1;
+  }
+  /* État désactivé assumé (maquette) — visuellement atténué. */
+  .lp-form__submit:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+</style>

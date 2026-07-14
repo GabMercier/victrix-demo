@@ -1,0 +1,54 @@
+# =============================================================================
+# Spec Bookshop — section « Appel à l'action » (contrat landing GELÉ).
+# Voir hero.bookshop.yml pour les conventions communes (structures `sections`,
+# discriminant `type` masqué, libellés français pour la palette CloudCannon).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Appel à l'action"
+  description: "Bandeau incitatif : titre, texte optionnel et bouton. Variante pâle (défaut) ou marine."
+  icon: campaign
+  # Polissage du sélecteur CloudCannon — voir hero.bookshop.yml (les clés de
+  # `spec` sont recopiées sur la valeur de structure générée).
+  picker_preview:
+    text: Appel à l'action
+    subtext: Bande de conversion avec bouton (variante pâle ou foncée)
+  preview:
+    icon: campaign
+    text:
+      - key: title
+      - text: Appel à l'action
+
+blueprint:
+  type: cta
+  title: "Prêt à passer à l'action ?"
+  body: ""
+  ctaLabel: "Nous joindre"
+  ctaHref: "/fr/nous-joindre/"
+  variant: light
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat landing — ne pas modifier."
+  title:
+    label: "Titre"
+  body:
+    label: "Texte"
+    comment: "Paragraphe d'appui sous le titre (optionnel)."
+  ctaLabel:
+    label: "Libellé du bouton"
+  ctaHref:
+    label: "Lien du bouton"
+    comment: "URL de destination, p. ex. /fr/nous-joindre/."
+  variant:
+    type: select
+    label: "Variante"
+    comment: "« light » : bandeau pâle (défaut) ; « dark » : bandeau marine contrasté."
+    options:
+      values:
+        - light
+        - dark

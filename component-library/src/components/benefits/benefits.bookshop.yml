@@ -1,0 +1,56 @@
+# =============================================================================
+# Spec Bookshop — section « Bénéfices » (contrat landing GELÉ).
+# Voir hero.bookshop.yml pour les conventions communes (structures `sections`,
+# discriminant `type` masqué, libellés français pour la palette CloudCannon).
+# NOTE : la clé `title` de _inputs s'applique par cascade au titre de la
+# section ET au titre de chaque carte (même nom de champ) — libellé partagé
+# « Titre », voulu.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Bénéfices"
+  description: "Grille de cartes (titre + description) présentant les avantages de l'offre — 1 à 3 colonnes selon la largeur d'écran."
+  icon: fact_check
+  # Polissage du sélecteur CloudCannon — voir hero.bookshop.yml (les clés de
+  # `spec` sont recopiées sur la valeur de structure générée).
+  picker_preview:
+    text: Bénéfices
+    subtext: Grille de cartes (titre + description)
+  preview:
+    icon: fact_check
+    text:
+      - key: title
+      - text: Bénéfices
+
+blueprint:
+  type: benefits
+  title: "Pourquoi choisir Victrix"
+  intro: ""
+  items:
+    - title: "Premier bénéfice"
+      description: "Décrivez l'avantage concret pour le client."
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat landing — ne pas modifier."
+  title:
+    label: "Titre"
+  intro:
+    label: "Introduction"
+    comment: "Paragraphe optionnel sous le titre de section."
+  items:
+    # `type: array` explicite : sans lui, `npx @bookshop/generate` fabriquerait
+    # une structure inline générique à partir du blueprint (et viderait la
+    # carte d'exemple), en concurrence avec la palette _structures.benefit_items
+    # de cloudcannon.config.yml — bail-out vérifié dans structure-builder.js.
+    type: array
+    label: "Bénéfices"
+    comment: "Cartes affichées en grille."
+    options:
+      structures: _structures.benefit_items
+  description:
+    label: "Description"

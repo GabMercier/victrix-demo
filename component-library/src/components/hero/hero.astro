@@ -1,0 +1,118 @@
+---
+/**
+ * Section « Héros » — composant Bookshop (contrat landing GELÉ).
+ *
+ * Props : { type: "hero", eyebrow?, title, subtitle?, ctaLabel?, ctaHref? }
+ * - `type` est le discriminant du contrat landing ; il arrive via le spread
+ *   {...section} depuis la page campagne et est volontairement ignoré ici.
+ *
+ * Contraintes / pièges :
+ * - Cette section rend le SEUL <h1> de la page : elle doit être placée en
+ *   première position dans `sections`. Toutes les autres sections titrent
+ *   en <h2>.
+ * - Aucun script client : l'éditeur visuel CloudCannon rend les composants
+ *   Bookshop DANS le navigateur — tout ce qui s'exécute ici doit y tourner.
+ * - Chaque var(--token, secours) embarque la valeur de src/styles/tokens.css :
+ *   le rendu reste fidèle même sans la feuille globale du site (cas de
+ *   l'éditeur visuel, où global.css n'est pas chargée).
+ */
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const { eyebrow, title, subtitle, ctaLabel, ctaHref } = Astro.props;
+---
+
+<section class="lp-hero">
+  <div class="lp-hero__container">
+    {eyebrow && <p class="lp-hero__eyebrow">{eyebrow}</p>}
+    <h1 class="lp-hero__title">{title}</h1>
+    {subtitle && <p class="lp-hero__subtitle">{subtitle}</p>}
+    {
+      /* Le bouton n'est rendu que si le libellé ET le lien sont fournis. */
+      ctaLabel && ctaHref && (
+        <a class="lp-hero__cta" href={ctaHref}>
+          {ctaLabel}
+        </a>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  /* Même langage visuel que le héros de la page d'accueil : dégradé marine,
+     surtitre vert accent, titre inversé, CTA pilule « outline ». */
+  .lp-hero {
+    background:
+      radial-gradient(120% 140% at 85% 0%, var(--color-navy-700, #0b4b71) 0%, transparent 55%),
+      linear-gradient(120deg, var(--color-navy-900, #052639) 0%, var(--color-navy, #083957) 70%);
+    color: var(--color-text-invert, #ffffff);
+    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
+  }
+
+  /* Conteneur répliqué localement (pas la classe globale .container) pour que
+     le composant reste autonome dans l'éditeur visuel. */
+  .lp-hero__container {
+    width: 100%;
+    max-width: var(--container-max, 1200px);
+    margin-inline: auto;
+    padding-inline: var(--container-pad, 1.5rem);
+    padding-block: var(--space-9, 6rem);
+  }
+
+  .lp-hero__eyebrow {
+    margin: 0 0 var(--space-4, 1rem);
+    color: var(--color-accent-green, #24fb8e);
+    font-size: var(--fs-200, 0.9375rem);
+    font-weight: var(--fw-semibold, 600);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lp-hero__title {
+    margin: 0;
+    max-width: 18ch;
+    color: var(--color-text-invert, #ffffff);
+    font-size: var(--fs-800, clamp(2.5rem, 3.5vw + 1.5rem, 4rem));
+    font-weight: var(--fw-extrabold, 800);
+    line-height: var(--lh-tight, 1.15);
+    text-wrap: balance;
+  }
+
+  .lp-hero__subtitle {
+    margin: var(--space-5, 1.5rem) 0 0;
+    max-width: 56ch;
+    font-size: var(--fs-400, clamp(1.125rem, 0.2vw + 1.05rem, 1.25rem));
+    line-height: var(--lh-normal, 1.6);
+    color: rgba(255, 255, 255, 0.85);
+    text-wrap: pretty;
+  }
+
+  .lp-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--space-6, 2rem);
+    padding: 0.7em 1.5em;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: var(--radius-pill, 999px);
+    color: var(--color-text-invert, #ffffff);
+    font-size: var(--fs-200, 0.9375rem);
+    font-weight: var(--fw-semibold, 600);
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+  .lp-hero__cta:hover {
+    background-color: var(--color-white, #ffffff);
+    color: var(--color-navy, #083957);
+  }
+</style>

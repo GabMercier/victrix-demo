@@ -1,0 +1,113 @@
+{
+  "metaTitle": "Artificial Intelligence",
+  "metaDescription": "AI consulting and integration services tailored to your organization: strategy, custom agents, secure adoption of generative AI.",
+  "hero": {
+    "eyebrow": "Artificial intelligence",
+    "titleAccent": "AI consulting and integration services",
+    "titleRest": "tailored to your organization",
+    "lead": "Adopt artificial intelligence in a secure and responsible way, with an approach that integrates people, processes, and change management at every step. Benefit from the guidance of our consultants to select and adopt AI solutions that address your challenges. Thanks to our multi-technology expertise, we ensure <strong>successful implementation and adoption</strong>, aligned with your business objectives.",
+    "cta": "Talk to an AI expert"
+  },
+  "fromStrategy": {
+    "blockTitle": "Put AI to work for businesses and public organizations",
+    "leadCardTitle": "With Victrix, move from strategy to adoption",
+    "leadCardText": "Our artificial intelligence consultants can step in at different stages, depending on your level of AI maturity or adoption. Here is what our AI interventions and services cover."
+  },
+  "interventions": [
+    {
+      "n": "01",
+      "title": "Exploring and analyzing opportunities",
+      "text": "Identify and prioritize the most promising use cases, then build a clear roadmap to launch your first concrete AI initiatives."
+    },
+    {
+      "n": "02",
+      "title": "Developing custom AI agents and solutions",
+      "text": "Design and deploy precise solutions to automate or optimize your priority processes, with end-to-end guidance from prototype to deployment."
+    },
+    {
+      "n": "03",
+      "title": "Secure adoption of generative AI",
+      "text": "Structure the adoption of generative AI across your organization through a solid plan, user support, and targeted training, putting best practices front and centre."
+    }
+  ],
+  "collaboration": {
+    "sHead": "How Victrix works with your teams for smooth and secure AI adoption",
+    "sIntro": "Whether you have a targeted project or a large-scale initiative, we collaborate with your teams to <strong>assess needs</strong>, <strong>define objectives</strong>, and <strong>meet your deadlines</strong>. Our collaborative approach ensures smooth and secure AI adoption while maximizing value for your organization.",
+    "items": [
+      {
+        "n": "01",
+        "title": "Ongoing expertise",
+        "text": "We provide you with AI experts for long-term consulting and development. You benefit from continuous guidance to ensure the follow-up, evolution, and improvement of your projects.",
+        "cta": "I want ongoing support"
+      },
+      {
+        "n": "02",
+        "title": "Tailored expertise",
+        "text": "We mobilize our experts for your specific projects, adjusting our support according to your priorities and deadlines to deliver targeted assistance that ensures results that meet your expectations.",
+        "cta": "I have a specific project"
+      }
+    ]
+  },
+  "cta1": {
+    "title": "Questions about an artificial intelligence project?",
+    "text": "Our experts support you at every step to ensure the success of all your AI projects.",
+    "cta": "Consult a specialist"
+  },
+  "areas": {
+    "sHead": "Artificial intelligence expertise",
+    "sSub": "Our areas of AI expertise",
+    "items": [
+      "Custom, interconnected agents for standardized processes",
+      "Customization of large language models (LLMs) to your domains or your data",
+      "Strategic consulting, governance, and roadmap",
+      "Change management and AI adoption",
+      "Data security and compliance"
+    ]
+  },
+  "multiTech": {
+    "sHead": "Multi-technology expertise",
+    "col1Title": "Large language models (LLMs)",
+    "col2Title": "Integrated agents",
+    "col3Title": "Technologies and development environments",
+    "openLocalLabel": "Open-source and local:"
+  },
+  "cta2": {
+    "title": "Ready to start your artificial intelligence project?",
+    "cta": "Consult our experts"
+  },
+  "expertsPanel": {
+    "sHead": "Structured, targeted interventions backed by a diverse pool of AI experts",
+    "items": [
+      {
+        "n": "01",
+        "title": "Strategic consulting",
+        "text": "Experienced advisors from our team, our global ecosystem, and our specialized AI partners."
+      },
+      {
+        "n": "02",
+        "title": "Technology and business architecture",
+        "text": "Senior engineers recognized as AI experts by our clients."
+      },
+      {
+        "n": "03",
+        "title": "Solution expertise",
+        "text": "Specialists who can step in on cybersecurity, ERP/CRM, data management, and intelligent search engines."
+      },
+      {
+        "n": "04",
+        "title": "Analysis, development, and change management",
+        "text": "Experts who support you in analysis, development, and change management, drawing on hands-on experience in AI projects and proofs of concept."
+      }
+    ]
+  },
+  "closing": {
+    "blockTitle": "Victrix accelerates AI adoption in your organization",
+    "p1": "Driven by an <strong>ecosystem of expertise</strong> that spans technology, data governance, cybersecurity, and managed services, Victrix is your strategic partner for managing your AI projects.",
+    "p2": "Our artificial intelligence support simplifies deployment, strategy, and your <strong>AI roadmap</strong>, whatever your level of maturity."
+  },
+  "greenCta": {
+    "title": "Meet our AI consultants",
+    "text": "Tap into the expertise of our artificial intelligence specialists to add real value to your processes and accelerate the achievement of your objectives.",
+    "cta": "Adopt AI with Victrix"
+  }
+}

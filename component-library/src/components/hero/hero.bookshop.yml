@@ -1,0 +1,58 @@
+# =============================================================================
+# Spec Bookshop — section « Héros » (contrat landing GELÉ).
+# - `spec` : libellé/description/icône affichés dans la palette de composants
+#   de CloudCannon (éditeurs francophones — tout en français).
+# - `structures: [sections]` : le composant est proposé dans tout tableau
+#   `sections` du front matter — la clé du contrat landing (PAS `content_blocks`).
+# - `blueprint` : données initiales à l'ajout du composant ; c'est aussi la
+#   source des Structures générées par `npx @bookshop/generate` (postbuild
+#   CloudCannon). `type: hero` y figure pour satisfaire le discriminant du
+#   contrat ; il est masqué dans l'éditeur via `_inputs`.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Héros"
+  description: "Bandeau d'entête de la campagne : surtitre, titre, sous-titre et bouton d'appel à l'action. À placer en première position (il porte le <h1> de la page)."
+  icon: title
+  # Les clés de `spec` sont recopiées telles quelles sur la valeur de structure
+  # générée par `npx @bookshop/generate` (structure-builder.js étale `spec`) —
+  # le polissage du sélecteur CloudCannon vit donc ici, pas dans
+  # cloudcannon.config.yml (dont la palette `sections` est générée).
+  picker_preview:
+    text: Héros
+    subtext: Titre principal, sous-titre et bouton — toujours en premier
+  preview:
+    icon: title
+    text:
+      - key: title
+      - text: Héros
+
+blueprint:
+  type: hero
+  eyebrow: ""
+  title: "Titre de la campagne"
+  subtitle: ""
+  ctaLabel: ""
+  ctaHref: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat landing — ne pas modifier."
+  eyebrow:
+    label: "Surtitre"
+    comment: "Courte ligne affichée au-dessus du titre (optionnel)."
+  title:
+    label: "Titre"
+  subtitle:
+    label: "Sous-titre"
+    comment: "Paragraphe d'appui sous le titre (optionnel)."
+  ctaLabel:
+    label: "Libellé du bouton"
+    comment: "Laisser vide pour masquer le bouton."
+  ctaHref:
+    label: "Lien du bouton"
+    comment: "URL de destination, p. ex. /fr/nous-joindre/."

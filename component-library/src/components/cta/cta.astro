@@ -1,0 +1,131 @@
+---
+/**
+ * Section « Appel à l'action » — composant Bookshop (contrat landing GELÉ).
+ *
+ * Props : { type: "cta", title, body?, ctaLabel, ctaHref, variant? }
+ * - `variant` : "light" (défaut, bandeau pâle) ou "dark" (bandeau marine,
+ *   même langage visuel que le bandeau « experts » de l'accueil).
+ * - `type` est le discriminant du contrat landing ; il arrive via le spread
+ *   {...section} depuis la page campagne et est volontairement ignoré ici.
+ *
+ * Contraintes / pièges :
+ * - <h2> : le <h1> unique appartient au héros.
+ * - La classe de variante est calculée (pas de class:list avec valeur brute) :
+ *   toute valeur inattendue retombe sur "light" au lieu de fuir dans le DOM.
+ * - Aucun script client ; var(--token, secours) reprend les valeurs de
+ *   src/styles/tokens.css pour un rendu fidèle hors du site (éditeur visuel
+ *   CloudCannon, qui rend le composant dans le navigateur).
+ */
+interface Props {
+  title: string;
+  body?: string;
+  ctaLabel: string;
+  ctaHref: string;
+  variant?: 'light' | 'dark';
+}
+
+const { title, body, ctaLabel, ctaHref, variant = 'light' } = Astro.props;
+const variantClass = variant === 'dark' ? 'lp-cta--dark' : 'lp-cta--light';
+---
+
+<section class={`lp-cta ${variantClass}`}>
+  <div class="lp-cta__container">
+    <div class="lp-cta__copy">
+      <h2 class="lp-cta__title">{title}</h2>
+      {body && <p class="lp-cta__body">{body}</p>}
+    </div>
+    <a class="lp-cta__btn" href={ctaHref}>{ctaLabel}</a>
+  </div>
+</section>
+
+<style>
+  .lp-cta {
+    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
+  }
+
+  /* Conteneur répliqué localement (pas la classe globale .container) pour que
+     le composant reste autonome dans l'éditeur visuel. */
+  .lp-cta__container {
+    width: 100%;
+    max-width: var(--container-max, 1200px);
+    margin-inline: auto;
+    padding-inline: var(--container-pad, 1.5rem);
+    padding-block: var(--space-7, 3rem);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5, 1.5rem);
+  }
+
+  .lp-cta__title {
+    margin: 0;
+    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
+    font-weight: var(--fw-bold, 700);
+    line-height: var(--lh-tight, 1.15);
+    text-wrap: balance;
+  }
+
+  .lp-cta__body {
+    margin: var(--space-2, 0.5rem) 0 0;
+    max-width: 60ch;
+    line-height: var(--lh-normal, 1.6);
+    text-wrap: pretty;
+  }
+
+  .lp-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7em 1.5em;
+    border: 2px solid transparent;
+    border-radius: var(--radius-pill, 999px);
+    font-size: var(--fs-200, 0.9375rem);
+    font-weight: var(--fw-bold, 700);
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  /* ---------- Variante « light » (défaut) : bandeau pâle ---------- */
+  .lp-cta--light {
+    background-color: var(--color-surface, #f6f7f8);
+    color: var(--color-text, #1a1c20);
+  }
+  .lp-cta--light .lp-cta__title {
+    color: var(--color-navy, #083957);
+  }
+  .lp-cta--light .lp-cta__body {
+    color: var(--color-text-muted, #4a4d54);
+  }
+  .lp-cta--light .lp-cta__btn {
+    background-color: var(--color-navy, #083957);
+    color: var(--color-text-invert, #ffffff);
+  }
+  .lp-cta--light .lp-cta__btn:hover {
+    background-color: var(--color-navy-700, #0b4b71);
+  }
+
+  /* ---------- Variante « dark » : bandeau marine contrasté ---------- */
+  .lp-cta--dark {
+    background-color: var(--color-navy, #083957);
+    color: var(--color-text-invert, #ffffff);
+  }
+  .lp-cta--dark .lp-cta__title {
+    color: var(--color-text-invert, #ffffff);
+  }
+  .lp-cta--dark .lp-cta__body {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .lp-cta--dark .lp-cta__btn {
+    background-color: var(--color-accent-green, #24fb8e);
+    color: var(--color-navy, #083957);
+  }
+  .lp-cta--dark .lp-cta__btn:hover {
+    background-color: var(--color-white, #ffffff);
+  }
+</style>

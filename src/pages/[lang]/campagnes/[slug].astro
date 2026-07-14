@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { defaultLocale, otherLocale, localizePath, isLocale } from '../../../i18n/config';
+// Bookshop section components — they live OUTSIDE src/ (component-library/) so
+// CloudCannon's component browser bundles only them, not the site chrome.
+// Vite resolves relative imports above src/ without any alias.
+import Hero from '../../../../component-library/src/components/hero/hero.astro';
+import Benefits from '../../../../component-library/src/components/benefits/benefits.astro';
+import Cta from '../../../../component-library/src/components/cta/cta.astro';
+import Form from '../../../../component-library/src/components/form/form.astro';
+
+/**
+ * Campaign landing pages ("campagnes") — one static route per entry in the
+ * `landing` collection (src/content/landing/<locale>/<slug>.md), rendered
+ * purely from its `sections` array. Section conventions (frozen contract):
+ *  - the hero comes FIRST — it owns the page's single <h1>; every other
+ *    section titles in <h2>;
+ *  - the `form` section is a NON-FUNCTIONAL mock (no action, disabled submit)
+ *    until the forms backend workstream lands;
+ *  - entries default to noindex (campaign pages stay out of organic search).
+ */
+export async function getStaticPaths() {
+  const pages = await getCollection('landing');
+  return pages.map((page) => {
+    // Entry ids are "<locale>/<filename>" (same generateId trick as blog).
+    // Unlike blog there is no per-locale `slug` frontmatter yet: the filename
+    // is both the pairing key AND the URL slug, identical in both locales.
+    const seg = page.id.split('/')[0];
+    const lang = isLocale(seg) ? seg : defaultLocale;
+    const slug = page.id.slice(page.id.indexOf('/') + 1);
+    const other = otherLocale[lang];
+    // Language switch / hreflang target: the translation shares the filename,
+    // so its URL is the same slug under the other prefix — but only if the
+    // counterpart file exists. Otherwise fall back to the other locale's home
+    // (there is no public campaigns index to point at). Keep the trailing
+    // slash: the no-slash URL 308-redirects on Cloudflare Pages.
+    const counterpart = pages.find((p) => p.id === `${other}/${slug}`);
+    const altLocalePath = counterpart
+      ? localizePath(`/campagnes/${slug}/`, other)
+      : localizePath('/', other);
+    return { params: { lang, slug }, props: { page, lang, altLocalePath } };
+  });
+}
+
+const { page, lang, altLocalePath } = Astro.props;
+---
+
+<BaseLayout
+  lang={lang}
+  title={page.data.title}
+  description={page.data.description}
+  noindex={page.data.noindex}
+  altLocalePath={altLocalePath}
+>
+  {
+    /* Map each section's `type` discriminator to its Bookshop component. The
+       explicit chain (instead of a component lookup map) keeps TypeScript's
+       union narrowing, so each spread is checked against the right Props.
+       Components deliberately ignore the extra `type` key the spread carries
+       (and `_bookshop_name`, added by CloudCannon's visual editor). */
+    page.data.sections.map((section) =>
+      section.type === 'hero' ? (
+        <Hero {...section} />
+      ) : section.type === 'benefits' ? (
+        <Benefits {...section} />
+      ) : section.type === 'cta' ? (
+        <Cta {...section} />
+      ) : (
+        <Form {...section} />
+      ),
+    )
+  }
+</BaseLayout>

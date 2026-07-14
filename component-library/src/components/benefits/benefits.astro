@@ -1,0 +1,130 @@
+---
+/**
+ * Section « Bénéfices » — composant Bookshop (contrat landing GELÉ).
+ *
+ * Props : { type: "benefits", title, intro?, items: [{ title, description }] }
+ * - `type` est le discriminant du contrat landing ; il arrive via le spread
+ *   {...section} depuis la page campagne et est volontairement ignoré ici.
+ *
+ * Contraintes / pièges :
+ * - <h2> de section et <h3> par carte : le <h1> unique appartient au héros.
+ * - `items = []` en secours : pendant l'édition en direct dans CloudCannon,
+ *   la liste peut être momentanément absente — on évite de planter l'éditeur
+ *   visuel (qui rend le composant dans le navigateur).
+ * - Aucun script client ; var(--token, secours) reprend les valeurs de
+ *   src/styles/tokens.css pour un rendu fidèle hors du site.
+ */
+interface BenefitItem {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  title: string;
+  intro?: string;
+  items: BenefitItem[];
+}
+
+const { title, intro, items = [] } = Astro.props;
+---
+
+<section class="lp-benefits">
+  <div class="lp-benefits__container">
+    <h2 class="lp-benefits__title">{title}</h2>
+    {intro && <p class="lp-benefits__intro">{intro}</p>}
+    <ul role="list" class="lp-benefits__grid">
+      {
+        items.map((item) => (
+          <li class="lp-benefits__card">
+            <h3 class="lp-benefits__card-title">{item.title}</h3>
+            <p class="lp-benefits__card-desc">{item.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  /* Grille de cartes dans l'esprit des cartes « expertises » de l'accueil
+     (bordure fine, liseré accent en tête, coins arrondis). */
+  .lp-benefits {
+    padding-block: var(--space-9, 6rem);
+    background-color: var(--color-bg, #ffffff);
+    color: var(--color-text, #1a1c20);
+    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
+  }
+
+  /* Conteneur répliqué localement (pas la classe globale .container) pour que
+     le composant reste autonome dans l'éditeur visuel. */
+  .lp-benefits__container {
+    width: 100%;
+    max-width: var(--container-max, 1200px);
+    margin-inline: auto;
+    padding-inline: var(--container-pad, 1.5rem);
+  }
+
+  .lp-benefits__title {
+    margin: 0;
+    text-align: center;
+    color: var(--color-navy, #083957);
+    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
+    font-weight: var(--fw-bold, 700);
+    line-height: var(--lh-tight, 1.15);
+    text-wrap: balance;
+  }
+
+  .lp-benefits__intro {
+    margin: var(--space-4, 1rem) auto 0;
+    max-width: 60ch;
+    text-align: center;
+    color: var(--color-text-muted, #4a4d54);
+    font-size: var(--fs-400, clamp(1.125rem, 0.2vw + 1.05rem, 1.25rem));
+    line-height: var(--lh-normal, 1.6);
+    text-wrap: pretty;
+  }
+
+  .lp-benefits__grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6, 2rem);
+    margin: var(--space-7, 3rem) 0 0;
+    padding: 0;
+  }
+  @media (min-width: 600px) {
+    .lp-benefits__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 960px) {
+    .lp-benefits__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .lp-benefits__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3, 0.75rem);
+    padding: var(--space-6, 2rem);
+    border: 1px solid var(--color-border, #e2e4e8);
+    border-top: 3px solid var(--color-accent-blue, #3366ff);
+    border-radius: var(--radius-lg, 16px);
+    background-color: var(--color-bg, #ffffff);
+  }
+
+  .lp-benefits__card-title {
+    margin: 0;
+    color: var(--color-navy, #083957);
+    font-size: var(--fs-500, clamp(1.375rem, 0.6vw + 1.2rem, 1.75rem));
+    font-weight: var(--fw-semibold, 600);
+    line-height: var(--lh-snug, 1.3);
+  }
+
+  .lp-benefits__card-desc {
+    margin: 0;
+    color: var(--color-text-muted, #4a4d54);
+    line-height: var(--lh-normal, 1.6);
+  }
+</style>

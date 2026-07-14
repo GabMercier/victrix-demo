@@ -1,5 +1,6 @@
 ---
 title: "L'intelligence artificielle au service de la productivité des organisations"
+slug: ia-au-service-de-la-productivite
 date: 2026-05-28
 excerpt: "Au-delà de l'effet de mode, l'IA générative transforme concrètement le quotidien des équipes. Voici comment l'adopter de façon structurée et responsable."
 coverImage: "../covers/ia-productivite.png"
