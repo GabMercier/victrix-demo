@@ -82,7 +82,7 @@
 |---|---|---|---|
 | 1 | **Moteur de recherche interne** (Pagefind : header, filtres par type, gabarit résultats) | ~1 j | Prochain lot technique |
 | 2 | **Formulaires : courriel de confirmation au visiteur + case consentement (checkbox)** | ~0,5 j | Avec l'activation des clés |
-| 3 | **Bloc analytique** : bandeau Loi 25 → GA4 + GTM + Clarity + événements conversion + Site Search. (Pixel Facebook et Matomo : « à valider avec l'équipe » au cahier — décisions à prendre en même temps que le bandeau.) | décision design + ~1–2 j | Après choix du bandeau (rencontre) |
+| 3 | **Bloc analytique** : bandeau Loi 25 → GA4 + GTM + Clarity + événements conversion + Site Search. Décisions à prendre en même temps que le bandeau : Pixel Facebook et Matomo (« à valider » au cahier — note : Matomo est une ALTERNATIVE à GA4, pas un complément), et deux options que le cahier ne nomme pas mais typiques en B2B : **LinkedIn Insight Tag** (si campagnes LinkedIn) et **ZoomInfo WebSights** (si abonnement ZoomInfo — identification des entreprises visiteuses). Question à poser : « quels canaux publicitaires et outils d'intelligence B2B utilisez-vous ? » Chaque script = une ligne dans le chargeur conditionné au consentement; le coût réel est la complexité du consentement, pas le code. | décision design + ~1–2 j | Après choix du bandeau (rencontre) |
 | 4 | **O Studio** : landing `/services/o-studio/` + formulaire dédié | ~1 j | Avec le lot Services |
 | 4b | O Studio : redirections 301 de l'ANCIEN DOMAINE | 🏢 tâche DNS/registrar + inventaire d'URLs | À inventorier maintenant |
 | 5 | **Breadcrumbs** toutes pages internes + BreadcrumbList JSON-LD | ~0,5 j | Prochain lot technique |
