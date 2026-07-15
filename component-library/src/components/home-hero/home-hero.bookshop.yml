@@ -1,0 +1,48 @@
+# =============================================================================
+# Spec Bookshop — section « Bannière d'accueil » (accueil composable).
+# Voir hero.bookshop.yml (campagnes) pour les conventions communes. Le tag
+# `structures: [sections]` place cette section dans la MÊME palette globale que
+# les sections de campagne : les sections d'accueil deviennent disponibles pour
+# les landings, et inversement (choix assumé — une seule palette).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Accueil — Bannière"
+  description: "Bannière d'entête de l'accueil : surtitre, titre, sous-titre et bouton. À placer en première position (elle porte le <h1> de la page)."
+  icon: title
+  picker_preview:
+    text: "Accueil — Bannière"
+    subtext: Titre principal, sous-titre et bouton — toujours en premier
+  preview:
+    icon: title
+    text:
+      - key: title
+      - text: "Accueil — Bannière"
+
+blueprint:
+  type: home-hero
+  eyebrow: "Services-conseils en TI"
+  title: "Titre de la bannière"
+  subtitle: ""
+  ctaLabel: "Découvrir Victrix"
+  ctaHref: "/fr/decouvrir"
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat sections — ne pas modifier."
+  eyebrow:
+    label: "Surtitre"
+    comment: "Courte ligne affichée au-dessus du titre (optionnel)."
+  title:
+    label: "Titre"
+  subtitle:
+    label: "Sous-titre"
+  ctaLabel:
+    label: "Libellé du bouton"
+  ctaHref:
+    label: "Lien du bouton"
+    comment: "URL finale, préfixe de langue inclus (ex. /fr/decouvrir)."

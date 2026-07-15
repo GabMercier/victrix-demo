@@ -20,8 +20,18 @@
  *
  * No wrapper element on purpose: sections land as direct children of the
  * layout, exactly like the previous inline map (HTML parity).
+ *
+ * `enrich` (optional): a per-`type` map of BUILD-ONLY props merged into the
+ * matching block before it is spread to its component — the seam that keeps
+ * component-library components browser-safe. The home page uses it to inject
+ * astro:assets-resolved image data (solution image, latest-article covers)
+ * that a component rendered in CloudCannon's browser editor cannot compute. It
+ * is absent on the campaign route (and in the editor's live re-render), where
+ * `enrich?.[type] ?? {}` spreads nothing — byte-identical to the previous
+ * `<Component {...block} />`. NOT part of the frontmatter, so it never touches
+ * the `bookshop:live` binding (the marker still traces only `contentBlocks`).
  */
-const { contentBlocks } = Astro.props;
+const { contentBlocks, enrich } = Astro.props;
 
 // Typed in the frontmatter on purpose: generic annotations inside template
 // expressions (`(block: Record<string, unknown>) => …`) are misparsed by the
@@ -48,7 +58,10 @@ for (const [path, mod] of Object.entries(componentImports)) {
      degrades a future data-source failure to "section skipped" instead of a
      build crash deep inside the renderer. */
   blocks.map((block) => {
-    const Component = components[(block.type ?? block._bookshop_name) as string];
-    return Component ? <Component {...block} /> : null;
+    const type = (block.type ?? block._bookshop_name) as string;
+    const Component = components[type];
+    // Build-only enrichment (see header). `{...{}}` when absent → no change.
+    const extra = (enrich?.[type] ?? {}) as Block;
+    return Component ? <Component {...block} {...extra} /> : null;
   })
 }

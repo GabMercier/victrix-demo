@@ -1,0 +1,161 @@
+---
+/**
+ * Section « Solution phare » — composant Bookshop (accueil composable).
+ *
+ * Props : { type: "home-solution", eyebrow, title, body, ctaLabel, ctaHref,
+ *           image, resolvedImage? }
+ *
+ * IMAGE — pourquoi ce n'est PAS un <Image> astro:assets ici : les composants de
+ * la bibliothèque sont recompilés pour le NAVIGATEUR par l'éditeur visuel
+ * CloudCannon ; importer astro:assets casserait ce bundle (même contrainte que
+ * JsonLd.astro, documentée dans faq.astro). L'image est donc pré-résolue au
+ * build par la page (src/pages/[lang]/index.astro appelle getImage) et injectée
+ * via la prop `resolvedImage` (mécanisme `enrich` du renderer partagé). Au build
+ * : <img> réel, PARITÉ avec l'ancienne page. En édition live (navigateur, pas
+ * de `resolvedImage`) : un cadre de remplacement — repli assumé pour une section
+ * non pure-frontmatter (cf. contrainte « rendu navigateur » du spike).
+ *
+ * PARITÉ : mêmes classes (.solution/.solution__img/.btn) et même arbre que
+ * l'ancienne page. Voir home-hero.astro pour les conventions communes.
+ */
+interface ResolvedImage {
+  src: string;
+  srcset: string;
+  width: number;
+  height: number;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  body: string;
+  ctaLabel: string;
+  ctaHref: string;
+  image?: string;
+  resolvedImage?: ResolvedImage;
+}
+
+const { eyebrow, title, body, ctaLabel, ctaHref, resolvedImage } = Astro.props;
+---
+
+<section class="solution">
+  <div class="container solution__inner">
+    {
+      resolvedImage ? (
+        <img
+          src={resolvedImage.src}
+          srcset={resolvedImage.srcset}
+          alt=""
+          sizes="(min-width: 880px) 420px, 100vw"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="auto"
+          width={resolvedImage.width}
+          height={resolvedImage.height}
+          class="solution__img"
+        />
+      ) : (
+        <div class="solution__img solution__img--placeholder" aria-hidden="true">
+          Image
+        </div>
+      )
+    }
+    <div class="solution__body">
+      <p class="eyebrow">{eyebrow}</p>
+      <h2 class="solution__title">{title}</h2>
+      <p class="solution__text">{body}</p>
+      <a class="btn btn--primary" href={ctaHref}>{ctaLabel}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Duplicatas scopés (autonomie éditeur). */
+  .container {
+    width: 100%;
+    max-width: var(--container-max, 1200px);
+    margin-inline: auto;
+    padding-inline: var(--container-pad, 1.5rem);
+  }
+  h2 {
+    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
+    font-weight: var(--fw-bold, 700);
+    line-height: var(--lh-tight, 1.15);
+    text-wrap: balance;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 0.7em 1.5em;
+    border: 2px solid transparent;
+    border-radius: var(--radius-pill, 999px);
+    font-weight: var(--fw-semibold, 600);
+    font-size: var(--fs-200, 0.9375rem);
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn--primary {
+    background-color: var(--color-navy, #083957);
+    color: var(--color-text-invert, #ffffff);
+  }
+  .btn--primary:hover {
+    background-color: var(--color-navy-700, #0b4b71);
+  }
+
+  /* ---------- Solution (déplacé depuis l'ancienne page d'accueil) ---------- */
+  .solution {
+    padding-block: var(--space-8, 4rem);
+    background-color: var(--color-surface, #f6f7f8);
+    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
+  }
+  .solution__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6, 2rem);
+    align-items: center;
+  }
+  @media (min-width: 880px) {
+    .solution__inner {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: var(--space-8, 4rem);
+    }
+  }
+  .solution__img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: var(--shadow-md, 0 4px 16px rgba(20, 33, 61, 0.1));
+  }
+  /* Cadre de remplacement — visible seulement dans l'éditeur live. */
+  .solution__img--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-grey-500, #8a8e96);
+    background-color: var(--color-grey-100, #f0f1f3);
+    border: 1px dashed var(--color-border, #e2e4e8);
+    font-weight: var(--fw-semibold, 600);
+  }
+  .eyebrow {
+    color: var(--color-accent, #3366ff);
+    font-weight: var(--fw-semibold, 600);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--fs-200, 0.9375rem);
+    margin-bottom: var(--space-3, 0.75rem);
+  }
+  .solution__title {
+    color: var(--color-accent-green, #24fb8e);
+    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
+  }
+  .solution__text {
+    margin-block: var(--space-4, 1rem) var(--space-6, 2rem);
+    font-size: var(--fs-400, clamp(1.125rem, 0.2vw + 1.05rem, 1.25rem));
+    color: var(--color-text-muted, #4a4d54);
+  }
+</style>

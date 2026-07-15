@@ -1,0 +1,113 @@
+---
+/**
+ * Section « Bannière d'accueil » — composant Bookshop (accueil composable).
+ *
+ * Props : { type: "home-hero", eyebrow?, title, subtitle, ctaLabel, ctaHref }
+ * - `type` est le discriminant du contrat sections ; il arrive via {...section}
+ *   depuis src/pages/[lang]/index.astro et est volontairement ignoré ici.
+ *
+ * PARITÉ (exigence dure de la conversion) : ce composant reproduit À
+ * L'IDENTIQUE le markup et les classes qu'émettait l'ancienne page d'accueil
+ * inline (mêmes classes .hero/.container/.btn, même arbre) — le HTML rendu au
+ * build normal reste sémantiquement identique (voir docs de la conversion). Les
+ * hrefs sont stockés AVEC le préfixe de langue dans le contenu (aucune
+ * localisation au rendu), comme les campagnes.
+ *
+ * Contraintes / pièges :
+ * - Rend le SEUL <h1> de la page : à garder en première position.
+ * - Aucun script client, aucun import astro:assets/i18n : l'éditeur visuel
+ *   CloudCannon rend les composants Bookshop DANS le navigateur.
+ * - Les styles globaux réutilisés (.container/.btn + tailles de titres) sont
+ *   dupliqués en scope local pour un rendu fidèle dans l'éditeur (où global.css
+ *   n'est pas chargée) ; sur le site réel ils doublent global.css sans effet.
+ *   Chaque var(--token, secours) embarque la valeur de src/styles/tokens.css.
+ */
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+const { eyebrow, title, subtitle, ctaLabel, ctaHref } = Astro.props;
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__inner">
+      {eyebrow && <p class="hero__eyebrow">{eyebrow}</p>}
+      <h1 class="hero__title">{title}</h1>
+      <p class="hero__subtitle">{subtitle}</p>
+      <a class="btn hero__cta" href={ctaHref}>{ctaLabel}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Duplicatas scopés (autonomie éditeur — voir en-tête). */
+  .container {
+    width: 100%;
+    max-width: var(--container-max, 1200px);
+    margin-inline: auto;
+    padding-inline: var(--container-pad, 1.5rem);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 0.7em 1.5em;
+    border: 2px solid transparent;
+    border-radius: var(--radius-pill, 999px);
+    font-weight: var(--fw-semibold, 600);
+    font-size: var(--fs-200, 0.9375rem);
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* ---------- Héros (déplacé depuis l'ancienne page d'accueil) ---------- */
+  .hero {
+    background:
+      radial-gradient(120% 140% at 85% 0%, var(--color-navy-700, #0b4b71) 0%, transparent 55%),
+      linear-gradient(120deg, var(--color-navy-900, #052639) 0%, var(--color-navy, #083957) 70%);
+    color: var(--color-text-invert, #ffffff);
+    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
+  }
+  .hero__inner {
+    padding-block: var(--space-9, 6rem);
+    max-width: 760px;
+  }
+  .hero__eyebrow {
+    color: var(--color-accent-green, #24fb8e);
+    font-weight: var(--fw-semibold, 600);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--fs-200, 0.9375rem);
+    margin-bottom: var(--space-4, 1rem);
+  }
+  .hero__title {
+    color: var(--color-text-invert, #ffffff);
+    max-width: 18ch;
+    font-size: var(--fs-800, clamp(2.5rem, 3.5vw + 1.5rem, 4rem));
+    font-weight: var(--fw-extrabold, 800);
+    line-height: var(--lh-tight, 1.15);
+    text-wrap: balance;
+  }
+  .hero__subtitle {
+    margin-top: var(--space-5, 1.5rem);
+    max-width: 56ch;
+    font-size: var(--fs-400, clamp(1.125rem, 0.2vw + 1.05rem, 1.25rem));
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .hero__cta {
+    margin-top: var(--space-6, 2rem);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    color: var(--color-text-invert, #ffffff);
+  }
+  .hero__cta:hover {
+    background-color: var(--color-white, #ffffff);
+    color: var(--color-navy, #083957);
+  }
+</style>

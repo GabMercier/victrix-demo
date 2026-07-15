@@ -1,0 +1,83 @@
+---
+/**
+ * Section « Bandeau ISO 27001 » — composant Bookshop (accueil composable).
+ *
+ * Props : { type: "home-iso", title, subtitle }
+ * PARITÉ : reproduit à l'identique le bandeau ISO de l'ancienne page d'accueil
+ * (mêmes classes, même SVG inline). Voir home-hero.astro pour les conventions
+ * communes (browser-safe, duplicatas scopés, fallbacks tokens).
+ */
+interface Props {
+  title: string;
+  subtitle: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<section class="iso" aria-label={title}>
+  <div class="container iso__inner">
+    <span class="iso__badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="28" height="28">
+        <path
+          fill="currentColor"
+          d="M12 1 3 5v6c0 5 3.8 9.4 9 11 5.2-1.6 9-6 9-11V5l-9-4Zm-1.2 14.6-3.4-3.4 1.4-1.4 2 2 4.6-4.6 1.4 1.4-6 6Z"
+        ></path>
+      </svg>
+    </span>
+    <p class="iso__text">
+      <strong>{title}</strong>
+      <span>{subtitle}</span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .container {
+    width: 100%;
+    max-width: var(--container-max, 1200px);
+    margin-inline: auto;
+    padding-inline: var(--container-pad, 1.5rem);
+  }
+
+  /* ---------- Bandeau ISO (déplacé depuis l'ancienne page d'accueil) ------- */
+  .iso {
+    background-color: var(--color-navy, #083957);
+    color: var(--color-text-invert, #ffffff);
+    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
+  }
+  .iso__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4, 1rem);
+    padding-block: var(--space-5, 1.5rem);
+    text-align: center;
+  }
+  .iso__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: var(--radius-pill, 999px);
+    background-color: rgba(36, 251, 142, 0.15);
+    color: var(--color-accent-green, #24fb8e);
+  }
+  .iso__text {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1, 0.25rem) var(--space-3, 0.75rem);
+  }
+  .iso__text strong {
+    font-size: var(--fs-500, clamp(1.375rem, 0.6vw + 1.2rem, 1.75rem));
+    font-weight: var(--fw-bold, 700);
+    letter-spacing: 0.02em;
+  }
+  .iso__text span {
+    color: rgba(255, 255, 255, 0.8);
+  }
+</style>

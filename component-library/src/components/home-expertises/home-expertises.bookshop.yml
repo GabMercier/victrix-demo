@@ -1,0 +1,50 @@
+# =============================================================================
+# Spec Bookshop — section « Expertises » (accueil composable).
+# Voir home-hero.bookshop.yml pour les conventions communes. La grille de cartes
+# `items` pointe vers _structures.expertise_items (cloudcannon.config.yml) — un
+# `type: array` explicite évite que @bookshop/generate fabrique une structure
+# inline générique et vide la carte d'exemple (même garde-fou que benefits).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Accueil — Expertises"
+  description: "Grille de cartes d'expertise numérotées (numéro, titre, description, lien), avec liseré de couleur d'accent — 1 à 3 colonnes."
+  icon: grid_view
+  picker_preview:
+    text: "Accueil — Expertises"
+    subtext: Grille de cartes numérotées avec accent de couleur
+  preview:
+    icon: grid_view
+    text:
+      - key: sectionTitle
+      - text: Expertises
+
+blueprint:
+  type: home-expertises
+  sectionTitle: "Nos expertises"
+  learnMore: "En savoir plus"
+  items:
+    - number: "01"
+      title: "Première expertise"
+      accent: "#B45309"
+      description: "Décrivez brièvement cette expertise."
+      href: "/fr/expertises/"
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat sections — ne pas modifier."
+  sectionTitle:
+    label: "Titre de section"
+  learnMore:
+    label: "Libellé du bouton des cartes"
+    comment: "Ex. « En savoir plus » — commun à toutes les cartes."
+  items:
+    type: array
+    label: "Cartes d'expertise"
+    comment: "Cartes affichées en grille."
+    options:
+      structures: _structures.expertise_items

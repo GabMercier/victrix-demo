@@ -1,0 +1,88 @@
+---
+/**
+ * Section « Bandeau experts » — composant Bookshop (accueil composable).
+ *
+ * Props : { type: "home-experts", title, subtitle, ctaLabel, ctaHref }
+ * PARITÉ : reproduit à l'identique le bandeau « Rencontrez nos experts » de
+ * l'ancienne page d'accueil (bandeau marine, bouton vert accent). Voir
+ * home-hero.astro pour les conventions communes.
+ */
+interface Props {
+  title: string;
+  subtitle: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+const { title, subtitle, ctaLabel, ctaHref } = Astro.props;
+---
+
+<section class="experts">
+  <div class="container experts__inner">
+    <div>
+      <h2 class="experts__title">{title}</h2>
+      <p class="experts__subtitle">{subtitle}</p>
+    </div>
+    <a class="btn experts__cta" href={ctaHref}>{ctaLabel}</a>
+  </div>
+</section>
+
+<style>
+  /* Duplicatas scopés (autonomie éditeur). */
+  .container {
+    width: 100%;
+    max-width: var(--container-max, 1200px);
+    margin-inline: auto;
+    padding-inline: var(--container-pad, 1.5rem);
+  }
+  h2 {
+    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
+    font-weight: var(--fw-bold, 700);
+    line-height: var(--lh-tight, 1.15);
+    text-wrap: balance;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 0.7em 1.5em;
+    border: 2px solid transparent;
+    border-radius: var(--radius-pill, 999px);
+    font-weight: var(--fw-semibold, 600);
+    font-size: var(--fs-200, 0.9375rem);
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* ---------- Bandeau experts (déplacé depuis l'ancienne page d'accueil) --- */
+  .experts {
+    background-color: var(--color-navy, #083957);
+    color: var(--color-text-invert, #ffffff);
+    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
+  }
+  .experts__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5, 1.5rem);
+    padding-block: var(--space-7, 3rem);
+  }
+  .experts__title {
+    color: var(--color-text-invert, #ffffff);
+  }
+  .experts__subtitle {
+    margin-top: var(--space-2, 0.5rem);
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .experts__cta {
+    background-color: var(--color-accent-green, #24fb8e);
+    color: var(--color-navy, #083957);
+    font-weight: var(--fw-bold, 700);
+  }
+  .experts__cta:hover {
+    background-color: var(--color-white, #ffffff);
+  }
+</style>

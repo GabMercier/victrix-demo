@@ -1,0 +1,38 @@
+# =============================================================================
+# Spec Bookshop — section « Partenaires » (accueil composable).
+# Voir home-hero.bookshop.yml pour les conventions communes. `names` est un
+# simple tableau de chaînes (noms de partenaires).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Accueil — Partenaires"
+  description: "Bande de noms de partenaires ou de technologies, alignés et centrés, sous un court titre."
+  icon: handshake
+  picker_preview:
+    text: "Accueil — Partenaires"
+    subtext: Titre + liste de noms alignés
+  preview:
+    icon: handshake
+    text:
+      - key: title
+      - text: Partenaires
+
+blueprint:
+  type: home-partners
+  title: "Nos partenaires"
+  names:
+    - "Partenaire 1"
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat sections — ne pas modifier."
+  title:
+    label: "Titre"
+  names:
+    type: array
+    label: "Noms des partenaires"
+    comment: "Un nom par ligne."

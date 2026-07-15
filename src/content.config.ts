@@ -49,58 +49,140 @@ const blog = defineCollection({
     }),
 });
 
-// Editable homepage content (singleton). Stored as JSON so Sveltia can edit it
-// as a "file" collection with nested fields; keep field names clean for the CMS.
+/**
+ * Shared `sections` palette — ONE discriminated union used by BOTH the `home`
+ * and `landing` collections, so CloudCannon's single generated `sections`
+ * palette (the per-component .bookshop.yml specs under component-library, all
+ * tagged `structures: [sections]`) is valid in either collection: home
+ * sections can appear on a
+ * campaign and vice-versa (a deliberate single-palette choice).
+ *
+ * Discriminated on `type` (the same key the pages switch on, the renderer keys
+ * on, and CloudCannon uses as id_key). `_bookshop_name` is stripped like every
+ * unknown key — do NOT add .strict() (it would fail the build mid-edit, when
+ * CloudCannon's visual editor adds that key). Optional string fields use
+ * .optional() and the components treat "" as absent, so a freshly-added blank
+ * section never fails validation.
+ *
+ * `image` is threaded in from the collection's `schema: ({ image }) => …`
+ * context (the only place Astro exposes the image() helper). The home-solution
+ * image accepts a resolved image OR a plain string ("" on a fresh section, or a
+ * not-yet-uploaded path) so adding the section never breaks the build; the page
+ * resolves it with getImage only when it is a real image.
+ */
+function sectionsSchema(image: () => z.ZodTypeAny) {
+  return z.discriminatedUnion('type', [
+    // ---- Campaign landing sections (frozen contract) ----
+    z.object({
+      type: z.literal('hero'),
+      eyebrow: z.string().optional(),
+      title: z.string(),
+      subtitle: z.string().optional(),
+      ctaLabel: z.string().optional(),
+      ctaHref: z.string().optional(),
+    }),
+    z.object({
+      type: z.literal('benefits'),
+      title: z.string(),
+      intro: z.string().optional(),
+      items: z.array(z.object({ title: z.string(), description: z.string() })),
+    }),
+    z.object({
+      type: z.literal('cta'),
+      title: z.string(),
+      body: z.string().optional(),
+      ctaLabel: z.string(),
+      ctaHref: z.string(),
+      variant: z.enum(['light', 'dark']).default('light'),
+    }),
+    z.object({
+      type: z.literal('form'),
+      title: z.string(),
+      intro: z.string().optional(),
+      submitLabel: z.string(),
+      consentText: z.string().optional(),
+      fields: z.array(
+        z.object({
+          label: z.string(),
+          type: z.enum(['text', 'email', 'textarea']),
+          required: z.boolean(),
+        }),
+      ),
+    }),
+    z.object({
+      type: z.literal('faq'),
+      title: z.string(),
+      items: z.array(z.object({ question: z.string(), answer: z.string() })),
+    }),
+    // ---- Home sections (composable home — mirror the home-* components) ----
+    z.object({
+      type: z.literal('home-hero'),
+      eyebrow: z.string().optional(),
+      title: z.string(),
+      subtitle: z.string(),
+      ctaLabel: z.string(),
+      ctaHref: z.string(),
+    }),
+    z.object({
+      type: z.literal('home-iso'),
+      title: z.string(),
+      subtitle: z.string(),
+    }),
+    z.object({
+      type: z.literal('home-expertises'),
+      sectionTitle: z.string(),
+      learnMore: z.string(),
+      items: z.array(
+        z.object({
+          number: z.string(),
+          title: z.string(),
+          accent: z.string(), // hex, kept ≥3:1 on white for accessible titles
+          description: z.string(),
+          href: z.string(),
+        }),
+      ),
+    }),
+    z.object({
+      type: z.literal('home-solution'),
+      eyebrow: z.string(),
+      title: z.string(),
+      body: z.string(),
+      ctaLabel: z.string(),
+      ctaHref: z.string(),
+      // Resolved image when the path is real; plain string ("") otherwise.
+      image: z.union([image(), z.string()]),
+    }),
+    z.object({
+      type: z.literal('home-partners'),
+      title: z.string(),
+      names: z.array(z.string()),
+    }),
+    z.object({
+      type: z.literal('home-experts'),
+      title: z.string(),
+      subtitle: z.string(),
+      ctaLabel: z.string(),
+      ctaHref: z.string(),
+    }),
+    z.object({
+      type: z.literal('home-latest'),
+      title: z.string(),
+      ctaLabel: z.string(),
+      ctaHref: z.string(),
+    }),
+  ]);
+}
+
+// Editable homepage content (singleton per locale). Migrated from a nested data
+// object to a `sections` array (see scripts/migrate-home-to-sections.mjs) so the
+// home is composed and live-edited in CloudCannon through the shared Bookshop
+// renderer, exactly like the campaign landings. Rendered by
+// src/pages/[lang]/index.astro. Stored as JSON (still a "file" collection).
 const home = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/home' }),
   schema: ({ image }) =>
     z.object({
-      hero: z.object({
-        eyebrow: z.string().optional(),
-        title: z.string(),
-        subtitle: z.string(),
-        ctaLabel: z.string(),
-        ctaHref: z.string(),
-      }),
-      iso: z.object({
-        title: z.string(),
-        subtitle: z.string(),
-      }),
-      expertises: z.object({
-        sectionTitle: z.string(),
-        items: z.array(
-          z.object({
-            number: z.string(),
-            title: z.string(),
-            accent: z.string(), // hex, kept ≥3:1 on white for accessible titles
-            description: z.string(),
-            href: z.string(),
-          }),
-        ),
-      }),
-      solutions: z.object({
-        eyebrow: z.string(),
-        title: z.string(),
-        body: z.string(),
-        ctaLabel: z.string(),
-        ctaHref: z.string(),
-        image: image(),
-      }),
-      partners: z.object({
-        title: z.string(),
-        names: z.array(z.string()),
-      }),
-      experts: z.object({
-        title: z.string(),
-        subtitle: z.string(),
-        ctaLabel: z.string(),
-        ctaHref: z.string(),
-      }),
-      articles: z.object({
-        title: z.string(),
-        ctaLabel: z.string(),
-        ctaHref: z.string(),
-      }),
+      sections: z.array(sectionsSchema(image)),
     }),
 });
 
@@ -134,76 +216,18 @@ const landing = defineCollection({
     // (yet) — the filename IS the URL slug in both locales.
     generateId: ({ entry }) => entry.replace(/\\/g, '/').replace(/\.[^/.]+$/, ''),
   }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    // Campaign pages are UNINDEXED unless a page explicitly opts in — paid
-    // traffic destinations shouldn't leak into organic search results.
-    noindex: z.boolean().default(true),
-    // Discriminated on `type` — the same key the campagnes page switches on
-    // and the CloudCannon structures palette uses as id_key.
-    sections: z.array(
-      z.discriminatedUnion('type', [
-        z.object({
-          type: z.literal('hero'),
-          eyebrow: z.string().optional(),
-          title: z.string(),
-          subtitle: z.string().optional(),
-          ctaLabel: z.string().optional(),
-          ctaHref: z.string().optional(),
-        }),
-        z.object({
-          type: z.literal('benefits'),
-          title: z.string(),
-          intro: z.string().optional(),
-          items: z.array(
-            z.object({
-              title: z.string(),
-              description: z.string(),
-            }),
-          ),
-        }),
-        z.object({
-          type: z.literal('cta'),
-          title: z.string(),
-          body: z.string().optional(),
-          ctaLabel: z.string(),
-          ctaHref: z.string(),
-          variant: z.enum(['light', 'dark']).default('light'),
-        }),
-        z.object({
-          type: z.literal('form'),
-          title: z.string(),
-          intro: z.string().optional(),
-          submitLabel: z.string(),
-          consentText: z.string().optional(),
-          fields: z.array(
-            z.object({
-              label: z.string(),
-              type: z.enum(['text', 'email', 'textarea']),
-              required: z.boolean(),
-            }),
-          ),
-        }),
-        // « FAQ » — native <details>/<summary> accordion + FAQPage JSON-LD.
-        // Fields mirror the component's Props EXACTLY (frozen contract):
-        // component-library/src/components/faq/faq.astro + faq.bookshop.yml.
-        // Answers are plain text (no HTML) — they are reused verbatim in the
-        // JSON-LD. `_bookshop_name` (added by CloudCannon's visual editor) is
-        // stripped like on every other section — see the .strict() note above.
-        z.object({
-          type: z.literal('faq'),
-          title: z.string(),
-          items: z.array(
-            z.object({
-              question: z.string(),
-              answer: z.string(),
-            }),
-          ),
-        }),
-      ]),
-    ),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      // Campaign pages are UNINDEXED unless a page explicitly opts in — paid
+      // traffic destinations shouldn't leak into organic search results.
+      noindex: z.boolean().default(true),
+      // Shared `sections` union (see sectionsSchema above) — the same palette
+      // the home page uses; the campaign route (src/pages/[lang]/campagnes/
+      // [slug].astro) renders it through the shared Bookshop renderer.
+      sections: z.array(sectionsSchema(image)),
+    }),
 });
 
 /**

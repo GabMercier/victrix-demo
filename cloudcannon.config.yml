@@ -161,48 +161,25 @@ collections_config:
     # French labels mirroring public/admin/config.yml. Inputs are keyed by
     # FIELD NAME and cascade into nested objects — shared names (title,
     # ctaLabel…) get ONE generic config on purpose.
+    # The home is now composed of `sections` (migrated from the old nested data
+    # object — see scripts/migrate-home-to-sections.mjs), edited visually like
+    # the campaign landings through the SHARED `sections` palette. Inputs are
+    # keyed by FIELD NAME and cascade into the section objects/arrays; the
+    # per-section polish (labels, hidden `type`) lives in each home-*.bookshop.yml
+    # spec, which @bookshop/generate copies onto the palette entries (that
+    # "containing structure" level outranks these collection-level fallbacks).
     _inputs:
-      hero:
-        type: object
-        label: Bannière (hero)
-      iso:
-        type: object
-        label: Bandeau ISO 27001
-      expertises:
-        type: object
-        label: Expertises
-      sectionTitle:
-        type: text
-        label: Titre de section
-      items:
+      sections:
         type: array
-        label: Cartes d'expertise
-      number:
-        type: text
-        label: Numéro
-      accent:
-        type: text
-        label: Couleur d'accent (hex)
-        # Quoted: an unquoted # would start a YAML comment mid-value.
-        comment: "Ex. #B45309 — garder un bon contraste sur fond blanc."
-      href:
-        type: text
-        label: Lien
-      solutions:
-        type: object
-        label: Solution phare
-      partners:
-        type: object
-        label: Partenaires
-      names:
-        type: array
-        label: Noms des partenaires
-      experts:
-        type: object
-        label: Bandeau « experts »
-      articles:
-        type: object
-        label: Bloc « derniers articles »
+        label: Sections
+        comment: >-
+          L'accueil est construit uniquement à partir de ces sections. Garder la
+          bannière en PREMIÈRE position : elle porte le seul <h1> de la page.
+        options:
+          structures: _structures.sections
+      # `type` = discriminant de section (défini par la palette) — jamais édité.
+      type:
+        hidden: true
       title:
         type: text
         label: Titre
@@ -212,18 +189,47 @@ collections_config:
       eyebrow:
         type: text
         label: Surtitre
-      description:
-        type: textarea
-        label: Description
-      body:
-        type: textarea
-        label: Texte
       ctaLabel:
         type: text
         label: Texte du bouton
       ctaHref:
         type: text
         label: Lien du bouton
+        comment: >-
+          URL finale, préfixe de langue inclus (ex. /fr/decouvrir) — les
+          sections sont rendues telles quelles, sans ajout du préfixe.
+      sectionTitle:
+        type: text
+        label: Titre de section
+      learnMore:
+        type: text
+        label: Libellé du bouton des cartes
+      body:
+        type: textarea
+        label: Texte
+      # Cartes d'expertise (tableau `items` de la section « Expertises »).
+      items:
+        type: array
+        label: Cartes d'expertise
+        options:
+          structures: _structures.expertise_items
+      number:
+        type: text
+        label: Numéro
+      accent:
+        type: text
+        label: Couleur d'accent (hex)
+        # Quoted: an unquoted # would start a YAML comment mid-value.
+        comment: "Ex. #B45309 — garder un bon contraste sur fond blanc."
+      description:
+        type: textarea
+        label: Description
+      href:
+        type: text
+        label: Lien
+      names:
+        type: array
+        label: Noms des partenaires
       image:
         type: image
         label: Image
@@ -576,18 +582,19 @@ collections_config:
         comment: >-
           301 = permanente (transfère le référencement) ; 302 = temporaire.
         options:
-          # NUMERIC values on purpose: the redirects.json contract wants
-          # 301|302 as JSON numbers. CloudCannon's select docs only show
-          # string/object values, so the Data Editor MIGHT round-trip these as
-          # the strings "301"/"302" — the build validator (astro.config.mjs,
-          # 'victrix:redirects') accepts those two exact strings and
-          # normalizes them back to numbers, so a valid pick from this
-          # dropdown can never fail a save. Everything else (303, free text…)
-          # still fails the build loudly — that's the guardrail. Re-test the
-          # round-trip in-editor before the spike gate all the same.
+          # STRING values — settled empirically 2026-07-15: the Data Editor
+          # rejects numeric select values outright ("This select input is
+          # misconfigured. This input must have a text value."), exactly the
+          # risk the round-2 review flagged. The editor therefore saves
+          # "code": "301" (string) into redirects.json; the build validator
+          # (astro.config.mjs, 'victrix:redirects') accepts the exact strings
+          # "301"/"302" and normalizes them to numbers for _redirects output.
+          # Anything else (303, free text…) still fails the build loudly —
+          # that's the guardrail. The seed entry uses the string form too so
+          # the select shows it as selected (a numeric 301 would not match).
           values:
-            - 301
-            - 302
+            - "301"
+            - "302"
 
 _structures:
   # Section palette for the landing `sections` array. The VALUES are NOT
@@ -627,6 +634,26 @@ _structures:
         value:
           title: ''
           description: ''
+
+  # Cartes d'expertise ({number,title,accent,description,href}) pour la section
+  # « Accueil — Expertises ». Même logique que benefit_items : une structure à
+  # valeur unique donne au bouton « + » la bonne forme, même sur un tableau
+  # vide. Non taguée dans un spec Bookshop → generate n'y touche pas.
+  expertise_items:
+    values:
+      - label: Carte d'expertise
+        icon: category
+        preview:
+          icon: category
+          text:
+            - key: title
+            - text: Carte d'expertise
+        value:
+          number: ''
+          title: ''
+          accent: '#2350E0'
+          description: ''
+          href: ''
 
   form_fields:
     values:
