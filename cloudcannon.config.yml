@@ -25,6 +25,18 @@
 # from a folder with no package.json and hide component-library/ (and the
 # bookshop.config.cjs glob of `npx @bookshop/generate`) from CloudCannon.
 
+# Global upload fallback. Without a top-level `paths.uploads`, any upload from
+# an input that doesn't declare its own `options.paths.uploads` (e.g. the
+# Source/Content Editor's inline image button, or a future _input with no
+# explicit path) lands in a root-level `uploads/` folder — how
+# uploads/yw3ziw8k83bh1.jpeg got there during spike testing. The blog cover and
+# home-page image inputs below already set their own `options.paths.uploads`
+# (they need per-collection relative paths for Astro's image() resolver) and
+# are UNCHANGED by this — a collection-level path always wins over the global
+# one. This only catches uploads that would otherwise have no configured home.
+paths:
+  uploads: src/assets/uploads
+
 collections_config:
   blog:
     path: src/content/blog
