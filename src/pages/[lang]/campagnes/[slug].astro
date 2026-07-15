@@ -39,11 +39,19 @@ export async function getStaticPaths() {
     const altLocalePath = counterpart
       ? localizePath(`/campagnes/${slug}/`, other)
       : localizePath('/', other);
-    return { params: { lang, slug }, props: { page, lang, altLocalePath } };
+    // `frontmatter` is LOAD-BEARING for CloudCannon live editing: the
+    // astro-bookshop vite plugin statically pattern-matches a variable
+    // literally named `frontmatter` to bind `bookshop:live` props to the
+    // entry's front-matter file (documented as "manual in Astro pages via
+    // getStaticPaths props"). Passing `page.data.sections` directly compiles
+    // to an EMPTY `params()` marker — the editor then re-renders the boundary
+    // with no data and the preview shows a blank page body (real bug, seen
+    // 2026-07-15). Do not rename or inline it.
+    return { params: { lang, slug }, props: { page, lang, altLocalePath, frontmatter: page.data } };
   });
 }
 
-const { page, lang, altLocalePath } = Astro.props;
+const { page, lang, altLocalePath, frontmatter } = Astro.props;
 ---
 
 <BaseLayout
@@ -57,12 +65,14 @@ const { page, lang, altLocalePath } = Astro.props;
     /* One `bookshop:live` boundary around the whole section loop — this is
        what lets CloudCannon's visual editor bind clicks on the page to the
        `sections` array in the entry's front matter (and re-render sections
-       live while typing). In normal Cloudflare builds the Bookshop integration
-       is off (astro.config gating) and the directive is an inert prop — the
-       rendered HTML is identical. Per-section prop-shape safety moved from
-       TS union narrowing to the zod schema, which already validates every
-       section at build time. */
+       live while typing). The expression MUST go through the `frontmatter`
+       variable (see getStaticPaths) — that exact name is how the Bookshop
+       plugin traces the binding into `params(...)` in the live marker. In
+       normal Cloudflare builds the Bookshop integration is off (astro.config
+       gating) and the directive is an inert prop — the rendered HTML is
+       identical. Per-section prop-shape safety moved from TS union narrowing
+       to the zod schema, which already validates every section at build time. */
   }
-  <Page bookshop:live contentBlocks={page.data.sections} />
+  <Page bookshop:live contentBlocks={frontmatter.sections} />
 
 </BaseLayout>
