@@ -58,6 +58,8 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 |---|---|
 | `GUIDE-PROJET.md` | Ce document — point d'entrée. |
 | `guide-edition.md` | Guide de l'éditeur (marketing) : publier au quotidien. |
+| `atelier-contenus.md` | Atelier types de contenus : couverture vs cahier des charges, fiches à remplir par le marketing, suggestions, LIMITES de la pile. |
+| `revue-cahier-des-charges.md` | Traçabilité 23/23 diapos du cahier des charges : état par exigence, spotlights diapos 14–15, écarts chiffrés (~5–6 j), équivalences outils. |
 | `critères.md` | Les 10 attentes marketing/webmestre + état WordPress actuel. |
 | `analyse-criteres.md` | Réponse critère par critère + arguments anti-WP + estimation révisée. |
 | `plan-pivot-editeur.md` | Le plan du pivot éditeur visuel (CloudCannon/Tina), gate à 8 critères. |
@@ -85,6 +87,9 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 | 8 | Redirections | ✅ Éditables au CMS, validées au build |
 | 9 | Clarity + images | 🔶 Images natives (Sharp au build); Clarity attend le bandeau de consentement Loi 25 (décision design) |
 | 10 | Responsive | ✅ Garanti par les gabarits |
+
+> Traçabilité complète face au **cahier des charges de l'agence** (23 diapos,
+> exigence par exigence, écarts chiffrés ~5–6 j) : `revue-cahier-des-charges.md`.
 
 ## Prochains jalons
 
