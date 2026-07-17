@@ -26,6 +26,7 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 | 14 juil. | CloudCannon connecté (site « Vic-demo », branche `spike/cloudcannon`), premier build réussi | `spike-cloudcannon.md` |
 | 14 juil. | **Pas de maquettes pour l'instant** : v1 fonctionnelle sur le design actuel, refonte graphique ultérieure via tokens | ce document + `plan-2026-07-15.md` |
 | 14 juil. | Stratégie de publication CloudCannon retenue : **Publishing → main** (le marketing édite sur `spike/cloudcannon`, le bouton Publish avance `main`, qui redéploie la prod) ; options éditeur/hébergement pour des décisions futures documentées (réversibilité : CloudCannon/Tina/Sveltia et Cloudflare/Azure sont deux choix indépendants) | `options-editeur-hebergement.md` + `operations.md` |
+| 17 juil. | **Hébergement cible : CloudCannon en bundle (CMS + hébergement) pour cette version; Azure Static Web Apps = l'alternative documentée.** Cloudflare Pages reste l'infra du spike/démo seulement. **Entra External ID et Dataverse : hors périmètre de cette version** (le portail demeure un prototype maquetté). | `.env.example` + `options-editeur-hebergement.md` |
 
 ## Ce qui fonctionne aujourd'hui (démontrable)
 
