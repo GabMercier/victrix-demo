@@ -10,7 +10,7 @@
 1. Ouvrir CloudCannon (l'URL du site « Vic-demo » vous est partagée par
    l'équipe technique, avec votre invitation).
 2. La barre latérale gauche liste les contenus éditables : **Blogue, Accueil,
-   Expertises, Campagnes, Redirections**.
+   Expertises, Campagnes, Navigation, Redirections**.
 
 > 💡 Chaque sauvegarde crée une version dans l'historique Git : tout est
 > traçable et réversible. Personne ne peut « perdre » le site.
@@ -51,8 +51,11 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
 2. La page s'ouvre dans l'**éditeur visuel** : la page rendue à droite, les
    sections à gauche.
 3. **+ Ajouter une section** propose la palette : **Héros, Bénéfices, FAQ,
-   Formulaire, Appel à l'action**. Glisser pour réordonner; chaque section a
-   ses champs (textes, boutons, questions/réponses…).
+   Formulaire, Appel à l'action, Témoignage, Bandeau logos partenaires,
+   Victrix en chiffres, Vidéo** (+ les sections d'accueil). Glisser pour
+   réordonner; chaque section a ses champs (textes, boutons, questions…).
+   Une page de démonstration des nouvelles sections existe :
+   `/fr/campagnes/demo-sections/`.
 4. Par défaut la page est **non indexée** (invisible des moteurs de recherche —
    voulu pour les campagnes). L'interrupteur « noindex » est là si une page
    doit un jour être indexée.
@@ -61,6 +64,46 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
 > ⚠️ Si vous arrivez sur une **page blanche avec une barre d'outils de texte** :
 > vous êtes dans l'éditeur de *contenu* (le corps de texte, vide sur une
 > landing). Basculez sur l'**éditeur visuel** avec les icônes en haut à droite.
+
+## Traduire : créer en FR, dupliquer vers EN (et inversement)
+
+La règle unique : **même nom de fichier dans `fr/` et `en/` = même page dans
+l'autre langue** (c'est ce qui relie le sélecteur FR|EN). Le flux le plus
+rapide :
+
+1. Créer et finaliser la page dans la première langue (FR ou EN).
+2. Sur le fichier (Blogue ou Campagnes) : menu **⋯ → Duplicate**.
+3. Dans la copie : ouvrir **⋯ → Rename / Move** et remplacer le dossier de
+   langue dans le chemin (`fr/` → `en/`, ou l'inverse) en gardant **exactement
+   le même nom de fichier** (retirer le suffixe ajouté par la duplication,
+   ex. `-1`).
+4. Traduire les textes dans la copie — la structure (sections, champs, image)
+   est déjà en place. Sur le Blogue, ajuster aussi le **Slug** dans la langue
+   cible.
+
+Autre chemin : **+ Ajouter** avec le gabarit de l'autre langue, en tapant le
+même nom de fichier — structure vierge, mais champs valides garantis.
+
+> 💡 Filet de sécurité : à chaque publication, le système signale dans le
+> journal de build les pages qui n'ont **pas encore de traduction** (aucun
+> blocage — un simple rappel).
+
+## Modifier le menu et la barre d'annonce
+
+**Navigation** dans la barre latérale : un fichier par langue (`fr` / `en`).
+
+- **Menu principal** : libellés, liens et ordre des entrées d'en-tête.
+- **Méga-menu** : les colonnes du sous-menu Expertises (titres, liens, icône
+  parmi la liste proposée).
+- **Barre d'annonce** : textes, lien, et l'interrupteur **Affichée** pour la
+  masquer complètement.
+- **Bouton « Portail client »** : libellé et visibilité.
+
+> ⚠️ Les liens de navigation s'écrivent **sans** préfixe de langue
+> (`/contact`, pas `/fr/contact`) — le site ajoute `/fr` ou `/en` tout seul.
+> C'est l'inverse des boutons de sections (qui prennent l'adresse complète);
+> les infobulles des champs le rappellent. Un lien mal formé bloque la
+> publication avec un message clair, comme pour les redirections.
 
 ## Gérer les redirections
 

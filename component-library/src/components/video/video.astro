@@ -1,0 +1,156 @@
+---
+/**
+ * Section « Vidéo » — composant Bookshop (palette partagée) en FAÇADE.
+ *
+ * Props : { type: "video", title, intro?, videoUrl, posterImage? }
+ *
+ * PERFORMANCE + CSP : aucun script ni iframe tiers n'est chargé au rendu —
+ * la façade est un LIEN (image d'aperçu + bouton lecture) qui ouvre la vidéo
+ * dans un nouvel onglet. public/_headers (GELÉ) n'autorise aucun frame-src
+ * YouTube/Vimeo : le mode « iframe au clic » exigera d'ajouter, le jour venu,
+ * frame-src https://www.youtube-nocookie.com https://player.vimeo.com à la
+ * CSP (même mécanique documentée que Turnstile, docs/formulaires.md §7) puis
+ * de remplacer ce lien par un embed au clic. Décision OPS — pas ici.
+ *
+ * Contraintes / pièges (voir faq.astro pour les conventions) :
+ * - `posterImage` est un CHEMIN (chaîne) servi tel quel — pas d'astro:assets.
+ *   Vide → façade en dégradé de marque (la section fonctionne sans image).
+ * - `videoUrl` vide (section fraîchement ajoutée) → le lien est désactivé
+ *   visuellement mais l'éditeur visuel ne plante pas.
+ */
+
+interface Props {
+  title: string;
+  intro?: string;
+  videoUrl: string;
+  posterImage?: string;
+  /** Libellé du bouton — champ de contenu (pas d'i18n dans une section). */
+  ctaLabel?: string;
+}
+
+const { title, intro = '', videoUrl = '', posterImage = '', ctaLabel = '' } = Astro.props;
+const facadeLabel = ctaLabel !== '' ? ctaLabel : 'Visionner la vidéo';
+---
+
+<section class="lp-video">
+  <div class="lp-video__container">
+    <h2 class="lp-video__title">{title}</h2>
+    {intro !== '' && <p class="lp-video__intro">{intro}</p>}
+    <a
+      class="lp-video__facade"
+      href={videoUrl !== '' ? videoUrl : undefined}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-disabled={videoUrl === '' ? 'true' : undefined}
+    >
+      {posterImage !== '' && <img class="lp-video__poster" src={posterImage} alt="" loading="lazy" />}
+      <span class="lp-video__play" aria-hidden="true"></span>
+      <span class="lp-video__cta">{facadeLabel}</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .lp-video {
+    padding-block: var(--space-9, 6rem);
+    background-color: var(--color-bg, #ffffff);
+    color: var(--color-text, #1a1c20);
+    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
+  }
+
+  /* Conteneur répliqué localement (pas la classe globale .container) pour que
+     le composant reste autonome dans l'éditeur visuel. */
+  .lp-video__container {
+    width: 100%;
+    max-width: var(--container-max, 1200px);
+    margin-inline: auto;
+    padding-inline: var(--container-pad, 1.5rem);
+    text-align: center;
+  }
+
+  .lp-video__title {
+    margin: 0;
+    color: var(--color-navy, #083957);
+    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
+    font-weight: var(--fw-bold, 700);
+    line-height: var(--lh-tight, 1.15);
+    text-wrap: balance;
+  }
+
+  .lp-video__intro {
+    max-width: 640px;
+    margin: var(--space-4, 1rem) auto 0;
+    color: var(--color-text-muted, #4a4d54);
+    line-height: var(--lh-normal, 1.6);
+    text-wrap: pretty;
+  }
+
+  /* Façade 16:9 : image d'aperçu (ou dégradé de marque) + bouton lecture.
+     C'est un lien — aucun script, aucun iframe au rendu. */
+  .lp-video__facade {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4, 1rem);
+    aspect-ratio: 16 / 9;
+    max-width: 760px;
+    margin: var(--space-7, 3rem) auto 0;
+    border-radius: var(--radius-lg, 12px);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--color-navy, #083957), var(--color-accent-blue, #3366ff));
+    text-decoration: none;
+  }
+  .lp-video__facade[aria-disabled='true'] {
+    cursor: default;
+    opacity: 0.75;
+  }
+
+  .lp-video__poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Triangle de lecture en pur CSS dans un disque. */
+  .lp-video__play {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: var(--color-white, #ffffff);
+    box-shadow: var(--shadow-lg, 0 18px 40px -12px rgb(8 57 87 / 0.4));
+    transition: transform 0.15s ease;
+  }
+  .lp-video__facade:hover .lp-video__play,
+  .lp-video__facade:focus-visible .lp-video__play {
+    transform: scale(1.08);
+  }
+  .lp-video__play::after {
+    content: '';
+    margin-left: 5px;
+    border-style: solid;
+    border-width: 12px 0 12px 20px;
+    border-color: transparent transparent transparent var(--color-navy, #083957);
+  }
+
+  .lp-video__cta {
+    position: relative;
+    z-index: 1;
+    color: var(--color-white, #ffffff);
+    font-weight: var(--fw-semibold, 600);
+    text-shadow: 0 1px 8px rgb(8 57 87 / 0.55);
+  }
+
+  .lp-video__facade:focus-visible {
+    outline: 3px solid var(--color-focus, #3366ff);
+    outline-offset: 3px;
+  }
+</style>

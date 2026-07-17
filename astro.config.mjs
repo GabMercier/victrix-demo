@@ -307,6 +307,53 @@ function redirectsFile() {
   };
 }
 
+/**
+ * Rapport d'appariement FR/EN — AVERTISSEMENT seulement, jamais bloquant.
+ *
+ * La règle du contenu bilingue : même nom de fichier dans fr/ et en/ = paire
+ * de traduction (blogue et campagnes — flux « Dupliquer » documenté dans
+ * docs/guide-edition.md, section « Traduire »). Cette intégration liste au
+ * build les entrées sans contrepartie, pour que l'oubli de traduction se voie
+ * dans le journal de build (CloudCannon comme préversions) au lieu d'être
+ * découvert par un visiteur via le sélecteur de langue. Tourne dans les deux
+ * modes de build.
+ */
+function i18nPairingReport() {
+  return {
+    name: 'victrix:i18n-pairing',
+    hooks: {
+      /** @param {{ logger: import('astro').AstroIntegrationLogger }} options */
+      'astro:build:done': async ({ logger }) => {
+        for (const root of ['./src/content/blog', './src/content/landing']) {
+          /** @type {Record<string, string[]>} */
+          const fichiers = {};
+          for (const locale of ['fr', 'en']) {
+            try {
+              fichiers[locale] = (
+                await fs.readdir(new URL(`${root}/${locale}/`, import.meta.url))
+              ).filter((f) => f.endsWith('.md'));
+            } catch {
+              fichiers[locale] = []; // dossier absent = rien à apparier
+            }
+          }
+          const collection = root.split('/').pop();
+          for (const [langue, cible] of [
+            ['fr', 'en'],
+            ['en', 'fr'],
+          ]) {
+            const orphelins = fichiers[langue].filter((f) => !fichiers[cible].includes(f));
+            if (orphelins.length > 0) {
+              logger.warn(
+                `[victrix:i18n-pairing] ${collection} : ${orphelins.length} entrée(s) ${langue}/ sans traduction ${cible}/ — ${orphelins.join(', ')}`
+              );
+            }
+          }
+        }
+      },
+    },
+  };
+}
+
 // https://astro.build/config
 export default defineConfig({
   // Served at the root on Cloudflare Pages — no `base` subpath.
@@ -385,6 +432,7 @@ export default defineConfig({
     // Deliberately UNCONDITIONAL — both the production build and the
     // STATIC_ONLY (CloudCannon) build run it; see the function's doc block.
     redirectsFile(),
+    i18nPairingReport(),
   ],
 
   // Image handling. Astro's built-in Sharp service optimizes images imported

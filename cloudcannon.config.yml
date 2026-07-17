@@ -794,6 +794,39 @@ _structures:
                 - email
                 - textarea
 
+  # Partenaires ({name, logo, description}) pour la section « Bandeau logos
+  # partenaires » (logo-banner). Même GOTCHA que faq_items : le tableau
+  # s'appelle AUSSI `items`, le spec logo-banner.bookshop.yml re-pointe son
+  # `items` vers CETTE structure.
+  logo_items:
+    values:
+      - label: Partenaire
+        icon: workspaces
+        preview:
+          icon: workspaces
+          text:
+            - key: name
+            - text: Partenaire
+        value:
+          name: ''
+          logo: ''
+          description: ''
+
+  # Chiffres ({number, label}) pour la section « Victrix en chiffres » (stats).
+  # Même GOTCHA `items` que ci-dessus — re-pointé par stats.bookshop.yml.
+  stat_items:
+    values:
+      - label: Chiffre
+        icon: insights
+        preview:
+          icon: insights
+          text:
+            - key: number
+            - text: Chiffre
+        value:
+          number: ''
+          label: ''
+
   # Navigation (collection « navigation ») : formes des tableaux du menu.
   # Même logique que benefit_items — une structure à valeur unique donne au
   # bouton « + » la bonne forme, même sur un tableau vide. Non taguées dans un

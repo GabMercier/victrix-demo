@@ -1,0 +1,56 @@
+# =============================================================================
+# Spec Bookshop — section « Vidéo » (palette partagée, ajout du 17 juil.).
+# FAÇADE sans script tiers : lien vers la vidéo (nouvel onglet). Le mode
+# « iframe au clic » attend l'entrée CSP frame-src (décision OPS — voir le
+# commentaire de video.astro). Voir hero.bookshop.yml pour les conventions.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Vidéo"
+  description: "Vidéo en façade performante : image d'aperçu + bouton lecture, ouverture dans un nouvel onglet — aucun script tiers chargé sur la page (YouTube, Vimeo ou Stream)."
+  icon: play_circle
+  picker_preview:
+    text: Vidéo
+    subtext: Façade cliquable — aucun script tiers sur la page
+  preview:
+    icon: play_circle
+    text:
+      - key: title
+      - text: Vidéo
+
+blueprint:
+  type: video
+  title: "Découvrez Victrix en vidéo"
+  intro: ""
+  videoUrl: ""
+  posterImage: ""
+  ctaLabel: "Visionner la vidéo"
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre"
+  intro:
+    type: textarea
+    label: "Introduction (optionnelle)"
+  ctaLabel:
+    label: "Libellé du bouton"
+    comment: "Ex. « Visionner la vidéo » (FR) / « Watch the video » (EN)."
+  videoUrl:
+    label: "Adresse de la vidéo"
+    comment: "URL complète YouTube, Vimeo ou Microsoft Stream (ex. https://www.youtube.com/watch?v=…). Vide → « Vidéo à venir »."
+  posterImage:
+    type: image
+    label: "Image d'aperçu (optionnelle)"
+    comment: >-
+      Vide → dégradé aux couleurs de la marque. Le fichier téléversé atterrit
+      dans public/images/sections/ (adresse servie telle quelle, /images/…).
+    options:
+      paths:
+        static: public
+        uploads: public/images/sections

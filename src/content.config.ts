@@ -114,6 +114,44 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       title: z.string(),
       items: z.array(z.object({ question: z.string(), answer: z.string() })),
     }),
+    // ---- Palette additions (17 juil., P-02) — shared like everything else.
+    // Image fields are PLAIN STRING paths served as-is (uploads land in
+    // public/images/sections/, saved as /images/…): these components are
+    // browser-safe (no astro:assets), and "" means "no image" everywhere. ----
+    z.object({
+      type: z.literal('testimonial'),
+      quote: z.string(),
+      name: z.string(),
+      role: z.string().optional(),
+      organization: z.string().optional(),
+      photo: z.string().optional(),
+    }),
+    z.object({
+      type: z.literal('logo-banner'),
+      title: z.string().optional(),
+      badge: z.string().optional(),
+      items: z.array(
+        z.object({
+          name: z.string(),
+          logo: z.string().optional(),
+          description: z.string().optional(),
+        }),
+      ),
+    }),
+    z.object({
+      type: z.literal('stats'),
+      title: z.string().optional(),
+      items: z.array(z.object({ number: z.string(), label: z.string() })),
+    }),
+    z.object({
+      type: z.literal('video'),
+      title: z.string(),
+      intro: z.string().optional(),
+      // "" until the editor pastes the URL — the facade renders disabled.
+      videoUrl: z.string(),
+      posterImage: z.string().optional(),
+      ctaLabel: z.string().optional(),
+    }),
     // ---- Home sections (composable home — mirror the home-* components) ----
     z.object({
       type: z.literal('home-hero'),

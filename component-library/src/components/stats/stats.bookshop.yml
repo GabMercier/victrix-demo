@@ -1,0 +1,48 @@
+# =============================================================================
+# Spec Bookshop — section « Victrix en chiffres » (palette partagée, ajout du
+# 17 juil.). Preuves sociales chiffrées exigées par le cahier des charges.
+# Voir hero.bookshop.yml pour les conventions communes.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Victrix en chiffres"
+  description: "Bande de statistiques sur fond marine (années d'expérience, clients, taux de satisfaction…) — les chiffres sont des textes libres (« 25+ », « 99,9 % »)."
+  icon: insights
+  picker_preview:
+    text: Victrix en chiffres
+    subtext: Statistiques en preuve sociale (fond marine)
+  preview:
+    icon: insights
+    text:
+      - key: title
+      - text: Victrix en chiffres
+
+blueprint:
+  type: stats
+  title: "Victrix en chiffres"
+  items:
+    - number: "25+"
+      label: "années d'expérience"
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre (optionnel)"
+  items:
+    # `type: array` explicite + structure déclarée à la main dans
+    # cloudcannon.config.yml (_structures.stat_items) — même bail-out et même
+    # re-pointage du `items` de collection que faq.bookshop.yml.
+    type: array
+    label: "Chiffres"
+    options:
+      structures: _structures.stat_items
+  number:
+    label: "Chiffre"
+    comment: "Texte libre — ex. « 25+ », « 99,9 % », « 3 bureaux »."
+  label:
+    label: "Libellé"
