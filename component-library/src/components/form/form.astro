@@ -81,6 +81,8 @@
  *   paginée (et son URL hachée) reste identique quand les drapeaux sont
  *   absents.
  */
+import { fieldName } from '../../../../src/lib/forms/field-name';
+
 interface FormField {
   label: string;
   type: 'text' | 'email' | 'textarea';
@@ -93,9 +95,47 @@ interface Props {
   submitLabel: string;
   consentText?: string;
   fields: FormField[];
+  /**
+   * FORMS V2 — référence un formulaire de src/data/forms/<lang>/<formId>.json.
+   * Non vide → champs/submitLabel/consentText viennent de la DÉFINITION,
+   * résolue au build par la route via le seam `enrich` (resolvedForms
+   * ci-dessous). Vide/absent → mode historique inline, rendu inchangé.
+   */
+  formId?: string;
+  /**
+   * Injecté PAR LA ROUTE via `enrich` (build seulement — jamais présent dans
+   * l'éditeur visuel, où le composant affiche alors une note et la maquette) :
+   * carte formId → définition, déjà validée (id inconnu = échec de build).
+   */
+  resolvedForms?: Record<
+    string,
+    { submitLabel: string; consentText: string; fields: FormField[] }
+  >;
 }
 
-const { title, intro, submitLabel, consentText, fields = [] } = Astro.props;
+const {
+  title,
+  intro,
+  submitLabel,
+  consentText,
+  fields = [],
+  formId = '',
+  resolvedForms,
+} = Astro.props;
+
+// Résolution forms v2 : la définition prime quand `formId` est posé ET résolu
+// (build). Sans formId, les trois `eff*` valent EXACTEMENT les props inline —
+// le rendu historique reste identique à l'octet près.
+const formDef = formId !== '' ? resolvedForms?.[formId] : undefined;
+const effFields = formDef ? formDef.fields : fields;
+const effSubmitLabel = formDef && formDef.submitLabel !== '' ? formDef.submitLabel : submitLabel;
+const effConsentText = formDef && formDef.consentText !== '' ? formDef.consentText : consentText;
+// Éditeur visuel : formId posé mais non résolu (enrich absent du navigateur) —
+// une note l'explique, la maquette inline reste affichée. Style EN LIGNE :
+// aucune classe nouvelle, la feuille de style paginée reste identique.
+const formIdPendingNote = formId !== '' && !formDef;
+const pendingNoteStyle =
+  'margin:0;padding:0.5rem 1rem;border:1px dashed var(--color-grey-300, #cdd0d6);border-radius:var(--radius-md, 8px);color:var(--color-text-muted, #4a4d54);font-size:var(--fs-100, 0.8125rem);';
 
 // Base d'identifiants stables pour lier <label for> et <input id>.
 const idBase =
@@ -124,36 +164,21 @@ const turnstileSiteKey = formsEnabled ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : ''
 const pagePath = Astro.url?.pathname ?? '';
 const formLang = pagePath.split('/')[1] === 'en' ? 'en' : 'fr';
 
-// `name` stable dérivé du libellé : accents décomposés puis retirés (NFD),
-// minuscules, tout le reste → tirets. Libellé vide → repli positionnel.
-// Uniquement des opérations de chaînes (compatibles navigateur — éditeur
-// visuel CloudCannon, cf. entête).
-// La plage des diacritiques (U+0300 à U+036F, détachés par NFD) est
-// construite via fromCharCode plutôt qu'écrite en littéral : des caractères
-// combinants invisibles dans la source seraient trop faciles à corrompre.
-const DIACRITIQUES = new RegExp(
-  `[${String.fromCharCode(0x0300)}-${String.fromCharCode(0x036f)}]`,
-  'g',
-);
-const fieldName = (label: string, index: number): string => {
-  const slug = (label ?? '')
-    .normalize('NFD')
-    .replace(DIACRITIQUES, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-  return slug || `champ-${index + 1}`;
-};
-const fieldNames = fields.map((field, i) => fieldName(field.label, i));
+// `name` stable dérivé du libellé — logique PARTAGÉE avec le serveur
+// (src/lib/forms/field-name.ts : mêmes noms dérivés côté registre, c'est le
+// contrat forms v2). Import relatif browser-safe (pur string, aucun import
+// dans le module — même règle que JsonLd.astro, cf. faq.astro).
+const fieldNames = effFields.map((field, i) => fieldName(field.label, i));
 
 // Listes annoncées au serveur (contrat de champs §4) — vides ⇒ champ caché
 // non rendu ; le serveur garde alors ses filets (soumission non vide +
-// heuristique courriel sur le nom).
-const requiredNames = fields
+// heuristique courriel sur le nom). Avec un `_formId`, le serveur ÉCRASE de
+// toute façon ces listes par celles du registre.
+const requiredNames = effFields
   .map((field, i) => (field.required ? fieldNames[i] : null))
   .filter((name): name is string => name !== null)
   .join(',');
-const emailNames = fields
+const emailNames = effFields
   .map((field, i) => (field.type === 'email' ? fieldNames[i] : null))
   .filter((name): name is string => name !== null)
   .join(',');
@@ -221,6 +246,7 @@ const errorMessage =
             </script>
             <input type="hidden" name="lang" value={formLang} />
             <input type="hidden" name="source" value={pagePath} />
+            {formDef && <input type="hidden" name="_formId" value={formId} />}
             {requiredNames && <input type="hidden" name="_requis" value={requiredNames} />}
             {emailNames && <input type="hidden" name="_courriels" value={emailNames} />}
             {/* Pot de miel `website` — voir honeypotStyle dans l'entête. */}
@@ -238,7 +264,15 @@ const errorMessage =
         )
       }
       {
-        fields.map((field, i) => {
+        formIdPendingNote && (
+          <p style={pendingNoteStyle}>
+            Formulaire lié : « {formId} » — ses champs réels s'affichent à la
+            publication (définition dans la collection Formulaires).
+          </p>
+        )
+      }
+      {
+        effFields.map((field, i) => {
           const id = `${idBase}-${i}`;
           return (
             <div class="lp-form__field">
@@ -272,7 +306,7 @@ const errorMessage =
         })
       }
 
-      {consentText && <p class="lp-form__consent">{consentText}</p>}
+      {effConsentText && <p class="lp-form__consent">{effConsentText}</p>}
 
       {
         turnstileSiteKey && (
@@ -295,7 +329,7 @@ const errorMessage =
 
       <!-- Bouton volontairement désactivé : le backend de formulaires est un
            chantier séparé (workstream ultérieur) — cette maquette n'envoie rien. -->
-      <button class="lp-form__submit" type="submit" disabled={!formsEnabled} style={formsEnabled ? 'cursor:pointer' : undefined}>{submitLabel}</button>
+      <button class="lp-form__submit" type="submit" disabled={!formsEnabled} style={formsEnabled ? 'cursor:pointer' : undefined}>{effSubmitLabel}</button>
     </form>
   </div>
 </section>

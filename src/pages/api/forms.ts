@@ -29,9 +29,25 @@ import {
   formatSubmissionText,
   MAX_PAYLOAD_BYTES,
   TURNSTILE_TOKEN_FIELD,
+  FORM_ID_FIELD,
+  REQUIRED_LIST_FIELD,
+  EMAIL_LIST_FIELD,
 } from '../../lib/forms/validation';
+import {
+  buildRegistry,
+  resolveForm,
+  requiredFieldNames,
+  emailFieldNames,
+} from '../../lib/forms/registry';
 import { verifyTurnstileToken } from '../../lib/forms/turnstile';
 import { sendEmail } from '../../lib/forms/smtp2go';
+
+// Registre des formulaires (« forms v2 ») — les définitions de src/data/forms/
+// sont EMBARQUÉES dans le bundle au build (workerd n'a pas de système de
+// fichiers) : c'est la liste blanche. Voir src/lib/forms/registry.ts.
+const FORM_REGISTRY = buildRegistry(
+  import.meta.glob('../../data/forms/**/*.json', { eager: true }) as Record<string, unknown>,
+);
 
 // On-demand (Cloudflare Pages Function), same idiom as src/pages/auth/*.
 // STATIC_ONLY builds flip this back to prerendered — hence the GET above.
@@ -91,6 +107,22 @@ export const POST: APIRoute = async ({ request, locals }) => {
     failure = seeOther(`${source}?erreur=1`);
     const thanks = seeOther(`/${lang}/merci/`);
 
+    // Forms v2 — un `_formId` présent bascule le registre en source de vérité :
+    // les listes requis/courriel annoncées par le client sont ÉCRASÉES par
+    // celles dérivées de la définition (même dérivation de noms que la section,
+    // src/lib/forms/field-name.ts), et un id inconnu est un échec de
+    // validation (la liste blanche, c'est le registre).
+    const formId = (fields[FORM_ID_FIELD] ?? '').trim();
+    const formDef = formId !== '' ? resolveForm(FORM_REGISTRY, lang, formId) : undefined;
+    if (formId !== '' && !formDef) {
+      console.warn(`[api/forms] formId inconnu: ${lang}/${formId}`);
+      return failure;
+    }
+    if (formDef) {
+      fields[REQUIRED_LIST_FIELD] = requiredFieldNames(formDef).join(',');
+      fields[EMAIL_LIST_FIELD] = emailFieldNames(formDef).join(',');
+    }
+
     const result = validateSubmission(fields);
     if (!result.ok) {
       console.warn('[api/forms] validation refusée:', result.errors.join(' | '));
@@ -122,10 +154,17 @@ export const POST: APIRoute = async ({ request, locals }) => {
     // (visible in the Pages Function logs / dev console) and still thank the
     // visitor. Lets the whole flow be demoed with zero provisioning.
     const apiKey = envValue(locals, 'SMTP2GO_API_KEY');
-    const to = envValue(locals, 'FORMS_TO_EMAIL');
+    // Destinataire PAR FORMULAIRE (défini dans src/data/forms/, jamais dans le
+    // POST); '' dans la définition → repli sur le destinataire global.
+    const to = formDef?.toEmail || envValue(locals, 'FORMS_TO_EMAIL');
     const from = envValue(locals, 'FORMS_FROM_EMAIL');
+    const subject = formDef?.subject
+      ? `${formDef.subject} — ${source} (${lang})`
+      : `Formulaire victrix — ${source} (${lang})`;
     if (!apiKey || !to || !from) {
-      console.log(`[api/forms] mode démo (SMTP2GO non configuré) — courriel simulé:\n${text}`);
+      console.log(
+        `[api/forms] mode démo (SMTP2GO non configuré) — courriel simulé (destinataire: ${to ?? 'aucun'}, objet: ${subject}):\n${text}`,
+      );
       return thanks;
     }
 
@@ -133,7 +172,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
       apiKey,
       to,
       from,
-      subject: `Formulaire victrix — ${source} (${lang})`,
+      subject,
       textBody: text,
     });
     if (!sent.ok) {

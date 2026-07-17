@@ -7,6 +7,21 @@
 > `C:\Repo\Victrix\Refontee site web Victrix - Estimé haut niveau – Copie.xlsx`
 > (les codes F-xx / N-x ci-dessous renvoient à ses lignes [Astro]).
 
+## 0. État au 17 juillet (fin de journée)
+
+**VAGUE 1 : COMPLÈTE.** P-01 (navigation éditable) et P-02 (4 sections
+palette + duplication FR↔EN + périmètre .env) sont **fermés** — commités et
+poussés (`9aa6547`, `a18b60c`, `fa6b1ce`). P-03 (formulaires v2) est **en
+revue** : implémenté et vérifié (gate vert, e2e démo), dans l'arbre de
+travail, à committer après revue. `landing/fr/test.md` supprimé (décision
+utilisateur, inclus dans le diff P-03).
+
+**Prochaine étape** : commit P-03 → vérifications CloudCannon (palette 9
+sections, collections Formulaires/Navigation) → **vague 2** dans l'ordre
+encodé : P-05 (champs étendus + consentement Loi 25) → P-07 (services
+composables) → P-04 (header de landing) → P-06 (Pagefind).
+Heures exécutées vague 1 : ~21 h d'estimé (3 lots), réalisées par Fable 5.
+
 ## 1. Gouvernance — qui fait quoi
 
 | Modèle | Rôle | Sessions types |
@@ -84,9 +99,9 @@ Statuts : ⬜ à faire · 🔵 en cours · 🟡 en revue (diff à revoir par Fab
 
 | ID | Tâche | Modèle | Dép. | Est. | Vague | Statut | Notes |
 |---|---|---|---|---|---|---|---|
-| P-01 | Navigation éditable (menu, méga-menu, annonce, bouton portail → `src/data/navigation/`) | ~~Opus 4.8~~ **Fable 5** | — | 7 h | 1 | 🟡 | Fait 17/07 (Fable 5). Gate vert (lint 0 err, 62/62, type-check 0 err, 2 builds en copie isolée), parité DOM header+mobile FR/EN prouvée, test négatif OK (lien invalide → build cassé avec message nommant le champ). Bonus CMS : interrupteurs annonce + portail. À REVOIR puis committer. |
-| P-02 | 4 sections palette : Témoignage, Bandeau logos, Chiffres, Vidéo (façade) | ~~Sonnet 5~~ **Fable 5** | P-01 | 7 h | 1 | 🟡 | Fait 17/07 (Fable 5). Gate vert; generate = 16 structures, live editing 7 pages; page démo `/fr|en/campagnes/demo-sections/`; parité page existante prouvée (seul le hash du bundle CSS change). Images = chemins publics (`public/images/sections/`), champ ctaLabel sur vidéo (pas d'i18n en section). BONUS livrés : flux duplication FR↔EN (guide + intégration `victrix:i18n-pairing`, avertissement build — a attrapé `landing/fr/test.md` orphelin), `.env.example` recadré (CloudCannon bundle, Azure alternative, Entra/Dataverse hors périmètre), décision hébergement au journal GUIDE-PROJET. À REVOIR puis committer. |
-| P-03 | Formulaires v2 cœur : collection `src/data/forms/` + réf. + destinataire par formulaire | **Opus 4.8** | P-02 | 7 h | 1 | ⬜ | Fiche complète §6.3 |
+| P-01 | Navigation éditable (menu, méga-menu, annonce, bouton portail → `src/data/navigation/`) | ~~Opus 4.8~~ **Fable 5** | — | 7 h | 1 | ✅ | Fermé — commit `9aa6547`, poussé. Gate vert, parité DOM prouvée, test négatif OK. Interrupteurs CMS annonce + portail en bonus. |
+| P-02 | 4 sections palette : Témoignage, Bandeau logos, Chiffres, Vidéo (façade) | ~~Sonnet 5~~ **Fable 5** | P-01 | 7 h | 1 | ✅ | Fermé — commits `a18b60c` + `fa6b1ce`, poussés. 16 structures, live editing 7 pages, page démo, parité prouvée. Bonus : duplication FR↔EN (guide + `victrix:i18n-pairing`), `.env.example` périmètre, décision hébergement. |
+| P-03 | Formulaires v2 cœur : collection `src/data/forms/` + réf. + destinataire par formulaire | ~~Opus 4.8~~ **Fable 5** | P-02 | 7 h | 1 | 🟡 | Fait 17/07 (Fable 5). Gate vert (69/69 tests dont 7 nouveaux registre); parité mode inline IDENTIQUE; formId inconnu casse le build (message nommant page+fichier); e2e démo : POST valide→/merci avec objet de la définition, formId inconnu→erreur, champs requis dérivés PAR LE SERVEUR depuis le registre. 4 défs seed (contact, campagne-evaluation ×FR/EN), collection CC « Formulaires », doc §4 _formId. `landing/fr/test.md` supprimé (décision user). À REVOIR puis committer. VAGUE 1 COMPLÈTE. |
 | P-04 | Header de landing par page (complet/allégé/personnalisé) | Sonnet 5 | P-01; en V2 après P-07 | 3,5 h | 2 | ⬜ | §7 |
 | P-05 | Champs étendus (checkbox Loi 25, select, tel, hidden) + conditionnels + `formatSubmissionText` | **Opus 4.8** | P-03 | 7 h | 2 | ⬜ | §7 |
 | P-06 | Pagefind (build, page résultats, entrée header) | Sonnet 5 | P-04 (Header.astro) | 7 h | 2 | ⬜ | §7 |
@@ -130,7 +145,7 @@ Statuts : ⬜ à faire · 🔵 en cours · 🟡 en revue (diff à revoir par Fab
 - Décision protection des préversions (Cloudflare Access ou équivalent).
 - Atelier contenus marketing (N4) — humain, doc `atelier-contenus.md` prêt.
 
-## 6. Fiches complètes — vague 1
+## 6. Fiches complètes — vague 1 (✅ EXÉCUTÉES le 17 juil. — conservées comme référence de format pour les prochaines fiches)
 
 ### 6.1 P-01 — Navigation éditable (Opus 4.8)
 
@@ -359,5 +374,6 @@ rejeté + collection Formulaires éditable dans la config CloudCannon.
 | Date | Session | Résultat |
 |---|---|---|
 | 2026-07-17 | Fable 5 — création de ce plan (vérifié par 3 agents : faits/couverture/séquencement) | Backlog initial, vague 1 prête |
+| 2026-07-17 | Fable 5 — **P-03 exécuté** (vague 1 complète). Fichiers : `src/lib/forms/{field-name,registry,registry.test}.ts` (logique de noms PARTAGÉE composant/serveur + registre-liste-blanche), `src/data/forms/{fr,en}/{contact,campagne-evaluation}.json`, `schemas/form-{fr,en}.json`, collection `forms` (content.config.ts) + `formId` sur la section form, `validation.ts` (+`_formId` méta), `api/forms.ts` (import.meta.glob registre, destinataire/objet/listes depuis la définition), `form.astro` (résolution via enrich, parité inline préservée, note éditeur), `[slug].astro` (enrich + build-gate formId), `form.bookshop.yml`, cloudcannon.config.yml (collection Formulaires), pages démo (form par référence), formulaires.md §4. Supprimé : `landing/fr/test.md`. | Gate vert, e2e démo prouvé, statut 🟡 |
 | 2026-07-17 | Fable 5 — **P-02 exécuté** + 2 ajouts utilisateur. Fichiers : 4 composants `component-library/src/components/{testimonial,logo-banner,stats,video}/` (+ specs FR), union zod +4 types (`content.config.ts`), `_structures.logo_items/stat_items` (cloudcannon.config.yml), pages démo `src/content/landing/{fr,en}/demo-sections.md`, `.env.example` réécrit (périmètre : CloudCannon bundle, Azure alt., pas d'Entra/Dataverse), `guide-edition.md` (sections Traduire/dupliquer + Navigation + palette à jour), `astro.config.mjs` (+`victrix:i18n-pairing`, avertissement non bloquant), GUIDE-PROJET (décision hébergement 17 juil.). Constat : `landing/fr/test.md` sans traduction EN (reliquat de test CloudCannon) — à supprimer ou traduire (décision utilisateur). | Gate vert, 16 structures, 7 pages live, parité OK, statut 🟡 |
 | 2026-07-17 | Fable 5 — **P-01 exécuté** (l'utilisateur a demandé d'avancer pendant les crédits Fable 5). Fichiers : `src/data/navigation/{fr,en}.json` (nouveaux), `src/content.config.ts` (collection `navigation` + navHref zod), `src/components/Header.astro` (getEntry + interrupteurs annonce/portail), `src/i18n/ui.ts` (nav/announce réduits aux chaînes a11y), `cloudcannon.config.yml` (collection Navigation + `_structures.nav_links`/`nav_columns`). Convention : liens SANS préfixe de langue (l'inverse des ctaHref de sections — commenté partout). | Gate vert, parité prouvée, statut 🟡 (revue humaine + commit) |

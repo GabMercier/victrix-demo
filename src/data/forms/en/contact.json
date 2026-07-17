@@ -1,0 +1,12 @@
+{
+  "name": "Contact (EN)",
+  "toEmail": "",
+  "subject": "Website message — contact form",
+  "submitLabel": "Send",
+  "consentText": "By submitting this form, you consent to Victrix collecting and using the information provided solely to process your request, in accordance with Law 25 on the protection of personal information in the private sector.",
+  "fields": [
+    { "label": "Full name", "type": "text", "required": true },
+    { "label": "Email", "type": "email", "required": true },
+    { "label": "Message", "type": "textarea", "required": true }
+  ]
+}

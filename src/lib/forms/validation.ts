@@ -37,6 +37,14 @@ export const EMAIL_LIST_FIELD = '_courriels';
 export const TURNSTILE_TOKEN_FIELD = 'cf-turnstile-response';
 
 /**
+ * Optional hidden field: id of a form DEFINITION from src/data/forms/ (« forms
+ * v2 »). When present, /api/forms resolves recipient/subject/field lists from
+ * the build-embedded registry (src/lib/forms/registry.ts) — never from the
+ * client — and an unknown id is a validation failure.
+ */
+export const FORM_ID_FIELD = '_formId';
+
+/**
  * Plumbing fields — never part of the visitor's message. Everything else in
  * the payload is user content and lands in the notification email.
  */
@@ -47,6 +55,7 @@ export const META_FIELDS: ReadonlySet<string> = new Set([
   REQUIRED_LIST_FIELD,
   EMAIL_LIST_FIELD,
   TURNSTILE_TOKEN_FIELD,
+  FORM_ID_FIELD,
 ]);
 
 /** Hard limits (contract): total payload < 25 KB, each value < 5000 chars. */

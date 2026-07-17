@@ -94,6 +94,7 @@ Champs cachés que la section « form » envoie avec les champs visibles :
 | `_requis` | non | noms des champs requis, séparés par des virgules — chacun doit être non vide après trim |
 | `_courriels` | non | noms des champs courriel, séparés par des virgules — format RFC de base exigé |
 | `cf-turnstile-response` | (auto) | injecté par le widget Turnstile ; jamais repris dans le courriel |
+| `_formId` | non | **Formulaires v2 (17 juil.)** : identifiant d'une définition de `src/data/forms/<lang>/` (collection CloudCannon « Formulaires »). Présent → le serveur résout **destinataire, objet et listes requis/courriel depuis le REGISTRE embarqué au build** (`src/lib/forms/registry.ts`) — les listes annoncées par le client sont écrasées, un id inconnu est un échec de validation (le registre est la liste blanche). La section « form » le pose automatiquement quand son champ « Formulaire lié » est rempli ; `toEmail` vide dans la définition = repli sur `FORMS_TO_EMAIL`. |
 
 Filet de sécurité si `_requis`/`_courriels` sont absents : le serveur refuse
 une soumission entièrement vide, et tout champ dont le NOM contient `email` ou

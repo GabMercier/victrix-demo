@@ -596,6 +596,80 @@ collections_config:
             - "301"
             - "302"
 
+  # Formulaires réutilisables (« forms v2 ») — un JSON par formulaire dans
+  # src/data/forms/fr|en/ (même nom de fichier = paire de traduction). Une
+  # section « Formulaire » d'une page les référence par leur identifiant (nom
+  # du fichier sans .json). LE DESTINATAIRE EST DÉFINI ICI, jamais dans la
+  # page : côté serveur, /api/forms résout destinataire/objet/champs depuis un
+  # registre embarqué au build (liste blanche) — le navigateur n'envoie qu'un
+  # identifiant. Validé au build (collection `forms`, src/content.config.ts).
+  forms:
+    path: src/data/forms
+    name: Formulaires
+    singular_name: Formulaire
+    description: >-
+      Définitions de formulaires réutilisables (destinataire, objet, champs).
+      Les dossiers fr/ et en/ contiennent les deux langues ; le même nom de
+      fichier relie une traduction à l'autre. Les pages y font référence par
+      l'identifiant (nom du fichier sans .json).
+    icon: dynamic_form
+    # Pas de page à prévisualiser (le JSON n'est pas une page).
+    disable_url: true
+    # Éditeur de données uniquement (JSON structuré, pas de corps markdown).
+    _enabled_editors:
+      - data
+    # « + Ajouter » : un gabarit par langue pour que le fichier atterrisse dans
+    # fr/ ou en/ avec un JSON valide (même logique que blog/landing).
+    schemas:
+      default:
+        name: Formulaire (FR)
+        icon: dynamic_form
+        path: schemas/form-fr.json
+        create:
+          path: 'fr/{name|slugify}.json'
+      en:
+        name: Formulaire (EN)
+        icon: dynamic_form
+        path: schemas/form-en.json
+        create:
+          path: 'en/{name|slugify}.json'
+    _inputs:
+      name:
+        type: text
+        label: Nom (interne)
+        comment: Affiché aux éditeurs seulement — jamais aux visiteurs.
+      toEmail:
+        type: text
+        label: Courriel destinataire
+        comment: >-
+          Adresse qui reçoit les soumissions de CE formulaire. Vide = le
+          destinataire global du site (variable FORMS_TO_EMAIL).
+      subject:
+        type: text
+        label: Objet du courriel
+        comment: Vide = objet générique.
+      submitLabel:
+        type: text
+        label: Libellé du bouton d'envoi
+      consentText:
+        type: textarea
+        label: Texte de consentement
+        comment: Mention Loi 25 affichée au-dessus du bouton (optionnelle).
+      fields:
+        type: array
+        label: Champs
+        comment: >-
+          Le nom technique de chaque champ dérive de son libellé — éviter deux
+          libellés identiques dans un même formulaire.
+        options:
+          structures: _structures.form_fields
+      label:
+        type: text
+        label: Libellé du champ
+      required:
+        type: switch
+        label: Champ obligatoire
+
   # Navigation du site (menu principal, méga-menu, barre d'annonce, bouton
   # portail) — un JSON par langue dans src/data/navigation, consommé par
   # src/components/Header.astro et validé au build par la collection

@@ -1,0 +1,12 @@
+{
+  "name": "",
+  "toEmail": "",
+  "subject": "",
+  "submitLabel": "Envoyer",
+  "consentText": "",
+  "fields": [
+    { "label": "Nom complet", "type": "text", "required": true },
+    { "label": "Courriel", "type": "email", "required": true },
+    { "label": "Message", "type": "textarea", "required": false }
+  ]
+}

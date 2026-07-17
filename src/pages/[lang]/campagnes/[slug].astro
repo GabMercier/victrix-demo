@@ -22,6 +22,11 @@ import Page from '../../../../component-library/src/shared/astro/page.astro';
  */
 export async function getStaticPaths() {
   const pages = await getCollection('landing');
+  // Forms v2 — définitions par langue pour le seam `enrich` du renderer : la
+  // section « form » reste browser-safe (elle ne lit pas la collection), la
+  // ROUTE résout formId → définition au build et l'injecte. Dans l'éditeur
+  // visuel (enrich absent), la section affiche une note + la maquette inline.
+  const formEntries = await getCollection('forms');
   return pages.map((page) => {
     // Entry ids are "<locale>/<filename>" (same generateId trick as blog).
     // Unlike blog there is no per-locale `slug` frontmatter yet: the filename
@@ -47,11 +52,38 @@ export async function getStaticPaths() {
     // to an EMPTY `params()` marker — the editor then re-renders the boundary
     // with no data and the preview shows a blank page body (real bug, seen
     // 2026-07-15). Do not rename or inline it.
-    return { params: { lang, slug }, props: { page, lang, altLocalePath, frontmatter: page.data } };
+    // Carte formId → définition POUR LA LANGUE de la page (ids "fr/contact"…),
+    // + garde-fou : un formId qui ne résout pas fait ÉCHOUER le build en
+    // nommant la page et le fichier attendu — même philosophie que les
+    // redirections (rien de cassé n'atteint le site).
+    const resolvedForms = Object.fromEntries(
+      formEntries
+        .filter((entry) => entry.id.startsWith(`${lang}/`))
+        .map((entry) => [entry.id.slice(lang.length + 1), entry.data]),
+    );
+    for (const section of page.data.sections) {
+      if (section.type === 'form' && section.formId && !resolvedForms[section.formId]) {
+        throw new Error(
+          `[campagnes] ${page.id} : formId « ${section.formId} » introuvable — attendu src/data/forms/${lang}/${section.formId}.json (collection Formulaires)`,
+        );
+      }
+    }
+    return {
+      params: { lang, slug },
+      props: {
+        page,
+        lang,
+        altLocalePath,
+        frontmatter: page.data,
+        // HORS frontmatter à dessein (le marqueur bookshop:live ne trace que
+        // contentBlocks) — voir l'entête du renderer partagé.
+        enrich: { form: { resolvedForms } },
+      },
+    };
   });
 }
 
-const { page, lang, altLocalePath, frontmatter } = Astro.props;
+const { page, lang, altLocalePath, frontmatter, enrich } = Astro.props;
 ---
 
 <BaseLayout
@@ -73,6 +105,6 @@ const { page, lang, altLocalePath, frontmatter } = Astro.props;
        identical. Per-section prop-shape safety moved from TS union narrowing
        to the zod schema, which already validates every section at build time. */
   }
-  <Page bookshop:live contentBlocks={frontmatter.sections} />
+  <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} />
 
 </BaseLayout>

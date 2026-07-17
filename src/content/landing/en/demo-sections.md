@@ -55,4 +55,13 @@ sections:
     videoUrl: ""
     posterImage: ""
     ctaLabel: "Watch the video"
+  # Form BY REFERENCE (forms v2): fields/button/consent/recipient come from
+  # src/data/forms/en/campagne-evaluation.json.
+  - _bookshop_name: form
+    type: form
+    title: "Request your assessment"
+    intro: "Form linked by reference — forms v2 demo."
+    formId: campagne-evaluation
+    submitLabel: "Send"
+    fields: []
 ---

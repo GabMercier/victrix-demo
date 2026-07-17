@@ -58,4 +58,13 @@ sections:
     videoUrl: ""
     posterImage: ""
     ctaLabel: "Visionner la vidéo"
+  # Formulaire PAR RÉFÉRENCE (forms v2) : champs/bouton/consentement/
+  # destinataire viennent de src/data/forms/fr/campagne-evaluation.json.
+  - _bookshop_name: form
+    type: form
+    title: "Demandez votre évaluation"
+    intro: "Formulaire lié par référence — démonstration forms v2."
+    formId: campagne-evaluation
+    submitLabel: "Envoyer"
+    fields: []
 ---

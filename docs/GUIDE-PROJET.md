@@ -37,8 +37,17 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
   hero / bénéfices / FAQ / formulaire / appel à l'action depuis une palette
   dans CloudCannon, avec `noindex` par défaut (critère 4 + 5).
 - **Édition CloudCannon** : collections Blogue, Accueil, Expertises, Campagnes,
-  Redirections en français; éditeur visuel par défaut; gabarits « + Ajouter »
-  qui ne peuvent pas produire de fichier invalide.
+  **Navigation, Formulaires**, Redirections en français; éditeur visuel par
+  défaut; gabarits « + Ajouter » qui ne peuvent pas produire de fichier
+  invalide. **Le menu, le méga-menu et la barre d'annonce sont éditables**
+  (17 juil.); duplication FR↔EN documentée (`guide-edition.md`) avec rappel
+  des traductions manquantes au build.
+- **Palette de 9 sections** (17 juil.) : héros, bénéfices, FAQ, formulaire,
+  appel à l'action + témoignage, bandeau logos partenaires, « Victrix en
+  chiffres », vidéo en façade — démonstration : `/fr/campagnes/demo-sections/`.
+- **Formulaires v2** (17 juil., en revue) : définitions réutilisables avec
+  **destinataire par formulaire résolu côté serveur** (registre-liste blanche
+  embarqué au build) — voir `formulaires.md` §4.
 - **Pipeline formulaires** (critère 6) : endpoint `/api/forms` (validation,
   pot de miel, Turnstile optionnel, envoi SMTP2GO, pages `/merci`) — **inerte
   tant que les clés ne sont pas posées** (voir `formulaires.md`).
@@ -78,12 +87,12 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 
 | # | Critère | État |
 |---|---|---|
-| 1 | Éditeur visuel | 🔄 Spike CloudCannon en cours (gate à clore — grille dans `spike-cloudcannon.md`); landing = plein visuel; accueil = panneau de données (conversion Bookshop = décision en attente) |
+| 1 | Éditeur visuel | ✅ De facto validé : édition visuelle live confirmée sur landings ET accueil (converti composable le 15 juil.); reste à cocher la grille formelle + capturer le clip (`spike-cloudcannon.md`) |
 | 2 | Preview / partage non public | ✅ Préversions par branche (noindex auto) + brouillons d'articles |
 | 3 | Types de contenus | ✅ Collections typées (blogue, accueil, expertises, campagnes) — en ajouter = 1 schéma + 1 gabarit |
 | 4 | Landing pages | ✅ Palette de 5 sections, autonome au CMS |
 | 5 | URLs + indexation | ✅ Slugs par langue, noindex par page, sitemap cohérent |
-| 6 | Formulaires | 🔶 Pipeline construit, **activation = poser les clés** (SMTP2GO + Turnstile, voir `formulaires.md`) |
+| 6 | Formulaires | 🔶 Pipeline construit + **v2 : définitions réutilisables, destinataire par formulaire (résolu serveur)**; activation = poser les clés (SMTP2GO + Turnstile, voir `formulaires.md`) |
 | 7 | SEO / schema | ✅ JSON-LD par gabarit (Organization, BlogPosting, FAQPage) |
 | 8 | Redirections | ✅ Éditables au CMS, validées au build |
 | 9 | Clarity + images | 🔶 Images natives (Sharp au build); Clarity attend le bandeau de consentement Loi 25 (décision design) |
@@ -94,13 +103,19 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 
 ## Prochains jalons
 
-1. **Clore la gate CloudCannon** (grille + vidéo + palier tarifaire) → verdict.
-2. Commit/push de la ronde « fondations 2 » (une fois la vérification verte).
-3. Décisions en attente (tableau dans `plan-2026-07-15.md`) : conversion
-   Bookshop de l'accueil, clés formulaires, CSP Turnstile, retrait de Sveltia,
-   bandeau Loi 25 + Clarity, collection Services.
-4. Démo aux sceptiques (vidéo + arguments d'`analyse-criteres.md`).
-5. Ensuite : port complet du contenu, dépôt de production semé de la branche.
+> Exécution pilotée par **`plan-prompts.md`** (backlog P-01..P-21 multi-modèles;
+> vague 1 — navigation, palette, formulaires v2 — livrée le 17 juil.).
+
+1. **Vague 2** (`plan-prompts.md`) : champs étendus + case consentement Loi 25
+   (P-05) → collection Services composable (P-07, architecture d'information à
+   confirmer) → header de landing par page (P-04) → recherche Pagefind (P-06).
+2. **Clore formellement la gate CloudCannon** (grille + vidéo + palier
+   tarifaire) — l'édition visuelle est validée de facto.
+3. Décisions/OPS restantes : clés formulaires (SMTP2GO/Turnstile), CSP
+   (Turnstile + analytics), bandeau Loi 25 minimal (approuvé 17 juil., à
+   construire — P-10), retrait de Sveltia, protection des préversions.
+4. Atelier contenus marketing, puis port complet du contenu (P-19).
+5. Ensuite : dépôt de production semé de la branche gagnante.
 
 ## Reprendre le contexte (nouvelle conversation, nouvelle personne)
 

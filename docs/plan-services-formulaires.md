@@ -1,6 +1,10 @@
 # Plan — Services, formulaires v2, menus éditables, contrôle éditorial et démo « environnement de test »
 
 > Cadrage des chantiers de la phase contenus, décidés le 17 juillet.
+> **SUIVI D'EXÉCUTION : `plan-prompts.md`** (le tableau de bord vivant). État
+> au 17 juil. soir : lot 1 (sections palette) ✅, lot 6 (navigation éditable) ✅,
+> lot 3 (formulaires v2 cœur) en revue; hébergement tranché = bundle
+> CloudCannon (Azure en alternative), Entra/Dataverse hors périmètre v1.
 > Intrant connu : **les expertises deviennent des services** (architecture
 > d'information finale en attente de confirmation — on prépare sans se bloquer).
 > Compléments : `atelier-contenus.md` (types + limites), `formulaires.md`

@@ -101,6 +101,13 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       intro: z.string().optional(),
       submitLabel: z.string(),
       consentText: z.string().optional(),
+      // Formulaires v2 : référence un formulaire de la collection `forms`
+      // (src/data/forms/<lang>/<formId>.json). Non vide → les champs,
+      // submitLabel et consentText du FORMULAIRE remplacent ceux ci-dessous
+      // (résolus au build par la route campagnes via le seam `enrich`; un id
+      // inconnu fait échouer le build). Vide/absent → mode historique : les
+      // champs inline ci-dessous, rendu inchangé.
+      formId: z.string().optional(),
       fields: z.array(
         z.object({
           label: z.string(),
@@ -386,4 +393,45 @@ const navigation = defineCollection({
   }),
 });
 
-export const collections = { blog, home, landing, expertises, navigation };
+/**
+ * Formulaires réutilisables (« formulaires v2 ») — un JSON par formulaire dans
+ * src/data/forms/<lang>/ (ids "fr/contact", "en/contact"…; même nom de
+ * fichier = paire de traduction, comme partout). Une section « form » les
+ * référence par `formId` (= nom du fichier sans .json).
+ *
+ * Ce schéma est le build-gate des définitions; côté exécution, /api/forms
+ * embarque les mêmes fichiers via import.meta.glob (src/lib/forms/registry.ts)
+ * et résout destinataire/sujet/champs DEPUIS le registre — le client n'envoie
+ * qu'un identifiant. `toEmail` vide = repli sur FORMS_TO_EMAIL.
+ */
+const forms = defineCollection({
+  loader: glob({
+    pattern: '**/*.json',
+    base: './src/data/forms',
+    // "<locale>/<fichier>" (même patron que blog/landing) — l'id complet est
+    // la clé du registre serveur.
+    generateId: ({ entry }) => entry.replace(/\\/g, '/').replace(/\.[^/.]+$/, ''),
+  }),
+  schema: z.object({
+    name: z.string().min(1, 'Nom interne requis'),
+    toEmail: z
+      .string()
+      .email('Courriel destinataire invalide')
+      .or(z.literal(''))
+      .default(''),
+    subject: z.string().default(''),
+    submitLabel: z.string().min(1, 'Libellé du bouton requis'),
+    consentText: z.string().default(''),
+    fields: z
+      .array(
+        z.object({
+          label: z.string().min(1, 'Libellé de champ requis'),
+          type: z.enum(['text', 'email', 'textarea']),
+          required: z.boolean(),
+        }),
+      )
+      .min(1, 'Au moins un champ'),
+  }),
+});
+
+export const collections = { blog, home, landing, expertises, navigation, forms };
