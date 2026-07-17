@@ -293,4 +293,59 @@ const expertises = defineCollection({
   }),
 });
 
-export const collections = { blog, home, landing, expertises };
+/**
+ * Site chrome navigation — header menu, mega menu, announcement bar, portal
+ * button. One JSON per locale in src/data/navigation (ids "fr" / "en"),
+ * edited in CloudCannon (« Navigation » collection, cloudcannon.config.yml)
+ * and consumed by src/components/Header.astro at build.
+ *
+ * Gotchas:
+ *  - Hrefs are stored WITHOUT a locale prefix ("/contact", not "/fr/contact")
+ *    and localized at render via localizePath() — the SAME convention as the
+ *    old src/i18n/ui.ts nav, but the OPPOSITE of page sections (ctaHref),
+ *    which store final URLs. The CloudCannon input comments say so.
+ *  - This schema is the build gate: an invalid link fails the build naming
+ *    the offending file — broken navigation can never reach the site.
+ *  - `icon` is capped to the five keys drawn as inline SVGs in Header.astro
+ *    (megaIcons) — adding an icon means drawing it there first.
+ */
+const navHref = z
+  .string()
+  .min(1, 'Lien requis')
+  .refine(
+    (v) => (v.startsWith('/') && !v.startsWith('//')) || v.startsWith('https://'),
+    { message: 'Lien invalide : chemin commençant par « / » (sans « // ») ou URL https://' },
+  );
+const navLink = z.object({ label: z.string().min(1, 'Libellé requis'), href: navHref });
+const navigation = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/data/navigation' }),
+  schema: z.object({
+    items: z.array(navLink).min(1),
+    portal: z.object({
+      label: z.string().min(1),
+      visible: z.boolean().default(true),
+    }),
+    mega: z.object({
+      parentHref: navHref,
+      ariaLabel: z.string().min(1),
+      columns: z.array(
+        z.object({
+          title: z.string().min(1),
+          href: navHref,
+          icon: z.enum(['strategy', 'cloud', 'security', 'productivity', 'managed']),
+          links: z.array(navLink),
+        }),
+      ),
+    }),
+    announce: z.object({
+      enabled: z.boolean().default(true),
+      before: z.string(),
+      strong: z.string(),
+      after: z.string(),
+      linkLabel: z.string().min(1),
+      linkHref: navHref,
+    }),
+  }),
+});
+
+export const collections = { blog, home, landing, expertises, navigation };

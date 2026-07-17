@@ -1,0 +1,76 @@
+{
+  "items": [
+    { "label": "Découvrir Victrix", "href": "/decouvrir" },
+    { "label": "Expertises", "href": "/expertises" },
+    { "label": "Produits", "href": "/produits" },
+    { "label": "Carrière", "href": "/carrieres" },
+    { "label": "Contact", "href": "/contact" },
+    { "label": "Ressources", "href": "/ressources" }
+  ],
+  "portal": { "label": "Portail client", "visible": true },
+  "mega": {
+    "parentHref": "/expertises",
+    "ariaLabel": "Sous-menu Expertises",
+    "columns": [
+      {
+        "title": "Conseil stratégique",
+        "href": "/expertises/consultation-strategique",
+        "icon": "strategy",
+        "links": [
+          { "label": "Conformité Loi 25", "href": "/expertises/consultation-strategique/conformite-loi-25" }
+        ]
+      },
+      {
+        "title": "Infonuagique",
+        "href": "/expertises/infonuagique",
+        "icon": "cloud",
+        "links": [
+          { "label": "Microsoft Azure", "href": "/expertises/infonuagique/microsoft-azure" },
+          { "label": "Amazon Web Services", "href": "/expertises/infonuagique/amazon-web-services" }
+        ]
+      },
+      {
+        "title": "Cybersécurité",
+        "href": "/expertises/cybersecurite",
+        "icon": "security",
+        "links": [
+          { "label": "Centre opérationnel de sécurité (SOC) évolutif", "href": "/expertises/cybersecurite/soc-evolutif" },
+          { "label": "Tests d’intrusion", "href": "/expertises/cybersecurite/tests-intrusion" },
+          { "label": "IoT et OT", "href": "/expertises/cybersecurite/iot-ot" }
+        ]
+      },
+      {
+        "title": "Productivité",
+        "href": "/expertises/productivite",
+        "icon": "productivity",
+        "links": [
+          { "label": "Ø Studio", "href": "/produits" },
+          { "label": "Intelligence artificielle", "href": "/expertises/intelligence-artificielle" },
+          { "label": "Plateforme employé et intranet", "href": "/produits/intranet" },
+          { "label": "ServiceNow", "href": "/expertises/productivite/servicenow" },
+          { "label": "Dynamics 365 Field Service", "href": "/expertises/productivite/dynamics-365-field-service" },
+          { "label": "Copilot pour Microsoft 365", "href": "/expertises/productivite/copilot-microsoft-365" },
+          { "label": "Copilot Studio", "href": "/expertises/productivite/copilot-studio" },
+          { "label": "O bureau", "href": "/produits/reservation-bureau" }
+        ]
+      },
+      {
+        "title": "Services gérés",
+        "href": "/expertises/services-geres",
+        "icon": "managed",
+        "links": [
+          { "label": "Services TI gérés", "href": "/expertises/services-geres/services-ti-geres" },
+          { "label": "Environnement Microsoft 365", "href": "/expertises/services-geres/environnement-microsoft-365" }
+        ]
+      }
+    ]
+  },
+  "announce": {
+    "enabled": true,
+    "before": "Découvrez ",
+    "strong": "Ø Studio",
+    "after": ", notre catalogue d’applications et de services pour accélérer votre productivité.",
+    "linkLabel": "En savoir plus →",
+    "linkHref": "/produits"
+  }
+}

@@ -1,4 +1,5 @@
 ---
+import { getEntry } from 'astro:content';
 import Logo from './Logo.astro';
 import { type Locale, defaultLocale, otherLocale, localizePath, swapLocale } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
@@ -6,9 +7,12 @@ import { useTranslations } from '../i18n/ui';
 /**
  * Global site header: dismissible announcement bar, logo, primary navigation,
  * a working FR/EN language switcher, and an accessible mobile drawer menu.
- * Locale-aware: labels come from the UI dictionary, internal hrefs are
- * localized, and the language switch links to the equivalent page in the
- * other locale (`altLocalePath`, provided by the layout).
+ * Locale-aware. CONTENT (menu items, mega menu, announcement, portal button)
+ * comes from the `navigation` collection — src/data/navigation/<lang>.json,
+ * editable in CloudCannon; hrefs are stored locale-less and localized here.
+ * Only accessibility strings stay in the UI dictionary (src/i18n/ui.ts).
+ * This is site chrome rendered at build — astro:content is fine here (the
+ * browser-safe rule only applies to Bookshop section components).
  */
 
 interface Props {
@@ -20,11 +24,17 @@ interface Props {
 const { lang = defaultLocale, altLocalePath } = Astro.props;
 const t = useTranslations(lang);
 
-const navItems = t.nav.items.map((item) => ({
+const navEntry = await getEntry('navigation', lang);
+if (!navEntry) {
+  throw new Error(`[navigation] Fichier manquant : src/data/navigation/${lang}.json`);
+}
+const nav = navEntry.data;
+
+const navItems = nav.items.map((item) => ({
   label: item.label,
   href: localizePath(item.href, lang),
-  // The "Expertises" item carries the mega menu (desktop only).
-  mega: item.href === t.nav.mega.parentHref ? t.nav.mega : undefined,
+  // The item whose href matches mega.parentHref carries the mega menu.
+  mega: item.href === nav.mega.parentHref ? nav.mega : undefined,
 }));
 
 // Mega-menu column icons (24×24 stroke outlines, colored via currentColor) —
@@ -44,11 +54,13 @@ const megaIcons: Record<string, string> = {
 
 // The portal lives under the locale prefix, like every other page.
 const portal = {
-  label: t.nav.portal,
+  label: nav.portal.label,
+  visible: nav.portal.visible,
   href: localizePath('/portail', lang),
 };
 
-const announceLink = localizePath(t.announce.linkHref, lang);
+const announce = nav.announce;
+const announceLink = localizePath(announce.linkHref, lang);
 
 // Active-state matching against the localized current path.
 const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
@@ -63,30 +75,36 @@ const frHref = lang === 'fr' ? Astro.url.pathname : alt;
 const enHref = lang === 'en' ? Astro.url.pathname : alt;
 ---
 
-<!-- Announcement bar (editable / dismissible) -->
-<div class="announcement" data-announcement>
-  <div class="container announcement__inner">
-    <p class="announcement__text">
-      {t.announce.before}<strong>{t.announce.strong}</strong>{t.announce.after}
-      <a class="announcement__link" href={announceLink}>{t.announce.linkLabel}</a>
-    </p>
-    <button
-      type="button"
-      class="announcement__close"
-      data-announce-close
-      aria-label={t.announce.close}
-    >
-      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-        <path
-          d="M2 2l12 12M14 2L2 14"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-        ></path>
-      </svg>
-    </button>
-  </div>
-</div>
+<!-- Announcement bar (editable / dismissible; « Affichée » switch in the CMS) -->
+{
+  announce.enabled && (
+    <div class="announcement" data-announcement>
+      <div class="container announcement__inner">
+        <p class="announcement__text">
+          {announce.before}<strong>{announce.strong}</strong>{announce.after}
+          <a class="announcement__link" href={announceLink}>
+            {announce.linkLabel}
+          </a>
+        </p>
+        <button
+          type="button"
+          class="announcement__close"
+          data-announce-close
+          aria-label={t.announce.close}
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            <path
+              d="M2 2l12 12M14 2L2 14"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  )
+}
 
 <header class="site-header">
   <div class="container site-header__inner">
@@ -150,9 +168,13 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
     </nav>
 
     <div class="site-header__actions">
-      <a class="btn btn--primary site-header__portal" href={portal.href}>
-        {portal.label}
-      </a>
+      {
+        portal.visible && (
+          <a class="btn btn--primary site-header__portal" href={portal.href}>
+            {portal.label}
+          </a>
+        )
+      }
 
       <div class="lang-switch" role="group" aria-label={t.nav.langGroupAria}>
         <a class:list={['lang-switch__link', { 'is-active': lang === 'fr' }]} href={frHref} aria-current={lang === 'fr' ? 'true' : undefined} lang="fr">FR</a>
@@ -210,7 +232,13 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
       }
     </ul>
 
-    <a class="btn btn--primary mobile-nav__portal" href={portal.href}>{portal.label}</a>
+    {
+      portal.visible && (
+        <a class="btn btn--primary mobile-nav__portal" href={portal.href}>
+          {portal.label}
+        </a>
+      )
+    }
 
     <div class="lang-switch lang-switch--mobile" role="group" aria-label={t.nav.langGroupAria}>
       <a class:list={['lang-switch__link', { 'is-active': lang === 'fr' }]} href={frHref} aria-current={lang === 'fr' ? 'true' : undefined} lang="fr">FR</a>

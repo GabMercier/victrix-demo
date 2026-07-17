@@ -596,6 +596,116 @@ collections_config:
             - "301"
             - "302"
 
+  # Navigation du site (menu principal, méga-menu, barre d'annonce, bouton
+  # portail) — un JSON par langue dans src/data/navigation, consommé par
+  # src/components/Header.astro et validé au build par la collection
+  # `navigation` (src/content.config.ts) : un lien invalide fait échouer le
+  # build en nommant le fichier fautif. ATTENTION CONVENTION : les liens
+  # internes sont stockés SANS préfixe de langue (/contact, pas /fr/contact) —
+  # le gabarit ajoute /fr ou /en au rendu. C'est l'INVERSE des sections de
+  # page (ctaHref = URL finale) ; les commentaires des champs le rappellent.
+  navigation:
+    path: src/data/navigation
+    name: Navigation
+    singular_name: Navigation
+    description: >-
+      Menu principal, méga-menu, barre d'annonce et bouton du portail (un
+      fichier par langue). Liens internes SANS préfixe de langue (ex.
+      /contact) — le site ajoute /fr ou /en automatiquement.
+    icon: menu
+    # Two dev-owned files (fr.json / en.json): no add/delete/rename, and no
+    # preview URL (the JSON is not a page).
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    disable_url: true
+    # Data Editor only (opens by default — first value). These are structured
+    # JSON files with no markdown body.
+    _enabled_editors:
+      - data
+    _inputs:
+      items:
+        type: array
+        label: Menu principal
+        comment: Entrées du menu d'en-tête, dans l'ordre d'affichage.
+        options:
+          structures: _structures.nav_links
+      portal:
+        type: object
+        label: Bouton « Portail client »
+      visible:
+        type: switch
+        label: Visible
+      mega:
+        type: object
+        label: Méga-menu
+        comment: >-
+          S'attache à l'entrée du menu principal dont le lien est identique au
+          « Lien parent » ci-dessous.
+      parentHref:
+        type: text
+        label: Lien parent
+        comment: >-
+          Doit correspondre au lien d'une entrée du menu principal (ex.
+          /expertises).
+      ariaLabel:
+        type: text
+        label: Libellé d'accessibilité
+      columns:
+        type: array
+        label: Colonnes
+        options:
+          structures: _structures.nav_columns
+      links:
+        type: array
+        label: Liens
+        options:
+          structures: _structures.nav_links
+      icon:
+        type: select
+        label: Icône
+        comment: >-
+          Icônes disponibles (dessinées dans le gabarit d'en-tête — en ajouter
+          une est une tâche développeur).
+        options:
+          values:
+            - strategy
+            - cloud
+            - security
+            - productivity
+            - managed
+      announce:
+        type: object
+        label: Barre d'annonce
+      enabled:
+        type: switch
+        label: Affichée
+        comment: Désactivé = la barre d'annonce disparaît du site.
+      before:
+        type: text
+        label: Texte (avant la partie en gras)
+      strong:
+        type: text
+        label: Partie en gras
+      after:
+        type: textarea
+        label: Texte (après la partie en gras)
+      linkLabel:
+        type: text
+        label: Libellé du lien
+      linkHref:
+        type: text
+        label: Lien de l'annonce
+        comment: Sans préfixe de langue (ex. /produits).
+      label:
+        type: text
+        label: Libellé
+      href:
+        type: text
+        label: Lien
+        comment: >-
+          Sans préfixe de langue (ex. /contact), ou URL https:// complète.
+
 _structures:
   # Section palette for the landing `sections` array. The VALUES are NOT
   # written here: the CloudCannon postbuild `npx @bookshop/generate` appends
@@ -683,6 +793,38 @@ _structures:
                 - text
                 - email
                 - textarea
+
+  # Navigation (collection « navigation ») : formes des tableaux du menu.
+  # Même logique que benefit_items — une structure à valeur unique donne au
+  # bouton « + » la bonne forme, même sur un tableau vide. Non taguées dans un
+  # spec Bookshop → generate n'y touche pas.
+  nav_links:
+    values:
+      - label: Lien de navigation
+        icon: link
+        preview:
+          icon: link
+          text:
+            - key: label
+            - text: Lien de navigation
+        value:
+          label: ''
+          href: ''
+
+  nav_columns:
+    values:
+      - label: Colonne du méga-menu
+        icon: view_column
+        preview:
+          icon: view_column
+          text:
+            - key: title
+            - text: Colonne du méga-menu
+        value:
+          title: ''
+          href: ''
+          icon: strategy
+          links: []
 
   # FAQ items ({question, answer} pairs) for the « FAQ » Bookshop section.
   # GOTCHA: the FAQ array is ALSO named `items` (frozen contract), and the
