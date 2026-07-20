@@ -896,6 +896,13 @@ _structures:
               Type « select » seulement — au moins une option; éviter les
               virgules dans le texte d'une option. Ignoré pour les autres
               types.
+          # Type d'entrée du tableau (notation documentée `nom[*]`) : sans
+          # lui, un tableau VIDE est « misconfigured » — CloudCannon ne sait
+          # pas quoi créer au « + Ajouter » (le clonage exige une entrée
+          # existante). Chaque option est une simple chaîne.
+          options[*]:
+            type: text
+            label: Option
           value:
             type: text
             label: Valeur (champ caché)
