@@ -1,5 +1,6 @@
 {
-  "name": "Campagne — évaluation de sécurité (FR)",
+  "_schema": "default",
+  "name": "Campagne évaluation de sécurité (FR)",
   "toEmail": "",
   "subject": "Demande d'évaluation de posture de sécurité",
   "submitLabel": "Envoyer ma demande",
@@ -11,7 +12,10 @@
       "required": true,
       "options": [],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "Courriel professionnel",
@@ -19,7 +23,10 @@
       "required": true,
       "options": [],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "Téléphone",
@@ -27,7 +34,10 @@
       "required": false,
       "options": [],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "Taille de l'entreprise",
@@ -40,7 +50,10 @@
         "Autre"
       ],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "Précisez la taille",
@@ -48,7 +61,10 @@
       "required": true,
       "options": [],
       "value": "",
-      "showIf": { "field": "Taille de l'entreprise", "equals": "Autre" }
+      "showIf": {
+        "field": "Taille de l'entreprise",
+        "equals": "Autre"
+      }
     },
     {
       "label": "Message",
@@ -56,7 +72,10 @@
       "required": false,
       "options": [],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "Je consens à ce que Victrix recueille et utilise mes renseignements pour traiter ma demande (Loi 25)",
@@ -64,7 +83,10 @@
       "required": true,
       "options": [],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "Page d'origine",
@@ -72,7 +94,10 @@
       "required": false,
       "options": [],
       "value": "{{page.titre}} ({{page.chemin}})",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "UTM — source",
@@ -80,7 +105,10 @@
       "required": false,
       "options": [],
       "value": "{{url.utm_source}}",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "UTM — campagne",
@@ -88,7 +116,10 @@
       "required": false,
       "options": [],
       "value": "{{url.utm_campaign}}",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     }
   ]
 }
