@@ -848,25 +848,84 @@ _structures:
           text:
             - key: label
             - text: Champ de formulaire
+        # Forme COMPLÈTE (P-05) : les clés étendues sont présentes avec des
+        # « formes vides » — options: [], value: '', showIf {field:'',…} —
+        # jamais null (un null casserait les .optional() zod en cours
+        # d'édition, voir l'entête _structures). Une clé laissée vide signifie
+        # simplement « sans objet pour ce type de champ ».
         value:
           label: ''
           type: text
           required: true
+          options: []
+          value: ''
+          showIf:
+            field: ''
+            equals: ''
         # Structure values support their own _inputs, and the "containing
         # structure" level outranks the landing collection's _inputs in the
         # configuration cascade — this re-exposes the form-field `type` select
         # that the collection-level `type: hidden` (section discriminator)
-        # would otherwise hide.
+        # would otherwise hide. Les _inputs des clés étendues (options/value/
+        # showIf/field/equals) vivent AUSSI ici pour rester scopés aux champs
+        # de formulaire.
         _inputs:
           type:
             type: select
             label: Type de champ
-            comment: Champ texte, courriel ou zone de texte multiligne.
+            comment: >-
+              text = texte court · email = courriel · tel = téléphone ·
+              textarea = texte long · select = liste déroulante · checkbox =
+              case à cocher (ex. consentement Loi 25) · hidden = champ caché.
+              Les clés « Options », « Valeur (champ caché) » et « Condition
+              d'affichage » ne s'appliquent qu'aux types indiqués dans leur
+              description.
             options:
               values:
                 - text
                 - email
+                - tel
                 - textarea
+                - select
+                - checkbox
+                - hidden
+          options:
+            type: array
+            label: Options (liste déroulante)
+            comment: >-
+              Type « select » seulement — au moins une option; éviter les
+              virgules dans le texte d'une option. Ignoré pour les autres
+              types.
+          value:
+            type: text
+            label: Valeur (champ caché)
+            comment: >-
+              Type « hidden » seulement. Jetons remplacés à la publication :
+              {{page.titre}}, {{page.chemin}}, {{page.slug}}, {{page.langue}}.
+              Un jeton {{url.utm_source}} (ou tout autre {{url.…}}, seul dans
+              la valeur) est rempli dans le navigateur du visiteur depuis
+              l'adresse de la page.
+          showIf:
+            type: object
+            label: Condition d'affichage
+            comment: >-
+              Laisser vide = champ toujours affiché. Sinon, le champ ne
+              s'affiche que si le champ pilote a la valeur attendue (le
+              serveur n'exige alors ce champ que lorsque la condition est
+              remplie).
+          field:
+            type: text
+            label: Champ pilote (libellé exact)
+            comment: >-
+              Recopier EXACTEMENT le libellé d'une liste déroulante ou d'une
+              case à cocher du même formulaire. Une faute de frappe bloque la
+              publication avec un message clair.
+          equals:
+            type: text
+            label: Valeur attendue
+            comment: >-
+              Une option de la liste pilote, ou « oui » pour une case à
+              cocher.
 
   # Partenaires ({name, logo, description}) pour la section « Bandeau logos
   # partenaires » (logo-banner). Même GOTCHA que faq_items : le tableau

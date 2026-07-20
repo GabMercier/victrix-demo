@@ -121,8 +121,39 @@ Les sections « Formulaire » des landings sont **en démonstration** tant que l
 clés d'envoi ne sont pas configurées (action technique ponctuelle, voir
 `docs/formulaires.md`). Une fois activées : anti-pourriel invisible,
 notification courriel à l'adresse choisie, et redirection du visiteur vers la
-page « Merci ». Les champs (nom, courriel, message…) se composent dans la
-section, comme le reste.
+page « Merci ».
+
+**Composer un formulaire réutilisable** (collection **Formulaires** de la
+barre latérale — recommandé) : un fichier = un formulaire, avec son
+destinataire et son objet de courriel; les pages y font référence par le champ
+« Formulaire lié » de la section. Sept types de champ :
+
+| Type | Usage |
+|---|---|
+| Texte court / Courriel / Téléphone / Texte long | les classiques (nom, courriel, message…) |
+| Liste déroulante | choix borné — remplir « Options (liste déroulante) », une par ligne |
+| Case à cocher | oui/non affirmatif — **c'est le type à utiliser pour le consentement Loi 25** (cocher « Obligatoire » : la demande ne part pas sans consentement, et le courriel indique « oui »/« non ») |
+| Champ caché | invisible du visiteur, mais présent dans le courriel — utile pour tracer la provenance |
+
+Deux raffinements optionnels :
+
+- **Champ auto-rempli** (type « champ caché ») : la « Valeur (champ caché) »
+  accepte des jetons remplacés automatiquement — `{{page.titre}}`,
+  `{{page.chemin}}`, `{{page.slug}}`, `{{page.langue}}` (valeurs de la page
+  qui héberge le formulaire) et `{{url.utm_source}}` (ou tout `{{url.…}}`,
+  seul dans la valeur) pour capter les paramètres de campagne de l'adresse
+  visitée. Le courriel de notification montre ces valeurs.
+- **Condition d'affichage** : un champ peut n'apparaître que si un autre champ
+  a une valeur précise (ex. « Précisez » ne s'affiche que si la liste vaut
+  « Autre »). Remplir « Champ pilote » avec le **libellé exact** d'une liste
+  déroulante ou d'une case du même formulaire, et « Valeur attendue » avec
+  l'option visée (« oui » pour une case). Une faute de frappe dans le libellé
+  **bloque la publication avec un message clair** — garde-fou, pas bogue.
+
+Le formulaire de démonstration `campagne-evaluation` (FR et EN) illustre tout
+cela : liste déroulante, champ conditionnel, case de consentement requise et
+champs cachés auto-remplis. Les champs peuvent aussi rester composés
+directement dans la section (mode historique), mais sans destinataire propre.
 
 ## Publier et partager un aperçu
 

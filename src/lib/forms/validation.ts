@@ -20,6 +20,9 @@
  *     additionally, any field whose NAME contains "email"/"courriel" is treated
  *     as an email field (heuristic fallback when `_requis`/`_courriels` are
  *     absent — the endpoint must stay safe even if the form omits them)
+ *   - hidden `_cases` (optional, P-05) — comma-separated names of checkbox
+ *     fields, so the email always reflects « oui »/« non » (see
+ *     reflectCheckboxes; an unchecked box is absent from the POST)
  *   - `cf-turnstile-response` — the Turnstile token (verified elsewhere;
  *     treated as a meta field here so it never leaks into the message body)
  */
@@ -32,6 +35,16 @@ export const REQUIRED_LIST_FIELD = '_requis';
 
 /** Optional hidden field: comma-separated names of email fields. */
 export const EMAIL_LIST_FIELD = '_courriels';
+
+/**
+ * Optional hidden field: comma-separated names of CHECKBOX fields (P-05).
+ * An unchecked checkbox is simply ABSENT from an urlencoded POST, so without
+ * this list the server cannot tell "unchecked" from "no such field" — and the
+ * notification email must always reflect the real state (« oui »/« non »,
+ * Loi 25). With `_formId`, the list is overwritten from the registry like
+ * `_requis`/`_courriels`.
+ */
+export const CHECKBOX_LIST_FIELD = '_cases';
 
 /** Turnstile's auto-injected hidden input (see docs/formulaires.md). */
 export const TURNSTILE_TOKEN_FIELD = 'cf-turnstile-response';
@@ -54,6 +67,7 @@ export const META_FIELDS: ReadonlySet<string> = new Set([
   HONEYPOT_FIELD,
   REQUIRED_LIST_FIELD,
   EMAIL_LIST_FIELD,
+  CHECKBOX_LIST_FIELD,
   TURNSTILE_TOKEN_FIELD,
   FORM_ID_FIELD,
 ]);
@@ -132,8 +146,12 @@ export function sanitizeSourcePath(value: string | undefined, lang: FormLang): s
   return path;
 }
 
-/** Split a comma-separated hidden-field value into trimmed, non-empty names. */
-function parseNameList(value: string | undefined): string[] {
+/**
+ * Split a comma-separated hidden-field value into trimmed, non-empty names.
+ * Exported since P-05: the endpoint parses `_cases` itself in inline mode
+ * (no `_formId`) to feed reflectCheckboxes.
+ */
+export function parseNameList(value: string | undefined): string[] {
   if (!value) return [];
   return value
     .split(',')
@@ -214,6 +232,23 @@ export function validateSubmission(fields: SubmissionFields): ValidationResult {
     if (!META_FIELDS.has(name)) data[name] = value;
   }
   return { ok: true, spam: false, data };
+}
+
+/**
+ * Reflect checkbox state in the outgoing data (P-05, exigence Loi 25) : for
+ * every checkbox name, the value becomes exactly « oui » or « non » — never a
+ * silent omission (an unchecked box is absent from the POST and would simply
+ * not appear in the email), and never a forged payload value (« nawak » is
+ * normalized to « oui » since the box WAS submitted as checked). Unchecked
+ * boxes are appended in list order, after the fields the visitor typed.
+ * Mutates and returns `data` — call it after validateSubmission, before
+ * formatSubmissionText.
+ */
+export function reflectCheckboxes(data: SubmissionFields, names: string[]): SubmissionFields {
+  for (const name of names) {
+    data[name] = (data[name] ?? '').trim() !== '' ? 'oui' : 'non';
+  }
+  return data;
 }
 
 /**

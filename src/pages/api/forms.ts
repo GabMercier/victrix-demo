@@ -23,21 +23,26 @@
 import type { APIRoute } from 'astro';
 import {
   parseFormBody,
+  parseNameList,
   sanitizeLang,
   sanitizeSourcePath,
   validateSubmission,
   formatSubmissionText,
+  reflectCheckboxes,
   MAX_PAYLOAD_BYTES,
   TURNSTILE_TOKEN_FIELD,
   FORM_ID_FIELD,
   REQUIRED_LIST_FIELD,
   EMAIL_LIST_FIELD,
+  CHECKBOX_LIST_FIELD,
 } from '../../lib/forms/validation';
 import {
   buildRegistry,
   resolveForm,
   requiredFieldNames,
   emailFieldNames,
+  checkboxFieldNames,
+  selectFieldViolations,
 } from '../../lib/forms/registry';
 import { verifyTurnstileToken } from '../../lib/forms/turnstile';
 import { sendEmail } from '../../lib/forms/smtp2go';
@@ -119,8 +124,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
       return failure;
     }
     if (formDef) {
-      fields[REQUIRED_LIST_FIELD] = requiredFieldNames(formDef).join(',');
+      // P-05 : les requis sont évalués AVEC les valeurs soumises — un champ
+      // requis dont la condition d'affichage (showIf, définie dans le
+      // formulaire) n'est pas satisfaite n'est pas exigé. Toujours depuis la
+      // définition, jamais depuis une liste envoyée par le client.
+      fields[REQUIRED_LIST_FIELD] = requiredFieldNames(formDef, fields).join(',');
       fields[EMAIL_LIST_FIELD] = emailFieldNames(formDef).join(',');
+      fields[CHECKBOX_LIST_FIELD] = checkboxFieldNames(formDef).join(',');
     }
 
     const result = validateSubmission(fields);
@@ -131,6 +141,17 @@ export const POST: APIRoute = async ({ request, locals }) => {
     // Honeypot tripped: PRETEND success (bots must not learn they were caught),
     // send nothing, store nothing.
     if (result.spam) return thanks;
+
+    // P-05 — liste blanche des selects : une valeur hors des options de la
+    // définition est un POST forgé (le <select> rendu n'offre que la liste).
+    // Après le pot de miel : un robot pris ne doit rien apprendre de plus.
+    if (formDef) {
+      const selectErrors = selectFieldViolations(formDef, fields);
+      if (selectErrors.length > 0) {
+        console.warn('[api/forms] select refusé:', selectErrors.join(' | '));
+        return failure;
+      }
+    }
 
     // Turnstile — verified only when the server secret is configured; without
     // it the widget (if any) is decorative and the honeypot is the only gate.
@@ -147,6 +168,15 @@ export const POST: APIRoute = async ({ request, locals }) => {
         return failure;
       }
     }
+
+    // P-05 — reflet des cases (Loi 25) : chaque case devient « oui »/« non »
+    // dans le courriel, jamais d'omission silencieuse. Liste depuis la
+    // définition (v2) ou depuis le champ `_cases` annoncé par la section
+    // (mode inline, plomberie strippée du contenu par META_FIELDS).
+    reflectCheckboxes(
+      result.data,
+      formDef ? checkboxFieldNames(formDef) : parseNameList(fields[CHECKBOX_LIST_FIELD]),
+    );
 
     const text = formatSubmissionText(result.data, { lang, source });
 

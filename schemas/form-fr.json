@@ -5,8 +5,29 @@
   "submitLabel": "Envoyer",
   "consentText": "",
   "fields": [
-    { "label": "Nom complet", "type": "text", "required": true },
-    { "label": "Courriel", "type": "email", "required": true },
-    { "label": "Message", "type": "textarea", "required": false }
+    {
+      "label": "Nom complet",
+      "type": "text",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Courriel",
+      "type": "email",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Message",
+      "type": "textarea",
+      "required": false,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    }
   ]
 }

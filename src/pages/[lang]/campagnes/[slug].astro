@@ -76,8 +76,20 @@ export async function getStaticPaths() {
         altLocalePath,
         frontmatter: page.data,
         // HORS frontmatter à dessein (le marqueur bookshop:live ne trace que
-        // contentBlocks) — voir l'entête du renderer partagé.
-        enrich: { form: { resolvedForms } },
+        // contentBlocks) — voir l'entête du renderer partagé. pageContext
+        // (P-05) alimente les jetons {{page.*}} des champs cachés de la
+        // section form (src/lib/forms/hidden-tokens.ts).
+        enrich: {
+          form: {
+            resolvedForms,
+            pageContext: {
+              titre: page.data.title,
+              chemin: `/${lang}/campagnes/${slug}/`,
+              slug,
+              langue: lang,
+            },
+          },
+        },
       },
     };
   });

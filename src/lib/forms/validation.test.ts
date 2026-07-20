@@ -2,10 +2,14 @@ import { describe, it, expect } from 'vitest';
 
 import {
   parseFormBody,
+  parseNameList,
   sanitizeLang,
   sanitizeSourcePath,
   validateSubmission,
   formatSubmissionText,
+  reflectCheckboxes,
+  CHECKBOX_LIST_FIELD,
+  META_FIELDS,
   MAX_VALUE_LENGTH,
   MAX_PAYLOAD_BYTES,
 } from './validation';
@@ -187,5 +191,55 @@ describe('formatSubmissionText', () => {
     expect(text).toContain('Page source : /fr/contact');
     expect(text).toContain('nom : Gabrielle');
     expect(text).toContain('message : Allô');
+  });
+});
+
+// ---- P-05 : cases à cocher (« oui »/« non », Loi 25) ----
+
+describe('checkbox plumbing (_cases)', () => {
+  it('_cases est un champ de plomberie : strippé du contenu du courriel', () => {
+    expect(META_FIELDS.has(CHECKBOX_LIST_FIELD)).toBe(true);
+    const result = validateSubmission(baseFields({ [CHECKBOX_LIST_FIELD]: 'consentement' }));
+    expect(result.ok).toBe(true);
+    if (result.ok) expect(result.data).not.toHaveProperty(CHECKBOX_LIST_FIELD);
+  });
+
+  it('une case requise non cochée (absente du POST) échoue via _requis', () => {
+    const result = validateSubmission(baseFields({ _requis: 'consentement' }));
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.errors).toContain('champ requis manquant: consentement');
+  });
+
+  it('parseNameList découpe et nettoie la liste', () => {
+    expect(parseNameList(' consentement , infolettre ,, ')).toEqual([
+      'consentement',
+      'infolettre',
+    ]);
+    expect(parseNameList(undefined)).toEqual([]);
+  });
+});
+
+describe('reflectCheckboxes', () => {
+  it('case cochée → « oui », case absente → ligne « non » ajoutée', () => {
+    const data = reflectCheckboxes({ consentement: 'oui', nom: 'G' }, [
+      'consentement',
+      'infolettre',
+    ]);
+    expect(data.consentement).toBe('oui');
+    expect(data.infolettre).toBe('non');
+    expect(data.nom).toBe('G');
+  });
+
+  it('valeur falsifiée normalisée à « oui » (la case a bel et bien été soumise)', () => {
+    expect(reflectCheckboxes({ consentement: 'nawak' }, ['consentement']).consentement).toBe(
+      'oui',
+    );
+  });
+
+  it('le courriel montre chaque case, cochée ou non', () => {
+    const data = reflectCheckboxes({ consentement: 'oui' }, ['consentement', 'infolettre']);
+    const text = formatSubmissionText(data, { lang: 'fr', source: '/fr/x' });
+    expect(text).toContain('consentement : oui');
+    expect(text).toContain('infolettre : non');
   });
 });

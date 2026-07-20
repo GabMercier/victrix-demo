@@ -3,10 +3,92 @@
   "toEmail": "",
   "subject": "Security posture assessment request",
   "submitLabel": "Send my request",
-  "consentText": "By submitting this form, you consent to Victrix collecting and using the information provided solely to process your request, in accordance with Law 25 on the protection of personal information in the private sector.",
+  "consentText": "The information provided is collected and used solely to process your request, in accordance with Law 25 on the protection of personal information in the private sector.",
   "fields": [
-    { "label": "Full name", "type": "text", "required": true },
-    { "label": "Business email", "type": "email", "required": true },
-    { "label": "Message", "type": "textarea", "required": false }
+    {
+      "label": "Full name",
+      "type": "text",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Business email",
+      "type": "email",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Phone",
+      "type": "tel",
+      "required": false,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Company size",
+      "type": "select",
+      "required": true,
+      "options": [
+        "Fewer than 50 employees",
+        "50 to 249 employees",
+        "250 employees or more",
+        "Other"
+      ],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Please specify the size",
+      "type": "text",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "Company size", "equals": "Other" }
+    },
+    {
+      "label": "Message",
+      "type": "textarea",
+      "required": false,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "I consent to Victrix collecting and using my information to process my request (Law 25)",
+      "type": "checkbox",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Origin page",
+      "type": "hidden",
+      "required": false,
+      "options": [],
+      "value": "{{page.titre}} ({{page.chemin}})",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "UTM — source",
+      "type": "hidden",
+      "required": false,
+      "options": [],
+      "value": "{{url.utm_source}}",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "UTM — campaign",
+      "type": "hidden",
+      "required": false,
+      "options": [],
+      "value": "{{url.utm_campaign}}",
+      "showIf": { "field": "", "equals": "" }
+    }
   ]
 }

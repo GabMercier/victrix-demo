@@ -91,15 +91,39 @@ Champs cachés que la section « form » envoie avec les champs visibles :
 | `lang` | oui | `fr` \| `en` — choisit la page /merci et la langue des redirections ; toute autre valeur retombe sur `fr` |
 | `source` | oui | chemin de la page hébergeant le formulaire — cible du retour en cas d'erreur ; assaini côté serveur (doit commencer par `/`, pas `//`, aucune barre oblique inversée `\` — les navigateurs la normalisent en `/`, même risque de redirection ouverte — requête/fragment retirés) |
 | `website` | oui (vide) | **pot de miel** : masqué aux humains (CSS), rempli par les robots ; rempli → succès simulé, rien d'envoyé |
-| `_requis` | non | noms des champs requis, séparés par des virgules — chacun doit être non vide après trim |
+| `_requis` | non | noms des champs requis, séparés par des virgules — chacun doit être non vide après trim. **P-05** : un champ requis CONDITIONNEL (`showIf`) n'y figure pas — sans la définition, le serveur ne peut pas évaluer la condition (garanti en v2 seulement, voir §5) |
 | `_courriels` | non | noms des champs courriel, séparés par des virgules — format RFC de base exigé |
+| `_cases` | non | **P-05** : noms des cases à cocher, séparés par des virgules. Une case non cochée est ABSENTE d'un POST urlencoded — cette liste permet au serveur de refléter l'état réel (« oui »/« non ») dans le courriel (exigence Loi 25), jamais d'omission silencieuse. Avec `_formId`, écrasée depuis le registre comme `_requis`/`_courriels` |
 | `cf-turnstile-response` | (auto) | injecté par le widget Turnstile ; jamais repris dans le courriel |
-| `_formId` | non | **Formulaires v2 (17 juil.)** : identifiant d'une définition de `src/data/forms/<lang>/` (collection CloudCannon « Formulaires »). Présent → le serveur résout **destinataire, objet et listes requis/courriel depuis le REGISTRE embarqué au build** (`src/lib/forms/registry.ts`) — les listes annoncées par le client sont écrasées, un id inconnu est un échec de validation (le registre est la liste blanche). La section « form » le pose automatiquement quand son champ « Formulaire lié » est rempli ; `toEmail` vide dans la définition = repli sur `FORMS_TO_EMAIL`. |
+| `_formId` | non | **Formulaires v2 (17 juil.)** : identifiant d'une définition de `src/data/forms/<lang>/` (collection CloudCannon « Formulaires »). Présent → le serveur résout **destinataire, objet et listes requis/courriel/cases depuis le REGISTRE embarqué au build** (`src/lib/forms/registry.ts`) — les listes annoncées par le client sont écrasées, un id inconnu est un échec de validation (le registre est la liste blanche). **P-05** : les requis sont évalués AVEC les valeurs soumises (un requis conditionnel dont le `showIf` n'est pas satisfait n'est pas exigé) et toute valeur de `select` hors des `options` de la définition est rejetée. La section « form » le pose automatiquement quand son champ « Formulaire lié » est rempli ; `toEmail` vide dans la définition = repli sur `FORMS_TO_EMAIL`. |
 
 Filet de sécurité si `_requis`/`_courriels` sont absents : le serveur refuse
 une soumission entièrement vide, et tout champ dont le NOM contient `email` ou
 `courriel` est validé comme courriel. Le endpoint reste donc sûr même si le
 formulaire n'annonce rien.
+
+### 4.1 Champs cachés auto-peuplés (P-05)
+
+Le `value` d'un champ de type `hidden` accepte des **jetons** (logique :
+`src/lib/forms/hidden-tokens.ts`, partagée avec l'éditeur visuel) :
+
+| Jeton | Résolu | Valeur |
+| --- | --- | --- |
+| `{{page.titre}}` | au build (seam `enrich` de la route campagnes) | titre de la page hôte |
+| `{{page.chemin}}` | au build | chemin de la page (ex. `/fr/campagnes/demo-sections/`) |
+| `{{page.slug}}` | au build | slug de la page |
+| `{{page.langue}}` | au build | `fr` \| `en` |
+| `{{url.utm_source}}` (ou tout `{{url.<param>}}`) | dans le NAVIGATEUR au chargement (mini-script, tronqué à 200 caractères) | paramètre de l'adresse visitée |
+
+Règles : les jetons `{{page.*}}` se mélangent librement à du texte fixe ; un
+jeton `{{url.*}}` doit être **seul et entier** dans la valeur ; tout jeton
+inconnu (ou hors contexte — éditeur visuel) se résout en chaîne vide, jamais
+en jeton brut. **Confiance limitée assumée** : la valeur voyage dans le POST
+comme n'importe quel champ et le serveur ne peut pas la re-résoudre (le
+registre connaît les formulaires, pas les pages) — c'est une valeur
+**informative** du courriel de notification, soumise aux limites du §5, rien
+de plus. Un champ `hidden` n'est jamais requis (un jeton peut légitimement se
+résoudre en chaîne vide).
 
 ## 5. Validation côté serveur (limites du contrat)
 
@@ -110,8 +134,34 @@ formulaire n'annonce rien.
   (`quelquechose@quelquechose.tld`, sans espace) ;
 - champs répétés (cases à cocher) joints par `", "` — rien n'est perdu.
 
-La logique vit dans `src/lib/forms/validation.ts` (fonctions pures, sans
-dépendance Astro) et est couverte par `validation.test.ts` (`npm test`).
+Ajouts **P-05** (types étendus) :
+
+- **cases à cocher** : le courriel montre chaque case en « oui »/« non »
+  (`reflectCheckboxes`) — une case non cochée apparaît « non » en fin de
+  courriel, une valeur falsifiée est normalisée « oui ». Une case REQUISE non
+  cochée = champ requis manquant. Un libellé = une case unique (les groupes de
+  cases partageant un libellé sont hors périmètre — même limite que « deux
+  libellés identiques », §4) ;
+- **select** : avec `_formId`, toute valeur hors des `options` de la
+  définition est rejetée (liste blanche — le POST forgé ne choisit pas ses
+  réponses). Éviter une option contenant une virgule (collision avec la
+  jointure des champs répétés) ;
+- **conditionnels (`showIf {field, equals}`)** : pure ergonomie navigateur
+  (le champ masqué est aussi `disabled`, donc non soumis). Le serveur
+  ré-évalue la condition DEPUIS LA DÉFINITION avec les valeurs soumises pour
+  décider si un champ requis est exigé — **garanti pour les formulaires liés
+  (`_formId`) seulement** : en mode inline, les requis conditionnels sont
+  exclus de `_requis` (comportement assumé ; les filets du §4 demeurent).
+  Sans JavaScript, les champs conditionnels restent visibles et, de fait,
+  facultatifs (progressive enhancement). Le pilote d'une condition est une
+  liste déroulante ou une case (validé au build), sans chaînage ;
+- **`tel`** : aucun format imposé côté serveur (les formats de téléphone
+  varient trop — champ libre court).
+
+La logique vit dans `src/lib/forms/validation.ts` et
+`src/lib/forms/registry.ts` (fonctions pures, sans dépendance Astro),
+couvertes par `validation.test.ts`, `registry.test.ts` et
+`hidden-tokens.test.ts` (`npm test`).
 
 ## 6. Mode démo (aucune variable SMTP2GO)
 
@@ -197,12 +247,10 @@ définies) et l'exclusion de `/merci` du sitemap (`astro.config.mjs`).
   ce mode (il fait `preventDefault` sur le submit). Tant que ce n'est pas
   fait : cadrer la démo en conséquence (« pipeline prouvé sur les landings ;
   portage de la page Contact = petit suivi »).
-- **Case à cocher de consentement (Loi 25)** : `consentText` est un
-  consentement par avis (paragraphe affiché au-dessus du bouton), défendable
-  pour un formulaire de contact, mais l'union des types de champs
-  (`text|email|textarea` — `src/content.config.ts`) n'offre pas de `checkbox` :
-  aucun consentement affirmatif n'est capturé ni reflété dans le courriel de
-  notification. Feuille de route : ajouter `checkbox` à l'énumération du
-  schéma landing + `form.astro` + `_structures.form_fields`
-  (cloudcannon.config.yml), et refléter l'état coché dans
-  `formatSubmissionText`.
+- ~~**Case à cocher de consentement (Loi 25)**~~ — **LIVRÉ (P-05, 17 juil.)** :
+  le type `checkbox` existe dans les 6 contrats synchronisés, une case requise
+  doit être cochée, et le courriel reflète chaque case en « oui »/« non »
+  (voir §4 `_cases` et §5). `consentText` demeure comme avis d'information
+  au-dessus du bouton ; le consentement affirmatif se capture par une case
+  requise dans la définition du formulaire (exemple seed :
+  `campagne-evaluation`).

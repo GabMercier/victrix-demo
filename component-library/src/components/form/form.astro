@@ -3,9 +3,37 @@
  * Section « Formulaire » — composant Bookshop (contrat landing GELÉ).
  *
  * Props : { type: "form", title, intro?, submitLabel, consentText?,
- *           fields: [{ label, type: "text"|"email"|"textarea", required }] }
+ *           fields: [{ label, type: "text"|"email"|"tel"|"textarea"|"select"|
+ *           "checkbox"|"hidden", required, options?, value?, showIf? }] }
  * - `type` (au niveau section) est le discriminant du contrat landing ; il
  *   arrive via le spread {...section} et est volontairement ignoré ici.
+ *
+ * P-05 — types de champ étendus, conditions d'affichage, champs auto-peuplés :
+ * - checkbox : name dérivé du libellé, value="oui" fixe ; requise = doit être
+ *   cochée (validation native + `_requis`). La LISTE des cases voyage dans le
+ *   champ caché `_cases` (le serveur en a besoin : une case non cochée est
+ *   ABSENTE du POST — reflet « oui »/« non » dans le courriel, Loi 25) ; avec
+ *   `_formId`, le serveur re-dérive cette liste de la définition.
+ * - select : options de la définition + première option vide « Choisir… » ;
+ *   avec `_formId`, le serveur rejette toute valeur hors liste.
+ * - hidden : jamais affiché, jamais requis ; `value` accepte les jetons
+ *   {{page.titre|chemin|slug|langue}} — résolus ICI depuis le prop
+ *   `pageContext` (injecté par la route via le seam enrich ; absent dans
+ *   l'éditeur visuel → chaîne vide) — et {{url.<param>}} EXACT (rendu en
+ *   hidden vide + data-url-param, rempli au chargement par le mini-script,
+ *   tronqué à 200 caractères). Voir src/lib/forms/hidden-tokens.ts.
+ * - showIf {field, equals} (field = LIBELLÉ exact du pilote, validé au
+ *   build) : le wrapper porte data-showif-field/-equals ; un mini-script
+ *   masque ET désactive (disabled = non soumis, exclu de la validation
+ *   native — c'est LE mécanisme) le champ tant que la condition n'est pas
+ *   satisfaite. Un requis conditionnel n'a PAS l'attribut required initial ni
+ *   d'entrée dans `_requis` : le serveur ne l'exige que via la définition
+ *   (formulaires liés) — docs/formulaires.md §5. Les deux mini-scripts
+ *   suivent le patron de la bannière d'erreur (is:inline + data-astro-rerun
+ *   + bloc {}) et se repèrent par closest('form').
+ * - PARITÉ : la feuille <style> reste GELÉE — tout style nouveau est EN
+ *   LIGNE ; les branches text/email/textarea et tout le rendu nouveau sont
+ *   strictement conditionnels (une page existante rend les mêmes octets).
  *
  * DEUX MODES (contrat « formulaires » — voir docs/formulaires.md) :
  * - Par défaut (PUBLIC_FORMS_ENABLED absente) : MAQUETTE NON FONCTIONNELLE —
@@ -82,11 +110,18 @@
  *   absents.
  */
 import { fieldName } from '../../../../src/lib/forms/field-name';
+import { resolveHiddenValue } from '../../../../src/lib/forms/hidden-tokens';
 
 interface FormField {
   label: string;
-  type: 'text' | 'email' | 'textarea';
+  type: 'text' | 'email' | 'tel' | 'textarea' | 'select' | 'checkbox' | 'hidden';
   required: boolean;
+  /** select seulement : les choix offerts. */
+  options?: string[];
+  /** hidden seulement : valeur émise (jetons — voir l'entête). */
+  value?: string;
+  /** Condition d'affichage — field = LIBELLÉ exact du champ pilote. */
+  showIf?: { field: string; equals: string };
 }
 
 interface Props {
@@ -111,6 +146,13 @@ interface Props {
     string,
     { submitLabel: string; consentText: string; fields: FormField[] }
   >;
+  /**
+   * Injecté PAR LA ROUTE via `enrich` (build seulement) : contexte de la page
+   * hôte pour les jetons {{page.*}} des champs cachés. Absent dans l'éditeur
+   * visuel → les jetons se résolvent en chaîne vide (repli : chemin/langue
+   * depuis Astro.url quand disponibles).
+   */
+  pageContext?: { titre?: string; chemin?: string; slug?: string; langue?: string };
 }
 
 const {
@@ -121,6 +163,7 @@ const {
   fields = [],
   formId = '',
   resolvedForms,
+  pageContext,
 } = Astro.props;
 
 // Résolution forms v2 : la définition prime quand `formId` est posé ET résolu
@@ -170,18 +213,73 @@ const formLang = pagePath.split('/')[1] === 'en' ? 'en' : 'fr';
 // dans le module — même règle que JsonLd.astro, cf. faq.astro).
 const fieldNames = effFields.map((field, i) => fieldName(field.label, i));
 
+// Condition d'affichage ACTIVE (field non vide — la « forme vide » que pose
+// l'éditeur CloudCannon, {field:'', equals:''}, signifie « pas de condition »).
+const activeShowIf = (field: FormField) =>
+  field.showIf && field.showIf.field.trim() !== '' ? field.showIf : null;
+
 // Listes annoncées au serveur (contrat de champs §4) — vides ⇒ champ caché
 // non rendu ; le serveur garde alors ses filets (soumission non vide +
 // heuristique courriel sur le nom). Avec un `_formId`, le serveur ÉCRASE de
-// toute façon ces listes par celles du registre.
+// toute façon ces listes par celles du registre. Exclusions P-05 : un champ
+// `hidden` n'est jamais requis (un jeton peut se résoudre en chaîne vide) et
+// un requis CONDITIONNEL n'entre pas dans `_requis` (sans la définition, le
+// serveur ne peut pas évaluer la condition — garanti en v2 seulement, §5).
 const requiredNames = effFields
-  .map((field, i) => (field.required ? fieldNames[i] : null))
+  .map((field, i) =>
+    field.required && field.type !== 'hidden' && !activeShowIf(field) ? fieldNames[i] : null,
+  )
   .filter((name): name is string => name !== null)
   .join(',');
 const emailNames = effFields
   .map((field, i) => (field.type === 'email' ? fieldNames[i] : null))
   .filter((name): name is string => name !== null)
   .join(',');
+// Liste des cases (contrat `_cases`, P-05) — le serveur en a besoin pour
+// refléter « oui »/« non » : une case non cochée est ABSENTE du POST.
+const caseNames = effFields
+  .map((field, i) => (field.type === 'checkbox' ? fieldNames[i] : null))
+  .filter((name): name is string => name !== null)
+  .join(',');
+
+// Jetons des champs cachés (P-05) — résolus au rendu depuis pageContext
+// (enrich, build) avec repli navigateur sûr : chemin/langue déjà calculés,
+// titre/slug indisponibles hors build → chaîne vide.
+const hiddenResolved = effFields.map((field) =>
+  field.type === 'hidden'
+    ? resolveHiddenValue(field.value ?? '', {
+        titre: pageContext?.titre ?? '',
+        chemin: pageContext?.chemin ?? pagePath,
+        slug: pageContext?.slug ?? '',
+        langue: pageContext?.langue ?? formLang,
+      })
+    : null,
+);
+
+// Attributs data-showif-* du wrapper d'un champ conditionnel (mode
+// fonctionnel seulement — la maquette montre tout). Pilote résolu par
+// LIBELLÉ exact, comme le garde-fou de build et le serveur.
+const showIfAttrs = (field: FormField) => {
+  const cond = formsEnabled ? activeShowIf(field) : null;
+  if (!cond) return {};
+  const pilotIndex = effFields.findIndex((f) => f.label === cond.field);
+  if (pilotIndex === -1) return {};
+  return { 'data-showif-field': fieldNames[pilotIndex], 'data-showif-equals': cond.equals };
+};
+// Requis conditionnel : marqué pour que le mini-script pose/retire `required`
+// quand la condition bascule (jamais d'attribut required initial).
+const condRequiredAttr = (field: FormField) =>
+  formsEnabled && field.required && activeShowIf(field) ? '' : undefined;
+const hasConditionals =
+  formsEnabled && effFields.some((field) => field.type !== 'hidden' && activeShowIf(field));
+const hasUrlParams =
+  formsEnabled && hiddenResolved.some((resolved) => resolved !== null && resolved.urlParam !== null);
+
+// Case à cocher : styles EN LIGNE (feuille de style paginée inchangée — voir
+// l'entête) ; accent-color reprend le marine de la charte.
+const checkboxLabelStyle = 'display:flex;align-items:flex-start;gap:0.6rem;cursor:pointer;';
+const checkboxInputStyle =
+  'width:1.1rem;height:1.1rem;margin-top:0.2rem;flex:none;accent-color:var(--color-navy, #083957);';
 
 // Pot de miel : idiome « visuellement masqué » EN LIGNE — pas display:none
 // (trop de robots l'ignorent), pas de classe CSS (feuille inchangée, cf.
@@ -249,6 +347,7 @@ const errorMessage =
             {formDef && <input type="hidden" name="_formId" value={formId} />}
             {requiredNames && <input type="hidden" name="_requis" value={requiredNames} />}
             {emailNames && <input type="hidden" name="_courriels" value={emailNames} />}
+            {caseNames && <input type="hidden" name="_cases" value={caseNames} />}
             {/* Pot de miel `website` — voir honeypotStyle dans l'entête. */}
             <div aria-hidden="true" style={honeypotStyle}>
               <label for={`${idBase}-website`}>Site Web</label>
@@ -260,6 +359,87 @@ const errorMessage =
                 autocomplete="off"
               />
             </div>
+            {/* Les deux mini-scripts P-05 vivent DANS ce fragment (aucun
+                nouveau conteneur d'expression au niveau racine du <form> :
+                un conteneur vide laisse un espace surnuméraire après
+                compressHTML — la parité à l'octet du mode maquette en
+                dépend). Placés AVANT les champs, ils attendent la fin de
+                l'analyse (readyState) au premier chargement; data-astro-rerun
+                les ré-exécute après une navigation du routeur, où le DOM est
+                déjà complet. */}
+            {hasConditionals && (
+              <script is:inline data-astro-rerun>
+                // Champs conditionnels (showIf) — ergonomie SEULEMENT : le
+                // serveur ré-évalue depuis la définition. Un champ masqué est
+                // aussi DÉSACTIVÉ (disabled = non soumis, exclu de la
+                // validation native) ; `required` suit la condition
+                // (data-showif-required).
+                {
+                  const f = document.currentScript && document.currentScript.closest('form');
+                  if (f) {
+                    const run = () => {
+                      const rows = f.querySelectorAll('[data-showif-field]');
+                      const apply = () => {
+                        rows.forEach((row) => {
+                          const pilot = f.elements.namedItem(
+                            row.getAttribute('data-showif-field') || '',
+                          );
+                          const value = !pilot
+                            ? ''
+                            : pilot.type === 'checkbox'
+                              ? pilot.checked
+                                ? pilot.value
+                                : ''
+                              : pilot.value || '';
+                          const on =
+                            value.trim() === (row.getAttribute('data-showif-equals') || '').trim();
+                          // hidden seul ne suffit pas : .lp-form__field pose
+                          // display:flex (style d'auteur > feuille UA) — le
+                          // style EN LIGNE tranche.
+                          row.hidden = !on;
+                          row.style.display = on ? '' : 'none';
+                          row.querySelectorAll('input, select, textarea').forEach((el) => {
+                            el.disabled = !on;
+                            if (el.hasAttribute('data-showif-required')) el.required = on;
+                          });
+                        });
+                      };
+                      f.addEventListener('change', apply);
+                      apply();
+                    };
+                    if (document.readyState === 'loading') {
+                      document.addEventListener('DOMContentLoaded', run);
+                    } else {
+                      run();
+                    }
+                  }
+                }
+              </script>
+            )}
+            {hasUrlParams && (
+              <script is:inline data-astro-rerun>
+                // Jetons url — remplit les champs cachés marqués
+                // data-url-param depuis la barre d'adresse (ex. utm_source),
+                // tronqué à 200 caractères. Purement informatif (courriel).
+                {
+                  const f = document.currentScript && document.currentScript.closest('form');
+                  if (f) {
+                    const run = () => {
+                      const params = new URLSearchParams(location.search);
+                      f.querySelectorAll('input[type="hidden"][data-url-param]').forEach((el) => {
+                        const value = params.get(el.getAttribute('data-url-param') || '');
+                        if (value) el.value = value.slice(0, 200);
+                      });
+                    };
+                    if (document.readyState === 'loading') {
+                      document.addEventListener('DOMContentLoaded', run);
+                    } else {
+                      run();
+                    }
+                  }
+                }
+              </script>
+            )}
           </>
         )
       }
@@ -274,8 +454,47 @@ const errorMessage =
       {
         effFields.map((field, i) => {
           const id = `${idBase}-${i}`;
+          if (field.type === 'hidden') {
+            // Jamais affiché, jamais requis — valeur = jetons résolus (entête).
+            const resolved = hiddenResolved[i];
+            return (
+              <input
+                type="hidden"
+                name={formsEnabled ? fieldNames[i] : id}
+                value={resolved ? resolved.value : ''}
+                data-url-param={resolved?.urlParam ?? undefined}
+              />
+            );
+          }
+          if (field.type === 'checkbox') {
+            // Case à cocher (consentement Loi 25…) — label cliquable qui
+            // ENGLOBE la case ; styles EN LIGNE (feuille gelée, cf. entête).
+            return (
+              <div class="lp-form__field" {...showIfAttrs(field)}>
+                <label class="lp-form__label" for={id} style={checkboxLabelStyle}>
+                  <input
+                    type="checkbox"
+                    id={id}
+                    name={formsEnabled ? fieldNames[i] : id}
+                    value="oui"
+                    required={field.required && !activeShowIf(field)}
+                    data-showif-required={condRequiredAttr(field)}
+                    style={checkboxInputStyle}
+                  />
+                  <span>
+                    {field.label}
+                    {field.required && (
+                      <span class="lp-form__req" aria-hidden="true">
+                        &nbsp;*
+                      </span>
+                    )}
+                  </span>
+                </label>
+              </div>
+            );
+          }
           return (
-            <div class="lp-form__field">
+            <div class="lp-form__field" {...showIfAttrs(field)}>
               <label class="lp-form__label" for={id}>
                 {field.label}
                 {field.required && (
@@ -290,15 +509,30 @@ const errorMessage =
                   id={id}
                   name={formsEnabled ? fieldNames[i] : id}
                   rows="5"
-                  required={field.required}
+                  required={field.required && !activeShowIf(field)}
+                  data-showif-required={condRequiredAttr(field)}
                 />
+              ) : field.type === 'select' ? (
+                <select
+                  class="lp-form__input"
+                  id={id}
+                  name={formsEnabled ? fieldNames[i] : id}
+                  required={field.required && !activeShowIf(field)}
+                  data-showif-required={condRequiredAttr(field)}
+                >
+                  <option value="">{formLang === 'en' ? 'Choose…' : 'Choisir…'}</option>
+                  {(field.options ?? []).map((opt) => (
+                    <option value={opt}>{opt}</option>
+                  ))}
+                </select>
               ) : (
                 <input
                   class="lp-form__input"
                   id={id}
                   name={formsEnabled ? fieldNames[i] : id}
                   type={field.type}
-                  required={field.required}
+                  required={field.required && !activeShowIf(field)}
+                  data-showif-required={condRequiredAttr(field)}
                 />
               )}
             </div>

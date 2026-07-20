@@ -50,6 +50,120 @@ const blog = defineCollection({
 });
 
 /**
+ * Champs de formulaire — SCHÉMA PARTAGÉ entre la section « form » (champs
+ * inline, dans sectionsSchema ci-dessous) et la collection `forms`
+ * (définitions réutilisables). C'est LE point de synchronisation du contrat
+ * de champ; les autres endroits à tenir alignés (P-05) :
+ * src/lib/forms/registry.ts (FormFieldDef) → component-library/src/components/
+ * form/form.astro (rendu) → cloudcannon.config.yml (_structures.form_fields)
+ * → schemas/form-*.json → docs/formulaires.md §4-5.
+ *
+ * Les clés étendues (P-05) sont TOUTES optionnelles : les définitions
+ * existantes (sans ces clés) restent valides telles quelles, et les « formes
+ * vides » que pose l'éditeur CloudCannon (options: [], value: '',
+ * showIf: {field:'', equals:''}) sont valides aussi — la sémantique « pas de
+ * condition » est showIf.field === '' (jamais null : voir le commentaire
+ * _structures de cloudcannon.config.yml sur les null).
+ */
+const FORM_FIELD_TYPES = [
+  'text',
+  'email',
+  'tel',
+  'textarea',
+  'select',
+  'checkbox',
+  'hidden',
+] as const;
+
+const formFieldCore = z.object({
+  label: z.string(),
+  type: z.enum(FORM_FIELD_TYPES),
+  required: z.boolean(),
+  // select seulement : la liste des choix (au moins un non vide — règle croisée).
+  options: z.array(z.string()).optional(),
+  // hidden seulement : la valeur émise. Jetons {{page.titre|chemin|slug|langue}}
+  // (résolus au build via le seam enrich de la route campagnes) et
+  // {{url.<param>}} EXACT (rempli dans le navigateur au chargement) — voir
+  // src/lib/forms/hidden-tokens.ts.
+  value: z.string().optional(),
+  // Condition d'affichage : le champ n'apparaît que si le champ pilote —
+  // désigné par son LIBELLÉ exact — vaut `equals`. Ergonomie navigateur; côté
+  // serveur, le registre ré-évalue la condition pour les champs requis
+  // (formulaires liés `_formId` seulement — docs/formulaires.md §5).
+  showIf: z.object({ field: z.string(), equals: z.string() }).optional(),
+});
+
+type FormFieldInput = z.infer<typeof formFieldCore>;
+
+/**
+ * Règles croisées d'un tableau de champs (superRefine des DEUX usages) —
+ * build-gate en français, même philosophie que les garde-fous navigation et
+ * redirects : un contenu invalide casse le build en nommant la faute et le
+ * champ. Limites délibérées : pilote de condition = select ou checkbox
+ * (l'égalité sur du texte libre est fragile), pas de chaînage (un pilote
+ * conditionnel créerait des cascades ambiguës), pas de condition sur un champ
+ * caché (toujours soumis).
+ */
+function formFieldRules(fields: FormFieldInput[], ctx: z.RefinementCtx): void {
+  const activeShowIf = (f: FormFieldInput) =>
+    f.showIf && f.showIf.field.trim() !== '' ? f.showIf : null;
+  fields.forEach((field, i) => {
+    const name = field.label.trim() !== '' ? `« ${field.label} »` : `n° ${i + 1}`;
+    if (field.type === 'select') {
+      const options = (field.options ?? []).filter((o) => o.trim() !== '');
+      if (options.length === 0) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: [i, 'options'],
+          message: `Le champ ${name} (liste déroulante) exige au moins une option`,
+        });
+      }
+    }
+    const cond = activeShowIf(field);
+    if (!cond) return;
+    if (field.type === 'hidden') {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: [i, 'showIf'],
+        message: `Le champ caché ${name} ne peut pas porter de condition d'affichage (il est toujours soumis)`,
+      });
+      return;
+    }
+    if (cond.equals.trim() === '') {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: [i, 'showIf', 'equals'],
+        message: `Condition du champ ${name} : la valeur attendue est vide`,
+      });
+    }
+    const pilotIndex = fields.findIndex((f) => f.label === cond.field);
+    if (pilotIndex === -1 || pilotIndex === i) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: [i, 'showIf', 'field'],
+        message: `Condition du champ ${name} : champ pilote « ${cond.field} » introuvable dans ce formulaire (recopier le libellé exact d'un autre champ)`,
+      });
+      return;
+    }
+    const pilot = fields[pilotIndex];
+    if (pilot.type !== 'select' && pilot.type !== 'checkbox') {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: [i, 'showIf', 'field'],
+        message: `Condition du champ ${name} : le pilote « ${cond.field} » doit être une liste déroulante ou une case à cocher`,
+      });
+    }
+    if (activeShowIf(pilot)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: [i, 'showIf', 'field'],
+        message: `Condition du champ ${name} : le pilote « ${cond.field} » est lui-même conditionnel (chaînage interdit)`,
+      });
+    }
+  });
+}
+
+/**
  * Shared `sections` palette — ONE discriminated union used by BOTH the `home`
  * and `landing` collections, so CloudCannon's single generated `sections`
  * palette (the per-component .bookshop.yml specs under component-library, all
@@ -108,13 +222,9 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // inconnu fait échouer le build). Vide/absent → mode historique : les
       // champs inline ci-dessous, rendu inchangé.
       formId: z.string().optional(),
-      fields: z.array(
-        z.object({
-          label: z.string(),
-          type: z.enum(['text', 'email', 'textarea']),
-          required: z.boolean(),
-        }),
-      ),
+      // Schéma de champ PARTAGÉ avec la collection `forms` (formFieldCore,
+      // défini plus haut) + règles croisées (options de select, conditions).
+      fields: z.array(formFieldCore).superRefine(formFieldRules),
     }),
     z.object({
       type: z.literal('faq'),
@@ -422,15 +532,13 @@ const forms = defineCollection({
     subject: z.string().default(''),
     submitLabel: z.string().min(1, 'Libellé du bouton requis'),
     consentText: z.string().default(''),
+    // Schéma de champ PARTAGÉ avec la section « form » (formFieldCore) — ici
+    // le libellé est exigé non vide (une définition réutilisable se doit
+    // d'être complète) et le formulaire doit avoir au moins un champ.
     fields: z
-      .array(
-        z.object({
-          label: z.string().min(1, 'Libellé de champ requis'),
-          type: z.enum(['text', 'email', 'textarea']),
-          required: z.boolean(),
-        }),
-      )
-      .min(1, 'Au moins un champ'),
+      .array(formFieldCore.extend({ label: z.string().min(1, 'Libellé de champ requis') }))
+      .min(1, 'Au moins un champ')
+      .superRefine(formFieldRules),
   }),
 });
 

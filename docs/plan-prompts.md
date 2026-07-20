@@ -7,20 +7,21 @@
 > `C:\Repo\Victrix\Refontee site web Victrix - Estimé haut niveau – Copie.xlsx`
 > (les codes F-xx / N-x ci-dessous renvoient à ses lignes [Astro]).
 
-## 0. État au 17 juillet (fin de journée)
+## 0. État au 17 juillet (vague 2 ouverte)
 
-**VAGUE 1 : COMPLÈTE.** P-01 (navigation éditable) et P-02 (4 sections
-palette + duplication FR↔EN + périmètre .env) sont **fermés** — commités et
-poussés (`9aa6547`, `a18b60c`, `fa6b1ce`). P-03 (formulaires v2) est **en
-revue** : implémenté et vérifié (gate vert, e2e démo), dans l'arbre de
-travail, à committer après revue. `landing/fr/test.md` supprimé (décision
-utilisateur, inclus dans le diff P-03).
+**VAGUE 1 : FERMÉE ET POUSSÉE.** P-01 (`9aa6547`), P-02 (`a18b60c` +
+`fa6b1ce`), P-03 (`ec065b3`) — les trois lots sont ✅ (gate vert, revus,
+commités, poussés). ~21 h d'estimé exécutées par Fable 5.
 
-**Prochaine étape** : commit P-03 → vérifications CloudCannon (palette 9
-sections, collections Formulaires/Navigation) → **vague 2** dans l'ordre
-encodé : P-05 (champs étendus + consentement Loi 25) → P-07 (services
+**VAGUE 2 EN COURS**, dans l'ordre encodé : **P-05** (champs étendus +
+consentement Loi 25 — fiche finale §6.4, prête à lancer) → P-07 (services
 composables) → P-04 (header de landing) → P-06 (Pagefind).
-Heures exécutées vague 1 : ~21 h d'estimé (3 lots), réalisées par Fable 5.
+
+**Restes OPS de la vague 1** (humain, hors sessions déléguées) :
+vérifications CloudCannon après le push `ec065b3` — palette à 9 sections
+dans l'éditeur visuel, collections « Formulaires » et « Navigation »
+visibles, note « Formulaire lié : … » sur la page démo — et réconciliation
+de l'estimé xlsx (lots vague 1).
 
 ## 1. Gouvernance — qui fait quoi
 
@@ -101,9 +102,9 @@ Statuts : ⬜ à faire · 🔵 en cours · 🟡 en revue (diff à revoir par Fab
 |---|---|---|---|---|---|---|---|
 | P-01 | Navigation éditable (menu, méga-menu, annonce, bouton portail → `src/data/navigation/`) | ~~Opus 4.8~~ **Fable 5** | — | 7 h | 1 | ✅ | Fermé — commit `9aa6547`, poussé. Gate vert, parité DOM prouvée, test négatif OK. Interrupteurs CMS annonce + portail en bonus. |
 | P-02 | 4 sections palette : Témoignage, Bandeau logos, Chiffres, Vidéo (façade) | ~~Sonnet 5~~ **Fable 5** | P-01 | 7 h | 1 | ✅ | Fermé — commits `a18b60c` + `fa6b1ce`, poussés. 16 structures, live editing 7 pages, page démo, parité prouvée. Bonus : duplication FR↔EN (guide + `victrix:i18n-pairing`), `.env.example` périmètre, décision hébergement. |
-| P-03 | Formulaires v2 cœur : collection `src/data/forms/` + réf. + destinataire par formulaire | ~~Opus 4.8~~ **Fable 5** | P-02 | 7 h | 1 | 🟡 | Fait 17/07 (Fable 5). Gate vert (69/69 tests dont 7 nouveaux registre); parité mode inline IDENTIQUE; formId inconnu casse le build (message nommant page+fichier); e2e démo : POST valide→/merci avec objet de la définition, formId inconnu→erreur, champs requis dérivés PAR LE SERVEUR depuis le registre. 4 défs seed (contact, campagne-evaluation ×FR/EN), collection CC « Formulaires », doc §4 _formId. `landing/fr/test.md` supprimé (décision user). À REVOIR puis committer. VAGUE 1 COMPLÈTE. |
+| P-03 | Formulaires v2 cœur : collection `src/data/forms/` + réf. + destinataire par formulaire | ~~Opus 4.8~~ **Fable 5** | P-02 | 7 h | 1 | ✅ | Fermé — commit `ec065b3`, poussé. Gate vert (69/69 tests dont 7 registre); parité mode inline IDENTIQUE; formId inconnu casse le build; e2e démo prouvé (destinataire/objet/requis résolus PAR LE SERVEUR depuis le registre). 4 défs seed, collection CC « Formulaires », doc §4 _formId. `landing/fr/test.md` supprimé. VAGUE 1 COMPLÈTE. |
 | P-04 | Header de landing par page (complet/allégé/personnalisé) | Sonnet 5 | P-01; en V2 après P-07 | 3,5 h | 2 | ⬜ | §7 |
-| P-05 | Champs étendus (checkbox Loi 25, select, tel, hidden) + conditionnels + `formatSubmissionText` | **Opus 4.8** | P-03 | 7 h | 2 | ⬜ | §7 |
+| P-05 | Champs étendus (checkbox Loi 25, select, tel, hidden) + conditionnels + auto-peuplés (volet D) | ~~Opus 4.8~~ **Fable 5** | P-03 | 7 h | 2 | 🟡 | Fait 17-18/07 (fiche §6.4 amendée). Gate vert (95 tests, 2 builds, parité BYTE des pages existantes prouvée par diff de baseline, hash CSS inchangés), 2 builds négatifs FR, e2e curl 7 scénarios + navigateur Playwright 11/11 (showIf masque+disabled+required dynamique, UTM rempli, case requise bloque), bundle live editing recompilé (6 pages, jetons embarqués). Revue adversariale 5 lentilles : 2 constats confirmés CORRIGÉS (options de select trimées; blueprint form.bookshop.yml en forme complète). À REVOIR puis committer. |
 | P-06 | Pagefind (build, page résultats, entrée header) | Sonnet 5 | P-04 (Header.astro) | 7 h | 2 | ⬜ | §7 |
 | P-07 | Collection `services` composable + migration IA + méga-menu dynamique (E.3) + section ressources liées | **Opus 4.8** | P-01+P-02+P-05 | 10,5 h | 2 | ⬜ | §7 |
 | P-08 | Courriel de confirmation visiteur (2ᵉ envoi SMTP2GO) | **Opus 4.8** | P-05 | 3,5 h | 3 | ⬜ | §7 — serveur |
@@ -120,6 +121,7 @@ Statuts : ⬜ à faire · 🔵 en cours · 🟡 en revue (diff à revoir par Fab
 | P-19 | Migration contenu restant (sessions multiples) | Sonnet 5 | P-07 | 14 h | 4 | ⬜ | §7 |
 | P-20 | Extension QA Playwright | Sonnet 5 | vagues 1–3 | 7 h | 4 | ⬜ | §7 |
 | P-21 | Démo processus complet (env. de test + sécurité) + vidéo | **Fable 5 + humain** | P-03+P-07+clés+préversions | 3,5 h | 4 | ⬜ | §7 |
+| P-22 | Formulaires multi-étapes (état par étape côté client, sans backend de session) | **Opus 4.8** | P-05 | 14 h | backlog | ⬜ | §7 — décision utilisateur 17/07 (rouvre le « non par défaut » des 3 docs); à lancer sur besoin marketing confirmé |
 | OPS | Fil rouge (voir §5) | **Fable 5 + humain** | décisions | — | — | 🔵 | continu |
 
 **Séquencement encodé** :
@@ -145,7 +147,7 @@ Statuts : ⬜ à faire · 🔵 en cours · 🟡 en revue (diff à revoir par Fab
 - Décision protection des préversions (Cloudflare Access ou équivalent).
 - Atelier contenus marketing (N4) — humain, doc `atelier-contenus.md` prêt.
 
-## 6. Fiches complètes — vague 1 (✅ EXÉCUTÉES le 17 juil. — conservées comme référence de format pour les prochaines fiches)
+## 6. Fiches complètes — texte final des prompts (le pilotage ajoute chaque fiche ici au lancement; 6.1–6.3 = vague 1, ✅ exécutées le 17 juil.)
 
 ### 6.1 P-01 — Navigation éditable (Opus 4.8)
 
@@ -281,6 +283,106 @@ simulé avec le BON destinataire par formulaire → /merci + un formId inconnu
 rejeté + collection Formulaires éditable dans la config CloudCannon.
 ```
 
+### 6.4 P-05 — Champs étendus + consentement Loi 25 (~~Opus 4.8~~ **Fable 5**) — VAGUE 2
+
+**Objectif** : les formulaires savent poser une vraie case de consentement
+(exigence Loi 25 du cahier des charges — écart confirmé de la revue), des
+listes déroulantes, des téléphones et des champs cachés; le courriel de
+notification reflète fidèlement l'état coché; des champs conditionnels
+simples améliorent l'ergonomie sans jamais remplacer la validation serveur.
+
+**Amendements du 17 juil. (décisions utilisateur, exécution Fable 5 en
+session directe — plan approuvé)** :
+- **Volet D ajouté — champs cachés auto-peuplés par la page hôte** : le
+  `value` d'un champ `hidden` accepte des jetons `{{page.titre}}`,
+  `{{page.chemin}}`, `{{page.slug}}`, `{{page.langue}}` (résolus au build via
+  le seam enrich de la route campagnes → prop `pageContext`) et
+  `{{url.<param>}}` EXACT (ex. `{{url.utm_source}}` — rempli au chargement
+  par mini-script inline, CSP gelée respectée). Nouveau module partagé
+  browser-safe `src/lib/forms/hidden-tokens.ts`.
+- **Contrôle des champs obligatoires** : déjà couvert (interrupteur
+  « Obligatoire » par champ + `_requis`/registre côté serveur) — rien à
+  ajouter, demande vérifiée.
+- **Multi-étapes** : PAS dans ce lot → **P-22** (backlog, choix explicite de
+  l'utilisateur via question).
+
+**Prompt à coller** (précédé du préambule §3) :
+
+```
+TÂCHE : étendre les types de champs des formulaires (v2).
+Lis d'abord docs/formulaires.md EN ENTIER (contrats §4–5), puis
+src/lib/forms/{field-name,registry,validation}.ts et l'entête de
+component-library/src/components/form/form.astro (les contrats y sont
+commentés — parité à l'octet, éditeur visuel, import.meta.env ?? {}).
+
+Nouveaux types de champ : `checkbox`, `select`, `tel`, `hidden` (en plus de
+text|email|textarea = 7 types). L'union vit à 6 endroits à synchroniser :
+1. src/content.config.ts — DEUX enums distincts : champs inline de la
+   section form (~l.114) ET collection `forms` (~l.429). Nouvelles clés
+   zod sur un champ : `options: z.array(z.string())` (select — exigée non
+   vide quand type=select, via superRefine/refine), `value: z.string()`
+   (hidden — la valeur émise), `showIf: z.object({field, equals}).optional()`
+   (conditionnel, permis sur tout champ visible).
+2. src/lib/forms/registry.ts — FormFieldDef + normalisation
+   options/value/showIf dans buildRegistry.
+3. component-library/src/components/form/form.astro — rendu : checkbox
+   (input + label cliquable, value="oui"; required = doit être cochée),
+   select (options + première option vide « Choisir… »), tel
+   (input type=tel), hidden (input type=hidden, jamais affiché, exclu du
+   rendu des labels). PARITÉ : les formulaires existants (text/email/
+   textarea) rendent un HTML IDENTIQUE à avant — prouve-le (diff dist/).
+4. cloudcannon.config.yml — _structures.form_fields : select « Type de
+   champ » étendu aux 7 types; nouvelles clés (options/value/showIf)
+   éditables avec commentaires FR clairs; defaults en chaînes vides/
+   tableaux vides — JAMAIS null (voir le commentaire _structures).
+5. schemas/form-fr.json + schemas/form-en.json — gabarits à jour.
+6. docs/formulaires.md §4–5 — contrat de champs mis à jour.
+
+LOI 25 — le point dur : une case NON cochée est ABSENTE d'un POST
+urlencoded. Le courriel de notification doit pourtant montrer l'état réel :
+- Serveur : dérive les noms des cases depuis la DÉFINITION (registre) quand
+  `_formId` est présent; en mode inline, nouvelle liste cachée `_cases`
+  (même patron que `_requis`/`_courriels` — ajoute-la à META_FIELDS et au
+  contrat §4).
+- formatSubmissionText : chaque case affiche « oui »/« non » — jamais
+  d'omission silencieuse. Une case required non cochée = champ requis
+  manquant (la mécanique actuelle le donne presque gratuitement : absente
+  → '' → échec requis; vérifie-le par un test).
+
+CONDITIONNELS (`showIf: {field, equals}`) — ergonomie SEULEMENT :
+- Navigateur : mini-script is:inline (CSP GELÉE : 'unsafe-inline' est déjà
+  permis sur /fr/*|/en/* — AUCUN script externe, aucun changement de
+  public/_headers) qui masque/affiche le champ selon la valeur du champ
+  pilote; un champ masqué est aussi `disabled` (il ne se soumet pas).
+  Patron data-astro-rerun + bloc { } de la bannière d'erreur (form.astro).
+- Serveur : quand `_formId` est présent, évalue showIf DEPUIS LA DÉFINITION
+  avec les valeurs soumises pour calculer la liste des requis (un champ
+  requis dont la condition n'est pas remplie n'est PAS exigé) — zéro
+  confiance dans le client, aucune liste conditionnelle envoyée par lui.
+- Sans JavaScript : champs conditionnels visibles et non exigés si leur
+  condition dépend d'une interaction — comportement documenté (progressive
+  enhancement, §5).
+
+SÉCURITÉ select : avec `_formId`, une valeur soumise hors de `options` est
+un échec de validation (le registre est la source de vérité).
+
+Seed : ajoute au formulaire « campagne-evaluation » (fr ET en) une case de
+consentement REQUISE (texte Loi 25) et un select (ex. taille d'entreprise);
+laisse « contact » inchangé (témoin de compatibilité).
+
+Tests : étends validation.test.ts + registry.test.ts (case cochée/non
+cochée dans le texte, case requise non cochée, valeur select hors liste,
+requis conditionnel exigé/non exigé, hidden). Les 69 tests existants
+restent verts.
+
+DONE = gate complet vert + parité HTML des formulaires existants prouvée +
+e2e démo (astro dev, PUBLIC_FORMS_ENABLED=1 sans clés) : case cochée →
+journal « … : oui »; case requise non cochée → ?erreur=1; valeur select
+falsifiée (curl) → rejet; champ requis sous condition non remplie → succès
++ dans la config CloudCannon, le « Type de champ » propose les 7 types
+avec libellés FR.
+```
+
 ## 7. Fiches condensées (vagues 2–4) — texte final rédigé par le pilotage au lancement
 
 - **P-04** : frontmatter landing + objet `header` (zod), select mode
@@ -288,11 +390,7 @@ rejeté + collection Formulaires éditable dans la config CloudCannon.
   `Header.astro` accepte une config optionnelle (défaut = navigation P-01);
   route campagnes la passe. Done : une campagne en mode allégé ne montre que
   logo + CTA; les autres pages inchangées.
-- **P-05** : étendre l'union des types de champ (checkbox/select/tel/hidden)
-  dans les 4 contrats + `formatSubmissionText` reflète l'état coché
-  (exigence Loi 25) + conditionnels (`showIf` : {field, equals}) en
-  progressive enhancement — le serveur revalide tout, le conditionnel est
-  ergonomie seulement.
+- **P-05** : → fiche finale rédigée, voir **§6.4**.
 - **P-06** : Pagefind au build (STATIC_ONLY ET build prod), page
   `/[lang]/recherche/`, entrée header (données P-01), filtres par type si
   simple. Note : l'UI Pagefind charge ses assets localement (CSP-safe).
@@ -343,6 +441,13 @@ rejeté + collection Formulaires éditable dans la config CloudCannon.
 - **P-21** : scénario de démo chantier D (`plan-services-formulaires.md`) :
   édition → préversion branche (env. de test) → build-gate → Publish par
   rôle → rollback. Capture vidéo. Fable 5 + humain.
+- **P-22** (backlog — décision utilisateur 17/07, sort du « non par défaut »
+  d'analyse-criteres/atelier-contenus/revue-cahier-des-charges) : formulaires
+  multi-étapes — découpage d'une définition en étapes (contrats P-05 comme
+  base), navigation client en progressive enhancement SANS état serveur (une
+  seule soumission finale, validation serveur inchangée), compat éditeur
+  visuel + mode maquette. À chiffrer finement et lancer seulement sur besoin
+  marketing confirmé (formulaire long réel).
 
 ## 8. Mapping estimé [Astro] → prompts (auditable)
 
@@ -373,6 +478,8 @@ rejeté + collection Formulaires éditable dans la config CloudCannon.
 
 | Date | Session | Résultat |
 |---|---|---|
+| 2026-07-18 | Fable 5 — **P-05 exécuté** (+ volet D auto-peuplé, décision user; multi-étapes → P-22 backlog). Fichiers : `src/lib/forms/hidden-tokens.ts` (+test, jetons page/url), `content.config.ts` (formFieldCore partagé 7 types + formFieldRules build-gate FR), `registry.ts` (normalisation, requis conditionnels évalués serveur, `_cases`, liste blanche select — options trimées), `validation.ts` (reflectCheckboxes oui/non), `api/forms.ts`, `form.astro` (rendu 7 types, 2 scripts inline DANS le fragment formsEnabled — parité; hidden via display inline, .lp-form__field flex bat l'attribut hidden), `[slug].astro` (enrich.pageContext), cloudcannon.config.yml + schemas + form.bookshop.yml (forme complète), seeds campagne-evaluation, docs §4-5-10 + guide-edition. Pièges consignés : cache `.astro` périmé → 500 dev sur campagnes (purger); artefact cp1252 du harnais curl (faux rejet accents). | Gate vert + e2e + navigateur + revue adversariale (2 corrigés), statut 🟡 |
+| 2026-07-17 | Fable 5 — **pilotage : ouverture de la vague 2.** P-03 fermé (commit `ec065b3` poussé par l'utilisateur) → vague 1 ✅ complète. Fiche finale P-05 rédigée (§6.4) après relecture du code livré (field-name/registry/validation/form.astro/cloudcannon). Restes OPS notés en §0 : vérifs CloudCannon post-push + réconciliation estimé xlsx (~21 h vague 1). | Vague 2 ouverte — P-05 prêt à lancer (Opus 4.8) |
 | 2026-07-17 | Fable 5 — création de ce plan (vérifié par 3 agents : faits/couverture/séquencement) | Backlog initial, vague 1 prête |
 | 2026-07-17 | Fable 5 — **P-03 exécuté** (vague 1 complète). Fichiers : `src/lib/forms/{field-name,registry,registry.test}.ts` (logique de noms PARTAGÉE composant/serveur + registre-liste-blanche), `src/data/forms/{fr,en}/{contact,campagne-evaluation}.json`, `schemas/form-{fr,en}.json`, collection `forms` (content.config.ts) + `formId` sur la section form, `validation.ts` (+`_formId` méta), `api/forms.ts` (import.meta.glob registre, destinataire/objet/listes depuis la définition), `form.astro` (résolution via enrich, parité inline préservée, note éditeur), `[slug].astro` (enrich + build-gate formId), `form.bookshop.yml`, cloudcannon.config.yml (collection Formulaires), pages démo (form par référence), formulaires.md §4. Supprimé : `landing/fr/test.md`. | Gate vert, e2e démo prouvé, statut 🟡 |
 | 2026-07-17 | Fable 5 — **P-02 exécuté** + 2 ajouts utilisateur. Fichiers : 4 composants `component-library/src/components/{testimonial,logo-banner,stats,video}/` (+ specs FR), union zod +4 types (`content.config.ts`), `_structures.logo_items/stat_items` (cloudcannon.config.yml), pages démo `src/content/landing/{fr,en}/demo-sections.md`, `.env.example` réécrit (périmètre : CloudCannon bundle, Azure alt., pas d'Entra/Dataverse), `guide-edition.md` (sections Traduire/dupliquer + Navigation + palette à jour), `astro.config.mjs` (+`victrix:i18n-pairing`, avertissement non bloquant), GUIDE-PROJET (décision hébergement 17 juil.). Constat : `landing/fr/test.md` sans traduction EN (reliquat de test CloudCannon) — à supprimer ou traduire (décision utilisateur). | Gate vert, 16 structures, 7 pages live, parité OK, statut 🟡 |

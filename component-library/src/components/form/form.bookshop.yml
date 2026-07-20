@@ -39,16 +39,34 @@ blueprint:
   formId: ""
   submitLabel: "Envoyer"
   consentText: ""
+  # Forme COMPLÈTE P-05 (comme schemas/form-*.json et _structures.form_fields) :
+  # CloudCannon ne matérialise les inputs que pour les clés PRÉSENTES — sans
+  # elles, un champ seed passé à « select » n'offrirait jamais ses Options.
   fields:
     - label: "Nom complet"
       type: text
       required: true
+      options: []
+      value: ""
+      showIf:
+        field: ""
+        equals: ""
     - label: "Courriel"
       type: email
       required: true
+      options: []
+      value: ""
+      showIf:
+        field: ""
+        equals: ""
     - label: "Message"
       type: textarea
       required: false
+      options: []
+      value: ""
+      showIf:
+        field: ""
+        equals: ""
 
 preview:
 
