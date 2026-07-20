@@ -1,0 +1,43 @@
+# =============================================================================
+# Spec Bookshop — section « Texte enrichi » (palette partagée, P-07).
+# Voir hero.bookshop.yml pour les conventions communes.
+#
+# `paragraphs` = tableau de CHAÎNES : type d'entrée déclaré par `paragraphs[*]`
+# (leçon P-05 sur les tableaux vides « misconfigured »).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Texte enrichi"
+  description: "Titre centré et un ou plusieurs paragraphes en colonne étroite (bloc de conclusion, mise en contexte). Les paragraphes peuvent contenir des <strong>."
+  icon: notes
+  picker_preview:
+    text: "Texte enrichi"
+    subtext: Titre + paragraphes en colonne étroite
+  preview:
+    icon: notes
+    text:
+      - key: title
+      - text: Texte enrichi
+
+blueprint:
+  type: rich-text
+  title: "Titre du bloc"
+  paragraphs:
+    - "Premier paragraphe. Peut contenir des <strong> pour la mise en gras."
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre (optionnel)"
+  paragraphs:
+    type: array
+    label: "Paragraphes"
+  paragraphs[*]:
+    type: textarea
+    label: "Paragraphe"
+    comment: "Peut contenir des <strong> (rendu HTML tel quel)."

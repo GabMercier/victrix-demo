@@ -529,6 +529,87 @@ collections_config:
           Texte simple, sans HTML — la réponse est aussi publiée en données
           structurées FAQPage (JSON-LD) pour les moteurs de recherche.
 
+  # Services (P-07) — pages composables PUBLIQUES et indexables, même palette de
+  # sections que les campagnes (src/content/services). Patron de la collection
+  # landing, MAIS : éditeur data (JSON, pas de corps markdown), noindex par
+  # défaut à FALSE (inverse des campagnes), et création par gabarit PAR LANGUE
+  # (schemas/service-{fr,en}.json, comme la collection forms). Les CHAMPS des
+  # sections viennent des specs .bookshop.yml (générés dans _structures.sections,
+  # qui priment sur les _inputs de collection) — d'où des _inputs de collection
+  # volontairement minimaux (page + sections).
+  services:
+    path: src/content/services
+    name: Services
+    singular_name: Service
+    description: >-
+      Pages de services, bâties par sections (comme les campagnes) mais
+      PUBLIQUES et indexables. Les dossiers fr/ et en/ contiennent les deux
+      langues ; le même nom de fichier relie une traduction à l'autre.
+    icon: rocket_launch
+    # Éditeur visuel par défaut (première valeur — voir le commentaire de la
+    # collection blog) : les services sont bâtis par sections, comme les
+    # campagnes ; Data en second pour les éditions de front matter / SEO. Pas de
+    # corps markdown (fichiers JSON) → pas de `content`.
+    _enabled_editors:
+      - visual
+      - data
+    # fr/<slug>.json → /fr/services/<slug>/ ; le segment de langue devient le
+    # préfixe d'URL (même astuce [relative_base_path] que blog/landing).
+    url: /[relative_base_path]/services/[slug]/
+    preview:
+      icon: rocket_launch
+      text:
+        - key: title
+        - text: Service sans titre
+      subtext:
+        - key: description
+    # « + Ajouter » : un gabarit par langue pour que le fichier atterrisse dans
+    # fr/ ou en/ avec un JSON valide (patron de la collection forms). Flux de
+    # traduction : créer (ou Dupliquer) le même nom de fichier dans l'autre dossier.
+    schemas:
+      default:
+        name: Service (FR)
+        icon: rocket_launch
+        path: schemas/service-fr.json
+        create:
+          path: 'fr/{title|slugify}.json'
+      en:
+        name: Service (EN)
+        icon: rocket_launch
+        path: schemas/service-en.json
+        create:
+          path: 'en/{title|slugify}.json'
+    _inputs:
+      title:
+        type: text
+        label: Titre
+        comment: >-
+          Titre de la page (onglet + SEO). Selon le contexte, sert aussi de
+          libellé à certaines sections ou cartes.
+      description:
+        type: textarea
+        label: Description
+        comment: >-
+          Description pour les moteurs de recherche et les partages.
+      noindex:
+        type: switch
+        label: Masquer des moteurs de recherche
+        comment: >-
+          DÉSACTIVÉ par défaut : un service est une page publique, indexée
+          (l'inverse des campagnes). N'activer que pour retirer temporairement
+          un service des résultats de recherche.
+      sections:
+        type: array
+        label: Sections
+        comment: >-
+          La page est construite uniquement à partir de ces sections. Garder le
+          héros en PREMIÈRE position : il porte le seul <h1> de la page.
+        options:
+          structures: _structures.sections
+      # `type` = discriminant de section (défini par la palette) — jamais édité.
+      type:
+        hidden: true
+
   # URL redirects — exposes src/data/redirects.json, which the inline
   # 'victrix:redirects' integration in astro.config.mjs turns into
   # dist/_redirects (Cloudflare Pages format) at build time. A COLLECTION on
@@ -779,6 +860,17 @@ collections_config:
         label: Lien
         comment: >-
           Sans préfixe de langue (ex. /contact), ou URL https:// complète.
+      service:
+        type: text
+        label: Service (au lieu du lien)
+        comment: >-
+          Alternative à « Lien » pour une entrée du menu ou d'une colonne du
+          méga-menu : identifiant d'un service = nom du fichier dans
+          src/content/services/<langue>/ SANS « .json » (ex.
+          intelligence-artificielle). Renseigner SOIT « Lien » SOIT « Service »,
+          jamais les deux. Le site calcule l'URL /<langue>/services/<identifiant>
+          et VÉRIFIE que le service existe : un identifiant inconnu — ou les deux
+          champs remplis — bloque la publication avec un message clair.
 
 _structures:
   # Section palette for the landing `sections` array. The VALUES are NOT
@@ -982,7 +1074,11 @@ _structures:
             - text: Lien de navigation
         value:
           label: ''
+          # Un lien porte SOIT href SOIT service (P-07, méga-menu dynamique E.3) —
+          # voir l'aide du champ « Service » (_inputs.service). Cette structure
+          # sert AUSSI les liens des colonnes du méga-menu (_inputs.links).
           href: ''
+          service: ''
 
   nav_columns:
     values:
@@ -1020,3 +1116,80 @@ _structures:
         value:
           question: ''
           answer: ''
+
+  # Cartes numérotées ({number, title, text, ctaLabel?, ctaHref?}) pour la
+  # section « numbered-cards » (P-07). Re-pointée par numbered-cards.bookshop.yml
+  # (même GOTCHA `items` que faq/logo/stats). Defaults en chaînes vides.
+  numbered_card_items:
+    values:
+      - label: Carte numérotée
+        icon: filter_1
+        preview:
+          icon: filter_1
+          text:
+            - key: title
+            - text: Carte numérotée
+        value:
+          number: ''
+          title: ''
+          text: ''
+          ctaLabel: ''
+          ctaHref: ''
+        _inputs:
+          number:
+            type: text
+            label: Numéro
+            comment: "Ex. « 01 » — affiché en gros chiffre pâle."
+          title:
+            type: text
+            label: Titre de la carte
+          text:
+            type: textarea
+            label: Texte de la carte
+          ctaLabel:
+            type: text
+            label: Libellé du bouton (optionnel)
+          ctaHref:
+            type: text
+            label: Lien du bouton (optionnel)
+            comment: "URL finale, préfixe de langue inclus (ex. /fr/contact)."
+
+  # Colonnes de technologies ({title, items[], subgroup?{label, items[]}}) pour
+  # la section « tech-columns » (P-07). Re-pointée par tech-columns.bookshop.yml.
+  # Les listes de chaînes déclarent leur type d'entrée par `items[*]` (leçon
+  # P-05 : un tableau vide sans type d'entrée est « misconfigured »).
+  tech_groups:
+    values:
+      - label: Colonne de technologies
+        icon: dns
+        preview:
+          icon: dns
+          text:
+            - key: title
+            - text: Colonne
+        value:
+          title: ''
+          items: []
+          subgroup:
+            label: ''
+            items: []
+        _inputs:
+          title:
+            type: text
+            label: Titre de la colonne
+          items:
+            type: array
+            label: Éléments
+            comment: "Une technologie / un outil par ligne."
+          items[*]:
+            type: text
+            label: Élément
+          subgroup:
+            type: object
+            label: Sous-groupe étiqueté (optionnel)
+            comment: >-
+              Ex. « Sources ouvertes et locales : » suivi de sa sous-liste.
+              Laisser l'étiquette et la liste vides pour ne pas l'afficher.
+          label:
+            type: text
+            label: Étiquette du sous-groupe

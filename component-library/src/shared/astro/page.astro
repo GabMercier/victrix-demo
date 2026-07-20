@@ -30,6 +30,11 @@
  * `enrich?.[type] ?? {}` spreads nothing — byte-identical to the previous
  * `<Component {...block} />`. NOT part of the frontmatter, so it never touches
  * the `bookshop:live` binding (the marker still traces only `contentBlocks`).
+ *
+ * One section type is BUILD-GATED on its enrichment: `related-posts` must
+ * receive a resolved `cards` array (only the services route provides it). A
+ * related-posts section on any other route fails the build via the guard in the
+ * map below, instead of shipping the component's placeholder cards to prod.
  */
 const { contentBlocks, enrich } = Astro.props;
 
@@ -62,6 +67,22 @@ for (const [path, mod] of Object.entries(componentImports)) {
     const Component = components[type];
     // Build-only enrichment (see header). `{...{}}` when absent → no change.
     const extra = (enrich?.[type] ?? {}) as Block;
+    // Garde-fou build (constat #2) : la section « ressources liées » n'affiche
+    // de VRAIES cartes que si la route les a résolues au build (enrich.cards =
+    // tableau, éventuellement vide). Sans cet apport — section posée sur une
+    // route qui n'alimente PAS related-posts (accueil, campagnes) — le composant
+    // retomberait sur ses cartes FACTICES en production. On casse le build (même
+    // philosophie de garde-fou que formId/navHref/service) plutôt que d'expédier
+    // des placeholders. Seule src/pages/[lang]/services/[slug].astro alimente
+    // related-posts. (Un tableau vide reste valide : la route a résolu 0 article
+    // — le composant ne rend alors rien, cf. related-posts.astro, constat #4.)
+    if (type === 'related-posts' && !Array.isArray(extra.cards)) {
+      throw new Error(
+        `[related-posts] Section « ressources liées » sur une page qui ne résout pas ses cartes au build ` +
+          `(enrich['related-posts'] absent). Cette section n'est supportée que sur les pages de services ` +
+          `(src/pages/[lang]/services/[slug].astro) : l'y retirer, ou la déplacer sur un service.`,
+      );
+    }
     return Component ? <Component {...block} {...extra} /> : null;
   })
 }

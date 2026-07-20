@@ -1,0 +1,100 @@
+# =============================================================================
+# Spec Bookshop — section « Cartes numérotées » (palette partagée, P-07).
+# Voir hero.bookshop.yml pour les conventions communes.
+#
+# Le sous-tableau `items` est re-pointé vers _structures.numbered_card_items
+# (déclarée à la main dans cloudcannon.config.yml) — même GOTCHA que
+# faq/stats/logo-banner : le `items` de la collection pointe sur benefit_items.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Cartes numérotées"
+  description: "Grille de cartes numérotées (étapes, interventions, piliers…), avec titre, introduction et carte d'introduction optionnelles, fond et colonnes réglables, et un bouton optionnel par carte."
+  icon: format_list_numbered
+  picker_preview:
+    text: "Cartes numérotées"
+    subtext: Grille de cartes à gros chiffre (2 ou 3 colonnes)
+  preview:
+    icon: format_list_numbered
+    text:
+      - key: sectionTitle
+      - text: Cartes numérotées
+
+blueprint:
+  type: numbered-cards
+  sectionTitle: "Titre de la section"
+  headingStyle: plain
+  intro: ""
+  leadCard:
+    title: ""
+    text: ""
+  tone: default
+  columns: "3"
+  cardStyle: default
+  items:
+    - number: "01"
+      title: "Titre de la carte"
+      text: "Description de la carte, en une ou deux phrases."
+      ctaLabel: ""
+      ctaHref: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  sectionTitle:
+    label: "Titre de la section"
+  headingStyle:
+    type: select
+    label: "Style du titre"
+    comment: "« plain » = titre centré simple ; « underline » = titre avec liseré vert."
+    options:
+      values:
+        - plain
+        - underline
+  intro:
+    type: textarea
+    label: "Introduction (optionnelle)"
+    comment: "Court paragraphe sous le titre. Peut contenir des <strong>."
+  leadCard:
+    type: object
+    label: "Carte d'introduction (optionnelle)"
+    comment: "Encadré à liseré vert entre le titre et les cartes. Laisser les deux champs vides pour ne pas l'afficher."
+  tone:
+    type: select
+    label: "Fond de section"
+    comment: "« default » = blanc ; « tint » = gris pâle."
+    options:
+      values:
+        - default
+        - tint
+  columns:
+    type: select
+    label: "Nombre de colonnes"
+    options:
+      values:
+        - "2"
+        - "3"
+  cardStyle:
+    type: select
+    label: "Alignement des cartes"
+    comment: "« default » = aligné à gauche ; « center » = centré."
+    options:
+      values:
+        - default
+        - center
+  items:
+    type: array
+    label: "Cartes"
+    options:
+      structures: _structures.numbered_card_items
+  # Champs de la carte d'introduction (leadCard) — les cartes de la grille ont
+  # leurs propres libellés dans _structures.numbered_card_items.
+  title:
+    label: "Titre de la carte d'introduction"
+  text:
+    type: textarea
+    label: "Texte de la carte d'introduction"

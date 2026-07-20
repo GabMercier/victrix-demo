@@ -1,0 +1,52 @@
+# =============================================================================
+# Spec Bookshop — section « Ressources liées » (palette partagée, P-07).
+# Voir home-latest.bookshop.yml pour les conventions des sections DYNAMIQUES.
+#
+# SECTION DYNAMIQUE : titre, étiquettes et lien éditables. Les cartes sont
+# alimentées AU BUILD par la route (articles du blogue partageant au moins une
+# étiquette) ; dans l'éditeur visuel, des cartes factices tiennent lieu d'aperçu.
+# `tags` = tableau de CHAÎNES : type d'entrée déclaré par `tags[*]`.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Ressources liées"
+  description: "Grille d'articles du blogue partageant au moins une des étiquettes choisies (les 3 plus récents), résolue automatiquement au build. Titre et lien optionnel vers toutes les ressources."
+  icon: collections_bookmark
+  picker_preview:
+    text: "Ressources liées"
+    subtext: Articles du blogue par étiquette (automatique)
+  preview:
+    icon: collections_bookmark
+    text:
+      - key: title
+      - text: Ressources liées
+
+blueprint:
+  type: related-posts
+  title: "Ressources liées"
+  tags:
+    - "intelligence artificielle"
+  ctaLabel: ""
+  ctaHref: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre"
+  tags:
+    type: array
+    label: "Étiquettes"
+    comment: "Un article s'affiche s'il porte AU MOINS une de ces étiquettes (celles du blogue). Les plus récents d'abord, maximum 3."
+  tags[*]:
+    type: text
+    label: "Étiquette"
+  ctaLabel:
+    label: "Libellé du lien (optionnel)"
+  ctaHref:
+    label: "Lien (optionnel)"
+    comment: "Ex. /fr/ressources — préfixe de langue inclus."

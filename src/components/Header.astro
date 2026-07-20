@@ -1,8 +1,9 @@
 ---
-import { getEntry } from 'astro:content';
+import { getEntry, getCollection } from 'astro:content';
 import Logo from './Logo.astro';
 import { type Locale, defaultLocale, otherLocale, localizePath, swapLocale } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
+import { resolveNavHref } from '../lib/navigation/service-links';
 
 /**
  * Global site header: dismissible announcement bar, logo, primary navigation,
@@ -30,12 +31,45 @@ if (!navEntry) {
 }
 const nav = navEntry.data;
 
-const navItems = nav.items.map((item) => ({
-  label: item.label,
-  href: localizePath(item.href, lang),
-  // The item whose href matches mega.parentHref carries the mega menu.
-  mega: item.href === nav.mega.parentHref ? nav.mega : undefined,
-}));
+// Slugs de la collection `services` POUR CETTE LANGUE — méga-menu dynamique
+// (P-07, E.3). Un lien de navigation portant un `service` est résolu vers
+// /<lang>/services/<slug> et VALIDÉ contre cet ensemble : un service inexistant
+// FAIT ÉCHOUER le build (src/lib/navigation/service-links.ts, prouvé par test).
+// La navigation reste la source de l'ordre et des libellés; la collection est
+// la source de vérité des URLs. Tant qu'aucun lien ne porte de `service` (cas
+// actuel), le rendu du header est identique à l'octet.
+const serviceEntries = await getCollection('services');
+const serviceSlugs = new Set(
+  serviceEntries
+    .filter((entry) => entry.id.startsWith(`${lang}/`))
+    .map((entry) => entry.id.slice(lang.length + 1)),
+);
+
+// L'entrée qui PORTE le méga-menu est celle dont l'URL RÉSOLUE égale le
+// « parentHref » résolu — comparaison sur les URLs finales (localisées), pas
+// sur les valeurs brutes : un item converti en lien `service` (href vide, URL
+// /<lang>/services/<slug>) doit encore accrocher son méga-menu. parentHref est
+// un href simple (schéma navHref) → resolveNavHref le localise.
+const megaParentHref = resolveNavHref({ href: nav.mega.parentHref }, lang, serviceSlugs);
+const navItems = nav.items.map((item) => {
+  // Résout un lien vers un service (validé) ou localise l'href brut (défaut).
+  const href = resolveNavHref(item, lang, serviceSlugs);
+  return {
+    label: item.label,
+    href,
+    mega: href === megaParentHref ? nav.mega : undefined,
+  };
+});
+
+// Garde-fou build : le méga-menu DOIT s'accrocher à une entrée du menu. Un
+// « parentHref » orphelin (aucune entrée ne correspond) ferait disparaître le
+// méga-menu SILENCIEUSEMENT — on casse le build en nommant le fichier et la
+// valeur fautive (rien de cassé n'atteint le site).
+if (!navItems.some((item) => item.mega)) {
+  throw new Error(
+    `[navigation] ${lang}.json : « parentHref » (${nav.mega.parentHref}) ne correspond à aucune entrée du menu principal — le méga-menu ne s'afficherait nulle part. Aligner « Lien parent » sur le lien (ou le service) d'une entrée du menu.`,
+  );
+}
 
 // Mega-menu column icons (24×24 stroke outlines, colored via currentColor) —
 // keyed by the `icon` names used in the ui dictionary.
@@ -150,7 +184,7 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
                         <ul role="list" class="mega__list">
                           {col.links.map((link) => (
                             <li>
-                              <a class="mega__link" href={localizePath(link.href, lang)}>
+                              <a class="mega__link" href={resolveNavHref(link, lang, serviceSlugs)}>
                                 {link.label}
                               </a>
                             </li>

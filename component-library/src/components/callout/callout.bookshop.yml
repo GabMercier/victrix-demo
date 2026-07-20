@@ -1,0 +1,51 @@
+# =============================================================================
+# Spec Bookshop — section « Encadré d'appel à l'action » (palette partagée, P-07).
+# Voir hero.bookshop.yml pour les conventions communes.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Encadré / bandeau d'action"
+  description: "Appel à l'action réutilisable : « box » = encadré centré sur fond pâle ; « banner-green » = bandeau vert large (titre et texte à gauche, bouton à droite)."
+  icon: ads_click
+  picker_preview:
+    text: "Encadré / bandeau d'action"
+    subtext: Encadré centré ou bandeau vert
+  preview:
+    icon: ads_click
+    text:
+      - key: title
+      - text: Encadré d'action
+
+blueprint:
+  type: callout
+  title: "Titre de l'appel à l'action"
+  body: ""
+  ctaLabel: ""
+  ctaHref: ""
+  layout: box
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre"
+  body:
+    type: textarea
+    label: "Texte (optionnel)"
+  ctaLabel:
+    label: "Libellé du bouton (optionnel)"
+  ctaHref:
+    label: "Lien du bouton (optionnel)"
+    comment: "URL finale, préfixe de langue inclus (ex. /fr/contact)."
+  layout:
+    type: select
+    label: "Présentation"
+    comment: "« box » = encadré centré sur fond pâle ; « banner-green » = bandeau vert pleine largeur."
+    options:
+      values:
+        - box
+        - banner-green

@@ -1,0 +1,44 @@
+# =============================================================================
+# Spec Bookshop — section « Colonnes de technologies » (palette partagée, P-07).
+# Voir hero.bookshop.yml pour les conventions communes.
+#
+# Le sous-tableau `groups` est re-pointé vers _structures.tech_groups (déclarée
+# à la main dans cloudcannon.config.yml) — chaque groupe portant lui-même une
+# liste `items` (chaînes) et un sous-groupe étiqueté optionnel.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Colonnes de technologies"
+  description: "Grille de colonnes bordées, chacune un titre et une liste à puces (technologies, outils, plateformes), avec un sous-groupe étiqueté optionnel par colonne."
+  icon: dns
+  picker_preview:
+    text: "Colonnes de technologies"
+    subtext: Colonnes de listes à puces (ex. technologies)
+  preview:
+    icon: dns
+    text:
+      - key: sectionTitle
+      - text: Colonnes de technologies
+
+blueprint:
+  type: tech-columns
+  sectionTitle: "Titre de la section"
+  groups:
+    - title: "Catégorie"
+      items:
+        - "Technologie"
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  sectionTitle:
+    label: "Titre de la section"
+  groups:
+    type: array
+    label: "Colonnes"
+    options:
+      structures: _structures.tech_groups

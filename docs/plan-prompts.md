@@ -7,21 +7,26 @@
 > `C:\Repo\Victrix\Refontee site web Victrix - Estimé haut niveau – Copie.xlsx`
 > (les codes F-xx / N-x ci-dessous renvoient à ses lignes [Astro]).
 
-## 0. État au 17 juillet (vague 2 ouverte)
+## 0. État au 20 juillet (vague 2 — P-05 fermé, P-07 exécuté + revu 🟡)
 
-**VAGUE 1 : FERMÉE ET POUSSÉE.** P-01 (`9aa6547`), P-02 (`a18b60c` +
-`fa6b1ce`), P-03 (`ec065b3`) — les trois lots sont ✅ (gate vert, revus,
-commités, poussés). ~21 h d'estimé exécutées par Fable 5.
+**VAGUE 1 fermée** (P-01/P-02/P-03 ✅). **P-05 fermé** (`41203b6` +
+hotfixes `dccdcf8`/`f13b7da`, poussés) — exécuté par Fable 5 avec le volet D
+(champs auto-peuplés) et P-22 (multi-étapes) ajouté au backlog.
 
-**VAGUE 2 EN COURS**, dans l'ordre encodé : **P-05** (champs étendus +
-consentement Loi 25 — fiche finale §6.4, prête à lancer) → P-07 (services
-composables) → P-04 (header de landing) → P-06 (Pagefind).
+**P-07 exécuté (Opus 4.8) PUIS revu — 8 constats corrigés** (services
+composables + méga-menu dynamique E.3 + section ressources liées ; tout non
+commité, statut 🟡). Gate re-vert + 5 builds négatifs (chaque garde-fou
+prouvé) + parité dist expertise byte-identique — détails ligne P-07 du backlog
+et journal 20/07. **PROCHAIN : commit utilisateur de P-07**, puis dans l'ordre
+encodé : P-04 (Sonnet 5, header de landing — APRÈS P-07) → P-06 (Sonnet 5,
+Pagefind — après P-04). UNE session déléguée à la fois (zones de collision §3) ;
+au retour de chaque lot : statut 🟡 → session de pilotage Fable 5 (revue du
+diff + gate) AVANT le commit utilisateur.
 
-**Restes OPS de la vague 1** (humain, hors sessions déléguées) :
-vérifications CloudCannon après le push `ec065b3` — palette à 9 sections
-dans l'éditeur visuel, collections « Formulaires » et « Navigation »
-visibles, note « Formulaire lié : … » sur la page démo — et réconciliation
-de l'estimé xlsx (lots vague 1).
+**Restes OPS** (humain) : vérifs CloudCannon post-rebuild (7 types de champ
++ « + Ajouter » des Options fonctionnel sur `campagne-evaluation`);
+réconciliation estimé xlsx (script prêt au scratchpad, relancer quand Excel
+est fermé).
 
 ## 1. Gouvernance — qui fait quoi
 
@@ -104,9 +109,9 @@ Statuts : ⬜ à faire · 🔵 en cours · 🟡 en revue (diff à revoir par Fab
 | P-02 | 4 sections palette : Témoignage, Bandeau logos, Chiffres, Vidéo (façade) | ~~Sonnet 5~~ **Fable 5** | P-01 | 7 h | 1 | ✅ | Fermé — commits `a18b60c` + `fa6b1ce`, poussés. 16 structures, live editing 7 pages, page démo, parité prouvée. Bonus : duplication FR↔EN (guide + `victrix:i18n-pairing`), `.env.example` périmètre, décision hébergement. |
 | P-03 | Formulaires v2 cœur : collection `src/data/forms/` + réf. + destinataire par formulaire | ~~Opus 4.8~~ **Fable 5** | P-02 | 7 h | 1 | ✅ | Fermé — commit `ec065b3`, poussé. Gate vert (69/69 tests dont 7 registre); parité mode inline IDENTIQUE; formId inconnu casse le build; e2e démo prouvé (destinataire/objet/requis résolus PAR LE SERVEUR depuis le registre). 4 défs seed, collection CC « Formulaires », doc §4 _formId. `landing/fr/test.md` supprimé. VAGUE 1 COMPLÈTE. |
 | P-04 | Header de landing par page (complet/allégé/personnalisé) | Sonnet 5 | P-01; en V2 après P-07 | 3,5 h | 2 | ⬜ | §7 |
-| P-05 | Champs étendus (checkbox Loi 25, select, tel, hidden) + conditionnels + auto-peuplés (volet D) | ~~Opus 4.8~~ **Fable 5** | P-03 | 7 h | 2 | 🟡 | Fait 17-18/07 (fiche §6.4 amendée). Gate vert (95 tests, 2 builds, parité BYTE des pages existantes prouvée par diff de baseline, hash CSS inchangés), 2 builds négatifs FR, e2e curl 7 scénarios + navigateur Playwright 11/11 (showIf masque+disabled+required dynamique, UTM rempli, case requise bloque), bundle live editing recompilé (6 pages, jetons embarqués). Revue adversariale 5 lentilles : 2 constats confirmés CORRIGÉS (options de select trimées; blueprint form.bookshop.yml en forme complète). À REVOIR puis committer. |
+| P-05 | Champs étendus (checkbox Loi 25, select, tel, hidden) + conditionnels + auto-peuplés (volet D) | ~~Opus 4.8~~ **Fable 5** | P-03 | 7 h | 2 | ✅ | Fermé — commits `41203b6` + hotfixes `dccdcf8` (script jamais seul enfant d'une expression JSX — regex du moteur Bookshop) et `f13b7da` (`options[*]` type d'entrée), poussés. Gate vert (95 tests), parité BYTE prouvée, e2e curl + navigateur 11/11, revue adversariale (2 corrigés). Détails : journal 17-20/07. |
 | P-06 | Pagefind (build, page résultats, entrée header) | Sonnet 5 | P-04 (Header.astro) | 7 h | 2 | ⬜ | §7 |
-| P-07 | Collection `services` composable + migration IA + méga-menu dynamique (E.3) + section ressources liées | **Opus 4.8** | P-01+P-02+P-05 | 10,5 h | 2 | ⬜ | §7 |
+| P-07 | Collection `services` composable + migration IA + méga-menu dynamique (E.3) + section ressources liées | **Opus 4.8** | P-01+P-02+P-05 | 10,5 h | 2 | 🟡 | Exécuté (Opus 4.8). 7 sections génériques (service-hero/numbered-cards/feature-boxes/tech-columns/callout/rich-text + related-posts), route `services/[slug]` (frontmatter+enrich form&related+build-gate formId), migration IA→service par script (`scripts/migrate-expertise-to-service.mjs`, 11 sections, image héros→public/images/sections), méga-menu E.3 (champ nav `service` + garde-fou `src/lib/navigation/service-links.ts` + test). Gate vert : lint 0, **100 tests** (+5), type-check 0, build + STATIC_ONLY (**27 pages**). Preuves : parité expertise+header **byte-identique**, marqueur `params(contentBlocks:sections)` non vide, DOM service = contenu expertise + ressources liées (vraies cartes résolues), **formulaire lié POST→303 /merci en direct** + jetons `{{page.*}}` résolus, garde-fous formId & méga-menu (builds négatifs). Piège : `getStaticPaths` hors portée frontmatter → préfixe **importé** (`SERVICE_URL_PREFIX`). Accueil/campagnes : hash bundle CSS `[slug]` change (palette +7, attendu, aucune régression de contenu). **Revue P-07 (20/07) : 8 constats corrigés** — 5 gardes-fous build prouvés par builds négatifs (parentHref orphelin, related-posts hors-service, double related-posts, href+espace, href+service), champ CMS `service` exposé (menu + méga-menu), grille vide masquée, `victrix:i18n-pairing` étendu aux services ; gate re-vert (lint 0, **100 tests**, type-check 0, build + STATIC_ONLY 27 pages), **expertise + accueil + campagnes + blogue byte-identiques** (seules les 2 pages services diffèrent d'espaces inter-balises inertes). Voir journal 20/07. Restes : commit utilisateur + décision archi (URLs) P-17/P-18. |
 | P-08 | Courriel de confirmation visiteur (2ᵉ envoi SMTP2GO) | **Opus 4.8** | P-05 | 3,5 h | 3 | ⬜ | §7 — serveur |
 | P-09 | — fusionné dans P-05 (conditionnels = mêmes contrats) | — | — | — | — | — | |
 | P-10 | Bandeau Loi 25 minimal (tokens) + mécanique de gating | **Opus 4.8** | — (GO utilisateur 17/07) | 10,5 h | 3 | ⬜ | §7 |
@@ -383,6 +388,86 @@ falsifiée (curl) → rejet; champ requis sous condition non remplie → succès
 avec libellés FR.
 ```
 
+### 6.5 P-07 — Collection `services` composable + méga-menu dynamique (Opus 4.8) — PROCHAIN LOT
+
+**Objectif** : les 6 services du cahier des charges deviennent des pages
+composables éditables au CMS (patron accueil/campagnes), l'expertise IA
+migre comme premier service, et le méga-menu se construit depuis la
+collection — sans casser l'existant.
+
+**Prompt à coller** (précédé du préambule §3 VERBATIM) :
+
+```
+TÂCHE : collection `services` composable + migration IA + méga-menu
+dynamique (E.3) + section « ressources liées ».
+Lis d'abord EN ENTIER : src/pages/[lang]/campagnes/[slug].astro (LE modèle
+de route à répliquer — commentaires load-bearing : variable `frontmatter`,
+seam enrich, build-gate formId), docs/plan-services-formulaires.md
+(chantiers A et E.3), scripts/migrate-home-to-sections.mjs (patron de
+migration), src/pages/[lang]/expertises/intelligence-artificielle.astro +
+src/content/expertises/ (la source à migrer), src/components/Header.astro +
+src/data/navigation/fr.json (le méga-menu), et l'entête de
+component-library/src/shared/astro/page.astro (seam enrich).
+
+1. Collection `services` : src/content/services/{fr,en}/<slug>.json —
+   patron EXACT de `landing` (mêmes `sections` partagées via sectionsSchema)
+   MAIS pages PUBLIQUES INDEXABLES : pas de noindex par défaut (l'inverse
+   des campagnes — décision explicite, commente-la). Même nom de fichier =
+   paire de traduction. Zod : title, description, sections (+ ce que la
+   migration exige).
+2. Route src/pages/[lang]/services/[slug].astro : réplique du patron
+   campagnes, AVEC TOUT ce qui y est load-bearing : variable LITTÉRALE
+   `frontmatter` + <Page bookshop:live contentBlocks={frontmatter.sections}>,
+   enrich.form = { resolvedForms, pageContext } (les formulaires liés et les
+   jetons {{page.*}} de P-05 doivent fonctionner sur un service AUSSI),
+   build-gate formId (throw nommant page+fichier), altLocalePath par fichier
+   homonyme. Préfixe d'URL en CONSTANTE commentée (architecture
+   d'information non confirmée — « services » provisoire, P-17/P-18
+   trancheront les redirections).
+3. Migration : l'expertise IA devient le service `intelligence-artificielle`
+   par SCRIPT commité (scripts/, patron migrate-home-to-sections.mjs :
+   machine-fidèle, rejouable). Si un bloc de la page expertise n'a pas
+   d'équivalent dans la palette (17 composants), crée la ou les sections
+   manquantes en suivant les 4 contrats — browser-safe, données build via
+   enrich. /expertises/intelligence-artificielle RESTE fonctionnelle et
+   inchangée (la redirection viendra en P-17) : ne supprime RIEN.
+4. Méga-menu dynamique (E.3) : Header.astro construit les liens de services
+   du méga-menu depuis la COLLECTION, dans l'ORDRE défini par
+   src/data/navigation/<lang>.json (la navigation reste la source d'ordre et
+   de libellés; garde-fou build : un lien de méga-menu pointant vers un
+   service inexistant CASSE le build avec un message clair — patron des
+   garde-fous existants). Parité DOM du header : identique à avant tant que
+   la navigation ne référence pas de nouveau service (prouve-le).
+5. Section « ressources liées » (nouveau type, ex. `related-posts`) : titre
+   + étiquettes (tags du blogue) → au build, la route résout les articles
+   correspondants via le seam enrich (patron EXACT de home-latest :
+   cartes pré-résolues, repli factice documenté dans l'éditeur visuel).
+   4 contrats complets (zod partagé, composant browser-safe, spec
+   .bookshop.yml, structure/inputs CloudCannon si sous-tableau).
+6. cloudcannon.config.yml : collection « Services » (libellés FR, éditeurs
+   visual+data, création AVEC gabarits schemas/service-fr.json +
+   service-en.json — patron de la collection forms : schéma par langue,
+   création dans le bon dossier). RÈGLE DU FICHIER : defaults en chaînes
+   vides, jamais null; un tableau seedé vide DOIT déclarer son type
+   d'entrée (`nom[*]`) ou une structure (leçon P-05, 20/07).
+7. RÈGLE BOOKSHOP (leçon P-05, 20/07, commentée dans form.astro) : dans un
+   composant de section, JAMAIS un <script> comme unique enfant d'une
+   expression JSX {cond && (…)} — le moteur retire les scripts par regex
+   avant compilation, le « ( ) » orphelin casse le build CloudCannon.
+
+DONE = gate complet vert (npm run lint 0 err, npm test 95+ verts, npm run
+type-check 0 err, npm run build ET STATIC_ONLY=1 npm run build — copie
+isolée si un dev server tourne, docs/operations.md §3.1) +
+/fr/services/intelligence-artificielle/ et /en/… rendent le MÊME CONTENU
+que la page expertise (comparaison DOM structurée) + la page expertise
+existante est BYTE-identique à avant + le header est BYTE-identique à avant
++ marqueur bookshop-live params(...) NON vide sur les pages services (build
+STATIC_ONLY) + un formulaire lié posé sur un service fonctionne en mode
+démo (PUBLIC_FORMS_ENABLED=1 : POST → /merci, jetons {{page.*}} résolus) +
+collection « Services » éditable dans la config CloudCannon + garde-fou
+méga-menu prouvé par un test négatif.
+```
+
 ## 7. Fiches condensées (vagues 2–4) — texte final rédigé par le pilotage au lancement
 
 - **P-04** : frontmatter landing + objet `header` (zod), select mode
@@ -394,14 +479,7 @@ avec libellés FR.
 - **P-06** : Pagefind au build (STATIC_ONLY ET build prod), page
   `/[lang]/recherche/`, entrée header (données P-01), filtres par type si
   simple. Note : l'UI Pagefind charge ses assets localement (CSP-safe).
-- **P-07** : collection `services` composable (patron accueil : sections +
-  enrich), migration expertise IA = 1er service (script, patron
-  `migrate-home-to-sections.mjs`), route `/[lang]/services/[slug]/`
-  (URLs provisoires si architecture non confirmée — préfixe configurable),
-  méga-menu construit depuis la collection + ordre de `navigation/` (E.3),
-  section « ressources liées » par étiquettes. Garder
-  `/expertises/intelligence-artificielle` fonctionnelle (redirection viendra
-  en P-17).
+- **P-07** : → fiche finale rédigée, voir **§6.5**.
 - **P-08** : second envoi SMTP2GO au soumetteur (gabarit texte par langue,
   adresse du visiteur = champ email du formulaire), échec d'envoi de
   confirmation non bloquant (journalisé). Serveur → Opus.
@@ -478,6 +556,9 @@ avec libellés FR.
 
 | Date | Session | Résultat |
 |---|---|---|
+| 2026-07-20 | Opus 4.8 (1M) — **revue P-07 : 8 constats corrigés** (branche `spike/cloudcannon`, non commité). BLOQUANTS — (#1) champ `service` des liens de nav exposé au CMS : `service: ''` dans `_structures.nav_links.value` (sert menu ET colonnes du méga-menu via `_inputs.links`) + `_inputs.service` (texte + aide FR « SOIT lien SOIT service ») ; (#2) garde-fou build dans le renderer partagé `component-library/src/shared/astro/page.astro` — une section `related-posts` sans cartes résolues (posée hors route services) CASSE le build au lieu d'expédier les cartes factices (**choix « garde-fou » vs « alimenter 3 routes » : aligné sur le patron build-gate formId/navHref/service, et évite la redite related-posts↔home-latest**) ; (#3) `Header.astro` — accroche du méga-menu comparée sur les URLs RÉSOLUES (un item converti en `service` garde son méga-menu) + garde-fou « parentHref orphelin ». IMPORTANTS — (#4) `related-posts.astro` ne rend RIEN quand 0 article résolu (plus de titre + CTA sur grille vide ; maquette éditeur intacte) ; (#5) garde-fou build « >1 `related-posts` par page » (route services). MINEURS — (#6) `content.config.ts` : le superRefine `navLink` valide la valeur BRUTE de `href` (« ␣/contact » précédé d'une espace échoue de nouveau — régression P-01 refermée) ; (#7) `href` ET `service` remplis = rejet build (message FR) + test `service-links` reformulé (précédence de resolveNavHref = filet défensif, plus un mode d'écriture supporté) ; (#8) `./src/content/services` ajouté au rapport `victrix:i18n-pairing` (extension `.json` portée par collection). VÉRIFS (copie isolée, dev server actif :4399) : lint 0 err/8 warns pré-existants, **100 tests**, type-check 0 err/3 hints, build prod + STATIC_ONLY **27 pages** verts ; **5 builds négatifs** prouvent chaque garde (#2/#3/#5/#6/#7) ; **parité dist : page expertise + accueil + campagnes + blogue byte-identiques** (35/37 HTML), seules les 2 pages services diffèrent d'espaces inter-balises inertes (wrapping conditionnel #4 — identiques après normalisation). | 8 constats corrigés, gate + 5 négatifs verts, statut 🟡 (revue Fable 5 / commit utilisateur) |
+| 2026-07-20 | Opus 4.8 (1M) — **P-07 exécuté** (services composables). 7 sections génériques (service-hero, numbered-cards, feature-boxes, tech-columns, callout, rich-text, related-posts) + route `src/pages/[lang]/services/[slug].astro` (réplique campagnes : `frontmatter`, enrich form+related-posts, build-gate formId) + `scripts/migrate-expertise-to-service.mjs` (IA→service, machine-fidèle, image héros→public) + méga-menu E.3 (champ nav `service` optionnel + `src/lib/navigation/service-links.ts` pur/testé) + collection CloudCannon « Services » (+`_structures.numbered_card_items`/`tech_groups`) + `schemas/service-{fr,en}.json`. Gate vert : lint 0 err, **100 tests** (dont 5 `service-links`, négatif inclus), type-check 0 err, build prod + STATIC_ONLY (**27 pages**). Preuves : page expertise + header **byte-identiques** (diff dist), marqueur bookshop-live `params(contentBlocks:sections)` non vide sur les services, comparaison DOM (service = tout le contenu expertise, dans l'ordre, + « ressources liées » aux **vraies cartes** résolues au build), **formulaire lié POST→303 /fr/merci en direct** (mode démo, objet résolu serveur) + contre-preuve consentement Loi 25 → ?erreur=1, garde-fous formId & méga-menu prouvés par builds négatifs. Piège consigné : `getStaticPaths` s'exécute dans une portée SÉPARÉE (pas d'accès aux const du frontmatter) → préfixe d'URL importé depuis service-links.ts. Accueil/campagnes : seul le hash du bundle CSS `[slug]` change (palette +7 composants, attendu — contenu inchangé). | Gate vert + preuves, statut 🟡 (revue Fable 5) |
+| 2026-07-20 | Fable 5 — pilotage : P-05 fermé ✅ (commits `41203b6`/`dccdcf8`/`f13b7da` poussés par l'utilisateur). Fiche finale **P-07 rédigée (§6.5)** — délégation reprend (Opus/Sonnet, revue Fable 5 au retour). §0 et §7 rafraîchis. | P-07 prêt à lancer (Opus 4.8) |
 | 2026-07-20 | Fable 5 — **correctif éditeur** : tableau « Options (liste déroulante) » signalé « misconfigured » quand vide (le clonage exige une entrée existante). Fix : type d'entrée du tableau via la notation documentée `options[*]: {type: text}` (cloudcannon.config.yml, niveau structure). NB : distinct du gotcha « fields[*].type inerte » (chemins imbriqués non supportés) — `nom[*]` au premier niveau EST la config officielle du type d'entrée. | Correctif config à committer |
 | 2026-07-20 | Fable 5 — **correctif build CloudCannon post-commit P-05** (`41203b6` cassait le postbuild Bookshop). Cause racine : astro-engine retire les `<script>…</script>` PAR REGEX avant de compiler (builder.js l.205) → un script UNIQUE enfant d'une expression `{cond && (…)}` laisse un « ( ) » orphelin; localement invisible (compilateur plus récent → échec DANS le try → repli texte complet l.211), chez CloudCannon le vieux compilateur imbriqué tolère le gabarit amputé et esbuild meurt l.214 hors try. Correctif : les 2 mini-scripts P-05 rendus inconditionnels dans le fragment formsEnabled (inertes sans conditionnel/jeton url), règle documentée dans l'entête de form.astro. Prouvé : harnais rejouant les DEUX chemins du moteur (amputé + complet) vert, contre-preuve HEAD reproduit le « && ( ) », gate + generate 16 structures/6 pages verts. | Correctif à committer (hotfix P-05) |
 | 2026-07-18 | Fable 5 — **P-05 exécuté** (+ volet D auto-peuplé, décision user; multi-étapes → P-22 backlog). Fichiers : `src/lib/forms/hidden-tokens.ts` (+test, jetons page/url), `content.config.ts` (formFieldCore partagé 7 types + formFieldRules build-gate FR), `registry.ts` (normalisation, requis conditionnels évalués serveur, `_cases`, liste blanche select — options trimées), `validation.ts` (reflectCheckboxes oui/non), `api/forms.ts`, `form.astro` (rendu 7 types, 2 scripts inline DANS le fragment formsEnabled — parité; hidden via display inline, .lp-form__field flex bat l'attribut hidden), `[slug].astro` (enrich.pageContext), cloudcannon.config.yml + schemas + form.bookshop.yml (forme complète), seeds campagne-evaluation, docs §4-5-10 + guide-edition. Pièges consignés : cache `.astro` périmé → 500 dev sur campagnes (purger); artefact cp1252 du harnais curl (faux rejet accents). | Gate vert + e2e + navigateur + revue adversariale (2 corrigés), statut 🟡 |

@@ -1,0 +1,65 @@
+# =============================================================================
+# Spec Bookshop — section « Service — Héros » (palette partagée, P-07).
+# Voir hero.bookshop.yml pour les conventions communes.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Service — Héros"
+  description: "Bannière de page service (fond marine, image à droite) : surtitre, titre en deux temps (partie accentuée + suite), paragraphe d'introduction et bouton. Porte le seul <h1> — à placer en PREMIÈRE position."
+  icon: rocket_launch
+  picker_preview:
+    text: "Service — Héros"
+    subtext: Bannière marine avec image (h1 de la page)
+  preview:
+    icon: rocket_launch
+    text:
+      - key: title
+      - text: Héros de service
+
+blueprint:
+  type: service-hero
+  eyebrow: ""
+  titleAccent: ""
+  title: "Titre du service"
+  lead: ""
+  ctaLabel: ""
+  ctaHref: ""
+  image: ""
+  imageAlt: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  eyebrow:
+    label: "Surtitre (optionnel)"
+  titleAccent:
+    label: "Début du titre — accentué (optionnel)"
+    comment: "Affiché en vert, au-dessus de la suite du titre."
+  title:
+    label: "Titre"
+  lead:
+    type: textarea
+    label: "Paragraphe d'introduction (optionnel)"
+    comment: "Peut contenir des <strong> (rendu HTML tel quel)."
+  ctaLabel:
+    label: "Libellé du bouton (optionnel)"
+  ctaHref:
+    label: "Lien du bouton (optionnel)"
+    comment: "URL finale, préfixe de langue inclus (ex. /fr/contact)."
+  image:
+    type: image
+    label: "Image (optionnelle)"
+    comment: >-
+      Le fichier téléversé atterrit dans public/images/sections/ (adresse
+      servie telle quelle, /images/…).
+    options:
+      paths:
+        static: public
+        uploads: public/images/sections
+  imageAlt:
+    label: "Texte alternatif de l'image"
+    comment: "Description pour l'accessibilité (laisser vide si l'image est purement décorative)."

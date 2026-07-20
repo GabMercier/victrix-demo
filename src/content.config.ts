@@ -325,6 +325,99 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       ctaLabel: z.string(),
       ctaHref: z.string(),
     }),
+    // ---- Sections « services » (P-07) — port fidèle de la page expertise IA
+    // vers des sections composables GÉNÉRIQUES et réutilisables (partagées
+    // comme tout le reste de la palette : disponibles sur services, landings
+    // ET accueil). Règles habituelles : champs optionnels en .optional() (le
+    // composant traite "" comme absent), images = chemins publics servis tels
+    // quels (browser-safe, aucun astro:assets). Les champs de texte enrichi
+    // (lead, intro, paragraphs) peuvent contenir des <strong> rendus set:html
+    // — même politique que la page expertise d'origine (contenu de dépôt). ----
+    z.object({
+      type: z.literal('service-hero'),
+      eyebrow: z.string().optional(),
+      // Le <h1> = surtitre accentué (bloc, optionnel) + `title`. `title` est
+      // requis : cette section porte le SEUL <h1> de la page (première position).
+      titleAccent: z.string().optional(),
+      title: z.string(),
+      lead: z.string().optional(),
+      ctaLabel: z.string().optional(),
+      ctaHref: z.string().optional(),
+      // Chemin public (ex. /images/services/…-hero.png), servi tel quel.
+      image: z.string().optional(),
+      imageAlt: z.string().optional(),
+    }),
+    z.object({
+      type: z.literal('numbered-cards'),
+      sectionTitle: z.string(),
+      // 'plain' = titre centré simple ; 'underline' = titre + liseré vert.
+      headingStyle: z.enum(['plain', 'underline']).default('plain'),
+      intro: z.string().optional(),
+      // Carte d'introduction en surimpression (liseré vert), optionnelle.
+      leadCard: z.object({ title: z.string(), text: z.string() }).optional(),
+      tone: z.enum(['default', 'tint']).default('default'),
+      // Nombre de colonnes de la grille (chaîne — valeur de select CloudCannon).
+      columns: z.enum(['2', '3']).default('3'),
+      cardStyle: z.enum(['default', 'center']).default('default'),
+      items: z.array(
+        z.object({
+          number: z.string(),
+          title: z.string(),
+          text: z.string(),
+          // CTA par carte (optionnel — rendu seulement si libellé ET lien).
+          ctaLabel: z.string().optional(),
+          ctaHref: z.string().optional(),
+        }),
+      ),
+    }),
+    z.object({
+      type: z.literal('feature-boxes'),
+      sectionTitle: z.string(),
+      subtitle: z.string().optional(),
+      // Liste de libellés simples (boîtes bordées) — tableau de chaînes.
+      boxes: z.array(z.string()),
+    }),
+    z.object({
+      type: z.literal('tech-columns'),
+      sectionTitle: z.string(),
+      // Chaque groupe = une colonne (titre + liste), avec un sous-groupe
+      // étiqueté optionnel (ex. « Sources ouvertes et locales : » + sa liste).
+      groups: z.array(
+        z.object({
+          title: z.string(),
+          items: z.array(z.string()),
+          subgroup: z.object({ label: z.string(), items: z.array(z.string()) }).optional(),
+        }),
+      ),
+    }),
+    z.object({
+      type: z.literal('callout'),
+      title: z.string(),
+      body: z.string().optional(),
+      ctaLabel: z.string().optional(),
+      ctaHref: z.string().optional(),
+      // 'box' = encadré centré (fond surface) ; 'banner-green' = bandeau vert
+      // large (titre/texte à gauche, bouton à droite).
+      layout: z.enum(['box', 'banner-green']).default('box'),
+    }),
+    z.object({
+      type: z.literal('rich-text'),
+      title: z.string().optional(),
+      // Chaque paragraphe rendu en <p set:html> (peut contenir des <strong>).
+      paragraphs: z.array(z.string()),
+    }),
+    z.object({
+      type: z.literal('related-posts'),
+      title: z.string(),
+      ctaLabel: z.string().optional(),
+      ctaHref: z.string().optional(),
+      // Étiquettes du blogue : un article correspond s'il en partage AU MOINS
+      // une. Les cartes sont résolues AU BUILD par la route (seam enrich,
+      // patron EXACT de home-latest — cartes pré-résolues en données simples) ;
+      // le composant reste browser-safe et affiche des cartes factices dans
+      // l'éditeur visuel (données injectées absentes).
+      tags: z.array(z.string()).default([]),
+    }),
   ]);
 }
 
@@ -381,6 +474,38 @@ const landing = defineCollection({
       // Shared `sections` union (see sectionsSchema above) — the same palette
       // the home page uses; the campaign route (src/pages/[lang]/campagnes/
       // [slug].astro) renders it through the shared Bookshop renderer.
+      sections: z.array(sectionsSchema(image)),
+    }),
+});
+
+/**
+ * Services — pages composables PUBLIQUES et INDEXABLES (P-07). Même contrat de
+ * `sections` que `landing` (union sectionsSchema PARTAGÉE), rendues par
+ * src/pages/[lang]/services/[slug].astro à travers le renderer Bookshop
+ * partagé (édition visuelle live, comme les campagnes et l'accueil).
+ *
+ * DIFFÉRENCE DÉLIBÉRÉE avec `landing` : `noindex` par défaut à FALSE — un
+ * service est une page de contenu destinée au référencement organique
+ * (l'inverse exact des campagnes, trafic payant → noindex par défaut). Un
+ * éditeur peut tout de même masquer un service précis (interrupteur).
+ *
+ * ids "<locale>/<fichier>" (même patron que blog/landing) : le nom de fichier
+ * partagé apparie les traductions FR/EN et sert de slug d'URL dans les deux
+ * langues. L'expertise IA a été migrée ici comme premier service via
+ * scripts/migrate-expertise-to-service.mjs (machine-fidèle, rejouable).
+ */
+const services = defineCollection({
+  loader: glob({
+    pattern: '**/*.json',
+    base: './src/content/services',
+    generateId: ({ entry }) => entry.replace(/\\/g, '/').replace(/\.[^/.]+$/, ''),
+  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      // INDEXABLE par défaut — inverse des campagnes (décision explicite P-07).
+      noindex: z.boolean().default(false),
       sections: z.array(sectionsSchema(image)),
     }),
 });
@@ -471,7 +596,64 @@ const navHref = z
     (v) => (v.startsWith('/') && !v.startsWith('//')) || v.startsWith('https://'),
     { message: 'Lien invalide : chemin commençant par « / » (sans « // ») ou URL https://' },
   );
-const navLink = z.object({ label: z.string().min(1, 'Libellé requis'), href: navHref });
+// Un lien de navigation porte SOIT `href` (mode par défaut — les liens actuels
+// sont inchangés), SOIT `service` (P-07, méga-menu dynamique E.3) : une
+// référence à la collection `services` par son identifiant. Header.astro calcule
+// alors l'URL finale (/<lang>/services/<slug>) DEPUIS la collection et FAIT
+// ÉCHOUER le build si le slug n'existe pas — même philosophie de garde-fou que
+// les autres liens (src/lib/navigation/service-links.ts, prouvé par test).
+// "" (chaîne vide) = non renseigné, JAMAIS null (convention du dépôt). Règles
+// du build-gate : href ET service vides = erreur (lien sans cible) ; href ET
+// service renseignés = erreur (SOIT l'un SOIT l'autre — un lien n'a qu'une
+// cible) ; quand href est seul, son format est validé sur la valeur BRUTE
+// (navHref) — une espace de tête (« /contact ») se localiserait en « /fr/ /contact »
+// (404) : elle DOIT échouer, préservant le garde-fou P-01.
+const navLink = z
+  .object({
+    label: z.string().min(1, 'Libellé requis'),
+    href: z.string().optional(),
+    service: z.string().optional(),
+  })
+  .superRefine((v, ctx) => {
+    // « Renseigné ? » via trim (une espace seule = non renseigné). La VALIDATION
+    // du format, elle, porte sur la valeur BRUTE (plus bas) — on ne toilette pas
+    // un href fautif, on le rejette.
+    const rawHref = v.href ?? '';
+    const rawService = v.service ?? '';
+    const hrefEmpty = rawHref.trim() === '';
+    const serviceEmpty = rawService.trim() === '';
+    if (hrefEmpty && serviceEmpty) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['href'],
+        message: 'Lien requis : renseigner « href » (ex. /contact) ou « service » (identifiant d’un service).',
+      });
+      return;
+    }
+    // SOIT href SOIT service, jamais les deux : un lien n'a qu'une cible.
+    // resolveNavHref garde une précédence défensive (service > href) comme
+    // filet, mais cette combinaison ne doit pas être offerte à l'auteur.
+    if (!hrefEmpty && !serviceEmpty) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['service'],
+        message: 'Renseigner « href » OU « service », pas les deux : un lien n’a qu’une seule cible.',
+      });
+      return;
+    }
+    // href seul : valider la valeur BRUTE (pas de trim) pour conserver le
+    // message et la portée du garde-fou P-01.
+    if (!hrefEmpty) {
+      const r = navHref.safeParse(rawHref);
+      if (!r.success) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['href'],
+          message: r.error.issues[0]?.message ?? 'Lien invalide',
+        });
+      }
+    }
+  });
 const navigation = defineCollection({
   loader: glob({ pattern: '*.json', base: './src/data/navigation' }),
   schema: z.object({
@@ -542,4 +724,4 @@ const forms = defineCollection({
   }),
 });
 
-export const collections = { blog, home, landing, expertises, navigation, forms };
+export const collections = { blog, home, landing, services, expertises, navigation, forms };

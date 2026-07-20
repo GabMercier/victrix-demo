@@ -311,8 +311,9 @@ function redirectsFile() {
  * Rapport d'appariement FR/EN — AVERTISSEMENT seulement, jamais bloquant.
  *
  * La règle du contenu bilingue : même nom de fichier dans fr/ et en/ = paire
- * de traduction (blogue et campagnes — flux « Dupliquer » documenté dans
- * docs/guide-edition.md, section « Traduire »). Cette intégration liste au
+ * de traduction (blogue et campagnes en .md, services en .json — flux
+ * « Dupliquer » documenté dans docs/guide-edition.md, section « Traduire »).
+ * Chaque collection déclare donc son extension. Cette intégration liste au
  * build les entrées sans contrepartie, pour que l'oubli de traduction se voie
  * dans le journal de build (CloudCannon comme préversions) au lieu d'être
  * découvert par un visiteur via le sélecteur de langue. Tourne dans les deux
@@ -324,14 +325,20 @@ function i18nPairingReport() {
     hooks: {
       /** @param {{ logger: import('astro').AstroIntegrationLogger }} options */
       'astro:build:done': async ({ logger }) => {
-        for (const root of ['./src/content/blog', './src/content/landing']) {
+        for (const { root, ext } of [
+          { root: './src/content/blog', ext: '.md' },
+          { root: './src/content/landing', ext: '.md' },
+          // Services (P-07) : même contrat d'appariement fr/en homonymes, mais
+          // fichiers .json (pas .md) — l'extension est portée par collection.
+          { root: './src/content/services', ext: '.json' },
+        ]) {
           /** @type {Record<string, string[]>} */
           const fichiers = {};
           for (const locale of ['fr', 'en']) {
             try {
               fichiers[locale] = (
                 await fs.readdir(new URL(`${root}/${locale}/`, import.meta.url))
-              ).filter((f) => f.endsWith('.md'));
+              ).filter((f) => f.endsWith(ext));
             } catch {
               fichiers[locale] = []; // dossier absent = rien à apparier
             }

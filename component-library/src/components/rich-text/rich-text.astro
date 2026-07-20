@@ -1,0 +1,68 @@
+---
+/**
+ * Section « Texte enrichi » — composant Bookshop (P-07).
+ *
+ * Props : { type: "rich-text", title?, paragraphs: string[] }
+ *
+ * Port fidèle du bloc de conclusion de la page expertise : titre centré + un ou
+ * plusieurs paragraphes en colonne étroite. Chaque paragraphe est rendu
+ * set:html (peut contenir des <strong>) — même politique que la page d'origine
+ * (contenu de dépôt de confiance).
+ *
+ * Contraintes / pièges :
+ * - <h2> : le <h1> unique appartient au héros.
+ * - `paragraphs = []` en secours pour ne pas planter l'éditeur pendant la saisie.
+ * - Aucun script client ; var(--token, secours) reprend src/styles/tokens.css.
+ */
+interface Props {
+  title?: string;
+  paragraphs: string[];
+}
+
+const { title, paragraphs = [] } = Astro.props;
+---
+
+<section class="rt">
+  <div class="rt__container">
+    {title && <h2 class="rt__title">{title}</h2>}
+    {paragraphs.map((p) => <p class="rt__p" set:html={p}></p>)}
+  </div>
+</section>
+
+<style>
+  .rt {
+    padding-block: var(--space-9, 6rem);
+    background-color: var(--color-bg, #ffffff);
+    color: var(--color-text, #1a1c20);
+    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
+  }
+
+  /* Colonne étroite centrée (équivalent .container.closing de la page expertise). */
+  .rt__container {
+    width: 100%;
+    max-width: 820px;
+    margin-inline: auto;
+    padding-inline: var(--container-pad, 1.5rem);
+  }
+
+  .rt__title {
+    margin: 0 auto;
+    max-width: 24ch;
+    text-align: center;
+    color: var(--color-navy, #083957);
+    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
+    font-weight: var(--fw-bold, 700);
+    line-height: var(--lh-tight, 1.15);
+    text-wrap: balance;
+  }
+
+  .rt__p {
+    margin: var(--space-4, 1rem) 0 0;
+    color: var(--color-text-muted, #4a4d54);
+    font-size: var(--fs-400, clamp(1.125rem, 0.2vw + 1.05rem, 1.25rem));
+    line-height: var(--lh-normal, 1.6);
+  }
+  .rt__p :global(strong) {
+    color: var(--color-navy, #083957);
+  }
+</style>

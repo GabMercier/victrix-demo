@@ -1,0 +1,207 @@
+{
+  "title": "Artificial Intelligence",
+  "description": "AI consulting and integration services tailored to your organization: strategy, custom agents, secure adoption of generative AI.",
+  "noindex": false,
+  "sections": [
+    {
+      "_bookshop_name": "service-hero",
+      "type": "service-hero",
+      "eyebrow": "Artificial intelligence",
+      "titleAccent": "AI consulting and integration services",
+      "title": "tailored to your organization",
+      "lead": "Adopt artificial intelligence in a secure and responsible way, with an approach that integrates people, processes, and change management at every step. Benefit from the guidance of our consultants to select and adopt AI solutions that address your challenges. Thanks to our multi-technology expertise, we ensure <strong>successful implementation and adoption</strong>, aligned with your business objectives.",
+      "ctaLabel": "Talk to an AI expert",
+      "ctaHref": "/en/contact",
+      "image": "/images/sections/intelligence-artificielle-hero.png",
+      "imageAlt": ""
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "sectionTitle": "Put AI to work for businesses and public organizations",
+      "headingStyle": "plain",
+      "leadCard": {
+        "title": "With Victrix, move from strategy to adoption",
+        "text": "Our artificial intelligence consultants can step in at different stages, depending on your level of AI maturity or adoption. Here is what our AI interventions and services cover."
+      },
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Exploring and analyzing opportunities",
+          "text": "Identify and prioritize the most promising use cases, then build a clear roadmap to launch your first concrete AI initiatives."
+        },
+        {
+          "number": "02",
+          "title": "Developing custom AI agents and solutions",
+          "text": "Design and deploy precise solutions to automate or optimize your priority processes, with end-to-end guidance from prototype to deployment."
+        },
+        {
+          "number": "03",
+          "title": "Secure adoption of generative AI",
+          "text": "Structure the adoption of generative AI across your organization through a solid plan, user support, and targeted training, putting best practices front and centre."
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "sectionTitle": "How Victrix works with your teams for smooth and secure AI adoption",
+      "headingStyle": "underline",
+      "intro": "Whether you have a targeted project or a large-scale initiative, we collaborate with your teams to <strong>assess needs</strong>, <strong>define objectives</strong>, and <strong>meet your deadlines</strong>. Our collaborative approach ensures smooth and secure AI adoption while maximizing value for your organization.",
+      "tone": "tint",
+      "columns": "2",
+      "cardStyle": "center",
+      "items": [
+        {
+          "number": "01",
+          "title": "Ongoing expertise",
+          "text": "We provide you with AI experts for long-term consulting and development. You benefit from continuous guidance to ensure the follow-up, evolution, and improvement of your projects.",
+          "ctaLabel": "I want ongoing support",
+          "ctaHref": "/en/contact"
+        },
+        {
+          "number": "02",
+          "title": "Tailored expertise",
+          "text": "We mobilize our experts for your specific projects, adjusting our support according to your priorities and deadlines to deliver targeted assistance that ensures results that meet your expectations.",
+          "ctaLabel": "I have a specific project",
+          "ctaHref": "/en/contact"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "title": "Questions about an artificial intelligence project?",
+      "body": "Our experts support you at every step to ensure the success of all your AI projects.",
+      "ctaLabel": "Consult a specialist",
+      "ctaHref": "/en/contact",
+      "layout": "box"
+    },
+    {
+      "_bookshop_name": "feature-boxes",
+      "type": "feature-boxes",
+      "sectionTitle": "Artificial intelligence expertise",
+      "subtitle": "Our areas of AI expertise",
+      "boxes": [
+        "Custom, interconnected agents for standardized processes",
+        "Customization of large language models (LLMs) to your domains or your data",
+        "Strategic consulting, governance, and roadmap",
+        "Change management and AI adoption",
+        "Data security and compliance"
+      ]
+    },
+    {
+      "_bookshop_name": "tech-columns",
+      "type": "tech-columns",
+      "sectionTitle": "Multi-technology expertise",
+      "groups": [
+        {
+          "title": "Large language models (LLMs)",
+          "items": [
+            "OpenAI",
+            "Llama",
+            "Claude",
+            "Gemini"
+          ]
+        },
+        {
+          "title": "Integrated agents",
+          "items": [
+            "Copilot 365",
+            "Copilot (Dynamics 365)",
+            "ChatGPT",
+            "NowAssist (ServiceNow)"
+          ]
+        },
+        {
+          "title": "Technologies and development environments",
+          "items": [
+            "Copilot Studio",
+            "Azure AI Foundry",
+            "ServiceNow AI Platform"
+          ],
+          "subgroup": {
+            "label": "Open-source and local:",
+            "items": [
+              "LangChain",
+              "Hugging Face",
+              "Docker",
+              "Ollama"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "title": "Ready to start your artificial intelligence project?",
+      "body": "",
+      "ctaLabel": "Consult our experts",
+      "ctaHref": "/en/contact",
+      "layout": "box"
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "sectionTitle": "Structured, targeted interventions backed by a diverse pool of AI experts",
+      "headingStyle": "underline",
+      "tone": "tint",
+      "columns": "2",
+      "cardStyle": "center",
+      "items": [
+        {
+          "number": "01",
+          "title": "Strategic consulting",
+          "text": "Experienced advisors from our team, our global ecosystem, and our specialized AI partners."
+        },
+        {
+          "number": "02",
+          "title": "Technology and business architecture",
+          "text": "Senior engineers recognized as AI experts by our clients."
+        },
+        {
+          "number": "03",
+          "title": "Solution expertise",
+          "text": "Specialists who can step in on cybersecurity, ERP/CRM, data management, and intelligent search engines."
+        },
+        {
+          "number": "04",
+          "title": "Analysis, development, and change management",
+          "text": "Experts who support you in analysis, development, and change management, drawing on hands-on experience in AI projects and proofs of concept."
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Victrix accelerates AI adoption in your organization",
+      "paragraphs": [
+        "Driven by an <strong>ecosystem of expertise</strong> that spans technology, data governance, cybersecurity, and managed services, Victrix is your strategic partner for managing your AI projects.",
+        "Our artificial intelligence support simplifies deployment, strategy, and your <strong>AI roadmap</strong>, whatever your level of maturity."
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "title": "Meet our AI consultants",
+      "body": "Tap into the expertise of our artificial intelligence specialists to add real value to your processes and accelerate the achievement of your objectives.",
+      "ctaLabel": "Adopt AI with Victrix",
+      "ctaHref": "/en/contact",
+      "layout": "banner-green"
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Related resources",
+      "tags": [
+        "Artificial intelligence"
+      ],
+      "ctaLabel": "See all resources",
+      "ctaHref": "/en/ressources"
+    }
+  ]
+}
