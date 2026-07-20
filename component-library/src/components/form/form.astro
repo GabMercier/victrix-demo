@@ -270,10 +270,6 @@ const showIfAttrs = (field: FormField) => {
 // quand la condition bascule (jamais d'attribut required initial).
 const condRequiredAttr = (field: FormField) =>
   formsEnabled && field.required && activeShowIf(field) ? '' : undefined;
-const hasConditionals =
-  formsEnabled && effFields.some((field) => field.type !== 'hidden' && activeShowIf(field));
-const hasUrlParams =
-  formsEnabled && hiddenResolved.some((resolved) => resolved !== null && resolved.urlParam !== null);
 
 // Case à cocher : styles EN LIGNE (feuille de style paginée inchangée — voir
 // l'entête) ; accent-color reprend le marine de la charte.
@@ -363,83 +359,85 @@ const errorMessage =
                 nouveau conteneur d'expression au niveau racine du <form> :
                 un conteneur vide laisse un espace surnuméraire après
                 compressHTML — la parité à l'octet du mode maquette en
-                dépend). Placés AVANT les champs, ils attendent la fin de
-                l'analyse (readyState) au premier chargement; data-astro-rerun
-                les ré-exécute après une navigation du routeur, où le DOM est
-                déjà complet. */}
-            {hasConditionals && (
-              <script is:inline data-astro-rerun>
-                // Champs conditionnels (showIf) — ergonomie SEULEMENT : le
-                // serveur ré-évalue depuis la définition. Un champ masqué est
-                // aussi DÉSACTIVÉ (disabled = non soumis, exclu de la
-                // validation native) ; `required` suit la condition
-                // (data-showif-required).
-                {
-                  const f = document.currentScript && document.currentScript.closest('form');
-                  if (f) {
-                    const run = () => {
-                      const rows = f.querySelectorAll('[data-showif-field]');
-                      const apply = () => {
-                        rows.forEach((row) => {
-                          const pilot = f.elements.namedItem(
-                            row.getAttribute('data-showif-field') || '',
-                          );
-                          const value = !pilot
-                            ? ''
-                            : pilot.type === 'checkbox'
-                              ? pilot.checked
-                                ? pilot.value
-                                : ''
-                              : pilot.value || '';
-                          const on =
-                            value.trim() === (row.getAttribute('data-showif-equals') || '').trim();
-                          // hidden seul ne suffit pas : .lp-form__field pose
-                          // display:flex (style d'auteur > feuille UA) — le
-                          // style EN LIGNE tranche.
-                          row.hidden = !on;
-                          row.style.display = on ? '' : 'none';
-                          row.querySelectorAll('input, select, textarea').forEach((el) => {
-                            el.disabled = !on;
-                            if (el.hasAttribute('data-showif-required')) el.required = on;
-                          });
+                dépend) et SANS enveloppe conditionnelle propre : le moteur
+                Bookshop retire les <script>…</script> PAR REGEX avant de
+                compiler (astro-engine/lib/builder.js, l.205) — un script
+                unique enfant d'une expression {cond && (…)} laisserait un
+                « ( ) » orphelin qui casse le build CloudCannon (constaté le
+                20 juil.). Ils sont inertes quand le formulaire n'a ni champ
+                conditionnel ni jeton url. Placés AVANT les champs, ils
+                attendent la fin de l'analyse (readyState) au premier
+                chargement; data-astro-rerun les ré-exécute après une
+                navigation du routeur, où le DOM est déjà complet. */}
+            <script is:inline data-astro-rerun>
+              // Champs conditionnels (showIf) — ergonomie SEULEMENT : le
+              // serveur ré-évalue depuis la définition. Un champ masqué est
+              // aussi DÉSACTIVÉ (disabled = non soumis, exclu de la
+              // validation native) ; `required` suit la condition
+              // (data-showif-required).
+              {
+                const f = document.currentScript && document.currentScript.closest('form');
+                if (f) {
+                  const run = () => {
+                    const rows = f.querySelectorAll('[data-showif-field]');
+                    const apply = () => {
+                      rows.forEach((row) => {
+                        const pilot = f.elements.namedItem(
+                          row.getAttribute('data-showif-field') || '',
+                        );
+                        const value = !pilot
+                          ? ''
+                          : pilot.type === 'checkbox'
+                            ? pilot.checked
+                              ? pilot.value
+                              : ''
+                            : pilot.value || '';
+                        const on =
+                          value.trim() === (row.getAttribute('data-showif-equals') || '').trim();
+                        // hidden seul ne suffit pas : .lp-form__field pose
+                        // display:flex (style d'auteur > feuille UA) — le
+                        // style EN LIGNE tranche.
+                        row.hidden = !on;
+                        row.style.display = on ? '' : 'none';
+                        row.querySelectorAll('input, select, textarea').forEach((el) => {
+                          el.disabled = !on;
+                          if (el.hasAttribute('data-showif-required')) el.required = on;
                         });
-                      };
-                      f.addEventListener('change', apply);
-                      apply();
-                    };
-                    if (document.readyState === 'loading') {
-                      document.addEventListener('DOMContentLoaded', run);
-                    } else {
-                      run();
-                    }
-                  }
-                }
-              </script>
-            )}
-            {hasUrlParams && (
-              <script is:inline data-astro-rerun>
-                // Jetons url — remplit les champs cachés marqués
-                // data-url-param depuis la barre d'adresse (ex. utm_source),
-                // tronqué à 200 caractères. Purement informatif (courriel).
-                {
-                  const f = document.currentScript && document.currentScript.closest('form');
-                  if (f) {
-                    const run = () => {
-                      const params = new URLSearchParams(location.search);
-                      f.querySelectorAll('input[type="hidden"][data-url-param]').forEach((el) => {
-                        const value = params.get(el.getAttribute('data-url-param') || '');
-                        if (value) el.value = value.slice(0, 200);
                       });
                     };
-                    if (document.readyState === 'loading') {
-                      document.addEventListener('DOMContentLoaded', run);
-                    } else {
-                      run();
-                    }
+                    f.addEventListener('change', apply);
+                    apply();
+                  };
+                  if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', run);
+                  } else {
+                    run();
                   }
                 }
-              </script>
-            )}
+              }
+            </script>
+            <script is:inline data-astro-rerun>
+              // Jetons url — remplit les champs cachés marqués
+              // data-url-param depuis la barre d'adresse (ex. utm_source),
+              // tronqué à 200 caractères. Purement informatif (courriel).
+              {
+                const f = document.currentScript && document.currentScript.closest('form');
+                if (f) {
+                  const run = () => {
+                    const params = new URLSearchParams(location.search);
+                    f.querySelectorAll('input[type="hidden"][data-url-param]').forEach((el) => {
+                      const value = params.get(el.getAttribute('data-url-param') || '');
+                      if (value) el.value = value.slice(0, 200);
+                    });
+                  };
+                  if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', run);
+                  } else {
+                    run();
+                  }
+                }
+              }
+            </script>
           </>
         )
       }
