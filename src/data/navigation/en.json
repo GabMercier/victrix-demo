@@ -1,13 +1,40 @@
 {
   "items": [
-    { "label": "Discover Victrix", "href": "/decouvrir" },
-    { "label": "Expertise", "href": "/expertises" },
-    { "label": "Products", "href": "/produits" },
-    { "label": "Careers", "href": "/carrieres" },
-    { "label": "Contact", "href": "/contact" },
-    { "label": "Resources", "href": "/ressources" }
+    {
+      "label": "Discover Victrix",
+      "href": "/decouvrir",
+      "service": ""
+    },
+    {
+      "label": "Products",
+      "href": "/produits",
+      "service": ""
+    },
+    {
+      "label": "Expertise",
+      "href": "/expertises",
+      "service": ""
+    },
+    {
+      "label": "Careers",
+      "href": "/carrieres",
+      "service": ""
+    },
+    {
+      "label": "Contact",
+      "href": "/contact",
+      "service": ""
+    },
+    {
+      "label": "Resources",
+      "href": "/ressources",
+      "service": ""
+    }
   ],
-  "portal": { "label": "Client portal", "visible": true },
+  "portal": {
+    "label": "Client portal",
+    "visible": true
+  },
   "mega": {
     "parentHref": "/expertises",
     "ariaLabel": "Expertise submenu",
@@ -17,7 +44,11 @@
         "href": "/expertises/consultation-strategique",
         "icon": "strategy",
         "links": [
-          { "label": "Law 25 compliance", "href": "/expertises/consultation-strategique/conformite-loi-25" }
+          {
+            "label": "Law 25 compliance",
+            "href": "/expertises/consultation-strategique/conformite-loi-25",
+            "service": ""
+          }
         ]
       },
       {
@@ -25,8 +56,16 @@
         "href": "/expertises/infonuagique",
         "icon": "cloud",
         "links": [
-          { "label": "Microsoft Azure", "href": "/expertises/infonuagique/microsoft-azure" },
-          { "label": "Amazon Web Services", "href": "/expertises/infonuagique/amazon-web-services" }
+          {
+            "label": "Microsoft Azure",
+            "href": "/expertises/infonuagique/microsoft-azure",
+            "service": ""
+          },
+          {
+            "label": "Amazon Web Services",
+            "href": "/expertises/infonuagique/amazon-web-services",
+            "service": ""
+          }
         ]
       },
       {
@@ -34,9 +73,21 @@
         "href": "/expertises/cybersecurite",
         "icon": "security",
         "links": [
-          { "label": "Scalable Security Operations Centre (SOC)", "href": "/expertises/cybersecurite/soc-evolutif" },
-          { "label": "Penetration testing", "href": "/expertises/cybersecurite/tests-intrusion" },
-          { "label": "IoT and OT", "href": "/expertises/cybersecurite/iot-ot" }
+          {
+            "label": "Scalable Security Operations Centre (SOC)",
+            "href": "/expertises/cybersecurite/soc-evolutif",
+            "service": ""
+          },
+          {
+            "label": "Penetration testing",
+            "href": "/expertises/cybersecurite/tests-intrusion",
+            "service": ""
+          },
+          {
+            "label": "IoT and OT",
+            "href": "/expertises/cybersecurite/iot-ot",
+            "service": ""
+          }
         ]
       },
       {
@@ -44,14 +95,46 @@
         "href": "/expertises/productivite",
         "icon": "productivity",
         "links": [
-          { "label": "Ø Studio", "href": "/produits" },
-          { "label": "Artificial intelligence", "href": "/expertises/intelligence-artificielle" },
-          { "label": "Employee platform and intranet", "href": "/produits/intranet" },
-          { "label": "ServiceNow", "href": "/expertises/productivite/servicenow" },
-          { "label": "Dynamics 365 Field Service", "href": "/expertises/productivite/dynamics-365-field-service" },
-          { "label": "Copilot for Microsoft 365", "href": "/expertises/productivite/copilot-microsoft-365" },
-          { "label": "Copilot Studio", "href": "/expertises/productivite/copilot-studio" },
-          { "label": "O bureau", "href": "/produits/reservation-bureau" }
+          {
+            "label": "Ø Studio",
+            "href": "/produits",
+            "service": ""
+          },
+          {
+            "label": "Artificial intelligence",
+            "href": "/expertises/intelligence-artificielle",
+            "service": ""
+          },
+          {
+            "label": "Employee platform and intranet",
+            "href": "/produits/intranet",
+            "service": ""
+          },
+          {
+            "label": "ServiceNow",
+            "href": "/expertises/productivite/servicenow",
+            "service": ""
+          },
+          {
+            "label": "Dynamics 365 Field Service",
+            "href": "/expertises/productivite/dynamics-365-field-service",
+            "service": ""
+          },
+          {
+            "label": "Copilot for Microsoft 365",
+            "href": "/expertises/productivite/copilot-microsoft-365",
+            "service": ""
+          },
+          {
+            "label": "Copilot Studio",
+            "href": "/expertises/productivite/copilot-studio",
+            "service": ""
+          },
+          {
+            "label": "O bureau",
+            "href": "/produits/reservation-bureau",
+            "service": ""
+          }
         ]
       },
       {
@@ -59,8 +142,16 @@
         "href": "/expertises/services-geres",
         "icon": "managed",
         "links": [
-          { "label": "Managed IT services", "href": "/expertises/services-geres/services-ti-geres" },
-          { "label": "Microsoft 365 environment", "href": "/expertises/services-geres/environnement-microsoft-365" }
+          {
+            "label": "Managed IT services",
+            "href": "/expertises/services-geres/services-ti-geres",
+            "service": ""
+          },
+          {
+            "label": "Microsoft 365 environment",
+            "href": "/expertises/services-geres/environnement-microsoft-365",
+            "service": ""
+          }
         ]
       }
     ]

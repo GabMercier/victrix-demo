@@ -101,6 +101,50 @@
       "title": "Our latest articles",
       "ctaLabel": "View all resources",
       "ctaHref": "/en/ressources"
+    },
+    {
+      "_bookshop_name": "form",
+      "type": "form",
+      "title": "Parlez-nous de votre projet",
+      "intro": "",
+      "formId": "",
+      "submitLabel": "Envoyer",
+      "consentText": "",
+      "fields": [
+        {
+          "label": "Nom complet",
+          "type": "text",
+          "required": true,
+          "options": [],
+          "value": "",
+          "showIf": {
+            "field": "",
+            "equals": ""
+          }
+        },
+        {
+          "label": "Courriel",
+          "type": "email",
+          "required": true,
+          "options": [],
+          "value": "",
+          "showIf": {
+            "field": "",
+            "equals": ""
+          }
+        },
+        {
+          "label": "Message",
+          "type": "textarea",
+          "required": false,
+          "options": [],
+          "value": "",
+          "showIf": {
+            "field": "",
+            "equals": ""
+          }
+        }
+      ]
     }
   ]
 }
