@@ -75,6 +75,7 @@ Prérequis : décisions §16 de l'inventaire (brouillons, contenus sans traducti
   - 8 formulaires actifs → `src/data/forms/` ;
   - 943 médias rapatriés (arborescence à décider : conserver `/wp-content/uploads/…` en chemins publics = zéro redirection média, ou re-arborer + règles de redirection).
 - Ordre de conversion : articles (les plus réguliers) → expertises SiteOrigin → expertises Brizy → pages.
+- **✅ AVANCÉ (2026-07-29) — articles convertis en STAGING** : `scripts/migration/convert-articles.mjs` (rejouable) → `docs/migration/staging/blog/{fr,en}/` (64 articles : 30 paires FR/EN + 2 publiés FR seuls + 2 brouillons FR) + `rapport-articles.md` (75 médias référencés, 7 articles vidéo avec iframes→liens, avertissements par article). Déshabillage SiteOrigin (blocs `textwidget`), HTML→Markdown (listes imbriquées et `<li>` orphelins gérés), URLs internes relativisées (structure FR racine), images ramenées aux originaux (`/wp-content/` conservé), slug d'URL par langue en frontmatter (fichiers homonymes fr/en). **PAS branché dans `src/content/blog/`** — prérequis avant le port : décisions Q1 (brouillons) et Q2 (sans-traduction) du §16, choix du schéma (coverImage en chemin public vs asset, seoTitle/author à ajouter à la collection), et rapatriement des médias.
 - Critère de sortie : chaque URL de l'inventaire rend une page avec le contenu migré ; vérification automatique contre le CSV.
 
 ### Phase 7 — Bascule (plus tard, hors périmètre immédiat)
