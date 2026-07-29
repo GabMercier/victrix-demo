@@ -32,11 +32,13 @@
     "@bookshop/browser": "3.19.0-rc1",
     "@bookshop/generate": "3.19.0-rc1",
     "@playwright/test": "^1.61.0",
+    "@tailwindcss/vite": "^4.3.3",
     "eslint": "^9.39.4",
     "eslint-plugin-astro": "^1.7.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "globals": "^17.7.0",
     "pagefind": "^1.5.2",
+    "tailwindcss": "^4.3.3",
     "typescript-eslint": "^8.62.0",
     "vitest": "^3.2.6"
   }

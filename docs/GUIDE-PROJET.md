@@ -123,10 +123,11 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
    à confirmer, P-17/P-18) → recherche Pagefind (P-06 🟡 exécutée le 28 juil.,
    passée avant P-04 sur priorité utilisateur — commit à faire) → **header de
    landing par page (P-04 — PROCHAIN, Sonnet 5)**.
-1bis. **Convergence migration** (`plan-convergence-migration.md`) : Phase 0 =
-   **installer Node 20** (action humaine, terminal admin : `nvm install 20` +
-   `nvm use 20` + `npm ci`) puis revalider le gate (baseline de parité) —
-   prérequis du pilote Tailwind v4 (Phase 1).
+1bis. **Convergence migration** (`plan-convergence-migration.md`) : Phase 0
+   ✅ faite (29 juil. — Node 20.20.2 actif, gate vert = baseline de parité).
+   Prochaine étape de cette piste : **Phase 1 — pilote Tailwind v4** sur un
+   composant Bookshop (risque clé : live editing CloudCannon). Les articles
+   WordPress sont déjà convertis en staging (`docs/migration/staging/blog/`).
 2. **Clore formellement la gate CloudCannon** (grille + vidéo + palier
    tarifaire) — l'édition visuelle est validée de facto.
 3. Décisions/OPS restantes : clés formulaires (SMTP2GO/Turnstile), CSP

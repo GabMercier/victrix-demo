@@ -16,14 +16,20 @@
 
 L'ordre est pensé pour dé-risquer tôt (outillage, pilote Tailwind, URLs) avant les gros volumes (re-skin, conversion de contenu). Chaque phase peut être découpée en fiches P-2x dans [plan-prompts.md](plan-prompts.md). Les phases 5 et 6 peuvent avancer en parallèle (zones de collision différentes : composants vs contenu/scripts).
 
-### Phase 0 — Prérequis outillage (~0,5 j)
+### Phase 0 — Prérequis outillage (~0,5 j) — ✅ FAITE (2026-07-29)
+
+> Node 20.20.2 installé et activé (nvm), `npm ci` (rebuild ABI — a nécessité l'arrêt de 3 processus node zombies de l'ancien serveur dev qui verrouillaient node_modules), **gate complet vert sous Node 20** : lint 0 err/8 warns préexistants, 100 tests, type-check 0 err/4 hints, build prod (26 pages indexées Pagefind) + `STATIC_ONLY` — c'est la **baseline de parité** pour les phases suivantes. Phase 1 (pilote Tailwind v4) DÉBLOQUÉE.
 
 - **Node 18 → 20** sur la machine de dev (`nvm install 20` + `nvm use`, terminal admin requis par nvm-windows) ; `.nvmrc`=20 et `engines>=20.3.0` sont déjà en place.
 - `npm ci` après bascule (rebuild sharp/esbuild pour le nouvel ABI), redémarrer le dev server.
 - Revalider le gate complet sur la base inchangée : lint, 100 tests, type-check, build normal + `STATIC_ONLY` (copie isolée si dev server actif — voir operations.md §3.1). → **baseline de parité** pour toute la suite.
 - Note : l'épinglage Astro v5 tenait à Node 18 ; on **reste sur Astro 5** pour la convergence (une montée Astro éventuelle = chantier séparé, après).
 
-### Phase 1 — Pilote Tailwind v4 (~1–1,5 j)
+### Phase 1 — Pilote Tailwind v4 (~1–1,5 j) — 🟡 EXÉCUTÉE (2026-07-29, vérif CloudCannon humaine restante)
+
+> FAIT : `tailwindcss` + `@tailwindcss/vite` (plugin vite dans astro.config.mjs), `src/styles/theme.css` (**imports granulaires SANS preflight** — le reset changerait tout le site; conséquences documentées dans l'entête : `border-solid` explicite, `m-0` où le navigateur met des marges), tokens `@theme` Luminous Precision à **noms distincts des legacy** (nuit/royal/céleste/givre/bordure/encre + `--font-grotesk`, ombres ambiantes, radius carte/contrôle — une collision avec `--color-surface`/`--font-sans`/`--radius-*` de tokens.css ferait perdre les couches en silence), **Hanken Grotesk variable auto-hébergée** (`public/fonts/HankenGrotesk-Variable.woff2`, 34,7 Ko latin 100–900, pas de CDN — CSP), `testimonial.astro` re-skinné 100 % utilitaires (zéro CSS scopé, carte Level 2 de la charte).
+> PREUVES : gate vert (lint 0/100 tests/type-check 0, build prod + STATIC_ONLY — dans vvbuild : l'EBUSY AV sur `c:\Repo\...\dist` a récidivé, la copie isolée reste la voie fiable), **parité 37/39 pages à l'octet** (modulo hash des bundles — seules les 2 landings demo-sections, hôtes du témoignage, diffèrent), utilitaires + tokens + @font-face présents dans le CSS de build, marqueur `bookshop-live params(contentBlocks:sections)` non vide.
+> RESTE (humain, = LE risque de la phase) : après push, ouvrir une landing demo-sections dans l'éditeur VISUEL CloudCannon et confirmer que le témoignage rend avec le style Luminous Precision et reste éditable en live. Si oui → GO Phase 5 par lots.
 
 But : prouver Tailwind v4 **dans la chaîne complète** (build Astro + Bookshop + éditeur visuel CloudCannon) avant d'y engager les 23 composants.
 

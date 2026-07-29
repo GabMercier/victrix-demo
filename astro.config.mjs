@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
+import tailwindcss from '@tailwindcss/vite';
 
 // Attach the Cloudflare adapter ONLY for the production build. Its dev-server
 // hook loads wrangler/undici, which needs the global `File` (Node 20+); this
@@ -551,5 +552,14 @@ export default defineConfig({
   // Listed explicitly for clarity; this is the default service.
   image: {
     service: { entrypoint: 'astro/assets/services/sharp' },
+  },
+
+  // Tailwind v4 (Phase 1 convergence — pilote « Luminous Precision »). Pas de
+  // tailwind.config : la config vit en CSS (@theme dans src/styles/theme.css,
+  // importé par BaseLayout). La détection des classes balaie tout le projet
+  // (component-library/ inclus — pas dans .gitignore). Le CSS généré est du
+  // CSS de build ordinaire : chargé tel quel par l'éditeur CloudCannon.
+  vite: {
+    plugins: [tailwindcss()],
   },
 });

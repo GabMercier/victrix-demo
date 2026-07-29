@@ -1,5 +1,10 @@
 ---
 import '../styles/global.css';
+// Thème Tailwind v4 « Luminous Precision » (Phase 1) — utilitaires + tokens
+// @theme, SANS preflight (cohabitation avec les styles existants — voir
+// l'entête de theme.css). Importé après global.css; les tokens portent des
+// noms distincts des legacy, aucune interférence.
+import '../styles/theme.css';
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';

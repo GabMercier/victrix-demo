@@ -1,0 +1,59 @@
+/**
+ * Thème Tailwind v4 — design system « Luminous Precision » (Phase 1, pilote).
+ * Source de vérité : C:\Repo\Victrix\Design\Maquette & Front End\*\DESIGN.md.
+ *
+ * IMPORTS GRANULAIRES, SANS PREFLIGHT (décision de cohabitation) : le reset
+ * Tailwind changerait le rendu de TOUT le site existant; on ne charge que le
+ * thème et les utilitaires. Conséquences à connaître tant que le preflight est
+ * absent :
+ *  - `border` ne pose pas border-style → toujours ajouter `border-solid`;
+ *  - les marges par défaut du navigateur restent (poser m-0 où il faut).
+ * Le preflight sera (re)évalué au début de la Phase 5 (re-skin complet).
+ *
+ * NOMS DE TOKENS VOLONTAIREMENT DISTINCTS des tokens legacy de tokens.css
+ * (--color-surface, --font-sans, --radius-* y existent déjà) : une collision
+ * ferait résoudre les utilitaires vers les valeurs LEGACY en silence (les
+ * couches @layer perdent contre les styles non-couchés). Règle de nommage du
+ * pilote : noms français de la charte (nuit, royal, céleste, givre…).
+ *
+ * RÈGLE DE COHABITATION (plan de convergence, Phase 1) : un composant est soit
+ * re-skinné Tailwind (zéro CSS scopé), soit intact — jamais d'hybride.
+ */
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* Hanken Grotesk — variable (100–900), latin, auto-hébergée (CSP : pas de
+   Google Fonts CDN). Fichier : public/fonts/HankenGrotesk-Variable.woff2. */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/HankenGrotesk-Variable.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@theme {
+  /* Typo */
+  --font-grotesk: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+  /* Palette (frontmatter DESIGN.md + prose « Colors ») */
+  --color-nuit: #001b44; /* Bleu Nuit — titres, texte fort (primary-container) */
+  --color-royal: #1d46f3; /* Bleu Royal — action, accents */
+  --color-royal-profond: #0038e6; /* secondary (états/hover d'action) */
+  --color-celeste: #86cefa; /* Bleu Céleste — accents doux, chips */
+  --color-givre: #f8f9fa; /* Bleu Givré — surfaces structurantes */
+  --color-bordure: #e5e7eb; /* bordure des cartes (Level 2) */
+  --color-encre: #191c1d; /* on-surface — texte courant */
+  --color-encre-douce: #44474f; /* on-surface-variant — texte secondaire */
+
+  /* Élévation (« Elevation & Depth ») — ombres ambiantes teintées Bleu Nuit */
+  --shadow-ambiante: 0 4px 12px rgb(0 27 68 / 0.05);
+  --shadow-surelevee: 0 12px 32px rgb(0 27 68 / 0.1);
+
+  /* Formes (« Shapes ») */
+  --radius-controle: 0.5rem; /* boutons, champs */
+  --radius-carte: 1rem; /* cartes, modales */
+}
