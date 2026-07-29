@@ -29,7 +29,10 @@ const enData = {
 };
 ---
 
-<BaseLayout lang="fr" title={fr.metaTitle} description={fr.metaDescription}>
+{/* noindex : une page 404 n'a rien à faire dans les moteurs (elle est servie
+    avec un statut 404, la meta est une ceinture de plus) NI dans la recherche
+    interne Pagefind (l'attribut data-pagefind-body suit !noindex). */}
+<BaseLayout lang="fr" title={fr.metaTitle} description={fr.metaDescription} noindex>
   <section class="nf">
     <div class="container nf__inner">
       <span class="nf__badge" aria-hidden="true">

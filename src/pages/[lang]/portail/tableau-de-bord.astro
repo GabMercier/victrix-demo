@@ -75,11 +75,14 @@ const dashboardHome = localizePath('/portail/tableau-de-bord', lang);
 const logoutAction = `/auth/logout?lang=${lang}`;
 ---
 
+{/* noindex : espace authentifié — jamais dans les moteurs ni dans l'index de
+    recherche interne (même raison que la page de connexion du portail). */}
 <BaseLayout
   lang={lang}
   altLocalePath={localizePath('/portail/tableau-de-bord', lang === 'fr' ? 'en' : 'fr')}
   title={t.myContracts}
   description="Victrix"
+  noindex
 >
   {/* Authenticated portal bar replaces the marketing header. */}
   <div slot="header">

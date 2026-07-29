@@ -27,6 +27,8 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 | 14 juil. | **Pas de maquettes pour l'instant** : v1 fonctionnelle sur le design actuel, refonte graphique ultérieure via tokens | ce document + `plan-2026-07-15.md` |
 | 14 juil. | Stratégie de publication CloudCannon retenue : **Publishing → main** (le marketing édite sur `spike/cloudcannon`, le bouton Publish avance `main`, qui redéploie la prod) ; options éditeur/hébergement pour des décisions futures documentées (réversibilité : CloudCannon/Tina/Sveltia et Cloudflare/Azure sont deux choix indépendants) | `options-editeur-hebergement.md` + `operations.md` |
 | 17 juil. | **Hébergement cible : CloudCannon en bundle (CMS + hébergement) pour cette version; Azure Static Web Apps = l'alternative documentée.** Cloudflare Pages reste l'infra du spike/démo seulement. **Entra External ID et Dataverse : hors périmètre de cette version** (le portail demeure un prototype maquetté). | `.env.example` + `options-editeur-hebergement.md` |
+| 24 juil. | **Migration WordPress→Astro cadrée** : inventaire de contenu généré (174 URLs, 78 expertises, 64 articles, 85 redirections, métadonnées Yoast extraites) + plan de convergence 7 phases (~12–17 j). Décisions : évolution du dépôt actuel (pas de rescaffold), **FR à la racine**, **Tailwind v4** (prérequis Node 20), CloudCannon Forms (spike d'abord). | `content-inventory.md` + `plan-convergence-migration.md` |
+| 28 juil. | **Recherche interne livrée (P-06, Pagefind)** — index statique au build, FR/EN séparés, page `/recherche` + icône header; passée AVANT P-04 (priorité utilisateur). **Stratégie SEO sans plugins documentée** pour le marketing. CSP : ajout ciblé `'wasm-unsafe-eval'` (wasm local Pagefind). | `seo-strategie.md` + ligne P-06 de `plan-prompts.md` |
 
 ## Ce qui fonctionne aujourd'hui (démontrable)
 
@@ -52,7 +54,12 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
   pot de miel, Turnstile optionnel, envoi SMTP2GO, pages `/merci`) — **inerte
   tant que les clés ne sont pas posées** (voir `formulaires.md`).
 - **SEO technique** (critère 7) : JSON-LD Organization partout, BlogPosting sur
-  les articles, FAQPage via la section FAQ — sans plugin ni licence.
+  les articles, FAQPage via la section FAQ — sans plugin ni licence. Équivalence
+  complète Yoast→natif + gouvernance : `seo-strategie.md`.
+- **Recherche interne** (28 juil., en revue) : moteur Pagefind sans service
+  tiers — page `/recherche` FR/EN + icône dans l'en-tête; index régénéré à
+  chaque build (les contenus migrés seront cherchables automatiquement),
+  aucune requête externe (aligné Loi 25).
 - **Brouillons** (critère 2) : interrupteur « Brouillon » sur les articles —
   visibles dans l'aperçu CloudCannon, exclus du site public; chaque branche a
   son URL de préversion partageable non indexée.
@@ -67,6 +74,10 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 | Document | Une ligne |
 |---|---|
 | `GUIDE-PROJET.md` | Ce document — point d'entrée. |
+| `plan-prompts.md` | **Tableau de bord d'exécution** : backlog P-01..P-22, statuts, journal des sessions. |
+| `content-inventory.md` | Inventaire complet du contenu WordPress à migrer (+ annexes `migration/`, scripts `scripts/migration/`). |
+| `plan-convergence-migration.md` | Plan 7 phases : faire de ce dépôt le site de production (Tailwind v4, FR racine, conversion de contenu). |
+| `seo-strategie.md` | SEO sans plugins WP : équivalence Yoast→natif, migration des métadonnées, gouvernance marketing, backlog priorisé. |
 | `guide-edition.md` | Guide de l'éditeur (marketing) : publier au quotidien. |
 | `atelier-contenus.md` | Atelier types de contenus : couverture vs cahier des charges, fiches à remplir par le marketing, suggestions, LIMITES de la pile. |
 | `revue-cahier-des-charges.md` | Traçabilité 23/23 diapos du cahier des charges : état par exigence, spotlights diapos 14–15, écarts chiffrés (~5–6 j), équivalences outils. |
@@ -107,8 +118,15 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 > vague 1 — navigation, palette, formulaires v2 — livrée le 17 juil.).
 
 1. **Vague 2** (`plan-prompts.md`) : champs étendus + case consentement Loi 25
-   (P-05) → collection Services composable (P-07, architecture d'information à
-   confirmer) → header de landing par page (P-04) → recherche Pagefind (P-06).
+   (P-05 ✅ poussé) → collection Services composable + méga-menu dynamique
+   (P-07 ✅ poussé le 20 juil. — `39fdd63`; architecture d'information des URLs
+   à confirmer, P-17/P-18) → recherche Pagefind (P-06 🟡 exécutée le 28 juil.,
+   passée avant P-04 sur priorité utilisateur — commit à faire) → **header de
+   landing par page (P-04 — PROCHAIN, Sonnet 5)**.
+1bis. **Convergence migration** (`plan-convergence-migration.md`) : Phase 0 =
+   **installer Node 20** (action humaine, terminal admin : `nvm install 20` +
+   `nvm use 20` + `npm ci`) puis revalider le gate (baseline de parité) —
+   prérequis du pilote Tailwind v4 (Phase 1).
 2. **Clore formellement la gate CloudCannon** (grille + vidéo + palier
    tarifaire) — l'édition visuelle est validée de facto.
 3. Décisions/OPS restantes : clés formulaires (SMTP2GO/Turnstile), CSP

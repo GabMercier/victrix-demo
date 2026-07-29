@@ -93,6 +93,10 @@ const portal = {
   href: localizePath('/portail', lang),
 };
 
+// Recherche interne (P-06) : icône dans les actions du header (desktop) +
+// lien dans le tiroir mobile. Chaînes d'interface (pas du contenu) → ui.ts.
+const searchHref = localizePath('/recherche', lang);
+
 const announce = nav.announce;
 const announceLink = localizePath(announce.linkHref, lang);
 
@@ -202,6 +206,27 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
     </nav>
 
     <div class="site-header__actions">
+      <a
+        class="site-header__search"
+        href={searchHref}
+        aria-label={t.search.navAria}
+        aria-current={isCurrent(searchHref) ? 'page' : undefined}
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle cx="10.5" cy="10.5" r="6.5"></circle>
+          <path d="M15.5 15.5L21 21"></path>
+        </svg>
+      </a>
       {
         portal.visible && (
           <a class="btn btn--primary site-header__portal" href={portal.href}>
@@ -264,6 +289,15 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
           </li>
         ))
       }
+      <li>
+        <a
+          class="mobile-nav__link"
+          href={searchHref}
+          aria-current={isCurrent(searchHref) ? 'page' : undefined}
+        >
+          {t.search.navLabel}
+        </a>
+      </li>
     </ul>
 
     {
@@ -602,6 +636,20 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
   .site-header__portal {
     display: none;
   }
+  /* Recherche : icône desktop seulement (le mobile passe par le tiroir). */
+  .site-header__search {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--color-navy);
+    border-radius: var(--radius-sm);
+  }
+  .site-header__search:hover,
+  .site-header__search[aria-current='page'] {
+    color: var(--color-accent-blue);
+  }
   /* The header portal button is accent blue on victrix.ca (the global
      .btn--primary stays navy elsewhere). */
   .site-header__portal,
@@ -770,6 +818,7 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
       display: block;
     }
     .site-header__portal,
+    .site-header__search,
     .lang-switch {
       display: flex;
     }

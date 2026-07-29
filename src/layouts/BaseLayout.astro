@@ -164,7 +164,11 @@ const orgSchema = {
     <!-- Global header (a page can override it by filling the "header" slot). -->
     <slot name="header"><Header lang={lang} altLocalePath={altPath} /></slot>
 
-    <main id="main-content">
+    {/* data-pagefind-body — périmètre de la recherche interne (P-06) : seules
+        les pages indexables (pas de noindex) entrent dans l'index Pagefind, et
+        seulement leur <main> (jamais le chrome header/footer). Dès qu'une page
+        porte l'attribut, toutes celles qui ne le portent pas sont exclues. */}
+    <main id="main-content" data-pagefind-body={noindex ? undefined : ''}>
       <slot />
     </main>
 

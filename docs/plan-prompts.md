@@ -7,26 +7,37 @@
 > `C:\Repo\Victrix\Refontee site web Victrix - Estimé haut niveau – Copie.xlsx`
 > (les codes F-xx / N-x ci-dessous renvoient à ses lignes [Astro]).
 
-## 0. État au 20 juillet (vague 2 — P-05 fermé, P-07 exécuté + revu 🟡)
+## 0. État au 28 juillet (vague 2 — P-05/P-06/P-07 fermés côté code, P-04 prochain)
 
 **VAGUE 1 fermée** (P-01/P-02/P-03 ✅). **P-05 fermé** (`41203b6` +
-hotfixes `dccdcf8`/`f13b7da`, poussés) — exécuté par Fable 5 avec le volet D
-(champs auto-peuplés) et P-22 (multi-étapes) ajouté au backlog.
+hotfixes `dccdcf8`/`f13b7da`, poussés). **P-07 fermé** (`39fdd63` poussé,
+8 constats de revue corrigés).
 
-**P-07 exécuté (Opus 4.8) PUIS revu — 8 constats corrigés** (services
-composables + méga-menu dynamique E.3 + section ressources liées ; tout non
-commité, statut 🟡). Gate re-vert + 5 builds négatifs (chaque garde-fou
-prouvé) + parité dist expertise byte-identique — détails ligne P-07 du backlog
-et journal 20/07. **PROCHAIN : commit utilisateur de P-07**, puis dans l'ordre
-encodé : P-04 (Sonnet 5, header de landing — APRÈS P-07) → P-06 (Sonnet 5,
-Pagefind — après P-04). UNE session déléguée à la fois (zones de collision §3) ;
-au retour de chaque lot : statut 🟡 → session de pilotage Fable 5 (revue du
-diff + gate) AVANT le commit utilisateur.
+**P-06 EXÉCUTÉ 🟡 (28/07, Fable 5 en session directe — demande utilisateur
+« moteur de recherche interne optimisé »)** : Pagefind au build (les 2 modes),
+page `/[lang]/recherche/`, icône header + lien tiroir mobile, index optimisé
+(portée `<main>` des pages indexables seulement, langues fr-CA/en-CA
+partitionnées avec racinisation, exclusions noindex/portail/404, ignore des
+« ressources liées », meta+tri par date des articles), CSP `'wasm-unsafe-eval'`
+appliquée (ligne OPS). Gate vert. NOTE D'ORDRE : P-06 est passé AVANT P-04
+(décision utilisateur — priorité recherche); P-04 devra composer avec l'icône
+recherche dans ses modes de header (voir fiche §7 amendée). Détails : ligne
+P-06 et journal 28/07. NOUVEAU DOC : [seo-strategie.md](seo-strategie.md)
+(équivalence Yoast→Astro, argumentaire marketing, backlog SEO priorisé).
+
+**PROCHAIN LOT : P-04** — header de landing par page (complet/allégé/
+personnalisé). **Modèle : Sonnet 5** (tâche patronée : frontmatter + zod +
+prop de chrome, aucune logique serveur — fiche §7). UNE session déléguée à la
+fois (zones de collision §3) ; au retour de chaque lot : gate + revue du diff
+AVANT le commit (utilisateur = maître des commits/push). En parallèle (autre
+piste) : Phase 0 du [plan de convergence](plan-convergence-migration.md) —
+**Node 20 à installer par l'utilisateur** (terminal admin), prérequis Tailwind.
 
 **Restes OPS** (humain) : vérifs CloudCannon post-rebuild (7 types de champ
-+ « + Ajouter » des Options fonctionnel sur `campagne-evaluation`);
-réconciliation estimé xlsx (script prêt au scratchpad, relancer quand Excel
-est fermé).
++ « + Ajouter » des Options fonctionnel sur `campagne-evaluation`; après
+commit P-06 : page Recherche fonctionnelle sur la préversion — taper un terme,
+vérifier résultats FR seulement sur /fr/recherche); réconciliation estimé xlsx
+(script prêt au scratchpad, relancer quand Excel est fermé).
 
 ## 1. Gouvernance — qui fait quoi
 
@@ -110,8 +121,8 @@ Statuts : ⬜ à faire · 🔵 en cours · 🟡 en revue (diff à revoir par Fab
 | P-03 | Formulaires v2 cœur : collection `src/data/forms/` + réf. + destinataire par formulaire | ~~Opus 4.8~~ **Fable 5** | P-02 | 7 h | 1 | ✅ | Fermé — commit `ec065b3`, poussé. Gate vert (69/69 tests dont 7 registre); parité mode inline IDENTIQUE; formId inconnu casse le build; e2e démo prouvé (destinataire/objet/requis résolus PAR LE SERVEUR depuis le registre). 4 défs seed, collection CC « Formulaires », doc §4 _formId. `landing/fr/test.md` supprimé. VAGUE 1 COMPLÈTE. |
 | P-04 | Header de landing par page (complet/allégé/personnalisé) | Sonnet 5 | P-01; en V2 après P-07 | 3,5 h | 2 | ⬜ | §7 |
 | P-05 | Champs étendus (checkbox Loi 25, select, tel, hidden) + conditionnels + auto-peuplés (volet D) | ~~Opus 4.8~~ **Fable 5** | P-03 | 7 h | 2 | ✅ | Fermé — commits `41203b6` + hotfixes `dccdcf8` (script jamais seul enfant d'une expression JSX — regex du moteur Bookshop) et `f13b7da` (`options[*]` type d'entrée), poussés. Gate vert (95 tests), parité BYTE prouvée, e2e curl + navigateur 11/11, revue adversariale (2 corrigés). Détails : journal 17-20/07. |
-| P-06 | Pagefind (build, page résultats, entrée header) | Sonnet 5 | P-04 (Header.astro) | 7 h | 2 | ⬜ | §7 |
-| P-07 | Collection `services` composable + migration IA + méga-menu dynamique (E.3) + section ressources liées | **Opus 4.8** | P-01+P-02+P-05 | 10,5 h | 2 | 🟡 | Exécuté (Opus 4.8). 7 sections génériques (service-hero/numbered-cards/feature-boxes/tech-columns/callout/rich-text + related-posts), route `services/[slug]` (frontmatter+enrich form&related+build-gate formId), migration IA→service par script (`scripts/migrate-expertise-to-service.mjs`, 11 sections, image héros→public/images/sections), méga-menu E.3 (champ nav `service` + garde-fou `src/lib/navigation/service-links.ts` + test). Gate vert : lint 0, **100 tests** (+5), type-check 0, build + STATIC_ONLY (**27 pages**). Preuves : parité expertise+header **byte-identique**, marqueur `params(contentBlocks:sections)` non vide, DOM service = contenu expertise + ressources liées (vraies cartes résolues), **formulaire lié POST→303 /merci en direct** + jetons `{{page.*}}` résolus, garde-fous formId & méga-menu (builds négatifs). Piège : `getStaticPaths` hors portée frontmatter → préfixe **importé** (`SERVICE_URL_PREFIX`). Accueil/campagnes : hash bundle CSS `[slug]` change (palette +7, attendu, aucune régression de contenu). **Revue P-07 (20/07) : 8 constats corrigés** — 5 gardes-fous build prouvés par builds négatifs (parentHref orphelin, related-posts hors-service, double related-posts, href+espace, href+service), champ CMS `service` exposé (menu + méga-menu), grille vide masquée, `victrix:i18n-pairing` étendu aux services ; gate re-vert (lint 0, **100 tests**, type-check 0, build + STATIC_ONLY 27 pages), **expertise + accueil + campagnes + blogue byte-identiques** (seules les 2 pages services diffèrent d'espaces inter-balises inertes). Voir journal 20/07. Restes : commit utilisateur + décision archi (URLs) P-17/P-18. |
+| P-06 | Pagefind (build, page résultats, entrée header) | ~~Sonnet 5~~ **Fable 5** | ~~P-04~~ (inversé — P-06 AVANT P-04, décision utilisateur 28/07) | 7 h | 2 | 🟡 | Exécuté 28/07 (session directe). Intégration `victrix:pagefind` (astro.config.mjs, les 2 modes de build, garde-fou 0 page, exclusion worker `/pagefind/*`), page `[lang]/recherche.astro` (noindex, hors sitemap, PagefindUI locale + trad FR/EN via ui.ts, `?q=` supporté pour P-11, repli dev server), icône header desktop + lien tiroir mobile, périmètre d'index = `data-pagefind-body` sur `<main>` quand !noindex (BaseLayout) → 16 pages (8 fr-CA + 8 en-CA, wasm racinisation par langue), 0 fuite portail/merci/campagnes (vérifié fragments), `data-pagefind-ignore` sur ressources liées, `data-pagefind-meta/sort` date sur articles. BONUS : noindex ajouté à 404 + 2 pages portail (aligné plan convergence Phase 3). **CSP modifiée (OPS)** : `'wasm-unsafe-eval'` sur /fr/* et /en/* (wasm local Pagefind, commenté dans _headers). Gate : lint 0 err/8 warns préexistants, 100 tests, type-check 0 err/4 hints (1 nouveau bénin define:vars), build prod + STATIC_ONLY verts en copie isolée (piège robocopy : `/XD dist` relatif exclut node_modules/*/dist — chemins ABSOLUS requis). Reste : commit utilisateur + vérif préversion. |
+| P-07 | Collection `services` composable + migration IA + méga-menu dynamique (E.3) + section ressources liées | **Opus 4.8** | P-01+P-02+P-05 | 10,5 h | 2 | ✅ | **Fermé — committé `08d060e` → rebasé sur 2 commits CloudCannon → `39fdd63` poussé.** Exécuté (Opus 4.8). 7 sections génériques (service-hero/numbered-cards/feature-boxes/tech-columns/callout/rich-text + related-posts), route `services/[slug]` (frontmatter+enrich form&related+build-gate formId), migration IA→service par script (`scripts/migrate-expertise-to-service.mjs`, 11 sections, image héros→public/images/sections), méga-menu E.3 (champ nav `service` + garde-fou `src/lib/navigation/service-links.ts` + test). Gate vert : lint 0, **100 tests** (+5), type-check 0, build + STATIC_ONLY (**27 pages**). Preuves : parité expertise+header **byte-identique**, marqueur `params(contentBlocks:sections)` non vide, DOM service = contenu expertise + ressources liées (vraies cartes résolues), **formulaire lié POST→303 /merci en direct** + jetons `{{page.*}}` résolus, garde-fous formId & méga-menu (builds négatifs). Piège : `getStaticPaths` hors portée frontmatter → préfixe **importé** (`SERVICE_URL_PREFIX`). Accueil/campagnes : hash bundle CSS `[slug]` change (palette +7, attendu, aucune régression de contenu). **Revue P-07 (20/07) : 8 constats corrigés** — 5 gardes-fous build prouvés par builds négatifs (parentHref orphelin, related-posts hors-service, double related-posts, href+espace, href+service), champ CMS `service` exposé (menu + méga-menu), grille vide masquée, `victrix:i18n-pairing` étendu aux services ; gate re-vert (lint 0, **100 tests**, type-check 0, build + STATIC_ONLY 27 pages), **expertise + accueil + campagnes + blogue byte-identiques** (seules les 2 pages services diffèrent d'espaces inter-balises inertes). Voir journal 20/07. Re-vérifié par l'utilisateur (lint 0/100 tests/type-check 0/build Complete!). Reste (hors P-07) : décision archi URLs P-17/P-18. |
 | P-08 | Courriel de confirmation visiteur (2ᵉ envoi SMTP2GO) | **Opus 4.8** | P-05 | 3,5 h | 3 | ⬜ | §7 — serveur |
 | P-09 | — fusionné dans P-05 (conditionnels = mêmes contrats) | — | — | — | — | — | |
 | P-10 | Bandeau Loi 25 minimal (tokens) + mécanique de gating | **Opus 4.8** | — (GO utilisateur 17/07) | 10,5 h | 3 | ⬜ | §7 |
@@ -473,12 +484,17 @@ méga-menu prouvé par un test négatif.
 - **P-04** : frontmatter landing + objet `header` (zod), select mode
   complet/allégé/personnalisé, liens bornés, CTA, switches annonce/langue;
   `Header.astro` accepte une config optionnelle (défaut = navigation P-01);
-  route campagnes la passe. Done : une campagne en mode allégé ne montre que
-  logo + CTA; les autres pages inchangées.
+  route campagnes la passe. AMENDEMENT 28/07 (P-06 passé avant) : le header
+  porte maintenant une icône recherche (`site-header__search`) + un lien
+  « Recherche » dans le tiroir mobile — décider de son sort par mode (proposé :
+  visible en complet, absente en allégé/personnalisé sauf opt-in) et le
+  couvrir dans les preuves de parité. Done : une campagne en mode allégé ne
+  montre que logo + CTA; les autres pages inchangées.
 - **P-05** : → fiche finale rédigée, voir **§6.4**.
-- **P-06** : Pagefind au build (STATIC_ONLY ET build prod), page
-  `/[lang]/recherche/`, entrée header (données P-01), filtres par type si
-  simple. Note : l'UI Pagefind charge ses assets localement (CSP-safe).
+- **P-06** : ✅ exécuté (28/07, Fable 5) — voir la ligne du tableau §4.
+  Extension future (post-migration Phase 6, si besoin) : filtres par type de
+  contenu via `data-pagefind-filter` sur les gabarits (services/articles/
+  pages) — l'UI Pagefind les affiche automatiquement; non requis pour la v1.
 - **P-07** : → fiche finale rédigée, voir **§6.5**.
 - **P-08** : second envoi SMTP2GO au soumetteur (gabarit texte par langue,
   adresse du visiteur = champ email du formulaire), échec d'envoi de
@@ -556,6 +572,8 @@ méga-menu prouvé par un test négatif.
 
 | Date | Session | Résultat |
 |---|---|---|
+| 2026-07-28 | Fable 5 — **P-06 exécuté** (session directe, demande utilisateur : recherche interne optimisée + assurance SEO marketing). Fichiers : `astro.config.mjs` (+`victrix:pagefind` : index au build dans les 2 modes, garde-fou 0 page, exclusion `/pagefind/*` du worker; sitemap −`/recherche/`), `src/pages/[lang]/recherche.astro` (nouvelle, noindex, PagefindUI locale, trad FR/EN, `?q=`, repli dev), `src/i18n/ui.ts` (bloc `search` fr/en), `src/components/Header.astro` (icône desktop + lien tiroir), `src/layouts/BaseLayout.astro` (`data-pagefind-body` sur `<main>` quand !noindex), `404.astro` + 2 pages portail (noindex — aligné Phase 3 convergence), `related-posts.astro` (`data-pagefind-ignore`), `ressources/[slug].astro` (meta/tri date), `public/_headers` (**CSP OPS : +`'wasm-unsafe-eval'`** /fr/* /en/*), `package.json` (+`pagefind` dev). Preuves : index = 16 pages exactement (8 fr-CA + 8 en-CA, wasm par langue), 0 fuite portail/merci dans les fragments, icône+lien dans le DOM buildé, sitemap sans /recherche/, `_routes.json` exclut `/pagefind/*`. Gate vert (lint 0/100 tests/type-check 0/build+STATIC_ONLY, copie isolée vvbuild — piège : `/XD` robocopy en chemins ABSOLUS sinon les `dist` de node_modules sautent). NOUVEAU DOC `docs/seo-strategie.md` (équivalence Yoast→natif, migration métadonnées, gouvernance CMS, backlog SEO priorisé). Plans mis à jour (ordre P-06↔P-04 inversé, fiche P-04 amendée). | P-06 🟡 (commit utilisateur); prochain : P-04 (Sonnet 5) + Node 20 (humain, Phase 0 convergence) |
+| 2026-07-20 (soir) | Utilisateur + Opus 4.8 — **P-07 COMMITTÉ & POUSSÉ (clôture)**. L'utilisateur a commité P-07 avec les 8 correctifs de revue (`08d060e`), puis — remote avancé par 2 commits éditeur CloudCannon (`demo-sections.md` fr/en + `campagne-evaluation.json`, aucun chevauchement) — rebasé proprement → **`39fdd63` poussé** sur spike/cloudcannon. Re-vérifié par l'utilisateur : lint 0 err/8 warns pré-existants, **100 tests**, type-check 0 err, `npm run build` **Complete!** (27 pages prérendues, services + expertises incluses). Pièges consignés : rebase avec dev server actif → verrou Windows intermittent sur les fichiers source (récupération sûre `git rebase --quit` + `git checkout -f <branche>`, le commit reste dans le reflog) ; « help me push » = préparer le rebase MAIS laisser le `git push` final à l'utilisateur. Pas de revue Fable 5 (décision utilisateur). | **P-07 ✅ fermé** — vague 2 : **P-04 prochain (Sonnet 5)** |
 | 2026-07-20 | Opus 4.8 (1M) — **revue P-07 : 8 constats corrigés** (branche `spike/cloudcannon`, non commité). BLOQUANTS — (#1) champ `service` des liens de nav exposé au CMS : `service: ''` dans `_structures.nav_links.value` (sert menu ET colonnes du méga-menu via `_inputs.links`) + `_inputs.service` (texte + aide FR « SOIT lien SOIT service ») ; (#2) garde-fou build dans le renderer partagé `component-library/src/shared/astro/page.astro` — une section `related-posts` sans cartes résolues (posée hors route services) CASSE le build au lieu d'expédier les cartes factices (**choix « garde-fou » vs « alimenter 3 routes » : aligné sur le patron build-gate formId/navHref/service, et évite la redite related-posts↔home-latest**) ; (#3) `Header.astro` — accroche du méga-menu comparée sur les URLs RÉSOLUES (un item converti en `service` garde son méga-menu) + garde-fou « parentHref orphelin ». IMPORTANTS — (#4) `related-posts.astro` ne rend RIEN quand 0 article résolu (plus de titre + CTA sur grille vide ; maquette éditeur intacte) ; (#5) garde-fou build « >1 `related-posts` par page » (route services). MINEURS — (#6) `content.config.ts` : le superRefine `navLink` valide la valeur BRUTE de `href` (« ␣/contact » précédé d'une espace échoue de nouveau — régression P-01 refermée) ; (#7) `href` ET `service` remplis = rejet build (message FR) + test `service-links` reformulé (précédence de resolveNavHref = filet défensif, plus un mode d'écriture supporté) ; (#8) `./src/content/services` ajouté au rapport `victrix:i18n-pairing` (extension `.json` portée par collection). VÉRIFS (copie isolée, dev server actif :4399) : lint 0 err/8 warns pré-existants, **100 tests**, type-check 0 err/3 hints, build prod + STATIC_ONLY **27 pages** verts ; **5 builds négatifs** prouvent chaque garde (#2/#3/#5/#6/#7) ; **parité dist : page expertise + accueil + campagnes + blogue byte-identiques** (35/37 HTML), seules les 2 pages services diffèrent d'espaces inter-balises inertes (wrapping conditionnel #4 — identiques après normalisation). | 8 constats corrigés, gate + 5 négatifs verts, statut 🟡 (revue Fable 5 / commit utilisateur) |
 | 2026-07-20 | Opus 4.8 (1M) — **P-07 exécuté** (services composables). 7 sections génériques (service-hero, numbered-cards, feature-boxes, tech-columns, callout, rich-text, related-posts) + route `src/pages/[lang]/services/[slug].astro` (réplique campagnes : `frontmatter`, enrich form+related-posts, build-gate formId) + `scripts/migrate-expertise-to-service.mjs` (IA→service, machine-fidèle, image héros→public) + méga-menu E.3 (champ nav `service` optionnel + `src/lib/navigation/service-links.ts` pur/testé) + collection CloudCannon « Services » (+`_structures.numbered_card_items`/`tech_groups`) + `schemas/service-{fr,en}.json`. Gate vert : lint 0 err, **100 tests** (dont 5 `service-links`, négatif inclus), type-check 0 err, build prod + STATIC_ONLY (**27 pages**). Preuves : page expertise + header **byte-identiques** (diff dist), marqueur bookshop-live `params(contentBlocks:sections)` non vide sur les services, comparaison DOM (service = tout le contenu expertise, dans l'ordre, + « ressources liées » aux **vraies cartes** résolues au build), **formulaire lié POST→303 /fr/merci en direct** (mode démo, objet résolu serveur) + contre-preuve consentement Loi 25 → ?erreur=1, garde-fous formId & méga-menu prouvés par builds négatifs. Piège consigné : `getStaticPaths` s'exécute dans une portée SÉPARÉE (pas d'accès aux const du frontmatter) → préfixe d'URL importé depuis service-links.ts. Accueil/campagnes : seul le hash du bundle CSS `[slug]` change (palette +7 composants, attendu — contenu inchangé). | Gate vert + preuves, statut 🟡 (revue Fable 5) |
 | 2026-07-20 | Fable 5 — pilotage : P-05 fermé ✅ (commits `41203b6`/`dccdcf8`/`f13b7da` poussés par l'utilisateur). Fiche finale **P-07 rédigée (§6.5)** — délégation reprend (Opus/Sonnet, revue Fable 5 au retour). §0 et §7 rafraîchis. | P-07 prêt à lancer (Opus 4.8) |

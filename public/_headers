@@ -21,10 +21,14 @@
 # locale swap, article copy-link). HARDENING TODO: hash those inline scripts (or
 # move them external) and drop 'unsafe-inline' from script-src. When real Entra
 # login is wired, add the IdP/login domain to form-action + connect-src.
+# 'wasm-unsafe-eval' (P-06, appliqué par la ligne OPS 2026-07-28) : la recherche
+# interne Pagefind compile un module WebAssembly LOCAL (/pagefind/*.wasm —
+# stemming FR/EN); Chrome exige cette directive pour WebAssembly.instantiate.
+# Elle n'autorise QUE la compilation wasm — PAS eval()/new Function() JS.
 /fr/*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; form-action 'self'; manifest-src 'self'
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; font-src 'self'; connect-src 'self'; form-action 'self'; manifest-src 'self'
 /en/*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; form-action 'self'; manifest-src 'self'
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; font-src 'self'; connect-src 'self'; form-action 'self'; manifest-src 'self'
 
 # Sveltia CMS admin needs to load its bundle from unpkg and talk to GitHub +
 # the OAuth worker, so it gets its own (looser) CSP. Because CSP is NOT set on /*

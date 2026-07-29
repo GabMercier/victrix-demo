@@ -31,11 +31,16 @@ const description =
     : 'Sign in to your Victrix client portal to access your contracts, services and documents.';
 ---
 
+{/* noindex : le portail (mock) reste hors des moteurs — décision du plan de
+    convergence (Phase 3) — et hors de la recherche interne Pagefind (le
+    data-pagefind-body de BaseLayout suit !noindex). Sans lui, le build
+    STATIC_ONLY (CloudCannon, portail prérendu) l'exposerait aux deux. */}
 <BaseLayout
   lang={lang}
   altLocalePath={localizePath('/portail', otherLocale[lang])}
   title={title}
   description={description}
+  noindex
 >
   <PortalLogin lang={lang} returnTo={returnTo} redirected={redirected} error={error} />
 </BaseLayout>

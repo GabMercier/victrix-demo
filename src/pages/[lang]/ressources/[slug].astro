@@ -118,7 +118,14 @@ const shareLinks = [
         <h1>{post.data.title}</h1>
 
         <p class="article__meta">
-          <time datetime={post.data.date.toISOString()}>
+          {/* data-pagefind-meta/sort : expose la date de l'article à la
+              recherche interne (P-06) — affichée sur les résultats et
+              disponible comme tri Pagefind. */}
+          <time
+            datetime={post.data.date.toISOString()}
+            data-pagefind-meta="date[datetime]"
+            data-pagefind-sort="date[datetime]"
+          >
             {dateFmt.format(post.data.date)}
           </time>
         </p>

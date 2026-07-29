@@ -33,6 +33,35 @@ const fr = {
     close: 'Fermer l’annonce',
   },
 
+  // Recherche interne (P-06) — page /recherche + entrée du header. Le bloc
+  // `ui` est passé tel quel aux traductions de l'interface Pagefind (clés
+  // officielles de PagefindUI; [SEARCH_TERM]/[COUNT] = jetons Pagefind).
+  search: {
+    navLabel: 'Recherche',
+    navAria: 'Rechercher sur le site',
+    metaTitle: 'Recherche',
+    metaDescription:
+      'Recherchez dans l’ensemble du contenu du site Victrix : services, expertises, articles et pages.',
+    eyebrow: 'Recherche',
+    title: 'Rechercher sur le site',
+    intro: 'Trouvez un service, une expertise, un article ou une page.',
+    noscript:
+      'La recherche nécessite JavaScript. Vous pouvez aussi parcourir le site via le menu ou consulter le blogue.',
+    ui: {
+      placeholder: 'Rechercher…',
+      clear_search: 'Effacer',
+      load_more: 'Afficher plus de résultats',
+      search_label: 'Rechercher sur ce site',
+      filters_label: 'Filtres',
+      zero_results: 'Aucun résultat pour [SEARCH_TERM]',
+      many_results: '[COUNT] résultats pour [SEARCH_TERM]',
+      one_result: '[COUNT] résultat pour [SEARCH_TERM]',
+      alt_search: 'Aucun résultat pour [SEARCH_TERM]. Résultats pour [DIFFERENT_TERM] :',
+      search_suggestion: 'Aucun résultat pour [SEARCH_TERM]. Essayez :',
+      searching: 'Recherche de [SEARCH_TERM]…',
+    },
+  },
+
   footer: {
     columns: [
       {
@@ -143,6 +172,34 @@ const en: UI = {
 
   announce: {
     close: 'Dismiss announcement',
+  },
+
+  // Internal search (P-06) — /recherche page + header entry. The `ui` block is
+  // handed verbatim to the Pagefind UI translations.
+  search: {
+    navLabel: 'Search',
+    navAria: 'Search this site',
+    metaTitle: 'Search',
+    metaDescription:
+      'Search all Victrix site content: services, expertise areas, articles and pages.',
+    eyebrow: 'Search',
+    title: 'Search the site',
+    intro: 'Find a service, an expertise area, an article or a page.',
+    noscript:
+      'Search requires JavaScript. You can also browse the site through the menu or visit the blog.',
+    ui: {
+      placeholder: 'Search…',
+      clear_search: 'Clear',
+      load_more: 'Load more results',
+      search_label: 'Search this site',
+      filters_label: 'Filters',
+      zero_results: 'No results for [SEARCH_TERM]',
+      many_results: '[COUNT] results for [SEARCH_TERM]',
+      one_result: '[COUNT] result for [SEARCH_TERM]',
+      alt_search: 'No results for [SEARCH_TERM]. Showing results for [DIFFERENT_TERM] instead:',
+      search_suggestion: 'No results for [SEARCH_TERM]. Try one of the following:',
+      searching: 'Searching for [SEARCH_TERM]…',
+    },
   },
 
   footer: {

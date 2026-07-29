@@ -58,8 +58,12 @@ const isEmptyResolved = Array.isArray(cards) && cards.length === 0;
 const hasCta = Boolean(ctaLabel && ctaHref);
 ---
 
+{/* data-pagefind-ignore (sur <section>) : les cartes pointent vers D'AUTRES
+    contenus — les indexer ici ferait remonter la page hôte sur les mots-clés
+    des articles liés (bruit inter-contenus dans la recherche interne P-06).
+    Attribut inerte partout ailleurs (browser-safe). */}
 {isEmptyResolved ? null : (
-<section class="related">
+<section class="related" data-pagefind-ignore>
   <div class="related__container">
     <div class="related__head">
       <h2 class="related__title">{title}</h2>

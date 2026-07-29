@@ -1,5 +1,6 @@
 // @ts-check
 import { promises as fs } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
@@ -361,6 +362,103 @@ function i18nPairingReport() {
   };
 }
 
+/**
+ * Recherche interne (P-06) — index Pagefind généré APRÈS le build, dans les
+ * DEUX modes (production Cloudflare ET STATIC_ONLY/CloudCannon : l'hébergement
+ * cible est CloudCannon, la préversion est Cloudflare — les deux doivent
+ * servir /pagefind/*).
+ *
+ * Périmètre d'indexation — piloté par le HTML, pas par cette intégration :
+ *  - BaseLayout pose `data-pagefind-body` sur <main> des pages indexables
+ *    (noindex = pas d'attribut). Dès qu'une page du site porte cet attribut,
+ *    Pagefind EXCLUT ENTIÈREMENT toute page qui ne le porte pas — donc
+ *    campagnes/merci/recherche/404/portail (noindex) sortent de l'index, et
+ *    seul le contenu utile de <main> est indexé (jamais header/footer/menus).
+ *  - Pagefind ignore aussi nativement toute page portant
+ *    <meta name="robots" content="noindex"> (ceinture + bretelles).
+ *  - Les langues sont partitionnées automatiquement par l'attribut
+ *    <html lang> : les pages FR ne remontent que des résultats FR, idem EN.
+ *
+ * Garde-fou : un index construit sur 0 page = recherche silencieusement morte
+ * → échec du build avec un message en français (philosophie du dépôt).
+ *
+ * Import dynamique guardé comme Bookshop : le paquet est une devDependency;
+ * s'il manque, on échoue AVEC un message clair plutôt qu'un module introuvable.
+ */
+function pagefindIndex() {
+  return {
+    name: 'victrix:pagefind',
+    hooks: {
+      /** @param {{ dir: URL, logger: import('astro').AstroIntegrationLogger }} options */
+      'astro:build:done': async ({ dir, logger }) => {
+        /** @type {(raison: string) => never} */
+        const fail = (raison) => {
+          throw new Error(`[victrix:pagefind] ${raison}`);
+        };
+
+        let pagefind;
+        try {
+          pagefind = await import('pagefind');
+        } catch {
+          fail(
+            'le paquet « pagefind » est introuvable — exécuter npm install (la recherche interne ne peut pas être construite sans lui).'
+          );
+        }
+
+        // `dir` = racine de sortie client (dist/ dans les deux modes — même
+        // convention que victrix:redirects ci-dessous).
+        const outDir = fileURLToPath(dir);
+        const { index, errors: createErrors } = await pagefind.createIndex({});
+        if (!index) {
+          fail(`création de l'index impossible : ${(createErrors ?? []).join(' | ')}`);
+        }
+        const { page_count: pageCount, errors: addErrors } = await index.addDirectory({
+          path: outDir,
+        });
+        if (addErrors?.length) {
+          fail(`indexation de ${outDir} en erreur : ${addErrors.join(' | ')}`);
+        }
+        if (!pageCount || pageCount === 0) {
+          fail(
+            '0 page indexée — data-pagefind-body absent du build ? La recherche serait vide; corriger avant de livrer.'
+          );
+        }
+        const { errors: writeErrors } = await index.writeFiles({
+          outputPath: `${outDir}/pagefind`,
+        });
+        if (writeErrors?.length) {
+          fail(`écriture de l'index en erreur : ${writeErrors.join(' | ')}`);
+        }
+        await pagefind.close();
+        logger.info(`index de recherche Pagefind : ${pageCount} pages indexées → /pagefind/`);
+
+        // Build Cloudflare seulement : servir /pagefind/* en statique pur, sans
+        // passer par le worker (même mécanique et même budget de 100 règles que
+        // victrix:redirects — un seul motif ici, coût minime).
+        const routesTarget = new URL('./_routes.json', dir);
+        let routesRaw = null;
+        try {
+          routesRaw = await fs.readFile(routesTarget, 'utf-8');
+        } catch {
+          return; // STATIC_ONLY (sans adaptateur) — rien à exclure.
+        }
+        try {
+          /** @type {{ version: number, include: string[], exclude: string[] }} */
+          const routes = JSON.parse(routesRaw);
+          const exclude = Array.isArray(routes.exclude) ? routes.exclude : [];
+          if (!exclude.includes('/pagefind/*')) {
+            routes.exclude = [...exclude, '/pagefind/*'];
+            await fs.writeFile(routesTarget, JSON.stringify(routes, null, 2), 'utf-8');
+            logger.info('/pagefind/* exclu du worker dans _routes.json');
+          }
+        } catch {
+          fail('dist/_routes.json existe mais ne contient pas du JSON valide (adaptateur Cloudflare).');
+        }
+      },
+    },
+  };
+}
+
 // https://astro.build/config
 export default defineConfig({
   // Served at the root on Cloudflare Pages — no `base` subpath.
@@ -431,14 +529,20 @@ export default defineConfig({
       // listing them in the sitemap would contradict that and invite crawlers
       // to URLs that exist only for paid/targeted traffic. Same reasoning for
       // the /{fr,en}/merci/ thank-you pages (noindex via BaseLayout): they
-      // only make sense right after a form submission. `page` is the FULL
-      // URL (site domain included), so a substring check is enough.
-      filter: (page) => !page.includes('/campagnes/') && !page.includes('/merci/'),
+      // only make sense right after a form submission, and for the internal
+      // search page /{fr,en}/recherche/ (noindex — best practice: never let
+      // engines index internal search results). `page` is the FULL URL (site
+      // domain included), so a substring check is enough.
+      filter: (page) =>
+        !page.includes('/campagnes/') && !page.includes('/merci/') && !page.includes('/recherche/'),
     }),
     // Editor-managed redirects (src/data/redirects.json) → dist/_redirects.
     // Deliberately UNCONDITIONAL — both the production build and the
     // STATIC_ONLY (CloudCannon) build run it; see the function's doc block.
     redirectsFile(),
+    // Index de recherche interne (P-06) — les deux modes de build; voir le
+    // bloc de doc de la fonction.
+    pagefindIndex(),
     i18nPairingReport(),
   ],
 
