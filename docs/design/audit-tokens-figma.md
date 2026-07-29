@@ -146,6 +146,15 @@ tokens sémantiques (chaque futur export exigerait une passe de renommage à vie
 
 ## 5. Verdict pipeline (vérification visuelle du design-lab)
 
+> **DÉCISION (user, 2026-07-29)** : le design system FINAL n'est pas encore
+> exporté. À la réception de l'export des maquettes finales, celui-ci devient
+> la **RÉFÉRENCE UNIQUE** du thème des blocs réutilisables et des gabarits de
+> page — les conflits du §3 (radii, Bleu Royal absent de la palette générée,
+> #0050cc hors charte…) seront réglés À CE MOMENT-LÀ, pas avant. D'ici là :
+> `theme-semantique.css` est un HARNAIS PROVISOIRE (design-lab seulement),
+> la Phase 5 attend l'export final, et ce script d'audit se rejoue sur
+> l'export final pour produire la version définitive de ce rapport.
+
 **✅ PIPELINE VALIDÉ** (2026-07-29, `/fr/design-lab` vs `screen.png`, viewport 1440) :
 le body de l'export Homepage compile et rend fidèlement contre le pipeline v4 du
 repo (`design-lab.css` + `theme-semantique.css`) — mise en page, grilles, typo
