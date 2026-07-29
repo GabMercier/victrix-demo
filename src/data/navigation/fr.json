@@ -1,7 +1,7 @@
 {
   "items": [
     { "label": "Découvrir Victrix", "href": "/decouvrir" },
-    { "label": "Expertises", "href": "/expertises" },
+    { "label": "Services", "href": "/services" },
     { "label": "Produits", "href": "/produits" },
     { "label": "Carrière", "href": "/carrieres" },
     { "label": "Contact", "href": "/contact" },
@@ -9,58 +9,58 @@
   ],
   "portal": { "label": "Portail client", "visible": true },
   "mega": {
-    "parentHref": "/expertises",
-    "ariaLabel": "Sous-menu Expertises",
+    "parentHref": "/services",
+    "ariaLabel": "Sous-menu Services",
     "columns": [
       {
         "title": "Conseil stratégique",
-        "href": "/expertises/consultation-strategique",
+        "href": "/services/consultation-strategique",
         "icon": "strategy",
         "links": [
-          { "label": "Conformité Loi 25", "href": "/expertises/consultation-strategique/conformite-loi-25" }
+          { "label": "Conformité Loi 25", "href": "/services/consultation-strategique/conformite-loi-25" }
         ]
       },
       {
         "title": "Infonuagique",
-        "href": "/expertises/infonuagique",
+        "href": "/services/infonuagique",
         "icon": "cloud",
         "links": [
-          { "label": "Microsoft Azure", "href": "/expertises/infonuagique/microsoft-azure" },
-          { "label": "Amazon Web Services", "href": "/expertises/infonuagique/amazon-web-services" }
+          { "label": "Microsoft Azure", "href": "/services/infonuagique/microsoft-azure" },
+          { "label": "Amazon Web Services", "href": "/services/infonuagique/amazon-web-services" }
         ]
       },
       {
         "title": "Cybersécurité",
-        "href": "/expertises/cybersecurite",
+        "href": "/services/cybersecurite",
         "icon": "security",
         "links": [
-          { "label": "Centre opérationnel de sécurité (SOC) évolutif", "href": "/expertises/cybersecurite/soc-evolutif" },
-          { "label": "Tests d’intrusion", "href": "/expertises/cybersecurite/tests-intrusion" },
-          { "label": "IoT et OT", "href": "/expertises/cybersecurite/iot-ot" }
+          { "label": "Centre opérationnel de sécurité (SOC) évolutif", "href": "/services/cybersecurite/soc-evolutif" },
+          { "label": "Tests d’intrusion", "href": "/services/cybersecurite/tests-intrusion" },
+          { "label": "IoT et OT", "href": "/services/cybersecurite/iot-ot" }
         ]
       },
       {
         "title": "Productivité",
-        "href": "/expertises/productivite",
+        "href": "/services/productivite",
         "icon": "productivity",
         "links": [
           { "label": "Ø Studio", "href": "/produits" },
-          { "label": "Intelligence artificielle", "href": "/expertises/intelligence-artificielle" },
+          { "label": "Intelligence artificielle", "service": "intelligence-artificielle" },
           { "label": "Plateforme employé et intranet", "href": "/produits/intranet" },
-          { "label": "ServiceNow", "href": "/expertises/productivite/servicenow" },
-          { "label": "Dynamics 365 Field Service", "href": "/expertises/productivite/dynamics-365-field-service" },
-          { "label": "Copilot pour Microsoft 365", "href": "/expertises/productivite/copilot-microsoft-365" },
-          { "label": "Copilot Studio", "href": "/expertises/productivite/copilot-studio" },
+          { "label": "ServiceNow", "href": "/services/productivite/servicenow" },
+          { "label": "Dynamics 365 Field Service", "href": "/services/productivite/dynamics-365-field-service" },
+          { "label": "Copilot pour Microsoft 365", "href": "/services/productivite/copilot-microsoft-365" },
+          { "label": "Copilot Studio", "href": "/services/productivite/copilot-studio" },
           { "label": "O bureau", "href": "/produits/reservation-bureau" }
         ]
       },
       {
         "title": "Services gérés",
-        "href": "/expertises/services-geres",
+        "href": "/services/services-geres",
         "icon": "managed",
         "links": [
-          { "label": "Services TI gérés", "href": "/expertises/services-geres/services-ti-geres" },
-          { "label": "Environnement Microsoft 365", "href": "/expertises/services-geres/environnement-microsoft-365" }
+          { "label": "Services TI gérés", "href": "/services/services-geres/services-ti-geres" },
+          { "label": "Environnement Microsoft 365", "href": "/services/services-geres/environnement-microsoft-365" }
         ]
       }
     ]

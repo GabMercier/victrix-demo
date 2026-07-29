@@ -48,12 +48,12 @@ But : les URLs du repo = les URLs de l'inventaire ([urls-contenus.csv](migration
 - Alignement de nommage à décider ici (c'était P-17/P-18) : le préfixe provisoire `services` vs `expertise` du site actuel. **Recommandation : adopter `/expertise/…` tel quel** (zéro redirection sur le contenu le plus profond du site).
 - Critère de sortie : les URLs publiées de l'inventaire résolvent en 200 sur un build local (script de vérification à écrire contre le CSV).
 
-### Phase 3 — Ménage prototype (~0,5–1 j)
+### Phase 3 — Ménage prototype (~0,5–1 j) — ✅ FAITE POUR L'ESSENTIEL (2026-07-30)
 
-- Retirer **Sveltia** (`public/admin/`, bloc CSP `/admin`, worker OAuth) — CloudCannon est l'éditeur.
-- Purger les contenus de démo (`demo-sections` fr/en, reliquats de test), décider du sort des pages campagnes de démo.
-- **Portail client** : reste mock, derrière noindex (périmètre inchangé — décision inventaire Q7 à confirmer).
-- Adapter Cloudflare : conservé en build-only tant que la préversion CF sert de démo ; la cible d'hébergement est CloudCannon (`STATIC_ONLY`).
+- ✅ **Sveltia retiré** (`public/admin/` supprimé, bloc CSP `/admin` retiré de `_headers`, `Disallow: /admin/` retiré de robots.txt). Reste OPS hors dépôt : décommissionner le worker OAuth `sveltia-cms-auth.…workers.dev`.
+- ✅ **Consolidation expertises → services** (confirmation utilisateur 30/07 — anticipe une partie de P-17) : collection + route + contenus `expertises` SUPPRIMÉS ; redirections 301 (pré-i18n + localisées) vers `/services/intelligence-artificielle` ; menu/méga-menu renommés « Services » et re-liés (`/services/*`, lien IA via le champ `service` validé au build) ; footer + cartes de l'accueil re-liés. Le CMS ne montre plus qu'UNE collection de pages de services.
+- ✅ **Portail client** : noindex (fait le 28/07 avec P-06).
+- Conservé À DESSEIN : `demo-sections` fr/en (vitrine de la palette + pilote Tailwind — purge à la vraie mise en prod), adaptateur Cloudflare build-only (la préversion CF sert encore de démo).
 
 ### Phase 4 — Formulaires → CloudCannon Forms (spike ~0,5 j + intégration ~0,5 j)
 

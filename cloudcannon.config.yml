@@ -1,9 +1,9 @@
-# CloudCannon configuration — landing-pages ("campagnes") editing spike.
+# CloudCannon configuration — l'éditeur du site (CloudCannon est LE CMS;
+# Sveltia a été retiré le 2026-07-30, Phase 3 du plan de convergence).
 #
 # Scope: makes this repo editable in CloudCannon (sidebar collections + the
-# visual editor for section-based campaign pages). Sveltia (public/admin/)
-# REMAINS the CMS for blog + home until the spike gate passes — do not remove
-# it. Editor-facing labels/comments below are French (FR-CA editors).
+# visual editor for section-based pages). Editor-facing labels/comments below
+# are French (FR-CA editors).
 #
 # Keep FOUR things in sync when the landing contract changes:
 #   1. the Zod schema in src/content.config.ts (frozen landing contract),
@@ -36,6 +36,25 @@
 # one. This only catches uploads that would otherwise have no configured home.
 paths:
   uploads: src/assets/uploads
+
+# Barre latérale organisée pour l'équipe marketing (demande utilisateur
+# 2026-07-30) : le CONTENU du site d'abord, les outils marketing ensuite, la
+# configuration à la fin. Une collection absente d'un groupe resterait visible
+# sous « Autres » — garder cette liste alignée sur collections_config.
+collection_groups:
+  - heading: Contenu du site
+    collections:
+      - home
+      - services
+      - blog
+  - heading: Marketing
+    collections:
+      - landing
+      - forms
+      - navigation
+  - heading: Configuration
+    collections:
+      - redirects
 
 collections_config:
   blog:
@@ -240,137 +259,6 @@ collections_config:
             # for Astro's image() resolver — hence uploads_use_relative_path.
             uploads: /src/content/home
             uploads_use_relative_path: true
-
-  # Expertise pages (per-locale JSON, like home) — src/content/expertises.
-  # Today: intelligence-artificielle only (migrated out of the old
-  # src/i18n/content/ai.ts so criterion 1's third target is editable here).
-  expertises:
-    path: src/content/expertises
-    name: Expertises
-    singular_name: Expertise
-    description: >-
-      Contenu des pages d'expertise (FR + EN). Modifier seulement — la mise en
-      page appartient au gabarit Astro correspondant.
-    icon: psychology
-    # The page template is hand-built per expertise — adding a JSON here does
-    # NOT create a page, so keep add/delete disabled.
-    disable_add: true
-    disable_add_folder: true
-    disable_file_actions: true
-    # fr/intelligence-artificielle.json → /fr/expertises/intelligence-artificielle/
-    url: /[relative_base_path]/expertises/[slug]/
-    # Same rationale as home: Visual by default (first value), Data as the
-    # flat-JSON fallback, no markdown body so no `content`.
-    _enabled_editors:
-      - visual
-      - data
-    _inputs:
-      metaTitle:
-        type: text
-        label: Titre (SEO)
-      metaDescription:
-        type: textarea
-        label: Description (SEO)
-      hero:
-        type: object
-        label: Bannière (hero)
-      titleAccent:
-        type: text
-        label: Début du titre (accentué)
-      titleRest:
-        type: text
-        label: Suite du titre
-      lead:
-        type: textarea
-        label: Paragraphe d'introduction
-        comment: Peut contenir des <strong> (rendu HTML tel quel).
-      eyebrow:
-        type: text
-        label: Surtitre
-      cta:
-        type: text
-        label: Libellé du bouton
-      fromStrategy:
-        type: object
-        label: Bloc « de la stratégie à l'adoption »
-      blockTitle:
-        type: text
-        label: Titre du bloc
-      leadCardTitle:
-        type: text
-        label: Titre de la carte d'introduction
-      leadCardText:
-        type: textarea
-        label: Texte de la carte d'introduction
-      interventions:
-        type: array
-        label: Interventions
-      collaboration:
-        type: object
-        label: Bloc « collaboration »
-      expertsPanel:
-        type: object
-        label: Bloc « bassin d'experts »
-      areas:
-        type: object
-        label: Domaines d'expertise
-      multiTech:
-        type: object
-        label: Expertise multitechnologique
-      closing:
-        type: object
-        label: Bloc de conclusion
-      greenCta:
-        type: object
-        label: Bandeau vert (appel à l'action)
-      cta1:
-        type: object
-        label: Encadré d'appel à l'action 1
-      cta2:
-        type: object
-        label: Encadré d'appel à l'action 2
-      sHead:
-        type: text
-        label: Titre de section
-      sIntro:
-        type: textarea
-        label: Introduction de section
-        comment: Peut contenir des <strong> (rendu HTML tel quel).
-      sSub:
-        type: text
-        label: Sous-titre de section
-      items:
-        type: array
-        label: Éléments
-      n:
-        type: text
-        label: Numéro
-      title:
-        type: text
-        label: Titre
-      text:
-        type: textarea
-        label: Texte
-      p1:
-        type: textarea
-        label: Premier paragraphe
-        comment: Peut contenir des <strong> (rendu HTML tel quel).
-      p2:
-        type: textarea
-        label: Deuxième paragraphe
-        comment: Peut contenir des <strong> (rendu HTML tel quel).
-      col1Title:
-        type: text
-        label: Titre de la colonne 1
-      col2Title:
-        type: text
-        label: Titre de la colonne 2
-      col3Title:
-        type: text
-        label: Titre de la colonne 3
-      openLocalLabel:
-        type: text
-        label: Libellé « sources ouvertes et locales »
 
   landing:
     path: src/content/landing
@@ -802,7 +690,7 @@ collections_config:
         label: Lien parent
         comment: >-
           Doit correspondre au lien d'une entrée du menu principal (ex.
-          /expertises).
+          /services).
       ariaLabel:
         type: text
         label: Libellé d'accessibilité
@@ -836,6 +724,22 @@ collections_config:
         type: switch
         label: Affichée
         comment: Désactivé = la barre d'annonce disparaît du site.
+      # Diffusion planifiée (marketing) : fenêtre [début, fin) évaluée à chaque
+      # PUBLICATION/reconstruction du site (rebuild quotidien automatique — voir
+      # guide-edition.md « Planifier »). L'éditeur visuel montre toujours la
+      # bannière, fenêtre ou pas, pour pouvoir l'éditer.
+      startAt:
+        type: datetime
+        label: Diffuser à partir de
+        comment: >-
+          Vide = dès maintenant. La bannière apparaît au premier build suivant
+          cette date (heure UTC).
+      endAt:
+        type: datetime
+        label: Retirer à partir de
+        comment: >-
+          Vide = jamais retirée. La bannière disparaît au premier build suivant
+          cette date (heure UTC).
       before:
         type: text
         label: Texte (avant la partie en gras)

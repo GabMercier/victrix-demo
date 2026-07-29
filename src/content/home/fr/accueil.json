@@ -26,42 +26,42 @@
           "title": "Cybersécurité",
           "accent": "#B45309",
           "description": "Audit, gouvernance, surveillance, gestion des identités (IAM), automatisation — SevOC.",
-          "href": "/fr/expertises/cybersecurite"
+          "href": "/fr/services/cybersecurite"
         },
         {
           "number": "02",
           "title": "Infonuagique",
           "accent": "#2350E0",
           "description": "Feuille de route multinuage, étude d’opportunité (IaaS, PaaS, SaaS), analyse de la posture de sécurité, migration vers une plateforme infonuagique (AWS, Azure).",
-          "href": "/fr/expertises/infonuagique"
+          "href": "/fr/services/infonuagique"
         },
         {
           "number": "03",
           "title": "Productivité",
           "accent": "#1F8A4C",
           "description": "BI et Power BI, développement Microsoft 365, gestion et automatisation des processus.",
-          "href": "/fr/expertises/productivite"
+          "href": "/fr/services/productivite"
         },
         {
           "number": "04",
           "title": "Intelligence artificielle",
           "accent": "#0E7C86",
           "description": "Exploration et analyse des opportunités, développement d’agents et de solutions d’IA sur mesure, adoption sécurisée de l’IA générative.",
-          "href": "/fr/expertises/intelligence-artificielle"
+          "href": "/fr/services/intelligence-artificielle"
         },
         {
           "number": "05",
           "title": "Consultation stratégique",
           "accent": "#5C6068",
           "description": "Stratégie, feuille de route technologique, positionnement stratégique.",
-          "href": "/fr/expertises/consultation-strategique"
+          "href": "/fr/services/consultation-strategique"
         },
         {
           "number": "06",
           "title": "Services gérés",
           "accent": "#C2410C",
           "description": "Services gérés de sécurité et d’infonuagique.",
-          "href": "/fr/expertises/services-geres"
+          "href": "/fr/services/services-geres"
         }
       ]
     },
@@ -72,7 +72,7 @@
       "title": "SevOC",
       "body": "Le SevOC prend en charge les opérations de sécurité de votre organisation. Contrairement à un SOC traditionnel, notre offre modulaire et évolutive vous permet de rester à l’avant-garde des technologies de sécurité.",
       "ctaLabel": "Découvrir le SevOC",
-      "ctaHref": "/fr/expertises/cybersecurite",
+      "ctaHref": "/fr/services/cybersecurite",
       "image": "../sevoc.png"
     },
     {

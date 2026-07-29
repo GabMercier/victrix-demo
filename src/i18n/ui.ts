@@ -65,14 +65,14 @@ const fr = {
   footer: {
     columns: [
       {
-        title: 'Expertises',
+        title: 'Services',
         links: [
-          { label: 'Consultation stratégique', href: '/expertises/consultation-strategique' },
-          { label: 'Infonuagique', href: '/expertises/infonuagique' },
-          { label: 'Cybersécurité', href: '/expertises/cybersecurite' },
-          { label: 'Productivité', href: '/expertises/productivite' },
-          { label: 'Intelligence artificielle', href: '/expertises/intelligence-artificielle' },
-          { label: 'Services gérés', href: '/expertises/services-geres' },
+          { label: 'Consultation stratégique', href: '/services/consultation-strategique' },
+          { label: 'Infonuagique', href: '/services/infonuagique' },
+          { label: 'Cybersécurité', href: '/services/cybersecurite' },
+          { label: 'Productivité', href: '/services/productivite' },
+          { label: 'Intelligence artificielle', href: '/services/intelligence-artificielle' },
+          { label: 'Services gérés', href: '/services/services-geres' },
         ],
       },
       {
@@ -205,14 +205,14 @@ const en: UI = {
   footer: {
     columns: [
       {
-        title: 'Expertise',
+        title: 'Services',
         links: [
-          { label: 'Strategic consulting', href: '/expertises/consultation-strategique' },
-          { label: 'Cloud computing', href: '/expertises/infonuagique' },
-          { label: 'Cybersecurity', href: '/expertises/cybersecurite' },
-          { label: 'Productivity', href: '/expertises/productivite' },
-          { label: 'Artificial intelligence', href: '/expertises/intelligence-artificielle' },
-          { label: 'Managed services', href: '/expertises/services-geres' },
+          { label: 'Strategic consulting', href: '/services/consultation-strategique' },
+          { label: 'Cloud computing', href: '/services/infonuagique' },
+          { label: 'Cybersecurity', href: '/services/cybersecurite' },
+          { label: 'Productivity', href: '/services/productivite' },
+          { label: 'Artificial intelligence', href: '/services/intelligence-artificielle' },
+          { label: 'Managed services', href: '/services/services-geres' },
         ],
       },
       {

@@ -85,6 +85,35 @@ describe('isDraftVisible / filterPublished', () => {
   });
 });
 
+describe('articles programmés (date future = publication différée)', () => {
+  const now = new Date('2026-07-30T12:00:00Z');
+  const past = post('fr/passe', { date: new Date('2026-07-01') });
+  const scheduled = post('fr/programme', { date: new Date('2026-09-01') });
+  const atNow = post('fr/pile-maintenant', { date: now });
+  const all = [past, scheduled, atNow];
+
+  it('cache un article daté dans le futur sur le build public', () => {
+    expect(filterPublished(all, false, false, now)).toEqual([past, atNow]);
+  });
+
+  it('date atteinte = publié (borne incluse)', () => {
+    expect(filterPublished([atNow], false, false, now)).toEqual([atNow]);
+  });
+
+  it("le build d'édition (STATIC_ONLY) montre les articles programmés", () => {
+    expect(filterPublished(all, true, false, now)).toEqual(all);
+  });
+
+  it('DRAFTS_VISIBLE (préversions) montre aussi les programmés', () => {
+    expect(filterPublished(all, false, true, now)).toEqual(all);
+  });
+
+  it('un brouillon futur reste un brouillon (les deux filtres se cumulent)', () => {
+    const draftFuture = post('fr/brouillon-futur', { draft: true, date: new Date('2026-09-01') });
+    expect(filterPublished([draftFuture], false, false, now)).toEqual([]);
+  });
+});
+
 describe('findCounterpart', () => {
   const fr = post('fr/cinq-pratiques-cybersecurite-pme');
   const en = post('en/cinq-pratiques-cybersecurite-pme', { slug: 'five-cybersecurity-practices-for-smbs' });

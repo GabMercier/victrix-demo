@@ -38,6 +38,15 @@
  */
 const { contentBlocks, enrich } = Astro.props;
 
+// Rendu de BUILD (SSR) vs re-rendu NAVIGATEUR de l'éditeur visuel. Le bundle
+// d'édition live compile ce fichier pour le navigateur, où import.meta.env
+// peut être absent (précédent : form.astro) — d'où l'accès défensif. Sert au
+// garde-fou related-posts ci-dessous : il ne doit JAMAIS se déclencher dans
+// l'éditeur (enrich y est TOUJOURS absent — même sur une page de services
+// légitime), sinon « Error rendering page! » sur toute page qui porte la
+// section (bogue corrigé le 2026-07-30).
+const isBuildRender = Boolean((import.meta.env ?? {}).SSR);
+
 // Typed in the frontmatter on purpose: generic annotations inside template
 // expressions (`(block: Record<string, unknown>) => …`) are misparsed by the
 // Astro compiler as JSX tags. Keep template expressions annotation-free.
@@ -67,16 +76,19 @@ for (const [path, mod] of Object.entries(componentImports)) {
     const Component = components[type];
     // Build-only enrichment (see header). `{...{}}` when absent → no change.
     const extra = (enrich?.[type] ?? {}) as Block;
-    // Garde-fou build (constat #2) : la section « ressources liées » n'affiche
-    // de VRAIES cartes que si la route les a résolues au build (enrich.cards =
-    // tableau, éventuellement vide). Sans cet apport — section posée sur une
-    // route qui n'alimente PAS related-posts (accueil, campagnes) — le composant
-    // retomberait sur ses cartes FACTICES en production. On casse le build (même
-    // philosophie de garde-fou que formId/navHref/service) plutôt que d'expédier
-    // des placeholders. Seule src/pages/[lang]/services/[slug].astro alimente
-    // related-posts. (Un tableau vide reste valide : la route a résolu 0 article
-    // — le composant ne rend alors rien, cf. related-posts.astro, constat #4.)
-    if (type === 'related-posts' && !Array.isArray(extra.cards)) {
+    // Garde-fou BUILD SEULEMENT (constat #2) : la section « ressources liées »
+    // n'affiche de VRAIES cartes que si la route les a résolues au build
+    // (enrich.cards = tableau, éventuellement vide). Sans cet apport — section
+    // posée sur une route qui n'alimente PAS related-posts (accueil, campagnes)
+    // — le composant retomberait sur ses cartes FACTICES en production. On
+    // casse le build (même philosophie que formId/navHref/service) plutôt que
+    // d'expédier des placeholders. Seule src/pages/[lang]/services/[slug].astro
+    // alimente related-posts. (Tableau vide = valide : 0 article résolu, le
+    // composant ne rend rien — constat #4.) `isBuildRender` est ESSENTIEL : dans
+    // le re-rendu navigateur de l'éditeur visuel, enrich est TOUJOURS absent —
+    // y compris sur un service légitime — et le composant doit alors montrer sa
+    // maquette factice éditable, pas une erreur de rendu.
+    if (isBuildRender && type === 'related-posts' && !Array.isArray(extra.cards)) {
       throw new Error(
         `[related-posts] Section « ressources liées » sur une page qui ne résout pas ses cartes au build ` +
           `(enrich['related-posts'] absent). Cette section n'est supportée que sur les pages de services ` +

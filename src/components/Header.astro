@@ -4,6 +4,7 @@ import Logo from './Logo.astro';
 import { type Locale, defaultLocale, otherLocale, localizePath, swapLocale } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 import { resolveNavHref } from '../lib/navigation/service-links';
+import { isWithinWindow } from '../lib/schedule';
 
 /**
  * Global site header: dismissible announcement bar, logo, primary navigation,
@@ -100,6 +101,15 @@ const searchHref = localizePath('/recherche', lang);
 const announce = nav.announce;
 const announceLink = localizePath(announce.linkHref, lang);
 
+// Fenêtre de diffusion planifiée de la bannière (schedule.ts) — évaluée au
+// BUILD. Le build d'édition (STATIC_ONLY — même gotcha d'expression membre
+// exacte que blog.ts) IGNORE la fenêtre : l'éditeur doit toujours voir et
+// pouvoir modifier la bannière; la fenêtre s'applique aux builds publiés.
+const STATIC_ONLY_BUILD = Boolean(import.meta.env.STATIC_ONLY);
+const announceVisible =
+  announce.enabled &&
+  (STATIC_ONLY_BUILD || isWithinWindow(new Date(), announce.startAt, announce.endAt));
+
 // Active-state matching against the localized current path.
 const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const isCurrent = (href: string) => {
@@ -113,9 +123,9 @@ const frHref = lang === 'fr' ? Astro.url.pathname : alt;
 const enHref = lang === 'en' ? Astro.url.pathname : alt;
 ---
 
-<!-- Announcement bar (editable / dismissible; « Affichée » switch in the CMS) -->
+<!-- Announcement bar (editable / dismissible; « Affichée » switch + fenêtre planifiée in the CMS) -->
 {
-  announce.enabled && (
+  announceVisible && (
     <div class="announcement" data-announcement>
       <div class="container announcement__inner">
         <p class="announcement__text">

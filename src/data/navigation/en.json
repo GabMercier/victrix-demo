@@ -11,8 +11,8 @@
       "service": ""
     },
     {
-      "label": "Expertise",
-      "href": "/expertises",
+      "label": "Services",
+      "href": "/services",
       "service": ""
     },
     {
@@ -36,63 +36,63 @@
     "visible": true
   },
   "mega": {
-    "parentHref": "/expertises",
-    "ariaLabel": "Expertise submenu",
+    "parentHref": "/services",
+    "ariaLabel": "Services submenu",
     "columns": [
       {
         "title": "Strategic consulting",
-        "href": "/expertises/consultation-strategique",
+        "href": "/services/consultation-strategique",
         "icon": "strategy",
         "links": [
           {
             "label": "Law 25 compliance",
-            "href": "/expertises/consultation-strategique/conformite-loi-25",
+            "href": "/services/consultation-strategique/conformite-loi-25",
             "service": ""
           }
         ]
       },
       {
         "title": "Cloud computing",
-        "href": "/expertises/infonuagique",
+        "href": "/services/infonuagique",
         "icon": "cloud",
         "links": [
           {
             "label": "Microsoft Azure",
-            "href": "/expertises/infonuagique/microsoft-azure",
+            "href": "/services/infonuagique/microsoft-azure",
             "service": ""
           },
           {
             "label": "Amazon Web Services",
-            "href": "/expertises/infonuagique/amazon-web-services",
+            "href": "/services/infonuagique/amazon-web-services",
             "service": ""
           }
         ]
       },
       {
         "title": "Cybersecurity",
-        "href": "/expertises/cybersecurite",
+        "href": "/services/cybersecurite",
         "icon": "security",
         "links": [
           {
             "label": "Scalable Security Operations Centre (SOC)",
-            "href": "/expertises/cybersecurite/soc-evolutif",
+            "href": "/services/cybersecurite/soc-evolutif",
             "service": ""
           },
           {
             "label": "Penetration testing",
-            "href": "/expertises/cybersecurite/tests-intrusion",
+            "href": "/services/cybersecurite/tests-intrusion",
             "service": ""
           },
           {
             "label": "IoT and OT",
-            "href": "/expertises/cybersecurite/iot-ot",
+            "href": "/services/cybersecurite/iot-ot",
             "service": ""
           }
         ]
       },
       {
         "title": "Productivity",
-        "href": "/expertises/productivite",
+        "href": "/services/productivite",
         "icon": "productivity",
         "links": [
           {
@@ -102,8 +102,7 @@
           },
           {
             "label": "Artificial intelligence",
-            "href": "/expertises/intelligence-artificielle",
-            "service": ""
+            "service": "intelligence-artificielle"
           },
           {
             "label": "Employee platform and intranet",
@@ -112,22 +111,22 @@
           },
           {
             "label": "ServiceNow",
-            "href": "/expertises/productivite/servicenow",
+            "href": "/services/productivite/servicenow",
             "service": ""
           },
           {
             "label": "Dynamics 365 Field Service",
-            "href": "/expertises/productivite/dynamics-365-field-service",
+            "href": "/services/productivite/dynamics-365-field-service",
             "service": ""
           },
           {
             "label": "Copilot for Microsoft 365",
-            "href": "/expertises/productivite/copilot-microsoft-365",
+            "href": "/services/productivite/copilot-microsoft-365",
             "service": ""
           },
           {
             "label": "Copilot Studio",
-            "href": "/expertises/productivite/copilot-studio",
+            "href": "/services/productivite/copilot-studio",
             "service": ""
           },
           {
@@ -139,17 +138,17 @@
       },
       {
         "title": "Managed services",
-        "href": "/expertises/services-geres",
+        "href": "/services/services-geres",
         "icon": "managed",
         "links": [
           {
             "label": "Managed IT services",
-            "href": "/expertises/services-geres/services-ti-geres",
+            "href": "/services/services-geres/services-ti-geres",
             "service": ""
           },
           {
             "label": "Microsoft 365 environment",
-            "href": "/expertises/services-geres/environnement-microsoft-365",
+            "href": "/services/services-geres/environnement-microsoft-365",
             "service": ""
           }
         ]

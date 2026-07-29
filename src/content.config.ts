@@ -510,68 +510,11 @@ const services = defineCollection({
     }),
 });
 
-/**
- * Expertise pages — per-locale JSON, one file per expertise (like `home`, one
- * entry per locale; ids are "<locale>/<filename>", e.g.
- * "fr/intelligence-artificielle"). Rendered by the matching hand-built template
- * under src/pages/[lang]/expertises/. The shape mirrors the old aiContent
- * object 1:1 so the template markup did not change during the migration.
- *
- * Gotchas:
- *  - `lead`, `sIntro`, `p1`, `p2` may contain <strong> and are rendered with
- *    set:html (trusted, in-repo content — same policy as before the migration).
- *  - Adding a JSON file does NOT create a page: each expertise has its own
- *    template. The CloudCannon collection therefore disables add/delete.
- */
-const expertises = defineCollection({
-  loader: glob({ pattern: '**/*.json', base: './src/content/expertises' }),
-  schema: z.object({
-    metaTitle: z.string(),
-    metaDescription: z.string(),
-    hero: z.object({
-      eyebrow: z.string(),
-      titleAccent: z.string(),
-      titleRest: z.string(),
-      lead: z.string(),
-      cta: z.string(),
-    }),
-    fromStrategy: z.object({
-      blockTitle: z.string(),
-      leadCardTitle: z.string(),
-      leadCardText: z.string(),
-    }),
-    interventions: z.array(
-      z.object({ n: z.string(), title: z.string(), text: z.string() }),
-    ),
-    collaboration: z.object({
-      sHead: z.string(),
-      sIntro: z.string(),
-      items: z.array(
-        z.object({ n: z.string(), title: z.string(), text: z.string(), cta: z.string() }),
-      ),
-    }),
-    cta1: z.object({ title: z.string(), text: z.string(), cta: z.string() }),
-    areas: z.object({
-      sHead: z.string(),
-      sSub: z.string(),
-      items: z.array(z.string()),
-    }),
-    multiTech: z.object({
-      sHead: z.string(),
-      col1Title: z.string(),
-      col2Title: z.string(),
-      col3Title: z.string(),
-      openLocalLabel: z.string(),
-    }),
-    cta2: z.object({ title: z.string(), cta: z.string() }),
-    expertsPanel: z.object({
-      sHead: z.string(),
-      items: z.array(z.object({ n: z.string(), title: z.string(), text: z.string() })),
-    }),
-    closing: z.object({ blockTitle: z.string(), p1: z.string(), p2: z.string() }),
-    greenCta: z.object({ title: z.string(), text: z.string(), cta: z.string() }),
-  }),
-});
+// NOTE ARCHITECTURE (2026-07-30) : l'ancienne collection `expertises` (page
+// artisanale /expertises/intelligence-artificielle) a été RETIRÉE — les
+// expertises sont devenues des SERVICES composables (collection `services`,
+// P-07; confirmation utilisateur). L'ancienne URL est redirigée en 301 vers
+// /services/intelligence-artificielle (astro.config.mjs, bloc `redirects`).
 
 /**
  * Site chrome navigation — header menu, mega menu, announcement bar, portal
@@ -589,6 +532,18 @@ const expertises = defineCollection({
  *  - `icon` is capped to the five keys drawn as inline SVGs in Header.astro
  *    (megaIcons) — adding an icon means drawing it there first.
  */
+// Borne de planification : vide (aucune borne) ou date/date-heure parsable.
+// Garde-fou build : une date fautive saisie au CMS casse le build avec un
+// message clair plutôt que d'être ignorée en silence (schedule.ts est
+// volontairement tolérant — c'est ICI que la validation vit).
+const scheduleBound = z
+  .string()
+  .default('')
+  .refine((v) => v.trim() === '' || !Number.isNaN(new Date(v).valueOf()), {
+    message:
+      'Date invalide — utiliser le sélecteur de date, format ISO (ex. 2026-08-01 ou 2026-08-01T09:00), ou laisser vide.',
+  });
+
 const navHref = z
   .string()
   .min(1, 'Lien requis')
@@ -676,6 +631,15 @@ const navigation = defineCollection({
     }),
     announce: z.object({
       enabled: z.boolean().default(true),
+      // Fenêtre de diffusion PLANIFIÉE (2026-07-30, demande marketing) :
+      // Header.astro ne rend la barre que si l'instant du BUILD est dans
+      // [startAt, endAt) — src/lib/schedule.ts. "" = pas de borne. Le build
+      // d'édition (STATIC_ONLY) IGNORE la fenêtre pour que l'éditeur voie et
+      // modifie toujours la bannière. Un site statique n'applique la fenêtre
+      // qu'à la reconstruction : rebuild quotidien planifié — voir
+      // operations.md § « Publication planifiée ».
+      startAt: scheduleBound,
+      endAt: scheduleBound,
       before: z.string(),
       strong: z.string(),
       after: z.string(),
@@ -724,4 +688,4 @@ const forms = defineCollection({
   }),
 });
 
-export const collections = { blog, home, landing, services, expertises, navigation, forms };
+export const collections = { blog, home, landing, services, navigation, forms };

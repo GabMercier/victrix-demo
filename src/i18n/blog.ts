@@ -57,18 +57,33 @@ export function isDraftVisible(
 }
 
 /**
- * The publishable subset of `posts` — the ONE draft gate every surface that
- * routes or lists posts goes through (ressources index + article routes via
- * the pages, the homepage's latest-articles strip via getPostsByLocale below).
- * In the STATIC_ONLY editing build (and in DRAFTS_VISIBLE opt-in builds) it
- * is the identity function (drafts render so editors can preview them).
+ * The publishable subset of `posts` — the ONE gate every surface that routes
+ * or lists posts goes through (ressources index + article routes via the
+ * pages, the homepage's latest-articles strip via getPostsByLocale below).
+ * Two filters, same visibility policy (editing/preview builds see everything):
+ *  - drafts (« Brouillon » switch);
+ *  - ARTICLES PROGRAMMÉS (2026-07-30, demande marketing) : une date FUTURE =
+ *    publication différée — l'article est exclu des builds publiés jusqu'à ce
+ *    qu'un build postérieur à sa date le fasse apparaître (rebuild quotidien
+ *    planifié : operations.md § « Publication planifiée »). Les dates de
+ *    frontmatter sans heure valent minuit UTC — l'article du « 2026-08-01 »
+ *    paraît au premier build du 1er août UTC.
+ * `now` est un paramètre pour les tests; en build il vaut l'instant du build.
  */
 export function filterPublished(
   posts: BlogPost[],
   staticOnly: boolean = STATIC_ONLY_BUILD,
   draftsVisible: boolean = DRAFTS_VISIBLE_BUILD,
+  now: Date = new Date(),
 ): BlogPost[] {
-  return isDraftVisible(staticOnly, draftsVisible) ? posts : posts.filter((post) => !post.data.draft);
+  // `?? 0` : zod garantit `date` sur toute vraie entrée; les doublures de test
+  // et données historiques sans date restent « publiées » (même tolérance que
+  // pour `draft` absent).
+  return isDraftVisible(staticOnly, draftsVisible)
+    ? posts
+    : posts.filter(
+        (post) => !post.data.draft && (post.data.date?.valueOf() ?? 0) <= now.valueOf(),
+      );
 }
 
 /** The locale segment of a post id, or null if malformed. */

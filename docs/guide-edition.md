@@ -93,11 +93,36 @@ même nom de fichier — structure vierge, mais champs valides garantis.
 **Navigation** dans la barre latérale : un fichier par langue (`fr` / `en`).
 
 - **Menu principal** : libellés, liens et ordre des entrées d'en-tête.
-- **Méga-menu** : les colonnes du sous-menu Expertises (titres, liens, icône
-  parmi la liste proposée).
+- **Méga-menu** : les colonnes du sous-menu Services (titres, liens, icône
+  parmi la liste proposée). Un lien peut viser une **page Services** par son
+  identifiant (champ « Service ») au lieu d'une adresse : le site calcule
+  l'adresse et refuse de publier si la page n'existe pas.
 - **Barre d'annonce** : textes, lien, et l'interrupteur **Affichée** pour la
   masquer complètement.
 - **Bouton « Portail client »** : libellé et visibilité.
+
+## Planifier (bannière promo, articles)
+
+- **Bannière d'annonce** : Navigation → Barre d'annonce → « **Diffuser à partir
+  de** » / « **Retirer à partir de** ». Laisser vide = pas de borne. La bannière
+  apparaît/disparaît **au premier build suivant** la date (un passage
+  automatique a lieu chaque nuit; heure en UTC — décalage de 4-5 h avec
+  Montréal). Dans l'éditeur visuel, la bannière reste toujours visible pour
+  que vous puissiez la modifier.
+- **Article programmé** : donner à l'article une **date future** — il reste
+  invisible du site public jusqu'à cette date (mais visible dans l'éditeur et
+  les aperçus, comme un brouillon). Il paraît au premier build suivant sa date.
+- Besoin de faire paraître tout de suite sans attendre la nuit ? Demander un
+  déclenchement manuel (GitHub → Actions → « Reconstruction planifiée »).
+
+## Créer une page Services (avec gabarit)
+
+**Services** dans la barre latérale → **+ Ajouter** → choisir **Service (FR)**
+ou **Service (EN)** : la page est créée dans la bonne langue avec un gabarit
+valide (héros + sections d'exemple), impossible de produire un fichier cassé.
+Composer ensuite par sections comme une campagne. Pour la traduction : créer
+(ou Dupliquer) **le même nom de fichier** dans l'autre langue — c'est ce qui
+relie les deux versions (voir « Traduire »).
 
 > ⚠️ Les liens de navigation s'écrivent **sans** préfixe de langue
 > (`/contact`, pas `/fr/contact`) — le site ajoute `/fr` ou `/en` tout seul.

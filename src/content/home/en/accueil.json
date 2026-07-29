@@ -26,42 +26,42 @@
           "title": "Cybersecurity",
           "accent": "#B45309",
           "description": "Audit, governance, monitoring, identity and access management (IAM), automation — SevOC.",
-          "href": "/en/expertises/cybersecurite"
+          "href": "/en/services/cybersecurite"
         },
         {
           "number": "02",
           "title": "Cloud Computing",
           "accent": "#2350E0",
           "description": "Multi-cloud roadmap, opportunity assessment (IaaS, PaaS, SaaS), security posture analysis, migration to a cloud platform (AWS, Azure).",
-          "href": "/en/expertises/infonuagique"
+          "href": "/en/services/infonuagique"
         },
         {
           "number": "03",
           "title": "Productivity",
           "accent": "#1F8A4C",
           "description": "BI and Power BI, Microsoft 365 development, process management and automation.",
-          "href": "/en/expertises/productivite"
+          "href": "/en/services/productivite"
         },
         {
           "number": "04",
           "title": "Artificial Intelligence",
           "accent": "#0E7C86",
           "description": "Opportunity exploration and analysis, development of custom AI agents and solutions, secure adoption of generative AI.",
-          "href": "/en/expertises/intelligence-artificielle"
+          "href": "/en/services/intelligence-artificielle"
         },
         {
           "number": "05",
           "title": "Strategic Consulting",
           "accent": "#5C6068",
           "description": "Strategy, technology roadmap, strategic positioning.",
-          "href": "/en/expertises/consultation-strategique"
+          "href": "/en/services/consultation-strategique"
         },
         {
           "number": "06",
           "title": "Managed Services",
           "accent": "#C2410C",
           "description": "Managed security and cloud computing services.",
-          "href": "/en/expertises/services-geres"
+          "href": "/en/services/services-geres"
         }
       ]
     },
@@ -72,7 +72,7 @@
       "title": "SevOC",
       "body": "The SevOC takes charge of your organization’s security operations. Unlike a traditional SOC, our modular and scalable offering lets you stay at the forefront of security technologies.",
       "ctaLabel": "Discover the SevOC",
-      "ctaHref": "/en/expertises/cybersecurite",
+      "ctaHref": "/en/services/cybersecurite",
       "image": "../sevoc.png"
     },
     {

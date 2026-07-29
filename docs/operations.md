@@ -189,6 +189,32 @@ CloudCannon pour avancer `main` — ce qui redéploie la production
   (lien de revue restreint) — Site Settings → Sharing. Domaine de test
   CloudCannon disponible pour prévisualiser sans exposer l'URL Cloudflare.
 
+## 7bis. Publication planifiée (contenus programmés)
+
+Un site statique n'applique les règles de dates **qu'au moment d'un build** —
+la « planification » repose donc sur trois pièces (2026-07-30) :
+
+1. **Ce qui se planifie déjà** :
+   - **Articles de blogue** : une date FUTURE dans le champ « Date » = l'article
+     est invisible des builds publiés jusqu'à sa date (les préversions et
+     l'éditeur CloudCannon le montrent — même politique que les brouillons).
+   - **Barre d'annonce (« promo »)** : champs « Diffuser à partir de » /
+     « Retirer à partir de » dans Navigation → Barre d'annonce. Fenêtre
+     [début, fin), heure UTC; vide = pas de borne. Une date invalide casse le
+     build (garde-fou zod). L'éditeur visuel montre toujours la bannière.
+2. **Le rebuild quotidien** : `.github/workflows/rebuild-planifie.yml` (06:17
+   UTC + bouton manuel dans l'onglet Actions). **Branchement OPS requis une
+   fois** : créer le secret GitHub `REBUILD_HOOK_URL` avec un build hook de
+   l'hébergeur (CloudCannon : Site Settings → Builds → Build Hooks; Cloudflare
+   Pages : Deploy hooks). Sans secret, le workflow tourne à vide sans échouer.
+3. **Granularité** : un passage par jour. Pour une parution à heure précise,
+   lancer le workflow manuellement (Actions → « Reconstruction planifiée » →
+   Run workflow) ou ajouter un second cron.
+
+Étendre la planification à d'autres surfaces (sections de l'accueil, campagnes)
+= réutiliser `src/lib/schedule.ts` + deux champs de dates (patron de la
+bannière); chantier au backlog (P-23, plan-prompts.md).
+
 ## 8. Dépannage
 
 | Symptôme | Cause | Solution |

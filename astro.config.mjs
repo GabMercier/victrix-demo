@@ -503,7 +503,13 @@ export default defineConfig({
     '/': '/fr',
     '/contact': '/fr/contact',
     '/ressources': '/fr/ressources',
-    '/expertises/intelligence-artificielle': '/fr/expertises/intelligence-artificielle',
+    // Expertises → services (consolidation 2026-07-30, confirmation utilisateur :
+    // les expertises SONT les services dans la nouvelle architecture). L'ancienne
+    // page artisanale /expertises/intelligence-artificielle est retirée; ses URLs
+    // (pré-i18n ET localisées) redirigent vers le service composable équivalent.
+    '/expertises/intelligence-artificielle': '/fr/services/intelligence-artificielle',
+    '/fr/expertises/intelligence-artificielle': '/fr/services/intelligence-artificielle',
+    '/en/expertises/intelligence-artificielle': '/en/services/intelligence-artificielle',
     // Preserve the three pre-i18n article URLs (explicit, not a dynamic pattern —
     // a dynamic `[slug]` redirect has no source route and breaks the build).
     '/ressources/ia-au-service-de-la-productivite': '/fr/ressources/ia-au-service-de-la-productivite',
