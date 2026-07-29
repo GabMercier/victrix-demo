@@ -141,16 +141,18 @@ collections_config:
         label: Image de couverture
         comment: >-
           Partagée entre les deux langues — téléverser une seule fois, le même
-          fichier sert au FR et à l'EN.
+          fichier sert au FR et à l'EN. Optionnelle (article sans image).
         options:
           paths:
-            # Covers live beside the locale folders; the SAVED value must stay
-            # relative to the article file ("../covers/<fichier>") so Astro's
-            # image() resolver keeps working — hence uploads_use_relative_path.
-            # First in-editor upload → build must be tested end-to-end before
-            # the spike gate (criterion 4).
-            uploads: /src/content/blog/covers
-            uploads_use_relative_path: true
+            # Contenu migré (2026-07-29) : les couvertures sont des CHEMINS
+            # PUBLICS servis tels quels (/wp-content/uploads/… — même
+            # convention que les images du corps et des sections, patron
+            # identique aux images de la palette : static: public → l'adresse
+            # enregistrée commence à /…). Les nouveaux téléversements
+            # atterrissent dans public/wp-content/uploads/cms/ (dossier dédié
+            # CMS, à l'écart des millésimes WordPress).
+            static: public
+            uploads: public/wp-content/uploads/cms
       tags:
         type: array
         label: Étiquettes
@@ -443,6 +445,12 @@ collections_config:
       - data
     # fr/<slug>.json → /fr/services/<slug>/ ; le segment de langue devient le
     # préfixe d'URL (même astuce [relative_base_path] que blog/landing).
+    # ⚠️ LIMITE CONNUE (branchement 2026-07-29) : pour les services IMBRIQUÉS
+    # (fr/cybersecurite/zero-trust.json) et les fichiers EN à slug anglais
+    # surchargé, ce gabarit donne un lien d'aperçu inexact ([relative_base_path]
+    # inclut le sous-dossier et [slug] ignore le champ `slug`). L'URL réelle est
+    # /<langue>/services/<slug ou chemin>/ — suivi : gabarit d'URL par données
+    # quand CloudCannon le permettra.
     url: /[relative_base_path]/services/[slug]/
     preview:
       icon: rocket_launch

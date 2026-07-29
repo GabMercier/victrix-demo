@@ -56,16 +56,13 @@ export async function getStaticPaths() {
       };
     }
 
-    // home-latest cards → 3 newest posts, covers pre-resolved (plain strings).
+    // home-latest cards → 3 newest posts. Couvertures = chemins publics servis
+    // tels quels (contenu migré de WordPress — voir le schéma blog) : plus de
+    // getImage, le composant omet srcset/dimensions quand absents.
     const posts = (await getPostsByLocale(lang)).slice(0, 3);
     const dateFmt = new Intl.DateTimeFormat(htmlLang[lang], { dateStyle: 'long', timeZone: 'UTC' });
     const cards = await Promise.all(
       posts.map(async (post) => {
-        const cover = await getImage({
-          src: post.data.coverImage,
-          widths: [400, 800],
-          sizes: '(min-width: 768px) 360px, 100vw',
-        });
         return {
           href: localizePath(`/ressources/${postUrlSlug(post)}`, lang),
           title: post.data.title,
@@ -73,12 +70,7 @@ export async function getStaticPaths() {
           tags: post.data.tags,
           dateISO: post.data.date.toISOString(),
           dateLabel: dateFmt.format(post.data.date),
-          img: {
-            src: cover.src,
-            srcset: cover.srcSet.attribute,
-            width: post.data.coverImage.width,
-            height: post.data.coverImage.height,
-          },
+          img: { src: post.data.coverImage ?? '' },
         };
       }),
     );

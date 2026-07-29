@@ -1,6 +1,5 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { Image, getImage } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import JsonLd from '../../../components/JsonLd.astro';
 import { defaultLocale, otherLocale, htmlLang, localizePath } from '../../../i18n/config';
@@ -39,14 +38,13 @@ const { Content } = await render(post);
 // roll back a day in timezones behind UTC).
 const dateFmt = new Intl.DateTimeFormat(htmlLang[lang], { dateStyle: 'long', timeZone: 'UTC' });
 
-const ogImage = await getImage({
-  src: post.data.coverImage,
-  width: 1200,
-  height: 630,
-  fit: 'cover',
-  position: 'center',
-  format: 'jpeg',
-});
+// Couverture = chemin public servi tel quel (contenu migré de WordPress —
+// voir le schéma blog). Pas de dérivé astro:assets : og:image et JSON-LD
+// pointent l'original en URL absolue; sans couverture, BaseLayout retombe
+// sur son image OG par défaut.
+const coverUrl = post.data.coverImage
+  ? new URL(post.data.coverImage, Astro.site).href
+  : undefined;
 
 const ressourcesHref = localizePath('/ressources', lang);
 
@@ -62,7 +60,7 @@ const articleSchema = {
   headline: post.data.title,
   datePublished: post.data.date.toISOString(),
   inLanguage: htmlLang[lang],
-  image: new URL(ogImage.src, Astro.site).href,
+  image: coverUrl ?? new URL('/og-image.png', Astro.site).href,
   author: { '@type': 'Organization', name: 'Les Solutions Victrix' },
   publisher: { '@type': 'Organization', name: 'Les Solutions Victrix' },
 };
@@ -91,13 +89,14 @@ const shareLinks = [
 
 <BaseLayout
   lang={lang}
-  title={post.data.title}
+  title={post.data.seoTitle || post.data.title}
   description={post.data.excerpt}
-  image={ogImage.src}
+  image={post.data.coverImage}
   ogType="article"
   publishedTime={post.data.date.toISOString()}
   tags={post.data.tags}
   altLocalePath={altLocalePath}
+  noindex={post.data.noindex}
 >
   <JsonLd schema={articleSchema} />
   <article class="article">
@@ -131,14 +130,11 @@ const shareLinks = [
         </p>
       </header>
 
-      <Image
-        class="article__cover"
-        src={post.data.coverImage}
-        alt=""
-        widths={[600, 900, 1200]}
-        sizes="(min-width: 800px) 760px, 100vw"
-        loading="eager"
-      />
+      {
+        post.data.coverImage && (
+          <img class="article__cover" src={post.data.coverImage} alt="" loading="eager" />
+        )
+      }
 
       <div class="prose article__body">
         <Content />

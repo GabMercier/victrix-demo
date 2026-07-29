@@ -290,7 +290,21 @@ function redirectsFile() {
         } catch {
           fail('dist/_routes.json existe mais ne contient pas du JSON valide (adaptateur Cloudflare).');
         }
-        const exclude = Array.isArray(routes.exclude) ? routes.exclude : [];
+        let exclude = Array.isArray(routes.exclude) ? routes.exclude : [];
+        // COMPACTION (2026-07-29) : depuis le branchement du contenu migré,
+        // l'adaptateur liste INDIVIDUELLEMENT les ~120 médias
+        // /wp-content/uploads/… et sature à lui seul le plafond de 100 règles
+        // (les sources de redirection n'entraient plus). Aucune route dynamique
+        // ne vit sous ces préfixes — un glob par dossier d'actifs est
+        // strictement équivalent et libère le budget. (C'est la consolidation
+        // annoncée par le commentaire ci-dessus.)
+        const ASSET_PREFIXES = ['/wp-content/', '/images/', '/fonts/'];
+        for (const prefix of ASSET_PREFIXES) {
+          if (exclude.some((e) => e.startsWith(prefix))) {
+            exclude = [...exclude.filter((e) => !e.startsWith(prefix)), `${prefix}*`];
+          }
+        }
+        routes.exclude = exclude;
         const budget = 100 - (Array.isArray(routes.include) ? routes.include.length : 0) - exclude.length;
         const manquants = [...seen].filter((de) => !exclude.includes(de));
         const ajoutes = manquants.slice(0, Math.max(0, budget));
@@ -299,9 +313,11 @@ function redirectsFile() {
             `[victrix:redirects] limite Cloudflare de 100 règles _routes.json atteinte — ${manquants.length - ajoutes.length} source(s) de redirection non exclue(s) du worker : ${manquants.slice(ajoutes.length).join(', ')}`
           );
         }
+        // Écriture inconditionnelle : la compaction seule doit persister même
+        // sans nouvelle source de redirection à ajouter.
+        routes.exclude = [...exclude, ...ajoutes];
+        await fs.writeFile(routesTarget, JSON.stringify(routes, null, 2), 'utf-8');
         if (ajoutes.length > 0) {
-          routes.exclude = [...exclude, ...ajoutes];
-          await fs.writeFile(routesTarget, JSON.stringify(routes, null, 2), 'utf-8');
           logger.info(`${ajoutes.length} source(s) de redirection exclue(s) du worker dans _routes.json`);
         }
       },
@@ -510,11 +526,12 @@ export default defineConfig({
     '/expertises/intelligence-artificielle': '/fr/services/intelligence-artificielle',
     '/fr/expertises/intelligence-artificielle': '/fr/services/intelligence-artificielle',
     '/en/expertises/intelligence-artificielle': '/en/services/intelligence-artificielle',
-    // Preserve the three pre-i18n article URLs (explicit, not a dynamic pattern —
-    // a dynamic `[slug]` redirect has no source route and breaks the build).
-    '/ressources/ia-au-service-de-la-productivite': '/fr/ressources/ia-au-service-de-la-productivite',
-    '/ressources/cinq-pratiques-cybersecurite-pme': '/fr/ressources/cinq-pratiques-cybersecurite-pme',
-    '/ressources/reussir-sa-migration-infonuagique': '/fr/ressources/reussir-sa-migration-infonuagique',
+    // Les trois articles DÉMO du prototype ont été retirés au branchement du
+    // vrai blogue (2026-07-29) — leurs URLs pré-i18n pointent maintenant vers
+    // l'index Ressources (supprimer la règle ferait un 404 sur les vieux liens).
+    '/ressources/ia-au-service-de-la-productivite': '/fr/ressources',
+    '/ressources/cinq-pratiques-cybersecurite-pme': '/fr/ressources',
+    '/ressources/reussir-sa-migration-infonuagique': '/fr/ressources',
     // Portal moved under the locale prefix.
     '/mon-portail': '/fr/portail',
     '/en/customer-portal': '/en/portail',
@@ -540,8 +557,13 @@ export default defineConfig({
       // search page /{fr,en}/recherche/ (noindex — best practice: never let
       // engines index internal search results). `page` is the FULL URL (site
       // domain included), so a substring check is enough.
+      // /design-lab : page laboratoire (test pipeline export Figma → Tailwind
+      // v4), noindex, à purger avant prod — jamais dans le sitemap.
       filter: (page) =>
-        !page.includes('/campagnes/') && !page.includes('/merci/') && !page.includes('/recherche/'),
+        !page.includes('/campagnes/') &&
+        !page.includes('/merci/') &&
+        !page.includes('/recherche/') &&
+        !page.includes('/design-lab'),
     }),
     // Editor-managed redirects (src/data/redirects.json) → dist/_redirects.
     // Deliberately UNCONDITIONAL — both the production build and the

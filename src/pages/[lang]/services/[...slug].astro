@@ -1,0 +1,180 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import {
+  type Locale,
+  defaultLocale,
+  otherLocale,
+  localizePath,
+  isLocale,
+  htmlLang,
+} from '../../../i18n/config';
+import { getPostsByLocale, postUrlSlug } from '../../../i18n/blog';
+// Le renderer Bookshop partagé mappe chaque section à son composant. Les
+// sections DOIVENT passer par lui — avec la directive `bookshop:live` — pour
+// que l'édition visuelle CloudCannon se branche (voir l'entête du renderer).
+import Page from '../../../../component-library/src/shared/astro/page.astro';
+// Préfixe d'URL des services — CONSTANTE PARTAGÉE avec Header.astro (méga-menu)
+// via src/lib/navigation/service-links.ts : source unique de vérité. IMPORTÉE
+// (et non déclarée en frontmatter) car getStaticPaths s'exécute dans une portée
+// SÉPARÉE qui n'accède PAS aux const du frontmatter — seulement aux imports
+// (piège Astro : « URL_PREFIX is not defined » sinon). « services » est
+// PROVISOIRE (architecture d'information non confirmée — P-17/P-18 trancheront
+// les URLs finales et les redirections expertises→services). NB : le segment de
+// DOSSIER de cette route porte aussi le mot — le changer exige de renommer le
+// dossier ET de prévoir une redirection.
+import { SERVICE_URL_PREFIX } from '../../../lib/navigation/service-links';
+
+/**
+ * Pages de services ("services") — une route statique par entrée de la
+ * collection `services` (src/content/services/<locale>/<slug>.json), rendue
+ * purement depuis son tableau `sections`. Réplique FIDÈLE du patron campagnes
+ * (src/pages/[lang]/campagnes/[slug].astro), AVEC tout ce qui y est
+ * load-bearing : variable LITTÉRALE `frontmatter`, seam `enrich` (formulaires
+ * liés + jetons {{page.*}} de P-05, ET cartes des ressources liées), build-gate
+ * formId, altLocalePath par fichier homonyme.
+ *
+ * DIFFÉRENCE avec les campagnes : les services sont PUBLICS et INDEXABLES
+ * (noindex par défaut à false dans la collection — décision explicite P-07).
+ */
+export async function getStaticPaths() {
+  const pages = await getCollection('services');
+  // Définitions de formulaires par langue pour le seam `enrich` (comme la route
+  // campagnes) : la section « form » reste browser-safe, la ROUTE résout
+  // formId → définition au build et l'injecte.
+  const formEntries = await getCollection('forms');
+
+  const paths = [];
+  for (const page of pages) {
+    // ids = "<locale>/<chemin>" (même astuce que blog/landing) — depuis le
+    // branchement (2026-07-29), le chemin peut être IMBRIQUÉ sur 2 niveaux
+    // (fr/cybersecurite/zero-trust) : la route est un paramètre REST
+    // ([...slug]) pour que les « / » passent.
+    const seg = page.id.split('/')[0];
+    const lang: Locale = isLocale(seg) ? seg : defaultLocale;
+    // Chemin de FICHIER (clé d'appariement FR/EN — toujours le chemin FR) vs
+    // slug d'URL : `data.slug` le surcharge (les fichiers EN gardent le chemin
+    // FR mais rendent leur URL anglaise d'origine — voir le schéma services).
+    const filePath = page.id.slice(page.id.indexOf('/') + 1);
+    const slug = page.data.slug || filePath;
+    const other = otherLocale[lang];
+
+    // Cible du sélecteur de langue / hreflang : la traduction partage le
+    // CHEMIN DE FICHIER → son URL est SON slug (surcharge comprise), si la
+    // contrepartie existe ; sinon repli sur l'accueil de l'autre langue.
+    // Barre oblique finale gardée.
+    const counterpart = pages.find((p) => p.id === `${other}/${filePath}`);
+    const altLocalePath = counterpart
+      ? localizePath(`/${SERVICE_URL_PREFIX}/${counterpart.data.slug || filePath}/`, other)
+      : localizePath('/', other);
+
+    // Carte formId → définition POUR LA LANGUE de la page (ids "fr/contact"…),
+    // + garde-fou : un formId qui ne résout pas fait ÉCHOUER le build en nommant
+    // la page et le fichier attendu (même philosophie que la route campagnes).
+    const resolvedForms = Object.fromEntries(
+      formEntries
+        .filter((entry) => entry.id.startsWith(`${lang}/`))
+        .map((entry) => [entry.id.slice(lang.length + 1), entry.data]),
+    );
+    for (const section of page.data.sections) {
+      if (section.type === 'form' && section.formId && !resolvedForms[section.formId]) {
+        throw new Error(
+          `[services] ${page.id} : formId « ${section.formId} » introuvable — attendu src/data/forms/${lang}/${section.formId}.json (collection Formulaires)`,
+        );
+      }
+    }
+
+    // Seam enrich — données BUILD-ONLY injectées par TYPE de section (le
+    // composant reste browser-safe). Voir l'entête du renderer partagé.
+    const enrich: Record<string, Record<string, unknown>> = {};
+
+    // Ressources liées (related-posts) : cartes résolues AU BUILD, patron EXACT
+    // de home-latest. Un article correspond s'il partage AU MOINS une étiquette
+    // (comparaison insensible à la casse) ; les plus récents d'abord, max 3 ;
+    // couvertures pré-résolues en chaînes simples (aucune image astro:assets
+    // ne franchit le seam). Une seule section « ressources liées » par page est
+    // alimentée : enrich est indexé par TYPE, donc les mêmes cartes seraient
+    // injectées dans TOUTES les sections related-posts d'une même page. Cette
+    // limite est désormais APPLIQUÉE par un garde-fou build (constat #5), et non
+    // seulement documentée — comme home-latest (une bande par page).
+    const relatedSections = page.data.sections.filter((s) => s.type === 'related-posts');
+    if (relatedSections.length > 1) {
+      throw new Error(
+        `[services] ${page.id} : ${relatedSections.length} sections « ressources liées » — une seule par page est supportée (enrich est indexé par type : les mêmes cartes seraient injectées partout). En retirer.`,
+      );
+    }
+    const relatedSection = relatedSections[0];
+    if (relatedSection && 'tags' in relatedSection) {
+      const wanted = relatedSection.tags.map((t) => t.toLowerCase());
+      const posts = (await getPostsByLocale(lang))
+        .filter((post) => post.data.tags.some((t) => wanted.includes(t.toLowerCase())))
+        .slice(0, 3);
+      const dateFmt = new Intl.DateTimeFormat(htmlLang[lang], {
+        dateStyle: 'long',
+        timeZone: 'UTC',
+      });
+      // Couvertures = chemins publics servis tels quels (contenu migré — voir
+      // le schéma blog) : plus de getImage, le composant omet srcset/dimensions.
+      const cards = await Promise.all(
+        posts.map(async (post) => {
+          return {
+            href: localizePath(`/ressources/${postUrlSlug(post)}`, lang),
+            title: post.data.title,
+            excerpt: post.data.excerpt,
+            tags: post.data.tags,
+            dateISO: post.data.date.toISOString(),
+            dateLabel: dateFmt.format(post.data.date),
+            img: { src: post.data.coverImage ?? '' },
+          };
+        }),
+      );
+      enrich['related-posts'] = { cards };
+    }
+
+    // Seam enrich « form » : formulaires liés + contexte de page pour les jetons
+    // {{page.*}} des champs cachés (P-05) — les formulaires liés doivent
+    // fonctionner sur un service AUSSI. HORS frontmatter à dessein (le marqueur
+    // bookshop:live ne trace que contentBlocks).
+    enrich.form = {
+      resolvedForms,
+      pageContext: {
+        titre: page.data.title,
+        chemin: `/${lang}/${SERVICE_URL_PREFIX}/${slug}/`,
+        slug,
+        langue: lang,
+      },
+    };
+
+    // `frontmatter` est LOAD-BEARING pour l'édition live CloudCannon : le plugin
+    // astro-bookshop trace une variable LITTÉRALEMENT nommée `frontmatter` pour
+    // lier bookshop:live → params(contentBlocks:sections). Passer
+    // page.data.sections directement compile en params() VIDE (aperçu blanc,
+    // constaté le 15/07). Ne pas renommer ni inliner. Voir
+    // src/pages/[lang]/campagnes/[slug].astro:43-50.
+    paths.push({
+      params: { lang, slug },
+      props: { page, lang, altLocalePath, frontmatter: page.data, enrich },
+    });
+  }
+  return paths;
+}
+
+const { page, lang, altLocalePath, frontmatter, enrich } = Astro.props;
+---
+
+<BaseLayout
+  lang={lang}
+  title={page.data.seoTitle || page.data.title}
+  description={page.data.description}
+  noindex={page.data.noindex}
+  altLocalePath={altLocalePath}
+>
+  {
+    /* Un seul périmètre `bookshop:live` autour de la boucle de sections — c'est
+       ce qui laisse l'éditeur visuel CloudCannon lier les clics à `sections`
+       (via la variable `frontmatter`). En build Cloudflare normal, l'intégration
+       Bookshop est off (gating astro.config) → directive inerte, HTML identique.
+       Sécurité de forme des props : la validation zod de chaque section au build. */
+  }
+  <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} />
+</BaseLayout>

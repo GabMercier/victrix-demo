@@ -29,6 +29,7 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 | 17 juil. | **Hébergement cible : CloudCannon en bundle (CMS + hébergement) pour cette version; Azure Static Web Apps = l'alternative documentée.** Cloudflare Pages reste l'infra du spike/démo seulement. **Entra External ID et Dataverse : hors périmètre de cette version** (le portail demeure un prototype maquetté). | `.env.example` + `options-editeur-hebergement.md` |
 | 24 juil. | **Migration WordPress→Astro cadrée** : inventaire de contenu généré (174 URLs, 78 expertises, 64 articles, 85 redirections, métadonnées Yoast extraites) + plan de convergence 7 phases (~12–17 j). Décisions : évolution du dépôt actuel (pas de rescaffold), **FR à la racine**, **Tailwind v4** (prérequis Node 20), CloudCannon Forms (spike d'abord). | `content-inventory.md` + `plan-convergence-migration.md` |
 | 28 juil. | **Recherche interne livrée (P-06, Pagefind)** — index statique au build, FR/EN séparés, page `/recherche` + icône header; passée AVANT P-04 (priorité utilisateur). **Stratégie SEO sans plugins documentée** pour le marketing. CSP : ajout ciblé `'wasm-unsafe-eval'` (wasm local Pagefind). | `seo-strategie.md` + ligne P-06 de `plan-prompts.md` |
+| 30 juil. | **Architecture consolidée : les expertises SONT les services** (collection legacy supprimée, 301 vers `/services/…`, menu « Services ») — préfixe d'URL FINAL à trancher en Phase 2 (`/expertise` WP vs `/services`). **Sveltia retiré** (Phase 3). **Planification marketing livrée** : bannière promo à fenêtre de dates + articles à date future différés + rebuild quotidien (secret OPS `REBUILD_HOOK_URL` à brancher). Barre latérale CloudCannon groupée. | journal `plan-prompts.md` 30/07 + `operations.md` §7bis + digest `docs/digests/` |
 
 ## Ce qui fonctionne aujourd'hui (démontrable)
 
@@ -60,6 +61,13 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
   tiers — page `/recherche` FR/EN + icône dans l'en-tête; index régénéré à
   chaque build (les contenus migrés seront cherchables automatiquement),
   aucune requête externe (aligné Loi 25).
+- **Planification marketing** (30 juil., en revue) : bannière d'annonce à
+  fenêtre « Diffuser / Retirer à partir de », articles à date future différés
+  (politique brouillons), reconstruction quotidienne automatique (workflow
+  GitHub — secret OPS à brancher). Voir `guide-edition.md` § Planifier.
+- **Une seule collection de pages « Services »** (30 juil.) : création par
+  gabarit FR/EN (« + Ajouter »), méga-menu re-lié, anciennes URLs expertises
+  en 301; barre latérale CloudCannon groupée (Contenu / Marketing / Config).
 - **Brouillons** (critère 2) : interrupteur « Brouillon » sur les articles —
   visibles dans l'aperçu CloudCannon, exclus du site public; chaque branche a
   son URL de préversion partageable non indexée.

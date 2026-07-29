@@ -27,26 +27,40 @@ const blog = defineCollection({
     // URL-only field, so we ignore it for id generation. See src/i18n/blog.ts.
     generateId: ({ entry }) => entry.replace(/\\/g, '/').replace(/\.[^/.]+$/, ''),
   }),
-  // Clean, Sveltia-friendly field names — mirror these in the CMS config.
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      date: z.coerce.date(),
-      excerpt: z.string(),
-      coverImage: image(),
-      tags: z.array(z.string()).default([]),
-      // Optional per-locale URL slug (SEO). When unset the filename is used, so
-      // FR can keep its filename-based URLs while EN sets an English slug. The
-      // filename still pairs the FR/EN translations — see src/i18n/blog.ts.
-      slug: z.string().optional(),
-      // Draft flag (CloudCannon switch « Brouillon »). Drafts are EXCLUDED from
-      // routes/listings on the public site, but the STATIC_ONLY (CloudCannon
-      // editing) build keeps them so editors can preview before publishing —
-      // the single switch lives in filterPublished() (src/i18n/blog.ts).
-      // `.default(false)` keeps every existing post published without touching
-      // its frontmatter.
-      draft: z.boolean().default(false),
-    }),
+  // Clean, CMS-friendly field names — mirror these in cloudcannon.config.yml.
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    excerpt: z.string(),
+    // CHEMIN PUBLIC servi tel quel (ex. /wp-content/uploads/2025/07/….jpg) —
+    // décision du branchement (2026-07-29) : le corps Markdown migré référence
+    // déjà ces chemins verbatim, la couverture suit la même convention (les
+    // images des sections aussi). L'ancien `image()` (asset optimisé) est
+    // parti avec les 3 articles démo. `.optional()` : quelques articles WP
+    // n'avaient pas d'image mise en avant.
+    coverImage: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    // Optional per-locale URL slug (SEO). When unset the filename is used, so
+    // FR can keep its filename-based URLs while EN sets an English slug. The
+    // filename still pairs the FR/EN translations — see src/i18n/blog.ts.
+    slug: z.string().optional(),
+    // Draft flag (CloudCannon switch « Brouillon »). Drafts are EXCLUDED from
+    // routes/listings on the public site, but the STATIC_ONLY (CloudCannon
+    // editing) build keeps them so editors can preview before publishing —
+    // the single switch lives in filterPublished() (src/i18n/blog.ts).
+    // `.default(false)` keeps every existing post published without touching
+    // its frontmatter.
+    draft: z.boolean().default(false),
+    // --- Champs hérités de WordPress (branchement Phase 6) ---
+    // <title> SEO propre (le suffixe « | Victrix » d'origine est retiré au
+    // câblage — BaseLayout appose déjà le nom du site).
+    seoTitle: z.string().optional(),
+    // Quelques articles (vidéo notamment) étaient noindex sur WP.
+    noindex: z.boolean().default(false),
+    // URL WordPress d'origine — carburant de l'audit zéro-404 / génération des
+    // redirections (Phase 2). Jamais rendu.
+    wpUrl: z.string().optional(),
+  }),
 });
 
 /**
@@ -506,6 +520,16 @@ const services = defineCollection({
       description: z.string().optional(),
       // INDEXABLE par défaut — inverse des campagnes (décision explicite P-07).
       noindex: z.boolean().default(false),
+      // Surcharge du SOUS-CHEMIN d'URL complet (branchement 2026-07-29, même
+      // logique que le `slug` du blogue) : les fichiers EN gardent le chemin
+      // FR (appariement par fichier homonyme) mais rendent leur URL anglaise
+      // d'origine — ex. en/cybersecurite/zero-trust.json porte
+      // slug: "cybersecurity/zero-trust". Absent → le chemin du fichier fait
+      // l'URL. Peut contenir des « / » (services imbriqués sur 2 niveaux).
+      slug: z.string().optional(),
+      // <title> SEO hérité de WordPress (suffixe « | Victrix » retiré au
+      // câblage — BaseLayout appose déjà le nom du site).
+      seoTitle: z.string().optional(),
       sections: z.array(sectionsSchema(image)),
     }),
 });

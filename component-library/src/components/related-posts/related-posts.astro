@@ -25,9 +25,11 @@
  */
 interface CardImage {
   src: string;
-  srcset: string;
-  width: number;
-  height: number;
+  // Absents pour les couvertures migrées (chemins publics servis tels quels,
+  // sans dérivés astro:assets) — les attributs correspondants sont omis.
+  srcset?: string;
+  width?: number;
+  height?: number;
 }
 interface Card {
   href: string;
@@ -96,18 +98,20 @@ const hasCta = Boolean(ctaLabel && ctaHref);
               <li>
                 <article class="card">
                   <a class="card__media" href={card.href} tabindex="-1" aria-hidden="true">
-                    <img
-                      src={card.img.src}
-                      srcset={card.img.srcset}
-                      alt=""
-                      sizes="(min-width: 768px) 360px, 100vw"
-                      loading="lazy"
-                      decoding="async"
-                      fetchpriority="auto"
-                      width={card.img.width}
-                      height={card.img.height}
-                      class="card__img"
-                    />
+                    {card.img.src && (
+                      <img
+                        src={card.img.src}
+                        srcset={card.img.srcset}
+                        alt=""
+                        sizes={card.img.srcset ? '(min-width: 768px) 360px, 100vw' : undefined}
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="auto"
+                        width={card.img.width}
+                        height={card.img.height}
+                        class="card__img"
+                      />
+                    )}
                   </a>
                   <div class="card__body">
                     {card.tags.length > 0 && (
