@@ -109,6 +109,8 @@ const fr = {
     title: 'Le blogue Victrix',
     intro:
       'Analyses, bonnes pratiques et points de vue de nos experts pour accompagner la transformation numérique de votre organisation.',
+    filterAll: 'Tous',
+    filterAria: 'Filtrer par catégorie',
   },
 
   article: {
@@ -120,6 +122,10 @@ const fr = {
     copyLink: 'Copier le lien',
     copied: 'Lien copié !',
     backBtn: '← Retour aux ressources',
+    latestTitle: 'Nos derniers articles',
+    readMore: 'Lire l’article',
+    breadcrumbHome: 'Accueil',
+    breadcrumbAria: 'Fil d’Ariane',
   },
 
   home: {
@@ -249,6 +255,8 @@ const en: UI = {
     title: 'The Victrix blog',
     intro:
       "Analysis, best practices and insights from our experts to support your organization's digital transformation.",
+    filterAll: 'All',
+    filterAria: 'Filter by category',
   },
 
   article: {
@@ -260,6 +268,10 @@ const en: UI = {
     copyLink: 'Copy link',
     copied: 'Link copied!',
     backBtn: '← Back to resources',
+    latestTitle: 'Our latest articles',
+    readMore: 'Read article',
+    breadcrumbHome: 'Home',
+    breadcrumbAria: 'Breadcrumb',
   },
 
   home: {

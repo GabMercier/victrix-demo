@@ -60,7 +60,7 @@ Privacy breaches can lead to a loss of trust from customers and business partner
 
 Individuals whose personal information has been disclosed are entitled to sue you for damages, which entails additional costs.
 
-[Talk to a law 25 and cybersecurity expert](/en/contact/)
+<a class="article-cta" href="/en/contact/">Talk to a law 25 and cybersecurity expert</a>
 
 Victrix offers a personalized compliance service to help your organization meet the requirements of Law 25 and avoid financial penalties. Our [public and private sector cybersecurity](/en/expertise/cybersecurity/) experts are with you every step of the way, from identifying compliance risks to implementing corrective measures.
 

@@ -53,7 +53,7 @@ Elle continue de transformer la manière dont les entreprises opèrent. Les outi
 
 La pénurie de main-d’œuvre en cybersécurité se poursuit en 2025. Afin de pallier le manque d’expertise, les entreprises doivent donc se tourner davantage vers les fournisseurs de services de cybersécurité.
 
-[Téléchargez le guide](/document/pourquoi-gerez-vous-encore-vos-ti/)
+<a class="article-cta" href="/document/pourquoi-gerez-vous-encore-vos-ti/">Téléchargez le guide</a>
 
 ## **Voici les éléments à considérer pour bien choisir votre fournisseur de services gérés TI.**
 
@@ -74,4 +74,4 @@ En 2025, les entreprises doivent être prêtes à relever les défis technologiq
 
 ### Prêts à élever votre efficacité avec des services gérés TI taillés sur mesure pour votre entreprise?
 
-[Contactez-nous](/contact/)
+<a class="article-cta" href="/contact/">Contactez-nous</a>

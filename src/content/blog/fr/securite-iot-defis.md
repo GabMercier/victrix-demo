@@ -42,7 +42,7 @@ Enfin, la dernière étape est de revoir et améliorer en continu le dispositif.
 
 Vos employés doivent se familiariser aux meilleures pratiques pour réduire le risque et assurer le succès d’adoption de sécurité des nouvelles technologies.
 
-[Parlez à un expert sécurité IoT](/expertise/cybersecurite/internet-des-objets-service-iot/)
+<a class="article-cta" href="/expertise/cybersecurite/internet-des-objets-service-iot/">Parlez à un expert sécurité IoT</a>
 
 Victrix se positionne comme un partenaire clé pour accompagner les entreprises dans la **sécurisation de leurs réseaux IoT**.
 

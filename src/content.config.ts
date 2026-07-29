@@ -653,6 +653,25 @@ const navigation = defineCollection({
         }),
       ),
     }),
+    // Méga-menu RESSOURCES (parité victrix.ca, 2026-07-29) : contrairement au
+    // méga-menu services (colonnes rédigées à la main ci-dessus), celui-ci est
+    // LARGEMENT GÉNÉRÉ AU BUILD par Header.astro — les catégories viennent des
+    // étiquettes réelles du blogue (blogCategories, src/i18n/blog.ts) et les
+    // « derniers articles » de la collection (jamais de liste d'articles à
+    // maintenir à la main dans la nav). Seuls les TEXTES sont éditables ici.
+    // Optionnel : son absence retire simplement le panneau (menu simple).
+    megaRessources: z
+      .object({
+        parentHref: navHref,
+        ariaLabel: z.string().min(1),
+        // Texte d'introduction de la colonne de gauche + libellé du bouton
+        // (le bouton pointe parentHref — le centre de ressources).
+        intro: z.string(),
+        ctaLabel: z.string().min(1),
+        categoriesTitle: z.string().min(1),
+        latestTitle: z.string().min(1),
+      })
+      .optional(),
     announce: z.object({
       enabled: z.boolean().default(true),
       // Fenêtre de diffusion PLANIFIÉE (2026-07-30, demande marketing) :

@@ -39,7 +39,7 @@ ServiceNow integrates automation technologies powered by [artificial intelligenc
 - **Predictive Intelligence:** Machine learning analyzes historical data to suggest proactive solutions.
 - **Automated Ticketing:** IT tickets are resolved automatically, reducing service interruptions and improving response times.
 
-[Contact Us](/en/contact/)
+<a class="article-cta" href="/en/contact/">Contact Us</a>
 
 #### Cloud-Based ITSM for Modern Businesses
 
@@ -113,4 +113,4 @@ A partnership with experts ensures a **smooth and successful deployment,** perfe
 - Receive 24/7 support to resolve any ITSM challenges
 - Benefit from ongoing optimization and updates to support your company's growth and evolving needs.
 
-[Let’s Discuss Your ITSM Implementation](/en/contact/)
+<a class="article-cta" href="/en/contact/">Let’s Discuss Your ITSM Implementation</a>

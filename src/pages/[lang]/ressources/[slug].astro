@@ -4,7 +4,13 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import JsonLd from '../../../components/JsonLd.astro';
 import { defaultLocale, otherLocale, htmlLang, localizePath } from '../../../i18n/config';
 import { useTranslations } from '../../../i18n/ui';
-import { postLocale, postUrlSlug, findCounterpart, filterPublished } from '../../../i18n/blog';
+import {
+  postLocale,
+  postUrlSlug,
+  findCounterpart,
+  filterPublished,
+  getPostsByLocale,
+} from '../../../i18n/blog';
 
 export async function getStaticPaths() {
   // Drafts get NO route on the public build; the STATIC_ONLY (CloudCannon
@@ -47,6 +53,10 @@ const coverUrl = post.data.coverImage
   : undefined;
 
 const ressourcesHref = localizePath('/ressources', lang);
+
+// Colonne latérale « Nos derniers articles » (parité victrix.ca) : les 2 plus
+// récents, article courant exclu.
+const latestPosts = (await getPostsByLocale(lang)).filter((p) => p.id !== post.id).slice(0, 2);
 
 // BlogPosting JSON-LD (via the frozen JsonLd contract — src/components/
 // JsonLd.astro). Search engines require ABSOLUTE URLs in structured data,
@@ -101,9 +111,18 @@ const shareLinks = [
   <JsonLd schema={articleSchema} />
   <article class="article">
     <div class="container article__inner">
-      <header class="article__head">
-        <a class="article__back" href={ressourcesHref}>{t.article.back}</a>
+      {/* Fil d'Ariane (parité victrix.ca) — remplace l'ancien lien retour. */}
+      <nav class="article__crumbs" aria-label={t.article.breadcrumbAria}>
+        <a href={localizePath('/', lang)}>{t.article.breadcrumbHome}</a>
+        <span aria-hidden="true">›</span>
+        <a href={ressourcesHref}>{t.blog.eyebrow}</a>
+        <span aria-hidden="true">›</span>
+        <span class="article__crumb-current" aria-current="page">{post.data.title}</span>
+      </nav>
 
+      <div class="article__layout">
+        <div class="article__main">
+      <header class="article__head">
         {
           post.data.tags.length > 0 && (
             <ul role="list" class="article__tags">
@@ -188,6 +207,39 @@ const shareLinks = [
 
         <a class="btn btn--outline" href={ressourcesHref}>{t.article.backBtn}</a>
       </footer>
+        </div>
+
+        {
+          latestPosts.length > 0 && (
+            <aside class="article__aside" aria-label={t.article.latestTitle} data-pagefind-ignore>
+              <h2 class="article__aside-title">{t.article.latestTitle}</h2>
+              {latestPosts.map((p) => {
+                const href = localizePath(`/ressources/${postUrlSlug(p)}/`, lang);
+                return (
+                  <article class="aside-card">
+                    {p.data.coverImage && (
+                      <a class="aside-card__media" href={href} tabindex="-1" aria-hidden="true">
+                        <img src={p.data.coverImage} alt="" loading="lazy" decoding="async" />
+                      </a>
+                    )}
+                    <div class="aside-card__body">
+                      <h3 class="aside-card__title">
+                        <a href={href}>{p.data.title}</a>
+                      </h3>
+                      <p class="aside-card__date">
+                        <time datetime={p.data.date.toISOString()}>{dateFmt.format(p.data.date)}</time>
+                      </p>
+                      <a class="btn btn--outline aside-card__btn" href={href}>
+                        {t.article.readMore}
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
+            </aside>
+          )
+        }
+      </div>
     </div>
   </article>
 </BaseLayout>
@@ -217,22 +269,157 @@ const shareLinks = [
   .article {
     padding-block: var(--space-7) var(--space-9);
   }
+  /* Deux colonnes dès 1100px : contenu (≤ 800px, largeur de lecture
+     inchangée) + colonne « derniers articles » (parité victrix.ca). */
   .article__inner {
+    max-width: var(--container-max);
+  }
+  .article__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+    justify-content: center;
+  }
+  .article__main {
     max-width: 800px;
+    width: 100%;
+    margin-inline: auto;
+  }
+  @media (min-width: 1100px) {
+    .article__layout {
+      grid-template-columns: minmax(0, 800px) 300px;
+      justify-content: space-between;
+    }
+    .article__main {
+      margin-inline: 0;
+    }
   }
   .article__head {
     margin-bottom: var(--space-6);
   }
-  .article__back {
-    display: inline-block;
-    margin-bottom: var(--space-5);
+
+  /* Fil d'Ariane */
+  .article__crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+    font-size: var(--fs-100);
+    color: var(--color-text-muted);
+  }
+  .article__crumbs a {
     color: var(--color-text-muted);
     text-decoration: none;
-    font-size: var(--fs-200);
-    font-weight: var(--fw-medium);
   }
-  .article__back:hover {
+  .article__crumbs a:hover {
     color: var(--color-accent-blue);
+  }
+  .article__crumb-current {
+    color: var(--color-navy);
+    font-weight: var(--fw-medium);
+    max-width: 48ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Colonne « Nos derniers articles » */
+  .article__aside {
+    display: grid;
+    gap: var(--space-5);
+    align-self: start;
+  }
+  @media (min-width: 1100px) {
+    .article__aside {
+      position: sticky;
+      top: calc(76px + var(--space-5));
+    }
+  }
+  .article__aside-title {
+    font-size: var(--fs-500);
+    color: var(--color-navy);
+    margin: 0;
+  }
+  .aside-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background-color: var(--color-bg);
+  }
+  .aside-card__media {
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: var(--color-surface);
+  }
+  .aside-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .aside-card__body {
+    padding: var(--space-4);
+    display: grid;
+    gap: var(--space-3);
+  }
+  .aside-card__title {
+    font-size: var(--fs-300);
+    line-height: var(--lh-snug);
+    margin: 0;
+  }
+  .aside-card__title a {
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+  .aside-card__title a:hover {
+    color: var(--color-accent-blue);
+  }
+  .aside-card__date {
+    margin: 0;
+    font-size: var(--fs-100);
+    color: var(--color-text-muted);
+  }
+  .aside-card__btn {
+    justify-self: start;
+    font-size: var(--fs-200);
+  }
+
+  /* ---------- Mise en forme du corps (parité victrix.ca) ----------
+     Le corps vient du Markdown migré (rendu <Content /> global) — :global()
+     obligatoire pour styler au travers de la frontière scoped. */
+  .article__body :global(h2) {
+    color: var(--color-navy);
+    position: relative;
+    padding-bottom: var(--space-3);
+  }
+  .article__body :global(h2)::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 72px;
+    height: 3px;
+    background-color: var(--color-accent-green);
+  }
+  .article__body :global(h3) {
+    color: var(--color-navy);
+  }
+  /* CTA : lien autonome marqué au câblage (wire-blog.mjs) → bouton marine,
+     comme les appels à l'action des articles victrix.ca. */
+  .article__body :global(.article-cta) {
+    display: inline-block;
+    background-color: var(--color-navy);
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-200);
+    padding: 0.7em 1.5em;
+    border-radius: var(--radius-pill);
+  }
+  .article__body :global(.article-cta):hover {
+    background-color: var(--color-accent-blue);
+    color: var(--color-white);
   }
   .article__tags {
     display: flex;

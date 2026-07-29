@@ -49,7 +49,7 @@ Whether for developing Power Apps, creating Power BI reports or automating tasks
 Power Automate makes it easy to automate long, repetitive processes, reducing the risk of errors and freeing up employees for higher value-added tasks. 
  Combine this with a Power App simplified interface, and your teams will gain in productivity. Beyond the business aspect, you also contribute to greater job satisfaction.
 
-[Contact our Power Platform experts](/en/contact/)
+<a class="article-cta" href="/en/contact/">Contact our Power Platform experts</a>
 
 ### 2. Integration and Extension of Microsoft 365 Capabilities
 

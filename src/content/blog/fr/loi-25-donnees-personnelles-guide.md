@@ -63,7 +63,7 @@ Les violations de la vie privée peuvent entraîner une perte de confiance de la
 
 Les personnes dont les renseignements personnels ont été divulgués sont en droit de vous poursuivre pour dommages et intérêts, ce qui entraîne des coûts supplémentaires.
 
-[Parlez à un expert Loi 25 et cybersécurité](/contact/)
+<a class="article-cta" href="/contact/">Parlez à un expert Loi 25 et cybersécurité</a>
 
 Victrix vous offre un service de mise en conformité sur mesure pour aider votre organisation à respecter les exigences de la Loi 25 et éviter les sanctions financières. Nos experts en [cybersécurité pour le secteur public et privé](/expertise/cybersecurite/) vous accompagnent à chaque étape, de l’identification des risques de non-conformité à la mise en place de mesures correctives.
 

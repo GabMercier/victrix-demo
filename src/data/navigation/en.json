@@ -155,6 +155,14 @@
       }
     ]
   },
+  "megaRessources": {
+    "parentHref": "/ressources",
+    "ariaLabel": "Resources submenu",
+    "intro": "Discover our resources: articles, news, videos and more.",
+    "ctaLabel": "Resources center",
+    "categoriesTitle": "Categories",
+    "latestTitle": "Latest articles"
+  },
   "announce": {
     "enabled": true,
     "before": "Discover ",

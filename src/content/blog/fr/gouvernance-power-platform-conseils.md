@@ -55,7 +55,7 @@ Power Automate facilite l'automatisation des processus longs et répétitifs, r�
 
 À cela, si vous ajoutez une Power App avec une interface simplifiée, vos équipes gagneront en productivité. Au-delà de l’aspect business, vous contribuez également à une meilleure satisfaction au travail.
 
-[Contactez nos experts Power Platform](/contact/)
+<a class="article-cta" href="/contact/">Contactez nos experts Power Platform</a>
 
 ### 2. Intégration et extension de Microsoft 365
 

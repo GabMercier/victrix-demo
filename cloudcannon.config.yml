@@ -725,6 +725,29 @@ collections_config:
             - security
             - productivity
             - managed
+      # Méga-menu Ressources : seuls les TEXTES sont éditables — les catégories
+      # (étiquettes du blogue) et les derniers articles sont générés au build
+      # depuis la collection Blogue (voir Header.astro).
+      megaRessources:
+        type: object
+        label: Méga-menu Ressources
+        comment: >-
+          Catégories et derniers articles sont automatiques (tirés du blogue) ;
+          seuls les textes ci-dessous s'éditent. S'attache à l'entrée du menu
+          dont le lien est identique au « Lien parent ».
+      intro:
+        type: textarea
+        label: Texte d'introduction
+      ctaLabel:
+        type: text
+        label: Libellé du bouton
+        comment: Le bouton mène au centre de ressources (le « Lien parent »).
+      categoriesTitle:
+        type: text
+        label: Titre de la colonne Catégories
+      latestTitle:
+        type: text
+        label: Titre de la colonne Derniers articles
       announce:
         type: object
         label: Barre d'annonce

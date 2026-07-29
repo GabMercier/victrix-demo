@@ -41,7 +41,7 @@ ServiceNow intègre des technologies d’automatisation alimentées par l’[int
 - L’intelligence prédictive: L’apprentissage automatique analyse les données historiques pour suggérer des solutions proactives.
 - Billetterie automatisée: Les billets TI se résolvent automatiquement, réduisant les interruptions de service et améliorant les temps de réponse.
 
-[Contactez-nous](/contact/)
+<a class="article-cta" href="/contact/">Contactez-nous</a>
 
 #### ITSM infonuagique pour les entreprises modernes
 
@@ -112,4 +112,4 @@ Un partenariat avec des experts assure un **déploiement harmonieux et réussi,*
 - Obtenir un soutien 24/7 pour résoudre tout défi ITSM
 - Bénéficier d'une optimisation et de mises à jour continues pour soutenir la croissance et les besoins de votre entreprise.
 
-[Parlons de votre implémentation ITSM](/contact/)
+<a class="article-cta" href="/contact/">Parlons de votre implémentation ITSM</a>

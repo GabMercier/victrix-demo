@@ -12,7 +12,7 @@ The NIS2 directive **introduces new security requirements** for organizations op
 
 Our [cybersecurity experts](/en/expertise/cybersecurity/) explain everything you need to know about this directive and how to prepare for compliance.
 
-[Get support for your compliance](/en/contact/)
+<a class="article-cta" href="/en/contact/">Get support for your compliance</a>
 
 <table style="border-collapse: collapse; width: 74.4159%; height: 347px;" border="1">
 <tbody>
@@ -73,7 +73,7 @@ Our [cybersecurity experts](/en/expertise/cybersecurity/) explain everything you
 
 With our Scalable Security Operations Center we help organizations meet the highest cybersecurity standards (GDPR, [DORA](/en/dora-regulation/), NIS2, [ISO 27001:2022](/en/iso-27001-iso-9001-certifications/))
 
-[Discover SEvOC](/en/expertise/cybersecurity/scalable-security-operations-center/)
+<a class="article-cta" href="/en/expertise/cybersecurity/scalable-security-operations-center/">Discover SEvOC</a>
 
 - Fines up to 2% of global annual turnover
 - Implementation of mandatory corrective measures enforced by authorities
@@ -84,7 +84,7 @@ With our Scalable Security Operations Center we help organizations meet the high
 
 **10 Million Euros.** This is the maximum fine you can face for non-compliance under NIS2.
 
-[Consult an expert](/en/contact/)
+<a class="article-cta" href="/en/contact/">Consult an expert</a>
 
 Victrix guides and supports essential and important entities in achieving NIS2 compliance. With a rigorous approach and certified GRC consultants, we guarantee customized compliance tailored to your business reality.
 

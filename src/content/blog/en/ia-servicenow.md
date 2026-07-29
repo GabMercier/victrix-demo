@@ -43,7 +43,7 @@ Whether it’s **reducing manual and repetitive tasks**, **anticipating incident
 
 We can help you determine where ServiceNow and AI will have the greatest impact on your operations.
 
-[Explore your ServiceNow and AI opportunities](/en/contact/)
+<a class="article-cta" href="/en/contact/">Explore your ServiceNow and AI opportunities</a>
 
 ServiceNow now **integrates AI into every layer of the platform—analytics, service, security, and user experience.**
 
@@ -129,7 +129,7 @@ ServiceNow's **Predictive Intelligence** uses machine learning to **categorize**
 
 These capabilities accelerate your processes and are real value drivers, but they must be rigorously managed. This is where the expertise of an AI governance expert like Victrix comes into its own.
 
-[Assess your AI governance](/en/contact/)
+<a class="article-cta" href="/en/contact/">Assess your AI governance</a>
 
 ServiceNow’s AI capabilities can deliver lasting value, provided they are rigorously governed. With **AI Control Tower**, ServiceNow offers **a centralized view of all your AI models**, **datasets**, and **workflows**.
 
@@ -141,7 +141,7 @@ ServiceNow’s AI capabilities can deliver lasting value, provided they are rigo
 
 ## Victrix Helps Organizations Deploy AI Control Tower to Reconcile Innovation and Compliance.
 
-[Consult our AI and ServiceNow experts](/en/contact/)
+<a class="article-cta" href="/en/contact/">Consult our AI and ServiceNow experts</a>
 
 **ServiceNow's AI**enhances performance, compliance, and visibility while eliminating the complexity of third-party integrations.
 
@@ -156,4 +156,4 @@ Our approach, focused on**security**, **cost-effectiveness**, and **alignment wi
 
 ### To get the most value out of your AI and ServiceNow projects, our experts support you from strategy to adoption.
 
-[Plan your ServiceNow AI project](/contact/)
+<a class="article-cta" href="/contact/">Plan your ServiceNow AI project</a>

@@ -14,7 +14,7 @@ However, one key question remains—which of these two AI models will generate t
 
 This article gives you the insights to confidently select the AI solution that will optimize your team's productivity.
 
-[Let's talk about your AI needs](/en/contact/)
+<a class="article-cta" href="/en/contact/">Let's talk about your AI needs</a>
 
 ### Compare Free Versions at a Glance
 

@@ -128,6 +128,22 @@ export async function getPostsByLocale(lang: Locale): Promise<BlogPost[]> {
 }
 
 /**
+ * Catégories du blogue = étiquettes DISTINCTES des articles fournis, dans
+ * l'ordre de première apparition (liste triée du plus récent au plus ancien →
+ * l'ordre suit l'actualité, stable d'un build à l'autre). Source PARTAGÉE du
+ * méga-menu Ressources (Header.astro) et des onglets de filtre de l'index
+ * Ressources — les deux surfaces listent donc toujours les mêmes catégories.
+ * Le contenu migré porte une étiquette de catégorie WordPress par article
+ * (« Nos articles », « Nos actualités », « Nos vidéos »…) ; une nouvelle
+ * étiquette saisie au CMS devient automatiquement une catégorie.
+ */
+export function blogCategories(posts: BlogPost[]): string[] {
+  const seen = new Set<string>();
+  for (const post of posts) for (const tag of post.data.tags) seen.add(tag);
+  return [...seen];
+}
+
+/**
  * A post's translation in the other locale — same pairing key (filename), or
  * null if it has no counterpart. Used by the article language switch to link to
  * the counterpart's localized URL instead of blindly swapping the path prefix.

@@ -4,6 +4,7 @@ import Logo from './Logo.astro';
 import { type Locale, defaultLocale, otherLocale, localizePath, swapLocale } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 import { resolveNavHref } from '../lib/navigation/service-links';
+import { getPostsByLocale, postUrlSlug, blogCategories } from '../i18n/blog';
 import { isWithinWindow } from '../lib/schedule';
 
 /**
@@ -52,6 +53,27 @@ const serviceSlugs = new Set(
 // /<lang>/services/<slug>) doit encore accrocher son méga-menu. parentHref est
 // un href simple (schéma navHref) → resolveNavHref le localise.
 const megaParentHref = resolveNavHref({ href: nav.mega.parentHref }, lang, serviceSlugs);
+
+// Méga-menu RESSOURCES (parité victrix.ca) — contenu GÉNÉRÉ AU BUILD : les
+// catégories viennent des étiquettes réelles du blogue (blogCategories — même
+// source que les onglets de filtre de l'index Ressources) et les « derniers
+// articles » de la collection. La nav ne porte que les textes (voir le schéma
+// navigation dans content.config.ts). Un lien de catégorie cible l'index
+// filtré : /<lang>/ressources/?categorie=<étiquette>.
+const megaRes = nav.megaRessources;
+const megaResParentHref = megaRes
+  ? resolveNavHref({ href: megaRes.parentHref }, lang, serviceSlugs)
+  : undefined;
+const blogPosts = megaRes ? await getPostsByLocale(lang) : [];
+const resCategories = blogCategories(blogPosts).map((tag) => ({
+  label: tag,
+  href: `${megaResParentHref}/?categorie=${encodeURIComponent(tag)}`,
+}));
+const resLatest = blogPosts.slice(0, 4).map((post) => ({
+  title: post.data.title,
+  href: localizePath(`/ressources/${postUrlSlug(post)}/`, lang),
+}));
+
 const navItems = nav.items.map((item) => {
   // Résout un lien vers un service (validé) ou localise l'href brut (défaut).
   const href = resolveNavHref(item, lang, serviceSlugs);
@@ -59,6 +81,7 @@ const navItems = nav.items.map((item) => {
     label: item.label,
     href,
     mega: href === megaParentHref ? nav.mega : undefined,
+    megaRes: megaRes && href === megaResParentHref ? megaRes : undefined,
   };
 });
 
@@ -69,6 +92,12 @@ const navItems = nav.items.map((item) => {
 if (!navItems.some((item) => item.mega)) {
   throw new Error(
     `[navigation] ${lang}.json : « parentHref » (${nav.mega.parentHref}) ne correspond à aucune entrée du menu principal — le méga-menu ne s'afficherait nulle part. Aligner « Lien parent » sur le lien (ou le service) d'une entrée du menu.`,
+  );
+}
+// Même garde-fou pour le méga-menu Ressources (quand il est configuré).
+if (megaRes && !navItems.some((item) => item.megaRes)) {
+  throw new Error(
+    `[navigation] ${lang}.json : « parentHref » du méga-menu Ressources (${megaRes.parentHref}) ne correspond à aucune entrée du menu principal — le panneau ne s'afficherait nulle part.`,
   );
 }
 
@@ -164,13 +193,16 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
       <ul role="list" class="primary-nav__list">
         {
           navItems.map((item) => (
-            <li class:list={[{ 'has-mega': !!item.mega }]} data-mega={item.mega ? '' : undefined}>
+            <li
+              class:list={[{ 'has-mega': !!(item.mega || item.megaRes) }]}
+              data-mega={item.mega || item.megaRes ? '' : undefined}
+            >
               <a
                 class="primary-nav__link"
                 href={item.href}
                 aria-current={isCurrent(item.href) ? 'page' : undefined}
-                aria-haspopup={item.mega ? 'true' : undefined}
-                aria-expanded={item.mega ? 'false' : undefined}
+                aria-haspopup={item.mega || item.megaRes ? 'true' : undefined}
+                aria-expanded={item.mega || item.megaRes ? 'false' : undefined}
               >
                 {item.label}
               </a>
@@ -206,6 +238,42 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
                         </ul>
                       </div>
                     ))}
+                  </div>
+                </div>
+              )}
+              {item.megaRes && (
+                <div class="mega" aria-label={item.megaRes.ariaLabel}>
+                  <div class="container mega-res">
+                    <div class="mega-res__intro">
+                      <p class="mega-res__text">{item.megaRes.intro}</p>
+                      <a class="btn btn--primary" href={megaResParentHref}>
+                        {item.megaRes.ctaLabel}
+                      </a>
+                    </div>
+                    <div>
+                      <p class="mega-res__title">{item.megaRes.categoriesTitle}</p>
+                      <ul role="list" class="mega__list mega-res__cats">
+                        {resCategories.map((cat) => (
+                          <li>
+                            <a class="mega__link" href={cat.href}>
+                              {cat.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <p class="mega-res__title">{item.megaRes.latestTitle}</p>
+                      <ul role="list" class="mega-res__articles">
+                        {resLatest.map((article) => (
+                          <li>
+                            <a class="mega-res__article" href={article.href}>
+                              {article.title}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               )}
@@ -634,6 +702,48 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
     display: inline-block;
   }
   .mega__link:hover {
+    color: var(--color-accent-blue);
+  }
+
+  /* ---------- Méga-menu Ressources (parité victrix.ca) ----------
+     Intro + CTA | Catégories | Derniers articles (2 colonnes). Contenu généré
+     au build depuis la collection blog — voir le frontmatter. */
+  .mega-res {
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) minmax(160px, 0.8fr) 2fr;
+    gap: var(--space-7);
+    padding-block: var(--space-7);
+  }
+  .mega-res__text {
+    margin: 0 0 var(--space-5);
+    color: var(--color-text-muted);
+    font-size: var(--fs-300);
+    max-width: 32ch;
+  }
+  .mega-res__title {
+    margin: 0 0 var(--space-4);
+    color: var(--color-accent-blue);
+    font-size: var(--fs-400);
+    font-weight: var(--fw-semibold);
+  }
+  .mega-res__cats {
+    padding-left: 0;
+  }
+  .mega-res__articles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4) var(--space-6);
+    margin: 0;
+    max-width: 56ch;
+  }
+  .mega-res__article {
+    color: var(--color-navy);
+    text-decoration: none;
+    font-size: var(--fs-200);
+    line-height: 1.45;
+    display: inline-block;
+  }
+  .mega-res__article:hover {
     color: var(--color-accent-blue);
   }
 

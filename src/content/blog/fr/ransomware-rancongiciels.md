@@ -70,7 +70,7 @@ Chaque année, ce sont des millions de dollars qui sont extorqués aux entrepris
 - Congédiement de responsables de la sécurité (RSSI) et d’employés pour réduire les pertes financières et coûts opérationnels
 - Impact quant à la conformité aux [réglementations sur la protection des données](/expertise/conseil-strategique/conformite-loi-25/) telles que la loi 25
 
-[Découvrez la solution SEvOC](/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/)
+<a class="article-cta" href="/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez la solution SEvOC</a>
 
 ### Que faire en cas d’attaque de ransomware?
 
@@ -156,7 +156,7 @@ Vous souhaitez améliorer votre posture de sécurité et éviter les embûches c
  Bénéficiez d’un [service SOC externalisé](/externalisation-soc-avantages-inconvenients/) puissant pour assurer une sécurité informatique de haut niveau à votre organisation. 
  **Découvrez SEvOC, le Centre Opérationnel de Sécurité Évolutif de Victrix.**
 
-[Découvrez la solution SEvOC](/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/)
+<a class="article-cta" href="/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez la solution SEvOC</a>
 
 ### SEvOC: une solution sur mesure pour contrer les menaces informatiques
 

@@ -14,7 +14,7 @@ La question reste — lequel de ces deux modèles d’IA génère le plus de val
 
 Nous vous offrons toutes les clés pour choisir efficacement l’IA qui optimisera la productivité de vos équipes.
 
-[Parlons de vos besoins en IA](/contact/)
+<a class="article-cta" href="/contact/">Parlons de vos besoins en IA</a>
 
 ### Comparer les versions gratuites en un coup d’œil
 
@@ -185,7 +185,7 @@ Copilot Studio est une plateforme IA avancée conçue par Microsoft pour [dével
 
 Parmi les réalisations Copilot Studio de Victrix, retrouvez des **automatisations intelligentes telles que la gestion et la recherche documentaire, la gestion des demandes de support client et la création d’agents conversationnels.** Découvrez comment votre entreprise peut bénéficier de Microsoft Copilot avec l’expertise Victrix.
 
-[Demandez une démo](/contact/)
+<a class="article-cta" href="/contact/">Demandez une démo</a>
 
 ## Quel choix stratégique pour votre entreprise?
 

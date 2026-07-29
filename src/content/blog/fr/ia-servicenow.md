@@ -139,7 +139,7 @@ Les capacités de l’IA ServiceNow peuvent vous procurer de la valeur durable, 
 
 ## Victrix aide les organisations à déployer la tour de contrôle IA pour concilier innovation et conformité.
 
-[Consultez nos experts IA et ServiceNow](/contact/)
+<a class="article-cta" href="/contact/">Consultez nos experts IA et ServiceNow</a>
 
 L’**IA de ServiceNow** améliore la performance, la conformité et la visibilité tout en éliminant la complexité des intégrations tierces. 
  **Victrix vous aide à la gouverner et à l’adapter à votre réalité organisationnelle.** 
@@ -152,4 +152,4 @@ L’**IA de ServiceNow** améliore la performance, la conformité et la visibili
 
 ### Pour tirer le maximum de valeur de vos projets IA et ServiceNow, nos experts vous accompagnent de la stratégie à l’adoption.
 
-[Planifiez vore projet IA et ServiceNow](/contact/)
+<a class="article-cta" href="/contact/">Planifiez vore projet IA et ServiceNow</a>

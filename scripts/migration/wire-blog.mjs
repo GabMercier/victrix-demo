@@ -16,7 +16,12 @@
  *  - `author` abandonné (valeur unique « admin@victrix » sans valeur éditoriale) ;
  *  - suffixe « | Victrix » retiré de seoTitle (BaseLayout appose déjà le nom du site) ;
  *  - première image du corps retirée si IDENTIQUE à coverImage (doublon
- *    WordPress : l'image mise en avant était répétée en tête d'article).
+ *    WordPress : l'image mise en avant était répétée en tête d'article) ;
+ *  - CTA : une ligne composée UNIQUEMENT d'un lien Markdown (patron des appels
+ *    à l'action WordPress) devient `<a class="article-cta">` — la page article
+ *    la style en bouton (parité victrix.ca). Détection au câblage plutôt qu'en
+ *    CSS : `:only-child` ignore les nœuds texte, il boutonniserait des liens
+ *    en fin de phrase.
  *
  * Sécurité : refuse d'écraser un fichier existant de src/content/blog sans
  * --force (les 3 articles démo doivent être retirés au préalable — voir le
@@ -87,6 +92,24 @@ for (const locale of ['fr', 'en']) {
     out = out.replace(/^author:[^\n]*\n/m, '');
     // seoTitle : retirer le suffixe « | Victrix » (BaseLayout appose le site).
     out = out.replace(/^(seoTitle:\s*")([^"]*?)\s*\|\s*Victrix\s*(")/m, '$1$2$3');
+    // Corps : PARAGRAPHES-CTA (un bloc composé d'un seul lien Markdown) →
+    // <a class="article-cta">, stylé en bouton par la page article. Par BLOC,
+    // pas par ligne : une ligne-lien À L'INTÉRIEUR d'un paragraphe (sans ligne
+    // vide autour) resterait un lien de texte — un bouton en pleine phrase
+    // lirait mal.
+    {
+      const end = out.indexOf('---', 4) + 3;
+      const body = out
+        .slice(end)
+        .split('\n\n')
+        .map((block) => {
+          const m = block.trim().match(/^\[([^\]]+)\]\((\/[^)\s]+|https?:[^)\s]+)\)$/);
+          return m ? `<a class="article-cta" href="${m[2]}">${m[1]}</a>` : block;
+        })
+        .join('\n\n');
+      out = out.slice(0, end) + body;
+    }
+
     // Corps : retirer la 1re image si identique à coverImage (doublon WP).
     const cover = out.match(/^coverImage:\s*"([^"]+)"/m)?.[1];
     if (cover) {

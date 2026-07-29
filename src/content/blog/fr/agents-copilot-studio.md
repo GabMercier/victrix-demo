@@ -26,7 +26,7 @@ Dans cet article, vous découvrirez comment faire passer votre entreprise au niv
 
 ### Nous vous aidons à bâtir votre premier agent intelligent sur mesure rapidement.
 
-[Consultez un expert Copilot Studio et Azure AI](/contact/)
+<a class="article-cta" href="/contact/">Consultez un expert Copilot Studio et Azure AI</a>
 
 ### Gagner du temps
 
@@ -80,7 +80,7 @@ Chez Victrix, nous accompagnons des organisations dans la **création d’agents
 
 ### Ces cas vous inspirent, mais vous aimeriez découvrir comment ces agents vous aident à atteindre vos objectifs?
 
-[Demandez une démo](/contact/)
+<a class="article-cta" href="/contact/">Demandez une démo</a>
 
 ## Donnez les outils à vos équipes pour performer. Créez votre agent Copilot intelligent.
 
@@ -90,4 +90,4 @@ Chez Victrix, nous vous accompagnons à chaque étape. De l’identification des
 
 ### Consultez nos experts pour découvrir toutes les intégrations possibles d'un agent intelligent sur mesure avec vos systèmes actuels
 
-[Discutez avec un expert Copilot et Azure AI](/contact/)
+<a class="article-cta" href="/contact/">Discutez avec un expert Copilot et Azure AI</a>

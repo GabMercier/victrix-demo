@@ -65,6 +65,14 @@
       }
     ]
   },
+  "megaRessources": {
+    "parentHref": "/ressources",
+    "ariaLabel": "Sous-menu Ressources",
+    "intro": "Découvrez nos ressources : articles, actualités, vidéos et plus encore.",
+    "ctaLabel": "Centre de ressources",
+    "categoriesTitle": "Catégories",
+    "latestTitle": "Derniers articles"
+  },
   "announce": {
     "enabled": true,
     "before": "Découvrez ",

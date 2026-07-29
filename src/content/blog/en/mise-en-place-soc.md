@@ -20,7 +20,7 @@ Our comprehensive guide will help you understand the basics of an effective SOC,
 
 Book a consultation and ask any questions you may have about our scalable SOC (SEvOC).
 
-[Talk to an expert](/en/contact/)
+<a class="article-cta" href="/en/contact/">Talk to an expert</a>
 
 A modern SOC is a strategic asset for any organization seeking to strengthen its security posture. The SOC centralizes key operations such as:
 
@@ -36,7 +36,7 @@ For IT managers, the SOC provides a security framework that allows them to **mon
 
 Victrix's SEvOC offering stands out by providing a **scalable framework that goes beyond the capabilities of a standard SOC**. Our offering includes features such as vulnerability management, threat intelligence, automation and orchestration (SOAR), tailored reporting and performance indicators, as well as continuous improvement and governance.
 
-[Discover our scalable SOC](/en/expertise/cybersecurity/scalable-security-operations-center/)
+<a class="article-cta" href="/en/expertise/cybersecurity/scalable-security-operations-center/">Discover our scalable SOC</a>
 
 Before starting your SOC setup project, it is important to **know what you have at your disposal**. This is your first hurdle to implementing effective security controls tailored to your needs. Start by asking yourself what is really important to your business.
 
@@ -51,7 +51,7 @@ Only after answering these questions will you be able to **choose the relevant c
 
 Several years could be needed to **secure the necessary budget, launch projects, recruit resources, convince management, and begin measuring ROI**. You need to be prepared for this possibility and adjust your expectations accordingly.
 
-[Get our expert advice](/en/contact/)
+<a class="article-cta" href="/en/contact/">Get our expert advice</a>
 
 ### Set Realistic Goals
 
@@ -278,4 +278,4 @@ The change may result in additional costs or modifications to the contract</td>
 
 SEvOC stands for more effective detection, smarter responses, and scalable operations. Let's work together to define the SOC model that's right for your organization.
 
-[Talk to a SEvOC expert](/en/contact/)
+<a class="article-cta" href="/en/contact/">Talk to a SEvOC expert</a>

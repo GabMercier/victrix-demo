@@ -26,7 +26,7 @@ In this article, you will discover how to take your business to the next level b
 
 ### We help you rapidly develop your first tailored intelligent agent.
 
-[Consult a Copilot Studio and Azure AI expert](/en/contact/)
+<a class="article-cta" href="/en/contact/">Consult a Copilot Studio and Azure AI expert</a>
 
 ### Save Time
 
@@ -83,7 +83,7 @@ At Victrix, we help organizations create high-value, **intelligent Copilot Studi
 
 ### These Cases Are Inspiring, But Would You Like to Discover How These Agents Can Help You Achieve Your Goals?
 
-[Request a demo](/en/contact/)
+<a class="article-cta" href="/en/contact/">Request a demo</a>
 
 ## Give your teams the tools they need to perform. Create your intelligent Copilot agent.
 
@@ -93,4 +93,4 @@ At Victrix, we support you every step of the way. From identifying use cases to 
 
 ### Consult Our Experts to Discover All the Possible Integrations of a Tailored Intelligent Agent with Your Current Systems
 
-[Talk to a Copilot and Azure AI expert](/en/contact/)
+<a class="article-cta" href="/en/contact/">Talk to a Copilot and Azure AI expert</a>

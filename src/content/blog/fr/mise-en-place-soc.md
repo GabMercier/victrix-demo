@@ -20,7 +20,7 @@ Notre guide complet vous aidera à comprendre les bases d’un SOC efficace, de 
 
 Réservez une consultation et posez toutes vos questions sur notre SOC évolutif (SEvOC).
 
-[Parlez à un expert](/contact/)
+<a class="article-cta" href="/contact/">Parlez à un expert</a>
 
 Un SOC moderne est un atout stratégique pour toute organisation qui cherche à renforcer sa posture de sécurité. Le SOC centralise des opérations clés comme :
 
@@ -34,7 +34,7 @@ Pour les responsables TI, le SOC offre un cadre de sécurité qui permet de **su
  
 L’offre SEvOC de Victrix se distingue en offrant **un cadre évolutif qui va au-delà des capacités d’un SOC standard**. Notre offre inclus des fonctions comme la gestion des vulnérabilités, la veille des menaces (*threat intelligence*), l’automatisation et l’orchestration (SOAR), des rapports et indicateurs de performance sur mesure, ainsi que l’amélioration continue et la gouvernance.
 
-[Découvrez notre SOC évolutif](/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/)
+<a class="article-cta" href="/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez notre SOC évolutif</a>
 
 Avant de lancer votre projet de mise en place d’un SOC, il est important de **connaitre ce dont vous disposez**. C’est votre premier obstacle à la mise en place de contrôles de sécurité efficaces et adaptés à vos besoins. Commencez par vous demander ce qui est vraiment important pour votre entreprise.
 
@@ -49,7 +49,7 @@ C’est seulement après avoir répondu à ces questions que vous serez en mesur
 
 Plusieurs années peuvent être nécessaires pour **obtenir le budget nécessaire, lancer les projets, recruter les ressources, convaincre la direction et commencer à mesurer le retour sur investissement**. Vous devez vous préparer à cette éventualité et adapter vos attentes en conséquence.
 
-[Obtenez nos conseils d'experts](/contact/)
+<a class="article-cta" href="/contact/">Obtenez nos conseils d'experts</a>
 
 ### Déterminer des objectifs réalistes
 
@@ -256,4 +256,4 @@ L'évolution peut entrainer des coûts supplémentaires ou des modifications du 
 
 SEvOC est synonyme de détection plus efficace, de réponses plus intelligentes et d’opérations évolutives. Définissons ensemble le modèle SOC adapté à votre organisation.
 
-[Discutez avec un expert SEvOC](/contact/)
+<a class="article-cta" href="/contact/">Discutez avec un expert SEvOC</a>

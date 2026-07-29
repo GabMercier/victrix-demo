@@ -12,7 +12,7 @@ La directive NIS2 **impose de nouvelles exigences de sécurité** aux organisati
 
 Nos [experts en cybersécurité](/expertise/cybersecurite/) vous expliquent tout ce que vous devez savoir sur cette directive ainsi que vos options pour vous préparer à la mise en conformité.
 
-[Soyez accompagné pour votre mise en conformité](/contact/)
+<a class="article-cta" href="/contact/">Soyez accompagné pour votre mise en conformité</a>
 
 <table style="border-collapse: collapse; width: 74.4159%; height: 347px;" border="1">
 <tbody>

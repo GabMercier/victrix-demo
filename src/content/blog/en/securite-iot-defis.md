@@ -22,7 +22,7 @@ The top 5 challenges are:
 - The complexity of connecting new objects to the Internet and securing them within existing infrastructures
 - Adherence to security and privacy standards
 
-[Ready to assess your IoT security?](/en/expertise/cybersecurity/internet-of-things-iot/)
+<a class="article-cta" href="/en/expertise/cybersecurity/internet-of-things-iot/">Ready to assess your IoT security?</a>
 
 ### 1. IoT Assessment and Inventory
 
@@ -44,7 +44,7 @@ Finally, the final step is to continually audit and improve the system. Regular 
 
 Your employees need to be familiar with best practices to reduce risk and ensure successful security adoption of new technologies.
 
-[Talk to an IoT security expert](/en/expertise/cybersecurity/internet-of-things-iot/)
+<a class="article-cta" href="/en/expertise/cybersecurity/internet-of-things-iot/">Talk to an IoT security expert</a>
 
 Victrix has positioned itself as a key partner to help organizations **secure their IoT networks**.
 

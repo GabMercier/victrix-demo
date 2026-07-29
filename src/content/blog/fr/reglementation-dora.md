@@ -14,7 +14,7 @@ La réglementation DORA (Digital Operational Resilience Act) est une préoccupat
 
 Dans cet article, nos [experts en cybersécurité](/expertise/cybersecurite/) pour les entités financières reviennent sur les exigences de cette norme et vous guident pour **élever votre résilience opérationnelle et assurer votre mise en conformité DORA**.
 
-[Soyez accompagné pour votre mise en conformité](/contact/)
+<a class="article-cta" href="/contact/">Soyez accompagné pour votre mise en conformité</a>
 
 Le règlement européen DORA implique aux sociétés financières de:
 

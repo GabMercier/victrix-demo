@@ -22,7 +22,7 @@ Le prix de Microsoft Viva varie en fonction du degré de personnalisation ainsi 
 
 Certaines fonctionnalités de Viva Connections, Engage et Learning sont même accessibles sans frais additionnels à l'intérieur même des licences Microsoft 365 que vous détenez peut-être déjà. Les suites Microsoft offrent beaucoup d’applications et de fonctionnalités, trop souvent non utilisées par les organisations. Nos experts peuvent vous aider à mieux exploiter et rentabiliser les outils Microsoft.
 
-[Contactez nos experts Microsoft](/contact/)
+<a class="article-cta" href="/contact/">Contactez nos experts Microsoft</a>
 
 ### Comment configurer Microsoft Viva pour une expérience personnalisée?
 
