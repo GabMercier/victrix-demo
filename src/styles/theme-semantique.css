@@ -1,0 +1,145 @@
+/**
+ * Tokens sémantiques « Luminous Precision » — nommage de l'export Figma
+ * (plugin Tailwind), adopté verbatim (décision session 2026-07-29) pour que
+ * les futurs exports se collent avec un minimum de renommage.
+ *
+ * ⚠️ NON IMPORTÉ PAR BaseLayout : ce fichier n'est consommé que par
+ * src/styles/design-lab.css (page laboratoire). Raison : 4 collisions avec les
+ * variables NON-COUCHÉES de tokens.css (--color-surface, --radius-sm/md/lg) —
+ * sur une page qui charge global.css, ces valeurs legacy gagneraient EN SILENCE
+ * contre @layer theme. Convergence prévue en Phase 5 : renommer les 4 variables
+ * legacy, puis fusionner ce fichier dans theme.css (les noms français du pilote
+ * — nuit, royal, givre… — restent comme alias de rédaction manuelle).
+ * Détail complet : docs/design/audit-tokens-figma.md.
+ *
+ * Source : blob `tailwind.config` des exports (C:\Repo\Victrix\Design\
+ * Maquette & Front End\Export - *\code.html) + frontmatter DESIGN.md.
+ * Valeurs littérales (pas de chaînage var() dans @theme) ; équivalences avec
+ * les tokens français du pilote signalées en commentaire.
+ */
+
+/* Les classes `dark:` des exports doivent rester INERTES tant qu'aucune
+   stratégie dark n'est décidée (Phase 5) : la variante n'active que sous un
+   ancêtre .dark explicite — jamais via prefers-color-scheme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* ---- Palette Material générée (union des exports) --------------------- */
+  --color-primary: #00020a;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #001b44; /* = --color-nuit */
+  --color-on-primary-container: #7084b3;
+  --color-primary-fixed: #d8e2ff;
+  --color-primary-fixed-dim: #b1c6f9;
+  --color-on-primary-fixed: #001a42;
+  --color-on-primary-fixed-variant: #314671;
+  --color-inverse-primary: #b1c6f9;
+
+  --color-secondary: #0038e6; /* = --color-royal-profond (action partout) */
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #3256ff;
+  --color-on-secondary-container: #eaeaff;
+  --color-secondary-fixed: #dee0ff;
+  --color-secondary-fixed-dim: #bac3ff;
+  --color-on-secondary-fixed: #00105b;
+  --color-on-secondary-fixed-variant: #002fc8;
+
+  --color-tertiary: #000204;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #001f2e;
+  --color-on-tertiary-container: #408cb5;
+  --color-tertiary-fixed: #c5e7ff;
+  --color-tertiary-fixed-dim: #87cffb; /* ≈ --color-celeste #86cefa (1 bit d'écart — conflit §3 de l'audit) */
+  --color-on-tertiary-fixed: #001e2d;
+  --color-on-tertiary-fixed-variant: #004c6a;
+
+  --color-surface: #f8f9fa; /* = --color-givre — COLLISION tokens.css (Phase 5) */
+  --color-surface-dim: #d9dadb;
+  --color-surface-bright: #f8f9fa;
+  --color-surface-variant: #e1e3e4;
+  --color-surface-tint: #495e8a;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container: #edeeef;
+  --color-surface-container-high: #e7e8e9;
+  --color-surface-container-highest: #e1e3e4;
+  --color-on-surface: #191c1d; /* = --color-encre */
+  --color-on-surface-variant: #44474f; /* = --color-encre-douce */
+  --color-inverse-surface: #2e3132;
+  --color-inverse-on-surface: #f0f1f2;
+
+  --color-background: #f8f9fa;
+  --color-on-background: #191c1d;
+  --color-outline: #75777f;
+  --color-outline-variant: #c5c6d0; /* ≠ --color-bordure #e5e7eb (conflit §3) */
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  /* ---- Échelle d'espacement nommée (4px baseline, DESIGN.md « Layout ») -- */
+  --spacing-base: 4px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+  --spacing-gutter: 24px;
+  --spacing-margin-mobile: 16px;
+  --spacing-margin-desktop: 48px;
+
+  /* ---- Échelle typographique sémantique ---------------------------------- */
+  --text-headline-xl: 48px;
+  --text-headline-xl--line-height: 56px;
+  --text-headline-xl--font-weight: 700;
+  --text-headline-xl--letter-spacing: -0.02em;
+  --text-headline-lg: 32px;
+  --text-headline-lg--line-height: 40px;
+  --text-headline-lg--font-weight: 600;
+  --text-headline-lg--letter-spacing: -0.01em;
+  --text-headline-lg-mobile: 28px;
+  --text-headline-lg-mobile--line-height: 36px;
+  --text-headline-lg-mobile--font-weight: 600;
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 32px;
+  --text-headline-md--font-weight: 600;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-lg--font-weight: 400;
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+  --text-body-md--font-weight: 400;
+  --text-label-md: 14px;
+  --text-label-md--line-height: 20px;
+  --text-label-md--font-weight: 500;
+  --text-label-md--letter-spacing: 0.01em;
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
+  --text-label-sm--font-weight: 600;
+
+  /* ---- Familles — l'export émet 12 alias, tous Hanken Grotesk ------------
+     (le markup combine `font-headline-md` + `text-headline-md`, etc.) */
+  --font-display: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-headline: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-label: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-xl: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-lg: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-lg-mobile: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-md: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body-lg: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body-md: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-label-md: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-label-sm: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+  /* ---- Rayons -------------------------------------------------------------
+     `rounded` nu (boutons/champs) : 0.5rem — DESIGN.md « Standard Components »
+     (= --radius-controle du pilote ; le code.html Homepage disait 0.25rem —
+     conflit §3, la charte gagne).
+     lg/xl : on GARDE les défauts v4 (0.5/0.75rem), identiques à la config du
+     markup Homepage — l'échelle divergente du DESIGN.md (lg 1rem, xl 1.5rem)
+     est un conflit ouvert (audit §3) à arbitrer avec le design AVANT adoption :
+     l'imposer ici fausserait le test de fidélité vs screen.png. */
+  --radius: 0.5rem;
+}
