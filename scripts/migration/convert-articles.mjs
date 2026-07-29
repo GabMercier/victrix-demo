@@ -32,8 +32,20 @@
  *  - écrit docs/migration/staging/blog/rapport-articles.md : comptes, paires,
  *    brouillons, sans-traduction, médias référencés, iframes, widgets ignorés.
  */
-import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import {
+  tag,
+  decodeEntities,
+  parseCategories,
+  metaValue,
+  balancedEnd,
+  extractBlocks,
+  makeUrlRewriter,
+  slugify,
+  forEachItem,
+  collectAttachments,
+} from './lib-wxr.mjs';
 
 const args = process.argv.slice(2);
 const getArg = (name, def) => {
@@ -43,99 +55,8 @@ const getArg = (name, def) => {
 const IN_DIR = getArg('--in', 'C:/Repo/Victrix/siteWP/export');
 const OUT_DIR = getArg('--out', 'docs/migration/staging/blog');
 
-// --- Helpers WXR (copie volontaire de parse-wxr.mjs — scripts autonomes) ----
-const unescapeCdata = (s) => s.replaceAll(']]]]><![CDATA[>', ']]>');
-function tag(xml, name) {
-  const re = new RegExp(`<${name}(?:\\s[^>]*)?>([\\s\\S]*?)</${name}>`);
-  const m = xml.match(re);
-  if (!m) return null;
-  const v = m[1];
-  const cd = v.match(/^\s*<!\[CDATA\[([\s\S]*)\]\]>\s*$/);
-  return cd ? unescapeCdata(cd[1]) : decodeEntities(v.trim());
-}
-function decodeEntities(s) {
-  return s
-    .replaceAll('&nbsp;', ' ')
-    .replaceAll('&#8217;', '’')
-    .replaceAll('&#8216;', '‘')
-    .replaceAll('&#8220;', '“')
-    .replaceAll('&#8221;', '”')
-    .replaceAll('&#8211;', '–')
-    .replaceAll('&#8212;', '—')
-    .replaceAll('&#8230;', '…')
-    .replaceAll('&#038;', '&')
-    .replaceAll('&#039;', "'")
-    .replaceAll('&lt;', '<')
-    .replaceAll('&gt;', '>')
-    .replaceAll('&quot;', '"')
-    .replaceAll('&amp;', '&');
-}
-function parseCategories(itemXml) {
-  const out = [];
-  const re = /<category domain="([^"]+)" nicename="([^"]+)"><!\[CDATA\[([\s\S]*?)\]\]><\/category>/g;
-  let m;
-  while ((m = re.exec(itemXml))) out.push({ domain: m[1], nicename: m[2], name: unescapeCdata(m[3]) });
-  return out;
-}
-function metaValue(itemXml, key) {
-  const re = new RegExp(
-    `<wp:postmeta>\\s*<wp:meta_key><!\\[CDATA\\[${key}\\]\\]></wp:meta_key>\\s*<wp:meta_value><!\\[CDATA\\[([\\s\\S]*?)\\]\\]></wp:meta_value>\\s*</wp:postmeta>`,
-  );
-  const m = itemXml.match(re);
-  return m ? unescapeCdata(m[1]) : null;
-}
-
-// --- Extraction du contenu utile (déshabillage SiteOrigin) ------------------
-/**
- * Retourne les blocs de contenu dans l'ordre du document. Un « bloc » est le
- * HTML intérieur d'un widget éditeur SiteOrigin; si la page n'est pas
- * SiteOrigin (1 article « html »), le contenu entier est un seul bloc.
- * Les widgets non-éditeur rencontrés sont listés pour le rapport.
- */
-function extractBlocks(content, warn) {
-  if (!content.includes('panel-layout')) return [content];
-  const blocks = [];
-  const marker = 'siteorigin-widget-tinymce textwidget';
-  // Widgets non-éditeur : signalés (sow-image, sow-button, sow-video…)
-  const soRe = /class="so-widget-(sow-[a-z-]+?)\s/g;
-  let sm;
-  while ((sm = soRe.exec(content))) {
-    if (sm[1] !== 'sow-editor') warn(`widget SiteOrigin non-éditeur ignoré : ${sm[1]}`);
-  }
-  let i = 0;
-  while ((i = content.indexOf(marker, i)) !== -1) {
-    const start = content.indexOf('>', i) + 1;
-    // Équilibrage des <div> pour trouver la fermeture du bloc (le contenu
-    // d'éditeur peut lui-même contenir des div).
-    let depth = 1;
-    let j = start;
-    const re = /<div[\s>]|<\/div>/g;
-    re.lastIndex = start;
-    let m;
-    while (depth > 0 && (m = re.exec(content))) {
-      depth += m[0].startsWith('</') ? -1 : 1;
-      j = m.index;
-    }
-    blocks.push(content.slice(start, j));
-    i = j;
-  }
-  return blocks;
-}
-
-// --- Réécriture d'URLs ------------------------------------------------------
-const SITE = /^https?:\/\/(www\.)?victrix\.ca/;
-const mediaRefs = new Set();
-function rewriteUrl(url, { image = false } = {}) {
-  let u = url;
-  if (SITE.test(u)) u = u.replace(SITE, '') || '/';
-  if (image) {
-    // -768x432.png → .png : viser l'original (les 943 médias inventoriés sont
-    // les originaux; les variantes sont des dérivés WordPress).
-    u = u.replace(/-\d{2,4}x\d{2,4}(\.[a-z]{3,4})$/i, '$1');
-    if (u.startsWith('/wp-content/')) mediaRefs.add(u);
-  }
-  return u;
-}
+// Helpers WXR/URLs : partagés via lib-wxr.mjs (extraits d'ici le 2026-07-29).
+const { rewriteUrl, mediaRefs } = makeUrlRewriter();
 
 // --- HTML (éditeur classique) → Markdown ------------------------------------
 function inlineToMd(html, warn) {
@@ -204,21 +125,6 @@ function listToMd(html, ordered, warn, indent = '') {
   }
   return items.join('\n');
 }
-/**
- * Trouve la fin ÉQUILIBRÉE d'un élément (gère <ul> dans <ul>, <table> dans
- * <table>…) — la regex non-gourmande s'arrêtait à la première fermeture et
- * laissait des <li> orphelins sur les listes imbriquées.
- */
-function balancedEnd(html, name, openEnd) {
-  const re = new RegExp(`<${name}\\b|</${name}>`, 'gi');
-  re.lastIndex = openEnd;
-  let depth = 1;
-  let m;
-  while (depth > 0 && (m = re.exec(html))) {
-    depth += m[0].startsWith('</') ? -1 : 1;
-  }
-  return m ? m.index + m[0].length : html.length;
-}
 function blockToMd(html, warn) {
   const out = [];
   // Découpe en éléments de bloc; le texte hors balise de bloc suit la règle
@@ -275,56 +181,32 @@ function blockToMd(html, warn) {
   return out.join('\n\n');
 }
 
-/** Slug de repli pour les brouillons (post_name vide chez WordPress). */
-function slugify(title) {
-  return (title ?? 'sans-titre')
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 60);
-}
-
 // --- Lecture des WXR --------------------------------------------------------
 const posts = [];
-const attachments = new Map(); // id → url
-for (const file of readdirSync(IN_DIR).filter((f) => f.endsWith('.xml'))) {
-  const xml = readFileSync(join(IN_DIR, file), 'utf8');
-  const re = /<item>([\s\S]*?)<\/item>/g;
-  let m;
-  while ((m = re.exec(xml))) {
-    const item = m[1];
-    const type = tag(item, 'wp:post_type');
-    if (type === 'attachment') {
-      const id = Number(tag(item, 'wp:post_id'));
-      const url = tag(item, 'wp:attachment_url');
-      if (id && url) attachments.set(id, url);
-      continue;
-    }
-    if (type !== 'post') continue;
-    const cats = parseCategories(item);
-    const status = tag(item, 'wp:status');
-    if (status === 'trash') continue;
-    posts.push({
-      id: Number(tag(item, 'wp:post_id')),
-      title: tag(item, 'title'),
-      slug: tag(item, 'wp:post_name') || slugify(tag(item, 'title')),
-      url: tag(item, 'link'),
-      status,
-      date: (tag(item, 'wp:post_date') ?? '').slice(0, 10),
-      author: tag(item, 'dc:creator'),
-      lang: cats.find((c) => c.domain === 'language')?.nicename ?? 'fr',
-      group: cats.find((c) => c.domain === 'post_translations')?.nicename ?? null,
-      categories: cats.filter((c) => c.domain === 'category').map((c) => c.name),
-      content: tag(item, 'content:encoded') ?? '',
-      seoTitle: metaValue(item, '_yoast_wpseo_title'),
-      seoDesc: metaValue(item, '_yoast_wpseo_metadesc'),
-      noindex: metaValue(item, '_yoast_wpseo_meta-robots-noindex') === '1',
-      thumbId: Number(metaValue(item, '_thumbnail_id') ?? 0),
-    });
-  }
-}
+const attachments = collectAttachments(IN_DIR);
+forEachItem(IN_DIR, (item) => {
+  if (tag(item, 'wp:post_type') !== 'post') return;
+  const status = tag(item, 'wp:status');
+  if (status === 'trash') return;
+  const cats = parseCategories(item);
+  posts.push({
+    id: Number(tag(item, 'wp:post_id')),
+    title: tag(item, 'title'),
+    slug: tag(item, 'wp:post_name') || slugify(tag(item, 'title')),
+    url: tag(item, 'link'),
+    status,
+    date: (tag(item, 'wp:post_date') ?? '').slice(0, 10),
+    author: tag(item, 'dc:creator'),
+    lang: cats.find((c) => c.domain === 'language')?.nicename ?? 'fr',
+    group: cats.find((c) => c.domain === 'post_translations')?.nicename ?? null,
+    categories: cats.filter((c) => c.domain === 'category').map((c) => c.name),
+    content: tag(item, 'content:encoded') ?? '',
+    seoTitle: metaValue(item, '_yoast_wpseo_title'),
+    seoDesc: metaValue(item, '_yoast_wpseo_metadesc'),
+    noindex: metaValue(item, '_yoast_wpseo_meta-robots-noindex') === '1',
+    thumbId: Number(metaValue(item, '_thumbnail_id') ?? 0),
+  });
+});
 
 // --- Appariement FR/EN par groupe Polylang ----------------------------------
 // Nom de fichier commun = slug FR (convention du dépôt : homonymes fr/ et en/).

@@ -1,6 +1,6 @@
 # Rapport de conversion — articles WordPress → staging blog
 
-> Généré par `scripts/migration/convert-articles.mjs` — rejouable. Sortie : `c:/Repo/Victrix/Demo-victrix/docs/migration/staging/blog/{fr,en}/`.
+> Généré par `scripts/migration/convert-articles.mjs` — rejouable. Sortie : `docs/migration/staging/blog/{fr,en}/`.
 > ⚠️ ZONE DE STAGING : rien n'est branché dans les collections. Revue humaine requise
 > (questions §16 de l'inventaire : brouillons Q1, sans-traduction Q2) avant le port vers `src/content/blog/`.
 
