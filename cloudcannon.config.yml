@@ -156,6 +156,12 @@ collections_config:
       tags:
         type: array
         label: Étiquettes
+      # Type d'entrée du tableau (notation documentée `nom[*]`) : sans lui,
+      # un tableau VIDE est « misconfigured » — CloudCannon ne sait pas quoi
+      # créer au « + Ajouter » (même patron que options[*]/items[*] plus bas).
+      tags[*]:
+        type: text
+        label: Étiquette
 
   home:
     path: src/content/home
@@ -251,6 +257,11 @@ collections_config:
       names:
         type: array
         label: Noms des partenaires
+      # Même correctif que blog.tags[*] : type d'entrée requis pour qu'un
+      # tableau vide offre « + Ajouter » au lieu de « misconfigured ».
+      names[*]:
+        type: text
+        label: Nom du partenaire
       image:
         type: image
         label: Image
@@ -332,6 +343,61 @@ collections_config:
           Activé par défaut : les pages de campagne (trafic payant) restent
           hors des résultats de recherche. Désactiver seulement si la page
           doit être indexée.
+      # ---- P-04 : en-tête / pied de page de campagne. Le bloc `header` est
+      # optionnel — sans lui (ou en mode « complet »), la page garde l'en-tête
+      # normal du site. Le CTA du bloc réutilise les noms ctaLabel/ctaHref des
+      # sections (cascade : mêmes _inputs « Libellé/Lien du bouton »). ----
+      header:
+        type: object
+        label: En-tête de la page
+        comment: >-
+          Optionnel — mode « complet » (défaut) : l'en-tête normal du site.
+          « allege » : logo + un seul bouton (campagne payante). «
+          personnalise » : liens et interrupteurs ci-dessous.
+      mode:
+        type: select
+        label: Mode d'en-tête
+        comment: >-
+          complet = en-tête normal du site · allege = logo + bouton seulement
+          · personnalise = liens bornés + interrupteurs. Bouton : ctaLabel /
+          ctaHref vides = bouton « Portail client » du site.
+        options:
+          values:
+            - complet
+            - allege
+            - personnalise
+      links:
+        type: array
+        label: Liens (mode personnalisé)
+        comment: >-
+          Au plus 5 liens simples (pas de méga-menus) — URL finale, préfixe
+          de langue inclus (ex. « /fr/contact »).
+        options:
+          structures: _structures.header_links
+      showAnnounce:
+        type: switch
+        label: Afficher la bannière d'annonce
+        comment: Mode personnalisé seulement (ignoré en mode allégé).
+      showLangSwitch:
+        type: switch
+        label: Afficher le sélecteur FR/EN
+        comment: Mode personnalisé seulement (ignoré en mode allégé).
+      showSearch:
+        type: switch
+        label: Afficher l'icône de recherche
+        comment: >-
+          Mode personnalisé seulement — la recherche est absente par défaut
+          hors du mode complet (amendement P-06/P-04).
+      footerMode:
+        type: select
+        label: Pied de page
+        comment: >-
+          complet (défaut) = pied de page normal du site · allege = logo +
+          barre légale seulement (campagne payante).
+        options:
+          values:
+            - complet
+            - allege
       sections:
         type: array
         label: Sections
@@ -998,6 +1064,32 @@ _structures:
   # Même logique que benefit_items — une structure à valeur unique donne au
   # bouton « + » la bonne forme, même sur un tableau vide. Non taguées dans un
   # spec Bookshop → generate n'y touche pas.
+# Liens de l'en-tête de campagne en mode « personnalisé » (P-04). Structure
+  # dédiée avec ses PROPRES _inputs : au niveau collection, `label` est déjà
+  # « Libellé du champ » (formulaires) — le niveau structure prime (même
+  # mécanisme que form_fields).
+  header_links:
+    values:
+      - label: Lien d'en-tête
+        icon: link
+        preview:
+          icon: link
+          text:
+            - key: label
+            - text: Lien d'en-tête
+        value:
+          label: ''
+          href: ''
+        _inputs:
+          label:
+            type: text
+            label: Libellé du lien
+          href:
+            type: text
+            label: Lien
+            comment: >-
+              URL finale, préfixe de langue inclus (ex. « /fr/contact »).
+
   nav_links:
     values:
       - label: Lien de navigation
