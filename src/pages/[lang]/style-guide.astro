@@ -1,0 +1,313 @@
+---
+import { getEntry, getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Page from '../../../component-library/src/shared/astro/page.astro';
+
+/**
+ * P-15 — page de contrôle visuel /fr/style-guide/ (noindex, hors sitemap).
+ * Sert de page de RÉFÉRENCE pour le redesign (« re-peau ») : tokens (couleurs,
+ * typo, espacements, rayons, ombres) + vitrine des 23 sections de la palette.
+ *
+ * La vitrine NE duplique aucune donnée : elle recompose les MÊMES entrées de
+ * démonstration que le script de captures (scripts/design/
+ * generate-section-previews.mjs) — landing demo-sections (7), benefits+cta
+ * d'evaluation-securite (2), accueil (7), service demo-sections (7) = 23
+ * types. Toute évolution des pages de démo se reflète ici automatiquement.
+ *
+ * Monolingue FR (même régime que design-lab — page interne, pas de contenu).
+ * Les tokens listés ci-dessous MIROIRENT src/styles/tokens.css : les pastilles
+ * rendent var(--…) en direct — une valeur changée dans tokens.css se reflète
+ * ici sans édition ; seule l'AJOUT/SUPPRESSION d'un token demande une mise à
+ * jour de ces listes.
+ */
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'fr' } }];
+}
+
+const landingDemo = await getEntry('landing', 'fr/demo-sections');
+const evalSecu = await getEntry('landing', 'fr/evaluation-securite');
+const serviceDemo = await getEntry('services', 'fr/demo-sections');
+const home = await getEntry('home', 'fr/accueil');
+if (!landingDemo || !evalSecu || !serviceDemo || !home) {
+  throw new Error(
+    '[style-guide] Entrée de démonstration manquante (landing/services demo-sections, evaluation-securite ou accueil) — la vitrine ne peut pas être composée.',
+  );
+}
+
+const blocks = [
+  ...landingDemo.data.sections,
+  ...evalSecu.data.sections.filter((s) => s.type === 'benefits' || s.type === 'cta'),
+  ...home.data.sections,
+  ...serviceDemo.data.sections,
+];
+
+// Seam `enrich` minimal (même mécanique que les routes campagnes/services) :
+//  - formulaires liés résolus pour la langue (la section form de la démo
+//    référence un formId réel — sans résolution elle montrerait la note
+//    d'éditeur au lieu du rendu de production) ;
+//  - related-posts : cartes FACTICES (le garde-fou du renderer exige un
+//    tableau au build ; ici la donnée n'a pas besoin d'être vraie — c'est
+//    une page de contrôle visuel).
+const formEntries = await getCollection('forms');
+const resolvedForms = Object.fromEntries(
+  formEntries.filter((e) => e.id.startsWith('fr/')).map((e) => [e.id.slice(3), e.data]),
+);
+const fakeCard = (n: number) => ({
+  href: '#',
+  title: `Article factice ${n} — contrôle visuel`,
+  excerpt: 'Texte de démonstration pour la carte de la vitrine du style guide.',
+  tags: ['Nos articles'],
+  dateISO: '2026-07-30',
+  dateLabel: '30 juillet 2026',
+  img: { src: '/wp-content/uploads/2025/07/cover-article-victrix.jpg' },
+});
+const enrich = {
+  form: {
+    resolvedForms,
+    pageContext: { titre: 'Style guide', chemin: '/fr/style-guide/', slug: 'style-guide', langue: 'fr' },
+  },
+  'related-posts': { cards: [fakeCard(1), fakeCard(2), fakeCard(3)] },
+};
+
+// Tokens — miroir de src/styles/tokens.css (voir l'entête).
+const colors = [
+  ['--color-navy', 'Marine — marque primaire'],
+  ['--color-navy-700', 'Marine 700 (survol)'],
+  ['--color-navy-900', 'Marine 900'],
+  ['--color-accent-blue', 'Bleu accent'],
+  ['--color-accent-blue-600', 'Bleu accent 600 (survol)'],
+  ['--color-accent-green', 'Vert Ø Studio'],
+  ['--color-grey-dark', 'Gris foncé (footer)'],
+  ['--color-ink', 'Encre (texte)'],
+  ['--color-grey-700', 'Gris 700'],
+  ['--color-grey-600', 'Gris 600'],
+  ['--color-grey-500', 'Gris 500'],
+  ['--color-grey-300', 'Gris 300'],
+  ['--color-grey-200', 'Gris 200 (bordures)'],
+  ['--color-grey-100', 'Gris 100'],
+  ['--color-grey-50', 'Gris 50 (surfaces)'],
+  ['--color-white', 'Blanc'],
+];
+const spaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+const typeScale = [
+  ['--fs-100', 'Mentions fines'],
+  ['--fs-200', 'Petit texte'],
+  ['--fs-300', 'Corps'],
+  ['--fs-400', 'Introduction'],
+  ['--fs-500', 'Titre h4'],
+  ['--fs-600', 'Titre h3'],
+  ['--fs-700', 'Titre h2'],
+  ['--fs-800', 'Titre h1'],
+];
+const radii = ['--radius-sm', '--radius-md', '--radius-lg', '--radius-pill'];
+const shadows = ['--shadow-sm', '--shadow-md', '--shadow-lg'];
+---
+
+<BaseLayout lang="fr" title="Style guide" noindex={true} altLocalePath="/fr/style-guide/">
+  <div class="sg">
+    <header class="container sg__head">
+      <p class="sg__eyebrow">Interne — contrôle visuel du redesign</p>
+      <h1>Style guide</h1>
+      <p class="sg__lead">
+        Tokens du thème (src/styles/tokens.css) et vitrine des 23 sections de la palette avec
+        données factices. Page noindex, hors sitemap — même régime que design-lab.
+      </p>
+    </header>
+
+    <section class="container sg__section" aria-labelledby="sg-colors">
+      <h2 id="sg-colors">Couleurs</h2>
+      <ul role="list" class="sg__swatches">
+        {
+          colors.map(([token, label]) => (
+            <li class="sg__swatch">
+              <span class="sg__chip" style={`background-color: var(${token})`} />
+              <code>{token}</code>
+              <span class="sg__label">{label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="container sg__section" aria-labelledby="sg-type">
+      <h2 id="sg-type">Typographie</h2>
+      <p class="sg__note">Montserrat — graisses 400 / 500 / 600 / 700 / 800.</p>
+      <ul role="list" class="sg__typelist">
+        {
+          typeScale.map(([token, label]) => (
+            <li>
+              <code>{token}</code>
+              <p class="sg__typesample" style={`font-size: var(${token})`}>
+                {label} — Voir grand, viser juste.
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="container sg__section" aria-labelledby="sg-space">
+      <h2 id="sg-space">Espacements</h2>
+      <ul role="list" class="sg__spaces">
+        {
+          spaces.map((n) => (
+            <li>
+              <code>{`--space-${n}`}</code>
+              <span class="sg__bar" style={`width: var(--space-${n})`} />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="container sg__section" aria-labelledby="sg-surfaces">
+      <h2 id="sg-surfaces">Rayons et ombres</h2>
+      <div class="sg__surfaces">
+        {
+          radii.map((token) => (
+            <div class="sg__surface" style={`border-radius: var(${token})`}>
+              <code>{token}</code>
+            </div>
+          ))
+        }
+        {
+          shadows.map((token) => (
+            <div class="sg__surface sg__surface--shadow" style={`box-shadow: var(${token})`}>
+              <code>{token}</code>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="sg__section" aria-labelledby="sg-palette">
+      <div class="container">
+        <h2 id="sg-palette">Vitrine des sections ({blocks.length})</h2>
+        <p class="sg__note">
+          Chaque bloc ci-dessous est rendu par le composant de production (renderer Bookshop
+          partagé) avec les données des pages de démonstration.
+        </p>
+      </div>
+      {
+        blocks.map((block) => (
+          <div class="sg__block">
+            <p class="container sg__blocklabel">
+              <code>{block.type}</code>
+            </p>
+            <Page contentBlocks={[block]} enrich={enrich} />
+          </div>
+        ))
+      }
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .sg__head {
+    padding-block: var(--space-7) var(--space-5);
+  }
+  .sg__eyebrow {
+    color: var(--color-accent-blue);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-200);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-2);
+  }
+  .sg__lead {
+    color: var(--color-text-muted);
+    max-width: 70ch;
+  }
+  .sg__section {
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+  .sg__note {
+    color: var(--color-text-muted);
+    font-size: var(--fs-200);
+  }
+  code {
+    font-size: var(--fs-100);
+    background: var(--color-grey-100);
+    padding: 0.1em 0.4em;
+    border-radius: var(--radius-sm);
+  }
+
+  .sg__swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--space-4);
+    margin: var(--space-5) 0 0;
+  }
+  .sg__swatch {
+    display: grid;
+    gap: var(--space-1);
+  }
+  .sg__chip {
+    display: block;
+    height: 56px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+  }
+  .sg__label {
+    color: var(--color-text-muted);
+    font-size: var(--fs-100);
+  }
+
+  .sg__typelist {
+    display: grid;
+    gap: var(--space-4);
+    margin: var(--space-5) 0 0;
+  }
+  .sg__typesample {
+    margin: var(--space-1) 0 0;
+    line-height: var(--lh-snug);
+    max-width: none;
+  }
+
+  .sg__spaces {
+    display: grid;
+    gap: var(--space-3);
+    margin: var(--space-5) 0 0;
+  }
+  .sg__spaces li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  .sg__bar {
+    display: inline-block;
+    height: 14px;
+    background: var(--color-accent-blue);
+    border-radius: var(--radius-sm);
+  }
+
+  .sg__surfaces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+    margin-top: var(--space-5);
+  }
+  .sg__surface {
+    display: grid;
+    place-items: center;
+    width: 160px;
+    height: 90px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+  }
+  .sg__surface--shadow {
+    border: 0;
+    border-radius: var(--radius-md);
+  }
+
+  .sg__block {
+    border-top: 1px dashed var(--color-border);
+    margin-top: var(--space-6);
+  }
+  .sg__blocklabel {
+    padding-block: var(--space-3);
+    margin: 0;
+  }
+</style>

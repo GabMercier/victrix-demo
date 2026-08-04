@@ -559,11 +559,16 @@ export default defineConfig({
       // domain included), so a substring check is enough.
       // /design-lab : page laboratoire (test pipeline export Figma → Tailwind
       // v4), noindex, à purger avant prod — jamais dans le sitemap.
+      // /style-guide : page de contrôle visuel P-15 (noindex, interne) ;
+      // /services/demo-sections : service de démonstration (noindex) servant
+      // aux captures d'aperçus de la palette — ni l'un ni l'autre au sitemap.
       filter: (page) =>
         !page.includes('/campagnes/') &&
         !page.includes('/merci/') &&
         !page.includes('/recherche/') &&
-        !page.includes('/design-lab'),
+        !page.includes('/design-lab') &&
+        !page.includes('/style-guide') &&
+        !page.includes('/services/demo-sections'),
     }),
     // Editor-managed redirects (src/data/redirects.json) → dist/_redirects.
     // Deliberately UNCONDITIONAL — both the production build and the
