@@ -994,6 +994,7 @@ _structures:
           label: ''
           type: text
           required: true
+          width: plein
           options: []
           value: ''
           showIf:
@@ -1026,6 +1027,17 @@ _structures:
                 - select
                 - checkbox
                 - hidden
+          width:
+            type: select
+            label: Largeur du champ
+            comment: >-
+              plein = pleine largeur (défaut) · demi = demi-rangée — deux
+              champs « demi » consécutifs se placent côte à côte (ex. Prénom /
+              Nom). Présentation seulement.
+            options:
+              values:
+                - plein
+                - demi
           options:
             type: array
             label: Options (liste déroulante)

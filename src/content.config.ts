@@ -93,6 +93,11 @@ const formFieldCore = z.object({
   label: z.string(),
   type: z.enum(FORM_FIELD_TYPES),
   required: z.boolean(),
+  // PRÉSENTATION seulement (re-skin formulaires 2026-08-04, maquettes Figma
+  // form1/form2) : « demi » = le champ occupe une demi-rangée (deux champs
+  // demi consécutifs partagent une rangée, ex. Prénom / Nom). Absent ou
+  // « plein » = pleine largeur. Le serveur l'ignore.
+  width: z.enum(['plein', 'demi']).optional(),
   // select seulement : la liste des choix (au moins un non vide — règle croisée).
   options: z.array(z.string()).optional(),
   // hidden seulement : la valeur émise. Jetons {{page.titre|chemin|slug|langue}}
@@ -229,6 +234,10 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       intro: z.string().optional(),
       submitLabel: z.string(),
       consentText: z.string().optional(),
+      // Re-skin 2026-08-04 (maquettes Figma) : « carte » = carte blanche à
+      // liseré bleu (form1, campagnes) ; « panneau » = panneau beige, bouton
+      // en largeur auto (form2).
+      variant: z.enum(['carte', 'panneau']).default('carte'),
       // Formulaires v2 : référence un formulaire de la collection `forms`
       // (src/data/forms/<lang>/<formId>.json). Non vide → les champs,
       // submitLabel et consentText du FORMULAIRE remplacent ceux ci-dessous

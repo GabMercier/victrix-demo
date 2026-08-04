@@ -250,7 +250,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
               </a>
               {item.mega && (
                 <div
-                  class="absolute top-full inset-x-0 bg-surface-container-lowest border-0 border-t border-solid border-outline-variant/40 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] invisible opacity-0 -translate-y-1.5 pointer-events-none transition-[opacity,transform] duration-150 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto group-data-[mega-closed]:hidden motion-reduce:transition-none motion-reduce:translate-y-0"
+                  class="absolute top-full inset-x-0 bg-surface-container-lowest border-0 border-t border-solid border-outline-variant/40 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] invisible opacity-0 -translate-y-1.5 pointer-events-none transition-[opacity,transform] duration-150 group-data-[mega-open]:visible group-data-[mega-open]:opacity-100 group-data-[mega-open]:translate-y-0 group-data-[mega-open]:pointer-events-auto motion-reduce:transition-none motion-reduce:translate-y-0"
                   aria-label={item.mega.ariaLabel}
                 >
                   <div
@@ -375,7 +375,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
               )}
               {item.megaRes && (
                 <div
-                  class="absolute top-full inset-x-0 bg-surface-container-lowest border-0 border-t border-solid border-outline-variant/40 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] invisible opacity-0 -translate-y-1.5 pointer-events-none transition-[opacity,transform] duration-150 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto group-data-[mega-closed]:hidden motion-reduce:transition-none motion-reduce:translate-y-0"
+                  class="absolute top-full inset-x-0 bg-surface-container-lowest border-0 border-t border-solid border-outline-variant/40 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] invisible opacity-0 -translate-y-1.5 pointer-events-none transition-[opacity,transform] duration-150 group-data-[mega-open]:visible group-data-[mega-open]:opacity-100 group-data-[mega-open]:translate-y-0 group-data-[mega-open]:pointer-events-auto motion-reduce:transition-none motion-reduce:translate-y-0"
                   aria-label={item.megaRes.ariaLabel}
                 >
                   <div class="container-site grid grid-cols-[minmax(220px,1fr)_minmax(160px,0.8fr)_2fr] gap-10 py-10">
@@ -651,6 +651,18 @@ const langLinkClass = 'no-underline p-1 text-sm';
   // Leaving the page with the drawer open: restore scroll + drop the focus trap.
   document.addEventListener('astro:before-swap', () => closeDrawer?.());
 
+  // Escape GLOBAL : ferme tout méga ouvert à la SOURIS (le gestionnaire par
+  // <li> ne couvre que le cas clavier — keydown ne remonte que depuis
+  // l'élément focalisé). Niveau module (une seule fois), requête le DOM
+  // courant : compatible avec les swaps du ClientRouter.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll<HTMLLIElement>('[data-mega]').forEach((li) => {
+      delete li.dataset.megaOpen;
+      li.querySelector<HTMLAnchorElement>('a[aria-haspopup]')?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
   document.addEventListener('astro:page-load', bindHeader);
 
   function bindHeader() {
@@ -725,39 +737,57 @@ const langLinkClass = 'no-underline p-1 text-sm';
   }
 
   // --- Mega menu ----------------------------------------------------------
-  // Open/close is CSS-driven (group-hover / group-focus-within utilities); JS
-  // only syncs aria-expanded and lets Escape close the panel (until pointer or
-  // focus leaves) via the data-mega-closed attribute the panel's
-  // group-data-[mega-closed]:hidden utility keys on.
-  document.querySelectorAll<HTMLLIElement>('[data-mega]').forEach((li) => {
-    const trigger = li.querySelector<HTMLAnchorElement>('a[aria-haspopup]');
-    const setExpanded = (v: boolean) => trigger?.setAttribute('aria-expanded', String(v));
-    const reopenable = () => {
-      delete li.dataset.megaClosed;
-    };
-    li.addEventListener('mouseenter', () => setExpanded(true));
-    li.addEventListener('focusin', () => setExpanded(true));
+  // Ouverture/fermeture pilotées par l'attribut data-mega-open sur le <li>
+  // (le panneau porte les utilitaires group-data-[mega-open]:*). Comportement
+  // demandé (2026-08-04) : une fois ouvert, le panneau RESTE ouvert tant que
+  // le pointeur est n'importe où dans le header (barre OU panneau — le
+  // panneau est un descendant du <header>, mouseleave ne se déclenche qu'en
+  // sortant de l'ensemble) ; survoler un autre onglet à méga bascule le
+  // panneau. Clavier : focus dans le li = ouvert, focus sorti = fermé.
+  // Escape ferme et marque data-mega-closed pour ne pas rouvrir tant que le
+  // pointeur/focus n'a pas quitté l'élément.
+  const megaItems = Array.from(document.querySelectorAll<HTMLLIElement>('[data-mega]'));
+  const headerEl = document.querySelector<HTMLElement>('header.site-header');
+  const megaTrigger = (li: HTMLLIElement) => li.querySelector<HTMLAnchorElement>('a[aria-haspopup]');
+  const closeMega = (li: HTMLLIElement) => {
+    delete li.dataset.megaOpen;
+    megaTrigger(li)?.setAttribute('aria-expanded', 'false');
+  };
+  const openMega = (li: HTMLLIElement) => {
+    if ('megaClosed' in li.dataset) return; // fermé par Escape — attendre la sortie
+    megaItems.forEach((other) => {
+      if (other !== li) closeMega(other);
+    });
+    li.dataset.megaOpen = '';
+    megaTrigger(li)?.setAttribute('aria-expanded', 'true');
+  };
+  megaItems.forEach((li) => {
+    li.addEventListener('mouseenter', () => openMega(li));
+    li.addEventListener('focusin', () => openMega(li));
+    // Quitter l'ÉLÉMENT ne ferme plus (c'est la sortie du header qui ferme) —
+    // on redevient seulement ré-ouvrable après un Escape.
     li.addEventListener('mouseleave', () => {
-      setExpanded(false);
-      reopenable();
+      delete li.dataset.megaClosed;
     });
     li.addEventListener('focusout', (e) => {
       if (!li.contains(e.relatedTarget as Node)) {
-        setExpanded(false);
-        reopenable();
+        closeMega(li);
+        delete li.dataset.megaClosed;
       }
     });
     li.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        // Focus first: it fires focusin (→ expanded=true), which the two
-        // lines below then correct — the reverse order would leave
-        // aria-expanded="true" on a hidden panel.
-        trigger?.focus();
+        // Focus d'abord : focusin (→ ouvre) est corrigé par les deux lignes
+        // suivantes — l'ordre inverse laisserait aria-expanded="true" sur un
+        // panneau masqué.
+        megaTrigger(li)?.focus();
         li.dataset.megaClosed = '';
-        setExpanded(false);
+        closeMega(li);
       }
     });
   });
+  // La sortie RÉELLE de la zone du header (barre + panneau) ferme tout.
+  headerEl?.addEventListener('mouseleave', () => megaItems.forEach(closeMega));
 
   // --- Announcement bar dismissal ----------------------------------------
   // The dismissed state is applied pre-paint by a blocking script in <head>

@@ -39,6 +39,7 @@ blueprint:
   formId: ""
   submitLabel: "Envoyer"
   consentText: ""
+  variant: carte
   # Forme COMPLÈTE P-05 (comme schemas/form-*.json et _structures.form_fields) :
   # CloudCannon ne matérialise les inputs que pour les clés PRÉSENTES — sans
   # elles, un champ seed passé à « select » n'offrirait jamais ses Options.
@@ -46,6 +47,7 @@ blueprint:
     - label: "Nom complet"
       type: text
       required: true
+      width: plein
       options: []
       value: ""
       showIf:
@@ -54,6 +56,7 @@ blueprint:
     - label: "Courriel"
       type: email
       required: true
+      width: plein
       options: []
       value: ""
       showIf:
@@ -62,6 +65,7 @@ blueprint:
     - label: "Message"
       type: textarea
       required: false
+      width: plein
       options: []
       value: ""
       showIf:
@@ -92,6 +96,20 @@ _inputs:
   consentText:
     label: "Texte de consentement"
     comment: "Petit texte affiché au-dessus du bouton (optionnel)."
+  # `variant` est AUSSI le nom du select light/dark de la section CTA — ce
+  # _inputs de STRUCTURE prime sur celui de la collection (même mécanique que
+  # le `type` de champ, voir le GOTCHA d'entête).
+  variant:
+    type: select
+    label: "Style du formulaire"
+    comment: >-
+      carte = carte blanche à liseré bleu, bouton pleine largeur (maquette
+      « guide ») · panneau = panneau beige, bouton en largeur auto (maquette
+      « contact »).
+    options:
+      values:
+        - carte
+        - panneau
   fields:
     # `type: array` explicite — voir le GOTCHA d'entête (bail-out de generate +
     # liaison à la structure partagée qui ré-expose le type de champ).
