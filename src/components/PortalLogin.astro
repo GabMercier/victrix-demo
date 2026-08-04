@@ -161,7 +161,7 @@ const homeHref = lang === 'fr' ? '/fr' : '/en';
 
 <style>
   .pl {
-    background: linear-gradient(180deg, var(--color-navy) 0 220px, var(--color-surface) 220px);
+    background: linear-gradient(180deg, var(--color-navy) 0 220px, var(--color-band) 220px);
     padding-block: var(--space-8) var(--space-9);
   }
   .pl__inner {
@@ -175,8 +175,8 @@ const homeHref = lang === 'fr' ? '/fr' : '/en';
     grid-template-columns: 1fr;
     overflow: hidden;
     background-color: var(--color-bg);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-3);
   }
   @media (min-width: 880px) {
     .pl__card {
@@ -249,7 +249,7 @@ const homeHref = lang === 'fr' ? '/fr' : '/en';
   .pl__alert {
     margin: var(--space-5) 0 0;
     padding: var(--space-3) var(--space-4);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-m);
     font-size: var(--fs-200);
     font-weight: var(--fw-medium);
   }
@@ -285,7 +285,7 @@ const homeHref = lang === 'fr' ? '/fr' : '/en';
     width: 100%;
     padding: 0.7em 0.9em;
     border: 1px solid var(--color-grey-500);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-m);
     background-color: var(--color-bg);
   }
   .field > input:focus-visible {

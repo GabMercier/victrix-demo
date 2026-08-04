@@ -62,9 +62,16 @@ But : les URLs du repo = les URLs de l'inventaire ([urls-contenus.csv](migration
 - **Repli si bloquant** : worker Cloudflare séparé réutilisant `/api/forms.ts` + SMTP2GO tel quel.
 - Hors périmètre CloudCannon Forms : le **gating des PDF** (échange lead ↔ document, inventaire Q4) — décision séparée (libérer les PDF ou petit worker de liens signés).
 
-### Phase 5 — Design system Luminous Precision (par lots, en parallèle de la 6)
+### Phase 5 — Design system final « Victrix modern web » (par lots, en parallèle de la 6)
 
-- Re-skin des 23 composants Bookshop **par lots**, dans l'ordre des maquettes disponibles : (1) chrome — header/footer/nav (maquette Homepage) ; (2) sections d'accueil ; (3) sections service/expertise (maquette expertise-productivite) ; (4) le reste + nouvelles sections issues des exports Figma→Tailwind.
+> **🟢 SOCLE APPLIQUÉ (2026-08-04)** : références tranchées (SYSTÈME = planche
+> `DesignSystemVictrix.png`, STRUCTURE = exports HTML — v2), thème final fusionné
+> dans `theme.css`, tokens legacy re-mappés sur les 6 ancres (re-peau instantanée
+> de tout le site), Hanken Grotesk partout, collisions `tokens.css` renommées,
+> design-lab purgé, `/fr/style-guide` = page « Design System Victrix ».
+> RESTE = les lots ci-dessous (le re-skin FIN, composant par composant).
+
+- Re-skin des 23 composants Bookshop **par lots**, dans l'ordre des maquettes disponibles : (1) chrome — header/footer/nav (maquette Accueil, à ré-exporter — voir arbitrages §2) ; (2) sections d'accueil ; (3) sections service/expertise (maquette PageExpertise — patrons déjà validés au port du 2026-08-04) ; (4) le reste + NOUVELLES sections issues des exports (tuiles image+overlay, marquee technologies, cartes bureaux, valeurs, carte flottante) et pages à créer (Carrières, Solutions).
 - Parité **fonctionnelle** exigée (tests, contrats de sections, live editing) ; parité **visuelle** non exigée — c'est le but du re-skin. Les 4 contrats par section et les specs `.bookshop.yml` restent inchangés sauf ajout de champs.
 - Les exports Figma+plugin Tailwind arrivent comme **matière première** (markup de référence), pas comme composants finaux : ils passent par le moule Bookshop (browser-safe, frontmatter-bindé, tokens `@theme` au lieu de valeurs codées en dur).
 

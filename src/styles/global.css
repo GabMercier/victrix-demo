@@ -6,44 +6,10 @@
 @import './tokens.css';
 
 /* -----------------------------------------------------------------------------
-   Self-hosted Montserrat (woff2 served from /public/fonts).
-   Only the weights used by the design are loaded, with font-display: swap.
+   Police du site : Hanken Grotesk VARIABLE (design system final, 2026-08-04),
+   déclarée par le @font-face de theme.css (chargé par BaseLayout) — Montserrat
+   retirée avec l'ancien design (fichiers woff2 supprimés de /public/fonts).
 ----------------------------------------------------------------------------- */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/Montserrat-Medium.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('/fonts/Montserrat-SemiBold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/Montserrat-Bold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url('/fonts/Montserrat-ExtraBold.woff2') format('woff2');
-}
 
 /* -----------------------------------------------------------------------------
    Modern reset
@@ -170,7 +136,7 @@ b {
 :focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: 2px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-s);
 }
 
 /* -----------------------------------------------------------------------------
@@ -200,8 +166,8 @@ b {
   background-color: var(--color-navy);
   color: var(--color-text-invert);
   font-weight: var(--fw-semibold);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-2);
   transform: translateY(-150%);
   transition: transform 150ms ease;
 }
@@ -314,14 +280,14 @@ html.announce-dismissed .announcement {
   margin-inline: 0;
   padding: var(--space-2) var(--space-5);
   border-left: 4px solid var(--color-accent);
-  background-color: var(--color-surface);
-  border-radius: var(--radius-sm);
+  background-color: var(--color-band);
+  border-radius: var(--radius-s);
   font-size: var(--fs-500);
   font-style: italic;
   color: var(--color-navy);
 }
 .prose img {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-m);
 }
 .prose hr {
   border: 0;
@@ -330,7 +296,7 @@ html.announce-dismissed .announcement {
 .prose code {
   font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
   font-size: 0.9em;
-  background-color: var(--color-surface);
+  background-color: var(--color-band);
   padding: 0.15em 0.4em;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-s);
 }

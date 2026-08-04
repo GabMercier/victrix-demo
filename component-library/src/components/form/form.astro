@@ -178,7 +178,7 @@ const effConsentText = formDef && formDef.consentText !== '' ? formDef.consentTe
 // aucune classe nouvelle, la feuille de style paginée reste identique.
 const formIdPendingNote = formId !== '' && !formDef;
 const pendingNoteStyle =
-  'margin:0;padding:0.5rem 1rem;border:1px dashed var(--color-grey-300, #cdd0d6);border-radius:var(--radius-md, 8px);color:var(--color-text-muted, #4a4d54);font-size:var(--fs-100, 0.8125rem);';
+  'margin:0;padding:0.5rem 1rem;border:1px dashed var(--color-grey-300, #cdd0d6);border-radius:var(--radius-m, 8px);color:var(--color-text-muted, #4a4d54);font-size:var(--fs-100, 0.8125rem);';
 
 // Base d'identifiants stables pour lier <label for> et <input id>.
 const idBase =
@@ -291,7 +291,7 @@ const honeypotStyle =
 // dans tokens.css → paire rouge littérale, contraste AA (texte #8c1d18 sur
 // fond #fdecea). Le display:none initial vient de l'attribut `hidden`.
 const errorBannerStyle =
-  'margin:0;padding:0.75rem 1rem;border:1px solid #b3261e;border-radius:var(--radius-md, 8px);background-color:#fdecea;color:#8c1d18;font-size:var(--fs-200, 0.9375rem);line-height:var(--lh-normal, 1.6);';
+  'margin:0;padding:0.75rem 1rem;border:1px solid #b3261e;border-radius:var(--radius-m, 8px);background-color:#fdecea;color:#8c1d18;font-size:var(--fs-200, 0.9375rem);line-height:var(--lh-normal, 1.6);';
 // Texte volontairement NON éditable (plomberie du contrat « formulaires »,
 // pas du contenu de campagne) — langue calée sur la page, comme Turnstile.
 const errorMessage =
@@ -569,7 +569,7 @@ const errorMessage =
 <style>
   .lp-form {
     padding-block: var(--space-9, 6rem);
-    background-color: var(--color-surface, #f6f7f8);
+    background-color: var(--color-band, #f6f7f8);
     color: var(--color-text, #1a1c20);
     font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
   }
@@ -612,8 +612,8 @@ const errorMessage =
     padding: var(--space-6, 2rem);
     background-color: var(--color-bg, #ffffff);
     border: 1px solid var(--color-border, #e2e4e8);
-    border-radius: var(--radius-lg, 16px);
-    box-shadow: var(--shadow-sm, 0 1px 2px rgba(20, 33, 61, 0.08));
+    border-radius: var(--radius-l, 16px);
+    box-shadow: var(--shadow-1, 0 1px 2px rgba(20, 33, 61, 0.08));
   }
 
   .lp-form__field {
@@ -635,7 +635,7 @@ const errorMessage =
     width: 100%;
     padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
     border: 1px solid var(--color-grey-300, #cdd0d6);
-    border-radius: var(--radius-md, 8px);
+    border-radius: var(--radius-m, 8px);
     background-color: var(--color-bg, #ffffff);
     font: inherit;
     color: inherit;

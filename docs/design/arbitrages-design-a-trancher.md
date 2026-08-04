@@ -1,80 +1,98 @@
-# Référence design retenue & points à signaler — refonte Victrix.ca
+# Références design retenues (v2) & points à signaler — refonte Victrix.ca
 
-> **DÉCISION (2026-08-04)** : les **exports HTML** (`docs/design/Export HTML/`)
-> sont la **référence maîtresse** de la refonte — ils sont postérieurs aux
-> artefacts du processus de décision (planche `DesignSystemVictrix.png`, prose
-> du design system). Ce qui les contredit s'aligne sur eux ; ce qui en est
-> absent ou douteux est **signalé à l'équipe design** (§2) sans bloquer le
-> chantier. Ce document remplace la version « 5 arbitrages bloquants » du même
-> jour ; l'analyse détaillée reste dans `analyse-reception-maquettes-finales.md`
-> et l'audit automatisé dans `audit-tokens-figma.md`.
+> **DÉCISION v2 (2026-08-04, après examen des maquettes — remplace la v1 du
+> même jour « les exports seuls font foi »)** : les exports HTML présentent des
+> incohérences internes (Accueil ≠ les 4 autres pages, échelle de rayons
+> suspecte) ; la planche **`DesignSystemVictrix.png` est la référence la plus
+> cohérente**. Hiérarchie retenue :
+> - **STRUCTURE des pages** (markup, rôles de tokens, layout, spacing) =
+>   les 5 exports HTML (`docs/design/Export HTML/`) ;
+> - **SYSTÈME visuel** (palette, typographie, style des composants, rayons) =
+>   la planche `docs/design/Design system/DesignSystemVictrix.png`.
+> On **garde les éléments qui correspondent, on transforme ce qui ne
+> correspond pas**. Implémenté dans `src/styles/theme-refonte.css` ; visible
+> sur `/fr/design-lab/{palettes, refonte, page-expertise}`.
 
 | Sujet | Statut | Valeur retenue |
 |---|---|---|
-| Palette | ✅ résolu | Frontmatter du design system (= consommé verbatim par les 4 exports alignés) |
-| Typo / spacing | ✅ résolu | Frontmatter (= 4 exports alignés) : display 56/800, headline-lg 40/700, body-lg 18/1.6, gutter 24px, section-gap 80px… |
-| Rayons | ✅ résolu | Configs des exports (identiques ×5) : `DEFAULT .125 / lg .25 / xl .5` — **sauf `full`**, voir §2.b |
-| CTA / navy | ✅ résolu | CTA = `primary` ; overlays sombres = `on-primary-fixed #00105B` (usage du code) |
-| Graisses | ✅ résolu | 700/800 (code) — la planche « SemiBold » est un spécimen |
+| Palette | ✅ tranché | 6 ancres planche projetées sur les rôles Material des exports (§1) — **dérivés à valider** |
+| Typographie | ✅ tranché | Tailles/rôles des exports, **graisses de la planche** (Display Bold, Headlines SemiBold, Label/Button Medium) |
+| Rayons | ✅ tranché | Échelle planche/charte : 4px boutons · 8px cartes · chips **pilule** (→ `rounded-full` rond) |
+| Spacing / layout | ✅ tranché | Exports (= planche : base 8px, sections 80-120, conteneur 1280) |
+| CTA | ✅ tranché | `primary` (Bleu Victrix) |
+| Dérivés de palette | 🔔 à valider | Nos interpolations entre les 6 ancres (§2.a) |
 | `Accueil.html` | 🔔 à signaler | Ré-export souhaité (hors-norme sur ~10 axes) |
-| `rounded-full` | 🔔 à signaler | Artefact probable — nous gardons les formes RONDES |
+| Contraste a11y | 🔔 à valider | Blanc sur `#1A5BFF` ≈ 4:1 (limite AA texte normal) |
 | Images mortes | 🔔 à signaler | 5 visuels à ré-exporter du `.fig` (Annexe A) |
 | Périmètre | 🔔 à signaler | Maquettes manquantes + routes à créer (Annexe B) |
 
 ---
 
-## 1. Référence retenue (application dans le repo)
+## 1. Application — les 6 ancres planche projetées sur les rôles Material
 
-Le thème candidat `src/styles/theme-refonte.css` implémente cette référence :
-47 couleurs + 8 styles typo + 7 espacements du frontmatter (identiques dans les
-4 exports Carrieres/Contact/PageExpertise/PageSolution), rayons des configs
-d'export. Les prototypes vivent sous `/fr/design-lab/` (refonte, palettes,
-page-expertise) — jamais chargés par le site réel avant la Phase 5.
+Les NOMS de rôles restent ceux du frontmatter/exports (le markup les consomme) ;
+les VALEURS sont ré-ancrées. Ancres : **Ivoire chaud `#FAF7F3`** · **Beige doux
+`#F2ECE4`** · **Sable clair `#E9E1D6`** · **Anthracite `#1A1F28`** · **Bleu
+Victrix `#1A5BFF`** · **Bleu nuit `#0D1430`**.
 
-Détails d'échelle des rayons (merge `theme.extend` v3 du Play CDN, repris tel
-quel) : `sm .125 / DEFAULT .125 / md .375 / lg .25 / xl .5 / 2xl 1 / 3xl 1.5`.
-L'échelle est **non-monotone** (`lg` < `md`) — assumé, c'est ce que rendent les
-maquettes.
+| Rôle (exports) | Avant (frontmatter) | Retenu | Source |
+|---|---|---|---|
+| `surface` / `background` | `#FCF9F5` | `#FAF7F3` | ancre Ivoire |
+| `surface-container` | `#F0EDEA` | `#F2ECE4` | ancre Beige |
+| `surface-container-highest` / `surface-variant` | `#E5E2DE` | `#E9E1D6` | ancre Sable |
+| `surface-container-low` / `-high` / `-dim` | échelle froide | `#F7F2EB` / `#EEE7DB` / `#DED5C6` | dérivés |
+| `on-surface` / `on-background` | `#1C1C1A` | `#1A1F28` | ancre Anthracite |
+| `on-surface-variant` | `#444656` | `#4A5160` | dérivé |
+| `outline` / `outline-variant` | `#747688` / `#C4C5D9` | `#767B87` / `#E0D8CA` | dérivés (bordures chaudes) |
+| `primary` | `#002FC7` | `#1A5BFF` | ancre Bleu Victrix |
+| `primary-container` | `#1D46F3` | `#1348D6` | dérivé (hover/états) |
+| `primary-fixed` / `-fixed-dim` | `#DEE0FF` / `#BAC3FF` | `#DCE6FF` / `#9DB8FF` | dérivés |
+| `on-primary-fixed` (overlays, bandes sombres) | `#00105B` | `#0D1430` | ancre Bleu nuit |
+| `secondary` (+ famille) | `#515D82`… | `#47536E`… | dérivés (ardoise re-teintée nuit) |
+| `tertiary` (+ famille) | `#424648`… | `#42464E`… | dérivés (gris anthracite) |
+| `error` (famille) | `#BA1A1A`… | inchangée | aucune contradiction |
 
-## 2. Points à signaler à l'équipe design
+**Typographie** (planche §3) : `display` 56/1.1/**700**/-0.5 % · `headline-lg`
+40/1.2/**600** · `headline-md` 24/1.3/**600** · `body-md` 16/1.6/400 (+
+`body-lg` 18, extension des exports) · `label-caps` 12/**500**/0.12em ·
+`button` **16/500**/0.02em. Les graisses 700/800 et le button 14/600 des
+exports sont transformés.
 
-### a. `Accueil.html` — ré-export souhaité 🔔
+**Rayons** (planche §Composants, recoupe la charte .md) : `rounded` 0.25rem
+(boutons), `lg` 0.5rem (cartes), chips **pilule** → `rounded-full` garde le
+rond natif ; l'échelle des configs d'export (décalée d'un cran, `full:
+0.75rem`) est écartée comme artefact du générateur.
 
-L'export Accueil diverge des 4 autres pages sur ~10 axes (audit automatisé) :
-polices **Manrope + Inter** déclarées mais jamais chargées (rendu réel = police
-de secours du navigateur), `headline-lg` 32px vs 40px, `body-lg` 16px/1.5 vs
-18px/1.6, graisses 600 vs 700, échelle d'espacement parallèle (`section-gap`
-128px vs 80px), CTA sur `secondary` (ardoise) là où les 4 autres pages posent
-`primary`. Génération antérieure probable. **En attendant un ré-export, nous
-traitons le système des 4 pages comme normatif et adapterons la maquette
-Accueil à ce système.**
+## 2. Points à signaler / valider avec l'équipe design
 
-### b. `rounded-full: 0.75rem` — artefact probable, non repris 🔔
+### a. Les valeurs DÉRIVÉES de la palette 🔔
 
-Les 5 configs posent `full: 0.75rem` (au lieu de « rond »). Appliqué à la
-lettre, cela transforme en carrés arrondis **10 éléments réellement
-circulaires** des maquettes : pastilles sociales des footers (PageExpertise,
-PageSolution), pastilles d'icônes de la barre de confiance et bouton-flèche
-rond (Accueil), **médaillon et photos d'équipe circulaires à bordure ronde
-(Carrières)**. L'échelle non-monotone du même bloc renforce l'hypothèse d'un
-artefact du générateur Figma→Tailwind. **Décision : nous gardons `rounded-full`
-rond** ; merci de confirmer ou de corriger l'export.
+La planche donne 6 ancres ; les ~40 autres rôles Material sont NOS
+interpolations (marquées « dérivé » dans `theme-refonte.css` et sur
+`/fr/design-lab/palettes`). À valider — en particulier `primary-container`
+`#1348D6` (états/hover), `outline-variant` `#E0D8CA` (bordures de cartes sur
+fonds chauds) et la famille `secondary` `#47536E`.
 
-### c. Navy des surfaces sombres — token à officialiser 🔔
+### b. Contraste d'accessibilité 🔔
 
-Le code des maquettes pose ses overlays et bandes sombres en
-`on-primary-fixed #00105B` ; la prose parle de `#000D2E`, la planche de
-`#0D1430` — aucun de ces deux hex n'a de token. **Nous employons `#00105B`
-comme le code** ; si un autre hex est voulu, il faudra le nommer dans la
-palette.
+Blanc sur Bleu Victrix `#1A5BFF` ≈ 4:1 — suffisant pour boutons/texte large
+(AA 3:1), limite pour du texte normal (AA 4.5:1). À valider pour les liens et
+petits libellés sur fond primaire.
 
-### d. Artefacts mineurs de génération (corrigés au portage, pour info)
+### c. `Accueil.html` — ré-export souhaité 🔔
 
-- `PageExpertise.html` : l'item de nav marqué ACTIF est « Secteurs » (page…
-  Expertise) ; `md:row` (footer) au lieu de `md:flex-row` ; `viewbox` en
-  minuscules dans le SVG décoratif du CTA.
-- Sélecteur de langue : « FR | EN » en texte statique sur Accueil uniquement,
-  absent des 4 autres pages.
+Diverge des 4 autres pages sur ~10 axes (Manrope/Inter jamais chargées,
+échelle d'espacement parallèle, `headline-lg` 32 vs 40, CTA sur `secondary`).
+Génération antérieure probable. En attendant : structure des 4 pages = normative.
+
+### d. Artefacts de génération constatés (corrigés au portage, pour info)
+
+- Échelle de rayons des 5 configs décalée d'un cran + `full: 0.75rem` (aurait
+  écrasé 10 éléments réellement circulaires — les chips pilule de la planche
+  confirment le rond) ;
+- `PageExpertise.html` : nav active « Secteurs » (sur une page Expertise),
+  `md:row` au lieu de `md:flex-row`, `viewbox` minuscule dans le SVG du CTA ;
+- Sélecteur de langue : « FR | EN » statique sur Accueil uniquement.
 
 ---
 

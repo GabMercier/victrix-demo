@@ -4,9 +4,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Page from '../../../component-library/src/shared/astro/page.astro';
 
 /**
- * P-15 — page de contrôle visuel /fr/style-guide/ (noindex, hors sitemap).
- * Sert de page de RÉFÉRENCE pour le redesign (« re-peau ») : tokens (couleurs,
- * typo, espacements, rayons, ombres) + vitrine des 23 sections de la palette.
+ * DESIGN SYSTEM VICTRIX — page de référence web /fr/style-guide/ (noindex,
+ * hors sitemap). Depuis le 2026-08-04, c'est LA version vivante de la planche
+ * docs/design/Design system/DesignSystemVictrix.png (décision v2 : SYSTÈME =
+ * planche, STRUCTURE = exports) et elle REMPLACE les pages design-lab
+ * (purgées) : ancres + rôles du système (@theme de theme.css), tokens legacy
+ * re-mappés (tokens.css), et vitrine des 23 sections de la palette.
  *
  * La vitrine NE duplique aucune donnée : elle recompose les MÊMES entrées de
  * démonstration que le script de captures (scripts/design/
@@ -14,11 +17,13 @@ import Page from '../../../component-library/src/shared/astro/page.astro';
  * d'evaluation-securite (2), accueil (7), service demo-sections (7) = 23
  * types. Toute évolution des pages de démo se reflète ici automatiquement.
  *
- * Monolingue FR (même régime que design-lab — page interne, pas de contenu).
- * Les tokens listés ci-dessous MIROIRENT src/styles/tokens.css : les pastilles
- * rendent var(--…) en direct — une valeur changée dans tokens.css se reflète
- * ici sans édition ; seule l'AJOUT/SUPPRESSION d'un token demande une mise à
- * jour de ces listes.
+ * Monolingue FR (page interne, pas de contenu marketing). Les pastilles
+ * rendent var(--…) en DIRECT — une valeur changée dans theme.css/tokens.css se
+ * reflète ici sans édition ; seul l'AJOUT/SUPPRESSION d'un token demande une
+ * mise à jour de ces listes. Icônes : sous-ensemble Material Symbols auto-
+ * hébergé (33 icônes, axe FILL variable — generate-icon-subset.mjs), chargé
+ * PAR CETTE PAGE seulement (adoption site-wide vs SVG inline : à trancher au
+ * re-skin des composants).
  */
 
 export function getStaticPaths() {
@@ -70,23 +75,24 @@ const enrich = {
   'related-posts': { cards: [fakeCard(1), fakeCard(2), fakeCard(3)] },
 };
 
-// Tokens — miroir de src/styles/tokens.css (voir l'entête).
+// Tokens LEGACY — miroir de src/styles/tokens.css (re-mappés sur la planche
+// le 2026-08-04 ; consommés par les composants pas encore re-skinnés).
 const colors = [
-  ['--color-navy', 'Marine — marque primaire'],
-  ['--color-navy-700', 'Marine 700 (survol)'],
-  ['--color-navy-900', 'Marine 900'],
-  ['--color-accent-blue', 'Bleu accent'],
-  ['--color-accent-blue-600', 'Bleu accent 600 (survol)'],
-  ['--color-accent-green', 'Vert Ø Studio'],
-  ['--color-grey-dark', 'Gris foncé (footer)'],
-  ['--color-ink', 'Encre (texte)'],
-  ['--color-grey-700', 'Gris 700'],
-  ['--color-grey-600', 'Gris 600'],
-  ['--color-grey-500', 'Gris 500'],
-  ['--color-grey-300', 'Gris 300'],
-  ['--color-grey-200', 'Gris 200 (bordures)'],
-  ['--color-grey-100', 'Gris 100'],
-  ['--color-grey-50', 'Gris 50 (surfaces)'],
+  ['--color-navy', 'navy → Bleu nuit (marque profonde)'],
+  ['--color-navy-700', 'navy 700 (survol, dérivé)'],
+  ['--color-navy-900', 'navy 900 (dérivé)'],
+  ['--color-accent-blue', 'accent → Bleu Victrix'],
+  ['--color-accent-blue-600', 'accent 600 (survol, dérivé)'],
+  ['--color-accent-green', 'ex-vert Ø Studio (retiré → Bleu Victrix)'],
+  ['--color-grey-dark', 'fond footer → Bleu nuit'],
+  ['--color-ink', 'encre → Anthracite'],
+  ['--color-grey-700', 'texte atténué (dérivé)'],
+  ['--color-grey-600', 'gris 600 (dérivé)'],
+  ['--color-grey-500', 'gris 500 (dérivé)'],
+  ['--color-grey-300', 'gris 300 (dérivé sable)'],
+  ['--color-grey-200', 'bordures (dérivé sable)'],
+  ['--color-grey-100', 'gris 100 → Beige doux'],
+  ['--color-grey-50', 'bandes claires (dérivé ivoire)'],
   ['--color-white', 'Blanc'],
 ];
 const spaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
@@ -100,20 +106,103 @@ const typeScale = [
   ['--fs-700', 'Titre h2'],
   ['--fs-800', 'Titre h1'],
 ];
-const radii = ['--radius-sm', '--radius-md', '--radius-lg', '--radius-pill'];
-const shadows = ['--shadow-sm', '--shadow-md', '--shadow-lg'];
+const radii = ['--radius-s', '--radius-m', '--radius-l', '--radius-pill'];
+const shadows = ['--shadow-1', '--shadow-2', '--shadow-3'];
 ---
 
 <BaseLayout lang="fr" title="Style guide" noindex={true} altLocalePath="/fr/style-guide/">
   <div class="sg">
     <header class="container sg__head">
-      <p class="sg__eyebrow">Interne — contrôle visuel du redesign</p>
-      <h1>Style guide</h1>
+      <p class="sg__eyebrow">Interne — référence vivante du design system</p>
+      <h1>Design System Victrix</h1>
       <p class="sg__lead">
-        Tokens du thème (src/styles/tokens.css) et vitrine des 23 sections de la palette avec
-        données factices. Page noindex, hors sitemap — même régime que design-lab.
+        Version web de la planche DesignSystemVictrix.png (système = planche, structure = exports —
+        décision du 4 août) : ancres et rôles du thème (src/styles/theme.css), tokens legacy re-mappés
+        (src/styles/tokens.css) et vitrine des 23 sections avec données factices. Les valeurs marquées
+        « dérivé » sont nos interpolations, à valider (docs/design/arbitrages-design-a-trancher.md).
       </p>
     </header>
+
+    <section class="container sg__section" aria-labelledby="sg-ancres">
+      <h2 id="sg-ancres">Les 6 ancres (planche)</h2>
+      <ul role="list" class="sg__swatches">
+        {
+          [
+            ['--color-surface', 'Ivoire chaud — surfaces'],
+            ['--color-surface-container', 'Beige doux — surfaces'],
+            ['--color-surface-container-highest', 'Sable clair — surfaces'],
+            ['--color-on-surface', 'Anthracite — texte'],
+            ['--color-primary', 'Bleu Victrix — actions, liens, marque'],
+            ['--color-on-primary-fixed', 'Bleu nuit — profondeur, contrastes'],
+          ].map(([token, label]) => (
+            <li class="sg__swatch">
+              <span class="sg__chip" style={`background-color: var(${token})`} />
+              <code>{token}</code>
+              <span class="sg__label">{label}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="sg__note">
+        Les ~40 autres rôles Material du thème (surface-container-low/high, primary-container,
+        secondary, tertiary…) sont dérivés de ces ancres — détail et statut dans
+        arbitrages-design-a-trancher.md §1.
+      </p>
+    </section>
+
+    <section class="container sg__section" aria-labelledby="sg-systeme-typo">
+      <h2 id="sg-systeme-typo">Typographie sémantique (système)</h2>
+      <p class="sg__note">
+        Hanken Grotesk variable (100–900), auto-hébergée. Graisses de la planche : Display Bold,
+        Headlines SemiBold, Label et Button Medium.
+      </p>
+      <div class="sg__typelist" style="margin-top: var(--space-5);">
+        <p class="font-display text-display m-0">display — Voir grand, viser juste.</p>
+        <p class="font-headline-lg text-headline-lg m-0">headline-lg — Voir grand, viser juste.</p>
+        <p class="font-headline-md text-headline-md m-0">headline-md — Voir grand, viser juste.</p>
+        <p class="font-body-lg text-body-lg m-0">body-lg — Corps introductif, dix-huit pixels.</p>
+        <p class="font-body-md text-body-md m-0">body-md — Corps de texte, seize pixels.</p>
+        <p class="font-label-caps text-label-caps uppercase m-0">label-caps — Catégories et métadonnées</p>
+        <p class="font-button text-button m-0">button — Libellé de bouton, seize pixels Medium</p>
+      </div>
+    </section>
+
+    <section class="container sg__section" aria-labelledby="sg-primitives">
+      <h2 id="sg-primitives">Primitives (planche §4)</h2>
+      <div class="sg__primitives">
+        <button class="bg-primary text-on-primary px-6 py-3 rounded font-button text-button inline-flex items-center gap-2" type="button">
+          Bouton primaire
+          <span class="ms text-[18px]" aria-hidden="true">arrow_forward</span>
+        </button>
+        <button class="bg-transparent text-primary border border-solid border-primary px-6 py-3 rounded font-button text-button inline-flex items-center gap-2" type="button">
+          Bouton secondaire
+          <span class="ms text-[18px]" aria-hidden="true">arrow_forward</span>
+        </button>
+        <span class="inline-flex items-center gap-2 bg-surface-container-high text-on-surface rounded-full px-4 py-2 font-label-caps text-label-caps uppercase">
+          <span class="ms text-[16px]" aria-hidden="true">security</span>
+          Chip pilule
+        </span>
+        <label class="sg__field">
+          <span class="font-body-md text-body-md font-bold">Courriel</span>
+          <span class="sg__fieldbox">
+            <span class="ms text-[20px]" aria-hidden="true">mail</span>
+            <input class="sg__fieldinput font-body-md text-body-md" placeholder="prenom.nom@entreprise.ca" type="email" />
+          </span>
+        </label>
+        <p class="sg__icons m-0">
+          {
+            ['verified', 'groups', 'trending_up', 'lightbulb', 'handshake', 'star', 'call', 'north_east'].map((i) => (
+              <span class="ms" title={i}>{i}</span>
+            ))
+          }
+        </p>
+      </div>
+      <p class="sg__note">
+        Iconographie : Material Symbols Outlined, sous-ensemble auto-hébergé de 33 icônes (axe FILL
+        variable), chargé par cette page seulement — adoption site-wide vs SVG inline à trancher au
+        re-skin.
+      </p>
+    </section>
 
     <section class="container sg__section" aria-labelledby="sg-colors">
       <h2 id="sg-colors">Couleurs</h2>
@@ -131,8 +220,11 @@ const shadows = ['--shadow-sm', '--shadow-md', '--shadow-lg'];
     </section>
 
     <section class="container sg__section" aria-labelledby="sg-type">
-      <h2 id="sg-type">Typographie</h2>
-      <p class="sg__note">Montserrat — graisses 400 / 500 / 600 / 700 / 800.</p>
+      <h2 id="sg-type">Échelle fluide legacy</h2>
+      <p class="sg__note">
+        Hanken Grotesk variable — échelle clamp() des composants pas encore re-skinnés (l'échelle
+        sémantique du système est ci-dessus).
+      </p>
       <ul role="list" class="sg__typelist">
         {
           typeScale.map(([token, label]) => (
@@ -204,6 +296,71 @@ const shadows = ['--shadow-sm', '--shadow-md', '--shadow-lg'];
 </BaseLayout>
 
 <style>
+  /* Material Symbols Outlined — sous-ensemble Refonte (33 icônes, FILL 0..1),
+     chargé PAR CETTE PAGE seulement (voir l'entête). */
+  @font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url('/fonts/MaterialSymbolsOutlined-Refonte.woff2') format('woff2');
+  }
+  .ms {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    display: inline-block;
+    white-space: nowrap;
+    direction: ltr;
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  .sg__primitives {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-5);
+    margin-top: var(--space-5);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-m);
+    padding: var(--space-5);
+  }
+  .sg__field {
+    display: grid;
+    gap: var(--space-1);
+    min-width: 260px;
+  }
+  .sg__fieldbox {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-s);
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-white);
+    color: var(--color-text-muted);
+  }
+  .sg__fieldbox:focus-within {
+    border-color: var(--color-focus);
+  }
+  .sg__fieldinput {
+    border: 0;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-family: inherit;
+  }
+  .sg__icons {
+    display: flex;
+    gap: var(--space-4);
+    color: var(--color-accent-blue);
+  }
+
   .sg__head {
     padding-block: var(--space-7) var(--space-5);
   }
@@ -231,7 +388,7 @@ const shadows = ['--shadow-sm', '--shadow-md', '--shadow-lg'];
     font-size: var(--fs-100);
     background: var(--color-grey-100);
     padding: 0.1em 0.4em;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-s);
   }
 
   .sg__swatches {
@@ -247,7 +404,7 @@ const shadows = ['--shadow-sm', '--shadow-md', '--shadow-lg'];
   .sg__chip {
     display: block;
     height: 56px;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-m);
     border: 1px solid var(--color-border);
   }
   .sg__label {
@@ -280,7 +437,7 @@ const shadows = ['--shadow-sm', '--shadow-md', '--shadow-lg'];
     display: inline-block;
     height: 14px;
     background: var(--color-accent-blue);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-s);
   }
 
   .sg__surfaces {
@@ -299,7 +456,7 @@ const shadows = ['--shadow-sm', '--shadow-md', '--shadow-lg'];
   }
   .sg__surface--shadow {
     border: 0;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-m);
   }
 
   .sg__block {

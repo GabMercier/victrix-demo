@@ -108,7 +108,7 @@ const { eyebrow, title, body, ctaLabel, ctaHref, resolvedImage } = Astro.props;
   /* ---------- Solution (déplacé depuis l'ancienne page d'accueil) ---------- */
   .solution {
     padding-block: var(--space-8, 4rem);
-    background-color: var(--color-surface, #f6f7f8);
+    background-color: var(--color-band, #f6f7f8);
     font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
   }
   .solution__inner {
@@ -128,8 +128,8 @@ const { eyebrow, title, body, ctaLabel, ctaHref, resolvedImage } = Astro.props;
     height: auto;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-    border-radius: var(--radius-lg, 16px);
-    box-shadow: var(--shadow-md, 0 4px 16px rgba(20, 33, 61, 0.1));
+    border-radius: var(--radius-l, 16px);
+    box-shadow: var(--shadow-2, 0 4px 16px rgba(20, 33, 61, 0.1));
   }
   /* Cadre de remplacement — visible seulement dans l'éditeur live. */
   .solution__img--placeholder {

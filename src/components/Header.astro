@@ -567,7 +567,7 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
     border: 0;
     color: var(--color-white);
     cursor: pointer;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-s);
   }
 
   /* ---------- Header bar ---------- */
@@ -635,7 +635,7 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
     right: 0;
     background-color: var(--color-white);
     border-top: 1px solid var(--color-border);
-    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    border-radius: 0 0 var(--radius-l) var(--radius-l);
     box-shadow: 0 28px 48px -16px rgb(8 57 87 / 0.28);
     opacity: 0;
     visibility: hidden;
@@ -764,7 +764,7 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
     width: 40px;
     height: 40px;
     color: var(--color-navy);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-s);
   }
   .site-header__search:hover,
   .site-header__search[aria-current='page'] {
@@ -860,7 +860,7 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
     height: 100%;
     overflow-y: auto;
     background-color: var(--color-white);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-3);
     padding: var(--space-5);
     display: flex;
     flex-direction: column;
@@ -897,10 +897,10 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
     font-weight: var(--fw-medium);
     font-size: var(--fs-400);
     text-decoration: none;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-s);
   }
   .mobile-nav__link:hover {
-    background-color: var(--color-surface);
+    background-color: var(--color-band);
     color: var(--color-accent-blue);
   }
   .mobile-nav__link[aria-current='page'] {

@@ -204,12 +204,14 @@ tokens sémantiques (chaque futur export exigerait une passe de renommage à vie
 > **RE-AUDIT 2026-08-04 — LIVRAISON FINALE** (5 exports `docs/design/Export
 > HTML/` + design system partagé). La décision du 2026-07-29 (« l'export final
 > = RÉFÉRENCE UNIQUE, conflits réglés à sa réception ») s'applique MAINTENANT.
-> **DÉCISION (user, 2026-08-04)** : les **exports HTML font foi** — palette/
-> typo/spacing = frontmatter (identique aux 4 exports alignés), rayons = configs
-> des exports, `rounded-full` reste rond (artefact signalé). Les §3 ci-dessus se
-> lisent comme un CONSTAT ; la résolution retenue et les points à signaler sont
-> dans `docs/design/arbitrages-design-a-trancher.md` (re-cadré), l'analyse
-> complète dans `docs/design/analyse-reception-maquettes-finales.md`.
+> **DÉCISION v2 (user, 2026-08-04 — remplace la v1 « exports seuls » du matin)** :
+> **STRUCTURE = exports HTML** (markup, rôles, layout, spacing) ; **SYSTÈME
+> visuel = planche `DesignSystemVictrix.png`** (palette 6 ancres, graisses
+> SemiBold/Bold, rayons 4/8px, chips pilule → `rounded-full` rond). Les rôles
+> Material des exports sont conservés, leurs valeurs ré-ancrées (dérivés à
+> valider). Les §3 ci-dessus se lisent comme un CONSTAT ; la résolution
+> retenue est dans `docs/design/arbitrages-design-a-trancher.md` (v2), le
+> détail dans `docs/design/analyse-reception-maquettes-finales.md`.
 
 **Lecture du Constat préalable ci-dessus (importante)** : la fusion prend les
 valeurs du PREMIER export lu (`Accueil`, ordre alphabétique) — les ~40 lignes de
@@ -231,7 +233,9 @@ conformes.
 
 **✅ PIPELINE REVALIDÉ SUR LA LIVRAISON FINALE** (2026-08-04,
 `/fr/design-lab/page-expertise` = port VERBATIM complet de PageExpertise.html,
-8 sections, viewport 1440, thème `theme-refonte.css` référence exports) :
+8 sections, viewport 1440, thème `theme-refonte.css` — décision v2 : le rendu
+diffère VOLONTAIREMENT du Play CDN de l'export sur les couleurs/graisses,
+ré-ancrées sur la planche) :
 header fixe + rétrécissement au scroll, héros display 56/800 sur scrim navy,
 cartes Approche avec icônes **FILL 1** (sous-ensemble à axe FILL variable),
 tuiles image+overlay `on-primary-fixed/80`, marquee, cartes outils, CTA avec

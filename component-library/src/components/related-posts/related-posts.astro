@@ -142,7 +142,7 @@ const hasCta = Boolean(ctaLabel && ctaHref);
   /* Duplicatas scopés (autonomie éditeur) — mêmes valeurs que home-latest. */
   .related {
     padding-block: var(--space-9, 6rem);
-    background-color: var(--color-surface, #f6f7f8);
+    background-color: var(--color-band, #f6f7f8);
     font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
   }
   .related__container {
@@ -204,21 +204,21 @@ const hasCta = Boolean(ctaLabel && ctaHref);
     height: 100%;
     background-color: var(--color-bg, #ffffff);
     border: 1px solid var(--color-border, #e2e4e8);
-    border-radius: var(--radius-lg, 16px);
+    border-radius: var(--radius-l, 16px);
     overflow: hidden;
     transition:
       box-shadow 0.15s ease,
       transform 0.15s ease;
   }
   .card:hover {
-    box-shadow: var(--shadow-md, 0 4px 16px rgba(20, 33, 61, 0.1));
+    box-shadow: var(--shadow-2, 0 4px 16px rgba(20, 33, 61, 0.1));
     transform: translateY(-2px);
   }
   .card__media {
     display: block;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background-color: var(--color-surface, #f6f7f8);
+    background-color: var(--color-band, #f6f7f8);
   }
   .card__media--placeholder {
     background-color: var(--color-grey-100, #f0f1f3);
@@ -246,7 +246,7 @@ const hasCta = Boolean(ctaLabel && ctaHref);
     font-size: var(--fs-100, 0.8125rem);
     font-weight: var(--fw-semibold, 600);
     color: var(--color-navy, #083957);
-    background-color: var(--color-surface, #f6f7f8);
+    background-color: var(--color-band, #f6f7f8);
     border: 1px solid var(--color-border, #e2e4e8);
     border-radius: var(--radius-pill, 999px);
     padding: 0.2em 0.7em;

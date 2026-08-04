@@ -40,15 +40,5 @@ export default tseslint.config(
     },
   },
 
-  // Page laboratoire /design-lab : markup d'export Figma repris VERBATIM (test
-  // de fidélité du pipeline — voir l'entête de la page). Ses href="#" sont des
-  // liens factices de maquette, pas des liens du site — on coupe le bruit de
-  // cette seule page ; la page sera purgée avant la prod.
-  {
-    files: ['**/design-lab/*.astro'],
-    rules: {
-      'astro/jsx-a11y/anchor-is-valid': 'off',
-    },
-  },
 );
 

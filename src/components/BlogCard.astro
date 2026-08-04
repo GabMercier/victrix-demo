@@ -56,19 +56,19 @@ const href = localizePath(`/ressources/${postUrlSlug(post)}`, lang);
     height: 100%;
     background-color: var(--color-bg);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-l);
     overflow: hidden;
     transition: box-shadow 0.15s ease, transform 0.15s ease;
   }
   .card:hover {
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-2);
     transform: translateY(-2px);
   }
   .card__media {
     display: block;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background-color: var(--color-surface);
+    background-color: var(--color-band);
   }
   .card__img {
     width: 100%;
@@ -91,7 +91,7 @@ const href = localizePath(`/ressources/${postUrlSlug(post)}`, lang);
     font-size: var(--fs-100);
     font-weight: var(--fw-semibold);
     color: var(--color-navy);
-    background-color: var(--color-surface);
+    background-color: var(--color-band);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-pill);
     padding: 0.2em 0.7em;
