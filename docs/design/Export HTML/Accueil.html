@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VICTRIX | Conseil Stratégique et Solutions TI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {surface: "#fcf9f5", "on-tertiary-fixed-variant": "#434749", "inverse-on-surface": "#f3f0ec", secondary: "#515d82", "inverse-surface": "#31302e", "on-secondary": "#ffffff", "on-primary-fixed": "#00105b", "secondary-fixed-dim": "#b9c6ef", "surface-variant": "#e5e2de", error: "#ba1a1a", "primary-fixed-dim": "#bac3ff", "tertiary-fixed-dim": "#c4c7c9", "surface-container-high": "#ebe8e4", "secondary-fixed": "#dae2ff", "on-primary-fixed-variant": "#002fc8", "inverse-primary": "#bac3ff", "surface-container-low": "#f6f3ef", "on-primary": "#ffffff", "error-container": "#ffdad6", "on-surface": "#1c1c1a", "surface-dim": "#dcdad6", "on-secondary-container": "#4e5b7f", "on-background": "#1c1c1a", "on-error": "#ffffff", tertiary: "#424648", primary: "#002fc7", "on-tertiary-fixed": "#181c1e", "primary-container": "#1d46f3", "surface-bright": "#fcf9f5", "tertiary-fixed": "#e0e3e5", "surface-container": "#f0edea", "primary-fixed": "#dee0ff", "surface-container-highest": "#e5e2de", "outline-variant": "#c4c5d9", "on-secondary-fixed-variant": "#394669", background: "#fcf9f5", "secondary-container": "#c6d3fe", "on-secondary-fixed": "#0c1a3b", "surface-tint": "#1e47f4", "on-tertiary-container": "#d4d7d9", "on-surface-variant": "#444656", "surface-container-lowest": "#ffffff", "on-tertiary": "#ffffff", "on-error-container": "#93000a", outline: "#747688", "tertiary-container": "#5a5e60", "on-primary-container": "#d0d5ff", "border-subtle": "#E5E7EB", "surface-alt": "#F8F9FA"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {unit: "8px", "section-gap-lg": "120px", "margin-mobile": "16px", "section-gap-sm": "64px", gutter: "1.5rem", "margin-desktop": "40px", "container-max": "1280px", "margin-page": "4rem", "section-gap": "8rem", md: "16px", xs: "4px", xl: "32px", sm: "8px", base: "8px", lg: "24px"}, fontFamily: {headline: ["Hanken Grotesk"], display: ["Hanken Grotesk"], body: ["Hanken Grotesk"], label: ["Hanken Grotesk"], "display-lg-mobile": ["Manrope"], caption: ["Inter"], "display-lg": ["Manrope"], "headline-lg": ["Hanken Grotesk"], "body-lg": ["Hanken Grotesk"], "body-md": ["Manrope"], "headline-md": ["Hanken Grotesk"], "label-md": ["Hanken Grotesk"], "label-caps": ["Manrope"], "headline-sm": ["Manrope"], "button-text": ["Manrope"]}, fontSize: {"display-lg": ["56px", {lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800"}], "headline-lg": ["32px", {lineHeight: "1.2", fontWeight: "700"}], "headline-md": ["24px", {lineHeight: "1.3", fontWeight: "600"}], "body-lg": ["16px", {lineHeight: "1.5", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "1.5", fontWeight: "400"}], "label-md": ["14px", {lineHeight: "1", fontWeight: "500"}], "display-lg-mobile": ["36px", {lineHeight: "1.2", fontWeight: "800"}], caption: ["12px", {lineHeight: "1.4", fontWeight: "400"}], "label-caps": ["12px", {lineHeight: "1.0", letterSpacing: "0.1em", fontWeight: "700"}], "headline-sm": ["24px", {lineHeight: "1.3", fontWeight: "700"}], "button-text": ["14px", {lineHeight: "1.0", fontWeight: "600"}]}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 30%, rgba(255, 255, 255, 0.2) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuCuiqpXwa2j8R4mNiaCW5WbJrEsmQYCnWf_BR3SxZAKUqvyIH3Sq57n5jxvvRJKkVnLskWYz1TzdsbMXx0AouPdQ78KMuGXMsnkx35WPODdINtfxs7eUHGWc4v08JaPR49ZPjiDll61rmeB7o0jOxIgog2QaTZ5lmpAo8jdR_IQ-IvGxXu2ChY0nU9Il-ERYToIc_FBuFvnFTIiTaqxKnkeTsNZNEZhUppzMhaGvWfHCFnmFl8-SY0vj6dmGZM-mgTzUtzdgWqalWE');
+            background-size: cover;
+            background-position: center;
+        }
+        .card-shadow {
+            box-shadow: 0px 4px 12px rgba(28, 27, 27, 0.05);
+        }
+        .raised-card {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-secondary/20">
+<!-- Header -->
+<header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-border-subtle">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<img alt="Victrix Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtWfKO1ej9Wm0zIMwaVDmCTYi6-67AShBUMRZU8eFkcega6EFx7kF-P-OTHmrMkc1X6zJhUkbnt8CXXBZ07QXVInfd51NmvK4ZhzFTXeKb95MhCApht6LtGe1KLE0zkum25vp657-Gkj4S5XCvNsNni9m8Kr7Ej9GaDo0gIL2cK91hgag4skhlMUckKRBnkzABdCstxjTPQYH6AkKdaPM0Ruu9MeXVG_rfGeKCIo283RoOYztcPEH8pNq3fBanq4GmJ8Cx7e1ToA"/>
+<span class="font-display text-headline-md font-bold text-on-surface">VICTRIX</span>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md" href="#">Découvrir Victrix</a>
+<a class="text-secondary font-bold border-b-2 border-secondary font-label-md" href="#">Expertises</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md" href="#">Solutions</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md" href="#">Secteurs</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md" href="#">Ressources</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md" href="#">À propos</a>
+</nav>
+<div class="flex items-center gap-6">
+<span class="font-label-md text-on-surface-variant">FR | EN</span>
+<a class="bg-secondary text-white px-6 py-2.5 rounded font-label-md hover:brightness-110 transition-all" href="#">Contactez-nous</a>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative min-h-[870px] flex flex-col hero-bg pt-20">
+<div class="flex-grow flex items-center">
+<div class="max-w-container-max mx-auto px-margin-desktop w-full py-12">
+<div class="max-w-3xl">
+<p class="text-secondary font-bold tracking-widest uppercase text-[12px] mb-6">CABINET-CONSEIL • TECHNOLOGIES • IA</p>
+<h1 class="text-[56px] leading-[1.1] font-bold text-on-surface mb-6">
+                    Propulsez votre entreprise avec des TI qui font <span class="text-secondary">vraiment</span> la différence.
+                </h1>
+<p class="text-body-lg text-on-surface-variant mb-10 max-w-2xl leading-relaxed">
+                    De la cybersécurité à l'IA, Victrix transforme vos enjeux technologiques en solutions concrètes, sécurisées et performantes.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-secondary text-white px-8 py-4 rounded font-label-md flex items-center gap-2 hover:brightness-110 transition-all">
+                        Découvrir nos expertises
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<button class="border border-outline text-on-surface px-8 py-4 rounded font-label-md transition-colors hover:bg-surface-variant">
+                        Parler à un expert
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Bar -->
+<section class="w-full bg-white border-b border-border-subtle py-8">
+<div class="max-w-container-max mx-auto px-margin-desktop flex flex-wrap items-center justify-between gap-8">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div>
+<div class="text-headline-md font-bold text-on-surface">30+ ans</div>
+<div class="text-[12px] text-on-surface-variant uppercase font-bold tracking-wider">d'expertise</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<div>
+<div class="text-headline-md font-bold text-on-surface">250+</div>
+<div class="text-[12px] text-on-surface-variant uppercase font-bold tracking-wider">experts</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img alt="Microsoft Solutions Partner" class="h-10 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtWfKO1ej9Wm0zIMwaVDmCTYi6-67AShBUMRZU8eFkcega6EFx7kF-P-OTHmrMkc1X6zJhUkbnt8CXXBZ07QXVInfd51NmvK4ZhzFTXeKb95MhCApht6LtGe1KLE0zkum25vp657-Gkj4S5XCvNsNni9m8Kr7Ej9GaDo0gIL2cK91hgag4skhlMUckKRBnkzABdCstxjTPQYH6AkKdaPM0Ruu9MeXVG_rfGeKCIo283RoOYztcPEH8pNq3fBanq4GmJ8Cx7e1ToA"/>
+<div>
+<div class="text-label-md font-bold text-on-surface">Microsoft</div>
+<div class="text-[10px] text-on-surface-variant uppercase font-bold">Solutions Partner</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Nos services (Expertises) Section -->
+<section class="py-section-gap-lg bg-background">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+<div>
+<h2 class="text-display-lg text-on-surface mb-4">Nos services</h2>
+<p class="text-body-lg text-on-surface-variant max-w-2xl">Des expertises complémentaires pour couvrir l'ensemble de vos besoins technologiques.</p>
+</div>
+<a class="text-secondary font-label-md flex items-center gap-2 group hover:underline underline-offset-4" href="#">
+                VOIR TOUTES NOS EXPERTISES
+                <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Cybersecurity -->
+<div class="relative group h-64 overflow-hidden rounded-lg raised-card">
+<img alt="Cybersécurité" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ1-PsbsUNx4PiQsj7vDCRJjBs6Qih8jiJROFqJxaZskE2bd_5VXICHvPFjJP5ukFiP7uYAORFbSRcYdhEEaMQKvAqEpH-5QjaptwGPgeTAh5av1vvJGfKW99uSpzHm4cdLdUsZ-bVgBwnVcRj7fvvzWQ0Xn74IXNJmPH5KVqvfn16hvGDcsESRntOgFF7ouAFoK3GDNCWbLvD-x0spDY4nllQzwgzawU78Kfxg_RbhvIkjkeOqVRLcJke-oJ_AfWr6snJ3Z4PcX4"/>
+<div class="absolute inset-0 bg-black/60 flex flex-col justify-end p-8">
+<h3 class="text-white text-headline-md font-bold mb-2">Cybersécurité</h3>
+</div>
+</div>
+<!-- Services Gérés -->
+<div class="bg-white p-8 rounded-lg border border-border-subtle raised-card group hover:border-secondary transition-all flex flex-col justify-between">
+<div>
+<h3 class="text-headline-md font-bold text-on-surface mb-2">Services Gérés</h3>
+<p class="text-on-surface-variant text-body-md">Paix d'esprit et performance 24/7/365.</p>
+</div>
+<a class="text-secondary font-bold text-label-md flex items-center gap-2 mt-8 uppercase tracking-wider" href="#">
+                    EN SAVOIR PLUS <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- IA & Auto -->
+<div class="bg-secondary p-8 rounded-lg raised-card flex flex-col justify-between text-white">
+<div>
+<h3 class="text-headline-md font-bold mb-2">IA &amp; Automatisation</h3>
+<p class="text-white/80 text-body-md">Exploitez le potentiel de l'IA générative pour vos processus d'affaires.</p>
+</div>
+<a class="text-white font-bold text-label-md flex items-center gap-2 mt-8 uppercase tracking-wider" href="#">
+                    DÉCOUVRIR <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- Migration Cloud -->
+<div class="relative group h-64 overflow-hidden rounded-lg raised-card">
+<img alt="Migration Cloud" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL0yxoGKisBKhcwco_voGqrzSNXt7kc8zhMQcQksLuBpk5rYiscPH2ntMNJF4XyVEvPcgUfIIQRVWTUYrC4-3zKU68iJw2_hLuuBqzL10pxPZZtjD2jLtJFbLDi3acnxFMaZXkoscAi1VoX9uz9oCGxHO1ZBviVGLAtaESMQnUkeAPqGgsUDHgxYxQa8RdBDMFNpTnBO2AlBrE12KHph9LNF8kNiJpFiuA25avX0pH3mLOJPrE2rGTL4bMtEokKJsuFut5xZf8jGA"/>
+<div class="absolute inset-0 bg-white/40 flex flex-col justify-end p-8">
+<h3 class="text-on-surface text-headline-md font-bold mb-2">Migration Cloud</h3>
+<p class="text-on-surface-variant text-body-md">Modernisez vos infrastructures avec agilité.</p>
+</div>
+</div>
+<!-- Conseil Stratégique -->
+<div class="bg-white p-8 rounded-lg border border-border-subtle raised-card flex flex-col justify-between">
+<div>
+<h3 class="text-headline-md font-bold text-on-surface mb-2">Conseil Stratégique</h3>
+<p class="text-on-surface-variant text-body-md">Accompagnement de la haute direction dans les choix technologiques.</p>
+</div>
+</div>
+<!-- Services Gérés 2 -->
+<div class="bg-[#001b44] p-8 rounded-lg raised-card group flex flex-col justify-between text-white">
+<div>
+<h3 class="text-headline-md font-bold mb-2">Services Gérés</h3>
+<p class="text-white/70 text-body-md">Paix d'esprit et performance 24/7/365.</p>
+</div>
+<a class="text-white font-bold text-label-md flex items-center gap-2 mt-8 uppercase tracking-wider" href="#">
+                    EN SAVOIR PLUS <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Section: Managed Services Detail -->
+<section class="py-section-gap-lg bg-white overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="w-full lg:w-1/2 relative">
+<div class="rounded-xl overflow-hidden shadow-2xl">
+<img alt="Office Team" class="w-full h-[500px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA67g4GUGmtE6wor7m7xHoAiYGXH4O7U7fx-VRE5GaVsIqR-JadRj2snO603rBfb5ubtZYTrQRNa7AOXqs6fRMynC1H5zhED6MDKwk61xu14G6onPe-XhIPBIfu-cxMknVX6Scvabc85FxP2J_lMCB1tNlAinBbnAL7m484D2uEM4wu4NJsEe2OuXoJP2ZeKst_OeNERIqiqz52VHnbWVJDWGCw2bTaMZKwbQvKoYP9jaPW6yqIzbIqc-eAT0FVme49Z81VAvEpszA"/>
+</div>
+<!-- Overlapping Card -->
+<div class="absolute bottom-[-40px] right-[-20px] bg-white p-8 rounded-xl shadow-xl border border-border-subtle max-w-[320px]">
+<div class="text-secondary font-bold text-display-lg leading-none mb-2">24/7</div>
+<div class="text-on-surface font-bold text-label-md uppercase mb-2">SERVICES GÉRÉS</div>
+<p class="text-caption text-on-surface-variant leading-tight">Support proactif et gestion complète de votre écosystème M365.</p>
+</div>
+</div>
+<div class="w-full lg:w-1/2">
+<h2 class="text-display-lg text-on-surface mb-6">Libérez votre équipe des contraintes <span class="text-secondary">opérationnelles</span></h2>
+<p class="text-body-lg text-on-surface-variant mb-10">Nos services gérés vous permettent de vous concentrer sur votre cœur de métier pendant que nos experts veillent sur la performance de vos systèmes.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+<div class="bg-primary-container p-6 rounded-lg border-l-4 border-white">
+<div class="font-bold text-white mb-2 uppercase text-[12px]">M365 Écosystème</div>
+<p class="text-white/90 text-body-md">Maximisez l'utilisation de vos licences et outils collaboratifs.</p>
+</div>
+<div class="bg-primary-container p-6 rounded-lg border-l-4 border-white">
+<div class="font-bold text-white mb-2 uppercase text-[12px]">Sécurité Infra</div>
+<p class="text-white/90 text-body-md">Surveillance continue et remédiation rapide des incidents.</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-4 text-on-surface font-bold text-headline-md group" href="#">
+<div class="w-12 h-12 rounded-full border border-outline flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+                    Parler à un expert
+                </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Nos solutions phares -->
+<section class="py-section-gap-lg bg-primary-container">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+<h2 class="text-display-lg text-white">Nos solutions phares</h2>
+<a class="text-white/90 font-label-md flex items-center gap-2 group hover:underline underline-offset-4" href="#">
+                VOIR TOUTES NOS SOLUTIONS
+                <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Ø Studio -->
+<div class="relative group h-[500px] overflow-hidden rounded-lg bg-secondary">
+<img alt="Ø Studio" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA67g4GUGmtE6wor7m7xHoAiYGXH4O7U7fx-VRE5GaVsIqR-JadRj2snO603rBfb5ubtZYTrQRNa7AOXqs6fRMynC1H5zhED6MDKwk61xu14G6onPe-XhIPBIfu-cxMknVX6Scvabc85FxP2J_lMCB1tNlAinBbnAL7m484D2uEM4wu4NJsEe2OuXoJP2ZeKst_OeNERIqiqz52VHnbWVJDWGCw2bTaMZKwbQvKoYP9jaPW6yqIzbIqc-eAT0FVme49Z81VAvEpszA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute inset-0 p-10 flex flex-col justify-end text-white">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-3xl">terminal</span>
+<h3 class="text-headline-lg font-bold">Ø Studio</h3>
+</div>
+<p class="text-white/90 mb-8 leading-relaxed font-body-md">Ø Studio offre une équipe multidisciplinaire pour <strong>automatiser vos processus</strong> et réaliser vos <strong>développements applicatifs à haute vitesse!</strong></p>
+<a class="text-white font-bold text-label-md flex items-center gap-2 hover:underline underline-offset-4 uppercase tracking-widest" href="#">
+                        DÉCOUVRIR Ø STUDIO <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- SEvOC -->
+<div class="relative group h-[500px] overflow-hidden rounded-lg bg-on-surface">
+<img alt="SEvOC" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ1-PsbsUNx4PiQsj7vDCRJjBs6Qih8jiJROFqJxaZskE2bd_5VXICHvPFjJP5ukFiP7uYAORFbSRcYdhEEaMQKvAqEpH-5QjaptwGPgeTAh5av1vvJGfKW99uSpzHm4cdLdUsZ-bVgBwnVcRj7fvvzWQ0Xn74IXNJmPH5KVqvfn16hvGDcsESRntOgFF7ouAFoK3GDNCWbLvD-x0spDY4nllQzwgzawU78Kfxg_RbhvIkjkeOqVRLcJke-oJ_AfWr6snJ3Z4PcX4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute inset-0 p-10 flex flex-col justify-end text-white">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-3xl">security</span>
+<h3 class="text-headline-lg font-bold">SEvOC</h3>
+</div>
+<p class="text-white/90 mb-8 leading-relaxed font-body-md">Le SEvOC prend en charge les <strong>opérations de sécurité</strong>. Notre offre <strong>évolutive et modulaire</strong> vous permet de rester à l'avant-garde.</p>
+<a class="text-white font-bold text-label-md flex items-center gap-2 hover:underline underline-offset-4 uppercase tracking-widest" href="#">
+                        DÉCOUVRIR SEvOC <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Migration Azure -->
+<div class="relative group h-[500px] overflow-hidden rounded-lg bg-secondary">
+<img alt="Migration Azure" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL0yxoGKisBKhcwco_voGqrzSNXt7kc8zhMQcQksLuBpk5rYiscPH2ntMNJF4XyVEvPcgUfIIQRVWTUYrC4-3zKU68iJw2_hLuuBqzL10pxPZZtjD2jLtJFbLDi3acnxFMaZXkoscAi1VoX9uz9oCGxHO1ZBviVGLAtaESMQnUkeAPqGgsUDHgxYxQa8RdBDMFNpTnBO2AlBrE12KHph9LNF8kNiJpFiuA25avX0pH3mLOJPrE2rGTL4bMtEokKJsuFut5xZf8jGA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute inset-0 p-10 flex flex-col justify-end text-white">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-3xl">cloud_sync</span>
+<h3 class="text-headline-lg font-bold">Migration Azure</h3>
+</div>
+<p class="text-white/90 mb-8 leading-relaxed font-body-md">Victrix accélère votre transition vers Azure. Basée sur le framework Microsoft Cloud Adoption, notre méthode sécurise vos premiers pas.</p>
+<a class="text-white font-bold text-label-md flex items-center gap-2 hover:underline underline-offset-4 uppercase tracking-widest" href="#">
+                        DÉCOUVRIR AZURE <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Ressources & Perspectives -->
+<section class="py-section-gap-lg bg-white">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+<div>
+<h2 class="text-display-lg text-on-surface mb-4">Ressources et perspectives</h2>
+<p class="text-body-lg text-on-surface-variant max-w-2xl">Découvrez nos derniers articles, études de cas et webinaires techniques.</p>
+</div>
+<a class="text-secondary font-label-md flex items-center gap-2 group hover:underline underline-offset-4" href="#">
+                VOIR TOUTES LES RESSOURCES
+                <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Article 1 -->
+<div class="group cursor-pointer flex flex-col h-full bg-white rounded-lg overflow-hidden border border-border-subtle card-shadow">
+<div class="aspect-video overflow-hidden">
+<img alt="Loi 25" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLtjYKIl4tk6DcjvZys4QbFyYgxVVjRzh_GwqaD8c5AN9xG29PIJllKoErm8IYW2YEz7VWFC4xcnKXtP3dmyWp_UZqFfwvyi4h8AP17hCZD602o_rgley2GqScyepX7aFrDZWS7QEfJv1NQHdVvtAI5Z1HMVlswOFFk-xszZlkWht2Ax4Lhoy4OcUrBgqcONyQa0pJQAfDcr2V4Ilqxv3cTRoTbikQ1zhy3TpHBASW_c2DudrGDgB5iNkDU"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<span class="text-[12px] font-bold text-on-surface-variant uppercase tracking-widest block mb-4">CONFORMITÉ</span>
+<h4 class="text-headline-md font-bold text-on-surface mb-4 line-clamp-2">Loi 25 : Votre entreprise est-elle conforme ?</h4>
+<p class="text-on-surface-variant text-body-md mb-8 flex-grow">Comprendre les nouveaux enjeux de protection des renseignements...</p>
+<a class="text-secondary font-bold text-label-md flex items-center gap-2 group-hover:underline" href="#">
+                        Lire la suite <span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+</div>
+</div>
+<!-- Article 2 -->
+<div class="group cursor-pointer flex flex-col h-full bg-white rounded-lg overflow-hidden border border-border-subtle card-shadow">
+<div class="aspect-video overflow-hidden">
+<img alt="Phishing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ1-PsbsUNx4PiQsj7vDCRJjBs6Qih8jiJROFqJxaZskE2bd_5VXICHvPFjJP5ukFiP7uYAORFbSRcYdhEEaMQKvAqEpH-5QjaptwGPgeTAh5av1vvJGfKW99uSpzHm4cdLdUsZ-bVgBwnVcRj7fvvzWQ0Xn74IXNJmPH5KVqvfn16hvGDcsESRntOgFF7ouAFoK3GDNCWbLvD-x0spDY4nllQzwgzawU78Kfxg_RbhvIkjkeOqVRLcJke-oJ_AfWr6snJ3Z4PcX4"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<span class="text-[12px] font-bold text-on-surface-variant uppercase tracking-widest block mb-4">SÉCURITÉ</span>
+<h4 class="text-headline-md font-bold text-on-surface mb-4 line-clamp-2">80% des cyberattaques causées par le phishing</h4>
+<p class="text-on-surface-variant text-body-md mb-8 flex-grow">Comment prévenir le fléau des courriels d'hameçonnage grâce à la...</p>
+<a class="text-secondary font-bold text-label-md flex items-center gap-2 group-hover:underline" href="#">
+                        Lire la suite <span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+</div>
+</div>
+<!-- Article 3 -->
+<div class="group cursor-pointer flex flex-col h-full bg-white rounded-lg overflow-hidden border border-border-subtle card-shadow">
+<div class="aspect-video overflow-hidden">
+<img alt="Services Gérés" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLt77ZMJPw4NofUJ8xUXah2ZZJIltFObFLubP_JYDo8N0VWNCphviUHqM3Q8ZoYiD44L-ANg3IPLregZrYhemPSBPV-DWGooszfwfd3Vf4xKAayweQwyJV-xD7y3XAb9b--y7gNptD34yfqDS7Mj63ifAa-33rOQB1aa_vZa3_KOOs-4onnW0cS_-qgxF2YmXz8uYk3F_RM45Hgo5_XVioWuP6k6qnxTgmbjoxuC5_evcaqv9hOGs_7lKQ"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<span class="text-[12px] font-bold text-on-surface-variant uppercase tracking-widest block mb-4">SERVICES GÉRÉS</span>
+<h4 class="text-headline-md font-bold text-on-surface mb-4 line-clamp-2">Pourquoi choisir Victrix pour vos services gérés</h4>
+<p class="text-on-surface-variant text-body-md mb-8 flex-grow">Découvrez les avantages d'une gestion TI déléguée et proactive pour...</p>
+<a class="text-secondary font-bold text-label-md flex items-center gap-2 group-hover:underline" href="#">
+                        Lire la suite <span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom CTA Banner -->
+<section class="max-w-container-max mx-auto px-margin-desktop mb-section-gap-lg">
+<div class="bg-surface-container-high rounded-lg p-12 lg:p-20 flex flex-col lg:flex-row justify-between items-center gap-12">
+<div class="text-center lg:text-left max-w-2xl">
+<h2 class="text-[48px] leading-[1.1] font-bold text-on-surface mb-6">Prêt à faire évoluer votre organisation ?</h2>
+<p class="text-body-lg text-on-surface-variant leading-relaxed">Discutons de vos enjeux et découvrons comment Victrix peut vous aider à aller plus loin dans votre transformation numérique.</p>
+</div>
+<button class="bg-secondary text-white px-12 py-5 rounded font-bold text-label-md uppercase tracking-widest hover:brightness-110 transition-all shadow-lg whitespace-nowrap">
+            PARLER À UN EXPERT
+        </button>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-white border-t border-border-subtle pt-20 pb-12">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+<div class="md:col-span-1">
+<div class="flex items-center gap-2 mb-8">
+<span class="font-display text-headline-md font-bold text-on-surface">VICTRIX</span>
+</div>
+<p class="text-on-surface-variant font-body-md leading-relaxed mb-6">
+                    Conseil stratégique et solutions TI pour des opérations plus efficaces, sécurisées et évolutives. Leader en transformation numérique au Canada.
+                </p>
+<p class="text-[12px] text-on-surface-variant">© 2024 Victrix. Tous droits réservés.</p>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-6 uppercase text-[14px] tracking-wider">Expertises</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Cybersécurité</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Cloud</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Intelligence Artificielle</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Productivité</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Conseil Stratégique</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Services Gérés</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-6 uppercase text-[14px] tracking-wider">Solutions</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Ø Studio</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">SEvOC</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Migration Azure</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Modern Work</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Office Booking</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-6 uppercase text-[14px] tracking-wider">Liens Rapides</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Secteurs</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Ressources</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">À propos</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Carrières</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors text-body-md" href="#">Confidentialité</a></li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

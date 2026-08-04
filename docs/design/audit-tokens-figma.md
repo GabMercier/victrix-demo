@@ -1,37 +1,57 @@
 # Audit tokens — exports Figma vs repo (`theme.css` / `tokens.css`)
 
 > Généré par `scripts/design/audit-export-tokens.mjs` — rejouable à chaque nouvel export.
-> Exports audités : `Export - Homepage`, `Export - expertise-productivite`.
+> Exports audités : `Accueil`, `Carrieres`, `Contact`, `PageExpertise`, `PageSolution`.
 
 **⚠️ Constat préalable** : les exports ne sont pas identiques entre eux :
-- `Export - expertise-productivite` sans section spacing/fontSize (l'audit travaille sur l'UNION des configs) ;
-- valeur divergente `fontFamily.headline` : `["Hanken Grotesk"]` vs `["Hanken Grotesk","sans-serif"]` (Export - expertise-productivite) ;
-- valeur divergente `fontFamily.display` : `["Hanken Grotesk"]` vs `["Hanken Grotesk","sans-serif"]` (Export - expertise-productivite) ;
-- valeur divergente `fontFamily.body` : `["Hanken Grotesk"]` vs `["Hanken Grotesk","sans-serif"]` (Export - expertise-productivite) ;
-- valeur divergente `fontFamily.label` : `["Hanken Grotesk"]` vs `["Hanken Grotesk","sans-serif"]` (Export - expertise-productivite) ;
-- valeur divergente `borderRadius.DEFAULT` : `"0.25rem"` vs `"0.5rem"` (Export - expertise-productivite) ;
-- valeur divergente `borderRadius.lg` : `"0.5rem"` vs `"1rem"` (Export - expertise-productivite) ;
-- valeur divergente `borderRadius.xl` : `"0.75rem"` vs `"1.5rem"` (Export - expertise-productivite) ;
+- valeur divergente `spacing.section-gap` : `"8rem"` vs `"80px"` (Carrieres) ;
+- valeur divergente `spacing.gutter` : `"1.5rem"` vs `"24px"` (Carrieres) ;
+- valeur divergente `fontSize.headline-md` : `["24px",{"lineHeight":"1.3","fontWeight":"600"}]` vs `["24px",{"lineHeight":"1.3","fontWeight":"700"}]` (Carrieres) ;
+- valeur divergente `fontSize.body-md` : `["16px",{"lineHeight":"1.5","fontWeight":"400"}]` vs `["16px",{"lineHeight":"1.6","fontWeight":"400"}]` (Carrieres) ;
+- valeur divergente `fontSize.headline-lg` : `["32px",{"lineHeight":"1.2","fontWeight":"700"}]` vs `["40px",{"lineHeight":"1.2","letterSpacing":"-0.01em","fontWeight":"700"}]` (Carrieres) ;
+- valeur divergente `fontSize.label-caps` : `["12px",{"lineHeight":"1.0","letterSpacing":"0.1em","fontWeight":"700"}]` vs `["12px",{"lineHeight":"1.2","letterSpacing":"0.1em","fontWeight":"700"}]` (Carrieres) ;
+- valeur divergente `fontSize.body-lg` : `["16px",{"lineHeight":"1.5","fontWeight":"400"}]` vs `["18px",{"lineHeight":"1.6","fontWeight":"400"}]` (Carrieres) ;
+- valeur divergente `fontFamily.body-md` : `["Manrope"]` vs `["Hanken Grotesk"]` (Carrieres) ;
+- valeur divergente `fontFamily.label-caps` : `["Manrope"]` vs `["Hanken Grotesk"]` (Carrieres) ;
+- valeur divergente `spacing.section-gap` : `"8rem"` vs `"80px"` (Contact) ;
+- valeur divergente `spacing.gutter` : `"1.5rem"` vs `"24px"` (Contact) ;
+- valeur divergente `fontSize.body-md` : `["16px",{"lineHeight":"1.5","fontWeight":"400"}]` vs `["16px",{"lineHeight":"1.6","fontWeight":"400"}]` (Contact) ;
+- valeur divergente `fontSize.headline-md` : `["24px",{"lineHeight":"1.3","fontWeight":"600"}]` vs `["24px",{"lineHeight":"1.3","fontWeight":"700"}]` (Contact) ;
+- valeur divergente `fontSize.label-caps` : `["12px",{"lineHeight":"1.0","letterSpacing":"0.1em","fontWeight":"700"}]` vs `["12px",{"lineHeight":"1.2","letterSpacing":"0.1em","fontWeight":"700"}]` (Contact) ;
+- valeur divergente `fontSize.body-lg` : `["16px",{"lineHeight":"1.5","fontWeight":"400"}]` vs `["18px",{"lineHeight":"1.6","fontWeight":"400"}]` (Contact) ;
+- valeur divergente `fontSize.headline-lg` : `["32px",{"lineHeight":"1.2","fontWeight":"700"}]` vs `["40px",{"lineHeight":"1.2","letterSpacing":"-0.01em","fontWeight":"700"}]` (Contact) ;
+- valeur divergente `fontFamily.body-md` : `["Manrope"]` vs `["Hanken Grotesk"]` (Contact) ;
+- valeur divergente `fontFamily.label-caps` : `["Manrope"]` vs `["Hanken Grotesk"]` (Contact) ;
+- valeur divergente `spacing.section-gap` : `"8rem"` vs `"80px"` (PageExpertise) ;
+- valeur divergente `spacing.gutter` : `"1.5rem"` vs `"24px"` (PageExpertise) ;
+- valeur divergente `fontSize.label-caps` : `["12px",{"lineHeight":"1.0","letterSpacing":"0.1em","fontWeight":"700"}]` vs `["12px",{"lineHeight":"1.2","letterSpacing":"0.1em","fontWeight":"700"}]` (PageExpertise) ;
+- valeur divergente `fontSize.headline-md` : `["24px",{"lineHeight":"1.3","fontWeight":"600"}]` vs `["24px",{"lineHeight":"1.3","fontWeight":"700"}]` (PageExpertise) ;
+- valeur divergente `fontSize.body-md` : `["16px",{"lineHeight":"1.5","fontWeight":"400"}]` vs `["16px",{"lineHeight":"1.6","fontWeight":"400"}]` (PageExpertise) ;
+- valeur divergente `fontSize.headline-lg` : `["32px",{"lineHeight":"1.2","fontWeight":"700"}]` vs `["40px",{"lineHeight":"1.2","letterSpacing":"-0.01em","fontWeight":"700"}]` (PageExpertise) ;
+- valeur divergente `fontSize.body-lg` : `["16px",{"lineHeight":"1.5","fontWeight":"400"}]` vs `["18px",{"lineHeight":"1.6","fontWeight":"400"}]` (PageExpertise) ;
+- valeur divergente `fontFamily.label-caps` : `["Manrope"]` vs `["Hanken Grotesk"]` (PageExpertise) ;
+- valeur divergente `fontFamily.body-md` : `["Manrope"]` vs `["Hanken Grotesk"]` (PageExpertise) ;
+- valeur divergente `spacing.gutter` : `"1.5rem"` vs `"24px"` (PageSolution) ;
+- valeur divergente `spacing.section-gap` : `"8rem"` vs `"80px"` (PageSolution) ;
+- valeur divergente `fontSize.body-md` : `["16px",{"lineHeight":"1.5","fontWeight":"400"}]` vs `["16px",{"lineHeight":"1.6","fontWeight":"400"}]` (PageSolution) ;
+- valeur divergente `fontSize.body-lg` : `["16px",{"lineHeight":"1.5","fontWeight":"400"}]` vs `["18px",{"lineHeight":"1.6","fontWeight":"400"}]` (PageSolution) ;
+- valeur divergente `fontSize.label-caps` : `["12px",{"lineHeight":"1.0","letterSpacing":"0.1em","fontWeight":"700"}]` vs `["12px",{"lineHeight":"1.2","letterSpacing":"0.1em","fontWeight":"700"}]` (PageSolution) ;
+- valeur divergente `fontSize.headline-md` : `["24px",{"lineHeight":"1.3","fontWeight":"600"}]` vs `["24px",{"lineHeight":"1.3","fontWeight":"700"}]` (PageSolution) ;
+- valeur divergente `fontSize.headline-lg` : `["32px",{"lineHeight":"1.2","fontWeight":"700"}]` vs `["40px",{"lineHeight":"1.2","letterSpacing":"-0.01em","fontWeight":"700"}]` (PageSolution) ;
+- valeur divergente `fontFamily.body-md` : `["Manrope"]` vs `["Hanken Grotesk"]` (PageSolution) ;
+- valeur divergente `fontFamily.label-caps` : `["Manrope"]` vs `["Hanken Grotesk"]` (PageSolution) ;
 
 ## 1. Équivalents — même valeur, autre nom dans `theme.css`
 
 | Token export (sémantique) | Valeur | Token repo (`theme.css`) |
 |---|---|---|
-| `on-surface-variant` | `#44474f` | `--color-encre-douce` |
-| `surface` | `#f8f9fa` | `--color-givre` |
-| `background` | `#f8f9fa` | `--color-givre` |
-| `secondary` | `#0038e6` | `--color-royal-profond` |
-| `on-background` | `#191c1d` | `--color-encre` |
-| `primary-container` | `#001b44` | `--color-nuit` |
-| `surface-bright` | `#f8f9fa` | `--color-givre` |
-| `on-surface` | `#191c1d` | `--color-encre` |
-| `rounded-DEFAULT` (DESIGN.md) | `0.5rem` | `--radius-controle` |
-| `rounded-lg` (DESIGN.md) | `1rem` | `--radius-carte` |
-| ombre Level 2 (prose) | `0 4px 12px rgb(0 27 68 / .05)` | `--shadow-ambiante` |
-| ombre Level 3 (prose) | `0 12px 32px rgb(0 27 68 / .1)` | `--shadow-surelevee` |
-| `fontFamily.*` (Hanken Grotesk ×12 alias) | — | `--font-grotesk` (un seul token) |
+| `primary-container` | `#1d46f3` | `--color-royal` |
+| `border-subtle` | `#e5e7eb` | `--color-bordure` |
+| `surface-alt` | `#f8f9fa` | `--color-givre` |
+| `rounded-lg` (DESIGN.md) | `0.5rem` | `--radius-controle` |
+| `fontFamily.*` (Hanken Grotesk ×10 alias) | — | `--font-grotesk` (un seul token) |
 
-Tokens couleur de `theme.css` **sans équivalent** dans la palette générée de l'export : `--color-royal` (`#1d46f3`), `--color-celeste` (`#86cefa`), `--color-bordure` (`#e5e7eb`) — voir §3 (conflits).
+Tokens couleur de `theme.css` **sans équivalent** dans la palette générée de l'export : `--color-nuit` (`#001b44`), `--color-royal-profond` (`#0038e6`), `--color-celeste` (`#86cefa`), `--color-encre` (`#191c1d`), `--color-encre-douce` (`#44474f`) — voir §3 (conflits).
 
 ## 2. Manquants dans `theme.css` — à couvrir par `theme-semantique.css`
 
@@ -41,70 +61,93 @@ les autres sont définis par le plugin mais non consommés (palette Material gé
 ### Couleurs
 | Token | Valeur | Statut |
 |---|---|---|
-| `inverse-on-surface` | `#f0f1f2` | défini seulement |
-| `tertiary` | `#000204` | défini seulement |
-| `on-secondary-fixed` | `#00105b` | défini seulement |
-| `on-primary-fixed` | `#001a42` | **[utilisé]** |
-| `on-primary-fixed-variant` | `#314671` | défini seulement |
-| `on-primary` | `#ffffff` | **[utilisé]** |
-| `secondary-container` | `#3256ff` | **[utilisé]** |
-| `primary-fixed-dim` | `#b1c6f9` | défini seulement |
-| `on-secondary-container` | `#eaeaff` | **[utilisé]** |
-| `tertiary-fixed-dim` | `#87cffb` | défini seulement |
-| `surface-container` | `#edeeef` | **[utilisé]** |
-| `primary` | `#00020a` | **[utilisé]** |
-| `surface-container-highest` | `#e1e3e4` | **[utilisé]** |
-| `outline-variant` | `#c5c6d0` | **[utilisé]** |
+| `surface` | `#fcf9f5` | **[utilisé]** |
+| `on-tertiary-fixed-variant` | `#434749` | défini seulement |
+| `inverse-on-surface` | `#f3f0ec` | défini seulement |
+| `secondary` | `#515d82` | **[utilisé]** |
+| `inverse-surface` | `#31302e` | défini seulement |
+| `on-secondary` | `#ffffff` | défini seulement |
+| `on-primary-fixed` | `#00105b` | **[utilisé]** |
+| `secondary-fixed-dim` | `#b9c6ef` | défini seulement |
+| `surface-variant` | `#e5e2de` | **[utilisé]** |
 | `error` | `#ba1a1a` | défini seulement |
-| `surface-tint` | `#495e8a` | défini seulement |
-| `on-primary-container` | `#7084b3` | défini seulement |
-| `surface-variant` | `#e1e3e4` | défini seulement |
-| `on-tertiary-fixed-variant` | `#004c6a` | **[utilisé]** |
-| `inverse-primary` | `#b1c6f9` | défini seulement |
-| `surface-container-lowest` | `#ffffff` | **[utilisé]** |
-| `tertiary-fixed` | `#c5e7ff` | défini seulement |
-| `outline` | `#75777f` | **[utilisé]** |
-| `on-error-container` | `#93000a` | défini seulement |
-| `surface-container-low` | `#f3f4f5` | **[utilisé]** |
-| `on-secondary` | `#ffffff` | **[utilisé]** |
-| `secondary-fixed-dim` | `#bac3ff` | défini seulement |
-| `secondary-fixed` | `#dee0ff` | **[utilisé]** |
-| `on-tertiary` | `#ffffff` | défini seulement |
+| `primary-fixed-dim` | `#bac3ff` | **[utilisé]** |
+| `tertiary-fixed-dim` | `#c4c7c9` | défini seulement |
+| `surface-container-high` | `#ebe8e4` | **[utilisé]** |
+| `secondary-fixed` | `#dae2ff` | défini seulement |
+| `on-primary-fixed-variant` | `#002fc8` | défini seulement |
+| `inverse-primary` | `#bac3ff` | défini seulement |
+| `surface-container-low` | `#f6f3ef` | **[utilisé]** |
+| `on-primary` | `#ffffff` | **[utilisé]** |
 | `error-container` | `#ffdad6` | défini seulement |
-| `surface-container-high` | `#e7e8e9` | défini seulement |
-| `on-tertiary-container` | `#408cb5` | **[utilisé]** |
-| `tertiary-container` | `#001f2e` | **[utilisé]** |
+| `on-surface` | `#1c1c1a` | **[utilisé]** |
+| `surface-dim` | `#dcdad6` | **[utilisé]** |
+| `on-secondary-container` | `#4e5b7f` | défini seulement |
+| `on-background` | `#1c1c1a` | **[utilisé]** |
 | `on-error` | `#ffffff` | défini seulement |
-| `on-secondary-fixed-variant` | `#002fc8` | **[utilisé]** |
-| `on-tertiary-fixed` | `#001e2d` | défini seulement |
-| `inverse-surface` | `#2e3132` | défini seulement |
-| `surface-dim` | `#d9dadb` | **[utilisé]** |
-| `primary-fixed` | `#d8e2ff` | **[utilisé]** |
+| `tertiary` | `#424648` | défini seulement |
+| `primary` | `#002fc7` | **[utilisé]** |
+| `on-tertiary-fixed` | `#181c1e` | défini seulement |
+| `surface-bright` | `#fcf9f5` | défini seulement |
+| `tertiary-fixed` | `#e0e3e5` | défini seulement |
+| `surface-container` | `#f0edea` | **[utilisé]** |
+| `primary-fixed` | `#dee0ff` | **[utilisé]** |
+| `surface-container-highest` | `#e5e2de` | **[utilisé]** |
+| `outline-variant` | `#c4c5d9` | **[utilisé]** |
+| `on-secondary-fixed-variant` | `#394669` | défini seulement |
+| `background` | `#fcf9f5` | **[utilisé]** |
+| `secondary-container` | `#c6d3fe` | **[utilisé]** |
+| `on-secondary-fixed` | `#0c1a3b` | défini seulement |
+| `surface-tint` | `#1e47f4` | défini seulement |
+| `on-tertiary-container` | `#d4d7d9` | défini seulement |
+| `on-surface-variant` | `#444656` | **[utilisé]** |
+| `surface-container-lowest` | `#ffffff` | **[utilisé]** |
+| `on-tertiary` | `#ffffff` | défini seulement |
+| `on-error-container` | `#93000a` | défini seulement |
+| `outline` | `#747688` | **[utilisé]** |
+| `tertiary-container` | `#5a5e60` | défini seulement |
+| `on-primary-container` | `#d0d5ff` | défini seulement |
 
 ### Échelle d’espacement nommée (absente de `theme.css` — spacing Tailwind par défaut)
 | Token | Valeur | Statut |
 |---|---|---|
-| `sm` | `8px` | **[utilisé]** |
-| `base` | `4px` | **[utilisé]** |
-| `xl` | `40px` | **[utilisé]** |
-| `md` | `16px` | **[utilisé]** |
+| `unit` | `8px` | défini seulement |
+| `section-gap-lg` | `120px` | **[utilisé]** |
 | `margin-mobile` | `16px` | défini seulement |
-| `xs` | `4px` | **[utilisé]** |
-| `lg` | `24px` | **[utilisé]** |
-| `gutter` | `24px` | **[utilisé]** |
-| `margin-desktop` | `48px` | **[utilisé]** |
+| `section-gap-sm` | `64px` | défini seulement |
+| `gutter` | `1.5rem` | **[utilisé]** |
+| `margin-desktop` | `40px` | **[utilisé]** |
+| `container-max` | `1280px` | défini seulement |
+| `margin-page` | `4rem` | défini seulement |
+| `section-gap` | `8rem` | **[utilisé]** |
+| `md` | `16px` | défini seulement |
+| `xs` | `4px` | défini seulement |
+| `xl` | `32px` | défini seulement |
+| `sm` | `8px` | défini seulement |
+| `base` | `8px` | défini seulement |
+| `lg` | `24px` | défini seulement |
+| `stack-md` | `16px` | **[utilisé]** |
+| `stack-sm` | `8px` | **[utilisé]** |
+| `margin-x` | `32px` | **[utilisé]** |
+| `stack-lg` | `32px` | **[utilisé]** |
 
 ### Échelle typographique sémantique (absente de `theme.css`)
 | Token | Taille / interligne / graisse / espacement | Statut |
 |---|---|---|
-| `headline-xl` | `48px / 56px / 700 / -0.02em` | **[utilisé]** |
-| `label-md` | `14px / 20px / 500 / 0.01em` | **[utilisé]** |
-| `headline-lg` | `32px / 40px / 600 / -0.01em` | **[utilisé]** |
-| `label-sm` | `12px / 16px / 600` | **[utilisé]** |
-| `body-md` | `16px / 24px / 400` | **[utilisé]** |
-| `headline-lg-mobile` | `28px / 36px / 600` | défini seulement |
-| `headline-md` | `24px / 32px / 600` | **[utilisé]** |
-| `body-lg` | `18px / 28px / 400` | **[utilisé]** |
+| `display-lg` | `56px / 1.1 / 800 / -0.02em` | **[utilisé]** |
+| `headline-lg` | `32px / 1.2 / 700` | **[utilisé]** |
+| `headline-md` | `24px / 1.3 / 600` | **[utilisé]** |
+| `body-lg` | `16px / 1.5 / 400` | **[utilisé]** |
+| `body-md` | `16px / 1.5 / 400` | **[utilisé]** |
+| `label-md` | `14px / 1 / 500` | **[utilisé]** |
+| `display-lg-mobile` | `36px / 1.2 / 800` | défini seulement |
+| `caption` | `12px / 1.4 / 400` | **[utilisé]** |
+| `label-caps` | `12px / 1.0 / 700 / 0.1em` | **[utilisé]** |
+| `headline-sm` | `24px / 1.3 / 700` | défini seulement |
+| `button-text` | `14px / 1.0 / 600` | défini seulement |
+| `display` | `56px / 1.1 / 800 / -0.02em` | **[utilisé]** |
+| `button` | `14px / 1 / 600 / 0.02em` | **[utilisé]** |
+| `headline-lg-mobile` | `32px / 1.2 / 700` | **[utilisé]** |
 
 ### Divers
 - **Dark mode** : `darkMode: "class"` + classes `dark:` dans le markup — aucune stratégie dark dans le repo (à rendre inerte via `@custom-variant` en A2, décision réelle en Phase 5).
@@ -117,13 +160,25 @@ les autres sont définis par le plugin mais non consommés (palette Material gé
 
 | # | Constat | Détail |
 |---|---|---|
-| 1 | `#1d46f3` cité dans la prose du DESIGN.md mais ABSENT de la palette générée | « …- **Bleu Royal ( » — le repo l'a pourtant retenu (`--color-royal`) |
-| 2 | `#86cefa` cité dans la prose du DESIGN.md mais ABSENT de la palette générée | « …- **Bleu Céleste ( » — le repo l'a pourtant retenu (`--color-celeste`) |
-| 3 | `#e5e7eb` cité dans la prose du DESIGN.md mais ABSENT de la palette générée | « …**Level 2 (Raised):** White cards with a subtle border ( » — le repo l'a pourtant retenu (`--color-bordure`) |
-| 4 | Rayon `DEFAULT` : `code.html` dit `0.25rem`, `DESIGN.md` dit `0.5rem` | l'échelle de radii du markup et celle de la charte divergent |
-| 5 | Rayon `lg` : `code.html` dit `0.5rem`, `DESIGN.md` dit `1rem` | l'échelle de radii du markup et celle de la charte divergent |
-| 6 | Rayon `xl` : `code.html` dit `0.75rem`, `DESIGN.md` dit `1.5rem` | l'échelle de radii du markup et celle de la charte divergent |
-| 7 | `.accenture-border` (CSS custom de l'export) utilise `#0050cc` | hex hors palette ET hors charte — ni `secondary #0038e6` ni `royal #1d46f3` |
+| 1 | `#000d2e` cité dans la prose du DESIGN.md mais ABSENT de la palette générée | « …- **Secondary ( » |
+| 2 | `#1d1d1b` cité dans la prose du DESIGN.md mais ABSENT de la palette générée | « …- **Neutral ( » |
+| 3 | `#f4f7f9` cité dans la prose du DESIGN.md mais ABSENT de la palette générée | « …- **Surface ( » |
+| 4 | `#e0e0e0` cité dans la prose du DESIGN.md mais ABSENT de la palette générée | « …- **Borders:** Use 1px solid borders in light gray ( » |
+| 5 | Rayon `DEFAULT` : `code.html` dit `0.125rem`, `DESIGN.md` dit `0.25rem` | l'échelle de radii du markup et celle de la charte divergent |
+| 6 | Rayon `lg` : `code.html` dit `0.25rem`, `DESIGN.md` dit `0.5rem` | l'échelle de radii du markup et celle de la charte divergent |
+| 7 | Rayon `xl` : `code.html` dit `0.5rem`, `DESIGN.md` dit `0.75rem` | l'échelle de radii du markup et celle de la charte divergent |
+| 8 | Rayon `full` : `code.html` dit `0.75rem`, `DESIGN.md` dit `9999px` | l'échelle de radii du markup et celle de la charte divergent |
+| 9 | Espacement `gutter` : la charte dit `24px`, les exports disent `1.5rem` | le code et la charte machine divergent |
+| 10 | Espacement `section-gap` : la charte dit `80px`, les exports disent `8rem` | le code et la charte machine divergent |
+| 11 | Taille `headline-lg` : la charte dit `40px`, les exports disent `32px` | le code et la charte machine divergent |
+| 12 | Taille `body-lg` : la charte dit `18px`, les exports disent `16px` | le code et la charte machine divergent |
+| 13 | `fontFamily.display-lg-mobile` déclare `Manrope` | famille HORS charte — non chargée par le `<link>` des exports (fallback navigateur silencieux) |
+| 14 | `fontFamily.caption` déclare `Inter` | famille HORS charte — non chargée par le `<link>` des exports (fallback navigateur silencieux) |
+| 15 | `fontFamily.display-lg` déclare `Manrope` | famille HORS charte — non chargée par le `<link>` des exports (fallback navigateur silencieux) |
+| 16 | `fontFamily.body-md` déclare `Manrope` | famille HORS charte — non chargée par le `<link>` des exports (fallback navigateur silencieux) |
+| 17 | `fontFamily.label-caps` déclare `Manrope` | famille HORS charte — non chargée par le `<link>` des exports (fallback navigateur silencieux) |
+| 18 | `fontFamily.headline-sm` déclare `Manrope` | famille HORS charte — non chargée par le `<link>` des exports (fallback navigateur silencieux) |
+| 19 | `fontFamily.button-text` déclare `Manrope` | famille HORS charte — non chargée par le `<link>` des exports (fallback navigateur silencieux) |
 
 ## 4. Collisions avec `tokens.css` (legacy, non-couché) — danger Phase 5
 
@@ -134,10 +189,10 @@ contre `@layer theme` : l’utilitaire compile, mais résout vers la valeur lega
 
 | Variable @theme v4 (si adoption verbatim) | Valeur export | Valeur legacy (`tokens.css`) |
 |---|---|---|
-| `--color-surface` | `#f8f9fa` | `var(--color-grey-50)` |
-| `--radius-sm` | `0.25rem` | `4px` |
-| `--radius-md` | `0.75rem` | `8px` |
-| `--radius-lg` | `1rem` | `16px` |
+| `--color-surface` | `#fcf9f5` | `var(--color-grey-50)` |
+| `--radius-sm` | `0.125rem` | `4px` |
+| `--radius-md` | `0.375rem` | `8px` |
+| `--radius-lg` | `0.5rem` | `16px` |
 
 **4 collision(s).** Décision Phase 5 recommandée : renommer ces variables
 legacy dans `tokens.css` + usages (mécanique, vérifiable au grep), puis fusionner
@@ -146,36 +201,45 @@ tokens sémantiques (chaque futur export exigerait une passe de renommage à vie
 
 ## 5. Verdict pipeline (vérification visuelle du design-lab)
 
-> **DÉCISION (user, 2026-07-29)** : le design system FINAL n'est pas encore
-> exporté. À la réception de l'export des maquettes finales, celui-ci devient
-> la **RÉFÉRENCE UNIQUE** du thème des blocs réutilisables et des gabarits de
-> page — les conflits du §3 (radii, Bleu Royal absent de la palette générée,
-> #0050cc hors charte…) seront réglés À CE MOMENT-LÀ, pas avant. D'ici là :
-> `theme-semantique.css` est un HARNAIS PROVISOIRE (design-lab seulement),
-> la Phase 5 attend l'export final, et ce script d'audit se rejoue sur
-> l'export final pour produire la version définitive de ce rapport.
+> **RE-AUDIT 2026-08-04 — LIVRAISON FINALE** (5 exports `docs/design/Export
+> HTML/` + design system partagé). La décision du 2026-07-29 (« l'export final
+> = RÉFÉRENCE UNIQUE, conflits réglés à sa réception ») s'applique MAINTENANT :
+> les arbitrages ouverts sont consignés dans
+> `docs/design/arbitrages-design-a-trancher.md` (5 bloquants) et l'analyse
+> complète dans `docs/design/analyse-reception-maquettes-finales.md`.
 
-**✅ PIPELINE VALIDÉ** (2026-07-29, `/fr/design-lab` vs `screen.png`, viewport 1440) :
-le body de l'export Homepage compile et rend fidèlement contre le pipeline v4 du
-repo (`design-lab.css` + `theme-semantique.css`) — mise en page, grilles, typo
-sémantique (`headline-xl`…), palette, ombres, bordures accent, icônes Material
-Symbols auto-hébergées (sous-ensemble 3 Ko) et Hanken Grotesk locale : conformes.
+**Lecture du Constat préalable ci-dessus (importante)** : la fusion prend les
+valeurs du PREMIER export lu (`Accueil`, ordre alphabétique) — les ~40 lignes de
+divergence montrent en réalité que **Carrieres, Contact, PageExpertise et
+PageSolution sont ALIGNÉS entre eux ET avec le frontmatter de la charte** ;
+`Accueil` seul diverge (spacing parallèle, `headline-lg` 32 vs 40, `body-lg`
+16/1.5 vs 18/1.6, graisses `headline-md` 600 vs 700, Manrope/Inter jusque dans
+`body-md`/`label-caps`). Dans les tableaux §2/§3, les valeurs « exports » des
+tokens homonymes sont donc CELLES D'ACCUEIL (gutter `1.5rem`, section-gap
+`8rem`…) — scorie probable d'une génération antérieure, voir arbitrage #2.
+Les RADII (§3 #5-8) font exception : les 5 exports partagent la MÊME échelle
+décalée (`DEFAULT .125` → `full .75rem`) contre la charte — conflit
+code-vs-charte uniforme, `full: 0.75rem` casserait `rounded-full`.
 
-**Recette de conversion d'un export** (à rejouer pour chaque futur écran) :
+**✅ PIPELINE VALIDÉ** (2026-07-29, ANCIEN export Homepage, `/fr/design-lab` vs
+`screen.png`, viewport 1440) : mise en page, grilles, typo sémantique, palette,
+ombres, icônes Material Symbols auto-hébergées et Hanken Grotesk locale
+conformes. **Revalidation sur la livraison FINALE : en attente** — à faire en
+portant une page finale (PageExpertise recommandé : la plus riche en patterns
+nouveaux) dans le design-lab avec le thème candidat `theme-refonte.css`.
+
+**Recette de conversion d'un export** (à rejouer pour chaque écran) :
 1. retirer Play CDN + config inline + liens Google Fonts (le pipeline les remplace) ;
-2. rapatrier les images `aida-public` en local et réécrire les `src` (+`data-alt`→`alt`) ;
+2. rapatrier les images distantes (`/aida/` ET `/aida-public/`) en local et
+   réécrire les `src` (+`data-alt`→`alt`) — `scripts/design/fetch-maquette-images.mjs`
+   l'a fait pour les 5 exports (20/25 ; 5 URLs DÉJÀ MORTES côté Google, listées
+   dans l'analyse de réception — à ré-exporter du `.fig`) ;
 3. retirer les scripts embarqués (décoratifs, `href="#"` non valides) ;
-4. ⚠️ **piège v4 découvert par le test** : l'échelle d'espacement nommée
-   (`--spacing-lg/xl`…) MASQUE les tailles nommées `--container-*` pour
-   `max-w-*` → remplacer `max-w-lg`/`max-w-xl` par `max-w-[32rem]`/`max-w-[36rem]`
-   (sinon colonne de 24/40 px) ; `max-w-2xl`/`7xl` non touchés (pas de spacing homonyme) ;
+4. ⚠️ piège v4 (découvert sur l'ancien export) : une échelle d'espacement nommée
+   qui recouvre un nom de taille (`--spacing-lg/xl`… vs `--container-*`) MASQUE
+   `max-w-*` → la charte finale n'a plus `lg/xl` mais `--spacing-container-max`
+   recrée le risque pour `max-w-container-max` — vérifier au portage ;
 5. si nouvelles icônes : régénérer le sous-ensemble Material Symbols
-   (`icon_names=` de l'API css2, triés alphabétiquement).
-
-**Deltas mineurs assumés** (non bloquants) :
-- `rounded` nu : 0.5rem (charte DESIGN.md, = `--radius-controle`) là où le
-  code.html Homepage disait 0.25rem — conflit §3, la charte gagne ;
-- `screen.png` rendu à 1600 px vs capture 1440 px : micro-écarts de retours de
-  ligne (bouton « Ø Studio » sur 1 ligne au lieu de 2) ;
-- antialiasing/graisse des icônes légèrement différents (axes figés opsz 24/wght 400).
+   (`icon_names=` de l'API css2, triés alphabétiquement) — les 5 exports
+   utilisent des icônes ABSENTES du sous-ensemble actuel (3,4 Ko).
 
