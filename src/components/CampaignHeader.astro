@@ -1,0 +1,326 @@
+---
+import { getEntry } from 'astro:content';
+import Logo from './Logo.astro';
+import { type Locale, defaultLocale, otherLocale, localizePath, swapLocale } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import { resolveHeaderConfig, type LandingHeaderConfig } from '../lib/chrome/header-config';
+import { isWithinWindow } from '../lib/schedule';
+
+/**
+ * En-tête de campagne (P-04) — rendu UNIQUEMENT quand une campagne porte un
+ * bloc `header` en mode « allégé » ou « personnalisé » (BaseLayout choisit :
+ * mode complet/absent → Header.astro, INTOUCHÉ — parité octet garantie).
+ *
+ *  - allégé : logo + UN bouton (CTA sur mesure, sinon le bouton portail) ;
+ *  - personnalisé : logo + liens bornés (sans méga-menus, sans tiroir mobile —
+ *    ils s'enroulent en mobile) + CTA + interrupteurs annonce / FR-EN /
+ *    recherche (politique : src/lib/chrome/header-config.ts).
+ *
+ * La bannière d'annonce réutilise les classes et attributs du header complet
+ * (data-announcement / data-announce-close) : l'état « fermée » est posé
+ * pré-peinture par le script bloquant de BaseLayout ; le clic de fermeture est
+ * géré ici (le script de Header.astro n'est pas chargé sur ces pages).
+ */
+
+interface Props {
+  lang?: Locale;
+  altLocalePath?: string;
+  config?: LandingHeaderConfig;
+}
+
+const { lang = defaultLocale, altLocalePath, config } = Astro.props;
+const t = useTranslations(lang);
+const chrome = resolveHeaderConfig(config);
+
+const navEntry = await getEntry('navigation', lang);
+if (!navEntry) {
+  throw new Error(`[navigation] Fichier manquant : src/data/navigation/${lang}.json`);
+}
+const nav = navEntry.data;
+
+// CTA : sur mesure si renseigné, sinon le bouton portail du site (même règle
+// de visibilité que le header complet). Aucun bouton si le portail est masqué.
+const cta =
+  chrome.cta ??
+  (nav.portal.visible ? { label: nav.portal.label, href: localizePath('/portail', lang) } : null);
+
+// Bannière d'annonce (personnalisé + interrupteur) — mêmes règles de fenêtre
+// planifiée que Header.astro (build d'édition STATIC_ONLY : toujours visible).
+const announce = nav.announce;
+const announceLink = localizePath(announce.linkHref, lang);
+const STATIC_ONLY_BUILD = Boolean(import.meta.env.STATIC_ONLY);
+const announceVisible =
+  chrome.showAnnounce &&
+  announce.enabled &&
+  (STATIC_ONLY_BUILD || isWithinWindow(new Date(), announce.startAt, announce.endAt));
+
+const searchHref = localizePath('/recherche', lang);
+
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const isCurrent = (href: string) => {
+  const h = href.replace(/\/+$/, '') || '/';
+  return h === '/' ? path === '/' : path === h || path.startsWith(h + '/');
+};
+
+const alt = altLocalePath ?? swapLocale(Astro.url.pathname, otherLocale[lang]);
+const frHref = lang === 'fr' ? Astro.url.pathname : alt;
+const enHref = lang === 'en' ? Astro.url.pathname : alt;
+---
+
+{
+  announceVisible && (
+    <div class="announcement" data-announcement>
+      <div class="container announcement__inner">
+        <p class="announcement__text">
+          {announce.before}<strong>{announce.strong}</strong>{announce.after}
+          <a class="announcement__link" href={announceLink}>
+            {announce.linkLabel}
+          </a>
+        </p>
+        <button
+          type="button"
+          class="announcement__close"
+          data-announce-close
+          aria-label={t.announce.close}
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            <path
+              d="M2 2l12 12M14 2L2 14"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  )
+}
+
+<header class="campaign-header">
+  <div class="container campaign-header__inner">
+    <a class="campaign-header__brand" href={localizePath('/', lang)} aria-label={t.nav.brandAria}>
+      <Logo variant="dark" />
+    </a>
+
+    {
+      chrome.links.length > 0 && (
+        <nav class="campaign-nav" aria-label="Navigation">
+          <ul role="list" class="campaign-nav__list">
+            {chrome.links.map((link) => (
+              <li>
+                <a
+                  class="campaign-nav__link"
+                  href={link.href}
+                  aria-current={isCurrent(link.href) ? 'page' : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    <div class="campaign-header__actions">
+      {
+        chrome.showSearch && (
+          <a
+            class="campaign-header__search"
+            href={searchHref}
+            aria-label={t.search.navAria}
+            aria-current={isCurrent(searchHref) ? 'page' : undefined}
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <circle cx="10.5" cy="10.5" r="6.5" />
+              <path d="M15.5 15.5L21 21" />
+            </svg>
+          </a>
+        )
+      }
+
+      {
+        cta && (
+          <a class="btn btn--primary campaign-header__cta" href={cta.href}>
+            {cta.label}
+          </a>
+        )
+      }
+
+      {
+        chrome.showLangSwitch && (
+          <div class="lang-switch" role="group" aria-label={t.nav.langGroupAria}>
+            <a
+              class:list={['lang-switch__link', { 'is-active': lang === 'fr' }]}
+              href={frHref}
+              aria-current={lang === 'fr' ? 'true' : undefined}
+              lang="fr"
+            >
+              FR
+            </a>
+            <span class="lang-switch__sep" aria-hidden="true">
+              |
+            </span>
+            <a
+              class:list={['lang-switch__link', { 'is-active': lang === 'en' }]}
+              href={enHref}
+              aria-current={lang === 'en' ? 'true' : undefined}
+              lang="en"
+            >
+              EN
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</header>
+
+<script>
+  // Fermeture de la bannière — même mécanique que Header.astro : classe sur
+  // <html> (déjà appliquée pré-peinture par le script bloquant de BaseLayout
+  // au rechargement) + mémorisation de session. Sans bannière rendue, le
+  // sélecteur ne trouve rien et le script est inerte.
+  document
+    .querySelector<HTMLButtonElement>('[data-announce-close]')
+    ?.addEventListener('click', () => {
+      document.documentElement.classList.add('announce-dismissed');
+      try {
+        sessionStorage.setItem('victrix-announce', 'closed');
+      } catch {
+        /* sessionStorage indisponible — la bannière se masque quand même */
+      }
+    });
+</script>
+
+<style>
+  /* Bannière d'annonce — mêmes tokens que Header.astro. */
+  .announcement {
+    background-color: var(--color-accent-blue);
+    color: var(--color-white);
+    font-size: var(--fs-200);
+  }
+  .announcement__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    justify-content: center;
+    padding-block: var(--space-2);
+  }
+  .announcement__text {
+    margin: 0;
+    max-width: none;
+    text-align: center;
+  }
+  .announcement__link {
+    color: var(--color-white);
+    font-weight: var(--fw-semibold);
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+  .announcement__close {
+    flex-shrink: 0;
+    display: inline-flex;
+    padding: var(--space-1);
+    background: transparent;
+    border: 0;
+    color: var(--color-white);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Barre d'en-tête — même gabarit visuel que .site-header (Header.astro). */
+  .campaign-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .campaign-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
+    min-height: 76px;
+    padding-block: var(--space-2);
+  }
+  .campaign-header__brand {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    --logo-height: 40px;
+  }
+
+  /* Liens du mode personnalisé — liste simple, s'enroule en mobile (pas de
+     tiroir : au plus 5 liens, décision P-04). */
+  .campaign-nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3) clamp(var(--space-4), 2vw, var(--space-6));
+    margin: 0;
+  }
+  .campaign-nav__link {
+    color: var(--color-navy);
+    font-weight: var(--fw-medium);
+    text-decoration: none;
+    padding-block: var(--space-2);
+    white-space: nowrap;
+  }
+  .campaign-nav__link:hover {
+    color: var(--color-accent-blue);
+  }
+  .campaign-nav__link[aria-current='page'] {
+    color: var(--color-accent-blue);
+    font-weight: var(--fw-semibold);
+    box-shadow: inset 0 -2px 0 0 var(--color-accent-blue);
+  }
+
+  .campaign-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  .campaign-header__search {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-navy);
+  }
+  .campaign-header__search:hover {
+    color: var(--color-accent-blue);
+  }
+
+  /* Sélecteur de langue — mêmes classes visuelles que le header complet, mais
+     styles SCOPÉS ici (ceux de Header.astro ne s'appliquent pas). */
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-200);
+  }
+  .lang-switch__link {
+    color: var(--color-grey-600, var(--color-navy));
+    text-decoration: none;
+    font-weight: var(--fw-medium);
+  }
+  .lang-switch__link.is-active {
+    color: var(--color-navy);
+    font-weight: var(--fw-bold);
+  }
+  .lang-switch__sep {
+    color: var(--color-border);
+  }
+</style>

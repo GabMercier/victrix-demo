@@ -1,0 +1,77 @@
+---
+import Logo from './Logo.astro';
+import { type Locale, defaultLocale, localizePath } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+
+/**
+ * Pied de page de campagne (P-04, mode « allégé ») — rendu UNIQUEMENT quand
+ * une campagne porte `footer.mode: allege` (BaseLayout choisit ; défaut →
+ * Footer.astro, INTOUCHÉ). Contenu : logo + barre légale (liens légaux + ©),
+ * mêmes sources que le pied de page complet (dictionnaire ui.ts).
+ */
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = defaultLocale } = Astro.props;
+const f = useTranslations(lang).footer;
+const year = 2026;
+---
+
+<footer class="campaign-footer">
+  <div class="container campaign-footer__inner">
+    <div class="campaign-footer__brand">
+      <Logo variant="light" />
+    </div>
+    <nav class="campaign-footer__legal" aria-label={f.contactTitle}>
+      <ul role="list">
+        {
+          f.legal.map((item) => (
+            <li>
+              <a href={localizePath(item.href, lang)}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <p class="campaign-footer__copy">©{year} Victrix</p>
+  </div>
+</footer>
+
+<style>
+  /* Mêmes tokens que .site-footer (Footer.astro), réduit à une seule barre. */
+  .campaign-footer {
+    background-color: var(--color-grey-dark);
+    color: var(--color-grey-300);
+  }
+  .campaign-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4) var(--space-6);
+    padding-block: var(--space-5);
+    font-size: var(--fs-200);
+  }
+  .campaign-footer__brand {
+    --logo-height: 36px;
+  }
+  .campaign-footer__legal ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+    margin: 0;
+  }
+  .campaign-footer__legal a {
+    color: var(--color-grey-300);
+    text-decoration: none;
+  }
+  .campaign-footer__legal a:hover {
+    color: var(--color-white);
+    text-decoration: underline;
+  }
+  .campaign-footer__copy {
+    margin: 0;
+  }
+</style>

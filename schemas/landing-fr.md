@@ -9,6 +9,17 @@
 title: "Nouvelle campagne"
 description: ""
 noindex: true
+# P-04 — en-tête/pied de page de campagne : « complet » = chrome normal du
+# site. Chaînes vides, jamais null (règle CloudCannon/zod du dépôt).
+header:
+  mode: complet
+  links: []
+  ctaLabel: ""
+  ctaHref: ""
+  showAnnounce: false
+  showLangSwitch: true
+  showSearch: false
+footerMode: complet
 sections:
   - _bookshop_name: hero
     type: hero

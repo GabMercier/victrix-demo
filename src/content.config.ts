@@ -485,6 +485,33 @@ const landing = defineCollection({
       // Campaign pages are UNINDEXED unless a page explicitly opts in — paid
       // traffic destinations shouldn't leak into organic search results.
       noindex: z.boolean().default(true),
+      // P-04 — en-tête de campagne par page. Bloc OPTIONNEL : absent → header
+      // normal du site (parité octet). Politique des modes résolue par
+      // src/lib/chrome/header-config.ts (complet / allégé / personnalisé,
+      // recherche opt-in hors complet — amendement 28/07). Les hrefs sont des
+      // URLs FINALES, préfixe de langue inclus (même règle que ctaHref des
+      // sections). Chaînes vides = absent (convention CloudCannon).
+      header: z
+        .object({
+          mode: z.enum(['complet', 'allege', 'personnalise']).default('complet'),
+          // Bornés à 5 : un menu de campagne reste court (pas de méga-menus).
+          links: z.array(z.object({ label: z.string(), href: z.string() })).max(5).default([]),
+          // CTA PLAT (ctaLabel/ctaHref, pas d'objet cta{label,href}) : mêmes
+          // noms que les sections → hérite des _inputs CloudCannon existants
+          // (« Libellé du bouton » / « Lien du bouton »). Vides = retomber sur
+          // le bouton portail.
+          ctaLabel: z.string().default(''),
+          ctaHref: z.string().default(''),
+          showAnnounce: z.boolean().default(false),
+          showLangSwitch: z.boolean().default(true),
+          showSearch: z.boolean().default(false),
+        })
+        .optional(),
+      // P-04 — pied de page : « allege » = logo + barre légale seulement.
+      // Champ PLAT (pas d'objet `footer.mode`) : les _inputs CloudCannon
+      // cascadent par NOM DE CHAMP SEUL, et `mode` est déjà le select 3 valeurs
+      // de l'en-tête — un second `mode` à 2 valeurs entrerait en collision.
+      footerMode: z.enum(['complet', 'allege']).default('complet'),
       // Shared `sections` union (see sectionsSchema above) — the same palette
       // the home page uses; the campaign route (src/pages/[lang]/campagnes/
       // [slug].astro) renders it through the shared Bookshop renderer.

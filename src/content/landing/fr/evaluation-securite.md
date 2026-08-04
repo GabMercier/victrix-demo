@@ -14,6 +14,18 @@
 title: "Évaluation de votre posture de sécurité"
 description: "Obtenez un portrait clair de vos défenses actuelles : une évaluation menée par les experts Victrix, des constats concrets et un plan d'action priorisé."
 noindex: true
+# P-04 — chrome allégé (campagne payante) : logo + un bouton, pied de page
+# réduit à la barre légale. ctaLabel/ctaHref vides → bouton portail ; ici un
+# CTA de conversion dédié.
+header:
+  mode: allege
+  links: []
+  ctaLabel: "Demander mon évaluation"
+  ctaHref: "/fr/contact"
+  showAnnounce: false
+  showLangSwitch: true
+  showSearch: false
+footerMode: allege
 sections:
   - _bookshop_name: hero
     type: hero

@@ -8,6 +8,15 @@ import { defaultLocale, otherLocale, localizePath, isLocale } from '../../../i18
 // connect (see the renderer's header comment for the full story). Vite
 // resolves relative imports above src/ without any alias.
 import Page from '../../../../component-library/src/shared/astro/page.astro';
+// P-04 — chrome de campagne. Importés ICI (et pas dans BaseLayout) à dessein :
+// le graphe de modules de BaseLayout alimente TOUTES les pages — y importer
+// ces composants ajouterait leur CSS à chaque page du site (parité octet
+// rompue partout). Depuis cette route, seules les pages campagnes le portent.
+import CampaignHeader from '../../../components/CampaignHeader.astro';
+import CampaignFooter from '../../../components/CampaignFooter.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { resolveHeaderConfig, resolveFooterMode } from '../../../lib/chrome/header-config';
 
 /**
  * Campaign landing pages ("campagnes") — one static route per entry in the
@@ -96,6 +105,12 @@ export async function getStaticPaths() {
 }
 
 const { page, lang, altLocalePath, frontmatter, enrich } = Astro.props;
+
+// P-04 — mode d'en-tête/pied de page de la campagne (politique :
+// src/lib/chrome/header-config.ts). « complet » (ou bloc absent) → slots non
+// remplis, BaseLayout rend Header/Footer par leurs valeurs par défaut.
+const useCampaignHeader = resolveHeaderConfig(page.data.header).mode !== 'complet';
+const useCampaignFooter = resolveFooterMode(page.data.footerMode) === 'allege';
 ---
 
 <BaseLayout
@@ -105,6 +120,30 @@ const { page, lang, altLocalePath, frontmatter, enrich } = Astro.props;
   noindex={page.data.noindex}
   altLocalePath={altLocalePath}
 >
+  {
+    /* GOTCHA Astro : une expression FAUSSE portant slot=… remplit quand même
+       le slot (de rien) et SUPPRIME le contenu par défaut — constaté ici le
+       2026-07-30 (campagne sans bloc header rendue SANS en-tête). D'où le
+       ternaire explicite : la branche « complet » re-rend Header/Footer avec
+       les mêmes props que les défauts de BaseLayout (sortie identique). */
+    useCampaignHeader ? (
+      <CampaignHeader
+        slot="header"
+        lang={lang}
+        altLocalePath={altLocalePath}
+        config={page.data.header}
+      />
+    ) : (
+      <Header slot="header" lang={lang} altLocalePath={altLocalePath} />
+    )
+  }
+  {
+    useCampaignFooter ? (
+      <CampaignFooter slot="footer" lang={lang} />
+    ) : (
+      <Footer slot="footer" lang={lang} />
+    )
+  }
   {
     /* One `bookshop:live` boundary around the whole section loop — this is
        what lets CloudCannon's visual editor bind clicks on the page to the

@@ -9,6 +9,17 @@
 title: "New campaign"
 description: ""
 noindex: true
+# P-04 — campaign header/footer: "complet" = the site's normal chrome.
+# Empty strings, never null (repo-wide CloudCannon/zod rule).
+header:
+  mode: complet
+  links: []
+  ctaLabel: ""
+  ctaHref: ""
+  showAnnounce: false
+  showLangSwitch: true
+  showSearch: false
+footerMode: complet
 sections:
   - _bookshop_name: hero
     type: hero
