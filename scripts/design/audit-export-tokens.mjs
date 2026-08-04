@@ -10,8 +10,12 @@
  * Usage :
  *   node scripts/design/audit-export-tokens.mjs
  *     [--export "C:/Repo/Victrix/Design/Maquette & Front End/Export - Homepage"]...
+ *     [--html "docs/design/Export HTML/Accueil.html"]...
+ *     [--design "docs/design/Design system/VictrixModernWeb-DesignSystenm.md"]
  *     [--out docs/design/audit-tokens-figma.md]
- *   (--export est répétable ; défaut = les deux exports connus)
+ *   (--export et --html sont répétables ; défaut = la livraison FINALE
+ *   2026-08-04 si docs/design/Export HTML existe — 5 exports HTML plats + UN
+ *   design system partagé — sinon les deux anciens dossiers Export - *)
  *
  * Sources croisées, par export :
  *  - code.html   : blob `tailwind.config = {...}` (palette générée, spacing,
@@ -31,23 +35,36 @@
  *     (--color-*, --radius-*, …) existe déjà NON-COUCHÉE dans tokens.css : la
  *     variable legacy gagnerait EN SILENCE sur @layer theme (danger Phase 5).
  */
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname, basename } from 'node:path';
 
 const args = process.argv.slice(2);
 const exportDirs = [];
+const htmlFiles = [];
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--export' && args[i + 1]) exportDirs.push(args[++i]);
+  if (args[i] === '--html' && args[i + 1]) htmlFiles.push(args[++i]);
 }
 const getArg = (name, def) => {
   const i = args.indexOf(name);
   return i >= 0 && args[i + 1] ? args[i + 1] : def;
 };
 const OUT = getArg('--out', 'docs/design/audit-tokens-figma.md');
-if (exportDirs.length === 0) {
-  const base = 'C:/Repo/Victrix/Design/Maquette & Front End';
-  exportDirs.push(`${base}/Export - Homepage`, `${base}/Export - expertise-productivite`);
+// Livraison finale (2026-08-04) : exports HTML PLATS + un design system
+// PARTAGÉ (l'ancien format = un dossier par export avec son DESIGN.md).
+if (exportDirs.length === 0 && htmlFiles.length === 0) {
+  const finalDir = 'docs/design/Export HTML';
+  if (existsSync(finalDir)) {
+    for (const f of readdirSync(finalDir))
+      if (f.endsWith('.html')) htmlFiles.push(join(finalDir, f));
+  } else {
+    const base = 'C:/Repo/Victrix/Design/Maquette & Front End';
+    exportDirs.push(`${base}/Export - Homepage`, `${base}/Export - expertise-productivite`);
+  }
 }
+const sharedMd = htmlFiles.length
+  ? readFileSync(getArg('--design', 'docs/design/Design system/VictrixModernWeb-DesignSystenm.md'), 'utf8')
+  : null;
 
 // ---------------------------------------------------------------------------
 // Parseurs
@@ -157,19 +174,19 @@ const themeColors = {};
 for (const [k, v] of Object.entries(themeVars))
   if (k.startsWith('color-') && /^#[0-9a-fA-F]{6}$/.test(v)) themeColors[k.slice(6)] = v.toLowerCase();
 
-const exportsData = exportDirs.map((dir) => {
-  const html = readFileSync(join(dir, 'code.html'), 'utf8');
-  const md = readFileSync(join(dir, 'DESIGN.md'), 'utf8');
-  const cfg = parseInlineConfig(html);
-  return {
-    dir,
-    name: basename(dir),
-    cfg,
-    fm: parseFrontmatter(md),
-    prose: proseHexes(md),
-    used: usedTokens(html, cfg),
-  };
-});
+const exportsData = [
+  ...exportDirs.map((dir) => {
+    const html = readFileSync(join(dir, 'code.html'), 'utf8');
+    const md = readFileSync(join(dir, 'DESIGN.md'), 'utf8');
+    const cfg = parseInlineConfig(html);
+    return { name: basename(dir), cfg, fm: parseFrontmatter(md), prose: proseHexes(md), used: usedTokens(html, cfg), html, md };
+  }),
+  ...htmlFiles.map((file) => {
+    const html = readFileSync(file, 'utf8');
+    const cfg = parseInlineConfig(html);
+    return { name: basename(file, '.html'), cfg, fm: parseFrontmatter(sharedMd), prose: proseHexes(sharedMd), used: usedTokens(html, cfg), html, md: sharedMd };
+  }),
+];
 
 // ---------------------------------------------------------------------------
 // Analyses (les DESIGN.md sont identiques entre exports ; les configs peuvent
@@ -245,9 +262,17 @@ for (const [name, val] of Object.entries(fmRounded)) {
   const eq = Object.entries(themeVars).filter(([k, v]) => k.startsWith('radius-') && v === String(val)).map(([k]) => k);
   if (eq.length) w(`| \`rounded-${name}\` (DESIGN.md) | \`${val}\` | \`--${eq.join('`, `--')}\` |`);
 }
-w('| ombre Level 2 (prose) | `0 4px 12px rgb(0 27 68 / .05)` | `--shadow-ambiante` |');
-w('| ombre Level 3 (prose) | `0 12px 32px rgb(0 27 68 / .1)` | `--shadow-surelevee` |');
-w('| `fontFamily.*` (Hanken Grotesk ×12 alias) | — | `--font-grotesk` (un seul token) |');
+// Ombres : correspondances propres à l'ANCIEN DESIGN.md — émises seulement si
+// la prose auditée les contient encore (la charte finale préfère les couches
+// tonales + bordures 1px, ombre hover `0px 4px 20px` à 5 %).
+if (ex.md.includes('0 4px 12px')) {
+  w('| ombre Level 2 (prose) | `0 4px 12px rgb(0 27 68 / .05)` | `--shadow-ambiante` |');
+  w('| ombre Level 3 (prose) | `0 12px 32px rgb(0 27 68 / .1)` | `--shadow-surelevee` |');
+}
+const famAliases = Object.entries(merged.fontFamily);
+const hankenAliases = famAliases.filter(([, v]) => (Array.isArray(v) ? v : [v]).includes('Hanken Grotesk'));
+if (hankenAliases.length)
+  w(`| \`fontFamily.*\` (Hanken Grotesk ×${hankenAliases.length} alias) | — | \`--font-grotesk\` (un seul token) |`);
 w();
 const unmatchedTheme = Object.keys(themeColors).filter((k) => !matchedThemeColors.has(k));
 if (unmatchedTheme.length)
@@ -324,8 +349,38 @@ for (const [name, val] of Object.entries(cfgRadii)) {
   if (fmVal !== undefined && String(fmVal) !== String(val))
     w(`| ${++ci} | Rayon \`${name}\` : \`code.html\` dit \`${val}\`, \`DESIGN.md\` dit \`${fmVal}\` | l'échelle de radii du markup et celle de la charte divergent |`);
 }
-// 3c. Couleur custom hors palette dans le CSS embarqué
-w(`| ${++ci} | \`.accenture-border\` (CSS custom de l'export) utilise \`#0050cc\` | hex hors palette ET hors charte — ni \`secondary #0038e6\` ni \`royal #1d46f3\` |`);
+// 3c. Charte (frontmatter) vs configs des exports — même token, autre valeur.
+for (const [name, val] of Object.entries(ex.fm.colors ?? {})) {
+  const cfgVal = cfgColors[name];
+  if (cfgVal && cfgVal !== String(val).toLowerCase())
+    w(`| ${++ci} | Couleur \`${name}\` : la charte (frontmatter) dit \`${val}\`, les exports disent \`${cfgVal}\` | le code et la charte machine divergent |`);
+}
+for (const [name, val] of Object.entries(ex.fm.spacing ?? {})) {
+  const cfgVal = merged.spacing[name];
+  if (cfgVal !== undefined && String(cfgVal) !== String(val))
+    w(`| ${++ci} | Espacement \`${name}\` : la charte dit \`${val}\`, les exports disent \`${cfgVal}\` | le code et la charte machine divergent |`);
+}
+for (const [name, def] of Object.entries(ex.fm.typography ?? {})) {
+  const cfgDef = merged.fontSize[name];
+  if (cfgDef && String(cfgDef[0]) !== String(def.fontSize))
+    w(`| ${++ci} | Taille \`${name}\` : la charte dit \`${def.fontSize}\`, les exports disent \`${cfgDef[0]}\` | le code et la charte machine divergent |`);
+}
+// 3d. Familles de police hors charte (la charte = Hanken Grotesk exclusif).
+for (const [alias, v] of famAliases) {
+  for (const fam of (Array.isArray(v) ? v : [v]).filter((f) => f !== 'sans-serif' && f !== 'Hanken Grotesk'))
+    w(`| ${++ci} | \`fontFamily.${alias}\` déclare \`${fam}\` | famille HORS charte — non chargée par le \`<link>\` des exports (fallback navigateur silencieux) |`);
+}
+// 3e. Hex des <style> embarqués hors palette générée ET hors prose de la charte.
+const styleHexes = new Map(); // hex → export de première occurrence
+for (const e of exportsData)
+  for (const sm of e.html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g))
+    for (const hm of sm[1].matchAll(/#[0-9a-fA-F]{6}\b/g)) {
+      const hex = hm[0].toLowerCase();
+      if (!styleHexes.has(hex)) styleHexes.set(hex, e.name);
+    }
+for (const [hex, page] of styleHexes)
+  if (!paletteHexes.has(hex) && !ex.prose.has(hex))
+    w(`| ${++ci} | CSS embarqué de \`${page}\` utilise \`${hex}\` | hex hors palette générée ET hors prose de la charte |`);
 w();
 
 // --- 4. Collisions legacy ---------------------------------------------------

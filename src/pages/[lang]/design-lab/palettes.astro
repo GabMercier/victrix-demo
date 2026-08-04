@@ -1,0 +1,198 @@
+---
+/**
+ * PAGE LABORATOIRE — COMPARAISON DES PALETTES (à purger avant la mise en prod).
+ * Support visuel de l'ARBITRAGE #1 (docs/design/arbitrages-design-a-trancher.md) :
+ * la livraison finale contient TROIS palettes divergentes, et le repo une
+ * quatrième (provisoire). Cette page les rend côte à côte + une même carte
+ * échantillon dans chacune des trois palettes candidates, pour trancher sur
+ * pièce plutôt que sur hex.
+ *
+ * Les nuanciers utilisent des valeurs ARBITRAIRES (bg-[#…]) et non les tokens :
+ * on montre les 4 sources telles quelles, indépendamment du thème chargé.
+ * Hors sitemap ('/design-lab'), hors Pagefind, hors CloudCannon, noindex,
+ * FR seulement — même régime que les autres pages design-lab.
+ */
+import '../../../styles/design-lab-refonte.css';
+
+export function getStaticPaths() {
+  // Page laboratoire monolingue — pas de variante /en.
+  return [{ params: { lang: 'fr' } }];
+}
+
+const sources = [
+  {
+    titre: '1 · Planche DesignSystemVictrix.png',
+    badge: 'Direction « Chaud et humain » — hex ABSENTS du code livré',
+    tone: 'warn',
+    couleurs: [
+      { hex: '#FAF7F3', nom: 'Ivoire chaud' },
+      { hex: '#F2ECE4', nom: 'Beige doux' },
+      { hex: '#E9E1D6', nom: 'Sable clair' },
+      { hex: '#1A1F28', nom: 'Anthracite' },
+      { hex: '#1A5BFF', nom: 'Bleu Victrix' },
+      { hex: '#0D1430', nom: 'Bleu nuit' },
+    ],
+  },
+  {
+    titre: '2 · Frontmatter du design system (charte machine)',
+    badge: 'RECOMMANDÉE — consommée par 4 exports sur 5',
+    tone: 'ok',
+    couleurs: [
+      { hex: '#FCF9F5', nom: 'surface' },
+      { hex: '#F0EDEA', nom: 'surface-container' },
+      { hex: '#E5E2DE', nom: 'surface-container-highest' },
+      { hex: '#C4C5D9', nom: 'outline-variant' },
+      { hex: '#1C1C1A', nom: 'on-surface' },
+      { hex: '#444656', nom: 'on-surface-variant' },
+      { hex: '#002FC7', nom: 'primary' },
+      { hex: '#1D46F3', nom: 'primary-container' },
+      { hex: '#00105B', nom: 'on-primary-fixed (navy des overlays)' },
+      { hex: '#515D82', nom: 'secondary' },
+      { hex: '#C6D3FE', nom: 'secondary-container' },
+      { hex: '#BA1A1A', nom: 'error' },
+    ],
+  },
+  {
+    titre: '3 · Prose §Colors du même document',
+    badge: 'Contredit son propre frontmatter (surface FROIDE)',
+    tone: 'warn',
+    couleurs: [
+      { hex: '#1D46F3', nom: 'Primary' },
+      { hex: '#000D2E', nom: 'Secondary (navy prose)' },
+      { hex: '#1D1D1B', nom: 'Neutral' },
+      { hex: '#F4F7F9', nom: 'Surface (froide)' },
+      { hex: '#E0E0E0', nom: 'Borders' },
+    ],
+  },
+  {
+    titre: '4 · Repo — pilote provisoire (theme.css « Luminous Precision »)',
+    badge: 'À REMPLACER par le thème final (décision 2026-07-29)',
+    tone: 'off',
+    couleurs: [
+      { hex: '#001B44', nom: 'nuit' },
+      { hex: '#1D46F3', nom: 'royal' },
+      { hex: '#0038E6', nom: 'royal-profond' },
+      { hex: '#86CEFA', nom: 'céleste (disparaît)' },
+      { hex: '#F8F9FA', nom: 'givre' },
+      { hex: '#E5E7EB', nom: 'bordure' },
+      { hex: '#191C1D', nom: 'encre' },
+      { hex: '#44474F', nom: 'encre-douce' },
+    ],
+  },
+];
+
+// Une MÊME carte échantillon rendue dans chaque palette candidate via des
+// custom properties scoppées (le markup est identique, seul le style= change).
+const echantillons = [
+  { nom: 'Planche PNG', vars: '--pal-primary:#1A5BFF; --pal-dark:#0D1430; --pal-surface:#FAF7F3; --pal-ink:#1A1F28; --pal-border:#E9E1D6;' },
+  { nom: 'Frontmatter (recommandée)', vars: '--pal-primary:#002FC7; --pal-dark:#00105B; --pal-surface:#FCF9F5; --pal-ink:#1C1C1A; --pal-border:#C4C5D9;' },
+  { nom: 'Prose', vars: '--pal-primary:#1D46F3; --pal-dark:#000D2E; --pal-surface:#F4F7F9; --pal-ink:#1D1D1B; --pal-border:#E0E0E0;' },
+];
+
+const badgeClasses = {
+  ok: 'bg-secondary-container text-on-secondary-container',
+  warn: 'bg-error-container text-on-error-container',
+  off: 'bg-surface-container-high text-on-surface-variant',
+};
+---
+
+<!doctype html>
+<html class="light" lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Design lab — Comparaison des palettes (arbitrage #1)</title>
+  </head>
+  <body class="bg-surface text-on-surface">
+    <header class="bg-surface-container-lowest border-b border-solid border-outline-variant sticky top-0 z-50">
+      <div class="max-w-container-max mx-auto px-margin-x h-16 flex items-center justify-between">
+        <p class="font-headline-md text-headline-md text-primary m-0">Design lab · Palettes</p>
+        <nav class="flex items-center gap-stack-lg">
+          <a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="/fr/design-lab/">Ancien export</a>
+          <a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="/fr/design-lab/refonte/">Prototypes refonte</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-container-max mx-auto px-margin-x py-stack-lg">
+      <section class="py-stack-lg">
+        <span class="font-label-caps text-label-caps text-primary uppercase block mb-stack-sm">Arbitrage #1 — quelle palette fait foi ?</span>
+        <h1 class="font-display text-display text-on-surface m-0 mb-stack-md">Quatre palettes en présence</h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-[46rem] m-0">
+          Les trois premières viennent de la livraison finale et divergent entre elles ; la quatrième est le pilote
+          provisoire du repo. Détail et recommandations : docs/design/arbitrages-design-a-trancher.md.
+        </p>
+      </section>
+
+      {
+        sources.map((s) => (
+          <section class="mb-stack-lg bg-surface-container-lowest border border-solid border-outline-variant rounded-lg p-stack-lg">
+            <div class="flex flex-wrap items-center gap-stack-md mb-stack-md">
+              <h2 class="font-headline-md text-headline-md m-0">{s.titre}</h2>
+              <span class={`font-label-caps text-label-caps uppercase rounded-full px-3 py-1 ${badgeClasses[s.tone]}`}>{s.badge}</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-gutter">
+              {s.couleurs.map((c) => (
+                <figure class="m-0">
+                  <div class="h-16 rounded border border-solid border-outline-variant" style={`background:${c.hex}`} />
+                  <figcaption class="mt-1">
+                    <span class="block text-body-md font-bold leading-tight">{c.nom}</span>
+                    <code class="text-label-caps text-on-surface-variant">{c.hex}</code>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+
+      <section class="mb-section-gap">
+        <div class="border-b border-solid border-outline-variant pb-stack-sm mb-stack-lg">
+          <h2 class="font-headline-md text-headline-md m-0">Même carte, trois palettes</h2>
+          <p class="text-body-md text-on-surface-variant m-0 mt-1">
+            Markup identique (carte charte : fond blanc, bordure 1px, label-caps, CTA plein, chip, encart navy) — seules
+            les variables de couleur changent.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter items-stretch">
+          {
+            echantillons.map((e) => (
+              <div class="flex flex-col gap-stack-sm" style={e.vars}>
+                <span class="font-label-caps text-label-caps uppercase text-on-surface-variant">{e.nom}</span>
+                <div class="rounded-lg p-stack-lg border border-solid flex-1 flex flex-col gap-stack-md" style="background:var(--pal-surface); border-color:var(--pal-border);">
+                  <div class="bg-white rounded p-stack-md border border-solid" style="border-color:var(--pal-border);">
+                    <span class="font-label-caps text-label-caps uppercase" style="color:var(--pal-primary);">Cybersécurité</span>
+                    <h3 class="font-headline-md text-headline-md m-0 my-1" style="color:var(--pal-ink);">Évaluation de posture</h3>
+                    <p class="text-body-md m-0 mb-3" style="color:var(--pal-ink); opacity:0.72;">
+                      Deux à quatre semaines selon l'environnement, rapport exécutif inclus.
+                    </p>
+                    <span class="inline-flex items-center gap-2 text-on-primary rounded px-4 py-2 font-button text-button" style="background:var(--pal-primary);">
+                      Planifier un appel
+                      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </span>
+                  </div>
+                  <div class="rounded p-stack-md text-white" style="background:var(--pal-dark);">
+                    <span class="font-label-caps text-label-caps uppercase opacity-70">Encart navy</span>
+                    <p class="text-body-md m-0">Fonds de cartes service, footer, sections contrastées.</p>
+                  </div>
+                  <span class="self-start inline-flex items-center gap-2 rounded-full px-3 py-1 font-label-caps text-label-caps uppercase" style="background:var(--pal-border); color:var(--pal-ink);">
+                    <span class="material-symbols-outlined text-[14px]">verified</span>
+                    Chip
+                  </span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <footer class="border-t border-solid border-outline-variant py-stack-lg">
+        <p class="text-body-md text-on-surface-variant m-0">
+          Recommandation (voir arbitrages #1/#4) : frontmatter comme référence machine ; navy des overlays =
+          on-primary-fixed <code>#00105B</code>, déjà utilisé par le code des maquettes.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
