@@ -685,8 +685,21 @@ const navigation = defineCollection({
       label: z.string().min(1),
       visible: z.boolean().default(true),
     }),
+    // Fidélité maquette 2026-08-04 : le bouton d'action du header (« Contact »
+    // en bleu) — le portail devient un lien texte. Optionnel : absent, le
+    // portail reste le bouton (comportement historique).
+    cta: z
+      .object({
+        label: z.string().min(1),
+        href: navHref,
+      })
+      .optional(),
     mega: z.object({
       parentHref: navHref,
+      // Fidélité maquette 2026-08-04 : le MÊME panneau peut s'ouvrir sous
+      // PLUSIEURS entrées du menu (Expertises + Services + Produits). Parents
+      // SUPPLÉMENTAIRES optionnels — le garde-fou build couvre l'ensemble.
+      parentHrefs: z.array(navHref).default([]),
       ariaLabel: z.string().min(1),
       columns: z.array(
         z.object({

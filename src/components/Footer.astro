@@ -1,5 +1,4 @@
 ---
-import Logo from './Logo.astro';
 import { type Locale, defaultLocale, localizePath } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 
@@ -21,7 +20,8 @@ interface Props {
 }
 
 const { lang = defaultLocale } = Astro.props;
-const f = useTranslations(lang).footer;
+const t = useTranslations(lang);
+const f = t.footer;
 const year = 2026;
 
 const colTitleClass = 'font-headline-md text-headline-md text-on-surface m-0 mb-4';
@@ -31,7 +31,7 @@ const smallMutedClass = 'text-xs font-semibold text-on-surface-variant';
 
 <footer class="site-footer bg-surface-container-low rounded-t-xl">
   <div class="container-site pt-14 pb-8">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10">
       {
         f.columns.map((col) => (
           <nav class="footer-col" aria-label={col.title}>
@@ -68,24 +68,18 @@ const smallMutedClass = 'text-xs font-semibold text-on-surface-variant';
             aria-hidden="true"
             focusable="false"
           >
-            <path d="M3 6h18v12H3z" />
-            <path d="M3 7l9 6 9-6" />
+            <path d="M14 4h5v16h-5" />
+            <path d="M3 12h12m0 0-4-4m4 4-4 4" />
           </svg>
           {f.contactCta.label}
         </a>
-
-        <address class="not-italic text-body-md text-on-surface-variant mt-4 max-w-[32ch]">
-          <strong class="text-on-surface font-semibold">{f.addressName}</strong><br />
-          {f.addressLines[0]}<br />
-          {f.addressLines[1]}
-        </address>
 
         <ul role="list" class="flex flex-col gap-1 mt-4">
           <li>
             <a class="text-body-md text-on-surface underline hover:text-primary" href="mailto:contact@victrix.ca">contact@victrix.ca</a>
           </li>
           <li>
-            <a class="text-body-md text-on-surface no-underline hover:text-primary" href="tel:+15148791919">514&nbsp;879-1919</a>
+            <a class="text-body-md text-on-surface no-underline hover:text-primary" href="tel:+15148791919">+1&nbsp;514&nbsp;879-1919</a>
           </li>
         </ul>
 
@@ -116,9 +110,11 @@ const smallMutedClass = 'text-xs font-semibold text-on-surface-variant';
     <div
       class="border-0 border-t border-solid border-outline-variant mt-10 pt-6 flex flex-wrap items-center justify-between gap-4"
     >
-      <div class="[--logo-height:32px]">
-        <Logo variant="dark" />
-      </div>
+      <a
+        class="font-headline-md text-headline-md font-bold text-on-surface no-underline"
+        href={localizePath('/', lang)}
+        aria-label={t.nav.brandAria}
+      >Victrix</a>
       <nav aria-label={f.contactTitle}>
         <ul role="list" class="flex flex-wrap items-center gap-6">
           {
@@ -135,29 +131,29 @@ const smallMutedClass = 'text-xs font-semibold text-on-surface-variant';
           }
         </ul>
       </nav>
-      <div class="flex items-center gap-6">
-        <p class:list={['m-0', smallMutedClass]}>©{year} Victrix</p>
-        <a
-          href="#"
-          aria-label={f.backToTop}
-          class="size-12 rounded-full border border-solid border-outline-variant bg-surface-container-low shadow-[0_1px_2px_rgba(0,0,0,0.05)] flex items-center justify-center text-on-surface no-underline hover:text-primary"
+      <p class:list={['m-0', smallMutedClass]}>© Victrix {year}</p>
+    </div>
+    <div class="flex justify-end mt-6">
+      <a
+        href="#"
+        aria-label={f.backToTop}
+        class="size-12 rounded-full border border-solid border-outline-variant bg-surface-container-low shadow-[0_1px_2px_rgba(0,0,0,0.05)] flex items-center justify-center text-on-surface no-underline hover:text-primary"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
         >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path d="M8 13V3M3.5 7.5L8 3l4.5 4.5" />
-          </svg>
-        </a>
-      </div>
+          <path d="M8 13V3M3.5 7.5L8 3l4.5 4.5" />
+        </svg>
+      </a>
     </div>
   </div>
 </footer>

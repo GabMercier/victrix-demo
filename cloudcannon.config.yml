@@ -750,22 +750,38 @@ collections_config:
           structures: _structures.nav_links
       portal:
         type: object
-        label: Bouton « Portail client »
+        label: Lien « Portail client »
+        comment: >-
+          Affiché en lien texte quand le bouton d'action ci-dessous est
+          renseigné (sinon il redevient le bouton).
       visible:
         type: switch
         label: Visible
+      cta:
+        type: object
+        label: Bouton d'action de l'en-tête
+        comment: >-
+          Le bouton bleu à droite (ex. « Contact »). Lien sans préfixe de
+          langue.
       mega:
         type: object
         label: Méga-menu
         comment: >-
-          S'attache à l'entrée du menu principal dont le lien est identique au
-          « Lien parent » ci-dessous.
+          S'attache aux entrées du menu principal dont le lien correspond au
+          « Lien parent » (et aux « Liens parents supplémentaires »).
       parentHref:
         type: text
         label: Lien parent
         comment: >-
           Doit correspondre au lien d'une entrée du menu principal (ex.
-          /services).
+          /expertises).
+      parentHrefs:
+        type: array
+        label: Liens parents supplémentaires
+        comment: >-
+          Autres entrées du menu qui ouvrent le MÊME panneau (ex. /services,
+          /produits). Chaque valeur doit correspondre au lien d'une entrée du
+          menu principal.
       ariaLabel:
         type: text
         label: Libellé d'accessibilité

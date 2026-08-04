@@ -62,33 +62,49 @@ const fr = {
     },
   },
 
+  // Footer — contenu des colonnes ALIGNÉ sur la maquette Figma « Composants »
+  // (2026-08-04). Cibles « mortes assumées » (pages à créer, décision user,
+  // comme /decouvrir ou /carrieres) : /services/infrastructure, /secteurs,
+  // /services/services-applicatifs, /services/projets-en-ia,
+  // /centre-de-confiance, /tarification.
   footer: {
     columns: [
       {
+        title: 'Expertises',
+        links: [
+          { label: 'Conseil stratégique', href: '/services/conseil-strategique' },
+          { label: 'Intelligence artificielle', href: '/services/intelligence-artificielle' },
+          { label: 'Infrastructure', href: '/services/infrastructure' },
+          { label: 'Secteurs d’activité', href: '/secteurs' },
+        ],
+      },
+      {
         title: 'Services',
         links: [
-          { label: 'Consultation stratégique', href: '/services/consultation-strategique' },
-          { label: 'Infonuagique', href: '/services/infonuagique' },
+          { label: 'Services applicatifs', href: '/services/services-applicatifs' },
+          { label: 'Infonuagique', href: '/services/services-infonuagiques' },
           { label: 'Cybersécurité', href: '/services/cybersecurite' },
-          { label: 'Productivité', href: '/services/productivite' },
-          { label: 'Intelligence artificielle', href: '/services/intelligence-artificielle' },
-          { label: 'Services gérés', href: '/services/services-geres' },
+          { label: 'Projets en IA', href: '/services/projets-en-ia' },
+          { label: 'Services gérés', href: '/services/services-ti-geres' },
         ],
       },
       {
         title: 'Produits',
         links: [
-          { label: 'Licences et équipements', href: '/produits/licences-equipements' },
-          { label: 'Intranet — Plateforme d’expérience employé', href: '/produits/intranet' },
-          { label: 'Application de réservation de bureau', href: '/produits/reservation-bureau' },
+          { label: 'Application de réservation de bureau', href: '/services/productivite/o-bureau' },
+          { label: 'Plateforme employé', href: '/services/productivite/plateforme-employe-intranet' },
+          { label: 'Approvisionnement TI', href: '/services/approvisionnement-ti' },
+          { label: 'Tarification', href: '/tarification' },
         ],
       },
       {
         title: 'À propos',
         links: [
-          { label: 'Carrières & Vie@Victrix', href: '/carrieres' },
-          { label: 'Blogue', href: '/ressources' },
-          { label: 'Tarification', href: '/tarification' },
+          { label: 'Découvrir Victrix', href: '/decouvrir' },
+          { label: 'Carrière', href: '/carrieres' },
+          { label: 'Centre de confiance', href: '/centre-de-confiance' },
+          { label: 'Ressources', href: '/ressources' },
+          { label: 'Actualités', href: '/ressources' },
         ],
       },
     ],
@@ -96,13 +112,12 @@ const fr = {
     addressName: 'Les Solutions Victrix',
     addressLines: ['1100, boul. René-Lévesque Ouest, bureau 1900', 'Montréal (Québec) H3B 4N4'],
     socialLabel: 'Suivez-nous sur :',
-    // Re-skin chrome 2026-08-04 (footer clair Figma) : chip « Nous joindre »
-    // + liens sociaux TEXTE (les pastilles-icônes sont retirées). Les URLs
-    // sociales réelles restent à fournir (héritées « # » de l'ancien footer).
-    contactCta: { label: 'Nous joindre', href: '/contact' },
+    // Chip du footer = accès au PORTAIL (maquette) ; liens sociaux TEXTE.
+    // URLs sociales réelles à fournir (héritées « # » de l'ancien footer).
+    contactCta: { label: 'Portail client', href: '/portail' },
     social: [
-      { label: 'LinkedIn', href: '#' },
       { label: 'Facebook', href: '#' },
+      { label: 'LinkedIn', href: '#' },
     ],
     backToTop: 'Retour en haut de page',
     legal: [
@@ -230,30 +245,41 @@ const en: UI = {
   footer: {
     columns: [
       {
+        title: 'Expertise',
+        links: [
+          { label: 'Strategic consulting', href: '/services/conseil-strategique' },
+          { label: 'Artificial intelligence', href: '/services/intelligence-artificielle' },
+          { label: 'Infrastructure', href: '/services/infrastructure' },
+          { label: 'Sectors', href: '/secteurs' },
+        ],
+      },
+      {
         title: 'Services',
         links: [
-          { label: 'Strategic consulting', href: '/services/consultation-strategique' },
-          { label: 'Cloud computing', href: '/services/infonuagique' },
+          { label: 'Application services', href: '/services/services-applicatifs' },
+          { label: 'Cloud computing', href: '/services/services-infonuagiques' },
           { label: 'Cybersecurity', href: '/services/cybersecurite' },
-          { label: 'Productivity', href: '/services/productivite' },
-          { label: 'Artificial intelligence', href: '/services/intelligence-artificielle' },
-          { label: 'Managed services', href: '/services/services-geres' },
+          { label: 'AI projects', href: '/services/projets-en-ia' },
+          { label: 'Managed services', href: '/services/services-ti-geres' },
         ],
       },
       {
         title: 'Products',
         links: [
-          { label: 'Licensing and equipment', href: '/produits/licences-equipements' },
-          { label: 'Intranet — Employee experience platform', href: '/produits/intranet' },
-          { label: 'Desk booking app', href: '/produits/reservation-bureau' },
+          { label: 'Desk booking app', href: '/services/productivite/o-bureau' },
+          { label: 'Employee platform', href: '/services/productivite/plateforme-employe-intranet' },
+          { label: 'IT procurement', href: '/services/approvisionnement-ti' },
+          { label: 'Pricing', href: '/tarification' },
         ],
       },
       {
         title: 'About',
         links: [
-          { label: 'Careers & Life@Victrix', href: '/carrieres' },
-          { label: 'Blog', href: '/ressources' },
-          { label: 'Pricing', href: '/tarification' },
+          { label: 'Discover Victrix', href: '/decouvrir' },
+          { label: 'Careers', href: '/carrieres' },
+          { label: 'Trust centre', href: '/centre-de-confiance' },
+          { label: 'Resources', href: '/ressources' },
+          { label: 'News', href: '/ressources' },
         ],
       },
     ],
@@ -261,10 +287,10 @@ const en: UI = {
     addressName: 'Les Solutions Victrix',
     addressLines: ['1100, boul. René-Lévesque Ouest, Suite 1900', 'Montréal (Québec) H3B 4N4'],
     socialLabel: 'Follow us on:',
-    contactCta: { label: 'Contact us', href: '/contact' },
+    contactCta: { label: 'Client portal', href: '/portail' },
     social: [
-      { label: 'LinkedIn', href: '#' },
       { label: 'Facebook', href: '#' },
+      { label: 'LinkedIn', href: '#' },
     ],
     backToTop: 'Back to top',
     legal: [

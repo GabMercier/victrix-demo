@@ -60,6 +60,12 @@ const serviceSlugs = new Set(
 // /<lang>/services/<slug>) doit encore accrocher son méga-menu. parentHref est
 // un href simple (schéma navHref) → resolveNavHref le localise.
 const megaParentHref = resolveNavHref({ href: nav.mega.parentHref }, lang, serviceSlugs);
+// Fidélité maquette : le même panneau peut s'accrocher à PLUSIEURS entrées
+// (parentHrefs supplémentaires — Expertises + Services + Produits).
+const megaParentSet = new Set([
+  megaParentHref,
+  ...(nav.mega.parentHrefs ?? []).map((h) => resolveNavHref({ href: h }, lang, serviceSlugs)),
+]);
 
 // Carte mise en avant + bandeau bas du méga-menu Services (Figma
 // « Composants ») — blocs OPTIONNELS de la nav, hrefs localisés ici.
@@ -102,7 +108,7 @@ const navItems = nav.items.map((item) => {
   return {
     label: item.label,
     href,
-    mega: href === megaParentHref ? nav.mega : undefined,
+    mega: megaParentSet.has(href) ? nav.mega : undefined,
     megaRes: megaRes && href === megaResParentHref ? megaRes : undefined,
   };
 });
@@ -114,6 +120,14 @@ const navItems = nav.items.map((item) => {
 if (!navItems.some((item) => item.mega)) {
   throw new Error(
     `[navigation] ${lang}.json : « parentHref » (${nav.mega.parentHref}) ne correspond à aucune entrée du menu principal — le méga-menu ne s'afficherait nulle part. Aligner « Lien parent » sur le lien (ou le service) d'une entrée du menu.`,
+  );
+}
+// Chaque parent SUPPLÉMENTAIRE doit aussi accrocher une entrée — un parent
+// orphelin serait ignoré en silence (même philosophie de garde-fou).
+const megaOrphans = [...megaParentSet].filter((h) => !navItems.some((i) => i.href === h));
+if (megaOrphans.length > 0) {
+  throw new Error(
+    `[navigation] ${lang}.json : « parentHrefs » du méga-menu — ${megaOrphans.join(', ')} ne correspond(ent) à aucune entrée du menu principal. Aligner chaque valeur sur le lien d'une entrée du menu.`,
   );
 }
 // Même garde-fou pour le méga-menu Ressources (quand il est configuré).
@@ -129,6 +143,13 @@ const portal = {
   visible: nav.portal.visible,
   href: localizePath('/portail', lang),
 };
+
+// Bouton d'action du header (maquette : « Contact » en bouton bleu, le portail
+// devient un lien texte). Absent du JSON → repli historique : le portail
+// reste le bouton.
+const headerCta = nav.cta
+  ? { label: nav.cta.label, href: resolveNavHref({ href: nav.cta.href }, lang, serviceSlugs) }
+  : null;
 
 // Recherche interne (P-06) : icône dans les actions du header (desktop) +
 // lien dans le tiroir mobile. Chaînes d'interface (pas du contenu) → ui.ts.
@@ -268,14 +289,6 @@ const langLinkClass = 'no-underline p-1 text-sm';
                             {megaFeatured.body}
                           </p>
                         )}
-                        {megaFeatured.image && (
-                          <img
-                            class="w-full rounded-lg border border-solid border-outline-variant mt-3"
-                            src={megaFeatured.image}
-                            alt=""
-                            loading="lazy"
-                          />
-                        )}
                         <a
                           class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.7px] text-primary no-underline mt-4 hover:text-primary-container"
                           href={megaFeatured.href}
@@ -295,6 +308,14 @@ const langLinkClass = 'no-underline p-1 text-sm';
                             <path d="M2 8h11M9 3.5L13.5 8 9 12.5" />
                           </svg>
                         </a>
+                        {megaFeatured.image && (
+                          <img
+                            class="w-full rounded-lg border border-solid border-outline-variant mt-4"
+                            src={megaFeatured.image}
+                            alt=""
+                            loading="lazy"
+                          />
+                        )}
                       </div>
                     )}
                     {item.mega.columns.map((col) => (
@@ -404,6 +425,33 @@ const langLinkClass = 'no-underline p-1 text-sm';
     </nav>
 
     <div class="flex items-center gap-4 lg:gap-6">
+      <!-- Maquette : seule L'AUTRE langue est proposée (« EN » sur les pages FR). -->
+      <div
+        class="lang-switch hidden lg:flex items-center text-sm"
+        role="group"
+        aria-label={t.nav.langGroupAria}
+      >
+        {
+          lang === 'fr' ? (
+            <a
+              class:list={['lang-switch__link font-bold text-on-primary-fixed/70 hover:text-primary', langLinkClass]}
+              href={enHref}
+              lang="en"
+            >
+              EN
+            </a>
+          ) : (
+            <a
+              class:list={['lang-switch__link font-bold text-on-primary-fixed/70 hover:text-primary', langLinkClass]}
+              href={frHref}
+              lang="fr"
+            >
+              FR
+            </a>
+          )
+        }
+      </div>
+
       <a
         class="site-header__search hidden lg:flex items-center justify-center size-[34px] rounded text-on-primary-fixed/70 hover:text-primary aria-[current=page]:text-primary"
         href={searchHref}
@@ -425,45 +473,30 @@ const langLinkClass = 'no-underline p-1 text-sm';
           <path d="M15.5 15.5L21 21"></path>
         </svg>
       </a>
+
       {
-        portal.visible && (
-          <a class:list={['site-header__portal hidden lg:inline-flex', ctaClass]} href={portal.href}>
-            {portal.label}
+        portal.visible &&
+          (headerCta ? (
+            <a
+              class="site-header__portal hidden lg:inline-flex text-sm font-medium tracking-[0.14px] text-on-primary-fixed/70 no-underline whitespace-nowrap hover:text-primary"
+              href={portal.href}
+            >
+              {portal.label}
+            </a>
+          ) : (
+            <a class:list={['site-header__portal hidden lg:inline-flex', ctaClass]} href={portal.href}>
+              {portal.label}
+            </a>
+          ))
+      }
+
+      {
+        headerCta && (
+          <a class:list={['site-header__cta hidden lg:inline-flex', ctaClass]} href={headerCta.href}>
+            {headerCta.label}
           </a>
         )
       }
-
-      <div
-        class="lang-switch hidden lg:flex items-center gap-2 text-sm"
-        role="group"
-        aria-label={t.nav.langGroupAria}
-      >
-        <a
-          class:list={[
-            'lang-switch__link',
-            langLinkClass,
-            lang === 'fr'
-              ? 'is-active font-bold text-on-primary-fixed'
-              : 'font-medium text-on-primary-fixed/70 hover:text-primary',
-          ]}
-          href={frHref}
-          aria-current={lang === 'fr' ? 'true' : undefined}
-          lang="fr"
-        >FR</a>
-        <span class="text-on-primary-fixed/40" aria-hidden="true">|</span>
-        <a
-          class:list={[
-            'lang-switch__link',
-            langLinkClass,
-            lang === 'en'
-              ? 'is-active font-bold text-on-primary-fixed'
-              : 'font-medium text-on-primary-fixed/70 hover:text-primary',
-          ]}
-          href={enHref}
-          aria-current={lang === 'en' ? 'true' : undefined}
-          lang="en"
-        >EN</a>
-      </div>
 
       <button
         type="button"
@@ -548,44 +581,55 @@ const langLinkClass = 'no-underline p-1 text-sm';
       </li>
     </ul>
 
-    {
-      portal.visible && (
-        <a class:list={['mobile-nav__portal self-start', ctaClass]} href={portal.href}>
-          {portal.label}
-        </a>
-      )
-    }
+    <div class="flex flex-col items-start gap-4">
+      {
+        headerCta && (
+          <a class:list={['mobile-nav__cta self-start', ctaClass]} href={headerCta.href}>
+            {headerCta.label}
+          </a>
+        )
+      }
+      {
+        portal.visible &&
+          (headerCta ? (
+            <a
+              class="mobile-nav__portal text-sm font-medium tracking-[0.14px] text-on-primary-fixed/70 no-underline hover:text-primary"
+              href={portal.href}
+            >
+              {portal.label}
+            </a>
+          ) : (
+            <a class:list={['mobile-nav__portal self-start', ctaClass]} href={portal.href}>
+              {portal.label}
+            </a>
+          ))
+      }
+    </div>
 
     <div
-      class="lang-switch lang-switch--mobile flex items-center gap-2 text-sm mt-auto"
+      class="lang-switch lang-switch--mobile flex items-center text-sm mt-auto"
       role="group"
       aria-label={t.nav.langGroupAria}
     >
-      <a
-        class:list={[
-          'lang-switch__link',
-          langLinkClass,
-          lang === 'fr'
-            ? 'is-active font-bold text-on-primary-fixed'
-            : 'font-medium text-on-primary-fixed/70 hover:text-primary',
-        ]}
-        href={frHref}
-        aria-current={lang === 'fr' ? 'true' : undefined}
-        lang="fr"
-      >FR</a>
-      <span class="text-on-primary-fixed/40" aria-hidden="true">|</span>
-      <a
-        class:list={[
-          'lang-switch__link',
-          langLinkClass,
-          lang === 'en'
-            ? 'is-active font-bold text-on-primary-fixed'
-            : 'font-medium text-on-primary-fixed/70 hover:text-primary',
-        ]}
-        href={enHref}
-        aria-current={lang === 'en' ? 'true' : undefined}
-        lang="en"
-      >EN</a>
+      {
+        lang === 'fr' ? (
+          <a
+            class:list={['lang-switch__link font-bold text-on-primary-fixed/70 hover:text-primary', langLinkClass]}
+            href={enHref}
+            lang="en"
+          >
+            EN
+          </a>
+        ) : (
+          <a
+            class:list={['lang-switch__link font-bold text-on-primary-fixed/70 hover:text-primary', langLinkClass]}
+            href={frHref}
+            lang="fr"
+          >
+            FR
+          </a>
+        )
+      }
     </div>
   </nav>
 </div>
@@ -672,7 +716,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
       .forEach((el) => el.addEventListener('click', close));
     // Close (then navigate) when a drawer link is activated.
     drawer
-      .querySelectorAll('.mobile-nav__link, .mobile-nav__portal')
+      .querySelectorAll('.mobile-nav__link, .mobile-nav__portal, .mobile-nav__cta')
       .forEach((el) => el.addEventListener('click', close));
 
     closeDrawer = () => {

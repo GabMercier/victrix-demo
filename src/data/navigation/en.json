@@ -1,171 +1,65 @@
 {
   "items": [
-    {
-      "label": "Discover Victrix",
-      "href": "/decouvrir",
-      "service": ""
-    },
-    {
-      "label": "Products",
-      "href": "/produits",
-      "service": ""
-    },
-    {
-      "label": "Services",
-      "href": "/services",
-      "service": ""
-    },
-    {
-      "label": "Careers",
-      "href": "/carrieres",
-      "service": ""
-    },
-    {
-      "label": "Contact",
-      "href": "/contact",
-      "service": ""
-    },
-    {
-      "label": "Resources",
-      "href": "/ressources",
-      "service": ""
-    }
+    { "label": "Discover Victrix", "href": "/decouvrir" },
+    { "label": "Expertise", "href": "/expertises" },
+    { "label": "Services", "href": "/services" },
+    { "label": "Products", "href": "/produits" },
+    { "label": "Careers", "href": "/carrieres" },
+    { "label": "Resources", "href": "/ressources" }
   ],
-  "portal": {
-    "label": "Client portal",
-    "visible": true
-  },
+  "portal": { "label": "Client portal", "visible": true },
+  "cta": { "label": "Contact", "href": "/contact" },
   "mega": {
-    "parentHref": "/services",
-    "ariaLabel": "Services submenu",
+    "parentHref": "/expertises",
+    "parentHrefs": ["/services", "/produits"],
+    "ariaLabel": "Expertise, Services and Products submenu",
     "columns": [
       {
-        "title": "Strategic consulting",
-        "href": "/services/consultation-strategique",
+        "title": "Expertise",
+        "href": "/expertises",
         "icon": "strategy",
         "links": [
-          {
-            "label": "Law 25 compliance",
-            "href": "/services/consultation-strategique/conformite-loi-25",
-            "service": ""
-          }
+          { "label": "Strategic consulting", "href": "/services/conseil-strategique" },
+          { "label": "Artificial intelligence", "service": "intelligence-artificielle" },
+          { "label": "Infrastructure", "href": "/services/infrastructure" },
+          { "label": "Sectors", "href": "/secteurs" }
         ]
       },
       {
-        "title": "Cloud computing",
-        "href": "/services/infonuagique",
+        "title": "Services",
+        "href": "/services",
         "icon": "cloud",
         "links": [
-          {
-            "label": "Microsoft Azure",
-            "href": "/services/infonuagique/microsoft-azure",
-            "service": ""
-          },
-          {
-            "label": "Amazon Web Services",
-            "href": "/services/infonuagique/amazon-web-services",
-            "service": ""
-          }
+          { "label": "Application services", "href": "/services/services-applicatifs" },
+          { "label": "Cloud computing", "href": "/services/services-infonuagiques" },
+          { "label": "Cybersecurity", "href": "/services/cybersecurite" },
+          { "label": "AI projects", "href": "/services/projets-en-ia" },
+          { "label": "Managed services", "href": "/services/services-ti-geres" }
         ]
       },
       {
-        "title": "Cybersecurity",
-        "href": "/services/cybersecurite",
-        "icon": "security",
-        "links": [
-          {
-            "label": "Scalable Security Operations Centre (SOC)",
-            "href": "/services/cybersecurite/soc-evolutif",
-            "service": ""
-          },
-          {
-            "label": "Penetration testing",
-            "href": "/services/cybersecurite/tests-intrusion",
-            "service": ""
-          },
-          {
-            "label": "IoT and OT",
-            "href": "/services/cybersecurite/iot-ot",
-            "service": ""
-          }
-        ]
-      },
-      {
-        "title": "Productivity",
-        "href": "/services/productivite",
+        "title": "Products",
+        "href": "/produits",
         "icon": "productivity",
         "links": [
-          {
-            "label": "Ø Studio",
-            "href": "/produits",
-            "service": ""
-          },
-          {
-            "label": "Artificial intelligence",
-            "service": "intelligence-artificielle"
-          },
-          {
-            "label": "Employee platform and intranet",
-            "href": "/produits/intranet",
-            "service": ""
-          },
-          {
-            "label": "ServiceNow",
-            "href": "/services/productivite/servicenow",
-            "service": ""
-          },
-          {
-            "label": "Dynamics 365 Field Service",
-            "href": "/services/productivite/dynamics-365-field-service",
-            "service": ""
-          },
-          {
-            "label": "Copilot for Microsoft 365",
-            "href": "/services/productivite/copilot-microsoft-365",
-            "service": ""
-          },
-          {
-            "label": "Copilot Studio",
-            "href": "/services/productivite/copilot-studio",
-            "service": ""
-          },
-          {
-            "label": "O bureau",
-            "href": "/produits/reservation-bureau",
-            "service": ""
-          }
-        ]
-      },
-      {
-        "title": "Managed services",
-        "href": "/services/services-geres",
-        "icon": "managed",
-        "links": [
-          {
-            "label": "Managed IT services",
-            "href": "/services/services-geres/services-ti-geres",
-            "service": ""
-          },
-          {
-            "label": "Microsoft 365 environment",
-            "href": "/services/services-geres/environnement-microsoft-365",
-            "service": ""
-          }
+          { "label": "O bureau", "href": "/services/productivite/o-bureau" },
+          { "label": "Employee platform & intranet", "href": "/services/productivite/plateforme-employe-intranet" },
+          { "label": "IT procurement", "href": "/services/approvisionnement-ti" }
         ]
       }
     ],
     "featured": {
       "title": "AI projects",
       "body": "See how we turn data into strategic advantage through artificial intelligence.",
-      "ctaLabel": "Explore the expertise",
+      "ctaLabel": "See the projects",
       "href": "/services/intelligence-artificielle",
-      "image": ""
+      "image": "/images/home/expertise-intelligence-artificielle.jpg"
     },
     "stripe": {
-      "text": "Over 30 years of IT consulting expertise.",
+      "text": "Québec expertise, recognized internationally.",
       "links": [
-        { "label": "Discover Victrix", "href": "/decouvrir" },
-        { "label": "Contact us", "href": "/contact" }
+        { "label": "Case studies", "href": "/ressources" },
+        { "label": "2024 white paper", "href": "/ressources" }
       ]
     }
   },

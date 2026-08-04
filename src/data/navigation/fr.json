@@ -1,81 +1,65 @@
 {
   "items": [
     { "label": "Découvrir Victrix", "href": "/decouvrir" },
+    { "label": "Expertises", "href": "/expertises" },
     { "label": "Services", "href": "/services" },
     { "label": "Produits", "href": "/produits" },
     { "label": "Carrière", "href": "/carrieres" },
-    { "label": "Contact", "href": "/contact" },
     { "label": "Ressources", "href": "/ressources" }
   ],
   "portal": { "label": "Portail client", "visible": true },
+  "cta": { "label": "Contact", "href": "/contact" },
   "mega": {
-    "parentHref": "/services",
-    "ariaLabel": "Sous-menu Services",
+    "parentHref": "/expertises",
+    "parentHrefs": ["/services", "/produits"],
+    "ariaLabel": "Sous-menu Expertises, Services et Produits",
     "columns": [
       {
-        "title": "Conseil stratégique",
-        "href": "/services/consultation-strategique",
+        "title": "Expertises",
+        "href": "/expertises",
         "icon": "strategy",
         "links": [
-          { "label": "Conformité Loi 25", "href": "/services/consultation-strategique/conformite-loi-25" }
+          { "label": "Conseil stratégique", "href": "/services/conseil-strategique" },
+          { "label": "Intelligence artificielle", "service": "intelligence-artificielle" },
+          { "label": "Infrastructure", "href": "/services/infrastructure" },
+          { "label": "Secteurs", "href": "/secteurs" }
         ]
       },
       {
-        "title": "Infonuagique",
-        "href": "/services/infonuagique",
+        "title": "Services",
+        "href": "/services",
         "icon": "cloud",
         "links": [
-          { "label": "Microsoft Azure", "href": "/services/infonuagique/microsoft-azure" },
-          { "label": "Amazon Web Services", "href": "/services/infonuagique/amazon-web-services" }
+          { "label": "Services applicatifs", "href": "/services/services-applicatifs" },
+          { "label": "Infonuagique", "href": "/services/services-infonuagiques" },
+          { "label": "Cybersécurité", "href": "/services/cybersecurite" },
+          { "label": "Projet en IA", "href": "/services/projets-en-ia" },
+          { "label": "Services gérés", "href": "/services/services-ti-geres" }
         ]
       },
       {
-        "title": "Cybersécurité",
-        "href": "/services/cybersecurite",
-        "icon": "security",
-        "links": [
-          { "label": "Centre opérationnel de sécurité (SOC) évolutif", "href": "/services/cybersecurite/soc-evolutif" },
-          { "label": "Tests d’intrusion", "href": "/services/cybersecurite/tests-intrusion" },
-          { "label": "IoT et OT", "href": "/services/cybersecurite/iot-ot" }
-        ]
-      },
-      {
-        "title": "Productivité",
-        "href": "/services/productivite",
+        "title": "Produits",
+        "href": "/produits",
         "icon": "productivity",
         "links": [
-          { "label": "Ø Studio", "href": "/produits" },
-          { "label": "Intelligence artificielle", "service": "intelligence-artificielle" },
-          { "label": "Plateforme employé et intranet", "href": "/produits/intranet" },
-          { "label": "ServiceNow", "href": "/services/productivite/servicenow" },
-          { "label": "Dynamics 365 Field Service", "href": "/services/productivite/dynamics-365-field-service" },
-          { "label": "Copilot pour Microsoft 365", "href": "/services/productivite/copilot-microsoft-365" },
-          { "label": "Copilot Studio", "href": "/services/productivite/copilot-studio" },
-          { "label": "O bureau", "href": "/produits/reservation-bureau" }
-        ]
-      },
-      {
-        "title": "Services gérés",
-        "href": "/services/services-geres",
-        "icon": "managed",
-        "links": [
-          { "label": "Services TI gérés", "href": "/services/services-geres/services-ti-geres" },
-          { "label": "Environnement Microsoft 365", "href": "/services/services-geres/environnement-microsoft-365" }
+          { "label": "O bureau", "href": "/services/productivite/o-bureau" },
+          { "label": "Plateforme employé Intranet", "href": "/services/productivite/plateforme-employe-intranet" },
+          { "label": "Approvisionnement TI", "href": "/services/approvisionnement-ti" }
         ]
       }
     ],
     "featured": {
       "title": "Projets en IA",
       "body": "Découvrez comment nous transformons les données en avantages stratégiques grâce à l’intelligence artificielle.",
-      "ctaLabel": "Explorer l’expertise",
+      "ctaLabel": "Voir les projets",
       "href": "/services/intelligence-artificielle",
-      "image": ""
+      "image": "/images/home/expertise-intelligence-artificielle.jpg"
     },
     "stripe": {
-      "text": "Plus de 30 ans d’expertise en services-conseils TI.",
+      "text": "Expertise québécoise reconnue à l’international.",
       "links": [
-        { "label": "Découvrir Victrix", "href": "/decouvrir" },
-        { "label": "Nous joindre", "href": "/contact" }
+        { "label": "Études de cas", "href": "/ressources" },
+        { "label": "Livre blanc 2024", "href": "/ressources" }
       ]
     }
   },
