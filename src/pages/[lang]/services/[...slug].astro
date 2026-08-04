@@ -24,6 +24,9 @@ import Page from '../../../../component-library/src/shared/astro/page.astro';
 // DOSSIER de cette route porte aussi le mot — le changer exige de renommer le
 // dossier ET de prévoir une redirection.
 import { SERVICE_URL_PREFIX } from '../../../lib/navigation/service-links';
+import JsonLd from '../../../components/JsonLd.astro';
+import { breadcrumbSchema } from '../../../lib/seo/breadcrumb';
+import { useTranslations } from '../../../i18n/ui';
 
 /**
  * Pages de services ("services") — une route statique par entrée de la
@@ -160,6 +163,18 @@ export async function getStaticPaths() {
 }
 
 const { page, lang, altLocalePath, frontmatter, enrich } = Astro.props;
+
+// BreadcrumbList JSON-LD (P-12) — balisage SEULEMENT (pas de fil d'Ariane
+// visible : le rendu des services attend le redesign — Phase 5). Accueil →
+// page courante ; l'IA des URLs étant provisoire (P-17/P-18), aucun niveau
+// intermédiaire « Services » n'est balisé (pas de page d'index à cibler).
+const crumbsSchema = breadcrumbSchema(
+  [
+    { name: useTranslations(lang).article.breadcrumbHome, path: localizePath('/', lang) },
+    { name: page.data.title },
+  ],
+  Astro.site!,
+);
 ---
 
 <BaseLayout
@@ -176,5 +191,6 @@ const { page, lang, altLocalePath, frontmatter, enrich } = Astro.props;
        Bookshop est off (gating astro.config) → directive inerte, HTML identique.
        Sécurité de forme des props : la validation zod de chaque section au build. */
   }
+  <JsonLd slot="head" schema={crumbsSchema} />
   <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} />
 </BaseLayout>

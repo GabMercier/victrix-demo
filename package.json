@@ -14,13 +14,15 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "design:previews": "node scripts/design/generate-section-previews.mjs"
   },
   "engines": {
     "node": ">=20.3.0"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.13",
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "@bookshop/astro-bookshop": "3.19.0-rc1",
     "astro": "^5.18.2",

@@ -11,6 +11,7 @@ import {
   filterPublished,
   getPostsByLocale,
 } from '../../../i18n/blog';
+import { breadcrumbSchema } from '../../../lib/seo/breadcrumb';
 
 export async function getStaticPaths() {
   // Drafts get NO route on the public build; the STATIC_ONLY (CloudCannon
@@ -75,6 +76,18 @@ const articleSchema = {
   publisher: { '@type': 'Organization', name: 'Les Solutions Victrix' },
 };
 
+// BreadcrumbList JSON-LD (P-12) — reflet machine du fil d'Ariane visible
+// ci-dessous (Accueil › Ressources › article). Même canal JsonLd que
+// BlogPosting ; URLs absolues, dernier élément sans `item`.
+const crumbsSchema = breadcrumbSchema(
+  [
+    { name: t.article.breadcrumbHome, path: localizePath('/', lang) },
+    { name: t.blog.eyebrow, path: `${ressourcesHref}/` },
+    { name: post.data.title },
+  ],
+  Astro.site!,
+);
+
 // Absolute canonical URL for the share buttons — keep the trailing slash so it
 // matches og:url (the no-slash form 308-redirects on Cloudflare Pages).
 const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
@@ -108,7 +121,8 @@ const shareLinks = [
   altLocalePath={altLocalePath}
   noindex={post.data.noindex}
 >
-  <JsonLd schema={articleSchema} />
+  <JsonLd slot="head" schema={articleSchema} />
+  <JsonLd slot="head" schema={crumbsSchema} />
   <article class="article">
     <div class="container article__inner">
       {/* Fil d'Ariane (parité victrix.ca) — remplace l'ancien lien retour. */}
