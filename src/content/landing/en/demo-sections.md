@@ -56,6 +56,18 @@ sections:
     videoUrl: ''
     posterImage: ''
     ctaLabel: Watch the video
+  - _bookshop_name: faq
+    type: faq
+    title: Frequently asked questions
+    items:
+      - question: How long does a security assessment take?
+        answer: >-
+          Two to four weeks depending on the size of the environment, executive
+          report included.
+      - question: Do you work with SMBs?
+        answer: >-
+          Yes — our managed services and assessments scale to organizations of
+          every size.
   - _bookshop_name: form
     type: form
     title: Request your assessment

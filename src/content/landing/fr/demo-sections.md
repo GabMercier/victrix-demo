@@ -58,6 +58,18 @@ sections:
     videoUrl: ''
     posterImage: ''
     ctaLabel: Visionner la vidéo
+  - _bookshop_name: faq
+    type: faq
+    title: Foire aux questions
+    items:
+      - question: Combien de temps dure une évaluation de sécurité ?
+        answer: >-
+          De deux à quatre semaines selon la taille de l'environnement, rapport
+          exécutif inclus.
+      - question: Travaillez-vous avec les PME ?
+        answer: >-
+          Oui — nos services gérés et nos évaluations s'adaptent aux
+          organisations de toutes tailles.
   - _bookshop_name: form
     type: form
     title: Demandez votre évaluation

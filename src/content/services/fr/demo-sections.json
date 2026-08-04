@@ -1,0 +1,80 @@
+{
+  "title": "Démonstration sections services",
+  "description": "Page de démonstration des sections de la palette services : en-tête de service, cartes numérotées, encadré, boîtes, colonnes techno, texte enrichi et ressources liées.",
+  "noindex": true,
+  "sections": [
+    {
+      "_bookshop_name": "service-hero",
+      "type": "service-hero",
+      "eyebrow": "Démonstration",
+      "titleAccent": "Les sections « services »",
+      "title": "de la palette composable",
+      "lead": "En-tête de service, cartes numérotées, encadré d'appel à l'action, boîtes de caractéristiques, colonnes technologiques, texte enrichi et ressources liées — sept blocs réutilisables.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "sectionTitle": "Notre démarche en trois étapes",
+      "headingStyle": "underline",
+      "intro": "",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        { "number": "01", "title": "Évaluer", "text": "Un portrait clair de la situation actuelle et des écarts à combler." },
+        { "number": "02", "title": "Planifier", "text": "Une feuille de route priorisée, alignée sur vos objectifs d'affaires." },
+        { "number": "03", "title": "Déployer", "text": "Une mise en œuvre progressive, mesurée et accompagnée." }
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "title": "Prêt à passer à l'action ?",
+      "body": "Discutons de vos enjeux et de la meilleure façon d'y répondre.",
+      "ctaLabel": "Planifier un appel",
+      "ctaHref": "/fr/contact",
+      "layout": "banner-green"
+    },
+    {
+      "_bookshop_name": "feature-boxes",
+      "type": "feature-boxes",
+      "sectionTitle": "Ce que couvre l'accompagnement",
+      "subtitle": "Un périmètre clair, adapté à votre organisation.",
+      "boxes": ["Stratégie et gouvernance", "Architecture et intégration", "Sécurité et conformité", "Formation et adoption"]
+    },
+    {
+      "_bookshop_name": "tech-columns",
+      "type": "tech-columns",
+      "sectionTitle": "Technologies maîtrisées",
+      "groups": [
+        { "title": "Infonuagique", "items": ["Microsoft Azure", "Microsoft 365", "AWS"] },
+        {
+          "title": "Données et IA",
+          "items": ["Power BI", "Copilot Studio"],
+          "subgroup": { "label": "Sources ouvertes :", "items": ["Python", "PostgreSQL"] }
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Une approche éprouvée",
+      "paragraphs": [
+        "Depuis plus de 25 ans, nos équipes accompagnent les organisations québécoises dans leurs projets technologiques les plus <strong>structurants</strong>.",
+        "Chaque mandat commence par l'écoute : comprendre vos enjeux d'affaires avant de parler de solutions."
+      ]
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Ressources liées",
+      "tags": ["Nos articles"],
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
+    }
+  ]
+}
