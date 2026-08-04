@@ -194,3 +194,18 @@
   --shadow-surelevee: 0 12px 32px rgb(13 20 48 / 0.1);
   --shadow-survol: 0 4px 20px rgb(0 0 0 / 0.05); /* « lift » planche */
 }
+
+/* Conteneur de section UNIQUE (lot chrome 2026-08-04) : 1280px centré,
+   gouttière 16px mobile / 32px ≥md (planche). Remplace l'assemblage
+   `max-w-container-max mx-auto px-margin-x` (gouttière fixe 32px) partout —
+   la version legacy `.container` de global.css est alignée sur les mêmes
+   valeurs via --container-pad (tokens.css). */
+@utility container-site {
+  width: 100%;
+  max-width: var(--spacing-container-max);
+  margin-inline: auto;
+  padding-inline: 16px;
+  @media (width >= 48rem) {
+    padding-inline: var(--spacing-margin-x);
+  }
+}

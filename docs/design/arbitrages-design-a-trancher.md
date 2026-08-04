@@ -16,6 +16,7 @@
 | Sujet | Statut | Valeur retenue |
 |---|---|---|
 | Palette | ✅ tranché | 6 ancres planche projetées sur les rôles Material des exports (§1) — **dérivés à valider** |
+| Chrome (header/méga/footer) | ✅ appliqué (2026-08-04) | Structure = export Figma `composants.css` (copie CSS), valeurs = tokens planche — **divergences à signaler, §2.e** |
 | Typographie | ✅ tranché | Tailles/rôles des exports, **graisses de la planche** (Display Bold, Headlines SemiBold, Label/Button Medium) |
 | Rayons | ✅ tranché | Échelle planche/charte : 4px boutons · 8px cartes · chips **pilule** (→ `rounded-full` rond) |
 | Spacing / layout | ✅ tranché | Exports (= planche : base 8px, sections 80-120, conteneur 1280) |
@@ -93,6 +94,28 @@ Génération antérieure probable. En attendant : structure des 4 pages = normat
 - `PageExpertise.html` : nav active « Secteurs » (sur une page Expertise),
   `md:row` au lieu de `md:flex-row`, `viewbox` minuscule dans le SVG du CTA ;
 - Sélecteur de langue : « FR | EN » statique sur Accueil uniquement.
+
+### e. Export « Composants » (`docs/design/composants.css`, copie CSS Figma du 2026-08-04) 🔔
+
+Le fichier fourni par le user prouve que les exports HTML étaient incomplets :
+le design final **inclut** un header TopAppBar avec méga-menus (3 colonnes +
+carte mise en avant + bandeau bas) et un footer **clair** 5 colonnes — la
+structure du site (méga-menus, recherche, FR|EN, CTA) était donc conforme.
+Appliqué au site le 2026-08-04 (lot chrome). Divergences constatées, mappées
+per la règle v2 (structure = export, valeurs = planche) — **à confirmer** :
+
+- **Bleus** : `#0038E6` (CTA, liens) et `#3256FF` (nav active) ≠ Bleu Victrix
+  planche `#1A5BFF` → mappés sur `primary`. Marine `#001A42` → famille Bleu
+  nuit. À trancher : ces bleus sont-ils une évolution voulue de la palette ?
+- **Neutres froids** : `#C5C6D0` (bordures), `#F8F9FA`/`#EDEEEF` (fonds) ≠
+  neutres chauds planche → mappés sur `outline-variant` /
+  `surface-container-low` / `surface-container`.
+- **Gouttières incohérentes dans le Figma** (sections 40px, header/footer
+  48px) → unifiées à 32px desktop / 16px mobile sur tout le site.
+- **Footer devenu CLAIR** (le navy actuel disparaît) — appliqué ; confirmer.
+- Sections « Nos expertises »/« Solutions Phares » du fichier en Inter/Manrope
+  64px : artefacts de génération (Hanken + échelle système conservés).
+- Différé : rétrécissement du header au scroll (80→64px).
 
 ---
 

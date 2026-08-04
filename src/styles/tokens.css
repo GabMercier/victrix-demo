@@ -106,5 +106,14 @@
   --shadow-3: 0 12px 32px rgba(13, 20, 48, 0.14);
 
   --container-max: 1280px; /* système (was 1200px) */
-  --container-pad: var(--space-5);
+  --container-pad: 16px; /* gouttière mobile — 32px ≥768px ci-dessous (was 24px fixe) */
+}
+
+/* Gouttière responsive : mêmes valeurs que l'utilitaire `container-site` de
+   theme.css (16px mobile / 32px desktop) pour que les pages legacy et les
+   sections re-skinnées partagent la même grille de contenu (1216px ≥768px). */
+@media (min-width: 768px) {
+  :root {
+    --container-pad: 32px;
+  }
 }

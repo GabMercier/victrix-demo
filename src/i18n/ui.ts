@@ -95,9 +95,16 @@ const fr = {
     contactTitle: 'Contact',
     addressName: 'Les Solutions Victrix',
     addressLines: ['1100, boul. René-Lévesque Ouest, bureau 1900', 'Montréal (Québec) H3B 4N4'],
-    socialLabel: 'Suivez-nous :',
-    facebookAria: 'Victrix sur Facebook',
-    linkedinAria: 'Victrix sur LinkedIn',
+    socialLabel: 'Suivez-nous sur :',
+    // Re-skin chrome 2026-08-04 (footer clair Figma) : chip « Nous joindre »
+    // + liens sociaux TEXTE (les pastilles-icônes sont retirées). Les URLs
+    // sociales réelles restent à fournir (héritées « # » de l'ancien footer).
+    contactCta: { label: 'Nous joindre', href: '/contact' },
+    social: [
+      { label: 'LinkedIn', href: '#' },
+      { label: 'Facebook', href: '#' },
+    ],
+    backToTop: 'Retour en haut de page',
     legal: [
       { label: 'Conditions d’utilisation', href: '/conditions-utilisation' },
       { label: 'Politique de confidentialité', href: '/politique-confidentialite' },
@@ -253,9 +260,13 @@ const en: UI = {
     contactTitle: 'Contact',
     addressName: 'Les Solutions Victrix',
     addressLines: ['1100, boul. René-Lévesque Ouest, Suite 1900', 'Montréal (Québec) H3B 4N4'],
-    socialLabel: 'Follow us:',
-    facebookAria: 'Victrix on Facebook',
-    linkedinAria: 'Victrix on LinkedIn',
+    socialLabel: 'Follow us on:',
+    contactCta: { label: 'Contact us', href: '/contact' },
+    social: [
+      { label: 'LinkedIn', href: '#' },
+      { label: 'Facebook', href: '#' },
+    ],
+    backToTop: 'Back to top',
     legal: [
       { label: 'Terms of use', href: '/conditions-utilisation' },
       { label: 'Privacy policy', href: '/politique-confidentialite' },

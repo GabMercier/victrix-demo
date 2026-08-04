@@ -4,9 +4,16 @@ import { type Locale, defaultLocale, localizePath } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 
 /**
- * Global site footer: brand, link columns, address block, contact, social,
- * and legal links. Locale-aware: labels from the UI dictionary, internal hrefs
+ * Global site footer: link columns, contact block (chip CTA, email/phone,
+ * social text links), separator, and a bottom bar (logo, legal links, ©,
+ * back-to-top). Locale-aware: labels from the UI dictionary, internal hrefs
  * localized. Email/phone are locale-neutral and stay literal.
+ *
+ * RE-SKIN 2026-08-04 (lot chrome) : footer CLAIR (Figma « Composants » —
+ * l'ancien fond Bleu nuit disparaît), 100 % utilitaires Tailwind (règle
+ * no-hybride), valeurs = tokens planche (arbitrage v2). `.site-footer` et
+ * `.footer-col` sont des HOOKS NUS pour e2e (header-variants.spec.ts) —
+ * `.footer-col` ne doit PAS apparaître dans CampaignFooter.
  */
 
 interface Props {
@@ -16,215 +23,141 @@ interface Props {
 const { lang = defaultLocale } = Astro.props;
 const f = useTranslations(lang).footer;
 const year = 2026;
+
+const colTitleClass = 'font-headline-md text-headline-md text-on-surface m-0 mb-4';
+const colLinkClass = 'text-body-md text-on-surface-variant no-underline hover:text-primary';
+const smallMutedClass = 'text-xs font-semibold text-on-surface-variant';
 ---
 
-<footer class="site-footer">
-  <div class="container site-footer__inner">
-    <div class="site-footer__brand">
-      <Logo variant="light" />
-    </div>
+<footer class="site-footer bg-surface-container-low rounded-t-xl">
+  <div class="container-site pt-14 pb-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+      {
+        f.columns.map((col) => (
+          <nav class="footer-col" aria-label={col.title}>
+            <h2 class={colTitleClass}>{col.title}</h2>
+            <ul role="list" class="flex flex-col gap-1">
+              {col.links.map((link) => (
+                <li>
+                  <a class={colLinkClass} href={localizePath(link.href, lang)}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
 
-    {
-      f.columns.map((col) => (
-        <nav class="footer-col" aria-label={col.title}>
-          <h2 class="footer-col__title">{col.title}</h2>
-          <ul role="list" class="footer-col__list">
-            {col.links.map((link) => (
-              <li>
-                <a class="footer-col__link" href={localizePath(link.href, lang)}>
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      ))
-    }
+      <div class="footer-col">
+        <h2 class={colTitleClass}>{f.contactTitle}</h2>
 
-    <div class="footer-col footer-col--contact">
-      <h2 class="footer-col__title">{f.contactTitle}</h2>
+        <a
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-fixed text-primary text-sm font-medium no-underline hover:bg-primary hover:text-on-primary transition-colors"
+          href={localizePath(f.contactCta.href, lang)}
+        >
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M3 6h18v12H3z" />
+            <path d="M3 7l9 6 9-6" />
+          </svg>
+          {f.contactCta.label}
+        </a>
 
-      <address class="footer-address">
-        <strong>{f.addressName}</strong><br />
-        {f.addressLines[0]}<br />
-        {f.addressLines[1]}
-      </address>
+        <address class="not-italic text-body-md text-on-surface-variant mt-4 max-w-[32ch]">
+          <strong class="text-on-surface font-semibold">{f.addressName}</strong><br />
+          {f.addressLines[0]}<br />
+          {f.addressLines[1]}
+        </address>
 
-      <ul role="list" class="footer-contact">
-        <li>
-          <a href="mailto:contact@victrix.ca">contact@victrix.ca&nbsp;→</a>
-        </li>
-        <li>
-          <a href="tel:+15148791919">514&nbsp;879-1919&nbsp;→</a>
-        </li>
-      </ul>
-
-      <div class="footer-social">
-        <span class="footer-social__label">{f.socialLabel}</span>
-        <ul role="list" class="footer-social__list">
+        <ul role="list" class="flex flex-col gap-1 mt-4">
           <li>
-            <a href="#" class="footer-social__link" aria-label={f.facebookAria}>
-              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path
-                  fill="currentColor"
-                  d="M14 9h2.5V6H14c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v7h3v-7H16l.5-3h-3V9.5C13.5 9.2 13.7 9 14 9z"
-                ></path>
-              </svg>
-            </a>
+            <a class="text-body-md text-on-surface underline hover:text-primary" href="mailto:contact@victrix.ca">contact@victrix.ca</a>
           </li>
           <li>
-            <a href="#" class="footer-social__link" aria-label={f.linkedinAria}>
-              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path
-                  fill="currentColor"
-                  d="M6.94 7.5a1.94 1.94 0 1 1 0-3.88 1.94 1.94 0 0 1 0 3.88zM5.2 9h3.5v11H5.2V9zm5.6 0h3.35v1.5h.05c.47-.85 1.6-1.75 3.3-1.75 3.53 0 4.18 2.2 4.18 5.05V20h-3.5v-4.9c0-1.17-.02-2.67-1.7-2.67-1.7 0-1.96 1.28-1.96 2.59V20h-3.5V9z"
-                ></path>
-              </svg>
-            </a>
+            <a class="text-body-md text-on-surface no-underline hover:text-primary" href="tel:+15148791919">514&nbsp;879-1919</a>
           </li>
         </ul>
+
+        <div class="mt-4">
+          <span class:list={['block mb-1', smallMutedClass]}>{f.socialLabel}</span>
+          <ul role="list" class="flex items-center gap-4">
+            {
+              f.social.map((s, i) => (
+                <>
+                  {i > 0 && (
+                    <li aria-hidden="true" class="text-on-surface-variant/40">
+                      |
+                    </li>
+                  )}
+                  <li>
+                    <a class="text-body-md text-primary no-underline hover:text-primary-container" href={s.href}>
+                      {s.label}
+                    </a>
+                  </li>
+                </>
+              ))
+            }
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="site-footer__bottombar">
-    <div class="container site-footer__bottom">
-      <nav class="footer-legal" aria-label={f.contactTitle}>
-        <ul role="list">
+    <div
+      class="border-0 border-t border-solid border-outline-variant mt-10 pt-6 flex flex-wrap items-center justify-between gap-4"
+    >
+      <div class="[--logo-height:32px]">
+        <Logo variant="dark" />
+      </div>
+      <nav aria-label={f.contactTitle}>
+        <ul role="list" class="flex flex-wrap items-center gap-6">
           {
             f.legal.map((item) => (
               <li>
-                <a href={localizePath(item.href, lang)}>{item.label}</a>
+                <a
+                  class:list={['no-underline hover:text-primary', smallMutedClass]}
+                  href={localizePath(item.href, lang)}
+                >
+                  {item.label}
+                </a>
               </li>
             ))
           }
         </ul>
       </nav>
-      <p class="footer-copy">©{year} Victrix</p>
+      <div class="flex items-center gap-6">
+        <p class:list={['m-0', smallMutedClass]}>©{year} Victrix</p>
+        <a
+          href="#"
+          aria-label={f.backToTop}
+          class="size-12 rounded-full border border-solid border-outline-variant bg-surface-container-low shadow-[0_1px_2px_rgba(0,0,0,0.05)] flex items-center justify-center text-on-surface no-underline hover:text-primary"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M8 13V3M3.5 7.5L8 3l4.5 4.5" />
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </footer>
-
-<style>
-  .site-footer {
-    background-color: var(--color-grey-dark);
-    color: var(--color-grey-300);
-  }
-
-  .site-footer__inner {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-7) var(--space-6);
-    padding-block: var(--space-8) var(--space-7);
-  }
-
-  .site-footer__brand {
-    --logo-height: 44px;
-  }
-
-  .footer-col__title {
-    color: var(--color-white);
-    font-size: var(--fs-300);
-    font-weight: var(--fw-bold);
-    margin-bottom: var(--space-4);
-  }
-
-  .footer-col__list,
-  .footer-contact {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    margin: 0;
-  }
-
-  .footer-col__link,
-  .footer-contact a,
-  .footer-legal a {
-    color: var(--color-grey-300);
-    text-decoration: none;
-  }
-  .footer-col__link:hover,
-  .footer-contact a:hover,
-  .footer-legal a:hover {
-    color: var(--color-white);
-    text-decoration: underline;
-  }
-
-  .footer-address {
-    font-style: normal;
-    line-height: var(--lh-normal);
-    margin-bottom: var(--space-5);
-    max-width: 32ch;
-  }
-  .footer-address strong {
-    color: var(--color-white);
-    font-weight: var(--fw-semibold);
-  }
-
-  .footer-social {
-    margin-top: var(--space-5);
-  }
-  .footer-social__label {
-    display: block;
-    color: var(--color-white);
-    font-weight: var(--fw-semibold);
-    margin-bottom: var(--space-3);
-  }
-  .footer-social__list {
-    display: flex;
-    gap: var(--space-3);
-    margin: 0;
-  }
-  .footer-social__link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: var(--radius-pill);
-    color: var(--color-white);
-  }
-  .footer-social__link:hover {
-    background-color: var(--color-accent-blue);
-    border-color: var(--color-accent-blue);
-  }
-
-  /* Bottom bar */
-  .site-footer__bottombar {
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-  }
-  .site-footer__bottom {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
-    padding-block: var(--space-5);
-    font-size: var(--fs-200);
-  }
-  .footer-legal ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-5);
-    margin: 0;
-  }
-  .footer-copy {
-    margin: 0;
-  }
-
-  /* Tablet: two columns. */
-  @media (min-width: 640px) {
-    .site-footer__inner {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  /* Desktop: brand + 4 link columns in one row. */
-  @media (min-width: 1024px) {
-    .site-footer__inner {
-      grid-template-columns: 1.4fr repeat(4, 1fr);
-      gap: var(--space-6);
-    }
-  }
-</style>

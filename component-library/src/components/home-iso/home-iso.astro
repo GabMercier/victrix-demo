@@ -29,8 +29,8 @@ interface Props {
 const { title, subtitle, items = [] } = Astro.props;
 ---
 
-<section class="w-full bg-surface-container-lowest border-y border-solid border-outline-variant py-8">
-  <div class="max-w-container-max mx-auto px-margin-x">
+<section class="w-full bg-surface-container-lowest border-0 border-y border-solid border-outline-variant py-8">
+  <div class="container-site">
     {
       items.length > 0 ? (
         <>

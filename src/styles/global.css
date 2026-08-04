@@ -12,8 +12,18 @@
 ----------------------------------------------------------------------------- */
 
 /* -----------------------------------------------------------------------------
-   Modern reset
+   Modern reset + base typography — COUCHE `base` (2026-08-04, lot chrome).
+   Cette feuille est chargée AVANT theme.css : la couche `base` est donc
+   déclarée avant `theme` et `utilities` (imports Tailwind) et perd contre
+   elles — les utilitaires des composants re-skinnés (text-*, m-*, max-w-*)
+   battent enfin les règles d'éléments d'ici (avant la couche, le `* { margin:
+   0 }` et le `h2 { font-size }` non-couchés battaient TOUS les utilitaires —
+   audit cascade du 2026-08-04). Les styles scopés legacy (non-couchés) battent
+   toujours cette couche, comme avant. Les blocs CLASSES (.btn, .container,
+   .prose…), :focus-visible et le bloc prefers-reduced-motion restent
+   NON-COUCHÉS plus bas : leur cascade actuelle est conservée à l'identique.
 ----------------------------------------------------------------------------- */
+@layer base {
 *,
 *::before,
 *::after {
@@ -28,8 +38,8 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-behavior: smooth;
-  /* Account for any future sticky header when jumping to #anchors. */
-  scroll-padding-top: var(--space-6);
+  /* Account for the sticky header (80px) when jumping to #anchors. */
+  scroll-padding-top: 96px;
 }
 
 body {
@@ -67,8 +77,10 @@ ol[role='list'] {
   list-style: none;
   padding: 0;
 }
+}
 
-/* Respect users who prefer reduced motion. */
+/* Respect users who prefer reduced motion. (NON-couché : !important, doit
+   tout battre — comportement inchangé.) */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -84,8 +96,9 @@ ol[role='list'] {
 }
 
 /* -----------------------------------------------------------------------------
-   Base typography
+   Base typography — couche `base` (voir l'entête du reset ci-dessus).
 ----------------------------------------------------------------------------- */
+@layer base {
 h1,
 h2,
 h3,
@@ -132,6 +145,7 @@ a:not([class]):hover {
 strong,
 b {
   font-weight: var(--fw-semibold);
+}
 }
 
 /* -----------------------------------------------------------------------------

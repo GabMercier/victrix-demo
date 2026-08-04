@@ -153,7 +153,21 @@
           }
         ]
       }
-    ]
+    ],
+    "featured": {
+      "title": "AI projects",
+      "body": "See how we turn data into strategic advantage through artificial intelligence.",
+      "ctaLabel": "Explore the expertise",
+      "href": "/services/intelligence-artificielle",
+      "image": ""
+    },
+    "stripe": {
+      "text": "Over 30 years of IT consulting expertise.",
+      "links": [
+        { "label": "Discover Victrix", "href": "/decouvrir" },
+        { "label": "Contact us", "href": "/contact" }
+      ]
+    }
   },
   "megaRessources": {
     "parentHref": "/ressources",

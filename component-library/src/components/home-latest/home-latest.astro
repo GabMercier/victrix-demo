@@ -12,17 +12,19 @@
  * astro:content NI astro:assets : il reste compilable pour le navigateur par
  * l'éditeur visuel CloudCannon (même contrainte que JsonLd.astro / faq.astro).
  *
- *  - Au build (`cards` fourni) : vraies cartes, PARITÉ avec l'ancienne page
- *    (mêmes classes .card, mêmes <img> résolus).
+ *  - Au build (`cards` fourni) : vraies cartes.
  *  - En édition live (navigateur, `cards` absent) : cartes FACTICES de
  *    remplacement — le titre et le lien restent éditables ; les cartes réelles
  *    réapparaissent au prochain build. C'est le repli « vraies données au build,
  *    factices dans l'éditeur » (équivalent à un drapeau ENV_BOOKSHOP_LIVE, mais
  *    piloté par la présence des données injectées — aucun import à éliminer).
  *
- * PARITÉ : le titre porte un <h2> (le <h1> appartient au héros) ; les cartes
- * portent des <h3> (`headingLevel="h3"` de l'ancien BlogCard). Voir home-hero.astro
- * pour les conventions communes.
+ * Le titre porte un <h2> (le <h1> appartient au héros) ; les cartes portent
+ * des <h3>. Voir home-hero.astro pour les conventions communes.
+ *
+ * RE-SKIN 2026-08-04 (lot chrome) : 100 % utilitaires Tailwind (règle
+ * no-hybride), rangée de tête = idiome home-expertises, rythme unifié
+ * py-section-gap (était 96px), conteneur container-site.
  */
 interface CardImage {
   src: string;
@@ -54,30 +56,44 @@ const { title, ctaLabel, ctaHref, cards } = Astro.props;
 // dans le navigateur par l'éditeur visuel). Jamais utilisées au build.
 const PLACEHOLDER_CARDS = 3;
 const isLive = !Array.isArray(cards);
+
+const cardClass =
+  'group relative flex flex-col h-full bg-surface-container-lowest border border-solid border-outline-variant rounded-lg overflow-hidden transition-[box-shadow,transform] duration-150 hover:shadow-survol hover:-translate-y-0.5 motion-reduce:transition-none';
+const tagClass =
+  'text-xs font-medium text-on-primary-fixed bg-surface-container border border-solid border-outline-variant rounded-full px-3 py-1';
+const titleClass = 'font-headline-md text-[20px] leading-snug m-0';
+const titleLinkClass =
+  "text-on-primary-fixed no-underline group-hover:text-primary after:content-[''] after:absolute after:inset-0";
+const mutedClass = 'm-0 text-sm text-on-surface-variant max-w-none';
 ---
 
-<section class="latest">
-  <div class="container">
-    <div class="latest__head">
-      <h2 class="section-title section-title--left">{title}</h2>
-      <a class="latest__link" href={ctaHref}>{ctaLabel}&nbsp;→</a>
+<section class="py-section-gap bg-surface">
+  <div class="container-site">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+      <h2 class="font-headline-lg text-headline-lg text-on-surface m-0">{title}</h2>
+      <a
+        class="font-button text-button text-primary no-underline whitespace-nowrap hover:text-primary-container"
+        href={ctaHref}
+      >{ctaLabel}&nbsp;→</a>
     </div>
-    <ul role="list" class="latest__grid">
+    <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 m-0 p-0">
       {
         isLive
           ? Array.from({ length: PLACEHOLDER_CARDS }).map(() => (
               <li>
-                <article class="card">
-                  <div class="card__media card__media--placeholder" aria-hidden="true" />
-                  <div class="card__body">
-                    <ul role="list" class="card__tags">
-                      <li class="tag">Étiquette</li>
+                <article class={cardClass}>
+                  <div class="block aspect-[16/10] bg-surface-container" aria-hidden="true" />
+                  <div class="flex flex-col gap-3 p-6">
+                    <ul role="list" class="flex flex-wrap gap-2 m-0">
+                      <li class={tagClass}>Étiquette</li>
                     </ul>
-                    <h3 class="card__title">
-                      <a href="#">Titre de l'article</a>
+                    <h3 class={titleClass}>
+                      <a class={titleLinkClass} href="#">
+                        Titre de l'article
+                      </a>
                     </h3>
-                    <p class="card__date">Date</p>
-                    <p class="card__excerpt">
+                    <p class={mutedClass}>Date</p>
+                    <p class={mutedClass}>
                       Les derniers articles du blogue s'affichent ici au build.
                     </p>
                   </div>
@@ -86,8 +102,13 @@ const isLive = !Array.isArray(cards);
             ))
           : cards.map((card) => (
               <li>
-                <article class="card">
-                  <a class="card__media" href={card.href} tabindex="-1" aria-hidden="true">
+                <article class={cardClass}>
+                  <a
+                    class="block aspect-[16/10] overflow-hidden bg-surface-container"
+                    href={card.href}
+                    tabindex="-1"
+                    aria-hidden="true"
+                  >
                     {card.img.src && (
                       <img
                         src={card.img.src}
@@ -99,25 +120,27 @@ const isLive = !Array.isArray(cards);
                         fetchpriority="auto"
                         width={card.img.width}
                         height={card.img.height}
-                        class="card__img"
+                        class="w-full h-full object-cover"
                       />
                     )}
                   </a>
-                  <div class="card__body">
+                  <div class="flex flex-col gap-3 p-6">
                     {card.tags.length > 0 && (
-                      <ul role="list" class="card__tags">
+                      <ul role="list" class="flex flex-wrap gap-2 m-0">
                         {card.tags.map((tag) => (
-                          <li class="tag">{tag}</li>
+                          <li class={tagClass}>{tag}</li>
                         ))}
                       </ul>
                     )}
-                    <h3 class="card__title">
-                      <a href={card.href}>{card.title}</a>
+                    <h3 class={titleClass}>
+                      <a class={titleLinkClass} href={card.href}>
+                        {card.title}
+                      </a>
                     </h3>
-                    <p class="card__date">
+                    <p class={mutedClass}>
                       <time datetime={card.dateISO}>{card.dateLabel}</time>
                     </p>
-                    <p class="card__excerpt">{card.excerpt}</p>
+                    <p class={mutedClass}>{card.excerpt}</p>
                   </div>
                 </article>
               </li>
@@ -126,147 +149,3 @@ const isLive = !Array.isArray(cards);
     </ul>
   </div>
 </section>
-
-<style>
-  /* Duplicatas scopés (autonomie éditeur). */
-  .container {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-  }
-  h2 {
-    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
-    font-weight: var(--fw-bold, 700);
-    line-height: var(--lh-tight, 1.15);
-    color: var(--color-navy, #083957);
-    text-wrap: balance;
-  }
-
-  /* ---------- Derniers articles (déplacé depuis l'ancienne page) ---------- */
-  .latest {
-    padding-block: var(--space-9, 6rem);
-    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
-  }
-  .section-title {
-    text-align: center;
-    margin-bottom: var(--space-7, 3rem);
-  }
-  .section-title--left {
-    text-align: left;
-    margin-bottom: 0;
-  }
-  .latest__head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-3, 0.75rem);
-    margin-bottom: var(--space-6, 2rem);
-  }
-  .latest__link {
-    color: var(--color-link, #083957);
-    font-weight: var(--fw-semibold, 600);
-    text-decoration: none;
-    white-space: nowrap;
-  }
-  .latest__link:hover {
-    color: var(--color-accent-blue, #3366ff);
-    text-decoration: underline;
-  }
-  .latest__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6, 2rem);
-    margin: 0;
-  }
-  @media (min-width: 640px) {
-    .latest__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (min-width: 1000px) {
-    .latest__grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  /* ---------- Carte d'article (repris de BlogCard pour l'autonomie) -------- */
-  .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-color: var(--color-bg, #ffffff);
-    border: 1px solid var(--color-border, #e2e4e8);
-    border-radius: var(--radius-l, 16px);
-    overflow: hidden;
-    transition:
-      box-shadow 0.15s ease,
-      transform 0.15s ease;
-  }
-  .card:hover {
-    box-shadow: var(--shadow-2, 0 4px 16px rgba(20, 33, 61, 0.1));
-    transform: translateY(-2px);
-  }
-  .card__media {
-    display: block;
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    background-color: var(--color-band, #f6f7f8);
-  }
-  .card__media--placeholder {
-    background-color: var(--color-grey-100, #f0f1f3);
-  }
-  .card__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .card__body {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3, 0.75rem);
-    padding: var(--space-5, 1.5rem);
-  }
-  .card__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2, 0.5rem);
-    margin: 0;
-  }
-  .tag {
-    font-size: var(--fs-100, 0.8125rem);
-    font-weight: var(--fw-semibold, 600);
-    color: var(--color-navy, #083957);
-    background-color: var(--color-band, #f6f7f8);
-    border: 1px solid var(--color-border, #e2e4e8);
-    border-radius: var(--radius-pill, 999px);
-    padding: 0.2em 0.7em;
-  }
-  .card__title {
-    font-size: var(--fs-500, clamp(1.375rem, 0.6vw + 1.2rem, 1.75rem));
-    line-height: var(--lh-snug, 1.3);
-  }
-  .card__title a {
-    color: var(--color-navy, #083957);
-    text-decoration: none;
-  }
-  .card__title a::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-  }
-  .card:hover .card__title a {
-    color: var(--color-accent-blue, #3366ff);
-  }
-  .card__date {
-    margin: 0;
-    font-size: var(--fs-200, 0.9375rem);
-    color: var(--color-text-muted, #4a4d54);
-  }
-  .card__excerpt {
-    margin: 0;
-    color: var(--color-text-muted, #4a4d54);
-  }
-</style>

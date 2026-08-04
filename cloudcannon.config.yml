@@ -783,8 +783,8 @@ collections_config:
         type: select
         label: Icône
         comment: >-
-          Icônes disponibles (dessinées dans le gabarit d'en-tête — en ajouter
-          une est une tâche développeur).
+          Champ hérité (plus affiché depuis la refonte 2026-08) — conservé pour
+          compatibilité.
         options:
           values:
             - strategy
@@ -792,6 +792,30 @@ collections_config:
             - security
             - productivity
             - managed
+      # Re-skin chrome 2026-08-04 : carte mise en avant + bandeau bas du
+      # méga-menu (Figma « Composants »). Les deux blocs sont optionnels —
+      # vides/absents, le panneau affiche ses colonnes seules.
+      featured:
+        type: object
+        label: Carte mise en avant
+        comment: >-
+          Carte à droite du méga-menu Services (titre, texte, lien). Optionnelle.
+      body:
+        type: textarea
+        label: Texte
+      image:
+        type: image
+        label: Image (optionnelle)
+        comment: >-
+          Chemin public (ex. /images/nav/carte.jpg). Vide = pas d'image.
+      stripe:
+        type: object
+        label: Bandeau bas du méga-menu
+        comment: >-
+          Bandeau sous les colonnes (texte court + 2 liens max). Optionnel.
+      text:
+        type: textarea
+        label: Texte
       # Méga-menu Ressources : seuls les TEXTES sont éditables — les catégories
       # (étiquettes du blogue) et les derniers articles sont générés au build
       # depuis la collection Blogue (voir Header.astro).
@@ -808,7 +832,9 @@ collections_config:
       ctaLabel:
         type: text
         label: Libellé du bouton
-        comment: Le bouton mène au centre de ressources (le « Lien parent »).
+        comment: >-
+          Méga-menu Ressources : le bouton mène au centre de ressources (le
+          « Lien parent »). Carte mise en avant : le lien du champ « Lien ».
       categoriesTitle:
         type: text
         label: Titre de la colonne Catégories

@@ -3,9 +3,13 @@
  * Section « Partenaires » — composant Bookshop (accueil composable).
  *
  * Props : { type: "home-partners", title, names: string[] }
- * PARITÉ : reproduit à l'identique la bande de partenaires de l'ancienne page
- * d'accueil. `names = []` en secours pendant l'édition live. Voir home-hero.astro
- * pour les conventions communes.
+ * `names = []` en secours pendant l'édition live. Voir home-hero.astro pour
+ * les conventions communes.
+ *
+ * RE-SKIN 2026-08-04 (lot chrome) : 100 % utilitaires Tailwind (règle
+ * no-hybride). Titre en label-caps discret centré (bande de noms nus — un
+ * headline-lg pèserait trop), noms atténués, rythme unifié py-section-gap
+ * (était 48px), conteneur container-site.
  */
 interface Props {
   title: string;
@@ -15,48 +19,17 @@ interface Props {
 const { title, names = [] } = Astro.props;
 ---
 
-<section class="partners" aria-label={title}>
-  <div class="container">
-    <h2 class="partners__title">{title}</h2>
-    <ul role="list" class="partners__list">
-      {names.map((name) => <li class="partners__item">{name}</li>)}
+<section class="py-section-gap bg-surface" aria-label={title}>
+  <div class="container-site">
+    <h2 class="text-center font-label-caps text-label-caps uppercase text-on-surface-variant m-0 mb-8">
+      {title}
+    </h2>
+    <ul role="list" class="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 m-0 p-0">
+      {
+        names.map((name) => (
+          <li class="font-headline-md text-headline-md text-outline">{name}</li>
+        ))
+      }
     </ul>
   </div>
 </section>
-
-<style>
-  .container {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-  }
-
-  /* ---------- Partenaires (déplacé depuis l'ancienne page d'accueil) ------- */
-  .partners {
-    padding-block: var(--space-7, 3rem);
-    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
-  }
-  .partners__title {
-    text-align: center;
-    font-size: var(--fs-500, clamp(1.375rem, 0.6vw + 1.2rem, 1.75rem));
-    color: var(--color-text-muted, #4a4d54);
-    margin-bottom: var(--space-5, 1.5rem);
-    line-height: var(--lh-tight, 1.15);
-    font-weight: var(--fw-bold, 700);
-  }
-  .partners__list {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-5, 1.5rem) var(--space-8, 4rem);
-    margin: 0;
-  }
-  .partners__item {
-    font-size: var(--fs-500, clamp(1.375rem, 0.6vw + 1.2rem, 1.75rem));
-    font-weight: var(--fw-bold, 700);
-    color: var(--color-grey-500, #8a8e96);
-    letter-spacing: 0.01em;
-  }
-</style>

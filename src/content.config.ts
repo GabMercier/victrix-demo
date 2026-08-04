@@ -692,10 +692,35 @@ const navigation = defineCollection({
         z.object({
           title: z.string().min(1),
           href: navHref,
+          // Hérité : plus rendu depuis le re-skin chrome 2026-08-04 (les têtes
+          // de colonne Figma sont textuelles) — champ conservé au contrat.
           icon: z.enum(['strategy', 'cloud', 'security', 'productivity', 'managed']),
           links: z.array(navLink),
         }),
       ),
+      // Re-skin chrome 2026-08-04 (Figma « Composants ») — les deux blocs sont
+      // OPTIONNELS : absents, le panneau rend ses colonnes seules (JSON
+      // existant valide sans changement). Hrefs SANS préfixe de langue
+      // (convention navigation, localisés au rendu).
+      featured: z
+        .object({
+          title: z.string().min(1),
+          body: z.string().default(''),
+          ctaLabel: z.string().min(1),
+          href: navHref,
+          // Chemin PUBLIC servi tel quel (ex. /images/nav/…) ; "" = pas d'image.
+          image: z.string().default(''),
+        })
+        .optional(),
+      stripe: z
+        .object({
+          text: z.string().min(1),
+          links: z
+            .array(z.object({ label: z.string().min(1), href: navHref }))
+            .max(2)
+            .default([]),
+        })
+        .optional(),
     }),
     // Méga-menu RESSOURCES (parité victrix.ca, 2026-07-29) : contrairement au
     // méga-menu services (colonnes rédigées à la main ci-dessus), celui-ci est

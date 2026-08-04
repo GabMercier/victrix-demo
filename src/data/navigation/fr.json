@@ -63,7 +63,21 @@
           { "label": "Environnement Microsoft 365", "href": "/services/services-geres/environnement-microsoft-365" }
         ]
       }
-    ]
+    ],
+    "featured": {
+      "title": "Projets en IA",
+      "body": "Découvrez comment nous transformons les données en avantages stratégiques grâce à l’intelligence artificielle.",
+      "ctaLabel": "Explorer l’expertise",
+      "href": "/services/intelligence-artificielle",
+      "image": ""
+    },
+    "stripe": {
+      "text": "Plus de 30 ans d’expertise en services-conseils TI.",
+      "links": [
+        { "label": "Découvrir Victrix", "href": "/decouvrir" },
+        { "label": "Nous joindre", "href": "/contact" }
+      ]
+    }
   },
   "megaRessources": {
     "parentHref": "/ressources",

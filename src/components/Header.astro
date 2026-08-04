@@ -16,6 +16,13 @@ import { isWithinWindow } from '../lib/schedule';
  * Only accessibility strings stay in the UI dictionary (src/i18n/ui.ts).
  * This is site chrome rendered at build — astro:content is fine here (the
  * browser-safe rule only applies to Bookshop section components).
+ *
+ * RE-SKIN 2026-08-04 (lot chrome) : 100 % utilitaires Tailwind (règle
+ * no-hybride), structure Figma « Composants » (docs/design/composants.css),
+ * valeurs = tokens planche (arbitrage v2). Les classes .site-header,
+ * .primary-nav, .site-header__search, .lang-switch, .announcement, etc. sont
+ * des HOOKS NUS (zéro CSS) : e2e (header-variants.spec.ts), script ci-dessous
+ * et global.css (html.announce-dismissed .announcement) s'y accrochent.
  */
 
 interface Props {
@@ -53,6 +60,21 @@ const serviceSlugs = new Set(
 // /<lang>/services/<slug>) doit encore accrocher son méga-menu. parentHref est
 // un href simple (schéma navHref) → resolveNavHref le localise.
 const megaParentHref = resolveNavHref({ href: nav.mega.parentHref }, lang, serviceSlugs);
+
+// Carte mise en avant + bandeau bas du méga-menu Services (Figma
+// « Composants ») — blocs OPTIONNELS de la nav, hrefs localisés ici.
+const megaFeatured = nav.mega.featured
+  ? { ...nav.mega.featured, href: resolveNavHref({ href: nav.mega.featured.href }, lang, serviceSlugs) }
+  : undefined;
+const megaStripe = nav.mega.stripe
+  ? {
+      text: nav.mega.stripe.text,
+      links: nav.mega.stripe.links.map((l) => ({
+        label: l.label,
+        href: resolveNavHref({ href: l.href }, lang, serviceSlugs),
+      })),
+    }
+  : undefined;
 
 // Méga-menu RESSOURCES (parité victrix.ca) — contenu GÉNÉRÉ AU BUILD : les
 // catégories viennent des étiquettes réelles du blogue (blogCategories — même
@@ -101,21 +123,6 @@ if (megaRes && !navItems.some((item) => item.megaRes)) {
   );
 }
 
-// Mega-menu column icons (24×24 stroke outlines, colored via currentColor) —
-// keyed by the `icon` names used in the ui dictionary.
-const megaIcons: Record<string, string> = {
-  strategy:
-    '<path d="M3 21h18M5 18h14M7 18v-7m3.5 7v-7m3 7v-7m3.5 7v-7M3.5 8L12 3l8.5 5h-17z"/>',
-  cloud:
-    '<path d="M7 18a4.5 4.5 0 1 1 .63-8.96A6 6 0 0 1 19.2 10.6 3.8 3.8 0 0 1 18 18H7z"/>',
-  security:
-    '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/>',
-  productivity:
-    '<path d="M5.5 14.5l4 4c5-2 8.5-5.2 9.5-10.7l.3-3.6-3.6.3C10.2 5.5 7 9 5.5 14.5z"/><circle cx="14" cy="10" r="1.7"/><path d="M5.5 14.5L3 21l6.5-2.5"/>',
-  managed:
-    '<circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3m0 13v3M2.5 12h3m13 0h3M5.2 5.2l2.1 2.1m9.4 9.4l2.1 2.1m0-13.6l-2.1 2.1M7.3 16.7l-2.1 2.1"/>',
-};
-
 // The portal lives under the locale prefix, like every other page.
 const portal = {
   label: nav.portal.label,
@@ -150,22 +157,32 @@ const isCurrent = (href: string) => {
 const alt = altLocalePath ?? swapLocale(Astro.url.pathname, otherLocale[lang]);
 const frHref = lang === 'fr' ? Astro.url.pathname : alt;
 const enHref = lang === 'en' ? Astro.url.pathname : alt;
+
+// Recettes utilitaires partagées dans CE composant (répétées verbatim côté
+// campagnes — composants autonomes, pas d'abstraction partagée).
+const ctaClass =
+  'inline-flex items-center justify-center px-6 py-2 rounded-lg bg-primary text-on-primary text-sm font-bold no-underline hover:bg-primary-container transition-colors';
+const megaHeadClass =
+  'block text-sm font-bold uppercase tracking-[1.4px] text-on-primary-fixed no-underline pb-2 border-0 border-b border-solid border-outline-variant hover:text-primary';
+const megaLinkClass =
+  'group/link flex items-center justify-between gap-2 p-2 rounded text-body-md font-medium text-on-surface no-underline hover:bg-surface-container-low hover:text-primary';
+const langLinkClass = 'no-underline p-1 text-sm';
 ---
 
 <!-- Announcement bar (editable / dismissible; « Affichée » switch + fenêtre planifiée in the CMS) -->
 {
   announceVisible && (
-    <div class="announcement" data-announcement>
-      <div class="container announcement__inner">
-        <p class="announcement__text">
-          {announce.before}<strong>{announce.strong}</strong>{announce.after}
-          <a class="announcement__link" href={announceLink}>
+    <div class="announcement bg-primary text-on-primary text-sm" data-announcement>
+      <div class="container-site flex items-center justify-center gap-4 py-2">
+        <p class="m-0 max-w-none text-center">
+          {announce.before}<strong class="font-semibold">{announce.strong}</strong>{announce.after}
+          <a class="text-on-primary font-semibold underline whitespace-nowrap" href={announceLink}>
             {announce.linkLabel}
           </a>
         </p>
         <button
           type="button"
-          class="announcement__close"
+          class="shrink-0 inline-flex p-1 bg-transparent border-0 text-on-primary cursor-pointer rounded"
           data-announce-close
           aria-label={t.announce.close}
         >
@@ -183,22 +200,26 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
   )
 }
 
-<header class="site-header">
-  <div class="container site-header__inner">
-    <a class="site-header__brand" href={localizePath('/', lang)} aria-label={t.nav.brandAria}>
+<header class="site-header sticky top-0 z-50 bg-surface shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+  <div class="container-site flex items-center justify-between gap-6 min-h-20">
+    <a
+      class="site-header__brand inline-flex items-center shrink-0 [--logo-height:40px]"
+      href={localizePath('/', lang)}
+      aria-label={t.nav.brandAria}
+    >
       <Logo variant="dark" />
     </a>
 
-    <nav class="primary-nav" aria-label="Navigation">
-      <ul role="list" class="primary-nav__list">
+    <nav class="primary-nav hidden lg:block" aria-label="Navigation">
+      <ul role="list" class="flex items-center gap-[clamp(1rem,2vw,2.5rem)]">
         {
           navItems.map((item) => (
             <li
-              class:list={[{ 'has-mega': !!(item.mega || item.megaRes) }]}
+              class:list={[{ 'group py-6 -my-6': !!(item.mega || item.megaRes) }]}
               data-mega={item.mega || item.megaRes ? '' : undefined}
             >
               <a
-                class="primary-nav__link"
+                class="text-sm font-medium tracking-[0.14px] text-on-primary-fixed/70 no-underline whitespace-nowrap py-2 hover:text-primary aria-[current=page]:text-primary aria-[current=page]:font-semibold aria-[current=page]:shadow-[inset_0_-2px_0_0_var(--color-primary)]"
                 href={item.href}
                 aria-current={isCurrent(item.href) ? 'page' : undefined}
                 aria-haspopup={item.mega || item.megaRes ? 'true' : undefined}
@@ -207,31 +228,100 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
                 {item.label}
               </a>
               {item.mega && (
-                <div class="mega" aria-label={item.mega.ariaLabel}>
-                  <div class="container mega__grid">
-                    {item.mega.columns.map((col) => (
-                      <div class="mega__col">
-                        <a class="mega__title" href={localizePath(col.href, lang)}>
+                <div
+                  class="absolute top-full inset-x-0 bg-surface-container-lowest border-0 border-t border-solid border-outline-variant/40 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] invisible opacity-0 -translate-y-1.5 pointer-events-none transition-[opacity,transform] duration-150 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto group-data-[mega-closed]:hidden motion-reduce:transition-none motion-reduce:translate-y-0"
+                  aria-label={item.mega.ariaLabel}
+                >
+                  <div
+                    class:list={[
+                      'container-site grid gap-x-10 gap-y-8',
+                      megaFeatured
+                        ? 'grid-cols-[repeat(3,minmax(0,1fr))_minmax(240px,1fr)]'
+                        : 'grid-cols-5',
+                      megaStripe ? 'pt-10 pb-10' : 'py-10',
+                    ]}
+                  >
+                    {megaFeatured && (
+                      <div class="col-start-4 row-start-1 row-span-2 self-start bg-surface-container-low border border-solid border-outline-variant rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.05)] p-6 flex flex-col items-start gap-1">
+                        <span class="size-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                           <svg
-                            width="24"
-                            height="24"
+                            width="20"
+                            height="20"
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            stroke-width="1.6"
+                            stroke-width="1.8"
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             aria-hidden="true"
                             focusable="false"
-                            set:html={megaIcons[col.icon]}
+                          >
+                            <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" />
+                            <path d="M18.5 15.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z" />
+                          </svg>
+                        </span>
+                        <p class="font-headline-md text-headline-md text-on-surface pt-3 m-0 max-w-none">
+                          {megaFeatured.title}
+                        </p>
+                        {megaFeatured.body && (
+                          <p class="text-body-md leading-[1.6] text-on-surface-variant m-0 max-w-none">
+                            {megaFeatured.body}
+                          </p>
+                        )}
+                        {megaFeatured.image && (
+                          <img
+                            class="w-full rounded-lg border border-solid border-outline-variant mt-3"
+                            src={megaFeatured.image}
+                            alt=""
+                            loading="lazy"
                           />
-                          <span>{col.title}</span>
+                        )}
+                        <a
+                          class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.7px] text-primary no-underline mt-4 hover:text-primary-container"
+                          href={megaFeatured.href}
+                        >
+                          {megaFeatured.ctaLabel}
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path d="M2 8h11M9 3.5L13.5 8 9 12.5" />
+                          </svg>
                         </a>
-                        <ul role="list" class="mega__list">
+                      </div>
+                    )}
+                    {item.mega.columns.map((col) => (
+                      <div>
+                        <a class={megaHeadClass} href={localizePath(col.href, lang)}>
+                          {col.title}
+                        </a>
+                        <ul role="list" class="mt-4 flex flex-col gap-2">
                           {col.links.map((link) => (
                             <li>
-                              <a class="mega__link" href={resolveNavHref(link, lang, serviceSlugs)}>
-                                {link.label}
+                              <a class={megaLinkClass} href={resolveNavHref(link, lang, serviceSlugs)}>
+                                <span>{link.label}</span>
+                                <svg
+                                  class="shrink-0 opacity-0 transition-opacity group-hover/link:opacity-100"
+                                  width="7"
+                                  height="12"
+                                  viewBox="0 0 7 12"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="1.6"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  aria-hidden="true"
+                                  focusable="false"
+                                >
+                                  <path d="M1.2 1.2L5.8 6l-4.6 4.8" />
+                                </svg>
                               </a>
                             </li>
                           ))}
@@ -239,36 +329,66 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
                       </div>
                     ))}
                   </div>
+                  {megaStripe && (
+                    <div class="bg-surface-container border-0 border-t border-solid border-outline-variant/40 py-4">
+                      <div class="container-site flex flex-wrap items-center justify-between gap-4">
+                        <p class="italic text-xs font-semibold text-on-surface-variant m-0 max-w-none">
+                          {megaStripe.text}
+                        </p>
+                        {megaStripe.links.length > 0 && (
+                          <div class="flex items-center gap-6">
+                            {megaStripe.links.map((l) => (
+                              <a
+                                class="text-xs font-semibold text-primary no-underline hover:text-primary-container"
+                                href={l.href}
+                              >
+                                {l.label}
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
               {item.megaRes && (
-                <div class="mega" aria-label={item.megaRes.ariaLabel}>
-                  <div class="container mega-res">
-                    <div class="mega-res__intro">
-                      <p class="mega-res__text">{item.megaRes.intro}</p>
-                      <a class="btn btn--primary" href={megaResParentHref}>
+                <div
+                  class="absolute top-full inset-x-0 bg-surface-container-lowest border-0 border-t border-solid border-outline-variant/40 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] invisible opacity-0 -translate-y-1.5 pointer-events-none transition-[opacity,transform] duration-150 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto group-data-[mega-closed]:hidden motion-reduce:transition-none motion-reduce:translate-y-0"
+                  aria-label={item.megaRes.ariaLabel}
+                >
+                  <div class="container-site grid grid-cols-[minmax(220px,1fr)_minmax(160px,0.8fr)_2fr] gap-10 py-10">
+                    <div>
+                      <p class="text-body-md text-on-surface-variant max-w-[32ch] m-0 mb-6">
+                        {item.megaRes.intro}
+                      </p>
+                      <a class={ctaClass} href={megaResParentHref}>
                         {item.megaRes.ctaLabel}
                       </a>
                     </div>
                     <div>
-                      <p class="mega-res__title">{item.megaRes.categoriesTitle}</p>
-                      <ul role="list" class="mega__list mega-res__cats">
+                      <p class:list={[megaHeadClass, 'm-0 max-w-none']}>
+                        {item.megaRes.categoriesTitle}
+                      </p>
+                      <ul role="list" class="mt-4 flex flex-col gap-2">
                         {resCategories.map((cat) => (
                           <li>
-                            <a class="mega__link" href={cat.href}>
-                              {cat.label}
+                            <a class={megaLinkClass} href={cat.href}>
+                              <span>{cat.label}</span>
                             </a>
                           </li>
                         ))}
                       </ul>
                     </div>
                     <div>
-                      <p class="mega-res__title">{item.megaRes.latestTitle}</p>
-                      <ul role="list" class="mega-res__articles">
+                      <p class:list={[megaHeadClass, 'm-0 max-w-none']}>
+                        {item.megaRes.latestTitle}
+                      </p>
+                      <ul role="list" class="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 max-w-[56ch]">
                         {resLatest.map((article) => (
                           <li>
-                            <a class="mega-res__article" href={article.href}>
-                              {article.title}
+                            <a class={megaLinkClass} href={article.href}>
+                              <span>{article.title}</span>
                             </a>
                           </li>
                         ))}
@@ -283,16 +403,16 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
       </ul>
     </nav>
 
-    <div class="site-header__actions">
+    <div class="flex items-center gap-4 lg:gap-6">
       <a
-        class="site-header__search"
+        class="site-header__search hidden lg:flex items-center justify-center size-[34px] rounded text-on-primary-fixed/70 hover:text-primary aria-[current=page]:text-primary"
         href={searchHref}
         aria-label={t.search.navAria}
         aria-current={isCurrent(searchHref) ? 'page' : undefined}
       >
         <svg
-          width="20"
-          height="20"
+          width="18"
+          height="18"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -307,41 +427,91 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
       </a>
       {
         portal.visible && (
-          <a class="btn btn--primary site-header__portal" href={portal.href}>
+          <a class:list={['site-header__portal hidden lg:inline-flex', ctaClass]} href={portal.href}>
             {portal.label}
           </a>
         )
       }
 
-      <div class="lang-switch" role="group" aria-label={t.nav.langGroupAria}>
-        <a class:list={['lang-switch__link', { 'is-active': lang === 'fr' }]} href={frHref} aria-current={lang === 'fr' ? 'true' : undefined} lang="fr">FR</a>
-        <span class="lang-switch__sep" aria-hidden="true">|</span>
-        <a class:list={['lang-switch__link', { 'is-active': lang === 'en' }]} href={enHref} aria-current={lang === 'en' ? 'true' : undefined} lang="en">EN</a>
+      <div
+        class="lang-switch hidden lg:flex items-center gap-2 text-sm"
+        role="group"
+        aria-label={t.nav.langGroupAria}
+      >
+        <a
+          class:list={[
+            'lang-switch__link',
+            langLinkClass,
+            lang === 'fr'
+              ? 'is-active font-bold text-on-primary-fixed'
+              : 'font-medium text-on-primary-fixed/70 hover:text-primary',
+          ]}
+          href={frHref}
+          aria-current={lang === 'fr' ? 'true' : undefined}
+          lang="fr"
+        >FR</a>
+        <span class="text-on-primary-fixed/40" aria-hidden="true">|</span>
+        <a
+          class:list={[
+            'lang-switch__link',
+            langLinkClass,
+            lang === 'en'
+              ? 'is-active font-bold text-on-primary-fixed'
+              : 'font-medium text-on-primary-fixed/70 hover:text-primary',
+          ]}
+          href={enHref}
+          aria-current={lang === 'en' ? 'true' : undefined}
+          lang="en"
+        >EN</a>
       </div>
 
       <button
         type="button"
-        class="nav-toggle"
+        class="lg:hidden size-11 inline-flex items-center justify-center bg-transparent border-0 cursor-pointer text-on-primary-fixed"
         data-nav-toggle
         aria-expanded="false"
         aria-controls="mobile-nav"
         aria-label={t.nav.openMenu}
       >
-        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M3 5h18M3 12h18M3 19h18" />
+        </svg>
       </button>
     </div>
   </div>
 </header>
 
 <!-- Mobile drawer -->
-<div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
-  <div class="mobile-nav__backdrop" data-nav-close></div>
-  <nav class="mobile-nav__panel" aria-label="Navigation">
-    <div class="mobile-nav__head">
-      <a class="site-header__brand" href={localizePath('/', lang)} aria-label={t.nav.brandAria}>
+<div class="fixed inset-0 z-[200]" id="mobile-nav" data-mobile-nav hidden>
+  <div class="absolute inset-0 bg-on-primary-fixed/55" data-nav-close></div>
+  <nav
+    class="absolute inset-y-0 right-0 h-full w-[min(86vw,360px)] overflow-y-auto bg-surface-container-lowest shadow-surelevee p-6 flex flex-col gap-6"
+    aria-label="Navigation"
+  >
+    <div class="flex items-center justify-between [--logo-height:34px]">
+      <a
+        class="site-header__brand inline-flex items-center"
+        href={localizePath('/', lang)}
+        aria-label={t.nav.brandAria}
+      >
         <Logo variant="dark" />
       </a>
-      <button type="button" class="nav-close" data-nav-close aria-label={t.nav.closeMenu}>
+      <button
+        type="button"
+        class="size-11 inline-flex items-center justify-center bg-transparent border-0 cursor-pointer text-on-primary-fixed"
+        data-nav-close
+        aria-label={t.nav.closeMenu}
+      >
         <svg width="22" height="22" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
           <path
             d="M2 2l12 12M14 2L2 14"
@@ -353,12 +523,12 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
       </button>
     </div>
 
-    <ul role="list" class="mobile-nav__list">
+    <ul role="list" class="flex flex-col gap-1">
       {
         navItems.map((item) => (
           <li>
             <a
-              class="mobile-nav__link"
+              class="mobile-nav__link block px-2 py-3 rounded text-lg font-medium text-on-primary-fixed no-underline hover:bg-surface-container-low hover:text-primary aria-[current=page]:text-primary aria-[current=page]:font-semibold"
               href={item.href}
               aria-current={isCurrent(item.href) ? 'page' : undefined}
             >
@@ -369,7 +539,7 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
       }
       <li>
         <a
-          class="mobile-nav__link"
+          class="mobile-nav__link block px-2 py-3 rounded text-lg font-medium text-on-primary-fixed no-underline hover:bg-surface-container-low hover:text-primary aria-[current=page]:text-primary aria-[current=page]:font-semibold"
           href={searchHref}
           aria-current={isCurrent(searchHref) ? 'page' : undefined}
         >
@@ -380,16 +550,42 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
 
     {
       portal.visible && (
-        <a class="btn btn--primary mobile-nav__portal" href={portal.href}>
+        <a class:list={['mobile-nav__portal self-start', ctaClass]} href={portal.href}>
           {portal.label}
         </a>
       )
     }
 
-    <div class="lang-switch lang-switch--mobile" role="group" aria-label={t.nav.langGroupAria}>
-      <a class:list={['lang-switch__link', { 'is-active': lang === 'fr' }]} href={frHref} aria-current={lang === 'fr' ? 'true' : undefined} lang="fr">FR</a>
-      <span class="lang-switch__sep" aria-hidden="true">|</span>
-      <a class:list={['lang-switch__link', { 'is-active': lang === 'en' }]} href={enHref} aria-current={lang === 'en' ? 'true' : undefined} lang="en">EN</a>
+    <div
+      class="lang-switch lang-switch--mobile flex items-center gap-2 text-sm mt-auto"
+      role="group"
+      aria-label={t.nav.langGroupAria}
+    >
+      <a
+        class:list={[
+          'lang-switch__link',
+          langLinkClass,
+          lang === 'fr'
+            ? 'is-active font-bold text-on-primary-fixed'
+            : 'font-medium text-on-primary-fixed/70 hover:text-primary',
+        ]}
+        href={frHref}
+        aria-current={lang === 'fr' ? 'true' : undefined}
+        lang="fr"
+      >FR</a>
+      <span class="text-on-primary-fixed/40" aria-hidden="true">|</span>
+      <a
+        class:list={[
+          'lang-switch__link',
+          langLinkClass,
+          lang === 'en'
+            ? 'is-active font-bold text-on-primary-fixed'
+            : 'font-medium text-on-primary-fixed/70 hover:text-primary',
+        ]}
+        href={enHref}
+        aria-current={lang === 'en' ? 'true' : undefined}
+        lang="en"
+      >EN</a>
     </div>
   </nav>
 </div>
@@ -485,13 +681,15 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
   }
 
   // --- Mega menu ----------------------------------------------------------
-  // Open/close is CSS-driven (:hover / :focus-within); JS only syncs
-  // aria-expanded and lets Escape close the panel (until pointer/focus leaves).
+  // Open/close is CSS-driven (group-hover / group-focus-within utilities); JS
+  // only syncs aria-expanded and lets Escape close the panel (until pointer or
+  // focus leaves) via the data-mega-closed attribute the panel's
+  // group-data-[mega-closed]:hidden utility keys on.
   document.querySelectorAll<HTMLLIElement>('[data-mega]').forEach((li) => {
-    const trigger = li.querySelector<HTMLAnchorElement>('.primary-nav__link');
+    const trigger = li.querySelector<HTMLAnchorElement>('a[aria-haspopup]');
     const setExpanded = (v: boolean) => trigger?.setAttribute('aria-expanded', String(v));
     const reopenable = () => {
-      li.classList.remove('mega-closed');
+      delete li.dataset.megaClosed;
     };
     li.addEventListener('mouseenter', () => setExpanded(true));
     li.addEventListener('focusin', () => setExpanded(true));
@@ -511,7 +709,7 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
         // lines below then correct — the reverse order would leave
         // aria-expanded="true" on a hidden panel.
         trigger?.focus();
-        li.classList.add('mega-closed');
+        li.dataset.megaClosed = '';
         setExpanded(false);
       }
     });
@@ -533,417 +731,3 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
   }
   }
 </script>
-
-<style>
-  /* ---------- Announcement bar ---------- */
-  .announcement {
-    background-color: var(--color-accent-blue);
-    color: var(--color-white);
-    font-size: var(--fs-200);
-  }
-  .announcement__inner {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-    justify-content: center;
-    padding-block: var(--space-2);
-  }
-  .announcement__text {
-    margin: 0;
-    max-width: none;
-    text-align: center;
-  }
-  .announcement__link {
-    color: var(--color-white);
-    font-weight: var(--fw-semibold);
-    text-decoration: underline;
-    white-space: nowrap;
-  }
-  .announcement__close {
-    flex-shrink: 0;
-    display: inline-flex;
-    padding: var(--space-1);
-    background: transparent;
-    border: 0;
-    color: var(--color-white);
-    cursor: pointer;
-    border-radius: var(--radius-s);
-  }
-
-  /* ---------- Header bar ---------- */
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background-color: var(--color-white);
-    border-bottom: 1px solid var(--color-border);
-  }
-  .site-header__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-5);
-    min-height: 76px;
-  }
-  .site-header__brand {
-    display: inline-flex;
-    align-items: center;
-    flex-shrink: 0;
-    --logo-height: 40px;
-  }
-
-  /* ---------- Primary (desktop) nav ---------- */
-  .primary-nav {
-    display: none;
-  }
-  .primary-nav__list {
-    display: flex;
-    align-items: center;
-    gap: clamp(var(--space-4), 2vw, var(--space-6));
-    margin: 0;
-  }
-  .primary-nav__link {
-    color: var(--color-navy);
-    font-weight: var(--fw-medium);
-    text-decoration: none;
-    padding-block: var(--space-2);
-    white-space: nowrap;
-  }
-  .primary-nav__link:hover {
-    color: var(--color-accent-blue);
-  }
-  .primary-nav__link[aria-current='page'] {
-    color: var(--color-accent-blue);
-    font-weight: var(--fw-semibold);
-    box-shadow: inset 0 -2px 0 0 var(--color-accent-blue);
-  }
-
-  /* ---------- Mega menu (desktop) ----------
-     The panel is a child of its nav <li>, so li:hover / :focus-within keeps it
-     open while the pointer or focus is inside. Negative margin + padding
-     stretch the li's hover area to the header's edges so the pointer never
-     crosses a "dead" gap on its way down to the panel. Positioned against
-     .site-header (sticky ⇒ containing block), spanning its full width. */
-  .has-mega {
-    padding-block: var(--space-5);
-    margin-block: calc(-1 * var(--space-5));
-  }
-  .mega {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: var(--color-white);
-    border-top: 1px solid var(--color-border);
-    border-radius: 0 0 var(--radius-l) var(--radius-l);
-    box-shadow: 0 28px 48px -16px rgb(8 57 87 / 0.28);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-6px);
-    pointer-events: none;
-    transition:
-      opacity 0.16s ease,
-      transform 0.16s ease,
-      visibility 0s linear 0.16s;
-  }
-  .has-mega:hover .mega,
-  .has-mega:focus-within .mega {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    pointer-events: auto;
-    transition-delay: 0s;
-  }
-  /* Escape closes the panel until the pointer/focus leaves the item. */
-  .has-mega.mega-closed .mega {
-    display: none;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .mega {
-      transition: none;
-      transform: none;
-    }
-  }
-  .mega__grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: var(--space-6);
-    padding-block: var(--space-7);
-  }
-  .mega__title {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    color: var(--color-navy);
-    font-size: var(--fs-200);
-    font-weight: var(--fw-semibold);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-  .mega__title svg {
-    flex-shrink: 0;
-    color: var(--color-accent-blue);
-  }
-  .mega__title:hover span {
-    color: var(--color-accent-blue);
-  }
-  .mega__list {
-    margin: var(--space-4) 0 0;
-    padding-left: calc(24px + var(--space-3));
-    display: grid;
-    gap: var(--space-3);
-  }
-  .mega__link {
-    color: var(--color-text-muted);
-    text-decoration: none;
-    font-size: var(--fs-200);
-    line-height: 1.4;
-    display: inline-block;
-  }
-  .mega__link:hover {
-    color: var(--color-accent-blue);
-  }
-
-  /* ---------- Méga-menu Ressources (parité victrix.ca) ----------
-     Intro + CTA | Catégories | Derniers articles (2 colonnes). Contenu généré
-     au build depuis la collection blog — voir le frontmatter. */
-  .mega-res {
-    display: grid;
-    grid-template-columns: minmax(220px, 1fr) minmax(160px, 0.8fr) 2fr;
-    gap: var(--space-7);
-    padding-block: var(--space-7);
-  }
-  .mega-res__text {
-    margin: 0 0 var(--space-5);
-    color: var(--color-text-muted);
-    font-size: var(--fs-300);
-    max-width: 32ch;
-  }
-  .mega-res__title {
-    margin: 0 0 var(--space-4);
-    color: var(--color-accent-blue);
-    font-size: var(--fs-400);
-    font-weight: var(--fw-semibold);
-  }
-  .mega-res__cats {
-    padding-left: 0;
-  }
-  .mega-res__articles {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-4) var(--space-6);
-    margin: 0;
-    max-width: 56ch;
-  }
-  .mega-res__article {
-    color: var(--color-navy);
-    text-decoration: none;
-    font-size: var(--fs-200);
-    line-height: 1.45;
-    display: inline-block;
-  }
-  .mega-res__article:hover {
-    color: var(--color-accent-blue);
-  }
-
-  /* ---------- Right-side actions ---------- */
-  .site-header__actions {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-  }
-  .site-header__portal {
-    display: none;
-  }
-  /* Recherche : icône desktop seulement (le mobile passe par le tiroir). */
-  .site-header__search {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    color: var(--color-navy);
-    border-radius: var(--radius-s);
-  }
-  .site-header__search:hover,
-  .site-header__search[aria-current='page'] {
-    color: var(--color-accent-blue);
-  }
-  /* The header portal button is accent blue on victrix.ca (the global
-     .btn--primary stays navy elsewhere). */
-  .site-header__portal,
-  .mobile-nav__portal {
-    background-color: var(--color-accent-blue);
-  }
-  .site-header__portal:hover,
-  .mobile-nav__portal:hover {
-    background-color: var(--color-accent-blue-600);
-  }
-
-  .lang-switch {
-    display: none;
-    align-items: center;
-    gap: var(--space-2);
-    color: var(--color-grey-600);
-    font-size: var(--fs-200);
-  }
-  .lang-switch__link {
-    color: var(--color-grey-600);
-    text-decoration: none;
-    text-transform: lowercase;
-    padding: var(--space-1);
-  }
-  .lang-switch__link.is-active {
-    color: var(--color-navy);
-    font-weight: var(--fw-semibold);
-  }
-  .lang-switch__link:hover {
-    color: var(--color-accent-blue);
-  }
-
-  /* ---------- Hamburger toggle ---------- */
-  .nav-toggle {
-    position: relative;
-    width: 44px;
-    height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    color: var(--color-navy);
-  }
-  .nav-toggle__bars,
-  .nav-toggle__bars::before,
-  .nav-toggle__bars::after {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: currentColor;
-    border-radius: 2px;
-  }
-  .nav-toggle__bars {
-    position: relative;
-  }
-  .nav-toggle__bars::before {
-    position: absolute;
-    top: -7px;
-  }
-  .nav-toggle__bars::after {
-    position: absolute;
-    top: 7px;
-  }
-
-  /* ---------- Mobile drawer ---------- */
-  .mobile-nav {
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-  }
-  .mobile-nav[hidden] {
-    display: none;
-  }
-  .mobile-nav__backdrop {
-    position: absolute;
-    inset: 0;
-    background-color: rgba(8, 57, 87, 0.55);
-    animation: announce-fade 0.2s ease;
-  }
-  .mobile-nav__panel {
-    position: absolute;
-    inset-block: 0;
-    inset-inline-end: 0;
-    width: min(86vw, 360px);
-    height: 100%;
-    overflow-y: auto;
-    background-color: var(--color-white);
-    box-shadow: var(--shadow-3);
-    padding: var(--space-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
-    animation: drawer-in 0.25s ease;
-  }
-  .mobile-nav__head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    --logo-height: 34px;
-  }
-  .nav-close {
-    width: 44px;
-    height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    color: var(--color-navy);
-  }
-  .mobile-nav__list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-    margin: 0;
-  }
-  .mobile-nav__link {
-    display: block;
-    padding: var(--space-3) var(--space-2);
-    color: var(--color-navy);
-    font-weight: var(--fw-medium);
-    font-size: var(--fs-400);
-    text-decoration: none;
-    border-radius: var(--radius-s);
-  }
-  .mobile-nav__link:hover {
-    background-color: var(--color-band);
-    color: var(--color-accent-blue);
-  }
-  .mobile-nav__link[aria-current='page'] {
-    color: var(--color-accent-blue);
-    font-weight: var(--fw-semibold);
-  }
-  .mobile-nav__portal {
-    align-self: flex-start;
-  }
-  .lang-switch--mobile {
-    display: flex;
-    margin-top: auto;
-  }
-
-  @keyframes announce-fade {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  @keyframes drawer-in {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  /* ---------- Desktop breakpoint ---------- */
-  @media (min-width: 1024px) {
-    .primary-nav {
-      display: block;
-    }
-    .site-header__portal,
-    .site-header__search,
-    .lang-switch {
-      display: flex;
-    }
-    .nav-toggle {
-      display: none;
-    }
-  }
-</style>
