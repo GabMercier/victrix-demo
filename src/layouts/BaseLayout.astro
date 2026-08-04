@@ -8,6 +8,7 @@ import '../styles/theme.css';
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
 import JsonLd from '../components/JsonLd.astro';
 import { type Locale, defaultLocale, otherLocale, htmlLang, swapLocale } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
@@ -95,6 +96,13 @@ const orgSchema = {
     <link rel="alternate" hreflang="fr-CA" href={frURL} />
     <link rel="alternate" hreflang="en-CA" href={enURL} />
     <link rel="alternate" hreflang="x-default" href={frURL} />
+    <!-- Flux RSS des ressources (P-14) — découverte automatique du flux. -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${SITE_NAME} — RSS`}
+      href={new URL(`/${lang}/rss.xml`, Astro.site)}
+    />
 
     {/* Icons + theme — official Victrix favicon */}
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -137,6 +145,12 @@ const orgSchema = {
         their own page-level schemas (e.g. BlogPosting) separately. */}
     <JsonLd schema={orgSchema} />
 
+    {/* Schémas JSON-LD par page (P-12 : BreadcrumbList, BlogPosting…) — les
+        routes les injectent via slot="head". Jamais dans le slot par défaut :
+        il atterrit dans <main>, où le comptage d'enfants (design:previews) et
+        le périmètre data-pagefind-body supposent « 1 enfant = 1 section ». */}
+    <slot name="head" />
+
     {/* SPA-like navigation: swaps page content client-side with a crossfade,
         persists across the site, respects prefers-reduced-motion. Inline
         scripts below re-apply state on astro:after-swap; component scripts
@@ -166,7 +180,8 @@ const orgSchema = {
   <body>
     <a class="skip-link" href="#main-content">{t.skipLink}</a>
 
-    <!-- Global header (a page can override it by filling the "header" slot). -->
+    <!-- Global header (a page can override it by filling the "header" slot —
+         P-04 : la route campagnes y place CampaignHeader en mode réduit). -->
     <slot name="header"><Header lang={lang} altLocalePath={altPath} /></slot>
 
     {/* data-pagefind-body — périmètre de la recherche interne (P-06) : seules
@@ -179,5 +194,9 @@ const orgSchema = {
 
     <!-- Global footer (a page can override it by filling the "footer" slot). -->
     <slot name="footer"><Footer lang={lang} /></slot>
+
+    <!-- Bandeau de consentement Loi 25 (P-10) — sur toutes les pages ; les
+         scripts analytiques (P-11) resteront gated sur ce consentement. -->
+    <ConsentBanner lang={lang} />
   </body>
 </html>

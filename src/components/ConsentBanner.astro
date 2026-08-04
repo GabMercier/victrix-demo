@@ -1,0 +1,184 @@
+---
+import { type Locale, defaultLocale, localizePath } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+
+/**
+ * Bandeau de consentement Loi 25 (P-10) — design minimal ASSUMÉ (décision
+ * 17/07) : tokens seulement, re-stylé au redesign. Rendu sur toutes les pages
+ * via BaseLayout ; masqué (hidden) tant que le script n'a pas constaté
+ * l'absence de choix mémorisé (pas d'éclair pour les visiteurs déjà décidés).
+ *
+ * Contrat de consentement (consommé par P-11 — pose des scripts analytiques) :
+ *  - localStorage `victrix-consent` = « accepted » | « refused » ;
+ *  - classe `consent-analytics` sur <html> quand accepté ;
+ *  - évènement `victrix:consent` (CustomEvent, detail.analytics: boolean) émis
+ *    à chaque choix ;
+ *  - GATING GÉNÉRIQUE : tout <script type="text/plain" data-consent="analytics">
+ *    (src via data-src, ou contenu inline) reste INERTE tant que le visiteur
+ *    n'a pas accepté ; il est activé (clone exécutable) dès l'acceptation — y
+ *    compris au retour sur le site et après chaque navigation ClientRouter.
+ *    Aucun script analytique ne se charge sans consentement.
+ *
+ * A11y : region nommée, boutons natifs (focus clavier), texte lisible ; le
+ * bandeau n'est PAS un modal — il ne piège pas le focus et ne bloque pas la
+ * navigation (exigence minimale Loi 25 : choix libre, refus aussi simple que
+ * l'acceptation).
+ */
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = defaultLocale } = Astro.props;
+const c = useTranslations(lang).consent;
+const policyHref = localizePath(c.policyHref, lang);
+---
+
+<div class="consent" data-consent-banner hidden role="region" aria-label={c.ariaLabel}>
+  <div class="container consent__inner">
+    <p class="consent__text">
+      {c.text}
+      <a class="consent__policy" href={policyHref}>{c.policyLabel}</a>
+    </p>
+    <div class="consent__actions">
+      <button type="button" class="btn btn--primary consent__btn" data-consent-accept>
+        {c.accept}
+      </button>
+      <button type="button" class="consent__btn consent__btn--ghost" data-consent-refuse>
+        {c.refuse}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Comme Header.astro : avec <ClientRouter />, ce module s'exécute UNE fois
+  // par session pendant que le DOM est remplacé à chaque navigation — les
+  // liaisons d'éléments vivent donc dans astro:page-load.
+  const KEY = 'victrix-consent';
+
+  const stored = (): string | null => {
+    try {
+      return localStorage.getItem(KEY);
+    } catch {
+      return null;
+    }
+  };
+
+  /** Active les scripts en attente de consentement présents dans le DOM. */
+  const activateGatedScripts = () => {
+    document
+      .querySelectorAll<HTMLScriptElement>('script[type="text/plain"][data-consent="analytics"]')
+      .forEach((inert) => {
+        const live = document.createElement('script');
+        for (const { name, value } of Array.from(inert.attributes)) {
+          if (name === 'type' || name === 'data-consent' || name === 'data-src') continue;
+          live.setAttribute(name, value);
+        }
+        const src = inert.dataset.src;
+        if (src) live.src = src;
+        else live.textContent = inert.textContent;
+        inert.replaceWith(live);
+      });
+  };
+
+  const applyChoice = (accepted: boolean, persist: boolean) => {
+    if (persist) {
+      try {
+        localStorage.setItem(KEY, accepted ? 'accepted' : 'refused');
+      } catch {
+        /* localStorage indisponible — le choix vaut pour la page courante */
+      }
+    }
+    document.documentElement.classList.toggle('consent-analytics', accepted);
+    if (accepted) activateGatedScripts();
+    document.dispatchEvent(new CustomEvent('victrix:consent', { detail: { analytics: accepted } }));
+  };
+
+  document.addEventListener('astro:page-load', () => {
+    const banner = document.querySelector<HTMLElement>('[data-consent-banner]');
+    if (!banner) return;
+
+    const choice = stored();
+    if (choice === 'accepted') {
+      // Choix déjà mémorisé : réappliquer (classe + activation des scripts de
+      // CETTE page — après un swap ClientRouter, les scripts inertes copiés
+      // dans le nouveau DOM doivent être réactivés).
+      applyChoice(true, false);
+      return;
+    }
+    if (choice === 'refused') return;
+
+    banner.hidden = false;
+    banner.querySelector<HTMLButtonElement>('[data-consent-accept]')?.addEventListener(
+      'click',
+      () => {
+        banner.hidden = true;
+        applyChoice(true, true);
+      },
+      { once: true },
+    );
+    banner.querySelector<HTMLButtonElement>('[data-consent-refuse]')?.addEventListener(
+      'click',
+      () => {
+        banner.hidden = true;
+        applyChoice(false, true);
+      },
+      { once: true },
+    );
+  });
+</script>
+
+<style>
+  /* Design minimal assumé — tokens seulement (re-peau au redesign). */
+  .consent {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 60; /* au-dessus du header sticky (50) */
+    background-color: var(--color-grey-dark);
+    color: var(--color-white);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 -12px 32px -16px rgb(8 57 87 / 0.4);
+  }
+  .consent__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3) var(--space-5);
+    padding-block: var(--space-4);
+  }
+  .consent__text {
+    margin: 0;
+    font-size: var(--fs-200);
+    max-width: 70ch;
+  }
+  .consent__policy {
+    color: var(--color-white);
+    font-weight: var(--fw-semibold);
+    text-decoration: underline;
+    white-space: nowrap;
+    margin-inline-start: var(--space-2);
+  }
+  .consent__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .consent__btn {
+    cursor: pointer;
+  }
+  .consent__btn--ghost {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: var(--radius-pill);
+    color: var(--color-white);
+    font-size: var(--fs-200);
+    font-weight: var(--fw-semibold);
+    padding: var(--space-2) var(--space-4);
+  }
+  .consent__btn--ghost:hover {
+    border-color: var(--color-white);
+  }
+</style>

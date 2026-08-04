@@ -104,6 +104,18 @@ const fr = {
     ],
   },
 
+  // Bandeau de consentement Loi 25 (P-10) — design minimal ASSUMÉ (décision
+  // 17/07), re-stylé au redesign via tokens. Aucun script analytique ne se
+  // charge sans « Accepter » (gating générique — voir ConsentBanner.astro).
+  consent: {
+    ariaLabel: 'Consentement aux témoins',
+    text: 'Nous utilisons des témoins (cookies) à des fins de mesure d’audience, conformément à la Loi 25.',
+    policyLabel: 'Politique de confidentialité',
+    policyHref: '/politique-confidentialite',
+    accept: 'Accepter',
+    refuse: 'Refuser',
+  },
+
   blog: {
     eyebrow: 'Ressources',
     title: 'Le blogue Victrix',
@@ -248,6 +260,17 @@ const en: UI = {
       { label: 'Terms of use', href: '/conditions-utilisation' },
       { label: 'Privacy policy', href: '/politique-confidentialite' },
     ],
+  },
+
+  // Law 25 consent banner (P-10) — deliberately minimal design (17/07
+  // decision), restyled via tokens at the redesign.
+  consent: {
+    ariaLabel: 'Cookie consent',
+    text: 'We use cookies for audience measurement, in accordance with Quebec’s Law 25.',
+    policyLabel: 'Privacy policy',
+    policyHref: '/politique-confidentialite',
+    accept: 'Accept',
+    refuse: 'Refuse',
   },
 
   blog: {
