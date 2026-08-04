@@ -1,11 +1,14 @@
 ---
 /**
  * Section « Bandeau experts » — composant Bookshop (accueil composable).
+ * RE-SKIN 2026-08-04 (lot accueil, Phase 5) : patron « Bottom CTA Banner » de
+ * la maquette Accueil.html normalisé système — panneau SABLE arrondi (couches
+ * tonales, pas d'aplat marine), grand titre, bouton primaire (la maquette
+ * posait bg-secondary, normalisé primary — décision CTA).
  *
  * Props : { type: "home-experts", title, subtitle, ctaLabel, ctaHref }
- * PARITÉ : reproduit à l'identique le bandeau « Rencontrez nos experts » de
- * l'ancienne page d'accueil (bandeau marine, bouton vert accent). Voir
- * home-hero.astro pour les conventions communes.
+ * (contrat inchangé). Browser-safe (éditeur visuel CloudCannon), aucun import.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 interface Props {
   title: string;
@@ -17,72 +20,19 @@ interface Props {
 const { title, subtitle, ctaLabel, ctaHref } = Astro.props;
 ---
 
-<section class="experts">
-  <div class="container experts__inner">
-    <div>
-      <h2 class="experts__title">{title}</h2>
-      <p class="experts__subtitle">{subtitle}</p>
+<section class="py-section-gap bg-surface">
+  <div class="max-w-container-max mx-auto px-margin-x">
+    <div class="bg-surface-container-high rounded-lg p-12 lg:p-20 flex flex-col lg:flex-row justify-between items-center gap-12">
+      <div class="text-center lg:text-left max-w-2xl">
+        <h2 class="font-headline-lg text-headline-lg text-on-surface m-0 mb-4">{title}</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant m-0">{subtitle}</p>
+      </div>
+      <a
+        class="no-underline bg-primary text-on-primary px-12 py-5 rounded font-button text-button uppercase tracking-widest hover:bg-primary-container transition-colors shadow-lg whitespace-nowrap"
+        href={ctaHref}
+      >
+        {ctaLabel}
+      </a>
     </div>
-    <a class="btn experts__cta" href={ctaHref}>{ctaLabel}</a>
   </div>
 </section>
-
-<style>
-  /* Duplicatas scopés (autonomie éditeur). */
-  .container {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-  }
-  h2 {
-    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
-    font-weight: var(--fw-bold, 700);
-    line-height: var(--lh-tight, 1.15);
-    text-wrap: balance;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    padding: 0.7em 1.5em;
-    border: 2px solid transparent;
-    border-radius: var(--radius-pill, 999px);
-    font-weight: var(--fw-semibold, 600);
-    font-size: var(--fs-200, 0.9375rem);
-    line-height: 1;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  /* ---------- Bandeau experts (déplacé depuis l'ancienne page d'accueil) --- */
-  .experts {
-    background-color: var(--color-navy, #083957);
-    color: var(--color-text-invert, #ffffff);
-    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
-  }
-  .experts__inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-5, 1.5rem);
-    padding-block: var(--space-7, 3rem);
-  }
-  .experts__title {
-    color: var(--color-text-invert, #ffffff);
-  }
-  .experts__subtitle {
-    margin-top: var(--space-2, 0.5rem);
-    color: rgba(255, 255, 255, 0.8);
-  }
-  .experts__cta {
-    background-color: var(--color-accent-green, #24fb8e);
-    color: var(--color-navy, #083957);
-    font-weight: var(--fw-bold, 700);
-  }
-  .experts__cta:hover {
-    background-color: var(--color-white, #ffffff);
-  }
-</style>

@@ -291,23 +291,35 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       subtitle: z.string(),
       ctaLabel: z.string(),
       ctaHref: z.string(),
+      // Re-skin 2026-08-04 (patron maquette Accueil) — chaîne vide = absent :
+      // photo de fond (chemin PUBLIC servi tel quel) + second bouton contour.
+      image: z.string().default(''),
+      cta2Label: z.string().default(''),
+      cta2Href: z.string().default(''),
     }),
     z.object({
       type: z.literal('home-iso'),
       title: z.string(),
       subtitle: z.string(),
+      // Re-skin 2026-08-04 — barre de confiance (patron Trust Bar) : items
+      // {value,label} ; tableau vide = ancien rendu titre + sous-titre.
+      items: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
     }),
     z.object({
       type: z.literal('home-expertises'),
       sectionTitle: z.string(),
+      // Re-skin 2026-08-04 — paragraphe d'appui à droite du titre (optionnel).
+      intro: z.string().default(''),
       learnMore: z.string(),
       items: z.array(
         z.object({
-          number: z.string(),
+          number: z.string(), // hérité (plus rendu depuis le re-skin tuiles)
           title: z.string(),
-          accent: z.string(), // hex, kept ≥3:1 on white for accessible titles
+          accent: z.string(), // hérité (plus rendu — accents multicolores retirés)
           description: z.string(),
           href: z.string(),
+          // Visuel de la tuile (chemin PUBLIC) ; vide = fond sable.
+          image: z.string().default(''),
         }),
       ),
     }),
@@ -320,6 +332,11 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       ctaHref: z.string(),
       // Resolved image when the path is real; plain string ("") otherwise.
       image: z.union([image(), z.string()]),
+      // Re-skin 2026-08-04 — carte statistique flottante (ex. « 24/7 ») ;
+      // chaînes vides = pas de carte.
+      statValue: z.string().default(''),
+      statLabel: z.string().default(''),
+      statText: z.string().default(''),
     }),
     z.object({
       type: z.literal('home-partners'),

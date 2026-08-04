@@ -1,26 +1,23 @@
 ---
 /**
  * Section « Bannière d'accueil » — composant Bookshop (accueil composable).
+ * RE-SKIN 2026-08-04 (lot accueil, Phase 5) : patron du HÉROS de la maquette
+ * Accueil.html NORMALISÉ sur le design system (décisions v2 + « garder le vibe
+ * de la maquette ») — héros CLAIR : photo pleine largeur voilée d'ivoire,
+ * surtitre label-caps Bleu Victrix, titre display anthracite, double CTA
+ * (primaire plein + secondaire contour ; la maquette posait bg-secondary,
+ * normalisé primary).
  *
- * Props : { type: "home-hero", eyebrow?, title, subtitle, ctaLabel, ctaHref }
- * - `type` est le discriminant du contrat sections ; il arrive via {...section}
- *   depuis src/pages/[lang]/index.astro et est volontairement ignoré ici.
+ * Props : { type: "home-hero", eyebrow?, title, subtitle, ctaLabel, ctaHref,
+ *           image?, cta2Label?, cta2Href? } — nouveaux champs OPTIONNELS
+ * (chaîne vide = absent, convention du dépôt) : l'ancien contenu reste valide.
+ * `image` est un chemin PUBLIC servi tel quel (pas d'astro:assets — l'éditeur
+ * visuel CloudCannon recompile ce composant pour le navigateur).
  *
- * PARITÉ (exigence dure de la conversion) : ce composant reproduit À
- * L'IDENTIQUE le markup et les classes qu'émettait l'ancienne page d'accueil
- * inline (mêmes classes .hero/.container/.btn, même arbre) — le HTML rendu au
- * build normal reste sémantiquement identique (voir docs de la conversion). Les
- * hrefs sont stockés AVEC le préfixe de langue dans le contenu (aucune
- * localisation au rendu), comme les campagnes.
- *
- * Contraintes / pièges :
- * - Rend le SEUL <h1> de la page : à garder en première position.
- * - Aucun script client, aucun import astro:assets/i18n : l'éditeur visuel
- *   CloudCannon rend les composants Bookshop DANS le navigateur.
- * - Les styles globaux réutilisés (.container/.btn + tailles de titres) sont
- *   dupliqués en scope local pour un rendu fidèle dans l'éditeur (où global.css
- *   n'est pas chargée) ; sur le site réel ils doublent global.css sans effet.
- *   Chaque var(--token, secours) embarque la valeur de src/styles/tokens.css.
+ * RÈGLE no-hybride : composant re-skinné = 100 % utilitaires Tailwind
+ * (theme.css), zéro CSS scopé. Preflight absent → border-solid explicites,
+ * m-0 sur les éléments typographiques.
+ * Rend le SEUL <h1> de la page : à garder en première position.
  */
 interface Props {
   eyebrow?: string;
@@ -28,86 +25,49 @@ interface Props {
   subtitle: string;
   ctaLabel: string;
   ctaHref: string;
+  image?: string;
+  cta2Label?: string;
+  cta2Href?: string;
 }
 
-const { eyebrow, title, subtitle, ctaLabel, ctaHref } = Astro.props;
+const { eyebrow, title, subtitle, ctaLabel, ctaHref, image, cta2Label, cta2Href } = Astro.props;
 ---
 
-<section class="hero">
-  <div class="container">
-    <div class="hero__inner">
-      {eyebrow && <p class="hero__eyebrow">{eyebrow}</p>}
-      <h1 class="hero__title">{title}</h1>
-      <p class="hero__subtitle">{subtitle}</p>
-      <a class="btn hero__cta" href={ctaHref}>{ctaLabel}</a>
+<section class="relative min-h-[640px] flex items-center overflow-hidden bg-surface">
+  {
+    image && (
+      <div class="absolute inset-0" aria-hidden="true">
+        <img src={image} alt="" class="w-full h-full object-cover" loading="eager" decoding="async" fetchpriority="high" />
+        <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/85 to-surface/25" />
+      </div>
+    )
+  }
+  <div class="relative z-10 max-w-container-max mx-auto px-margin-x w-full py-20">
+    <div class="max-w-3xl">
+      {eyebrow && <p class="font-label-caps text-label-caps text-primary uppercase m-0 mb-6">{eyebrow}</p>}
+      <h1 class="font-display text-display text-on-surface m-0 mb-6 text-balance">{title}</h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant m-0 mb-10 max-w-2xl">{subtitle}</p>
+      <div class="flex flex-wrap gap-4">
+        <a
+          class="no-underline bg-primary text-on-primary px-8 py-4 rounded font-button text-button inline-flex items-center gap-2 hover:bg-primary-container transition-colors"
+          href={ctaHref}
+        >
+          {ctaLabel}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        {
+          cta2Label && cta2Href && (
+            <a
+              class="no-underline border border-solid border-outline text-on-surface px-8 py-4 rounded font-button text-button inline-flex items-center hover:bg-surface-variant transition-colors"
+              href={cta2Href}
+            >
+              {cta2Label}
+            </a>
+          )
+        }
+      </div>
     </div>
   </div>
 </section>
-
-<style>
-  /* Duplicatas scopés (autonomie éditeur — voir en-tête). */
-  .container {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    padding: 0.7em 1.5em;
-    border: 2px solid transparent;
-    border-radius: var(--radius-pill, 999px);
-    font-weight: var(--fw-semibold, 600);
-    font-size: var(--fs-200, 0.9375rem);
-    line-height: 1;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  /* ---------- Héros (déplacé depuis l'ancienne page d'accueil) ---------- */
-  .hero {
-    background:
-      radial-gradient(120% 140% at 85% 0%, var(--color-navy-700, #0b4b71) 0%, transparent 55%),
-      linear-gradient(120deg, var(--color-navy-900, #052639) 0%, var(--color-navy, #083957) 70%);
-    color: var(--color-text-invert, #ffffff);
-    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
-  }
-  .hero__inner {
-    padding-block: var(--space-9, 6rem);
-    max-width: 760px;
-  }
-  .hero__eyebrow {
-    color: var(--color-accent-green, #24fb8e);
-    font-weight: var(--fw-semibold, 600);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: var(--fs-200, 0.9375rem);
-    margin-bottom: var(--space-4, 1rem);
-  }
-  .hero__title {
-    color: var(--color-text-invert, #ffffff);
-    max-width: 18ch;
-    font-size: var(--fs-800, clamp(2.5rem, 3.5vw + 1.5rem, 4rem));
-    font-weight: var(--fw-extrabold, 800);
-    line-height: var(--lh-tight, 1.15);
-    text-wrap: balance;
-  }
-  .hero__subtitle {
-    margin-top: var(--space-5, 1.5rem);
-    max-width: 56ch;
-    font-size: var(--fs-400, clamp(1.125rem, 0.2vw + 1.05rem, 1.25rem));
-    color: rgba(255, 255, 255, 0.85);
-  }
-  .hero__cta {
-    margin-top: var(--space-6, 2rem);
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    color: var(--color-text-invert, #ffffff);
-  }
-  .hero__cta:hover {
-    background-color: var(--color-white, #ffffff);
-    color: var(--color-navy, #083957);
-  }
-</style>

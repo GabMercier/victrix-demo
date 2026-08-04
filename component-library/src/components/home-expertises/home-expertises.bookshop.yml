@@ -9,11 +9,11 @@ spec:
   structures:
     - sections
   label: "Accueil — Expertises"
-  description: "Grille de cartes d'expertise numérotées (numéro, titre, description, lien), avec liseré de couleur d'accent — 1 à 3 colonnes."
+  description: "Tuiles d'expertise image + voile Bleu nuit (titre, description, lien) — patron de la maquette Accueil. Les champs numéro/accent sont hérités et ne sont plus rendus."
   icon: grid_view
   picker_preview:
     text: "Accueil — Expertises"
-    subtext: Grille de cartes numérotées avec accent de couleur
+    subtext: Tuiles image + voile navy, titre et lien
   preview:
     icon: grid_view
     text:
@@ -23,6 +23,7 @@ spec:
 blueprint:
   type: home-expertises
   sectionTitle: "Nos expertises"
+  intro: ""
   learnMore: "En savoir plus"
   items:
     - number: "01"
@@ -30,6 +31,7 @@ blueprint:
       accent: "#B45309"
       description: "Décrivez brièvement cette expertise."
       href: "/fr/expertises/"
+      image: ""
 
 preview:
 
@@ -39,9 +41,12 @@ _inputs:
     comment: "Discriminant technique du contrat sections — ne pas modifier."
   sectionTitle:
     label: "Titre de section"
+  intro:
+    label: "Paragraphe d'appui"
+    comment: "Affiché à droite du titre (optionnel)."
   learnMore:
-    label: "Libellé du bouton des cartes"
-    comment: "Ex. « En savoir plus » — commun à toutes les cartes."
+    label: "Libellé du lien des tuiles"
+    comment: "Ex. « En savoir plus » — commun à toutes les tuiles."
   items:
     type: array
     label: "Cartes d'expertise"

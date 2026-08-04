@@ -28,6 +28,9 @@ blueprint:
   ctaLabel: "En savoir plus"
   ctaHref: "/fr/expertises/"
   image: ""
+  statValue: ""
+  statLabel: ""
+  statText: ""
 
 preview:
 
@@ -48,3 +51,10 @@ _inputs:
     comment: "URL finale, préfixe de langue inclus."
   image:
     label: "Image"
+  statValue:
+    label: "Carte flottante — valeur"
+    comment: "Ex. « 24/7 ». Vide = pas de carte flottante sur l'image."
+  statLabel:
+    label: "Carte flottante — libellé"
+  statText:
+    label: "Carte flottante — texte d'appui"

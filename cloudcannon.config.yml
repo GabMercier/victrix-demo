@@ -242,12 +242,13 @@ collections_config:
           structures: _structures.expertise_items
       number:
         type: text
-        label: Numéro
+        label: Numéro (hérité — plus affiché)
+        comment: "Champ de l'ancien design, conservé pour compatibilité."
       accent:
         type: text
-        label: Couleur d'accent (hex)
+        label: Couleur d'accent (héritée — plus affichée)
         # Quoted: an unquoted # would start a YAML comment mid-value.
-        comment: "Ex. #B45309 — garder un bon contraste sur fond blanc."
+        comment: "Champ de l'ancien design, conservé pour compatibilité (ex. #B45309)."
       description:
         type: textarea
         label: Description
@@ -931,6 +932,7 @@ _structures:
           accent: '#2350E0'
           description: ''
           href: ''
+          image: ''
 
   form_fields:
     values:

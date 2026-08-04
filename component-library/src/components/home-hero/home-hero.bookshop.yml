@@ -27,6 +27,9 @@ blueprint:
   subtitle: ""
   ctaLabel: "Découvrir Victrix"
   ctaHref: "/fr/decouvrir"
+  image: ""
+  cta2Label: ""
+  cta2Href: ""
 
 preview:
 
@@ -46,3 +49,12 @@ _inputs:
   ctaHref:
     label: "Lien du bouton"
     comment: "URL finale, préfixe de langue inclus (ex. /fr/decouvrir)."
+  image:
+    label: "Photo de fond"
+    comment: "Chemin public (ex. /images/home/hero-accueil.jpg) — voilée d'ivoire pour la lisibilité. Vide = fond uni."
+  cta2Label:
+    label: "Libellé du second bouton"
+    comment: "Bouton contour à droite du principal (optionnel — vide = absent)."
+  cta2Href:
+    label: "Lien du second bouton"
+    comment: "URL finale, préfixe de langue inclus."

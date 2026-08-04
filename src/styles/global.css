@@ -116,12 +116,16 @@ p {
   text-wrap: pretty;
 }
 
-a {
+/* Liens NON CLASSÉS seulement : cette feuille est NON-COUCHÉE et battrait les
+   utilitaires @layer des composants re-skinnés (ex. text-on-primary sur un
+   bouton plein → texte bleu sur bleu, vécu au lot accueil 2026-08-04). Un lien
+   porteur de classes gère sa propre couleur. */
+a:not([class]) {
   color: var(--color-link);
   text-underline-offset: 0.15em;
 }
 
-a:hover {
+a:not([class]):hover {
   color: var(--color-link-hover);
 }
 

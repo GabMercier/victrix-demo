@@ -6,22 +6,25 @@
 spec:
   structures:
     - sections
-  label: "Accueil — Bandeau ISO"
-  description: "Fin bandeau marine avec badge : une certification ou une mention forte (titre en gras + sous-titre)."
+  label: "Accueil — Barre de confiance"
+  description: "Bande claire de chiffres clés et certifications (ex. 30+ ans, 250+ experts, ISO 27001). Sans éléments, retombe sur l'ancien bandeau titre + sous-titre."
   icon: verified
   picker_preview:
-    text: "Accueil — Bandeau ISO"
-    subtext: Bandeau marine, badge + mention en gras
+    text: "Accueil — Barre de confiance"
+    subtext: Chiffres clés et certifications en bande claire
   preview:
     icon: verified
     text:
       - key: title
-      - text: "Bandeau ISO"
+      - text: "Barre de confiance"
 
 blueprint:
   type: home-iso
-  title: "Certifié ISO 27001"
+  title: "Ils nous font confiance"
   subtitle: "La sécurité de l’information au cœur de toutes nos pratiques."
+  items:
+    - value: "30+ ans"
+      label: "d’expertise"
 
 preview:
 
@@ -30,6 +33,13 @@ _inputs:
     hidden: true
     comment: "Discriminant technique du contrat sections — ne pas modifier."
   title:
-    label: "Titre (mention en gras)"
+    label: "Titre (masqué quand des éléments existent)"
   subtitle:
-    label: "Sous-titre"
+    label: "Sous-titre (rendu seulement sans éléments)"
+  items:
+    label: "Éléments de confiance"
+    comment: "Chiffre ou mention (valeur) + libellé court. Tableau vide = ancien bandeau."
+  value:
+    label: "Valeur"
+  label:
+    label: "Libellé"

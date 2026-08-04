@@ -1,17 +1,22 @@
 ---
 /**
  * Section « Expertises » — composant Bookshop (accueil composable).
+ * RE-SKIN 2026-08-04 (lot accueil, Phase 5) : patron « Nos services » de la
+ * maquette Accueil.html normalisé système — TUILES image + overlay Bleu nuit
+ * (même pattern que les tuiles expertises de PageExpertise, validé au port du
+ * pipeline). Les ACCENTS multicolores par carte et les numéros de l'ancien
+ * design sont RETIRÉS du rendu (champs conservés au contrat pour
+ * compatibilité du contenu existant).
  *
- * Props : { type: "home-expertises", sectionTitle, learnMore,
- *           items: [{ number, title, accent, description, href }] }
- * - `learnMore` : libellé du bouton de chaque carte. Il provenait du
- *   dictionnaire UI (t.home.learnMore) ; il est passé en champ de contenu pour
- *   que le composant reste autonome dans le navigateur (aucun import i18n).
+ * Props : { type: "home-expertises", sectionTitle, intro?, learnMore,
+ *           items: [{ number, title, accent, description, href, image? }] }
+ * - `intro` (NOUVEAU, optionnel) : paragraphe d'appui à droite du titre.
+ * - `items[].image` (NOUVEAU, optionnel) : chemin PUBLIC servi tel quel ;
+ *   sans image, la tuile pose un fond sable (pas de casse).
+ * - `learnMore` : libellé du lien de chaque tuile (champ de contenu — aucun
+ *   import i18n, composant browser-safe pour l'éditeur visuel CloudCannon).
  *
- * PARITÉ : reproduit à l'identique la grille d'expertises de l'ancienne page
- * d'accueil (mêmes classes .exp-card, style="--accent:…" inline, libellés).
- * `items = []` en secours pendant l'édition live. Voir home-hero.astro pour les
- * conventions communes.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 interface ExpertiseItem {
   number: string;
@@ -19,31 +24,52 @@ interface ExpertiseItem {
   accent: string;
   description: string;
   href: string;
+  image?: string;
 }
 
 interface Props {
   sectionTitle: string;
+  intro?: string;
   learnMore: string;
   items: ExpertiseItem[];
 }
 
-const { sectionTitle, learnMore, items = [] } = Astro.props;
+const { sectionTitle, intro, learnMore, items = [] } = Astro.props;
 ---
 
-<section class="expertises">
-  <div class="container">
-    <h2 class="section-title">{sectionTitle}</h2>
-    <ul role="list" class="expertises__grid">
+<section class="py-section-gap bg-surface">
+  <div class="max-w-container-max mx-auto px-margin-x">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+      <h2 class="font-headline-lg text-headline-lg text-on-surface m-0">{sectionTitle}</h2>
+      {intro && <p class="font-body-md text-body-md text-on-surface-variant max-w-sm m-0 md:text-right">{intro}</p>}
+    </div>
+    <ul role="list" class="grid grid-cols-1 md:grid-cols-3 gap-6 m-0 p-0 list-none">
       {
         items.map((item) => (
-          <li class="exp-card" style={`--accent:${item.accent}`}>
-            <p class="exp-card__num" aria-hidden="true">
-              {item.number}
-            </p>
-            <h3 class="exp-card__title">{item.title}</h3>
-            <p class="exp-card__desc">{item.description}</p>
-            <a class="btn btn--outline exp-card__cta" href={item.href}>
-              {learnMore}
+          <li class="m-0">
+            <a class="group relative block h-64 rounded-lg overflow-hidden no-underline" href={item.href}>
+              {item.image ? (
+                <img
+                  src={item.image}
+                  alt=""
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <span class="absolute inset-0 bg-surface-container-high" aria-hidden="true" />
+              )}
+              <span class="absolute inset-0 bg-gradient-to-t from-on-primary-fixed/85 via-on-primary-fixed/35 to-transparent" aria-hidden="true" />
+              <span class="absolute bottom-0 left-0 right-0 p-6 block">
+                <span class="block font-headline-md text-white text-[20px] mb-1">{item.title}</span>
+                <span class="block font-body-md text-[14px] leading-snug text-white/80 mb-3">{item.description}</span>
+                <span class="inline-flex items-center gap-2 font-button text-button text-primary-fixed-dim group-hover:text-white transition-colors">
+                  {learnMore}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </span>
             </a>
           </li>
         ))
@@ -51,104 +77,3 @@ const { sectionTitle, learnMore, items = [] } = Astro.props;
     </ul>
   </div>
 </section>
-
-<style>
-  /* Duplicatas scopés (autonomie éditeur). */
-  .container {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-  }
-  h2 {
-    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
-    font-weight: var(--fw-bold, 700);
-    line-height: var(--lh-tight, 1.15);
-    color: var(--color-navy, #083957);
-    text-wrap: balance;
-  }
-  h3 {
-    font-size: var(--fs-600, clamp(1.625rem, 1vw + 1.3rem, 2.25rem));
-    font-weight: var(--fw-bold, 700);
-    line-height: var(--lh-tight, 1.15);
-    color: var(--color-navy, #083957);
-    text-wrap: balance;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    padding: 0.7em 1.5em;
-    border: 2px solid transparent;
-    border-radius: var(--radius-pill, 999px);
-    font-weight: var(--fw-semibold, 600);
-    font-size: var(--fs-200, 0.9375rem);
-    line-height: 1;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .btn--outline {
-    border-color: var(--color-navy, #083957);
-    color: var(--color-navy, #083957);
-    background-color: transparent;
-  }
-  .btn--outline:hover {
-    background-color: var(--color-navy, #083957);
-    color: var(--color-text-invert, #ffffff);
-  }
-
-  /* ---------- Expertises (déplacé depuis l'ancienne page d'accueil) -------- */
-  .expertises {
-    padding-block: var(--space-9, 6rem);
-    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
-  }
-  .section-title {
-    text-align: center;
-    margin-bottom: var(--space-7, 3rem);
-  }
-  .expertises__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6, 2rem);
-    margin: 0;
-  }
-  @media (min-width: 600px) {
-    .expertises__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (min-width: 960px) {
-    .expertises__grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  .exp-card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3, 0.75rem);
-    padding: var(--space-6, 2rem);
-    border: 1px solid var(--color-border, #e2e4e8);
-    border-top: 3px solid var(--accent);
-    border-radius: var(--radius-l, 16px);
-    background-color: var(--color-bg, #ffffff);
-  }
-  .exp-card__num {
-    font-size: var(--fs-500, clamp(1.375rem, 0.6vw + 1.2rem, 1.75rem));
-    font-weight: var(--fw-extrabold, 800);
-    color: var(--accent);
-    line-height: 1;
-  }
-  .exp-card__title {
-    color: var(--accent);
-    font-size: var(--fs-500, clamp(1.375rem, 0.6vw + 1.2rem, 1.75rem));
-  }
-  .exp-card__desc {
-    color: var(--color-text-muted, #4a4d54);
-    flex-grow: 1;
-  }
-  .exp-card__cta {
-    align-self: flex-start;
-    margin-top: var(--space-2, 0.5rem);
-  }
-</style>
