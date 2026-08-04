@@ -1,11 +1,11 @@
 ---
 /**
  * PAGE LABORATOIRE — COMPARAISON DES PALETTES (à purger avant la mise en prod).
- * Support visuel de l'ARBITRAGE #1 (docs/design/arbitrages-design-a-trancher.md) :
- * la livraison finale contient TROIS palettes divergentes, et le repo une
- * quatrième (provisoire). Cette page les rend côte à côte + une même carte
- * échantillon dans chacune des trois palettes candidates, pour trancher sur
- * pièce plutôt que sur hex.
+ * A servi de support à la décision « quelle palette fait foi » — TRANCHÉE le
+ * 2026-08-04 : les exports HTML font foi, donc frontmatter RETENUE (voir
+ * docs/design/arbitrages-design-a-trancher.md). La page reste utile comme
+ * trace de la décision et pour montrer l'écart aux palettes historiques
+ * (planche, prose) si l'équipe design revient dessus.
  *
  * Les nuanciers utilisent des valeurs ARBITRAIRES (bg-[#…]) et non les tokens :
  * on montre les 4 sources telles quelles, indépendamment du thème chargé.
@@ -22,7 +22,7 @@ export function getStaticPaths() {
 const sources = [
   {
     titre: '1 · Planche DesignSystemVictrix.png',
-    badge: 'Direction « Chaud et humain » — hex ABSENTS du code livré',
+    badge: 'Historique — hex absents du code livré (signalé)',
     tone: 'warn',
     couleurs: [
       { hex: '#FAF7F3', nom: 'Ivoire chaud' },
@@ -35,7 +35,7 @@ const sources = [
   },
   {
     titre: '2 · Frontmatter du design system (charte machine)',
-    badge: 'RECOMMANDÉE — consommée par 4 exports sur 5',
+    badge: 'RETENUE (décision 2026-08-04) — consommée par 4 exports sur 5',
     tone: 'ok',
     couleurs: [
       { hex: '#FCF9F5', nom: 'surface' },
@@ -54,7 +54,7 @@ const sources = [
   },
   {
     titre: '3 · Prose §Colors du même document',
-    badge: 'Contredit son propre frontmatter (surface FROIDE)',
+    badge: 'Historique — contredit le frontmatter (surface froide)',
     tone: 'warn',
     couleurs: [
       { hex: '#1D46F3', nom: 'Primary' },
@@ -85,7 +85,7 @@ const sources = [
 // custom properties scoppées (le markup est identique, seul le style= change).
 const echantillons = [
   { nom: 'Planche PNG', vars: '--pal-primary:#1A5BFF; --pal-dark:#0D1430; --pal-surface:#FAF7F3; --pal-ink:#1A1F28; --pal-border:#E9E1D6;' },
-  { nom: 'Frontmatter (recommandée)', vars: '--pal-primary:#002FC7; --pal-dark:#00105B; --pal-surface:#FCF9F5; --pal-ink:#1C1C1A; --pal-border:#C4C5D9;' },
+  { nom: 'Frontmatter (RETENUE)', vars: '--pal-primary:#002FC7; --pal-dark:#00105B; --pal-surface:#FCF9F5; --pal-ink:#1C1C1A; --pal-border:#C4C5D9;' },
   { nom: 'Prose', vars: '--pal-primary:#1D46F3; --pal-dark:#000D2E; --pal-surface:#F4F7F9; --pal-ink:#1D1D1B; --pal-border:#E0E0E0;' },
 ];
 
@@ -117,11 +117,12 @@ const badgeClasses = {
 
     <main class="max-w-container-max mx-auto px-margin-x py-stack-lg">
       <section class="py-stack-lg">
-        <span class="font-label-caps text-label-caps text-primary uppercase block mb-stack-sm">Arbitrage #1 — quelle palette fait foi ?</span>
+        <span class="font-label-caps text-label-caps text-primary uppercase block mb-stack-sm">Décision 2026-08-04 — les exports HTML font foi</span>
         <h1 class="font-display text-display text-on-surface m-0 mb-stack-md">Quatre palettes en présence</h1>
         <p class="font-body-lg text-body-lg text-on-surface-variant max-w-[46rem] m-0">
-          Les trois premières viennent de la livraison finale et divergent entre elles ; la quatrième est le pilote
-          provisoire du repo. Détail et recommandations : docs/design/arbitrages-design-a-trancher.md.
+          La palette RETENUE est le frontmatter du design system (celle que consomment les 4 exports alignés) ;
+          planche et prose sont historiques, le pilote du repo est à remplacer. Détail et points à signaler :
+          docs/design/arbitrages-design-a-trancher.md.
         </p>
       </section>
 
@@ -189,8 +190,8 @@ const badgeClasses = {
 
       <footer class="border-t border-solid border-outline-variant py-stack-lg">
         <p class="text-body-md text-on-surface-variant m-0">
-          Recommandation (voir arbitrages #1/#4) : frontmatter comme référence machine ; navy des overlays =
-          on-primary-fixed <code>#00105B</code>, déjà utilisé par le code des maquettes.
+          Décision 2026-08-04 : les exports font foi — frontmatter = référence machine ; navy des overlays =
+          on-primary-fixed <code>#00105B</code> (usage du code des maquettes, token dédié à officialiser).
         </p>
       </footer>
     </main>

@@ -26,8 +26,13 @@ l'export se sont **déplacés**, pas résolus.
 Carrieres/Contact/PageExpertise/PageSolution sont **alignées entre elles ET avec le
 frontmatter** — seul `Accueil.html` diverge ; et l'échelle de rayons décalée est
 **uniforme sur les 5 exports** (conflit code-vs-charte pur, pas une dérive de page).
-Les 5 arbitrages sont formalisés, prêts à envoyer :
-`docs/design/arbitrages-design-a-trancher.md`.
+
+**➡️ DÉCISION (2026-08-04)** : les **exports HTML font foi** (référence maîtresse,
+postérieurs aux artefacts du processus de décision). Les tableaux « quelle source
+gagne » de ce document se lisent donc : colonne exports/frontmatter retenue ;
+planche et prose = historiques. Les écarts restants (Accueil, `rounded-full`,
+images mortes, périmètre) sont des **points à signaler** — voir
+`docs/design/arbitrages-design-a-trancher.md` (re-cadré en conséquence).
 
 ## 2. Résumé du design system livré
 

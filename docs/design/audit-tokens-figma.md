@@ -203,9 +203,12 @@ tokens sémantiques (chaque futur export exigerait une passe de renommage à vie
 
 > **RE-AUDIT 2026-08-04 — LIVRAISON FINALE** (5 exports `docs/design/Export
 > HTML/` + design system partagé). La décision du 2026-07-29 (« l'export final
-> = RÉFÉRENCE UNIQUE, conflits réglés à sa réception ») s'applique MAINTENANT :
-> les arbitrages ouverts sont consignés dans
-> `docs/design/arbitrages-design-a-trancher.md` (5 bloquants) et l'analyse
+> = RÉFÉRENCE UNIQUE, conflits réglés à sa réception ») s'applique MAINTENANT.
+> **DÉCISION (user, 2026-08-04)** : les **exports HTML font foi** — palette/
+> typo/spacing = frontmatter (identique aux 4 exports alignés), rayons = configs
+> des exports, `rounded-full` reste rond (artefact signalé). Les §3 ci-dessus se
+> lisent comme un CONSTAT ; la résolution retenue et les points à signaler sont
+> dans `docs/design/arbitrages-design-a-trancher.md` (re-cadré), l'analyse
 > complète dans `docs/design/analyse-reception-maquettes-finales.md`.
 
 **Lecture du Constat préalable ci-dessus (importante)** : la fusion prend les
@@ -224,9 +227,19 @@ code-vs-charte uniforme, `full: 0.75rem` casserait `rounded-full`.
 **✅ PIPELINE VALIDÉ** (2026-07-29, ANCIEN export Homepage, `/fr/design-lab` vs
 `screen.png`, viewport 1440) : mise en page, grilles, typo sémantique, palette,
 ombres, icônes Material Symbols auto-hébergées et Hanken Grotesk locale
-conformes. **Revalidation sur la livraison FINALE : en attente** — à faire en
-portant une page finale (PageExpertise recommandé : la plus riche en patterns
-nouveaux) dans le design-lab avec le thème candidat `theme-refonte.css`.
+conformes.
+
+**✅ PIPELINE REVALIDÉ SUR LA LIVRAISON FINALE** (2026-08-04,
+`/fr/design-lab/page-expertise` = port VERBATIM complet de PageExpertise.html,
+8 sections, viewport 1440, thème `theme-refonte.css` référence exports) :
+header fixe + rétrécissement au scroll, héros display 56/800 sur scrim navy,
+cartes Approche avec icônes **FILL 1** (sous-ensemble à axe FILL variable),
+tuiles image+overlay `on-primary-fixed/80`, marquee, cartes outils, CTA avec
+SVG décoratif, footer 4 colonnes — conformes. **Deltas assumés** : fond du
+héros + capture Ø Studio = stand-ins locaux (URLs d'origine MORTES, Annexe A
+des signalements) ; `rounded-full` gardé ROND (décision — configs export
+`full: 0.75rem` = artefact signalé) ; `viewbox`→`viewBox` et `md:row`→
+`md:flex-row` corrigés (artefacts de génération).
 
 **Recette de conversion d'un export** (à rejouer pour chaque écran) :
 1. retirer Play CDN + config inline + liens Google Fonts (le pipeline les remplace) ;

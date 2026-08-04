@@ -8,10 +8,11 @@
  *  1. moissonne les noms d'icônes des 5 exports finaux (docs/design/Export
  *     HTML/*.html, contenu texte des .material-symbols-outlined) ;
  *  2. ajoute les icônes passées en --extra a,b,c (celles des prototypes) ;
- *  3. interroge l'API css2 (icon_names= triés alphabétiquement, axes figés
- *     opsz 24 / wght 400 / FILL 0 / GRAD 0, UA Chrome sinon l'API sert du TTF
- *     complet) et télécharge le woff2 subsetté vers
- *     public/fonts/MaterialSymbolsOutlined-Refonte.woff2.
+ *  3. interroge l'API css2 (icon_names= triés alphabétiquement, axes
+ *     opsz 24 / wght 400 / GRAD 0 figés, FILL VARIABLE 0..1 — les cartes
+ *     « Approche » de PageExpertise posent `font-variation-settings: "FILL" 1`
+ *     en inline ; UA Chrome sinon l'API sert du TTF complet) et télécharge le
+ *     woff2 subsetté vers public/fonts/MaterialSymbolsOutlined-Refonte.woff2.
  *
  * Le sous-ensemble HISTORIQUE (MaterialSymbolsOutlined-Subset.woff2, 16 icônes
  * de l'ancien export Homepage) reste intact — /fr/design-lab s'en sert.
@@ -44,7 +45,7 @@ if (names.length === 0) {
 }
 
 const cssUrl =
-  'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0' +
+  'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0' +
   `&icon_names=${names.join(',')}&display=block`;
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36';

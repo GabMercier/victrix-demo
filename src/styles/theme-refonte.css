@@ -4,16 +4,17 @@
  * VictrixModernWeb-DesignSystenm.md (= la charte machine, consommée fidèlement
  * par 4 exports sur 5 — Accueil diverge, voir arbitrage #2).
  *
- * ⚠️ STATUT : PROVISOIRE tant que les 5 arbitrages de
- * docs/design/arbitrages-design-a-trancher.md ne sont pas tranchés. Les choix
- * pris en attendant (tous réversibles, marqués « arbitrage #n » ci-dessous) :
- *   #1 palette  → frontmatter verbatim (la planche PNG #1A5BFF/#0D1430 n'a
- *                 aucun hex dans le code livré) ;
- *   #3 rayons   → échelle de la CHARTE (0.25 boutons / 0.5 cartes), pas celle
- *                 des configs d'export (décalée d'un cran, full 0.75rem = bug) ;
- *   #4 navy     → pas de token dédié : les prototypes emploient
- *                 on-primary-fixed (#00105b) comme le code des exports ;
- *   #5 graisses → celles de la charte machine (700/800).
+ * ✅ STATUT : RÉFÉRENCE ACTÉE (décision user 2026-08-04) — **les exports HTML
+ * font foi** (postérieurs aux artefacts du processus de décision ; la planche
+ * PNG et la prose du .md sont historiques). Concrètement : palette + typo +
+ * spacing = frontmatter (identique aux 4 exports alignés), RAYONS = configs
+ * des exports (identiques sur les 5). Écarts restants À SIGNALER à l'équipe
+ * design (docs/design/arbitrages-design-a-trancher.md) :
+ *   - Accueil.html hors-norme (Manrope/Inter, échelle parallèle) → ré-export ;
+ *   - `full: 0.75rem` des configs NON repris (voir bloc rayons) ;
+ *   - navy des overlays sans token dédié : on emploie on-primary-fixed
+ *     (#00105b) comme le code des exports ;
+ *   - 5 images mortes à ré-exporter du .fig.
  *
  * ⚠️ NON IMPORTÉ PAR BaseLayout : consommé uniquement par
  * src/styles/design-lab-refonte.css (pages laboratoire de la refonte).
@@ -34,7 +35,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* ---- Palette (frontmatter, 47 tokens verbatim — arbitrage #1) ---------- */
+  /* ---- Palette (frontmatter, 47 tokens verbatim = les 4 exports alignés
+     la consomment telle quelle — décision export-first) ------------------- */
   --color-surface: #fcf9f5;
   --color-surface-dim: #dcdad6;
   --color-surface-bright: #fcf9f5;
@@ -55,7 +57,7 @@
   --color-primary-container: #1d46f3; /* = --color-royal du pilote */
   --color-on-primary-container: #d0d5ff;
   --color-inverse-primary: #bac3ff;
-  --color-secondary: #515d82; /* ardoise — CTA = primary (arbitrage #4) */
+  --color-secondary: #515d82; /* ardoise — les CTA sont sur primary (usage des 4 exports) */
   --color-on-secondary: #ffffff;
   --color-secondary-container: #c6d3fe;
   --color-on-secondary-container: #4e5b7f;
@@ -69,7 +71,7 @@
   --color-on-error-container: #93000a;
   --color-primary-fixed: #dee0ff;
   --color-primary-fixed-dim: #bac3ff;
-  --color-on-primary-fixed: #00105b; /* navy des overlays du code (arbitrage #4) */
+  --color-on-primary-fixed: #00105b; /* navy des overlays (usage des exports — token dédié à officialiser côté design) */
   --color-on-primary-fixed-variant: #002fc8;
   --color-secondary-fixed: #dae2ff;
   --color-secondary-fixed-dim: #b9c6ef;
@@ -83,9 +85,9 @@
   --color-on-background: #1c1c1a;
   --color-surface-variant: #e5e2de;
 
-  /* ---- Typographie (charte machine ; interlignes en RATIOS — arbitrage #5).
-     Chaque style expose la taille + interligne/graisse/espacement liés, et un
-     alias --font-* car le markup des exports pose `font-<style> text-<style>`. */
+  /* ---- Typographie (frontmatter = les 4 exports alignés ; interlignes en
+     RATIOS). Chaque style expose la taille + interligne/graisse/espacement
+     liés, et un alias --font-* car le markup pose `font-<style> text-<style>`. */
   --text-display: 56px;
   --text-display--line-height: 1.1;
   --text-display--font-weight: 800;
@@ -123,6 +125,11 @@
   --font-body-md: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-label-caps: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-button: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  /* Alias NUS des configs PageExpertise/Contact (sans fontSize appariée —
+     `font-body` existe dans le markup des exports, `text-body` non). */
+  --font-headline: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-label: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
 
   /* ---- Espacement nommé (charte). L'échelle numérique v4 par défaut reste
      active. ⚠️ --spacing-container-max fait résoudre `max-w-container-max`
@@ -137,14 +144,20 @@
   --spacing-stack-md: 16px;
   --spacing-stack-lg: 32px;
 
-  /* ---- Rayons (CHARTE — arbitrage #3 ; les configs d'export décalent tout
-     d'un cran et posent full: 0.75rem, bug quasi certain). `rounded-full`
-     garde sa valeur v4 (calc(infinity*1px)). */
+  /* ---- Rayons = CONFIGS DES EXPORTS (identiques sur les 5 ; décision
+     export-first). Échelle héritée du merge `theme.extend` v3 du Play CDN —
+     NON-MONOTONE (lg 0.25 < md 0.375), on la reprend telle quelle. sm/md/2xl/
+     3xl = défauts v3 conservés par le merge (md/2xl/3xl coïncident avec v4 ;
+     sm redéfini car v4 dit 0.25). EXCEPTION VOULUE (décision user 2026-08-04,
+     signalée à l'équipe design) : pas de `--radius-full` — les configs posent
+     `full: 0.75rem` (artefact probable du générateur) qui écraserait les 10
+     éléments réellement circulaires des maquettes (pastilles sociales, photos
+     d'équipe Carrières…) ; `rounded-full` garde le v4 natif calc(infinity*1px). */
   --radius-sm: 0.125rem;
-  --radius: 0.25rem; /* boutons, petits composants, images (charte §Shapes) */
+  --radius: 0.125rem;
   --radius-md: 0.375rem;
-  --radius-lg: 0.5rem; /* cartes, grands conteneurs */
-  --radius-xl: 0.75rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
 
   /* ---- Élévation (charte §Elevation : couches tonales + bordures 1px ;
      seul « lift » autorisé au survol). */

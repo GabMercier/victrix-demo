@@ -4,21 +4,20 @@
  * /fr/design-lab). Prototypes des SECTIONS SANS COMPOSANT EXISTANT relevées
  * dans les maquettes finales (docs/design/Export HTML/, analyse de réception
  * §3/§5.5), rendues par le pipeline v4 du repo avec le THÈME CANDIDAT
- * theme-refonte.css (charte machine — arbitrages en attente, voir
- * docs/design/arbitrages-design-a-trancher.md).
+ * theme-refonte.css (RÉFÉRENCE ACTÉE 2026-08-04 : les exports HTML font foi —
+ * écarts restants signalés dans docs/design/arbitrages-design-a-trancher.md).
  *
  * Markup repris des exports avec les adaptations de la recette d'audit §5 :
  *  1. Play CDN + config inline + Google Fonts retirés → design-lab-refonte.css ;
  *  2. images distantes → copies locales public/images/design-lab/refonte/
  *     (rapatriées par scripts/design/fetch-maquette-images.mjs) ;
  *  3. data-alt → alt, href="#" → liens réels ou <button> ;
- *  4. rayons rendus selon la CHARTE (arbitrage #3) — c'est VOULU que les
- *     tuiles paraissent plus arrondies que dans les exports (leurs configs
- *     décalent l'échelle d'un cran) ;
+ *  4. rayons rendus selon les CONFIGS DES EXPORTS (décision 2026-08-04) —
+ *     rounded-full excepté, gardé ROND (artefact signalé) ;
  *  5. carte flottante « 24/7 » (Accueil) TRANSPOSÉE au système normatif des
- *     4 pages alignées (arbitrage #2) : text-display (pas display-lg/Manrope),
- *     border-outline-variant (pas border-subtle), chiffre en primary (pas
- *     secondary — arbitrage #4 CTA) ;
+ *     4 pages alignées (Accueil hors-norme, ré-export demandé) : text-display
+ *     (pas display-lg/Manrope), border-outline-variant (pas border-subtle),
+ *     chiffre en primary (pas secondary — les CTA des 4 pages sont primary) ;
  *  6. marquee : contenu doublé (boucle sans couture), gel au survol et sous
  *     prefers-reduced-motion (design-lab-refonte.css).
  * Hors sitemap (filtre '/design-lab' d'astro.config.mjs), hors Pagefind,
@@ -84,9 +83,9 @@ const valeurs = [
         <span class="font-label-caps text-label-caps text-primary uppercase block mb-stack-sm">Laboratoire · thème candidat theme-refonte.css</span>
         <h1 class="font-display text-display text-on-surface m-0 mb-stack-md">Sections des maquettes finales sans composant existant</h1>
         <p class="font-body-lg text-body-lg text-on-surface-variant max-w-[46rem] m-0">
-          Chaque bloc reproduit un pattern des exports HTML finaux avec les tokens de la charte machine.
-          Les 5 arbitrages design restent ouverts (docs/design/arbitrages-design-a-trancher.md) — les choix
-          provisoires appliqués ici sont notés sur chaque bloc.
+          Chaque bloc reproduit un pattern des exports HTML finaux avec les tokens retenus. Référence actée
+          (2026-08-04) : les exports font foi — les écarts restants sont signalés à l'équipe design
+          (docs/design/arbitrages-design-a-trancher.md).
         </p>
       </section>
 
@@ -94,7 +93,7 @@ const valeurs = [
       <section class="mb-section-gap">
         <div class="border-b border-solid border-outline-variant pb-stack-sm mb-stack-lg flex flex-wrap items-baseline gap-stack-md">
           <h2 class="font-headline-md text-headline-md m-0">1 · Tuiles expertises (image + overlay navy)</h2>
-          <span class="font-label-caps text-label-caps text-on-surface-variant uppercase">PageExpertise.html · ⛔ gap — home-expertises ne couvre pas ce pattern · overlay = on-primary-fixed (arbitrage #4)</span>
+          <span class="font-label-caps text-label-caps text-on-surface-variant uppercase">PageExpertise.html · ⛔ gap — home-expertises ne couvre pas ce pattern · overlay = on-primary-fixed (usage des exports)</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {
@@ -202,7 +201,7 @@ const valeurs = [
       <section class="mb-section-gap">
         <div class="border-b border-solid border-outline-variant pb-stack-sm mb-stack-lg flex flex-wrap items-baseline gap-stack-md">
           <h2 class="font-headline-md text-headline-md m-0">6 · Vitrine + carte flottante « 24/7 »</h2>
-          <span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Accueil.html · ⛔ gap · TRANSPOSÉ au système des 4 pages alignées (arbitrages #2/#4)</span>
+          <span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Accueil.html · ⛔ gap · TRANSPOSÉ au système des 4 pages alignées (Accueil hors-norme, signalé)</span>
         </div>
         <div class="flex flex-col lg:flex-row items-center gap-16 overflow-visible">
           <div class="w-full lg:w-1/2 relative mb-12 lg:mb-0">
@@ -247,7 +246,7 @@ const valeurs = [
       <section class="mb-section-gap">
         <div class="border-b border-solid border-outline-variant pb-stack-sm mb-stack-lg flex flex-wrap items-baseline gap-stack-md">
           <h2 class="font-headline-md text-headline-md m-0">7 · Primitives de la planche</h2>
-          <span class="font-label-caps text-label-caps text-on-surface-variant uppercase">DesignSystemVictrix.png §4 · rayon boutons = charte 0.25rem (arbitrage #3)</span>
+          <span class="font-label-caps text-label-caps text-on-surface-variant uppercase">DesignSystemVictrix.png §4 · rayons = configs exports (rounded 0.125rem ; full gardé rond, signalé)</span>
         </div>
         <div class="flex flex-wrap items-center gap-stack-lg bg-surface-container-lowest border border-solid border-outline-variant rounded-lg p-stack-lg">
           <button class="bg-primary text-on-primary px-6 py-3 rounded font-button text-button inline-flex items-center gap-2 group" type="button">
