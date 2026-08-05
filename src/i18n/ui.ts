@@ -64,7 +64,8 @@ const fr = {
 
   // Footer — contenu des colonnes ALIGNÉ sur la maquette Figma « Composants »
   // (2026-08-04). Cibles « mortes assumées » (pages à créer, décision user,
-  // comme /decouvrir ou /carrieres) : /services/infrastructure, /secteurs,
+  // comme /decouvrir — /carrieres existe depuis 2026-08-05) :
+  // /services/infrastructure, /secteurs,
   // /services/services-applicatifs, /services/projets-en-ia,
   // /centre-de-confiance, /tarification.
   footer: {
