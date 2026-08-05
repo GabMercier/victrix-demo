@@ -110,6 +110,12 @@ per la règle v2 (structure = export, valeurs = planche) — **à confirmer** :
 - **Neutres froids** : `#C5C6D0` (bordures), `#F8F9FA`/`#EDEEEF` (fonds) ≠
   neutres chauds planche → mappés sur `outline-variant` /
   `surface-container-low` / `surface-container`.
+  **RÉVISION 2026-08-04 (passe fidélité `megamenu.css`, décision user)** : dans
+  le MÉGA-MENU seulement, les neutres froids de la maquette sont repris tels
+  quels (panneau blanc, carte `#F8F9FA` bordure `#C5C6D0` + halo bleu flouté,
+  bandeau `#EDEEEF`, hover `#F8F9FA`) — les bleus/navy restent sur les tokens
+  planche. À trancher : généraliser les neutres froids au reste du chrome, ou
+  ré-ancrer le méga sur les chauds ?
 - **Gouttières incohérentes dans le Figma** (sections 40px, header/footer
   48px) → unifiées à 32px desktop / 16px mobile sur tout le site.
 - **Footer devenu CLAIR** (le navy actuel disparaît) — appliqué ; confirmer.
