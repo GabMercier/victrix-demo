@@ -1,0 +1,60 @@
+# =============================================================================
+# Spec Bookshop — section « Offres numérotées » (palette partagée),
+# NOUVELLE 2026-08-05 (fidélité maquette produit-enfant.css). Voir
+# hero.bookshop.yml pour les conventions communes. La grille `items` pointe
+# vers _structures.offer_items (cloudcannon.config.yml) — chaque carte porte
+# sa propre liste `bullets` (_structures.offer_bullets).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Produit — Offres numérotées"
+  description: "Tête centrée puis cartes « verre » à tuile numéro bleue et liste à puces (icônes), avec bouton primaire centré sous la grille."
+  icon: format_list_numbered
+  picker_preview:
+    text: "Produit — Offres numérotées"
+    subtext: Cartes numérotées à listes de puces + bouton centré
+  preview:
+    icon: format_list_numbered
+    text:
+      - key: title
+      - text: Offres numérotées
+
+blueprint:
+  type: offer-cards
+  title: "Nos offres"
+  intro: ""
+  ctaLabel: ""
+  ctaHref: ""
+  items:
+    - number: "1"
+      title: "Première offre"
+      bullets:
+        - text: "Premier point de la liste"
+          icon: coche
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre"
+  intro:
+    label: "Introduction"
+    comment: "Paragraphe optionnel sous le titre de section."
+  ctaLabel:
+    label: "Libellé du bouton (optionnel)"
+    comment: "Bouton primaire centré sous la grille. Vide = absent."
+  ctaHref:
+    label: "Lien du bouton"
+    comment: "URL finale, préfixe de langue inclus (ex. /fr/contact)."
+  items:
+    # `type: array` explicite — voir benefits.bookshop.yml (sans lui, generate
+    # fabriquerait une structure inline concurrente de _structures.offer_items).
+    type: array
+    label: "Cartes d'offre"
+    comment: "Cartes en grille de 2 (numéro, titre, liste à puces)."
+    options:
+      structures: _structures.offer_items

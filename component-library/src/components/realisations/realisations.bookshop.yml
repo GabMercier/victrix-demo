@@ -1,0 +1,58 @@
+# =============================================================================
+# Spec Bookshop — section « Réalisations » (palette partagée),
+# NOUVELLE 2026-08-05 (fidélité maquette produit-enfant.css). Voir
+# hero.bookshop.yml pour les conventions communes. La grille `items` pointe
+# vers _structures.realisation_items (cloudcannon.config.yml).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Produit — Réalisations"
+  description: "Tête titre + texte à gauche, lien souligné à droite, puis grille de 4 cartes blanches bordées (icône, titre, texte) — ex. secteurs santé, services, RH, juridique."
+  icon: workspace_premium
+  picker_preview:
+    text: "Produit — Réalisations"
+    subtext: Lien souligné à droite + grille de 4 cartes icône
+  preview:
+    icon: workspace_premium
+    text:
+      - key: title
+      - text: Réalisations
+
+blueprint:
+  type: realisations
+  title: "Nos réalisations"
+  intro: ""
+  linkLabel: ""
+  linkHref: ""
+  items:
+    - title: "Secteur"
+      text: ""
+      icon: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre"
+  intro:
+    label: "Introduction"
+    comment: "Paragraphe optionnel sous le titre de section."
+  linkLabel:
+    label: "Libellé du lien (optionnel)"
+    comment: "Lien souligné d'un liseré bleu, à droite de la tête. Vide = absent."
+  linkHref:
+    label: "Lien"
+    comment: "URL finale, préfixe de langue inclus (ex. /fr/contact)."
+  items:
+    # `type: array` explicite — voir benefits.bookshop.yml (sans lui, generate
+    # fabriquerait une structure inline concurrente de
+    # _structures.realisation_items).
+    type: array
+    label: "Cartes de réalisation"
+    comment: "Cartes en grille de 4 (icône, titre, texte)."
+    options:
+      structures: _structures.realisation_items

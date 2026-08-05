@@ -1,0 +1,52 @@
+---
+/**
+ * Section « Bandeau technologies » (marquee) — composant Bookshop, NOUVEAU
+ * 2026-08-05. FIDÉLITÉ MAQUETTE (docs/design/expertise-mere.css §Technologies
+ * Section) : bande Bleu nuit py-48px, noms d'outils 24/700 blancs séparés de
+ * points médians bleu pâle, DÉFILEMENT continu (animation `--animate-marquee`
+ * de theme.css : contenu doublé, translateX(-50 %) = boucle sans couture),
+ * pause au survol, immobile en prefers-reduced-motion.
+ *
+ * Props : { type: "tech-marquee", ariaLabel?, items: string[] }
+ * Accessibilité : la bande animée est aria-hidden ; une liste sr-only (avec
+ * `ariaLabel` en intitulé) porte le contenu pour les lecteurs d'écran.
+ * Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé (les
+ * keyframes vivent dans le thème — @theme --animate-marquee).
+ */
+interface Props {
+  ariaLabel?: string;
+  items: string[];
+}
+
+const { ariaLabel, items = [] } = Astro.props;
+---
+
+<section class="bg-on-primary-fixed py-12 overflow-hidden">
+  {
+    items.length > 0 && (
+      <>
+        <ul role="list" class="sr-only" aria-label={ariaLabel || undefined}>
+          {items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        <div
+          class="flex w-max items-center gap-8 animate-marquee hover:[animation-play-state:paused] motion-reduce:animate-none"
+          aria-hidden="true"
+        >
+          {[0, 1].map(() => (
+            <div class="flex items-center gap-8 shrink-0">
+              {items.map((item) => (
+                <>
+                  <span class="text-2xl leading-8 font-bold text-white whitespace-nowrap">{item}</span>
+                  <span class="text-base text-primary-fixed-dim">·</span>
+                </>
+              ))}
+            </div>
+          ))}
+        </div>
+      </>
+    )
+  }
+</section>

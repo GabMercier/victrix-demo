@@ -1,0 +1,87 @@
+---
+/**
+ * Section « Valeur stratégique » — composant Bookshop, NOUVEAU 2026-08-05.
+ * FIDÉLITÉ MAQUETTE (docs/design/produit-enfant.css §Section - Strategic
+ * Value, « Page Produit - Enfant ») : fond ivoire (surface) py-80, deux
+ * colonnes centrées gap-80 — à gauche l'image bordée rayon 4 posée sur un
+ * HALO bleu flouté (aplat primary 5 % débordant de 16 px, blur 20) ; à droite
+ * titre 40/700 ls -0.4 + LISERÉ bleu 64×4, paragraphes 16/26, puis rangée de
+ * tuiles statistiques (fond beige clair, liseré GAUCHE bleu 4 px, valeur
+ * 24/700 bleue, étiquette 12/700 majuscules ls 1.2). Bleus/neutres chauds =
+ * tokens (export Hanken/chaud) ; bordure froide #C4C5D9 verbatim (précédent
+ * méga/benefits).
+ *
+ * Props : { type: "strategic-value", title, paragraphs: [...], image?,
+ *           imageAlt?, stats?: [{ value, label }] }
+ * - `paragraphs` : chaque entrée rendue en <p set:html> (peut contenir des
+ *   <strong> — contenu de dépôt, même politique que rich-text) ;
+ * - `image` = chemin PUBLIC servi tel quel (browser-safe CloudCannon) ;
+ * - `stats` : tableau vide = pas de rangée.
+ *
+ * Contraintes / pièges :
+ * - <h2> de section : le <h1> unique appartient au héros.
+ * - Liseré gauche des tuiles : `border-0 border-l-4 border-solid` OBLIGATOIRE
+ *   (sans preflight, border-solid seul réveille la largeur UA « medium » sur
+ *   les côtés non nuls — piège consigné au lot chrome).
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  title: string;
+  paragraphs: string[];
+  image?: string;
+  imageAlt?: string;
+  stats?: Stat[];
+}
+
+const { title, paragraphs = [], image, imageAlt, stats = [] } = Astro.props;
+---
+
+<section class="py-20 bg-surface">
+  <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    {
+      image && (
+        <div class="relative isolate">
+          <span class="absolute -inset-4 bg-primary/5 blur-[20px] rounded-lg -z-10" aria-hidden="true" />
+          <img
+            src={image}
+            alt={imageAlt ?? ''}
+            class="w-full h-auto border border-solid border-[#C4C5D9] rounded-sm shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      )
+    }
+    <div class="flex flex-col items-start gap-4">
+      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
+        {title}
+      </h2>
+      <span class="w-16 h-1 bg-primary" aria-hidden="true"></span>
+      {
+        paragraphs.map((paragraph) => (
+          <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none pt-2" set:html={paragraph} />
+        ))
+      }
+      {
+        stats.length > 0 && (
+          <div class="self-stretch flex flex-col sm:flex-row gap-6 pt-4">
+            {stats.map((stat) => (
+              <div class="flex-1 bg-surface-container-low border-0 border-l-4 border-solid border-primary p-6 flex flex-col gap-3">
+                <p class="text-2xl leading-8 font-bold text-primary m-0">{stat.value}</p>
+                <p class="text-xs font-bold uppercase tracking-[1.2px] text-on-surface-variant m-0 max-w-none">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

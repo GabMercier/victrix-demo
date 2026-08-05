@@ -6,11 +6,11 @@ spec:
   structures:
     - sections
   label: "Service — Héros"
-  description: "Bannière de page service (fond marine, image à droite) : surtitre, titre en deux temps (partie accentuée + suite), paragraphe d'introduction et bouton. Porte le seul <h1> — à placer en PREMIÈRE position."
+  description: "Bannière de page service : photo de fond voilée de Bleu nuit, surtitre, titre, paragraphe d'introduction et jusqu'à deux boutons. Porte le seul <h1> — à placer en PREMIÈRE position."
   icon: rocket_launch
   picker_preview:
     text: "Service — Héros"
-    subtext: Bannière marine avec image (h1 de la page)
+    subtext: Photo voilée Bleu nuit, titre blanc, deux boutons (h1 de la page)
   preview:
     icon: rocket_launch
     text:
@@ -20,11 +20,16 @@ spec:
 blueprint:
   type: service-hero
   eyebrow: ""
+  eyebrowStyle: texte
   titleAccent: ""
   title: "Titre du service"
+  titleHighlight: ""
   lead: ""
   ctaLabel: ""
   ctaHref: ""
+  cta2Label: ""
+  cta2Href: ""
+  overlay: voile
   image: ""
   imageAlt: ""
 
@@ -36,11 +41,23 @@ _inputs:
     comment: "Discriminant technique du contrat de sections — ne pas modifier."
   eyebrow:
     label: "Surtitre (optionnel)"
+  eyebrowStyle:
+    type: select
+    label: "Style du surtitre"
+    comment: "« texte » : texte bleu pâle (défaut) ; « badge » : chip bleu plein (page produit)."
+    options:
+      allow_empty: false
+      values:
+        - texte
+        - badge
   titleAccent:
     label: "Début du titre — accentué (optionnel)"
-    comment: "Affiché en vert, au-dessus de la suite du titre."
+    comment: "Affiché en bloc au-dessus de la suite du titre."
   title:
     label: "Titre"
+  titleHighlight:
+    label: "Mots du titre en bleu clair (optionnel)"
+    comment: "Sous-chaîne EXACTE du titre, rendue en bleu clair (ex. « Automatisez »). Vide = titre uniforme."
   lead:
     type: textarea
     label: "Paragraphe d'introduction (optionnel)"
@@ -50,12 +67,27 @@ _inputs:
   ctaHref:
     label: "Lien du bouton (optionnel)"
     comment: "URL finale, préfixe de langue inclus (ex. /fr/contact)."
+  cta2Label:
+    label: "Libellé du second bouton (optionnel)"
+    comment: "Bouton « verre » translucide à droite du principal. Vide = absent."
+  cta2Href:
+    label: "Lien du second bouton"
+    comment: "URL finale, préfixe de langue inclus."
+  overlay:
+    type: select
+    label: "Voile sur la photo"
+    comment: "« voile » : Bleu nuit uniforme (défaut) ; « degrade » : dégradé anthracite gauche→droite (page produit)."
+    options:
+      allow_empty: false
+      values:
+        - voile
+        - degrade
   image:
     type: image
-    label: "Image (optionnelle)"
+    label: "Photo de fond (optionnelle)"
     comment: >-
-      Le fichier téléversé atterrit dans public/images/sections/ (adresse
-      servie telle quelle, /images/…).
+      Photo pleine largeur voilée de Bleu nuit. Le fichier téléversé atterrit
+      dans public/images/sections/ (adresse servie telle quelle, /images/…).
     options:
       paths:
         static: public

@@ -1,0 +1,127 @@
+---
+/**
+ * Section « Réalisations » — composant Bookshop, NOUVEAU 2026-08-05.
+ * FIDÉLITÉ MAQUETTE (docs/design/produit-enfant.css §Section - Réalisations
+ * (Bento Grid Style), « Page Produit - Enfant ») : fond ivoire (surface)
+ * py-80, tête en DEUX blocs alignés au bas — à gauche titre 40/700 ls -0.4 +
+ * texte 16/26 (max 576) ; à droite LIEN souligné d'un liseré bleu 2 px
+ * (14/600 ls 0.28 bleu + flèche) — puis grille de 4 cartes blanches bordées
+ * (gris froid #C4C5D9, p-32) : icône 32 px bleue, titre 24/700, texte 16/26.
+ *
+ * Props : { type: "realisations", title, intro?, linkLabel?, linkHref?,
+ *           items: [{ icon?, title, text? }] }
+ * - `icon` en clé fermée « trousse » | « casque » | « groupe » | « marteau »
+ *   | "" (vide = pas d'icône) — secteurs santé/services/RH/juridique ;
+ * - linkLabel/linkHref : lien de section (rendu si libellé ET lien).
+ *
+ * Contraintes / pièges :
+ * - <h2> de section, <h3> par carte : le <h1> unique appartient au héros.
+ * - `items = []` en secours (édition en direct CloudCannon).
+ * - Liseré du lien : `border-0 border-b-2 border-solid` OBLIGATOIRE (piège
+ *   border-solid/UA-medium sans preflight, consigné au lot chrome).
+ * - Bordure froide #C4C5D9 verbatim (précédent méga) ; le reste = tokens.
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface RealisationItem {
+  title: string;
+  text?: string;
+  icon?: 'trousse' | 'casque' | 'groupe' | 'marteau' | '';
+}
+
+interface Props {
+  title: string;
+  intro?: string;
+  linkLabel?: string;
+  linkHref?: string;
+  items: RealisationItem[];
+}
+
+const { title, intro, linkLabel, linkHref, items = [] } = Astro.props;
+
+// Pictogrammes (stroke 24px) par clé fermée du contrat.
+const ICONS: Record<string, string[]> = {
+  trousse: ['M4 8h16v12H4V8Z', 'M9 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2', 'M12 11.5v5M9.5 14h5'],
+  casque: [
+    'M5 13a7 7 0 0 1 14 0',
+    'M4 14h3v5H5a1 1 0 0 1-1-1v-4Z',
+    'M20 14h-3v5h2a1 1 0 0 0 1-1v-4Z',
+    'M17 19a3 3 0 0 1-3 3h-2',
+  ],
+  groupe: [
+    'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+    'M3.5 19c.6-2.7 2.7-4.5 5.5-4.5s4.9 1.8 5.5 4.5',
+    'M15.5 5.6a3 3 0 0 1 0 4.8M17.5 14.9c1.6.6 2.7 1.9 3 4.1',
+  ],
+  marteau: ['m14 13-7.5 7.5a1.6 1.6 0 0 1-3-1 1.6 1.6 0 0 1 .8-1.2L11 11.5', 'm8 8 5-5 8 8-5 5-8-8Z', 'M13 21h8'],
+};
+---
+
+<section class="py-20 bg-surface">
+  <div class="container-site flex flex-col gap-16">
+    <div class="flex flex-wrap items-end justify-between gap-8">
+      <div class="max-w-[576px] flex flex-col gap-2">
+        <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
+          {title}
+        </h2>
+        {intro && <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none">{intro}</p>}
+      </div>
+      {
+        linkLabel && linkHref && (
+          <a
+            class="no-underline inline-flex items-center gap-2 pb-1 border-0 border-b-2 border-solid border-primary text-primary text-sm font-semibold tracking-[0.28px] leading-none hover:text-primary-container hover:border-primary-container transition-colors"
+            href={linkHref}
+          >
+            {linkLabel}
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M5 12h14m0 0-6-6m6 6-6 6" />
+            </svg>
+          </a>
+        )
+      }
+    </div>
+    <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 m-0 p-0 list-none">
+      {
+        items.map((item) => {
+          const icon = item.icon && ICONS[item.icon];
+          return (
+            <li class="m-0 bg-white border border-solid border-[#C4C5D9] p-8 flex flex-col items-start gap-2">
+              {icon && (
+                <svg
+                  class="text-primary"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  {icon.map((d) => (
+                    <path d={d} />
+                  ))}
+                </svg>
+              )}
+              <h3 class="text-2xl leading-8 font-bold text-on-surface m-0 pt-2">{item.title}</h3>
+              {item.text && <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none">{item.text}</p>}
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>

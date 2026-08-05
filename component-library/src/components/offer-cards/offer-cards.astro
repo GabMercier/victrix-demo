@@ -1,0 +1,127 @@
+---
+/**
+ * Section « Offres numérotées » — composant Bookshop, NOUVEAU 2026-08-05.
+ * FIDÉLITÉ MAQUETTE (docs/design/produit-enfant.css §Section - Nos Offres
+ * (Numbered Grid), « Page Produit - Enfant ») : fond beige clair
+ * (surface-container-low) py-80, tête CENTRÉE (titre 40/700 ls -0.4 + intro
+ * 16/26 max 672), grille de 2 cartes « verre » (blanc 80 % bordé gris froid
+ * 50 %, backdrop-blur 6, rayon 8, p-32) — tuile NUMÉRO 64 px bleu plein
+ * (24/700 blanc, rayon 4) + titre 24/700 + LISTE à puces icônes bleues
+ * (16/24) — puis bouton primaire centré sous la grille.
+ *
+ * Props : { type: "offer-cards", title, intro?, ctaLabel?, ctaHref?,
+ *           items: [{ number, title, bullets: [{ icon?, text }] }] }
+ * - `icon` en clé fermée « coche » | « document » | « cible » | « carte »
+ *   (défaut « coche » — le motif dominant de la maquette) ;
+ * - ctaLabel/ctaHref : bouton de section (rendu si libellé ET lien).
+ *
+ * Contraintes / pièges :
+ * - <h2> de section, <h3> par carte : le <h1> unique appartient au héros.
+ * - `items = []` / `bullets = []` en secours (édition en direct CloudCannon).
+ * - Bordure froide #E0E0E0/50 verbatim (précédent méga : les gris froids des
+ *   exports restent tels quels) ; bleus/neutres chauds = tokens.
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface OfferBullet {
+  text: string;
+  icon?: 'coche' | 'document' | 'cible' | 'carte' | '';
+}
+
+interface OfferItem {
+  number: string;
+  title: string;
+  bullets: OfferBullet[];
+}
+
+interface Props {
+  title: string;
+  intro?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  items: OfferItem[];
+}
+
+const { title, intro, ctaLabel, ctaHref, items = [] } = Astro.props;
+
+// Pictogrammes (stroke 24px) par clé fermée du contrat.
+const ICONS: Record<string, string[]> = {
+  coche: ['M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z', 'm8.5 12.5 2.5 2.5 4.5-5.5'],
+  document: ['M6 3h8l4 4v14H6V3Z', 'M14 3v4h4', 'M9 12h6M9 16h6'],
+  cible: [
+    'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z',
+    'M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z',
+    'M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z',
+  ],
+  carte: ['m9 4-6 2v14l6-2 6 2 6-2V4l-6 2-6-2Z', 'M9 4v14', 'M15 6v14'],
+};
+---
+
+<section class="py-20 bg-surface-container-low">
+  <div class="container-site flex flex-col gap-8">
+    <div class="max-w-[672px] mx-auto text-center flex flex-col gap-4">
+      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
+        {title}
+      </h2>
+      {intro && <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none">{intro}</p>}
+    </div>
+    <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-6 m-0 p-0 list-none">
+      {
+        items.map((item) => (
+          <li class="m-0 bg-white/80 border border-solid border-[#E0E0E0]/50 backdrop-blur-[6px] rounded-lg p-8 flex flex-col sm:flex-row items-start gap-6">
+            <span
+              class="size-16 shrink-0 rounded bg-primary text-white text-2xl leading-8 font-bold flex items-center justify-center"
+              aria-hidden="true"
+            >
+              {item.number}
+            </span>
+            <div class="flex flex-col gap-4">
+              <h3 class="text-2xl leading-8 font-bold text-on-surface m-0">{item.title}</h3>
+              <ul role="list" class="flex flex-col gap-3 m-0 p-0 list-none">
+                {(item.bullets ?? []).map((bullet) => {
+                  const icon = ICONS[bullet.icon || 'coche'];
+                  return (
+                    <li class="m-0 flex items-start gap-3 text-base leading-6 text-on-surface-variant">
+                      {icon && (
+                        <svg
+                          class="shrink-0 text-primary mt-[3.5px]"
+                          width="17"
+                          height="17"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          {icon.map((d) => (
+                            <path d={d} />
+                          ))}
+                        </svg>
+                      )}
+                      <span>{bullet.text}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    {
+      ctaLabel && ctaHref && (
+        <div class="flex justify-center pt-2">
+          <a
+            class="no-underline bg-primary text-on-primary px-8 py-4 rounded-sm text-sm font-semibold tracking-[0.28px] leading-none inline-flex items-center hover:bg-primary-container transition-colors"
+            href={ctaHref}
+          >
+            {ctaLabel}
+          </a>
+        </div>
+      )
+    }
+  </div>
+</section>

@@ -1,22 +1,28 @@
 ---
 /**
- * Section « Bénéfices » — composant Bookshop (contrat landing GELÉ).
+ * Section « Bénéfices » — composant Bookshop (contrat landing GELÉ, enrichi).
+ * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/expertise-mere.css §Approche
+ * Section, « Notre approche humaine ») : fond blanc py-80, tête CENTRÉE
+ * (H2 40/700 ls -0.4 + intro 18/29), grille de cartes bordées #C3C6D7 rayon 2
+ * p-32 — tuile icône 48 px bleu pâle (primary-fixed) avec pictogramme bleu,
+ * titre 24/700, texte 16/24. Bleus/navy/textes = tokens (export Hanken/chaud) ;
+ * bordure froide #C3C6D7 verbatim (précédent méga).
  *
- * Props : { type: "benefits", title, intro?, items: [{ title, description }] }
- * - `type` est le discriminant du contrat landing ; il arrive via le spread
- *   {...section} depuis la page campagne et est volontairement ignoré ici.
+ * Props : { type: "benefits", title, intro?, items: [{ title, description,
+ *           icon? }] }
+ * - `icon` NOUVEAU (clé fermée « dossier » | « personne » | « groupe » | "" —
+ *   vide = pas de tuile) ; contrat existant intact (campagnes valides).
  *
  * Contraintes / pièges :
  * - <h2> de section et <h3> par carte : le <h1> unique appartient au héros.
- * - `items = []` en secours : pendant l'édition en direct dans CloudCannon,
- *   la liste peut être momentanément absente — on évite de planter l'éditeur
- *   visuel (qui rend le composant dans le navigateur).
- * - Aucun script client ; var(--token, secours) reprend les valeurs de
- *   src/styles/tokens.css pour un rendu fidèle hors du site.
+ * - `items = []` en secours (édition en direct CloudCannon).
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 interface BenefitItem {
   title: string;
   description: string;
+  icon?: 'dossier' | 'personne' | 'groupe' | '';
 }
 
 interface Props {
@@ -26,105 +32,56 @@ interface Props {
 }
 
 const { title, intro, items = [] } = Astro.props;
+
+// Pictogrammes (stroke 24px) par clé fermée du contrat.
+const ICONS: Record<string, string[]> = {
+  dossier: ['M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z'],
+  personne: ['M12 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z', 'M5 20c.8-3.2 3.6-5 7-5s6.2 1.8 7 5'],
+  groupe: [
+    'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+    'M3.5 19c.6-2.7 2.7-4.5 5.5-4.5s4.9 1.8 5.5 4.5',
+    'M15.5 5.6a3 3 0 0 1 0 4.8M17.5 14.9c1.6.6 2.7 1.9 3 4.1',
+  ],
+};
 ---
 
-<section class="lp-benefits">
-  <div class="lp-benefits__container">
-    <h2 class="lp-benefits__title">{title}</h2>
-    {intro && <p class="lp-benefits__intro">{intro}</p>}
-    <ul role="list" class="lp-benefits__grid">
+<section class="py-20 bg-white">
+  <div class="container-site">
+    <div class="max-w-[672px] mx-auto text-center flex flex-col gap-4 mb-16">
+      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
+        {title}
+      </h2>
+      {intro && <p class="text-lg leading-[29px] text-on-surface-variant m-0 max-w-none">{intro}</p>}
+    </div>
+    <ul role="list" class="grid grid-cols-1 md:grid-cols-3 gap-8 m-0 p-0 list-none">
       {
         items.map((item) => (
-          <li class="lp-benefits__card">
-            <h3 class="lp-benefits__card-title">{item.title}</h3>
-            <p class="lp-benefits__card-desc">{item.description}</p>
+          <li class="m-0 bg-white border border-solid border-[#C3C6D7] rounded-sm p-8 flex flex-col gap-4">
+            {item.icon && ICONS[item.icon] && (
+              <span class="size-12 rounded-sm bg-primary-fixed text-primary flex items-center justify-center">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  {ICONS[item.icon].map((d) => (
+                    <path d={d} />
+                  ))}
+                </svg>
+              </span>
+            )}
+            <h3 class="text-2xl leading-8 font-bold text-on-surface m-0 pt-2">{item.title}</h3>
+            <p class="text-base leading-6 text-on-surface-variant m-0 max-w-none">{item.description}</p>
           </li>
         ))
       }
     </ul>
   </div>
 </section>
-
-<style>
-  /* Grille de cartes dans l'esprit des cartes « expertises » de l'accueil
-     (bordure fine, liseré accent en tête, coins arrondis). */
-  .lp-benefits {
-    padding-block: var(--space-9, 6rem);
-    background-color: var(--color-bg, #ffffff);
-    color: var(--color-text, #1a1c20);
-    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
-  }
-
-  /* Conteneur répliqué localement (pas la classe globale .container) pour que
-     le composant reste autonome dans l'éditeur visuel. */
-  .lp-benefits__container {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-  }
-
-  .lp-benefits__title {
-    margin: 0;
-    text-align: center;
-    color: var(--color-navy, #083957);
-    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
-    font-weight: var(--fw-bold, 700);
-    line-height: var(--lh-tight, 1.15);
-    text-wrap: balance;
-  }
-
-  .lp-benefits__intro {
-    margin: var(--space-4, 1rem) auto 0;
-    max-width: 60ch;
-    text-align: center;
-    color: var(--color-text-muted, #4a4d54);
-    font-size: var(--fs-400, clamp(1.125rem, 0.2vw + 1.05rem, 1.25rem));
-    line-height: var(--lh-normal, 1.6);
-    text-wrap: pretty;
-  }
-
-  .lp-benefits__grid {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6, 2rem);
-    margin: var(--space-7, 3rem) 0 0;
-    padding: 0;
-  }
-  @media (min-width: 600px) {
-    .lp-benefits__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (min-width: 960px) {
-    .lp-benefits__grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .lp-benefits__card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3, 0.75rem);
-    padding: var(--space-6, 2rem);
-    border: 1px solid var(--color-border, #e2e4e8);
-    border-top: 3px solid var(--color-accent-blue, #3366ff);
-    border-radius: var(--radius-l, 16px);
-    background-color: var(--color-bg, #ffffff);
-  }
-
-  .lp-benefits__card-title {
-    margin: 0;
-    color: var(--color-navy, #083957);
-    font-size: var(--fs-500, clamp(1.375rem, 0.6vw + 1.2rem, 1.75rem));
-    font-weight: var(--fw-semibold, 600);
-    line-height: var(--lh-snug, 1.3);
-  }
-
-  .lp-benefits__card-desc {
-    margin: 0;
-    color: var(--color-text-muted, #4a4d54);
-    line-height: var(--lh-normal, 1.6);
-  }
-</style>

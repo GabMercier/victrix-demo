@@ -30,6 +30,7 @@ blueprint:
   items:
     - title: "Premier bénéfice"
       description: "Décrivez l'avantage concret pour le client."
+      icon: ""
 
 preview:
 
@@ -54,3 +55,13 @@ _inputs:
       structures: _structures.benefit_items
   description:
     label: "Description"
+  icon:
+    type: select
+    label: "Icône (optionnelle)"
+    options:
+      allow_empty: true
+      values:
+        - dossier
+        - personne
+        - groupe
+    comment: "Tuile pictogramme au-dessus du titre de la carte. Vide = aucune."

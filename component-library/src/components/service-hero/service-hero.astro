@@ -1,157 +1,164 @@
 ---
 /**
  * Section « Héros de service » — composant Bookshop (P-07).
+ * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/expertise-mere.css §Hero Section,
+ * « Page Expertise - Mère ») : héros SOMBRE pleine largeur — photo de fond +
+ * voile Bleu nuit 40 %, contenu aligné à gauche : eyebrow 12/700 ls 1.2 bleu
+ * pâle, H1 56/800 lh 1.25 ls -1.12 blanc, lead 18/29 ivoire, double CTA
+ * (primaire rayon 2 + flèche ; secondaire « verre » blanc 10 % bordé blanc
+ * 20 % + backdrop-blur). Bleus/navy/ivoire = tokens (export Hanken/chaud).
  *
- * Props : { type: "service-hero", eyebrow?, titleAccent?, title, lead?,
- *           ctaLabel?, ctaHref?, image?, imageAlt? }
- * - `type` est le discriminant du contrat sections ; il arrive via le spread
- *   {...section} depuis la route et est volontairement ignoré ici.
+ * VARIANTE « produit enfant » (docs/design/produit-enfant.css §Hero Section,
+ * « Page Produit - Enfant », 2026-08-05) — trois ajouts ADDITIFS :
+ *  - `eyebrowStyle: "badge"` : surtitre en CHIP bleu plein (12/700 ls 1.2
+ *    blanc, rayon 2) au lieu du texte bleu pâle ;
+ *  - `overlay: "degrade"` : voile en DÉGRADÉ anthracite gauche→droite (80 % →
+ *    transparent) au lieu du voile Bleu nuit uniforme, hauteur 640 ;
+ *  - `titleHighlight` : sous-chaîne du titre rendue en bleu clair (première
+ *    occurrence — patron home-hero) ; vide ou introuvable = titre uniforme.
  *
- * Port fidèle du héros de la page expertise (src/pages/[lang]/expertises/
- * intelligence-artificielle.astro) vers une section composable réutilisable.
+ * Props : { type: "service-hero", eyebrow?, eyebrowStyle?, titleAccent?,
+ *           title, titleHighlight?, lead?, ctaLabel?, ctaHref?, cta2Label?,
+ *           cta2Href?, overlay?, image?, imageAlt? }
+ * - `image` = chemin PUBLIC servi tel quel, désormais PHOTO DE FOND (l'ancien
+ *   rendu la posait à droite du texte) ; sans image : aplat Bleu nuit.
+ * - `imageAlt` conservé au contrat (image décorative désormais — alt="").
+ * - `titleAccent` : surtitre accentué en bloc au-dessus du titre (hérité).
+ * - cta2* : NOUVEAUX (chaîne vide = absent).
  *
  * Contraintes / pièges :
- * - Rend le SEUL <h1> de la page → à placer en PREMIÈRE position. Le <h1>
- *   contient le surtitre accentué (bloc) suivi du titre.
- * - `lead` peut contenir des <strong> → rendu set:html (contenu de dépôt,
- *   même politique que la page expertise d'origine).
- * - `image` = chemin PUBLIC servi tel quel (ex. /images/services/…-hero.png) :
- *   aucun astro:assets (le composant doit compiler dans le navigateur pour
- *   l'éditeur visuel CloudCannon — même règle que testimonial/video/faq).
- * - Aucun script client ; chaque var(--token, secours) embarque la valeur de
- *   src/styles/tokens.css pour un rendu fidèle hors du site (éditeur visuel).
+ * - Rend le SEUL <h1> de la page → à placer en PREMIÈRE position.
+ * - `lead` peut contenir des <strong> → rendu set:html (contenu de dépôt).
+ * - Browser-safe (éditeur visuel CloudCannon) : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 interface Props {
   eyebrow?: string;
+  eyebrowStyle?: 'texte' | 'badge';
   titleAccent?: string;
   title: string;
+  titleHighlight?: string;
   lead?: string;
   ctaLabel?: string;
   ctaHref?: string;
+  cta2Label?: string;
+  cta2Href?: string;
+  overlay?: 'voile' | 'degrade';
   image?: string;
   imageAlt?: string;
 }
 
-const { eyebrow, titleAccent, title, lead, ctaLabel, ctaHref, image, imageAlt } = Astro.props;
+const {
+  eyebrow,
+  eyebrowStyle = 'texte',
+  titleAccent,
+  title,
+  titleHighlight,
+  lead,
+  ctaLabel,
+  ctaHref,
+  cta2Label,
+  cta2Href,
+  overlay = 'voile',
+  image,
+} = Astro.props;
+
+// Toute valeur inattendue (édition en cours au CMS) retombe sur le défaut.
+const gradient = overlay === 'degrade';
+const badge = eyebrowStyle === 'badge';
+
+// Sous-chaîne accentuée rendue en bleu clair là où elle apparaît dans le titre
+// (première occurrence — patron home-hero) ; absente ou introuvable = titre
+// uniforme, aucune casse.
+const highlightIndex = titleHighlight ? title.indexOf(titleHighlight) : -1;
+const titleParts =
+  highlightIndex >= 0 && titleHighlight
+    ? {
+        before: title.slice(0, highlightIndex),
+        accent: titleHighlight,
+        after: title.slice(highlightIndex + titleHighlight.length),
+      }
+    : null;
 ---
 
-<section class="svc-hero">
-  <div class="svc-hero__container">
-    <div class="svc-hero__text">
-      {eyebrow && <p class="svc-hero__eyebrow">{eyebrow}</p>}
-      <h1 class="svc-hero__title">
-        {titleAccent && <span class="svc-hero__title-accent">{titleAccent}</span>}
-        {title}
-      </h1>
-      {lead && <p class="svc-hero__lead" set:html={lead}></p>}
+<section
+  class:list={[
+    'relative min-h-[600px] flex items-center overflow-hidden bg-on-primary-fixed isolate',
+    gradient ? 'lg:min-h-[640px]' : 'lg:min-h-[716px]',
+  ]}
+>
+  {
+    image && (
+      <img
+        src={image}
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover -z-20"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+    )
+  }
+  <div
+    class:list={[
+      'absolute inset-0 -z-10',
+      gradient ? 'bg-gradient-to-r from-on-surface/80 to-transparent' : 'bg-on-primary-fixed/40',
+    ]}
+    aria-hidden="true"
+  >
+  </div>
+  <div class="container-site py-24 w-full">
+    <div class="max-w-[688px] flex flex-col items-start gap-4">
       {
-        /* Le bouton n'est rendu que si le libellé ET le lien sont fournis. */
-        ctaLabel && ctaHref && (
-          <a class="svc-hero__cta" href={ctaHref}>
-            {ctaLabel}
-          </a>
+        eyebrow &&
+          (badge ? (
+            <p class="inline-flex items-center bg-primary text-white text-xs font-bold uppercase tracking-[1.2px] px-3 py-1 rounded-sm m-0 max-w-none">
+              {eyebrow}
+            </p>
+          ) : (
+            <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary-fixed m-0 max-w-none">{eyebrow}</p>
+          ))
+      }
+      <h1 class="text-[36px] leading-[1.25] lg:text-[56px] lg:leading-[70px] font-extrabold tracking-[-1.12px] text-white m-0 text-balance">
+        {titleAccent && <span class="block">{titleAccent}</span>}
+        {
+          titleParts ? (
+            <>
+              {titleParts.before}
+              <span class="text-primary-fixed-dim">{titleParts.accent}</span>
+              {titleParts.after}
+            </>
+          ) : (
+            title
+          )
+        }
+      </h1>
+      {lead && <p class="text-lg leading-[29px] text-surface-container-low m-0 max-w-[672px] pt-1" set:html={lead} />}
+      {
+        ((ctaLabel && ctaHref) || (cta2Label && cta2Href)) && (
+          <div class="flex flex-wrap items-center gap-4 pt-6">
+            {ctaLabel && ctaHref && (
+              <a
+                class="no-underline bg-primary text-on-primary px-8 py-4 rounded-sm text-sm font-semibold tracking-[0.28px] leading-none inline-flex items-center gap-2 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] hover:bg-primary-container transition-colors"
+                href={ctaHref}
+              >
+                {ctaLabel}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                  <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            )}
+            {cta2Label && cta2Href && (
+              <a
+                class="no-underline bg-white/10 border border-solid border-white/20 backdrop-blur-[6px] text-white px-8 py-[18px] rounded-sm text-sm font-semibold tracking-[0.28px] leading-none inline-flex items-center hover:bg-white/20 transition-colors"
+                href={cta2Href}
+              >
+                {cta2Label}
+              </a>
+            )}
+          </div>
         )
       }
     </div>
-    {image && <img class="svc-hero__img" src={image} alt={imageAlt ?? ''} loading="eager" />}
   </div>
 </section>
-
-<style>
-  /* Même langage visuel que le héros de la page expertise : dégradé marine,
-     surtitre vert accent, titre inversé, image à droite. */
-  .svc-hero {
-    background:
-      radial-gradient(120% 130% at 90% 10%, var(--color-navy-700, #0b4b71) 0%, transparent 55%),
-      linear-gradient(120deg, var(--color-navy-900, #052639) 0%, var(--color-navy, #083957) 70%);
-    color: var(--color-text-invert, #ffffff);
-    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
-  }
-
-  /* Conteneur répliqué localement (pas la classe globale .container) pour que
-     le composant reste autonome dans l'éditeur visuel. */
-  .svc-hero__container {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6, 2rem);
-    align-items: center;
-    padding-block: var(--space-9, 6rem);
-  }
-  @media (min-width: 900px) {
-    .svc-hero__container {
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: var(--space-8, 4rem);
-    }
-  }
-
-  .svc-hero__eyebrow {
-    margin: 0 0 var(--space-4, 1rem);
-    color: var(--color-accent-green, #24fb8e);
-    font-weight: var(--fw-semibold, 600);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: var(--fs-200, 0.9375rem);
-  }
-
-  .svc-hero__title {
-    margin: 0;
-    color: var(--color-text-invert, #ffffff);
-    font-size: var(--fs-800, clamp(2.5rem, 3.5vw + 1.5rem, 4rem));
-    font-weight: var(--fw-extrabold, 800);
-    line-height: var(--lh-tight, 1.15);
-    text-wrap: balance;
-  }
-  .svc-hero__title-accent {
-    display: block;
-    color: var(--color-accent-green, #24fb8e);
-  }
-
-  .svc-hero__lead {
-    margin: var(--space-5, 1.5rem) 0 0;
-    max-width: 60ch;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: var(--fs-400, clamp(1.125rem, 0.2vw + 1.05rem, 1.25rem));
-    line-height: var(--lh-normal, 1.6);
-    text-wrap: pretty;
-  }
-  .svc-hero__lead :global(strong) {
-    color: var(--color-text-invert, #ffffff);
-  }
-
-  .svc-hero__cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: var(--space-6, 2rem);
-    padding: 0.7em 1.5em;
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    border-radius: var(--radius-pill, 999px);
-    color: var(--color-text-invert, #ffffff);
-    font-size: var(--fs-200, 0.9375rem);
-    font-weight: var(--fw-semibold, 600);
-    line-height: 1;
-    text-decoration: none;
-    cursor: pointer;
-    transition:
-      background-color 0.15s ease,
-      color 0.15s ease,
-      border-color 0.15s ease;
-  }
-  .svc-hero__cta:hover {
-    background-color: var(--color-white, #ffffff);
-    color: var(--color-navy, #083957);
-  }
-
-  .svc-hero__img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: var(--radius-l, 16px);
-    box-shadow: var(--shadow-3, 0 12px 32px rgba(20, 33, 61, 0.14));
-  }
-</style>

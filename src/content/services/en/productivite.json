@@ -1,110 +1,158 @@
 {
   "title": "Productivity Consulting",
   "description": "Looking to improve your company’s efficiency? Victrix offers customized productivity consulting and innovative productivity tools. Discover our solutions!",
+  "slug": "productivity-consulting",
   "sections": [
     {
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Productivity & strategy",
       "titleAccent": "",
-      "title": "Productivity Consulting",
-      "lead": "Productivity Consulting & Tools for Businesses Are you looking for productivity consulting experts to help you improve your company’s efficiency? With years of experience, Victrix has refined how we handle the different continuous improvement process steps, from analysis to implementation.nnOur human and customer-oriented approach is user-centred and takes into account your business needs. Find out how we help companies boost productivity with our know-how and exclusive productivity applications.nn Let's meet",
-      "ctaLabel": "En savoir plus",
-      "ctaHref": "#",
-      "image": "/wp-content/uploads/2023/10/gestion-des-processus-et-productivite.png",
+      "title": "Improve Business Productivity",
+      "lead": "Looking for ideas to improve your company's productivity? With years of experience, Victrix offers a human, customer-oriented approach that considers your business needs and focuses on your users.",
+      "ctaLabel": "Let's meet",
+      "ctaHref": "/en/contact",
+      "cta2Label": "Discover our solutions",
+      "cta2Href": "/en/produits",
+      "image": "/images/services/hero-productivite.jpg",
       "imageAlt": ""
     },
     {
-      "type": "rich-text",
-      "title": "Our approach",
-      "paragraphs": [
-        "Our IT strategic consulting specialists and business productivity experts use a proactive approach to help you maximize the value of every working hour. Trust our team to reconcile the realities, needs, and objectives of the three main stakeholders in your project.",
-        "<strong>ORGANIZATION</strong>",
-        "Your vision, your image, your message.",
-        "<strong>HOLDER</strong>",
-        "Their responsibilities, their abilities, their initiative.",
-        "<strong>RECEIVER</strong>",
-        "Their productivity tools, their membership, their interests."
+      "type": "benefits",
+      "title": "Our human approach",
+      "intro": "Our specialists use a proactive approach to help you get the most out of every working hour by reconciling the realities of the three main stakeholders.",
+      "items": [
+        {
+          "title": "THE ORGANIZATION",
+          "description": "Your vision, your image, your message. We align technology tools with your overall strategic objectives.",
+          "icon": "dossier"
+        },
+        {
+          "title": "THE HOLDER",
+          "description": "Their responsibilities, their abilities, their initiative. We value the people who deploy and maintain your solutions.",
+          "icon": "personne"
+        },
+        {
+          "title": "THE RECEIVER",
+          "description": "Their tools, their sense of belonging, their interests. We optimize the end-user experience to maximize adoption.",
+          "icon": "groupe"
+        }
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Modern Intranet",
-      "paragraphs": [
-        "<strong>Search (Delve)</strong>",
-        "<strong>BI and Power BI</strong>",
-        "<strong>Collaboration tools</strong>"
+      "type": "expertise-bento",
+      "eyebrow": "Areas of expertise",
+      "title": "A 360° view of your digital productivity",
+      "intro": "Ideal solutions to simplify daily tasks and deliver immediate time savings.",
+      "items": [
+        {
+          "title": "Modern Intranet",
+          "text": "Create a single point of entry for information and internal communication.",
+          "peau": "blanche",
+          "taille": "grande",
+          "icon": "fenetre",
+          "image": "/images/services/bento-intranet.jpg",
+          "href": ""
+        },
+        {
+          "title": "BI and Power BI",
+          "text": "",
+          "peau": "bleue",
+          "taille": "haute",
+          "icon": "graphique",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Collaboration",
+          "text": "",
+          "peau": "blanche",
+          "taille": "haute",
+          "icon": "personnes",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Process automation",
+          "text": "Free your teams from repetitive tasks.",
+          "peau": "blanche",
+          "taille": "large",
+          "icon": "engrenage",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Document management",
+          "text": "",
+          "peau": "blanche",
+          "taille": "petite",
+          "icon": "document",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "M365 development",
+          "text": "",
+          "peau": "ardoise",
+          "taille": "petite",
+          "icon": "code",
+          "image": "",
+          "href": ""
+        }
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Document management",
-      "paragraphs": [
-        "<strong>M365 Development</strong>",
-        "<strong>Process management and automation</strong>",
-        "<strong>Content migration</strong>",
-        "We offer our expertise in a host of aspects that influence employee productivity. Victrix finds <strong>the perfect solutions to streamline workflows</strong> and save your company time. \n From implementing a modern intranet or a <a href=\"/en/expertise/productivity-consulting/dynamics-365-field-service/\">field service management solution</a> to <a href=\"/en/expertise/managed-it-services/maximize-the-use-of-your-m365-ecosystem/\">M365 development</a>, you can rely on our team."
+      "type": "tech-marquee",
+      "ariaLabel": "Technologies we master",
+      "items": [
+        "OneNote",
+        "Stream",
+        "Power BI",
+        "Teams",
+        "Sharepoint",
+        "PowerApps",
+        "PowerAutomate",
+        "OneDrive",
+        "Copilot",
+        "Dynamics 365"
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Our Technologies",
-      "paragraphs": [
-        "Need help facilitating file sharing, task management or moving to a new storage space? Our specialists know <strong>how to improve productivity and workflow efficiency</strong> with the right productivity apps. We are also familiar with the following productivity solutions:"
+      "type": "exclusive-tools",
+      "title": "Our exclusive productivity solutions",
+      "intro": "Victrix develops its own applications to meet the specific challenges of modern work.",
+      "featured": {
+        "badge": "Victrix exclusive",
+        "title": "Ø Studio",
+        "text": "Move to the Power Platform with support tailored to your needs. Ø Studio gives you development speed and delivery capacity to migrate your applications or automate your processes.",
+        "ctaLabel": "Raise your productivity with Ø Studio",
+        "href": "/en/services/productivite/o-bureau",
+        "image": "/wp-content/uploads/2023/09/bg-o-studio-1-scaled.jpg"
+      },
+      "items": [
+        {
+          "title": "O bureau",
+          "text": "Simplify bookings, improve management and automate usage reports for your offices with our easy-to-implement booking management application.",
+          "ctaLabel": "Manage bookings efficiently",
+          "href": "/en/services/productivite/o-bureau",
+          "icon": "calendrier"
+        },
+        {
+          "title": "Employee platform",
+          "text": "Give your staff the best in intranet experiences. Boost productivity at work by centralizing tools and knowledge.",
+          "ctaLabel": "Deploy a modern intranet",
+          "href": "/en/services/productivite/plateforme-employe-intranet",
+          "icon": "etoile"
+        }
       ]
     },
     {
-      "type": "rich-text",
-      "title": "OneNote | Stream | Power BI | Teams | Sharepoint | Forms | Planner | OneDrive | PowerApps | PowerAutomate",
-      "paragraphs": [
-        "<strong>OneNote</strong>",
-        "<strong>Stream</strong>",
-        "<strong>Power BI</strong>",
-        "<strong>Teams</strong>",
-        "<strong>SharePoint</strong>",
-        "<strong>Forms</strong>",
-        "<strong>Planner</strong>",
-        "<strong>OneDrive</strong>",
-        "<strong>Power Apps</strong>",
-        "<strong>Power Automate</strong>"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Our Top Productivity Solutions",
-      "paragraphs": [
-        "Victrix offers several tools to improve efficiency and productivity in the workplace. Learn more about our exclusive productivity solutions.",
-        "<strong>Ø Studio</strong>",
-        "<strong>Propel yourself towards the Power Platform</strong> with support adapted to your needs.\nThe Ø Studio offers <strong>rapid development and increased delivery capacity</strong> to migrate applications or automate processes.",
-        "<a href=\"/en/expertise/productivity-consulting/o-studio/\">Enhance productivity with Ø Studio</a>",
-        "<strong>O bureau - Office Booking app</strong>",
-        "O bureau is a productivity app exclusive to Victrix. Our <strong>office booking management software</strong> is easy to use and implement.",
-        "O bureau simplifies the schedule meeting and office booking process, improves management, and automates office usage reports.",
-        "<a href=\"/en/expertise/productivity-consulting/office-booking/\">Increase efficiency with our office booking app</a>",
-        "<strong>Employee Platform & Intranet</strong>",
-        "There are many strategies to improve productivity in business, and having a user-friendly employee platform is right at the top of the list. Offer your staff <strong>the best employee platform on the market </strong>with Victrix.",
-        "Here’s how our platform helps you achieve better productivity:",
-        "<ul><li>Create a truly unified experience</li>\n <li>Improve integration</li>\n <li>Improve employee engagement and productivity</li>\n <li>Ultimately, help your business reap the benefits of increased productivity</li></ul>",
-        "Take advantage of our 360° support to offer your employees <strong>a platform that goes beyond the simple intranet</strong>.",
-        "<a href=\"/en/expertise/productivity-consulting/employee-platform-intranet/\">Improve team productivity with our employee platform</a>"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Victrix Helps Companies Improve Employee Productivity",
-      "paragraphs": [
-        "Victrix specializes in <a href=\"/en/expertise/strategic-advice/\">IT and business strategy</a>. We can offer you the best solutions to <strong>retain engaged employees and increase your productivity</strong> while always prioritizing your needs, objectives and users.",
-        "Our methodology is agile, scalable, and transparent. Everything occurs in collaboration and synergy while respecting your brand image."
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Achieve High Productivity With Victrix’s Productivity Consulting and Tools",
-      "paragraphs": [
-        "To ensure your competitiveness, it is critical to <strong>find ways to boost team productivity</strong>, especially now that remote working is a reality for many businesses. \n That is why Victrix has developed its own <strong>productivity apps</strong>. Follow the example of many other businesses and provide your employees with the tools they need, tailored to their requirements and your expectations.",
-        "Meet Our Experts Let's talk about your projects! n"
-      ]
+      "type": "cta",
+      "title": "Ready to move your organization forward?",
+      "body": "Let's discuss your challenges and see how Victrix can help you go further in your digital transformation and performance improvement.",
+      "ctaLabel": "Book a slot with an expert",
+      "ctaHref": "/en/contact",
+      "variant": "dark"
     }
   ],
-  "slug": "productivity-consulting",
   "seoTitle": "Productivity Consulting Firm in Montreal | Expertise"
 }

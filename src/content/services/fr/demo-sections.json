@@ -25,9 +25,21 @@
       "columns": "3",
       "cardStyle": "default",
       "items": [
-        { "number": "01", "title": "Évaluer", "text": "Un portrait clair de la situation actuelle et des écarts à combler." },
-        { "number": "02", "title": "Planifier", "text": "Une feuille de route priorisée, alignée sur vos objectifs d'affaires." },
-        { "number": "03", "title": "Déployer", "text": "Une mise en œuvre progressive, mesurée et accompagnée." }
+        {
+          "number": "01",
+          "title": "Évaluer",
+          "text": "Un portrait clair de la situation actuelle et des écarts à combler."
+        },
+        {
+          "number": "02",
+          "title": "Planifier",
+          "text": "Une feuille de route priorisée, alignée sur vos objectifs d'affaires."
+        },
+        {
+          "number": "03",
+          "title": "Déployer",
+          "text": "Une mise en œuvre progressive, mesurée et accompagnée."
+        }
       ]
     },
     {
@@ -44,18 +56,39 @@
       "type": "feature-boxes",
       "sectionTitle": "Ce que couvre l'accompagnement",
       "subtitle": "Un périmètre clair, adapté à votre organisation.",
-      "boxes": ["Stratégie et gouvernance", "Architecture et intégration", "Sécurité et conformité", "Formation et adoption"]
+      "boxes": [
+        "Stratégie et gouvernance",
+        "Architecture et intégration",
+        "Sécurité et conformité",
+        "Formation et adoption"
+      ]
     },
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Technologies maîtrisées",
       "groups": [
-        { "title": "Infonuagique", "items": ["Microsoft Azure", "Microsoft 365", "AWS"] },
+        {
+          "title": "Infonuagique",
+          "items": [
+            "Microsoft Azure",
+            "Microsoft 365",
+            "AWS"
+          ]
+        },
         {
           "title": "Données et IA",
-          "items": ["Power BI", "Copilot Studio"],
-          "subgroup": { "label": "Sources ouvertes :", "items": ["Python", "PostgreSQL"] }
+          "items": [
+            "Power BI",
+            "Copilot Studio"
+          ],
+          "subgroup": {
+            "label": "Sources ouvertes :",
+            "items": [
+              "Python",
+              "PostgreSQL"
+            ]
+          }
         }
       ]
     },
@@ -72,9 +105,190 @@
       "_bookshop_name": "related-posts",
       "type": "related-posts",
       "title": "Ressources liées",
-      "tags": ["Nos articles"],
+      "tags": [
+        "Nos articles"
+      ],
       "ctaLabel": "Voir toutes les ressources",
       "ctaHref": "/fr/ressources"
+    },
+    {
+      "_bookshop_name": "expertise-bento",
+      "type": "expertise-bento",
+      "eyebrow": "Démonstration",
+      "title": "Bento des domaines d'expertise",
+      "intro": "Cartes à peau et taille variées, placées dans une grille de quatre colonnes.",
+      "items": [
+        {
+          "title": "Carte vitrine",
+          "text": "Grande carte deux colonnes avec image.",
+          "peau": "blanche",
+          "taille": "grande",
+          "icon": "fenetre",
+          "image": "/images/services/bento-intranet.jpg",
+          "href": ""
+        },
+        {
+          "title": "Carte bleue",
+          "text": "",
+          "peau": "bleue",
+          "taille": "haute",
+          "icon": "graphique",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Carte haute",
+          "text": "",
+          "peau": "blanche",
+          "taille": "haute",
+          "icon": "personnes",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Carte large",
+          "text": "Icône à droite, texte à gauche.",
+          "peau": "blanche",
+          "taille": "large",
+          "icon": "engrenage",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Carte petite",
+          "text": "",
+          "peau": "blanche",
+          "taille": "petite",
+          "icon": "document",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Carte ardoise",
+          "text": "",
+          "peau": "ardoise",
+          "taille": "petite",
+          "icon": "code",
+          "image": "",
+          "href": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "tech-marquee",
+      "type": "tech-marquee",
+      "ariaLabel": "Technologies de démonstration",
+      "items": [
+        "OneNote",
+        "Stream",
+        "Power BI",
+        "Teams",
+        "Sharepoint",
+        "PowerApps",
+        "PowerAutomate"
+      ]
+    },
+    {
+      "_bookshop_name": "exclusive-tools",
+      "type": "exclusive-tools",
+      "title": "Solutions exclusives",
+      "intro": "Carte vedette et grille de cartes outils.",
+      "featured": {
+        "badge": "Exclusivité Victrix",
+        "title": "Solution vedette",
+        "text": "Présentez ici votre solution phare, avec image à droite.",
+        "ctaLabel": "En savoir plus",
+        "href": "/fr/contact",
+        "image": "/wp-content/uploads/2023/09/bg-o-studio-1-scaled.jpg"
+      },
+      "items": [
+        {
+          "title": "Premier outil",
+          "text": "Description du premier outil.",
+          "ctaLabel": "En savoir plus",
+          "href": "/fr/contact",
+          "icon": "calendrier"
+        },
+        {
+          "title": "Second outil",
+          "text": "Description du second outil.",
+          "ctaLabel": "En savoir plus",
+          "href": "/fr/contact",
+          "icon": "etoile"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "strategic-value",
+      "type": "strategic-value",
+      "title": "Valeur stratégique",
+      "paragraphs": [
+        "Premier paragraphe de démonstration, avec un mot <strong>important</strong> mis en évidence.",
+        "Second paragraphe : la section rend chaque entrée du tableau comme un paragraphe distinct."
+      ],
+      "image": "/images/services/valeur-copilot-studio.jpg",
+      "imageAlt": "",
+      "stats": [
+        { "value": "ROI", "label": "Optimisation rapide" },
+        { "value": "100 %", "label": "Intégration M365" }
+      ]
+    },
+    {
+      "_bookshop_name": "offer-cards",
+      "type": "offer-cards",
+      "title": "Offres numérotées",
+      "intro": "Cartes « verre » à tuile numéro bleue et liste à puces, bouton primaire centré.",
+      "ctaLabel": "Prendre rendez-vous",
+      "ctaHref": "/fr/contact",
+      "items": [
+        {
+          "number": "1",
+          "title": "Première offre",
+          "bullets": [
+            { "text": "Point à crochet cerclé", "icon": "coche" },
+            { "text": "Second point de la liste", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "2",
+          "title": "Seconde offre",
+          "bullets": [
+            { "text": "Point à icône document", "icon": "document" },
+            { "text": "Point à icône cible", "icon": "cible" },
+            { "text": "Point à icône feuille de route", "icon": "carte" }
+          ]
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "realisations",
+      "type": "realisations",
+      "title": "Réalisations",
+      "intro": "Tête à gauche, lien souligné à droite, grille de quatre cartes.",
+      "linkLabel": "Demandez une démo",
+      "linkHref": "/fr/contact",
+      "items": [
+        {
+          "title": "Santé",
+          "text": "Carte à icône trousse de premiers soins.",
+          "icon": "trousse"
+        },
+        {
+          "title": "Services",
+          "text": "Carte à icône casque d'écoute.",
+          "icon": "casque"
+        },
+        {
+          "title": "RH",
+          "text": "Carte à icône groupe de personnes.",
+          "icon": "groupe"
+        },
+        {
+          "title": "Juridique",
+          "text": "Carte à icône marteau de juge.",
+          "icon": "marteau"
+        }
+      ]
     }
   ]
 }

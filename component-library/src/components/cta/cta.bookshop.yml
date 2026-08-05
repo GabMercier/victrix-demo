@@ -26,6 +26,8 @@ blueprint:
   body: ""
   ctaLabel: "Nous joindre"
   ctaHref: "/fr/nous-joindre/"
+  cta2Label: ""
+  cta2Href: ""
   variant: light
 
 preview:
@@ -44,11 +46,18 @@ _inputs:
   ctaHref:
     label: "Lien du bouton"
     comment: "URL de destination, p. ex. /fr/nous-joindre/."
+  cta2Label:
+    label: "Libellé du second bouton (optionnel)"
+    comment: "Bouton contour à droite du principal. Vide = absent."
+  cta2Href:
+    label: "Lien du second bouton"
+    comment: "URL de destination, préfixe de langue inclus."
   variant:
     type: select
     label: "Variante"
-    comment: "« light » : bandeau pâle (défaut) ; « dark » : bandeau marine contrasté."
+    comment: "« light » : bandeau pâle (défaut) ; « dark » : bandeau bleu ; « nuit » : panneau anthracite centré (page produit)."
     options:
       values:
         - light
         - dark
+        - nuit

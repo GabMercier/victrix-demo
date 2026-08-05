@@ -218,7 +218,15 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('benefits'),
       title: z.string(),
       intro: z.string().optional(),
-      items: z.array(z.object({ title: z.string(), description: z.string() })),
+      items: z.array(
+        z.object({
+          title: z.string(),
+          description: z.string(),
+          // Fidélité maquette expertise-mere.css (2026-08-05) : icône de la
+          // tuile pâle au-dessus du titre (clé fermée ; vide = pas de tuile).
+          icon: z.enum(['dossier', 'personne', 'groupe', '']).default(''),
+        }),
+      ),
     }),
     z.object({
       type: z.literal('cta'),
@@ -226,7 +234,13 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       body: z.string().optional(),
       ctaLabel: z.string(),
       ctaHref: z.string(),
-      variant: z.enum(['light', 'dark']).default('light'),
+      // Fidélité maquette produit-enfant.css (2026-08-05) : second bouton
+      // CONTOUR à droite du principal ; vides = absent (contrat gelé intact).
+      cta2Label: z.string().default(''),
+      cta2Href: z.string().default(''),
+      // « nuit » (produit-enfant.css) : panneau anthracite, contenu centré,
+      // sans décor — les deux valeurs historiques sont inchangées.
+      variant: z.enum(['light', 'dark', 'nuit']).default('light'),
     }),
     z.object({
       type: z.literal('form'),
@@ -419,16 +433,142 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('service-hero'),
       eyebrow: z.string().optional(),
+      // Fidélité maquette produit-enfant.css (2026-08-05) : « badge » = chip
+      // bleu plein au lieu du texte bleu pâle.
+      eyebrowStyle: z.enum(['texte', 'badge']).default('texte'),
       // Le <h1> = surtitre accentué (bloc, optionnel) + `title`. `title` est
       // requis : cette section porte le SEUL <h1> de la page (première position).
       titleAccent: z.string().optional(),
       title: z.string(),
+      // Sous-chaîne du titre rendue en bleu clair (première occurrence —
+      // patron home-hero) ; vide = titre uniforme.
+      titleHighlight: z.string().default(''),
       lead: z.string().optional(),
       ctaLabel: z.string().optional(),
       ctaHref: z.string().optional(),
+      // Fidélité maquette expertise-mere.css (2026-08-05) : second bouton
+      // « verre » translucide à droite du principal ; vides = absent.
+      cta2Label: z.string().default(''),
+      cta2Href: z.string().default(''),
+      // « degrade » (produit-enfant.css) : voile en dégradé anthracite
+      // gauche→droite au lieu du voile Bleu nuit uniforme.
+      overlay: z.enum(['voile', 'degrade']).default('voile'),
       // Chemin public (ex. /images/services/…-hero.png), servi tel quel.
+      // Depuis le re-skin 2026-08-05 : PHOTO DE FOND pleine largeur voilée de
+      // Bleu nuit (plus une image à droite du texte).
       image: z.string().optional(),
       imageAlt: z.string().optional(),
+    }),
+    // ---- Sections « page expertise mère » (fidélité maquette
+    // expertise-mere.css, 2026-08-05). Partagées comme toute la palette ;
+    // images = chemins PUBLICS (browser-safe). ----
+    // Bento des domaines d'expertise : grille 4 colonnes, cartes à peau
+    // (blanche/bleue/ardoise) et taille (grande 2 col × 3 rangées, haute 1×2,
+    // large 2×1, petite 1×1).
+    z.object({
+      type: z.literal('expertise-bento'),
+      eyebrow: z.string().default(''),
+      title: z.string(),
+      intro: z.string().default(''),
+      items: z.array(
+        z.object({
+          title: z.string(),
+          text: z.string().default(''),
+          peau: z.enum(['blanche', 'bleue', 'ardoise']).default('blanche'),
+          taille: z.enum(['grande', 'haute', 'large', 'petite']).default('petite'),
+          icon: z
+            .enum(['fenetre', 'graphique', 'personnes', 'engrenage', 'document', 'code', ''])
+            .default(''),
+          image: z.string().default(''),
+          href: z.string().default(''),
+        }),
+      ),
+    }),
+    // Bandeau marquee de technologies (fond Bleu nuit, défilement continu).
+    z.object({
+      type: z.literal('tech-marquee'),
+      // Libellé d'accessibilité du bandeau (les noms défilent, aria-hidden).
+      ariaLabel: z.string().default(''),
+      items: z.array(z.string()),
+    }),
+    // Solutions exclusives : carte vedette (badge, titre, texte, lien, image)
+    // + cartes outils (tuile icône, titre, texte, lien).
+    z.object({
+      type: z.literal('exclusive-tools'),
+      title: z.string(),
+      intro: z.string().default(''),
+      featured: z
+        .object({
+          badge: z.string().default(''),
+          title: z.string(),
+          text: z.string().default(''),
+          ctaLabel: z.string().default(''),
+          href: z.string().default(''),
+          image: z.string().default(''),
+        })
+        .optional(),
+      items: z.array(
+        z.object({
+          title: z.string(),
+          text: z.string().default(''),
+          ctaLabel: z.string().default(''),
+          href: z.string().default(''),
+          icon: z.enum(['calendrier', 'etoile', '']).default(''),
+        }),
+      ),
+    }),
+    // ---- Sections « page produit enfant » (fidélité maquette
+    // produit-enfant.css, 2026-08-05). Partagées comme toute la palette ;
+    // images = chemins PUBLICS (browser-safe). ----
+    // Valeur stratégique : image sur halo bleu flouté à gauche, titre à liseré
+    // bleu + paragraphes + tuiles statistiques à droite.
+    z.object({
+      type: z.literal('strategic-value'),
+      title: z.string(),
+      // Chaque paragraphe rendu en <p set:html> (peut contenir des <strong> —
+      // contenu de dépôt, même politique que rich-text).
+      paragraphs: z.array(z.string()),
+      image: z.string().default(''),
+      imageAlt: z.string().default(''),
+      // Tuiles statistiques (liseré gauche bleu) ; tableau vide = pas de rangée.
+      stats: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
+    }),
+    // Offres numérotées : cartes « verre » à tuile numéro bleue et liste à
+    // puces icônes, bouton primaire centré sous la grille.
+    z.object({
+      type: z.literal('offer-cards'),
+      title: z.string(),
+      intro: z.string().default(''),
+      ctaLabel: z.string().default(''),
+      ctaHref: z.string().default(''),
+      items: z.array(
+        z.object({
+          number: z.string(),
+          title: z.string(),
+          bullets: z.array(
+            z.object({
+              text: z.string(),
+              icon: z.enum(['coche', 'document', 'cible', 'carte', '']).default('coche'),
+            }),
+          ),
+        }),
+      ),
+    }),
+    // Réalisations : tête titre + texte à gauche, lien à liseré bleu à droite,
+    // grille de 4 cartes blanches bordées (icône, titre, texte).
+    z.object({
+      type: z.literal('realisations'),
+      title: z.string(),
+      intro: z.string().default(''),
+      linkLabel: z.string().default(''),
+      linkHref: z.string().default(''),
+      items: z.array(
+        z.object({
+          title: z.string(),
+          text: z.string().default(''),
+          icon: z.enum(['trousse', 'casque', 'groupe', 'marteau', '']).default(''),
+        }),
+      ),
     }),
     z.object({
       type: z.literal('numbered-cards'),

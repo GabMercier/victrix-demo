@@ -977,6 +977,227 @@ _structures:
         value:
           title: ''
           description: ''
+          icon: ''
+        _inputs:
+          icon:
+            type: select
+            label: Icône (optionnelle)
+            options:
+              allow_empty: true
+              values:
+                - dossier
+                - personne
+                - groupe
+            comment: Tuile pictogramme au-dessus du titre. Vide = aucune.
+
+  # Cartes du bento d'expertises (section « Service — Bento d'expertises »,
+  # fidélité maquette expertise-mere.css 2026-08-05).
+  bento_items:
+    values:
+      - label: Carte bento
+        icon: dashboard
+        preview:
+          icon: dashboard
+          text:
+            - key: title
+            - text: Carte bento
+        value:
+          title: ''
+          text: ''
+          peau: blanche
+          taille: petite
+          icon: ''
+          image: ''
+          href: ''
+        _inputs:
+          text:
+            type: textarea
+            label: Texte
+          peau:
+            type: select
+            label: Peau de la carte
+            options:
+              allow_empty: false
+              values:
+                - blanche
+                - bleue
+                - ardoise
+          taille:
+            type: select
+            label: Taille dans la grille
+            options:
+              allow_empty: false
+              values:
+                - grande
+                - haute
+                - large
+                - petite
+            comment: >-
+              grande = 2 colonnes × 3 rangées (vitrine avec image) ; haute = 1×2 ;
+              large = 2×1 (icône à droite) ; petite = 1×1.
+          icon:
+            type: select
+            label: Icône
+            options:
+              allow_empty: true
+              values:
+                - fenetre
+                - graphique
+                - personnes
+                - engrenage
+                - document
+                - code
+          image:
+            type: text
+            label: Image (chemin public)
+            comment: "Cartes « grande » seulement. Ex. /images/services/… — servie telle quelle."
+          href:
+            type: text
+            label: Lien (optionnel)
+            comment: Rend la carte entière cliquable. URL finale, préfixe de langue inclus.
+
+  # Cartes outils (section « Service — Solutions exclusives »).
+  tool_items:
+    values:
+      - label: Carte outil
+        icon: widgets
+        preview:
+          icon: widgets
+          text:
+            - key: title
+            - text: Carte outil
+        value:
+          title: ''
+          text: ''
+          ctaLabel: ''
+          href: ''
+          icon: ''
+        _inputs:
+          text:
+            type: textarea
+            label: Texte
+          ctaLabel:
+            type: text
+            label: Libellé du lien
+          icon:
+            type: select
+            label: Icône
+            options:
+              allow_empty: true
+              values:
+                - calendrier
+                - etoile
+
+  # Tuiles statistiques (section « Produit — Valeur stratégique », fidélité
+  # maquette produit-enfant.css 2026-08-05).
+  stat_items:
+    values:
+      - label: Tuile statistique
+        icon: monitoring
+        preview:
+          icon: monitoring
+          text:
+            - key: value
+            - text: Tuile statistique
+        value:
+          value: ''
+          label: ''
+        # _inputs de STRUCTURE : `label` est aussi un nom de champ de formulaire
+        # au niveau collection — le libellé spécifique DOIT vivre ici (il prime).
+        _inputs:
+          value:
+            type: text
+            label: Valeur
+            comment: "Chiffre ou mot mis en avant (ex. « ROI », « 100 % »)."
+          label:
+            type: text
+            label: Étiquette
+            comment: "Petite ligne en majuscules sous la valeur."
+
+  # Cartes d'offre numérotées (section « Produit — Offres numérotées ») — la
+  # liste `bullets` de chaque carte pointe vers _structures.offer_bullets.
+  offer_items:
+    values:
+      - label: Carte d'offre
+        icon: format_list_numbered
+        preview:
+          icon: format_list_numbered
+          text:
+            - key: title
+            - text: Carte d'offre
+        value:
+          number: ''
+          title: ''
+          bullets: []
+        _inputs:
+          number:
+            type: text
+            label: Numéro
+            comment: "Affiché dans la tuile bleue (ex. « 1 »)."
+          bullets:
+            type: array
+            label: Points de la liste
+            options:
+              structures: _structures.offer_bullets
+
+  # Puces des cartes d'offre (icône + texte).
+  offer_bullets:
+    values:
+      - label: Point de liste
+        icon: check_circle
+        preview:
+          icon: check_circle
+          text:
+            - key: text
+            - text: Point de liste
+        value:
+          text: ''
+          icon: coche
+        _inputs:
+          text:
+            type: text
+            label: Texte
+          icon:
+            type: select
+            label: Icône
+            options:
+              allow_empty: false
+              values:
+                - coche
+                - document
+                - cible
+                - carte
+            comment: "coche = crochet cerclé ; document ; cible ; carte = feuille de route."
+
+  # Cartes de réalisation (section « Produit — Réalisations »).
+  realisation_items:
+    values:
+      - label: Carte de réalisation
+        icon: workspace_premium
+        preview:
+          icon: workspace_premium
+          text:
+            - key: title
+            - text: Carte de réalisation
+        value:
+          title: ''
+          text: ''
+          icon: ''
+        _inputs:
+          text:
+            type: textarea
+            label: Texte
+          icon:
+            type: select
+            label: Icône
+            options:
+              allow_empty: true
+              values:
+                - trousse
+                - casque
+                - groupe
+                - marteau
+            comment: "trousse = santé ; casque = services ; groupe = RH ; marteau = juridique. Vide = aucune."
 
   # Cartes d'expertise ({number,title,accent,description,href}) pour la section
   # « Accueil — Expertises ». Même logique que benefit_items : une structure à

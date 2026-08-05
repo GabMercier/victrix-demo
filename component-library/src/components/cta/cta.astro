@@ -1,131 +1,127 @@
 ---
 /**
- * Section « Appel à l'action » — composant Bookshop (contrat landing GELÉ).
+ * Section « Appel à l'action » — composant Bookshop (contrat landing GELÉ,
+ * enrichi ADDITIVEMENT).
+ * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/expertise-mere.css §CTA Section) :
+ * PANNEAU arrondi 8 dans le conteneur —
+ *  - variant "dark"  : aplat Bleu Victrix, titre 40/700 blanc, corps 18/29
+ *    blanc 80 %, bouton BLANC texte bleu rayon 2, décor cercles (plein +
+ *    tireté) en filigrane à droite ;
+ *  - variant "light" : panneau beige (surface-container), titre navy, bouton
+ *    primaire — même géométrie ;
+ *  - variant "nuit"  : NOUVEAU (produit-enfant.css §CTA Section, 2026-08-05) —
+ *    aplat anthracite (on-surface), contenu CENTRÉ (max 768), sans décor,
+ *    bouton primaire + second bouton CONTOUR blanc.
+ * Bleus/navy/anthracite = tokens (export Hanken/chaud, #002FC8→primary,
+ * #1C1C1A→on-surface).
  *
- * Props : { type: "cta", title, body?, ctaLabel, ctaHref, variant? }
- * - `variant` : "light" (défaut, bandeau pâle) ou "dark" (bandeau marine,
- *   même langage visuel que le bandeau « experts » de l'accueil).
- * - `type` est le discriminant du contrat landing ; il arrive via le spread
- *   {...section} depuis la page campagne et est volontairement ignoré ici.
+ * Props : { type: "cta", title, body?, ctaLabel, ctaHref, cta2Label?,
+ *           cta2Href?, variant? }
+ * (contrat GELÉ intact — `cta2*` et la valeur « nuit » sont ADDITIFS ; toute
+ * valeur inattendue de `variant` retombe sur "light" ; cta2 vide = absent.)
  *
  * Contraintes / pièges :
  * - <h2> : le <h1> unique appartient au héros.
- * - La classe de variante est calculée (pas de class:list avec valeur brute) :
- *   toute valeur inattendue retombe sur "light" au lieu de fuir dans le DOM.
- * - Aucun script client ; var(--token, secours) reprend les valeurs de
- *   src/styles/tokens.css pour un rendu fidèle hors du site (éditeur visuel
- *   CloudCannon, qui rend le composant dans le navigateur).
+ * - Bouton contour : `border border-solid` (piège UA-medium sans preflight).
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 interface Props {
   title: string;
   body?: string;
   ctaLabel: string;
   ctaHref: string;
-  variant?: 'light' | 'dark';
+  cta2Label?: string;
+  cta2Href?: string;
+  variant?: 'light' | 'dark' | 'nuit';
 }
 
-const { title, body, ctaLabel, ctaHref, variant = 'light' } = Astro.props;
-const variantClass = variant === 'dark' ? 'lp-cta--dark' : 'lp-cta--light';
+const { title, body, ctaLabel, ctaHref, cta2Label, cta2Href, variant = 'light' } = Astro.props;
+const dark = variant === 'dark';
+const nuit = variant === 'nuit';
 ---
 
-<section class={`lp-cta ${variantClass}`}>
-  <div class="lp-cta__container">
-    <div class="lp-cta__copy">
-      <h2 class="lp-cta__title">{title}</h2>
-      {body && <p class="lp-cta__body">{body}</p>}
+<section class="py-20 bg-surface">
+  <div class="container-site">
+    <div
+      class:list={[
+        'relative overflow-hidden rounded-lg p-10 lg:p-20 isolate',
+        nuit ? 'bg-on-surface' : dark ? 'bg-primary' : 'bg-surface-container',
+      ]}
+    >
+      <!-- Décor : grand cercle tireté + cercle plein, filigrane à droite (pas en « nuit »). -->
+      {
+        !nuit && (
+          <svg
+            class:list={[
+              'absolute -right-24 top-1/2 -translate-y-1/2 -z-10',
+              dark ? 'text-white/20' : 'text-primary/10',
+            ]}
+            width="460"
+            height="460"
+            viewBox="0 0 460 460"
+            fill="none"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <circle cx="230" cy="230" r="180" stroke="currentColor" stroke-width="2.3" stroke-dasharray="14 14" />
+            <circle cx="230" cy="230" r="120" stroke="currentColor" stroke-width="1.2" />
+          </svg>
+        )
+      }
+      <div
+        class:list={[
+          'flex flex-col gap-6',
+          nuit ? 'max-w-[768px] mx-auto items-center text-center' : 'max-w-[576px] items-start',
+        ]}
+      >
+        <h2
+          class:list={[
+            'text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] m-0 text-balance',
+            dark || nuit ? 'text-white' : 'text-on-surface',
+          ]}
+        >
+          {title}
+        </h2>
+        {
+          body && (
+            <p
+              class:list={[
+                'text-lg leading-[29px] m-0 max-w-none',
+                dark || nuit ? 'text-white/80' : 'text-on-surface-variant',
+              ]}
+            >
+              {body}
+            </p>
+          )
+        }
+        <div class:list={['flex flex-wrap items-center gap-4 mt-2', nuit && 'justify-center']}>
+          <a
+            class:list={[
+              'no-underline px-10 py-5 rounded-sm text-sm font-semibold tracking-[0.28px] leading-none inline-flex items-center shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] transition-colors',
+              dark ? 'bg-white text-primary hover:bg-primary-fixed' : 'bg-primary text-on-primary hover:bg-primary-container',
+            ]}
+            href={ctaHref}
+          >
+            {ctaLabel}
+          </a>
+          {
+            cta2Label && cta2Href && (
+              <a
+                class:list={[
+                  'no-underline px-10 py-[19px] rounded-sm text-sm font-semibold tracking-[0.28px] leading-none inline-flex items-center border border-solid transition-colors',
+                  dark || nuit
+                    ? 'border-white text-white hover:bg-white/10'
+                    : 'border-primary text-primary hover:bg-primary/5',
+                ]}
+                href={cta2Href}
+              >
+                {cta2Label}
+              </a>
+            )
+          }
+        </div>
+      </div>
     </div>
-    <a class="lp-cta__btn" href={ctaHref}>{ctaLabel}</a>
   </div>
 </section>
-
-<style>
-  .lp-cta {
-    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
-  }
-
-  /* Conteneur répliqué localement (pas la classe globale .container) pour que
-     le composant reste autonome dans l'éditeur visuel. */
-  .lp-cta__container {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-    padding-block: var(--space-7, 3rem);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-5, 1.5rem);
-  }
-
-  .lp-cta__title {
-    margin: 0;
-    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
-    font-weight: var(--fw-bold, 700);
-    line-height: var(--lh-tight, 1.15);
-    text-wrap: balance;
-  }
-
-  .lp-cta__body {
-    margin: var(--space-2, 0.5rem) 0 0;
-    max-width: 60ch;
-    line-height: var(--lh-normal, 1.6);
-    text-wrap: pretty;
-  }
-
-  .lp-cta__btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.7em 1.5em;
-    border: 2px solid transparent;
-    border-radius: var(--radius-pill, 999px);
-    font-size: var(--fs-200, 0.9375rem);
-    font-weight: var(--fw-bold, 700);
-    line-height: 1;
-    text-decoration: none;
-    cursor: pointer;
-    transition:
-      background-color 0.15s ease,
-      color 0.15s ease,
-      border-color 0.15s ease;
-  }
-
-  /* ---------- Variante « light » (défaut) : bandeau pâle ---------- */
-  .lp-cta--light {
-    background-color: var(--color-band, #f6f7f8);
-    color: var(--color-text, #1a1c20);
-  }
-  .lp-cta--light .lp-cta__title {
-    color: var(--color-navy, #083957);
-  }
-  .lp-cta--light .lp-cta__body {
-    color: var(--color-text-muted, #4a4d54);
-  }
-  .lp-cta--light .lp-cta__btn {
-    background-color: var(--color-navy, #083957);
-    color: var(--color-text-invert, #ffffff);
-  }
-  .lp-cta--light .lp-cta__btn:hover {
-    background-color: var(--color-navy-700, #0b4b71);
-  }
-
-  /* ---------- Variante « dark » : bandeau marine contrasté ---------- */
-  .lp-cta--dark {
-    background-color: var(--color-navy, #083957);
-    color: var(--color-text-invert, #ffffff);
-  }
-  .lp-cta--dark .lp-cta__title {
-    color: var(--color-text-invert, #ffffff);
-  }
-  .lp-cta--dark .lp-cta__body {
-    color: rgba(255, 255, 255, 0.8);
-  }
-  .lp-cta--dark .lp-cta__btn {
-    background-color: var(--color-accent-green, #24fb8e);
-    color: var(--color-navy, #083957);
-  }
-  .lp-cta--dark .lp-cta__btn:hover {
-    background-color: var(--color-white, #ffffff);
-  }
-</style>
