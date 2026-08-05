@@ -1,14 +1,22 @@
 ---
 /**
- * Section « Solution phare » — composant Bookshop (accueil composable).
- * RE-SKIN 2026-08-04 (lot accueil, Phase 5) : patron « vitrine + carte
- * flottante » de la maquette Accueil.html (validé au port PageExpertise),
- * normalisé système — image arrondie ombrée + CARTE STATISTIQUE flottante
- * (ex. « 24/7 »), texte à droite avec surtitre label-caps et CTA primaire.
+ * Section « Solution / efficacité opérationnelle » — composant Bookshop.
+ * FIDÉLITÉ MAQUETTE 2026-08-04 (docs/design/accueil.css
+ * §Section - OperationalEfficiency, « Libérez votre équipe des contraintes
+ * opérationnelles ») : fond gris froid #F9FAFB, image arrondie 12 ombrée
+ * (0 25px 50px) avec BADGE FLOTTANT blanc à liseré gauche bleu 4px (statValue
+ * 30/700 bleu, statLabel 12/700 majuscules navy, statText 12 gris) ; à droite
+ * titre 48/800, corps 16/26, TUILES de caractéristiques blanches bordées
+ * (label 12/900 majuscules, texte 12/16) et CTA « cercle-flèche » (anneau 48px
+ * bordé #D1D5DB + libellé 20/700 navy).
+ * Neutres froids maquette tels quels ; bleus/navy = tokens (décision méga).
  *
  * Props : { type: "home-solution", eyebrow, title, body, ctaLabel, ctaHref,
- *           image, statValue?, statLabel?, statText?, resolvedImage? }
- * - stat* (NOUVEAUX, optionnels — chaîne vide = absent) : carte flottante.
+ *           image, statValue?, statLabel?, statText?, features?,
+ *           resolvedImage? }
+ * - eyebrow : chaîne vide = absent (maquette : pas de surtitre) ;
+ * - features [{label,text}] : tuiles (tableau vide = aucune) ;
+ * - stat* : badge flottant (statValue vide = pas de badge).
  *
  * IMAGE — pourquoi ce n'est PAS un <Image> astro:assets ici : les composants de
  * la bibliothèque sont recompilés pour le NAVIGATEUR par l'éditeur visuel
@@ -26,6 +34,11 @@ interface ResolvedImage {
   height: number;
 }
 
+interface Feature {
+  label: string;
+  text: string;
+}
+
 interface Props {
   eyebrow: string;
   title: string;
@@ -36,18 +49,30 @@ interface Props {
   statValue?: string;
   statLabel?: string;
   statText?: string;
+  features?: Feature[];
   resolvedImage?: ResolvedImage;
 }
 
-const { eyebrow, title, body, ctaLabel, ctaHref, statValue, statLabel, statText, resolvedImage } = Astro.props;
+const {
+  eyebrow,
+  title,
+  body,
+  ctaLabel,
+  ctaHref,
+  statValue,
+  statLabel,
+  statText,
+  features = [],
+  resolvedImage,
+} = Astro.props;
 const hasStat = Boolean(statValue);
 ---
 
-<section class="py-section-gap bg-surface-container-low overflow-hidden">
+<section class="py-24 bg-[#F9FAFB] overflow-hidden">
   <div class="container-site">
     <div class="flex flex-col lg:flex-row items-center gap-16">
-      <div class:list={['w-full lg:w-1/2 relative', hasStat && 'mb-12 lg:mb-0']}>
-        <div class="rounded-xl overflow-hidden shadow-2xl bg-surface-container-high">
+      <div class:list={['w-full lg:w-1/2 relative', hasStat && 'mb-16 lg:mb-0']}>
+        <div class="rounded-xl overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] bg-white">
           {
             resolvedImage ? (
               <img
@@ -59,10 +84,10 @@ const hasStat = Boolean(statValue);
                 decoding="async"
                 width={resolvedImage.width}
                 height={resolvedImage.height}
-                class="w-full h-[380px] object-cover"
+                class="w-full h-[320px] object-cover"
               />
             ) : (
-              <div class="w-full h-[380px] flex items-center justify-center font-label-caps text-label-caps uppercase text-on-surface-variant" aria-hidden="true">
+              <div class="w-full h-[320px] flex items-center justify-center text-xs font-bold uppercase tracking-[1.2px] text-[#6B7280]" aria-hidden="true">
                 Image
               </div>
             )
@@ -70,26 +95,51 @@ const hasStat = Boolean(statValue);
         </div>
         {
           hasStat && (
-            <div class="absolute bottom-[-40px] right-0 lg:right-[-8px] bg-white p-8 rounded-xl shadow-xl border border-solid border-outline-variant max-w-[300px]">
-              <p class="text-primary font-display text-[40px] leading-none m-0 mb-2">{statValue}</p>
-              {statLabel && <p class="text-on-surface font-button text-button uppercase tracking-widest m-0 mb-2">{statLabel}</p>}
-              {statText && <p class="font-label-caps text-label-caps text-on-surface-variant leading-tight m-0 normal-case tracking-normal">{statText}</p>}
+            <div class="absolute -bottom-10 right-4 lg:right-10 bg-white border-0 border-l-4 border-solid border-primary rounded-lg shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] px-7 py-6 max-w-[320px]">
+              <p class="text-primary text-[30px] leading-9 font-bold m-0 max-w-none">{statValue}</p>
+              {statLabel && (
+                <p class="text-on-primary-fixed text-xs font-bold uppercase tracking-[1.2px] m-0 mt-1 max-w-none">
+                  {statLabel}
+                </p>
+              )}
+              {statText && <p class="text-xs leading-4 text-[#6B7280] m-0 mt-1.5 max-w-none">{statText}</p>}
             </div>
           )
         }
       </div>
-      <div class="w-full lg:w-1/2">
-        <p class="font-label-caps text-label-caps text-primary uppercase m-0 mb-4">{eyebrow}</p>
-        <h2 class="font-headline-lg text-headline-lg text-on-surface m-0 mb-6">{title}</h2>
-        <p class="font-body-lg text-body-lg text-on-surface-variant m-0 mb-10">{body}</p>
-        <a
-          class="no-underline bg-primary text-on-primary px-8 py-4 rounded font-button text-button inline-flex items-center gap-2 hover:bg-primary-container transition-colors"
-          href={ctaHref}
-        >
-          {ctaLabel}
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-            <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
+      <div class="w-full lg:w-1/2 flex flex-col items-start gap-8">
+        {
+          eyebrow && (
+            <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary m-0 max-w-none">{eyebrow}</p>
+          )
+        }
+        <h2 class="text-[36px] leading-none lg:text-[48px] lg:leading-[48px] font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0 text-balance">
+          {title}
+        </h2>
+        <p class="text-base leading-[26px] text-[#545F71] m-0 max-w-none">{body}</p>
+        {
+          features.length > 0 && (
+            <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full m-0 p-0 pt-2 list-none">
+              {features.map((f) => (
+                <li class="m-0 bg-white border border-solid border-[#F3F4F6] rounded-lg p-6 flex flex-col gap-2">
+                  <p class="text-xs font-black uppercase tracking-[-0.6px] text-on-primary-fixed m-0 max-w-none">
+                    {f.label}
+                  </p>
+                  <p class="text-xs leading-4 text-[#6B7280] m-0 max-w-none">{f.text}</p>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+        <a class="group inline-flex items-center gap-4 no-underline pt-2" href={ctaHref}>
+          <span class="size-12 rounded-full border-2 border-solid border-[#D1D5DB] flex items-center justify-center text-on-primary-fixed transition-colors group-hover:border-primary group-hover:text-primary">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <span class="text-xl leading-7 font-bold text-on-primary-fixed group-hover:text-primary transition-colors">
+            {ctaLabel}
+          </span>
         </a>
       </div>
     </div>

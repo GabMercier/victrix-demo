@@ -24,6 +24,7 @@ blueprint:
   type: home-hero
   eyebrow: "Services-conseils en TI"
   title: "Titre de la bannière"
+  titleAccent: ""
   subtitle: ""
   ctaLabel: "Découvrir Victrix"
   ctaHref: "/fr/decouvrir"
@@ -42,6 +43,9 @@ _inputs:
     comment: "Courte ligne affichée au-dessus du titre (optionnel)."
   title:
     label: "Titre"
+  titleAccent:
+    label: "Mot accentué du titre"
+    comment: "Sous-chaîne du titre affichée en bleu (ex. « vraiment »). Vide = titre uniforme."
   subtitle:
     label: "Sous-titre"
   ctaLabel:

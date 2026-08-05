@@ -1,0 +1,128 @@
+---
+/**
+ * Section « Solutions phares » — composant Bookshop (accueil composable),
+ * NOUVEAU 2026-08-04. FIDÉLITÉ MAQUETTE (docs/design/accueil.css
+ * §SolutionsSection) : rangée de tête (titre 48/800 ls -0.96 + lien 12/700
+ * majuscules bleu à droite), 3 CARTES SOMBRES 500px rayon 12 — photo de fond,
+ * dégradé noir bas→transparent (0deg #000 → 40 % → 0), contenu ancré en bas :
+ * icône 24 blanche + titre 24/700 blanc, texte 14/23 #E5E7EB, lien 12/700
+ * majuscules blanc + flèche. Carte entière cliquable (lien étiré).
+ * Neutres froids maquette tels quels ; bleus = tokens (décision méga).
+ *
+ * Props : { type: "home-solutions", title, ctaLabel?, ctaHref?,
+ *           items: [{ title, text, image, href, ctaLabel?, icon? }] }
+ * - icon : clé fermée « ecran » | « bouclier » | « nuage » | "" (aucune) —
+ *   icônes inline (aucune police d'icônes) ;
+ * - images = chemins PUBLICS servis tels quels (browser-safe, éditeur visuel
+ *   CloudCannon — aucun astro:assets).
+ *
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface SolutionItem {
+  title: string;
+  text: string;
+  image?: string;
+  href: string;
+  ctaLabel?: string;
+  icon?: 'ecran' | 'bouclier' | 'nuage' | '';
+}
+
+interface Props {
+  title: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  items: SolutionItem[];
+}
+
+const { title, ctaLabel, ctaHref, items = [] } = Astro.props;
+
+// Tracés d'icônes (stroke 2, 24px) par clé fermée du contrat.
+const ICONS: Record<string, string[]> = {
+  ecran: [
+    'M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z',
+    'M9 21h6M12 17v4',
+  ],
+  bouclier: ['M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3Z', 'M9 12l2 2 4-4'],
+  nuage: ['M7 18a4.5 4.5 0 1 1 .7-8.95A6 6 0 0 1 19 10.5 3.75 3.75 0 0 1 18.25 18H7Z'],
+};
+---
+
+<section class="py-24 bg-white">
+  <div class="container-site">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+      <h2 class="text-[48px] leading-none font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0">
+        {title}
+      </h2>
+      {
+        ctaLabel && ctaHref && (
+          <a
+            class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
+            href={ctaHref}
+          >
+            {ctaLabel}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        )
+      }
+    </div>
+    <ul role="list" class="grid grid-cols-1 md:grid-cols-3 gap-8 m-0 p-0 list-none">
+      {
+        items.map((item) => (
+          <li class="m-0">
+            <article class="group relative h-[500px] rounded-xl overflow-hidden flex flex-col justify-end p-8 bg-on-primary-fixed isolate">
+              {item.image && (
+                <img
+                  src={item.image}
+                  alt=""
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 -z-20"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+              <span
+                class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent -z-10"
+                aria-hidden="true"
+              />
+              <div class="flex flex-col gap-4">
+                <p class="flex items-center gap-2 m-0 max-w-none">
+                  {item.icon && ICONS[item.icon] && (
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-white shrink-0"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      {ICONS[item.icon].map((d) => (
+                        <path d={d} />
+                      ))}
+                    </svg>
+                  )}
+                  <span class="text-2xl leading-8 font-bold tracking-[-0.48px] text-white">{item.title}</span>
+                </p>
+                <p class="text-sm leading-[23px] text-[#E5E7EB] m-0 max-w-none">{item.text}</p>
+                <a
+                  class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[1.2px] text-white no-underline after:content-[''] after:absolute after:inset-0"
+                  href={item.href}
+                >
+                  {item.ctaLabel || item.title}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

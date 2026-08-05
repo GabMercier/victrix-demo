@@ -228,18 +228,41 @@ collections_config:
       sectionTitle:
         type: text
         label: Titre de section
+      titleAccent:
+        type: text
+        label: Mot accentué du titre
+        comment: >-
+          Sous-chaîne du titre affichée en bleu (ex. « vraiment »). Vide =
+          titre uniforme.
+      intro:
+        type: textarea
+        label: Paragraphe d'appui
       learnMore:
         type: text
         label: Libellé du bouton des cartes
+      readMoreLabel:
+        type: text
+        label: Libellé « Lire la suite »
+        comment: Lien au bas de chaque carte d'article. Vide = absent.
       body:
         type: textarea
         label: Texte
       # Cartes d'expertise (tableau `items` de la section « Expertises »).
+      # NB : la section « Solutions phares » porte AUSSI un tableau `items` —
+      # sa spec bookshop (home-solutions.bookshop.yml) le re-lie à
+      # _structures.solution_items au niveau structure, qui PRIME sur ce repli
+      # de collection (même mécanique que le `variant` form vs cta).
       items:
         type: array
         label: Cartes d'expertise
         options:
           structures: _structures.expertise_items
+      # Tuiles de caractéristiques (section « Solution » — home-solution).
+      features:
+        type: array
+        label: Tuiles de caractéristiques
+        options:
+          structures: _structures.solution_features
       number:
         type: text
         label: Numéro (hérité — plus affiché)
@@ -975,6 +998,90 @@ _structures:
           description: ''
           href: ''
           image: ''
+          variant: claire
+          linkLabel: ''
+        # _inputs de STRUCTURE (priment sur ceux de la collection — même
+        # mécanique que form_fields) : la peau de la carte est une clé fermée.
+        _inputs:
+          variant:
+            type: select
+            label: Peau de la carte
+            options:
+              allow_empty: false
+              values:
+                - claire
+                - image
+                - bleue
+                - nuit
+            comment: >-
+              claire = carte blanche bordée ; image = photo + voile navy (renseigner
+              « Image ») ; bleue = aplat bleu ; nuit = aplat marine.
+          linkLabel:
+            type: text
+            label: Libellé du lien (surcharge)
+            comment: Vide = libellé commun de la section (« Libellé du bouton des cartes »).
+
+  # Cartes de la section « Solutions phares » (home-solutions, fidélité
+  # maquette accueil.css) — images = CHEMINS PUBLICS (ex. /images/home/…),
+  # contrairement à l'image de home-solution (relative, résolue par Astro).
+  solution_items:
+    values:
+      - label: Carte de solution
+        icon: dark_mode
+        preview:
+          icon: dark_mode
+          text:
+            - key: title
+            - text: Carte de solution
+        value:
+          title: ''
+          text: ''
+          image: ''
+          href: ''
+          ctaLabel: ''
+          icon: ''
+        _inputs:
+          text:
+            type: textarea
+            label: Texte
+          image:
+            type: text
+            label: Image (chemin public)
+            comment: "Ex. /images/home/sevoc.png — servie telle quelle."
+          ctaLabel:
+            type: text
+            label: Libellé du lien
+          icon:
+            type: select
+            label: Icône
+            options:
+              allow_empty: true
+              values:
+                - ecran
+                - bouclier
+                - nuage
+            comment: Icône décorative à gauche du titre (vide = aucune).
+
+  # Tuiles de caractéristiques de la section « Solution » (home-solution).
+  solution_features:
+    values:
+      - label: Tuile de caractéristique
+        icon: check_box
+        preview:
+          icon: check_box
+          text:
+            - key: label
+            - text: Tuile
+        value:
+          label: ''
+          text: ''
+        _inputs:
+          label:
+            type: text
+            label: Libellé (majuscules)
+          text:
+            type: textarea
+            label: Texte d'appui
 
   form_fields:
     values:

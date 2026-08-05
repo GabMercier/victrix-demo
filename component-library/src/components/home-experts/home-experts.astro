@@ -1,10 +1,12 @@
 ---
 /**
- * Section « Bandeau experts » — composant Bookshop (accueil composable).
- * RE-SKIN 2026-08-04 (lot accueil, Phase 5) : patron « Bottom CTA Banner » de
- * la maquette Accueil.html normalisé système — panneau SABLE arrondi (couches
- * tonales, pas d'aplat marine), grand titre, bouton primaire (la maquette
- * posait bg-secondary, normalisé primary — décision CTA).
+ * Section « Bandeau CTA final » — composant Bookshop (accueil composable).
+ * FIDÉLITÉ MAQUETTE 2026-08-04 (docs/design/accueil.css §Section - FinalCTA,
+ * « Prêt à faire évoluer votre organisation ? ») : panneau gris froid #F3F4F6
+ * rayon 16, padding 80px desktop, titre 48/900 ls -0.96 navy à gauche +
+ * sous-titre 18/28 #545F71, bouton primaire à droite (14/900 majuscules
+ * ls 1.4, rayon 4, ombre portée).
+ * Neutres froids maquette tels quels ; bleus/navy = tokens (décision méga).
  *
  * Props : { type: "home-experts", title, subtitle, ctaLabel, ctaHref }
  * (contrat inchangé). Browser-safe (éditeur visuel CloudCannon), aucun import.
@@ -20,15 +22,17 @@ interface Props {
 const { title, subtitle, ctaLabel, ctaHref } = Astro.props;
 ---
 
-<section class="py-section-gap bg-surface">
+<section class="py-24 bg-white">
   <div class="container-site">
-    <div class="bg-surface-container-high rounded-lg p-8 lg:p-12 flex flex-col lg:flex-row justify-between items-center gap-12">
-      <div class="text-center lg:text-left max-w-2xl">
-        <h2 class="font-headline-lg text-headline-lg text-on-surface m-0 mb-4">{title}</h2>
-        <p class="font-body-lg text-body-lg text-on-surface-variant m-0">{subtitle}</p>
+    <div class="bg-[#F3F4F6] rounded-2xl p-10 lg:p-20 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12">
+      <div class="max-w-xl flex flex-col gap-8">
+        <h2 class="text-[36px] leading-none lg:text-[48px] lg:leading-[48px] font-black tracking-[-0.96px] text-on-primary-fixed m-0 text-balance">
+          {title}
+        </h2>
+        <p class="text-lg leading-7 text-[#545F71] m-0 max-w-none">{subtitle}</p>
       </div>
       <a
-        class="no-underline bg-primary text-on-primary px-12 py-5 rounded font-button text-button uppercase tracking-widest hover:bg-primary-container transition-colors shadow-lg whitespace-nowrap"
+        class="no-underline bg-primary text-on-primary px-10 py-5 rounded text-sm font-black uppercase tracking-[1.4px] leading-5 hover:bg-primary-container transition-colors shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] whitespace-nowrap shrink-0"
         href={ctaHref}
       >
         {ctaLabel}

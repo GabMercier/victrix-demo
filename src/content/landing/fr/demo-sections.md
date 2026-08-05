@@ -78,4 +78,29 @@ sections:
     submitLabel: Envoyer
     consentText: ''
     fields: []
+  # Sections d'accueil retirées de la page d'accueil (refonte maquette
+  # 2026-08-04) mais conservées à la palette : rendues ICI pour la couverture
+  # du script d'aperçus (design:previews échoue sur un type sans rendu).
+  - _bookshop_name: home-iso
+    type: home-iso
+    title: Ils nous font confiance
+    subtitle: La sécurité de l'information au cœur de toutes nos pratiques.
+    items:
+      - value: 30+ ans
+        label: d'expertise
+      - value: '250+'
+        label: experts
+      - value: ISO 27001
+        label: certifié
+      - value: Microsoft
+        label: Solutions Partner
+  - _bookshop_name: home-partners
+    type: home-partners
+    title: Nos partenaires
+    names:
+      - Imprivata
+      - AlgoSec
+      - AWS
+      - OVHcloud
+      - ServiceNow
 ---

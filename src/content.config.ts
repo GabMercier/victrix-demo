@@ -297,6 +297,9 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('home-hero'),
       eyebrow: z.string().optional(),
       title: z.string(),
+      // Fidélité maquette accueil.css (2026-08-04) : sous-chaîne du titre
+      // rendue en Bleu Victrix (« vraiment ») ; vide = titre uniforme.
+      titleAccent: z.string().default(''),
       subtitle: z.string(),
       ctaLabel: z.string(),
       ctaHref: z.string(),
@@ -317,9 +320,13 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('home-expertises'),
       sectionTitle: z.string(),
-      // Re-skin 2026-08-04 — paragraphe d'appui à droite du titre (optionnel).
+      // Re-skin 2026-08-04 — paragraphe d'appui (maquette bento : SOUS le titre).
       intro: z.string().default(''),
       learnMore: z.string(),
+      // Fidélité maquette accueil.css — lien en haut à droite de la section
+      // (« Voir toutes nos expertises → ») ; vides = pas de lien.
+      ctaLabel: z.string().default(''),
+      ctaHref: z.string().default(''),
       items: z.array(
         z.object({
           number: z.string(), // hérité (plus rendu depuis le re-skin tuiles)
@@ -327,8 +334,14 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           accent: z.string(), // hérité (plus rendu — accents multicolores retirés)
           description: z.string(),
           href: z.string(),
-          // Visuel de la tuile (chemin PUBLIC) ; vide = fond sable.
+          // Visuel de la tuile (chemin PUBLIC) ; requis pour la variante image.
           image: z.string().default(''),
+          // Fidélité maquette (bento « Nos services ») : peau de la carte.
+          // image = photo + voile nuit, titre 30px ; claire = blanche bordée ;
+          // bleue = aplat Bleu Victrix + forme décorative ; nuit = aplat navy.
+          variant: z.enum(['image', 'claire', 'bleue', 'nuit']).default('claire'),
+          // Libellé du lien de CETTE carte ; vide = learnMore de la section.
+          linkLabel: z.string().default(''),
         }),
       ),
     }),
@@ -346,6 +359,31 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       statValue: z.string().default(''),
       statLabel: z.string().default(''),
       statText: z.string().default(''),
+      // Fidélité maquette accueil.css (« Libérez votre équipe ») : petites
+      // tuiles de caractéristiques sous le corps ; tableau vide = aucune.
+      features: z.array(z.object({ label: z.string(), text: z.string() })).default([]),
+    }),
+    // Fidélité maquette accueil.css — « Nos solutions phares » : 3 cartes
+    // sombres photo + dégradé noir, icône + titre + texte + lien. Images =
+    // chemins PUBLICS servis tels quels (browser-safe, règle des sections).
+    z.object({
+      type: z.literal('home-solutions'),
+      title: z.string(),
+      // Lien en haut à droite (« Voir toutes nos solutions → ») ; vides = absent.
+      ctaLabel: z.string().default(''),
+      ctaHref: z.string().default(''),
+      items: z.array(
+        z.object({
+          title: z.string(),
+          text: z.string(),
+          image: z.string().default(''),
+          href: z.string(),
+          // Libellé du lien de la carte (ex. « Découvrir Ø Studio »).
+          ctaLabel: z.string().default(''),
+          // Icône décorative de la carte (clé fermée ; vide = aucune).
+          icon: z.enum(['ecran', 'bouclier', 'nuage', '']).default(''),
+        }),
+      ),
     }),
     z.object({
       type: z.literal('home-partners'),
@@ -362,6 +400,11 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('home-latest'),
       title: z.string(),
+      // Fidélité maquette accueil.css — sous-titre sous le titre de section.
+      subtitle: z.string().default(''),
+      // Libellé « Lire la suite » des cartes (contenu, pas i18n — composant
+      // browser-safe) ; vide = ligne absente.
+      readMoreLabel: z.string().default(''),
       ctaLabel: z.string(),
       ctaHref: z.string(),
     }),

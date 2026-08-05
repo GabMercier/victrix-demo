@@ -25,6 +25,8 @@ blueprint:
   sectionTitle: "Nos expertises"
   intro: ""
   learnMore: "En savoir plus"
+  ctaLabel: ""
+  ctaHref: ""
   items:
     - number: "01"
       title: "Première expertise"
@@ -32,6 +34,8 @@ blueprint:
       description: "Décrivez brièvement cette expertise."
       href: "/fr/expertises/"
       image: ""
+      variant: claire
+      linkLabel: ""
 
 preview:
 
@@ -43,10 +47,16 @@ _inputs:
     label: "Titre de section"
   intro:
     label: "Paragraphe d'appui"
-    comment: "Affiché à droite du titre (optionnel)."
+    comment: "Affiché sous le titre (optionnel)."
   learnMore:
     label: "Libellé du lien des tuiles"
-    comment: "Ex. « En savoir plus » — commun à toutes les tuiles."
+    comment: "Ex. « En savoir plus » — commun à toutes les tuiles (une carte peut le surcharger)."
+  ctaLabel:
+    label: "Libellé du lien de section"
+    comment: "Lien en haut à droite (ex. « Voir toutes nos expertises »). Vide = absent."
+  ctaHref:
+    label: "Lien de section"
+    comment: "URL finale, préfixe de langue inclus."
   items:
     type: array
     label: "Cartes d'expertise"

@@ -1,20 +1,26 @@
 ---
 /**
- * Section « Expertises » — composant Bookshop (accueil composable).
- * RE-SKIN 2026-08-04 (lot accueil, Phase 5) : patron « Nos services » de la
- * maquette Accueil.html normalisé système — TUILES image + overlay Bleu nuit
- * (même pattern que les tuiles expertises de PageExpertise, validé au port du
- * pipeline). Les ACCENTS multicolores par carte et les numéros de l'ancien
- * design sont RETIRÉS du rendu (champs conservés au contrat pour
- * compatibilité du contenu existant).
+ * Section « Expertises » (bento « Nos services ») — composant Bookshop.
+ * FIDÉLITÉ MAQUETTE 2026-08-04 (docs/design/accueil.css §ServicesGrid) :
+ * grille 3 colonnes × N rangées de cartes 300px rayon 8, QUATRE PEAUX par
+ * carte (`items[].variant`) —
+ *  - image  : photo + fond navy (mix-blend overlay 60 %), titre 30/700 blanc
+ *             ancré en bas ;
+ *  - claire : carte blanche bordée #F3F4F6, titre 24/700 navy, texte #6B7280,
+ *             lien 12/700 majuscules navy + flèche ;
+ *  - bleue  : aplat Bleu Victrix + forme décorative blanche 10 % en bas à
+ *             droite, texte bleu pâle, lien blanc ;
+ *  - nuit   : aplat navy, texte #9CA3AF, lien blanc.
+ * Rangée de tête : titre 48/700 ls -0.96 + paragraphe d'appui SOUS le titre,
+ * lien « Voir toutes nos expertises → » 12/700 majuscules bleu à droite.
+ * Neutres froids maquette tels quels ; bleus/navy = tokens (décision méga).
  *
  * Props : { type: "home-expertises", sectionTitle, intro?, learnMore,
- *           items: [{ number, title, accent, description, href, image? }] }
- * - `intro` (NOUVEAU, optionnel) : paragraphe d'appui à droite du titre.
- * - `items[].image` (NOUVEAU, optionnel) : chemin PUBLIC servi tel quel ;
- *   sans image, la tuile pose un fond sable (pas de casse).
- * - `learnMore` : libellé du lien de chaque tuile (champ de contenu — aucun
- *   import i18n, composant browser-safe pour l'éditeur visuel CloudCannon).
+ *           ctaLabel?, ctaHref?, items: [{ number, title, accent, description,
+ *           href, image?, variant?, linkLabel? }] }
+ * - `variant` défaut « claire » ; `linkLabel` vide = `learnMore` commun ;
+ * - `number`/`accent` hérités (jamais rendus) ; images = chemins PUBLICS
+ *   (browser-safe, éditeur visuel CloudCannon).
  *
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
@@ -25,54 +31,134 @@ interface ExpertiseItem {
   description: string;
   href: string;
   image?: string;
+  variant?: 'image' | 'claire' | 'bleue' | 'nuit';
+  linkLabel?: string;
 }
 
 interface Props {
   sectionTitle: string;
   intro?: string;
   learnMore: string;
+  ctaLabel?: string;
+  ctaHref?: string;
   items: ExpertiseItem[];
 }
 
-const { sectionTitle, intro, learnMore, items = [] } = Astro.props;
+const { sectionTitle, intro, learnMore, ctaLabel, ctaHref, items = [] } = Astro.props;
+
+// Recettes par peau — la carte entière est cliquable via le lien étiré du CTA.
+const cardBase = 'group relative h-[300px] rounded-lg overflow-hidden flex flex-col';
+const linkBase =
+  "inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[1.2px] no-underline after:content-[''] after:absolute after:inset-0";
+const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
 ---
 
-<section class="py-section-gap bg-surface">
+<section class="py-24 bg-white">
   <div class="container-site">
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
-      <h2 class="font-headline-lg text-headline-lg text-on-surface m-0">{sectionTitle}</h2>
-      {intro && <p class="font-body-md text-body-md text-on-surface-variant max-w-sm m-0 md:text-right">{intro}</p>}
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+      <div class="max-w-xl flex flex-col gap-6">
+        <h2 class="text-[48px] leading-none font-bold tracking-[-0.96px] text-on-primary-fixed m-0">
+          {sectionTitle}
+        </h2>
+        {intro && <p class="text-base leading-6 text-[#545F71] m-0 max-w-none">{intro}</p>}
+      </div>
+      {
+        ctaLabel && ctaHref && (
+          <a
+            class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
+            href={ctaHref}
+          >
+            {ctaLabel}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <path d={arrow} stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        )
+      }
     </div>
     <ul role="list" class="grid grid-cols-1 md:grid-cols-3 gap-6 m-0 p-0 list-none">
       {
-        items.map((item) => (
-          <li class="m-0">
-            <a class="group relative block h-64 rounded-lg overflow-hidden no-underline" href={item.href}>
-              {item.image ? (
-                <img
-                  src={item.image}
-                  alt=""
-                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
+        items.map((item) => {
+          const variant = item.variant || 'claire';
+          const label = item.linkLabel || learnMore;
+          return (
+            <li class="m-0">
+              {variant === 'image' ? (
+                <a
+                  class:list={[cardBase, 'justify-end p-8 bg-on-primary-fixed no-underline isolate']}
+                  href={item.href}
+                >
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt=""
+                      class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-60 transition-transform duration-300 group-hover:scale-105 -z-10"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                  <span class="block text-[30px] leading-9 font-bold tracking-[-0.6px] text-white">
+                    {item.title}
+                  </span>
+                </a>
+              ) : variant === 'bleue' ? (
+                <div class:list={[cardBase, 'justify-between p-10 bg-primary isolate']}>
+                  <span
+                    class="absolute -right-10 -bottom-10 size-64 rounded-3xl bg-white/10 -z-10"
+                    aria-hidden="true"
+                  />
+                  <span class="flex flex-col gap-4">
+                    <span class="block text-2xl leading-8 font-bold tracking-[-0.48px] text-white">
+                      {item.title}
+                    </span>
+                    <span class="block text-base leading-6 text-[#DBEAFE]">{item.description}</span>
+                  </span>
+                  <a class:list={[linkBase, 'text-white']} href={item.href}>
+                    {label}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                      <path d={arrow} stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                </div>
+              ) : variant === 'nuit' ? (
+                <div class:list={[cardBase, 'justify-between p-10 bg-on-primary-fixed']}>
+                  <span class="flex flex-col gap-4">
+                    <span class="block text-2xl leading-8 font-bold tracking-[-0.48px] text-white">
+                      {item.title}
+                    </span>
+                    <span class="block text-base leading-6 text-[#9CA3AF]">{item.description}</span>
+                  </span>
+                  <a class:list={[linkBase, 'text-white']} href={item.href}>
+                    {label}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                      <path d={arrow} stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                </div>
               ) : (
-                <span class="absolute inset-0 bg-surface-container-high" aria-hidden="true" />
+                <div
+                  class:list={[
+                    cardBase,
+                    'justify-between p-10 bg-white border border-solid border-[#F3F4F6] transition-shadow hover:shadow-survol',
+                  ]}
+                >
+                  <span class="flex flex-col gap-4">
+                    <span class="block text-2xl leading-8 font-bold tracking-[-0.48px] text-on-primary-fixed">
+                      {item.title}
+                    </span>
+                    <span class="block text-base leading-6 text-[#6B7280]">{item.description}</span>
+                  </span>
+                  <a class:list={[linkBase, 'text-on-primary-fixed group-hover:text-primary']} href={item.href}>
+                    {label}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                      <path d={arrow} stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                </div>
               )}
-              <span class="absolute inset-0 bg-gradient-to-t from-on-primary-fixed/85 via-on-primary-fixed/35 to-transparent" aria-hidden="true" />
-              <span class="absolute bottom-0 left-0 right-0 p-6 block">
-                <span class="block font-headline-md text-white text-[20px] mb-1">{item.title}</span>
-                <span class="block font-body-md text-[14px] leading-snug text-white/80 mb-3">{item.description}</span>
-                <span class="inline-flex items-center gap-2 font-button text-button text-primary-fixed-dim group-hover:text-white transition-colors">
-                  {learnMore}
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-                    <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </span>
-              </span>
-            </a>
-          </li>
-        ))
+            </li>
+          );
+        })
       }
     </ul>
   </div>

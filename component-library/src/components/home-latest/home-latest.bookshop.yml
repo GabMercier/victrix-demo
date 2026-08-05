@@ -24,6 +24,8 @@ spec:
 blueprint:
   type: home-latest
   title: "Nos derniers articles"
+  subtitle: ""
+  readMoreLabel: "Lire la suite"
   ctaLabel: "Voir toutes les ressources"
   ctaHref: "/fr/ressources"
 
@@ -35,6 +37,12 @@ _inputs:
     comment: "Discriminant technique du contrat sections — ne pas modifier."
   title:
     label: "Titre"
+  subtitle:
+    label: "Sous-titre"
+    comment: "Paragraphe d'appui sous le titre (optionnel)."
+  readMoreLabel:
+    label: "Libellé « Lire la suite »"
+    comment: "Lien affiché au bas de chaque carte. Vide = absent."
   ctaLabel:
     label: "Libellé du lien"
   ctaHref:

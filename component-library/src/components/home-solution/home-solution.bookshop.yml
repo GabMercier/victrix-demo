@@ -22,7 +22,7 @@ spec:
 
 blueprint:
   type: home-solution
-  eyebrow: "Nos solutions phares"
+  eyebrow: ""
   title: "Titre de la solution"
   body: ""
   ctaLabel: "En savoir plus"
@@ -31,6 +31,7 @@ blueprint:
   statValue: ""
   statLabel: ""
   statText: ""
+  features: []
 
 preview:
 
@@ -58,3 +59,11 @@ _inputs:
     label: "Carte flottante — libellé"
   statText:
     label: "Carte flottante — texte d'appui"
+  # Tuiles de caractéristiques (fidélité maquette « Libérez votre équipe ») —
+  # `type: array` explicite + structure dédiée (même garde-fou que items).
+  features:
+    type: array
+    label: "Tuiles de caractéristiques"
+    comment: "Petites tuiles sous le texte (ex. « M365 Écosystème »). Vide = aucune."
+    options:
+      structures: _structures.solution_features
