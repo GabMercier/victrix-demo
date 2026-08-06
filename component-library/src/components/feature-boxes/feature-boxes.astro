@@ -1,16 +1,19 @@
 ---
 /**
  * Section « Boîtes de domaines » — composant Bookshop (P-07).
+ * RE-SKIN DESIGN SYSTEM 2026-08-05 : tête centrée (H2 40/700 ls -0.4 +
+ * liseré bleu 64×4 — patron des têtes landing), grille de tuiles bordées
+ * #C4C5D9 (verbatim, précédent méga) à libellé 16/600, survol bordure bleue
+ * (patron des tuiles valeurs de la page Carrières). L'ancien thème
+ * navy/liseré vert disparaît.
  *
  * Props : { type: "feature-boxes", sectionTitle, subtitle?, boxes: string[] }
- *
- * Port fidèle du bloc « domaines d'expertise » de la page expertise : titre à
- * liseré vert, sous-titre, grille de boîtes bordées (libellés simples).
  *
  * Contraintes / pièges :
  * - <h2> : le <h1> unique appartient au héros.
  * - `boxes = []` en secours pour ne pas planter l'éditeur pendant la saisie.
- * - Aucun script client ; var(--token, secours) reprend src/styles/tokens.css.
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 interface Props {
   sectionTitle: string;
@@ -21,95 +24,23 @@ interface Props {
 const { sectionTitle, subtitle, boxes = [] } = Astro.props;
 ---
 
-<section class="fb">
-  <div class="fb__container">
-    <h2 class="fb__title">{sectionTitle}</h2>
-    {subtitle && <p class="fb__sub">{subtitle}</p>}
-    <ul role="list" class="fb__grid">
-      {boxes.map((box) => <li class="fb__box">{box}</li>)}
+<section class="py-20 bg-surface-container-low">
+  <div class="container-site">
+    <div class="mx-auto text-center flex flex-col items-center gap-4 mb-12">
+      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
+        {sectionTitle}
+      </h2>
+      <span class="w-16 h-1 bg-primary" aria-hidden="true"></span>
+      {subtitle && <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-[672px]">{subtitle}</p>}
+    </div>
+    <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-0 p-0 list-none">
+      {
+        boxes.map((box) => (
+          <li class="m-0 min-h-24 flex items-center justify-center text-center p-6 bg-white border border-solid border-[#C4C5D9] rounded-xs text-base font-semibold text-on-surface hover:border-primary transition-colors">
+            {box}
+          </li>
+        ))
+      }
     </ul>
   </div>
 </section>
-
-<style>
-  .fb {
-    padding-block: var(--space-9, 6rem);
-    background-color: var(--color-band, #f6f7f8);
-    color: var(--color-text, #1a1c20);
-    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
-  }
-
-  /* Conteneur répliqué localement (pas la classe globale .container). */
-  .fb__container {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-  }
-
-  /* Titre à liseré vert (équivalent .s-head de la page expertise). */
-  .fb__title {
-    position: relative;
-    margin: 0 auto;
-    max-width: 24ch;
-    padding-bottom: var(--space-4, 1rem);
-    text-align: center;
-    color: var(--color-navy, #083957);
-    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
-    font-weight: var(--fw-bold, 700);
-    line-height: var(--lh-tight, 1.15);
-    text-wrap: balance;
-  }
-  .fb__title::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    width: 220px;
-    max-width: 60%;
-    height: 3px;
-    background-color: var(--color-accent-green, #24fb8e);
-    border-radius: 2px;
-  }
-
-  .fb__sub {
-    margin: var(--space-4, 1rem) auto 0;
-    text-align: center;
-    color: var(--color-text-muted, #4a4d54);
-    line-height: var(--lh-normal, 1.6);
-  }
-
-  .fb__grid {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-4, 1rem);
-    margin: var(--space-7, 3rem) 0 0;
-    padding: 0;
-  }
-  @media (min-width: 700px) {
-    .fb__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (min-width: 1000px) {
-    .fb__grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .fb__box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 96px;
-    padding: var(--space-5, 1.5rem);
-    text-align: center;
-    font-weight: var(--fw-semibold, 600);
-    color: var(--color-navy, #083957);
-    background-color: var(--color-bg, #ffffff);
-    border: 1.5px solid var(--color-accent-green, #24fb8e);
-    border-radius: var(--radius-m, 8px);
-  }
-</style>

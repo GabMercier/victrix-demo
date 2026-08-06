@@ -1,15 +1,22 @@
 ---
 /**
  * Section « Victrix en chiffres » — composant Bookshop (palette partagée).
+ * RE-SKIN DESIGN SYSTEM 2026-08-05 : bande beige (surface-container-low),
+ * titre centré 40/700 ls -0.4, tuiles statistiques au patron strategic-value —
+ * fond blanc, LISERÉ GAUCHE bleu 4 px, valeur 40/700 bleue, étiquette 12/700
+ * majuscules ls 1.2. L'ancien thème navy/vert disparaît.
  *
  * Props : { type: "stats", title?, items: [{ number, label }] }
  * - `number` est une CHAÎNE affichée telle quelle (« 25+ », « 99,9 % ») —
  *   aucun formatage numérique imposé, le marketing garde la main.
  *
- * Contraintes / pièges (voir faq.astro pour les conventions) :
- * - `items = []` en secours : liste momentanément absente pendant l'édition
- *   en direct — ne pas planter l'éditeur visuel.
+ * Contraintes / pièges :
+ * - `items = []` en secours (édition en direct CloudCannon).
  * - <h2> optionnel : rendu seulement si un titre est fourni.
+ * - Liseré gauche : `border-0 border-l-4 border-solid` OBLIGATOIRE (piège
+ *   border-solid/UA-medium sans preflight, consigné au lot chrome).
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 
 interface StatItem {
@@ -25,76 +32,24 @@ interface Props {
 const { title = '', items = [] } = Astro.props;
 ---
 
-<section class="lp-stats">
-  <div class="lp-stats__container">
-    {title !== '' && <h2 class="lp-stats__title">{title}</h2>}
-    <ul role="list" class="lp-stats__grid">
+<section class="py-20 bg-surface-container-low">
+  <div class="container-site flex flex-col gap-12">
+    {
+      title !== '' && (
+        <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
+          {title}
+        </h2>
+      )
+    }
+    <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 m-0 p-0 list-none">
       {
         items.map((item) => (
-          <li class="lp-stats__item">
-            <span class="lp-stats__number">{item.number}</span>
-            <span class="lp-stats__label">{item.label}</span>
+          <li class="m-0 bg-white border-0 border-l-4 border-solid border-primary p-6 flex flex-col gap-3 shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+            <p class="text-[40px] leading-[48px] font-bold text-primary m-0">{item.number}</p>
+            <p class="text-xs font-bold uppercase tracking-[1.2px] text-on-surface-variant m-0 max-w-none">{item.label}</p>
           </li>
         ))
       }
     </ul>
   </div>
 </section>
-
-<style>
-  .lp-stats {
-    padding-block: var(--space-9, 6rem);
-    background-color: var(--color-navy, #083957);
-    color: var(--color-white, #ffffff);
-    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
-  }
-
-  /* Conteneur répliqué localement (pas la classe globale .container) pour que
-     le composant reste autonome dans l'éditeur visuel. */
-  .lp-stats__container {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-    text-align: center;
-  }
-
-  .lp-stats__title {
-    margin: 0;
-    color: var(--color-white, #ffffff);
-    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
-    font-weight: var(--fw-bold, 700);
-    line-height: var(--lh-tight, 1.15);
-    text-wrap: balance;
-  }
-
-  .lp-stats__grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-7, 3rem);
-    margin: var(--space-7, 3rem) 0 0;
-    padding: 0;
-  }
-
-  .lp-stats__item {
-    flex: 0 1 220px;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2, 0.5rem);
-  }
-
-  .lp-stats__number {
-    color: var(--color-accent-green, #24fb8e);
-    font-size: var(--fs-800, clamp(2.5rem, 3vw + 1.6rem, 3.75rem));
-    font-weight: var(--fw-bold, 700);
-    line-height: 1;
-  }
-
-  .lp-stats__label {
-    color: var(--color-white, #ffffff);
-    opacity: 0.85;
-    line-height: var(--lh-snug, 1.4);
-    text-wrap: balance;
-  }
-</style>

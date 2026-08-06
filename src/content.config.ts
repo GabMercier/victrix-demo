@@ -213,18 +213,32 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       subtitle: z.string().optional(),
       ctaLabel: z.string().optional(),
       ctaHref: z.string().optional(),
+      // Champs AJOUTÉS 2026-08-05 (landing-page.css — contrat gelé intact,
+      // tous par défaut vides) : héros clair 2 colonnes de la landing.
+      titleAccent: z.string().default(''),
+      image: z.string().default(''),
+      cta2Label: z.string().default(''),
+      cta2Href: z.string().default(''),
+      eyebrowIcon: z.enum(['livre', '']).default(''),
+      ctaIcon: z.enum(['telechargement', '']).default(''),
     }),
     z.object({
       type: z.literal('benefits'),
       title: z.string(),
       intro: z.string().optional(),
+      // « compact » AJOUTÉ 2026-08-05 (landing-page.css §Guide Benefits) :
+      // tête réduite 16/24 + liseré bleu, cartes compactes.
+      headingStyle: z.enum(['titre', 'compact']).default('titre'),
       items: z.array(
         z.object({
           title: z.string(),
           description: z.string(),
           // Fidélité maquette expertise-mere.css (2026-08-05) : icône de la
           // tuile pâle au-dessus du titre (clé fermée ; vide = pas de tuile).
-          icon: z.enum(['dossier', 'personne', 'groupe', '']).default(''),
+          // ampoule/croissance/losange AJOUTÉES 2026-08-05 (landing-page.css).
+          icon: z
+            .enum(['dossier', 'personne', 'groupe', 'ampoule', 'croissance', 'losange', ''])
+            .default(''),
         }),
       ),
     }),
@@ -532,6 +546,15 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       imageAlt: z.string().default(''),
       // Tuiles statistiques (liseré gauche bleu) ; tableau vide = pas de rangée.
       stats: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
+      // Champs AJOUTÉS 2026-08-05 (landing-page.css §Studio Section — contrat
+      // intact, tous par défaut vides) : « vitrine » = texte à gauche/image
+      // encadrée blanc à droite, tuiles « verre », badge chip, puces cochées,
+      // carte flottante sur l'image (rendue si cardTitle ET image).
+      variant: z.enum(['produit', 'vitrine']).default('produit'),
+      badge: z.string().default(''),
+      bullets: z.array(z.string()).default([]),
+      cardTitle: z.string().default(''),
+      cardText: z.string().default(''),
     }),
     // Offres numérotées : cartes « verre » à tuile numéro bleue et liste à
     // puces icônes, bouton primaire centré sous la grille.
@@ -777,6 +800,43 @@ const services = defineCollection({
 // /services/intelligence-artificielle (astro.config.mjs, bloc `redirects`).
 
 /**
+ * Solutions — entrées du CATALOGUE de solutions Ø Studio (page
+ * /[lang]/solutions, fidélité maquette solutions-catalogue.css 2026-08-05,
+ * BASE — voir docs/design/solutions-catalogue-plan.md pour l'organisation
+ * complète). Une entrée JSON par solution, ids "<locale>/<fichier>" (même
+ * patron que blog/landing/services : le nom de fichier apparie FR/EN).
+ *
+ * PAS de pages de détail pour l'instant — `href`/`docHref` pointent vers une
+ * cible existante (ex. /contact) ou restent vides (lien masqué). Les valeurs
+ * de `sector` et `solutionType` sont LIBRES : la page catalogue construit ses
+ * filtres à partir des valeurs distinctes rencontrées (ordre d'apparition).
+ */
+const solutions = defineCollection({
+  loader: glob({
+    pattern: '**/*.json',
+    base: './src/content/solutions',
+    generateId: ({ entry }) => entry.replace(/\\/g, '/').replace(/\.[^/.]+$/, ''),
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    // Chemin PUBLIC servi tel quel ("" = vignette de remplacement grise).
+    image: z.string().default(''),
+    // Chip du haut de vignette (filtre « Secteurs d'activité »).
+    sector: z.string(),
+    // Chip du pied de carte (filtre « Types de solution »).
+    solutionType: z.string(),
+    // true → l'entrée alimente le panneau vedette (bleu nuit) en tête de
+    // catalogue (la première trouvée dans l'ordre `order` gagne).
+    featured: z.boolean().default(false),
+    // Ordre d'affichage dans la grille (croissant).
+    order: z.number().default(999),
+    href: z.string().default(''),
+    docHref: z.string().default(''),
+  }),
+});
+
+/**
  * Site chrome navigation — header menu, mega menu, announcement bar, portal
  * button. One JSON per locale in src/data/navigation (ids "fr" / "en"),
  * edited in CloudCannon (« Navigation » collection, cloudcannon.config.yml)
@@ -1005,4 +1065,4 @@ const forms = defineCollection({
   }),
 });
 
-export const collections = { blog, home, landing, services, navigation, forms };
+export const collections = { blog, home, landing, services, solutions, navigation, forms };

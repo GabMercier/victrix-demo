@@ -988,6 +988,9 @@ _structures:
                 - dossier
                 - personne
                 - groupe
+                - ampoule
+                - croissance
+                - losange
             comment: Tuile pictogramme au-dessus du titre. Vide = aucune.
 
   # Cartes du bento d'expertises (section « Service — Bento d'expertises »,

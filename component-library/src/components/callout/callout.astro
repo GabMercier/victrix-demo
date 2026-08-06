@@ -1,17 +1,24 @@
 ---
 /**
  * Section « Encadré d'appel à l'action » — composant Bookshop (P-07).
+ * RE-SKIN DESIGN SYSTEM 2026-08-05 (landing-page.css §Contact CTA Section +
+ * recettes établies) — l'ancien thème navy/vert disparaît :
+ * - layout 'box' : encadré beige centré (surface-container, rayon 8) — titre
+ *   32/700, texte 16/26, bouton primaire rayon 2 (recette cta light) ;
+ * - layout 'banner-green' : BANDEAU PLEINE LARGEUR bg-primary py-64 — titre
+ *   16/24 blanc + texte 16/24 blanc/90 à gauche, bouton BLANC texte bleu à
+ *   droite (la maquette landing « Besoin d'un accompagnement sur mesure ? »).
+ *   La CLÉ 'banner-green' est conservée telle quelle (contrat gelé — le vert
+ *   n'existe plus dans le système, seule la peau change).
  *
  * Props : { type: "callout", title, body?, ctaLabel?, ctaHref?, layout? }
- * - layout : 'box' (encadré centré sur fond surface — les deux encadrés CTA de
- *   la page expertise) | 'banner-green' (bandeau vert large : titre/texte à
- *   gauche, bouton à droite — le bandeau vert de bas de page).
  *
  * Contraintes / pièges :
  * - <h2> : le <h1> unique appartient au héros.
  * - Le bouton n'est rendu que si le libellé ET le lien sont fournis.
  * - Layout CALCULÉ (booléen) : toute valeur inattendue retombe sur 'box'.
- * - Aucun script client ; var(--token, secours) reprend src/styles/tokens.css.
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 interface Props {
   title: string;
@@ -28,27 +35,35 @@ const hasCta = Boolean(ctaLabel && ctaHref);
 
 {
   isBanner ? (
-    <section class="co co--banner">
-      <div class="co__banner-inner">
-        <div>
-          <h2 class="co__banner-title">{title}</h2>
-          {body && <p class="co__banner-body">{body}</p>}
+    <section class="bg-primary py-16">
+      <div class="container-site flex flex-wrap items-center justify-between gap-6">
+        <div class="flex flex-col gap-2 max-w-[576px]">
+          <h2 class="text-base leading-6 font-semibold text-on-primary m-0">{title}</h2>
+          {body && <p class="text-base leading-6 text-on-primary/90 m-0 max-w-none">{body}</p>}
         </div>
         {hasCta && (
-          <a class="co__banner-btn" href={ctaHref}>
+          <a
+            class="shrink-0 inline-flex items-center justify-center bg-white text-primary px-8 py-4 rounded-xs text-base leading-6 no-underline hover:bg-primary-fixed transition-colors"
+            href={ctaHref}
+          >
             {ctaLabel}
           </a>
         )}
       </div>
     </section>
   ) : (
-    <section class="co co--box">
-      <div class="co__box-container">
-        <div class="co__box">
-          <h2 class="co__box-title">{title}</h2>
-          {body && <p class="co__box-body">{body}</p>}
+    <section class="py-20 bg-surface">
+      <div class="container-site">
+        <div class="max-w-[860px] mx-auto bg-surface-container rounded-lg p-8 lg:p-12 text-center flex flex-col items-center gap-4">
+          <h2 class="text-[28px] leading-[1.2] lg:text-[32px] lg:leading-10 font-bold tracking-[-0.4px] text-on-surface m-0">
+            {title}
+          </h2>
+          {body && <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-[60ch]">{body}</p>}
           {hasCta && (
-            <a class="co__box-btn" href={ctaHref}>
+            <a
+              class="mt-2 inline-flex items-center justify-center bg-primary text-on-primary px-8 py-4 rounded-xs text-base leading-6 no-underline hover:bg-primary-container transition-colors"
+              href={ctaHref}
+            >
               {ctaLabel}
             </a>
           )}
@@ -57,117 +72,3 @@ const hasCta = Boolean(ctaLabel && ctaHref);
     </section>
   )
 }
-
-<style>
-  .co {
-    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
-  }
-
-  /* ---------- Layout « box » : encadré centré sur fond surface ---------- */
-  .co--box {
-    padding-block: var(--space-9, 6rem);
-    background-color: var(--color-bg, #ffffff);
-    color: var(--color-text, #1a1c20);
-  }
-  .co__box-container {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-  }
-  .co__box {
-    max-width: 860px;
-    margin-inline: auto;
-    padding: var(--space-7, 3rem);
-    text-align: center;
-    background-color: var(--color-band, #f6f7f8);
-    border-radius: var(--radius-l, 16px);
-  }
-  .co__box-title {
-    margin: 0;
-    color: var(--color-navy, #083957);
-    font-size: var(--fs-600, clamp(1.625rem, 1vw + 1.3rem, 2.25rem));
-    font-weight: var(--fw-bold, 700);
-    line-height: var(--lh-tight, 1.15);
-    text-wrap: balance;
-  }
-  .co__box-body {
-    margin: var(--space-3, 0.75rem) auto var(--space-5, 1.5rem);
-    max-width: 60ch;
-    color: var(--color-text-muted, #4a4d54);
-    line-height: var(--lh-normal, 1.6);
-  }
-  .co__box-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: var(--space-2, 0.5rem);
-    padding: 0.7em 1.5em;
-    border: 2px solid transparent;
-    border-radius: var(--radius-pill, 999px);
-    background-color: var(--color-navy, #083957);
-    color: var(--color-text-invert, #ffffff);
-    font-size: var(--fs-200, 0.9375rem);
-    font-weight: var(--fw-semibold, 600);
-    line-height: 1;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.15s ease;
-  }
-  .co__box-btn:hover {
-    background-color: var(--color-navy-700, #0b4b71);
-  }
-
-  /* ---------- Layout « banner-green » : bandeau vert large ---------- */
-  .co--banner {
-    background-color: var(--color-accent-green, #24fb8e);
-    color: var(--color-navy, #083957);
-  }
-  .co__banner-inner {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-    padding-block: var(--space-8, 4rem);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-5, 1.5rem);
-  }
-  .co__banner-title {
-    margin: 0;
-    max-width: 18ch;
-    color: var(--color-navy, #083957);
-    font-size: var(--fs-700, clamp(2rem, 2vw + 1.4rem, 3rem));
-    font-weight: var(--fw-bold, 700);
-    line-height: var(--lh-tight, 1.15);
-    text-wrap: balance;
-  }
-  .co__banner-body {
-    margin-top: var(--space-3, 0.75rem);
-    max-width: 60ch;
-    color: color-mix(in srgb, var(--color-navy, #083957) 85%, transparent);
-    line-height: var(--lh-normal, 1.6);
-  }
-  .co__banner-btn {
-    flex-shrink: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.7em 1.5em;
-    border: 2px solid transparent;
-    border-radius: var(--radius-pill, 999px);
-    background-color: var(--color-navy, #083957);
-    color: var(--color-text-invert, #ffffff);
-    font-size: var(--fs-200, 0.9375rem);
-    font-weight: var(--fw-bold, 700);
-    line-height: 1;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.15s ease;
-  }
-  .co__banner-btn:hover {
-    background-color: var(--color-navy-700, #0b4b71);
-  }
-</style>

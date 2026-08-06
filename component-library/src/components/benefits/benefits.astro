@@ -8,10 +8,14 @@
  * titre 24/700, texte 16/24. Bleus/navy/textes = tokens (export Hanken/chaud) ;
  * bordure froide #C3C6D7 verbatim (précédent méga).
  *
- * Props : { type: "benefits", title, intro?, items: [{ title, description,
- *           icon? }] }
- * - `icon` NOUVEAU (clé fermée « dossier » | « personne » | « groupe » | "" —
- *   vide = pas de tuile) ; contrat existant intact (campagnes valides).
+ * Props : { type: "benefits", title, intro?, headingStyle?, items: [{ title,
+ *           description, icon? }] }
+ * - `icon` (clé fermée « dossier » | « personne » | « groupe » | « ampoule » |
+ *   « croissance » | « losange » | "" — vide = pas de tuile) ; les 3 dernières
+ *   clés AJOUTÉES 2026-08-05 (landing-page.css). Contrat existant intact.
+ * - `headingStyle` AJOUTÉ 2026-08-05 (landing-page.css §Guide Benefits) :
+ *   « titre » (défaut, H2 40/700 centré) | « compact » (tête réduite 16/24
+ *   centrée + liseré bleu 64×4 dessous — patron des têtes de la landing).
  *
  * Contraintes / pièges :
  * - <h2> de section et <h3> par carte : le <h1> unique appartient au héros.
@@ -22,16 +26,18 @@
 interface BenefitItem {
   title: string;
   description: string;
-  icon?: 'dossier' | 'personne' | 'groupe' | '';
+  icon?: 'dossier' | 'personne' | 'groupe' | 'ampoule' | 'croissance' | 'losange' | '';
 }
 
 interface Props {
   title: string;
   intro?: string;
+  headingStyle?: 'titre' | 'compact';
   items: BenefitItem[];
 }
 
-const { title, intro, items = [] } = Astro.props;
+const { title, intro, headingStyle = 'titre', items = [] } = Astro.props;
+const compact = headingStyle === 'compact';
 
 // Pictogrammes (stroke 24px) par clé fermée du contrat.
 const ICONS: Record<string, string[]> = {
@@ -42,23 +48,50 @@ const ICONS: Record<string, string[]> = {
     'M3.5 19c.6-2.7 2.7-4.5 5.5-4.5s4.9 1.8 5.5 4.5',
     'M15.5 5.6a3 3 0 0 1 0 4.8M17.5 14.9c1.6.6 2.7 1.9 3 4.1',
   ],
+  ampoule: [
+    'M12 3a6 6 0 0 0-3.4 10.9c.8.6 1.4 1.6 1.4 2.6h4c0-1 .6-2 1.4-2.6A6 6 0 0 0 12 3Z',
+    'M9.5 19.5h5',
+    'M10.5 22h3',
+  ],
+  croissance: ['m3.5 17.5 5.5-5.5 4 4 7-7.5', 'M15 8.5h5v5'],
+  losange: ['M12 3 4 9.5 12 21l8-11.5L12 3Z', 'm8 9.5 4 4.5 4-4.5', 'M4 9.5h16'],
 };
 ---
 
 <section class="py-20 bg-white">
   <div class="container-site">
-    <div class="max-w-[672px] mx-auto text-center flex flex-col gap-4 mb-16">
-      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
-        {title}
-      </h2>
-      {intro && <p class="text-lg leading-[29px] text-on-surface-variant m-0 max-w-none">{intro}</p>}
-    </div>
-    <ul role="list" class="grid grid-cols-1 md:grid-cols-3 gap-8 m-0 p-0 list-none">
+    {
+      compact ? (
+        <div class="mx-auto text-center flex flex-col items-center gap-4 mb-16">
+          <h2 class="text-base leading-6 font-semibold text-on-surface m-0">{title}</h2>
+          <span class="w-16 h-1 bg-primary" aria-hidden="true" />
+          {intro && <p class="text-base leading-6 text-on-surface-variant m-0 max-w-[672px]">{intro}</p>}
+        </div>
+      ) : (
+        <div class="max-w-[672px] mx-auto text-center flex flex-col gap-4 mb-16">
+          <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
+            {title}
+          </h2>
+          {intro && <p class="text-lg leading-[29px] text-on-surface-variant m-0 max-w-none">{intro}</p>}
+        </div>
+      )
+    }
+    <ul role="list" class:list={['grid grid-cols-1 md:grid-cols-3 m-0 p-0 list-none', compact ? 'gap-6' : 'gap-8']}>
       {
         items.map((item) => (
-          <li class="m-0 bg-white border border-solid border-[#C3C6D7] rounded-sm p-8 flex flex-col gap-4">
+          <li
+            class:list={[
+              'm-0 bg-white border border-solid rounded-sm p-8 flex flex-col gap-4',
+              compact ? 'border-[#E5E2DE] shadow-[0_1px_2px_rgba(0,0,0,0.05)] rounded-xs' : 'border-[#C3C6D7]',
+            ]}
+          >
             {item.icon && ICONS[item.icon] && (
-              <span class="size-12 rounded-sm bg-primary-fixed text-primary flex items-center justify-center">
+              <span
+                class:list={[
+                  'size-12 text-primary flex items-center justify-center',
+                  compact ? 'rounded-xs bg-primary/10' : 'rounded-sm bg-primary-fixed',
+                ]}
+              >
                 <svg
                   width="18"
                   height="18"
@@ -77,7 +110,9 @@ const ICONS: Record<string, string[]> = {
                 </svg>
               </span>
             )}
-            <h3 class="text-2xl leading-8 font-bold text-on-surface m-0 pt-2">{item.title}</h3>
+            <h3 class:list={['text-on-surface m-0 pt-2', compact ? 'text-base leading-6 font-semibold' : 'text-2xl leading-8 font-bold']}>
+              {item.title}
+            </h3>
             <p class="text-base leading-6 text-on-surface-variant m-0 max-w-none">{item.description}</p>
           </li>
         ))

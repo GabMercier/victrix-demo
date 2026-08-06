@@ -35,6 +35,12 @@ blueprint:
   subtitle: ""
   ctaLabel: ""
   ctaHref: ""
+  titleAccent: ""
+  image: ""
+  cta2Label: ""
+  cta2Href: ""
+  eyebrowIcon: ""
+  ctaIcon: ""
 
 preview:
 
@@ -56,3 +62,38 @@ _inputs:
   ctaHref:
     label: "Lien du bouton"
     comment: "URL de destination, p. ex. /fr/nous-joindre/."
+  titleAccent:
+    label: "Mots accentués du titre"
+    comment: "Sous-chaîne EXACTE du titre rendue en bleu (optionnel)."
+  image:
+    type: image
+    label: "Image (optionnelle)"
+    comment: >-
+      Visuel de droite (carte sur halo bleu flouté). Le fichier téléversé
+      atterrit dans public/images/sections/ (adresse servie telle quelle,
+      /images/…). Vide = héros en colonne texte seule.
+    options:
+      paths:
+        static: public
+        uploads: public/images/sections
+  cta2Label:
+    label: "Libellé du second bouton"
+    comment: "Bouton contour à droite du principal. Vide = absent."
+  cta2Href:
+    label: "Lien du second bouton"
+  eyebrowIcon:
+    type: select
+    label: "Icône du surtitre (optionnelle)"
+    options:
+      allow_empty: true
+      values:
+        - livre
+    comment: "Petit pictogramme devant le surtitre. Vide = aucun."
+  ctaIcon:
+    type: select
+    label: "Icône du bouton (optionnelle)"
+    options:
+      allow_empty: true
+      values:
+        - telechargement
+    comment: "Pictogramme à droite du libellé du bouton principal. Vide = aucun."

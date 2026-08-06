@@ -27,6 +27,7 @@ blueprint:
   type: benefits
   title: "Pourquoi choisir Victrix"
   intro: ""
+  headingStyle: titre
   items:
     - title: "Premier bénéfice"
       description: "Décrivez l'avantage concret pour le client."
@@ -43,6 +44,15 @@ _inputs:
   intro:
     label: "Introduction"
     comment: "Paragraphe optionnel sous le titre de section."
+  headingStyle:
+    type: select
+    label: "Style de tête"
+    options:
+      allow_empty: false
+      values:
+        - titre
+        - compact
+    comment: "« titre » = grand titre 40 px ; « compact » = tête réduite + liseré bleu et cartes compactes (patron landing)."
   items:
     # `type: array` explicite : sans lui, `npx @bookshop/generate` fabriquerait
     # une structure inline générique à partir du blueprint (et viderait la
@@ -64,4 +74,7 @@ _inputs:
         - dossier
         - personne
         - groupe
+        - ampoule
+        - croissance
+        - losange
     comment: "Tuile pictogramme au-dessus du titre de la carte. Vide = aucune."

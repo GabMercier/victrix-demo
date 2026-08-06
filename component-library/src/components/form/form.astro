@@ -260,7 +260,10 @@ const submitClass = isCard
   : 'sm:col-span-2 justify-self-start inline-flex items-center justify-center gap-2 py-4 px-10 bg-primary text-on-primary text-body-md rounded-sm border-0 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] transition-colors hover:bg-primary-container cursor-pointer disabled:opacity-55 disabled:cursor-not-allowed';
 ---
 
-<section class:list={['py-section-gap', isCard ? 'bg-surface-container-low' : 'bg-surface']}>
+{/* id="formulaire" : ancre stable pour les CTA de héros (« Télécharger le
+    guide » → #formulaire). Première section form de la page seulement en
+    pratique — deux forms sur une même page partageraient l'ancre. */}
+<section id="formulaire" class:list={['py-section-gap', isCard ? 'bg-surface-container-low' : 'bg-surface']}>
   <div class="container-site">
     <div
       class:list={[

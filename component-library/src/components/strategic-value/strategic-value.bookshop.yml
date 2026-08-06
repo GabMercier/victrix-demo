@@ -29,6 +29,11 @@ blueprint:
   stats:
     - value: "ROI"
       label: "Optimisation rapide"
+  variant: produit
+  badge: ""
+  bullets: []
+  cardTitle: ""
+  cardText: ""
 
 preview:
 
@@ -64,3 +69,24 @@ _inputs:
     comment: "Rangée sous les paragraphes (ex. « ROI / Optimisation rapide »). Vide = absente."
     options:
       structures: _structures.stat_items
+  variant:
+    type: select
+    label: "Variante"
+    options:
+      allow_empty: false
+      values:
+        - produit
+        - vitrine
+    comment: "« produit » = image à gauche, titre 40 px ; « vitrine » = bande sable, texte à gauche/image encadrée blanc à droite, tuiles verre (patron landing Ø Studio)."
+  badge:
+    label: "Badge (optionnel)"
+    comment: "Chip bleu majuscules au-dessus du titre (ex. « INNOVATION »). Vide = absent."
+  bullets:
+    type: array
+    label: "Puces cochées"
+    comment: "Liste à coches bleues sous les tuiles. Vide = absente."
+  cardTitle:
+    label: "Titre de la carte flottante"
+    comment: "Carte blanche posée sur l'image (rendue si l'image est fournie). Vide = absente."
+  cardText:
+    label: "Texte de la carte flottante"

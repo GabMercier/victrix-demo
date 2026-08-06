@@ -4,16 +4,20 @@
  * partagée). VERSION RICHE, distincte de la section d'accueil `home-partners`
  * (simple liste de NOMS) : ici chaque partenaire peut porter un logo, un
  * descriptif court, et la section un badge (ex. « Microsoft Cloud Network »).
+ * RE-SKIN DESIGN SYSTEM 2026-08-05 : fond ivoire (surface), titre 24/700,
+ * badge en CHIP pilule bleu pâle (primary-fixed — patron chip footer),
+ * pastilles texte 18/600 anthracite, descriptifs 14/20.
  *
  * Props : { type: "logo-banner", title?, badge?,
  *           items: [{ name, logo?, description? }] }
  *
- * Contraintes / pièges (voir faq.astro pour les conventions) :
+ * Contraintes / pièges :
  * - `logo` est un CHEMIN (chaîne) servi tel quel — pas d'astro:assets. Vide →
  *   pastille texte stylée avec le nom (la section fonctionne sans images).
- * - `items = []` en secours : liste momentanément absente pendant l'édition
- *   en direct — ne pas planter l'éditeur visuel.
+ * - `items = []` en secours (édition en direct CloudCannon).
  * - <h2> optionnel : rendu seulement si un titre est fourni.
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 
 interface LogoItem {
@@ -31,105 +35,33 @@ interface Props {
 const { title = '', badge = '', items = [] } = Astro.props;
 ---
 
-<section class="lp-logos">
-  <div class="lp-logos__container">
-    {title !== '' && <h2 class="lp-logos__title">{title}</h2>}
-    {badge !== '' && <p class="lp-logos__badge">{badge}</p>}
-    <ul role="list" class="lp-logos__grid">
+<section class="py-20 bg-surface">
+  <div class="container-site text-center">
+    {title !== '' && <h2 class="text-2xl leading-8 font-bold text-on-surface m-0">{title}</h2>}
+    {
+      badge !== '' && (
+        <p class="inline-block m-0 max-w-none mt-4 px-4 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-sm font-semibold">
+          {badge}
+        </p>
+      )
+    }
+    <ul role="list" class="flex flex-wrap justify-center items-start gap-8 m-0 mt-12 p-0 list-none">
       {
         items.map((item) => (
-          <li class="lp-logos__item">
+          <li class="m-0 basis-[200px] shrink grow-0 flex flex-col items-center gap-3">
             {item.logo ? (
-              <img class="lp-logos__img" src={item.logo} alt={item.name} loading="lazy" />
+              <img class="max-h-12 max-w-40 object-contain border-0" src={item.logo} alt={item.name} loading="lazy" />
             ) : (
-              <span class="lp-logos__name">{item.name}</span>
+              <span class="inline-flex items-center min-h-12 text-lg font-semibold text-on-surface tracking-[0.02em]">
+                {item.name}
+              </span>
             )}
-            {item.description && <p class="lp-logos__desc">{item.description}</p>}
+            {item.description && (
+              <p class="text-sm leading-5 text-on-surface-variant m-0 max-w-none">{item.description}</p>
+            )}
           </li>
         ))
       }
     </ul>
   </div>
 </section>
-
-<style>
-  .lp-logos {
-    padding-block: var(--space-8, 4.5rem);
-    background-color: var(--color-bg, #ffffff);
-    color: var(--color-text, #1a1c20);
-    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
-  }
-
-  /* Conteneur répliqué localement (pas la classe globale .container) pour que
-     le composant reste autonome dans l'éditeur visuel. */
-  .lp-logos__container {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-    text-align: center;
-  }
-
-  .lp-logos__title {
-    margin: 0;
-    color: var(--color-navy, #083957);
-    font-size: var(--fs-600, clamp(1.5rem, 1.5vw + 1.1rem, 2rem));
-    font-weight: var(--fw-bold, 700);
-    line-height: var(--lh-tight, 1.15);
-    text-wrap: balance;
-  }
-
-  .lp-logos__badge {
-    display: inline-block;
-    margin: var(--space-4, 1rem) 0 0;
-    padding: var(--space-1, 0.25rem) var(--space-4, 1rem);
-    border: 1px solid var(--color-accent-blue, #3366ff);
-    border-radius: 999px;
-    color: var(--color-accent-blue, #3366ff);
-    font-size: var(--fs-200, 0.875rem);
-    font-weight: var(--fw-semibold, 600);
-  }
-
-  .lp-logos__grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    gap: var(--space-6, 2rem);
-    margin: var(--space-7, 3rem) 0 0;
-    padding: 0;
-  }
-
-  .lp-logos__item {
-    flex: 0 1 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-3, 0.75rem);
-  }
-
-  .lp-logos__img {
-    max-height: 48px;
-    max-width: 160px;
-    object-fit: contain;
-  }
-
-  /* Pastille texte de secours quand aucun logo n'est téléversé. */
-  .lp-logos__name {
-    display: inline-flex;
-    align-items: center;
-    min-height: 48px;
-    color: var(--color-navy, #083957);
-    font-size: var(--fs-400, 1.125rem);
-    font-weight: var(--fw-semibold, 600);
-    letter-spacing: 0.02em;
-  }
-
-  .lp-logos__desc {
-    margin: 0;
-    color: var(--color-text-muted, #4a4d54);
-    font-size: var(--fs-200, 0.875rem);
-    line-height: var(--lh-normal, 1.6);
-    text-wrap: pretty;
-  }
-</style>

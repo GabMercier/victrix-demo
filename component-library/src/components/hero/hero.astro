@@ -1,20 +1,27 @@
 ---
 /**
- * Section « Héros » — composant Bookshop (contrat landing GELÉ).
+ * Section « Héros » — composant Bookshop (contrat landing GELÉ, enrichi).
+ * RE-SKIN DESIGN SYSTEM 2026-08-05 (docs/design/landing-page.css + capture
+ * « Landing page ») : héros CLAIR sur bande beige (surface-container-low),
+ * deux colonnes — à gauche eyebrow majuscules bleu (ls 1.6, icône livre
+ * optionnelle), H1 56/800 ls -1.12 avec sous-chaîne accentuée en bleu
+ * (`titleAccent`, patron home-hero), sous-titre 16/24, deux CTA rayon 2
+ * (primaire + contour #747688) ; à droite carte image sur HALO bleu flouté
+ * (aplat primary/5 débordant 16 px, blur 32) bordée blanc/50, ombre 2xl.
+ * Sans image : colonne texte seule (les campagnes existantes restent valides).
  *
- * Props : { type: "hero", eyebrow?, title, subtitle?, ctaLabel?, ctaHref? }
- * - `type` est le discriminant du contrat landing ; il arrive via le spread
- *   {...section} depuis la page campagne et est volontairement ignoré ici.
+ * Props : { type: "hero", eyebrow?, title, subtitle?, ctaLabel?, ctaHref?,
+ *           titleAccent?, image?, cta2Label?, cta2Href?, eyebrowIcon?, ctaIcon? }
+ * - Champs AJOUTÉS 2026-08-05 (contrat gelé intact, tous par défaut vides) :
+ *   `titleAccent` sous-chaîne du titre rendue text-primary ; `image` chemin
+ *   PUBLIC servi tel quel ; `cta2Label/cta2Href` bouton contour ; `eyebrowIcon`
+ *   clé fermée « livre » | "" ; `ctaIcon` clé fermée « telechargement » | "".
  *
  * Contraintes / pièges :
- * - Cette section rend le SEUL <h1> de la page : elle doit être placée en
- *   première position dans `sections`. Toutes les autres sections titrent
- *   en <h2>.
- * - Aucun script client : l'éditeur visuel CloudCannon rend les composants
- *   Bookshop DANS le navigateur — tout ce qui s'exécute ici doit y tourner.
- * - Chaque var(--token, secours) embarque la valeur de src/styles/tokens.css :
- *   le rendu reste fidèle même sans la feuille globale du site (cas de
- *   l'éditeur visuel, où global.css n'est pas chargée).
+ * - Cette section rend le SEUL <h1> de la page : première position dans
+ *   `sections` ; les autres sections titrent en <h2>.
+ * - Aucun script client (éditeur visuel CloudCannon) ; browser-safe.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 interface Props {
   eyebrow?: string;
@@ -22,97 +29,144 @@ interface Props {
   subtitle?: string;
   ctaLabel?: string;
   ctaHref?: string;
+  titleAccent?: string;
+  image?: string;
+  cta2Label?: string;
+  cta2Href?: string;
+  eyebrowIcon?: 'livre' | '';
+  ctaIcon?: 'telechargement' | '';
 }
 
-const { eyebrow, title, subtitle, ctaLabel, ctaHref } = Astro.props;
+const {
+  eyebrow,
+  title,
+  subtitle,
+  ctaLabel,
+  ctaHref,
+  titleAccent = '',
+  image = '',
+  cta2Label = '',
+  cta2Href = '',
+  eyebrowIcon = '',
+  ctaIcon = '',
+} = Astro.props;
+
+// Sous-chaîne accentuée (patron home-hero) : introuvable → titre uniforme.
+const accentIndex = titleAccent ? title.indexOf(titleAccent) : -1;
+const titleParts =
+  accentIndex >= 0 && titleAccent
+    ? {
+        before: title.slice(0, accentIndex),
+        accent: titleAccent,
+        after: title.slice(accentIndex + titleAccent.length),
+      }
+    : null;
+
+const hasCta = Boolean(ctaLabel && ctaHref);
+const hasCta2 = Boolean(cta2Label && cta2Href);
 ---
 
-<section class="lp-hero">
-  <div class="lp-hero__container">
-    {eyebrow && <p class="lp-hero__eyebrow">{eyebrow}</p>}
-    <h1 class="lp-hero__title">{title}</h1>
-    {subtitle && <p class="lp-hero__subtitle">{subtitle}</p>}
+<section class="bg-surface-container-low py-20 lg:py-24">
+  <div
+    class:list={[
+      'container-site',
+      image ? 'grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-6 items-center' : 'flex flex-col items-start',
+    ]}
+  >
+    <div class="flex flex-col items-start gap-6 max-w-[576px]">
+      {
+        eyebrow && (
+          <p class="m-0 max-w-none flex items-center gap-2 text-base leading-6 uppercase tracking-[1.6px] text-primary">
+            {eyebrowIcon === 'livre' && (
+              <svg
+                class="shrink-0"
+                width="17"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 5.5C10.5 4 8.5 3.5 6 3.5c-1.2 0-2.2.15-3 .4v14.6c.8-.25 1.8-.4 3-.4 2.5 0 4.5.5 6 2 1.5-1.5 3.5-2 6-2 1.2 0 2.2.15 3 .4V3.9c-.8-.25-1.8-.4-3-.4-2.5 0-4.5.5-6 2Z" />
+                <path d="M12 5.5v14.6" />
+              </svg>
+            )}
+            {eyebrow}
+          </p>
+        )
+      }
+      <h1 class="text-[40px] leading-[1.15] lg:text-[56px] lg:leading-[62px] font-extrabold tracking-[-1.12px] text-on-surface m-0">
+        {
+          titleParts ? (
+            <>
+              {titleParts.before}
+              <span class="text-primary">{titleParts.accent}</span>
+              {titleParts.after}
+            </>
+          ) : (
+            title
+          )
+        }
+      </h1>
+      {subtitle && <p class="text-base leading-6 text-on-surface-variant m-0 max-w-[533px]">{subtitle}</p>}
+      {
+        (hasCta || hasCta2) && (
+          <div class="flex flex-wrap gap-4 pt-2">
+            {hasCta && (
+              <a
+                class="inline-flex items-center justify-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-xs text-base leading-6 no-underline hover:bg-primary-container transition-colors"
+                href={ctaHref}
+              >
+                {ctaLabel}
+                {ctaIcon === 'telechargement' && (
+                  <svg
+                    class="shrink-0"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5" />
+                    <path d="M4.5 20h15" />
+                  </svg>
+                )}
+              </a>
+            )}
+            {hasCta2 && (
+              <a
+                class="inline-flex items-center justify-center border border-solid border-outline text-on-surface px-8 py-4 rounded-xs text-base leading-6 no-underline hover:border-primary hover:text-primary transition-colors"
+                href={cta2Href}
+              >
+                {cta2Label}
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
     {
-      /* Le bouton n'est rendu que si le libellé ET le lien sont fournis. */
-      ctaLabel && ctaHref && (
-        <a class="lp-hero__cta" href={ctaHref}>
-          {ctaLabel}
-        </a>
+      image && (
+        <div class="relative isolate">
+          <span class="absolute -inset-4 bg-primary/5 blur-[32px] rounded-xl -z-10" aria-hidden="true" />
+          <img
+            src={image}
+            alt=""
+            class="w-full h-auto border border-solid border-white/50 rounded-lg shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
       )
     }
   </div>
 </section>
-
-<style>
-  /* Même langage visuel que le héros de la page d'accueil : dégradé marine,
-     surtitre vert accent, titre inversé, CTA pilule « outline ». */
-  .lp-hero {
-    background:
-      radial-gradient(120% 140% at 85% 0%, var(--color-navy-700, #0b4b71) 0%, transparent 55%),
-      linear-gradient(120deg, var(--color-navy-900, #052639) 0%, var(--color-navy, #083957) 70%);
-    color: var(--color-text-invert, #ffffff);
-    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
-  }
-
-  /* Conteneur répliqué localement (pas la classe globale .container) pour que
-     le composant reste autonome dans l'éditeur visuel. */
-  .lp-hero__container {
-    width: 100%;
-    max-width: var(--container-max, 1200px);
-    margin-inline: auto;
-    padding-inline: var(--container-pad, 1.5rem);
-    padding-block: var(--space-9, 6rem);
-  }
-
-  .lp-hero__eyebrow {
-    margin: 0 0 var(--space-4, 1rem);
-    color: var(--color-accent-green, #24fb8e);
-    font-size: var(--fs-200, 0.9375rem);
-    font-weight: var(--fw-semibold, 600);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .lp-hero__title {
-    margin: 0;
-    max-width: 18ch;
-    color: var(--color-text-invert, #ffffff);
-    font-size: var(--fs-800, clamp(2.5rem, 3.5vw + 1.5rem, 4rem));
-    font-weight: var(--fw-extrabold, 800);
-    line-height: var(--lh-tight, 1.15);
-    text-wrap: balance;
-  }
-
-  .lp-hero__subtitle {
-    margin: var(--space-5, 1.5rem) 0 0;
-    max-width: 56ch;
-    font-size: var(--fs-400, clamp(1.125rem, 0.2vw + 1.05rem, 1.25rem));
-    line-height: var(--lh-normal, 1.6);
-    color: rgba(255, 255, 255, 0.85);
-    text-wrap: pretty;
-  }
-
-  .lp-hero__cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: var(--space-6, 2rem);
-    padding: 0.7em 1.5em;
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    border-radius: var(--radius-pill, 999px);
-    color: var(--color-text-invert, #ffffff);
-    font-size: var(--fs-200, 0.9375rem);
-    font-weight: var(--fw-semibold, 600);
-    line-height: 1;
-    text-decoration: none;
-    cursor: pointer;
-    transition:
-      background-color 0.15s ease,
-      color 0.15s ease,
-      border-color 0.15s ease;
-  }
-  .lp-hero__cta:hover {
-    background-color: var(--color-white, #ffffff);
-    color: var(--color-navy, #083957);
-  }
-</style>
