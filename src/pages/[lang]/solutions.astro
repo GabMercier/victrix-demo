@@ -1,0 +1,334 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { type Locale, localePaths, localizePath } from '../../i18n/config';
+import { solutionsContent } from '../../i18n/content/solutions';
+
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props as { lang: Locale };
+const c = solutionsContent[lang];
+
+/**
+ * Catalogue de solutions Ø Studio — BASE 2026-08-05, FIDÉLITÉ MAQUETTE
+ * (docs/design/solutions-catalogue.css + capture « Ø Studio - Catalogue de
+ * solutions » ; maquette PAS finale — organisation complète et suites dans
+ * docs/design/solutions-catalogue-plan.md) :
+ *  - barre outil : titre 16/700 + champ de recherche (fond #F3F4F5 rayon 8) ;
+ *  - panneau VEDETTE bleu nuit (on-primary-fixed) rayon 12 : badge pilule
+ *    bleu, titre 48/800 blanc, texte 18/29 bleu pâle, bouton primaire +
+ *    bouton contour (rayon 12), visuel à droite ;
+ *  - filtres : selects « Secteurs d'activité » / « Types de solution »
+ *    construits sur les valeurs DISTINCTES des entrées (ordre d'apparition) ;
+ *  - grille de cartes : blanches bordées #C5C6D0 rayon 12, vignette 4:3
+ *    (fond #F3F4F5 si pas d'image) + chip secteur pilule blanche 10/700
+ *    majuscules, titre 18/700, texte 14/20, pied bordé — chip type lavande +
+ *    lien « Découvrir → » bleu ;
+ *  - panneau CTA bas #EDEEEF rayon 16 centré (titre 30/700, 2 boutons).
+ * COULEURS : famille FROIDE de la maquette verbatim (#F8F9FA/#F3F4F5/
+ * #C5C6D0/#00020A/#44474F/#EDEEEF/#EAEAFF — précédents accueil/méga) ; bleus
+ * = TOKENS (#0038E6→primary, #3256FF→action claire→primary, #001B44→
+ * on-primary-fixed, #D8E2FF→primary-fixed).
+ * Les `href` des entrées sont stockés SANS préfixe de langue (convention
+ * navigation) et localisés ici via localizePath.
+ * Filtrage CLIENT (patron du filtre catégories de /ressources) : selects +
+ * recherche masquent les cartes via data-*, ?secteur=&type= maintenus à
+ * l'URL (replaceState), liaison sur astro:page-load (compatible ClientRouter).
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+
+const all = (await getCollection('solutions'))
+  .filter((entry) => entry.id.startsWith(`${lang}/`))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const featured = all.find((entry) => entry.data.featured);
+const cards = all.filter((entry) => entry !== featured);
+
+// Valeurs distinctes, ordre de première apparition (options des filtres).
+const sectors = [...new Set(cards.map((entry) => entry.data.sector))];
+const types = [...new Set(cards.map((entry) => entry.data.solutionType))];
+
+const selectClass =
+  'w-full sm:w-56 h-10 appearance-none pl-3 pr-9 bg-white border border-solid border-[#C5C6D0] rounded-lg text-sm text-[#00020A] cursor-pointer focus-visible:border-primary focus-visible:outline-none';
+---
+
+<BaseLayout lang={lang} title={c.metaTitle} description={c.metaDescription}>
+  <div class="bg-[#F8F9FA]">
+    <!-- Barre outil : titre + recherche -->
+    <div class="border-0 border-b border-solid border-[#C5C6D0]/60 bg-[#F8F9FA]">
+      <div class="container-site h-16 flex items-center justify-between gap-6">
+        <h1 class="text-base font-bold text-[#00020A] m-0">{c.toolbarTitle}</h1>
+        <span class="relative block w-full max-w-md">
+          <svg
+            class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#44474F]"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-3.8-3.8"></path>
+          </svg>
+          <input
+            class="w-full h-10 pl-10 pr-4 bg-[#F3F4F5] border-0 rounded-lg text-base text-[#00020A] placeholder:text-[#6B7280] focus-visible:outline-2 focus-visible:outline-primary"
+            type="search"
+            placeholder={c.searchPlaceholder}
+            aria-label={c.searchAria}
+            data-solutions-search
+          />
+        </span>
+      </div>
+    </div>
+
+    <div class="container-site py-8 flex flex-col gap-10 pb-20">
+      <!-- Panneau vedette -->
+      {
+        featured && (
+          <section class="bg-on-primary-fixed rounded-xl p-8 lg:p-12 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)]">
+            <div class:list={['grid grid-cols-1 gap-8 items-center', featured.data.image && 'lg:grid-cols-[1fr_432px]']}>
+              <div class="flex flex-col items-start gap-6">
+                <p class="m-0 max-w-none inline-flex items-center gap-2 bg-primary text-on-primary text-xs leading-4 font-bold uppercase tracking-[0.6px] px-3 py-1 rounded-full">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                    <path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z" />
+                  </svg>
+                  {c.featuredBadge}
+                </p>
+                <h2 class="text-4xl lg:text-5xl leading-none font-extrabold text-white m-0">{featured.data.title}</h2>
+                <p class="text-lg leading-[29px] text-primary-fixed m-0 max-w-[576px]">{featured.data.description}</p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                  {featured.data.href && (
+                    <a
+                      class="inline-flex items-center justify-center text-center bg-primary text-on-primary px-10 py-4 rounded-xl text-base font-bold leading-6 no-underline hover:bg-primary-container transition-colors"
+                      href={localizePath(featured.data.href, lang)}
+                    >
+                      {c.featuredCta}
+                    </a>
+                  )}
+                  {featured.data.docHref && (
+                    <a
+                      class="inline-flex items-center justify-center text-center border-2 border-solid border-primary-fixed text-primary-fixed px-8 py-4 rounded-xl text-base font-bold leading-6 no-underline hover:bg-primary-fixed/10 transition-colors"
+                      href={localizePath(featured.data.docHref, lang)}
+                    >
+                      {c.featuredDoc}
+                    </a>
+                  )}
+                </div>
+              </div>
+              {featured.data.image && (
+                <img
+                  class="w-full h-auto rounded-lg border-0"
+                  src={featured.data.image}
+                  alt=""
+                  loading="eager"
+                  decoding="async"
+                />
+              )}
+            </div>
+          </section>
+        )
+      }
+
+      <!-- Filtres -->
+      <section class="flex flex-wrap items-end gap-6" aria-label={`${c.sectorLabel} / ${c.typeLabel}`}>
+        <div class="flex flex-col gap-1.5">
+          <label class="text-sm leading-5 text-[#44474F]" for="filtre-secteur">{c.sectorLabel}</label>
+          <span class="relative block">
+            <select class={selectClass} id="filtre-secteur" data-solutions-filter="sector">
+              <option value="">{c.sectorAll}</option>
+              {sectors.map((sector) => <option value={sector}>{sector}</option>)}
+            </select>
+            <svg
+              class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#6B7280]"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </span>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label class="text-sm leading-5 text-[#44474F]" for="filtre-type">{c.typeLabel}</label>
+          <span class="relative block">
+            <select class={selectClass} id="filtre-type" data-solutions-filter="type">
+              <option value="">{c.typeAll}</option>
+              {types.map((type) => <option value={type}>{type}</option>)}
+            </select>
+            <svg
+              class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#6B7280]"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </span>
+        </div>
+      </section>
+
+      <!-- Grille -->
+      <section>
+        <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 m-0 p-0 list-none">
+          {
+            cards.map((entry) => (
+              <li
+                class="m-0 bg-white border border-solid border-[#C5C6D0] rounded-xl overflow-hidden flex flex-col"
+                data-solutions-card
+                data-sector={entry.data.sector}
+                data-type={entry.data.solutionType}
+                data-search={`${entry.data.title} ${entry.data.description}`.toLowerCase()}
+              >
+                <div class="relative aspect-[4/3] bg-[#F3F4F5]">
+                  {entry.data.image && (
+                    <img
+                      class="w-full h-full object-cover border-0"
+                      src={entry.data.image}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                  <p class="absolute top-3 left-3 m-0 max-w-none bg-white/90 shadow-[0_1px_2px_rgba(0,0,0,0.05)] rounded-full px-3 py-1 text-[10px] leading-4 font-bold uppercase tracking-[0.5px] text-[#00020A]">
+                    {entry.data.sector}
+                  </p>
+                </div>
+                <div class="p-6 grow flex flex-col">
+                  <h3 class="text-lg leading-[22px] font-bold text-[#00020A] m-0 mb-3">{entry.data.title}</h3>
+                  <p class="text-sm leading-5 text-[#44474F] m-0 max-w-none mb-6">{entry.data.description}</p>
+                  <div class="mt-auto pt-4 border-0 border-t border-solid border-[#C5C6D0] flex items-center justify-between gap-2">
+                    <p class="m-0 max-w-none bg-[#EAEAFF]/60 rounded px-2 py-1 text-xs leading-4 font-semibold text-primary">
+                      {entry.data.solutionType}
+                    </p>
+                    {entry.data.href && (
+                      <a
+                        class="inline-flex items-center gap-2 text-sm font-bold text-primary no-underline hover:text-primary-container"
+                        href={localizePath(entry.data.href, lang)}
+                      >
+                        {c.discover}
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M5 12h14m0 0-6-6m6 6-6 6" />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="m-0 max-w-none text-base text-[#44474F] text-center py-12" data-solutions-empty hidden>
+          {c.emptyMessage}
+        </p>
+      </section>
+
+      <!-- CTA bas -->
+      <section class="bg-[#EDEEEF] rounded-2xl p-10 flex flex-col items-center text-center gap-4">
+        <h2 class="text-[26px] leading-9 lg:text-[30px] font-bold text-[#00020A] m-0">{c.ctaTitle}</h2>
+        <p class="text-sm leading-5 text-[#44474F] m-0 max-w-[576px]">{c.ctaText}</p>
+        <div class="flex flex-wrap justify-center gap-4 pt-2">
+          <a
+            class="inline-flex items-center gap-2 bg-white border border-solid border-[#C5C6D0] rounded-lg px-6 py-3 text-sm font-bold text-[#00020A] no-underline hover:border-primary hover:text-primary transition-colors"
+            href={c.ctaPhoneHref}
+          >
+            <svg class="shrink-0 text-primary" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <path
+                d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"
+              ></path>
+            </svg>
+            {c.ctaPhone}
+          </a>
+          <a
+            class="inline-flex items-center justify-center bg-primary text-on-primary rounded-lg px-6 py-3 text-sm font-bold no-underline hover:bg-primary-container transition-colors"
+            href={localizePath('/contact', lang)}
+          >
+            {c.ctaButton}
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Filtrage client du catalogue (patron du filtre catégories de /ressources) :
+  // re-lié sur astro:page-load (le DOM est remplacé par ClientRouter, le module
+  // ne s'exécute qu'une fois par session). ?secteur=&type= lus à l'arrivée et
+  // maintenus via replaceState ; la recherche reste hors URL (éphémère).
+  document.addEventListener('astro:page-load', () => {
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-solutions-card]'));
+    if (cards.length === 0) return;
+    const sectorSelect = document.querySelector<HTMLSelectElement>('[data-solutions-filter="sector"]');
+    const typeSelect = document.querySelector<HTMLSelectElement>('[data-solutions-filter="type"]');
+    const search = document.querySelector<HTMLInputElement>('[data-solutions-search]');
+    const empty = document.querySelector<HTMLElement>('[data-solutions-empty]');
+
+    const apply = () => {
+      const sector = sectorSelect?.value ?? '';
+      const type = typeSelect?.value ?? '';
+      const query = (search?.value ?? '').trim().toLowerCase();
+      let visible = 0;
+      for (const card of cards) {
+        const show =
+          (sector === '' || card.dataset.sector === sector) &&
+          (type === '' || card.dataset.type === type) &&
+          (query === '' || (card.dataset.search ?? '').includes(query));
+        // Style inline, PAS l'attribut hidden : la classe utilitaire `flex`
+        // de la carte (style auteur) bat la règle UA [hidden]{display:none}.
+        card.style.display = show ? '' : 'none';
+        if (show) visible += 1;
+      }
+      if (empty) empty.hidden = visible > 0;
+      const url = new URL(window.location.href);
+      if (sector) url.searchParams.set('secteur', sector);
+      else url.searchParams.delete('secteur');
+      if (type) url.searchParams.set('type', type);
+      else url.searchParams.delete('type');
+      history.replaceState(null, '', url);
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const initialSector = params.get('secteur') ?? '';
+    const initialType = params.get('type') ?? '';
+    if (sectorSelect && initialSector && Array.from(sectorSelect.options).some((o) => o.value === initialSector)) {
+      sectorSelect.value = initialSector;
+    }
+    if (typeSelect && initialType && Array.from(typeSelect.options).some((o) => o.value === initialType)) {
+      typeSelect.value = initialType;
+    }
+
+    sectorSelect?.addEventListener('change', apply);
+    typeSelect?.addEventListener('change', apply);
+    search?.addEventListener('input', apply);
+    apply();
+  });
+</script>
