@@ -5,7 +5,7 @@ excerpt: "Is setting up an in-house SOC your best option? Find out how to set up
 tags: ["Our articles"]
 slug: "setting-up-a-soc"
 coverImage: "/wp-content/uploads/2022/02/solution-sevoc-pourquoi.jpg"
-seoTitle: "%%title%% %%page%%"
+seoTitle: ""
 wpUrl: "/en/setting-up-a-soc/"
 ---
 Before diving into the details of setting up a [SOC (Security Operations Center)](/en/expertise/cybersecurity/scalable-security-operations-center/), let's first address a taboo subject: **not all companies have the means and resources to build an internal SOC**.

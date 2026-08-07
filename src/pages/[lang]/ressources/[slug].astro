@@ -151,11 +151,13 @@ const shareLinks = [
 
         <p class="article__meta">
           {/* data-pagefind-meta/sort : expose la date de l'article à la
-              recherche interne (P-06) — affichée sur les résultats et
-              disponible comme tri Pagefind. */}
+              recherche interne (P-06). AFFICHAGE : meta « date » sans [attr] =
+              le TEXTE de l'élément (date formatée dans la langue de la page) —
+              un meta sur [datetime] montrerait l'ISO brut dans les résultats.
+              TRI : reste sur l'attribut datetime (ISO), trié correctement. */}
           <time
             datetime={post.data.date.toISOString()}
-            data-pagefind-meta="date[datetime]"
+            data-pagefind-meta="date"
             data-pagefind-sort="date[datetime]"
           >
             {dateFmt.format(post.data.date)}

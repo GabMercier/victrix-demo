@@ -5,7 +5,7 @@ excerpt: "Learn about Power Platform governance. Find out how to maximize the po
 tags: ["Our articles"]
 slug: "power-platform-governance-advice"
 coverImage: "/wp-content/uploads/2024/08/power_platform_image-article.png"
-seoTitle: "%%title%% %%page%% | %%sitename%%"
+seoTitle: ""
 wpUrl: "/en/power-platform-governance-advice/"
 ---
 ![Governance of the Microsoft Power Platform suite](/wp-content/uploads/2024/05/power_platform_image-article.png) 

@@ -2,7 +2,10 @@
 # Spec Bookshop — section « Valeur stratégique » (palette partagée),
 # NOUVELLE 2026-08-05 (fidélité maquette produit-enfant.css). Voir
 # hero.bookshop.yml pour les conventions communes. La rangée `stats` pointe
-# vers _structures.stat_items (cloudcannon.config.yml).
+# vers _structures.stat_tiles (cloudcannon.config.yml) — clé DISTINCTE de
+# _structures.stat_items (stats.bookshop.yml, forme {number,label}) : les deux
+# formes diffèrent ({value,label} ici) et un même nom serait écrasé par la
+# seconde définition YAML.
 # =============================================================================
 spec:
   structures:
@@ -63,12 +66,12 @@ _inputs:
     comment: "Description pour l'accessibilité (laisser vide si l'image est purement décorative)."
   stats:
     # `type: array` explicite — voir benefits.bookshop.yml (sans lui, generate
-    # fabriquerait une structure inline concurrente de _structures.stat_items).
+    # fabriquerait une structure inline concurrente de _structures.stat_tiles).
     type: array
     label: "Tuiles statistiques"
     comment: "Rangée sous les paragraphes (ex. « ROI / Optimisation rapide »). Vide = absente."
     options:
-      structures: _structures.stat_items
+      structures: _structures.stat_tiles
   variant:
     type: select
     label: "Variante"

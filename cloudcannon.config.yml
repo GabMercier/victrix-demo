@@ -46,6 +46,7 @@ collection_groups:
     collections:
       - home
       - services
+      - solutions
       - blog
   - heading: Marketing
     collections:
@@ -84,6 +85,17 @@ collections_config:
     # with slug: "" — their preview link is wrong until the editor fills it in
     # (the schema comment says so); the built site falls back to the filename.
     url: /[relative_base_path]/ressources/{slug}/
+    # Carte du navigateur de fichiers : couverture + titre + extrait (repli
+    # icône quand l'article n'a pas d'image).
+    preview:
+      icon: post_add
+      image:
+        - key: coverImage
+      text:
+        - key: title
+        - text: Article sans titre
+      subtext:
+        - key: excerpt
     # "+ Ajouter" templates. One schema per locale so a new file ALWAYS lands
     # inside fr/ or en/ (a root-level file would silently map to /fr/ in
     # src/pages/[lang]/ressources/[slug].astro) and always starts with front
@@ -121,7 +133,10 @@ collections_config:
       date:
         type: date
         label: Date de publication
-        comment: Format AAAA-MM-JJ.
+        comment: >-
+          Format AAAA-MM-JJ. Une date FUTURE programme l'article : il reste
+          hors du site public jusqu'au premier build suivant cette date
+          (l'aperçu de l'éditeur le montre toujours).
       # Matches the `draft` field of the blog Zod schema (default false).
       # Visibility rule lives in src/i18n/blog.ts (filterPublished): drafts
       # are excluded from the public site but KEPT in STATIC_ONLY builds —
@@ -136,6 +151,27 @@ collections_config:
       excerpt:
         type: textarea
         label: Extrait
+        comment: >-
+          Sert aussi de description SEO (résultats Google, partages) et de
+          texte des cartes du blogue.
+      seoTitle:
+        type: text
+        label: Titre SEO (surcharge)
+        comment: >-
+          Remplace le titre dans l'onglet du navigateur et les résultats
+          Google. Vide = le titre de l'article.
+      noindex:
+        type: switch
+        label: Masquer des moteurs de recherche
+        comment: >-
+          Activé : l'article reste en ligne mais sort des résultats Google et
+          de la recherche interne. Désactivé par défaut.
+      wpUrl:
+        type: text
+        label: Ancienne URL WordPress (référence)
+        comment: >-
+          Trace de migration — n'affecte pas le site (les redirections se
+          gèrent dans la collection Redirections).
       coverImage:
         type: image
         label: Image de couverture
@@ -178,6 +214,15 @@ collections_config:
     # in the VISUAL editor next to the real homepage (criterion 1), instead of
     # the bare data editor a disable_url data collection would get.
     url: /[relative_base_path]/
+    # Carte du navigateur : le JSON n'a que `sections` au premier niveau — pas
+    # de titre à afficher, d'où un libellé statique (le dossier fr/ ou en/
+    # distingue les deux fichiers).
+    preview:
+      icon: home
+      text:
+        - text: Page d'accueil
+      subtext:
+        - text: Bannière, expertises, solutions, partenaires…
     # First value = default editor (see the blog collection's comment for the
     # doc reference). Visual first — GUARANTEES criterion 1 instead of relying
     # on CloudCannon's heuristic; Data second as the flat-JSON fallback. No
@@ -479,8 +524,10 @@ collections_config:
         type: array
         label: Champs du formulaire
         comment: >-
-          Maquette non fonctionnelle : rien n'est envoyé ni collecté (le
-          backend de formulaires est un chantier séparé, à venir).
+          Envoi réel via le backend du site quand la construction se fait avec
+          PUBLIC_FORMS_ENABLED=1 (sinon maquette, bouton désactivé) — voir
+          docs/formulaires.md. Astuce : « Formulaire lié » remplace ces champs
+          par un formulaire réutilisable de la collection Formulaires.
         options:
           structures: _structures.form_fields
       submitLabel:
@@ -584,6 +631,12 @@ collections_config:
           DÉSACTIVÉ par défaut : un service est une page publique, indexée
           (l'inverse des campagnes). N'activer que pour retirer temporairement
           un service des résultats de recherche.
+      seoTitle:
+        type: text
+        label: Titre SEO (surcharge)
+        comment: >-
+          Remplace le titre dans l'onglet du navigateur et les résultats
+          Google. Vide = le titre de la page.
       sections:
         type: array
         label: Sections
@@ -595,6 +648,107 @@ collections_config:
       # `type` = discriminant de section (défini par la palette) — jamais édité.
       type:
         hidden: true
+
+  # Catalogue de solutions (/fr|en/solutions) — fiches JSON à plat, une carte
+  # du catalogue par fiche (suite n°1 du plan
+  # docs/design/solutions-catalogue-plan.md §3). Éditeur de données : la fiche
+  # n'a PAS de page propre (le catalogue est une page unique avec filtres) —
+  # les pages de détail /solutions/<slug> restent une suite planifiée.
+  solutions:
+    path: src/content/solutions
+    name: Solutions
+    singular_name: Solution
+    description: >-
+      Fiches du catalogue de solutions (page /solutions). Les dossiers fr/ et
+      en/ contiennent les deux langues ; le même nom de fichier relie une
+      traduction à l'autre. Chaque fiche est une carte du catalogue.
+    icon: apps
+    # Pas de page par fiche → pas d'URL d'aperçu (le lien mènerait à un 404).
+    disable_url: true
+    # Éditeur de données uniquement (JSON structuré, pas de corps markdown).
+    _enabled_editors:
+      - data
+    preview:
+      icon: apps
+      text:
+        - key: title
+        - text: Solution sans titre
+      subtext:
+        - key: description
+    # « + Ajouter » : un gabarit par langue pour que le fichier atterrisse dans
+    # fr/ ou en/ avec un JSON valide (même logique que services/forms). Flux de
+    # traduction : créer (ou Dupliquer) le même nom de fichier dans l'autre
+    # dossier.
+    schemas:
+      default:
+        name: Solution (FR)
+        icon: apps
+        path: schemas/solution-fr.json
+        create:
+          path: 'fr/{title|slugify}.json'
+      en:
+        name: Solution (EN)
+        icon: apps
+        path: schemas/solution-en.json
+        create:
+          path: 'en/{title|slugify}.json'
+    _inputs:
+      title:
+        type: text
+        label: Titre
+      description:
+        type: textarea
+        label: Description
+        comment: Texte affiché sur la carte du catalogue.
+      image:
+        type: image
+        label: Image de la vignette
+        comment: >-
+          Optionnelle — vide, la carte affiche une vignette de remplacement
+          grise. Les téléversements atterrissent dans public/images/solutions/
+          (adresse servie telle quelle, /images/…).
+        options:
+          paths:
+            static: public
+            uploads: public/images/solutions
+      sector:
+        type: text
+        label: Secteur d'activité
+        comment: >-
+          Chip en haut de la vignette ET valeur du filtre « Secteurs
+          d'activité » : reprendre EXACTEMENT la graphie des autres fiches —
+          une variante (accent, majuscule) crée un filtre séparé.
+      solutionType:
+        type: text
+        label: Type de solution
+        comment: >-
+          Chip au pied de la carte ET valeur du filtre « Types de solution » —
+          même consigne de graphie exacte que le secteur.
+      featured:
+        type: switch
+        label: Solution vedette
+        comment: >-
+          Activé : la fiche alimente le grand panneau bleu nuit en tête de
+          catalogue. En cas de doublon, la première selon l'ordre d'affichage
+          gagne.
+      order:
+        type: number
+        label: Ordre d'affichage
+        comment: Croissant — les petits numéros d'abord (la vedette est à 0).
+      href:
+        type: text
+        label: Lien de la carte
+        comment: >-
+          SANS préfixe de langue (ex. /contact ou
+          /services/productivite/o-bureau) — le site ajoute /fr ou /en
+          automatiquement (convention navigation, l'INVERSE des sections de
+          page). Vide = carte sans lien.
+      docHref:
+        type: text
+        label: Lien « Documentation » (vedette)
+        comment: >-
+          Panneau vedette seulement. Sans préfixe de langue, comme le lien de
+          la carte.
 
   # URL redirects — exposes src/data/redirects.json, which the inline
   # 'victrix:redirects' integration in astro.config.mjs turns into
@@ -1092,8 +1246,10 @@ _structures:
                 - etoile
 
   # Tuiles statistiques (section « Produit — Valeur stratégique », fidélité
-  # maquette produit-enfant.css 2026-08-05).
-  stat_items:
+  # maquette produit-enfant.css 2026-08-05). Clé DISTINCTE de stat_items
+  # (« Victrix en chiffres », {number,label}) : YAML garde la DERNIÈRE
+  # définition d'une clé dupliquée — sous un même nom, celle-ci serait écrasée.
+  stat_tiles:
     values:
       - label: Tuile statistique
         icon: monitoring

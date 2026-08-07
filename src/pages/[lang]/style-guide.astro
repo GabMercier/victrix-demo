@@ -9,13 +9,15 @@ import Page from '../../../component-library/src/shared/astro/page.astro';
  * docs/design/Design system/DesignSystemVictrix.png (décision v2 : SYSTÈME =
  * planche, STRUCTURE = exports) et elle REMPLACE les pages design-lab
  * (purgées) : ancres + rôles du système (@theme de theme.css), tokens legacy
- * re-mappés (tokens.css), et vitrine des 23 sections de la palette.
+ * re-mappés (tokens.css), et vitrine des sections de la palette (30 au
+ * 2026-08-07).
  *
  * La vitrine NE duplique aucune donnée : elle recompose les MÊMES entrées de
  * démonstration que le script de captures (scripts/design/
- * generate-section-previews.mjs) — landing demo-sections (7), benefits+cta
- * d'evaluation-securite (2), accueil (7), service demo-sections (7) = 23
- * types. Toute évolution des pages de démo se reflète ici automatiquement.
+ * generate-section-previews.mjs) — l'union des pages de démo (landing
+ * demo-sections, evaluation-securite, accueil, service demo-sections) couvre
+ * tous les types. Toute évolution des pages de démo se reflète ici
+ * automatiquement.
  *
  * Monolingue FR (page interne, pas de contenu marketing). Les pastilles
  * rendent var(--…) en DIRECT — une valeur changée dans theme.css/tokens.css se

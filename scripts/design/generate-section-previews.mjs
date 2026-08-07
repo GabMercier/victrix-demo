@@ -43,8 +43,9 @@ const ROOT = process.cwd();
 const COMPONENTS_DIR = join(ROOT, 'component-library', 'src', 'components');
 
 // ---------------------------------------------------------------------------
-// Pages sources (FR) — fichier de contenu → URL rendue. L'union couvre les
-// 23 types de la palette ; le garde-fou plus bas le prouve à chaque exécution.
+// Pages sources (FR) — fichier de contenu → URL rendue. L'union couvre TOUS
+// les types de la palette (30 au 2026-08-07) ; le garde-fou plus bas le
+// prouve à chaque exécution.
 // ---------------------------------------------------------------------------
 const SOURCES = [
   { file: 'src/content/landing/fr/demo-sections.md', url: '/fr/campagnes/demo-sections/' },
