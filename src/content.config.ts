@@ -365,11 +365,18 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           // Visuel de la tuile (chemin PUBLIC) ; requis pour la variante image.
           image: z.string().default(''),
           // Fidélité maquette (bento « Nos services ») : peau de la carte.
-          // image = photo + voile nuit, titre 30px ; claire = blanche bordée ;
-          // bleue = aplat Bleu Victrix + forme décorative ; nuit = aplat navy.
+          // image = photo + voile nuit, titre 30px (sans image : placeholder
+          // gris clair + « V » filigrane) ; claire = blanche bordée ;
+          // bleue = aplat Bleu Victrix + « V » filigrane ; nuit = aplat navy.
           variant: z.enum(['image', 'claire', 'bleue', 'nuit']).default('claire'),
           // Libellé du lien de CETTE carte ; vide = learnMore de la section.
           linkLabel: z.string().default(''),
+          // Référence bento 2026-08-11 : carte LARGE (2 colonnes sur 3) —
+          // ex. Cybersécurité en tête de grille. Additif, défaut false.
+          wide: z.boolean().default(false),
+          // Pictogramme optionnel en tête des peaux claire/bleue/nuit
+          // (clés fermées — référence bento 2026-08-11). Vide = aucun.
+          icon: z.enum(['', 'ia', 'strategie', 'engrenage']).default(''),
         }),
       ),
     }),

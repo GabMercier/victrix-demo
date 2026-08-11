@@ -30,17 +30,9 @@
           "href": "/fr/services/cybersecurite",
           "image": "/images/home/expertise-cybersecurite.jpg",
           "variant": "image",
-          "linkLabel": ""
-        },
-        {
-          "number": "02",
-          "title": "Services Gérés",
-          "accent": "#1a5bff",
-          "description": "Paix d'esprit et performance 24/7/365.",
-          "href": "/fr/services/services-ti-geres",
-          "image": "",
-          "variant": "claire",
-          "linkLabel": ""
+          "linkLabel": "",
+          "wide": true,
+          "icon": ""
         },
         {
           "number": "03",
@@ -50,7 +42,9 @@
           "href": "/fr/services/intelligence-artificielle",
           "image": "",
           "variant": "bleue",
-          "linkLabel": "Découvrir"
+          "linkLabel": "Découvrir",
+          "wide": false,
+          "icon": "ia"
         },
         {
           "number": "04",
@@ -59,8 +53,10 @@
           "description": "Modernisez vos infrastructures avec agilité.",
           "href": "/fr/services/services-infonuagiques",
           "image": "",
-          "variant": "claire",
-          "linkLabel": ""
+          "variant": "image",
+          "linkLabel": "",
+          "wide": false,
+          "icon": ""
         },
         {
           "number": "05",
@@ -70,7 +66,9 @@
           "href": "/fr/services/conseil-strategique",
           "image": "",
           "variant": "claire",
-          "linkLabel": ""
+          "linkLabel": "",
+          "wide": false,
+          "icon": "strategie"
         },
         {
           "number": "06",
@@ -80,7 +78,9 @@
           "href": "/fr/services/services-ti-geres",
           "image": "",
           "variant": "nuit",
-          "linkLabel": ""
+          "linkLabel": "",
+          "wide": false,
+          "icon": "engrenage"
         }
       ]
     },

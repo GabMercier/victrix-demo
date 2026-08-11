@@ -126,6 +126,17 @@ per la règle v2 (structure = export, valeurs = planche) — **à confirmer** :
   header passe de `bg-surface` (Ivoire `#FAF7F3`) à **BLANC** (`bg-white`) —
   appliqué à `Header.astro` + `CampaignHeader.astro` (cohérent avec le panneau
   méga déjà blanc). Pour info à l'équipe design.
+- **RÉVISION 2026-08-11 (suite, proposition user acceptée)** : le FOOTER passe
+  aussi de `bg-surface-container-low` (Sable clair) à **BLANC**, aligné sur le
+  header, avec liseré froid `#C5C6D0/30` en tête (séparation sur les sections
+  blanches) — `Footer.astro` + `CampaignFooter.astro`. L'export Figma
+  « Composants » montrait un footer clair sable — divergence assumée, à
+  confirmer avec l'équipe design.
+- **Bento accueil (référence user 2026-08-11)** : « Services Gérés » dédoublé
+  (5 cartes), Cybersécurité LARGE (2 col, description affichée sur la photo),
+  « V » filigrane sur la peau bleue et sur le placeholder gris (peau image
+  sans image), pictogrammes fermés ia/strategie/engrenage en tête des cartes
+  colorées. Extensions ADDITIVES du contrat (wide/icon).
 - **Question tokens d'état (audit P-16, 2026-08-11)** 🔔 : le thème n'a qu'un
   rôle d'ERREUR (`--color-error*`) — aucun rôle succès/avertissement. Le
   tableau de bord du portail (prototype mock) emploie un vert `#0A6B3C` et un

@@ -37,6 +37,9 @@ interface ExpertiseItem {
   image?: string;
   variant?: 'image' | 'claire' | 'bleue' | 'nuit';
   linkLabel?: string;
+  // Référence bento 2026-08-11 : carte large (2 colonnes) + pictogramme.
+  wide?: boolean;
+  icon?: '' | 'ia' | 'strategie' | 'engrenage';
 }
 
 interface Props {
@@ -56,9 +59,20 @@ const linkBase =
   "inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[1.2px] no-underline after:content-[''] after:absolute after:inset-0";
 const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
 // « V » de marque en filigrane (peau bleue + remplacement d'image manquante) :
-// glyphe Hanken 340px blanc 10 %, ancré à droite et rogné par overflow-hidden.
-const watermark =
-  'absolute -right-12 -bottom-20 text-[340px] leading-none font-black text-white/10 select-none -z-10';
+// glyphe Hanken 340px, ancré à droite et rogné par overflow-hidden. Blanc 10 %
+// sur les aplat foncés ; gris sur le placeholder clair (image manquante).
+const watermarkBase =
+  'absolute -right-12 -bottom-20 text-[340px] leading-none font-black select-none -z-10';
+
+// Pictogrammes des cartes (clés fermées — référence bento 2026-08-11) :
+// étincelle IA / cible stratégie / engrenage. Trait 2, currentColor.
+const ICONS: Record<string, string> = {
+  ia: '<path fill="currentColor" stroke="none" d="M11 3l1.9 5.1L18 10l-5.1 1.9L11 17l-1.9-5.1L4 10l5.1-1.9L11 3z"/><path fill="currentColor" stroke="none" d="M18.5 14l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1 1-2.5z"/>',
+  strategie:
+    '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor" stroke="none"/>',
+  engrenage:
+    '<circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/>',
+};
 ---
 
 <section class="py-24 bg-white">
@@ -89,11 +103,32 @@ const watermark =
         items.map((item) => {
           const variant = item.variant || 'claire';
           const label = item.linkLabel || learnMore;
+          const iconPaths = item.icon ? ICONS[item.icon] : undefined;
+          const icon = (colorClass: string) =>
+            iconPaths && (
+              <svg
+                class={colorClass}
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                aria-hidden="true"
+                focusable="false"
+                set:html={iconPaths}
+              />
+            );
           return (
-            <li class="m-0">
+            <li class:list={['m-0', item.wide && 'md:col-span-2']}>
               {variant === 'image' ? (
                 <a
-                  class:list={[cardBase, 'justify-end p-8 bg-on-primary-fixed no-underline isolate']}
+                  class:list={[
+                    cardBase,
+                    'justify-end p-8 no-underline isolate',
+                    item.image ? 'bg-on-primary-fixed' : 'bg-[#F3F4F6]',
+                  ]}
                   href={item.href}
                 >
                   {item.image ? (
@@ -105,20 +140,36 @@ const watermark =
                       decoding="async"
                     />
                   ) : (
-                    <span class={watermark} aria-hidden="true">
+                    <span class:list={[watermarkBase, 'text-black/[0.06]']} aria-hidden="true">
                       V
                     </span>
                   )}
-                  <span class="block text-[30px] leading-9 font-bold tracking-[-0.6px] text-white">
+                  <span
+                    class:list={[
+                      'block text-[30px] leading-9 font-bold tracking-[-0.6px]',
+                      item.image ? 'text-white' : 'text-on-primary-fixed',
+                    ]}
+                  >
                     {item.title}
                   </span>
+                  {item.description && (
+                    <span
+                      class:list={[
+                        'block mt-2 text-base leading-6 max-w-[52ch]',
+                        item.image ? 'text-white/75' : 'text-[#6B7280]',
+                      ]}
+                    >
+                      {item.description}
+                    </span>
+                  )}
                 </a>
               ) : variant === 'bleue' ? (
                 <div class:list={[cardBase, 'justify-between p-10 bg-primary isolate']}>
-                  <span class={watermark} aria-hidden="true">
+                  <span class:list={[watermarkBase, 'text-white/10']} aria-hidden="true">
                     V
                   </span>
                   <span class="flex flex-col gap-4">
+                    {icon('text-white')}
                     <span class="block text-2xl leading-8 font-bold tracking-[-0.48px] text-white">
                       {item.title}
                     </span>
@@ -134,6 +185,7 @@ const watermark =
               ) : variant === 'nuit' ? (
                 <div class:list={[cardBase, 'justify-between p-10 bg-on-primary-fixed']}>
                   <span class="flex flex-col gap-4">
+                    {icon('text-white')}
                     <span class="block text-2xl leading-8 font-bold tracking-[-0.48px] text-white">
                       {item.title}
                     </span>
@@ -154,6 +206,7 @@ const watermark =
                   ]}
                 >
                   <span class="flex flex-col gap-4">
+                    {icon('text-primary')}
                     <span class="block text-2xl leading-8 font-bold tracking-[-0.48px] text-on-primary-fixed">
                       {item.title}
                     </span>
