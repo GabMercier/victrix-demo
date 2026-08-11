@@ -44,7 +44,8 @@
         "links": [
           { "label": "O bureau", "href": "/services/productivite/o-bureau" },
           { "label": "Employee platform & intranet", "href": "/services/productivite/plateforme-employe-intranet" },
-          { "label": "IT procurement", "href": "/services/approvisionnement-ti" }
+          { "label": "IT procurement", "href": "/services/approvisionnement-ti" },
+          { "label": "Solutions catalogue", "href": "/solutions" }
         ]
       }
     ],

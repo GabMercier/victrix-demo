@@ -155,6 +155,8 @@ fichier dans `fr/` et `en/` relie les deux langues.
   site ajoute `/fr` ou `/en` tout seul.
 - Une fiche n'a pas (encore) de page propre : « Découvrir » mène au lien de la
   carte. Les pages de détail sont une suite planifiée.
+- Le catalogue est accessible aux visiteurs par **« Catalogue de solutions »**
+  dans la colonne Produits du méga-menu et du pied de page.
 
 ## Bien référencer une page (SEO)
 
@@ -202,7 +204,14 @@ page « Merci ».
 **Composer un formulaire réutilisable** (collection **Formulaires** de la
 barre latérale — recommandé) : un fichier = un formulaire, avec son
 destinataire et son objet de courriel; les pages y font référence par le champ
-« Formulaire lié » de la section. Sept types de champ :
+« Formulaire lié » de la section.
+
+> ⚠️ **« Courriel destinataire » est le champ le plus sensible de l'éditeur** :
+> c'est l'adresse qui reçoit réellement les messages des visiteurs. Une faute
+> de frappe les détourne silencieusement — vérifier deux fois avant de
+> publier. Vide = le destinataire global du site (réglage technique).
+
+Sept types de champ :
 
 | Type | Usage |
 |---|---|
@@ -258,6 +267,35 @@ directement dans la section (mode historique), mais sans destinataire propre.
 | L'accueil ne se modifie pas en cliquant sur la page | L'accueil s'édite par le panneau de champs à gauche (aperçu à droite). L'édition clic-sur-la-page y viendra si l'équipe la juge prioritaire. |
 | Je veux annuler une modification | Tout est versionné — demander à l'équipe technique de restaurer, rien n'est perdu. |
 | Boutons en anglais (« Add Bénéfices », « Save », « Publish »…) | L'interface de l'application CloudCannon est en anglais (pas d'option française à ce jour); tout NOTRE contenu (étiquettes de sections, champs, descriptions) est en français. Le mélange est cosmétique — comme utiliser Word en anglais pour écrire un texte français. |
+
+## Ce que vous contrôlez — et ce qui est verrouillé (et pourquoi)
+
+**Vous contrôlez tout le contenu** : textes, images, ordre des sections d'une
+page, articles, fiches de solutions, formulaires, menu et pied de bannière,
+redirections, réglages SEO page par page. C'est le cœur du site et il est
+entièrement entre vos mains.
+
+**Certaines valeurs sont des listes fermées** (un menu déroulant plutôt qu'un
+champ libre). Ce n'est pas une limitation gratuite : chaque liste garantit la
+**charte graphique** ou le bon fonctionnement du site.
+
+| Champ | Pourquoi une liste fermée |
+|---|---|
+| Peau de carte (« claire / image / bleue / nuit ») | seules ces variantes existent dans le design |
+| Icônes (cartes, bénéfices, réalisations…) | l'icône vient d'une bibliothèque dessinée pour le site |
+| Type de champ de formulaire | chaque type a son comportement serveur (validation, courriel) |
+| Couleur d'accent | bornée aux couleurs de la **charte** — pas de couleur libre, la cohérence visuelle est garantie d'avance |
+
+**Quelques champs sont « hérités »** : visibles dans l'éditeur avec la mention
+« hérité — plus affiché » (couleur d'accent et numéro des cartes d'expertise,
+icônes des colonnes du méga-menu). Ils viennent de l'ancien design et n'ont
+plus d'effet visuel — les remplir ou non ne change rien au site.
+
+**Le filet de sécurité final, c'est la construction du site** : chaque
+publication est validée de bout en bout avant la mise en ligne. Une valeur
+invalide **bloque la publication avec un message clair** — le site en ligne
+reste intact. Autrement dit : vous ne pouvez pas casser le site en prod depuis
+l'éditeur, au pire une publication est retardée le temps d'une correction.
 
 ## Ce qu'il ne faut pas toucher
 

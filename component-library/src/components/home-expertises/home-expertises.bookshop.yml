@@ -30,7 +30,7 @@ blueprint:
   items:
     - number: "01"
       title: "Première expertise"
-      accent: "#B45309"
+      accent: "#1a5bff"
       description: "Décrivez brièvement cette expertise."
       href: "/fr/expertises/"
       image: ""

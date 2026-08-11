@@ -238,10 +238,11 @@ const condRequiredAttr = (field: FormField) =>
 const honeypotStyle =
   'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;';
 
-// Bannière d'erreur « ?erreur=1 » : paire rouge littérale (pas de rôle
-// « erreur » au thème), contraste AA. display:none initial via `hidden`.
+// Bannière d'erreur « ?erreur=1 » : rôles d'erreur du thème (P-16 — le
+// commentaire « pas de rôle erreur » était périmé, theme.css les définit).
+// display:none initial via `hidden`.
 const errorBannerStyle =
-  'border:1px solid #b3261e;background-color:#fdecea;color:#8c1d18;';
+  'border:1px solid var(--color-error);background-color:var(--color-error-container);color:var(--color-on-error-container);';
 const errorMessage =
   formLang === 'en'
     ? 'Your message could not be sent. Please check your answers and try again.'

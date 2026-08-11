@@ -21,12 +21,17 @@ catalogue Solutions livré (collection + route + filtres) et **déclaré au CMS
 le 2026-08-07** (+ cartes preview blog/home, inputs SEO exposés, fix date
 Pagefind).
 
-**Prochains candidats** : P-16 (contrôle d'attributs + finalisation
-guide-edition — ferme la vague 3), P-13 (footer 3 bureaux — à combiner avec
+**MàJ 11/08 : P-16 FERMÉ → VAGUE 3 FERMÉE** (reste P-11, bloqué OPS, hors
+vague par ses prérequis). Même lot : « Catalogue de solutions » ajouté au
+méga (colonne Produits) + footer FR/EN (le catalogue était inatteignable),
+header passé en BLANC (consigne designer, §2.e).
+
+**Prochains candidats** : P-13 (footer 3 bureaux — à combiner avec
 « footer éditable au CMS », tout le pied de page vit encore dans ui.ts),
 P-08 (courriel de confirmation), P-11 (analytics — toujours bloqué OPS-CSP +
-clés). OPS prioritaire : secret `REBUILD_HOOK_URL` (sans lui, aucune
-publication programmée automatique) + clés SMTP2GO/Turnstile.
+clés), pages placeholder des liens morts (objectif Lighthouse). OPS
+prioritaire : secret `REBUILD_HOOK_URL` (sans lui, aucune publication
+programmée automatique) + clés SMTP2GO/Turnstile.
 
 ## 0bis. État au 28 juillet (HISTORIQUE — vague 2, P-05/P-06/P-07 fermés côté code, P-04 prochain)
 
@@ -152,7 +157,7 @@ Statuts : ⬜ à faire · 🔵 en cours · 🟡 en revue (diff à revoir par Fab
 | P-13 | Footer 3 bureaux + carte façade | Sonnet 5 | P-01 (zone ui.ts) | 3,5 h | 3 | ⬜ | §7 |
 | P-14 | RSS + partage social sans témoins | ~~Sonnet 5~~ **Fable 5** | — | 3,5 h | 3 | ✅ | Fermé — commité/poussé depuis (statut mis à jour 07/08). Exécuté 30/07 — PÉRIMÈTRE AJUSTÉ : les boutons de partage sans témoins existaient déjà sur les articles (LinkedIn/X/Facebook/copier). Ajouté = flux RSS par langue `/{fr,en}/rss.xml` (`@astrojs/rss`, NOUVELLE dépendance) : articles publiés, URLs canoniques absolues, `<language>` fr-ca/en-ca + `<link rel=alternate type=application/rss+xml>` dans BaseLayout (découverte auto). |
 | P-15 | Page style-guide (tokens + vitrine palette, noindex) | ~~Sonnet 5~~ **Fable 5** | P-02 | 3,5 h | 3 | ✅ | Fermé — commité/poussé depuis (statut mis à jour 07/08). Exécuté 30/07. `/fr/style-guide/` (noindex, hors sitemap, monolingue — régime design-lab) : tokens (couleurs/typo/espaces/rayons/ombres, rendus en var(--…) live depuis tokens.css) + vitrine des sections de la palette (23 alors, 30 aujourd'hui) SANS duplication de données (recompose landing demo-sections + benefits/cta d'evaluation-securite + accueil + service demo-sections — mêmes sources que le script de captures ; enrich local : formulaires résolus + cartes factices related-posts). Page de contrôle visuel pour la « re-peau » Phase 5. |
-| P-16 | Contrôle attributs (select charte, verrous, hex en dur) + `guide-edition.md` | Sonnet 5 | P-02+P-03+P-07 | 3,5 h | 3 | ⬜ | §7 — ferme la vague 3 |
+| P-16 | Contrôle attributs (select charte, verrous, hex en dur) + `guide-edition.md` | ~~Sonnet 5~~ **Fable 5** | P-02+P-03+P-07 | 3,5 h | 3 | ✅ | **Fermé 11/08 — FERME LA VAGUE 3.** Exécuté (session directe) : `accent` des cartes d'expertise = **select des 6 ancres de la charte** (niveau structure `expertise_items` + niveau collection `home`, dupliqué pour qu'aucun chemin n'offre de texte libre) + migration des 12 valeurs de contenu `#2350E0`→`#1a5bff` et du défaut blueprint `#B45309`→`#1a5bff` (champ non rendu — migration sans risque visuel). **Audit hex** : 3 vrais reliquats corrigés/traités — PortalLogin.astro (alerte erreur → rôles `--color-error*` du thème), form.astro bannière `?erreur=1` (idem ; son commentaire « pas de rôle erreur au thème » était périmé), tableau-de-bord portail (vert/ambre d'état HORS SYSTÈME — commentés, question « tokens d'état ? » → signalements §2.e). Le reste des hex = famille froide verbatim des maquettes (délibéré, annoncé dans les entêtes) + `<meta theme-color>` (var() impossible dans un meta — commenté). **Verrous forms** : `label`/`required` déplacés au niveau structure `form_fields` (normalisation), `toEmail` marqué CHAMP SENSIBLE (config + guide). **guide-edition.md** : nouvelle section « Ce que vous contrôlez — et ce qui est verrouillé (et pourquoi) » (listes fermées/charte, champs hérités, build = filet de sécurité), avertissement toEmail, lien catalogue. |
 | P-17 | Landing O Studio + formulaire dédié + matrice 301 + redirections expertises→services | Sonnet 5 | P-03+P-07+P-18+arch. | 7 h | 4 | ⬜ | §7 |
 | P-18 | Inventaire URLs victrix.ca + ancien domaine O Studio → matrice zéro-404 | Sonnet 5 | — | 7 h | 4 | ⬜ | §7 — livrable = la matrice |
 | P-19 | Migration contenu restant (sessions multiples) | Sonnet 5 | P-07 | 14 h | 4 | ⬜ | §7 |

@@ -122,6 +122,15 @@ per la règle v2 (structure = export, valeurs = planche) — **à confirmer** :
 - Sections « Nos expertises »/« Solutions Phares » du fichier en Inter/Manrope
   64px : artefacts de génération (Hanken + échelle système conservés).
 - Différé : rétrécissement du header au scroll (80→64px).
+- **RÉVISION 2026-08-11 (consigne designer relayée par le user)** : la barre du
+  header passe de `bg-surface` (Ivoire `#FAF7F3`) à **BLANC** (`bg-white`) —
+  appliqué à `Header.astro` + `CampaignHeader.astro` (cohérent avec le panneau
+  méga déjà blanc). Pour info à l'équipe design.
+- **Question tokens d'état (audit P-16, 2026-08-11)** 🔔 : le thème n'a qu'un
+  rôle d'ERREUR (`--color-error*`) — aucun rôle succès/avertissement. Le
+  tableau de bord du portail (prototype mock) emploie un vert `#0A6B3C` et un
+  ambre `#8A5A00` en dur pour ses badges d'état. Faut-il ajouter des rôles
+  succès/avertissement à la planche, ou l'état reste-t-il hors système ?
 
 ---
 

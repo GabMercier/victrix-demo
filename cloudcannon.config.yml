@@ -313,10 +313,22 @@ collections_config:
         label: Numéro (hérité — plus affiché)
         comment: "Champ de l'ancien design, conservé pour compatibilité."
       accent:
-        type: text
+        # P-16 : borné à la charte (même select qu'au niveau structure
+        # expertise_items, qui prime — dupliqué ici pour qu'aucun chemin
+        # d'édition n'offre de texte libre).
+        type: select
         label: Couleur d'accent (héritée — plus affichée)
+        options:
+          allow_empty: false
+          values:
+            - '#1a5bff'
+            - '#0d1430'
+            - '#1a1f28'
+            - '#faf7f3'
+            - '#f2ece4'
+            - '#e9e1d6'
         # Quoted: an unquoted # would start a YAML comment mid-value.
-        comment: "Champ de l'ancien design, conservé pour compatibilité (ex. #B45309)."
+        comment: "Les 6 ancres de la charte (#1a5bff Bleu Victrix, #0d1430 Bleu nuit, #1a1f28 Anthracite, #faf7f3 Ivoire, #f2ece4 Beige, #e9e1d6 Sable). Champ de l'ancien design, conservé pour compatibilité ; plus rendu."
       description:
         type: textarea
         label: Description
@@ -862,8 +874,11 @@ collections_config:
       toEmail:
         type: text
         label: Courriel destinataire
+        # P-16 : champ SENSIBLE — voir aussi guide-edition.md §Formulaires.
         comment: >-
-          Adresse qui reçoit les soumissions de CE formulaire. Vide = le
+          ⚠️ CHAMP SENSIBLE : cette adresse reçoit RÉELLEMENT les soumissions
+          de CE formulaire — une faute de frappe détourne les messages des
+          visiteurs. Vérifier deux fois avant de publier. Vide = le
           destinataire global du site (variable FORMS_TO_EMAIL).
       subject:
         type: text
@@ -884,12 +899,8 @@ collections_config:
           libellés identiques dans un même formulaire.
         options:
           structures: _structures.form_fields
-      label:
-        type: text
-        label: Libellé du champ
-      required:
-        type: switch
-        label: Champ obligatoire
+      # P-16 : label/required vivent désormais au niveau STRUCTURE
+      # (_structures.form_fields), avec tous les autres _inputs de champ.
 
   # Navigation du site (menu principal, méga-menu, barre d'annonce, bouton
   # portail) — un JSON par langue dans src/data/navigation, consommé par
@@ -1374,7 +1385,7 @@ _structures:
         value:
           number: ''
           title: ''
-          accent: '#2350E0'
+          accent: '#1a5bff'
           description: ''
           href: ''
           image: ''
@@ -1400,6 +1411,25 @@ _structures:
             type: text
             label: Libellé du lien (surcharge)
             comment: Vide = libellé commun de la section (« Libellé du bouton des cartes »).
+          # P-16 : la couleur d'accent est BORNÉE à la charte (plus de texte
+          # libre). Champ hérité — plus affiché depuis la refonte 2026-08 —
+          # mais tant qu'il vit au contrat, il ne doit accepter que la charte.
+          accent:
+            type: select
+            label: Couleur d'accent (héritée — plus affichée)
+            options:
+              allow_empty: false
+              values:
+                - '#1a5bff'
+                - '#0d1430'
+                - '#1a1f28'
+                - '#faf7f3'
+                - '#f2ece4'
+                - '#e9e1d6'
+            comment: >-
+              Les 6 ancres de la charte — #1a5bff Bleu Victrix, #0d1430 Bleu nuit,
+              #1a1f28 Anthracite, #faf7f3 Ivoire, #f2ece4 Beige, #e9e1d6 Sable.
+              Champ de l'ancien design, conservé pour compatibilité ; plus rendu.
 
   # Cartes de la section « Solutions phares » (home-solutions, fidélité
   # maquette accueil.css) — images = CHEMINS PUBLICS (ex. /images/home/…),
@@ -1495,6 +1525,14 @@ _structures:
         # showIf/field/equals) vivent AUSSI ici pour rester scopés aux champs
         # de formulaire.
         _inputs:
+          # P-16 : label/required déplacés ici depuis les _inputs de la
+          # collection forms — tous les _inputs de champ vivent au même niveau.
+          label:
+            type: text
+            label: Libellé du champ
+          required:
+            type: switch
+            label: Champ obligatoire
           type:
             type: select
             label: Type de champ

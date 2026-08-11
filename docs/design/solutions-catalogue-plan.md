@@ -65,8 +65,11 @@ tout seuls — pas d'enum à maintenir tant que la taxonomie n'est pas actée.
    offer-cards, realisations, cta) plutôt qu'un gabarit dédié.
 3. **Images réelles** des vignettes + visuel vedette (Ø Bureau) à exporter du
    .fig → `public/images/solutions/`.
-4. **Navigation** : décider où le catalogue vit dans le méga (colonne
-   PRODUITS ? entrée « Solutions » du pied de page — actuellement morte ?).
+4. ~~**Navigation**~~ ✅ **TRANCHÉ ET FAIT (2026-08-11, décision user)** :
+   « Catalogue de solutions » ajouté à la colonne PRODUITS du méga-menu
+   (`src/data/navigation/{fr,en}.json`) ET du pied de page (`src/i18n/ui.ts`),
+   FR + EN. PAS d'entrée top-level (le header reste fidèle à la maquette Figma,
+   6 entrées).
 5. **Recherche interne** : les cartes ne sont pas des pages → hors Pagefind ;
    si le catalogue doit remonter dans /recherche, créer les pages de détail
    d'abord.
