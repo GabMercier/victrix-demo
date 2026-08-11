@@ -1,0 +1,41 @@
+{
+  "title": "Our expertise",
+  "description": "Complementary expertise covering all your technology needs.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Our expertise",
+      "subtitle": "Complementary expertise covering all your technology needs.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Detailed presentation in preparation",
+      "paragraphs": [
+        "The full presentation of our expertise will be published soon.",
+        "Browse the service pages already online — <a href=\"/en/services/intelligence-artificielle/\">artificial intelligence</a>, <a href=\"/en/services/cybersecurite/\">cybersecurity</a>, <a href=\"/en/services/productivity-consulting/\">productivity</a> — or contact us to learn more."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "A specific need?",
+      "body": "Our experts will point you to the right expertise.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "variant": "dark"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "title": "Pricing",
+  "description": "Flexible business models tailored to your context.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Pricing",
+      "subtitle": "Flexible business models tailored to your context.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Details coming soon",
+      "paragraphs": [
+        "The details of our pricing models will be published soon.",
+        "Every mandate is unique: we prepare an offer tailored to your needs — let’s talk."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Get an estimate",
+      "body": "Describe your project and we will come back to you quickly with a proposal.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "variant": "dark"
+    }
+  ]
+}

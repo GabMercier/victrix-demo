@@ -1,0 +1,41 @@
+{
+  "title": "Nos expertises",
+  "description": "Des expertises complémentaires pour couvrir l’ensemble de vos besoins technologiques.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Nos expertises",
+      "subtitle": "Des expertises complémentaires pour couvrir l’ensemble de vos besoins technologiques.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Présentation détaillée en préparation",
+      "paragraphs": [
+        "La présentation complète de nos expertises sera publiée prochainement.",
+        "Consultez nos pages de services déjà en ligne — <a href=\"/fr/services/intelligence-artificielle/\">intelligence artificielle</a>, <a href=\"/fr/services/cybersecurite/\">cybersécurité</a>, <a href=\"/fr/services/productivite/\">productivité</a> — ou communiquez avec nous pour en savoir plus."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Un besoin précis ?",
+      "body": "Nos experts vous orienteront vers la bonne expertise.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "variant": "dark"
+    }
+  ]
+}

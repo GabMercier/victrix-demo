@@ -1,0 +1,41 @@
+{
+  "title": "Secteurs d’activité",
+  "description": "Une connaissance fine des réalités des organisations publiques et privées.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Secteurs d’activité",
+      "subtitle": "Une connaissance fine des réalités des organisations publiques et privées.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Contenu en préparation",
+      "paragraphs": [
+        "Cette page présentera bientôt les secteurs que nous servons et nos réalisations dans chacun.",
+        "Entre-temps, communiquez avec nous pour discuter des enjeux propres à votre secteur."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Votre secteur, nos experts",
+      "body": "Parlons des défis technologiques propres à votre domaine.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "variant": "dark"
+    }
+  ]
+}

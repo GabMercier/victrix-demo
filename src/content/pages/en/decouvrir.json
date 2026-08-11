@@ -1,0 +1,41 @@
+{
+  "title": "Discover Victrix",
+  "description": "A trusted partner in IT consulting services and productivity solutions.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Discover Victrix",
+      "subtitle": "A trusted partner in IT consulting services and productivity solutions.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "A full presentation is coming",
+      "paragraphs": [
+        "This page will soon present our history, our team and our approach.",
+        "In the meantime, our experts will be happy to introduce Victrix and answer your questions."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Let's get acquainted",
+      "body": "Let’s discuss your technology challenges and how Victrix can support you.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "variant": "dark"
+    }
+  ]
+}

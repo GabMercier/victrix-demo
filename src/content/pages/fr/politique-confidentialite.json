@@ -1,0 +1,41 @@
+{
+  "title": "Politique de confidentialité",
+  "description": "Politique de confidentialité de Victrix.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Politique de confidentialité",
+      "subtitle": "",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Document en préparation",
+      "paragraphs": [
+        "Notre politique de confidentialité est en cours de rédaction et sera publiée sur cette page. Elle décrira la façon dont nous recueillons, utilisons et protégeons vos renseignements personnels.",
+        "Pour toute question sur la protection de vos renseignements personnels, communiquez avec nous."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Des questions ?",
+      "body": "Notre équipe vous répondra avec plaisir.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "variant": "light"
+    }
+  ]
+}

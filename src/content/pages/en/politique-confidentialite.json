@@ -1,0 +1,41 @@
+{
+  "title": "Privacy policy",
+  "description": "Victrix privacy policy.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Privacy policy",
+      "subtitle": "",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Document in preparation",
+      "paragraphs": [
+        "Our privacy policy is being drafted and will be published on this page. It will describe how we collect, use and protect your personal information.",
+        "For any question about the protection of your personal information, contact us."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Questions?",
+      "body": "Our team will be glad to answer.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "variant": "light"
+    }
+  ]
+}

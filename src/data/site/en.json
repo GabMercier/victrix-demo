@@ -1,0 +1,15 @@
+{
+  "notFound": {
+    "metaTitle": "Page not found",
+    "metaDescription": "The requested page could not be found. Explore our services, our resources, or contact us.",
+    "eyebrow": "Error 404",
+    "title": "Page not found",
+    "text": "The page you are looking for may have been moved, renamed or removed. Use the links below to continue your visit, or contact us — we will point you in the right direction.",
+    "requestedLabel": "Requested address:",
+    "links": [
+      { "label": "Back to home", "href": "/", "primary": true },
+      { "label": "Read the blog", "href": "/ressources", "primary": false },
+      { "label": "Contact us", "href": "/contact", "primary": false }
+    ]
+  }
+}

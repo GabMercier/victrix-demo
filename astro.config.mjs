@@ -1,5 +1,6 @@
 // @ts-check
 import { promises as fs } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
@@ -349,6 +350,8 @@ function i18nPairingReport() {
           // Services (P-07) : même contrat d'appariement fr/en homonymes, mais
           // fichiers .json (pas .md) — l'extension est portée par collection.
           { root: './src/content/services', ext: '.json' },
+          // Pages génériques (2026-08-11) : même contrat que services.
+          { root: './src/content/pages', ext: '.json' },
         ]) {
           /** @type {Record<string, string[]>} */
           const fichiers = {};
@@ -476,6 +479,45 @@ function pagefindIndex() {
   };
 }
 
+/**
+ * Chemins d'URL des pages composables NOINDEX (collections `pages` et
+ * `services`) — consommés par le filtre du sitemap ci-dessous. Lecture
+ * SYNCHRONE des JSON au chargement de la config (build seulement, quelques
+ * dizaines de fichiers) : la liste suit le champ `noindex` des contenus, rien
+ * à entretenir à la main. Défauts alignés sur les schémas zod
+ * (src/content.config.ts) : pages → noindex TRUE par défaut (placeholders),
+ * services → FALSE (pages publiques).
+ */
+function collectNoindexComposablePaths() {
+  const paths = [];
+  for (const { root, urlPrefix, defaultNoindex } of [
+    { root: './src/content/pages', urlPrefix: '', defaultNoindex: true },
+    { root: './src/content/services', urlPrefix: 'services/', defaultNoindex: false },
+  ]) {
+    for (const locale of ['fr', 'en']) {
+      let files = [];
+      try {
+        files = readdirSync(fileURLToPath(new URL(`${root}/${locale}/`, import.meta.url))).filter(
+          (f) => f.endsWith('.json'),
+        );
+      } catch {
+        continue; // dossier absent = rien à exclure
+      }
+      for (const file of files) {
+        const data = JSON.parse(
+          readFileSync(fileURLToPath(new URL(`${root}/${locale}/${file}`, import.meta.url)), 'utf8'),
+        );
+        const noindex = typeof data.noindex === 'boolean' ? data.noindex : defaultNoindex;
+        if (!noindex) continue;
+        const slug = data.slug || file.replace(/\.json$/, '');
+        paths.push(`/${locale}/${urlPrefix}${slug}/`);
+      }
+    }
+  }
+  return paths;
+}
+const noindexComposablePaths = collectNoindexComposablePaths();
+
 // https://astro.build/config
 export default defineConfig({
   // Served at the root on Cloudflare Pages — no `base` subpath.
@@ -561,12 +603,19 @@ export default defineConfig({
       // remplace l'ancien design-lab, purgé le 2026-08-04) ;
       // /services/demo-sections : service de démonstration (noindex) servant
       // aux captures d'aperçus de la palette — ni l'un ni l'autre au sitemap.
+      // + exclusion DYNAMIQUE des pages composables noindex (2026-08-11) : les
+      // placeholders des collections `pages` et `services` naissent
+      // noindex:true — les lister au sitemap contredirait le noindex. La liste
+      // est lue des JSON au chargement de la config (build seulement) : passer
+      // un placeholder à noindex:false le fait entrer au sitemap tout seul,
+      // aucune liste à entretenir ici.
       filter: (page) =>
         !page.includes('/campagnes/') &&
         !page.includes('/merci/') &&
         !page.includes('/recherche/') &&
         !page.includes('/style-guide') &&
-        !page.includes('/services/demo-sections'),
+        !page.includes('/services/demo-sections') &&
+        !noindexComposablePaths.some((path) => page.includes(path)),
     }),
     // Editor-managed redirects (src/data/redirects.json) → dist/_redirects.
     // Deliberately UNCONDITIONAL — both the production build and the

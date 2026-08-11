@@ -137,6 +137,28 @@ relie les deux versions (voir « Traduire »).
 > les infobulles des champs le rappellent. Un lien mal formé bloque la
 > publication avec un message clair, comme pour les redirections.
 
+## Modifier les pages générales (Découvrir, Produits, Tarification…)
+
+**Pages** dans la barre latérale : les pages générales du site — Découvrir
+Victrix, Nos expertises, Nos services, Nos produits, Secteurs d'activité,
+Tarification, Centre de confiance et les pages légales. Elles se composent par
+sections, exactement comme les pages Services.
+
+- Plusieurs de ces pages sont aujourd'hui des **placeholders** (texte
+  d'attente officiel). Remplacer les sections par le vrai contenu, puis
+  désactiver « **Masquer des moteurs de recherche** » : la page devient
+  indexable et entre au sitemap automatiquement.
+- Même règle de traduction que partout : le même nom de fichier dans `fr/` et
+  `en/` relie les deux langues.
+
+## Modifier les textes du site (page « introuvable »)
+
+**Textes du site** (groupe Configuration) : les textes d'interface qui ne
+vivent dans aucune page — pour l'instant, la page « introuvable » (erreur 404),
+un fichier par langue. Titre, message et boutons y sont modifiables ; les
+liens des boutons s'écrivent **sans préfixe de langue** (`/contact`), comme la
+navigation.
+
 ## Gérer le catalogue de solutions
 
 **Solutions** dans la barre latérale : une fiche = une carte du catalogue

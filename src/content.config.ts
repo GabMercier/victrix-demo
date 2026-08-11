@@ -1065,4 +1065,68 @@ const forms = defineCollection({
   }),
 });
 
-export const collections = { blog, home, landing, services, solutions, navigation, forms };
+/**
+ * Pages génériques (2026-08-11) — pages composables de PREMIER NIVEAU d'URL
+ * (/decouvrir, /expertises, /produits, /secteurs, /tarification,
+ * /centre-de-confiance, pages légales…), rendues par la route attrape-tout
+ * src/pages/[lang]/[...slug].astro. Patron EXACT de la collection `services`
+ * (mêmes sections composables, même appariement fr/en par nom de fichier,
+ * même surcharge `slug`), seule l'URL change : PAS de préfixe /services/.
+ *
+ * Créée pour remplacer les « liens morts assumés » de la nav/du footer par des
+ * pages placeholder ÉDITABLES au CMS (langage officiel — plus de message 404
+ * « prototype »). Les placeholders naissent noindex:true ; passer noindex à
+ * false quand le vrai contenu arrive.
+ */
+const pages = defineCollection({
+  loader: glob({
+    pattern: '**/*.json',
+    base: './src/content/pages',
+    generateId: ({ entry }) => entry.replace(/\\/g, '/').replace(/\.[^/.]+$/, ''),
+  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      // Placeholder par défaut → masqué des moteurs (l'inverse des services) ;
+      // basculer à false quand la page a son vrai contenu.
+      noindex: z.boolean().default(true),
+      slug: z.string().optional(),
+      seoTitle: z.string().optional(),
+      sections: z.array(sectionsSchema(image)),
+    }),
+});
+
+/**
+ * Textes du site (2026-08-11) — chaînes d'interface ÉDITABLES au CMS, un JSON
+ * par langue dans src/data/site (patron de la collection navigation). Premier
+ * locataire : la page 404 (src/pages/404.astro) — les textes vivaient dans
+ * ui.ts (code), le user veut TOUT le texte éditable. Destiné à absorber
+ * d'autres chaînes de chrome au fil des lots (footer = P-13+).
+ */
+const site = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/data/site' }),
+  schema: z.object({
+    notFound: z.object({
+      metaTitle: z.string().min(1),
+      metaDescription: z.string().min(1),
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+      text: z.string().min(1),
+      requestedLabel: z.string().min(1),
+      // Mêmes règles que la nav : liens internes SANS préfixe de langue
+      // (la page 404 localise via localizePath).
+      links: z
+        .array(
+          z.object({
+            label: z.string().min(1),
+            href: navHref,
+            primary: z.boolean().default(false),
+          }),
+        )
+        .min(1),
+    }),
+  }),
+});
+
+export const collections = { blog, home, landing, services, solutions, navigation, forms, pages, site };

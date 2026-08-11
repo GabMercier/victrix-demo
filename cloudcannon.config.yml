@@ -45,6 +45,7 @@ collection_groups:
   - heading: Contenu du site
     collections:
       - home
+      - pages
       - services
       - solutions
       - blog
@@ -55,6 +56,7 @@ collection_groups:
       - navigation
   - heading: Configuration
     collections:
+      - site
       - redirects
 
 collections_config:
@@ -661,6 +663,86 @@ collections_config:
       type:
         hidden: true
 
+  # Pages génériques (2026-08-11) — pages composables de PREMIER NIVEAU d'URL
+  # (/decouvrir, /expertises, /produits, /secteurs, /tarification,
+  # /centre-de-confiance, pages légales…), rendues par la route attrape-tout
+  # src/pages/[lang]/[...slug].astro. PATRON EXACT de la collection services
+  # (mêmes sections, mêmes gabarits par langue), sans le préfixe /services/.
+  # Créées comme PLACEHOLDERS (noindex activé) : remplacer le contenu puis
+  # désactiver « Masquer des moteurs de recherche » quand la page est prête.
+  pages:
+    path: src/content/pages
+    name: Pages
+    singular_name: Page
+    description: >-
+      Pages générales du site (Découvrir, Expertises, Produits, Secteurs,
+      Tarification, Centre de confiance, pages légales…), bâties par sections.
+      Les dossiers fr/ et en/ contiennent les deux langues ; le même nom de
+      fichier relie une traduction à l'autre. Une page placeholder reste
+      masquée des moteurs tant que « Masquer des moteurs de recherche » est
+      activé.
+    icon: description
+    _enabled_editors:
+      - visual
+      - data
+    # fr/<slug>.json → /fr/<slug>/ (pas de préfixe — pages de premier niveau).
+    url: /[relative_base_path]/[slug]/
+    preview:
+      icon: description
+      text:
+        - key: title
+        - text: Page sans titre
+      subtext:
+        - key: description
+    schemas:
+      default:
+        name: Page (FR)
+        icon: description
+        path: schemas/page-fr.json
+        create:
+          path: 'fr/{title|slugify}.json'
+      en:
+        name: Page (EN)
+        icon: description
+        path: schemas/page-en.json
+        create:
+          path: 'en/{title|slugify}.json'
+    _inputs:
+      title:
+        type: text
+        label: Titre
+        comment: >-
+          Titre de la page (onglet + SEO). Selon le contexte, sert aussi de
+          libellé à certaines sections.
+      description:
+        type: textarea
+        label: Description
+        comment: >-
+          Description pour les moteurs de recherche et les partages.
+      noindex:
+        type: switch
+        label: Masquer des moteurs de recherche
+        comment: >-
+          ACTIVÉ par défaut sur une nouvelle page (placeholder). Le désactiver
+          quand la page a son vrai contenu — elle entre alors aussi au sitemap
+          automatiquement.
+      seoTitle:
+        type: text
+        label: Titre SEO (surcharge)
+        comment: >-
+          Remplace le titre dans l'onglet du navigateur et les résultats
+          Google. Vide = le titre de la page.
+      sections:
+        type: array
+        label: Sections
+        comment: >-
+          La page est construite uniquement à partir de ces sections. Garder le
+          héros en PREMIÈRE position : il porte le seul <h1> de la page.
+        options:
+          structures: _structures.sections
+      type:
+        hidden: true
+
   # Catalogue de solutions (/fr|en/solutions) — fiches JSON à plat, une carte
   # du catalogue par fiche (suite n°1 du plan
   # docs/design/solutions-catalogue-plan.md §3). Éditeur de données : la fiche
@@ -761,6 +843,70 @@ collections_config:
         comment: >-
           Panneau vedette seulement. Sans préfixe de langue, comme le lien de
           la carte.
+
+  # Textes du site (2026-08-11) — chaînes d'interface éditables (un JSON par
+  # langue dans src/data/site, patron de la collection navigation). Premier
+  # locataire : la page 404 (l'ancien texte « prototype » de ui.ts est retiré ;
+  # le user veut TOUT le texte éditable). Destiné à absorber d'autres chaînes
+  # de chrome au fil des lots (footer = P-13+).
+  site:
+    path: src/data/site
+    name: Textes du site
+    singular_name: Textes du site
+    description: >-
+      Textes d'interface du site (page « introuvable » pour l'instant), un
+      fichier par langue (fr.json / en.json). D'autres textes du site s'y
+      ajouteront au fil des mises à jour.
+    icon: translate
+    # Deux fichiers fixes (fr/en) — rien à ajouter/supprimer/renommer.
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    # Pas de page à prévisualiser (le JSON n'est pas une page).
+    disable_url: true
+    _enabled_editors:
+      - data
+    _inputs:
+      notFound:
+        type: object
+        label: Page « introuvable » (erreur 404)
+        comment: >-
+          Textes affichés quand un visiteur atteint une adresse inexistante.
+      metaTitle:
+        type: text
+        label: Titre d'onglet
+      metaDescription:
+        type: textarea
+        label: Description (moteurs de recherche)
+      eyebrow:
+        type: text
+        label: Surtitre
+      title:
+        type: text
+        label: Titre
+      text:
+        type: textarea
+        label: Message
+      requestedLabel:
+        type: text
+        label: Étiquette « adresse demandée »
+        comment: Affichée devant l'adresse que le visiteur a demandée.
+      links:
+        type: array
+        label: Boutons
+        comment: Liens proposés au visiteur (le premier « principal » est bleu).
+      label:
+        type: text
+        label: Libellé
+      href:
+        type: text
+        label: Lien
+        comment: >-
+          SANS préfixe de langue (/contact, pas /fr/contact) — la page ajoute
+          /fr ou /en toute seule.
+      primary:
+        type: switch
+        label: Bouton principal (bleu)
 
   # URL redirects — exposes src/data/redirects.json, which the inline
   # 'victrix:redirects' integration in astro.config.mjs turns into

@@ -26,12 +26,25 @@ vague par ses prérequis). Même lot : « Catalogue de solutions » ajouté au
 méga (colonne Produits) + footer FR/EN (le catalogue était inatteignable),
 header passé en BLANC (consigne designer, §2.e).
 
+**MàJ 11/08 (après-midi) : PLUS AUCUN LIEN MORT — pages placeholder
+partout, langage officiel.** Nouvelle collection composable `pages` (route
+attrape-tout `[lang]/[...slug].astro`, patron services) : 9 pages FR+EN
+(/decouvrir, /expertises, /services, /produits, /secteurs, /tarification,
+/centre-de-confiance, /conditions-utilisation, /politique-confidentialite) +
+3 entrées services (infrastructure, services-applicatifs, projets-en-ia) —
+placeholders noindex:true, exclus du sitemap DYNAMIQUEMENT (astro.config lit
+le champ noindex des JSON ; basculer noindex à false suffit). Nouvelle
+collection `site` (Textes du site, data fr/en) : la page 404 est ÉDITABLE AU
+CMS, texte officiel « Page introuvable » (la mention « prototype » est
+RETIRÉE ; ui.ts.notFound déménagé). Bento accueil : filigrane « V » de marque
+sur la peau bleue + placeholder V si peau image sans image (demande user).
+
 **Prochains candidats** : P-13 (footer 3 bureaux — à combiner avec
 « footer éditable au CMS », tout le pied de page vit encore dans ui.ts),
 P-08 (courriel de confirmation), P-11 (analytics — toujours bloqué OPS-CSP +
-clés), pages placeholder des liens morts (objectif Lighthouse). OPS
-prioritaire : secret `REBUILD_HOOK_URL` (sans lui, aucune publication
-programmée automatique) + clés SMTP2GO/Turnstile.
+clés), contenu réel des placeholders (marketing). OPS prioritaire : secret
+`REBUILD_HOOK_URL` (sans lui, aucune publication programmée automatique) +
+clés SMTP2GO/Turnstile.
 
 ## 0bis. État au 28 juillet (HISTORIQUE — vague 2, P-05/P-06/P-07 fermés côté code, P-04 prochain)
 

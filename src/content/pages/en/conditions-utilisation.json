@@ -1,0 +1,41 @@
+{
+  "title": "Terms of use",
+  "description": "Terms of use of the victrix.ca website.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Terms of use",
+      "subtitle": "",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Document in preparation",
+      "paragraphs": [
+        "The terms of use of this website are being drafted and will be published on this page.",
+        "For any question, contact us."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Questions?",
+      "body": "Our team will be glad to answer.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "variant": "light"
+    }
+  ]
+}

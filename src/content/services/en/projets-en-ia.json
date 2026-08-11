@@ -1,0 +1,41 @@
+{
+  "title": "AI projects",
+  "description": "From ideation to deployment: artificial intelligence projects that deliver value.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "AI projects",
+      "subtitle": "From ideation to deployment: artificial intelligence projects that deliver value.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Page in preparation",
+      "paragraphs": [
+        "The detailed presentation of our artificial intelligence projects will be published soon.",
+        "Explore our <a href=\"/en/services/intelligence-artificielle/\">artificial intelligence</a> expertise today, or contact our experts."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "An AI project?",
+      "body": "Let’s discuss your use cases and their potential.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "variant": "dark"
+    }
+  ]
+}

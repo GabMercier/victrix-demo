@@ -1,0 +1,41 @@
+{
+  "title": "Conditions d’utilisation",
+  "description": "Conditions d’utilisation du site victrix.ca.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Conditions d’utilisation",
+      "subtitle": "",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Document en préparation",
+      "paragraphs": [
+        "Les conditions d’utilisation de ce site sont en cours de rédaction et seront publiées sur cette page.",
+        "Pour toute question, communiquez avec nous."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Des questions ?",
+      "body": "Notre équipe vous répondra avec plaisir.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "variant": "light"
+    }
+  ]
+}

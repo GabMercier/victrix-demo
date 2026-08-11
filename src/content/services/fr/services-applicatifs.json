@@ -1,0 +1,41 @@
+{
+  "title": "Services applicatifs",
+  "description": "Concevoir, moderniser et maintenir vos applications d’affaires.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Services applicatifs",
+      "subtitle": "Concevoir, moderniser et maintenir vos applications d’affaires.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Page en préparation",
+      "paragraphs": [
+        "La présentation détaillée de nos services applicatifs sera publiée prochainement.",
+        "Nos équipes accompagnent déjà de nombreuses organisations — communiquez avec nous pour discuter de vos projets applicatifs."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Un projet applicatif ?",
+      "body": "Parlons de vos applications d’affaires et de leur évolution.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "variant": "dark"
+    }
+  ]
+}

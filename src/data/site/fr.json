@@ -1,0 +1,15 @@
+{
+  "notFound": {
+    "metaTitle": "Page introuvable",
+    "metaDescription": "La page demandée est introuvable. Explorez nos services, nos ressources ou communiquez avec nous.",
+    "eyebrow": "Erreur 404",
+    "title": "Page introuvable",
+    "text": "La page que vous cherchez a peut-être été déplacée, renommée ou retirée. Utilisez les liens ci-dessous pour poursuivre votre visite, ou communiquez avec nous — nous vous guiderons.",
+    "requestedLabel": "Adresse demandée :",
+    "links": [
+      { "label": "Retour à l’accueil", "href": "/", "primary": true },
+      { "label": "Consulter le blogue", "href": "/ressources", "primary": false },
+      { "label": "Nous joindre", "href": "/contact", "primary": false }
+    ]
+  }
+}

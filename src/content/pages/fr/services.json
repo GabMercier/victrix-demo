@@ -1,0 +1,41 @@
+{
+  "title": "Nos services",
+  "description": "Du conseil stratégique aux services gérés : un accompagnement de bout en bout.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Nos services",
+      "subtitle": "Du conseil stratégique aux services gérés : un accompagnement de bout en bout.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Catalogue complet en préparation",
+      "paragraphs": [
+        "La vue d’ensemble de nos services sera publiée prochainement.",
+        "Plusieurs pages de services sont déjà en ligne — <a href=\"/fr/services/conseil-strategique/\">conseil stratégique</a>, <a href=\"/fr/services/services-infonuagiques/\">infonuagique</a>, <a href=\"/fr/services/services-ti-geres/\">services gérés</a> — et notre <a href=\"/fr/solutions/\">catalogue de solutions</a> est disponible."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Parlons de vos besoins",
+      "body": "Décrivez-nous votre contexte : nous bâtirons l’accompagnement qui vous convient.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "variant": "dark"
+    }
+  ]
+}

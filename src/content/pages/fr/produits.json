@@ -1,0 +1,41 @@
+{
+  "title": "Nos produits",
+  "description": "Des solutions éprouvées pour accélérer la productivité de vos équipes.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Nos produits",
+      "subtitle": "Des solutions éprouvées pour accélérer la productivité de vos équipes.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Gamme complète en préparation",
+      "paragraphs": [
+        "La présentation détaillée de nos produits — Ø Studio, O bureau, plateforme employé — sera publiée prochainement.",
+        "Découvrez dès maintenant notre <a href=\"/fr/solutions/\">catalogue de solutions</a> ou nos pages produit déjà en ligne, comme <a href=\"/fr/services/productivite/o-bureau/\">O bureau</a>."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Une démonstration ?",
+      "body": "Nos équipes vous présenteront les produits adaptés à vos besoins.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "variant": "dark"
+    }
+  ]
+}

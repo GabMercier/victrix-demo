@@ -1,0 +1,41 @@
+{
+  "title": "Tarification",
+  "description": "Des modèles d’affaires flexibles, adaptés à votre contexte.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Tarification",
+      "subtitle": "Des modèles d’affaires flexibles, adaptés à votre contexte.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Détails à venir",
+      "paragraphs": [
+        "Les détails de nos modèles de tarification seront publiés prochainement.",
+        "Chaque mandat étant unique, nous préparons une offre adaptée à vos besoins — parlons-en."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Obtenez une estimation",
+      "body": "Décrivez votre projet : nous vous reviendrons rapidement avec une proposition.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "variant": "dark"
+    }
+  ]
+}

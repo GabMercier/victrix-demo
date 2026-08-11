@@ -1,0 +1,41 @@
+{
+  "title": "Our services",
+  "description": "From strategic consulting to managed services: end-to-end support.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Our services",
+      "subtitle": "From strategic consulting to managed services: end-to-end support.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Full catalogue in preparation",
+      "paragraphs": [
+        "The overview of our services will be published soon.",
+        "Several service pages are already online — <a href=\"/en/services/conseil-strategique/\">strategic consulting</a>, <a href=\"/en/services/services-infonuagiques/\">cloud services</a>, <a href=\"/en/services/services-ti-geres/\">managed services</a> — and our <a href=\"/en/solutions/\">solutions catalogue</a> is available."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Let’s talk about your needs",
+      "body": "Tell us about your context: we will build the right support for you.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "variant": "dark"
+    }
+  ]
+}

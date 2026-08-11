@@ -1,6 +1,6 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { ui } from '../i18n/ui';
 import { localizePath } from '../i18n/config';
 
 /**
@@ -8,9 +8,19 @@ import { localizePath } from '../i18n/config';
  * path, so the locale isn't known at build time: we render French (the default)
  * and a tiny client script swaps the copy + links to English when the requested
  * path is under /en/.
+ *
+ * TEXTES ÉDITABLES AU CMS (2026-08-11) : les chaînes vivent dans la collection
+ * `site` (src/data/site/{fr,en}.json, déclarée à CloudCannon) — plus dans
+ * ui.ts. Le garde-fou zod exige le bloc notFound dans les DEUX langues.
  */
-const fr = ui.fr.notFound;
-const en = ui.en.notFound;
+const siteEntries = await getCollection('site');
+const notFoundOf = (lang: string) => {
+  const entry = siteEntries.find((e) => e.id === lang);
+  if (!entry) throw new Error(`[404] src/data/site/${lang}.json introuvable (collection site)`);
+  return entry.data.notFound;
+};
+const fr = notFoundOf('fr');
+const en = notFoundOf('en');
 
 const links = fr.links.map((l, i) => ({
   primary: l.primary,

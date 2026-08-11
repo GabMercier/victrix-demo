@@ -8,9 +8,13 @@
  *             ancré en bas ;
  *  - claire : carte blanche bordée #F3F4F6, titre 24/700 navy, texte #6B7280,
  *             lien 12/700 majuscules navy + flèche ;
- *  - bleue  : aplat Bleu Victrix + forme décorative blanche 10 % en bas à
- *             droite, texte bleu pâle, lien blanc ;
+ *  - bleue  : aplat Bleu Victrix + grand « V » de marque en filigrane (blanc
+ *             10 %, ancré à droite, rogné par la carte — demande user
+ *             2026-08-11, remplace l'ancien carré arrondi), texte bleu pâle,
+ *             lien blanc ;
  *  - nuit   : aplat navy, texte #9CA3AF, lien blanc.
+ * Peau « image » SANS image renseignée : le même « V » filigrane sert de
+ * visuel de remplacement sur l'aplat navy (placeholder de marque).
  * Rangée de tête : titre 48/700 ls -0.96 + paragraphe d'appui SOUS le titre,
  * lien « Voir toutes nos expertises → » 12/700 majuscules bleu à droite.
  * Neutres froids maquette tels quels ; bleus/navy = tokens (décision méga).
@@ -51,6 +55,10 @@ const cardBase = 'group relative h-[300px] rounded-lg overflow-hidden flex flex-
 const linkBase =
   "inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[1.2px] no-underline after:content-[''] after:absolute after:inset-0";
 const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
+// « V » de marque en filigrane (peau bleue + remplacement d'image manquante) :
+// glyphe Hanken 340px blanc 10 %, ancré à droite et rogné par overflow-hidden.
+const watermark =
+  'absolute -right-12 -bottom-20 text-[340px] leading-none font-black text-white/10 select-none -z-10';
 ---
 
 <section class="py-24 bg-white">
@@ -88,7 +96,7 @@ const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
                   class:list={[cardBase, 'justify-end p-8 bg-on-primary-fixed no-underline isolate']}
                   href={item.href}
                 >
-                  {item.image && (
+                  {item.image ? (
                     <img
                       src={item.image}
                       alt=""
@@ -96,6 +104,10 @@ const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
                       loading="lazy"
                       decoding="async"
                     />
+                  ) : (
+                    <span class={watermark} aria-hidden="true">
+                      V
+                    </span>
                   )}
                   <span class="block text-[30px] leading-9 font-bold tracking-[-0.6px] text-white">
                     {item.title}
@@ -103,10 +115,9 @@ const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
                 </a>
               ) : variant === 'bleue' ? (
                 <div class:list={[cardBase, 'justify-between p-10 bg-primary isolate']}>
-                  <span
-                    class="absolute -right-10 -bottom-10 size-64 rounded-3xl bg-white/10 -z-10"
-                    aria-hidden="true"
-                  />
+                  <span class={watermark} aria-hidden="true">
+                    V
+                  </span>
                   <span class="flex flex-col gap-4">
                     <span class="block text-2xl leading-8 font-bold tracking-[-0.48px] text-white">
                       {item.title}

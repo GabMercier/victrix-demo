@@ -63,11 +63,11 @@ const fr = {
   },
 
   // Footer — contenu des colonnes ALIGNÉ sur la maquette Figma « Composants »
-  // (2026-08-04). Cibles « mortes assumées » (pages à créer, décision user,
-  // comme /decouvrir — /carrieres existe depuis 2026-08-05) :
-  // /services/infrastructure, /secteurs,
-  // /services/services-applicatifs, /services/projets-en-ia,
-  // /centre-de-confiance, /tarification.
+  // (2026-08-04). PLUS AUCUNE cible morte depuis 2026-08-11 : toutes les
+  // anciennes cibles mortes ont une page placeholder éditable au CMS
+  // (collection `pages` — /decouvrir, /expertises, /produits, /secteurs,
+  // /tarification, /centre-de-confiance, pages légales — et collection
+  // `services` — infrastructure, services-applicatifs, projets-en-ia).
   footer: {
     columns: [
       {
@@ -181,20 +181,8 @@ const fr = {
     ],
   },
 
-  notFound: {
-    metaTitle: 'Page en construction',
-    metaDescription:
-      'Cette section du site Victrix est en cours de construction. Découvrez les pages déjà en ligne.',
-    eyebrow: 'Erreur 404',
-    title: 'Page en construction',
-    text: 'La page que vous cherchez n’est pas encore en ligne — ou n’existe pas. Ce site est un prototype : plusieurs sections sont toujours en cours de réalisation. Merci de votre patience !',
-    requestedLabel: 'Adresse demandée :',
-    links: [
-      { label: 'Retour à l’accueil', href: '/', primary: true },
-      { label: 'Consulter le blogue', href: '/ressources', primary: false },
-      { label: 'Nous joindre', href: '/contact', primary: false },
-    ],
-  },
+  // notFound : DÉMÉNAGÉ vers la collection `site` (src/data/site/{fr,en}.json,
+  // éditable au CMS — 2026-08-11). src/pages/404.astro lit la collection.
 };
 
 type UI = typeof fr;
@@ -353,20 +341,7 @@ const en: UI = {
     ],
   },
 
-  notFound: {
-    metaTitle: 'Page under construction',
-    metaDescription:
-      'This section of the Victrix site is under construction. Explore the pages already online.',
-    eyebrow: 'Error 404',
-    title: 'Page under construction',
-    text: "The page you're looking for isn't online yet — or doesn't exist. This site is a prototype: several sections are still being built. Thanks for your patience!",
-    requestedLabel: 'Requested address:',
-    links: [
-      { label: 'Back to home', href: '/', primary: true },
-      { label: 'Visit the blog', href: '/ressources', primary: false },
-      { label: 'Contact us', href: '/contact', primary: false },
-    ],
-  },
+  // notFound : voir la collection `site` (miroir du commentaire FR).
 };
 
 export const ui: Record<Locale, UI> = { fr, en };

@@ -1,0 +1,41 @@
+{
+  "title": "Découvrir Victrix",
+  "description": "Partenaire de confiance en services-conseils TI et en solutions de productivité.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Découvrir Victrix",
+      "subtitle": "Partenaire de confiance en services-conseils TI et en solutions de productivité.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Une présentation complète à venir",
+      "paragraphs": [
+        "Cette page présentera bientôt notre histoire, notre équipe et notre approche.",
+        "Entre-temps, nos experts se feront un plaisir de vous présenter Victrix et de répondre à vos questions."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Faisons connaissance",
+      "body": "Discutons de vos enjeux technologiques et de la façon dont Victrix peut vous accompagner.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "variant": "dark"
+    }
+  ]
+}
