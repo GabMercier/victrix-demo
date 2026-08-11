@@ -1,6 +1,6 @@
 # Guide de l'éditeur — publier sur le site Victrix
 
-> Pour l'équipe marketing. Version du **14 juillet 2026** (prototype
+> Pour l'équipe marketing. Version du **7 août 2026** (branche
 > `spike/cloudcannon`). Le principe à retenir : **vous éditez le contenu, les
 > gabarits garantissent la forme** — vous ne pouvez pas casser la mise en page.
 > Captures d'écran à ajouter.
@@ -9,8 +9,10 @@
 
 1. Ouvrir CloudCannon (l'URL du site « Vic-demo » vous est partagée par
    l'équipe technique, avec votre invitation).
-2. La barre latérale gauche liste les contenus éditables : **Blogue, Accueil,
-   Expertises, Campagnes, Navigation, Redirections**.
+2. La barre latérale gauche liste les contenus éditables, en trois groupes :
+   - **Contenu du site** : Accueil, Services, Solutions, Blogue ;
+   - **Marketing** : Campagnes, Formulaires, Navigation ;
+   - **Configuration** : Redirections.
 
 > 💡 Chaque sauvegarde crée une version dans l'historique Git : tout est
 > traçable et réversible. Personne ne peut « perdre » le site.
@@ -32,6 +34,10 @@
    - **Slug** : l'adresse de la page (`/fr/ressources/<slug>/`). Chaque langue
      a le sien. Ne pas changer sur un article déjà publié sans prévoir une
      redirection (voir plus bas).
+   - **Date de publication** : une date **future** programme l'article (voir
+     « Planifier » plus bas).
+   - **Titre SEO (surcharge)** et **Masquer des moteurs de recherche** : les
+     réglages de référencement par article (voir « Bien référencer une page »).
 4. **Save** → l'article part en publication (en ligne en quelques minutes).
 
 ## Créer un article
@@ -50,12 +56,13 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
    « Évaluation de votre posture de sécurité ».
 2. La page s'ouvre dans l'**éditeur visuel** : la page rendue à droite, les
    sections à gauche.
-3. **+ Ajouter une section** propose la palette : **Héros, Bénéfices, FAQ,
-   Formulaire, Appel à l'action, Témoignage, Bandeau logos partenaires,
-   Victrix en chiffres, Vidéo** (+ les sections d'accueil). Glisser pour
-   réordonner; chaque section a ses champs (textes, boutons, questions…).
-   Une page de démonstration des nouvelles sections existe :
-   `/fr/campagnes/demo-sections/`.
+3. **+ Ajouter une section** propose la palette : **une trentaine de
+   sections** (héros, bénéfices, FAQ, formulaire, appel à l'action,
+   témoignage, bandeau logos, chiffres, vidéo, grilles bento, tuiles, cartes
+   d'offre, réalisations…), chacune avec sa **vignette d'aperçu** dans le
+   sélecteur. Glisser pour réordonner; chaque section a ses champs (textes,
+   boutons, questions…). Deux vitrines pour tout voir :
+   `/fr/campagnes/demo-sections/` et `/fr/style-guide/`.
 4. Par défaut la page est **non indexée** (invisible des moteurs de recherche —
    voulu pour les campagnes). L'interrupteur « noindex » est là si une page
    doit un jour être indexée.
@@ -129,6 +136,50 @@ relie les deux versions (voir « Traduire »).
 > C'est l'inverse des boutons de sections (qui prennent l'adresse complète);
 > les infobulles des champs le rappellent. Un lien mal formé bloque la
 > publication avec un message clair, comme pour les redirections.
+
+## Gérer le catalogue de solutions
+
+**Solutions** dans la barre latérale : une fiche = une carte du catalogue
+(`/fr/solutions/`). Même règle de traduction que partout : le même nom de
+fichier dans `fr/` et `en/` relie les deux langues.
+
+- **Secteur d'activité** et **Type de solution** : ces deux champs alimentent
+  les chips de la carte ET les **filtres** de la page. Reprendre **exactement**
+  la graphie des autres fiches (accents et majuscules compris) — une variante
+  crée un filtre séparé.
+- **Solution vedette** : activée, la fiche remplit le grand panneau bleu nuit
+  en tête de catalogue (une seule vedette; en cas de doublon, la première
+  selon l'ordre d'affichage gagne).
+- **Ordre d'affichage** : croissant (petits numéros d'abord).
+- **Liens** : sans préfixe de langue (`/contact`), comme la navigation — le
+  site ajoute `/fr` ou `/en` tout seul.
+- Une fiche n'a pas (encore) de page propre : « Découvrir » mène au lien de la
+  carte. Les pages de détail sont une suite planifiée.
+
+## Bien référencer une page (SEO)
+
+Ce que vous contrôlez, page par page :
+
+- **Titre** (et « Titre SEO (surcharge) » sur le blogue et les services) :
+  ≤ 60 caractères, portant le mot-clé principal. Vide = le titre normal sert
+  partout.
+- **Description** (« Extrait » sur le blogue) : 120–155 caractères, orientée
+  clic — c'est le texte affiché sous le lien dans Google et les partages.
+- **Masquer des moteurs de recherche** (`noindex`) : campagnes masquées par
+  défaut (trafic payant), tout le reste indexé par défaut. N'y toucher que
+  pour retirer temporairement une page des résultats.
+- **Redirections** : à chaque changement d'adresse d'une page publiée (voir
+  la section suivante).
+
+Le reste (balise canonique, hreflang FR/EN, sitemap, données structurées,
+aperçus de partage) est **automatique** — personne n'a à y penser, personne ne
+peut le casser depuis l'éditeur.
+
+Checklist de rédaction (remplace les « pastilles vertes » de Yoast) : 1 sujet
+= 1 page · un seul grand titre (le champ Titre), sous-titres descriptifs ·
+liens internes vers les services/articles liés · texte alternatif des images
+· nommer les fichiers d'images en mots réels (`audit-cybersecurite.jpg`, pas
+`IMG_0034.jpg`) · vérifier l'aperçu de partage avant publication.
 
 ## Gérer les redirections
 
@@ -210,9 +261,9 @@ directement dans la section (mode historique), mais sans destinataire propre.
 
 ## Ce qu'il ne faut pas toucher
 
-- Le dossier `public/admin/` (l'ancien éditeur, en cours de retrait) et les
-  fichiers techniques à la racine — l'éditeur ne vous les propose pas, c'est
-  voulu.
+- Les fichiers techniques à la racine du dépôt — l'éditeur ne vous les
+  propose pas, c'est voulu. (L'ancien éditeur Sveltia a été retiré : CloudCannon
+  est le seul outil d'édition.)
 - Les **noms de fichiers** des contenus existants (ils apparient FR ⇄ EN).
   Pour changer une adresse publique, utiliser le champ **Slug** + une
   redirection.

@@ -56,9 +56,10 @@ tout seuls — pas d'enum à maintenir tant que la taxonomie n'est pas actée.
 
 ## 3. Suites planifiées
 
-1. **CloudCannon** : déclarer la collection `solutions` dans
-   `cloudcannon.config.yml` (icône, `_inputs` des champs, chemins d'upload
-   `public/images/solutions/`) pour l'édition par les éditeurs.
+1. ~~**CloudCannon** : déclarer la collection `solutions`~~ → ✅ **FAIT
+   (2026-08-07)** : collection déclarée dans `cloudcannon.config.yml` (éditeur
+   data, carte preview, gabarits `schemas/solution-{fr,en}.json`, `_inputs`
+   FR, uploads `public/images/solutions/`), groupe « Contenu du site ».
 2. **Pages de détail** (`/solutions/<slug>`) quand le contenu existera —
    réutiliser les sections composables (service-hero, strategic-value,
    offer-cards, realisations, cta) plutôt qu'un gabarit dédié.

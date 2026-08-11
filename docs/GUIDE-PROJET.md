@@ -92,12 +92,12 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 | `revue-cahier-des-charges.md` | Traçabilité 23/23 diapos du cahier des charges : état par exigence, spotlights diapos 14–15, écarts chiffrés (~5–6 j), équivalences outils. |
 | `critères.md` | Les 10 attentes marketing/webmestre + état WordPress actuel. |
 | `analyse-criteres.md` | Réponse critère par critère + arguments anti-WP + estimation révisée. |
-| `plan-pivot-editeur.md` | Le plan du pivot éditeur visuel (CloudCannon/Tina), gate à 8 critères. |
-| `spike-cloudcannon.md` | Réglages CloudCannon + grille de gate à remplir. |
+| `plan-pivot-editeur.md` | Le plan du pivot éditeur visuel (CloudCannon/Tina) — **exécuté, gate close 2026-08-07** (conservé pour l'historique). |
+| `spike-cloudcannon.md` | Réglages CloudCannon + grille de gate — **remplie, close 2026-08-07** (reste : vidéo → P-21). |
 | `formulaires.md` | Architecture des formulaires, variables d'env, étapes d'activation. |
 | `plan-2026-07-15.md` | Plan de la journée : clore la gate, décisions en attente. |
 | `reunion-marketing-2026-07-09.md` | Déroulé de la démo marketing + objections/réponses. |
-| `roadmap.md` | Feuille de route par jalons (M0→M4) — antérieure au pivot, à rafraîchir. |
+| `roadmap.md` | Feuille de route par jalons (M0→M4) — **OBSOLÈTE** (antérieure au pivot ; bannière posée le 2026-08-07 — ne rien planifier depuis ce fichier). |
 | `portail-auth.md` | Plan directeur du portail client (Entra External ID). |
 | `i18n-architecture.md` | Architecture bilingue (URLs, slugs, SEO). |
 | `DEPLOYMENT.md` | Déploiement Cloudflare Pages. |
@@ -107,10 +107,10 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 
 | # | Critère | État |
 |---|---|---|
-| 1 | Éditeur visuel | ✅ De facto validé : édition visuelle live confirmée sur landings ET accueil (converti composable le 15 juil.); reste à cocher la grille formelle + capturer le clip (`spike-cloudcannon.md`) |
+| 1 | Éditeur visuel | ✅ Validé — grille formelle cochée et **gate close le 2026-08-07** (`spike-cloudcannon.md`); reste le clip vidéo (replié dans P-21) |
 | 2 | Preview / partage non public | ✅ Préversions par branche (noindex auto) + brouillons d'articles |
-| 3 | Types de contenus | ✅ Collections typées (blogue, accueil, expertises, campagnes) — en ajouter = 1 schéma + 1 gabarit |
-| 4 | Landing pages | ✅ Palette de 5 sections, autonome au CMS |
+| 3 | Types de contenus | ✅ Collections typées (blogue, accueil, services, solutions, campagnes, formulaires, navigation, redirections) — en ajouter = 1 schéma + 1 gabarit |
+| 4 | Landing pages | ✅ Palette de **30 sections** avec vignettes d'aperçu, autonome au CMS |
 | 5 | URLs + indexation | ✅ Slugs par langue, noindex par page, sitemap cohérent |
 | 6 | Formulaires | 🔶 Pipeline construit + **v2 : définitions réutilisables, destinataire par formulaire (résolu serveur)**; activation = poser les clés (SMTP2GO + Turnstile, voir `formulaires.md`) |
 | 7 | SEO / schema | ✅ JSON-LD par gabarit (Organization, BlogPosting, FAQPage) |
@@ -126,22 +126,24 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 > Exécution pilotée par **`plan-prompts.md`** (backlog P-01..P-21 multi-modèles;
 > vague 1 — navigation, palette, formulaires v2 — livrée le 17 juil.).
 
-1. **Vague 2** (`plan-prompts.md`) : champs étendus + case consentement Loi 25
-   (P-05 ✅ poussé) → collection Services composable + méga-menu dynamique
-   (P-07 ✅ poussé le 20 juil. — `39fdd63`; architecture d'information des URLs
-   à confirmer, P-17/P-18) → recherche Pagefind (P-06 🟡 exécutée le 28 juil.,
-   passée avant P-04 sur priorité utilisateur — commit à faire) → **header de
-   landing par page (P-04 — PROCHAIN, Sonnet 5)**.
-1bis. **Convergence migration** (`plan-convergence-migration.md`) : Phase 0
-   ✅ faite (29 juil. — Node 20.20.2 actif, gate vert = baseline de parité).
-   Prochaine étape de cette piste : **Phase 1 — pilote Tailwind v4** sur un
-   composant Bookshop (risque clé : live editing CloudCannon). Les articles
-   WordPress sont déjà convertis en staging (`docs/migration/staging/blog/`).
-2. **Clore formellement la gate CloudCannon** (grille + vidéo + palier
-   tarifaire) — l'édition visuelle est validée de facto.
+1. **Vagues 1–2 fermées ; vague 3 aux ¾** (`plan-prompts.md`, état §0 du
+   07/08) : P-04/P-06/P-10/P-12/P-14/P-15 ✅ commités et poussés. Prochains :
+   **P-16** (contrôle d'attributs + finalisation guide-edition — ferme la
+   vague 3), **P-13** (footer 3 bureaux — à combiner avec « footer éditable au
+   CMS », il vit encore dans ui.ts), P-08 ; P-11 bloqué sur OPS-CSP + clés.
+1bis. **Convergence migration** (`plan-convergence-migration.md`) : Phases 0
+   et 3 ✅ ; Phase 1 exécutée (reste la vérif humaine de l'éditeur visuel) ;
+   **Phase 5 : socle + re-skin de la palette complète FAITS (2026-08-06)**,
+   pages Accueil/Contact/Carrières/Expertise/Produit fidèles aux maquettes ;
+   Phase 6 : articles convertis ET branchés (30 FR + 30 EN). Restent :
+   **Phase 2 (FR à la racine)** et **Phase 4 (spike CloudCannon Forms)**.
+2. ~~Clore formellement la gate CloudCannon~~ ✅ **FAIT le 2026-08-07**
+   (grille remplie, `spike-cloudcannon.md`) — restes non bloquants : vidéo
+   (P-21) + note du palier tarifaire (OPS).
 3. Décisions/OPS restantes : clés formulaires (SMTP2GO/Turnstile), CSP
-   (Turnstile + analytics), bandeau Loi 25 minimal (approuvé 17 juil., à
-   construire — P-10), retrait de Sveltia, protection des préversions.
+   (Turnstile + analytics), **secret `REBUILD_HOOK_URL`** (sans lui, aucune
+   publication programmée automatique), protection des préversions,
+   décommission du worker OAuth Sveltia (le retrait DANS le dépôt est fait).
 4. Atelier contenus marketing, puis port complet du contenu (P-19).
 5. Ensuite : dépôt de production semé de la branche gagnante.
 

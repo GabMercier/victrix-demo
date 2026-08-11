@@ -42,11 +42,11 @@ plugin **Redirection** (301). État vérifié dans le code du nouveau site :
 | Open Graph / Twitter Cards (Yoast) | OG complet (type, locale, image 1200×630, article:published_time, article:tag) + Twitter `summary_large_image` sur chaque page | ✅ en place |
 | hreflang bilingue (Polylang) | Natif : `fr-CA`, `en-CA` et `x-default` sur chaque page + dans le sitemap | ✅ en place |
 | Données structurées (schema.org) | JSON-LD `Organization` (toutes pages), `BlogPosting` (articles), `FAQPage` (sections FAQ) | ✅ en place — mieux que le Yoast de base |
-| Fil d'Ariane + `BreadcrumbList` | Composant + JSON-LD | 📋 planifié (P-12) |
+| Fil d'Ariane + `BreadcrumbList` | Composant + JSON-LD | ✅ **fait (P-12, 2026-07-30)** — JSON-LD sur articles + services ; fil VISIBLE sur les articles, extension aux autres gabarits reportée au fil du redesign |
 | Redirections 301 (plugin Redirection) | `src/data/redirects.json`, éditable dans CloudCannon, **validé au build** (boucle, doublon, code invalide = publication bloquée avec message clair) | ✅ mécanique en place; les 85 règles WP exportées, à charger en Phase 6 |
-| Flux RSS (WordPress) | Flux natif Astro | 📋 planifié (P-14) |
+| Flux RSS (WordPress) | Flux natif Astro | ✅ **fait (P-14, 2026-07-30)** — `/fr/rss.xml` + `/en/rss.xml`, découverte auto (`rel=alternate`) |
 | Recherche interne (SearchWP/relevanssi…) | **Pagefind** — index statique généré au build, FR/EN séparés | ✅ **fait (P-06, 2026-07-28)** — voir §6 |
-| Analytics / Site Search / conversions | GA4 + GTM + Clarity sous bandeau de consentement Loi 25 | 📋 planifié (P-10/P-11) |
+| Analytics / Site Search / conversions | GA4 + GTM + Clarity sous bandeau de consentement Loi 25 | 🔶 bandeau de consentement ✅ fait (P-10, 2026-07-30) ; pose des scripts 📋 planifiée (P-11 — bloquée sur OPS-CSP + clés) |
 | « Feux verts » d'analyse de lisibilité Yoast | Pas d'équivalent embarqué — remplacé par la checklist de rédaction §5.3 et des audits périodiques (Lighthouse/GSC) | ⚠️ différence assumée |
 
 **La seule vraie perte fonctionnelle est la pastille verte de Yoast** (l'analyse de lisibilité
@@ -115,7 +115,8 @@ Chaîne déjà outillée (inventaire commité, scripts rejouables dans `scripts/
 
 ### 5.3 Checklist de rédaction (remplace les pastilles Yoast)
 
-À intégrer au guide d'édition : 1 sujet = 1 page; titre ≤ 60 caractères portant le mot-clé
+✅ Intégrée au guide d'édition (`guide-edition.md`, section « Bien référencer
+une page », 2026-08-07) : 1 sujet = 1 page; titre ≤ 60 caractères portant le mot-clé
 principal; description 120–155 caractères orientée clic; un seul H1, sous-titres H2/H3
 descriptifs; liens internes vers les services/articles liés; texte alternatif des images;
 nommer les fichiers d'images en mots réels; vérifier l'aperçu de partage avant publication.
@@ -135,10 +136,11 @@ nommer les fichiers d'images en mots réels; vérifier l'aperçu de partage avan
   pas faire ce qui est périmé) : le balisage `SearchAction`/« sitelinks searchbox » (retiré
   par Google en 2024); les meta keywords (ignorées depuis 2009); le bourrage de
   données structurées non affichables.
-- **Reste à faire, priorisé** (petits chantiers connus, aucun bloquant) :
-  1. `BreadcrumbList` + fil d'Ariane (P-12) — enrichit l'affichage des résultats Google.
-  2. RSS + partage social (P-14).
-  3. Analytics sous consentement + suivi site search (P-10/P-11).
+- **Reste à faire, priorisé** (petits chantiers connus, aucun bloquant — statuts au 2026-08-07) :
+  1. ~~`BreadcrumbList` + fil d'Ariane (P-12)~~ ✅ fait (articles + services).
+  2. ~~RSS + partage social (P-14)~~ ✅ fait.
+  3. Analytics sous consentement + suivi site search — bandeau ✅ (P-10) ; pose des scripts (P-11) bloquée sur OPS-CSP + clés.
+  3bis. **Image de partage (og:image) par page** : défaut global `/og-image.png` ; seuls les articles la surchargent (couverture). Champ dédié par contenu à ajouter (suggestion atelier-contenus §GAP).
   4. Finitions signalées par l'inventaire technique : logo `Organization` en ≥112 px (le
      favicon 32 px actuel est un bouche-trou), `dateModified` sur les articles, hôte du
      sitemap dans robots.txt dérivé de la config, URL de production définitive dans

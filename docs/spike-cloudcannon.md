@@ -1,8 +1,18 @@
 # Spike CloudCannon — état, réglages et grille de décision
 
+> **✅ GATE CLOSE — CloudCannon ADOPTÉ (constat formel du 2026-08-07).**
+> L'adoption était acquise de facto depuis des semaines : Sveltia retiré le
+> 2026-07-30 (Phase 3 du plan de convergence), tout le travail CMS construit
+> sur CloudCannon depuis (palette de 30 sections, collections services/
+> solutions/formulaires/navigation, accueil composable). La grille ci-dessous
+> est remplie avec les preuves accumulées. **Restes NON bloquants** : la
+> capture vidéo du critère 8 (repliée dans P-21, démo complète + vidéo) et la
+> note du palier tarifaire/prix par siège (ligne OPS — à consigner depuis le
+> compte CloudCannon). La relève Tina (phase 1b du plan pivot) est SANS OBJET.
+>
 > Compagnon d'exécution de `docs/plan-pivot-editeur.md` (phases 0–1).
-> État au **13 juillet 2026** : fondations construites et vérifiées en local;
-> reste la connexion CloudCannon et la session d'évaluation sur les 8 critères.
+> État initial au **13 juillet 2026** : fondations construites et vérifiées en
+> local; restait la connexion CloudCannon et la session d'évaluation.
 
 ## Ce qui est en place (vérifié : lint 0 erreur, 23/23 tests, `astro check` 0 erreur, build Cloudflare normal intact, build `STATIC_ONLY` statique pur)
 
@@ -34,19 +44,20 @@
 
 ## La gate : 8 critères (de `docs/plan-pivot-editeur.md`)
 
-| # | Critère | Résultat | Constats |
+| # | Critère | Résultat | Constats (au 2026-08-07) |
 |---|---|---|---|
-| 1 | Édition visuelle sur accueil, un article, la page expertise | ☐ | |
-| 2 | Édition FR/EN propre sans casser l'appariement | ☐ | |
-| 3 | Composer une landing depuis la palette (ajouter/réordonner) | ☐ | |
-| 4 | Images : upload + pipeline `astro:assets` intact | ☐ | |
-| 5 | Publier → commit → build CF Pages → en ligne en minutes | ☐ | |
-| 6 | Brouillon sur branche + URL de prévisualisation partageable | ☐ | |
-| 7 | Aucune régression (transitions, en-têtes, portail) | ☐ | |
-| 8 | Le regard marketing : soutient la comparaison Elementor ? (capturer une vidéo) | ☐ | |
+| 1 | Édition visuelle sur accueil, un article, la page expertise | ✅ | Accueil converti en sections composables (éditeur visuel) ; articles en Content Editor + aperçu ; expertise → collection `services` (visuel). « Validé de facto » acté dans GUIDE-PROJET dès juillet. |
+| 2 | Édition FR/EN propre sans casser l'appariement | ✅ | Fichiers miroirs fr/en + flux Duplicate documenté (guide-edition) + rappel `victrix:i18n-pairing` au build. |
+| 3 | Composer une landing depuis la palette (ajouter/réordonner) | ✅ | Dépassé : palette de **30 sections** (vs 4 prévues au spike), vignettes d'aperçu générées, éditeur visuel live. |
+| 4 | Images : upload + pipeline `astro:assets` intact | ✅ | Uploads par collection configurés ; repli documenté pour l'aperçu live (composants browser-safe, chemins publics). |
+| 5 | Publier → commit → build CF Pages → en ligne en minutes | ✅ | Pipeline inchangé, éprouvé sur des dizaines de publications de la branche. |
+| 6 | Brouillon sur branche + URL de prévisualisation partageable | ✅ | Préversions par branche (noindex) + brouillons d'articles + option `DRAFTS_VISIBLE`. |
+| 7 | Aucune régression (transitions, en-têtes, portail) | ✅ | Gate permanent du dépôt (lint/tests/e2e/builds des 2 modes) vert à chaque lot. |
+| 8 | Le regard marketing : soutient la comparaison Elementor ? (capturer une vidéo) | ☐ | **Seul reste** — capture vidéo à faire, repliée dans **P-21** (démo processus complet + vidéo). Ne conditionne plus l'adoption. |
 
 Échec = critère 1, 3 ou 5 non atteignable sans contournement lourd → relève
-Tina (`plan-pivot-editeur.md`, phase 1b).
+Tina (`plan-pivot-editeur.md`, phase 1b). **Résultat : aucun critère en échec
+— la relève Tina n'a jamais été montée (sans objet).**
 
 ## Points à vérifier expressément pendant la session
 
@@ -78,4 +89,6 @@ Tina (`plan-pivot-editeur.md`, phase 1b).
   poids d'installation seulement).
 - Le build normal Cloudflare et `astro dev` sont prouvés inchangés (Bookshop
   jamais chargé hors `STATIC_ONLY`; vérifié par build complet des deux modes).
-- Sveltia (`public/admin/`) reste intact jusqu'au verdict de la gate.
+- ~~Sveltia (`public/admin/`) reste intact jusqu'au verdict de la gate.~~
+  **RETIRÉ le 2026-07-30** (verdict rendu) ; reste OPS hors dépôt :
+  décommissionner le worker OAuth `sveltia-cms-auth.…workers.dev`.

@@ -1,5 +1,15 @@
 # Plan — pivot vers un éditeur visuel (CloudCannon d'abord, Tina en relève)
 
+> **✅ PLAN EXÉCUTÉ — GATE CLOSE, CloudCannon ADOPTÉ (constat formel du
+> 2026-08-07).** Grille remplie dans `spike-cloudcannon.md` : critères 1–7 ✅,
+> critère 8 (vidéo) replié dans P-21. Phase 1b (Tina) : jamais montée, sans
+> objet. Phase 2 (portage complet + retrait Sveltia) : faite — Sveltia retiré
+> le 2026-07-30, toutes les collections portées (dernière : `solutions`,
+> 2026-08-07). Phase 3 (démo équipe) : PAS ENCORE FAITE — repliée dans P-21
+> avec la vidéo. Restes OPS : palier tarifaire à consigner, worker OAuth
+> Sveltia à décommissionner. Ce document est conservé pour l'historique de la
+> décision ; le suivi vivant est `plan-prompts.md` + `plan-convergence-migration.md`.
+
 > Décision issue de l'analyse des critères marketing (`docs/analyse-criteres.md`,
 > critère 1). Constat : sans édition visuelle, la nouvelle pile sera perçue comme
 > un recul par l'équipe marketing — risque réel d'échec du projet. Sveltia est
