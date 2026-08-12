@@ -1106,14 +1106,59 @@ const pages = defineCollection({
 
 /**
  * Textes du site (2026-08-11) — chaînes d'interface ÉDITABLES au CMS, un JSON
- * par langue dans src/data/site (patron de la collection navigation). Premier
- * locataire : la page 404 (src/pages/404.astro) — les textes vivaient dans
- * ui.ts (code), le user veut TOUT le texte éditable. Destiné à absorber
- * d'autres chaînes de chrome au fil des lots (footer = P-13+).
+ * par langue dans src/data/site (patron de la collection navigation).
+ *
+ * RÈGLE DE PÉRIMÈTRE (décision user 2026-08-11) : cette collection ne contient
+ * que le texte TRANSVERSAL — ce qui s'affiche sur toutes les pages sans
+ * appartenir à aucune (pied de page, bandeau de consentement). Le texte propre
+ * à une page s'édite AVEC sa page (collections pages/services/landing/blog…) —
+ * ne pas y verser le chrome du blogue, de la recherche, du catalogue, etc.
+ * Exception assumée : la page 404, qui n'a aucune entrée de collection où
+ * vivre. Le bandeau promo, lui, vit déjà dans la collection `navigation`.
+ *
+ * Les chaînes d'ACCESSIBILITÉ (aria-labels, lien d'évitement) restent dans
+ * src/i18n/ui.ts : ce n'est pas du contenu, un éditeur n'a pas à y toucher.
  */
 const site = defineCollection({
   loader: glob({ pattern: '*.json', base: './src/data/site' }),
   schema: z.object({
+    // Pied de page — visible sur toutes les pages (Footer.astro + le pied
+    // allégé des campagnes, CampaignFooter.astro, qui n'en lit que `legal` et
+    // `contactTitle`). Liens internes SANS préfixe de langue (navHref).
+    footer: z.object({
+      columns: z
+        .array(
+          z.object({
+            title: z.string().min(1),
+            links: z
+              .array(z.object({ label: z.string().min(1), href: navHref }))
+              .min(1),
+          }),
+        )
+        .min(1),
+      contactTitle: z.string().min(1),
+      // Coordonnées affichées dans la colonne Contact du pied de page.
+      email: z.string().email('Courriel invalide'),
+      phone: z.string().min(1),
+      // Numéro composable (tel:), sans espaces ni ponctuation.
+      phoneHref: z.string().min(1),
+      socialLabel: z.string().min(1),
+      // Puce du pied de page = accès au portail client.
+      contactCta: z.object({ label: z.string().min(1), href: navHref }),
+      // Liens sociaux TEXTE. '#' hérité tant que les URLs réelles ne sont pas
+      // fournies — d'où un z.string() simple ici (navHref refuserait '#').
+      social: z.array(z.object({ label: z.string().min(1), href: z.string().min(1) })),
+      legal: z.array(z.object({ label: z.string().min(1), href: navHref })),
+    }),
+    // Bandeau de consentement Loi 25 (P-10) — visible sur toutes les pages via
+    // BaseLayout. Formulation à portée légale : éditable sans développeur.
+    consent: z.object({
+      text: z.string().min(1),
+      policyLabel: z.string().min(1),
+      policyHref: navHref,
+      accept: z.string().min(1),
+      refuse: z.string().min(1),
+    }),
     notFound: z.object({
       metaTitle: z.string().min(1),
       metaDescription: z.string().min(1),

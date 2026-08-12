@@ -1,4 +1,74 @@
 {
+  "footer": {
+    "columns": [
+      {
+        "title": "Expertises",
+        "links": [
+          { "label": "Conseil stratégique", "href": "/services/conseil-strategique" },
+          { "label": "Intelligence artificielle", "href": "/services/intelligence-artificielle" },
+          { "label": "Infrastructure", "href": "/services/infrastructure" },
+          { "label": "Secteurs d’activité", "href": "/secteurs" }
+        ]
+      },
+      {
+        "title": "Services",
+        "links": [
+          { "label": "Services applicatifs", "href": "/services/services-applicatifs" },
+          { "label": "Infonuagique", "href": "/services/services-infonuagiques" },
+          { "label": "Cybersécurité", "href": "/services/cybersecurite" },
+          { "label": "Projets en IA", "href": "/services/projets-en-ia" },
+          { "label": "Services gérés", "href": "/services/services-ti-geres" }
+        ]
+      },
+      {
+        "title": "Produits",
+        "links": [
+          {
+            "label": "Application de réservation de bureau",
+            "href": "/services/productivite/o-bureau"
+          },
+          {
+            "label": "Plateforme employé",
+            "href": "/services/productivite/plateforme-employe-intranet"
+          },
+          { "label": "Approvisionnement TI", "href": "/services/approvisionnement-ti" },
+          { "label": "Catalogue de solutions", "href": "/solutions" },
+          { "label": "Tarification", "href": "/tarification" }
+        ]
+      },
+      {
+        "title": "À propos",
+        "links": [
+          { "label": "Découvrir Victrix", "href": "/decouvrir" },
+          { "label": "Carrière", "href": "/carrieres" },
+          { "label": "Centre de confiance", "href": "/centre-de-confiance" },
+          { "label": "Ressources", "href": "/ressources" },
+          { "label": "Actualités", "href": "/ressources" }
+        ]
+      }
+    ],
+    "contactTitle": "Contact",
+    "email": "contact@victrix.ca",
+    "phone": "+1 514 879-1919",
+    "phoneHref": "+15148791919",
+    "socialLabel": "Suivez-nous sur :",
+    "contactCta": { "label": "Portail client", "href": "/portail" },
+    "social": [
+      { "label": "Facebook", "href": "#" },
+      { "label": "LinkedIn", "href": "#" }
+    ],
+    "legal": [
+      { "label": "Conditions d’utilisation", "href": "/conditions-utilisation" },
+      { "label": "Politique de confidentialité", "href": "/politique-confidentialite" }
+    ]
+  },
+  "consent": {
+    "text": "Nous utilisons des témoins (cookies) à des fins de mesure d’audience, conformément à la Loi 25.",
+    "policyLabel": "Politique de confidentialité",
+    "policyHref": "/politique-confidentialite",
+    "accept": "Accepter",
+    "refuse": "Refuser"
+  },
   "notFound": {
     "metaTitle": "Page introuvable",
     "metaDescription": "La page demandée est introuvable. Explorez nos services, nos ressources ou communiquez avec nous.",

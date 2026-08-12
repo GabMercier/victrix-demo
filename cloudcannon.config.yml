@@ -49,6 +49,7 @@ collection_groups:
       - services
       - solutions
       - blog
+      - site
   - heading: Marketing
     collections:
       - landing
@@ -56,7 +57,6 @@ collection_groups:
       - navigation
   - heading: Configuration
     collections:
-      - site
       - redirects
 
 collections_config:
@@ -854,9 +854,10 @@ collections_config:
     name: Textes du site
     singular_name: Textes du site
     description: >-
-      Textes d'interface du site (page « introuvable » pour l'instant), un
-      fichier par langue (fr.json / en.json). D'autres textes du site s'y
-      ajouteront au fil des mises à jour.
+      Textes qui s'affichent sur TOUTES les pages sans appartenir à aucune :
+      pied de page et bandeau de consentement (+ la page « introuvable »). Un
+      fichier par langue (fr.json / en.json). Le texte propre à une page
+      s'édite avec sa page ; le bandeau promo vit dans « Navigation ».
     icon: translate
     # Deux fichiers fixes (fr/en) — rien à ajouter/supprimer/renommer.
     disable_add: true
@@ -866,7 +867,93 @@ collections_config:
     disable_url: true
     _enabled_editors:
       - data
+    # ⚠️ Les _inputs de collection sont une carte PLATE par nom de champ : les
+    # clés génériques (title, label, href, text) sont partagées par les trois
+    # blocs — d'où des libellés volontairement génériques, qui se lisent bien
+    # partout. Les libellés précis vivent sur les clés de bloc.
     _inputs:
+      # --- Pied de page (Footer.astro + pied allégé des campagnes) ----------
+      footer:
+        type: object
+        label: Pied de page
+        comment: >-
+          Affiché au bas de toutes les pages. Les colonnes de liens, les
+          coordonnées, les réseaux sociaux et les mentions légales.
+      columns:
+        type: array
+        label: Colonnes de liens
+        comment: Une colonne par thème (Expertises, Services, Produits, À propos).
+        options:
+          structures: _structures.footer_columns
+      # `links` existe sous DEUX formes : les boutons de la 404 (avec
+      # « principal ») et les liens d'une colonne de pied de page (sans). La
+      # carte plate ne peut en tenir qu'une → elle sert la 404, et
+      # _structures.footer_columns re-pointe SES `links` vers site_links à son
+      # propre niveau (qui prime — même mécanique que form_fields/faq_items).
+      links:
+        type: array
+        label: Boutons
+        comment: Liens proposés au visiteur (le « principal » est bleu).
+        options:
+          structures: _structures.site_buttons
+      contactTitle:
+        type: text
+        label: Titre de la colonne Contact
+      email:
+        type: text
+        label: Courriel affiché
+        comment: Sert aussi de destination du lien (mailto:).
+      phone:
+        type: text
+        label: Téléphone affiché
+        comment: Tel qu'il doit apparaître, avec espaces et tirets.
+      phoneHref:
+        type: text
+        label: Téléphone composable
+        comment: >-
+          Le même numéro SANS espace ni tiret, indicatif pays compris
+          (ex. +15148791919) — c'est ce que compose un téléphone mobile.
+      socialLabel:
+        type: text
+        label: Intitulé des réseaux sociaux
+      contactCta:
+        type: object
+        label: Bouton du pied de page
+        comment: La pastille bleue (accès au portail client).
+      social:
+        type: array
+        label: Réseaux sociaux
+        comment: >-
+          Liens texte. « # » = adresse non fournie (le lien ne mène nulle part)
+          — remplacer par l'adresse réelle de la page Victrix.
+        options:
+          structures: _structures.site_links
+      legal:
+        type: array
+        label: Mentions légales (barre du bas)
+        options:
+          structures: _structures.site_links
+      # --- Bandeau de consentement (Loi 25) ---------------------------------
+      consent:
+        type: object
+        label: Bandeau de consentement (Loi 25)
+        comment: >-
+          Affiché en bas de l'écran au premier passage, jusqu'au choix du
+          visiteur. Formulation à portée légale : valider les changements.
+      policyLabel:
+        type: text
+        label: Libellé du lien vers la politique
+      policyHref:
+        type: text
+        label: Lien vers la politique
+        comment: SANS préfixe de langue (/politique-confidentialite).
+      accept:
+        type: text
+        label: Bouton « Accepter »
+      refuse:
+        type: text
+        label: Bouton « Refuser »
+      # --- Page « introuvable » (erreur 404) --------------------------------
       notFound:
         type: object
         label: Page « introuvable » (erreur 404)
@@ -886,15 +973,12 @@ collections_config:
         label: Titre
       text:
         type: textarea
-        label: Message
+        label: Texte
       requestedLabel:
         type: text
         label: Étiquette « adresse demandée »
         comment: Affichée devant l'adresse que le visiteur a demandée.
-      links:
-        type: array
-        label: Boutons
-        comment: Liens proposés au visiteur (le premier « principal » est bleu).
+      # --- Clés partagées par les trois blocs (carte plate) -----------------
       label:
         type: text
         label: Libellé
@@ -902,8 +986,8 @@ collections_config:
         type: text
         label: Lien
         comment: >-
-          SANS préfixe de langue (/contact, pas /fr/contact) — la page ajoute
-          /fr ou /en toute seule.
+          SANS préfixe de langue (/contact, pas /fr/contact) — le site ajoute
+          /fr ou /en tout seul.
       primary:
         type: switch
         label: Bouton principal (bleu)
@@ -1855,6 +1939,67 @@ _structures:
           # sert AUSSI les liens des colonnes du méga-menu (_inputs.links).
           href: ''
           service: ''
+
+  # ---------------------------------------------------------------------------
+  # Collection « Textes du site » (2026-08-11) — pied de page et 404.
+  # ---------------------------------------------------------------------------
+
+  # Lien simple {label, href} : liens d'une colonne de pied de page, réseaux
+  # sociaux, mentions légales. Href SANS préfixe de langue (sauf réseaux
+  # sociaux : URL externe complète, ou « # » tant qu'elle n'est pas fournie).
+  site_links:
+    values:
+      - label: Lien
+        icon: link
+        preview:
+          icon: link
+          text:
+            - key: label
+            - text: Lien
+        value:
+          label: ''
+          href: ''
+
+  # Bouton de la page « introuvable » {label, href, primary} — même forme que
+  # site_links + la bascule « bouton principal ».
+  site_buttons:
+    values:
+      - label: Bouton
+        icon: smart_button
+        preview:
+          icon: smart_button
+          text:
+            - key: label
+            - text: Bouton
+        value:
+          label: ''
+          href: ''
+          primary: false
+
+  # Colonne de liens du pied de page. Son `_inputs.links` de STRUCTURE prime
+  # sur celui de la collection (qui sert les boutons de la 404) — mécanique
+  # documentée plus haut pour form_fields et faq_items.
+  footer_columns:
+    values:
+      - label: Colonne du pied de page
+        icon: view_column
+        preview:
+          icon: view_column
+          text:
+            - key: title
+            - text: Colonne du pied de page
+        value:
+          title: ''
+          links: []
+        _inputs:
+          title:
+            type: text
+            label: Titre de la colonne
+          links:
+            type: array
+            label: Liens de la colonne
+            options:
+              structures: _structures.site_links
 
   nav_columns:
     values:

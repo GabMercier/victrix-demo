@@ -39,12 +39,24 @@ CMS, texte officiel « Page introuvable » (la mention « prototype » est
 RETIRÉE ; ui.ts.notFound déménagé). Bento accueil : filigrane « V » de marque
 sur la peau bleue + placeholder V si peau image sans image (demande user).
 
-**Prochains candidats** : P-13 (footer 3 bureaux — à combiner avec
-« footer éditable au CMS », tout le pied de page vit encore dans ui.ts),
+**MàJ 11/08 (soir) : PARTIE CMS DE P-13 FAITE — pied de page ÉDITABLE.**
+Nouvelle règle de périmètre pour la collection `site` (« Textes du site »,
+décision user) : **elle ne contient que le texte transversal** — ce qui
+s'affiche sur toutes les pages sans appartenir à aucune. Y sont entrés le
+**pied de page** (colonnes, coordonnées, réseaux, mentions légales) et le
+**bandeau de consentement Loi 25** ; le texte propre à une page reste avec sa
+page, et le bandeau promo était déjà éditable (collection `navigation`). Les
+chaînes d'accessibilité restent dans `ui.ts` à dessein. Correctifs au
+passage : année du © calculée au build (elle était figée à 2026), champs
+`addressName`/`addressLines` morts retirés. **Reste de P-13** : les 3 bureaux
+et la carte façade — travail de DESIGN, non entamé.
+
+**Prochains candidats** : P-13 (partie design : 3 bureaux + carte façade),
 P-08 (courriel de confirmation), P-11 (analytics — toujours bloqué OPS-CSP +
-clés), contenu réel des placeholders (marketing). OPS prioritaire : secret
-`REBUILD_HOOK_URL` (sans lui, aucune publication programmée automatique) +
-clés SMTP2GO/Turnstile.
+clés), contenu réel des placeholders (marketing), lot « pages » pour sortir
+les copies de Carrières/Contact/Solutions de `src/i18n/content/*.ts`. OPS
+prioritaire : secret `REBUILD_HOOK_URL` (sans lui, aucune publication
+programmée automatique) + clés SMTP2GO/Turnstile.
 
 ## 0bis. État au 28 juillet (HISTORIQUE — vague 2, P-05/P-06/P-07 fermés côté code, P-04 prochain)
 

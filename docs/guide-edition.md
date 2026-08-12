@@ -151,13 +151,36 @@ sections, exactement comme les pages Services.
 - Même règle de traduction que partout : le même nom de fichier dans `fr/` et
   `en/` relie les deux langues.
 
-## Modifier les textes du site (page « introuvable »)
+## Modifier les textes du site (pied de page, bandeau de consentement)
 
-**Textes du site** (groupe Configuration) : les textes d'interface qui ne
-vivent dans aucune page — pour l'instant, la page « introuvable » (erreur 404),
-un fichier par langue. Titre, message et boutons y sont modifiables ; les
-liens des boutons s'écrivent **sans préfixe de langue** (`/contact`), comme la
-navigation.
+**Textes du site** dans la barre latérale : les textes qui s'affichent sur
+**toutes les pages sans appartenir à aucune**. Un fichier par langue
+(`fr` / `en`), trois blocs :
+
+- **Pied de page** — les quatre colonnes de liens, le titre et les coordonnées
+  de la colonne Contact, la pastille « Portail client », les réseaux sociaux
+  et les mentions légales de la barre du bas. Le pied de page allégé des
+  campagnes reprend automatiquement les mêmes mentions légales.
+- **Bandeau de consentement (Loi 25)** — la phrase affichée en bas de l'écran
+  au premier passage, le lien vers la politique et les deux boutons. Texte à
+  **portée légale** : faire valider les changements.
+- **Page « introuvable » (erreur 404)** — titre, message et boutons proposés
+  quand un visiteur atteint une adresse inexistante.
+
+Deux points d'attention :
+
+- Les liens internes s'écrivent **sans préfixe de langue** (`/contact`, pas
+  `/fr/contact`) — le site ajoute `/fr` ou `/en` tout seul. Les liens de
+  réseaux sociaux, eux, sont des adresses externes complètes.
+- Le **téléphone existe en deux champs** : celui qui s'affiche (avec espaces
+  et tirets) et celui que compose un mobile (sans espace, indicatif compris,
+  ex. `+15148791919`). Modifier les deux.
+
+L'année du copyright se met à jour toute seule à chaque publication.
+
+**Ce qui ne se trouve PAS ici** : le texte propre à une page s'édite **avec sa
+page** (Pages, Services, Solutions, Blogue) ; le **bandeau promotionnel** du
+haut se modifie dans **Navigation**.
 
 ## Gérer le catalogue de solutions
 

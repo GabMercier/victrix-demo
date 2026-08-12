@@ -1,4 +1,71 @@
 {
+  "footer": {
+    "columns": [
+      {
+        "title": "Expertise",
+        "links": [
+          { "label": "Strategic consulting", "href": "/services/conseil-strategique" },
+          { "label": "Artificial intelligence", "href": "/services/intelligence-artificielle" },
+          { "label": "Infrastructure", "href": "/services/infrastructure" },
+          { "label": "Sectors", "href": "/secteurs" }
+        ]
+      },
+      {
+        "title": "Services",
+        "links": [
+          { "label": "Application services", "href": "/services/services-applicatifs" },
+          { "label": "Cloud computing", "href": "/services/services-infonuagiques" },
+          { "label": "Cybersecurity", "href": "/services/cybersecurite" },
+          { "label": "AI projects", "href": "/services/projets-en-ia" },
+          { "label": "Managed services", "href": "/services/services-ti-geres" }
+        ]
+      },
+      {
+        "title": "Products",
+        "links": [
+          { "label": "Desk booking app", "href": "/services/productivite/o-bureau" },
+          {
+            "label": "Employee platform",
+            "href": "/services/productivite/plateforme-employe-intranet"
+          },
+          { "label": "IT procurement", "href": "/services/approvisionnement-ti" },
+          { "label": "Solutions catalogue", "href": "/solutions" },
+          { "label": "Pricing", "href": "/tarification" }
+        ]
+      },
+      {
+        "title": "About",
+        "links": [
+          { "label": "Discover Victrix", "href": "/decouvrir" },
+          { "label": "Careers", "href": "/carrieres" },
+          { "label": "Trust centre", "href": "/centre-de-confiance" },
+          { "label": "Resources", "href": "/ressources" },
+          { "label": "News", "href": "/ressources" }
+        ]
+      }
+    ],
+    "contactTitle": "Contact",
+    "email": "contact@victrix.ca",
+    "phone": "+1 514 879-1919",
+    "phoneHref": "+15148791919",
+    "socialLabel": "Follow us on:",
+    "contactCta": { "label": "Client portal", "href": "/portail" },
+    "social": [
+      { "label": "Facebook", "href": "#" },
+      { "label": "LinkedIn", "href": "#" }
+    ],
+    "legal": [
+      { "label": "Terms of use", "href": "/conditions-utilisation" },
+      { "label": "Privacy policy", "href": "/politique-confidentialite" }
+    ]
+  },
+  "consent": {
+    "text": "We use cookies for audience measurement, in accordance with Quebec’s Law 25.",
+    "policyLabel": "Privacy policy",
+    "policyHref": "/politique-confidentialite",
+    "accept": "Accept",
+    "refuse": "Refuse"
+  },
   "notFound": {
     "metaTitle": "Page not found",
     "metaDescription": "The requested page could not be found. Explore our services, our resources, or contact us.",

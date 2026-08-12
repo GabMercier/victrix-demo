@@ -1,12 +1,18 @@
 ---
 import { type Locale, defaultLocale, localizePath } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
+import { getSiteText } from '../i18n/site';
 
 /**
  * Bandeau de consentement Loi 25 (P-10) — design minimal ASSUMÉ (décision
  * 17/07) : tokens seulement, re-stylé au redesign. Rendu sur toutes les pages
  * via BaseLayout ; masqué (hidden) tant que le script n'a pas constaté
  * l'absence de choix mémorisé (pas d'éclair pour les visiteurs déjà décidés).
+ *
+ * TEXTES ÉDITABLES AU CMS (2026-08-11) : la formulation vient de la collection
+ * `site` (« Textes du site ») — bandeau transversal, à portée légale : elle
+ * doit pouvoir être corrigée sans développeur. Le libellé de région (aria)
+ * reste dans ui.ts.
  *
  * Contrat de consentement (consommé par P-11 — pose des scripts analytiques) :
  *  - localStorage `victrix-consent` = « accepted » | « refused » ;
@@ -30,11 +36,12 @@ interface Props {
 }
 
 const { lang = defaultLocale } = Astro.props;
-const c = useTranslations(lang).consent;
+const c = (await getSiteText(lang)).consent;
+const ariaLabel = useTranslations(lang).consent.ariaLabel;
 const policyHref = localizePath(c.policyHref, lang);
 ---
 
-<div class="consent" data-consent-banner hidden role="region" aria-label={c.ariaLabel}>
+<div class="consent" data-consent-banner hidden role="region" aria-label={ariaLabel}>
   <div class="container consent__inner">
     <p class="consent__text">
       {c.text}
