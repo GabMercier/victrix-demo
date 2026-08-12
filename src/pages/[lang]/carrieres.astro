@@ -1,12 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { type Locale, localePaths, localizePath } from '../../i18n/config';
-import { carrieresContent } from '../../i18n/content/carrieres';
+import { getLocaleData } from '../../i18n/locale-data';
 
 export const getStaticPaths = localePaths;
 
 const { lang } = Astro.props as { lang: Locale };
-const c = carrieresContent[lang];
+// Contenu ÉDITABLE AU CMS (collection `carrieres`, src/data/carrieres/<lang>.json
+// — migré de src/i18n/content/carrieres.ts le 2026-08-12 ; `testimonials.items`
+// y est devenu `testimonials.cards`, voir le schéma). Appel nu (gotcha
+// Bookshop, voir merci.astro) ; `c.…` aux points d'usage comme avant.
+const c = await getLocaleData('carrieres', lang);
 
 /**
  * Page Carrières — FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/carriere.css +
@@ -243,7 +247,7 @@ const capsLabel = 'text-xs font-bold uppercase tracking-[1.2px]';
       <h2 class:list={[h2Class, 'text-center']}>{c.testimonials.title}</h2>
       <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-6 m-0 p-0 list-none">
         {
-          c.testimonials.items.map((t) => (
+          c.testimonials.cards.map((t) => (
             <li class:list={['m-0 relative bg-surface rounded-sm p-8 lg:p-12 flex flex-col items-center text-center', cardBorder]}>
               <svg
                 class="absolute top-8 left-8 text-primary/20 opacity-50"

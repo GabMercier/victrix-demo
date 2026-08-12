@@ -10,6 +10,7 @@ import rss from '@astrojs/rss';
 import type { APIRoute } from 'astro';
 import { locales, type Locale, localizePath } from '../../i18n/config';
 import { useTranslations } from '../../i18n/ui';
+import { getLocaleData } from '../../i18n/locale-data';
 import { getPostsByLocale, postUrlSlug } from '../../i18n/blog';
 
 export function getStaticPaths() {
@@ -19,11 +20,14 @@ export function getStaticPaths() {
 export const GET: APIRoute = async (context) => {
   const lang = context.params.lang as Locale;
   const t = useTranslations(lang);
+  // Titre/description du flux = bloc `ressources` de la collection
+  // `pagesSysteme` (éditable au CMS, 2026-08-12) — même source que l'index.
+  const sys = await getLocaleData('pagesSysteme', lang);
   const posts = await getPostsByLocale(lang);
 
   return rss({
-    title: `${t.siteName} — ${t.blog.eyebrow}`,
-    description: t.blog.intro,
+    title: `${t.siteName} — ${sys.ressources.eyebrow}`,
+    description: sys.ressources.intro,
     // `site` = astro.config `site` (obligatoire pour des liens absolus).
     site: context.site!,
     items: posts.map((post) => ({

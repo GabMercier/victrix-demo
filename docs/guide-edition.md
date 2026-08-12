@@ -179,8 +179,50 @@ Deux points d'attention :
 L'année du copyright se met à jour toute seule à chaque publication.
 
 **Ce qui ne se trouve PAS ici** : le texte propre à une page s'édite **avec sa
-page** (Pages, Services, Solutions, Blogue) ; le **bandeau promotionnel** du
-haut se modifie dans **Navigation**.
+page** (Pages, Services, Solutions, Blogue — et les collections **Page
+Contact**, **Page Carrières** et **Pages système** ci-dessous) ; le **bandeau
+promotionnel** du haut se modifie dans **Navigation**.
+
+## Modifier les pages Contact et Carrières
+
+**Page Contact** et **Page Carrières** dans la barre latérale : tout le texte
+de ces deux pages, un fichier par langue (`fr` / `en`). La mise en page, elle,
+est fixe — vous changez les mots et les photos, le site garde sa forme.
+
+- **Page Contact** — héros, intitulés de la carte Coordonnées, les trois
+  cartes bureaux (ville, adresse, photo), la section formulaire (titre, texte
+  d'appui, puces, libellés des champs, choix des listes Sujet/Expertise, texte
+  de consentement, bouton). **Garder l'ordre Québec, Montréal, Paris** des
+  cartes bureaux : le téléphone affiché au bas de chaque carte est apparié par
+  position. Les numéros de téléphone eux-mêmes (cliquables) sont gérés par
+  l'équipe technique. Dans le texte de consentement, laisser `{privacy}` tel
+  quel : il devient automatiquement le lien vers la politique de
+  confidentialité dans la bonne langue.
+- **Page Carrières** — héros, carte « Happy At Work », valeurs (icône à liste
+  fermée + libellé), atouts « Pourquoi rejoindre » (icône + titre + texte),
+  témoignages (portrait, citation, prénom, rôle), responsabilité sociale et
+  appel à l'action final. Les **photos de section** (héros, équipe, RSE) sont
+  gérées par l'équipe technique en attendant les visuels authentiques ; les
+  **portraits des témoignages**, eux, se téléversent ici.
+
+Comme partout : liens internes **sans préfixe de langue**, et une valeur
+invalide (ex. une icône hors liste) **bloque la publication** avec un message
+clair — le site en ligne reste intact.
+
+## Modifier les pages système (blogue, recherche, merci)
+
+**Pages système** dans la barre latérale : les textes de trois pages « outils »
+qui n'ont pas de fiche de contenu propre, un fichier par langue, trois blocs :
+
+- **Index du blogue** (`/ressources`) — surtitre, titre, introduction et
+  l'onglet « Tous » des filtres. Le surtitre (« Ressources ») sert aussi de nom
+  de section dans le **fil d'Ariane des articles** et de titre du **flux RSS** —
+  un seul champ à changer, tout suit.
+- **Page de recherche** (`/recherche`) — titre d'onglet, textes d'en-tête et
+  message sans JavaScript. Les textes de l'interface de recherche elle-même
+  (« Rechercher… », compteurs de résultats) sont gérés par l'équipe technique.
+- **Page de confirmation** (`/merci`) — le message affiché après l'envoi d'un
+  formulaire, et ses boutons.
 
 ## Gérer le catalogue de solutions
 
@@ -202,6 +244,34 @@ fichier dans `fr/` et `en/` relie les deux langues.
   carte. Les pages de détail sont une suite planifiée.
 - Le catalogue est accessible aux visiteurs par **« Catalogue de solutions »**
   dans la colonne Produits du méga-menu et du pied de page.
+
+## Médias et images
+
+Le sélecteur d'image de CloudCannon téléverse chaque visuel **dans le dossier
+prévu pour son emplacement** — vous n'avez pas de chemin à choisir, l'éditeur
+range pour vous :
+
+| Où vous téléversez | Où le fichier atterrit |
+|---|---|
+| Couverture d'un article de blogue | `wp-content/uploads/cms` (à côté des médias migrés de WordPress) |
+| Image de la page d'accueil (« Solution ») | avec le contenu de l'accueil (image optimisée au build) |
+| Images de sections (héros, bento, cartes…) | `images/sections` |
+| Fiche du catalogue de solutions | `images/solutions` |
+| Cartes bureaux (Page Contact) | `images/contact` |
+| Portraits de témoignages (Page Carrières) | `images/carrieres` |
+| Carte du méga-menu (Navigation) | `images/nav` |
+
+Trois règles simples :
+
+- **Une image = un seul téléversement** : le même fichier sert au FR et à
+  l'EN (téléverser dans une langue, recopier le chemin dans l'autre, ou
+  utiliser la duplication FR → EN).
+- Le sélecteur ne montre que le dossier de l'emplacement en cours — c'est
+  voulu : chaque type d'image a sa maison. Pour réutiliser un visuel déjà
+  téléversé ailleurs, recopier son **chemin** (ex. `/images/sections/photo.jpg`)
+  dans le champ.
+- Préférer des fichiers **légers** (JPG pour les photos, moins de ~300 ko si
+  possible) : les images de sections sont servies telles quelles.
 
 ## Bien référencer une page (SEO)
 
@@ -315,10 +385,18 @@ directement dans la section (mode historique), mais sans destinataire propre.
 
 ## Ce que vous contrôlez — et ce qui est verrouillé (et pourquoi)
 
-**Vous contrôlez tout le contenu** : textes, images, ordre des sections d'une
-page, articles, fiches de solutions, formulaires, menu et pied de bannière,
+**Vous contrôlez le contenu** : textes, images, ordre des sections d'une
+page, articles, fiches de solutions, pages Contact et Carrières, textes du
+site et pages système, formulaires, menu et barre d'annonce, pied de page,
 redirections, réglages SEO page par page. C'est le cœur du site et il est
-entièrement entre vos mains.
+entre vos mains.
+
+Trois exceptions, techniques ou temporaires, restent côté équipe : le
+**chrome du catalogue de solutions** (titres et libellés de filtres de
+`/solutions`), certaines **photos de section** de la page Carrières (héros,
+équipe, RSE — en attendant les visuels authentiques) et les micro-textes
+d'interface (boutons de partage d'article, interface de recherche, chaînes
+d'accessibilité).
 
 **Certaines valeurs sont des listes fermées** (un menu déroulant plutôt qu'un
 champ libre). Ce n'est pas une limitation gratuite : chaque liste garantit la

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { type Locale, localePaths, localizePath } from '../../i18n/config';
-import { useTranslations } from '../../i18n/ui';
+import { getLocaleData } from '../../i18n/locale-data';
 
 /**
  * /[lang]/merci — post-submission thank-you page (contrat « formulaires »).
@@ -20,17 +20,19 @@ const { lang } = Astro.props as { lang: Locale };
 // GOTCHA Bookshop (STATIC_ONLY / CloudCannon editing build): the Bookshop Vite
 // plugin instruments COMPONENT props (here the <BaseLayout> call) with
 // data-binding paths by re-rooting each expression through its variable's
-// declaration. A declaration of the form `useTranslations(lang).merci` gets
+// declaration. A declaration of the form `(await getLocaleData(…)).merci` gets
 // re-rooted to `Astro.props.merci.…` in the compiled module — undefined at
 // render time, which CRASHES the editing build. Keep the bare-call pattern
-// (`useTranslations(lang)`) like the other [lang] pages and reach `t.merci.*`
-// at the use sites: those paths stay rooted at `t`, which is in scope.
-const t = useTranslations(lang);
+// like the other [lang] pages and reach `sys.merci.*` at the use sites: those
+// paths stay rooted at `sys`, which is in scope.
+// Textes ÉDITABLES AU CMS (collection `pagesSysteme`, bloc `merci` — migrés
+// de ui.ts le 2026-08-12).
+const sys = await getLocaleData('pagesSysteme', lang);
 
-const links = t.merci.links.map((l) => ({ ...l, href: localizePath(l.href, lang) }));
+const links = sys.merci.links.map((l) => ({ ...l, href: localizePath(l.href, lang) }));
 ---
 
-<BaseLayout lang={lang} title={t.merci.metaTitle} description={t.merci.metaDescription} noindex>
+<BaseLayout lang={lang} title={sys.merci.metaTitle} description={sys.merci.metaDescription} noindex>
   <section class="merci">
     <div class="container merci__inner">
       <span class="merci__badge" aria-hidden="true">
@@ -48,8 +50,8 @@ const links = t.merci.links.map((l) => ({ ...l, href: localizePath(l.href, lang)
         </svg>
       </span>
 
-      <h1 class="merci__title">{t.merci.title}</h1>
-      <p class="merci__text">{t.merci.text}</p>
+      <h1 class="merci__title">{sys.merci.title}</h1>
+      <p class="merci__text">{sys.merci.text}</p>
 
       <nav class="merci__actions" aria-label="Pages">
         {

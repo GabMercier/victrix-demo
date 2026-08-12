@@ -1181,4 +1181,214 @@ const site = defineCollection({
   }),
 });
 
-export const collections = { blog, home, landing, services, solutions, navigation, forms, pages, site };
+/**
+ * Page Contact (2026-08-12) — contenu de la page /contact, un JSON par langue
+ * dans src/data/contact (patron de la collection `site` : fichiers verrouillés,
+ * éditeur de données). Migré de src/i18n/content/contact.ts pour rendre la page
+ * éditable au CMS — le texte propre à une page s'édite avec sa page (règle de
+ * périmètre de la collection `site`). La MISE EN PAGE reste dans le gabarit
+ * src/pages/[lang]/contact.astro (les numéros de téléphone y demeurent aussi :
+ * neutres de langue, décision du re-skin 2026-08-05).
+ */
+const contact = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/data/contact' }),
+  schema: z.object({
+    metaTitle: z.string().min(1),
+    metaDescription: z.string().min(1),
+    heroEyebrow: z.string().min(1),
+    heroTitle: z.string().min(1),
+    heroSub: z.string().min(1),
+    infoTitle: z.string().min(1),
+    // Libellés de la carte Coordonnées (les numéros vivent dans le gabarit).
+    infoLabels: z.object({
+      montreal: z.string().min(1),
+      quebec: z.string().min(1),
+      paris: z.string().min(1),
+      tollFree: z.string().min(1),
+      email: z.string().min(1),
+    }),
+    // Cartes bureaux. Le gabarit apparie les téléphones PAR POSITION (Québec,
+    // Montréal, Paris) — conserver cet ordre. Image = chemin PUBLIC servi tel
+    // quel ("" = pas de photo), convention des sections.
+    offices: z
+      .array(
+        z.object({
+          city: z.string().min(1),
+          lines: z.array(z.string().min(1)).min(1),
+          image: z.string().default(''),
+        }),
+      )
+      .min(1),
+    formTitle: z.string().min(1),
+    formIntro: z.string().min(1),
+    formBullets: z.array(z.string().min(1)),
+    reqNote: z.string().min(1),
+    labels: z.object({
+      firstName: z.string().min(1),
+      lastName: z.string().min(1),
+      email: z.string().min(1),
+      phone: z.string().min(1),
+      subject: z.string().min(1),
+      subjectPlaceholder: z.string().min(1),
+      expertise: z.string().min(1),
+      expertisePlaceholder: z.string().min(1),
+      request: z.string().min(1),
+      message: z.string().min(1),
+    }),
+    subjectOptions: z.array(z.string().min(1)).min(1),
+    expertiseOptions: z.array(z.string().min(1)).min(1),
+    // HTML restreint ({privacy} = lien vers la politique, localisé au rendu) —
+    // même politique que le consentText des formulaires (contenu de dépôt).
+    consentText: z.string().min(1),
+    submit: z.string().min(1),
+    statusMessage: z.string().min(1),
+  }),
+});
+
+/**
+ * Page Carrières (2026-08-12) — contenu de la page /carrieres, un JSON par
+ * langue dans src/data/carrieres (même patron que `contact`). Migré de
+ * src/i18n/content/carrieres.ts. Les icônes restent des CLÉS FERMÉES rendues
+ * en SVG par le gabarit (jamais de markup dans le contenu) — un choix hors
+ * liste casse le build avec un message clair. Les photos de section (héros,
+ * équipe, responsabilité sociale) restent dans le gabarit (re-skin à venir
+ * avec les visuels authentiques) ; seuls les portraits des témoignages sont
+ * du contenu.
+ */
+const carrieres = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/data/carrieres' }),
+  schema: z.object({
+    metaTitle: z.string().min(1),
+    metaDescription: z.string().min(1),
+    hero: z.object({
+      title: z.string().min(1),
+      sub: z.string().min(1),
+      ctaLabel: z.string().min(1),
+    }),
+    happy: z.object({
+      title: z.string().min(1),
+      lead: z.string().min(1),
+      quote: z.string().min(1),
+    }),
+    values: z.object({
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+      items: z
+        .array(
+          z.object({
+            icon: z.enum(['etoile', 'groupe', 'ampoule', 'poignee', 'insigne']),
+            label: z.string().min(1),
+          }),
+        )
+        .min(1),
+    }),
+    join: z.object({
+      title: z.string().min(1),
+      lead: z.string().min(1),
+      cardTitle: z.string().min(1),
+      cardText: z.string().min(1),
+      features: z
+        .array(
+          z.object({
+            icon: z.enum(['croissance', 'progression', 'coeur', 'formation']),
+            title: z.string().min(1),
+            text: z.string().min(1),
+          }),
+        )
+        .min(1),
+    }),
+    // `cards` (pas `items`) : la carte _inputs de CloudCannon est PLATE par nom
+    // de champ — un second `items` de forme différente (values.items) entrerait
+    // en collision. Nom distinct = configuration d'éditeur sans ambiguïté.
+    testimonials: z.object({
+      title: z.string().min(1),
+      cards: z
+        .array(
+          z.object({
+            image: z.string().default(''),
+            quote: z.string().min(1),
+            name: z.string().min(1),
+            role: z.string().min(1),
+          }),
+        )
+        .min(1),
+    }),
+    social: z.object({
+      title: z.string().min(1),
+      lead: z.string().min(1),
+      engagementTitle: z.string().min(1),
+      engagementText: z.string().min(1),
+      // Pastilles texte (placeholders de la maquette) en attendant les logos
+      // réels des partenaires académiques.
+      partners: z.array(z.string().min(1)),
+    }),
+    cta: z.object({
+      title: z.string().min(1),
+      text: z.string().min(1),
+      label: z.string().min(1),
+    }),
+  }),
+});
+
+/**
+ * Pages système (2026-08-12) — textes des trois pages « outils » qui n'ont pas
+ * de collection de contenu où vivre : l'index du blogue (/ressources), la
+ * recherche (/recherche) et la confirmation d'envoi (/merci). Un JSON par
+ * langue dans src/data/pages-systeme, un BLOC par page (le pendant de la
+ * collection `site`, qui elle ne porte que le transversal — règle de
+ * périmètre). Les chaînes d'accessibilité et l'interface Pagefind restent dans
+ * src/i18n/ui.ts (interface, pas contenu).
+ *
+ * Le bloc `ressources` alimente aussi le fil d'Ariane des articles et le titre
+ * du flux RSS (le nom public de la section « Ressources » n'est défini qu'ici).
+ */
+const pagesSysteme = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/data/pages-systeme' }),
+  schema: z.object({
+    ressources: z.object({
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+      intro: z.string().min(1),
+      filterAll: z.string().min(1),
+    }),
+    recherche: z.object({
+      metaTitle: z.string().min(1),
+      metaDescription: z.string().min(1),
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+      intro: z.string().min(1),
+      noscript: z.string().min(1),
+    }),
+    merci: z.object({
+      metaTitle: z.string().min(1),
+      metaDescription: z.string().min(1),
+      title: z.string().min(1),
+      text: z.string().min(1),
+      // Mêmes règles que la 404 : liens internes SANS préfixe de langue.
+      links: z
+        .array(
+          z.object({
+            label: z.string().min(1),
+            href: navHref,
+            primary: z.boolean().default(false),
+          }),
+        )
+        .min(1),
+    }),
+  }),
+});
+
+export const collections = {
+  blog,
+  home,
+  landing,
+  services,
+  solutions,
+  navigation,
+  forms,
+  pages,
+  site,
+  contact,
+  carrieres,
+  pagesSysteme,
+};

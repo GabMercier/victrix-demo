@@ -49,7 +49,10 @@ collection_groups:
       - services
       - solutions
       - blog
+      - contact
+      - carrieres
       - site
+      - pagesSysteme
   - heading: Marketing
     collections:
       - landing
@@ -992,6 +995,353 @@ collections_config:
         type: switch
         label: Bouton principal (bleu)
 
+  # Page Contact (2026-08-12) — contenu de /contact migré de
+  # src/i18n/content/contact.ts vers src/data/contact/{fr,en}.json (collection
+  # `contact`, patron « Textes du site » : fichiers verrouillés, éditeur de
+  # données). La mise en page et les numéros de téléphone cliquables restent
+  # dans le gabarit (src/pages/[lang]/contact.astro).
+  contact:
+    path: src/data/contact
+    name: Page Contact
+    singular_name: Page Contact
+    description: >-
+      Textes de la page Contact : héros, coordonnées, cartes bureaux et
+      formulaire. Un fichier par langue (fr.json / en.json). Les numéros de
+      téléphone cliquables sont gérés par l'équipe technique.
+    icon: contact_page
+    # Deux fichiers fixes (fr/en) — rien à ajouter/supprimer/renommer.
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    # Pas de page à prévisualiser (le JSON n'est pas une page) — vérifier le
+    # rendu sur /fr/contact via la préversion.
+    disable_url: true
+    _enabled_editors:
+      - data
+    _inputs:
+      metaTitle:
+        type: text
+        label: Titre d'onglet
+      metaDescription:
+        type: textarea
+        label: Description (moteurs de recherche)
+      heroEyebrow:
+        type: text
+        label: Surtitre du héros
+      heroTitle:
+        type: text
+        label: Titre principal (H1)
+      heroSub:
+        type: textarea
+        label: Sous-titre du héros
+      infoTitle:
+        type: text
+        label: Titre de la carte Coordonnées
+      infoLabels:
+        type: object
+        label: Libellés des coordonnées
+        comment: >-
+          Les intitulés seulement — les numéros de téléphone eux-mêmes sont
+          gérés par l'équipe technique (neutres de langue).
+      montreal:
+        type: text
+        label: Intitulé « Montréal »
+      quebec:
+        type: text
+        label: Intitulé « Québec »
+      paris:
+        type: text
+        label: Intitulé « Paris »
+      tollFree:
+        type: text
+        label: Intitulé « Sans frais »
+      email:
+        type: text
+        label: Libellé « Courriel »
+      offices:
+        type: array
+        label: Cartes bureaux
+        comment: >-
+          GARDER L'ORDRE Québec, Montréal, Paris : le téléphone affiché au bas
+          de chaque carte est apparié par position.
+        options:
+          structures: _structures.contact_office_items
+      formTitle:
+        type: text
+        label: Titre de la section formulaire
+      formIntro:
+        type: textarea
+        label: Texte d'appui du formulaire
+      formBullets:
+        type: array
+        label: Puces cochées (arguments)
+      formBullets[*]:
+        type: text
+        label: Argument
+      reqNote:
+        type: text
+        label: Note « champs obligatoires » (lecteurs d'écran)
+      labels:
+        type: object
+        label: Libellés des champs du formulaire
+      firstName:
+        type: text
+        label: Libellé « Prénom »
+      lastName:
+        type: text
+        label: Libellé « Nom »
+      phone:
+        type: text
+        label: Libellé « Téléphone »
+      subject:
+        type: text
+        label: Question « Sujet »
+      subjectPlaceholder:
+        type: text
+        label: Texte par défaut de la liste Sujet
+      expertise:
+        type: text
+        label: Libellé « Expertise »
+      expertisePlaceholder:
+        type: text
+        label: Texte par défaut de la liste Expertise
+      request:
+        type: text
+        label: Libellé « Précisez votre demande »
+      message:
+        type: text
+        label: Libellé « Message »
+      subjectOptions:
+        type: array
+        label: Choix de la liste « Sujet »
+      subjectOptions[*]:
+        type: text
+        label: Choix
+      expertiseOptions:
+        type: array
+        label: Choix de la liste « Expertise »
+      expertiseOptions[*]:
+        type: text
+        label: Choix
+      consentText:
+        type: textarea
+        label: Texte de consentement (Loi 25)
+        comment: >-
+          Formulation à portée légale. Garder le lien tel quel : {privacy} est
+          remplacé automatiquement par l'adresse de la politique de
+          confidentialité dans la bonne langue.
+      submit:
+        type: text
+        label: Libellé du bouton d'envoi
+      statusMessage:
+        type: textarea
+        label: Message de confirmation (démo)
+        comment: Affiché sous le formulaire après l'envoi (mode démonstration).
+
+  # Page Carrières (2026-08-12) — contenu de /carrieres migré de
+  # src/i18n/content/carrieres.ts vers src/data/carrieres/{fr,en}.json. Les
+  # icônes sont des CLÉS FERMÉES dessinées en SVG par le gabarit (les listes
+  # des deux sélecteurs vivent dans les structures carriere_value_items /
+  # carriere_feature_items). Les photos de section (héros, équipe, RSE)
+  # restent dans le gabarit en attendant les visuels authentiques.
+  carrieres:
+    path: src/data/carrieres
+    name: Page Carrières
+    singular_name: Page Carrières
+    description: >-
+      Textes de la page Carrières : héros, Happy At Work, valeurs, atouts,
+      témoignages, responsabilité sociale et appel à l'action. Un fichier par
+      langue (fr.json / en.json).
+    icon: work
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    disable_url: true
+    _enabled_editors:
+      - data
+    # ⚠️ Carte PLATE par nom de champ (voir « Textes du site ») : les clés
+    # génériques (title, lead, text, label…) sont partagées par plusieurs
+    # blocs — libellés volontairement génériques. Les libellés fins des
+    # éléments de tableau vivent dans leurs structures.
+    _inputs:
+      metaTitle:
+        type: text
+        label: Titre d'onglet
+      metaDescription:
+        type: textarea
+        label: Description (moteurs de recherche)
+      hero:
+        type: object
+        label: Héros
+        comment: La photo de fond est gérée par l'équipe technique.
+      sub:
+        type: textarea
+        label: Sous-titre
+      ctaLabel:
+        type: text
+        label: Libellé du bouton
+        comment: Les boutons de la page mènent à la page Contact.
+      happy:
+        type: object
+        label: Carte « Happy At Work »
+      lead:
+        type: textarea
+        label: Texte d'appui
+      quote:
+        type: textarea
+        label: Citation
+      values:
+        type: object
+        label: Nos valeurs
+      eyebrow:
+        type: text
+        label: Surtitre
+      items:
+        type: array
+        label: Tuiles de valeurs
+        options:
+          structures: _structures.carriere_value_items
+      join:
+        type: object
+        label: Pourquoi rejoindre notre équipe
+        comment: La photo de la section est gérée par l'équipe technique.
+      cardTitle:
+        type: text
+        label: Titre de la carte flottante
+      cardText:
+        type: textarea
+        label: Texte de la carte flottante
+      features:
+        type: array
+        label: Atouts (grille 2×2)
+        options:
+          structures: _structures.carriere_feature_items
+      testimonials:
+        type: object
+        label: Témoignages
+      cards:
+        type: array
+        label: Cartes de témoignage
+        options:
+          structures: _structures.carriere_testimonial_items
+      social:
+        type: object
+        label: Responsabilité sociale
+        comment: La photo de la section est gérée par l'équipe technique.
+      engagementTitle:
+        type: text
+        label: Titre de l'engagement
+      engagementText:
+        type: textarea
+        label: Texte de l'engagement
+      partners:
+        type: array
+        label: Partenaires (pastilles texte)
+        comment: >-
+          Pastilles de remplacement en attendant les logos réels des
+          partenaires académiques.
+      partners[*]:
+        type: text
+        label: Nom du partenaire
+      cta:
+        type: object
+        label: Appel à l'action final
+      text:
+        type: textarea
+        label: Texte
+      label:
+        type: text
+        label: Libellé
+      title:
+        type: text
+        label: Titre
+      image:
+        type: image
+        label: Photo
+        comment: Partagée entre les deux langues — téléverser une seule fois.
+        options:
+          paths:
+            static: public
+            uploads: public/images/carrieres
+
+  # Pages système (2026-08-12) — textes des trois pages « outils » sans
+  # collection de contenu : index du blogue (/ressources), recherche
+  # (/recherche) et confirmation d'envoi (/merci). Le pendant par-page de
+  # « Textes du site » (qui ne porte que le transversal). Le bloc « Index du
+  # blogue » alimente aussi le fil d'Ariane des articles et le flux RSS.
+  pagesSysteme:
+    path: src/data/pages-systeme
+    name: Pages système
+    singular_name: Pages système
+    description: >-
+      Textes de l'index du blogue (/ressources), de la page de recherche
+      (/recherche) et de la page de confirmation (/merci). Un fichier par
+      langue (fr.json / en.json).
+    icon: web
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    disable_url: true
+    _enabled_editors:
+      - data
+    _inputs:
+      ressources:
+        type: object
+        label: Index du blogue (/ressources)
+        comment: >-
+          Le surtitre « Ressources » sert aussi de nom de section dans le fil
+          d'Ariane des articles et de titre du flux RSS.
+      recherche:
+        type: object
+        label: Page de recherche (/recherche)
+      merci:
+        type: object
+        label: Page de confirmation (/merci)
+        comment: Affichée après l'envoi réussi d'un formulaire.
+      metaTitle:
+        type: text
+        label: Titre d'onglet
+      metaDescription:
+        type: textarea
+        label: Description (moteurs de recherche)
+      eyebrow:
+        type: text
+        label: Surtitre
+      title:
+        type: text
+        label: Titre
+      intro:
+        type: textarea
+        label: Texte d'introduction
+      filterAll:
+        type: text
+        label: Onglet « Tous » des filtres
+      noscript:
+        type: textarea
+        label: Message sans JavaScript
+        comment: Affiché seulement si le navigateur bloque JavaScript.
+      text:
+        type: textarea
+        label: Texte
+      links:
+        type: array
+        label: Boutons
+        comment: Liens proposés au visiteur (le « principal » est bleu).
+        options:
+          structures: _structures.site_buttons
+      label:
+        type: text
+        label: Libellé
+      href:
+        type: text
+        label: Lien
+        comment: >-
+          SANS préfixe de langue (/contact, pas /fr/contact) — le site ajoute
+          /fr ou /en tout seul.
+      primary:
+        type: switch
+        label: Bouton principal (bleu)
+
   # URL redirects — exposes src/data/redirects.json, which the inline
   # 'victrix:redirects' integration in astro.config.mjs turns into
   # dist/_redirects (Cloudflare Pages format) at build time. A COLLECTION on
@@ -1242,6 +1592,15 @@ collections_config:
         label: Image (optionnelle)
         comment: >-
           Chemin public (ex. /images/nav/carte.jpg). Vide = pas d'image.
+        # Sans `paths` explicites, un téléversement tombait sur le repli global
+        # (src/assets/uploads) et enregistrait un chemin que Header.astro ne
+        # sert pas — corrigé 2026-08-12 : même patron public que les autres
+        # images servies telles quelles (static: public → l'adresse commence
+        # à /images/…).
+        options:
+          paths:
+            static: public
+            uploads: public/images/nav
       stripe:
         type: object
         label: Bandeau bas du méga-menu
@@ -2114,3 +2473,140 @@ _structures:
           label:
             type: text
             label: Étiquette du sous-groupe
+
+  # ---- Structures des collections « Page Contact » / « Page Carrières »
+  # (2026-08-12). Chaque structure porte ses _inputs SCOPÉS — ils priment sur
+  # la carte plate de la collection (même mécanique que footer_columns), ce qui
+  # permet notamment deux sélecteurs d'icônes différents dans Carrières. ----
+
+  # Carte bureau de la page Contact {city, lines[], image}. L'ordre du tableau
+  # apparie les téléphones (gabarit) : Québec, Montréal, Paris.
+  contact_office_items:
+    values:
+      - label: Carte bureau
+        icon: location_city
+        preview:
+          icon: location_city
+          text:
+            - key: city
+            - text: Bureau
+        value:
+          city: ''
+          lines: []
+          image: ''
+        _inputs:
+          city:
+            type: text
+            label: Ville
+          lines:
+            type: array
+            label: Lignes d'adresse
+          lines[*]:
+            type: text
+            label: Ligne
+          image:
+            type: image
+            label: Photo du bureau
+            comment: Partagée entre les deux langues — téléverser une seule fois.
+            options:
+              paths:
+                static: public
+                uploads: public/images/contact
+
+  # Tuile de valeur de la page Carrières {icon, label}. Icônes en CLÉS FERMÉES
+  # dessinées en SVG par le gabarit (VALUE_ICONS, carrieres.astro) — en ajouter
+  # une = la dessiner là d'abord.
+  carriere_value_items:
+    values:
+      - label: Valeur
+        icon: stars
+        preview:
+          icon: stars
+          text:
+            - key: label
+            - text: Valeur
+        value:
+          icon: etoile
+          label: ''
+        _inputs:
+          icon:
+            type: select
+            label: Icône
+            comment: Liste fermée — les pictogrammes sont dessinés par le site.
+            options:
+              values:
+                - etoile
+                - groupe
+                - ampoule
+                - poignee
+                - insigne
+          label:
+            type: text
+            label: Libellé de la valeur
+
+  # Atout « Pourquoi rejoindre » {icon, title, text}. Mêmes règles de clés
+  # fermées (JOIN_ICONS, carrieres.astro).
+  carriere_feature_items:
+    values:
+      - label: Atout
+        icon: task_alt
+        preview:
+          icon: task_alt
+          text:
+            - key: title
+            - text: Atout
+        value:
+          icon: croissance
+          title: ''
+          text: ''
+        _inputs:
+          icon:
+            type: select
+            label: Icône
+            comment: Liste fermée — les pictogrammes sont dessinés par le site.
+            options:
+              values:
+                - croissance
+                - progression
+                - coeur
+                - formation
+          title:
+            type: text
+            label: Titre de l'atout
+          text:
+            type: textarea
+            label: Texte de l'atout
+
+  # Carte témoignage {image, quote, name, role} de la page Carrières.
+  carriere_testimonial_items:
+    values:
+      - label: Témoignage
+        icon: format_quote
+        preview:
+          icon: format_quote
+          text:
+            - key: name
+            - text: Témoignage
+        value:
+          image: ''
+          quote: ''
+          name: ''
+          role: ''
+        _inputs:
+          image:
+            type: image
+            label: Portrait
+            comment: Partagé entre les deux langues — téléverser une seule fois.
+            options:
+              paths:
+                static: public
+                uploads: public/images/carrieres
+          quote:
+            type: textarea
+            label: Citation
+          name:
+            type: text
+            label: Prénom
+          role:
+            type: text
+            label: Rôle / poste

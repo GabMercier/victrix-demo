@@ -1,0 +1,82 @@
+{
+  "metaTitle": "Careers",
+  "metaDescription": "Join Victrix: a passionate team, a Happy At Work certified environment, and real IT career opportunities.",
+  "hero": {
+    "title": "Life at Victrix",
+    "sub": "Browse our job openings and find the opportunity you have been waiting for!",
+    "ctaLabel": "Apply"
+  },
+  "happy": {
+    "title": "Happy At Work",
+    "lead": "Victrix is HappyIndex® AtWork 2024 certified among companies “where people are happy to work”.",
+    "quote": "This distinction is awarded following a participative survey that lets employees speak anonymously about their day-to-day experience within the company."
+  },
+  "values": {
+    "eyebrow": "Culture",
+    "title": "Our values",
+    "items": [
+      { "icon": "etoile", "label": "Excellence" },
+      { "icon": "groupe", "label": "Collaboration" },
+      { "icon": "ampoule", "label": "Innovation" },
+      { "icon": "poignee", "label": "Commitment" },
+      { "icon": "insigne", "label": "Integrity" }
+    ]
+  },
+  "join": {
+    "title": "Why join our team?",
+    "lead": "Victrix values its employees and offers a rewarding work environment. We are always looking for talented, motivated people.",
+    "cardTitle": "A stimulating environment",
+    "cardText": "Contribute to our success and thrive within a passionate team.",
+    "features": [
+      {
+        "icon": "croissance",
+        "title": "Personal development",
+        "text": "Ongoing support for your professional aspirations."
+      },
+      {
+        "icon": "progression",
+        "title": "Career growth",
+        "text": "Real opportunities for advancement within the group."
+      },
+      {
+        "icon": "coeur",
+        "title": "Well-being at work",
+        "text": "A respected balance between professional and personal life."
+      },
+      {
+        "icon": "formation",
+        "title": "Skills and training",
+        "text": "Training programs to stay at the leading edge of IT."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What our experts say",
+    "cards": [
+      {
+        "image": "/images/carrieres/temoignage-mikael.png",
+        "quote": "“Victrix lets me step out of my comfort zone and take on new challenges, both personally and professionally.”",
+        "name": "Mikaël",
+        "role": "Cloud Architect"
+      },
+      {
+        "image": "/images/carrieres/temoignage-daniel.png",
+        "quote": "“Victrix lets me pursue continuous training. The journey keeps getting better and makes me even stronger in my field.”",
+        "name": "Daniel",
+        "role": "Consultant"
+      }
+    ]
+  },
+  "social": {
+    "title": "Our social responsibility and commitments",
+    "lead": "Social and community activities are organized every month to celebrate our successes and bring everyone together to create memorable moments.",
+    "engagementTitle": "Committed to young talent",
+    "engagementText": "We actively collaborate with academic institutions to support the next generation in IT.",
+    "partners": ["Partner 1", "Partner 2"]
+  },
+  "cta": {
+    "title": "Want to learn more about our career opportunities?",
+    "text": "Write to us or schedule a meeting with our recruitment teams today.",
+    "label": "Contact us"
+  }
+}

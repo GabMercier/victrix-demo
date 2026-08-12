@@ -1,6 +1,9 @@
 /**
- * UI / chrome dictionary — everything outside the page bodies & content
- * collections: header, footer, blog index, article controls, 404.
+ * UI / chrome dictionary — INTERFACE strings only (accessibility labels,
+ * header entries, Pagefind UI, article share controls). Page and chrome
+ * CONTENT has been progressively moved to CMS-editable collections: footer/
+ * consent/404 → `site` (2026-08-11), blog index & RSS / search page / merci →
+ * `pagesSysteme`, Contact → `contact`, Carrières → `carrieres` (2026-08-12).
  *
  * `fr` is the source of truth; `en` is typed against it (`UI`), so the two
  * locales can never drift out of shape — a missing/extra key fails the build.
@@ -33,20 +36,16 @@ const fr = {
     close: 'Fermer l’annonce',
   },
 
-  // Recherche interne (P-06) — page /recherche + entrée du header. Le bloc
-  // `ui` est passé tel quel aux traductions de l'interface Pagefind (clés
-  // officielles de PagefindUI; [SEARCH_TERM]/[COUNT] = jetons Pagefind).
+  // Recherche interne (P-06) — entrée du header + interface Pagefind. Les
+  // TEXTES de la page /recherche (titre, intro, noscript…) sont DÉMÉNAGÉS vers
+  // la collection `pagesSysteme` (src/data/pages-systeme/{fr,en}.json, bloc
+  // `recherche`, éditable au CMS — 2026-08-12). Restent ici : l'entrée du
+  // header (interface) et le bloc `ui`, passé tel quel aux traductions de
+  // l'interface Pagefind (clés officielles de PagefindUI; [SEARCH_TERM]/
+  // [COUNT] = jetons Pagefind).
   search: {
     navLabel: 'Recherche',
     navAria: 'Rechercher sur le site',
-    metaTitle: 'Recherche',
-    metaDescription:
-      'Recherchez dans l’ensemble du contenu du site Victrix : services, expertises, articles et pages.',
-    eyebrow: 'Recherche',
-    title: 'Rechercher sur le site',
-    intro: 'Trouvez un service, une expertise, un article ou une page.',
-    noscript:
-      'La recherche nécessite JavaScript. Vous pouvez aussi parcourir le site via le menu ou consulter le blogue.',
     ui: {
       placeholder: 'Rechercher…',
       clear_search: 'Effacer',
@@ -77,12 +76,11 @@ const fr = {
     ariaLabel: 'Consentement aux témoins',
   },
 
+  // Index du blogue : les TEXTES (surtitre, titre, intro, libellé « Tous »)
+  // sont DÉMÉNAGÉS vers la collection `pagesSysteme` (bloc `ressources`,
+  // éditable au CMS — 2026-08-12) ; ce bloc alimente aussi le fil d'Ariane des
+  // articles et le flux RSS. Seule l'étiquette d'accessibilité reste ici.
   blog: {
-    eyebrow: 'Ressources',
-    title: 'Le blogue Victrix',
-    intro:
-      'Analyses, bonnes pratiques et points de vue de nos experts pour accompagner la transformation numérique de votre organisation.',
-    filterAll: 'Tous',
     filterAria: 'Filtrer par catégorie',
   },
 
@@ -105,19 +103,8 @@ const fr = {
     learnMore: 'En savoir plus',
   },
 
-  // Page /merci — atterrissage après une soumission de formulaire réussie
-  // (redirection 303 de /api/forms, voir docs/formulaires.md). noindex.
-  merci: {
-    metaTitle: 'Merci',
-    metaDescription: 'Votre message a bien été envoyé à l’équipe Victrix.',
-    title: 'Merci !',
-    text: 'Votre message a été envoyé. Notre équipe vous répondra dans les meilleurs délais.',
-    links: [
-      { label: 'Retour à l’accueil', href: '/', primary: true },
-      { label: 'Consulter le blogue', href: '/ressources', primary: false },
-    ],
-  },
-
+  // merci : DÉMÉNAGÉ vers la collection `pagesSysteme` (src/data/pages-systeme/
+  // {fr,en}.json, bloc `merci`, éditable au CMS — 2026-08-12).
   // notFound : DÉMÉNAGÉ vers la collection `site` (src/data/site/{fr,en}.json,
   // éditable au CMS — 2026-08-11). src/pages/404.astro lit la collection.
 };
@@ -141,19 +128,12 @@ const en: UI = {
     close: 'Dismiss announcement',
   },
 
-  // Internal search (P-06) — /recherche page + header entry. The `ui` block is
-  // handed verbatim to the Pagefind UI translations.
+  // Internal search (P-06) — header entry + Pagefind UI. The /recherche page
+  // texts moved to the `pagesSysteme` collection (see the FR comments). The
+  // `ui` block is handed verbatim to the Pagefind UI translations.
   search: {
     navLabel: 'Search',
     navAria: 'Search this site',
-    metaTitle: 'Search',
-    metaDescription:
-      'Search all Victrix site content: services, expertise areas, articles and pages.',
-    eyebrow: 'Search',
-    title: 'Search the site',
-    intro: 'Find a service, an expertise area, an article or a page.',
-    noscript:
-      'Search requires JavaScript. You can also browse the site through the menu or visit the blog.',
     ui: {
       placeholder: 'Search…',
       clear_search: 'Clear',
@@ -179,12 +159,8 @@ const en: UI = {
     ariaLabel: 'Cookie consent',
   },
 
+  // Blog index texts moved to the `pagesSysteme` collection (see FR comments).
   blog: {
-    eyebrow: 'Resources',
-    title: 'The Victrix blog',
-    intro:
-      "Analysis, best practices and insights from our experts to support your organization's digital transformation.",
-    filterAll: 'All',
     filterAria: 'Filter by category',
   },
 
@@ -207,18 +183,7 @@ const en: UI = {
     learnMore: 'Learn more',
   },
 
-  // /merci page — post-submission landing (303 redirect from /api/forms).
-  merci: {
-    metaTitle: 'Thank you',
-    metaDescription: 'Your message has been sent to the Victrix team.',
-    title: 'Thank you!',
-    text: 'Your message has been sent. Our team will get back to you as soon as possible.',
-    links: [
-      { label: 'Back to home', href: '/', primary: true },
-      { label: 'Visit the blog', href: '/ressources', primary: false },
-    ],
-  },
-
+  // merci: moved to the `pagesSysteme` collection (see the FR comments).
   // notFound : voir la collection `site` (miroir du commentaire FR).
 };
 

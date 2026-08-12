@@ -1,0 +1,26 @@
+{
+  "ressources": {
+    "eyebrow": "Ressources",
+    "title": "Le blogue Victrix",
+    "intro": "Analyses, bonnes pratiques et points de vue de nos experts pour accompagner la transformation numérique de votre organisation.",
+    "filterAll": "Tous"
+  },
+  "recherche": {
+    "metaTitle": "Recherche",
+    "metaDescription": "Recherchez dans l’ensemble du contenu du site Victrix : services, expertises, articles et pages.",
+    "eyebrow": "Recherche",
+    "title": "Rechercher sur le site",
+    "intro": "Trouvez un service, une expertise, un article ou une page.",
+    "noscript": "La recherche nécessite JavaScript. Vous pouvez aussi parcourir le site via le menu ou consulter le blogue."
+  },
+  "merci": {
+    "metaTitle": "Merci",
+    "metaDescription": "Votre message a bien été envoyé à l’équipe Victrix.",
+    "title": "Merci !",
+    "text": "Votre message a été envoyé. Notre équipe vous répondra dans les meilleurs délais.",
+    "links": [
+      { "label": "Retour à l’accueil", "href": "/", "primary": true },
+      { "label": "Consulter le blogue", "href": "/ressources", "primary": false }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ressources": {
+    "eyebrow": "Resources",
+    "title": "The Victrix blog",
+    "intro": "Analysis, best practices and insights from our experts to support your organization's digital transformation.",
+    "filterAll": "All"
+  },
+  "recherche": {
+    "metaTitle": "Search",
+    "metaDescription": "Search all Victrix site content: services, expertise areas, articles and pages.",
+    "eyebrow": "Search",
+    "title": "Search the site",
+    "intro": "Find a service, an expertise area, an article or a page.",
+    "noscript": "Search requires JavaScript. You can also browse the site through the menu or visit the blog."
+  },
+  "merci": {
+    "metaTitle": "Thank you",
+    "metaDescription": "Your message has been sent to the Victrix team.",
+    "title": "Thank you!",
+    "text": "Your message has been sent. Our team will get back to you as soon as possible.",
+    "links": [
+      { "label": "Back to home", "href": "/", "primary": true },
+      { "label": "Visit the blog", "href": "/ressources", "primary": false }
+    ]
+  }
+}

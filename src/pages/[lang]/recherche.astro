@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { type Locale, localePaths } from '../../i18n/config';
 import { useTranslations } from '../../i18n/ui';
+import { getLocaleData } from '../../i18n/locale-data';
 
 /**
  * /[lang]/recherche — recherche interne (P-06, Pagefind).
@@ -30,6 +31,10 @@ const { lang } = Astro.props as { lang: Locale };
 // GOTCHA Bookshop (voir merci.astro) : garder l'appel nu useTranslations(lang)
 // et atteindre t.search.* aux points d'usage.
 const t = useTranslations(lang);
+// Textes de la page ÉDITABLES AU CMS (collection `pagesSysteme`, bloc
+// `recherche` — migrés de ui.ts le 2026-08-12). L'interface Pagefind
+// (t.search.ui) et l'entrée du header restent dans ui.ts (interface).
+const sys = await getLocaleData('pagesSysteme', lang);
 
 const devNote =
   lang === 'fr'
@@ -37,12 +42,12 @@ const devNote =
     : 'The search index is generated at build time — it is not available on the dev server. Run a build to try the search.';
 ---
 
-<BaseLayout lang={lang} title={t.search.metaTitle} description={t.search.metaDescription} noindex>
+<BaseLayout lang={lang} title={sys.recherche.metaTitle} description={sys.recherche.metaDescription} noindex>
   <section class="search-page">
     <div class="container search-page__inner">
-      <p class="search-page__eyebrow">{t.search.eyebrow}</p>
-      <h1 class="search-page__title">{t.search.title}</h1>
-      <p class="search-page__intro">{t.search.intro}</p>
+      <p class="search-page__eyebrow">{sys.recherche.eyebrow}</p>
+      <h1 class="search-page__title">{sys.recherche.title}</h1>
+      <p class="search-page__intro">{sys.recherche.intro}</p>
 
       {/* Feuille de style de l'interface Pagefind — asset local produit par le
           build (un <link rel="stylesheet"> dans le corps est valide HTML et
@@ -50,7 +55,7 @@ const devNote =
       <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
 
       <div id="search" class="search-page__mount"></div>
-      <noscript><p class="search-page__note">{t.search.noscript}</p></noscript>
+      <noscript><p class="search-page__note">{sys.recherche.noscript}</p></noscript>
     </div>
   </section>
 </BaseLayout>

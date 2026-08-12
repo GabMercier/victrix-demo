@@ -1,12 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { type Locale, localePaths, localizePath } from '../../i18n/config';
-import { contactContent } from '../../i18n/content/contact';
+import { getLocaleData } from '../../i18n/locale-data';
 
 export const getStaticPaths = localePaths;
 
 const { lang } = Astro.props as { lang: Locale };
-const c = contactContent[lang];
+// Contenu ÉDITABLE AU CMS (collection `contact`, src/data/contact/<lang>.json —
+// migré de src/i18n/content/contact.ts le 2026-08-12). Appel nu (gotcha
+// Bookshop, voir merci.astro) ; `c.…` aux points d'usage comme avant.
+const c = await getLocaleData('contact', lang);
 
 /**
  * Page Contact — FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/contact.css +
