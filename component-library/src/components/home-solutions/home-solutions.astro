@@ -1,13 +1,13 @@
 ---
 /**
  * Section « Solutions phares » — composant Bookshop (accueil composable),
- * NOUVEAU 2026-08-04. FIDÉLITÉ MAQUETTE (docs/design/accueil.css
- * §SolutionsSection) : rangée de tête (titre 48/800 ls -0.96 + lien 12/700
- * majuscules bleu à droite), 3 CARTES SOMBRES 500px rayon 12 — photo de fond,
- * dégradé noir bas→transparent (0deg #000 → 40 % → 0), contenu ancré en bas :
- * icône 24 blanche + titre 24/700 blanc, texte 14/23 #E5E7EB, lien 12/700
- * majuscules blanc + flèche. Carte entière cliquable (lien étiré).
- * Neutres froids maquette tels quels ; bleus = tokens (décision méga).
+ * NOUVEAU 2026-08-04, RE-ANCRÉ 2026-08-14 sur export2
+ * (docs/design/export2/Code/card-solutions — décision v3) : rangée de tête
+ * (titre 48/800 ls -0.96 + lien bleu à droite), 3 CARTES SOMBRES 500px
+ * rayon 4 — photo de fond, dégradé noir 90 % bas → 60 % mi-hauteur →
+ * transparent haut, contenu ancré en bas p-40 : icône 32 blanche + titre
+ * 24/700 blanc, texte 14/1.5 blanc, lien 14/600 blanc SOULIGNÉ + flèche
+ * (survol : opacité 80 %). Carte entière cliquable (lien étiré).
  *
  * Props : { type: "home-solutions", title, ctaLabel?, ctaHref?,
  *           items: [{ title, text, image, href, ctaLabel?, icon? }] }
@@ -71,7 +71,7 @@ const ICONS: Record<string, string[]> = {
       {
         items.map((item) => (
           <li class="m-0">
-            <article class="group relative h-[500px] rounded-xl overflow-hidden flex flex-col justify-end p-8 bg-on-primary-fixed isolate">
+            <article class="group relative h-[500px] rounded overflow-hidden flex flex-col justify-end p-6 sm:p-10 bg-on-primary-fixed isolate">
               {item.image && (
                 <img
                   src={item.image}
@@ -82,39 +82,41 @@ const ICONS: Record<string, string[]> = {
                 />
               )}
               <span
-                class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent -z-10"
+                class="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0.6)_50%,rgba(0,0,0,0)_100%)] -z-10"
                 aria-hidden="true"
               />
               <div class="flex flex-col gap-4">
-                <p class="flex items-center gap-2 m-0 max-w-none">
-                  {item.icon && ICONS[item.icon] && (
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="text-white shrink-0"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      {ICONS[item.icon].map((d) => (
-                        <path d={d} />
-                      ))}
-                    </svg>
-                  )}
-                  <span class="text-2xl leading-8 font-bold tracking-[-0.48px] text-white">{item.title}</span>
-                </p>
-                <p class="text-sm leading-[23px] text-[#E5E7EB] m-0 max-w-none">{item.text}</p>
+                <div class="flex flex-col gap-2">
+                  <p class="flex items-center gap-3 m-0 max-w-none">
+                    {item.icon && ICONS[item.icon] && (
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="text-white shrink-0"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        {ICONS[item.icon].map((d) => (
+                          <path d={d} />
+                        ))}
+                      </svg>
+                    )}
+                    <span class="text-headline-md text-white">{item.title}</span>
+                  </p>
+                  <p class="text-sm leading-normal text-white m-0 max-w-none">{item.text}</p>
+                </div>
                 <a
-                  class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[1.2px] text-white no-underline after:content-[''] after:absolute after:inset-0"
+                  class="inline-flex items-center gap-1 text-sm font-semibold text-white underline underline-offset-4 decoration-1 transition-opacity hover:opacity-80 after:content-[''] after:absolute after:inset-0"
                   href={item.href}
                 >
                   {item.ctaLabel || item.title}
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
                     <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </a>

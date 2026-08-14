@@ -17,9 +17,9 @@ import { isWithinWindow } from '../lib/schedule';
  * This is site chrome rendered at build — astro:content is fine here (the
  * browser-safe rule only applies to Bookshop section components).
  *
- * RE-SKIN 2026-08-04 (lot chrome) : 100 % utilitaires Tailwind (règle
- * no-hybride), structure Figma « Composants » (docs/design/composants.css),
- * valeurs = tokens planche (arbitrage v2). Les classes .site-header,
+ * RE-SKIN 2026-08-04 (lot chrome), RE-ANCRÉ 2026-08-14 sur export2
+ * (docs/design/export2/Code/{header,mega-menu} — décision v3) : 100 %
+ * utilitaires Tailwind (règle no-hybride). Les classes .site-header,
  * .primary-nav, .site-header__search, .lang-switch, .announcement, etc. sont
  * des HOOKS NUS (zéro CSS) : e2e (header-variants.spec.ts), script ci-dessous
  * et global.css (html.announce-dismissed .announcement) s'y accrochent.
@@ -196,19 +196,24 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
 
 // Recettes utilitaires partagées dans CE composant (répétées verbatim côté
 // campagnes — composants autonomes, pas d'abstraction partagée).
+// Bouton primaire export2 (Code/header) : rayon 4px, 12/24, 14/600, ombre
+// effet « normal », hover bleu-600 (= primary-container).
 const ctaClass =
-  'inline-flex items-center justify-center px-6 py-2 rounded-lg bg-primary text-on-primary text-sm font-bold no-underline hover:bg-primary-container transition-colors';
+  'inline-flex items-center justify-center px-6 py-3 rounded bg-primary text-on-primary text-sm font-semibold no-underline shadow-controle hover:bg-primary-container transition-colors';
 // Panneau méga : rendu une seule fois par clé, ouvert via data-open (JS).
-// NEUTRES FROIDS de la maquette (docs/design/megamenu.css — décision user
-// 2026-08-04 passe fidélité : le méga garde les gris froids #F8F9FA/#C5C6D0/
-// #EDEEEF de l'export, PAS les neutres chauds des tokens ; les bleus/navy
-// restent sur les tokens de marque). Divergence à consigner §2.e.
+// Les gris froids jadis « verbatim maquette » (#F8F9FA/#C5C6D0/#EDEEEF) sont
+// devenus l'échelle neutral-* officielle (export2, décision v3 2026-08-14) —
+// la divergence consignée le 2026-08-04 est levée, tout passe par tokens.
 const megaPanelClass =
-  'absolute top-full inset-x-0 bg-white border-0 border-t border-solid border-[#C5C6D0]/10 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] invisible opacity-0 -translate-y-1.5 pointer-events-none transition-[opacity,transform] duration-150 data-[open]:visible data-[open]:opacity-100 data-[open]:translate-y-0 data-[open]:pointer-events-auto motion-reduce:transition-none motion-reduce:translate-y-0';
+  'absolute top-full inset-x-0 bg-white border-0 border-t border-solid border-neutral-300/10 shadow-surelevee invisible opacity-0 -translate-y-1.5 pointer-events-none transition-[opacity,transform] duration-150 data-[open]:visible data-[open]:opacity-100 data-[open]:translate-y-0 data-[open]:pointer-events-auto motion-reduce:transition-none motion-reduce:translate-y-0';
+// Tête de colonne (export mega-menu .overline + .divider) : 12/600 uppercase
+// ls 0.5px neutral-800, filet appuyé neutral-500.
 const megaHeadClass =
-  'block text-sm font-bold uppercase tracking-[1.4px] text-on-primary-fixed no-underline pb-2 border-0 border-b border-solid border-[#C5C6D0] hover:text-primary';
+  'block text-xs font-semibold uppercase tracking-[0.5px] text-neutral-800 no-underline pb-2 border-0 border-b border-solid border-outline hover:text-primary';
+// Lien de colonne (export .menu-list) : 14px neutral-800, hauteur 40px,
+// indicateur bleu 6px à gauche au survol (remplace l'ancienne flèche).
 const megaLinkClass =
-  'group/link flex items-center justify-between gap-2 p-2 rounded text-body-md font-medium text-on-surface no-underline hover:bg-[#F8F9FA] hover:text-primary';
+  'relative flex items-center h-10 pl-3.5 pr-2 text-sm text-neutral-800 no-underline transition-colors hover:text-primary before:content-[""] before:absolute before:left-0 before:inset-y-0 before:w-1.5 before:rounded-[1px] before:bg-primary before:opacity-0 before:transition-opacity hover:before:opacity-100';
 const langLinkClass = 'no-underline p-1 text-sm';
 ---
 
@@ -243,9 +248,9 @@ const langLinkClass = 'no-underline p-1 text-sm';
   )
 }
 
-<!-- Barre BLANCHE (décision designer 2026-08-11 — plus bg-surface ivoire) : cohérente avec le panneau méga bg-white. -->
-<header class="site-header sticky top-0 z-50 bg-white shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
-  <div class="container-site flex items-center justify-between gap-6 min-h-20">
+<!-- Barre BLANCHE, hauteur 72px + ombre « normal » (export2 Code/header). -->
+<header class="site-header sticky top-0 z-50 bg-white shadow-controle">
+  <div class="container-site flex items-center justify-between gap-6 min-h-[72px]">
     <a
       class="site-header__brand inline-flex items-center shrink-0 [--logo-height:40px]"
       href={localizePath('/', lang)}
@@ -260,7 +265,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
           navItems.map((item, i) => (
             <li class:list={[{ 'py-6 -my-6': !!item.megaKey }]} data-mega={item.megaKey}>
               <a
-                class="text-sm font-medium tracking-[0.14px] text-on-primary-fixed/70 no-underline whitespace-nowrap py-2 hover:text-primary aria-[current=page]:text-primary aria-[current=page]:font-semibold aria-[current=page]:shadow-[inset_0_-2px_0_0_var(--color-primary)]"
+                class="text-base font-normal text-neutral-600 no-underline whitespace-nowrap py-2 px-2 rounded transition-colors hover:text-primary hover:bg-primary/5 aria-[current=page]:text-primary aria-[current=page]:font-semibold aria-[current=page]:shadow-[inset_0_-2px_0_0_var(--color-primary)]"
                 href={item.href}
                 aria-current={isCurrent(item.href) ? 'page' : undefined}
                 aria-haspopup={item.megaKey ? 'true' : undefined}
@@ -290,7 +295,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
                     ]}
                   >
                     {megaFeatured && (
-                      <div class="col-start-4 row-start-1 row-span-2 self-start relative overflow-hidden bg-[#F8F9FA] border border-solid border-[#C5C6D0] rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.05)] p-6 flex flex-col items-start gap-1">
+                      <div class="col-start-4 row-start-1 row-span-2 self-start relative overflow-hidden bg-surface-container-low border border-solid border-neutral-300 rounded-lg p-6 flex flex-col items-start gap-1">
                         {/* Halo décoratif bleu du coin supérieur droit (maquette). */}
                         <span
                           class="absolute -top-8 -right-8 size-32 rounded-full bg-[rgba(0,56,230,0.05)] blur-[20px] pointer-events-none"
@@ -311,16 +316,16 @@ const langLinkClass = 'no-underline p-1 text-sm';
                             />
                           </svg>
                         </span>
-                        <p class="font-headline-md text-headline-md text-on-surface pt-3 m-0 max-w-none">
+                        <p class="text-base font-bold text-on-surface pt-3 m-0 max-w-none">
                           {megaFeatured.title}
                         </p>
                         {megaFeatured.body && (
-                          <p class="text-body-md leading-[1.6] text-on-surface-variant m-0 max-w-none">
+                          <p class="text-sm leading-normal text-neutral-700 m-0 max-w-none">
                             {megaFeatured.body}
                           </p>
                         )}
                         <a
-                          class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.7px] text-primary no-underline mt-6 hover:text-primary-container"
+                          class="inline-flex items-center gap-1 text-sm font-semibold text-primary no-underline mt-2 hover:underline"
                           href={megaFeatured.href}
                         >
                           {megaFeatured.ctaLabel}
@@ -340,7 +345,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
                         </a>
                         {megaFeatured.image && (
                           <img
-                            class="w-full rounded-lg border border-solid border-[#C5C6D0] mt-6"
+                            class="w-full rounded mt-6"
                             src={megaFeatured.image}
                             alt=""
                             loading="lazy"
@@ -358,21 +363,6 @@ const langLinkClass = 'no-underline p-1 text-sm';
                             <li>
                               <a class={megaLinkClass} href={resolveNavHref(link, lang, serviceSlugs)}>
                                 <span>{link.label}</span>
-                                <svg
-                                  class="shrink-0 opacity-0 transition-opacity group-hover/link:opacity-100"
-                                  width="7"
-                                  height="12"
-                                  viewBox="0 0 7 12"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  stroke-width="1.6"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  aria-hidden="true"
-                                  focusable="false"
-                                >
-                                  <path d="M1.2 1.2L5.8 6l-4.6 4.8" />
-                                </svg>
                               </a>
                             </li>
                           ))}
@@ -381,16 +371,16 @@ const langLinkClass = 'no-underline p-1 text-sm';
                     ))}
                   </div>
                   {megaStripe && (
-                    <div class="bg-[#EDEEEF] border-0 border-t border-solid border-[#C5C6D0]/10 py-4">
+                    <div class="bg-surface-container border-0 border-t border-solid border-neutral-300/10 py-4">
                       <div class="container-site flex flex-wrap items-center justify-between gap-4">
-                        <p class="italic text-xs font-semibold text-on-surface-variant m-0 max-w-none">
+                        <p class="text-sm font-semibold text-neutral-700 m-0 max-w-none">
                           {megaStripe.text}
                         </p>
                         {megaStripe.links.length > 0 && (
                           <div class="flex items-center gap-6">
                             {megaStripe.links.map((l) => (
                               <a
-                                class="text-xs font-semibold text-primary no-underline hover:text-primary-container"
+                                class="text-sm font-semibold text-primary no-underline hover:underline"
                                 href={l.href}
                               >
                                 {l.label}
@@ -466,7 +456,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
         {
           lang === 'fr' ? (
             <a
-              class:list={['lang-switch__link font-bold text-on-primary-fixed/70 hover:text-primary', langLinkClass]}
+              class:list={['lang-switch__link font-semibold text-neutral-600 hover:text-primary', langLinkClass]}
               href={enHref}
               lang="en"
             >
@@ -474,7 +464,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
             </a>
           ) : (
             <a
-              class:list={['lang-switch__link font-bold text-on-primary-fixed/70 hover:text-primary', langLinkClass]}
+              class:list={['lang-switch__link font-semibold text-neutral-600 hover:text-primary', langLinkClass]}
               href={frHref}
               lang="fr"
             >
@@ -485,7 +475,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
       </div>
 
       <a
-        class="site-header__search hidden lg:flex items-center justify-center size-[34px] rounded text-on-primary-fixed/70 hover:text-primary aria-[current=page]:text-primary"
+        class="site-header__search hidden lg:flex items-center justify-center size-[34px] rounded-full text-neutral-600 hover:text-primary hover:bg-neutral-600/10 transition-colors aria-[current=page]:text-primary"
         href={searchHref}
         aria-label={t.search.navAria}
         aria-current={isCurrent(searchHref) ? 'page' : undefined}
@@ -510,7 +500,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
         portal.visible &&
           (headerCta ? (
             <a
-              class="site-header__portal hidden lg:inline-flex text-sm font-medium tracking-[0.14px] text-on-primary-fixed/70 no-underline whitespace-nowrap hover:text-primary"
+              class="site-header__portal hidden lg:inline-flex text-base font-semibold text-neutral-600 no-underline whitespace-nowrap hover:text-primary"
               href={portal.href}
             >
               {portal.label}
@@ -625,7 +615,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
         portal.visible &&
           (headerCta ? (
             <a
-              class="mobile-nav__portal text-sm font-medium tracking-[0.14px] text-on-primary-fixed/70 no-underline hover:text-primary"
+              class="mobile-nav__portal text-base font-semibold text-neutral-600 no-underline hover:text-primary"
               href={portal.href}
             >
               {portal.label}
@@ -646,7 +636,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
       {
         lang === 'fr' ? (
           <a
-            class:list={['lang-switch__link font-bold text-on-primary-fixed/70 hover:text-primary', langLinkClass]}
+            class:list={['lang-switch__link font-semibold text-neutral-600 hover:text-primary', langLinkClass]}
             href={enHref}
             lang="en"
           >
@@ -654,7 +644,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
           </a>
         ) : (
           <a
-            class:list={['lang-switch__link font-bold text-on-primary-fixed/70 hover:text-primary', langLinkClass]}
+            class:list={['lang-switch__link font-semibold text-neutral-600 hover:text-primary', langLinkClass]}
             href={frHref}
             lang="fr"
           >

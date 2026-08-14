@@ -14,11 +14,13 @@ import { getSiteText } from '../i18n/site';
  * d'aucune page. Seules les chaînes d'ACCESSIBILITÉ (brandAria, backToTop)
  * restent dans ui.ts.
  *
- * RE-SKIN 2026-08-04 (lot chrome) : footer CLAIR (Figma « Composants » —
- * l'ancien fond Bleu nuit disparaît), 100 % utilitaires Tailwind (règle
- * no-hybride), valeurs = tokens planche (arbitrage v2). `.site-footer` et
- * `.footer-col` sont des HOOKS NUS pour e2e (header-variants.spec.ts) —
- * `.footer-col` ne doit PAS apparaître dans CampaignFooter.
+ * RE-SKIN 2026-08-04 (lot chrome), RE-ANCRÉ 2026-08-14 sur export2
+ * (docs/design/export2/Code/footer — décision v3) : fond gris clair
+ * neutral-50, titres 18/700, liens 14, chip portail bleu-200/bleu-600,
+ * filet appuyé neutral-500. 100 % utilitaires Tailwind (règle no-hybride).
+ * `.site-footer` et `.footer-col` sont des HOOKS NUS pour e2e
+ * (header-variants.spec.ts) — `.footer-col` ne doit PAS apparaître dans
+ * CampaignFooter.
  */
 
 interface Props {
@@ -31,15 +33,15 @@ const f = (await getSiteText(lang)).footer;
 // Année du © calculée au build (elle était figée à 2026 en dur).
 const year = new Date().getFullYear();
 
-const colTitleClass = 'font-headline-md text-headline-md text-on-surface m-0 mb-4';
-const colLinkClass = 'text-body-md text-on-surface-variant no-underline hover:text-primary';
-const smallMutedClass = 'text-xs font-semibold text-on-surface-variant';
+const colTitleClass = 'text-lg font-bold text-on-surface m-0 mb-4';
+const colLinkClass = 'text-sm leading-normal text-neutral-700 no-underline hover:text-primary';
+const smallMutedClass = 'text-sm font-semibold text-neutral-700';
 ---
 
-<!-- Footer BLANC comme le header (proposition user 2026-08-11, acceptée) :
-     liseré froid en tête pour rester lisible sur les sections blanches. -->
+<!-- Fond gris clair neutral-50 (export2 Code/footer — remplace le footer
+     blanc du 2026-08-11). -->
 <footer
-  class="site-footer bg-white rounded-t-xl border-0 border-t border-solid border-[#C5C6D0]/30"
+  class="site-footer bg-surface-container-low border-0 border-t border-solid border-neutral-300/30"
 >
   <div class="container-site pt-14 pb-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10">
@@ -64,7 +66,7 @@ const smallMutedClass = 'text-xs font-semibold text-on-surface-variant';
         <h2 class={colTitleClass}>{f.contactTitle}</h2>
 
         <a
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-fixed text-primary text-sm font-medium no-underline hover:bg-primary hover:text-on-primary transition-colors"
+          class="inline-flex items-center gap-2 px-6 py-2 rounded bg-primary-fixed text-primary-container text-sm font-semibold no-underline shadow-controle hover:bg-primary hover:text-on-primary transition-colors"
           href={localizePath(f.contactCta.href, lang)}
         >
           <svg
@@ -85,28 +87,28 @@ const smallMutedClass = 'text-xs font-semibold text-on-surface-variant';
           {f.contactCta.label}
         </a>
 
-        <ul role="list" class="flex flex-col gap-1 mt-4">
+        <ul role="list" class="flex flex-col gap-1.5 mt-4">
           <li>
-            <a class="text-body-md text-on-surface underline hover:text-primary" href={`mailto:${f.email}`}>{f.email}</a>
+            <a class="text-sm text-neutral-800 underline hover:text-primary" href={`mailto:${f.email}`}>{f.email}</a>
           </li>
           <li>
-            <a class="text-body-md text-on-surface no-underline hover:text-primary whitespace-nowrap" href={`tel:${f.phoneHref}`}>{f.phone}</a>
+            <a class="text-sm text-neutral-800 no-underline hover:text-primary whitespace-nowrap" href={`tel:${f.phoneHref}`}>{f.phone}</a>
           </li>
         </ul>
 
         <div class="mt-4">
-          <span class:list={['block mb-1', smallMutedClass]}>{f.socialLabel}</span>
+          <span class="block mb-1 text-sm font-semibold text-neutral-700">{f.socialLabel}</span>
           <ul role="list" class="flex items-center gap-4">
             {
               f.social.map((s, i) => (
                 <>
                   {i > 0 && (
-                    <li aria-hidden="true" class="text-on-surface-variant/40">
+                    <li aria-hidden="true" class="text-neutral-300">
                       |
                     </li>
                   )}
                   <li>
-                    <a class="text-body-md text-primary no-underline hover:text-primary-container" href={s.href}>
+                    <a class="text-sm font-semibold text-primary no-underline hover:text-primary-container" href={s.href}>
                       {s.label}
                     </a>
                   </li>
@@ -119,10 +121,10 @@ const smallMutedClass = 'text-xs font-semibold text-on-surface-variant';
     </div>
 
     <div
-      class="border-0 border-t border-solid border-outline-variant mt-10 pt-6 flex flex-wrap items-center justify-between gap-4"
+      class="border-0 border-t border-solid border-outline mt-10 pt-6 flex flex-wrap items-center justify-between gap-4"
     >
       <a
-        class="font-headline-md text-headline-md font-bold text-on-surface no-underline"
+        class="text-headline-md font-bold text-on-surface no-underline"
         href={localizePath('/', lang)}
         aria-label={t.nav.brandAria}
       >Victrix</a>
@@ -148,7 +150,7 @@ const smallMutedClass = 'text-xs font-semibold text-on-surface-variant';
       <a
         href="#"
         aria-label={t.footer.backToTop}
-        class="size-12 rounded-full border border-solid border-outline-variant bg-white shadow-[0_1px_2px_rgba(0,0,0,0.05)] flex items-center justify-center text-on-surface no-underline hover:text-primary"
+        class="size-12 rounded-full border border-solid border-neutral-400 bg-transparent shadow-[0_1px_2px_rgba(0,0,0,0.05)] flex items-center justify-center text-on-surface no-underline transition-colors hover:bg-black/5 hover:text-primary"
       >
         <svg
           width="16"

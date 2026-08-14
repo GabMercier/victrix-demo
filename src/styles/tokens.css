@@ -1,11 +1,12 @@
 /* =============================================================================
    Design tokens — Victrix (legacy layer)
    Single source of truth consumed via var(--token) by the NOT-YET-reskinned
-   components. Since 2026-08-04 the values are REMAPPED onto the final design
-   system (decision v2: SYSTEM = planche DesignSystemVictrix.png, STRUCTURE =
-   HTML exports) so the whole site wears the new skin at once; components then
-   get properly re-skinned lot by lot (Tailwind utilities from theme.css) and
-   stop using this file. Old values kept in comments for traceability.
+   components. Since 2026-08-14 the values are REMAPPED onto the export2 design
+   system (decision v3: docs/design/export2/ — Inter + neutres froids + bleu
+   Victrix; remplace l'arbitrage v2 « planche ») so the whole site wears the
+   new skin at once; components then get properly re-skinned lot by lot
+   (Tailwind utilities from theme.css) and stop using this file. Old values
+   kept in comments for traceability.
 
    RENAMED on 2026-08-04 (collision with Tailwind v4 @theme names, audit §4):
    --color-surface → --color-band · --radius-sm/md/lg → --radius-s/m/l ·
@@ -15,32 +16,32 @@
 
 :root {
   /* ---------------------------------------------------------------------------
-     Brand palette — planche anchors (was: WP-parity palette)
-     - nuit:    #0d1430  deep brand tone (was navy #083957) — headings, dark UI
-     - victrix: #1a5bff  actions, links, brand accents (was accent-blue #3366ff)
-     - the Ø Studio GREEN (#24fb8e) is RETIRED by the new system → victrix blue
+     Brand palette — export2 anchors (2026-08-14, remplace les ancres planche)
+     - nuit:    #0b1334  semantic.background.bleu — headings, dark UI
+     - victrix: #1a5bff  bleu-500 — actions, links, brand accents
   --------------------------------------------------------------------------- */
-  --color-navy: #0d1430; /* Bleu nuit (ancre planche) — was #083957 */
-  --color-navy-700: #16244d; /* hover tint (dérivé) — was #0b4b71 */
-  --color-navy-900: #080d1f; /* deeper (dérivé) — was #052639 */
-  --color-accent-blue: #1a5bff; /* Bleu Victrix (ancre planche) — was #3366ff */
-  --color-accent-blue-600: #1348d6; /* hover (dérivé) — was #2350e0 */
+  --color-navy: #0b1334; /* Bleu nuit (export2 semantic.background) — was #0d1430 */
+  --color-navy-700: #142052; /* hover tint (dérivé) — was #16244d */
+  --color-navy-900: #070c22; /* deeper (dérivé) — was #080d1f */
+  --color-accent-blue: #1a5bff; /* Bleu Victrix (bleu-500) — unchanged */
+  --color-accent-blue-600: #0043eb; /* hover (bleu-600 export2) — was #1348d6 */
   --color-accent-green: #1a5bff; /* green retired → Bleu Victrix — was #24fb8e */
-  --color-grey-dark: #0d1430; /* footer background → Bleu nuit — was #373434 */
+  --color-grey-dark: #0b1334; /* dark band background → Bleu nuit */
 
-  /* Neutrals — warm scale (ivoire/beige/sable + anthracite, planche anchors) */
+  /* Neutrals — COOL scale (export2 color.neutral.* ; l'échelle chaude v2 est
+     retirée — ivoire/beige/sable survivent comme accents dans theme.css) */
   --color-white: #ffffff;
-  --color-grey-50: #f7f2eb; /* light section band (dérivé ivoire→beige) — was #f6f7f8 */
-  --color-grey-100: #f2ece4; /* Beige doux (ancre) — was #f0f1f3 */
-  --color-grey-200: #e0d8ca; /* borders (dérivé sable) — was #e2e4e8 */
-  --color-grey-300: #d4cab7; /* (dérivé) — was #cdd0d6 */
-  --color-grey-500: #767b87; /* muted (dérivé anthracite) — was #8a8e96 */
-  --color-grey-600: #5d6470; /* (dérivé) — was #6c7077 */
-  --color-grey-700: #4a5160; /* (dérivé) — was #4a4d54 */
-  --color-ink: #1a1f28; /* Anthracite (ancre planche) — was #1a1c20 */
+  --color-grey-50: #f9fafb; /* neutral-50 — light section band — was #f7f2eb */
+  --color-grey-100: #f3f4f7; /* neutral-100 — was #f2ece4 */
+  --color-grey-200: #e5e7eb; /* neutral-200 — borders — was #e0d8ca */
+  --color-grey-300: #cdd2da; /* neutral-300 — was #d4cab7 */
+  --color-grey-500: #7b889d; /* neutral-500 — muted — was #767b87 */
+  --color-grey-600: #545f71; /* neutral-600 — was #5d6470 */
+  --color-grey-700: #404957; /* neutral-700 — was #4a5160 */
+  --color-ink: #21242a; /* neutral-900 — was #1a1f28 anthracite */
 
   /* Semantic aliases — prefer these in components */
-  --color-bg: #faf7f3; /* page canvas = Ivoire chaud (ancre) — was white */
+  --color-bg: #ffffff; /* page canvas = blanc (export2) — was ivoire #faf7f3 */
   --color-band: var(--color-grey-50); /* light section band (ex --color-surface) */
   --color-text: var(--color-ink);
   --color-text-muted: var(--color-grey-700);
@@ -67,10 +68,10 @@
   --space-10: 8rem;     /* 128 */
 
   /* ---------------------------------------------------------------------------
-     Typography — Hanken Grotesk site-wide (variable font, @font-face in
-     theme.css). Montserrat retired with the redesign.
+     Typography — Inter site-wide (variable font, @font-face in theme.css —
+     export2, 2026-08-14). Hanken Grotesk retired with the v2 system.
   --------------------------------------------------------------------------- */
-  --font-sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto,
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif;
 
   --fw-regular: 400;
@@ -101,9 +102,9 @@
   --radius-l: 12px; /* grands conteneurs (was 16px — resserré sur le système) */
   --radius-pill: 999px;
 
-  --shadow-1: 0 1px 2px rgba(13, 20, 48, 0.08); /* teinte → Bleu nuit */
-  --shadow-2: 0 4px 16px rgba(13, 20, 48, 0.1);
-  --shadow-3: 0 12px 32px rgba(13, 20, 48, 0.14);
+  --shadow-1: 0 1px 2px rgba(11, 19, 52, 0.08); /* teinte → Bleu nuit export2 */
+  --shadow-2: 0 4px 16px rgba(11, 19, 52, 0.1);
+  --shadow-3: 0 12px 32px rgba(11, 19, 52, 0.14);
 
   --container-max: 1280px; /* système (was 1200px) */
   --container-pad: 16px; /* gouttière mobile — 32px ≥768px ci-dessous (was 24px fixe) */
