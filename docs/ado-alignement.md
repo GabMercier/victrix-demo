@@ -1,250 +1,138 @@
-# Alignement du backlog Azure DevOps — état au 2026-08-12 (+ addendum du 17)
+# Alignement du backlog Azure DevOps — v2, audit AC du 2026-08-17
 
-> **⚠️ Mise à jour 2026-08-17** : voir l'**addendum en fin de document** — la
-> semaine « fermeture maximale » a livré P-08, P-11 (code), le portage du
-> formulaire Contact, le formulaire Évaluation sur Cybersécurité, le fil
-> d'Ariane visible, les schémas Service/LocalBusiness, les filtres de
-> recherche et le maillage : plusieurs stories « Garder » deviennent
-> fermables. La leçon F2.5 (critères d'acceptation à vérifier clause par
-> clause) a aussi RETIRÉ deux stories de la liste « Fermer » du 12 :
-> « Formulaires contextuels par page » et « Consentement Loi 25 + reCAPTCHA »
-> ne se ferment qu'après la pose des clés (voir l'addendum).
+**Quoi** : l'état de chaque work item du projet ADO « Victrix - Refonte site
+Web » (org `Victrix-clients`) audité **contre ses critères d'acceptation
+réels** — extraits par l'API (WIQL + workitemsbatch, script
+`scratchpad/dump-ado.mjs`) — et contre le dépôt (branche `spike/cloudcannon`,
+semaine « fermeture maximale » livrée le 17). **Remplace** la v1 du 12 août
+(mapping par titres) et son addendum : la passe 1 est **déjà appliquée** — les
+CPT, gabarits, méga-menu, nav mobile, bilinguisme, headers, Loi 25, meta,
+recherche et les obsolètes WordPress sont Closed/Removed dans ADO. Ce document
+liste ce qui reste, par condition de fermeture.
 
-**Quoi** : la correspondance entre les user stories du projet ADO « Victrix -
-Refonte site Web Team » et l'état réel du prototype Astro + CloudCannon
-(branche `spike/cloudcannon`, gate CloudCannon fermée le 2026-08-07).
-**Pourquoi** : le backlog ADO a été rédigé pour la refonte WordPress d'origine ;
-le pivot vers Astro/CloudCannon a livré beaucoup de ces stories sous une autre
-forme et en a rendu certaines obsolètes. **Comment l'utiliser** : appliquer les
-états recommandés dans ADO (colonne « Recommandé »), en collant la note comme
-commentaire de fermeture. Le backlog vivant côté dépôt reste
-`docs/plan-prompts.md` (P-01…P-23) — les correspondances P-xx sont indiquées.
+Backlog vivant côté dépôt : `docs/plan-prompts.md` (P-xx). Guide de pose des
+clés : `docs/operations.md §7ter`.
 
-Légende des recommandations :
+## 1. Fermables MAINTENANT (clic direct)
 
-- **Fermer** — livré dans le prototype (la preuve dit où).
-- **Retirer** — obsolète depuis le pivot (spécifique à WordPress) ; état ADO
-  « Removed » (ou fermer avec la note, selon votre convention d'équipe).
-- **Garder** — reste à faire ; la note précise ce qui existe déjà et le blocage.
-
-## Epic 0 — Cadrage & pré-requis
-
-| Story | ADO | Recommandé | Note à coller |
+| ID | Story | État | Note à coller |
 |---|---|---|---|
-| Inventaire exhaustif des URLs Victrix + O Studio | Active | Garder (Active) | = P-18 du dépôt. Préalable à la matrice 301 exhaustive et à la landing Ø Studio (P-17). |
-| Matrice de redirections 301 exhaustive | Active | Garder (Active) | Mécanisme LIVRÉ (2 couches : règles dev + collection Redirections éditable au CMS, wildcards `/expertise/*` actifs). Reste la matrice exhaustive — dépend de l'inventaire P-18. |
-| Résoudre les incohérences du CDC (Produits, Expertis…) | Active | Garder (Active) | Décision d'affaires — hors dépôt. |
-| Trancher les outils ouverts (recherche, SEO, heatmap) | New | Garder + note | 2 des 3 tranchés et livrés : recherche = **Pagefind** (local, zéro tiers, conforme Loi 25) ; SEO = **natif Astro** (pas de plugin — voir docs/seo-strategie.md). Reste heatmap/analytics à trancher (lié à P-11). |
+| #1439 | Documentation technique + guide d'édition | In Progress | AC satisfaite : guide de prise en main + procédures (docs/operations.md, DEPLOYMENT.md, formulaires.md, seo-strategie.md) et guide d'édition non-technique complet (docs/guide-edition.md, à jour 2026-08-17). La formation reste suivie par #1440. |
+| #1486 | schema.org (LocalBusiness, Organization, Service, FAQPage, Article) | New | Les 5 types de l'AC sont émis : Organization (toutes pages), Article (BlogPosting sur le blogue), FAQPage (section FAQ), Service (pages services indexables, 2026-08-17), LocalBusiness ×3 bureaux (page Contact, 2026-08-17). Validation Rich Results possible sur la préversion. |
+| #1459 | Breadcrumbs sur toutes les pages internes | New | Fil d'Ariane visible + BreadcrumbList JSON-LD sur TOUTES les pages internes (2026-08-17) : articles, services (parent inclus sur les enfants), pages génériques, Contact, Carrières, Solutions, index Ressources. Accessible (nav aria-label, aria-current). |
+| #1419 | F2.1 — Modèle de contenu (feature) | New | Conteneur : les 4 stories enfants sont fermées. |
+| #1423 | F2.2 — Gabarits (feature) | New | Conteneur : story enfant fermée (15 gabarits livrés). |
+| #1468 | F2.6 — Bilinguisme (feature) | New | Conteneur : les 2 stories enfants sont fermées. |
+| #1471 | F2.7 — Sécurité (feature) | New | Conteneur : headers fermés, clauses WordPress retirées. |
+| #1476 | F2.8 — Loi 25 (feature) | New | Conteneur : les 2 stories + task Axeptio fermées. |
 
-## Epic 1 — Design & Design System
+**À confirmer par toi (2 stories du designer — je ne tranche pas à sa place)** :
 
-Aucun changement d'état : l'epic reflète la réalité — **en attente de l'export
-Tailwind/Figma et des visuels du designer externe**. À son arrivée, le point
-d'entrée technique est `scripts/design/audit-export-tokens.mjs` (réconciliation
-des tokens — les exports Figma reçus à ce jour sont incohérents entre eux :
-Manrope vs Hanken Grotesk, tailles divergentes — voir
-`docs/design/audit-tokens-figma.md`).
-
-| Story | ADO | Recommandé | Note à coller |
+| ID | Story | État | Fermable si… |
 |---|---|---|---|
-| F1.2 — Design System (feature) | New | Passer In Progress | Base livrée dans le prototype : thème Tailwind v4 (`src/styles/theme.css`, ancré sur les 6 couleurs de la planche), page /style-guide interne, 30 sections composables. Finalisation à l'arrivée de l'export Figma. |
+| #1408 | Rafraîchissement de la charte | In Progress | …tu considères l'export2 (tokens + composants v3, appliqués au prototype `47c1a19`) comme LA charte modernisée livrée. AC : « charte modernisée sans rebranding » — c'est le cas. |
+| #1409 | Conception des maquettes | In Progress | …Victrix a bien l'accès ÉDITABLE aux fichiers Figma (l'AC ne porte que là-dessus). Le `.fig` est dans le dépôt (docs/design) — si l'accès Figma est acquis, ferme. |
 
-## Epic 2 — Développement
+## 2. Fermables dès les clés posées (§7ter) + vérif préversion
 
-### F2.1 — Modèle de contenu (CPT & taxonomies) — **Fermer les 4 stories**
+Pose SMTP2GO + Turnstile + `PUBLIC_GA4_ID` dans Cloudflare Pages, redéploie,
+puis une passe de vérification (~15 min) ferme le bloc :
 
-Les « CPT WordPress » sont devenus des **collections de contenu Astro**
-(éditables dans CloudCannon) — l'intention de la feature est entièrement
-couverte :
-
-| Story | Recommandé | Note à coller |
-|---|---|---|
-| CPT Expertises | Fermer | Les expertises sont des pages de la collection `services` (29 par langue, 2 niveaux d'URL), composables par sections et éditables au CMS. |
-| CPT Ressources | Fermer | Collection `blog` : 30 articles FR + 30 EN migrés de WordPress, brouillons, SEO par article, RSS par langue. |
-| CPT Services (migré depuis les Expertises actuelles) | Fermer | Migration /expertise/ → /services/ réalisée (collection `services` + redirections 301 wildcard). |
-| Taxonomies configurées (secteurs, technologies, type) | Fermer | Étiquettes du blogue (catégories dynamiques : filtres + méga-menu Ressources générés des étiquettes réelles) ; catalogue de solutions filtré par Secteur d'activité + Type de solution. |
-
-### F2.2 — Gabarits — **Fermer**
-
-| Story | Recommandé | Note à coller |
-|---|---|---|
-| Construire les 7 gabarits | Fermer | 15 gabarits livrés (accueil, page générique, service 2 niveaux, campagne, liste/article blogue, contact, carrières, catalogue solutions, recherche, merci, 404, portail…) + 30 sections composables réutilisables. |
-
-### F2.3 — Navigation & transverses
-
-| Story | ADO | Recommandé | Note à coller |
+| ID | Story | État | Vérification qui ferme |
 |---|---|---|---|
-| Méga-menu simplifié (6 services, max 2 niveaux, <= 3…) | New | Fermer | Méga-menu 3 colonnes / 13 liens / 2 niveaux, partagé par 3 entrées du menu + méga-menu Ressources auto-généré du blogue. Éditable au CMS (collection Navigation) avec garde-fou build (lien invalide = publication bloquée). |
-| Header sticky + CTA contact persistant | New | Fermer | Header sticky, CTA « Contact » persistant, barre d'annonce planifiable. |
-| Navigation mobile entièrement refaite | New | Fermer | Tiroir plein écran : focus trap, verrou de défilement, recherche, CTA, langue. |
-| Breadcrumbs sur toutes les pages internes | New | Garder | Fait : fil d'Ariane visible sur les articles + BreadcrumbList JSON-LD sur articles/services/pages. Reste : le fil VISIBLE sur services et pages génériques. |
-| Footer (3 bureaux, partenaires, mentions légales / Loi…) | New | Garder | Footer livré et ÉDITABLE AU CMS (4 colonnes, contact, sociaux, mentions légales, © auto). Reste le design « 3 bureaux + partenaires » = P-13 (les 3 bureaux existent déjà comme contenu CMS sur la page Contact). |
+| #1430 | Confirmation visuelle + email automatique | New | Soumettre le formulaire → /merci + courriel équipe + courriel visiteur (P-08 livré). |
+| #1491 | GA4 + GTM + événements de conversion | New | GA4 DebugView : `generate_lead` après une soumission (le 303 vers /merci = 1 conversion par envoi — AC « sur chaque soumission » couverte pour tous les formulaires). Marquer l'événement clé dans l'admin GA4. |
+| #1492 | Site Search tracking | New | DebugView : événement `search` en tapant dans /recherche. |
+| #1462 | Suivi GA4 (Site Search) | New | Doublon assumé de #1492 — même vérification. |
+| #1428 | Page de résultats stylisée + filtres par type | New | Sur la PRÉVERSION (l'index Pagefind n'existe qu'au build) : le groupe « Type » (Service/Article/Page) apparaît et filtre. |
+| #1436 | Tests formulaires + moteur de recherche | New | `npm run test:e2e` vert (12/13 constaté, flake portail corrigé — attendu 13/13) + un envoi réel sur la préversion. |
 
-### F2.4 — Moteur de recherche interne
+*Note : #1429 (Formulaires contextuels) et #1467 (Consentement + reCAPTCHA)
+sont déjà fermés — cette même passe de vérification les rend VRAIS en
+production (formulaire « Évaluation posture sécurité » posé sur Cybersécurité
+FR/EN, Turnstile visible dès la clé).*
 
-| Story | ADO | Recommandé | Note à coller |
+## 3. Fermable après un coup d'œil à la préversion
+
+| ID | Story | État | Note |
 |---|---|---|---|
-| Plugin de recherche indexant les 3 CPT | New | Fermer | Pagefind (local, sans service tiers) : tout le contenu indexable FR/EN, pages noindex exclues, build bloqué si l'index sort vide. |
-| Page de résultats stylisée + filtres par type | New | Garder | Page /recherche livrée (FR/EN, `?q=` partageable). Reste : filtres par type de contenu. |
-| Suivi GA4 (Site Search) | New | Garder | = P-11, bloqué clés + CSP (OPS). Le paramètre `?q=` est déjà propagé pour ce suivi. |
-| Task — Vérifier l'indexation des SearchTerm | New | Retirer | Concept du plugin WordPress — remplacé par Pagefind + le suivi Site Search de P-11. |
+| #1489 | Maillage interne Services ↔ Ressources | New | Livré : champ « Thèmes » sur les 60 articles + 27 bandes « Ressources liées » sur les services, cartes réelles prouvées au build. Un coup d'œil visuel et c'est fermé. |
 
-### F2.5 — Formulaires dynamiques & conversion
+## 4. Décisions à trancher (2 minutes, puis fermer)
 
-| Story | ADO | Recommandé | Note à coller |
+| ID | Story | État | Proposition |
 |---|---|---|---|
-| Formulaires contextuels par page | New | Fermer | Section « Formulaire » posable sur toute page + formulaires réutilisables (collection Formulaires), champs conditionnels, champs cachés auto (page, UTM). Backend /api/forms testé (SMTP2GO), activation prod = clés (OPS). |
-| Confirmation visuelle + email automatique après soumission | New | Garder | Confirmation visuelle LIVRÉE (redirection /merci, éditable au CMS). Reste le courriel de confirmation au visiteur = P-08, bloqué clés SMTP2GO. |
-| Gating livres blancs (téléchargement + GA4) | New | Garder | Non commencé. Dépend de P-11 (GA4) pour la mesure. |
-| Améliorations UX formulaires (multi-étapes, labels, AR…) | New | Garder | Labels/ARIA/validation livrés au re-skin. Reste multi-étapes = P-22 (sur besoin marketing). |
-| Consentement Loi 25 + reCAPTCHA sur chaque formulaire | New | Fermer (avec variance) | Consentement livré sur chaque formulaire (case + lien politique, texte éditable au CMS). Anti-spam : **Turnstile retenu à la place de reCAPTCHA** (meilleur profil Loi 25/vie privée) + honeypot, vérif côté serveur. Activation prod = clés + entrée CSP (OPS). |
+| #1451 | Trancher les outils ouverts (recherche, SEO, heatmap) | New | 2 des 3 sont tranchés ET livrés : recherche = Pagefind (local, Loi 25-friendly), SEO = natif Astro. Reste heatmap → proposer « aucun en v1, réévalué post-lancement » et fermer. |
+| #1494 | Heatmaps / A/B testing (optionnel) | New | Si la décision ci-dessus = pas de v1 → Removed (ou fermer avec la note). Sinon, reste ouvert lié aux clés GTM. |
+| #1483 | Confirmer responsable et volume de la migration | New | Décision d'affaires — le dépôt est prêt (gabarits + scripts rejouables, 25/29 services déjà réels). |
 
-### F2.6 — Bilinguisme — **Fermer les 2 stories**
+## 5. Reste ouvert — avec l'état réel face à l'AC
 
-| Story | Recommandé | Note à coller |
-|---|---|---|
-| FR/EN, préfixe /en/, sélecteur de langue dans le header | Fermer | i18n complet `/fr` + `/en`, sélecteur desktop + mobile, appariement FR⇄EN par fichier vérifié au build. |
-| hreflang + canonical corrects | Fermer | canonical + hreflang fr-CA/en-CA/x-default + og:locale sur toutes les pages (BaseLayout). |
+### Design (Epic 1)
+- **#1407 Maquettes Figma Desktop+Mobile** (Active) — AC : 6 pages. Partiel :
+  l'export2 couvre 5 composants + 5 photos ; les maquettes de pages complètes
+  restent chez le designer.
+- **#1412 Composants réutilisables** (Active) — re-skin v3 en cours (header,
+  méga, footer, cartes faits) ; normalisation boutons à finaliser.
+- **#1452 Visuels authentiques** (New) — 5 vraies photos livrées dans
+  l'export2, PAS encore câblées dans les pages (Lot 6). L'AC note la
+  dépendance « intrant Victrix » : d'autres visuels restent à fournir.
+- **#1453 Validation des maquettes** (Active) — gate parties prenantes.
 
-### F2.7 — Sécurité : durcissement
+### Inventaire & migration (Epic 0 / F3.1)
+- **#1445 Inventaire URLs** (Active) — ⚠️ la task « Export screaming frog et
+  sitemap » (#1542) est FERMÉE : l'export existe. Récupérer le fichier et le
+  déposer dans le dépôt (docs/migration/) → P-18 peut se terminer (statut,
+  langue, cible par URL).
+- **#1447 Matrice 301 exhaustive** (Active) — mécanisme livré ; la matrice
+  attend #1445 ; validation Julie.
+- **#1448 Incohérences CDC** (Active) — atelier.
+- **#1480 Intégration contenu Services** (New) — 25/29 services réels ; = P-19.
+- **#1481 Rapatriement O Studio** (New) — AC exige page /services/o-studio/ au
+  design system + formulaire dédié + 301 du vieux domaine = P-17 (le
+  formulaire dédié est facile désormais : collection Formulaires + formId).
+- **#1488 Matrice 301 implémentée ; zéro 404** (New) — dépend #1445/#1447.
 
-| Story | ADO | Recommandé | Note à coller |
-|---|---|---|---|
-| Headers HTTP (CSP, X-Frame-Options, X-Content-Typ…) | New | Fermer | Livré via `public/_headers` Cloudflare : nosniff, SAMEORIGIN, Referrer-Policy, Permissions-Policy, HSTS, CSP sur /fr/* et /en/*. Suite planifiée : retirer 'unsafe-inline' + entrées Turnstile/analytics (OPS-CSP). |
-| 6 admins -> <= 2 ; wp-admin protégé ; XML-RPC off ;… | New | Retirer | Obsolète — plus de WordPress. Équivalent nouveau monde : accès CloudCannon par siège nommé + dépôt Git (2 mainteneurs). |
-| SecuPress ; reCAPTCHA ; limitation des connexions | New | Retirer | Obsolète — extensions WordPress. Équivalents natifs : Turnstile + honeypot (formulaires), Cloudflare devant le site, aucune surface de connexion publique (site statique). |
+### SEO / analytics restants
+- **#1487 Sitemap soumis GSC + Bing** (New) + **#1493 GSC + Bing configurés**
+  (New) — le sitemap bilingue est livré ; la soumission attend le domaine
+  final.
+- **#1496 WebP/AVIF + srcset + lazy** (New) — lazy ✓ ; WebP/AVIF + srcset à
+  faire (après visuels finaux).
 
-### F2.8 — Loi 25 (implémentation)
+### Formulaires restants
+- **#1465 Gating livres blancs** (New) — pas de PDF fourni ; le pipeline
+  (formulaire + GA4) est prêt à l'accueillir.
+- **#1466 Améliorations UX formulaires** (New) — labels permanents ✓ ; reste :
+  messages d'erreur ARIA par champ, focus ≥ 3px à vérifier, multi-étapes
+  (P-22) si besoin.
 
-| Story | ADO | Recommandé | Note à coller |
-|---|---|---|---|
-| Bandeau de consentement cookies personnalisable + … | New | Fermer | Bandeau natif livré, texte/boutons ÉDITABLES AU CMS (Textes du site), contrat de consentement prêt pour les analytics (scripts gelés tant que non accepté). Une seule catégorie (analytique) — granularité à revoir si un 2ᵉ type de témoin apparaît. |
-| Cases de consentement + lien politique sur les formul… | New | Fermer | Case requise + lien politique sur chaque formulaire ; formulation éditable au CMS. |
-| Task — Analyser Axeptio | New | Retirer | Sans objet : bandeau construit nativement, aucun service tiers (rien à déclarer, zéro dépendance). |
+### Recette & mise en ligne (Epic 4)
+- **#1435 Cross-browser + 5 tailles** (New) — recette manuelle à planifier.
+- **#1498 Tests automatisés a11y** (New) — Lighthouse/axe à outiller (reporté
+  cette semaine) ; lint jsx-a11y déjà au CI.
+- **#1499 Tests manuels a11y + AA documentée** (New) — recette.
+- **#1501 Performance** (New) — AC à reformuler (WP Rocket sans objet) ; cibles
+  Lighthouse/LCP/CLS mesurables sur la préversion.
+- **#1503 Validation 301/hreflang/sitemap** (New) — à la bascule.
+- **#1504 Grade ≥ B securityheaders** (New) — testable DÈS MAINTENANT sur
+  victrix-demo.pages.dev (headers durcis + CSP posée) ; clauses wp-config /
+  CF7 / admins sans objet — reformuler en fermant.
+- **#1438 Migration staging → production** (New) — domaine + DNS + rollback.
+- **#1440 Formation Ilyes + Walter** (New) — matériel prêt (guide d'édition) ;
+  lié à l'ouverture des accès.
+- **#1622 Task — CloudCannon licence payante** (New) — préalable à
+  l'invitation des gestionnaires (sièges) ; vérifier compte de service
+  marketing + gestion du domaine (la question posée dans la task).
 
-## Epic 3 — Contenu, migration & SEO
+### Conteneurs
+Les 5 Epics et les features F0.2, F0.3, F1.1, F1.2, F2.3, F2.4, F2.5, F3.x,
+F4.x restent ouverts tant que leurs enfants le sont — fermer chaque feature en
+même temps que sa dernière story.
 
-### F3.1 — Migration de contenu
+## Projection
 
-| Story | ADO | Recommandé | Note à coller |
-|---|---|---|---|
-| Intégration du contenu Services (CPT) | New | Passer Active | 25 services réels migrés et indexables (sur 29) ; 4 placeholders officiels noindex. Reste = P-19 (~14 h, sessions multiples). |
-| Rapatriement O Studio -> /services/o-studio/ (homog…) | New | Garder | Catalogue de solutions livré (collection + filtres). Reste landing Ø Studio + 301 du vieux domaine = P-17 (dépend P-18). |
-| Migration /expertise/ -> /services/ + 301 (valider Julie) | New | Fermer (valider Julie) | Fait dans le prototype : collection services + 301 (`/expertises/*` règles dev + `/expertise/*` wildcard CMS). La validation Julie porte sur la matrice exhaustive (P-18). |
-| Confirmer responsable et volume de la migration | New | Garder | Décision d'affaires — le dépôt est prêt (gabarits + scripts de migration rejouables). |
-
-### F3.2 — SEO on-page & technique
-
-| Story | ADO | Recommandé | Note à coller |
-|---|---|---|---|
-| Meta titles/descriptions normés sur toutes les pages | New | Fermer | Normés par gabarit (patron « {titre} — Victrix ») + surcharge SEO par page/article éditable au CMS + guide (docs/guide-edition.md §SEO). |
-| schema.org (LocalBusiness, Organization, Service, FAQ…) | New | Garder | Fait : Organization (toutes pages), BlogPosting, BreadcrumbList, FAQPage. Reste : LocalBusiness (3 bureaux) et Service. |
-| Sitemap XML bilingue soumis GSC + Bing | New | Garder | Sitemap bilingue LIVRÉ (alternates fr-CA/en-CA, exclusions noindex automatiques). Reste la soumission GSC/Bing = tâche de mise en ligne (domaine final requis). |
-| Matrice 301 implémentée ; zéro 404 sur URLs existantes | New | Garder | Mécanisme livré + zéro lien mort interne (audit 2026-08-11). La matrice exhaustive = P-17/P-18 (doublon assumé avec Epic 0). |
-| Maillage interne Services <-> Ressources | New | Garder | Section « Ressources liées » livrée (cartes par étiquettes, résolues au build) mais posée sur 2 services seulement — à généraliser lors de P-19. |
-
-### F3.3 — Analytics — tout Garder (bloqué OPS)
-
-Les 4 stories restent : GA4 + GTM + événements = **P-11**, bloqué clés + CSP
-(le contrat de consentement Loi 25 est prêt côté site) ; Site Search tracking
-(le `?q=` est déjà propagé) ; GSC + Bing (mise en ligne) ; Heatmaps/A-B
-(optionnel — à trancher avec la story F0.3).
-
-### F3.4 — Images & médias
-
-| Story | ADO | Recommandé | Note à coller |
-|---|---|---|---|
-| WebP/AVIF + srcset + lazy loading | New | Garder | Lazy loading + decoding async systématiques, fonts optimisées. Reste WebP/AVIF + srcset généralisé (1 image srcset à ce jour) — bon candidat post-export design (les visuels vont changer). |
-
-## Epic 4 — Recette, conformité & Go Live
-
-| Story | ADO | Recommandé | Note à coller |
-|---|---|---|---|
-| Cross-browser + 5 tailles d'écran + marges >= 16px | New | Garder | Playwright en place (2 specs) ; extension = P-20. |
-| Tests formulaires + moteur de recherche | New | Garder | 122 tests unitaires verts (formulaires serveur couverts) ; e2e formulaires/recherche = P-20. |
-| Tests automatisés (WAVE, axe, Lighthouse A11Y >= 90…) | New | Garder | Lint a11y (jsx-a11y) actif au CI ; audits outillés à ajouter. |
-| Tests manuels (clavier, contraste) + corrections + AA | New | Garder | — |
-| Mesures cibles + corrections performance | New | Garder | Site statique + fonts optimisées : bonne base, mesures à faire. |
-| Validation 301 / hreflang / sitemap (zéro 404) | New | Garder | Outillé en continu (garde-fous build + audit zéro lien mort) ; validation finale à la mise en ligne. |
-| Grade >= B securityheaders ; <= 2 admins ; CF7 désin… | New | Garder (reformuler) | Headers posés (voir F2.7) — mesurer le grade en prod. Les clauses WordPress (admins, CF7) sont sans objet. |
-| Migration staging -> production (zéro interruption) + … | New | Garder | Prototype déployé en continu sur Cloudflare Pages ; la bascule production = décision domaine + DNS. |
-| Documentation technique + guide d'édition | New | Fermer | docs/ complet (opérations, déploiement, formulaires, SEO, guide projet) + guide de l'éditeur non-technique (docs/guide-edition.md, à jour 2026-08-12). |
-| Formation de l'équipe interne (Ilyes + Walter) | New | Garder | Matériel prêt (guide d'édition) ; session à planifier avec l'ouverture des accès CloudCannon (voir docs/contenu-a-fournir.md). |
-| Sauvegardes automatiques quotidiennes (UpdraftPlus,…) | New | Retirer | Obsolète (extension WordPress). Le contenu EST le dépôt Git (versionné, restaurable commit par commit) ; l'hébergement statique n'a pas de base de données. |
-
-## Récapitulatif
-
-- **Fermer : 16 stories** (F2.1 ×4, F2.2, F2.3 ×3, F2.4 ×1, F2.5 ×2, F2.6 ×2,
-  F2.7 ×1, F2.8 ×2, F3.2 ×1 — + F3.1 « migration /expertise/ » et F4.5
-  « documentation » = **18** si vous fermez aussi ces deux-là).
-- **Retirer (obsolètes WordPress) : 5** — wp-admin/6 admins, SecuPress,
-  SearchTerm, Axeptio, UpdraftPlus.
-- **Passer In Progress/Active : 2** — F1.2 Design System, Intégration contenu
-  Services.
-- **Le reste demeure ouvert**, avec les correspondances P-xx du dépôt :
-  P-08 (courriel), P-11 (analytics), P-13 (footer bureaux), P-17/P-18
-  (Ø Studio + inventaire URLs), P-19 (migration contenu), P-20 (QA), P-22
-  (multi-étapes), P-23 (planification par section).
-
----
-
-## Addendum — semaine du 2026-08-17 (« fermeture maximale »)
-
-### Correction sur la liste du 12 (leçon AC de F2.5)
-
-Le critère d'acceptation de « Formulaires contextuels par page » exige, sur la
-page Cybersécurité : le formulaire « Évaluation posture sécurité » (pas le
-générique), labels permanents, consentement + captcha PRÉSENTS, événement de
-conversion GA4 à la soumission, confirmation visuelle + courriel automatique.
-Deux stories sortent donc de la liste « Fermer maintenant » du 12 et passent
-dans le tableau ci-dessous : **« Formulaires contextuels par page »** et
-**« Consentement Loi 25 + reCAPTCHA »**. Décompte du 12 corrigé : **20 Fermer
-+ 5 Retirer**.
-
-### Livré cette semaine (dépôt, branche spike/cloudcannon)
-
-- Formulaire **« Évaluation posture sécurité »** posé sur la page service
-  Cybersécurité FR + EN (`formId: campagne-evaluation`).
-- **Page Contact portée sur /api/forms** (2 modes ; `_formId: contact` ;
-  définitions réécrites miroir de la page ; garde-fous de build page ↔
-  définition).
-- **P-08** : courriel de confirmation au visiteur (2ᵉ envoi SMTP2GO, gabarit
-  fixe FR/EN, échec non bloquant ; +4 tests).
-- **P-11 (code)** : gtag GELÉ sous consentement Loi 25 dans BaseLayout
-  (inerte sans `PUBLIC_GA4_ID`), conversion `generate_lead` sur /merci,
-  Site Search sur /recherche (`?q=` + saisie Pagefind) ; **CSP appliquée**
-  (Turnstile + GA4) dans `public/_headers`.
-- **Fil d'Ariane VISIBLE** sur services (parent inclus) et pages génériques —
-  aligné au JSON-LD (même tableau).
-- **Schémas** : `Service` (services indexables) + `LocalBusiness` ×3 bureaux
-  (page Contact).
-- **Filtre « Type »** dans la recherche interne (Service / Article / Page).
-- **Maillage F3.2** : champ `topics` du blogue (distinct des catégories), 54
-  fichiers d'articles thématisés, 27 bandes « Ressources liées » sur les
-  services (26 posées + l'existante IA qui matche désormais).
-- **E2e +6** : formulaires (maquette + validation), formulaire lié sur
-  service, fil d'Ariane, recherche, merci (`tests/e2e/formulaires-recherche`).
-
-### Passe 2 de fermetures — conditions
-
-| Story ADO | Fermable quand | Reste à faire |
-|---|---|---|
-| Formulaires contextuels par page (F2.5) | Clés posées + vérif préversion | OPS §7ter (SMTP2GO, Turnstile, GA4) puis test réel : widget visible, POST → /merci, 2 courriels, événement GA4 |
-| Consentement Loi 25 + reCAPTCHA (F2.5) | idem | idem (le captcha doit être VISIBLE en prod) |
-| Confirmation visuelle + email (F2.5) | idem | idem — P-08 livré, activation = clés |
-| GA4 + GTM + événements de conversion (F3.3) | Clés + vérif DebugView | Poser `PUBLIC_GA4_ID`, marquer `generate_lead` événement clé dans GA4 |
-| Site Search tracking (F3.3) | idem | Vérifier l'événement `search` en DebugView |
-| Suivi GA4 Site Search (F2.4) | idem | Doublon assumé de la précédente |
-| Breadcrumbs sur toutes les pages internes (F2.3) | Vérif visuelle préversion | Livré (services + pages ; articles déjà faits) — valider le rendu |
-| schema.org LocalBusiness/Organization/Service/FAQ (F3.2) | Maintenant | Tout est émis — valider au Rich Results Test si souhaité |
-| Page de résultats stylisée + filtres par type (F2.4) | Vérif sur un BUILD | Le filtre n'apparaît que sur un build (index Pagefind) — vérifier sur préversion |
-| Maillage interne Services <-> Ressources (F3.2) | Vérif visuelle préversion | Bandes livrées partout ; ajuster les thèmes au besoin (guide §blogue) |
-| Tests formulaires + moteur de recherche (F4.1) | E2e vert | Redémarrer le dev server puis `npm run test:e2e` |
-
-### Toujours ouvert après cette semaine
-
-Gating livres blancs (pas de PDF fourni) · GSC/Bing + Heatmaps (domaine /
-décision) · WebP/AVIF (F3.4) · P-13 footer bureaux (l'export2 n'a PAS le bloc
-— dépendance design) · audits Lighthouse/axe + tests manuels (F4.2/F4.3) ·
-migration contenu (P-17/18/19) · mise en ligne (F4.5) · Cloud Cannon licence
-payante (Task — préalable à l'invitation des gestionnaires).
+Déjà fermé/retiré par toi : ~27 items. Section 1 : **+8 à +10**. Sections 2-4
+(clés + vérifs + 3 décisions) : **+9 à +10**. → Le backlog de développement
+(Epic 2) sera entièrement fermé ; il restera l'inventaire/migration de contenu,
+le design en cours, la recette et la mise en ligne.

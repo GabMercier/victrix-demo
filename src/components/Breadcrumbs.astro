@@ -28,8 +28,12 @@ const { lang, items } = Astro.props;
 const t = useTranslations(lang);
 ---
 
+{/* data-pagefind-ignore : le fil vit DANS <main data-pagefind-body> — sans
+    l'exclusion, « Accueil › … » entrerait dans l'index de recherche de chaque
+    page (précédent : l'aside des articles). */}
 <nav
   data-crumbs
+  data-pagefind-ignore
   aria-label={t.article.breadcrumbAria}
   class="bg-white border-0 border-b border-solid border-neutral-200"
 >
