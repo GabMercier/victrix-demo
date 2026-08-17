@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { type Locale, localePaths, localizePath } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
 import { getLocaleData } from '../../i18n/locale-data';
 
 export const getStaticPaths = localePaths;
 
 const { lang } = Astro.props as { lang: Locale };
+const t = useTranslations(lang);
 // Contenu ÉDITABLE AU CMS (collection `carrieres`, src/data/carrieres/<lang>.json
 // — migré de src/i18n/content/carrieres.ts le 2026-08-12 ; `testimonials.items`
 // y est devenu `testimonials.cards`, voir le schéma). Appel nu (gotcha
@@ -99,6 +102,13 @@ const capsLabel = 'text-xs font-bold uppercase tracking-[1.2px]';
 ---
 
 <BaseLayout lang={lang} title={c.metaTitle} description={c.metaDescription} contentType="Page">
+  <Breadcrumbs
+    lang={lang}
+    items={[
+      { name: t.article.breadcrumbHome, path: localizePath('/', lang) },
+      { name: c.metaTitle },
+    ]}
+  />
   <!-- Hero -->
   <section class="relative flex items-center min-h-[560px] overflow-hidden">
     <img

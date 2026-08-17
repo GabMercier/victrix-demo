@@ -1,7 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { type Locale, localePaths, localizePath } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
 import { solutionsContent } from '../../i18n/content/solutions';
 
 export const getStaticPaths = localePaths;
@@ -53,6 +55,13 @@ const selectClass =
 ---
 
 <BaseLayout lang={lang} title={c.metaTitle} description={c.metaDescription} contentType="Page">
+  <Breadcrumbs
+    lang={lang}
+    items={[
+      { name: useTranslations(lang).article.breadcrumbHome, path: localizePath('/', lang) },
+      { name: c.metaTitle },
+    ]}
+  />
   <div class="bg-[#F8F9FA]">
     <!-- Barre outil : titre + recherche -->
     <div class="border-0 border-b border-solid border-[#C5C6D0]/60 bg-[#F8F9FA]">

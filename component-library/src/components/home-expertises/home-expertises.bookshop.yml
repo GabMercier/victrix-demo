@@ -36,9 +36,9 @@ blueprint:
       image: ""
       variant: claire
       linkLabel: ""
-      # Référence bento 2026-08-11 : carte large (2 col) + pictogramme fermé.
+      # Référence bento 2026-08-11 : carte large (2 col). Pictogramme retiré
+      # du contrat le 2026-08-17 (correction user : tuiles sans icônes).
       wide: false
-      icon: ""
 
 preview:
 

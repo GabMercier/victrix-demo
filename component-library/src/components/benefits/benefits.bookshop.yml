@@ -77,4 +77,7 @@ _inputs:
         - ampoule
         - croissance
         - losange
-    comment: "Tuile pictogramme au-dessus du titre de la carte. Vide = aucune."
+        - organisation
+        - porteur
+        - destinataire
+    comment: "Tuile pictogramme au-dessus du titre de la carte. Vide = aucune. organisation/porteur/destinataire = icônes pleines de la page Expertises."

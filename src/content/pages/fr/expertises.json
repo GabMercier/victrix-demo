@@ -1,7 +1,7 @@
 {
   "title": "Nos expertises",
-  "description": "Des expertises complémentaires pour couvrir l’ensemble de vos besoins technologiques.",
-  "noindex": true,
+  "description": "Des expertises complémentaires pour couvrir l'ensemble de vos besoins technologiques.",
+  "noindex": false,
   "seoTitle": "",
   "sections": [
     {
@@ -9,31 +9,154 @@
       "type": "hero",
       "eyebrow": "",
       "title": "Nos expertises",
-      "subtitle": "Des expertises complémentaires pour couvrir l’ensemble de vos besoins technologiques.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "subtitle": "Des expertises complémentaires pour couvrir l'ensemble de vos besoins technologiques. De la stratégie à l'exploitation, nos équipes vous accompagnent à chaque étape de votre transformation numérique.",
+      "ctaLabel": "Parler à un expert",
+      "ctaHref": "/fr/contact",
       "titleAccent": "",
-      "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
+      "image": "/images/sections/expertises-hero.jpg",
+      "cta2Label": "Découvrir nos services",
+      "cta2Href": "/fr/services",
       "eyebrowIcon": "",
       "ctaIcon": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Présentation détaillée en préparation",
-      "paragraphs": [
-        "La présentation complète de nos expertises sera publiée prochainement.",
-        "Consultez nos pages de services déjà en ligne — <a href=\"/fr/services/intelligence-artificielle/\">intelligence artificielle</a>, <a href=\"/fr/services/cybersecurite/\">cybersécurité</a>, <a href=\"/fr/services/productivite/\">productivité</a> — ou communiquez avec nous pour en savoir plus."
+      "_bookshop_name": "benefits",
+      "type": "benefits",
+      "title": "Notre approche humaine",
+      "intro": "Chaque solution technologique est pensée pour servir trois réalités indissociables : votre organisation, ceux qui la font vivre et ceux qu'elle sert.",
+      "headingStyle": "titre",
+      "items": [
+        {
+          "title": "L'organisation",
+          "description": "Votre vision, votre image, votre message. Nous alignons les outils technologiques sur vos objectifs stratégiques globaux.",
+          "icon": "organisation"
+        },
+        {
+          "title": "Le porteur",
+          "description": "Ses responsabilités, ses capacités, son initiative. Nous valorisons l'humain qui déploie et maintient vos solutions.",
+          "icon": "porteur"
+        },
+        {
+          "title": "Le destinataire",
+          "description": "Ses outils, son appartenance, ses intérêts. Nous optimisons l'expérience utilisateur finale pour maximiser l'adoption.",
+          "icon": "destinataire"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "tech-marquee",
+      "type": "tech-marquee",
+      "ariaLabel": "Technologies maîtrisées",
+      "items": [
+        "OneNote",
+        "Teams",
+        "Outlook",
+        "Excel",
+        "OneDrive",
+        "Power BI",
+        "Power Automate",
+        "SharePoint"
+      ]
+    },
+    {
+      "_bookshop_name": "exclusive-tools",
+      "type": "exclusive-tools",
+      "title": "Nos solutions de productivité exclusives",
+      "intro": "Des produits conçus par nos équipes pour accélérer votre quotidien — prêts à déployer dans votre environnement Microsoft 365.",
+      "featured": {
+        "badge": "Solution exclusive",
+        "title": "Ø Studio",
+        "text": "Propulsez-vous vers la Power Platform avec un accompagnement adapté à vos besoins. Le Ø Studio vous offre rapidité de développement et gain en capacité de livraison afin de migrer vos applications ou automatiser vos processus.",
+        "ctaLabel": "Découvrir l'accompagnement Ø Studio",
+        "href": "/fr/produits",
+        "image": "/images/sections/expertises-ostudio.png"
+      },
+      "items": [
+        {
+          "title": "O bureau",
+          "text": "Simplifiez les réservations, améliorez la gestion et automatisez les rapports d'utilisation de vos bureaux grâce à notre application de gestion de réservation facile à implémenter.",
+          "ctaLabel": "Explorer l'application de réservation",
+          "href": "/fr/produits",
+          "icon": "calendrier"
+        },
+        {
+          "title": "Plateforme employé",
+          "text": "Offrez à votre personnel ce qu'il y a de mieux en matière d'intranet. Augmentez la productivité au travail en centralisant les outils et les connaissances.",
+          "ctaLabel": "Découvrir la plateforme employé",
+          "href": "/fr/produits",
+          "icon": "etoile"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "expertise-bento",
+      "type": "expertise-bento",
+      "eyebrow": "Nos expertises",
+      "title": "Un écosystème complet de solutions Microsoft 365",
+      "intro": "De l'intranet à l'automatisation, nos spécialistes couvrent l'ensemble de la plateforme Microsoft 365.",
+      "items": [
+        {
+          "title": "Intranet Moderne",
+          "text": "Créez un point d'entrée unique pour l'information et la communication interne.",
+          "peau": "blanche",
+          "taille": "grande",
+          "icon": "fenetre",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "BI et Power BI",
+          "text": "",
+          "peau": "bleue",
+          "taille": "haute",
+          "icon": "graphique",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Collaboration",
+          "text": "",
+          "peau": "blanche",
+          "taille": "haute",
+          "icon": "personnes",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Automatisation des processus",
+          "text": "Libérez vos équipes des tâches répétitives.",
+          "peau": "blanche",
+          "taille": "large",
+          "icon": "engrenage",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Gestion documentaire",
+          "text": "",
+          "peau": "blanche",
+          "taille": "petite",
+          "icon": "document",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Développement M365",
+          "text": "",
+          "peau": "ardoise",
+          "taille": "petite",
+          "icon": "code",
+          "image": "",
+          "href": ""
+        }
       ]
     },
     {
       "_bookshop_name": "cta",
       "type": "cta",
-      "title": "Un besoin précis ?",
-      "body": "Nos experts vous orienteront vers la bonne expertise.",
-      "ctaLabel": "Nous joindre",
+      "title": "Prêt à faire évoluer votre organisation ?",
+      "body": "Discutons de vos enjeux et découvrons comment Victrix peut vous aider à aller plus loin dans votre transformation numérique et l'amélioration de vos performances.",
+      "ctaLabel": "Planifiez une consultation gratuite",
       "ctaHref": "/fr/contact",
       "variant": "dark"
     }

@@ -59,10 +59,10 @@ chaque service.
 
 | Quoi | Référence |
 |---|---|
-| Brancher le formulaire Contact sur le backend réel (page encore en maquette ; /api/forms est prêt) | docs/formulaires.md §10 |
-| Clés SMTP2GO + Turnstile + entrée CSP (activation des envois en prod) | docs/operations.md §OPS |
-| Courriel de confirmation au visiteur | P-08 |
-| Analytics GA4/GTM + Site Search (contrat de consentement déjà prêt) | P-11 |
+| ~~Brancher le formulaire Contact sur le backend réel~~ **FAIT 2026-08-17** (2 modes, actif dès les clés) | docs/formulaires.md §10 |
+| Clés SMTP2GO + Turnstile + GA4 (la CSP est APPLIQUÉE — il ne reste que la pose des variables) | docs/operations.md §7ter |
+| ~~Courriel de confirmation au visiteur~~ **FAIT 2026-08-17** (P-08 — actif dès les clés SMTP2GO) | P-08 |
+| ~~Analytics GA4 + Site Search~~ **FAIT côté code 2026-08-17** (P-11 — actif dès `PUBLIC_GA4_ID`) | P-11 |
 | **Secret `REBUILD_HOOK_URL`** — sans lui, la publication planifiée (bannière promo datée, articles à date future) ne s'applique jamais | docs/operations.md § publication planifiée |
 | Décommission du worker OAuth Sveltia | docs/GUIDE-PROJET.md § jalons |
 | Photos authentiques (héros Carrières, équipe, RSE, visuels de sections) + re-skin final | attendus avec l'export design |

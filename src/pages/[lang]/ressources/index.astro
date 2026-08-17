@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import BlogCard from '../../../components/BlogCard.astro';
-import { type Locale, localePaths } from '../../../i18n/config';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { type Locale, localePaths, localizePath } from '../../../i18n/config';
 import { useTranslations } from '../../../i18n/ui';
 import { getLocaleData } from '../../../i18n/locale-data';
 import { getPostsByLocale, filterPublished, blogCategories } from '../../../i18n/blog';
@@ -32,6 +33,13 @@ const categories = blogCategories(posts);
 ---
 
 <BaseLayout lang={lang} title={sys.ressources.title} description={sys.ressources.intro} contentType="Page">
+  <Breadcrumbs
+    lang={lang}
+    items={[
+      { name: t.article.breadcrumbHome, path: localizePath('/', lang) },
+      { name: sys.ressources.title },
+    ]}
+  />
   <div class="container blog">
     <header class="blog__head">
       <p class="eyebrow">{sys.ressources.eyebrow}</p>

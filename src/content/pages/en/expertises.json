@@ -1,7 +1,7 @@
 {
   "title": "Our expertise",
   "description": "Complementary expertise covering all your technology needs.",
-  "noindex": true,
+  "noindex": false,
   "seoTitle": "",
   "sections": [
     {
@@ -9,31 +9,154 @@
       "type": "hero",
       "eyebrow": "",
       "title": "Our expertise",
-      "subtitle": "Complementary expertise covering all your technology needs.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "subtitle": "Complementary expertise covering all your technology needs. From strategy to operations, our teams support you at every step of your digital transformation.",
+      "ctaLabel": "Talk to an expert",
+      "ctaHref": "/en/contact",
       "titleAccent": "",
-      "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
+      "image": "/images/sections/expertises-hero.jpg",
+      "cta2Label": "Explore our services",
+      "cta2Href": "/en/services",
       "eyebrowIcon": "",
       "ctaIcon": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Detailed presentation in preparation",
-      "paragraphs": [
-        "The full presentation of our expertise will be published soon.",
-        "Browse the service pages already online — <a href=\"/en/services/intelligence-artificielle/\">artificial intelligence</a>, <a href=\"/en/services/cybersecurite/\">cybersecurity</a>, <a href=\"/en/services/productivity-consulting/\">productivity</a> — or contact us to learn more."
+      "_bookshop_name": "benefits",
+      "type": "benefits",
+      "title": "Our human approach",
+      "intro": "Every technology solution is designed to serve three inseparable realities: your organization, the people who run it, and the people it serves.",
+      "headingStyle": "titre",
+      "items": [
+        {
+          "title": "The organization",
+          "description": "Your vision, your image, your message. We align technology tools with your overall strategic objectives.",
+          "icon": "organisation"
+        },
+        {
+          "title": "The owner",
+          "description": "Their responsibilities, their capabilities, their initiative. We empower the people who deploy and maintain your solutions.",
+          "icon": "porteur"
+        },
+        {
+          "title": "The end user",
+          "description": "Their tools, their sense of belonging, their interests. We optimize the end-user experience to maximize adoption.",
+          "icon": "destinataire"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "tech-marquee",
+      "type": "tech-marquee",
+      "ariaLabel": "Technologies we master",
+      "items": [
+        "OneNote",
+        "Teams",
+        "Outlook",
+        "Excel",
+        "OneDrive",
+        "Power BI",
+        "Power Automate",
+        "SharePoint"
+      ]
+    },
+    {
+      "_bookshop_name": "exclusive-tools",
+      "type": "exclusive-tools",
+      "title": "Our exclusive productivity solutions",
+      "intro": "Products built by our teams to speed up your day-to-day — ready to deploy in your Microsoft 365 environment.",
+      "featured": {
+        "badge": "Exclusive solution",
+        "title": "Ø Studio",
+        "text": "Launch yourself onto the Power Platform with support tailored to your needs. Ø Studio gives you faster development and greater delivery capacity to migrate your applications or automate your processes.",
+        "ctaLabel": "Discover the Ø Studio program",
+        "href": "/en/produits",
+        "image": "/images/sections/expertises-ostudio.png"
+      },
+      "items": [
+        {
+          "title": "O bureau",
+          "text": "Simplify bookings, improve management and automate usage reports for your workspaces with our easy-to-implement desk booking application.",
+          "ctaLabel": "Explore the booking application",
+          "href": "/en/produits",
+          "icon": "calendrier"
+        },
+        {
+          "title": "Employee platform",
+          "text": "Give your staff the very best in intranet experience. Boost workplace productivity by centralizing tools and knowledge.",
+          "ctaLabel": "Discover the employee platform",
+          "href": "/en/produits",
+          "icon": "etoile"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "expertise-bento",
+      "type": "expertise-bento",
+      "eyebrow": "Our expertise",
+      "title": "A complete ecosystem of Microsoft 365 solutions",
+      "intro": "From intranet to automation, our specialists cover the entire Microsoft 365 platform.",
+      "items": [
+        {
+          "title": "Modern Intranet",
+          "text": "Create a single point of entry for internal information and communication.",
+          "peau": "blanche",
+          "taille": "grande",
+          "icon": "fenetre",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "BI and Power BI",
+          "text": "",
+          "peau": "bleue",
+          "taille": "haute",
+          "icon": "graphique",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Collaboration",
+          "text": "",
+          "peau": "blanche",
+          "taille": "haute",
+          "icon": "personnes",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Process automation",
+          "text": "Free your teams from repetitive tasks.",
+          "peau": "blanche",
+          "taille": "large",
+          "icon": "engrenage",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Document management",
+          "text": "",
+          "peau": "blanche",
+          "taille": "petite",
+          "icon": "document",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "M365 development",
+          "text": "",
+          "peau": "ardoise",
+          "taille": "petite",
+          "icon": "code",
+          "image": "",
+          "href": ""
+        }
       ]
     },
     {
       "_bookshop_name": "cta",
       "type": "cta",
-      "title": "A specific need?",
-      "body": "Our experts will point you to the right expertise.",
-      "ctaLabel": "Contact us",
+      "title": "Ready to move your organization forward?",
+      "body": "Let's discuss your challenges and discover how Victrix can help you go further in your digital transformation and performance improvement.",
+      "ctaLabel": "Book a free consultation",
       "ctaHref": "/en/contact",
       "variant": "dark"
     }

@@ -1,12 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import JsonLd from '../../components/JsonLd.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { type Locale, localePaths, localizePath } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
 import { getLocaleData } from '../../i18n/locale-data';
 
 export const getStaticPaths = localePaths;
 
 const { lang } = Astro.props as { lang: Locale };
+const t = useTranslations(lang);
 // Contenu ÉDITABLE AU CMS (collection `contact`, src/data/contact/<lang>.json —
 // migré de src/i18n/content/contact.ts le 2026-08-12). Appel nu (gotcha
 // Bookshop, voir merci.astro) ; `c.…` aux points d'usage comme avant.
@@ -128,6 +131,13 @@ const phoneIcon =
 ---
 
 <BaseLayout lang={lang} title={c.metaTitle} description={c.metaDescription} contentType="Page">
+  <Breadcrumbs
+    lang={lang}
+    items={[
+      { name: t.article.breadcrumbHome, path: localizePath('/', lang) },
+      { name: c.metaTitle },
+    ]}
+  />
   {/* LocalBusiness ×3 (2026-08-17, F3.2) — un schéma par bureau, depuis le
       MÊME contenu CMS que les cartes (collection contact) : adresse, ville,
       téléphone (apparié par position, comme les cartes), photo. */}

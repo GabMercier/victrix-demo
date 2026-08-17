@@ -31,8 +31,7 @@
           "image": "/images/home/expertise-cybersecurite.jpg",
           "variant": "image",
           "linkLabel": "",
-          "wide": true,
-          "icon": ""
+          "wide": true
         },
         {
           "number": "03",
@@ -43,8 +42,7 @@
           "image": "",
           "variant": "bleue",
           "linkLabel": "Discover",
-          "wide": false,
-          "icon": "ia"
+          "wide": false
         },
         {
           "number": "04",
@@ -55,8 +53,7 @@
           "image": "",
           "variant": "image",
           "linkLabel": "",
-          "wide": false,
-          "icon": ""
+          "wide": false
         },
         {
           "number": "05",
@@ -67,8 +64,7 @@
           "image": "",
           "variant": "claire",
           "linkLabel": "",
-          "wide": false,
-          "icon": "strategie"
+          "wide": false
         },
         {
           "number": "06",
@@ -79,8 +75,7 @@
           "image": "",
           "variant": "nuit",
           "linkLabel": "",
-          "wide": false,
-          "icon": "engrenage"
+          "wide": false
         }
       ]
     },

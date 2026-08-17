@@ -243,9 +243,22 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           description: z.string(),
           // Fidélité maquette expertise-mere.css (2026-08-05) : icône de la
           // tuile pâle au-dessus du titre (clé fermée ; vide = pas de tuile).
-          // ampoule/croissance/losange AJOUTÉES 2026-08-05 (landing-page.css).
+          // ampoule/croissance/losange AJOUTÉES 2026-08-05 (landing-page.css) ;
+          // organisation/porteur/destinataire AJOUTÉES 2026-08-17 (page
+          // Expertises — SVG pleins fournis, docs/design/export2/Images).
           icon: z
-            .enum(['dossier', 'personne', 'groupe', 'ampoule', 'croissance', 'losange', ''])
+            .enum([
+              'dossier',
+              'personne',
+              'groupe',
+              'ampoule',
+              'croissance',
+              'losange',
+              'organisation',
+              'porteur',
+              'destinataire',
+              '',
+            ])
             .default(''),
         }),
       ),
@@ -382,9 +395,8 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           // Référence bento 2026-08-11 : carte LARGE (2 colonnes sur 3) —
           // ex. Cybersécurité en tête de grille. Additif, défaut false.
           wide: z.boolean().default(false),
-          // Pictogramme optionnel en tête des peaux claire/bleue/nuit
-          // (clés fermées — référence bento 2026-08-11). Vide = aucun.
-          icon: z.enum(['', 'ia', 'strategie', 'engrenage']).default(''),
+          // `icon` RETIRÉ 2026-08-17 (correction user : aucun pictogramme
+          // dans les tuiles) — une clé résiduelle dans le JSON est ignorée.
         }),
       ),
     }),

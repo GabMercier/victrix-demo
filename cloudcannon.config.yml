@@ -1761,7 +1761,13 @@ _structures:
                 - ampoule
                 - croissance
                 - losange
-            comment: Tuile pictogramme au-dessus du titre. Vide = aucune.
+                - organisation
+                - porteur
+                - destinataire
+            comment: >-
+              Tuile pictogramme au-dessus du titre. Vide = aucune.
+              organisation/porteur/destinataire = icônes pleines de la page
+              Expertises (approche en 3 angles).
 
   # Cartes du bento d'expertises (section « Service — Bento d'expertises »,
   # fidélité maquette expertise-mere.css 2026-08-05).
@@ -1997,7 +2003,6 @@ _structures:
           variant: claire
           linkLabel: ''
           wide: false
-          icon: ''
         # _inputs de STRUCTURE (priment sur ceux de la collection — même
         # mécanique que form_fields) : la peau de la carte est une clé fermée.
         _inputs:
@@ -2018,26 +2023,15 @@ _structures:
             type: text
             label: Libellé du lien (surcharge)
             comment: Vide = libellé commun de la section (« Libellé du bouton des cartes »).
-          # Référence bento 2026-08-11 : carte large + pictogramme fermé.
+          # Référence bento 2026-08-11 : carte large. (Le pictogramme `icon`
+          # est RETIRÉ du contrat le 2026-08-17 — correction user : aucun
+          # pictogramme dans les tuiles « Nos services ».)
           wide:
             type: switch
             label: Carte large (2 colonnes)
             comment: >-
               Activée, la carte occupe 2 colonnes sur 3 (ex. Cybersécurité en
               tête de grille). Une seule carte large par rangée.
-          icon:
-            type: select
-            label: Pictogramme (optionnel)
-            options:
-              allow_empty: true
-              values:
-                - ia
-                - strategie
-                - engrenage
-            comment: >-
-              Petit pictogramme en tête des peaux claire/bleue/nuit — ia =
-              étincelle IA · strategie = cible · engrenage = rouage. Vide =
-              aucun. Sans effet sur la peau image.
           # P-16 : la couleur d'accent est BORNÉE à la charte (plus de texte
           # libre). Champ hérité — plus affiché depuis la refonte 2026-08 —
           # mais tant qu'il vit au contrat, il ne doit accepter que la charte.

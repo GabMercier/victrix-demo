@@ -97,9 +97,13 @@ const resCategories = blogCategories(blogPosts).map((tag) => ({
   label: tag,
   href: `${megaResParentHref}/?categorie=${encodeURIComponent(tag)}`,
 }));
-const resLatest = blogPosts.slice(0, 4).map((post) => ({
+// Correction 2026-08-17 : DEUX cartes AVEC image de couverture (les 4 titres
+// en liste débordaient de leur rangée h-10 — chevauchement visuel). L'image
+// vient du frontmatter `coverImage` (chemin public servi tel quel).
+const resLatest = blogPosts.slice(0, 2).map((post) => ({
   title: post.data.title,
   href: localizePath(`/ressources/${postUrlSlug(post)}/`, lang),
+  image: post.data.coverImage ?? '',
 }));
 
 // Chaque entrée porte au plus une CLÉ de panneau (« main » = le méga partagé
@@ -427,11 +431,24 @@ const langLinkClass = 'no-underline p-1 text-sm';
                       <p class:list={[megaHeadClass, 'm-0 max-w-none']}>
                         {megaRes.latestTitle}
                       </p>
-                      <ul role="list" class="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 max-w-[56ch]">
+                      <ul role="list" class="mt-4 grid grid-cols-2 gap-6 max-w-[640px]">
                         {resLatest.map((article) => (
                           <li>
-                            <a class={megaLinkClass} href={article.href}>
-                              <span>{article.title}</span>
+                            <a class="group flex flex-col gap-3 no-underline" href={article.href}>
+                              <span class="block aspect-video overflow-hidden rounded bg-surface-container">
+                                {article.image && (
+                                  <img
+                                    src={article.image}
+                                    alt=""
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none"
+                                  />
+                                )}
+                              </span>
+                              <span class="text-sm leading-normal font-semibold text-neutral-800 transition-colors group-hover:text-primary">
+                                {article.title}
+                              </span>
                             </a>
                           </li>
                         ))}
