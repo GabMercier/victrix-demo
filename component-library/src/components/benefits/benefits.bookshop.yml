@@ -30,6 +30,7 @@ blueprint:
   type: benefits
   title: "Pourquoi choisir Victrix"
   intro: ""
+  fond: blanc
   headingStyle: titre
   items:
     - title: "Première carte"
@@ -47,6 +48,20 @@ _inputs:
   intro:
     label: "Introduction"
     comment: "Paragraphe optionnel sous le titre de section."
+  # « Fond de section » (2026-08-17, pilote 6 blocs) : choix BORNÉ à la
+  # palette officielle — 5 fonds clairs, jamais de couleur libre (esprit P-16).
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      values:
+        - blanc
+        - givre
+        - ivoire
+        - beige
+        - sable
+    comment: "Couleur de fond de la section, bornée à la palette officielle : blanc · givre (gris très pâle) · ivoire · beige · sable."
   headingStyle:
     type: select
     label: "Style de tête"

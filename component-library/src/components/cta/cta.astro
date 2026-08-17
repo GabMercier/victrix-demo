@@ -9,6 +9,8 @@
  *    tireté) en filigrane à droite ;
  *  - variant "light" : panneau beige (surface-container), titre navy, bouton
  *    primaire — même géométrie ;
+ *  - `fond` (2026-08-17, pilote 6 blocs) : lavis de la SECTION derrière le
+ *    panneau, borné à la palette (blanc/givre/ivoire/beige/sable).
  *  - variant "nuit"  : NOUVEAU (produit-enfant.css §CTA Section, 2026-08-05) —
  *    aplat anthracite (on-surface), contenu CENTRÉ (max 768), sans décor,
  *    bouton primaire + second bouton CONTOUR blanc.
@@ -34,14 +36,35 @@ interface Props {
   cta2Label?: string;
   cta2Href?: string;
   variant?: 'light' | 'dark' | 'nuit';
+  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
 }
 
-const { title, body, ctaLabel, ctaHref, cta2Label, cta2Href, variant = 'light' } = Astro.props;
+const {
+  title,
+  body,
+  ctaLabel,
+  ctaHref,
+  cta2Label,
+  cta2Href,
+  variant = 'light',
+  fond = 'blanc',
+} = Astro.props;
 const dark = variant === 'dark';
 const nuit = variant === 'nuit';
+
+// « Fond de section » (2026-08-17, pilote 6 blocs) : lavis DERRIÈRE le
+// panneau (le panneau garde sa `variant`). Clé fermée → utilitaire de la
+// palette officielle ; défaut = rendu historique (blanc, ex-bg-surface).
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
 ---
 
-<section class="py-20 bg-surface">
+<section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
   <div class="container-site">
     <div
       class:list={[

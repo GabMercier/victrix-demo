@@ -48,11 +48,23 @@ interface Props {
   title: string;
   intro?: string;
   headingStyle?: 'titre' | 'compact';
+  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
   items: BenefitItem[];
 }
 
-const { title, intro, headingStyle = 'titre', items = [] } = Astro.props;
+const { title, intro, headingStyle = 'titre', fond = 'blanc', items = [] } = Astro.props;
 const compact = headingStyle === 'compact';
+
+// « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
+// de la palette officielle (aucune couleur libre — esprit P-16). 5 fonds
+// CLAIRS seulement ; défaut = rendu historique du bloc (blanc).
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
 
 // Pictogrammes (stroke 24px) par clé fermée du contrat.
 const ICONS: Record<string, string[]> = {
@@ -97,7 +109,7 @@ const FILL_ICONS: Record<string, { viewBox: string; w: number; h: number; d: str
 };
 ---
 
-<section class="py-20 bg-white">
+<section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
   <div class="container-site">
     {
       compact ? (

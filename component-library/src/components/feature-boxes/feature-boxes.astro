@@ -18,13 +18,25 @@
 interface Props {
   sectionTitle: string;
   subtitle?: string;
+  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
   boxes: string[];
 }
 
-const { sectionTitle, subtitle, boxes = [] } = Astro.props;
+const { sectionTitle, subtitle, fond = 'givre', boxes = [] } = Astro.props;
+
+// « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
+// de la palette officielle (aucune couleur libre — esprit P-16). Défaut =
+// rendu historique (givre #f9fafb, ex-bg-surface-container-low).
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
 ---
 
-<section class="py-20 bg-surface-container-low">
+<section class:list={['py-20', FONDS[fond] ?? FONDS.givre]}>
   <div class="container-site">
     <div class="mx-auto text-center flex flex-col items-center gap-4 mb-12">
       <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">

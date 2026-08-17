@@ -45,10 +45,22 @@ interface FaqItem {
 
 interface Props {
   title: string;
+  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
   items: FaqItem[];
 }
 
-const { title, items = [] } = Astro.props;
+const { title, fond = 'blanc', items = [] } = Astro.props;
+
+// « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
+// de la palette officielle (aucune couleur libre — esprit P-16). Défaut =
+// rendu historique (blanc, ex-bg-surface).
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
 
 // Balisage schema.org FAQPage construit depuis les questions — permet aux
 // moteurs de recherche d'afficher les Q/R en résultats enrichis. Les réponses
@@ -67,7 +79,7 @@ const faqSchema = {
 };
 ---
 
-<section class="py-20 bg-surface">
+<section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
   <div class="container-site">
     <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
       {title}

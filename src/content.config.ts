@@ -212,6 +212,14 @@ function formFieldRules(fields: FormFieldInput[], ctx: z.RefinementCtx): void {
  * resolves it with getImage only when it is a real image.
  */
 function sectionsSchema(image: () => z.ZodTypeAny) {
+  // « Fond de section » (2026-08-17, demande user) : lavis de fond au CHOIX,
+  // BORNÉ à la palette officielle (esprit P-16 : un select, jamais de couleur
+  // libre). 5 fonds CLAIRS seulement — les textes/liens restent lisibles sans
+  // re-design ; les peaux SOMBRES restent des `variant` par composant (cta
+  // « nuit », etc.). PILOTE sur 6 blocs génériques (benefits, cta, faq, stats,
+  // feature-boxes, rich-text) ; le DÉFAUT de chaque bloc = son rendu
+  // historique (blanc ou givre) — zéro churn visuel sur l'existant.
+  const fondClair = z.enum(['blanc', 'givre', 'ivoire', 'beige', 'sable']);
   return z.discriminatedUnion('type', [
     // ---- Campaign landing sections (frozen contract) ----
     z.object({
@@ -234,6 +242,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('benefits'),
       title: z.string(),
       intro: z.string().optional(),
+      fond: fondClair.default('blanc'),
       // « compact » AJOUTÉ 2026-08-05 (landing-page.css §Guide Benefits) :
       // tête réduite 16/24 + liseré bleu, cartes compactes.
       headingStyle: z.enum(['titre', 'compact']).default('titre'),
@@ -276,6 +285,8 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // « nuit » (produit-enfant.css) : panneau anthracite, contenu centré,
       // sans décor — les deux valeurs historiques sont inchangées.
       variant: z.enum(['light', 'dark', 'nuit']).default('light'),
+      // Fond de la SECTION derrière le panneau (le panneau garde sa `variant`).
+      fond: fondClair.default('blanc'),
     }),
     z.object({
       type: z.literal('form'),
@@ -301,6 +312,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('faq'),
       title: z.string(),
+      fond: fondClair.default('blanc'),
       items: z.array(z.object({ question: z.string(), answer: z.string() })),
     }),
     // ---- Palette additions (17 juil., P-02) — shared like everything else.
@@ -330,6 +342,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('stats'),
       title: z.string().optional(),
+      fond: fondClair.default('givre'),
       items: z.array(z.object({ number: z.string(), label: z.string() })),
     }),
     z.object({
@@ -647,6 +660,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('feature-boxes'),
       sectionTitle: z.string(),
       subtitle: z.string().optional(),
+      fond: fondClair.default('givre'),
       // Liste de libellés simples (boîtes bordées) — tableau de chaînes.
       boxes: z.array(z.string()),
     }),
@@ -676,6 +690,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('rich-text'),
       title: z.string().optional(),
+      fond: fondClair.default('blanc'),
       // Chaque paragraphe rendu en <p set:html> (peut contenir des <strong>).
       paragraphs: z.array(z.string()),
     }),

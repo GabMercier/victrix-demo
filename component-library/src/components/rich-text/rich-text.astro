@@ -17,13 +17,25 @@
  */
 interface Props {
   title?: string;
+  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
   paragraphs: string[];
 }
 
-const { title, paragraphs = [] } = Astro.props;
+const { title, fond = 'blanc', paragraphs = [] } = Astro.props;
+
+// « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
+// de la palette officielle (aucune couleur libre — esprit P-16). Défaut =
+// rendu historique (blanc, ex-bg-surface).
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
 ---
 
-<section class="py-20 bg-surface">
+<section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
   <div class="w-full max-w-[820px] mx-auto px-4 md:px-8 flex flex-col gap-4">
     {
       title && (
