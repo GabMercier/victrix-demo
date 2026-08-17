@@ -380,7 +380,7 @@ collections_config:
     name: Campagnes
     singular_name: Campagne
     description: >-
-      Pages d'atterrissage de campagne, bâties par sections (héros, bénéfices,
+      Pages d'atterrissage de campagne, bâties par sections (héros, cartes à icônes,
       appel à l'action, formulaire). Les dossiers fr/ et en/ contiennent les
       deux langues ; le même nom de fichier relie une traduction à l'autre.
     icon: campaign
@@ -437,7 +437,7 @@ collections_config:
         label: Description
         comment: >-
           Au niveau de la page : description pour les moteurs de recherche et
-          les partages. Dans une carte « Bénéfices » : le texte de la carte.
+          les partages. Dans une « Carte à icône » : le texte de la carte.
       noindex:
         type: switch
         label: Masquer des moteurs de recherche
@@ -1735,15 +1735,17 @@ _structures:
   #
   # Default values use EMPTY STRINGS ("") instead of blank YAML values: blank
   # parses to null, and null fails the Zod `.optional()` string fields mid-edit.
+  # (Renommage d'affichage 2026-08-17 : la palette dit « Carte à icône » —
+  # la clé technique benefit_items ne change pas.)
   benefit_items:
     values:
-      - label: Carte bénéfice
+      - label: Carte à icône
         icon: check_circle
         preview:
           icon: check_circle
           text:
             - key: title
-            - text: Carte bénéfice
+            - text: Carte à icône
         value:
           title: ''
           description: ''

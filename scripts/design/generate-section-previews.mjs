@@ -116,10 +116,13 @@ let captured = 0;
 for (const [url, entries] of byUrl) {
   await page.goto(`${BASE}${url}`, { waitUntil: 'networkidle', timeout: 30000 });
   // Chrome hors-section masqué pendant la capture : la barre d'outils dev
-  // d'Astro flotte en bas du viewport et l'en-tête du site est collant
-  // (sticky) — les deux déborderaient sur les sections capturées.
+  // d'Astro flotte en bas du viewport, l'en-tête du site est collant (sticky)
+  // et le bandeau de consentement Loi 25 ([data-consent-banner], AJOUTÉ après
+  // cette liste — il photobombait les sections ancrées en bas, vu 2026-08-17)
+  // — tous déborderaient sur les sections capturées.
   await page.addStyleTag({
-    content: 'astro-dev-toolbar, header.site-header, footer { display: none !important; }',
+    content:
+      'astro-dev-toolbar, header.site-header, footer, [data-consent-banner] { display: none !important; }',
   });
   // Seuls les éléments RENDUS comptent : une balise métadonnée (script JSON-LD,
   // style, link) projetée dans <main> n'occupe aucun index visuel — l'exclure

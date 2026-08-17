@@ -64,7 +64,7 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
 2. La page s'ouvre dans l'**éditeur visuel** : la page rendue à droite, les
    sections à gauche.
 3. **+ Ajouter une section** propose la palette : **une trentaine de
-   sections** (héros, bénéfices, FAQ, formulaire, appel à l'action,
+   sections** (héros, cartes à icônes, FAQ, formulaire, appel à l'action,
    témoignage, bandeau logos, chiffres, vidéo, grilles bento, tuiles, cartes
    d'offre, réalisations…), chacune avec sa **vignette d'aperçu** dans le
    sélecteur. Glisser pour réordonner; chaque section a ses champs (textes,
@@ -412,7 +412,7 @@ champ libre). Ce n'est pas une limitation gratuite : chaque liste garantit la
 | Champ | Pourquoi une liste fermée |
 |---|---|
 | Peau de carte (« claire / image / bleue / nuit ») | seules ces variantes existent dans le design |
-| Icônes (cartes, bénéfices, réalisations…) | l'icône vient d'une bibliothèque dessinée pour le site |
+| Icônes (cartes à icônes, réalisations…) | l'icône vient d'une bibliothèque dessinée pour le site |
 | Type de champ de formulaire | chaque type a son comportement serveur (validation, courriel) |
 | Couleur d'accent | bornée aux couleurs de la **charte** — pas de couleur libre, la cohérence visuelle est garantie d'avance |
 

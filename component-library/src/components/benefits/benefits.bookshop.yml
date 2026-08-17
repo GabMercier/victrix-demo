@@ -1,5 +1,8 @@
 # =============================================================================
-# Spec Bookshop — section « Bénéfices » (contrat landing GELÉ).
+# Spec Bookshop — section « Cartes à icônes » (contrat landing GELÉ — la clé
+# technique reste `benefits` : RENOMMAGE D'AFFICHAGE SEULEMENT, 2026-08-17,
+# demande user — le bloc sert bien au-delà des « bénéfices » : approche,
+# valeurs, avantages…).
 # Voir hero.bookshop.yml pour les conventions communes (structures `sections`,
 # discriminant `type` masqué, libellés français pour la palette CloudCannon).
 # NOTE : la clé `title` de _inputs s'applique par cascade au titre de la
@@ -9,19 +12,19 @@
 spec:
   structures:
     - sections
-  label: "Bénéfices"
-  description: "Grille de cartes (titre + description) présentant les avantages de l'offre — 1 à 3 colonnes selon la largeur d'écran."
+  label: "Cartes à icônes"
+  description: "Grille de cartes (icône, titre, description) — bénéfices, approche, valeurs… 1 à 3 colonnes selon la largeur d'écran."
   icon: fact_check
   # Polissage du sélecteur CloudCannon — voir hero.bookshop.yml (les clés de
   # `spec` sont recopiées sur la valeur de structure générée).
   picker_preview:
-    text: Bénéfices
-    subtext: Grille de cartes (titre + description)
+    text: Cartes à icônes
+    subtext: Grille de cartes (icône, titre, description)
   preview:
     icon: fact_check
     text:
       - key: title
-      - text: Bénéfices
+      - text: Cartes à icônes
 
 blueprint:
   type: benefits
@@ -29,8 +32,8 @@ blueprint:
   intro: ""
   headingStyle: titre
   items:
-    - title: "Premier bénéfice"
-      description: "Décrivez l'avantage concret pour le client."
+    - title: "Première carte"
+      description: "Décrivez le point clé de cette carte."
       icon: ""
 
 preview:
@@ -59,7 +62,7 @@ _inputs:
     # carte d'exemple), en concurrence avec la palette _structures.benefit_items
     # de cloudcannon.config.yml — bail-out vérifié dans structure-builder.js.
     type: array
-    label: "Bénéfices"
+    label: "Cartes"
     comment: "Cartes affichées en grille."
     options:
       structures: _structures.benefit_items
