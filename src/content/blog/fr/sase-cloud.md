@@ -3,6 +3,7 @@ title: "SASE Cloud: Qu’est-ce que le Secure Access Service Edge?"
 date: 2023-11-02
 excerpt: "Découvrez la solution SASE cloud (Secure Access Service Edge) pour améliorer votre sécurité informatique et connectivité. Confiez votre cybersécurité à Victrix."
 tags: ["Nos articles"]
+topics: ["Cybersécurité", "Infonuagique"]
 slug: "sase-cloud"
 coverImage: "/wp-content/uploads/2023/11/sase-victrix-1024x576-1.jpg"
 seoTitle: "SASE Cloud: Secure Access Service Edge | Cybersécurité"

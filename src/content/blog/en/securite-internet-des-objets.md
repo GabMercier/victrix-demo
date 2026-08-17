@@ -3,6 +3,7 @@ title: "Internet of Things Security: Issues & Solutions for Diverse Sectors"
 date: 2024-12-04
 excerpt: "Explore our solutions for addressing the main Internet of Things (IoT) security challenges faced by large enterprises in various sectors."
 tags: ["Our articles"]
+topics: ["Cybersecurity"]
 slug: "internet-of-things-security"
 coverImage: "/wp-content/uploads/2024/12/design-sans-titre-3.jpg"
 seoTitle: "Internet of Things Security: Issues & Solutions"

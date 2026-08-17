@@ -25,6 +25,7 @@ import Page from '../../../../component-library/src/shared/astro/page.astro';
 // dossier ET de prévoir une redirection.
 import { SERVICE_URL_PREFIX } from '../../../lib/navigation/service-links';
 import JsonLd from '../../../components/JsonLd.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { breadcrumbSchema } from '../../../lib/seo/breadcrumb';
 import { useTranslations } from '../../../i18n/ui';
 
@@ -71,6 +72,27 @@ export async function getStaticPaths() {
       ? localizePath(`/${SERVICE_URL_PREFIX}/${counterpart.data.slug || filePath}/`, other)
       : localizePath('/', other);
 
+    // Fil d'Ariane (2026-08-17) — un SEUL tableau alimente le fil VISIBLE
+    // (Breadcrumbs.astro) ET le balisage BreadcrumbList (breadcrumbSchema).
+    // Hiérarchie réelle des fichiers : un service ENFANT (fr/cybersecurite/
+    // zero-trust) insère son PARENT (titre + slug surchargé). Toujours pas de
+    // niveau « Services » intermédiaire : aucune page d'index à cibler (IA des
+    // URLs provisoire — P-17/P-18), décision P-12 inchangée sur ce point.
+    const crumbs: { name: string; path?: string }[] = [
+      { name: useTranslations(lang).article.breadcrumbHome, path: localizePath('/', lang) },
+    ];
+    if (filePath.includes('/')) {
+      const parentPath = filePath.split('/').slice(0, -1).join('/');
+      const parent = pages.find((p) => p.id === `${lang}/${parentPath}`);
+      if (parent) {
+        crumbs.push({
+          name: parent.data.title,
+          path: localizePath(`/${SERVICE_URL_PREFIX}/${parent.data.slug || parentPath}/`, lang),
+        });
+      }
+    }
+    crumbs.push({ name: page.data.title });
+
     // Carte formId → définition POUR LA LANGUE de la page (ids "fr/contact"…),
     // + garde-fou : un formId qui ne résout pas fait ÉCHOUER le build en nommant
     // la page et le fichier attendu (même philosophie que la route campagnes).
@@ -109,8 +131,12 @@ export async function getStaticPaths() {
     const relatedSection = relatedSections[0];
     if (relatedSection && 'tags' in relatedSection) {
       const wanted = relatedSection.tags.map((t) => t.toLowerCase());
+      // Un article correspond par ses `tags` (catégories) OU ses `topics`
+      // (maillage thématique, 2026-08-17) — les sections visent les topics.
       const posts = (await getPostsByLocale(lang))
-        .filter((post) => post.data.tags.some((t) => wanted.includes(t.toLowerCase())))
+        .filter((post) =>
+          [...post.data.tags, ...post.data.topics].some((t) => wanted.includes(t.toLowerCase())),
+        )
         .slice(0, 3);
       const dateFmt = new Intl.DateTimeFormat(htmlLang[lang], {
         dateStyle: 'long',
@@ -156,25 +182,32 @@ export async function getStaticPaths() {
     // src/pages/[lang]/campagnes/[slug].astro:43-50.
     paths.push({
       params: { lang, slug },
-      props: { page, lang, altLocalePath, frontmatter: page.data, enrich },
+      props: { page, lang, altLocalePath, frontmatter: page.data, enrich, crumbs },
     });
   }
   return paths;
 }
 
-const { page, lang, altLocalePath, frontmatter, enrich } = Astro.props;
+const { page, lang, altLocalePath, frontmatter, enrich, crumbs } = Astro.props;
 
-// BreadcrumbList JSON-LD (P-12) — balisage SEULEMENT (pas de fil d'Ariane
-// visible : le rendu des services attend le redesign — Phase 5). Accueil →
-// page courante ; l'IA des URLs étant provisoire (P-17/P-18), aucun niveau
-// intermédiaire « Services » n'est balisé (pas de page d'index à cibler).
-const crumbsSchema = breadcrumbSchema(
-  [
-    { name: useTranslations(lang).article.breadcrumbHome, path: localizePath('/', lang) },
-    { name: page.data.title },
-  ],
-  Astro.site!,
-);
+// BreadcrumbList JSON-LD (P-12) + fil VISIBLE (2026-08-17) — le MÊME tableau
+// `crumbs` (construit dans getStaticPaths, parent inclus) alimente les deux.
+const crumbsSchema = breadcrumbSchema(crumbs, Astro.site!);
+
+// Schéma Service (2026-08-17) — pages INDEXABLES seulement (un placeholder
+// noindex n'a pas à annoncer un service aux moteurs). Provider = la même
+// Organization que le schéma global de BaseLayout.
+const serviceSchema = page.data.noindex
+  ? null
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: page.data.title,
+      ...(page.data.description ? { description: page.data.description } : {}),
+      provider: { '@type': 'Organization', name: 'Les Solutions Victrix' },
+      url: new URL(Astro.url.pathname, Astro.site).href,
+      inLanguage: htmlLang[lang],
+    };
 ---
 
 <BaseLayout
@@ -183,6 +216,7 @@ const crumbsSchema = breadcrumbSchema(
   description={page.data.description}
   noindex={page.data.noindex}
   altLocalePath={altLocalePath}
+  contentType="Service"
 >
   {
     /* Un seul périmètre `bookshop:live` autour de la boucle de sections — c'est
@@ -192,5 +226,7 @@ const crumbsSchema = breadcrumbSchema(
        Sécurité de forme des props : la validation zod de chaque section au build. */
   }
   <JsonLd slot="head" schema={crumbsSchema} />
+  {serviceSchema && <JsonLd slot="head" schema={serviceSchema} />}
+  <Breadcrumbs lang={lang} items={crumbs} />
   <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} />
 </BaseLayout>

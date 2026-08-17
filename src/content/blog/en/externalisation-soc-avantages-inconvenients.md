@@ -3,6 +3,7 @@ title: "SOC Outsourcing for SMBs: Pros & Cons"
 date: 2023-10-04
 excerpt: "Are you considering SOC outsourcing for your company? Find out all about the advantages and disadvantages of an external SOC and Victrix’s exclusive offer."
 tags: ["Our articles"]
+topics: ["Cybersecurity", "Managed services"]
 slug: "soc-outsourcing-pros-cons"
 coverImage: "/wp-content/uploads/2023/10/istock-1310129244-1.jpg"
 seoTitle: "SOC Outsourcing Services for SMBs: Pros & Cons"

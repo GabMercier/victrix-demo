@@ -3,6 +3,7 @@ title: "Power Platform Governance: Advice and Support"
 date: 2024-08-15
 excerpt: "Learn about Power Platform governance. Find out how to maximize the potential of your apps, and get personalized advice and support from Victrix."
 tags: ["Our articles"]
+topics: ["Productivity", "Strategic consulting"]
 slug: "power-platform-governance-advice"
 coverImage: "/wp-content/uploads/2024/08/power_platform_image-article.png"
 seoTitle: ""

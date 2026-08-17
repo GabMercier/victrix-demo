@@ -31,7 +31,7 @@ const posts = filterPublished(await getPostsByLocale(lang));
 const categories = blogCategories(posts);
 ---
 
-<BaseLayout lang={lang} title={sys.ressources.title} description={sys.ressources.intro}>
+<BaseLayout lang={lang} title={sys.ressources.title} description={sys.ressources.intro} contentType="Page">
   <div class="container blog">
     <header class="blog__head">
       <p class="eyebrow">{sys.ressources.eyebrow}</p>

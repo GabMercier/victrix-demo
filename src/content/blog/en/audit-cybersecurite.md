@@ -3,6 +3,7 @@ title: "Cybersecurity Risk Assessment Audit to Manage Risk & Compliance"
 date: 2024-10-08
 excerpt: "Ensuring compliance and de-risking starts with a cybersecurity risk assessment audit. Discover the benefits of auditing your organization with Victrix."
 tags: ["Our articles"]
+topics: ["Cybersecurity"]
 slug: "cybersecurity-risk-audit"
 coverImage: "/wp-content/uploads/2024/10/computationally-intensive-tasks-servers-1-scaled.jpg"
 seoTitle: "Cybersecurity Risk Assessment Audit | Risk & Compliance"

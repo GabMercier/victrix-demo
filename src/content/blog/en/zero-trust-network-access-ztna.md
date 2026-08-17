@@ -3,6 +3,7 @@ title: "Zero Trust Network Access (ZTNA): Ultimate Cybersecurity Model"
 date: 2023-10-18
 excerpt: "Find out all about the ZTNA (Zero Trust Network Access) model in cybersecurity and Victrix's approach to ensuring maximum security for your organization’s networks"
 tags: ["Our articles"]
+topics: ["Cybersecurity"]
 slug: "zero-trust-network-access-ztna"
 coverImage: "/wp-content/uploads/2023/10/ztna-victrix-1-scaled.jpg"
 seoTitle: "Zero Trust Network Access (ZTNA) | Cybersecurity"

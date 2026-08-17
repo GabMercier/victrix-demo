@@ -3,6 +3,7 @@ title: "ServiceNow & AI: Transforming Your Organization’s Performance and AI G
 date: 2025-11-14
 excerpt: "Find out how to enhance your operations and govern AI securely with ServiceNow. Achieve measurable performance, compliance, and long-term value for your organization."
 tags: ["Our articles"]
+topics: ["Artificial intelligence", "Managed services"]
 slug: "servicenow-ai"
 coverImage: "/wp-content/uploads/2025/03/design-sans-titre-2.png"
 seoTitle: "ServiceNow AI: Transforming Performance and AI Governance"

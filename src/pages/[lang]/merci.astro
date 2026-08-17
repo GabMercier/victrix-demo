@@ -64,6 +64,18 @@ const links = sys.merci.links.map((l) => ({ ...l, href: localizePath(l.href, lan
       </nav>
     </div>
   </section>
+
+  {/* Conversion GA4 (P-11) — script GELÉ (contrat data-consent) : ne s'exécute
+      qu'avec le consentement Loi 25 ET si l'amorce gtag de BaseLayout est
+      rendue (PUBLIC_GA4_ID posé — l'amorce précède ce script dans l'ordre du
+      document). /api/forms redirige ici en 303 après une soumission réussie :
+      une vue = une conversion. Marquer « generate_lead » comme événement clé
+      dans l'admin GA4 (docs/operations.md §7ter). */}
+  <script is:inline type="text/plain" data-consent="analytics">
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'generate_lead', { method: 'formulaire' });
+    }
+  </script>
 </BaseLayout>
 
 <style>

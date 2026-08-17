@@ -3,6 +3,7 @@ title: "8 New Trends in IT in 2025: Rethinking Your IT Services for Greater Effi
 date: 2025-01-17
 excerpt: "Discover the 8 new trends in IT that call for a rethink of IT services. Optimize performance and cybersecurity with a MSP ready to tackle new challenges."
 tags: ["Our articles"]
+topics: ["Strategic consulting"]
 slug: "it-trends"
 coverImage: "/wp-content/uploads/2025/01/optical-fiber-background-600x600-1.jpg"
 seoTitle: "8 New Trends in IT in 2025: Elevate Your Business Efficiency"

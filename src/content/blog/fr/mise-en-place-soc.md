@@ -3,6 +3,7 @@ title: "Mise en place d’un SOC adapté à vos opérations TI "
 date: 2025-07-10
 excerpt: "La mise en place d'un SOC interne est-elle votre meilleure option? Découvrez comment mettre en place un SOC adapté aux besoins de votre entreprise."
 tags: ["Nos articles"]
+topics: ["Cybersécurité", "Services gérés"]
 slug: "mise-en-place-soc"
 coverImage: "/wp-content/uploads/2022/02/solution-sevoc-pourquoi.jpg"
 seoTitle: "Mise en place d'un SOC adapté à vos opérations TI"

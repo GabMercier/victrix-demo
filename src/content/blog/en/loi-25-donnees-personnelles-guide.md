@@ -3,6 +3,7 @@ title: "Law 25: Personal Data Protection in Quebec"
 date: 2024-09-12
 excerpt: "Read our guide and learn how organizations comply with the requirements of Law 25 on the protection of personal data. For more help, contact Victrix."
 tags: ["Our articles"]
+topics: ["Cybersecurity", "Strategic consulting"]
 slug: "law-25-personal-data-guide"
 coverImage: "/wp-content/uploads/2024/09/law25.jpg"
 seoTitle: "Law 25 Personal Data | Law and Requirements Guide"

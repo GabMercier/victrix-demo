@@ -25,10 +25,19 @@
 # interne Pagefind compile un module WebAssembly LOCAL (/pagefind/*.wasm —
 # stemming FR/EN); Chrome exige cette directive pour WebAssembly.instantiate.
 # Elle n'autorise QUE la compilation wasm — PAS eval()/new Function() JS.
+# OPS-CSP 2026-08-17 (édition planifiée — docs/formulaires.md §CSP + P-11) :
+#  - challenges.cloudflare.com (script-src, frame-src, connect-src) : widget
+#    anti-pourriel Turnstile des formulaires (activé par PUBLIC_TURNSTILE_SITE_KEY).
+#  - www.googletagmanager.com (script-src, connect-src) + *.google-analytics.com
+#    / *.analytics.google.com (connect-src, endpoints régionaux inclus) : GA4
+#    SOUS CONSENTEMENT — le script gtag reste gelé (type="text/plain") tant que
+#    le visiteur n'a pas accepté le bandeau Loi 25 (ConsentBanner.astro).
+#  - frame-src était absent (repli sur default-src 'self') : déclaré désormais,
+#    'self' + Turnstile uniquement.
 /fr/*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; font-src 'self'; connect-src 'self'; form-action 'self'; manifest-src 'self'
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://challenges.cloudflare.com https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://challenges.cloudflare.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; frame-src 'self' https://challenges.cloudflare.com; form-action 'self'; manifest-src 'self'
 /en/*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; font-src 'self'; connect-src 'self'; form-action 'self'; manifest-src 'self'
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://challenges.cloudflare.com https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://challenges.cloudflare.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; frame-src 'self' https://challenges.cloudflare.com; form-action 'self'; manifest-src 'self'
 
 # Sveltia CMS retiré (Phase 3 convergence, 2026-07-30) : CloudCannon est
 # l'éditeur du site. Le bloc CSP /admin/* et public/admin/ ont été supprimés;

@@ -39,6 +39,17 @@ interface Props {
    * by campaign landing pages (src/content/landing), which default to noindex.
    */
   noindex?: boolean;
+  /**
+   * Type de contenu pour le FILTRE de la recherche interne (2026-08-17) —
+   * valeur du filtre « Type » de Pagefind, posée sur <main> à côté de
+   * data-pagefind-body. Par ROUTE (le fichier de route EST le type) :
+   * « Service », « Article », « Page »… Même graphie FR/EN (mots communs).
+   * Absent → la page n'a pas de valeur de filtre (elle disparaît des
+   * résultats quand un filtre est actif) — donner un type à toute page
+   * indexable. L'interface Pagefind affiche le groupe automatiquement dès
+   * que l'index contient des filtres.
+   */
+  contentType?: string;
 }
 
 const {
@@ -51,6 +62,7 @@ const {
   tags,
   altLocalePath,
   noindex = false,
+  contentType,
 } = Astro.props;
 
 const t = useTranslations(lang);
@@ -82,6 +94,29 @@ const orgSchema = {
   url: new URL('/', Astro.site).href,
   logo: new URL('/favicon-32x32.png', Astro.site).href,
 };
+
+// P-11 — GA4 sous consentement Loi 25 (2026-08-17). PUBLIC_GA4_ID absent →
+// AUCUNE balise rendue (zéro requête, parité stricte avec l'existant).
+// Présent → deux balises GELÉES (type="text/plain" data-consent="analytics"),
+// que ConsentBanner (activateGatedScripts) dégèle à l'acceptation du bandeau
+// PUIS à chaque astro:page-load — le re-config gtag à chaque navigation envoie
+// le page_view de la page courante (suivi SPA voulu; gtag.js re-injecté vient
+// du cache navigateur). La CSP (public/_headers) autorise googletagmanager +
+// google-analytics depuis l'édition OPS-CSP du même jour. Accès défensif
+// import.meta.env : patron form.astro (bundle Bookshop navigateur).
+const env = import.meta.env ?? {};
+const GA4_ID = typeof env.PUBLIC_GA4_ID === 'string' ? env.PUBLIC_GA4_ID.trim() : '';
+// Amorce construite ici (un script inline Astro n'interpole pas {}) — injectée
+// via set:html. GA4_ID vient de l'environnement de build (opérateur), pas
+// d'une saisie visiteur.
+const ga4Bootstrap = GA4_ID
+  ? [
+      'window.dataLayer = window.dataLayer || [];',
+      'window.gtag = function () { window.dataLayer.push(arguments); };',
+      "window.gtag('js', new Date());",
+      `window.gtag('config', '${GA4_ID}');`,
+    ].join('\n')
+  : '';
 ---
 
 <!doctype html>
@@ -152,6 +187,23 @@ const orgSchema = {
         le périmètre data-pagefind-body supposent « 1 enfant = 1 section ». */}
     <slot name="head" />
 
+    {/* GA4 (P-11) — balises GELÉES tant que le visiteur n'a pas accepté le
+        bandeau Loi 25 (contrat data-consent, voir ConsentBanner.astro). Rien
+        n'est rendu sans PUBLIC_GA4_ID. L'amorce définit window.gtag AVANT les
+        scripts d'événements des pages (ordre du document — /merci, /recherche). */}
+    {GA4_ID && (
+      <script
+        is:inline
+        type="text/plain"
+        data-consent="analytics"
+        async
+        data-src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+      />
+    )}
+    {GA4_ID && (
+      <script is:inline type="text/plain" data-consent="analytics" set:html={ga4Bootstrap} />
+    )}
+
     {/* SPA-like navigation: swaps page content client-side with a crossfade,
         persists across the site, respects prefers-reduced-motion. Inline
         scripts below re-apply state on astro:after-swap; component scripts
@@ -188,8 +240,19 @@ const orgSchema = {
     {/* data-pagefind-body — périmètre de la recherche interne (P-06) : seules
         les pages indexables (pas de noindex) entrent dans l'index Pagefind, et
         seulement leur <main> (jamais le chrome header/footer). Dès qu'une page
-        porte l'attribut, toutes celles qui ne le portent pas sont exclues. */}
-    <main id="main-content" data-pagefind-body={noindex ? undefined : ''}>
+        porte l'attribut, toutes celles qui ne le portent pas sont exclues.
+        data-pagefind-filter (2026-08-17) : filtre « Type » depuis l'attribut
+        data-content-type (prop contentType) — l'interface de /recherche
+        l'affiche automatiquement. Le slot par défaut suit le contrat « 1
+        enfant = 1 section » (comptage design:previews) avec DEUX exceptions
+        par attribut : script/style/link et [data-crumbs] (fil d'Ariane —
+        src/components/Breadcrumbs.astro). */}
+    <main
+      id="main-content"
+      data-pagefind-body={noindex ? undefined : ''}
+      data-pagefind-filter={!noindex && contentType ? 'Type[data-content-type]' : undefined}
+      data-content-type={!noindex && contentType ? contentType : undefined}
+    >
       <slot />
     </main>
 

@@ -3,6 +3,7 @@ title: "Comprendre la directive NIS2 pour assurer sa conformité"
 date: 2024-11-27
 excerpt: "Parcourez le guide de nos experts en cybersécurité sur la directive NIS2 pour découvrir si vous y êtes assujettis et comment assurer votre conformité."
 tags: ["Nos articles"]
+topics: ["Cybersécurité"]
 slug: "directive-nis2"
 coverImage: "/wp-content/uploads/2024/11/design-sans-titre.jpg"
 seoTitle: "Directive NIS2: Assurez votre conformité"

@@ -3,6 +3,7 @@ title: "8 Tendances TI en 2025: Repenser vos services TI pour plus d'efficacité
 date: 2025-01-17
 excerpt: "Découvrez les 8 tendances TI qui invitent à repenser les services TI. Optimisez performance et cybersécurité avec un fournisseur qui répond aux nouveaux défis."
 tags: ["Nos articles"]
+topics: ["Conseil stratégique"]
 slug: "tendances-ti"
 coverImage: "/wp-content/uploads/2025/01/optical-fiber-background-scaled.jpg"
 seoTitle: "8 Tendances TI en 2025: Élevez votre efficacité d’affaires"

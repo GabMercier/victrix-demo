@@ -100,6 +100,26 @@
         "<strong>Can Victrix Help My Organization Secure Its Cloud?</strong>",
         "Victrix is your strategic partner for cloud cybersecurity services such as <a href=\"/en/expertise/cloud-services-provider/\"><strong>secure infrastructure deployment</strong></a> (PaaS, SaaS, and IaaS), <strong>application transformation and optimization</strong> (DevOps/DevSecOps), <strong>API protection</strong>, and <strong>process automation</strong>.  n"
       ]
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Related resources",
+      "tags": [
+        "Cybersecurity"
+      ],
+      "ctaLabel": "See all resources",
+      "ctaHref": "/en/ressources"
+    },
+    {
+      "type": "form",
+      "title": "Security posture assessment",
+      "intro": "Get a clear picture of your security posture — one of our experts will get back to you shortly.",
+      "submitLabel": "Send my request",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "campagne-evaluation",
+      "fields": []
     }
   ],
   "slug": "cybersecurity",

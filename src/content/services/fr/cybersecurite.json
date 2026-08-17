@@ -100,6 +100,26 @@
         "<strong>Est-ce que Victrix peut aider mon organisation à sécuriser l'infonuagique ?</strong>",
         "Victrix est votre partenaire stratégique pour bénéficier de services de cybersécurité infonuagique tels que le <a href=\"/expertise/services-infonuagiques/\"><strong>déploiement sécurisé d’infrastructures</strong> </a>(PaaS, SaaS et IaaS), la <strong>transformation et l’optimisation d’applications </strong>(DevOps/DevSecOps), la<strong> protection des APIs</strong> et l’<strong>automatisation des processus</strong>. n"
       ]
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Ressources liées",
+      "tags": [
+        "Cybersécurité"
+      ],
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
+    },
+    {
+      "type": "form",
+      "title": "Évaluation posture sécurité",
+      "intro": "Obtenez un portrait clair de votre posture de sécurité — un de nos experts vous recontacte rapidement.",
+      "submitLabel": "Envoyer ma demande",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "campagne-evaluation",
+      "fields": []
     }
   ],
   "seoTitle": "La cybersécurité au service de vos affaires | Expertise"

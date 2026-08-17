@@ -3,6 +3,7 @@ title: "Zero Trust Network Access (ZTNA): modèle de cybersécurité optimal"
 date: 2023-10-18
 excerpt: "Découvrez tout au sujet du modèle ZTNA (Zero Trust Network Access) en cybersécurité et l’approche de Victrix pour assurer une sécurité optimale de vos réseaux."
 tags: ["Nos articles"]
+topics: ["Cybersécurité"]
 slug: "zero-trust-network-access-ztna"
 coverImage: "/wp-content/uploads/2023/10/ztna-victrix-scaled.jpg"
 seoTitle: "Zero Trust Network Access (ZTNA) | Cybersécurité"

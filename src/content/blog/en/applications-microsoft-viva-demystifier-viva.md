@@ -3,6 +3,7 @@ title: "Demystifying All Microsoft Viva Apps"
 date: 2024-02-15
 excerpt: "Explore Microsoft Viva apps and discover how this employee experience platform boosts the productivity and engagement of your teams."
 tags: ["Our articles"]
+topics: ["Productivity"]
 slug: "microsoft-viva-apps"
 coverImage: "/wp-content/uploads/2024/02/microsoft-viva_image-article-1.png"
 seoTitle: "Microsoft Viva Apps: Demystifying Viva"

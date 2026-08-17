@@ -3,6 +3,7 @@ title: "Ransomware: 8 Ransomware Protection Tips for Organizations"
 date: 2023-11-30
 excerpt: "Learn all about ransomware and how to protect your organization against them. Victrix is your partner to maintain a security posture beyond reproach."
 tags: ["Our articles"]
+topics: ["Cybersecurity"]
 slug: "ransomware-protection-tips"
 coverImage: "/wp-content/uploads/2023/11/ransomware-e1701148187185-1024x741-1.png"
 seoTitle: "8 Ransomware Protection Tips for Organizations"

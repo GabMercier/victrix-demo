@@ -3,6 +3,7 @@ title: "Démystifier les fonctionnalités de Microsoft Copilot et son intégrati
 date: 2025-01-29
 excerpt: "Explorez les capacités de l’IA générative avec les fonctionnalités de Microsoft Copilot. Victrix révèle le pouvoir de l’IA intégré à vos outils M365."
 tags: ["Nos articles"]
+topics: ["Intelligence artificielle", "Productivité"]
 slug: "fonctionnalites-microsoft-copilot"
 coverImage: "/wp-content/uploads/2025/01/design-sans-titre-1.jpg"
 seoTitle: "Explorez les fonctionnalités de Microsoft Copilot"

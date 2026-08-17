@@ -3,6 +3,7 @@ title: "Démystifier les applications Microsoft Viva"
 date: 2024-02-15
 excerpt: "Explorez les applications Microsoft Viva et découvrez comment cette plateforme expérience employé stimule la productivité et l’engagement de vos équipes"
 tags: ["Nos articles"]
+topics: ["Productivité"]
 slug: "applications-microsoft-viva-demystifier-viva"
 coverImage: "/wp-content/uploads/2024/02/microsoft-viva_image-article-1024x623-1.jpg"
 seoTitle: "Applications Microsoft Viva: démystifier Viva"

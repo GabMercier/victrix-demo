@@ -3,6 +3,7 @@ title: "Gouvernance Power Platform: Conseils et accompagnement"
 date: 2024-05-03
 excerpt: "Découvrez ce qu’est la gouvernance Power Platform. Maîtrisez le potentiel de vos apps et bénéficiez de conseils et d’un accompagnement personnalisé avec Victrix."
 tags: ["Nos articles"]
+topics: ["Productivité", "Conseil stratégique"]
 slug: "gouvernance-power-platform-conseils"
 coverImage: "/wp-content/uploads/2024/05/power_platform_image-article.png"
 seoTitle: "Gouvernance Power Platform: Conseil et accompagnement"

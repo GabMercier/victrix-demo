@@ -3,6 +3,7 @@ title: "Ransomware (rançongiciels): 8 façons de se protéger"
 date: 2023-11-30
 excerpt: "Découvrez tout sur les ransomware (rançongiciels) et comment protéger votre organisation. Victrix, votre partenaire pour une posture de sécurité irréprochable."
 tags: ["Nos articles"]
+topics: ["Cybersécurité"]
 slug: "ransomware-rancongiciels"
 coverImage: "/wp-content/uploads/2023/11/ransomware-e1701148187185-1024x741-1.jpg"
 seoTitle: "Ransomware (rançongiciels): 8 façons de se protéger"

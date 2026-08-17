@@ -3,6 +3,7 @@ title: "Victrix expands its cybersecurity offering in France"
 date: 2024-09-16
 excerpt: "By joining forces with COMITEM, Victrix is expanding its offering in France as part of the strong branding strategy launched by Alan Allman Associates."
 tags: ["Our news"]
+topics: ["Cybersecurity"]
 slug: "expands-cybersecurity-offering-france"
 coverImage: "/wp-content/uploads/2024/09/image-landing-page-victrix.jpg"
 wpUrl: "/en/expands-cybersecurity-offering-france/"

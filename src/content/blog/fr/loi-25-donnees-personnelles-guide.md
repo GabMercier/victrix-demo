@@ -3,6 +3,7 @@ title: "Loi 25: protection des renseignements personnels au Québec"
 date: 2024-09-09
 excerpt: "Lisez notre guide et apprenez comment les organisations se conforment aux exigences de la loi 25 sur la protection des données personnelles."
 tags: ["Nos articles"]
+topics: ["Cybersécurité", "Conseil stratégique"]
 slug: "loi-25-donnees-personnelles-guide"
 coverImage: "/wp-content/uploads/2024/09/image-1-v2-1-scaled.jpg"
 seoTitle: "Loi 25 données personnelles | Guide loi et exigences"

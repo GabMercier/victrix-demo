@@ -3,6 +3,7 @@ title: "Sécurité Internet des Objets: enjeux et solutions pour différents sec
 date: 2024-12-03
 excerpt: "Découvrez nos solutions pour répondre aux principaux défis des grandes organisations et de divers secteurs en matière de sécurité Internet des Objets."
 tags: ["Nos articles"]
+topics: ["Cybersécurité"]
 slug: "securite-internet-des-objets"
 coverImage: "/wp-content/uploads/2024/12/design-sans-titre-2.jpg"
 seoTitle: "Sécurité Internet des Objets: enjeux et solutions"

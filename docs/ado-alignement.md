@@ -1,4 +1,14 @@
-# Alignement du backlog Azure DevOps — état au 2026-08-12
+# Alignement du backlog Azure DevOps — état au 2026-08-12 (+ addendum du 17)
+
+> **⚠️ Mise à jour 2026-08-17** : voir l'**addendum en fin de document** — la
+> semaine « fermeture maximale » a livré P-08, P-11 (code), le portage du
+> formulaire Contact, le formulaire Évaluation sur Cybersécurité, le fil
+> d'Ariane visible, les schémas Service/LocalBusiness, les filtres de
+> recherche et le maillage : plusieurs stories « Garder » deviennent
+> fermables. La leçon F2.5 (critères d'acceptation à vérifier clause par
+> clause) a aussi RETIRÉ deux stories de la liste « Fermer » du 12 :
+> « Formulaires contextuels par page » et « Consentement Loi 25 + reCAPTCHA »
+> ne se ferment qu'après la pose des clés (voir l'addendum).
 
 **Quoi** : la correspondance entre les user stories du projet ADO « Victrix -
 Refonte site Web Team » et l'état réel du prototype Astro + CloudCannon
@@ -175,3 +185,66 @@ Les 4 stories restent : GA4 + GTM + événements = **P-11**, bloqué clés + CSP
   P-08 (courriel), P-11 (analytics), P-13 (footer bureaux), P-17/P-18
   (Ø Studio + inventaire URLs), P-19 (migration contenu), P-20 (QA), P-22
   (multi-étapes), P-23 (planification par section).
+
+---
+
+## Addendum — semaine du 2026-08-17 (« fermeture maximale »)
+
+### Correction sur la liste du 12 (leçon AC de F2.5)
+
+Le critère d'acceptation de « Formulaires contextuels par page » exige, sur la
+page Cybersécurité : le formulaire « Évaluation posture sécurité » (pas le
+générique), labels permanents, consentement + captcha PRÉSENTS, événement de
+conversion GA4 à la soumission, confirmation visuelle + courriel automatique.
+Deux stories sortent donc de la liste « Fermer maintenant » du 12 et passent
+dans le tableau ci-dessous : **« Formulaires contextuels par page »** et
+**« Consentement Loi 25 + reCAPTCHA »**. Décompte du 12 corrigé : **20 Fermer
++ 5 Retirer**.
+
+### Livré cette semaine (dépôt, branche spike/cloudcannon)
+
+- Formulaire **« Évaluation posture sécurité »** posé sur la page service
+  Cybersécurité FR + EN (`formId: campagne-evaluation`).
+- **Page Contact portée sur /api/forms** (2 modes ; `_formId: contact` ;
+  définitions réécrites miroir de la page ; garde-fous de build page ↔
+  définition).
+- **P-08** : courriel de confirmation au visiteur (2ᵉ envoi SMTP2GO, gabarit
+  fixe FR/EN, échec non bloquant ; +4 tests).
+- **P-11 (code)** : gtag GELÉ sous consentement Loi 25 dans BaseLayout
+  (inerte sans `PUBLIC_GA4_ID`), conversion `generate_lead` sur /merci,
+  Site Search sur /recherche (`?q=` + saisie Pagefind) ; **CSP appliquée**
+  (Turnstile + GA4) dans `public/_headers`.
+- **Fil d'Ariane VISIBLE** sur services (parent inclus) et pages génériques —
+  aligné au JSON-LD (même tableau).
+- **Schémas** : `Service` (services indexables) + `LocalBusiness` ×3 bureaux
+  (page Contact).
+- **Filtre « Type »** dans la recherche interne (Service / Article / Page).
+- **Maillage F3.2** : champ `topics` du blogue (distinct des catégories), 54
+  fichiers d'articles thématisés, 27 bandes « Ressources liées » sur les
+  services (26 posées + l'existante IA qui matche désormais).
+- **E2e +6** : formulaires (maquette + validation), formulaire lié sur
+  service, fil d'Ariane, recherche, merci (`tests/e2e/formulaires-recherche`).
+
+### Passe 2 de fermetures — conditions
+
+| Story ADO | Fermable quand | Reste à faire |
+|---|---|---|
+| Formulaires contextuels par page (F2.5) | Clés posées + vérif préversion | OPS §7ter (SMTP2GO, Turnstile, GA4) puis test réel : widget visible, POST → /merci, 2 courriels, événement GA4 |
+| Consentement Loi 25 + reCAPTCHA (F2.5) | idem | idem (le captcha doit être VISIBLE en prod) |
+| Confirmation visuelle + email (F2.5) | idem | idem — P-08 livré, activation = clés |
+| GA4 + GTM + événements de conversion (F3.3) | Clés + vérif DebugView | Poser `PUBLIC_GA4_ID`, marquer `generate_lead` événement clé dans GA4 |
+| Site Search tracking (F3.3) | idem | Vérifier l'événement `search` en DebugView |
+| Suivi GA4 Site Search (F2.4) | idem | Doublon assumé de la précédente |
+| Breadcrumbs sur toutes les pages internes (F2.3) | Vérif visuelle préversion | Livré (services + pages ; articles déjà faits) — valider le rendu |
+| schema.org LocalBusiness/Organization/Service/FAQ (F3.2) | Maintenant | Tout est émis — valider au Rich Results Test si souhaité |
+| Page de résultats stylisée + filtres par type (F2.4) | Vérif sur un BUILD | Le filtre n'apparaît que sur un build (index Pagefind) — vérifier sur préversion |
+| Maillage interne Services <-> Ressources (F3.2) | Vérif visuelle préversion | Bandes livrées partout ; ajuster les thèmes au besoin (guide §blogue) |
+| Tests formulaires + moteur de recherche (F4.1) | E2e vert | Redémarrer le dev server puis `npm run test:e2e` |
+
+### Toujours ouvert après cette semaine
+
+Gating livres blancs (pas de PDF fourni) · GSC/Bing + Heatmaps (domaine /
+décision) · WebP/AVIF (F3.4) · P-13 footer bureaux (l'export2 n'a PAS le bloc
+— dépendance design) · audits Lighthouse/axe + tests manuels (F4.2/F4.3) ·
+migration contenu (P-17/18/19) · mise en ligne (F4.5) · Cloud Cannon licence
+payante (Task — préalable à l'invitation des gestionnaires).

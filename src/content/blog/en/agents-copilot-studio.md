@@ -3,6 +3,7 @@ title: "Your Personalized Intelligent Agent: A Trusted AI Assistant"
 date: 2025-07-03
 excerpt: "Discover all the benefits of a tailored Copilot intelligent agent that understands your organization and its processes. Find out how Victrix can support you in its design and implementation."
 tags: ["Our articles"]
+topics: ["Artificial intelligence", "Productivity"]
 slug: "copilot-studio-agents"
 coverImage: "/wp-content/uploads/2025/07/cover-article-victrix.jpg"
 seoTitle: "Personalized Intelligent Agent: Your Trusted Partner | Copilot"

@@ -3,6 +3,7 @@ title: "Setting Up a SOC Aligned with Your IT Operations"
 date: 2025-07-10
 excerpt: "Is setting up an in-house SOC your best option? Find out how to set up a SOC tailored to your business needs."
 tags: ["Our articles"]
+topics: ["Cybersecurity", "Managed services"]
 slug: "setting-up-a-soc"
 coverImage: "/wp-content/uploads/2022/02/solution-sevoc-pourquoi.jpg"
 seoTitle: ""

@@ -3,6 +3,7 @@ title: "ServiceNow ITSM: Business-Led Strategy to Scale IT Operations"
 date: 2025-02-11
 excerpt: "See why companies choose the ServiceNow ITSM platform. Find out how to maximize IT efficiency and ROI with ServiceNow ITSM and a strong business-led strategy."
 tags: ["Our articles"]
+topics: ["Managed services"]
 slug: "servicenow-itsm"
 coverImage: "/wp-content/uploads/2025/02/victrix.png"
 seoTitle: "ServiceNow ITSM: Business-Led Strategy to Scale IT Operations"

@@ -119,6 +119,7 @@ const useCampaignFooter = resolveFooterMode(page.data.footerMode) === 'allege';
   description={page.data.description}
   noindex={page.data.noindex}
   altLocalePath={altLocalePath}
+  contentType="Page"
 >
   {
     /* GOTCHA Astro : une expression FAUSSE portant slot=… remplit quand même

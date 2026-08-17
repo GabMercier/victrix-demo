@@ -130,6 +130,16 @@
         "Faites appel à notre expertise pour vos <strong>projets de migration vers AWS ou Azure</strong> afin de bénéficier d’un stockage infonuagique sécurisé, flexible et accessible. \n Notre approche distinctive nous permet d’accélérer la dématérialisation des centres de données en offrant des services agiles de qualité, grâce à notre pratique multi-cloud.",
         "Rencontrez nos experts en solutions infonuagiques Contactez-nous pour en discuter!"
       ]
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Ressources liées",
+      "tags": [
+        "Infonuagique"
+      ],
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
     }
   ],
   "seoTitle": "Services infonuagiques adaptés à vos enjeux | Expertise"

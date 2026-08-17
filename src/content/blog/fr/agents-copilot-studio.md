@@ -3,6 +3,7 @@ title: "Votre agent intelligent sur mesure: votre assistant IA de confiance"
 date: 2025-07-03
 excerpt: "Découvrez tous les bénéfices d’un agent intelligent Copilot sur mesure qui connait votre organisation et ses processus. Voyez comment Victrix vous accompagne dans sa conception et mise en œuvre."
 tags: ["Nos articles"]
+topics: ["Intelligence artificielle", "Productivité"]
 slug: "agents-copilot-studio"
 coverImage: "/wp-content/uploads/2025/07/cover-article-victrix.jpg"
 seoTitle: "L'agent intelligent sur mesure: votre assistant IA de confiance"

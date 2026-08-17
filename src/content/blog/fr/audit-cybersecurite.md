@@ -3,6 +3,7 @@ title: "Audit de cybersécurité: Gérer le risque et la conformité"
 date: 2024-10-08
 excerpt: "Assurez votre conformité et réduisez vos risques grâce à l’audit de cybersécurité. Découvrez les avantages de l’audit de votre organisation avec Victrix."
 tags: ["Nos articles"]
+topics: ["Cybersécurité"]
 slug: "audit-cybersecurite"
 coverImage: "/wp-content/uploads/2024/10/computationally-intensive-tasks-servers-scaled.jpg"
 seoTitle: "Audit de cybersécurité: Gérer le risque et la conformité"

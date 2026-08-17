@@ -3,6 +3,7 @@ title: "DORA Regulation: Compliance for the Financial Sector"
 date: 2024-10-14
 excerpt: "Learn more about the DORA regulation, its requirements, and how Victrix can help your financial institution comply."
 tags: ["Our articles"]
+topics: ["Cybersecurity"]
 slug: "dora-regulation"
 coverImage: "/wp-content/uploads/2024/10/business-corporate-protection-safety-security-concept-1-scaled.jpg"
 seoTitle: "DORA regulation | Compliance and resilience"

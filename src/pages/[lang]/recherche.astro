@@ -58,6 +58,39 @@ const devNote =
       <noscript><p class="search-page__note">{sys.recherche.noscript}</p></noscript>
     </div>
   </section>
+
+  {/* Suivi « Site Search » GA4 (P-11) — script GELÉ (contrat data-consent).
+      Deux sources : le paramètre ?q= (liens partagés / entrée du header) à
+      l'activation, et la saisie dans le champ Pagefind (écouteur document
+      délégué, debounce — le DOM Pagefind est injecté après coup). Garde
+      window.victrixSearchTrack : l'activation rejoue ce script à chaque
+      navigation vers /recherche (ClientRouter), l'écouteur ne doit s'attacher
+      qu'une fois par session. */}
+  <script is:inline type="text/plain" data-consent="analytics">
+    (function () {
+      const send = function (term) {
+        if (term && typeof window.gtag === 'function') {
+          window.gtag('event', 'search', { search_term: term });
+        }
+      };
+      send(new URLSearchParams(window.location.search).get('q'));
+      if (window.victrixSearchTrack) return;
+      window.victrixSearchTrack = { last: '', timer: 0 };
+      document.addEventListener('input', function (e) {
+        const el = e.target;
+        if (!el || !el.classList || !el.classList.contains('pagefind-ui__search-input')) return;
+        const state = window.victrixSearchTrack;
+        clearTimeout(state.timer);
+        state.timer = setTimeout(function () {
+          const v = (el.value || '').trim();
+          if (v && v !== state.last) {
+            state.last = v;
+            send(v);
+          }
+        }, 1500);
+      });
+    })();
+  </script>
 </BaseLayout>
 
 {/* Init Pagefind UI. define:vars ⇒ is:inline (CSP : 'unsafe-inline' déjà

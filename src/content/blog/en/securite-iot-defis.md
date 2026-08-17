@@ -3,6 +3,7 @@ title: "IoT Security: Understanding the Challenges for Enterprises"
 date: 2024-09-30
 excerpt: "Discover the top IoT security challenges. Learn how to protect your connected devices from cybersecurity threats."
 tags: ["Our articles"]
+topics: ["Cybersecurity"]
 slug: "iot-security-challenges"
 coverImage: "/wp-content/uploads/2024/09/design-sans-titre-7-1.jpg"
 seoTitle: "Understanding IoT Security Challenges"

@@ -215,6 +215,39 @@ la « planification » repose donc sur trois pièces (2026-07-30) :
 = réutiliser `src/lib/schedule.ts` + deux champs de dates (patron de la
 bannière); chantier au backlog (P-23, plan-prompts.md).
 
+## 7ter. Activer formulaires + analytics (les clés — OPS, une fois)
+
+La CSP (`public/_headers`) autorise **depuis le 2026-08-17** Turnstile
+(`challenges.cloudflare.com`) et GA4 (`googletagmanager.com`,
+`*.google-analytics.com`) — les clés peuvent donc être posées sans autre
+changement de code. Tout est **inerte tant que les variables sont absentes** :
+sans clés, le site est strictement identique.
+
+Dans Cloudflare Pages → Settings → Environment variables (production **et**
+préversions si vous voulez tester sur une branche) :
+
+| Variable | Valeur | Effet |
+|---|---|---|
+| `PUBLIC_FORMS_ENABLED` | `1` | Les sections « form » deviennent de vrais formulaires POST |
+| `PUBLIC_TURNSTILE_SITE_KEY` | clé de site Turnstile | Widget anti-pourriel affiché |
+| `TURNSTILE_SECRET_KEY` | clé secrète Turnstile | Vérification serveur du jeton |
+| `SMTP2GO_API_KEY` | clé API SMTP2GO | Envoi réel des courriels |
+| `FORMS_FROM_EMAIL` | expéditeur **vérifié** dans SMTP2GO | Adresse d'envoi |
+| `FORMS_TO_EMAIL` | boîte de réception équipe | Destinataire par défaut (un formulaire peut la surcharger) |
+| `PUBLIC_GA4_ID` | `G-XXXXXXXXXX` | Balises GA4 **gelées** émises ; elles ne s'exécutent qu'après acceptation du bandeau Loi 25 |
+
+Où créer les comptes/clés : Turnstile → tableau de bord Cloudflare → Turnstile
+→ Add site (domaine `victrix-demo.pages.dev` + domaine final) ; SMTP2GO →
+Settings → API Keys + Sender domains (vérifier le domaine de
+`FORMS_FROM_EMAIL`) ; GA4 → admin Google Analytics → propriété → flux Web →
+ID de mesure. Après la pose : redéployer (Retry deployment ou push) — les
+variables ne s'appliquent qu'aux builds suivants.
+
+Vérifications (préversion) : widget Turnstile visible sous le formulaire ;
+soumission → `/fr/merci/` + courriel reçu ; **aucune requête
+google-analytics avant d'accepter le bandeau**, requêtes `collect` après
+acceptation (onglet Réseau) ; GA4 DebugView montre les événements.
+
 ## 8. Dépannage
 
 | Symptôme | Cause | Solution |
@@ -226,7 +259,7 @@ bannière); chantier au backlog (P-23, plan-prompts.md).
 | Palette de sections avec des doublons | `_structures.sections` écrit à la main en double avec les entrées générées par `@bookshop/generate` | Ne jamais lister les sections vous-même dans `cloudcannon.config.yml` — seules les clés `style`/`remove_extra_inputs` sont à nous, voir le commentaire au-dessus de `_structures.sections` |
 | Redirection CMS servie en `200` au lieu de `301` | `_routes.json` (adaptateur Cloudflare) n'exclut pas la source — le worker (`include: "/*"`) intercepte avant `_redirects` | Déjà corrigé dans `astro.config.mjs` (intégration `victrix:redirects`, exclusion automatique) — si ça revient, vérifier que le build de prod (pas `STATIC_ONLY`) a bien tourné après l'ajout d'une redirection |
 | `/api/forms` répond `405` sur le domaine de test CloudCannon | Attendu : le build `STATIC_ONLY` ne peut émettre qu'un stub GET statique pour cette route (pas de Pages Function en dehors de Cloudflare) | Rien à corriger — tester le vrai POST sur une préversion de branche Cloudflare, pas sur CloudCannon |
-| Widget Turnstile absent malgré `PUBLIC_TURNSTILE_SITE_KEY` posée | CSP (`public/_headers`) ne liste pas encore `challenges.cloudflare.com` — modification documentée mais volontairement pas appliquée (voir `formulaires.md` §7) | Ne pas poser la clé en production tant que la CSP n'est pas mise à jour — le script serait bloqué silencieusement |
+| Widget Turnstile absent malgré `PUBLIC_TURNSTILE_SITE_KEY` posée | Avant 2026-08-17 : la CSP ne listait pas `challenges.cloudflare.com`. C'est **appliqué** depuis (voir §7ter) — si le widget manque encore, vérifier que le build servi date d'après la pose des variables | Redéployer après la pose des clés ; vérifier la console navigateur pour un éventuel blocage CSP résiduel |
 | Un fichier texte édité en PowerShell (`.gitignore`, `.env`…) devient illisible / git le traite comme binaire | `>>`/`echo "…" >> fichier` en PowerShell écrit en **UTF-16LE** par défaut ; ajouté à un fichier existant en UTF-8, ça corrompt le fichier (rencontré sur `.gitignore` le 14 juillet 2026 — `git diff` l'a montré en « Bin » au lieu d'un diff texte) | Éditer avec un éditeur de texte, ou `Add-Content -Encoding utf8`/`Set-Content -Encoding utf8` — jamais `>>` nu sur un fichier UTF-8 existant |
 
 ## 9. Fichiers liés

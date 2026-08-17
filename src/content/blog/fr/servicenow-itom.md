@@ -3,6 +3,7 @@ title: "ServiceNow ITOM: modules, avantages, coût et ROI"
 date: 2025-05-07
 excerpt: "Simplifiez la gestion des services, réduisez les temps d'arrêt et maximisez le ROI avec ServiceNow ITOM. Choisissez Victrix pour une mise en œuvre réussie."
 tags: ["Nos articles"]
+topics: ["Services gérés", "Infonuagique"]
 slug: "servicenow-itom"
 coverImage: "/wp-content/uploads/2024/11/servicenow-victrix.png"
 seoTitle: "ServiceNow ITOM: Améliorez votre visibilité, rapidité et ROI"

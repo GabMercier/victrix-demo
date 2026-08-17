@@ -3,6 +3,7 @@ title: "Copilot vs ChatGPT: Adoptez l’IA la plus stratégique pour vos affaire
 date: 2025-03-18
 excerpt: "Copilot ou ChatGPT? Parcourez notre comparatif pour choisir l'IA qui aura un réel impact sur votre productivité, et adaptée à vos besoins sur Microsoft 365."
 tags: ["Nos articles"]
+topics: ["Intelligence artificielle"]
 slug: "copilot-vs-chatgpt"
 coverImage: "/wp-content/uploads/2025/03/linkedin_templates.png"
 seoTitle: "Copilot vs ChatGPT: choisir l'IA la plus stratégique pour votre entreprise"

@@ -82,6 +82,16 @@
         "<a href=\"/carriere/\">Faites partie de l'équipe</a>",
         "Assurez le succès de vos projets stratégiques avec Victrix n"
       ]
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Ressources liées",
+      "tags": [
+        "Conseil stratégique"
+      ],
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
     }
   ],
   "seoTitle": "Conseil stratégique | Expertise multidisciplinaire"

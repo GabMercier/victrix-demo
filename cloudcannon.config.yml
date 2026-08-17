@@ -197,12 +197,28 @@ collections_config:
       tags:
         type: array
         label: Étiquettes
+        comment: >-
+          Catégories de l'index du blogue (onglets de filtre + méga-menu
+          Ressources). Pour relier l'article aux pages Services, utiliser
+          plutôt les Thèmes ci-dessous.
       # Type d'entrée du tableau (notation documentée `nom[*]`) : sans lui,
       # un tableau VIDE est « misconfigured » — CloudCannon ne sait pas quoi
       # créer au « + Ajouter » (même patron que options[*]/items[*] plus bas).
       tags[*]:
         type: text
         label: Étiquette
+      topics:
+        type: array
+        label: Thèmes (maillage Services)
+        comment: >-
+          Relie l'article aux bandes « Ressources liées » des pages Services.
+          Reprendre EXACTEMENT un nom d'expertise : Cybersécurité, Intelligence
+          artificielle, Infonuagique, Productivité, Services gérés, Conseil
+          stratégique (équivalents anglais dans les fichiers EN). N'alimente
+          PAS les filtres du blogue.
+      topics[*]:
+        type: text
+        label: Thème
 
   home:
     path: src/content/home

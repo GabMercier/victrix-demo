@@ -36,6 +36,13 @@
      redirection (voir plus bas).
    - **Date de publication** : une date **future** programme l'article (voir
      « Planifier » plus bas).
+   - **Étiquettes** vs **Thèmes (maillage Services)** : deux champs distincts.
+     Les *étiquettes* sont les catégories du blogue (onglets de filtre +
+     méga-menu Ressources). Les *thèmes* relient l'article aux bandes
+     « Ressources liées » des pages Services — reprendre exactement un nom
+     d'expertise (Cybersécurité, Intelligence artificielle, Infonuagique,
+     Productivité, Services gérés, Conseil stratégique ; équivalents anglais
+     côté EN). Un article sans thème n'apparaît dans aucune bande.
    - **Titre SEO (surcharge)** et **Masquer des moteurs de recherche** : les
      réglages de référencement par article (voir « Bien référencer une page »).
 4. **Save** → l'article part en publication (en ligne en quelques minutes).

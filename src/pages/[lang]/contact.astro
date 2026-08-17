@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import JsonLd from '../../components/JsonLd.astro';
 import { type Locale, localePaths, localizePath } from '../../i18n/config';
 import { getLocaleData } from '../../i18n/locale-data';
 
@@ -30,13 +31,24 @@ const c = await getLocaleData('contact', lang);
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé (l'ancienne
  * feuille de la page est supprimée).
  *
- * SUIVI PLANIFIÉ (docs/formulaires.md §10) : formulaire encore en MAQUETTE —
- * aucun `action`, le script en bas simule la confirmation (preventDefault).
- * Le backend /api/forms est prêt ; le portage (POST /api/forms +
- * data-astro-reload + champs cachés du contrat §4, derrière
- * PUBLIC_FORMS_ENABLED) reste un travail de gabarit seulement. Ne pas oublier
- * de débrancher la confirmation simulée dans ce mode.
+ * PORTAGE /api/forms FAIT (2026-08-17 — docs/formulaires.md §10) : DEUX MODES,
+ * même règle que la section « form » (form.astro) :
+ *  - PUBLIC_FORMS_ENABLED absente → MAQUETTE inchangée (aucun `action`, le
+ *    script en bas simule la confirmation — il se repère par
+ *    [data-contact-form], attribut posé seulement dans ce mode) ;
+ *  - PUBLIC_FORMS_ENABLED="1" → vrai <form method="POST" action="/api/forms">
+ *    avec le contrat de champs §4 : `lang`, `source`, `_formId: contact`
+ *    (le serveur dérive requis/courriels/cases et la liste blanche des selects
+ *    DEPUIS la définition src/data/forms/<lang>/contact.json), pot de miel
+ *    `website`, bannière ?erreur=1, widget Turnstile si la clé est posée,
+ *    data-astro-reload (POST natif urlencoded, vrai suivi du 303 vers /merci).
+ * Les `name` des champs sont DÉRIVÉS de la définition (fieldName partagé) et
+ * deux garde-fous de build cassent la compilation si la page et la définition
+ * divergent (libellés, options des selects) — une dérive silencieuse ferait
+ * rejeter des soumissions légitimes.
  */
+import { getEntry } from 'astro:content';
+import { fieldName } from '../../lib/forms/field-name';
 
 // Locale-neutral coordinates (template-only, mirrors the office cards order).
 const officePhones = [
@@ -46,6 +58,64 @@ const officePhones = [
 ];
 
 const consentHtml = c.consentText.replace('{privacy}', localizePath('/politique-confidentialite', lang));
+
+// --- Formulaire réel : définition, noms de champs, garde-fous ---------------
+const formDefEntry = await getEntry('forms', `${lang}/contact`);
+if (!formDefEntry) {
+  throw new Error(
+    `[contact] définition introuvable : src/data/forms/${lang}/contact.json — la page Contact exige un formulaire « contact » par langue.`,
+  );
+}
+const formDef = formDefEntry.data;
+const defNames = new Map(formDef.fields.map((f, i) => [f.label, fieldName(f.label, i)]));
+/** Nom HTML d'un champ, par LIBELLÉ exact de la définition (garde-fou build). */
+const nameFor = (label: string): string => {
+  const name = defNames.get(label);
+  if (!name) {
+    throw new Error(
+      `[contact] champ « ${label} » absent de src/data/forms/${lang}/contact.json — réaligner la définition avec la page (libellés identiques, à l'accent près).`,
+    );
+  }
+  return name;
+};
+/** Les options d'un select de la page doivent égaler celles de la définition. */
+const assertSameOptions = (label: string, options: string[]): void => {
+  const defOptions = formDef.fields.find((f) => f.label === label)?.options ?? [];
+  const same =
+    options.length === defOptions.length && options.every((opt, i) => opt === defOptions[i]);
+  if (!same) {
+    throw new Error(
+      `[contact] options de « ${label} » désalignées entre src/data/contact/${lang}.json (page) et src/data/forms/${lang}/contact.json (définition — la liste blanche du serveur).`,
+    );
+  }
+};
+assertSameOptions(c.labels.subject, c.subjectOptions);
+assertSameOptions(c.labels.expertise, c.expertiseOptions);
+// La case de consentement est identifiée par TYPE (son libellé de définition
+// est interne — la page affiche son propre texte riche avec le lien).
+const consentDefField = formDef.fields.find((f) => f.type === 'checkbox');
+if (!consentDefField) {
+  throw new Error(
+    `[contact] la définition src/data/forms/${lang}/contact.json doit contenir une case à cocher (consentement Loi 25).`,
+  );
+}
+const consentName = nameFor(consentDefField.label);
+
+// Mode fonctionnel (mêmes drapeaux que form.astro — parité stricte sans clés).
+const env = import.meta.env ?? {};
+const formsEnabled = env.PUBLIC_FORMS_ENABLED === '1';
+const turnstileSiteKey = formsEnabled ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+const pagePath = Astro.url?.pathname ?? '';
+
+// Pot de miel : idiome « visuellement masqué » EN LIGNE (patron form.astro).
+const honeypotStyle =
+  'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;';
+const errorBannerStyle =
+  'border:1px solid var(--color-error);background-color:var(--color-error-container);color:var(--color-on-error-container);';
+const errorMessage =
+  lang === 'en'
+    ? 'Your message could not be sent. Please check your answers and try again.'
+    : 'Votre message n’a pas pu être envoyé. Vérifiez vos réponses, puis réessayez.';
 
 // Recettes partagées de la page (répétées si besoin ailleurs — pas d'abstraction).
 const cardBorder = 'border border-solid border-[#C4C5D9]';
@@ -57,7 +127,32 @@ const phoneIcon =
   'M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z';
 ---
 
-<BaseLayout lang={lang} title={c.metaTitle} description={c.metaDescription}>
+<BaseLayout lang={lang} title={c.metaTitle} description={c.metaDescription} contentType="Page">
+  {/* LocalBusiness ×3 (2026-08-17, F3.2) — un schéma par bureau, depuis le
+      MÊME contenu CMS que les cartes (collection contact) : adresse, ville,
+      téléphone (apparié par position, comme les cartes), photo. */}
+  {
+    c.offices.map((office, i) => (
+      <JsonLd
+        slot="head"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'LocalBusiness',
+          name: `Les Solutions Victrix — ${office.city}`,
+          parentOrganization: { '@type': 'Organization', name: 'Les Solutions Victrix' },
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: office.lines.join(', '),
+            addressLocality: office.city,
+            addressCountry: office.city === 'Paris' ? 'FR' : 'CA',
+          },
+          ...(officePhones[i] ? { telephone: officePhones[i].tel } : {}),
+          ...(office.image ? { image: new URL(office.image, Astro.site).href } : {}),
+          url: new URL(Astro.url.pathname, Astro.site).href,
+        }}
+      />
+    ))
+  }
   <!-- Hero -->
   <section class="bg-surface py-20 lg:py-24">
     <div class="container-site flex flex-col items-center text-center gap-4">
@@ -171,28 +266,62 @@ const phoneIcon =
 
       <div class:list={['bg-[#F0EDEA] rounded-sm p-6 sm:p-8 lg:p-12', cardBorder]}>
         <p class="sr-only" id="req-note">{c.reqNote}</p>
-        <form class="flex flex-col gap-6" aria-describedby="req-note" data-contact-form>
+        <form
+          class="flex flex-col gap-6"
+          aria-describedby="req-note"
+          data-contact-form={formsEnabled ? undefined : ''}
+          method={formsEnabled ? 'POST' : undefined}
+          action={formsEnabled ? '/api/forms' : undefined}
+          data-astro-reload={formsEnabled ? '' : undefined}
+        >
+          {
+            formsEnabled && (
+              <>
+                {/* Bannière d'erreur + mini-script FRÈRES ADJACENTS (le script se
+                    repère par previousElementSibling) — patron form.astro. */}
+                <p class="m-0 max-w-none px-4 py-3 rounded text-sm leading-normal" role="alert" hidden style={errorBannerStyle}>
+                  {errorMessage}
+                </p>
+                <script is:inline data-astro-rerun>
+                  // Révèle la bannière au retour d'un échec (« ?erreur=1 »).
+                  {
+                    const s = document.currentScript;
+                    const b = s && s.previousElementSibling;
+                    if (b && /[?&]erreur=/.test(location.search)) b.removeAttribute('hidden');
+                  }
+                </script>
+                <input type="hidden" name="lang" value={lang} />
+                <input type="hidden" name="source" value={pagePath} />
+                <input type="hidden" name="_formId" value="contact" />
+                {/* Pot de miel `website` — voir honeypotStyle. */}
+                <div aria-hidden="true" style={honeypotStyle}>
+                  <label for="contact-website">Site Web</label>
+                  <input id="contact-website" type="text" name="website" tabindex="-1" autocomplete="off" />
+                </div>
+              </>
+            )
+          }
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="flex flex-col gap-2">
               <label class={labelClass} for="firstname">{c.labels.firstName} <span aria-hidden="true">*</span></label>
-              <input class={inputClass} id="firstname" name="firstname" type="text" autocomplete="given-name" required />
+              <input class={inputClass} id="firstname" name={formsEnabled ? nameFor(c.labels.firstName) : 'firstname'} type="text" autocomplete="given-name" required />
             </div>
             <div class="flex flex-col gap-2">
               <label class={labelClass} for="lastname">{c.labels.lastName} <span aria-hidden="true">*</span></label>
-              <input class={inputClass} id="lastname" name="lastname" type="text" autocomplete="family-name" required />
+              <input class={inputClass} id="lastname" name={formsEnabled ? nameFor(c.labels.lastName) : 'lastname'} type="text" autocomplete="family-name" required />
             </div>
             <div class="flex flex-col gap-2">
               <label class={labelClass} for="email">{c.labels.email} <span aria-hidden="true">*</span></label>
-              <input class={inputClass} id="email" name="email" type="email" autocomplete="email" required />
+              <input class={inputClass} id="email" name={formsEnabled ? nameFor(c.labels.email) : 'email'} type="email" autocomplete="email" required />
             </div>
             <div class="flex flex-col gap-2">
               <label class={labelClass} for="phone">{c.labels.phone}</label>
-              <input class={inputClass} id="phone" name="phone" type="tel" autocomplete="tel" />
+              <input class={inputClass} id="phone" name={formsEnabled ? nameFor(c.labels.phone) : 'phone'} type="tel" autocomplete="tel" />
             </div>
             <div class="flex flex-col gap-2">
               <label class={labelClass} for="subject">{c.labels.subject} <span aria-hidden="true">*</span></label>
               <span class="relative block">
-                <select class:list={[inputClass, 'appearance-none pr-10']} id="subject" name="subject" required>
+                <select class:list={[inputClass, 'appearance-none pr-10']} id="subject" name={formsEnabled ? nameFor(c.labels.subject) : 'subject'} required>
                   <option value="">{c.labels.subjectPlaceholder}</option>
                   {c.subjectOptions.map((opt) => (
                     <option value={opt}>{opt}</option>
@@ -206,7 +335,7 @@ const phoneIcon =
             <div class="flex flex-col gap-2">
               <label class={labelClass} for="expertise">{c.labels.expertise} <span aria-hidden="true">*</span></label>
               <span class="relative block">
-                <select class:list={[inputClass, 'appearance-none pr-10']} id="expertise" name="expertise" required>
+                <select class:list={[inputClass, 'appearance-none pr-10']} id="expertise" name={formsEnabled ? nameFor(c.labels.expertise) : 'expertise'} required>
                   <option value="">{c.labels.expertisePlaceholder}</option>
                   {c.expertiseOptions.map((opt) => (
                     <option value={opt}>{opt}</option>
@@ -221,7 +350,7 @@ const phoneIcon =
 
           <div class="flex flex-col gap-2">
             <label class={labelClass} for="request">{c.labels.request}</label>
-            <input class={inputClass} id="request" name="request" type="text" />
+            <input class={inputClass} id="request" name={formsEnabled ? nameFor(c.labels.request) : 'request'} type="text" />
           </div>
 
           <div class="flex flex-col gap-2">
@@ -229,7 +358,7 @@ const phoneIcon =
             <textarea
               class="w-full h-[122px] p-3 bg-white border border-solid border-[#C4C5D9] rounded text-base text-on-surface resize-y focus-visible:border-primary focus-visible:outline-none"
               id="message"
-              name="message"
+              name={formsEnabled ? nameFor(c.labels.message) : 'message'}
               required
             ></textarea>
           </div>
@@ -238,7 +367,8 @@ const phoneIcon =
             <input
               class="size-4 mt-1 shrink-0 bg-white border border-solid border-[#C4C5D9] rounded-sm accent-[var(--color-primary)]"
               id="consent"
-              name="consent"
+              name={formsEnabled ? consentName : 'consent'}
+              value="oui"
               type="checkbox"
               required
             />
@@ -246,6 +376,16 @@ const phoneIcon =
               <span set:html={consentHtml} />
             </label>
           </div>
+
+          {
+            turnstileSiteKey && (
+              <>
+                {/* Widget Turnstile — CSP appliquée le 2026-08-17 (public/_headers). */}
+                <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-language={lang} />
+                <script is:inline async defer src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
+              </>
+            )
+          }
 
           <button
             type="submit"
@@ -271,8 +411,11 @@ const phoneIcon =
 
 <script>
   // Demo-only submission: validate natively, then confirm inline (no backend).
-  // Re-bound on astro:page-load — the DOM is swapped on each client-side
-  // navigation while this module executes only once per session.
+  // MODE MAQUETTE SEULEMENT : [data-contact-form] n'est posé que quand
+  // PUBLIC_FORMS_ENABLED est absente — en mode réel, ce module ne trouve rien
+  // et le POST natif suit son cours (303 → /merci). Re-bound on
+  // astro:page-load — the DOM is swapped on each client-side navigation while
+  // this module executes only once per session.
   document.addEventListener('astro:page-load', () => {
     const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
     const status = document.querySelector<HTMLParagraphElement>('[data-form-status]');

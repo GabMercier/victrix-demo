@@ -3,6 +3,7 @@ title: "IA et ServiceNow: transformer la performance et la gouvernance IA de vot
 date: 2025-11-14
 excerpt: "Découvrez comment accélérer vos opérations et gouverner l'IA avec ServiceNow. Performance, conformité et valeur mesurable pour votre organisation."
 tags: ["Nos articles"]
+topics: ["Intelligence artificielle", "Services gérés"]
 slug: "ia-servicenow"
 coverImage: "/wp-content/uploads/2025/03/design-sans-titre-2.png"
 seoTitle: "IA et ServiceNow: performance, conformité et gouvernance"

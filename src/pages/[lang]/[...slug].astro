@@ -15,6 +15,7 @@ import { getPostsByLocale, postUrlSlug } from '../../i18n/blog';
 // que l'édition visuelle CloudCannon se branche (voir l'entête du renderer).
 import Page from '../../../component-library/src/shared/astro/page.astro';
 import JsonLd from '../../components/JsonLd.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
 import { useTranslations } from '../../i18n/ui';
 
@@ -84,7 +85,9 @@ export async function getStaticPaths() {
     if (relatedSection && 'tags' in relatedSection) {
       const wanted = relatedSection.tags.map((t) => t.toLowerCase());
       const posts = (await getPostsByLocale(lang))
-        .filter((post) => post.data.tags.some((t) => wanted.includes(t.toLowerCase())))
+        .filter((post) =>
+          [...post.data.tags, ...post.data.topics].some((t) => wanted.includes(t.toLowerCase())),
+        )
         .slice(0, 3);
       const dateFmt = new Intl.DateTimeFormat(htmlLang[lang], {
         dateStyle: 'long',
@@ -128,14 +131,14 @@ export async function getStaticPaths() {
 
 const { page, lang, altLocalePath, frontmatter, enrich } = Astro.props;
 
-// BreadcrumbList JSON-LD (P-12) : Accueil → page courante.
-const crumbsSchema = breadcrumbSchema(
-  [
-    { name: useTranslations(lang).article.breadcrumbHome, path: localizePath('/', lang) },
-    { name: page.data.title },
-  ],
-  Astro.site!,
-);
+// Fil d'Ariane (2026-08-17) — le MÊME tableau alimente le fil VISIBLE
+// (Breadcrumbs.astro) et le balisage BreadcrumbList (P-12). Collection plate :
+// Accueil → page courante, pas de niveau intermédiaire.
+const crumbs = [
+  { name: useTranslations(lang).article.breadcrumbHome, path: localizePath('/', lang) },
+  { name: page.data.title },
+];
+const crumbsSchema = breadcrumbSchema(crumbs, Astro.site!);
 ---
 
 <BaseLayout
@@ -144,7 +147,9 @@ const crumbsSchema = breadcrumbSchema(
   description={page.data.description}
   noindex={page.data.noindex}
   altLocalePath={altLocalePath}
+  contentType="Page"
 >
   <JsonLd slot="head" schema={crumbsSchema} />
+  <Breadcrumbs lang={lang} items={crumbs} />
   <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} />
 </BaseLayout>

@@ -3,6 +3,7 @@ title: "Externalisation du SOC: avantages & inconvénients"
 date: 2023-10-04
 excerpt: "Vous considérez l’externalisation du SOC de votre entreprise? Découvrez tous les avantages et inconvénients d’un SOC externe ainsi que l’offre exclusive de Victrix."
 tags: ["Nos articles"]
+topics: ["Cybersécurité", "Services gérés"]
 slug: "externalisation-soc-avantages-inconvenients"
 coverImage: "/wp-content/uploads/2023/10/istock-1310129244-1.jpg"
 seoTitle: "Externalisation du SOC: avantages & inconvénients"

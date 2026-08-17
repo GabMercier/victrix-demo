@@ -19,7 +19,11 @@ test.describe('client portal (mock)', () => {
     await page.goto('/fr/portail');
     await page.getByRole('button', { name: 'Se connecter' }).click();
 
-    await expect(page).toHaveURL(/\/fr\/portail\/tableau-de-bord/);
+    // Timeout élargi : /auth/login et le tableau de bord sont des routes À LA
+    // DEMANDE — leur PREMIÈRE compilation sur un dev server froid, sous la
+    // charge des workers parallèles, peut dépasser les 5 s par défaut (flake
+    // constaté 2026-08-17 : vert en solo, rouge en suite complète à froid).
+    await expect(page).toHaveURL(/\/fr\/portail\/tableau-de-bord/, { timeout: 15_000 });
     await expect(page.getByRole('heading', { name: 'Mes contrats' })).toBeVisible();
 
     await page.getByRole('button', { name: 'Se déconnecter' }).click();

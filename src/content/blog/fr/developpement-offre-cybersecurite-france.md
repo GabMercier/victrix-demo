@@ -3,6 +3,7 @@ title: "Victrix développe son offre cybersécurité en France"
 date: 2024-09-16
 excerpt: "En se rapprochant de COMITEM, Victrix étend son offre cybersécurité en France dans le cadre de la stratégie de marques fortes lancée par Alan Allman Associates."
 tags: ["Nos actualités"]
+topics: ["Cybersécurité"]
 slug: "developpement-offre-cybersecurite-france"
 coverImage: "/wp-content/uploads/2024/09/image-landing-page-victrix.jpg"
 wpUrl: "/developpement-offre-cybersecurite-france/"

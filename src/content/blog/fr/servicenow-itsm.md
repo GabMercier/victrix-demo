@@ -3,6 +3,7 @@ title: "ServiceNow ITSM: Une stratégie axée affaires pour croître les opérat
 date: 2025-02-10
 excerpt: "Voyez pourquoi les entreprises choisissent la plateforme ServiceNow ITSM. Apprenez comment maximiser ROI et efficacité avec une stratégie d’implémentation axée affaires."
 tags: ["Nos articles"]
+topics: ["Services gérés"]
 slug: "servicenow-itsm"
 coverImage: "/wp-content/uploads/2025/02/victrix.png"
 seoTitle: "ServiceNow ITSM: La stratégie pour croître les opérations TI"

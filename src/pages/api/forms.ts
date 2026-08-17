@@ -46,6 +46,7 @@ import {
 } from '../../lib/forms/registry';
 import { verifyTurnstileToken } from '../../lib/forms/turnstile';
 import { sendEmail } from '../../lib/forms/smtp2go';
+import { confirmationEmail } from '../../lib/forms/confirmation';
 
 // Registre des formulaires (« forms v2 ») — les définitions de src/data/forms/
 // sont EMBARQUÉES dans le bundle au build (workerd n'a pas de système de
@@ -210,6 +211,30 @@ export const POST: APIRoute = async ({ request, locals }) => {
       // visitor mistake: log loudly, but don't bounce them back to retry —
       // that only trains double submissions.
       console.error('[api/forms] envoi SMTP2GO échoué:', sent.error);
+    }
+
+    // P-08 — courriel de confirmation au VISITEUR (2e envoi, indépendant du
+    // premier). Adresse : le premier champ courriel dérivé de la DÉFINITION
+    // (forms v2) ou de la liste `_courriels` annoncée par la section (mode
+    // inline) — sa valeur a déjà passé la validation de format. Gabarit fixe
+    // par langue (src/lib/forms/confirmation.ts) : rien du contenu soumis n'y
+    // est recopié. Échec NON bloquant : la demande est reçue et notifiée.
+    const visitorEmailField = (
+      formDef ? emailFieldNames(formDef) : parseNameList(fields[EMAIL_LIST_FIELD])
+    )[0];
+    const visitorEmail = visitorEmailField ? result.data[visitorEmailField] : undefined;
+    if (visitorEmail) {
+      const confirmation = confirmationEmail(lang);
+      const confirmed = await sendEmail({
+        apiKey,
+        to: visitorEmail,
+        from,
+        subject: confirmation.subject,
+        textBody: confirmation.textBody,
+      });
+      if (!confirmed.ok) {
+        console.error('[api/forms] envoi de confirmation (P-08) échoué:', confirmed.error);
+      }
     }
     return thanks;
   } catch (err) {

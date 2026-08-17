@@ -3,6 +3,7 @@ title: "Sécurité IoT: Comprendre les défis pour les entreprises"
 date: 2024-09-30
 excerpt: "Découvrez les principaux défis de sécurité IoT. Apprenez comment protéger vos dispositifs connectés contre les menaces de cybersécurité."
 tags: ["Nos articles"]
+topics: ["Cybersécurité"]
 slug: "securite-iot-defis"
 coverImage: "/wp-content/uploads/2024/09/design-sans-titre-7.jpg"
 seoTitle: "Comprendre les défis de la sécurité IoT"

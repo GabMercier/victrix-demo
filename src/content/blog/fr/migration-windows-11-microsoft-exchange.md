@@ -3,6 +3,7 @@ title: "Anticiper la fin du soutien de Windows 10 : une migration stratégique
 date: 2025-08-04
 excerpt: "Préparez-vous à une transition sécurisée et performante vers Windows 11 et Exchange SE avec Victrix, vos experts en migration du système d’exploitation Windows."
 tags: ["Nos articles"]
+topics: ["Infonuagique", "Services gérés"]
 slug: "migration-windows-11-microsoft-exchange"
 coverImage: "/wp-content/uploads/2025/08/image-article-exchange-se_01-1.png"
 seoTitle: "Migrez à Windows 11 et Exchange SE en toute sécurité"

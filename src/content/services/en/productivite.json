@@ -152,6 +152,16 @@
       "ctaLabel": "Book a slot with an expert",
       "ctaHref": "/en/contact",
       "variant": "dark"
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Related resources",
+      "tags": [
+        "Productivity"
+      ],
+      "ctaLabel": "See all resources",
+      "ctaHref": "/en/ressources"
     }
   ],
   "seoTitle": "Productivity Consulting Firm in Montreal | Expertise"

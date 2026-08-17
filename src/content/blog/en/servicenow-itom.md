@@ -3,6 +3,7 @@ title: "ServiceNow ITOM: Modules, Benefits, Cost & ROI"
 date: 2025-05-07
 excerpt: "Learn how ServiceNow ITOM helps manage services, reduce downtime, and drive ROI through automation and visibility. Work with Victrix to ensure successful implementation."
 tags: ["Our articles"]
+topics: ["Managed services", "Cloud computing"]
 slug: "servicenow-itom"
 coverImage: "/wp-content/uploads/2024/11/servicenow-victrix.png"
 seoTitle: "ServiceNow ITOM: Improve Visibility, Speed & ROI"

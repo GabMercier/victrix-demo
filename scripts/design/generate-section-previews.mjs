@@ -123,8 +123,13 @@ for (const [url, entries] of byUrl) {
   });
   // Seuls les éléments RENDUS comptent : une balise métadonnée (script JSON-LD,
   // style, link) projetée dans <main> n'occupe aucun index visuel — l'exclure
-  // garde comptage et indexation alignés sur les sections.
-  const rendered = page.locator('#main-content > :not(script):not(style):not(link)');
+  // garde comptage et indexation alignés sur les sections. [data-crumbs] : le
+  // fil d'Ariane visible (src/components/Breadcrumbs.astro, 2026-08-17) vit en
+  // enfant direct de <main> AVANT les sections — exclu par attribut pour la
+  // même raison.
+  const rendered = page.locator(
+    '#main-content > :not(script):not(style):not(link):not([data-crumbs])',
+  );
   const childCount = await rendered.count();
   const expected = entries[0].total;
   if (childCount !== expected) {

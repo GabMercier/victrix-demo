@@ -188,21 +188,14 @@ aucun compte externe.
    Échec réseau vers `siteverify` = refus (« fail closed ») : un robot ne doit
    pas passer parce que Cloudflare tousse.
 
-### CSP — modification documentée, PAS appliquée
+### CSP — modification APPLIQUÉE (2026-08-17)
 
-`public/_headers` est **gelé** (chantier CSP séparé). Le widget Turnstile exige
-d'ajouter à la politique existante, le jour où on l'active :
-
-```
-Content-Security-Policy:
-  script-src … https://challenges.cloudflare.com;
-  frame-src  … https://challenges.cloudflare.com;
-```
-
-(Le mode « pre-clearance », non utilisé ici, demanderait en plus
-`connect-src 'self'`.) Tant que la CSP n'est pas modifiée, ne PAS définir
-`PUBLIC_TURNSTILE_SITE_KEY` en production : le script serait bloqué par la CSP
-et le formulaire retomberait sur pot de miel seul.
+`public/_headers` autorise désormais Turnstile sur `/fr/*` et `/en/*` :
+`script-src`, `frame-src` et `connect-src` incluent
+`https://challenges.cloudflare.com` (édition OPS-CSP planifiée, faite en même
+temps que les entrées GA4 — voir `docs/operations.md` §7ter).
+`PUBLIC_TURNSTILE_SITE_KEY` peut donc être posée sans autre changement ; sans
+la clé, rien ne change (widget absent, pot de miel seul).
 
 ## 8. SMTP2GO — mise en service
 
@@ -235,17 +228,18 @@ définies) et l'exclusion de `/merci` du sitemap (`astro.config.mjs`).
 
 ## 10. Suivis planifiés (hors périmètre de ce chantier)
 
-- **Formulaire de la page Contact** (`src/pages/[lang]/contact.astro`) : encore
-  la maquette historique (`<form data-contact-form>` sans `action`, confirmation
-  simulée par script client) — le pipeline fonctionnel n'est branché que sur
-  les sections « Formulaire » des landings de campagne. Le endpoint
-  `/api/forms` est agnostique au formulaire : le portage est un travail de
-  gabarit seulement — poser `method="POST" action="/api/forms"` +
-  `data-astro-reload`, les champs cachés du §4 (`lang`, `source`, pot de miel
-  `website`, `_requis`/`_courriels`) derrière le même drapeau
-  `PUBLIC_FORMS_ENABLED`, et débrancher le script de confirmation simulée dans
-  ce mode (il fait `preventDefault` sur le submit). Tant que ce n'est pas
-  fait : cadrer la démo en conséquence (« pipeline prouvé sur les landings ;
+- **Formulaire de la page Contact — PORTÉ le 2026-08-17** : la page suit
+  désormais les DEUX MODES de la section « Formulaire » (maquette sans clés /
+  vrai POST avec `PUBLIC_FORMS_ENABLED=1`), avec `_formId: contact` — le
+  serveur dérive requis/courriels/cases et la liste blanche des selects de
+  `src/data/forms/<lang>/contact.json`. Les `name` des champs sont dérivés de
+  la définition (fieldName partagé) et DEUX GARDE-FOUS DE BUILD cassent la
+  compilation si la page et la définition divergent (libellé manquant, options
+  de select désalignées) — en cas d'erreur au build, réaligner les deux
+  fichiers nommés par le message. **P-08 fait aussi** : `/api/forms` envoie un
+  2e courriel de confirmation au visiteur (gabarit fixe par langue,
+  `src/lib/forms/confirmation.ts`, échec non bloquant journalisé). Ancien
+  suivi (pour mémoire) : (« pipeline prouvé sur les landings ;
   portage de la page Contact = petit suivi »).
 - ~~**Case à cocher de consentement (Loi 25)**~~ — **LIVRÉ (P-05, 17 juil.)** :
   le type `checkbox` existe dans les 6 contrats synchronisés, une case requise

@@ -40,6 +40,14 @@ const blog = defineCollection({
     // n'avaient pas d'image mise en avant.
     coverImage: z.string().optional(),
     tags: z.array(z.string()).default([]),
+    // Maillage Services ↔ Ressources (2026-08-17) : étiquettes THÉMATIQUES
+    // consommées par la section « Ressources liées » — DISTINCTES des `tags`
+    // (catégories héritées de WordPress, qui alimentent les filtres de l'index
+    // du blogue et le méga-menu Ressources ; y verser des thèmes multiplierait
+    // les onglets). Vocabulaire aligné sur les expertises : Cybersécurité,
+    // Intelligence artificielle, Infonuagique, Productivité, Services gérés,
+    // Conseil stratégique (miroirs EN dans les fichiers en/).
+    topics: z.array(z.string()).default([]),
     // Optional per-locale URL slug (SEO). When unset the filename is used, so
     // FR can keep its filename-based URLs while EN sets an English slug. The
     // filename still pairs the FR/EN translations — see src/i18n/blog.ts.

@@ -151,6 +151,16 @@
       "ctaLabel": "Réservez un créneau avec un expert",
       "ctaHref": "/fr/contact",
       "variant": "dark"
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Ressources liées",
+      "tags": [
+        "Productivité"
+      ],
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
     }
   ],
   "seoTitle": "Améliorez la productivité en entreprise | Expertise"

@@ -3,6 +3,7 @@ title: "Victrix Renews Its ISO 27001 and ISO 9001 Certifications: a Double S
 date: 2025-07-29
 excerpt: "Victrix renews its ISO 27001 and ISO 9001 certifications, demonstrating its commitment to continuous improvement and its desire to maintain the highest standards in information security."
 tags: ["Our news"]
+topics: ["Cybersecurity", "Strategic consulting"]
 slug: "iso-27001-iso-9001-certifications"
 coverImage: "/wp-content/uploads/2025/07/cover-article_certification-iso_en-1.png"
 seoTitle: "ISO 27001 and ISO 9001: Victrix Renews Its Certifications"
