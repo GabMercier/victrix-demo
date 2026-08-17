@@ -14,7 +14,8 @@
  *             10 %, ancré à droite, rogné par la carte — demande user
  *             2026-08-11, remplace l'ancien carré arrondi), texte bleu pâle,
  *             lien blanc ;
- *  - nuit   : aplat navy, texte #9CA3AF, lien blanc.
+ *  - nuit   : aplat anthracite #1A2029 (export2 homepage.css 2026-08-17 —
+ *             « Noir Anthracite », remplace le navy), texte #9CA3AF, lien blanc.
  * Peau « image » SANS image renseignée : le même « V » filigrane sert de
  * visuel de remplacement sur l'aplat navy (placeholder de marque).
  * Rangée de tête : titre 48/700 ls -0.96 + paragraphe d'appui SOUS le titre,
@@ -160,7 +161,9 @@ const watermarkBase =
                   </a>
                 </div>
               ) : variant === 'nuit' ? (
-                <div class:list={[cardBase, 'justify-between p-10 bg-on-primary-fixed']}>
+                /* Peau nuit = « Noir Anthracite » #1A2029 (export2 homepage.css
+                   §ServicesGrid, 2026-08-17) — remplace le navy on-primary-fixed. */
+                <div class:list={[cardBase, 'justify-between p-10 bg-anthracite']}>
                   <span class="flex flex-col gap-4">
                     <span class="block text-2xl leading-8 font-bold tracking-[-0.48px] text-white">
                       {item.title}
