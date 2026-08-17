@@ -13,6 +13,11 @@ spec:
   description: "Trois cartes sombres photo + dégradé : icône, titre, texte et lien (ex. Ø Studio, SEvOC, Migration Azure)."
   icon: dark_mode
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/home-solutions/preview.png"
     text: "Accueil — Solutions phares"
     subtext: Cartes sombres photo, icône, titre et lien
   preview:

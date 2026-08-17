@@ -4,16 +4,17 @@
   "sections": [
     {
       "type": "service-hero",
-      "eyebrow": "Productivité & stratégie",
+      "eyebrow": "",
       "titleAccent": "",
-      "title": "Améliorer la Productivité en entreprise",
+      "title": "Améliorer la productivité en entreprise",
       "lead": "À la recherche d'une idée pour améliorer la productivité de votre entreprise? Avec des années d'expérience, Victrix vous propose une approche humaine et orientée client qui considère vos besoins d'affaires et se concentre sur vos utilisateurs.",
       "ctaLabel": "Rencontrons-nous",
       "ctaHref": "/fr/contact",
       "cta2Label": "Découvrir nos solutions",
       "cta2Href": "/fr/produits",
-      "image": "/images/services/hero-productivite.jpg",
-      "imageAlt": ""
+      "image": "/images/sections/expertises-hero.jpg",
+      "imageAlt": "",
+      "titleHighlight": "la productivité"
     },
     {
       "type": "benefits",
@@ -23,79 +24,17 @@
         {
           "title": "L'ORGANISATION",
           "description": "Votre vision, votre image, votre message. Nous alignons les outils technologiques sur vos objectifs stratégiques globaux.",
-          "icon": "dossier"
+          "icon": "organisation"
         },
         {
           "title": "LE PORTEUR",
           "description": "Ses responsabilités, ses capacités, son initiative. Nous valorisons l'humain qui déploie et maintient vos solutions.",
-          "icon": "personne"
+          "icon": "porteur"
         },
         {
           "title": "LE DESTINATAIRE",
           "description": "Ses outils, son appartenance, ses intérêts. Nous optimisons l'expérience utilisateur finale pour maximiser l'adoption.",
-          "icon": "groupe"
-        }
-      ]
-    },
-    {
-      "type": "expertise-bento",
-      "eyebrow": "Domaines d'expertise",
-      "title": "Une vision 360° de votre productivité numérique",
-      "intro": "Des solutions idéales pour simplifier les tâches quotidiennes et bénéficier d'un gain de temps immédiat.",
-      "items": [
-        {
-          "title": "Intranet Moderne",
-          "text": "Créez un point d'entrée unique pour l'information et la communication interne.",
-          "peau": "blanche",
-          "taille": "grande",
-          "icon": "fenetre",
-          "image": "/images/services/bento-intranet.jpg",
-          "href": ""
-        },
-        {
-          "title": "BI et Power BI",
-          "text": "",
-          "peau": "bleue",
-          "taille": "haute",
-          "icon": "graphique",
-          "image": "",
-          "href": ""
-        },
-        {
-          "title": "Collaboration",
-          "text": "",
-          "peau": "blanche",
-          "taille": "haute",
-          "icon": "personnes",
-          "image": "",
-          "href": ""
-        },
-        {
-          "title": "Automatisation des processus",
-          "text": "Libérez vos équipes des tâches répétitives.",
-          "peau": "blanche",
-          "taille": "large",
-          "icon": "engrenage",
-          "image": "",
-          "href": ""
-        },
-        {
-          "title": "Gestion documentaire",
-          "text": "",
-          "peau": "blanche",
-          "taille": "petite",
-          "icon": "document",
-          "image": "",
-          "href": ""
-        },
-        {
-          "title": "Développement M365",
-          "text": "",
-          "peau": "ardoise",
-          "taille": "petite",
-          "icon": "code",
-          "image": "",
-          "href": ""
+          "icon": "destinataire"
         }
       ]
     },
@@ -125,7 +64,7 @@
         "text": "Propulsez-vous vers la Power Platform avec un accompagnement adapté à vos besoins. Le Ø Studio vous offre rapidité de développement et gain en capacité de livraison afin de migrer vos applications ou automatiser vos processus.",
         "ctaLabel": "Élevez votre taux de productivité avec le Ø Studio",
         "href": "/fr/services/productivite/o-bureau",
-        "image": "/wp-content/uploads/2023/09/bg-o-studio-1-scaled.jpg"
+        "image": "/images/sections/expertises-ostudio.png"
       },
       "items": [
         {
@@ -133,14 +72,76 @@
           "text": "Simplifiez les réservations, améliorez la gestion et automatisez les rapports d'utilisation de vos bureaux grâce à notre application de gestion de réservation facile à implémenter.",
           "ctaLabel": "Gérer la réservation efficacement",
           "href": "/fr/services/productivite/o-bureau",
-          "icon": "calendrier"
+          "icon": ""
         },
         {
           "title": "Plateforme employé",
           "text": "Offrez à votre personnel ce qu'il y a de mieux en matière d'intranet. Augmentez la productivité au travail en centralisant les outils et les connaissances.",
           "ctaLabel": "Déployer un intranet moderne",
           "href": "/fr/services/productivite/plateforme-employe-intranet",
-          "icon": "etoile"
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "type": "expertise-bento",
+      "eyebrow": "Domaines d'expertise",
+      "title": "Une vision 360° de votre productivité numérique",
+      "intro": "Des solutions idéales pour simplifier les tâches quotidiennes et bénéficier d'un gain de temps immédiat.",
+      "items": [
+        {
+          "title": "Intranet Moderne",
+          "text": "Créez un point d'entrée unique pour l'information et la communication interne.",
+          "peau": "blanche",
+          "taille": "grande",
+          "icon": "",
+          "image": "/images/services/bento-intranet.jpg",
+          "href": ""
+        },
+        {
+          "title": "BI et Power BI",
+          "text": "",
+          "peau": "bleue",
+          "taille": "haute",
+          "icon": "",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Collaboration",
+          "text": "",
+          "peau": "blanche",
+          "taille": "haute",
+          "icon": "",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Automatisation des processus",
+          "text": "Libérez vos équipes des tâches répétitives.",
+          "peau": "blanche",
+          "taille": "large",
+          "icon": "",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Gestion documentaire",
+          "text": "",
+          "peau": "blanche",
+          "taille": "petite",
+          "icon": "",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Développement M365",
+          "text": "",
+          "peau": "ardoise",
+          "taille": "petite",
+          "icon": "",
+          "image": "",
+          "href": ""
         }
       ]
     },

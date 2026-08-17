@@ -14,6 +14,11 @@ spec:
   description: "Grille d'articles du blogue partageant au moins une des étiquettes choisies (les 3 plus récents), résolue automatiquement au build. Titre et lien optionnel vers toutes les ressources."
   icon: collections_bookmark
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/related-posts/preview.png"
     text: "Ressources liées"
     subtext: Articles du blogue par étiquette (automatique)
   preview:

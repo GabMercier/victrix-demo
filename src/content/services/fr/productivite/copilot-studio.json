@@ -15,7 +15,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "overlay": "degrade",
-      "image": "/images/services/hero-copilot-studio.jpg",
+      "image": "/images/sections/produit-enfant-hero.jpg",
       "imageAlt": ""
     },
     {
@@ -28,9 +28,16 @@
       "image": "/images/services/valeur-copilot-studio.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "ROI", "label": "Optimisation rapide" },
-        { "value": "100 %", "label": "Intégration M365" }
-      ]
+        {
+          "value": "ROI",
+          "label": "Optimisation rapide"
+        },
+        {
+          "value": "100 %",
+          "label": "Intégration M365"
+        }
+      ],
+      "fond": "ivoire"
     },
     {
       "type": "offer-cards",
@@ -43,21 +50,40 @@
           "number": "1",
           "title": "Positionnement et adoption",
           "bullets": [
-            { "text": "Introduction aux bases de Copilot et de l'IA", "icon": "coche" },
-            { "text": "Apprentissage par l'exemple : identification des cas d'utilisation", "icon": "coche" },
-            { "text": "Démonstration des retours sur investissement (ROI)", "icon": "coche" }
+            {
+              "text": "Introduction aux bases de Copilot et de l'IA",
+              "icon": "coche"
+            },
+            {
+              "text": "Apprentissage par l'exemple : identification des cas d'utilisation",
+              "icon": "coche"
+            },
+            {
+              "text": "Démonstration des retours sur investissement (ROI)",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "2",
           "title": "Identification des cas d'utilisation",
           "bullets": [
-            { "text": "Analyse de l'infrastructure existante", "icon": "document" },
-            { "text": "Définition des priorités et des objectifs", "icon": "cible" },
-            { "text": "Feuille de route d'implémentation personnalisée", "icon": "carte" }
+            {
+              "text": "Analyse de l'infrastructure existante",
+              "icon": "document"
+            },
+            {
+              "text": "Définition des priorités et des objectifs",
+              "icon": "cible"
+            },
+            {
+              "text": "Feuille de route d'implémentation personnalisée",
+              "icon": "carte"
+            }
           ]
         }
-      ]
+      ],
+      "fond": "beige"
     },
     {
       "type": "realisations",
@@ -86,7 +112,8 @@
           "text": "Automatisation intelligente de la gestion et analyse documentaire.",
           "icon": "marteau"
         }
-      ]
+      ],
+      "fond": "ivoire"
     },
     {
       "type": "cta",

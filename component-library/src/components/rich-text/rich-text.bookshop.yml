@@ -12,6 +12,11 @@ spec:
   description: "Titre centré et un ou plusieurs paragraphes en colonne étroite (bloc de conclusion, mise en contexte). Les paragraphes peuvent contenir des <strong>."
   icon: notes
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/rich-text/preview.png"
     text: "Texte enrichi"
     subtext: Titre + paragraphes en colonne étroite
   preview:

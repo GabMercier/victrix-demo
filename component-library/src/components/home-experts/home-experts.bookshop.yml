@@ -9,6 +9,11 @@ spec:
   description: "Bandeau marine d'appel à l'action : titre, sous-titre et bouton vert accent, alignés en ligne."
   icon: groups
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/home-experts/preview.png"
     text: "Accueil — Bandeau experts"
     subtext: Bandeau marine, titre + bouton d'appel à l'action
   preview:

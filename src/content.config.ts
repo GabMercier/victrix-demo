@@ -217,8 +217,10 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
   // libre). 5 fonds CLAIRS seulement — les textes/liens restent lisibles sans
   // re-design ; les peaux SOMBRES restent des `variant` par composant (cta
   // « nuit », etc.). PILOTE sur 6 blocs génériques (benefits, cta, faq, stats,
-  // feature-boxes, rich-text) ; le DÉFAUT de chaque bloc = son rendu
-  // historique (blanc ou givre) — zéro churn visuel sur l'existant.
+  // feature-boxes, rich-text ; ÉTENDU le jour même à strategic-value,
+  // offer-cards, realisations — lavis chauds de produit-child.css) ; le
+  // DÉFAUT de chaque bloc = son rendu historique (blanc ou givre) — zéro
+  // churn visuel sur l'existant.
   const fondClair = z.enum(['blanc', 'givre', 'ivoire', 'beige', 'sable']);
   return z.discriminatedUnion('type', [
     // ---- Campaign landing sections (frozen contract) ----
@@ -595,6 +597,10 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       bullets: z.array(z.string()).default([]),
       cardTitle: z.string().default(''),
       cardText: z.string().default(''),
+      // « Fond de section » ÉTENDU 2026-08-17 (produit-child.css : lavis
+      // chauds). '' = défaut historique du bloc (blanc, ou gris perle en
+      // variante vitrine) — le défaut dépend de la variante, d'où la clé vide.
+      fond: z.enum(['', 'blanc', 'givre', 'ivoire', 'beige', 'sable']).default(''),
     }),
     // Offres numérotées : cartes « verre » à tuile numéro bleue et liste à
     // puces icônes, bouton primaire centré sous la grille.
@@ -602,6 +608,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('offer-cards'),
       title: z.string(),
       intro: z.string().default(''),
+      fond: fondClair.default('givre'),
       ctaLabel: z.string().default(''),
       ctaHref: z.string().default(''),
       items: z.array(
@@ -623,6 +630,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('realisations'),
       title: z.string(),
       intro: z.string().default(''),
+      fond: fondClair.default('blanc'),
       linkLabel: z.string().default(''),
       linkHref: z.string().default(''),
       items: z.array(

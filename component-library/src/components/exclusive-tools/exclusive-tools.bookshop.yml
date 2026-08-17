@@ -11,6 +11,11 @@ spec:
   description: "Carte vedette (badge, titre, texte, lien, image) suivie d'une grille de cartes outils (icône, titre, texte, lien) — ex. Ø Studio, O bureau."
   icon: widgets
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/exclusive-tools/preview.png"
     text: "Service — Solutions exclusives"
     subtext: Carte vedette + grille de cartes outils
   preview:

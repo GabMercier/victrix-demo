@@ -15,6 +15,11 @@ spec:
   # Polissage du sélecteur CloudCannon — voir hero.bookshop.yml (les clés de
   # `spec` sont recopiées sur la valeur de structure générée).
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/faq/preview.png"
     text: FAQ
     subtext: Accordéon de questions-réponses (balisage FAQPage inclus)
   preview:

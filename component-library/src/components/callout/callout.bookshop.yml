@@ -9,6 +9,11 @@ spec:
   description: "Appel à l'action réutilisable : « box » = encadré centré sur fond pâle ; « banner-green » = bandeau vert large (titre et texte à gauche, bouton à droite)."
   icon: ads_click
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/callout/preview.png"
     text: "Encadré / bandeau d'action"
     subtext: Encadré centré ou bandeau vert
   preview:

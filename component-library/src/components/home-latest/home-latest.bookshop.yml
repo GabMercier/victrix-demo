@@ -13,6 +13,11 @@ spec:
   description: "Bloc « derniers articles » : titre, lien vers le blogue, et grille des 3 articles les plus récents (alimentée automatiquement au build)."
   icon: article
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/home-latest/preview.png"
     text: "Accueil — Derniers articles"
     subtext: Titre + lien + 3 articles récents (automatique)
   preview:

@@ -776,10 +776,13 @@ collections_config:
       en/ contiennent les deux langues ; le même nom de fichier relie une
       traduction à l'autre. Chaque fiche est une carte du catalogue.
     icon: apps
-    # Pas de page par fiche → pas d'URL d'aperçu (le lien mènerait à un 404).
-    disable_url: true
-    # Éditeur de données uniquement (JSON structuré, pas de corps markdown).
+    # Pas de page par fiche — l'URL d'aperçu pointe le CATALOGUE de la langue
+    # (2026-08-17, demande user : préversion partout) : la carte éditée s'y
+    # trouve. [relative_base_path] = fr|en (sous-dossier).
+    url: /[relative_base_path]/solutions/
+    # Aperçu visuel du catalogue + éditeur de données (JSON structuré).
     _enabled_editors:
+      - visual
       - data
     preview:
       icon: apps
@@ -882,7 +885,9 @@ collections_config:
     disable_add: true
     disable_add_folder: true
     disable_file_actions: true
-    # Pas de page à prévisualiser (le JSON n'est pas une page).
+    # Aperçu : l'ACCUEIL de la langue (2026-08-17) — le pied de page et le
+    # bandeau de consentement édités ici y sont visibles. [slug] = fr|en.
+    url: /[slug]/
     disable_url: true
     _enabled_editors:
       - data
@@ -1029,10 +1034,11 @@ collections_config:
     disable_add: true
     disable_add_folder: true
     disable_file_actions: true
-    # Pas de page à prévisualiser (le JSON n'est pas une page) — vérifier le
-    # rendu sur /fr/contact via la préversion.
-    disable_url: true
+    # Aperçu : la page Contact de la langue (2026-08-17, demande user :
+    # préversion partout). [slug] = fr|en (nom du fichier).
+    url: /[slug]/contact/
     _enabled_editors:
+      - visual
       - data
     _inputs:
       metaTitle:
@@ -1172,8 +1178,11 @@ collections_config:
     disable_add: true
     disable_add_folder: true
     disable_file_actions: true
-    disable_url: true
+    # Aperçu : la page Carrières de la langue (2026-08-17, demande user :
+    # préversion partout). [slug] = fr|en (nom du fichier).
+    url: /[slug]/carrieres/
     _enabled_editors:
+      - visual
       - data
     # ⚠️ Carte PLATE par nom de champ (voir « Textes du site ») : les clés
     # génériques (title, lead, text, label…) sont partagées par plusieurs
@@ -1515,12 +1524,13 @@ collections_config:
       fichier par langue). Liens internes SANS préfixe de langue (ex.
       /contact) — le site ajoute /fr ou /en automatiquement.
     icon: menu
-    # Two dev-owned files (fr.json / en.json): no add/delete/rename, and no
-    # preview URL (the JSON is not a page).
+    # Two dev-owned files (fr.json / en.json): no add/delete/rename.
     disable_add: true
     disable_add_folder: true
     disable_file_actions: true
-    disable_url: true
+    # Aperçu : l'ACCUEIL de la langue (2026-08-17) — le menu édité ici y est
+    # visible. [slug] = fr|en (nom du fichier).
+    url: /[slug]/
     # Data Editor only (opens by default — first value). These are structured
     # JSON files with no markdown body.
     _enabled_editors:

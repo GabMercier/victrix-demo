@@ -12,6 +12,11 @@ spec:
   description: "Bannière d'entête de l'accueil : surtitre, titre, sous-titre et bouton. À placer en première position (elle porte le <h1> de la page)."
   icon: title
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/home-hero/preview.png"
     text: "Accueil — Bannière"
     subtext: Titre principal, sous-titre et bouton — toujours en premier
   preview:

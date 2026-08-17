@@ -12,6 +12,11 @@ spec:
   description: "Titre à liseré vert, sous-titre et grille de boîtes bordées portant des libellés courts (domaines d'expertise, champs d'intervention…)."
   icon: grid_view
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/feature-boxes/preview.png"
     text: "Boîtes de domaines"
     subtext: Grille de libellés courts encadrés
   preview:

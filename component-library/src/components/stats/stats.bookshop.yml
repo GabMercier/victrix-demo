@@ -10,6 +10,11 @@ spec:
   description: "Bande de statistiques sur fond marine (années d'expérience, clients, taux de satisfaction…) — les chiffres sont des textes libres (« 25+ », « 99,9 % »)."
   icon: insights
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/stats/preview.png"
     text: Victrix en chiffres
     subtext: Statistiques en preuve sociale (fond marine)
   preview:

@@ -12,6 +12,11 @@ spec:
   description: "Tuiles d'expertise image + voile Bleu nuit (titre, description, lien) — patron de la maquette Accueil. Les champs numéro/accent sont hérités et ne sont plus rendus."
   icon: grid_view
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/home-expertises/preview.png"
     text: "Accueil — Expertises"
     subtext: Tuiles image + voile navy, titre et lien
   preview:

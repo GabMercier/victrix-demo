@@ -37,12 +37,24 @@ interface OfferItem {
 interface Props {
   title: string;
   intro?: string;
+  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
   ctaLabel?: string;
   ctaHref?: string;
   items: OfferItem[];
 }
 
-const { title, intro, ctaLabel, ctaHref, items = [] } = Astro.props;
+const { title, intro, fond = 'givre', ctaLabel, ctaHref, items = [] } = Astro.props;
+
+// « Fond de section » ÉTENDU 2026-08-17 (produit-child.css §Nos Offres,
+// lavis chauds) : clé fermée → utilitaire de la palette officielle. Défaut =
+// rendu historique (givre #f9fafb, ex-bg-surface-container-low).
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
 
 // Pictogrammes (stroke 24px) par clé fermée du contrat.
 const ICONS: Record<string, string[]> = {
@@ -57,7 +69,7 @@ const ICONS: Record<string, string[]> = {
 };
 ---
 
-<section class="py-20 bg-surface-container-low">
+<section class:list={['py-20', FONDS[fond] ?? FONDS.givre]}>
   <div class="container-site flex flex-col gap-8">
     <div class="max-w-[672px] mx-auto text-center flex flex-col gap-4">
       <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">

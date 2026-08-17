@@ -12,6 +12,11 @@ spec:
   description: "Bloc image + texte pour mettre en avant une offre : surtitre, titre, paragraphe et bouton, avec visuel à gauche."
   icon: workspaces
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/home-solution/preview.png"
     text: "Accueil — Solution phare"
     subtext: Image à gauche, texte et bouton à droite
   preview:

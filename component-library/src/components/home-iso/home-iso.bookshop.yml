@@ -10,6 +10,11 @@ spec:
   description: "Bande claire de chiffres clés et certifications (ex. 30+ ans, 250+ experts, ISO 27001). Sans éléments, retombe sur l'ancien bandeau titre + sous-titre."
   icon: verified
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/home-iso/preview.png"
     text: "Accueil — Barre de confiance"
     subtext: Chiffres clés et certifications en bande claire
   preview:

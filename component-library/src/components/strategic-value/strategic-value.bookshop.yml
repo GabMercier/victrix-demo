@@ -14,6 +14,11 @@ spec:
   description: "Deux colonnes : image sur halo bleu à gauche ; titre à liseré bleu, paragraphes et tuiles statistiques à droite."
   icon: insights
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/strategic-value/preview.png"
     text: "Produit — Valeur stratégique"
     subtext: Image + halo, paragraphes et tuiles statistiques
   preview:
@@ -25,6 +30,7 @@ spec:
 blueprint:
   type: strategic-value
   title: "Valeur stratégique"
+  fond: ""
   paragraphs:
     - "Décrivez la valeur de la solution pour le client."
   image: ""
@@ -93,3 +99,17 @@ _inputs:
     comment: "Carte blanche posée sur l'image (rendue si l'image est fournie). Vide = absente."
   cardText:
     label: "Texte de la carte flottante"
+  # « Fond de section » (2026-08-17, extension produit-child.css) : choix
+  # BORNÉ à la palette officielle — 5 fonds clairs (esprit P-16).
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: true
+      values:
+        - blanc
+        - givre
+        - ivoire
+        - beige
+        - sable
+    comment: "Couleur de fond de la section, bornée à la palette officielle. Vide = défaut du bloc (blanc, ou gris perle en variante vitrine)."

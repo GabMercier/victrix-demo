@@ -10,6 +10,11 @@ spec:
   description: "Citation d'un client ou partenaire avec nom, fonction et photo optionnelle — preuve sociale pour les pages de vente et de campagne."
   icon: format_quote
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/testimonial/preview.png"
     text: Témoignage
     subtext: Citation avec attribution (photo optionnelle)
   preview:

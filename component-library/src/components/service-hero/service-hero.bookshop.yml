@@ -9,6 +9,11 @@ spec:
   description: "Bannière de page service : photo de fond voilée de Bleu nuit, surtitre, titre, paragraphe d'introduction et jusqu'à deux boutons. Porte le seul <h1> — à placer en PREMIÈRE position."
   icon: rocket_launch
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/service-hero/preview.png"
     text: "Service — Héros"
     subtext: Photo voilée Bleu nuit, titre blanc, deux boutons (h1 de la page)
   preview:

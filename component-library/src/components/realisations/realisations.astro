@@ -32,12 +32,24 @@ interface RealisationItem {
 interface Props {
   title: string;
   intro?: string;
+  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
   linkLabel?: string;
   linkHref?: string;
   items: RealisationItem[];
 }
 
-const { title, intro, linkLabel, linkHref, items = [] } = Astro.props;
+const { title, intro, fond = 'blanc', linkLabel, linkHref, items = [] } = Astro.props;
+
+// « Fond de section » ÉTENDU 2026-08-17 (produit-child.css §Réalisations,
+// lavis chauds) : clé fermée → utilitaire de la palette officielle. Défaut =
+// rendu historique (blanc, ex-bg-surface).
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
 
 // Pictogrammes (stroke 24px) par clé fermée du contrat.
 const ICONS: Record<string, string[]> = {
@@ -57,7 +69,7 @@ const ICONS: Record<string, string[]> = {
 };
 ---
 
-<section class="py-20 bg-surface">
+<section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
   <div class="container-site flex flex-col gap-16">
     <div class="flex flex-wrap items-end justify-between gap-8">
       <div class="max-w-[576px] flex flex-col gap-2">

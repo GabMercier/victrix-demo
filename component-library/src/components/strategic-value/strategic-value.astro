@@ -55,6 +55,7 @@ interface Props {
   bullets?: string[];
   cardTitle?: string;
   cardText?: string;
+  fond?: '' | 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
 }
 
 const {
@@ -68,17 +69,36 @@ const {
   bullets = [],
   cardTitle = '',
   cardText = '',
+  fond = '',
 } = Astro.props;
 
 const vitrine = variant === 'vitrine';
 const hasCard = Boolean(cardTitle && image);
+
+// « Fond de section » ÉTENDU 2026-08-17 (produit-child.css §Strategic Value,
+// lavis chauds) : clé fermée → utilitaire de la palette officielle. '' =
+// défaut historique — il dépend de la `variant`, d'où la clé vide.
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
 ---
 
-<section class:list={['py-20', vitrine ? 'bg-surface-container-high' : 'bg-surface']}>
+<section
+  class:list={[
+    'py-20',
+    FONDS[fond] ?? (vitrine ? 'bg-surface-container-high' : 'bg-surface'),
+  ]}
+>
   <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    {/* Ordre produit-child.css (2026-08-17) : TEXTE à gauche, image à droite
+        (mobile : texte puis image — order-2 à tous les points de rupture). */}
     {
       image && !vitrine && (
-        <div class="relative isolate">
+        <div class="relative isolate order-2">
           <span class="absolute -inset-4 bg-primary/5 blur-[20px] rounded-lg -z-10" aria-hidden="true" />
           <img
             src={image}

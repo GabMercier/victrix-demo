@@ -24,6 +24,11 @@ spec:
   # générée (structure-builder.js étale `spec`) — le polissage du sélecteur
   # CloudCannon vit donc ici, pas dans cloudcannon.config.yml.
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/form/preview.png"
     text: Formulaire
     subtext: Maquette par défaut — fonctionnel si PUBLIC_FORMS_ENABLED=1
   preview:

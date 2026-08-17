@@ -11,6 +11,11 @@ spec:
   description: "Grille de logos de partenaires (Microsoft, AWS, Cisco, ServiceNow…) avec descriptif court optionnel par partenaire et badge de certification optionnel."
   icon: workspaces
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/logo-banner/preview.png"
     text: Bandeau logos partenaires
     subtext: Logos + descriptifs + badge (ex. certification)
   preview:

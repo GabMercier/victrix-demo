@@ -15,7 +15,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "overlay": "degrade",
-      "image": "/images/services/hero-copilot-studio.jpg",
+      "image": "/images/sections/produit-enfant-hero.jpg",
       "imageAlt": ""
     },
     {
@@ -28,9 +28,16 @@
       "image": "/images/services/valeur-copilot-studio.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "ROI", "label": "Fast optimisation" },
-        { "value": "100%", "label": "M365 integration" }
-      ]
+        {
+          "value": "ROI",
+          "label": "Fast optimisation"
+        },
+        {
+          "value": "100%",
+          "label": "M365 integration"
+        }
+      ],
+      "fond": "ivoire"
     },
     {
       "type": "offer-cards",
@@ -43,21 +50,40 @@
           "number": "1",
           "title": "Positioning and adoption",
           "bullets": [
-            { "text": "Introduction to Copilot and AI basics", "icon": "coche" },
-            { "text": "Learning by example: identifying use cases", "icon": "coche" },
-            { "text": "Demonstrating return on investment (ROI)", "icon": "coche" }
+            {
+              "text": "Introduction to Copilot and AI basics",
+              "icon": "coche"
+            },
+            {
+              "text": "Learning by example: identifying use cases",
+              "icon": "coche"
+            },
+            {
+              "text": "Demonstrating return on investment (ROI)",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "2",
           "title": "Identifying use cases",
           "bullets": [
-            { "text": "Analysis of existing infrastructure", "icon": "document" },
-            { "text": "Defining priorities and objectives", "icon": "cible" },
-            { "text": "Tailored implementation roadmap", "icon": "carte" }
+            {
+              "text": "Analysis of existing infrastructure",
+              "icon": "document"
+            },
+            {
+              "text": "Defining priorities and objectives",
+              "icon": "cible"
+            },
+            {
+              "text": "Tailored implementation roadmap",
+              "icon": "carte"
+            }
           ]
         }
-      ]
+      ],
+      "fond": "beige"
     },
     {
       "type": "realisations",
@@ -86,7 +112,8 @@
           "text": "Intelligent automation of document management and analysis.",
           "icon": "marteau"
         }
-      ]
+      ],
+      "fond": "ivoire"
     },
     {
       "type": "cta",

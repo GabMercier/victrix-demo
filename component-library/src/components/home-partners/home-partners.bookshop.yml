@@ -10,6 +10,11 @@ spec:
   description: "Bande de noms de partenaires ou de technologies, alignés et centrés, sous un court titre."
   icon: handshake
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/home-partners/preview.png"
     text: "Accueil — Partenaires"
     subtext: Titre + liste de noms alignés
   preview:

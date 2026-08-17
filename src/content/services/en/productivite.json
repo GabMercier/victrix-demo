@@ -5,16 +5,17 @@
   "sections": [
     {
       "type": "service-hero",
-      "eyebrow": "Productivity & strategy",
+      "eyebrow": "",
       "titleAccent": "",
-      "title": "Improve Business Productivity",
+      "title": "Improve business productivity",
       "lead": "Looking for ideas to improve your company's productivity? With years of experience, Victrix offers a human, customer-oriented approach that considers your business needs and focuses on your users.",
       "ctaLabel": "Let's meet",
       "ctaHref": "/en/contact",
       "cta2Label": "Discover our solutions",
       "cta2Href": "/en/produits",
-      "image": "/images/services/hero-productivite.jpg",
-      "imageAlt": ""
+      "image": "/images/sections/expertises-hero.jpg",
+      "imageAlt": "",
+      "titleHighlight": "business productivity"
     },
     {
       "type": "benefits",
@@ -24,79 +25,17 @@
         {
           "title": "THE ORGANIZATION",
           "description": "Your vision, your image, your message. We align technology tools with your overall strategic objectives.",
-          "icon": "dossier"
+          "icon": "organisation"
         },
         {
           "title": "THE HOLDER",
           "description": "Their responsibilities, their abilities, their initiative. We value the people who deploy and maintain your solutions.",
-          "icon": "personne"
+          "icon": "porteur"
         },
         {
           "title": "THE RECEIVER",
           "description": "Their tools, their sense of belonging, their interests. We optimize the end-user experience to maximize adoption.",
-          "icon": "groupe"
-        }
-      ]
-    },
-    {
-      "type": "expertise-bento",
-      "eyebrow": "Areas of expertise",
-      "title": "A 360° view of your digital productivity",
-      "intro": "Ideal solutions to simplify daily tasks and deliver immediate time savings.",
-      "items": [
-        {
-          "title": "Modern Intranet",
-          "text": "Create a single point of entry for information and internal communication.",
-          "peau": "blanche",
-          "taille": "grande",
-          "icon": "fenetre",
-          "image": "/images/services/bento-intranet.jpg",
-          "href": ""
-        },
-        {
-          "title": "BI and Power BI",
-          "text": "",
-          "peau": "bleue",
-          "taille": "haute",
-          "icon": "graphique",
-          "image": "",
-          "href": ""
-        },
-        {
-          "title": "Collaboration",
-          "text": "",
-          "peau": "blanche",
-          "taille": "haute",
-          "icon": "personnes",
-          "image": "",
-          "href": ""
-        },
-        {
-          "title": "Process automation",
-          "text": "Free your teams from repetitive tasks.",
-          "peau": "blanche",
-          "taille": "large",
-          "icon": "engrenage",
-          "image": "",
-          "href": ""
-        },
-        {
-          "title": "Document management",
-          "text": "",
-          "peau": "blanche",
-          "taille": "petite",
-          "icon": "document",
-          "image": "",
-          "href": ""
-        },
-        {
-          "title": "M365 development",
-          "text": "",
-          "peau": "ardoise",
-          "taille": "petite",
-          "icon": "code",
-          "image": "",
-          "href": ""
+          "icon": "destinataire"
         }
       ]
     },
@@ -126,7 +65,7 @@
         "text": "Move to the Power Platform with support tailored to your needs. Ø Studio gives you development speed and delivery capacity to migrate your applications or automate your processes.",
         "ctaLabel": "Raise your productivity with Ø Studio",
         "href": "/en/services/productivite/o-bureau",
-        "image": "/wp-content/uploads/2023/09/bg-o-studio-1-scaled.jpg"
+        "image": "/images/sections/expertises-ostudio.png"
       },
       "items": [
         {
@@ -134,14 +73,76 @@
           "text": "Simplify bookings, improve management and automate usage reports for your offices with our easy-to-implement booking management application.",
           "ctaLabel": "Manage bookings efficiently",
           "href": "/en/services/productivite/o-bureau",
-          "icon": "calendrier"
+          "icon": ""
         },
         {
           "title": "Employee platform",
           "text": "Give your staff the best in intranet experiences. Boost productivity at work by centralizing tools and knowledge.",
           "ctaLabel": "Deploy a modern intranet",
           "href": "/en/services/productivite/plateforme-employe-intranet",
-          "icon": "etoile"
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "type": "expertise-bento",
+      "eyebrow": "Areas of expertise",
+      "title": "A 360° view of your digital productivity",
+      "intro": "Ideal solutions to simplify daily tasks and deliver immediate time savings.",
+      "items": [
+        {
+          "title": "Modern Intranet",
+          "text": "Create a single point of entry for information and internal communication.",
+          "peau": "blanche",
+          "taille": "grande",
+          "icon": "",
+          "image": "/images/services/bento-intranet.jpg",
+          "href": ""
+        },
+        {
+          "title": "BI and Power BI",
+          "text": "",
+          "peau": "bleue",
+          "taille": "haute",
+          "icon": "",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Collaboration",
+          "text": "",
+          "peau": "blanche",
+          "taille": "haute",
+          "icon": "",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Process automation",
+          "text": "Free your teams from repetitive tasks.",
+          "peau": "blanche",
+          "taille": "large",
+          "icon": "",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Document management",
+          "text": "",
+          "peau": "blanche",
+          "taille": "petite",
+          "icon": "",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "M365 development",
+          "text": "",
+          "peau": "ardoise",
+          "taille": "petite",
+          "icon": "",
+          "image": "",
+          "href": ""
         }
       ]
     },

@@ -20,6 +20,11 @@ spec:
   # le polissage du sélecteur CloudCannon vit donc ici, pas dans
   # cloudcannon.config.yml (dont la palette `sections` est générée).
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/hero/preview.png"
     text: Héros
     subtext: Titre principal, sous-titre et bouton — toujours en premier
   preview:

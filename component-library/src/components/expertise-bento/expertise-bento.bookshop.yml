@@ -12,6 +12,11 @@ spec:
   description: "Grille bento 4 colonnes de cartes à peau (blanche, bleue, ardoise) et taille (grande, haute, large, petite) : domaines d'expertise d'une page mère."
   icon: dashboard
   picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/expertise-bento/preview.png"
     text: "Service — Bento d'expertises"
     subtext: Grille bento de cartes (peaux et tailles variées)
   preview:
