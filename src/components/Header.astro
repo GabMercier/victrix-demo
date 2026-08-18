@@ -208,8 +208,12 @@ const ctaClass =
 // Les gris froids jadis « verbatim maquette » (#F8F9FA/#C5C6D0/#EDEEEF) sont
 // devenus l'échelle neutral-* officielle (export2, décision v3 2026-08-14) —
 // la divergence consignée le 2026-08-04 est levée, tout passe par tokens.
+// « Plein écran sous 1300px » (demande user 2026-08-17) : flex-col (le
+// bandeau bas est poussé au BORD BAS via mt-auto quand openMega() donne au
+// panneau une min-height jusqu'au bas du viewport — voir le script) ; au-delà
+// de 1300px, hauteur naturelle, comportement inchangé.
 const megaPanelClass =
-  'absolute top-full inset-x-0 bg-white border-0 border-t border-solid border-neutral-300/10 shadow-surelevee invisible opacity-0 -translate-y-1.5 pointer-events-none transition-[opacity,transform] duration-150 data-[open]:visible data-[open]:opacity-100 data-[open]:translate-y-0 data-[open]:pointer-events-auto motion-reduce:transition-none motion-reduce:translate-y-0';
+  'absolute top-full inset-x-0 flex flex-col bg-white border-0 border-t border-solid border-neutral-300/10 shadow-surelevee invisible opacity-0 -translate-y-1.5 pointer-events-none transition-[opacity,transform] duration-150 data-[open]:visible data-[open]:opacity-100 data-[open]:translate-y-0 data-[open]:pointer-events-auto motion-reduce:transition-none motion-reduce:translate-y-0';
 // Tête de colonne (export mega-menu .overline + .divider) : 12/600 uppercase
 // ls 0.5px neutral-800, filet appuyé neutral-500.
 const megaHeadClass =
@@ -296,6 +300,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
                         ? 'grid-cols-[repeat(3,minmax(0,1fr))_minmax(240px,1fr)]'
                         : 'grid-cols-5',
                       megaStripe ? 'pt-10 pb-10' : 'py-10',
+                      'max-[1300px]:py-6',
                     ]}
                   >
                     {megaFeatured && (
@@ -375,7 +380,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
                     ))}
                   </div>
                   {megaStripe && (
-                    <div class="bg-surface-container border-0 border-t border-solid border-neutral-300/10 py-4">
+                    <div class="mt-auto bg-surface-container border-0 border-t border-solid border-neutral-300/10 py-4">
                       <div class="container-site flex flex-wrap items-center justify-between gap-4">
                         <p class="text-sm font-semibold text-neutral-700 m-0 max-w-none">
                           {megaStripe.text}
@@ -404,7 +409,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
                   data-mega-panel="ressources"
                   aria-label={megaRes.ariaLabel}
                 >
-                  <div class="container-site grid grid-cols-[minmax(220px,1fr)_minmax(160px,0.8fr)_2fr] gap-10 py-10">
+                  <div class="container-site grid grid-cols-[minmax(220px,1fr)_minmax(160px,0.8fr)_2fr] gap-10 py-10 max-[1300px]:py-6 max-[1300px]:gap-6">
                     <div>
                       <p class="text-body-md text-on-surface-variant max-w-[32ch] m-0 mb-6">
                         {megaRes.intro}
@@ -698,9 +703,33 @@ const langLinkClass = 'no-underline p-1 text-sm';
     if (e.key !== 'Escape') return;
     document.querySelectorAll<HTMLElement>('[data-mega-panel]').forEach((p) => {
       delete p.dataset.open;
+      p.style.minHeight = ''; // retire l'étirement plein écran (<1300px)
     });
     document.querySelectorAll<HTMLLIElement>('[data-mega]').forEach((li) => {
       li.querySelector<HTMLAnchorElement>('a[aria-haspopup]')?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // « Plein écran sous 1300px » (demande user 2026-08-17) : sur les fenêtres
+  // étroites, le panneau méga ouvert s'ÉTIRE jusqu'au bas du viewport
+  // (min-height depuis son bord haut — sous l'en-tête collant, bannière
+  // incluse) pour que son bandeau bas (mt-auto) soit visible SANS défiler,
+  // comme un menu mobile. Au-delà de 1300px : hauteur naturelle, comportement
+  // inchangé. min-height (pas height) : si le contenu dépassait quand même,
+  // il n'est jamais rogné. Niveau module (une seule fois, requêtes DOM au
+  // moment de l'événement) — compatible avec les swaps du ClientRouter,
+  // comme le Escape global ci-dessus.
+  const megaFill = window.matchMedia('(max-width: 1300px)');
+  const sizeMegaPanel = (p: HTMLElement) => {
+    p.style.minHeight = megaFill.matches
+      ? `${Math.max(0, window.innerHeight - p.getBoundingClientRect().top)}px`
+      : '';
+  };
+  // Une fenêtre qui traverse 1300px pendant qu'un panneau est ouvert change
+  // de mode (étiré ↔ naturel) sans fermer/rouvrir.
+  megaFill.addEventListener('change', () => {
+    document.querySelectorAll<HTMLElement>('[data-mega-panel]').forEach((p) => {
+      if ('open' in p.dataset) sizeMegaPanel(p);
     });
   });
 
@@ -795,6 +824,7 @@ const langLinkClass = 'no-underline p-1 text-sm';
   const closeAllMegas = () => {
     megaPanels.forEach((p) => {
       delete p.dataset.open;
+      p.style.minHeight = '';
     });
     megaItems.forEach((li) => megaTrigger(li)?.setAttribute('aria-expanded', 'false'));
   };
@@ -802,8 +832,13 @@ const langLinkClass = 'no-underline p-1 text-sm';
     if ('megaClosed' in li.dataset) return; // fermé par Escape — attendre la sortie
     const key = li.dataset.mega;
     megaPanels.forEach((p) => {
-      if (p.dataset.megaPanel === key) p.dataset.open = '';
-      else delete p.dataset.open;
+      if (p.dataset.megaPanel === key) {
+        p.dataset.open = '';
+        sizeMegaPanel(p); // étirement plein écran sous 1300px (voir module)
+      } else {
+        delete p.dataset.open;
+        p.style.minHeight = '';
+      }
     });
     // Tous les déclencheurs du panneau ouvert sont « expanded » (ils
     // contrôlent le même panneau), les autres non.

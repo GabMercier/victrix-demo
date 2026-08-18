@@ -106,8 +106,8 @@
   --shadow-2: 0 4px 16px rgba(11, 19, 52, 0.1);
   --shadow-3: 0 12px 32px rgba(11, 19, 52, 0.14);
 
-  --container-max: 1280px; /* système (was 1200px) */
-  --container-pad: 16px; /* gouttière mobile — 32px ≥768px ci-dessous (was 24px fixe) */
+  --container-max: 1920px; /* ÉLARGI 2026-08-17 (remplir le viewport) — suit --spacing-container-max de theme.css (was 1280px) */
+  --container-pad: 16px; /* gouttière mobile — proportionnelle ≥768px ci-dessous (was 24px fixe) */
 }
 
 /* Gouttière responsive : mêmes valeurs que l'utilitaire `container-site` de
@@ -115,6 +115,8 @@
    sections re-skinnées partagent la même grille de contenu (1216px ≥768px). */
 @media (min-width: 768px) {
   :root {
-    --container-pad: 32px;
+    /* Mêmes valeurs que container-site (theme.css) : 3.75vw = gouttière 48px
+       de la planche 1280, plancher 32px, plafond 96px. */
+    --container-pad: clamp(32px, 3.75vw, 96px);
   }
 }

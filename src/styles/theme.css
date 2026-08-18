@@ -211,7 +211,12 @@
      ⚠️ --spacing-container-max fait résoudre `max-w-container-max` (1280px,
      correct) — vigilance si un futur export nomme un spacing homonyme d'une
      taille --container-*. */
-  --spacing-container-max: 1280px;
+  /* ÉLARGI 2026-08-17 (retour user : « remplir le viewport ») : 1280 → 1920.
+     Les maquettes sont des planches 1280 où le contenu OCCUPE TOUT le cadre ;
+     à 2560 de large, le site plafonné à 1280 flottait dans le blanc. 1920 =
+     75 % d'un écran 2560, plein cadre jusqu'au 1080p. C'EST LE CADRAN UNIQUE
+     (container-site + .container legacy via tokens.css) — ajuster ici. */
+  --spacing-container-max: 1920px;
   --spacing-gutter: 24px;
   --spacing-margin-x: 32px;
   --spacing-section-gap: 80px;
@@ -258,6 +263,9 @@
   margin-inline: auto;
   padding-inline: 16px;
   @media (width >= 48rem) {
-    padding-inline: var(--spacing-margin-x);
+    /* Gouttière PROPORTIONNELLE (élargissement 2026-08-17) : 3.75vw = les
+       48px de la planche 1280 (expertisesparent.css padding 0 48), plancher
+       32px (ex-fixe), plafond 96px sur très large. */
+    padding-inline: clamp(var(--spacing-margin-x), 3.75vw, 96px);
   }
 }

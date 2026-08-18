@@ -294,7 +294,10 @@ const shareLinks = [
   /* Deux colonnes dès 1100px : contenu (≤ 800px, largeur de lecture
      inchangée) + colonne « derniers articles » (parité victrix.ca). */
   .article__inner {
-    max-width: var(--container-max);
+    /* Largeur de LECTURE inchangée malgré l'élargissement global du
+       conteneur (2026-08-17) : la paire 800px + 300px et son space-between
+       se disloqueraient sur un conteneur 1920. */
+    max-width: min(var(--container-max), 1280px);
   }
   .article__layout {
     display: grid;
