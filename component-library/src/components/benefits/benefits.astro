@@ -114,7 +114,7 @@ const FILL_ICONS: Record<string, { viewBox: string; w: number; h: number; d: str
     {
       compact ? (
         <div class="mx-auto text-center flex flex-col items-center gap-4 mb-16">
-          <h2 class="text-base leading-6 font-semibold text-on-surface m-0">{title}</h2>
+          <h2 class="text-[32px] leading-[39px] font-bold text-on-surface m-0">{title}</h2>
           <span class="w-16 h-1 bg-primary" aria-hidden="true" />
           {intro && <p class="text-base leading-6 text-on-surface-variant m-0 max-w-[672px]">{intro}</p>}
         </div>
@@ -133,7 +133,7 @@ const FILL_ICONS: Record<string, { viewBox: string; w: number; h: number; d: str
           <li
             class:list={[
               'm-0 bg-white border border-solid rounded-sm p-8 flex flex-col gap-4',
-              compact ? 'border-[#E5E2DE] shadow-[0_1px_2px_rgba(0,0,0,0.05)] rounded-xs' : 'border-[#C3C6D7]',
+              compact ? 'pb-14 border-[#E5E2DE] shadow-[0_1px_2px_rgba(0,0,0,0.05)] rounded-xs' : 'border-[#C3C6D7]',
             ]}
           >
             {item.icon && (ICONS[item.icon] || FILL_ICONS[item.icon]) && (
@@ -174,7 +174,7 @@ const FILL_ICONS: Record<string, { viewBox: string; w: number; h: number; d: str
                 )}
               </span>
             )}
-            <h3 class:list={['text-on-surface m-0 pt-2', compact ? 'text-base leading-6 font-semibold' : 'text-2xl leading-8 font-bold']}>
+            <h3 class:list={['text-on-surface m-0 pt-2', compact ? 'text-base leading-6 font-normal' : 'text-2xl leading-8 font-bold']}>
               {item.title}
             </h3>
             <p class="text-base leading-6 text-on-surface-variant m-0 max-w-none">{item.description}</p>

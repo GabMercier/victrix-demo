@@ -1,30 +1,24 @@
 ---
-# Page campagne « Licences Power Platform » — VITRINE de la landing maquette
-# (docs/design/landing-page.css + capture « Landing page », 2026-08-05) :
-# héros clair 2 colonnes (accent bleu, 2 CTA, image sur halo), bénéfices en
-# tête compacte + liseré, section Ø Studio (strategic-value « vitrine »),
-# formulaire carte (form1) ancré #formulaire, bandeau bleu final (callout
-# banner). Mêmes conventions que evaluation-securite.md (contrat gelé).
-# L'image Ø Studio est un STAND-IN du dépôt (bureaux) — la photo exacte de la
-# maquette n'est pas dans les assets export.
-title: "Licences Microsoft Power Platform : comment s'y retrouver ?"
+# Page campagne « Licences Power Platform » — MAQUETTE FINALE 2026-08-18
+# (docs/design/export2/landing-pagefinal.txt + capture « Landing page ») :
+# CHROME COMPLET (header 5 entrées + footer 4+1 colonnes — la maquette finale
+# abandonne le chrome allégé), héros clair IVOIRE sans eyebrow (accent bleu
+# conservé, 2 CTA, image sur halo), bénéfices en tête compacte 32/700 +
+# liseré, section Ø Studio IVOIRE (strategic-value « vitrine »), formulaire
+# carte sur bande SABLE lié à la DÉFINITION campagne-guide-licences (case
+# consentement Loi 25 + champs cachés UTM), bandeau bleu final (callout
+# banner). L'image Ø Studio est un STAND-IN du dépôt (bureaux) — la photo
+# exacte de la maquette n'est pas dans les assets export.
+title: "Licences Microsoft Power Platform : comment s'y retrouver ?"
 description: "Guide complet pour choisir les bonnes licences Microsoft Power Platform : types de licences, paliers de service et alignement sur vos besoins d'affaires."
 noindex: true
-header:
-  mode: allege
-  links: []
-  ctaLabel: "Parler à un expert"
-  ctaHref: "/fr/contact"
-  showAnnounce: false
-  showLangSwitch: true
-  showSearch: false
-footerMode: allege
+# Chrome COMPLET : blocs header/footerMode ABSENTS (défaut de la route) — la
+# maquette finale montre la navigation et le pied de page du site entiers.
 sections:
   - _bookshop_name: hero
     type: hero
-    eyebrow: "Ressources • Guide complet"
-    eyebrowIcon: livre
-    title: "Licences Microsoft Power Platform : comment s'y retrouver ?"
+    fond: ivoire
+    title: "Licences Microsoft Power Platform : comment s'y retrouver ?"
     titleAccent: "Power Platform"
     subtitle: "S'y retrouver dans les différentes licences peut sembler complexe pour les directions informatiques. Notre guide simplifie vos choix stratégiques pour optimiser vos investissements."
     ctaLabel: "Télécharger le guide"
@@ -50,6 +44,7 @@ sections:
   - _bookshop_name: strategic-value
     type: strategic-value
     variant: vitrine
+    fond: ivoire
     badge: "Innovation"
     title: "Ø Studio, une technologie créative à votre service"
     paragraphs:
@@ -70,25 +65,15 @@ sections:
   - _bookshop_name: form
     type: form
     variant: carte
+    fond: sable
     title: "Téléchargez notre guide"
     intro: "Complétez le formulaire ci-dessous pour recevoir le guide immédiatement par courriel."
+    # Formulaire LIÉ (2026-08-18) : champs, bouton, consentement et case Loi 25
+    # viennent de src/data/forms/fr/campagne-guide-licences.json (+ champs
+    # cachés Page d'origine / UTM) — les champs inline historiques sont retirés.
+    formId: campagne-guide-licences
     submitLabel: "Recevoir le guide"
-    consentText: "En soumettant ce formulaire, vous consentez à recevoir des communications de Victrix et acceptez sa politique de confidentialité."
-    fields:
-      - label: "Prénom"
-        type: text
-        required: true
-        width: demi
-      - label: "Nom"
-        type: text
-        required: true
-        width: demi
-      - label: "Entreprise"
-        type: text
-        required: true
-      - label: "Courriel Professionnel"
-        type: email
-        required: true
+    fields: []
   - _bookshop_name: callout
     type: callout
     layout: banner-green

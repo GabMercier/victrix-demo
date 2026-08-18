@@ -1047,9 +1047,6 @@ collections_config:
       metaDescription:
         type: textarea
         label: Description (moteurs de recherche)
-      heroEyebrow:
-        type: text
-        label: Surtitre du héros
       heroTitle:
         type: text
         label: Titre principal (H1)
@@ -1065,15 +1062,6 @@ collections_config:
         comment: >-
           Les intitulés seulement — les numéros de téléphone eux-mêmes sont
           gérés par l'équipe technique (neutres de langue).
-      montreal:
-        type: text
-        label: Intitulé « Montréal »
-      quebec:
-        type: text
-        label: Intitulé « Québec »
-      paris:
-        type: text
-        label: Intitulé « Paris »
       tollFree:
         type: text
         label: Intitulé « Sans frais »

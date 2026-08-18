@@ -70,10 +70,17 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
    sélecteur. Glisser pour réordonner; chaque section a ses champs (textes,
    boutons, questions…). Deux vitrines pour tout voir :
    `/fr/campagnes/demo-sections/` et `/fr/style-guide/`.
-4. Par défaut la page est **non indexée** (invisible des moteurs de recherche —
+4. **Fond de section** : plusieurs sections (héros, cartes à icônes, appel à
+   l'action, FAQ, chiffres, tuiles, texte riche, formulaire, valeur
+   stratégique, cartes d'offre, réalisations) offrent un sélecteur « Fond de
+   section » **borné à la palette officielle** : blanc · givre (gris très
+   pâle) · ivoire · beige · sable. Laisser la valeur par défaut = le rendu
+   historique de la section ; aucune couleur libre n'est possible (c'est
+   voulu — cohérence de la charte).
+5. Par défaut la page est **non indexée** (invisible des moteurs de recherche —
    voulu pour les campagnes). L'interrupteur « noindex » est là si une page
    doit un jour être indexée.
-5. **Save** → en ligne en quelques minutes à `/fr/campagnes/<nom>/`.
+6. **Save** → en ligne en quelques minutes à `/fr/campagnes/<nom>/`.
 
 > ⚠️ Si vous arrivez sur une **page blanche avec une barre d'outils de texte** :
 > vous êtes dans l'éditeur de *contenu* (le corps de texte, vide sur une

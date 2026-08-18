@@ -239,6 +239,9 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       cta2Href: z.string().default(''),
       eyebrowIcon: z.enum(['livre', '']).default(''),
       ctaIcon: z.enum(['telechargement', '']).default(''),
+      // « Fond de section » ÉTENDU 2026-08-18 (landing-pagefinal.txt : héros
+      // IVOIRE) ; défaut « givre » = rendu historique (surface-container-low).
+      fond: fondClair.default('givre'),
     }),
     z.object({
       type: z.literal('benefits'),
@@ -307,6 +310,11 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // inconnu fait échouer le build). Vide/absent → mode historique : les
       // champs inline ci-dessous, rendu inchangé.
       formId: z.string().optional(),
+      // « Fond de section » ÉTENDU 2026-08-18 (landing-pagefinal.txt : bande
+      // SABLE derrière la carte). '' = défaut historique du bloc (givre en
+      // carte, blanc en panneau) — le défaut dépend de la variante, d'où la
+      // clé vide (patron strategic-value).
+      fond: z.enum(['', 'blanc', 'givre', 'ivoire', 'beige', 'sable']).default(''),
       // Schéma de champ PARTAGÉ avec la collection `forms` (formFieldCore,
       // défini plus haut) + règles croisées (options de select, conditions).
       fields: z.array(formFieldCore).superRefine(formFieldRules),
@@ -1241,15 +1249,13 @@ const contact = defineCollection({
   schema: z.object({
     metaTitle: z.string().min(1),
     metaDescription: z.string().min(1),
-    heroEyebrow: z.string().min(1),
     heroTitle: z.string().min(1),
     heroSub: z.string().min(1),
     infoTitle: z.string().min(1),
     // Libellés de la carte Coordonnées (les numéros vivent dans le gabarit).
+    // Maquette finale 2026-08-18 : 2 rangées seulement (sans frais + courriel)
+    // — l'eyebrow du héros et la mini-grille des villes sont supprimés.
     infoLabels: z.object({
-      montreal: z.string().min(1),
-      quebec: z.string().min(1),
-      paris: z.string().min(1),
       tollFree: z.string().min(1),
       email: z.string().min(1),
     }),

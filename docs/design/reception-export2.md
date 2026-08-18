@@ -70,3 +70,37 @@ hérités (#6B7280/#9CA3AF/#F3F4F6/#DBEAFE)→neutral-600/400/100 + bleu-100.
    composant dit overline 12px là où le tokens.json dit 14/16 (retenu : 12px
    pour le méga — fidélité visuelle au screenshot) ; boutons 14/600 vs
    `label.bold.s` 700 (retenu : 600, valeur des 5 exports).
+
+## 5. Livraison 2026-08-18 — maquettes FINALES landing + contact, images catalogue
+
+Reçus : `landing-pagefinal.txt` (landing campagne Licences Power Platform),
+`contactfinal.css` (page Contact), `hero catalogue.jpg` + 8 photos de
+solutions (le fichier hash `2090b126….jpg` = « Gestion des idées », confirmé
+visuellement). **Appliqués le jour même** (contact.astro ; landing
+licences-power-platform fr+en + composants hero/benefits/form/strategic-value/
+callout ; 9 images → `public/images/solutions/`, câblées dans les 18 JSON).
+
+Mappings/arbitrages (décision user 2026-08-18 : teinte proche → token en
+place, jamais de nouveau hex) :
+
+- **`#002FC7`** (titres/icônes/liens des deux maquettes finales — les boutons
+  y restent `#1A5BFF`) → **`primary #1a5bff`**. Le même export utilise les
+  vrais tokens ailleurs (header/footer/form) ; `#002FC7` est lu comme calque
+  hérité de l'ancienne planche. À confirmer avec le designer.
+- `#1C1C1A`→on-surface `#21242a` · `#444656`→on-surface-variant `#545f71` ·
+  `#00105B`→on-primary-fixed `#0b1334` (substitutions déjà en place).
+- `#FAF7F4`→ivoire · `#F1E8DF`→beige · `#EBE0D5`→sable · `#AAB2C0`→
+  neutral-400 · `#072C88`→bleu-800 (tous exacts).
+- Purgés de contact.astro : les verbatims de l'ancienne maquette `#C4C5D9`,
+  `#F0EDEA` (et le gris Tailwind `#6B7280` des chevrons).
+- `#E5E2DE` (bordures cartes landing) : verbatim conservé (déjà en place,
+  proche neutral-200 `#e5e7eb` — à trancher avec le designer).
+
+Signalement ASSETS : **tous les exports image font 512 px de large** —
+étirés pleine largeur à ≥1920 ils deviennent flous (héros Carrières,
+héros services, vedette catalogue). Le lettrage cuit de
+`produit-enfant-hero.jpg` (bas droite) se fait rogner sur les viewports
+larges et bas quel que soit l'object-position. **Demander des exports
+≥1920 px** (et idéalement le lettrage en HTML, pas cuit dans l'image).
+Correctif posé : héros Carrières `object-[50%_25%]` (les visages ne sont
+plus coupés sur grand écran).

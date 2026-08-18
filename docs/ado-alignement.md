@@ -73,11 +73,19 @@ FR/EN, Turnstile visible dès la clé).*
   l'export2 couvre 5 composants + 5 photos ; les maquettes de pages complètes
   restent chez le designer.
 - **#1412 Composants réutilisables** (Active) — re-skin v3 en cours (header,
-  méga, footer, cartes faits) ; normalisation boutons à finaliser.
-- **#1452 Visuels authentiques** (New) — 5 vraies photos livrées dans
-  l'export2, PAS encore câblées dans les pages (Lot 6). L'AC note la
-  dépendance « intrant Victrix » : d'autres visuels restent à fournir.
-- **#1453 Validation des maquettes** (Active) — gate parties prenantes.
+  méga, footer, cartes faits ; 2026-08-18 : hero/benefits/form/strategic-value/
+  callout alignés sur les maquettes FINALES landing + contact) ; normalisation
+  boutons à finaliser.
+- **#1452 Visuels authentiques** (New) — avancé 2026-08-18 : les **9 images du
+  catalogue Solutions sont CÂBLÉES** (public/images/solutions/, 18 JSON fr+en —
+  vedette o-bureau incluse). Restent : les 5 photos export2/Images (Lot 6) et
+  les visuels « intrant Victrix ». ⚠️ Tous les exports font 512 px de large —
+  flous en pleine largeur ≥1920 ; demander des exports ≥1920 px au designer
+  (héros Carrières/services surtout).
+- **#1453 Validation des maquettes** (Active) — gate parties prenantes ;
+  2026-08-18 : landing « Licences Power Platform » et Contact appliqués sur
+  les maquettes FINALES (landing-pagefinal.txt, contactfinal.css) → prêts
+  pour la validation.
 
 ### Inventaire & migration (Epic 0 / F3.1)
 - **#1445 Inventaire URLs** (Active) — ⚠️ la task « Export screaming frog et

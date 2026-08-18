@@ -117,6 +117,11 @@ interface Props {
   consentText?: string;
   /** « carte » (form1, défaut) ou « panneau » (form2) — voir l'entête. */
   variant?: 'carte' | 'panneau';
+  /**
+   * « Fond de section » (2026-08-18, landing-pagefinal.txt : bande SABLE).
+   * '' = défaut historique du bloc (givre en carte, blanc en panneau).
+   */
+  fond?: '' | 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
   fields: FormField[];
   /**
    * FORMS V2 — référence un formulaire de src/data/forms/<lang>/<formId>.json.
@@ -149,6 +154,7 @@ const {
   submitLabel,
   consentText,
   variant = 'carte',
+  fond = '',
   fields = [],
   formId = '',
   resolvedForms,
@@ -248,36 +254,57 @@ const errorMessage =
     ? 'Your message could not be sent. Please check your answers and try again.'
     : 'Votre message n’a pas pu être envoyé. Vérifiez vos réponses, puis réessayez.';
 
-// --- Recettes visuelles par variante (maquettes form1 / form2) --------------
+// --- Recettes visuelles par variante (maquettes form1 / form2 ; carte
+// AJUSTÉE 2026-08-18 sur landing-pagefinal.txt : bordures neutral-400,
+// strip bleu-800, titre 20/24 bold, gouttière demi-champs 12px, bouton
+// rayon 4 + ombre contrôle + semi-gras) --------------------------------------
 const isCard = variant !== 'panneau';
 const inputClass = isCard
-  ? 'w-full text-body-md text-on-surface bg-surface-container-lowest border border-solid border-outline rounded-sm px-3 py-3 placeholder:text-outline'
+  ? 'w-full text-body-md text-on-surface bg-surface-container-lowest border border-solid border-neutral-400 rounded-sm px-3 py-3 placeholder:text-outline'
   : 'w-full text-body-md text-on-surface bg-surface-container-lowest border border-solid border-outline-variant rounded px-3 py-3 placeholder:text-outline';
 const labelClass = 'font-bold text-body-md text-on-surface';
 const fieldClass = (field: FormField) =>
   ['flex flex-col gap-2', field.width === 'demi' ? 'sm:col-span-1' : 'sm:col-span-2'].join(' ');
 const submitClass = isCard
-  ? 'sm:col-span-2 w-full inline-flex items-center justify-center gap-2 py-4 px-10 bg-primary text-on-primary text-body-md rounded-sm border-0 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)] transition-colors hover:bg-primary-container cursor-pointer disabled:opacity-55 disabled:cursor-not-allowed'
+  ? 'sm:col-span-2 w-full inline-flex items-center justify-center gap-2 py-4 px-10 bg-primary text-on-primary text-body-md font-semibold rounded border-0 shadow-controle transition-colors hover:bg-primary-container cursor-pointer disabled:opacity-55 disabled:cursor-not-allowed'
   : 'sm:col-span-2 justify-self-start inline-flex items-center justify-center gap-2 py-4 px-10 bg-primary text-on-primary text-body-md rounded-sm border-0 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] transition-colors hover:bg-primary-container cursor-pointer disabled:opacity-55 disabled:cursor-not-allowed';
+
+// « Fond de section » : clé fermée → utilitaire de la palette officielle ;
+// '' = rendu historique de la variante (carte = givre, panneau = blanc).
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
+const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surface');
 ---
 
 {/* id="formulaire" : ancre stable pour les CTA de héros (« Télécharger le
     guide » → #formulaire). Première section form de la page seulement en
     pratique — deux forms sur une même page partageraient l'ancre. */}
-<section id="formulaire" class:list={['py-section-gap', isCard ? 'bg-surface-container-low' : 'bg-surface']}>
+<section id="formulaire" class:list={['py-section-gap', fondClass]}>
   <div class="container-site">
     <div
       class:list={[
         'mx-auto',
         isCard
-          ? 'relative overflow-hidden max-w-[736px] bg-surface-container-lowest border border-solid border-outline-variant rounded-lg shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] p-6 sm:p-12'
+          ? 'relative overflow-hidden max-w-[736px] bg-surface-container-lowest border border-solid border-neutral-400 rounded-lg shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] p-6 sm:p-8'
           : 'max-w-[760px] bg-surface-container rounded-sm p-6 sm:p-12',
       ]}
     >
-      {isCard && <span class="absolute top-0 inset-x-0 h-1 bg-primary" aria-hidden="true" />}
+      {isCard && <span class="absolute top-0 inset-x-0 h-1 bg-bleu-800" aria-hidden="true" />}
 
       <div class="flex flex-col gap-2 mb-10">
-        <h2 class="text-body-md font-normal text-center text-on-surface m-0 max-w-none">{title}</h2>
+        <h2
+          class:list={[
+            'text-center text-on-surface m-0 max-w-none',
+            isCard ? 'text-xl leading-6 font-bold' : 'text-body-md font-normal',
+          ]}
+        >
+          {title}
+        </h2>
         {intro && (
           <p class="text-body-md text-center text-on-surface-variant m-0 max-w-none mx-auto">
             {intro}
@@ -288,7 +315,7 @@ const submitClass = isCard
       <!-- Maquette : formulaire volontairement SANS `action` — le backend de
            formulaires est un chantier séparé (workstream ultérieur). -->
       <form
-        class:list={['grid grid-cols-1 sm:grid-cols-2', isCard ? 'gap-6' : 'gap-4']}
+        class:list={['grid grid-cols-1 sm:grid-cols-2', isCard ? 'gap-x-3 gap-y-6' : 'gap-4']}
         method={formsEnabled ? 'POST' : undefined}
         action={formsEnabled ? '/api/forms' : undefined}
         data-astro-reload={formsEnabled ? '' : undefined}

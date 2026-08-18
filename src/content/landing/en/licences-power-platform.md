@@ -4,20 +4,12 @@
 title: "Microsoft Power Platform licensing: making sense of it all"
 description: "A complete guide to choosing the right Microsoft Power Platform licences: licence types, service tiers, and alignment with your business needs."
 noindex: true
-header:
-  mode: allege
-  links: []
-  ctaLabel: "Talk to an expert"
-  ctaHref: "/en/contact"
-  showAnnounce: false
-  showLangSwitch: true
-  showSearch: false
-footerMode: allege
+# Full chrome: header/footerMode blocks ABSENT (route default) — the final
+# maquette shows the full site navigation and footer (2026-08-18).
 sections:
   - _bookshop_name: hero
     type: hero
-    eyebrow: "Resources • Complete guide"
-    eyebrowIcon: livre
+    fond: ivoire
     title: "Microsoft Power Platform licensing: making sense of it all"
     titleAccent: "Power Platform"
     subtitle: "Navigating the different licences can feel complex for IT leadership. Our guide simplifies your strategic choices to optimize your investments."
@@ -44,6 +36,7 @@ sections:
   - _bookshop_name: strategic-value
     type: strategic-value
     variant: vitrine
+    fond: ivoire
     badge: "Innovation"
     title: "Ø Studio, creative technology at your service"
     paragraphs:
@@ -64,25 +57,15 @@ sections:
   - _bookshop_name: form
     type: form
     variant: carte
+    fond: sable
     title: "Download our guide"
     intro: "Fill out the form below to receive the guide immediately by email."
+    # Linked form (2026-08-18): fields, button, consent text and the Law 25
+    # checkbox come from src/data/forms/en/campagne-guide-licences.json
+    # (+ hidden Page of origin / UTM fields) — inline fields removed.
+    formId: campagne-guide-licences
     submitLabel: "Get the guide"
-    consentText: "By submitting this form, you consent to receiving communications from Victrix and accept its privacy policy."
-    fields:
-      - label: "First name"
-        type: text
-        required: true
-        width: demi
-      - label: "Last name"
-        type: text
-        required: true
-        width: demi
-      - label: "Company"
-        type: text
-        required: true
-      - label: "Business email"
-        type: email
-        required: true
+    fields: []
   - _bookshop_name: callout
     type: callout
     layout: banner-green

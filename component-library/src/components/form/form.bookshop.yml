@@ -45,6 +45,7 @@ blueprint:
   submitLabel: "Envoyer"
   consentText: ""
   variant: carte
+  fond: ""
   # Forme COMPLÈTE P-05 (comme schemas/form-*.json et _structures.form_fields) :
   # CloudCannon ne matérialise les inputs que pour les clés PRÉSENTES — sans
   # elles, un champ seed passé à « select » n'offrirait jamais ses Options.
@@ -115,6 +116,20 @@ _inputs:
       values:
         - carte
         - panneau
+  # « Fond de section » ÉTENDU au formulaire (2026-08-18, landing finale) :
+  # choix BORNÉ à la palette officielle (esprit P-16).
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: true
+      values:
+        - blanc
+        - givre
+        - ivoire
+        - beige
+        - sable
+    comment: "Couleur de fond de la bande derrière le formulaire. Vide = défaut du bloc (gris très pâle en carte, blanc en panneau)."
   fields:
     # `type: array` explicite — voir le GOTCHA d'entête (bail-out de generate +
     # liaison à la structure partagée qui ré-expose le type de champ).

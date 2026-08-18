@@ -16,21 +16,25 @@ const t = useTranslations(lang);
 const c = await getLocaleData('contact', lang);
 
 /**
- * Page Contact — FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/contact.css +
- * capture fournie par le user), lot « une page à la fois » :
- *  - héros centré ivoire : eyebrow 12/700 ls 1.2 bleu, H1 56/800 ls -1.12
- *    navy, sous-titre 18/29 centré ;
- *  - bande beige (surface-container-low) : carte Coordonnées blanche (titre
- *    bleu, rangées icône + libellé/valeur, filet, mini-grille des villes) + 3
- *    cartes bureaux ivoire (photo, ville 24/700, adresse, tél bleu en pied) ;
- *  - section formulaire 2 colonnes : titre 40/700 + intro + puces cochées
- *    bleues à gauche ; panneau #F0EDEA bordé à droite (champs 50px blancs
- *    rayon 4, selects Sujet/Expertise à chevron custom, « Précisez votre
- *    demande », message, consentement, bouton primaire rayon 2).
- * Couleurs : export déjà Hanken/chaud → bleus/navy/textes/fonds = TOKENS
- * (#002FC7→primary, #00105B→on-primary-fixed, #1C1C1A→on-surface,
- * #444656→on-surface-variant, #F6F3EF→surface-container-low, #FCF9F5→surface) ;
- * bordures froides #C4C5D9 et panneau #F0EDEA repris VERBATIM (précédent méga).
+ * Page Contact — FIDÉLITÉ MAQUETTE FINALE 2026-08-18
+ * (docs/design/export2/contactfinal.css + capture fournie par le user) :
+ *  - héros centré IVOIRE (py 120) : H1 56/800 ls -1.12 navy + sous-titre
+ *    18/29 centré — l'eyebrow de l'ancienne maquette est SUPPRIMÉ ;
+ *  - bande BLANCHE : 4 colonnes ÉGALES gap 16 — carte Coordonnées blanche
+ *    (titre bleu, 2 rangées tél/courriel SEULEMENT — la mini-grille des
+ *    villes de l'ancienne maquette est supprimée) + 3 cartes bureaux BEIGE
+ *    (photo ~2:1 rayon 2, ville 24/700 + adresse flush, tél bleu en pied) ;
+ *    cartes : rayon 8, ombre 0 1px 2px 25 %, SANS bordure ;
+ *  - section formulaire IVOIRE (py 60) 2 colonnes ≈1:2 gap 16 : titre
+ *    40/700 + intro + puces cochées bleues à gauche ; panneau BEIGE rayon 2
+ *    sans bordure à droite (champs 50px blancs rayon 2 bordure neutral-400,
+ *    selects à chevron custom neutral-600, consentement 14px, bouton primaire
+ *    PLEINE LARGEUR h 56 rayon 4 + flèche).
+ * Couleurs : 100 % tokens — #002FC7→primary (décision user 2026-08-18 :
+ * teinte proche = token en place), #00105B→on-primary-fixed,
+ * #1C1C1A→on-surface, #444656→on-surface-variant, #FAF7F4→ivoire,
+ * #F1E8DF→beige, #AAB2C0→neutral-400, #545F71→on-surface-variant.
+ * Les verbatims de l'ancienne maquette (#C4C5D9, #F0EDEA) sont PURGÉS.
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé (l'ancienne
  * feuille de la page est supprimée).
  *
@@ -121,11 +125,10 @@ const errorMessage =
     : 'Votre message n’a pas pu être envoyé. Vérifiez vos réponses, puis réessayez.';
 
 // Recettes partagées de la page (répétées si besoin ailleurs — pas d'abstraction).
-const cardBorder = 'border border-solid border-[#C4C5D9]';
+const cardShadow = 'shadow-[0_1px_2px_rgba(0,0,0,0.25)]';
 const labelClass = 'block text-base font-bold text-on-surface';
 const inputClass =
-  'w-full h-[50px] px-3 bg-white border border-solid border-[#C4C5D9] rounded text-base text-on-surface focus-visible:border-primary focus-visible:outline-none';
-const cityLabelClass = 'block text-xs font-bold uppercase tracking-[1.2px] text-on-surface-variant mb-1';
+  'w-full h-[50px] px-3 bg-white border border-solid border-neutral-400 rounded-sm text-base text-on-surface-variant focus-visible:border-primary focus-visible:outline-none';
 const phoneIcon =
   'M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z';
 ---
@@ -164,9 +167,8 @@ const phoneIcon =
     ))
   }
   <!-- Hero -->
-  <section class="bg-surface py-20 lg:py-24">
+  <section class="bg-ivoire py-20 lg:py-30">
     <div class="container-site flex flex-col items-center text-center gap-4">
-      <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary m-0 max-w-none">{c.heroEyebrow}</p>
       <h1 class="text-[40px] leading-[1.1] lg:text-[56px] lg:leading-[62px] font-extrabold tracking-[-1.12px] text-on-primary-fixed m-0">
         {c.heroTitle}
       </h1>
@@ -175,10 +177,10 @@ const phoneIcon =
   </section>
 
   <!-- Coordonnées + bureaux -->
-  <section class="bg-surface-container-low pt-20 pb-28 lg:pb-40">
-    <div class="container-site grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-6 items-stretch">
+  <section class="bg-white py-20">
+    <div class="container-site grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
       <!-- Carte coordonnées -->
-      <div class:list={['bg-white rounded-sm shadow-[0_1px_2px_rgba(0,0,0,0.05)] p-8 lg:p-10 flex flex-col gap-8', cardBorder]}>
+      <div class:list={['bg-white rounded-lg p-6 flex flex-col gap-8', cardShadow]}>
         <h2 class="text-2xl font-bold text-primary m-0">{c.infoTitle}</h2>
         <div class="flex flex-col gap-4">
           <div class="flex items-start gap-4">
@@ -201,45 +203,33 @@ const phoneIcon =
             </p>
           </div>
         </div>
-        <div class="border-0 border-t border-solid border-[#C4C5D9] pt-4 grid grid-cols-2 gap-x-6 gap-y-4">
-          <p class="m-0 max-w-none">
-            <span class={cityLabelClass}>{c.infoLabels.montreal}</span>
-            <a class="text-base text-on-surface no-underline hover:text-primary" href="tel:+15148791919">514-879-1919</a>
-          </p>
-          <p class="m-0 max-w-none">
-            <span class={cityLabelClass}>{c.infoLabels.quebec}</span>
-            <a class="text-base text-on-surface no-underline hover:text-primary" href="tel:+14187808181">418-780-8181</a>
-          </p>
-          <p class="m-0 max-w-none">
-            <span class={cityLabelClass}>{c.infoLabels.paris}</span>
-            <a class="text-base text-on-surface no-underline hover:text-primary" href="tel:+33174905040">+33 1 74 90 50 40</a>
-          </p>
-        </div>
       </div>
 
       <!-- Cartes bureaux -->
       {
         c.offices.map((office, i) => (
-          <article class:list={['bg-surface rounded-sm p-6 flex flex-col', cardBorder]}>
+          <article class:list={['bg-beige rounded-lg p-4 flex flex-col gap-4', cardShadow]}>
             <img
-              class="w-full aspect-[16/10] object-cover rounded-sm border-0"
+              class="w-full aspect-[252/128] object-cover rounded-sm border-0"
               src={office.image}
               alt=""
               loading="lazy"
               decoding="async"
             />
-            <h3 class="text-2xl font-bold text-on-surface m-0 mt-5 mb-2">{office.city}</h3>
-            <address class="not-italic text-base leading-6 text-on-surface-variant m-0">
-              {office.lines.map((line) => (
-                <span class="block">{line}</span>
-              ))}
-            </address>
+            <div>
+              <h3 class="text-2xl font-bold text-on-surface m-0">{office.city}</h3>
+              <address class="not-italic text-base leading-[26px] text-on-surface-variant m-0">
+                {office.lines.map((line) => (
+                  <span class="block">{line}</span>
+                ))}
+              </address>
+            </div>
             {officePhones[i] && (
               <a
-                class="mt-auto pt-6 inline-flex items-center gap-2 text-base font-bold text-primary no-underline hover:text-primary-container"
+                class="mt-auto inline-flex items-center gap-2 text-base font-bold text-primary no-underline hover:text-primary-container"
                 href={`tel:${officePhones[i].tel}`}
               >
-                <svg class="shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                <svg class="shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
                   <path d={phoneIcon} />
                 </svg>
                 {officePhones[i].phone}
@@ -252,8 +242,8 @@ const phoneIcon =
   </section>
 
   <!-- Formulaire -->
-  <section class="bg-surface py-20 lg:py-24">
-    <div class="container-site grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-12 lg:gap-20 items-start">
+  <section class="bg-ivoire py-15">
+    <div class="container-site grid grid-cols-1 lg:grid-cols-[minmax(0,376fr)_minmax(0,792fr)] gap-10 lg:gap-4 items-start">
       <div class="flex flex-col gap-4">
         <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-balance">
           {c.formTitle}
@@ -274,7 +264,7 @@ const phoneIcon =
         </ul>
       </div>
 
-      <div class:list={['bg-[#F0EDEA] rounded-sm p-6 sm:p-8 lg:p-12', cardBorder]}>
+      <div class="bg-beige rounded-sm p-6 sm:p-8 lg:p-12">
         <p class="sr-only" id="req-note">{c.reqNote}</p>
         <form
           class="flex flex-col gap-6"
@@ -311,7 +301,7 @@ const phoneIcon =
               </>
             )
           }
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-6">
             <div class="flex flex-col gap-2">
               <label class={labelClass} for="firstname">{c.labels.firstName} <span aria-hidden="true">*</span></label>
               <input class={inputClass} id="firstname" name={formsEnabled ? nameFor(c.labels.firstName) : 'firstname'} type="text" autocomplete="given-name" required />
@@ -337,7 +327,7 @@ const phoneIcon =
                     <option value={opt}>{opt}</option>
                   ))}
                 </select>
-                <svg class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#6B7280]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <svg class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <path d="m6 9 6 6 6-6" />
                 </svg>
               </span>
@@ -351,7 +341,7 @@ const phoneIcon =
                     <option value={opt}>{opt}</option>
                   ))}
                 </select>
-                <svg class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#6B7280]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <svg class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <path d="m6 9 6 6 6-6" />
                 </svg>
               </span>
@@ -366,7 +356,7 @@ const phoneIcon =
           <div class="flex flex-col gap-2">
             <label class={labelClass} for="message">{c.labels.message} <span aria-hidden="true">*</span></label>
             <textarea
-              class="w-full h-[122px] p-3 bg-white border border-solid border-[#C4C5D9] rounded text-base text-on-surface resize-y focus-visible:border-primary focus-visible:outline-none"
+              class="w-full h-[120px] p-3 bg-white border border-solid border-neutral-400 rounded-sm text-base text-on-surface-variant resize-y focus-visible:border-primary focus-visible:outline-none"
               id="message"
               name={formsEnabled ? nameFor(c.labels.message) : 'message'}
               required
@@ -375,14 +365,14 @@ const phoneIcon =
 
           <div class="flex items-start gap-3 py-2">
             <input
-              class="size-4 mt-1 shrink-0 bg-white border border-solid border-[#C4C5D9] rounded-sm accent-[var(--color-primary)]"
+              class="size-4 mt-1 shrink-0 bg-white border border-solid border-neutral-600 rounded-sm accent-[var(--color-primary)]"
               id="consent"
               name={formsEnabled ? consentName : 'consent'}
               value="oui"
               type="checkbox"
               required
             />
-            <label class="text-base leading-[26px] text-on-surface-variant" for="consent">
+            <label class="text-sm leading-6 text-on-surface-variant" for="consent">
               <span set:html={consentHtml} />
             </label>
           </div>
@@ -399,9 +389,13 @@ const phoneIcon =
 
           <button
             type="submit"
-            class="self-start bg-primary text-on-primary px-10 py-4 rounded-sm text-base leading-6 border-0 cursor-pointer shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] hover:bg-primary-container transition-colors"
+            class="w-full inline-flex items-center justify-center gap-2.5 bg-primary text-on-primary px-8 py-4 rounded text-base leading-6 font-semibold border-0 cursor-pointer shadow-controle hover:bg-primary-container transition-colors"
           >
             {c.submit}
+            <svg class="shrink-0" width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M1 5h11" />
+              <path d="M8.5 1.5 12 5l-3.5 3.5" />
+            </svg>
           </button>
 
           <p
