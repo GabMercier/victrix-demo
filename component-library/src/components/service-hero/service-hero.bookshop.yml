@@ -81,12 +81,13 @@ _inputs:
   overlay:
     type: select
     label: "Voile sur la photo"
-    comment: "« voile » : Bleu nuit uniforme (défaut) ; « degrade » : dégradé anthracite gauche→droite (page produit)."
+    comment: "« voile » : Bleu nuit uniforme (défaut) ; « degrade » : dégradé anthracite gauche→droite (page produit) ; « blanc » : héros CLAIR — fondu blanc/beige sur la photo, titre foncé, accent bleu (page expertise mère)."
     options:
       allow_empty: false
       values:
         - voile
         - degrade
+        - blanc
   image:
     type: image
     label: "Photo de fond (optionnelle)"

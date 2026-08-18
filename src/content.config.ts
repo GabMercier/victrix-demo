@@ -508,7 +508,10 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       cta2Href: z.string().default(''),
       // « degrade » (produit-enfant.css) : voile en dégradé anthracite
       // gauche→droite au lieu du voile Bleu nuit uniforme.
-      overlay: z.enum(['voile', 'degrade']).default('voile'),
+      // « blanc » AJOUTÉ 2026-08-17 (expertisesparent.css §HeroSection —
+      // retour user) : héros CLAIR — double dégradé blanc + beige sur la
+      // photo, titre foncé, accent bleu-500, bouton 2 « verre » clair.
+      overlay: z.enum(['voile', 'degrade', 'blanc']).default('voile'),
       // Chemin public (ex. /images/services/…-hero.png), servi tel quel.
       // Depuis le re-skin 2026-08-05 : PHOTO DE FOND pleine largeur voilée de
       // Bleu nuit (plus une image à droite du texte).
