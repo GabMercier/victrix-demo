@@ -35,12 +35,17 @@
    Fichier : public/fonts/InterVariable.woff2 (rsms.me/inter, OFL). Remplace
    Hanken Grotesk (décision v3 — export2 : fontFamily "Inter" sur les 24
    styles de texte du tokens.json). */
+/* SOUS-ENSEMBLE (2026-08-19, Lighthouse) : InterVariable-subset.woff2 = les
+   caractères réellement utilisés par le site + plages latines complètes,
+   généré par scripts/subset-inter.mjs (345 Ko → 107 Ko, axe de graisse
+   conservé). L'original InterVariable.woff2 reste dans public/fonts comme
+   source pour régénérer. Le preload de BaseLayout pointe le même fichier. */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/InterVariable.woff2') format('woff2');
+  src: url('/fonts/InterVariable-subset.woff2') format('woff2');
 }
 
 /* Les classes `dark:` des maquettes portées restent INERTES tant qu'aucune
