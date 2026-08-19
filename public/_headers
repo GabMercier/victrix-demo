@@ -44,10 +44,6 @@
 # le worker OAuth (sveltia-cms-auth.…workers.dev) peut être décommissionné
 # côté Cloudflare (tâche OPS, hors dépôt).
 
-# Keep auth endpoints out of search results.
-/auth/*
-  X-Robots-Tag: noindex
-
 # Content-hashed build assets — safe to cache forever.
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable

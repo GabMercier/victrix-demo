@@ -5,24 +5,18 @@ import Logo from './Logo.astro';
  * Branded client-portal login card (shared by the FR and EN entry pages).
  *
  * It deliberately LOOKS like the legacy Victrix login (email + password fields,
- * "forgot password" link, brand panel) — but the primary action starts the
- * OIDC redirect to the identity provider. The credential fields carry NO `name`
- * attribute, so nothing is ever posted to this domain; the form only submits a
- * hidden `returnTo` to GET /auth/login, which hands off to the IdP (mock signs
- * in instantly). See docs/portail-auth.md §3.
+ * brand panel). 2026-08-18 : le prototype de connexion MOCK (OIDC/PKCE-shaped,
+ * /auth/*, tableau de bord) est RETIRÉ — la carte est purement VISUELLE : les
+ * champs n'ont pas de `name`, le <form> n'a pas d'action et le bouton est
+ * DÉSACTIVÉ. L'implémentation réelle (Entra ID) suivra docs/portail-auth.md ;
+ * l'ancien flux vit dans l'historique git.
  */
 
 interface Props {
   lang: 'fr' | 'en';
-  /** Where to land after sign-in (already validated upstream). */
-  returnTo: string;
-  /** Show the "please sign in to continue" notice (came from the guard). */
-  redirected?: boolean;
-  /** Show an error notice (e.g. a failed callback bounced back here). */
-  error?: boolean;
 }
 
-const { lang, returnTo, redirected = false, error = false } = Astro.props;
+const { lang } = Astro.props;
 
 const t = {
   fr: {
@@ -30,17 +24,13 @@ const t = {
     title: 'Mon portail',
     intro:
       'Accédez à vos contrats, services et documents en toute sécurité.',
-    redirected: 'Veuillez vous connecter pour accéder à votre portail.',
-    error:
-      'La connexion n’a pas pu être finalisée. Veuillez réessayer.',
     emailLabel: 'Courriel',
     passwordLabel: 'Mot de passe',
-    forgot: 'Mot de passe oublié ?',
     submit: 'Se connecter',
     secureNote:
-      'Connexion sécurisée : vous êtes authentifié chez notre fournisseur d’identité (Microsoft Entra). Aucun mot de passe n’est traité par ce site.',
+      'Connexion sécurisée : vous serez authentifié chez notre fournisseur d’identité (Microsoft Entra). Aucun mot de passe n’est traité par ce site.',
     demoNote:
-      'Démonstration : la connexion est simulée — vous serez connecté automatiquement.',
+      'Démonstration : la connexion sera activée avec l’intégration Microsoft Entra — elle est désactivée sur ce prototype.',
     panelTitle: 'Un portail, tous vos services',
     panelLead:
       'Suivez vos contrats de cybersécurité, vos rapports et l’état de vos services Victrix au même endroit.',
@@ -57,15 +47,12 @@ const t = {
     eyebrow: 'Client area',
     title: 'My portal',
     intro: 'Securely access your contracts, services and documents.',
-    redirected: 'Please sign in to access your portal.',
-    error: 'Sign-in could not be completed. Please try again.',
     emailLabel: 'Email',
     passwordLabel: 'Password',
-    forgot: 'Forgot your password?',
     submit: 'Sign in',
     secureNote:
-      'Secure sign-in: you authenticate with our identity provider (Microsoft Entra). No password is ever processed by this site.',
-    demoNote: 'Demo: sign-in is simulated — you will be logged in automatically.',
+      'Secure sign-in: you will authenticate with our identity provider (Microsoft Entra). No password is ever processed by this site.',
+    demoNote: 'Demo: sign-in will be enabled with the Microsoft Entra integration — it is disabled on this prototype.',
     panelTitle: 'One portal, all your services',
     panelLead:
       'Track your cybersecurity contracts, reports and the status of your Victrix services in one place.',
@@ -80,7 +67,6 @@ const t = {
   },
 }[lang];
 
-const loginHref = `/auth/login?returnTo=${encodeURIComponent(returnTo)}`;
 const homeHref = lang === 'fr' ? '/fr' : '/en';
 ---
 
@@ -112,20 +98,9 @@ const homeHref = lang === 'fr' ? '/fr' : '/en';
         <h1 class="pl__title">{t.title}</h1>
         <p class="pl__intro">{t.intro}</p>
 
-        {error && (
-          <p class="pl__alert pl__alert--error" role="alert">{t.error}</p>
-        )}
-        {!error && redirected && (
-          <p class="pl__alert pl__alert--info" role="status">{t.redirected}</p>
-        )}
-
-        {/*
-          GET → /auth/login. The credential inputs have NO `name`, so only the
-          hidden returnTo is submitted; the provider takes over from there.
-        */}
-        <form class="pl__fields" method="get" action="/auth/login" aria-describedby="pl-secure-note">
-          <input type="hidden" name="returnTo" value={returnTo} />
-
+        {/* Carte VISUELLE : pas d'action, champs sans `name`, bouton
+            désactivé — rien n'est jamais soumis (voir l'entête). */}
+        <form class="pl__fields" aria-describedby="pl-secure-note">
           <div class="field">
             <label for="pl-email">{t.emailLabel}</label>
             <input id="pl-email" type="email" autocomplete="username" inputmode="email" />
@@ -136,11 +111,7 @@ const homeHref = lang === 'fr' ? '/fr' : '/en';
             <input id="pl-password" type="password" autocomplete="current-password" />
           </div>
 
-          <div class="pl__row">
-            <a class="pl__forgot" href={loginHref}>{t.forgot}</a>
-          </div>
-
-          <button type="submit" class="btn btn--primary pl__submit">{t.submit}</button>
+          <button type="submit" class="btn btn--primary pl__submit" disabled>{t.submit}</button>
 
           <p id="pl-secure-note" class="pl__note">
             <svg width="15" height="15" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
@@ -246,25 +217,6 @@ const homeHref = lang === 'fr' ? '/fr' : '/en';
     color: var(--color-text-muted);
   }
 
-  .pl__alert {
-    margin: var(--space-5) 0 0;
-    padding: var(--space-3) var(--space-4);
-    border-radius: var(--radius-m);
-    font-size: var(--fs-200);
-    font-weight: var(--fw-medium);
-  }
-  .pl__alert--info {
-    background-color: rgba(51, 102, 255, 0.1);
-    border: 1px solid var(--color-accent-blue);
-    color: var(--color-navy);
-  }
-  .pl__alert--error {
-    /* P-16 : rôles d'erreur du thème (finis les rouges en dur). */
-    background-color: var(--color-error-container);
-    border: 1px solid var(--color-error);
-    color: var(--color-on-error-container);
-  }
-
   .pl__fields {
     margin-top: var(--space-5);
     display: flex;
@@ -293,18 +245,14 @@ const homeHref = lang === 'fr' ? '/fr' : '/en';
     border-color: var(--color-accent-blue);
   }
 
-  .pl__row {
-    margin-top: calc(var(--space-4) * -1 + var(--space-1));
-  }
-  .pl__forgot {
-    font-size: var(--fs-200);
-    color: var(--color-link);
-    font-weight: var(--fw-medium);
-  }
   .pl__submit {
     align-self: stretch;
     width: 100%;
     padding-block: 0.85em;
+  }
+  .pl__submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
   }
 
   .pl__note,

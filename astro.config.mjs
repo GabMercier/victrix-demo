@@ -17,45 +17,27 @@ const isBuild = process.argv.includes('build');
 // STATIC_ONLY mode — a fully-static build for CloudCannon's editing environment.
 // CloudCannon builds the site to drive its visual editor and has no Cloudflare
 // Pages runtime, so in this mode (a) the Cloudflare adapter stays OFF even
-// during `astro build`, and (b) the handful of on-demand routes (portal + auth)
-// are force-prerendered so the build can succeed with no adapter at all.
-// Cloudflare Pages production builds are UNCHANGED — STATIC_ONLY is unset
-// there, the adapter still attaches, and the portal still runs on demand.
+// during `astro build`, and (b) toute route à la demande est force-prérendue
+// pour que le build passe sans adaptateur. Cloudflare Pages production builds
+// are UNCHANGED — STATIC_ONLY is unset there and the adapter still attaches.
 // Enable with `STATIC_ONLY=1 astro build` (any non-empty value).
 //
-// What force-prerendering does to those routes in the STATIC_ONLY output (the
-// verification agent proves this empirically; expectations from Astro's source):
-//   - /fr/portail + /en/portail: no cookies exist at build time, so the session
-//     check finds nothing and the plain login screen is baked. Fine for editing.
-//   - the dashboard: the no-session redirect gets baked as a
-//     <meta http-equiv="refresh"> page pointing at the login — for EVERY
-//     visitor of that build. Never ship a STATIC_ONLY build to production.
-//   - /auth/login + /auth/callback: prerendered endpoints keep only the
-//     response BODY (status codes and Set-Cookie headers are dropped), so the
-//     mock sign-in flow does not function in a STATIC_ONLY build.
-//   - /auth/logout exports only POST; Astro logs a "No API Route handler
-//     exists for the method \"GET\"" warning and emits no file. Expected.
-//   - the sitemap gains the portal pages in this mode (they became
-//     prerendered) — harmless, the editing build is never served to crawlers.
+// Seule route à la demande restante : /api/forms (le portail mock et /auth/*
+// ont été RETIRÉS le 2026-08-18). Force-prérendu, un endpoint ne garde que le
+// CORPS de la réponse (statuts et en-têtes perdus) — d'où la consigne de ne
+// JAMAIS poser PUBLIC_FORMS_ENABLED dans l'environnement de build CloudCannon
+// (docs/formulaires.md).
 const staticOnly = Boolean(process.env.STATIC_ONLY);
 
 /**
- * STATIC_ONLY inline integration. Two jobs:
- *
- * 1. `astro:route:setup` — the documented hook for flipping a route's
- *    prerender flag (an explicit `export const prerender = false` in the file
- *    arrives as the default and may be overridden here; runs before bundling).
- *    We flip EVERY route so a future on-demand route can't silently break the
- *    CloudCannon build either.
- *
- * 2. Prerendering a *dynamic* route requires `getStaticPaths()` — Astro
- *    hard-errors with GetStaticPathsRequired otherwise (see
- *    node_modules/astro/dist/core/routing/validation.js) — but the two portal
- *    pages (src/pages/[lang]/portail/*.astro) are on-demand by design and have
- *    none, and those files belong to the auth workstream (frozen — must not be
- *    edited). So we shim it in from outside: Astro's compiler plugin is
- *    `enforce: 'pre'`, meaning a plain Vite plugin's `transform` receives the
- *    COMPILED JS of .astro modules and can safely append one extra export.
+ * STATIC_ONLY inline integration — `astro:route:setup` is the documented hook
+ * for flipping a route's prerender flag (an explicit `export const prerender
+ * = false` in the file arrives as the default and may be overridden here; runs
+ * before bundling). We flip EVERY route so a future on-demand route can't
+ * silently break the CloudCannon build either. Aujourd'hui la seule route à
+ * la demande est /api/forms (le portail mock et ses routes /auth/* ont été
+ * RETIRÉS le 2026-08-18 — la page de connexion restante est prérendue) ;
+ * l'ancien shim getStaticPaths des pages portail est parti avec.
  */
 function staticOnlyMode() {
   return {
@@ -64,35 +46,6 @@ function staticOnlyMode() {
       /** @param {{ route: { component: string, prerender?: boolean } }} options */
       'astro:route:setup': ({ route }) => {
         route.prerender = true;
-      },
-      /** @param {{ updateConfig: (config: object) => void }} options */
-      'astro:config:setup': ({ updateConfig }) => {
-        updateConfig({
-          vite: {
-            plugins: [
-              {
-                name: 'victrix:static-only-getstaticpaths',
-                /**
-                 * @param {string} code
-                 * @param {string} id
-                 */
-                transform(code, id) {
-                  // Vite ids use forward slashes on every OS; the `$` anchor
-                  // skips the compiler's ?astro&type=style/script subrequests.
-                  if (!/\/src\/pages\/\[lang\]\/portail\/[^/?#]+\.astro$/.test(id)) return;
-                  // Safety: never double-export if a real one appears someday.
-                  if (code.includes('getStaticPaths')) return;
-                  return {
-                    code:
-                      code +
-                      "\nexport function getStaticPaths() { return [{ params: { lang: 'fr' } }, { params: { lang: 'en' } }]; }\n",
-                    map: null,
-                  };
-                },
-              },
-            ],
-          },
-        });
       },
     },
   };
@@ -527,12 +480,13 @@ export default defineConfig({
 
   // The marketing site stays fully prerendered (static). `output: 'static'` is
   // the default and means EVERY page is prerendered UNLESS it opts out with
-  // `export const prerender = false`. Only the client-portal + auth routes do
-  // that, so they run on demand as a Cloudflare Pages Function while the rest of
-  // the site is served as static assets from the edge — unchanged behaviour.
+  // `export const prerender = false`. Only /api/forms does that (the mock
+  // portal's on-demand routes were removed 2026-08-18), so it runs on demand
+  // as a Cloudflare Pages Function while the rest of the site is served as
+  // static assets from the edge.
   output: 'static',
 
-  // The Cloudflare adapter lets the few on-demand routes run on Pages. Build-only
+  // The Cloudflare adapter lets the on-demand route run on Pages. Build-only
   // (see `isBuild` above); `imageService: 'compile'` optimizes images with sharp
   // at build time so the worker never needs sharp at runtime. STATIC_ONLY builds
   // (CloudCannon editing — see above) run adapter-less: everything prerenders.
@@ -615,6 +569,10 @@ export default defineConfig({
         !page.includes('/recherche/') &&
         !page.includes('/style-guide') &&
         !page.includes('/services/demo-sections') &&
+        // /portail : page de connexion noindex, PRÉRENDUE depuis le retrait
+        // du portail mock (2026-08-18) — sans cette exclusion elle entrerait
+        // au sitemap en contradiction avec son noindex.
+        !page.includes('/portail') &&
         !noindexComposablePaths.some((path) => page.includes(path)),
     }),
     // Editor-managed redirects (src/data/redirects.json) → dist/_redirects.

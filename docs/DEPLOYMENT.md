@@ -44,12 +44,14 @@ then add a deploy job to `.github/workflows/ci.yml` (a stub note is already ther
 ## 3. Environment variables & secrets
 
 Set in the Pages dashboard (Settings → Environment variables) or via Wrangler.
-See `.env.example` for the full list. None are required for the **mock** portal.
+See `.env.example` for the full list.
+
+> 2026-08-18 : le portail MOCK est retiré (reste la page de connexion
+> visuelle) — AUCUNE des variables portail ci-dessous n'est lue aujourd'hui.
+> Elles arriveront avec l'implémentation réelle (docs/portail-auth.md §7).
 
 | Name | Type | When |
 |---|---|---|
-| `AUTH_PROVIDER` | var (`mock`/`entra`) | switch on real auth |
-| `PORTAL_DATA` | var (`mock`/`dataverse`) | switch on real data |
 | `PORTAL_SESSION_SECRET` | **secret** | real portal (cookie signing) |
 | `ENTRA_AUTHORITY` / `ENTRA_CLIENT_ID` | var | real auth |
 | `ENTRA_CLIENT_SECRET` | **secret** | real auth (confidential client) |

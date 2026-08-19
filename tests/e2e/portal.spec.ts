@@ -14,25 +14,19 @@ test.describe('routing & i18n', () => {
   });
 });
 
-test.describe('client portal (mock)', () => {
-  test('sign in lands on the dashboard, then sign out', async ({ page }) => {
+// 2026-08-18 : le portail MOCK (tableau de bord, routes /auth/*, middleware,
+// session) est RETIRÉ — seule la page de connexion VISUELLE subsiste,
+// prérendue, bouton désactivé (l'intégration Entra réelle suivra
+// docs/portail-auth.md).
+test.describe('client portal (login page only)', () => {
+  test('login page renders with a disabled sign-in button', async ({ page }) => {
     await page.goto('/fr/portail');
-    await page.getByRole('button', { name: 'Se connecter' }).click();
-
-    // Timeout élargi : /auth/login et le tableau de bord sont des routes À LA
-    // DEMANDE — leur PREMIÈRE compilation sur un dev server froid, sous la
-    // charge des workers parallèles, peut dépasser les 5 s par défaut (flake
-    // constaté 2026-08-17 : vert en solo, rouge en suite complète à froid).
-    await expect(page).toHaveURL(/\/fr\/portail\/tableau-de-bord/, { timeout: 15_000 });
-    await expect(page.getByRole('heading', { name: 'Mes contrats' })).toBeVisible();
-
-    await page.getByRole('button', { name: 'Se déconnecter' }).click();
-    await expect(page).toHaveURL(/\/fr\/portail/);
+    await expect(page.getByRole('heading', { name: 'Mon portail' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Se connecter' })).toBeDisabled();
   });
 
-  test('dashboard is guarded when signed out', async ({ page }) => {
-    await page.goto('/fr/portail/tableau-de-bord');
-    // Middleware bounces unauthenticated users back to the login.
-    await expect(page).toHaveURL(/\/fr\/portail\?returnTo=/);
+  test('the old dashboard route is gone', async ({ page }) => {
+    const response = await page.goto('/fr/portail/tableau-de-bord');
+    expect(response?.status()).toBe(404);
   });
 });

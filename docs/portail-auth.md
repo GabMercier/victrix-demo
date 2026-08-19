@@ -1,8 +1,14 @@
 # Client portal — architecture & implementation blueprint
 
-> Status: **implemented (prototype, mock auth + mock data).** The structure below
-> is live; the mock→real swap points in §7 are the remaining work to go to
-> production. This document doubles as the stakeholder architecture note.
+> Status 2026-08-18 : **prototype mock RETIRÉ du site (décision user).** Le
+> tableau de bord, les routes `/auth/*`, le middleware de garde, `src/lib/auth`
+> et `src/lib/data` sont supprimés — seule la **page de connexion visuelle**
+> (`/fr/portail`, prérendue, bouton désactivé) subsiste. Le code du prototype
+> (OIDC/PKCE-shaped, session cookie signée, données mock) vit dans
+> l'**historique git** (avant le commit de retrait) et ce document reste le
+> **plan de l'implémentation réelle** (Entra ID + Dataverse, §7).
+>
+> Statut précédent : implemented (prototype, mock auth + mock data).
 
 ## 1. Why this exists
 

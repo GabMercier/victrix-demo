@@ -98,8 +98,25 @@ const selectClass =
       <!-- Panneau vedette -->
       {
         featured && (
-          <section class="bg-on-primary-fixed rounded-xl p-8 lg:p-12 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)]">
-            <div class:list={['grid grid-cols-1 gap-8 items-center', featured.data.image && 'lg:grid-cols-[1fr_432px]']}>
+          <section class="relative overflow-hidden bg-on-primary-fixed rounded-xl p-8 lg:p-12 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)]">
+            {/* <lg : la photo devient le FOND du panneau sous un lavis navy
+                (dégradé gauche→droite) au lieu de s'empiler sous le texte —
+                demande user 2026-08-18. ≥lg : colonne image proportionnelle
+                (5/12, remplace le 432px fixe qui laissait l'image perdue à
+                droite sur grand écran). */}
+            {featured.data.image && (
+              <div class="absolute inset-0 lg:hidden" aria-hidden="true">
+                <img
+                  class="w-full h-full object-cover border-0"
+                  src={featured.data.image}
+                  alt=""
+                  loading="eager"
+                  decoding="async"
+                />
+                <span class="absolute inset-0 bg-gradient-to-r from-on-primary-fixed via-on-primary-fixed/90 to-on-primary-fixed/55" />
+              </div>
+            )}
+            <div class:list={['relative grid grid-cols-1 gap-8 items-center', featured.data.image && 'lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]']}>
               <div class="flex flex-col items-start gap-6">
                 <p class="m-0 max-w-none inline-flex items-center gap-2 bg-primary text-on-primary text-xs leading-4 font-bold uppercase tracking-[0.6px] px-3 py-1 rounded-full">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
@@ -130,7 +147,7 @@ const selectClass =
               </div>
               {featured.data.image && (
                 <img
-                  class="w-full h-auto rounded-lg border-0"
+                  class="hidden lg:block w-full h-auto rounded-lg border-0"
                   src={featured.data.image}
                   alt=""
                   loading="eager"
@@ -216,6 +233,13 @@ const selectClass =
                       decoding="async"
                     />
                   )}
+                  {/* Léger dégradé en tête : le chip secteur reste lisible
+                      sur photos claires (demande user 2026-08-18). */}
+                  <span
+                    class="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/25 to-transparent pointer-events-none"
+                    aria-hidden="true"
+                  />
+
                   <p class="absolute top-3 left-3 m-0 max-w-none bg-white/90 shadow-[0_1px_2px_rgba(0,0,0,0.05)] rounded-full px-3 py-1 text-[10px] leading-4 font-bold uppercase tracking-[0.5px] text-[#00020A]">
                     {entry.data.sector}
                   </p>
