@@ -1,4 +1,5 @@
 ---
+slug: ''
 # Gabarit CloudCannon (« + Ajouter » → Campagne (FR) — voir
 # cloudcannon.config.yml, collections_config.landing.schemas). Le fichier créé
 # atterrit dans src/content/landing/fr/ (create.path du schéma) et son front

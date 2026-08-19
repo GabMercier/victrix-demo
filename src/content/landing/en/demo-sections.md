@@ -1,4 +1,5 @@
 ---
+slug: demo-sections
 _schema: default
 title: Demo new sections
 description: Demo page for the Testimonial, Partner logos, Stats and Video sections.

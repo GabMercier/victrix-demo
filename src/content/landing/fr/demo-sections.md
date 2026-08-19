@@ -1,4 +1,5 @@
 ---
+slug: demo-sections
 _schema: default
 title: Démonstration nouvelles sections
 description: >-

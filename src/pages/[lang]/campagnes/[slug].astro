@@ -36,22 +36,39 @@ export async function getStaticPaths() {
   // ROUTE résout formId → définition au build et l'injecte. Dans l'éditeur
   // visuel (enrich absent), la section affiche une note + la maquette inline.
   const formEntries = await getCollection('forms');
+  // URL personnalisable (2026-08-18) : le NOM DE FICHIER reste la clé
+  // d'appariement des traductions ; le SEGMENT D'URL est le frontmatter `slug`
+  // s'il est renseigné, sinon le nom de fichier (comportement historique).
+  const fileSlugOf = (p: (typeof pages)[number]) => p.id.slice(p.id.indexOf('/') + 1);
+  const urlSlugOf = (p: (typeof pages)[number]) => p.data.slug || fileSlugOf(p);
+  // Garde-fou : deux campagnes d'une même langue sur le même segment d'URL
+  // font ÉCHOUER le build en nommant les deux fichiers — jamais une page
+  // écrasée en silence (même philosophie que les redirections).
+  const seen = new Map<string, string>();
+  for (const p of pages) {
+    const key = `${p.id.split('/')[0]}/${urlSlugOf(p)}`;
+    const prev = seen.get(key);
+    if (prev) {
+      throw new Error(
+        `[campagnes] URL en double « /${key}/ » : ${prev} et ${p.id} — changer le champ « slug » de l'une des deux pages.`,
+      );
+    }
+    seen.set(key, p.id);
+  }
   return pages.map((page) => {
     // Entry ids are "<locale>/<filename>" (same generateId trick as blog).
-    // Unlike blog there is no per-locale `slug` frontmatter yet: the filename
-    // is both the pairing key AND the URL slug, identical in both locales.
     const seg = page.id.split('/')[0];
     const lang = isLocale(seg) ? seg : defaultLocale;
-    const slug = page.id.slice(page.id.indexOf('/') + 1);
+    const slug = urlSlugOf(page);
     const other = otherLocale[lang];
-    // Language switch / hreflang target: the translation shares the filename,
-    // so its URL is the same slug under the other prefix — but only if the
-    // counterpart file exists. Otherwise fall back to the other locale's home
-    // (there is no public campaigns index to point at). Keep the trailing
-    // slash: the no-slash URL 308-redirects on Cloudflare Pages.
-    const counterpart = pages.find((p) => p.id === `${other}/${slug}`);
+    // Language switch / hreflang target: the translation shares the FILENAME
+    // (pairing key) but owns its URL slug — point at the counterpart's own
+    // localized URL when the file exists. Otherwise fall back to the other
+    // locale's home (there is no public campaigns index to point at). Keep the
+    // trailing slash: the no-slash URL 308-redirects on Cloudflare Pages.
+    const counterpart = pages.find((p) => p.id === `${other}/${fileSlugOf(page)}`);
     const altLocalePath = counterpart
-      ? localizePath(`/campagnes/${slug}/`, other)
+      ? localizePath(`/campagnes/${urlSlugOf(counterpart)}/`, other)
       : localizePath('/', other);
     // `frontmatter` is LOAD-BEARING for CloudCannon live editing: the
     // astro-bookshop vite plugin statically pattern-matches a variable

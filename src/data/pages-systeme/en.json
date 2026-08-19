@@ -1,9 +1,33 @@
 {
   "ressources": {
-    "eyebrow": "Resources",
-    "title": "The Victrix blog",
-    "intro": "Analysis, best practices and insights from our experts to support your organization's digital transformation.",
-    "filterAll": "All"
+    "eyebrow": "Resource centre",
+    "title": "IT perspectives and",
+    "titleAccent": "expertise",
+    "intro": "Explore our latest articles, case studies and white papers to stay at the forefront of digital transformation.",
+    "filterAll": "All",
+    "subscribeLabel": "Subscribe to the newsletter",
+    "searchPlaceholder": "Search an expertise...",
+    "readMore": "Read the article",
+    "byline": "By Victrix Expertise",
+    "expertCard": {
+      "title": "500+ Experts",
+      "subtitle": "Sharing their knowledge"
+    },
+    "newsletter": {
+      "title": "Stay ahead of the trends",
+      "text": "Receive our best analyses and expert advice in your inbox every month.",
+      "emailPlaceholder": "your@email.com",
+      "submitLabel": "Subscribe",
+      "confirmation": "Thank you! Your newsletter subscription is confirmed."
+    },
+    "cta": {
+      "title": "Ready to transform your technology vision?",
+      "text": "Our experts are available to discuss your challenges and craft a tailored strategy aligned with your business goals.",
+      "primaryLabel": "Book a meeting",
+      "primaryHref": "/contact",
+      "secondaryLabel": "Contact us",
+      "secondaryHref": "/contact"
+    }
   },
   "recherche": {
     "metaTitle": "Search",
@@ -11,7 +35,7 @@
     "eyebrow": "Search",
     "title": "Search the site",
     "intro": "Find a service, an expertise area, an article or a page.",
-    "noscript": "Search requires JavaScript. You can also browse the site through the menu or visit the blog."
+    "noscript": "Search requires JavaScript. You can also browse the site through the menu or visit the resource centre."
   },
   "merci": {
     "metaTitle": "Thank you",
@@ -20,7 +44,7 @@
     "text": "Your message has been sent. Our team will get back to you as soon as possible.",
     "links": [
       { "label": "Back to home", "href": "/", "primary": true },
-      { "label": "Visit the blog", "href": "/ressources", "primary": false }
+      { "label": "Visit the resource centre", "href": "/ressources", "primary": false }
     ]
   }
 }

@@ -75,7 +75,7 @@
     "requestedLabel": "Requested address:",
     "links": [
       { "label": "Back to home", "href": "/", "primary": true },
-      { "label": "Read the blog", "href": "/ressources", "primary": false },
+      { "label": "Visit the resource centre", "href": "/ressources", "primary": false },
       { "label": "Contact us", "href": "/contact", "primary": false }
     ]
   }

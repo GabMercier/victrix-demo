@@ -1,4 +1,5 @@
 ---
+slug: ''
 # CloudCannon template ("+ Add" → Campaign (EN) — see cloudcannon.config.yml,
 # collections_config.landing.schemas). The created file lands in
 # src/content/landing/en/ (the schema's create.path) and its front matter MUST

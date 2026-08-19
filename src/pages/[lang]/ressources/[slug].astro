@@ -173,7 +173,14 @@ const shareLinks = [
 
       {
         post.data.coverImage && (
-          <img class="article__cover" src={post.data.coverImage} alt="" loading="eager" />
+          <img
+            class="article__cover"
+            src={post.data.coverImage}
+            alt=""
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
         )
       }
 
@@ -449,17 +456,17 @@ const shareLinks = [
   .article__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2);
+    gap: var(--space-2) var(--space-4);
     margin: 0 0 var(--space-4);
   }
+  /* Catégories — même recette que les cartes du centre de ressources
+     (refonte 2026-08-18) : libellé bleu MAJUSCULES, sans capsule. */
   .tag {
     font-size: var(--fs-100);
     font-weight: var(--fw-semibold);
-    color: var(--color-navy);
-    background-color: var(--color-band);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-pill);
-    padding: 0.2em 0.7em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent-blue);
   }
   .article__head h1 {
     max-width: 22ch;

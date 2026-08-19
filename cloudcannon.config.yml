@@ -65,12 +65,12 @@ collection_groups:
 collections_config:
   blog:
     path: src/content/blog
-    name: Blogue
+    name: Centre de ressources
     singular_name: Article
     description: >-
-      Articles du blogue. Les dossiers fr/ et en/ contiennent les deux
-      langues ; le même nom de fichier dans les deux dossiers relie une
-      traduction à l'autre.
+      Articles du centre de ressources (/ressources). Les dossiers fr/ et en/
+      contiennent les deux langues ; le même nom de fichier dans les deux
+      dossiers relie une traduction à l'autre.
     icon: post_add
     # Editing interfaces. The FIRST value is the editor a file OPENS IN by
     # default (documented in CloudCannon's "Set a default editing interface"
@@ -158,7 +158,7 @@ collections_config:
         label: Extrait
         comment: >-
           Sert aussi de description SEO (résultats Google, partages) et de
-          texte des cartes du blogue.
+          texte des cartes du centre de ressources.
       seoTitle:
         type: text
         label: Titre SEO (surcharge)
@@ -198,8 +198,9 @@ collections_config:
         type: array
         label: Étiquettes
         comment: >-
-          Catégories de l'index du blogue (onglets de filtre + méga-menu
-          Ressources). Pour relier l'article aux pages Services, utiliser
+          Catégories du centre de ressources (pilules de filtre + méga-menu
+          Ressources). La PREMIÈRE étiquette sert de catégorie affichée sur
+          les cartes. Pour relier l'article aux pages Services, utiliser
           plutôt les Thèmes ci-dessous.
       # Type d'entrée du tableau (notation documentée `nom[*]`) : sans lui,
       # un tableau VIDE est « misconfigured » — CloudCannon ne sait pas quoi
@@ -392,9 +393,13 @@ collections_config:
       - visual
       - content
     # Same [relative_base_path] trick as blog: the locale folder becomes the
-    # URL prefix. Landing has no per-locale `slug` frontmatter (yet) — the
-    # filename IS the URL slug in both locales, so this template is exact.
-    url: /[relative_base_path]/campagnes/[slug]/
+    # URL prefix. {slug} is a DATA placeholder reading the `slug` front matter
+    # (2026-08-18 — URL personnalisable) : every seeded campaign carries an
+    # explicit `slug` (= filename by default), so this template is exact. New
+    # pages created from the schemas start with slug: "" — the preview link is
+    # wrong until the editor fills it in (the built site falls back to the
+    # filename).
+    url: /[relative_base_path]/campagnes/{slug}/
     # "+ Ajouter" templates — same rationale as blog: force the fr/ or en/
     # folder (a root-level file would collide into /fr/ in the campagnes
     # getStaticPaths) and start from front matter that SATISFIES the frozen
@@ -432,6 +437,15 @@ collections_config:
         comment: >-
           Titre de la page (onglet + SEO), d'une section ou d'une carte,
           selon le contexte.
+      slug:
+        type: text
+        label: Adresse de la page (segment d'URL)
+        comment: >-
+          Le dernier segment de l'adresse : /fr/campagnes/<segment>/.
+          Minuscules, chiffres et traits d'union seulement (ex.
+          offre-licences-2026). Vide = le nom du fichier. Le nom de fichier
+          reste ce qui relie la page à sa traduction — changer l'adresse ne
+          brise pas l'appariement FR/EN.
       description:
         type: textarea
         label: Description
@@ -1297,7 +1311,7 @@ collections_config:
     name: Pages système
     singular_name: Pages système
     description: >-
-      Textes de l'index du blogue (/ressources), de la page de recherche
+      Textes du centre de ressources (/ressources), de la page de recherche
       (/recherche) et de la page de confirmation (/merci). Un fichier par
       langue (fr.json / en.json).
     icon: web
@@ -1310,10 +1324,71 @@ collections_config:
     _inputs:
       ressources:
         type: object
-        label: Index du blogue (/ressources)
+        label: Centre de ressources (/ressources)
         comment: >-
-          Le surtitre « Ressources » sert aussi de nom de section dans le fil
-          d'Ariane des articles et de titre du flux RSS.
+          Le surtitre (« Centre de ressources ») sert aussi de nom de section
+          dans le fil d'Ariane des articles et de titre du flux RSS.
+      titleAccent:
+        type: text
+        label: Fin de titre (en bleu)
+        comment: >-
+          Suite du titre affichée en bleu sur la ligne suivante (ex. «
+          expertises TI »). Vide = titre d'un seul tenant.
+      subscribeLabel:
+        type: text
+        label: Bouton « S'abonner à l'infolettre »
+        comment: Le bouton du héros — il mène à la carte infolettre de la page.
+      searchPlaceholder:
+        type: text
+        label: Texte indicatif de la recherche
+        comment: Affiché dans le champ de recherche de la barre de filtres.
+      readMore:
+        type: text
+        label: Lien « Lire l'article » des cartes
+      byline:
+        type: text
+        label: Signature de l'article vedette
+        comment: Ex. « Par Victrix Expertise ». Vide = pas de signature.
+      expertCard:
+        type: object
+        label: Carte décorative du héros
+        comment: La carte vitrée à droite du héros (ex. « 500+ Experts »).
+      subtitle:
+        type: text
+        label: Sous-titre
+      newsletter:
+        type: object
+        label: Carte infolettre
+        comment: >-
+          La carte marine de la grille. DÉMO : l'inscription affiche la
+          confirmation sans envoi réel.
+      emailPlaceholder:
+        type: text
+        label: Texte indicatif du champ courriel
+      submitLabel:
+        type: text
+        label: Libellé du bouton d'envoi
+      confirmation:
+        type: textarea
+        label: Message de confirmation
+      cta:
+        type: object
+        label: Bandeau d'appel à l'action
+        comment: Le bandeau au bas de la page (titre, texte, deux boutons).
+      primaryLabel:
+        type: text
+        label: Bouton principal — libellé
+      primaryHref:
+        type: text
+        label: Bouton principal — lien
+        comment: SANS préfixe de langue (/contact, pas /fr/contact).
+      secondaryLabel:
+        type: text
+        label: Bouton secondaire — libellé
+      secondaryHref:
+        type: text
+        label: Bouton secondaire — lien
+        comment: SANS préfixe de langue (/contact, pas /fr/contact).
       recherche:
         type: object
         label: Page de recherche (/recherche)

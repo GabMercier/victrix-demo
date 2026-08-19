@@ -1,4 +1,5 @@
 ---
+slug: evaluation-securite
 _schema: default
 title: Assess your security posture
 description: >-

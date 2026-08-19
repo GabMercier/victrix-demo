@@ -1,4 +1,5 @@
 ---
+slug: licences-power-platform
 # Page campagne « Licences Power Platform » — MAQUETTE FINALE 2026-08-18
 # (docs/design/export2/landing-pagefinal.txt + capture « Landing page ») :
 # CHROME COMPLET (header 5 entrées + footer 4+1 colonnes — la maquette finale

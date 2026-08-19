@@ -52,6 +52,21 @@ const types = [...new Set(cards.map((entry) => entry.data.solutionType))];
 
 const selectClass =
   'w-full sm:w-56 h-10 appearance-none pl-3 pr-9 bg-white border border-solid border-[#C5C6D0] rounded-lg text-sm text-[#00020A] cursor-pointer focus-visible:border-primary focus-visible:outline-none';
+
+// Préremplissage du formulaire contact (2026-08-18) : quand la fiche d'une
+// solution pointe vers /contact, le lien transporte `?sujet=` (l'option du
+// select « De quoi souhaitez-vous parler ? ») et `?produit=` (le nom de la
+// solution). La page contact lit ces paramètres CÔTÉ CLIENT et préremplit le
+// formulaire — un sujet inconnu est simplement ignoré (tolérant), donc pas de
+// garde-fou de build ici. Les valeurs doivent refléter les options de
+// src/data/forms/<langue>/contact.json.
+const subjectProject = lang === 'en' ? 'A project' : 'Un projet';
+const contactHref = (href: string, productTitle: string): string => {
+  const base = localizePath(href, lang);
+  if (!/^\/contact\/?$/.test(href)) return base;
+  const params = new URLSearchParams({ sujet: subjectProject, produit: productTitle });
+  return `${base}?${params.toString()}`;
+};
 ---
 
 <BaseLayout lang={lang} title={c.metaTitle} description={c.metaDescription} contentType="Page">
@@ -130,7 +145,7 @@ const selectClass =
                   {featured.data.href && (
                     <a
                       class="inline-flex items-center justify-center text-center bg-primary text-on-primary px-10 py-4 rounded-xl text-base font-bold leading-6 no-underline hover:bg-primary-container transition-colors"
-                      href={localizePath(featured.data.href, lang)}
+                      href={contactHref(featured.data.href, featured.data.title)}
                     >
                       {c.featuredCta}
                     </a>
@@ -254,7 +269,7 @@ const selectClass =
                     {entry.data.href && (
                       <a
                         class="inline-flex items-center gap-2 text-sm font-bold text-primary no-underline hover:text-primary-container"
-                        href={localizePath(entry.data.href, lang)}
+                        href={contactHref(entry.data.href, entry.data.title)}
                       >
                         {c.discover}
                         <svg

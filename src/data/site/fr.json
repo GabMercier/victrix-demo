@@ -78,7 +78,7 @@
     "requestedLabel": "Adresse demandée :",
     "links": [
       { "label": "Retour à l’accueil", "href": "/", "primary": true },
-      { "label": "Consulter le blogue", "href": "/ressources", "primary": false },
+      { "label": "Consulter le centre de ressources", "href": "/ressources", "primary": false },
       { "label": "Nous joindre", "href": "/contact", "primary": false }
     ]
   }

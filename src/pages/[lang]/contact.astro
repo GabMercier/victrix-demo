@@ -425,6 +425,38 @@ const phoneIcon =
   // astro:page-load — the DOM is swapped on each client-side navigation while
   // this module executes only once per session.
   document.addEventListener('astro:page-load', () => {
+    // Préremplissage par l'URL (2026-08-18) — liens « Découvrir » du catalogue
+    // de solutions (?sujet=&produit=), réutilisable par toute page :
+    //  - ?sujet=     → sélectionne l'option EXACTE du select « De quoi
+    //                  souhaitez-vous parler ? » (valeur inconnue : ignorée) ;
+    //  - ?expertise= → même mécanique sur le select « Expertise » ;
+    //  - ?produit=   → remplit « Précisez votre demande » avec le nom du
+    //                  produit et fait défiler jusqu'au formulaire.
+    // Fonctionne dans les DEUX modes (maquette et /api/forms réel) : les ids
+    // des champs sont identiques, seuls les attributs name changent.
+    {
+      const params = new URLSearchParams(location.search);
+      const setSelect = (id: string, value: string | null) => {
+        const select = document.getElementById(id) as HTMLSelectElement | null;
+        if (!select || !value) return false;
+        const match = Array.from(select.options).some((opt) => opt.value === value);
+        if (match) select.value = value;
+        return match;
+      };
+      const subjectSet = setSelect('subject', params.get('sujet'));
+      const expertiseSet = setSelect('expertise', params.get('expertise'));
+      const produit = params.get('produit');
+      const request = document.getElementById('request') as HTMLInputElement | null;
+      let produitSet = false;
+      if (produit && request && !request.value) {
+        request.value = produit;
+        produitSet = true;
+      }
+      if (subjectSet || expertiseSet || produitSet) {
+        document.querySelector('form[aria-describedby="req-note"]')?.scrollIntoView({ block: 'start' });
+      }
+    }
+
     const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
     const status = document.querySelector<HTMLParagraphElement>('[data-form-status]');
     if (form && status) {

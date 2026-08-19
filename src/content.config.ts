@@ -774,6 +774,20 @@ const landing = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      // Segment d'URL personnalisable (2026-08-18) : vide = le nom de fichier
+      // (comportement historique). Le nom de fichier reste la CLÉ D'APPARIEMENT
+      // des traductions — seul le segment d'URL change. Minuscules, chiffres
+      // et traits d'union seulement ; l'unicité PAR LANGUE est vérifiée au
+      // build par la route campagnes (deux pages sur la même URL = échec
+      // explicite, jamais une page écrasée en silence).
+      slug: z
+        .string()
+        .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
+          message:
+            'slug : minuscules, chiffres et traits d’union seulement (ex. offre-licences-2026)',
+        })
+        .or(z.literal(''))
+        .default(''),
       description: z.string().optional(),
       // Campaign pages are UNINDEXED unless a page explicitly opts in — paid
       // traffic destinations shouldn't leak into organic search results.
@@ -1411,8 +1425,38 @@ const pagesSysteme = defineCollection({
     ressources: z.object({
       eyebrow: z.string().min(1),
       title: z.string().min(1),
+      // Fin de titre en bleu (maquette « ressources parent » 2026-08-18 :
+      // « Perspectives et **expertises TI** ») — vide = titre d'un seul tenant.
+      titleAccent: z.string().default(''),
       intro: z.string().min(1),
       filterAll: z.string().min(1),
+      // Refonte « Centre de ressources » (maquette export2, 2026-08-18) —
+      // textes du héros, de la barre de recherche, des cartes et du bandeau
+      // d'appel à l'action. Tous éditables au CMS (collection Pages système).
+      subscribeLabel: z.string().min(1),
+      searchPlaceholder: z.string().min(1),
+      readMore: z.string().min(1),
+      byline: z.string().default(''),
+      expertCard: z.object({
+        title: z.string().min(1),
+        subtitle: z.string().min(1),
+      }),
+      newsletter: z.object({
+        title: z.string().min(1),
+        text: z.string().min(1),
+        emailPlaceholder: z.string().min(1),
+        submitLabel: z.string().min(1),
+        confirmation: z.string().min(1),
+      }),
+      cta: z.object({
+        title: z.string().min(1),
+        text: z.string().min(1),
+        primaryLabel: z.string().min(1),
+        // Liens internes SANS préfixe de langue (même règle que `merci.links`).
+        primaryHref: navHref,
+        secondaryLabel: z.string().min(1),
+        secondaryHref: navHref,
+      }),
     }),
     recherche: z.object({
       metaTitle: z.string().min(1),

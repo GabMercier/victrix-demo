@@ -1,4 +1,5 @@
 ---
+slug: licences-power-platform
 # English twin of fr/licences-power-platform.md (same file name = language
 # switch). See the FR file for the design provenance (landing-page.css).
 title: "Microsoft Power Platform licensing: making sense of it all"

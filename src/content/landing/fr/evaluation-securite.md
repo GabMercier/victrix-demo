@@ -1,4 +1,5 @@
 ---
+slug: evaluation-securite
 # Page campagne (collection « landing ») — rendue UNIQUEMENT à partir de
 # `sections` par src/pages/[lang]/campagnes/[slug].astro ; le corps Markdown
 # est ignoré. Conventions (contrat gelé) :
