@@ -17,9 +17,9 @@
 > 💡 Chaque sauvegarde crée une version dans l'historique Git : tout est
 > traçable et réversible. Personne ne peut « perdre » le site.
 
-## Modifier un article de blogue
+## Modifier un article du centre de ressources
 
-1. **Blogue** → choisir l'article. Chaque article existe en deux fichiers
+1. **Centre de ressources** → choisir l'article. Chaque article existe en deux fichiers
    miroirs : `fr/` et `en/` (même nom de fichier = même article dans l'autre
    langue).
 2. Modifier le texte dans l'éditeur; l'aperçu se met à jour.
@@ -37,8 +37,9 @@
    - **Date de publication** : une date **future** programme l'article (voir
      « Planifier » plus bas).
    - **Étiquettes** vs **Thèmes (maillage Services)** : deux champs distincts.
-     Les *étiquettes* sont les catégories du blogue (onglets de filtre +
-     méga-menu Ressources). Les *thèmes* relient l'article aux bandes
+     Les *étiquettes* sont les catégories du centre de ressources (pilules de
+     filtre + méga-menu Ressources) — la **première** étiquette est la
+     catégorie affichée sur la carte de l'article. Les *thèmes* relient l'article aux bandes
      « Ressources liées » des pages Services — reprendre exactement un nom
      d'expertise (Cybersécurité, Intelligence artificielle, Infonuagique,
      Productivité, Services gérés, Conseil stratégique ; équivalents anglais
@@ -49,7 +50,7 @@
 
 ## Créer un article
 
-1. **Blogue** → **+ Ajouter** → choisir le gabarit **FR** ou **EN**.
+1. **Centre de ressources** → **+ Ajouter** → choisir le gabarit **FR** ou **EN**.
 2. Le fichier arrive pré-rempli avec des champs valides — remplacer les textes,
    poser l'image, écrire.
 3. Laisser **Brouillon** activé tant que ce n'est pas prêt; créer ensuite le
@@ -80,7 +81,16 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
 5. Par défaut la page est **non indexée** (invisible des moteurs de recherche —
    voulu pour les campagnes). L'interrupteur « noindex » est là si une page
    doit un jour être indexée.
-6. **Save** → en ligne en quelques minutes à `/fr/campagnes/<nom>/`.
+6. **Adresse de la page** : le champ « Adresse de la page (segment d'URL) »
+   choisit le dernier segment de l'adresse (`/fr/campagnes/<segment>/`) —
+   minuscules, chiffres et traits d'union seulement (ex.
+   `offre-licences-2026`). Vide = le nom du fichier. Changer l'adresse ne
+   brise **pas** l'appariement FR/EN (c'est le nom de fichier qui relie les
+   traductions) ; deux campagnes d'une même langue ne peuvent pas partager la
+   même adresse (la publication est bloquée avec un message clair). Sur une
+   page déjà en ligne, prévoir une **redirection** de l'ancienne adresse
+   (voir « Gérer les redirections »).
+7. **Save** → en ligne en quelques minutes à `/fr/campagnes/<segment>/`.
 
 > ⚠️ Si vous arrivez sur une **page blanche avec une barre d'outils de texte** :
 > vous êtes dans l'éditeur de *contenu* (le corps de texte, vide sur une
@@ -223,14 +233,18 @@ Comme partout : liens internes **sans préfixe de langue**, et une valeur
 invalide (ex. une icône hors liste) **bloque la publication** avec un message
 clair — le site en ligne reste intact.
 
-## Modifier les pages système (blogue, recherche, merci)
+## Modifier les pages système (centre de ressources, recherche, merci)
 
 **Pages système** dans la barre latérale : les textes de trois pages « outils »
 qui n'ont pas de fiche de contenu propre, un fichier par langue, trois blocs :
 
-- **Index du blogue** (`/ressources`) — surtitre, titre, introduction et
-  l'onglet « Tous » des filtres. Le surtitre (« Ressources ») sert aussi de nom
-  de section dans le **fil d'Ariane des articles** et de titre du **flux RSS** —
+- **Centre de ressources** (`/ressources`) — tous les textes de la page :
+  héros (chip, titre et sa **fin en bleu**, bouton d'abonnement, carte
+  décorative « 500+ Experts »), texte indicatif de la recherche, lien « Lire
+  l'article » des cartes, **carte infolettre** (titre, texte, bouton, message
+  de confirmation) et **bandeau d'appel à l'action** du bas (titre, texte,
+  deux boutons). Le surtitre (« Centre de ressources ») sert aussi de nom de
+  section dans le **fil d'Ariane des articles** et de titre du **flux RSS** —
   un seul champ à changer, tout suit.
 - **Page de recherche** (`/recherche`) — titre d'onglet, textes d'en-tête et
   message sans JavaScript. Les textes de l'interface de recherche elle-même
@@ -254,6 +268,11 @@ fichier dans `fr/` et `en/` relie les deux langues.
 - **Ordre d'affichage** : croissant (petits numéros d'abord).
 - **Liens** : sans préfixe de langue (`/contact`), comme la navigation — le
   site ajoute `/fr` ou `/en` tout seul.
+- **Lien vers `/contact` = formulaire prérempli** : quand le lien d'une fiche
+  pointe vers la page contact, le site y transporte automatiquement le nom de
+  la solution — le visiteur arrive sur un formulaire où le sujet (« Un
+  projet ») et le champ « Précisez votre demande » sont déjà remplis. Rien à
+  configurer : c'est automatique dès que le lien est `/contact`.
 - Une fiche n'a pas (encore) de page propre : « Découvrir » mène au lien de la
   carte. Les pages de détail sont une suite planifiée.
 - Le catalogue est accessible aux visiteurs par **« Catalogue de solutions »**
@@ -334,6 +353,12 @@ page « Merci ».
 barre latérale — recommandé) : un fichier = un formulaire, avec son
 destinataire et son objet de courriel; les pages y font référence par le champ
 « Formulaire lié » de la section.
+
+La **carte infolettre** du centre de ressources s'appuie sur le formulaire
+« Infolettre » de cette collection : son **« Courriel destinataire »** est
+l'adresse qui reçoit les inscriptions (vide = le destinataire global). Ses
+textes visibles (titre, bouton, confirmation) s'éditent dans **Pages
+système → Centre de ressources**, pas ici.
 
 > ⚠️ **« Courriel destinataire » est le champ le plus sensible de l'éditeur** :
 > c'est l'adresse qui reçoit réellement les messages des visiteurs. Une faute

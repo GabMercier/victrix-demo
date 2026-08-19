@@ -1,0 +1,19 @@
+{
+  "_schema": "default",
+  "name": "Infolettre (FR)",
+  "toEmail": "",
+  "subject": "Inscription à l'infolettre",
+  "submitLabel": "S'inscrire",
+  "consentText": "",
+  "fields": [
+    {
+      "label": "Courriel",
+      "type": "email",
+      "required": true,
+      "width": "plein",
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    }
+  ]
+}

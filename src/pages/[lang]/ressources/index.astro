@@ -5,6 +5,7 @@ import { type Locale, htmlLang, localePaths, localizePath } from '../../../i18n/
 import { useTranslations } from '../../../i18n/ui';
 import { getLocaleData } from '../../../i18n/locale-data';
 import { getPostsByLocale, filterPublished, blogCategories, postUrlSlug } from '../../../i18n/blog';
+import { coverForCard, coverSmall } from '../../../lib/images/cover-derivative';
 
 export const getStaticPaths = localePaths;
 
@@ -58,6 +59,50 @@ const searchIndex = (post: (typeof posts)[number]) =>
 const [featured, ...rest] = posts;
 
 const pageTitle = [r.title, r.titleAccent].filter(Boolean).join(' ');
+
+// --- Infolettre RÉELLE (2026-08-19) — même patron deux modes que la page
+// contact (docs/formulaires.md §10) :
+//  - PUBLIC_FORMS_ENABLED absente → MAQUETTE : pas d'action, le script en bas
+//    simule la confirmation ([data-newsletter-form] n'est posé que dans ce
+//    mode) ;
+//  - PUBLIC_FORMS_ENABLED="1" → vrai <form method="POST" action="/api/forms">
+//    avec `_formId: infolettre` : le serveur dérive requis/courriels depuis
+//    src/data/forms/<langue>/infolettre.json, pot de miel `website`, widget
+//    Turnstile si la clé est posée, 303 vers /merci, ?erreur=1 au retour.
+// Le nom du champ courriel est DÉRIVÉ de la définition (fieldName partagé) —
+// un désalignement page↔définition casse le build, jamais les soumissions.
+import { getEntry } from 'astro:content';
+import { fieldName } from '../../../lib/forms/field-name';
+
+const newsletterDefEntry = await getEntry('forms', `${lang}/infolettre`);
+if (!newsletterDefEntry) {
+  throw new Error(
+    `[ressources] définition introuvable : src/data/forms/${lang}/infolettre.json — la carte infolettre exige un formulaire « infolettre » par langue.`,
+  );
+}
+const newsletterEmailIndex = newsletterDefEntry.data.fields.findIndex((f) => f.type === 'email');
+if (newsletterEmailIndex === -1) {
+  throw new Error(
+    `[ressources] la définition src/data/forms/${lang}/infolettre.json doit contenir un champ courriel.`,
+  );
+}
+const newsletterEmailName = fieldName(
+  newsletterDefEntry.data.fields[newsletterEmailIndex].label,
+  newsletterEmailIndex,
+);
+
+// Mode fonctionnel (mêmes drapeaux que contact.astro — parité stricte).
+const env = import.meta.env ?? {};
+const formsEnabled = env.PUBLIC_FORMS_ENABLED === '1';
+const turnstileSiteKey = formsEnabled ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+const pagePath = Astro.url?.pathname ?? '';
+// Pot de miel : idiome « visuellement masqué » EN LIGNE (patron form.astro).
+const honeypotStyle =
+  'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;';
+const newsletterError =
+  lang === 'en'
+    ? 'Your subscription could not be sent. Please check your email address and try again.'
+    : 'Votre inscription n’a pas pu être envoyée. Vérifiez votre adresse courriel, puis réessayez.';
 
 // Recettes partagées de la page (répétées si besoin ailleurs — pas d'abstraction).
 const categoryClass =
@@ -188,6 +233,12 @@ const pillBase =
                 <img
                   class="absolute inset-0 w-full h-full object-cover border-0"
                   src={featured.data.coverImage}
+                  srcset={
+                    coverSmall(featured.data.coverImage)
+                      ? `${coverSmall(featured.data.coverImage)} 800w, ${featured.data.coverImage} 1600w`
+                      : undefined
+                  }
+                  sizes="(min-width: 768px) 66vw, 100vw"
                   alt=""
                   loading="eager"
                   fetchpriority="high"
@@ -228,12 +279,16 @@ const pillBase =
             <li class="m-0" data-tags={post.data.tags.join('|')} data-search={searchIndex(post)}>
               <article class={cardClass}>
                 <div class="relative aspect-[2/1] bg-neutral-100 overflow-hidden">
+                  {/* Dérivé 800 px + lazy PARTOUT (2026-08-19) : sur mobile ces
+                      cartes sont sous le pli — les charger tôt gonflait le
+                      graphe pré-LCP de la simulation Lighthouse. Seule la
+                      vedette reste eager/fetchpriority. */}
                   {post.data.coverImage && (
                     <img
                       class="w-full h-full object-cover border-0"
-                      src={post.data.coverImage}
+                      src={coverForCard(post.data.coverImage)}
                       alt=""
-                      loading={i < 2 ? 'eager' : 'lazy'}
+                      loading="lazy"
                       decoding="async"
                     />
                   )}
@@ -275,17 +330,70 @@ const pillBase =
                   </svg>
                   <h2 class="m-0 text-base leading-6 font-normal text-white">{r.newsletter.title}</h2>
                   <p class="m-0 max-w-none text-base leading-6 text-neutral-200">{r.newsletter.text}</p>
-                  <form class="flex flex-col gap-4" data-newsletter-form novalidate>
+                  <form
+                    class="flex flex-col gap-4"
+                    data-newsletter-form={formsEnabled ? undefined : ''}
+                    novalidate={formsEnabled ? undefined : true}
+                    method={formsEnabled ? 'POST' : undefined}
+                    action={formsEnabled ? '/api/forms' : undefined}
+                    data-astro-reload={formsEnabled ? '' : undefined}
+                  >
+                    {
+                      formsEnabled && (
+                        <>
+                          {/* Bannière d'erreur + mini-script FRÈRES ADJACENTS
+                              (previousElementSibling) — patron contact.astro. */}
+                          <p
+                            class="m-0 max-w-none px-4 py-3 rounded text-sm leading-normal bg-white/10 border border-solid border-white/30 text-white"
+                            role="alert"
+                            hidden
+                          >
+                            {newsletterError}
+                          </p>
+                          <script is:inline data-astro-rerun>
+                            {
+                              const s = document.currentScript;
+                              const b = s && s.previousElementSibling;
+                              if (b && /[?&]erreur=/.test(location.search)) b.removeAttribute('hidden');
+                            }
+                          </script>
+                          <input type="hidden" name="lang" value={lang} />
+                          <input type="hidden" name="source" value={pagePath} />
+                          <input type="hidden" name="_formId" value="infolettre" />
+                          {/* Pot de miel `website` — voir honeypotStyle. */}
+                          <div aria-hidden="true" style={honeypotStyle}>
+                            <label for="infolettre-website">Site Web</label>
+                            <input
+                              id="infolettre-website"
+                              type="text"
+                              name="website"
+                              tabindex="-1"
+                              autocomplete="off"
+                            />
+                          </div>
+                        </>
+                      )
+                    }
                     <label class="block">
                       <span class="sr-only">{r.newsletter.emailPlaceholder}</span>
                       <input
                         class="w-full h-[51px] px-4 bg-white/10 border border-solid border-white/20 rounded text-base text-white placeholder:text-white/50 focus-visible:border-primary focus-visible:outline-none"
                         type="email"
-                        name="email"
+                        name={formsEnabled ? newsletterEmailName : 'email'}
+                        autocomplete="email"
                         placeholder={r.newsletter.emailPlaceholder}
                         required
                       />
                     </label>
+                    {
+                      turnstileSiteKey && (
+                        <>
+                          {/* Widget Turnstile — CSP déjà en place (public/_headers). */}
+                          <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-language={lang} />
+                          <script is:inline async defer src="https://challenges.cloudflare.com/turnstile/v0/api.js" />
+                        </>
+                      )
+                    }
                     <button
                       type="submit"
                       class="w-full inline-flex items-center justify-center bg-primary text-white px-4 py-3 rounded text-base leading-6 uppercase font-medium border-0 cursor-pointer shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] hover:bg-primary-container transition-colors"

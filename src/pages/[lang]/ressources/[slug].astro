@@ -12,6 +12,7 @@ import {
   filterPublished,
   getPostsByLocale,
 } from '../../../i18n/blog';
+import { coverForCard, coverSmall } from '../../../lib/images/cover-derivative';
 import { breadcrumbSchema } from '../../../lib/seo/breadcrumb';
 
 export async function getStaticPaths() {
@@ -176,6 +177,12 @@ const shareLinks = [
           <img
             class="article__cover"
             src={post.data.coverImage}
+            srcset={
+              coverSmall(post.data.coverImage)
+                ? `${coverSmall(post.data.coverImage)} 800w, ${post.data.coverImage} 1600w`
+                : undefined
+            }
+            sizes="(min-width: 800px) 800px, 100vw"
             alt=""
             loading="eager"
             fetchpriority="high"
@@ -248,7 +255,7 @@ const shareLinks = [
                   <article class="aside-card">
                     {p.data.coverImage && (
                       <a class="aside-card__media" href={href} tabindex="-1" aria-hidden="true">
-                        <img src={p.data.coverImage} alt="" loading="lazy" decoding="async" />
+                        <img src={coverForCard(p.data.coverImage)} alt="" loading="lazy" decoding="async" />
                       </a>
                     )}
                     <div class="aside-card__body">

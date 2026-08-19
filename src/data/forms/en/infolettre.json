@@ -1,0 +1,19 @@
+{
+  "_schema": "default",
+  "name": "Newsletter (EN)",
+  "toEmail": "",
+  "subject": "Newsletter subscription",
+  "submitLabel": "Subscribe",
+  "consentText": "",
+  "fields": [
+    {
+      "label": "Email",
+      "type": "email",
+      "required": true,
+      "width": "plein",
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    }
+  ]
+}
