@@ -1094,6 +1094,16 @@ collections_config:
       labels:
         type: object
         label: Libellés des champs du formulaire
+      # Les clés de `placeholders` portent les MÊMES noms que celles de
+      # `labels` (firstName, email…) — la carte plate _inputs partage donc
+      # leurs libellés ; l'objet parent, lui, précise le rôle.
+      placeholders:
+        type: object
+        label: Textes indicatifs des champs (placeholders)
+        comment: >-
+          Texte gris affiché dans les champs vides (« Votre prénom »,
+          « votre@courriel.com », « Écrire… »…). Les textes par défaut des
+          deux listes déroulantes se règlent dans « Libellés » ci-dessus.
       firstName:
         type: text
         label: Libellé « Prénom »

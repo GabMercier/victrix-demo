@@ -8,6 +8,14 @@
     "tollFree": "Toll-free",
     "email": "Email"
   },
+  "placeholders": {
+    "firstName": "Your first name",
+    "lastName": "Your last name",
+    "email": "you@email.com",
+    "phone": "(418) 000 0000",
+    "request": "Write…",
+    "message": "Write…"
+  },
   "offices": [
     {
       "city": "Québec",

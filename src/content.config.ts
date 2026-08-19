@@ -1287,6 +1287,17 @@ const contact = defineCollection({
       request: z.string().min(1),
       message: z.string().min(1),
     }),
+    // Placeholders des champs (maquette finale 2026-08-18 : « Votre prénom »,
+    // « votre@courriel.com », « Écrire… »…) — les selects gardent leurs
+    // placeholders dans `labels` (première option).
+    placeholders: z.object({
+      firstName: z.string().min(1),
+      lastName: z.string().min(1),
+      email: z.string().min(1),
+      phone: z.string().min(1),
+      request: z.string().min(1),
+      message: z.string().min(1),
+    }),
     subjectOptions: z.array(z.string().min(1)).min(1),
     expertiseOptions: z.array(z.string().min(1)).min(1),
     // HTML restreint ({privacy} = lien vers la politique, localisé au rendu) —

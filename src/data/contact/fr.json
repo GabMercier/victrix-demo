@@ -45,6 +45,14 @@
     "request": "Précisez votre demande",
     "message": "Message"
   },
+  "placeholders": {
+    "firstName": "Votre prénom",
+    "lastName": "Votre nom",
+    "email": "votre@courriel.com",
+    "phone": "(418) 000 0000",
+    "request": "Écrire…",
+    "message": "Écrire…"
+  },
   "subjectOptions": ["Un projet", "Une expertise", "Une carrière", "Autre"],
   "expertiseOptions": [
     "Conseil stratégique",
