@@ -119,7 +119,7 @@ même nom de fichier — structure vierge, mais champs valides garantis.
 > journal de build les pages qui n'ont **pas encore de traduction** (aucun
 > blocage — un simple rappel).
 
-## Modifier le menu et la barre d'annonce
+## Modifier le menu
 
 **Navigation** dans la barre latérale : un fichier par langue (`fr` / `en`).
 
@@ -128,18 +128,38 @@ même nom de fichier — structure vierge, mais champs valides garantis.
   parmi la liste proposée). Un lien peut viser une **page Services** par son
   identifiant (champ « Service ») au lieu d'une adresse : le site calcule
   l'adresse et refuse de publier si la page n'existe pas.
-- **Barre d'annonce** : textes, lien, et l'interrupteur **Affichée** pour la
-  masquer complètement.
 - **Bouton « Portail client »** : libellé et visibilité.
+
+La barre d'annonce (bandeau bleu) a sa propre collection — voir ci-dessous.
+
+## Barres d'annonce (bibliothèque planifiable)
+
+**Barres d'annonce** dans la barre latérale (groupe Marketing) : une fiche par
+bannière, **+ Ajouter** pour en créer autant que voulu à l'avance. Chaque fiche
+contient :
+
+- **Nom (interne)** : pour vous y retrouver dans la liste — jamais affiché.
+- **Affichée** : interrupteur maître (désactivé = jamais montrée, dates ou pas).
+- **Diffuser à partir de** / **Retirer à partir de** : la fenêtre de diffusion
+  (commune aux deux langues). Vide = pas de borne.
+- **Textes (FR)** et **Textes (EN)** : le message dans chaque langue (avant /
+  partie en gras / après, libellé du lien).
+- **Lien de l'annonce** : sans préfixe de langue (ex. `/produits`).
+
+**Une seule bannière s'affiche à la fois.** Si plusieurs sont actives en même
+temps, celle qui a **commencé le plus récemment** gagne (une bannière sans date
+de début compte comme « depuis toujours » et cède donc la place aux bannières
+datées). Pratique : garder une bannière permanente sans dates, et programmer
+des bannières de campagne par-dessus — tout revient à la permanente à la fin.
 
 ## Planifier (bannière promo, articles)
 
-- **Bannière d'annonce** : Navigation → Barre d'annonce → « **Diffuser à partir
-  de** » / « **Retirer à partir de** ». Laisser vide = pas de borne. La bannière
+- **Barres d'annonce** : chaque fiche porte « **Diffuser à partir de** » /
+  « **Retirer à partir de** ». Laisser vide = pas de borne. La bannière
   apparaît/disparaît **au premier build suivant** la date (un passage
   automatique a lieu chaque nuit; heure en UTC — décalage de 4-5 h avec
-  Montréal). Dans l'éditeur visuel, la bannière reste toujours visible pour
-  que vous puissiez la modifier.
+  Montréal). Dans l'éditeur visuel, une bannière « Affichée » reste toujours
+  visible pour que vous puissiez la modifier.
 - **Article programmé** : donner à l'article une **date future** — il reste
   invisible du site public jusqu'à cette date (mais visible dans l'éditeur et
   les aperçus, comme un brouillon). Il paraît au premier build suivant sa date.
@@ -358,7 +378,11 @@ La **carte infolettre** du centre de ressources s'appuie sur le formulaire
 « Infolettre » de cette collection : son **« Courriel destinataire »** est
 l'adresse qui reçoit les inscriptions (vide = le destinataire global). Ses
 textes visibles (titre, bouton, confirmation) s'éditent dans **Pages
-système → Centre de ressources**, pas ici.
+système → Centre de ressources**, pas ici — à une exception près : la petite
+ligne de consentement sous le bouton vient du champ **« Texte de
+consentement »** du formulaire Infolettre (vide = pas de ligne ; le texte en
+place est une ébauche à faire valider juridiquement, voir
+`docs/chiffres-officiels.md` §4).
 
 > ⚠️ **« Courriel destinataire » est le champ le plus sensible de l'éditeur** :
 > c'est l'adresse qui reçoit réellement les messages des visiteurs. Une faute
@@ -426,7 +450,7 @@ directement dans la section (mode historique), mais sans destinataire propre.
 
 **Vous contrôlez le contenu** : textes, images, ordre des sections d'une
 page, articles, fiches de solutions, pages Contact et Carrières, textes du
-site et pages système, formulaires, menu et barre d'annonce, pied de page,
+site et pages système, formulaires, menu et barres d'annonce, pied de page,
 redirections, réglages SEO page par page. C'est le cœur du site et il est
 entre vos mains.
 

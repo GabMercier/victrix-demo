@@ -912,8 +912,8 @@ const solutions = defineCollection({
 });
 
 /**
- * Site chrome navigation — header menu, mega menu, announcement bar, portal
- * button. One JSON per locale in src/data/navigation (ids "fr" / "en"),
+ * Site chrome navigation — header menu, mega menu, portal button. One JSON
+ * per locale in src/data/navigation (ids "fr" / "en"),
  * edited in CloudCannon (« Navigation » collection, cloudcannon.config.yml)
  * and consumed by src/components/Header.astro at build.
  *
@@ -927,7 +927,8 @@ const solutions = defineCollection({
  *  - `icon` is capped to the five keys drawn as inline SVGs in Header.astro
  *    (megaIcons) — adding an icon means drawing it there first.
  */
-// Borne de planification : vide (aucune borne) ou date/date-heure parsable.
+// Borne de planification (collection `annonces` ci-dessous, et toute
+// planification future) : vide (aucune borne) ou date/date-heure parsable.
 // Garde-fou build : une date fautive saisie au CMS casse le build avec un
 // message clair plutôt que d'être ignorée en silence (schedule.ts est
 // volontairement tolérant — c'est ICI que la validation vit).
@@ -1081,23 +1082,41 @@ const navigation = defineCollection({
         latestTitle: z.string().min(1),
       })
       .optional(),
-    announce: z.object({
-      enabled: z.boolean().default(true),
-      // Fenêtre de diffusion PLANIFIÉE (2026-07-30, demande marketing) :
-      // Header.astro ne rend la barre que si l'instant du BUILD est dans
-      // [startAt, endAt) — src/lib/schedule.ts. "" = pas de borne. Le build
-      // d'édition (STATIC_ONLY) IGNORE la fenêtre pour que l'éditeur voie et
-      // modifie toujours la bannière. Un site statique n'applique la fenêtre
-      // qu'à la reconstruction : rebuild quotidien planifié — voir
-      // operations.md § « Publication planifiée ».
-      startAt: scheduleBound,
-      endAt: scheduleBound,
-      before: z.string(),
-      strong: z.string(),
-      after: z.string(),
-      linkLabel: z.string().min(1),
-      linkHref: navHref,
-    }),
+  }),
+});
+
+/**
+ * Barres d'annonce (bibliothèque, 2026-08-20 — remplace l'objet `announce`
+ * embarqué dans la navigation) : un JSON par bannière dans src/data/annonces,
+ * ajoutable/supprimable au CMS (« Barres d'annonce », groupe Marketing).
+ * Textes FR et EN dans le MÊME fichier — les DEUX sont OBLIGATOIRES (build
+ * gate : pas de repli silencieux; une bannière sans traduction ne publie pas).
+ * Fenêtre de diffusion PARTAGÉE [startAt, endAt) évaluée au BUILD
+ * (src/lib/schedule.ts) ; une seule bannière s'affiche à la fois — sélection
+ * par pickActiveAnnounce (la plus récemment commencée gagne), consommée via
+ * src/lib/announce.ts. Le build d'édition (STATIC_ONLY) IGNORE la fenêtre
+ * pour que l'éditeur voie et modifie toujours une bannière. Un site statique
+ * n'applique la fenêtre qu'à la reconstruction : rebuild quotidien planifié —
+ * voir operations.md § « Publication planifiée ».
+ */
+const annonceText = z.object({
+  before: z.string(),
+  strong: z.string(),
+  after: z.string(),
+  linkLabel: z.string().min(1),
+});
+const annonces = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/data/annonces' }),
+  schema: z.object({
+    // Nom interne (liste du CMS seulement — jamais rendu aux visiteurs).
+    title: z.string().min(1),
+    enabled: z.boolean().default(true),
+    startAt: scheduleBound,
+    endAt: scheduleBound,
+    fr: annonceText,
+    en: annonceText,
+    // SANS préfixe de langue (convention navigation) — localisé au rendu.
+    linkHref: navHref,
   }),
 });
 
@@ -1492,6 +1511,7 @@ export const collections = {
   services,
   solutions,
   navigation,
+  annonces,
   forms,
   pages,
   site,

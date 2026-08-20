@@ -198,10 +198,18 @@ la « planification » repose donc sur trois pièces (2026-07-30) :
    - **Articles de blogue** : une date FUTURE dans le champ « Date » = l'article
      est invisible des builds publiés jusqu'à sa date (les préversions et
      l'éditeur CloudCannon le montrent — même politique que les brouillons).
-   - **Barre d'annonce (« promo »)** : champs « Diffuser à partir de » /
-     « Retirer à partir de » dans Navigation → Barre d'annonce. Fenêtre
-     [début, fin), heure UTC; vide = pas de borne. Une date invalide casse le
-     build (garde-fou zod). L'éditeur visuel montre toujours la bannière.
+   - **Barres d'annonce (bibliothèque, 2026-08-20)** : collection « Barres
+     d'annonce » (groupe Marketing) — une fiche par bannière
+     (src/data/annonces/*.json), champs « Diffuser à partir de » / « Retirer à
+     partir de ». Fenêtre [début, fin), heure UTC; vide = pas de borne. Une
+     seule s'affiche à la fois : parmi les bannières « Affichée » dont la
+     fenêtre couvre le build, la plus récemment COMMENCÉE gagne (startAt vide
+     = « depuis toujours », perd contre toute bannière datée; égalité → nom de
+     fichier) — sélection dans src/lib/announce.ts + pickActiveAnnounce
+     (src/lib/schedule.ts, testé). Une date invalide casse le build (garde-fou
+     zod, collection `annonces`). L'éditeur visuel montre toujours une
+     bannière « Affichée ». Supprimer TOUTES les fiches est toléré (site sans
+     bannière + avertissement glob au build) — en garder au moins une.
 2. **Le rebuild quotidien** : `.github/workflows/rebuild-planifie.yml` (06:17
    UTC + bouton manuel dans l'onglet Actions). **Branchement OPS requis une
    fois** : créer le secret GitHub `REBUILD_HOOK_URL` avec un build hook de

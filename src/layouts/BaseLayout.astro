@@ -12,6 +12,7 @@ import ConsentBanner from '../components/ConsentBanner.astro';
 import JsonLd from '../components/JsonLd.astro';
 import { type Locale, defaultLocale, otherLocale, htmlLang, swapLocale } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
+import { getActiveAnnounceId } from '../lib/announce';
 
 interface Props {
   /** Page locale. Required so chrome, <html lang>, and hreflang are correct. */
@@ -68,6 +69,12 @@ const {
 const t = useTranslations(lang);
 const other = otherLocale[lang];
 
+// Id de la bannière d'annonce active (collection `annonces`) — pour le script
+// anti-flash ci-dessous. Constant pour tout le build (un seul « maintenant »
+// dans src/lib/announce.ts) → le script inline reste identique sur toutes les
+// pages, propriété dont dépend le ClientRouter (voir le commentaire du script).
+const activeAnnounceId = await getActiveAnnounceId();
+
 const SITE_NAME = t.siteName;
 const fullTitle = title ? `${title} — ${SITE_NAME}` : SITE_NAME;
 const metaDescription = description ?? t.defaultDescription;
@@ -85,14 +92,17 @@ const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
 // Organization JSON-LD — the ONE sitewide structured-data block, emitted on
 // every page (frozen contract). Absolute URLs are required by schema.org
 // consumers, hence `new URL(..., Astro.site)` like the canonical/OG URLs above.
-// TODO: `logo` points at the 32×32 favicon as a PLACEHOLDER — swap it for a
-// proper brand asset under public/ (Google recommends ≥ 112×112) when one lands.
+// `logo` = public/images/logo-victrix.png (1200×379, fond blanc), rendu du
+// SVG de marque src/assets/victrix-logo.svg avec les fills de la charte
+// (.lv-mark #0b1334 / .lv-tag #7b889d — le SVG source n'a pas de couleurs,
+// elles sont injectées par Logo.astro à l'affichage). Régénérer via sharp si
+// le logo change.
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Les Solutions Victrix',
   url: new URL('/', Astro.site).href,
-  logo: new URL('/favicon-32x32.png', Astro.site).href,
+  logo: new URL('/images/logo-victrix.png', Astro.site).href,
 };
 
 // P-11 — GA4 sous consentement Loi 25 (2026-08-17). PUBLIC_GA4_ID absent →
@@ -210,17 +220,24 @@ const ga4Bootstrap = GA4_ID
         re-bind on astro:page-load. */}
     <ClientRouter />
 
-    {/* Hide the announcement bar before first paint if it was dismissed this
-        session — prevents a flash/layout jump on every navigation. The swap
-        resets <html> attributes from the incoming static page, so the class is
-        re-applied on astro:after-swap (fires before the new page paints). This
-        script is identical on every page, so the router runs it only once —
-        the document-level listener never double-registers. */}
-    <script is:inline>
+    {/* Hide the announcement bar before first paint if THIS banner was
+        dismissed this session — prevents a flash/layout jump on every
+        navigation. The stored value is the dismissed banner's ID (annonces
+        collection): a different banner going live must reappear despite an
+        earlier dismissal. The swap resets <html> attributes from the incoming
+        static page, so the class is re-applied on astro:after-swap (fires
+        before the new page paints). `activeAnnounceId` is constant across the
+        whole build, so this script stays identical on every page and the
+        router runs it only once — the document-level listener never
+        double-registers. */}
+    <script is:inline define:vars={{ activeAnnounceId }}>
       (() => {
         const applyDismissed = () => {
           try {
-            if (sessionStorage.getItem('victrix-announce') === 'closed') {
+            if (
+              activeAnnounceId &&
+              sessionStorage.getItem('victrix-announce') === activeAnnounceId
+            ) {
               document.documentElement.classList.add('announce-dismissed');
             }
           } catch {}

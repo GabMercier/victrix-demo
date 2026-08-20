@@ -1,6 +1,6 @@
 {
   "title": "Discover Victrix",
-  "description": "A trusted partner in IT consulting services and productivity solutions.",
+  "description": "Renowned for its high-quality services and distinctive customer experience, Victrix offers a proven approach that combines excellence, agility and proximity.",
   "noindex": true,
   "seoTitle": "",
   "sections": [
@@ -9,9 +9,9 @@
       "type": "hero",
       "eyebrow": "",
       "title": "Discover Victrix",
-      "subtitle": "A trusted partner in IT consulting services and productivity solutions.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "subtitle": "Renowned for its high-quality services and distinctive customer experience, Victrix offers a proven approach that combines excellence, agility and proximity.",
+      "ctaLabel": "Let's meet",
+      "ctaHref": "/en/contact",
       "titleAccent": "",
       "image": "",
       "cta2Label": "",
@@ -22,19 +22,53 @@
     {
       "_bookshop_name": "rich-text",
       "type": "rich-text",
-      "title": "A full presentation is coming",
+      "title": "Our culture",
       "paragraphs": [
-        "This page will soon present our history, our team and our approach.",
-        "In the meantime, our experts will be happy to introduce Victrix and answer your questions."
+        "At Victrix, we know that traditional ways of doing things are no longer sufficient to achieve the highest levels of performance and exceed the expectations of our customers, partners and employees."
+      ]
+    },
+    {
+      "_bookshop_name": "benefits",
+      "type": "benefits",
+      "title": "Our values",
+      "intro": "",
+      "items": [
+        { "title": "Excellence", "description": "", "icon": "" },
+        { "title": "Collaboration", "description": "", "icon": "" },
+        { "title": "Innovation", "description": "", "icon": "" },
+        { "title": "Commitment", "description": "", "icon": "" },
+        { "title": "Integrity", "description": "", "icon": "" }
+      ]
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "sectionTitle": "Our history",
+      "intro": "More than twenty years of growth, acquisitions and international expansion.",
+      "columns": "3",
+      "items": [
+        { "number": "2003", "title": "Foundation of Victrix", "text": "" },
+        { "number": "2004", "title": "Acquisition of ELFIQ Networks", "text": "Acquisition of the IT consulting services division of 3-Soft Group" },
+        { "number": "2007", "title": "Acquisition of Cogeti Informatique", "text": "Acquisition of Informatique Stratégique · Acquisition of Noxent" },
+        { "number": "2008", "title": "Acquisition of Compu-Sys", "text": "" },
+        { "number": "2009", "title": "Acquisition of IPtel", "text": "" },
+        { "number": "2010", "title": "Acquisition of Expra Solutions", "text": "" },
+        { "number": "2011", "title": "Acquisition of Progilan", "text": "" },
+        { "number": "2012", "title": "Acquisition of Teltech", "text": "" },
+        { "number": "2015", "title": "Acquisition of AGRM", "text": "" },
+        { "number": "2016", "title": "Acquisition of Noverka Conseil", "text": "" },
+        { "number": "2017", "title": "Acquisition of VisionTI", "text": "" },
+        { "number": "2019", "title": "Victrix joins the Alan Allman Associates international ecosystem", "text": "" },
+        { "number": "2023", "title": "Société Conseil Lambda joins Victrix", "text": "" }
       ]
     },
     {
       "_bookshop_name": "cta",
       "type": "cta",
-      "title": "Let's get acquainted",
-      "body": "Let’s discuss your technology challenges and how Victrix can support you.",
-      "ctaLabel": "Contact us",
-      "ctaHref": "/en/contact",
+      "title": "We are recruiting the experts of tomorrow!",
+      "body": "Interested? Do not hesitate to contact us.",
+      "ctaLabel": "Our opportunities",
+      "ctaHref": "/en/carrieres",
       "variant": "dark"
     }
   ]

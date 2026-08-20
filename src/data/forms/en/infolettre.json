@@ -4,7 +4,7 @@
   "toEmail": "",
   "subject": "Newsletter subscription",
   "submitLabel": "Subscribe",
-  "consentText": "",
+  "consentText": "By subscribing, you consent to receiving the Victrix newsletter by email. You may withdraw your consent at any time. Your information is handled in accordance with the privacy policy (Law 25).",
   "fields": [
     {
       "label": "Email",

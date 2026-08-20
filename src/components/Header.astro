@@ -5,14 +5,16 @@ import { type Locale, defaultLocale, otherLocale, localizePath, swapLocale } fro
 import { useTranslations } from '../i18n/ui';
 import { resolveNavHref } from '../lib/navigation/service-links';
 import { getPostsByLocale, postUrlSlug, blogCategories } from '../i18n/blog';
-import { isWithinWindow } from '../lib/schedule';
+import { getActiveAnnounce } from '../lib/announce';
 
 /**
  * Global site header: dismissible announcement bar, logo, primary navigation,
  * a working FR/EN language switcher, and an accessible mobile drawer menu.
- * Locale-aware. CONTENT (menu items, mega menu, announcement, portal button)
- * comes from the `navigation` collection — src/data/navigation/<lang>.json,
- * editable in CloudCannon; hrefs are stored locale-less and localized here.
+ * Locale-aware. CONTENT (menu items, mega menu, portal button) comes from the
+ * `navigation` collection — src/data/navigation/<lang>.json, editable in
+ * CloudCannon; hrefs are stored locale-less and localized here. The
+ * announcement bar comes from the `annonces` collection (schedulable banner
+ * library — src/lib/announce.ts picks the active one).
  * Only accessibility strings stay in the UI dictionary (src/i18n/ui.ts).
  * This is site chrome rendered at build — astro:content is fine here (the
  * browser-safe rule only applies to Bookshop section components).
@@ -174,17 +176,10 @@ const headerCta = nav.cta
 // lien dans le tiroir mobile. Chaînes d'interface (pas du contenu) → ui.ts.
 const searchHref = localizePath('/recherche', lang);
 
-const announce = nav.announce;
-const announceLink = localizePath(announce.linkHref, lang);
-
-// Fenêtre de diffusion planifiée de la bannière (schedule.ts) — évaluée au
-// BUILD. Le build d'édition (STATIC_ONLY — même gotcha d'expression membre
-// exacte que blog.ts) IGNORE la fenêtre : l'éditeur doit toujours voir et
-// pouvoir modifier la bannière; la fenêtre s'applique aux builds publiés.
-const STATIC_ONLY_BUILD = Boolean(import.meta.env.STATIC_ONLY);
-const announceVisible =
-  announce.enabled &&
-  (STATIC_ONLY_BUILD || isWithinWindow(new Date(), announce.startAt, announce.endAt));
+// Bannière d'annonce : bibliothèque planifiable (collection `annonces`) — la
+// sélection (fenêtre, priorité, STATIC_ONLY) vit dans src/lib/announce.ts.
+// `null` = aucune bannière active ce build.
+const announce = await getActiveAnnounce(lang);
 
 // Active-state matching against the localized current path.
 const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
@@ -228,12 +223,16 @@ const langLinkClass = 'no-underline p-1 text-sm';
 
 <!-- Announcement bar (editable / dismissible; « Affichée » switch + fenêtre planifiée in the CMS) -->
 {
-  announceVisible && (
-    <div class="announcement bg-primary text-on-primary text-sm" data-announcement>
+  announce && (
+    <div
+      class="announcement bg-primary text-on-primary text-sm"
+      data-announcement
+      data-announce-id={announce.id}
+    >
       <div class="container-site flex items-center justify-center gap-4 py-2">
         <p class="m-0 max-w-none text-center">
           {announce.before}<strong class="font-semibold">{announce.strong}</strong>{announce.after}
-          <a class="text-on-primary font-semibold underline whitespace-nowrap" href={announceLink}>
+          <a class="text-on-primary font-semibold underline whitespace-nowrap" href={announce.href}>
             {announce.linkLabel}
           </a>
         </p>
@@ -910,12 +909,15 @@ const langLinkClass = 'no-underline p-1 text-sm';
   // --- Announcement bar dismissal ----------------------------------------
   // The dismissed state is applied pre-paint by a blocking script in <head>
   // (adds .announce-dismissed on <html>); here we only handle the close click.
+  // Stored value = the dismissed banner's ID (not a flag): a DIFFERENT banner
+  // going live mid-session must reappear even after this one was closed.
   const announceClose = document.querySelector<HTMLButtonElement>('[data-announce-close]');
   if (announceClose) {
     announceClose.addEventListener('click', () => {
       document.documentElement.classList.add('announce-dismissed');
+      const id = announceClose.closest<HTMLElement>('[data-announcement]')?.dataset.announceId;
       try {
-        sessionStorage.setItem('victrix-announce', 'closed');
+        sessionStorage.setItem('victrix-announce', id ?? 'closed');
       } catch {
         /* sessionStorage unavailable — banner still hides for this page view */
       }

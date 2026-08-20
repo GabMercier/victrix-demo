@@ -4,7 +4,7 @@ import Logo from './Logo.astro';
 import { type Locale, defaultLocale, otherLocale, localizePath, swapLocale } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 import { resolveHeaderConfig, type LandingHeaderConfig } from '../lib/chrome/header-config';
-import { isWithinWindow } from '../lib/schedule';
+import { getActiveAnnounce } from '../lib/announce';
 
 /**
  * En-tête de campagne (P-04) — rendu UNIQUEMENT quand une campagne porte un
@@ -50,15 +50,10 @@ const cta =
   chrome.cta ??
   (nav.portal.visible ? { label: nav.portal.label, href: localizePath('/portail', lang) } : null);
 
-// Bannière d'annonce (personnalisé + interrupteur) — mêmes règles de fenêtre
-// planifiée que Header.astro (build d'édition STATIC_ONLY : toujours visible).
-const announce = nav.announce;
-const announceLink = localizePath(announce.linkHref, lang);
-const STATIC_ONLY_BUILD = Boolean(import.meta.env.STATIC_ONLY);
-const announceVisible =
-  chrome.showAnnounce &&
-  announce.enabled &&
-  (STATIC_ONLY_BUILD || isWithinWindow(new Date(), announce.startAt, announce.endAt));
+// Bannière d'annonce (personnalisé + interrupteur `showAnnounce`) — même
+// bibliothèque planifiable que Header.astro (collection `annonces`, sélection
+// dans src/lib/announce.ts, build d'édition STATIC_ONLY : toujours visible).
+const announce = chrome.showAnnounce ? await getActiveAnnounce(lang) : null;
 
 const searchHref = localizePath('/recherche', lang);
 
@@ -81,12 +76,16 @@ const langLinkClass = 'no-underline p-1 text-sm';
 ---
 
 {
-  announceVisible && (
-    <div class="announcement bg-primary text-on-primary text-sm" data-announcement>
+  announce && (
+    <div
+      class="announcement bg-primary text-on-primary text-sm"
+      data-announcement
+      data-announce-id={announce.id}
+    >
       <div class="container-site flex items-center justify-center gap-4 py-2">
         <p class="m-0 max-w-none text-center">
           {announce.before}<strong class="font-semibold">{announce.strong}</strong>{announce.after}
-          <a class="text-on-primary font-semibold underline whitespace-nowrap" href={announceLink}>
+          <a class="text-on-primary font-semibold underline whitespace-nowrap" href={announce.href}>
             {announce.linkLabel}
           </a>
         </p>
@@ -224,16 +223,17 @@ const langLinkClass = 'no-underline p-1 text-sm';
 <script>
   // Fermeture de la bannière — même mécanique que Header.astro : classe sur
   // <html> (déjà appliquée pré-peinture par le script bloquant de BaseLayout
-  // au rechargement) + mémorisation de session. Sans bannière rendue, le
+  // au rechargement) + mémorisation de session, valeur = ID de la bannière
+  // fermée (une AUTRE bannière doit réapparaître). Sans bannière rendue, le
   // sélecteur ne trouve rien et le script est inerte.
-  document
-    .querySelector<HTMLButtonElement>('[data-announce-close]')
-    ?.addEventListener('click', () => {
-      document.documentElement.classList.add('announce-dismissed');
-      try {
-        sessionStorage.setItem('victrix-announce', 'closed');
-      } catch {
-        /* sessionStorage indisponible — la bannière se masque quand même */
-      }
-    });
+  const announceClose = document.querySelector<HTMLButtonElement>('[data-announce-close]');
+  announceClose?.addEventListener('click', () => {
+    document.documentElement.classList.add('announce-dismissed');
+    const id = announceClose.closest<HTMLElement>('[data-announcement]')?.dataset.announceId;
+    try {
+      sessionStorage.setItem('victrix-announce', id ?? 'closed');
+    } catch {
+      /* sessionStorage indisponible — la bannière se masque quand même */
+    }
+  });
 </script>

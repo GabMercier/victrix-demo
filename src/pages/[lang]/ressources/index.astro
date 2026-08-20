@@ -400,6 +400,14 @@ const pillBase =
                     >
                       {r.newsletter.submitLabel}
                     </button>
+                    {/* Consentement Loi 25 — vient du formulaire « infolettre »
+                        (Formulaires → Infolettre → Texte de consentement) ;
+                        vide = pas de ligne. */}
+                    {newsletterDefEntry.data.consentText && (
+                      <p class="m-0 max-w-none text-xs leading-4 text-neutral-300">
+                        {newsletterDefEntry.data.consentText}
+                      </p>
+                    )}
                     <p
                       class="m-0 max-w-none text-sm leading-5 font-medium text-white"
                       data-newsletter-status

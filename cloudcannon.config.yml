@@ -57,6 +57,7 @@ collection_groups:
     collections:
       - landing
       - forms
+      - annonces
       - navigation
   - heading: Configuration
     collections:
@@ -1580,7 +1581,89 @@ collections_config:
       # P-16 : label/required vivent désormais au niveau STRUCTURE
       # (_structures.form_fields), avec tous les autres _inputs de champ.
 
-  # Navigation du site (menu principal, méga-menu, barre d'annonce, bouton
+  # Bibliothèque de barres d'annonce (bandeau bleu au-dessus de l'en-tête,
+  # 2026-08-20 — remplace l'objet « announce » jadis embarqué dans la
+  # navigation) : un JSON par bannière dans src/data/annonces, textes FR et EN
+  # dans le MÊME fichier, fenêtre de diffusion PARTAGÉE. Une seule bannière
+  # s'affiche à la fois : parmi les bannières « Affichée » dont la fenêtre
+  # couvre le moment du build, la plus récemment COMMENCÉE gagne (égalité →
+  # nom de fichier). Validé au build (collection `annonces`,
+  # src/content.config.ts) ; sélection : src/lib/announce.ts.
+  annonces:
+    path: src/data/annonces
+    name: Barres d'annonce
+    singular_name: Barre d'annonce
+    description: >-
+      Bannières promotionnelles au-dessus de l'en-tête, textes FR et EN dans
+      le même fichier. Une seule s'affiche à la fois : parmi les bannières
+      « Affichée » dont la fenêtre couvre le moment de la publication, la plus
+      récemment commencée gagne. Lien SANS préfixe de langue (ex. /produits).
+    icon: campaign
+    # Pas de page à prévisualiser (le JSON n'est pas une page).
+    disable_url: true
+    # Éditeur de données uniquement (JSON structuré, pas de corps markdown).
+    _enabled_editors:
+      - data
+    # « + Ajouter » : gabarit avec TOUTES les clés (y compris startAt/endAt
+    # vides) — l'éditeur de données n'affiche que les clés présentes dans le
+    # fichier, un gabarit incomplet cacherait les contrôles de planification.
+    schemas:
+      default:
+        name: Barre d'annonce
+        icon: campaign
+        path: schemas/annonce.json
+        create:
+          path: '{title|slugify}.json'
+    _inputs:
+      title:
+        type: text
+        label: Nom (interne)
+        comment: Affiché aux éditeurs seulement — jamais aux visiteurs.
+      enabled:
+        type: switch
+        label: Affichée
+        comment: Désactivé = cette bannière ne s'affiche jamais, dates ou pas.
+      # Diffusion planifiée (marketing) : fenêtre [début, fin) évaluée à chaque
+      # PUBLICATION/reconstruction du site (rebuild quotidien automatique — voir
+      # guide-edition.md « Planifier »). L'éditeur visuel montre toujours une
+      # bannière « Affichée », fenêtre ou pas, pour pouvoir l'éditer.
+      startAt:
+        type: datetime
+        label: Diffuser à partir de
+        comment: >-
+          Vide = dès maintenant. La bannière apparaît au premier build suivant
+          cette date (heure UTC). Si plusieurs bannières sont actives en même
+          temps, la plus récemment commencée gagne.
+      endAt:
+        type: datetime
+        label: Retirer à partir de
+        comment: >-
+          Vide = jamais retirée. La bannière disparaît au premier build suivant
+          cette date (heure UTC).
+      fr:
+        type: object
+        label: Textes (FR)
+      en:
+        type: object
+        label: Textes (EN)
+      before:
+        type: text
+        label: Texte (avant la partie en gras)
+      strong:
+        type: text
+        label: Partie en gras
+      after:
+        type: textarea
+        label: Texte (après la partie en gras)
+      linkLabel:
+        type: text
+        label: Libellé du lien
+      linkHref:
+        type: text
+        label: Lien de l'annonce
+        comment: Sans préfixe de langue (ex. /produits). Commun aux deux langues.
+
+  # Navigation du site (menu principal, méga-menu, bouton
   # portail) — un JSON par langue dans src/data/navigation, consommé par
   # src/components/Header.astro et validé au build par la collection
   # `navigation` (src/content.config.ts) : un lien invalide fait échouer le
@@ -1593,9 +1676,10 @@ collections_config:
     name: Navigation
     singular_name: Navigation
     description: >-
-      Menu principal, méga-menu, barre d'annonce et bouton du portail (un
-      fichier par langue). Liens internes SANS préfixe de langue (ex.
-      /contact) — le site ajoute /fr ou /en automatiquement.
+      Menu principal, méga-menu et bouton du portail (un fichier par langue).
+      Liens internes SANS préfixe de langue (ex. /contact) — le site ajoute
+      /fr ou /en automatiquement. La barre d'annonce a sa propre collection
+      « Barres d'annonce ».
     icon: menu
     # Two dev-owned files (fr.json / en.json): no add/delete/rename.
     disable_add: true
@@ -1733,45 +1817,6 @@ collections_config:
       latestTitle:
         type: text
         label: Titre de la colonne Derniers articles
-      announce:
-        type: object
-        label: Barre d'annonce
-      enabled:
-        type: switch
-        label: Affichée
-        comment: Désactivé = la barre d'annonce disparaît du site.
-      # Diffusion planifiée (marketing) : fenêtre [début, fin) évaluée à chaque
-      # PUBLICATION/reconstruction du site (rebuild quotidien automatique — voir
-      # guide-edition.md « Planifier »). L'éditeur visuel montre toujours la
-      # bannière, fenêtre ou pas, pour pouvoir l'éditer.
-      startAt:
-        type: datetime
-        label: Diffuser à partir de
-        comment: >-
-          Vide = dès maintenant. La bannière apparaît au premier build suivant
-          cette date (heure UTC).
-      endAt:
-        type: datetime
-        label: Retirer à partir de
-        comment: >-
-          Vide = jamais retirée. La bannière disparaît au premier build suivant
-          cette date (heure UTC).
-      before:
-        type: text
-        label: Texte (avant la partie en gras)
-      strong:
-        type: text
-        label: Partie en gras
-      after:
-        type: textarea
-        label: Texte (après la partie en gras)
-      linkLabel:
-        type: text
-        label: Libellé du lien
-      linkHref:
-        type: text
-        label: Lien de l'annonce
-        comment: Sans préfixe de langue (ex. /produits).
       label:
         type: text
         label: Libellé
