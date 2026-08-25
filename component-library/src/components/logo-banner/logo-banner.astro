@@ -1,0 +1,67 @@
+---
+/**
+ * Section « Bandeau logos partenaires » — composant Bookshop (palette
+ * partagée). VERSION RICHE, distincte de la section d'accueil `home-partners`
+ * (simple liste de NOMS) : ici chaque partenaire peut porter un logo, un
+ * descriptif court, et la section un badge (ex. « Microsoft Cloud Network »).
+ * RE-SKIN DESIGN SYSTEM 2026-08-05 : fond ivoire (surface), titre 24/700,
+ * badge en CHIP pilule bleu pâle (primary-fixed — patron chip footer),
+ * pastilles texte 18/600 anthracite, descriptifs 14/20.
+ *
+ * Props : { type: "logo-banner", title?, badge?,
+ *           items: [{ name, logo?, description? }] }
+ *
+ * Contraintes / pièges :
+ * - `logo` est un CHEMIN (chaîne) servi tel quel — pas d'astro:assets. Vide →
+ *   pastille texte stylée avec le nom (la section fonctionne sans images).
+ * - `items = []` en secours (édition en direct CloudCannon).
+ * - <h2> optionnel : rendu seulement si un titre est fourni.
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+
+interface LogoItem {
+  name: string;
+  logo?: string;
+  description?: string;
+}
+
+interface Props {
+  title?: string;
+  badge?: string;
+  items: LogoItem[];
+}
+
+const { title = '', badge = '', items = [] } = Astro.props;
+---
+
+<section class="py-20 bg-surface">
+  <div class="container-site text-center">
+    {title !== '' && <h2 class="text-2xl leading-8 font-bold text-on-surface m-0">{title}</h2>}
+    {
+      badge !== '' && (
+        <p class="inline-block m-0 max-w-none mt-4 px-4 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-sm font-semibold">
+          {badge}
+        </p>
+      )
+    }
+    <ul role="list" class="flex flex-wrap justify-center items-start gap-8 m-0 mt-12 p-0 list-none">
+      {
+        items.map((item) => (
+          <li class="m-0 basis-[200px] shrink grow-0 flex flex-col items-center gap-3">
+            {item.logo ? (
+              <img class="max-h-12 max-w-40 object-contain border-0" src={item.logo} alt={item.name} loading="lazy" />
+            ) : (
+              <span class="inline-flex items-center min-h-12 text-lg font-semibold text-on-surface tracking-[0.02em]">
+                {item.name}
+              </span>
+            )}
+            {item.description && (
+              <p class="text-sm leading-5 text-on-surface-variant m-0 max-w-none">{item.description}</p>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

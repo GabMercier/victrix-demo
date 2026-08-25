@@ -1,0 +1,161 @@
+---
+/**
+ * Section « Ressources liées » — composant Bookshop (P-07).
+ * RE-SKIN DESIGN SYSTEM 2026-08-05 : bande gris clair froid #F9FAFB (verbatim
+ * maquette accueil — même bande que home-latest), tête gauche + lien fléché
+ * bleu, cartes au PATRON home-latest re-skinné : blanches rayon 12, chip
+ * catégorie 10/900 #9CA3AF, titre 20/700 navy → bleu au survol, extrait 14/20
+ * #6B7280, date 14 discrète, survol ombre + translation.
+ *
+ * Props : { type: "related-posts", title, tags: string[], ctaLabel?, ctaHref?,
+ *           cards? }
+ *
+ * SECTION DYNAMIQUE — repli documenté, patron EXACT de home-latest. Les cartes
+ * proviennent de la collection blog, LUE AU BUILD (src/pages/[lang]/services/
+ * [slug].astro : la route filtre les articles qui partagent AU MOINS une des
+ * `tags`, résout leurs couvertures en données SIMPLES — src/srcset/dims en
+ * chaînes — et les injecte via la prop `cards` (mécanisme `enrich` du renderer
+ * partagé). Ce composant n'importe donc NI astro:content NI astro:assets : il
+ * reste compilable pour le navigateur par l'éditeur visuel CloudCannon (même
+ * contrainte que JsonLd.astro / faq.astro / home-latest).
+ *
+ *  - Au build (`cards` fourni) : vraies cartes.
+ *  - En édition live (navigateur, `cards` absent) : cartes FACTICES de
+ *    remplacement — le titre, les étiquettes et le lien restent éditables ;
+ *    les cartes réelles réapparaissent au prochain build. (`tags` pilote la
+ *    résolution au build ; il n'affecte pas le rendu ici.)
+ *
+ * PARITÉ : titre en <h2> (le <h1> appartient au héros) ; cartes en <h3>.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface CardImage {
+  src: string;
+  // Absents pour les couvertures migrées (chemins publics servis tels quels,
+  // sans dérivés astro:assets) — les attributs correspondants sont omis.
+  srcset?: string;
+  width?: number;
+  height?: number;
+}
+interface Card {
+  href: string;
+  title: string;
+  excerpt: string;
+  tags: string[];
+  dateISO: string;
+  dateLabel: string;
+  img: CardImage;
+}
+interface Props {
+  title: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  cards?: Card[];
+}
+
+const { title, ctaLabel, ctaHref, cards } = Astro.props;
+
+// Repli éditeur : 3 cartes factices quand aucune donnée n'est injectée (rendu
+// dans le navigateur par l'éditeur visuel). Jamais utilisées au build.
+const PLACEHOLDER_CARDS = 3;
+const isLive = !Array.isArray(cards);
+// Build (cards fourni) mais AUCUN article ne correspond aux étiquettes → tableau
+// vide : ne RIEN rendre (pas de titre ni de CTA au-dessus d'une grille vide en
+// production — constat #4). L'éditeur (cards absent → isLive) garde la maquette.
+const isEmptyResolved = Array.isArray(cards) && cards.length === 0;
+const hasCta = Boolean(ctaLabel && ctaHref);
+
+// Recettes partagées des cartes (patron home-latest re-skinné).
+const cardClass =
+  'group relative flex flex-col h-full bg-white rounded-xl overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-[box-shadow,transform] duration-150 hover:shadow-survol hover:-translate-y-0.5 motion-reduce:transition-none';
+const chipClass = 'text-[10px] leading-[15px] font-black uppercase tracking-[1px] text-[#9CA3AF] m-0 max-w-none';
+const titleClass = 'text-xl leading-7 font-bold tracking-[-0.4px] m-0';
+const titleLinkClass =
+  "text-on-primary-fixed no-underline group-hover:text-primary after:content-[''] after:absolute after:inset-0";
+const excerptClass = 'm-0 text-sm leading-5 text-[#6B7280] max-w-none';
+---
+
+{/* data-pagefind-ignore (sur <section>) : les cartes pointent vers D'AUTRES
+    contenus — les indexer ici ferait remonter la page hôte sur les mots-clés
+    des articles liés (bruit inter-contenus dans la recherche interne P-06).
+    Attribut inerte partout ailleurs (browser-safe). */}
+{isEmptyResolved ? null : (
+<section class="py-20 bg-[#F9FAFB]" data-pagefind-ignore>
+  <div class="container-site">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-8">
+      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
+        {title}
+      </h2>
+      {hasCta && (
+        <a
+          class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
+          href={ctaHref}
+        >
+          {ctaLabel}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      )}
+    </div>
+    <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 m-0 p-0 list-none">
+      {
+        isLive
+          ? Array.from({ length: PLACEHOLDER_CARDS }).map(() => (
+              <li class="m-0">
+                <article class={cardClass}>
+                  <div class="block aspect-[16/10] bg-[#F3F4F6]" aria-hidden="true" />
+                  <div class="flex flex-col gap-3 p-8 grow">
+                    <p class={chipClass}>Étiquette</p>
+                    <h3 class={titleClass}>
+                      <a class={titleLinkClass} href="#">
+                        Titre de l'article
+                      </a>
+                    </h3>
+                    <p class="m-0 max-w-none text-sm text-[#9CA3AF]">Date</p>
+                    <p class={excerptClass}>
+                      Les ressources liées (articles partageant une étiquette) s'affichent ici au
+                      build.
+                    </p>
+                  </div>
+                </article>
+              </li>
+            ))
+          : cards.map((card) => (
+              <li class="m-0">
+                <article class={cardClass}>
+                  <a class="block aspect-[16/10] overflow-hidden bg-[#F3F4F6]" href={card.href} tabindex="-1" aria-hidden="true">
+                    {card.img.src && (
+                      <img
+                        src={card.img.src}
+                        srcset={card.img.srcset}
+                        alt=""
+                        sizes={card.img.srcset ? '(min-width: 768px) 360px, 100vw' : undefined}
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="auto"
+                        width={card.img.width}
+                        height={card.img.height}
+                        class="w-full h-full object-cover border-0"
+                      />
+                    )}
+                  </a>
+                  <div class="flex flex-col gap-3 p-8 grow">
+                    {card.tags.length > 0 && <p class={chipClass}>{card.tags[0]}</p>}
+                    <h3 class={titleClass}>
+                      <a class={titleLinkClass} href={card.href}>
+                        {card.title}
+                      </a>
+                    </h3>
+                    <p class="m-0 max-w-none text-sm text-[#9CA3AF]">
+                      <time datetime={card.dateISO}>{card.dateLabel}</time>
+                    </p>
+                    <p class={excerptClass}>{card.excerpt}</p>
+                  </div>
+                </article>
+              </li>
+            ))
+      }
+    </ul>
+  </div>
+</section>
+)}

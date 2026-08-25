@@ -1,0 +1,41 @@
+{
+  "title": "Centre de confiance",
+  "description": "Sécurité, conformité et protection de vos données.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Centre de confiance",
+      "subtitle": "Sécurité, conformité et protection de vos données.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Contenu en préparation",
+      "paragraphs": [
+        "Cette page regroupera nos engagements en matière de sécurité, de conformité et de protection des renseignements personnels.",
+        "Pour toute question sur nos pratiques, communiquez avec notre équipe."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Des questions sur nos pratiques ?",
+      "body": "Notre équipe vous répondra avec plaisir.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "variant": "light"
+    }
+  ]
+}

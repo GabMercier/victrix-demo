@@ -1,47 +1,56 @@
 /* =============================================================================
-   Design tokens — Victrix prototype
-   Single source of truth for brand colors, spacing, typography, and surfaces.
-   Edit values here; consume them everywhere via var(--token).
+   Design tokens — Victrix (legacy layer)
+   Single source of truth consumed via var(--token) by the NOT-YET-reskinned
+   components. Since 2026-08-14 the values are REMAPPED onto the export2 design
+   system (decision v3: docs/design/export2/ — Inter + neutres froids + bleu
+   Victrix; remplace l'arbitrage v2 « planche ») so the whole site wears the
+   new skin at once; components then get properly re-skinned lot by lot
+   (Tailwind utilities from theme.css) and stop using this file. Old values
+   kept in comments for traceability.
+
+   RENAMED on 2026-08-04 (collision with Tailwind v4 @theme names, audit §4):
+   --color-surface → --color-band · --radius-sm/md/lg → --radius-s/m/l ·
+   --shadow-sm/md/lg → --shadow-1/2/3. This :root is UN-LAYERED and would
+   silently beat @layer theme — never reuse a Tailwind theme token name here.
    ========================================================================== */
 
 :root {
   /* ---------------------------------------------------------------------------
-     Brand palette — confirmed by the user
-     - navy:         #083957  main blue (primary brand — buttons, headings)
-     - accent-blue:  #3366FF  accent blue (links, focus, announcement bar)
-     - accent-green: #24FB8E  Ø Studio accent green
-     - grey-dark:    #373434  dark grey (footer background)
+     Brand palette — export2 anchors (2026-08-14, remplace les ancres planche)
+     - nuit:    #0b1334  semantic.background.bleu — headings, dark UI
+     - victrix: #1a5bff  bleu-500 — actions, links, brand accents
   --------------------------------------------------------------------------- */
-  --color-navy: #083957;          /* main blue — primary brand */
-  --color-navy-700: #0b4b71;      /* lighter tint for hover */
-  --color-navy-900: #052639;      /* deeper tint */
-  --color-accent-blue: #3366ff;   /* accent blue */
-  --color-accent-blue-600: #2350e0; /* accent-blue hover */
-  --color-accent-green: #24fb8e;  /* Ø Studio accent green */
-  --color-grey-dark: #373434;     /* footer background */
+  --color-navy: #0b1334; /* Bleu nuit (export2 semantic.background) — was #0d1430 */
+  --color-navy-700: #142052; /* hover tint (dérivé) — was #16244d */
+  --color-navy-900: #070c22; /* deeper (dérivé) — was #080d1f */
+  --color-accent-blue: #1a5bff; /* Bleu Victrix (bleu-500) — unchanged */
+  --color-accent-blue-600: #0043eb; /* hover (bleu-600 export2) — was #1348d6 */
+  --color-accent-green: #1a5bff; /* green retired → Bleu Victrix — was #24fb8e */
+  --color-grey-dark: #0b1334; /* dark band background → Bleu nuit */
 
-  /* Neutrals */
+  /* Neutrals — COOL scale (export2 color.neutral.* ; l'échelle chaude v2 est
+     retirée — ivoire/beige/sable survivent comme accents dans theme.css) */
   --color-white: #ffffff;
-  --color-grey-50: #f6f7f8;       /* light section background (cards/blog band) */
-  --color-grey-100: #f0f1f3;
-  --color-grey-200: #e2e4e8;
-  --color-grey-300: #cdd0d6;
-  --color-grey-500: #8a8e96;
-  --color-grey-600: #6c7077;
-  --color-grey-700: #4a4d54;
-  --color-ink: #1a1c20;           /* near-black body text */
+  --color-grey-50: #f9fafb; /* neutral-50 — light section band — was #f7f2eb */
+  --color-grey-100: #f3f4f7; /* neutral-100 — was #f2ece4 */
+  --color-grey-200: #e5e7eb; /* neutral-200 — borders — was #e0d8ca */
+  --color-grey-300: #cdd2da; /* neutral-300 — was #d4cab7 */
+  --color-grey-500: #7b889d; /* neutral-500 — muted — was #767b87 */
+  --color-grey-600: #545f71; /* neutral-600 — was #5d6470 */
+  --color-grey-700: #404957; /* neutral-700 — was #4a5160 */
+  --color-ink: #21242a; /* neutral-900 — was #1a1f28 anthracite */
 
   /* Semantic aliases — prefer these in components */
-  --color-bg: var(--color-white);
-  --color-surface: var(--color-grey-50);
+  --color-bg: #ffffff; /* page canvas = blanc (export2) — was ivoire #faf7f3 */
+  --color-band: var(--color-grey-50); /* light section band (ex --color-surface) */
   --color-text: var(--color-ink);
   --color-text-muted: var(--color-grey-700);
   --color-text-invert: var(--color-white);
   --color-accent: var(--color-accent-blue);
-  --color-link: var(--color-navy);
-  --color-link-hover: var(--color-accent-blue);
+  --color-link: var(--color-accent-blue); /* planche : liens = Bleu Victrix — was navy */
+  --color-link-hover: var(--color-accent-blue-600); /* was accent-blue */
   --color-border: var(--color-grey-200);
-  --color-focus: var(--color-accent-blue); /* focus ring — high-contrast on white */
+  --color-focus: var(--color-accent-blue); /* focus ring — high-contrast on ivory */
 
   /* ---------------------------------------------------------------------------
      Spacing scale (4px base; rem-based so it respects user font-size)
@@ -59,9 +68,10 @@
   --space-10: 8rem;     /* 128 */
 
   /* ---------------------------------------------------------------------------
-     Typography
+     Typography — Inter site-wide (variable font, @font-face in theme.css —
+     export2, 2026-08-14). Hanken Grotesk retired with the v2 system.
   --------------------------------------------------------------------------- */
-  --font-sans: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto,
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif;
 
   --fw-regular: 400;
@@ -85,17 +95,28 @@
   --fs-800: clamp(2.5rem, 3.5vw + 1.5rem, 4rem);         /* h1 */
 
   /* ---------------------------------------------------------------------------
-     Surfaces — radius, shadows, layout
+     Surfaces — radius, shadows, layout (renamed: -s/-m/-l, -1/-2/-3)
   --------------------------------------------------------------------------- */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
+  --radius-s: 4px; /* = système `rounded` 0.25rem */
+  --radius-m: 8px; /* = système cartes 0.5rem */
+  --radius-l: 12px; /* grands conteneurs (was 16px — resserré sur le système) */
   --radius-pill: 999px;
 
-  --shadow-sm: 0 1px 2px rgba(20, 33, 61, 0.08);
-  --shadow-md: 0 4px 16px rgba(20, 33, 61, 0.1);
-  --shadow-lg: 0 12px 32px rgba(20, 33, 61, 0.14);
+  --shadow-1: 0 1px 2px rgba(11, 19, 52, 0.08); /* teinte → Bleu nuit export2 */
+  --shadow-2: 0 4px 16px rgba(11, 19, 52, 0.1);
+  --shadow-3: 0 12px 32px rgba(11, 19, 52, 0.14);
 
-  --container-max: 1200px;
-  --container-pad: var(--space-5);
+  --container-max: 1920px; /* ÉLARGI 2026-08-17 (remplir le viewport) — suit --spacing-container-max de theme.css (was 1280px) */
+  --container-pad: 16px; /* gouttière mobile — proportionnelle ≥768px ci-dessous (was 24px fixe) */
+}
+
+/* Gouttière responsive : mêmes valeurs que l'utilitaire `container-site` de
+   theme.css (16px mobile / 32px desktop) pour que les pages legacy et les
+   sections re-skinnées partagent la même grille de contenu (1216px ≥768px). */
+@media (min-width: 768px) {
+  :root {
+    /* Mêmes valeurs que container-site (theme.css) : 3.75vw = gouttière 48px
+       de la planche 1280, plancher 32px, plafond 96px. */
+    --container-pad: clamp(32px, 3.75vw, 96px);
+  }
 }

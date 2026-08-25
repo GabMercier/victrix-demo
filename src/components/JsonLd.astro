@@ -1,0 +1,37 @@
+---
+/**
+ * JSON-LD structured-data emitter (FROZEN contract — do not add props).
+ *
+ * Props: { schema: object } — the COMPLETE schema.org object, "@context"
+ * included. Callers build the object; this component only serializes it
+ * safely. Used by BaseLayout (Organization), the blog article page
+ * (BlogPosting) and the FAQ Bookshop section (FAQPage).
+ *
+ * Constraints / gotchas:
+ *  - "<" is escaped as its JSON unicode escape (backslash + "u003c" — see
+ *    the replace() below) so a string value containing "</script>" (e.g. a
+ *    CMS-edited FAQ answer) cannot terminate the tag early and inject markup.
+ *    JSON syntax itself never produces "<", so the replacement only ever
+ *    touches string values/keys — where the escape parses back to "<",
+ *    i.e. lossless for JSON consumers.
+ *  - `set:html` is required: Astro's default expression escaping would
+ *    HTML-encode the quotes and emit invalid JSON. `is:inline` keeps the tag
+ *    out of Astro's script processing (a typed data block is not executable
+ *    JS and must ship verbatim).
+ *  - MUST stay browser-safe (pure string ops — no Node APIs, no i18n, no
+ *    astro:assets): the FAQ component in component-library/ imports this
+ *    file, and CloudCannon's visual editor compiles Bookshop components AND
+ *    their imports to run in the browser (see bookshop.config.cjs).
+ */
+interface Props {
+  /** Complete schema.org object, "@context" included. */
+  schema: object;
+}
+
+const { schema } = Astro.props;
+
+// Escape "<" (see above) — neutralizes "</script>" breakout in string values.
+const json = JSON.stringify(schema).replace(/</g, '\\u003c');
+---
+
+<script is:inline type="application/ld+json" set:html={json} />

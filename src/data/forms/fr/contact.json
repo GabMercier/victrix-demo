@@ -1,0 +1,96 @@
+{
+  "_schema": "default",
+  "name": "Contact (FR)",
+  "toEmail": "",
+  "subject": "Message du site — formulaire de contact",
+  "submitLabel": "Envoyer le message",
+  "consentText": "",
+  "fields": [
+    {
+      "label": "Prénom",
+      "type": "text",
+      "required": true,
+      "width": "demi",
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Nom",
+      "type": "text",
+      "required": true,
+      "width": "demi",
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Courriel",
+      "type": "email",
+      "required": true,
+      "width": "demi",
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Téléphone",
+      "type": "tel",
+      "required": false,
+      "width": "demi",
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "De quoi souhaitez-vous parler ?",
+      "type": "select",
+      "required": true,
+      "width": "demi",
+      "options": ["Un projet", "Une expertise", "Une carrière", "Autre"],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Expertise",
+      "type": "select",
+      "required": true,
+      "width": "demi",
+      "options": [
+        "Conseil stratégique",
+        "Intelligence artificielle",
+        "Cybersécurité",
+        "Infonuagique",
+        "Infrastructure",
+        "Services gérés",
+        "Autre"
+      ],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Précisez votre demande",
+      "type": "text",
+      "required": false,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Message",
+      "type": "textarea",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Consentement (Loi 25)",
+      "type": "checkbox",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    }
+  ]
+}

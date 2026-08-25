@@ -1,5 +1,14 @@
 # Victrix site — development roadmap
 
+> **⚠️ OBSOLETE (flagged 2026-08-07) — kept for history only.** Written
+> 2026-06-23, BEFORE the visual-editor pivot: it still names Sveltia as the
+> CMS (replaced by CloudCannon, adopted after the July spike) and puts the
+> Entra ID portal in M3 (descoped 2026-07-17 — the portal stays a mock
+> prototype). Much of M1/M2 has since shipped through other tracks (View
+> Transitions, RSS, JSON-LD, Pagefind, EN slugs). **The living roadmap is:**
+> `plan-convergence-migration.md` (phases) + `plan-prompts.md` (P-xx backlog)
+> + `GUIDE-PROJET.md` (jalons). Do not plan work from this file.
+
 > Purpose: turn the current faithful reproduction of victrix.ca into a production-grade
 > base for the real thing. Marketing will deliver a **new design later**; until then we keep
 > reproducing the existing site and invest in the foundations (quality, performance, the

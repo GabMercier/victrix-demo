@@ -1,0 +1,175 @@
+---
+/**
+ * Section « Derniers articles » — composant Bookshop (accueil composable).
+ *
+ * Props : { type: "home-latest", title, ctaLabel, ctaHref, cards? }
+ *
+ * SECTION DYNAMIQUE — repli documenté. Les cartes proviennent de la collection
+ * blog, LUE AU BUILD (src/pages/[lang]/index.astro : getPostsByLocale + getImage
+ * pré-résolvent les 3 derniers articles en données SIMPLES — src/srcset/dims en
+ * chaînes, aucune image astro:assets), injectées via la prop `cards`
+ * (mécanisme `enrich` du renderer partagé). Ce composant n'importe donc NI
+ * astro:content NI astro:assets : il reste compilable pour le navigateur par
+ * l'éditeur visuel CloudCannon (même contrainte que JsonLd.astro / faq.astro).
+ *
+ *  - Au build (`cards` fourni) : vraies cartes.
+ *  - En édition live (navigateur, `cards` absent) : cartes FACTICES de
+ *    remplacement — le titre et le lien restent éditables ; les cartes réelles
+ *    réapparaissent au prochain build. C'est le repli « vraies données au build,
+ *    factices dans l'éditeur » (équivalent à un drapeau ENV_BOOKSHOP_LIVE, mais
+ *    piloté par la présence des données injectées — aucun import à éliminer).
+ *
+ * Le titre porte un <h2> (le <h1> appartient au héros) ; les cartes portent
+ * des <h3>. Voir home-hero.astro pour les conventions communes.
+ *
+ * FIDÉLITÉ MAQUETTE 2026-08-04 (docs/design/accueil.css §ResourcesSection,
+ * « Ressources et perspectives ») : fond #F9FAFB, rangée de tête (titre 48/800
+ * + `subtitle` NOUVEAU optionnel, lien 12/700 majuscules bleu à droite),
+ * cartes blanches rayon 12 ombre 1px — image 16/10, catégorie 10/900 ls 1px
+ * #9CA3AF (première étiquette, texte nu — plus de pastilles), titre 20/700
+ * ls -0.4 navy, extrait 14/20 #6B7280, « LIRE LA SUITE » 12/700 majuscules
+ * bleu + flèche ↗. La date n'est plus rendue (conservée aux données).
+ * Neutres froids maquette tels quels ; bleus/navy = tokens (décision méga).
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface CardImage {
+  src: string;
+  // Absents pour les couvertures migrées (chemins publics servis tels quels,
+  // sans dérivés astro:assets) — les attributs correspondants sont omis.
+  srcset?: string;
+  width?: number;
+  height?: number;
+}
+interface Card {
+  href: string;
+  title: string;
+  excerpt: string;
+  tags: string[];
+  dateISO: string;
+  dateLabel: string;
+  img: CardImage;
+}
+interface Props {
+  title: string;
+  subtitle?: string;
+  /** Libellé « Lire la suite » des cartes — champ de contenu (browser-safe). */
+  readMoreLabel?: string;
+  ctaLabel: string;
+  ctaHref: string;
+  cards?: Card[];
+}
+
+const { title, subtitle, readMoreLabel, ctaLabel, ctaHref, cards } = Astro.props;
+
+// Repli éditeur : 3 cartes factices quand aucune donnée n'est injectée (rendu
+// dans le navigateur par l'éditeur visuel). Jamais utilisées au build.
+const PLACEHOLDER_CARDS = 3;
+const isLive = !Array.isArray(cards);
+
+const cardClass =
+  'group relative flex flex-col h-full bg-white rounded-xl overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-[box-shadow,transform] duration-150 hover:shadow-survol hover:-translate-y-0.5 motion-reduce:transition-none';
+const chipClass = 'text-[10px] leading-[15px] font-black uppercase tracking-[1px] text-[#9CA3AF] m-0 max-w-none';
+const titleClass = 'text-xl leading-7 font-bold tracking-[-0.4px] m-0';
+const titleLinkClass =
+  "text-on-primary-fixed no-underline group-hover:text-primary after:content-[''] after:absolute after:inset-0";
+const excerptClass = 'm-0 text-sm leading-5 text-[#6B7280] max-w-none';
+const readMoreClass =
+  'inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline mt-auto pt-4';
+---
+
+{/* Fond IVOIRE #FAF7F4 (export2 homepage.css §ResourcesSection,
+    « Secondaire/Ivoire », 2026-08-17) — remplace le gris froid provisoire. */}
+<section class="py-24 bg-ivoire">
+  <div class="container-site">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+      <div class="max-w-2xl flex flex-col gap-4">
+        <h2 class="text-[48px] leading-none font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0">
+          {title}
+        </h2>
+        {subtitle && <p class="text-base leading-6 text-[#545F71] m-0 max-w-none">{subtitle}</p>}
+      </div>
+      <a
+        class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
+        href={ctaHref}
+      >
+        {ctaLabel}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </div>
+    <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 m-0 p-0">
+      {
+        isLive
+          ? Array.from({ length: PLACEHOLDER_CARDS }).map(() => (
+              <li>
+                <article class={cardClass}>
+                  <div class="block aspect-[16/10] bg-[#F3F4F6]" aria-hidden="true" />
+                  <div class="flex flex-col gap-4 p-8 grow">
+                    <p class={chipClass}>Catégorie</p>
+                    <h3 class={titleClass}>
+                      <a class={titleLinkClass} href="#">
+                        Titre de l'article
+                      </a>
+                    </h3>
+                    <p class={excerptClass}>Les derniers articles du blogue s'affichent ici au build.</p>
+                    {readMoreLabel && (
+                      <span class={readMoreClass}>
+                        {readMoreLabel}
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                          <path d="M7 17 17 7m0 0H9m8 0v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </span>
+                    )}
+                  </div>
+                </article>
+              </li>
+            ))
+          : cards.map((card) => (
+              <li>
+                <article class={cardClass}>
+                  <a
+                    class="block aspect-[16/10] overflow-hidden bg-[#F3F4F6]"
+                    href={card.href}
+                    tabindex="-1"
+                    aria-hidden="true"
+                  >
+                    {card.img.src && (
+                      <img
+                        src={card.img.src}
+                        srcset={card.img.srcset}
+                        alt=""
+                        sizes={card.img.srcset ? '(min-width: 768px) 360px, 100vw' : undefined}
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="auto"
+                        width={card.img.width}
+                        height={card.img.height}
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    )}
+                  </a>
+                  <div class="flex flex-col gap-4 p-8 grow">
+                    {card.tags.length > 0 && <p class={chipClass}>{card.tags[0]}</p>}
+                    <h3 class={titleClass}>
+                      <a class={titleLinkClass} href={card.href}>
+                        {card.title}
+                      </a>
+                    </h3>
+                    <p class={excerptClass}>{card.excerpt}</p>
+                    {readMoreLabel && (
+                      <span class={readMoreClass}>
+                        {readMoreLabel}
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                          <path d="M7 17 17 7m0 0H9m8 0v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </span>
+                    )}
+                  </div>
+                </article>
+              </li>
+            ))
+      }
+    </ul>
+  </div>
+</section>

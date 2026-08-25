@@ -21,26 +21,28 @@
 # locale swap, article copy-link). HARDENING TODO: hash those inline scripts (or
 # move them external) and drop 'unsafe-inline' from script-src. When real Entra
 # login is wired, add the IdP/login domain to form-action + connect-src.
+# 'wasm-unsafe-eval' (P-06, appliqué par la ligne OPS 2026-07-28) : la recherche
+# interne Pagefind compile un module WebAssembly LOCAL (/pagefind/*.wasm —
+# stemming FR/EN); Chrome exige cette directive pour WebAssembly.instantiate.
+# Elle n'autorise QUE la compilation wasm — PAS eval()/new Function() JS.
+# OPS-CSP 2026-08-17 (édition planifiée — docs/formulaires.md §CSP + P-11) :
+#  - challenges.cloudflare.com (script-src, frame-src, connect-src) : widget
+#    anti-pourriel Turnstile des formulaires (activé par PUBLIC_TURNSTILE_SITE_KEY).
+#  - www.googletagmanager.com (script-src, connect-src) + *.google-analytics.com
+#    / *.analytics.google.com (connect-src, endpoints régionaux inclus) : GA4
+#    SOUS CONSENTEMENT — le script gtag reste gelé (type="text/plain") tant que
+#    le visiteur n'a pas accepté le bandeau Loi 25 (ConsentBanner.astro).
+#  - frame-src était absent (repli sur default-src 'self') : déclaré désormais,
+#    'self' + Turnstile uniquement.
 /fr/*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; form-action 'self'; manifest-src 'self'
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://challenges.cloudflare.com https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://challenges.cloudflare.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; frame-src 'self' https://challenges.cloudflare.com; form-action 'self'; manifest-src 'self'
 /en/*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; form-action 'self'; manifest-src 'self'
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://challenges.cloudflare.com https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://challenges.cloudflare.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; frame-src 'self' https://challenges.cloudflare.com; form-action 'self'; manifest-src 'self'
 
-# Sveltia CMS admin needs to load its bundle from unpkg and talk to GitHub +
-# the OAuth worker, so it gets its own (looser) CSP. Because CSP is NOT set on /*
-# (see above), this is the ONLY policy applied here — nothing to intersect with.
-# It's noindex + auth-gated.
-# Sveltia also loads its UI fonts (Merriweather Sans, Noto Sans Mono) AND its icon
-# font (Material Symbols) from Google Fonts at runtime — without fonts.googleapis.com
-# in style-src and fonts.gstatic.com in font-src, every icon renders as raw ligature
-# text ("arrow_back", "more_vert", …).
-/admin/*
-  X-Robots-Tag: noindex
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' data: https://unpkg.com https://fonts.gstatic.com; connect-src 'self' https://unpkg.com https://api.github.com https://raw.githubusercontent.com https://*.githubusercontent.com https://sveltia-cms-auth.gabriel-mercier-blouin.workers.dev; frame-src 'self';
-
-# Keep auth endpoints out of search results.
-/auth/*
-  X-Robots-Tag: noindex
+# Sveltia CMS retiré (Phase 3 convergence, 2026-07-30) : CloudCannon est
+# l'éditeur du site. Le bloc CSP /admin/* et public/admin/ ont été supprimés;
+# le worker OAuth (sveltia-cms-auth.…workers.dev) peut être décommissionné
+# côté Cloudflare (tâche OPS, hors dépôt).
 
 # Content-hashed build assets — safe to cache forever.
 /_astro/*

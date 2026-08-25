@@ -1,0 +1,41 @@
+{
+  "title": "Industries",
+  "description": "Deep knowledge of the realities of public and private organizations.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Industries",
+      "subtitle": "Deep knowledge of the realities of public and private organizations.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Content in preparation",
+      "paragraphs": [
+        "This page will soon present the industries we serve and our track record in each.",
+        "In the meantime, contact us to discuss the challenges specific to your industry."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Your industry, our experts",
+      "body": "Let’s talk about the technology challenges specific to your field.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "variant": "dark"
+    }
+  ]
+}

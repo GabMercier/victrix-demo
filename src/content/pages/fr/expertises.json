@@ -1,0 +1,166 @@
+{
+  "title": "Nos expertises",
+  "description": "Des expertises complémentaires pour couvrir l'ensemble de vos besoins technologiques.",
+  "noindex": false,
+  "seoTitle": "",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "",
+      "titleAccent": "",
+      "title": "Améliorer la productivité en entreprise",
+      "lead": "À la recherche d'une idée pour améliorer la productivité de votre entreprise? Avec des années d'expérience, Victrix vous propose une approche humaine et orientée client qui considère vos besoins d'affaires et se concentre sur vos utilisateurs.",
+      "ctaLabel": "Rencontrons-nous",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "Découvrir nos solutions",
+      "cta2Href": "/fr/produits",
+      "image": "/images/sections/expertises-hero.jpg",
+      "imageAlt": "",
+      "titleHighlight": "la productivité",
+      "_bookshop_name": "service-hero",
+      "overlay": "blanc"
+    },
+    {
+      "type": "benefits",
+      "title": "Notre approche humaine",
+      "intro": "Nos spécialistes utilisent une approche proactive pour vous aider à tirer le maximum des heures travaillées en conciliant les réalités des trois grands acteurs.",
+      "items": [
+        {
+          "title": "L'ORGANISATION",
+          "description": "Votre vision, votre image, votre message. Nous alignons les outils technologiques sur vos objectifs stratégiques globaux.",
+          "icon": "organisation"
+        },
+        {
+          "title": "LE PORTEUR",
+          "description": "Ses responsabilités, ses capacités, son initiative. Nous valorisons l'humain qui déploie et maintient vos solutions.",
+          "icon": "porteur"
+        },
+        {
+          "title": "LE DESTINATAIRE",
+          "description": "Ses outils, son appartenance, ses intérêts. Nous optimisons l'expérience utilisateur finale pour maximiser l'adoption.",
+          "icon": "destinataire"
+        }
+      ],
+      "_bookshop_name": "benefits"
+    },
+    {
+      "type": "tech-marquee",
+      "ariaLabel": "Technologies maîtrisées",
+      "items": [
+        "OneNote",
+        "Stream",
+        "Power BI",
+        "Teams",
+        "Sharepoint",
+        "PowerApps",
+        "PowerAutomate",
+        "OneDrive",
+        "Copilot",
+        "Dynamics 365"
+      ],
+      "_bookshop_name": "tech-marquee"
+    },
+    {
+      "type": "exclusive-tools",
+      "title": "Nos solutions de productivité exclusives",
+      "intro": "Victrix développe ses propres applications pour répondre aux défis spécifiques du travail moderne.",
+      "featured": {
+        "badge": "Exclusivité Victrix",
+        "title": "Ø Studio",
+        "text": "Propulsez-vous vers la Power Platform avec un accompagnement adapté à vos besoins. Le Ø Studio vous offre rapidité de développement et gain en capacité de livraison afin de migrer vos applications ou automatiser vos processus.",
+        "ctaLabel": "Élevez votre taux de productivité avec le Ø Studio",
+        "href": "/fr/services/productivite/o-bureau",
+        "image": "/images/sections/expertises-ostudio.png"
+      },
+      "items": [
+        {
+          "title": "O bureau",
+          "text": "Simplifiez les réservations, améliorez la gestion et automatisez les rapports d'utilisation de vos bureaux grâce à notre application de gestion de réservation facile à implémenter.",
+          "ctaLabel": "Gérer la réservation efficacement",
+          "href": "/fr/services/productivite/o-bureau",
+          "icon": ""
+        },
+        {
+          "title": "Plateforme employé",
+          "text": "Offrez à votre personnel ce qu'il y a de mieux en matière d'intranet. Augmentez la productivité au travail en centralisant les outils et les connaissances.",
+          "ctaLabel": "Déployer un intranet moderne",
+          "href": "/fr/services/productivite/plateforme-employe-intranet",
+          "icon": ""
+        }
+      ],
+      "_bookshop_name": "exclusive-tools"
+    },
+    {
+      "type": "expertise-bento",
+      "eyebrow": "Domaines d'expertise",
+      "title": "Une vision 360° de votre productivité numérique",
+      "intro": "Des solutions idéales pour simplifier les tâches quotidiennes et bénéficier d'un gain de temps immédiat.",
+      "items": [
+        {
+          "title": "Intranet Moderne",
+          "text": "Créez un point d'entrée unique pour l'information et la communication interne.",
+          "peau": "blanche",
+          "taille": "grande",
+          "icon": "",
+          "image": "/images/services/bento-intranet.jpg",
+          "href": ""
+        },
+        {
+          "title": "BI et Power BI",
+          "text": "",
+          "peau": "bleue",
+          "taille": "haute",
+          "icon": "",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Collaboration",
+          "text": "",
+          "peau": "blanche",
+          "taille": "haute",
+          "icon": "",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Automatisation des processus",
+          "text": "Libérez vos équipes des tâches répétitives.",
+          "peau": "blanche",
+          "taille": "large",
+          "icon": "",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Gestion documentaire",
+          "text": "",
+          "peau": "blanche",
+          "taille": "petite",
+          "icon": "",
+          "image": "",
+          "href": ""
+        },
+        {
+          "title": "Développement M365",
+          "text": "",
+          "peau": "ardoise",
+          "taille": "petite",
+          "icon": "",
+          "image": "",
+          "href": ""
+        }
+      ],
+      "_bookshop_name": "expertise-bento"
+    },
+    {
+      "type": "cta",
+      "title": "Prêt à faire évoluer votre organisation ?",
+      "body": "Discutons de vos enjeux et découvrons comment Victrix peut vous aider à aller plus loin dans votre transformation numérique et l'amélioration de vos performances.",
+      "ctaLabel": "Réservez un créneau avec un expert",
+      "ctaHref": "/fr/contact",
+      "variant": "dark",
+      "_bookshop_name": "cta"
+    }
+  ]
+}

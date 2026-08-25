@@ -1,0 +1,55 @@
+# =============================================================================
+# Spec Bookshop — section « Derniers articles » (accueil composable).
+# Voir home-hero.bookshop.yml pour les conventions communes.
+#
+# SECTION DYNAMIQUE : seuls le titre et le lien sont éditables. Les cartes sont
+# alimentées par la collection blog AU BUILD (voir home-latest.astro) ; dans
+# l'éditeur visuel, des cartes factices tiennent lieu d'aperçu.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Accueil — Derniers articles"
+  description: "Bloc « derniers articles » : titre, lien vers le blogue, et grille des 3 articles les plus récents (alimentée automatiquement au build)."
+  icon: article
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/home-latest/preview.png"
+    text: "Accueil — Derniers articles"
+    subtext: Titre + lien + 3 articles récents (automatique)
+  preview:
+    icon: article
+    text:
+      - key: title
+      - text: Derniers articles
+
+blueprint:
+  type: home-latest
+  title: "Nos derniers articles"
+  subtitle: ""
+  readMoreLabel: "Lire la suite"
+  ctaLabel: "Voir toutes les ressources"
+  ctaHref: "/fr/ressources"
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat sections — ne pas modifier."
+  title:
+    label: "Titre"
+  subtitle:
+    label: "Sous-titre"
+    comment: "Paragraphe d'appui sous le titre (optionnel)."
+  readMoreLabel:
+    label: "Libellé « Lire la suite »"
+    comment: "Lien affiché au bas de chaque carte. Vide = absent."
+  ctaLabel:
+    label: "Libellé du lien"
+  ctaHref:
+    label: "Lien"
+    comment: "URL finale, préfixe de langue inclus (ex. /fr/ressources)."

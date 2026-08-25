@@ -1,0 +1,96 @@
+{
+  "_schema": "default",
+  "name": "Contact (EN)",
+  "toEmail": "",
+  "subject": "Website message — contact form",
+  "submitLabel": "Send message",
+  "consentText": "",
+  "fields": [
+    {
+      "label": "First name",
+      "type": "text",
+      "required": true,
+      "width": "demi",
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Last name",
+      "type": "text",
+      "required": true,
+      "width": "demi",
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Email",
+      "type": "email",
+      "required": true,
+      "width": "demi",
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Phone",
+      "type": "tel",
+      "required": false,
+      "width": "demi",
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "What would you like to talk about?",
+      "type": "select",
+      "required": true,
+      "width": "demi",
+      "options": ["A project", "An area of expertise", "A career", "Other"],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Expertise",
+      "type": "select",
+      "required": true,
+      "width": "demi",
+      "options": [
+        "Strategic consulting",
+        "Artificial intelligence",
+        "Cybersecurity",
+        "Cloud computing",
+        "Infrastructure",
+        "Managed services",
+        "Other"
+      ],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Tell us more about your request",
+      "type": "text",
+      "required": false,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Message",
+      "type": "textarea",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Consent (Law 25)",
+      "type": "checkbox",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    }
+  ]
+}

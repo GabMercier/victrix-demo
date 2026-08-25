@@ -1,0 +1,71 @@
+# =============================================================================
+# Spec Bookshop — section « Bandeau logos partenaires » (palette partagée,
+# ajout du 17 juil.). DISTINCTE de la section d'accueil `home-partners`
+# (liste de noms en texte) : version riche avec logos, descriptifs et badge.
+# Voir hero.bookshop.yml pour les conventions communes.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Bandeau logos partenaires"
+  description: "Grille de logos de partenaires (Microsoft, AWS, Cisco, ServiceNow…) avec descriptif court optionnel par partenaire et badge de certification optionnel."
+  icon: workspaces
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/logo-banner/preview.png"
+    text: Bandeau logos partenaires
+    subtext: Logos + descriptifs + badge (ex. certification)
+  preview:
+    icon: workspaces
+    text:
+      - key: title
+      - text: Bandeau logos partenaires
+
+blueprint:
+  type: logo-banner
+  title: "Nos partenaires technologiques"
+  badge: ""
+  items:
+    - name: "Nom du partenaire"
+      logo: ""
+      description: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre (optionnel)"
+  badge:
+    label: "Badge (optionnel)"
+    comment: "Petit insigne sous le titre — ex. « Membre Microsoft Cloud Network »."
+  items:
+    # `type: array` explicite : sans lui, `npx @bookshop/generate` fabriquerait
+    # une structure inline générique à partir du blueprint. La palette
+    # _structures.logo_items est déclarée à la main dans cloudcannon.config.yml
+    # (même bail-out que faq.bookshop.yml — et même GOTCHA : le `items` de la
+    # collection landing pointe sur benefit_items, ce spec le re-pointe ici).
+    type: array
+    label: "Partenaires"
+    options:
+      structures: _structures.logo_items
+  name:
+    label: "Nom du partenaire"
+  logo:
+    type: image
+    label: "Logo (optionnel)"
+    comment: >-
+      Vide → le nom s'affiche en texte stylé. Le fichier téléversé atterrit
+      dans public/images/sections/ (adresse servie telle quelle, /images/…).
+    options:
+      paths:
+        static: public
+        uploads: public/images/sections
+  description:
+    type: textarea
+    label: "Descriptif court (optionnel)"

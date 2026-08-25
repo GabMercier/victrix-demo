@@ -1,0 +1,179 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { defaultLocale, otherLocale, localizePath, isLocale } from '../../../i18n/config';
+// The shared Bookshop renderer (component-library/src/shared/astro/page.astro)
+// maps each section to its component. Sections MUST be rendered through it —
+// with the `bookshop:live` directive below — for CloudCannon's live editing to
+// connect (see the renderer's header comment for the full story). Vite
+// resolves relative imports above src/ without any alias.
+import Page from '../../../../component-library/src/shared/astro/page.astro';
+// P-04 — chrome de campagne. Importés ICI (et pas dans BaseLayout) à dessein :
+// le graphe de modules de BaseLayout alimente TOUTES les pages — y importer
+// ces composants ajouterait leur CSS à chaque page du site (parité octet
+// rompue partout). Depuis cette route, seules les pages campagnes le portent.
+import CampaignHeader from '../../../components/CampaignHeader.astro';
+import CampaignFooter from '../../../components/CampaignFooter.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { resolveHeaderConfig, resolveFooterMode } from '../../../lib/chrome/header-config';
+
+/**
+ * Campaign landing pages ("campagnes") — one static route per entry in the
+ * `landing` collection (src/content/landing/<locale>/<slug>.md), rendered
+ * purely from its `sections` array. Section conventions (frozen contract):
+ *  - the hero comes FIRST — it owns the page's single <h1>; every other
+ *    section titles in <h2>;
+ *  - the `form` section is a NON-FUNCTIONAL mock (no action, disabled submit)
+ *    by default; it becomes a real <form method="POST" action="/api/forms">
+ *    only when the build runs with PUBLIC_FORMS_ENABLED=1 (docs/formulaires.md);
+ *  - entries default to noindex (campaign pages stay out of organic search).
+ */
+export async function getStaticPaths() {
+  const pages = await getCollection('landing');
+  // Forms v2 — définitions par langue pour le seam `enrich` du renderer : la
+  // section « form » reste browser-safe (elle ne lit pas la collection), la
+  // ROUTE résout formId → définition au build et l'injecte. Dans l'éditeur
+  // visuel (enrich absent), la section affiche une note + la maquette inline.
+  const formEntries = await getCollection('forms');
+  // URL personnalisable (2026-08-18) : le NOM DE FICHIER reste la clé
+  // d'appariement des traductions ; le SEGMENT D'URL est le frontmatter `slug`
+  // s'il est renseigné, sinon le nom de fichier (comportement historique).
+  const fileSlugOf = (p: (typeof pages)[number]) => p.id.slice(p.id.indexOf('/') + 1);
+  const urlSlugOf = (p: (typeof pages)[number]) => p.data.slug || fileSlugOf(p);
+  // Garde-fou : deux campagnes d'une même langue sur le même segment d'URL
+  // font ÉCHOUER le build en nommant les deux fichiers — jamais une page
+  // écrasée en silence (même philosophie que les redirections).
+  const seen = new Map<string, string>();
+  for (const p of pages) {
+    const key = `${p.id.split('/')[0]}/${urlSlugOf(p)}`;
+    const prev = seen.get(key);
+    if (prev) {
+      throw new Error(
+        `[campagnes] URL en double « /${key}/ » : ${prev} et ${p.id} — changer le champ « slug » de l'une des deux pages.`,
+      );
+    }
+    seen.set(key, p.id);
+  }
+  return pages.map((page) => {
+    // Entry ids are "<locale>/<filename>" (same generateId trick as blog).
+    const seg = page.id.split('/')[0];
+    const lang = isLocale(seg) ? seg : defaultLocale;
+    const slug = urlSlugOf(page);
+    const other = otherLocale[lang];
+    // Language switch / hreflang target: the translation shares the FILENAME
+    // (pairing key) but owns its URL slug — point at the counterpart's own
+    // localized URL when the file exists. Otherwise fall back to the other
+    // locale's home (there is no public campaigns index to point at). Keep the
+    // trailing slash: the no-slash URL 308-redirects on Cloudflare Pages.
+    const counterpart = pages.find((p) => p.id === `${other}/${fileSlugOf(page)}`);
+    const altLocalePath = counterpart
+      ? localizePath(`/campagnes/${urlSlugOf(counterpart)}/`, other)
+      : localizePath('/', other);
+    // `frontmatter` is LOAD-BEARING for CloudCannon live editing: the
+    // astro-bookshop vite plugin statically pattern-matches a variable
+    // literally named `frontmatter` to bind `bookshop:live` props to the
+    // entry's front-matter file (documented as "manual in Astro pages via
+    // getStaticPaths props"). Passing `page.data.sections` directly compiles
+    // to an EMPTY `params()` marker — the editor then re-renders the boundary
+    // with no data and the preview shows a blank page body (real bug, seen
+    // 2026-07-15). Do not rename or inline it.
+    // Carte formId → définition POUR LA LANGUE de la page (ids "fr/contact"…),
+    // + garde-fou : un formId qui ne résout pas fait ÉCHOUER le build en
+    // nommant la page et le fichier attendu — même philosophie que les
+    // redirections (rien de cassé n'atteint le site).
+    const resolvedForms = Object.fromEntries(
+      formEntries
+        .filter((entry) => entry.id.startsWith(`${lang}/`))
+        .map((entry) => [entry.id.slice(lang.length + 1), entry.data]),
+    );
+    for (const section of page.data.sections) {
+      if (section.type === 'form' && section.formId && !resolvedForms[section.formId]) {
+        throw new Error(
+          `[campagnes] ${page.id} : formId « ${section.formId} » introuvable — attendu src/data/forms/${lang}/${section.formId}.json (collection Formulaires)`,
+        );
+      }
+    }
+    return {
+      params: { lang, slug },
+      props: {
+        page,
+        lang,
+        altLocalePath,
+        frontmatter: page.data,
+        // HORS frontmatter à dessein (le marqueur bookshop:live ne trace que
+        // contentBlocks) — voir l'entête du renderer partagé. pageContext
+        // (P-05) alimente les jetons {{page.*}} des champs cachés de la
+        // section form (src/lib/forms/hidden-tokens.ts).
+        enrich: {
+          form: {
+            resolvedForms,
+            pageContext: {
+              titre: page.data.title,
+              chemin: `/${lang}/campagnes/${slug}/`,
+              slug,
+              langue: lang,
+            },
+          },
+        },
+      },
+    };
+  });
+}
+
+const { page, lang, altLocalePath, frontmatter, enrich } = Astro.props;
+
+// P-04 — mode d'en-tête/pied de page de la campagne (politique :
+// src/lib/chrome/header-config.ts). « complet » (ou bloc absent) → slots non
+// remplis, BaseLayout rend Header/Footer par leurs valeurs par défaut.
+const useCampaignHeader = resolveHeaderConfig(page.data.header).mode !== 'complet';
+const useCampaignFooter = resolveFooterMode(page.data.footerMode) === 'allege';
+---
+
+<BaseLayout
+  lang={lang}
+  title={page.data.title}
+  description={page.data.description}
+  noindex={page.data.noindex}
+  altLocalePath={altLocalePath}
+  contentType="Page"
+>
+  {
+    /* GOTCHA Astro : une expression FAUSSE portant slot=… remplit quand même
+       le slot (de rien) et SUPPRIME le contenu par défaut — constaté ici le
+       2026-07-30 (campagne sans bloc header rendue SANS en-tête). D'où le
+       ternaire explicite : la branche « complet » re-rend Header/Footer avec
+       les mêmes props que les défauts de BaseLayout (sortie identique). */
+    useCampaignHeader ? (
+      <CampaignHeader
+        slot="header"
+        lang={lang}
+        altLocalePath={altLocalePath}
+        config={page.data.header}
+      />
+    ) : (
+      <Header slot="header" lang={lang} altLocalePath={altLocalePath} />
+    )
+  }
+  {
+    useCampaignFooter ? (
+      <CampaignFooter slot="footer" lang={lang} />
+    ) : (
+      <Footer slot="footer" lang={lang} />
+    )
+  }
+  {
+    /* One `bookshop:live` boundary around the whole section loop — this is
+       what lets CloudCannon's visual editor bind clicks on the page to the
+       `sections` array in the entry's front matter (and re-render sections
+       live while typing). The expression MUST go through the `frontmatter`
+       variable (see getStaticPaths) — that exact name is how the Bookshop
+       plugin traces the binding into `params(...)` in the live marker. In
+       normal Cloudflare builds the Bookshop integration is off (astro.config
+       gating) and the directive is an inert prop — the rendered HTML is
+       identical. Per-section prop-shape safety moved from TS union narrowing
+       to the zod schema, which already validates every section at build time. */
+  }
+  <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} />
+
+</BaseLayout>

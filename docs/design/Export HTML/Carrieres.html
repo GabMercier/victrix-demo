@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Carrières | VICTRIX - Conseil stratégique et solutions TI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#31302e",
+                        "on-tertiary-fixed": "#181c1e",
+                        "outline-variant": "#c4c5d9",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#002fc8",
+                        "inverse-on-surface": "#f3f0ec",
+                        "tertiary-container": "#5a5e60",
+                        "on-secondary-fixed": "#0c1a3b",
+                        "on-tertiary-fixed-variant": "#434749",
+                        "primary-container": "#1d46f3",
+                        "surface-dim": "#dcdad6",
+                        "on-error": "#ffffff",
+                        "outline": "#747688",
+                        "on-tertiary-container": "#d4d7d9",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#1e47f4",
+                        "inverse-primary": "#bac3ff",
+                        "primary-fixed-dim": "#bac3ff",
+                        "primary": "#002fc7",
+                        "surface-container-low": "#f6f3ef",
+                        "surface-container": "#f0edea",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1c1c1a",
+                        "on-secondary-container": "#4e5b7f",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#ebe8e4",
+                        "on-secondary-fixed-variant": "#394669",
+                        "on-surface-variant": "#444656",
+                        "on-error-container": "#93000a",
+                        "surface": "#fcf9f5",
+                        "surface-container-highest": "#e5e2de",
+                        "secondary": "#515d82",
+                        "on-primary-container": "#d0d5ff",
+                        "secondary-fixed": "#dae2ff",
+                        "primary-fixed": "#dee0ff",
+                        "on-background": "#1c1c1a",
+                        "background": "#fcf9f5",
+                        "secondary-container": "#c6d3fe",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#424648",
+                        "on-primary-fixed": "#00105b",
+                        "tertiary-fixed": "#e0e3e5",
+                        "surface-variant": "#e5e2de",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "secondary-fixed-dim": "#b9c6ef",
+                        "surface-bright": "#fcf9f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "margin-x": "32px",
+                        "stack-lg": "32px",
+                        "container-max": "1280px",
+                        "section-gap": "80px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "display": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "button": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "display": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "button": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; background-color: #fcf9f5; color: #1c1c1a; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .nav-item-active { border-bottom: 2px solid #002fc7; font-weight: 700; color: #002fc7; padding-bottom: 0.25rem; }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface sticky top-0 z-50 border-b border-outline-variant">
+<nav class="flex justify-between items-center w-full px-margin-x h-20 max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md font-bold text-on-surface uppercase tracking-tight">VICTRIX</div>
+<div class="hidden md:flex gap-gutter items-center">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Expertises</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Solutions</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Secteurs</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Ressources</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">À propos</a>
+<a class="nav-item-active" href="#">Carriéres</a>
+</div>
+<div class="flex items-center gap-stack-md">
+<span class="text-label-caps font-label-caps text-on-surface-variant cursor-pointer">FR | EN</span>
+<a class="bg-primary-container text-on-primary px-6 py-3 rounded-lg font-button text-button transition-all hover:scale-105 active:scale-95" href="#">Contactez-nous</a>
+</div>
+</nav>
+</header>
+<main>
+<!-- Section Hero -->
+<section class="relative min-h-[70vh] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Life at Victrix office" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLtN9AE0M19uaoxr0RueVGkyXqpfLL1gsyxlxvRaq7IUO9s2mkZe86Dala_hbePco2SVRXAioBjv74Ro6YR0OI5uq7Pkm2_Oq1IlkI4fIwzCS_6EJBCQ-eftMfzafVhndh41CzoO9vETV44URFtXRPMTg6e_ia89X4Vgq2G-JTnBidD7OQTJ1_-I3WVO-4Y5siJsXfm5iUDeVmWNknysMwo5fWWA7ZY6nKJmsM0Mxmcu7T4hXBF3OVzHYDU"/>
+<div class="absolute inset-0 bg-on-surface/40"></div>
+</div>
+<div class="relative z-10 w-full px-margin-x max-w-container-max mx-auto text-on-primary">
+<div class="max-w-2xl">
+<h1 class="font-display text-display mb-stack-md leading-tight">La vie chez Victrix</h1>
+<p class="font-body-lg text-body-lg mb-stack-lg opacity-90">Parcourez nos offres d'emploi et trouvez l'opportunité que vous attendiez!</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary-container text-on-primary px-8 py-4 rounded-lg font-button text-button uppercase tracking-wider hover:bg-primary transition-colors shadow-lg">Postulez</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section Happy At Work -->
+<section class="py-section-gap bg-surface-container">
+<div class="max-w-container-max mx-auto px-margin-x">
+<div class="bg-surface-container-lowest p-stack-lg md:p-12 border border-outline-variant rounded-lg flex flex-col md:flex-row items-center gap-gutter">
+<div class="flex-shrink-0 w-32 h-32 md:w-48 md:h-48 bg-primary/5 rounded-full flex items-center justify-center border-4 border-primary/20">
+<span class="material-symbols-outlined text-primary text-6xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-stack-sm">Happy At Work</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-md">Victrix est certifiée HappyIndex® AtWork 2024 des entreprises «où l’on est heureux de travailler».</p>
+<p class="font-body-md text-body-md text-on-surface-variant italic border-l-4 border-primary pl-4">Cette distinction est décernée à la suite d’une enquête participative, qui permet aux salariés de s’exprimer anonymement sur leur expérience au quotidien dans l’entreprise.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section Valeurs -->
+<section class="py-section-gap bg-surface">
+<div class="max-w-container-max mx-auto px-margin-x">
+<div class="text-center mb-stack-lg">
+<span class="text-label-caps font-label-caps text-primary mb-2 block">CULTURE</span>
+<h2 class="font-headline-lg text-headline-lg">Nos valeurs</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-gutter">
+<div class="flex flex-col items-center text-center p-stack-md border border-outline-variant hover:border-primary transition-colors group">
+<span class="material-symbols-outlined text-primary text-4xl mb-stack-sm group-hover:scale-110 transition-transform">star</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest font-bold">Excellence</span>
+</div>
+<div class="flex flex-col items-center text-center p-stack-md border border-outline-variant hover:border-primary transition-colors group">
+<span class="material-symbols-outlined text-primary text-4xl mb-stack-sm group-hover:scale-110 transition-transform">groups</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest font-bold">Collaboration</span>
+</div>
+<div class="flex flex-col items-center text-center p-stack-md border border-outline-variant hover:border-primary transition-colors group">
+<span class="material-symbols-outlined text-primary text-4xl mb-stack-sm group-hover:scale-110 transition-transform">lightbulb</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest font-bold">Innovation</span>
+</div>
+<div class="flex flex-col items-center text-center p-stack-md border border-outline-variant hover:border-primary transition-colors group">
+<span class="material-symbols-outlined text-primary text-4xl mb-stack-sm group-hover:scale-110 transition-transform">handshake</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest font-bold">Engagement</span>
+</div>
+<div class="flex flex-col items-center text-center p-stack-md border border-outline-variant hover:border-primary transition-colors group col-span-2 md:col-span-1">
+<span class="material-symbols-outlined text-primary text-4xl mb-stack-sm group-hover:scale-110 transition-transform">verified</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest font-bold">Intégrité</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section Pourquoi rejoindre notre équipe? -->
+<section class="py-section-gap">
+<div class="max-w-container-max mx-auto px-margin-x">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-section-gap items-center">
+<div class="relative rounded-lg overflow-hidden h-[500px]">
+<img alt="Team working together" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLuaAWjNZ3rej1r8s95glD8ZvFUY2KhdT1ONlLtfwpHCNvZ2ynxeI7VAwAENfRzRi1NhJZjEU6J02bEbJ_DekgBbW5dznDn29lfF0wNMuurUv2S1S4PgfOKbWogSGXxcTEx8_vWH5cny8AqUP6DNbmeSzzDfrapFXf5KNYEoyo8UaNO5PH0cWKZfxJT9A--nwTEWgsV_t-vePa1qVZkIBAPCzaPX7A-UFsb122K1cZe0EJAjA1asivNY_hM"/>
+<div class="absolute bottom-0 left-0 bg-primary p-stack-lg text-on-primary max-w-[80%]">
+<h3 class="font-headline-md text-headline-md mb-2">Un environnement stimulant</h3>
+<p class="font-body-md text-body-md opacity-90">Contribuez à notre succès et épanouissez-vous au sein d'une équipe passionnée.</p>
+</div>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-stack-md">Pourquoi rejoindre notre équipe?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">Victrix valorise ses employés et offre un environnement de travail enrichissant. Nous sommes toujours à la recherche de personnes talentueuses et motivées.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-body-lg font-bold mb-1">Développement personnel</h4>
+<p class="text-body-md text-on-surface-variant">Accompagnement continu dans vos aspirations professionnelles.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">downloading</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-body-lg font-bold mb-1">Évolution de carrière</h4>
+<p class="text-body-md text-on-surface-variant">Opportunités réelles de progression au sein du groupe.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-body-lg font-bold mb-1">Bien-être au travail</h4>
+<p class="text-body-md text-on-surface-variant">Équilibre vie professionnelle et vie personnelle respecté.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">school</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-body-lg font-bold mb-1">Compétences et formation</h4>
+<p class="text-body-md text-on-surface-variant">Programmes de formation pour rester à la pointe des TI.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section Témoignages -->
+<section class="py-section-gap bg-surface-container-high overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-x">
+<div class="text-center mb-section-gap">
+<h2 class="font-headline-lg text-headline-lg">Ce que nos experts disent</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Testimony 1 -->
+<div class="bg-surface p-12 rounded-lg border border-outline-variant relative flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full overflow-hidden mb-6 border-4 border-primary/10">
+<img alt="Mikaël - Architecte Cloud" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvooubMdM4HurXaByl-f49tna3kQPwOCkJKlnLCCpoqaJvjp4VhLJplyvNiFTkURf2JBONKr-9brxiFlDNOesZ5-HUg0qDThEb8yjADQozfaNo40ctI_8sZdPo8lYcs9ew6qWE1xpP1chOA-HWRjcl1epolAGxcNFIZS5lC77A862BPm6uC3iegtrPfwxbHnL7X3FbvB1ZQDUZhEQGOsZaHbJkKgWi-hb_7CVqkHi4GYNAk8h0a1IUptwA"/>
+</div>
+<span class="material-symbols-outlined text-primary/20 text-6xl absolute top-8 left-8 opacity-50">format_quote</span>
+<p class="font-body-lg text-body-lg text-on-surface italic mb-8 relative z-10">"Victrix me permet de sortir de ma zone de confort et de relever de nouveaux défis sur le plan personnel et professionnel."</p>
+<div class="mt-auto">
+<h4 class="font-headline-md text-headline-md text-on-surface">Mikaël</h4>
+<p class="text-label-caps font-label-caps text-primary uppercase">Architecte Cloud</p>
+</div>
+</div>
+<!-- Testimony 2 -->
+<div class="bg-surface p-12 rounded-lg border border-outline-variant relative flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full overflow-hidden mb-6 border-4 border-primary/10">
+<img alt="Daniel - Conseiller" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLtQlQ8PdOdqFWpcRaZeVNS-7iTigU84aTvgJ4RU_zh4_-2Qao29gA1L0d38pOnYwe-ULFQbikrhXHXYqwZ2s0qkp9dCkjObx7Aye7oMKreSe5PeRDfRYzvFMRqDU9oGkWf6pLyafXHpIWQ7Yf7FN-7Y_VfZhzw1ZbLdv6Utyw1Rg7S1HzbXXfarJ2b_3fWl4p3lYgsQ7SQ-Z_ZbnqhBXrpqCWuHnkxAe6dc8cMc7QFb3f1-DdmSfPvA8c0"/>
+</div>
+<span class="material-symbols-outlined text-primary/20 text-6xl absolute top-8 left-8 opacity-50">format_quote</span>
+<p class="font-body-lg text-body-lg text-on-surface italic mb-8 relative z-10">"Victrix me permet de faire de la formation continue. Le parcours est étonamment bonifié et me permet de devenir encore meilleur dans mon domaine."</p>
+<div class="mt-auto">
+<h4 class="font-headline-md text-headline-md text-on-surface">Daniel</h4>
+<p class="text-label-caps font-label-caps text-primary uppercase">Conseiller</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section Responsabilité Sociale -->
+<section class="py-section-gap">
+<div class="max-w-container-max mx-auto px-margin-x">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-section-gap items-center">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-stack-md">Notre responsabilité sociale et nos engagements</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-md">Des activités à buts sociaux et associatifs sont organisées tous les mois afin de célébrer nos succès et nous retrouver tous ensemble pour créer des moments mémorables.</p>
+<div class="space-y-stack-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">diversity_3</span>
+<span class="font-body-md text-body-md font-bold">Engagement pour les jeunes talents</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Nous collaborons activement avec les institutions académiques pour soutenir la relève en TI.</p>
+</div>
+<!-- Partners placeholders or icons could go here -->
+<div class="flex gap-gutter mt-stack-lg opacity-60">
+<div class="h-12 w-32 bg-surface-container-highest rounded flex items-center justify-center font-bold text-outline">Partner 1</div>
+<div class="h-12 w-32 bg-surface-container-highest rounded flex items-center justify-center font-bold text-outline">Partner 2</div>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden h-[400px]">
+<img alt="Social responsibility activities" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLtgAqd1XajiZH1dcOSsUWtXfKU-1eEGjT1JIlud7k-CaB3GMPhOAnydj-HmlXsz0dfzH3-tUTnfBVuGrX5oWHUztgpIq0It3Iv500MVwkx6xZA3vM8y4CNHSZ_afDBHfmUV6Cd8sdZUmxgFFIJf7ro6M28Jy_jO7ZbK6g12GzVZZ_SL-gkBTaYqYsVLJzFn-bEVx_HT4hvVEyPDBL80Myqe6C2xlq0MVQHW6u9WbynCmHyTYrFhvgbfPZk"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section CTA Final -->
+<section class="py-section-gap px-margin-x bg-primary-container text-on-primary">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="font-headline-lg text-headline-lg mb-stack-md">Vous souhaitez en apprendre davantage sur nos opportunités de carrière?</h2>
+<p class="font-body-lg text-body-lg mb-stack-lg opacity-90">Écrivez-nous ou planifiez une rencontre avec nos équipes de recrutement dès aujourd'hui.</p>
+<button class="bg-surface text-primary px-10 py-4 rounded-lg font-button text-button uppercase tracking-widest hover:bg-surface-container-low transition-all font-bold">Contactez-nous</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest py-section-gap border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-x max-w-container-max mx-auto">
+<div>
+<div class="text-headline-md font-headline-md font-bold text-on-surface mb-stack-md">VICTRIX</div>
+<p class="text-body-md text-on-surface-variant mb-stack-lg">Conseil stratégique et solutions TI pour des opérations plus efficaces. Leader en transformation numérique au Canada.</p>
+<div class="flex gap-4">
+<a class="text-primary hover:scale-110 transition-transform" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-primary hover:scale-110 transition-transform" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+</div>
+<div>
+<h5 class="text-label-caps font-label-caps text-on-surface font-bold mb-stack-md uppercase">Expertises</h5>
+<ul class="space-y-2 text-body-md text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Cybersécurité</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Cloud</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">IA</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Productivité</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Services Gérés</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-label-caps font-label-caps text-on-surface font-bold mb-stack-md uppercase">Liens Rapides</h5>
+<ul class="space-y-2 text-body-md text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Solutions</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Ressources</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">À propos</a></li>
+<li><a class="font-bold text-primary" href="#">Carrières</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Confidentialité</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-label-caps font-label-caps text-on-surface font-bold mb-stack-md uppercase">Contact</h5>
+<p class="text-body-md text-on-surface-variant">contact@victrix.ca</p>
+<p class="text-body-md text-on-surface-variant mb-stack-md">+1 514-879-1919</p>
+<button class="w-full py-3 bg-on-surface text-surface rounded font-button text-button uppercase hover:opacity-90 transition-opacity">Contactez-nous</button>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-x mt-section-gap pt-stack-lg border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-label-caps font-label-caps text-on-surface-variant opacity-70">© 2024 Victrix. Tous droits réservés. Conseil stratégique et solutions TI.</p>
+<div class="flex gap-stack-md">
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Conditions d'utilisation</a>
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Politique de confidentialité</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions and subtle scroll effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-8');
+                    }
+                });
+            }, observerOptions);
+
+            // Apply fade-in to major sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-8');
+                observer.observe(section);
+            });
+        });
+    </script>
+</body></html>

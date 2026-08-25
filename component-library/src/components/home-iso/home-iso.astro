@@ -1,0 +1,62 @@
+---
+/**
+ * Section « Barre de confiance » (ex-bandeau ISO) — composant Bookshop.
+ * RE-SKIN 2026-08-04 (lot accueil, Phase 5) : patron « Trust Bar » de la
+ * maquette Accueil.html normalisé système — bande blanche bordée sable,
+ * pastilles rondes ivoire à icône, chiffres en headline-md, libellés en
+ * label-caps. La certification ISO historique devient l'un des items.
+ *
+ * Props : { type: "home-iso", title, subtitle, items? }.
+ * `items` (NOUVEAU, optionnel — tableau vide = absent) : [{ value, label }].
+ * Sans items, la bande retombe sur l'ancien rendu titre + sous-titre —
+ * l'ancien contenu reste valide tel quel. `title` sert de titre de section
+ * masqué (a11y) quand les items sont présents.
+ *
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé ; browser-safe
+ * (éditeur visuel CloudCannon), aucun import.
+ */
+interface Item {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  items?: Item[];
+}
+
+const { title, subtitle, items = [] } = Astro.props;
+---
+
+<section class="w-full bg-surface-container-lowest border-0 border-y border-solid border-outline-variant py-8">
+  <div class="container-site">
+    {
+      items.length > 0 ? (
+        <>
+          <h2 class="sr-only">{title}</h2>
+          <div class="flex flex-wrap items-center justify-between gap-8">
+            {items.map((item) => (
+              <div class="flex items-center gap-4">
+                <span class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" focusable="false">
+                    <path d="m5 13 4 4 10-11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <span>
+                  <span class="block font-headline-md text-headline-md text-on-surface">{item.value}</span>
+                  <span class="block font-label-caps text-label-caps uppercase text-on-surface-variant">{item.label}</span>
+                </span>
+              </div>
+            ))}
+          </div>
+        </>
+      ) : (
+        <div class="text-center">
+          <h2 class="font-headline-md text-headline-md text-on-surface m-0">{title}</h2>
+          <p class="font-body-md text-body-md text-on-surface-variant m-0 mt-2">{subtitle}</p>
+        </div>
+      )
+    }
+  </div>
+</section>

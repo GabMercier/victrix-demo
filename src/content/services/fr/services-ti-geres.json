@@ -1,0 +1,186 @@
+{
+  "title": "Services Gérés",
+  "description": "Sécurisez, optimisez et gouvernez vos TI avec nos services gérés adaptés. Surveillance, support et automatisation, pour une performance sans compromis.",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "",
+      "titleAccent": "",
+      "title": "Services Gérés",
+      "titleHighlight": "Gérés",
+      "lead": "Nos services gérés simplifient votre gestion TI au quotidien et vous permettent de bénéficier de conseils stratégiques alignés à vos objectifs. Résolvez vos défis commerciaux, démarrez des projets innovants et conservez votre avantage concurrentiel en libérant vos ressources internes des tâches opérationnelles.",
+      "ctaLabel": "Échangez avec un expert",
+      "ctaHref": "/fr/contact",
+      "image": "/wp-content/uploads/2022/03/fournisseur-de-services-geres-ti.jpg",
+      "imageAlt": ""
+    },
+    {
+      "type": "rich-text",
+      "fond": "givre",
+      "paragraphs": [
+        "<strong>+225 000</strong> points de terminaison gérés à travers le Canada",
+        "<strong>99,9 %</strong> de respect des accords de services (SLA)",
+        "<strong>ZÉRO</strong> attaque réussie"
+      ]
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Pourquoi choisir Victrix pour vos services gérés",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Une gestion TI sans compromis",
+        "text": "<strong>Réduisez vos coûts d'exploitation, renforcez votre sécurité, accélérez votre transformation numérique et augmentez la productivité de votre équipe TI interne.</strong> Notre offre de services gérés TI permet à vos équipes de se concentrer sur les fonctions essentielles et d'accroître votre efficacité globale.",
+        "watermark": "engrenage",
+        "stats": []
+      },
+      "aside": {
+        "icon": "etoile",
+        "title": "Un accompagnement personnalisé",
+        "text": "Avec notre accompagnement personnalisé, maximisez votre retour sur investissement et faites évoluer votre environnement technologique en toute confiance.",
+        "linkLabel": "Obtenez un accord de service sur mesure",
+        "linkHref": "/fr/contact"
+      }
+    },
+    {
+      "type": "numbered-cards",
+      "sectionTitle": "L'externalisation, votre avantage stratégique pour rester compétitifs face aux défis actuels",
+      "headingStyle": "plain",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "La pénurie de main-d'œuvre qualifiée en TI",
+          "text": "Répondez rapidement à vos besoins ponctuels ou évolutifs en TI sans avoir à recruter. Nos experts prennent le relais, vous assurant la flexibilité dont vous avez besoin pour votre bonne continuité opérationnelle."
+        },
+        {
+          "number": "02",
+          "title": "L'optimisation des coûts et le contrôle du budget TI",
+          "text": "Bénéficiez d'une tarification prévisible grâce à nos banques de temps définies à l'avance. Pas de surprise : vous savez exactement combien coûtent vos services TI. Nous éliminons les imprévus et vous réalisez des économies sans sacrifier la qualité."
+        },
+        {
+          "number": "03",
+          "title": "La prise en charge et l'accélération des projets technologiques",
+          "text": "Confiez-nous la gestion ou la réalisation de vos initiatives numériques critiques. Victrix agit comme catalyseur pour concrétiser vos projets dans les délais, sans alourdir vos équipes internes."
+        },
+        {
+          "number": "04",
+          "title": "Performances, évolutivité et excellence des services",
+          "text": "Appuyez-vous sur une équipe d'experts polyvalents pour faire évoluer vos environnements TI : solutions infonuagiques, cybersécurité, réseau, communication, gestion d'équipements. Résultat ? Un temps de réponse optimisé, des projets accélérés et une résilience assurée."
+        },
+        {
+          "number": "05",
+          "title": "La cybersécurité avancée",
+          "text": "Renforcez votre posture de sécurité avec un accompagnement proactif couvrant la surveillance, la réponse aux incidents, la gestion des données et la conformité aux normes et réglementations comme la Loi 25, DORA, NIS2 et autres exigences sectorielles."
+        }
+      ]
+    },
+    {
+      "type": "offer-cards",
+      "title": "Une couverture de services gérés axée sur la sécurité et l'amélioration continue",
+      "intro": "Assurez la continuité, la sécurité et l'optimisation de votre environnement TI et allégez la charge de vos équipes internes. En tant que fournisseur de services gérés, Victrix prend en charge l'administration, la surveillance et l'évolution de vos infrastructures.",
+      "fond": "givre",
+      "ctaLabel": "Demandez une évaluation de vos besoins TI",
+      "ctaHref": "/fr/contact",
+      "items": [
+        {
+          "number": "01",
+          "title": "Services de soutien et gestion",
+          "bullets": [
+            { "text": "Soutien technique et assistance selon un niveau de service personnalisé", "icon": "coche" },
+            { "text": "Gestion des incidents et problèmes", "icon": "coche" },
+            { "text": "Suivi des actifs, configurations et mises à jour", "icon": "coche" },
+            { "text": "Sélection et acquisition d'outils et de solutions TI adaptés", "icon": "coche" },
+            { "text": "Déploiement, adoption et formation des équipes", "icon": "coche" },
+            { "text": "Gestion des licences", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Services de sécurité gérés",
+          "bullets": [
+            { "text": "Protection des infrastructures, systèmes informatiques, réseaux et données en temps réel", "icon": "coche" },
+            { "text": "Surveillance, détection et réponse aux incidents", "icon": "coche" },
+            { "text": "Gestion des vulnérabilités, des menaces, du risque et de la conformité (GRC)", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Services pour l'optimisation et la performance",
+          "bullets": [
+            { "text": "Gestion et maintenance des infrastructures", "icon": "coche" },
+            { "text": "Développement d'applications sur mesure et maintenance", "icon": "coche" },
+            { "text": "Automatisation de processus et intégration de systèmes", "icon": "coche" },
+            { "text": "Surveillance de la disponibilité, des performances et de la capacité des serveurs", "icon": "coche" },
+            { "text": "Amélioration continue des infrastructures et services infonuagiques", "icon": "coche" },
+            { "text": "Suivi des performances et optimisation", "icon": "coche" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "Victrix : une prise en charge qui résout vos défis de gestion TI",
+      "paragraphs": [
+        "Avec une expertise éprouvée en services TI gérés, notre équipe s'engage à fournir des services adaptés à vos besoins. Nous prenons en charge <strong>l'administration, l'évolution et l'amélioration continue de la maturité de vos infrastructures informatiques et de votre cybersécurité</strong>, tout en vous offrant une expérience client et une qualité de services exceptionnelle.",
+        "Là où la gestion interne implique des coûts élevés et variables, une dépendance aux ressources internes, des horaires limités et un risque accru sans expertise, nos services gérés offrent un coût prévisible et optimisé, l'accès à des experts qualifiés en moins de 24 h, une surveillance 24/7, une conformité et une veille continue en cybersécurité, et une évolutivité ajustable selon vos besoins."
+      ],
+      "image": "",
+      "imageAlt": "",
+      "stats": [
+        { "value": "24/7", "label": "Surveillance en continu" },
+        { "value": "< 24 h", "label": "Accès à des experts qualifiés" },
+        { "value": "Coût", "label": "Prévisible et optimisé" },
+        { "value": "Évolutivité", "label": "Ajustable selon vos besoins" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
+    },
+    {
+      "type": "faq",
+      "title": "En savoir plus sur nos services gérés TI",
+      "fond": "givre",
+      "items": [
+        {
+          "question": "Quels sont les principaux avantages de l'externalisation des services TI gérés avec Victrix ?",
+          "answer": "Nous pouvons vous aider à réduire vos risques, à améliorer la fiabilité de vos systèmes et à libérer vos ressources : un guichet unique pour tous vos besoins en TI ; un renforcement de votre posture de sécurité (partage de risques, surveillance 24/7, conformité et amélioration continue) ; une extension de votre équipe avec des experts certifiés en infonuagique, sécurité, infrastructure, productivité et conseil stratégique ; une optimisation des ressources humaines (gain de productivité, tâches à haute valeur ajoutée et rétention) ; un ROI rapide et une réduction des coûts d'exploitation grâce à une tarification fixe et sans surprise ; et une gestion basée sur les meilleures pratiques pour limiter les interventions d'urgence. L'externalisation des services technologiques avec Victrix vous permet ainsi de transformer votre gestion TI en un levier de performance."
+        },
+        {
+          "question": "Quel type d'entreprise ou d'organisation peut bénéficier de nos services gérés ?",
+          "answer": "Les services gérés TI offerts par Victrix s'adaptent aux besoins de grandes organisations, autant dans le secteur privé que public : secteur public (ministères, municipalités, services publics et sociaux), santé (cliniques privées, hôpitaux, CISSS, CLSC), industriel (manufacturier, technologie, aérospatial) et finance (institutions financières, assurances)."
+        },
+        {
+          "question": "Quelles certifications reconnues possède Victrix ?",
+          "answer": "Victrix possède la certification ISO 27001 et ISO 9001, qui garantissent la sécurité et la qualité des services TI offerts."
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Ressources liées",
+      "tags": [
+        "Services gérés"
+      ],
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
+    },
+    {
+      "type": "cta",
+      "title": "Victrix, votre partenaire stratégique pour des services gérés adaptés à votre organisation",
+      "body": "Intéressés ? Des questions ? Contactez-nous dès aujourd'hui pour parler de vos projets.",
+      "ctaLabel": "Parlons de vos projets",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "seoTitle": "Services gérés TI | Gestion, Sécurité et Performance"
+}

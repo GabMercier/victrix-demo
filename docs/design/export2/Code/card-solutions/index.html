@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generated Page</title>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="global.css">
+  <style id="sections-styles">
+/* CSS for section section:Card */
+#section-solution-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .solution-card {
+    position: relative;
+    width: 100%;
+    max-width: 384px;
+    min-height: 500px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #e5e2e1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .bg-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  .card-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-grow: 1;
+    padding: 40px;
+    gap: 16px;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .icon-concept {
+    width: 31px;
+    height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .title-text {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .description-text {
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .button-link {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    align-self: flex-start;
+    transition: opacity 0.2s ease;
+  }
+
+  .button-link:hover {
+    opacity: 0.8;
+  }
+
+  .button-text {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+
+  .icon-action {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 480px) {
+    .card-container {
+      padding: 24px;
+    }
+    
+    .solution-card {
+      min-height: 400px;
+    }
+  }
+  </style>
+</head>
+<body>
+<section id="section-solution-card">
+  <div class="solution-card">
+    <div class="card-background">
+      <img src="images/c92d77642d239cfbaf55ef93704d1f250f48b5d2.png" alt="Office workspace background" class="bg-image">
+      <div class="bg-gradient"></div>
+    </div>
+    <div class="card-container">
+      <div class="card-content">
+        <div class="card-title">
+          <img src="images/97_751.svg" alt="Concept Icon" class="icon-concept">
+          <h2 class="title-text">Ø Studio</h2>
+        </div>
+        <p class="description-text">
+          Ø Studio offre une équipe multidisciplinaire pour automatiser vos processus et réaliser vos développements applicatifs à haute vitesse!
+        </p>
+      </div>
+      <a href="#" class="button-link">
+        <span class="button-text">Découvrir Ø Studio</span>
+        <img src="images/I97_836_97_829.svg" alt="Arrow Right" class="icon-action">
+      </a>
+    </div>
+  </div>
+</section>
+</body>
+</html>

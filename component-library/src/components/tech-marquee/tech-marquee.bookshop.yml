@@ -1,0 +1,47 @@
+# =============================================================================
+# Spec Bookshop — section « Bandeau technologies » (palette partagée),
+# NOUVELLE 2026-08-05 (fidélité maquette expertise-mere.css). Voir
+# hero.bookshop.yml pour les conventions communes.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Service — Bandeau technologies"
+  description: "Bande Bleu nuit à défilement continu des noms d'outils/technologies (ex. Teams, Power BI). S'immobilise au survol et en mouvement réduit."
+  icon: swap_horiz
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/tech-marquee/preview.png"
+    text: "Service — Bandeau technologies"
+    subtext: Noms d'outils défilants sur bande Bleu nuit
+  preview:
+    icon: swap_horiz
+    text:
+      - key: ariaLabel
+      - text: Bandeau technologies
+
+blueprint:
+  type: tech-marquee
+  ariaLabel: "Technologies maîtrisées"
+  items:
+    - "Teams"
+    - "Power BI"
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  ariaLabel:
+    label: "Intitulé d'accessibilité"
+    comment: "Nomme la liste pour les lecteurs d'écran (le défilement est décoratif)."
+  items:
+    type: array
+    label: "Technologies"
+  items[*]:
+    type: text
+    label: "Nom de la technologie"

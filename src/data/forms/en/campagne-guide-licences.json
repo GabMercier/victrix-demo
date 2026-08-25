@@ -1,0 +1,100 @@
+{
+  "_schema": "default",
+  "name": "Power Platform licensing guide campaign (EN)",
+  "toEmail": "",
+  "subject": "Microsoft Power Platform licensing guide request",
+  "submitLabel": "Get the guide",
+  "consentText": "By submitting the form, you consent to receiving communications from Victrix and accept its privacy policy (Law 25).",
+  "fields": [
+    {
+      "label": "First name",
+      "type": "text",
+      "required": true,
+      "width": "demi",
+      "options": [],
+      "value": "",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "Last name",
+      "type": "text",
+      "required": true,
+      "width": "demi",
+      "options": [],
+      "value": "",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "Company",
+      "type": "text",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "Business email",
+      "type": "email",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "I consent to Victrix collecting and using my information to process my request (Law 25)",
+      "type": "checkbox",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "Page of origin",
+      "type": "hidden",
+      "required": false,
+      "options": [],
+      "value": "{{page.titre}} ({{page.chemin}})",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "UTM — source",
+      "type": "hidden",
+      "required": false,
+      "options": [],
+      "value": "{{url.utm_source}}",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "UTM — campaign",
+      "type": "hidden",
+      "required": false,
+      "options": [],
+      "value": "{{url.utm_campaign}}",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    }
+  ]
+}

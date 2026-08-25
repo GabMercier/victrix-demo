@@ -1,0 +1,120 @@
+{
+  "title": "Maximize the use of your M365 ecosystem",
+  "description": "Get the most out of M365 with our Microsoft 365 managed services. Victrix takes care of management and security operations to ensure your compliance.",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "",
+      "titleAccent": "",
+      "title": "Maximize the use of your M365 ecosystem",
+      "titleHighlight": "M365 ecosystem",
+      "lead": "Our Microsoft 365 management solution handles administrative and security tasks to ensure your environment remains compliant.",
+      "ctaLabel": "Let's meet",
+      "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2022/05/istock-508289586.jpg",
+      "imageAlt": ""
+    },
+    {
+      "type": "bento-metrics",
+      "title": "How Microsoft 365 Managed Services Help Your Business",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Make better use of your internal resources",
+        "text": "Access skills that are not available, improve your security, increase your capacity for innovation and reduce your costs.",
+        "watermark": "engrenage",
+        "stats": []
+      },
+      "aside": {
+        "icon": "etoile",
+        "title": "A scalable complement",
+        "text": "Our offer is a scalable solution that enables you to stay at the cutting edge of technology with our Vigilance and Evolution component.",
+        "linkLabel": "",
+        "linkHref": ""
+      }
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "Our Approach",
+      "fond": "givre",
+      "boxes": [
+        "Technical Support and Advice",
+        "Operational Management",
+        "Cost Optimization",
+        "Vigilance and Evolution",
+        "Security and Compliance"
+      ]
+    },
+    {
+      "type": "numbered-cards",
+      "sectionTitle": "Benefits of Victrix's M365 Managed Services",
+      "headingStyle": "plain",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Proactivity",
+          "text": "Allow your team to focus on the core business of your organization."
+        },
+        {
+          "number": "02",
+          "title": "Security",
+          "text": "Take advantage of our NOC and SOC systems to protect yourself against cyber threats."
+        },
+        {
+          "number": "03",
+          "title": "Vigilance and Evolution",
+          "text": "Ensure a fast and efficient service, constant monitoring and the evolution of your environment."
+        }
+      ]
+    },
+    {
+      "type": "offer-cards",
+      "title": "Our Methodology",
+      "intro": "",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Technical Compliance",
+          "bullets": [
+            { "text": "Validation of the compliance of the M365 environment", "icon": "coche" },
+            { "text": "Security, identity and backup elements", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Service Integration",
+          "bullets": [
+            { "text": "Technical documentation", "icon": "document" },
+            { "text": "Linkage with your team", "icon": "coche" },
+            { "text": "Definition of KPIs, procedures and processes", "icon": "cible" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Service Launch",
+          "bullets": [
+            { "text": "Response and escalation of incidents, problems and changes", "icon": "coche" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "title": "Any questions?",
+      "body": "Contact us to discuss your projects.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "slug": "managed-it-services/maximize-the-use-of-your-m365-ecosystem",
+  "seoTitle": "Microsoft 365 Managed Services | Expertise"
+}

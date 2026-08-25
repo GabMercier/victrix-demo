@@ -1,0 +1,2752 @@
+# CloudCannon configuration — l'éditeur du site (CloudCannon est LE CMS;
+# Sveltia a été retiré le 2026-07-30, Phase 3 du plan de convergence).
+#
+# Scope: makes this repo editable in CloudCannon (sidebar collections + the
+# visual editor for section-based pages). Editor-facing labels/comments below
+# are French (FR-CA editors).
+#
+# Keep FOUR things in sync when the landing contract changes:
+#   1. the Zod schema in src/content.config.ts (frozen landing contract),
+#   2. the Bookshop components in component-library/src/components/,
+#   3. the per-component *.bookshop.yml specs (structures tag `sections` +
+#      blueprint = the palette entry; `npx @bookshop/generate` turns them into
+#      the `_structures.sections` values at build time — see _structures below),
+#   4. the schema templates in schemas/ (default front matter for new files).
+#
+# CloudCannon build settings (configured in the CloudCannon UI, NOT here):
+#   - build command runs with STATIC_ONLY=1 (adapter-less, fully static build);
+#   - `npx @bookshop/generate` runs as the postbuild step so the visual editor
+#     can render the Bookshop components live and populate the sections palette.
+
+# NO `source` key on purpose: the SSG source is the repo root (package.json +
+# astro.config.mjs live there), so CloudCannon's default (empty) Source Folder
+# is correct — same convention as CloudCannon's official Astro starter, where
+# collection paths carry the src/ prefix instead. A `source: src` would build
+# from a folder with no package.json and hide component-library/ (and the
+# bookshop.config.cjs glob of `npx @bookshop/generate`) from CloudCannon.
+
+# Global upload fallback. Without a top-level `paths.uploads`, any upload from
+# an input that doesn't declare its own `options.paths.uploads` (e.g. the
+# Source/Content Editor's inline image button, or a future _input with no
+# explicit path) lands in a root-level `uploads/` folder — how
+# uploads/yw3ziw8k83bh1.jpeg got there during spike testing. The blog cover and
+# home-page image inputs below already set their own `options.paths.uploads`
+# (they need per-collection relative paths for Astro's image() resolver) and
+# are UNCHANGED by this — a collection-level path always wins over the global
+# one. This only catches uploads that would otherwise have no configured home.
+paths:
+  uploads: src/assets/uploads
+
+# Barre latérale organisée pour l'équipe marketing (demande utilisateur
+# 2026-07-30) : le CONTENU du site d'abord, les outils marketing ensuite, la
+# configuration à la fin. Une collection absente d'un groupe resterait visible
+# sous « Autres » — garder cette liste alignée sur collections_config.
+collection_groups:
+  - heading: Contenu du site
+    collections:
+      - home
+      - pages
+      - services
+      - solutions
+      - blog
+      - contact
+      - carrieres
+      - site
+      - pagesSysteme
+  - heading: Marketing
+    collections:
+      - landing
+      - forms
+      - annonces
+      - navigation
+  - heading: Configuration
+    collections:
+      - redirects
+
+collections_config:
+  blog:
+    path: src/content/blog
+    name: Centre de ressources
+    singular_name: Article
+    description: >-
+      Articles du centre de ressources (/ressources). Les dossiers fr/ et en/
+      contiennent les deux langues ; le même nom de fichier dans les deux
+      dossiers relie une traduction à l'autre.
+    icon: post_add
+    # Editing interfaces. The FIRST value is the editor a file OPENS IN by
+    # default (documented in CloudCannon's "Set a default editing interface"
+    # article — the reference page for _enabled_editors only covers the
+    # enable/disable part). Listing values DISABLES every unlisted interface;
+    # the Source Editor can never be disabled. Blog = long-form writing →
+    # Content Editor first, Visual Editor second for an in-template preview.
+    _enabled_editors:
+      - content
+      - visual
+    # Preview/output URL. [relative_base_path] = the path under the collection
+    # folder, i.e. the locale segment ("fr" | "en"); {slug} is a DATA
+    # placeholder (curly braces) reading the per-locale `slug` front matter.
+    # EVERY post now carries an explicit `slug` (FR = the filename, EN = the
+    # English slug — see src/i18n/blog.ts postUrlSlug), so this template is
+    # exact for both locales. New posts created from the schemas below start
+    # with slug: "" — their preview link is wrong until the editor fills it in
+    # (the schema comment says so); the built site falls back to the filename.
+    url: /[relative_base_path]/ressources/{slug}/
+    # Carte du navigateur de fichiers : couverture + titre + extrait (repli
+    # icône quand l'article n'a pas d'image).
+    preview:
+      icon: post_add
+      image:
+        - key: coverImage
+      text:
+        - key: title
+        - text: Article sans titre
+      subtext:
+        - key: excerpt
+    # "+ Ajouter" templates. One schema per locale so a new file ALWAYS lands
+    # inside fr/ or en/ (a root-level file would silently map to /fr/ in
+    # src/pages/[lang]/ressources/[slug].astro) and always starts with front
+    # matter that satisfies the Zod blog schema (an empty file would break the
+    # next build of the commit CloudCannon pushes). Translation pairing
+    # workflow: create (or Duplicate) the same filename in the other locale
+    # folder. Schema `path`s are relative to the repo root; `create.path`s are
+    # relative to the collection path.
+    schemas:
+      default:
+        name: Article (FR)
+        icon: post_add
+        path: schemas/blog-fr.md
+        create:
+          path: 'fr/{title|slugify}.md'
+      en:
+        name: Article (EN)
+        icon: post_add
+        path: schemas/blog-en.md
+        create:
+          path: 'en/{title|slugify}.md'
+    # French labels mirroring the Sveltia config (public/admin/config.yml —
+    # read-only reference), so CloudCannon is no step down from Sveltia.
+    _inputs:
+      title:
+        type: text
+        label: Titre
+      slug:
+        type: text
+        label: Slug (URL)
+        comment: >-
+          Segment d'URL propre à la langue. FR : reprendre le nom de fichier ;
+          EN : slug anglais (ex. ai-for-organizational-productivity). Requis
+          pour que le lien d'aperçu CloudCannon soit exact.
+      date:
+        type: date
+        label: Date de publication
+        comment: >-
+          Format AAAA-MM-JJ. Une date FUTURE programme l'article : il reste
+          hors du site public jusqu'au premier build suivant cette date
+          (l'aperçu de l'éditeur le montre toujours).
+      # Matches the `draft` field of the blog Zod schema (default false).
+      # Visibility rule lives in src/i18n/blog.ts (filterPublished): drafts
+      # are excluded from the public site but KEPT in STATIC_ONLY builds —
+      # i.e. exactly the CloudCannon editing build — so editors can preview.
+      draft:
+        type: switch
+        label: Brouillon
+        comment: >-
+          Activé : l'article n'apparaît que dans l'aperçu de l'éditeur
+          (build CloudCannon), jamais sur le site public — ni page, ni
+          listes. Désactiver pour publier.
+      excerpt:
+        type: textarea
+        label: Extrait
+        comment: >-
+          Sert aussi de description SEO (résultats Google, partages) et de
+          texte des cartes du centre de ressources.
+      seoTitle:
+        type: text
+        label: Titre SEO (surcharge)
+        comment: >-
+          Remplace le titre dans l'onglet du navigateur et les résultats
+          Google. Vide = le titre de l'article.
+      noindex:
+        type: switch
+        label: Masquer des moteurs de recherche
+        comment: >-
+          Activé : l'article reste en ligne mais sort des résultats Google et
+          de la recherche interne. Désactivé par défaut.
+      wpUrl:
+        type: text
+        label: Ancienne URL WordPress (référence)
+        comment: >-
+          Trace de migration — n'affecte pas le site (les redirections se
+          gèrent dans la collection Redirections).
+      coverImage:
+        type: image
+        label: Image de couverture
+        comment: >-
+          Partagée entre les deux langues — téléverser une seule fois, le même
+          fichier sert au FR et à l'EN. Optionnelle (article sans image).
+        options:
+          paths:
+            # Contenu migré (2026-07-29) : les couvertures sont des CHEMINS
+            # PUBLICS servis tels quels (/wp-content/uploads/… — même
+            # convention que les images du corps et des sections, patron
+            # identique aux images de la palette : static: public → l'adresse
+            # enregistrée commence à /…). Les nouveaux téléversements
+            # atterrissent dans public/wp-content/uploads/cms/ (dossier dédié
+            # CMS, à l'écart des millésimes WordPress).
+            static: public
+            uploads: public/wp-content/uploads/cms
+      tags:
+        type: array
+        label: Étiquettes
+        comment: >-
+          Catégories du centre de ressources (pilules de filtre + méga-menu
+          Ressources). La PREMIÈRE étiquette sert de catégorie affichée sur
+          les cartes. Pour relier l'article aux pages Services, utiliser
+          plutôt les Thèmes ci-dessous.
+      # Type d'entrée du tableau (notation documentée `nom[*]`) : sans lui,
+      # un tableau VIDE est « misconfigured » — CloudCannon ne sait pas quoi
+      # créer au « + Ajouter » (même patron que options[*]/items[*] plus bas).
+      tags[*]:
+        type: text
+        label: Étiquette
+      topics:
+        type: array
+        label: Thèmes (maillage Services)
+        comment: >-
+          Relie l'article aux bandes « Ressources liées » des pages Services.
+          Reprendre EXACTEMENT un nom d'expertise : Cybersécurité, Intelligence
+          artificielle, Infonuagique, Productivité, Services gérés, Conseil
+          stratégique (équivalents anglais dans les fichiers EN). N'alimente
+          PAS les filtres du blogue.
+      topics[*]:
+        type: text
+        label: Thème
+
+  home:
+    path: src/content/home
+    name: Accueil
+    description: >-
+      Contenu de la page d'accueil (fichier unique — modifier seulement, ne
+      pas ajouter ni supprimer de fichier).
+    icon: home
+    # Singleton JSON: editors may only edit the existing file.
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    # fr/accueil.json → /fr/, en/accueil.json → /en/ — opening the file lands
+    # in the VISUAL editor next to the real homepage (criterion 1), instead of
+    # the bare data editor a disable_url data collection would get.
+    url: /[relative_base_path]/
+    # Carte du navigateur : le JSON n'a que `sections` au premier niveau — pas
+    # de titre à afficher, d'où un libellé statique (le dossier fr/ ou en/
+    # distingue les deux fichiers).
+    preview:
+      icon: home
+      text:
+        - text: Page d'accueil
+      subtext:
+        - text: Bannière, expertises, solutions, partenaires…
+    # First value = default editor (see the blog collection's comment for the
+    # doc reference). Visual first — GUARANTEES criterion 1 instead of relying
+    # on CloudCannon's heuristic; Data second as the flat-JSON fallback. No
+    # `content`: these are JSON files, there is no markdown body to edit.
+    _enabled_editors:
+      - visual
+      - data
+    # French labels mirroring public/admin/config.yml. Inputs are keyed by
+    # FIELD NAME and cascade into nested objects — shared names (title,
+    # ctaLabel…) get ONE generic config on purpose.
+    # The home is now composed of `sections` (migrated from the old nested data
+    # object — see scripts/migrate-home-to-sections.mjs), edited visually like
+    # the campaign landings through the SHARED `sections` palette. Inputs are
+    # keyed by FIELD NAME and cascade into the section objects/arrays; the
+    # per-section polish (labels, hidden `type`) lives in each home-*.bookshop.yml
+    # spec, which @bookshop/generate copies onto the palette entries (that
+    # "containing structure" level outranks these collection-level fallbacks).
+    _inputs:
+      sections:
+        type: array
+        label: Sections
+        comment: >-
+          L'accueil est construit uniquement à partir de ces sections. Garder la
+          bannière en PREMIÈRE position : elle porte le seul <h1> de la page.
+        options:
+          structures: _structures.sections
+      # `type` = discriminant de section (défini par la palette) — jamais édité.
+      type:
+        hidden: true
+      title:
+        type: text
+        label: Titre
+      subtitle:
+        type: textarea
+        label: Sous-titre
+      eyebrow:
+        type: text
+        label: Surtitre
+      ctaLabel:
+        type: text
+        label: Texte du bouton
+      ctaHref:
+        type: text
+        label: Lien du bouton
+        comment: >-
+          URL finale, préfixe de langue inclus (ex. /fr/decouvrir) — les
+          sections sont rendues telles quelles, sans ajout du préfixe.
+      sectionTitle:
+        type: text
+        label: Titre de section
+      titleAccent:
+        type: text
+        label: Mot accentué du titre
+        comment: >-
+          Sous-chaîne du titre affichée en bleu (ex. « vraiment »). Vide =
+          titre uniforme.
+      intro:
+        type: textarea
+        label: Paragraphe d'appui
+      learnMore:
+        type: text
+        label: Libellé du bouton des cartes
+      readMoreLabel:
+        type: text
+        label: Libellé « Lire la suite »
+        comment: Lien au bas de chaque carte d'article. Vide = absent.
+      body:
+        type: textarea
+        label: Texte
+      # Cartes d'expertise (tableau `items` de la section « Expertises »).
+      # NB : la section « Solutions phares » porte AUSSI un tableau `items` —
+      # sa spec bookshop (home-solutions.bookshop.yml) le re-lie à
+      # _structures.solution_items au niveau structure, qui PRIME sur ce repli
+      # de collection (même mécanique que le `variant` form vs cta).
+      items:
+        type: array
+        label: Cartes d'expertise
+        options:
+          structures: _structures.expertise_items
+      # Tuiles de caractéristiques (section « Solution » — home-solution).
+      features:
+        type: array
+        label: Tuiles de caractéristiques
+        options:
+          structures: _structures.solution_features
+      number:
+        type: text
+        label: Numéro (hérité — plus affiché)
+        comment: "Champ de l'ancien design, conservé pour compatibilité."
+      accent:
+        # P-16 : borné à la charte (même select qu'au niveau structure
+        # expertise_items, qui prime — dupliqué ici pour qu'aucun chemin
+        # d'édition n'offre de texte libre).
+        type: select
+        label: Couleur d'accent (héritée — plus affichée)
+        options:
+          allow_empty: false
+          values:
+            - '#1a5bff'
+            - '#0d1430'
+            - '#1a1f28'
+            - '#faf7f3'
+            - '#f2ece4'
+            - '#e9e1d6'
+        # Quoted: an unquoted # would start a YAML comment mid-value.
+        comment: "Les 6 ancres de la charte (#1a5bff Bleu Victrix, #0d1430 Bleu nuit, #1a1f28 Anthracite, #faf7f3 Ivoire, #f2ece4 Beige, #e9e1d6 Sable). Champ de l'ancien design, conservé pour compatibilité ; plus rendu."
+      description:
+        type: textarea
+        label: Description
+      href:
+        type: text
+        label: Lien
+      names:
+        type: array
+        label: Noms des partenaires
+      # Même correctif que blog.tags[*] : type d'entrée requis pour qu'un
+      # tableau vide offre « + Ajouter » au lieu de « misconfigured ».
+      names[*]:
+        type: text
+        label: Nom du partenaire
+      image:
+        type: image
+        label: Image
+        options:
+          paths:
+            # Images live beside the locale folders (src/content/home); the
+            # SAVED value must stay relative to the JSON file ("../<fichier>")
+            # for Astro's image() resolver — hence uploads_use_relative_path.
+            uploads: /src/content/home
+            uploads_use_relative_path: true
+
+  landing:
+    path: src/content/landing
+    name: Campagnes
+    singular_name: Campagne
+    description: >-
+      Pages d'atterrissage de campagne, bâties par sections (héros, cartes à icônes,
+      appel à l'action, formulaire). Les dossiers fr/ et en/ contiennent les
+      deux langues ; le même nom de fichier relie une traduction à l'autre.
+    icon: campaign
+    # First value = default editor (doc reference in the blog collection's
+    # comment). Campaign pages are section-built → Visual Editor first (live
+    # Bookshop rendering is the whole point of the spike); Content Editor
+    # second for quick front-matter/SEO edits without the preview.
+    _enabled_editors:
+      - visual
+      - content
+    # Same [relative_base_path] trick as blog: the locale folder becomes the
+    # URL prefix. {slug} is a DATA placeholder reading the `slug` front matter
+    # (2026-08-18 — URL personnalisable) : every seeded campaign carries an
+    # explicit `slug` (= filename by default), so this template is exact. New
+    # pages created from the schemas start with slug: "" — the preview link is
+    # wrong until the editor fills it in (the built site falls back to the
+    # filename).
+    url: /[relative_base_path]/campagnes/{slug}/
+    # "+ Ajouter" templates — same rationale as blog: force the fr/ or en/
+    # folder (a root-level file would collide into /fr/ in the campagnes
+    # getStaticPaths) and start from front matter that SATISFIES the frozen
+    # landing contract (title + sections required — an empty file would break
+    # the build of the commit CloudCannon pushes). Translation pairing
+    # workflow: create (or Duplicate) the same filename in the other folder.
+    schemas:
+      default:
+        name: Campagne (FR)
+        icon: campaign
+        path: schemas/landing-fr.md
+        create:
+          path: 'fr/{title|slugify}.md'
+      en:
+        name: Campaign (EN)
+        icon: campaign
+        path: schemas/landing-en.md
+        create:
+          path: 'en/{title|slugify}.md'
+    # Collection card shown in the CloudCannon file browser.
+    preview:
+      icon: campaign
+      text:
+        - key: title
+        - text: Campagne sans titre
+      subtext:
+        - key: description
+    # Inputs are keyed by FIELD NAME and cascade into nested objects/arrays of
+    # this collection — a name shared across levels (title, description) gets
+    # ONE config, so those labels/comments stay generic on purpose.
+    _inputs:
+      title:
+        type: text
+        label: Titre
+        comment: >-
+          Titre de la page (onglet + SEO), d'une section ou d'une carte,
+          selon le contexte.
+      slug:
+        type: text
+        label: Adresse de la page (segment d'URL)
+        comment: >-
+          Le dernier segment de l'adresse : /fr/campagnes/<segment>/.
+          Minuscules, chiffres et traits d'union seulement (ex.
+          offre-licences-2026). Vide = le nom du fichier. Le nom de fichier
+          reste ce qui relie la page à sa traduction — changer l'adresse ne
+          brise pas l'appariement FR/EN.
+      description:
+        type: textarea
+        label: Description
+        comment: >-
+          Au niveau de la page : description pour les moteurs de recherche et
+          les partages. Dans une « Carte à icône » : le texte de la carte.
+      noindex:
+        type: switch
+        label: Masquer des moteurs de recherche
+        comment: >-
+          Activé par défaut : les pages de campagne (trafic payant) restent
+          hors des résultats de recherche. Désactiver seulement si la page
+          doit être indexée.
+      # ---- P-04 : en-tête / pied de page de campagne. Le bloc `header` est
+      # optionnel — sans lui (ou en mode « complet »), la page garde l'en-tête
+      # normal du site. Le CTA du bloc réutilise les noms ctaLabel/ctaHref des
+      # sections (cascade : mêmes _inputs « Libellé/Lien du bouton »). ----
+      header:
+        type: object
+        label: En-tête de la page
+        comment: >-
+          Optionnel — mode « complet » (défaut) : l'en-tête normal du site.
+          « allege » : logo + un seul bouton (campagne payante). «
+          personnalise » : liens et interrupteurs ci-dessous.
+      mode:
+        type: select
+        label: Mode d'en-tête
+        comment: >-
+          complet = en-tête normal du site · allege = logo + bouton seulement
+          · personnalise = liens bornés + interrupteurs. Bouton : ctaLabel /
+          ctaHref vides = bouton « Portail client » du site.
+        options:
+          values:
+            - complet
+            - allege
+            - personnalise
+      links:
+        type: array
+        label: Liens (mode personnalisé)
+        comment: >-
+          Au plus 5 liens simples (pas de méga-menus) — URL finale, préfixe
+          de langue inclus (ex. « /fr/contact »).
+        options:
+          structures: _structures.header_links
+      showAnnounce:
+        type: switch
+        label: Afficher la bannière d'annonce
+        comment: Mode personnalisé seulement (ignoré en mode allégé).
+      showLangSwitch:
+        type: switch
+        label: Afficher le sélecteur FR/EN
+        comment: Mode personnalisé seulement (ignoré en mode allégé).
+      showSearch:
+        type: switch
+        label: Afficher l'icône de recherche
+        comment: >-
+          Mode personnalisé seulement — la recherche est absente par défaut
+          hors du mode complet (amendement P-06/P-04).
+      footerMode:
+        type: select
+        label: Pied de page
+        comment: >-
+          complet (défaut) = pied de page normal du site · allege = logo +
+          barre légale seulement (campagne payante).
+        options:
+          values:
+            - complet
+            - allege
+      sections:
+        type: array
+        label: Sections
+        comment: >-
+          La page est construite uniquement à partir de ces sections. Garder
+          le héros en PREMIÈRE position : il porte le seul <h1> de la page.
+        options:
+          structures: _structures.sections
+      # `type` is the section discriminator (set by the palette) — never
+      # hand-edited, so it cascades to hidden for every input named `type` in
+      # this collection. The INNER `type` of a form field is re-exposed at a
+      # MORE SPECIFIC cascade level: _structures.form_fields.values[0]._inputs
+      # below (the containing structure outranks collection-level _inputs).
+      # CloudCannon has NO bracketed path-key syntax ("fields[*].type" was
+      # inert config) — plain input names only.
+      type:
+        hidden: true
+      eyebrow:
+        type: text
+        label: Surtitre
+        comment: Petit libellé affiché au-dessus du titre du héros (optionnel).
+      subtitle:
+        type: textarea
+        label: Sous-titre
+      intro:
+        type: textarea
+        label: Introduction
+        comment: Court paragraphe sous le titre de la section (optionnel).
+      body:
+        type: textarea
+        label: Texte
+      ctaLabel:
+        type: text
+        label: Libellé du bouton
+      ctaHref:
+        type: text
+        label: Lien du bouton
+        comment: >-
+          URL finale, préfixe de langue inclus (ex. « /fr/contact ») — les
+          sections sont rendues telles quelles, sans ajout du préfixe.
+      variant:
+        type: select
+        label: Variante
+        comment: « light » = bande pâle ; « dark » = bande marine foncée.
+        options:
+          values:
+            - light
+            - dark
+      items:
+        type: array
+        label: Cartes
+        options:
+          structures: _structures.benefit_items
+      fields:
+        type: array
+        label: Champs du formulaire
+        comment: >-
+          Envoi réel via le backend du site quand la construction se fait avec
+          PUBLIC_FORMS_ENABLED=1 (sinon maquette, bouton désactivé) — voir
+          docs/formulaires.md. Astuce : « Formulaire lié » remplace ces champs
+          par un formulaire réutilisable de la collection Formulaires.
+        options:
+          structures: _structures.form_fields
+      submitLabel:
+        type: text
+        label: Libellé du bouton d'envoi
+      consentText:
+        type: textarea
+        label: Texte de consentement
+        comment: >-
+          Mention affichée sous les champs (ex. consentement Loi 25 sur la
+          protection des renseignements personnels).
+      label:
+        type: text
+        label: Libellé du champ
+      required:
+        type: switch
+        label: Champ obligatoire
+      # FAQ section fields (cascade — only the FAQ items use these names).
+      question:
+        type: text
+        label: Question
+      answer:
+        type: textarea
+        label: Réponse
+        comment: >-
+          Texte simple, sans HTML — la réponse est aussi publiée en données
+          structurées FAQPage (JSON-LD) pour les moteurs de recherche.
+
+  # Services (P-07) — pages composables PUBLIQUES et indexables, même palette de
+  # sections que les campagnes (src/content/services). Patron de la collection
+  # landing, MAIS : éditeur data (JSON, pas de corps markdown), noindex par
+  # défaut à FALSE (inverse des campagnes), et création par gabarit PAR LANGUE
+  # (schemas/service-{fr,en}.json, comme la collection forms). Les CHAMPS des
+  # sections viennent des specs .bookshop.yml (générés dans _structures.sections,
+  # qui priment sur les _inputs de collection) — d'où des _inputs de collection
+  # volontairement minimaux (page + sections).
+  services:
+    path: src/content/services
+    name: Services
+    singular_name: Service
+    description: >-
+      Pages de services, bâties par sections (comme les campagnes) mais
+      PUBLIQUES et indexables. Les dossiers fr/ et en/ contiennent les deux
+      langues ; le même nom de fichier relie une traduction à l'autre.
+    icon: rocket_launch
+    # Éditeur visuel par défaut (première valeur — voir le commentaire de la
+    # collection blog) : les services sont bâtis par sections, comme les
+    # campagnes ; Data en second pour les éditions de front matter / SEO. Pas de
+    # corps markdown (fichiers JSON) → pas de `content`.
+    _enabled_editors:
+      - visual
+      - data
+    # fr/<slug>.json → /fr/services/<slug>/ ; le segment de langue devient le
+    # préfixe d'URL (même astuce [relative_base_path] que blog/landing).
+    # ⚠️ LIMITE CONNUE (branchement 2026-07-29) : pour les services IMBRIQUÉS
+    # (fr/cybersecurite/zero-trust.json) et les fichiers EN à slug anglais
+    # surchargé, ce gabarit donne un lien d'aperçu inexact ([relative_base_path]
+    # inclut le sous-dossier et [slug] ignore le champ `slug`). L'URL réelle est
+    # /<langue>/services/<slug ou chemin>/ — suivi : gabarit d'URL par données
+    # quand CloudCannon le permettra.
+    url: /[relative_base_path]/services/[slug]/
+    preview:
+      icon: rocket_launch
+      text:
+        - key: title
+        - text: Service sans titre
+      subtext:
+        - key: description
+    # « + Ajouter » : un gabarit par langue pour que le fichier atterrisse dans
+    # fr/ ou en/ avec un JSON valide (patron de la collection forms). Flux de
+    # traduction : créer (ou Dupliquer) le même nom de fichier dans l'autre dossier.
+    schemas:
+      default:
+        name: Service (FR)
+        icon: rocket_launch
+        path: schemas/service-fr.json
+        create:
+          path: 'fr/{title|slugify}.json'
+      en:
+        name: Service (EN)
+        icon: rocket_launch
+        path: schemas/service-en.json
+        create:
+          path: 'en/{title|slugify}.json'
+    _inputs:
+      title:
+        type: text
+        label: Titre
+        comment: >-
+          Titre de la page (onglet + SEO). Selon le contexte, sert aussi de
+          libellé à certaines sections ou cartes.
+      description:
+        type: textarea
+        label: Description
+        comment: >-
+          Description pour les moteurs de recherche et les partages.
+      noindex:
+        type: switch
+        label: Masquer des moteurs de recherche
+        comment: >-
+          DÉSACTIVÉ par défaut : un service est une page publique, indexée
+          (l'inverse des campagnes). N'activer que pour retirer temporairement
+          un service des résultats de recherche.
+      seoTitle:
+        type: text
+        label: Titre SEO (surcharge)
+        comment: >-
+          Remplace le titre dans l'onglet du navigateur et les résultats
+          Google. Vide = le titre de la page.
+      sections:
+        type: array
+        label: Sections
+        comment: >-
+          La page est construite uniquement à partir de ces sections. Garder le
+          héros en PREMIÈRE position : il porte le seul <h1> de la page.
+        options:
+          structures: _structures.sections
+      # `type` = discriminant de section (défini par la palette) — jamais édité.
+      type:
+        hidden: true
+
+  # Pages génériques (2026-08-11) — pages composables de PREMIER NIVEAU d'URL
+  # (/decouvrir, /expertises, /produits, /secteurs, /tarification,
+  # /centre-de-confiance, pages légales…), rendues par la route attrape-tout
+  # src/pages/[lang]/[...slug].astro. PATRON EXACT de la collection services
+  # (mêmes sections, mêmes gabarits par langue), sans le préfixe /services/.
+  # Créées comme PLACEHOLDERS (noindex activé) : remplacer le contenu puis
+  # désactiver « Masquer des moteurs de recherche » quand la page est prête.
+  pages:
+    path: src/content/pages
+    name: Pages
+    singular_name: Page
+    description: >-
+      Pages générales du site (Découvrir, Expertises, Produits, Secteurs,
+      Tarification, Centre de confiance, pages légales…), bâties par sections.
+      Les dossiers fr/ et en/ contiennent les deux langues ; le même nom de
+      fichier relie une traduction à l'autre. Une page placeholder reste
+      masquée des moteurs tant que « Masquer des moteurs de recherche » est
+      activé.
+    icon: description
+    _enabled_editors:
+      - visual
+      - data
+    # fr/<slug>.json → /fr/<slug>/ (pas de préfixe — pages de premier niveau).
+    url: /[relative_base_path]/[slug]/
+    preview:
+      icon: description
+      text:
+        - key: title
+        - text: Page sans titre
+      subtext:
+        - key: description
+    schemas:
+      default:
+        name: Page (FR)
+        icon: description
+        path: schemas/page-fr.json
+        create:
+          path: 'fr/{title|slugify}.json'
+      en:
+        name: Page (EN)
+        icon: description
+        path: schemas/page-en.json
+        create:
+          path: 'en/{title|slugify}.json'
+    _inputs:
+      title:
+        type: text
+        label: Titre
+        comment: >-
+          Titre de la page (onglet + SEO). Selon le contexte, sert aussi de
+          libellé à certaines sections.
+      description:
+        type: textarea
+        label: Description
+        comment: >-
+          Description pour les moteurs de recherche et les partages.
+      noindex:
+        type: switch
+        label: Masquer des moteurs de recherche
+        comment: >-
+          ACTIVÉ par défaut sur une nouvelle page (placeholder). Le désactiver
+          quand la page a son vrai contenu — elle entre alors aussi au sitemap
+          automatiquement.
+      seoTitle:
+        type: text
+        label: Titre SEO (surcharge)
+        comment: >-
+          Remplace le titre dans l'onglet du navigateur et les résultats
+          Google. Vide = le titre de la page.
+      sections:
+        type: array
+        label: Sections
+        comment: >-
+          La page est construite uniquement à partir de ces sections. Garder le
+          héros en PREMIÈRE position : il porte le seul <h1> de la page.
+        options:
+          structures: _structures.sections
+      type:
+        hidden: true
+
+  # Catalogue de solutions (/fr|en/solutions) — fiches JSON à plat, une carte
+  # du catalogue par fiche (suite n°1 du plan
+  # docs/design/solutions-catalogue-plan.md §3). Éditeur de données : la fiche
+  # n'a PAS de page propre (le catalogue est une page unique avec filtres) —
+  # les pages de détail /solutions/<slug> restent une suite planifiée.
+  solutions:
+    path: src/content/solutions
+    name: Solutions
+    singular_name: Solution
+    description: >-
+      Fiches du catalogue de solutions (page /solutions). Les dossiers fr/ et
+      en/ contiennent les deux langues ; le même nom de fichier relie une
+      traduction à l'autre. Chaque fiche est une carte du catalogue.
+    icon: apps
+    # Pas de page par fiche — l'URL d'aperçu pointe le CATALOGUE de la langue
+    # (2026-08-17, demande user : préversion partout) : la carte éditée s'y
+    # trouve. [relative_base_path] = fr|en (sous-dossier).
+    url: /[relative_base_path]/solutions/
+    # Aperçu visuel du catalogue + éditeur de données (JSON structuré).
+    _enabled_editors:
+      - visual
+      - data
+    preview:
+      icon: apps
+      text:
+        - key: title
+        - text: Solution sans titre
+      subtext:
+        - key: description
+    # « + Ajouter » : un gabarit par langue pour que le fichier atterrisse dans
+    # fr/ ou en/ avec un JSON valide (même logique que services/forms). Flux de
+    # traduction : créer (ou Dupliquer) le même nom de fichier dans l'autre
+    # dossier.
+    schemas:
+      default:
+        name: Solution (FR)
+        icon: apps
+        path: schemas/solution-fr.json
+        create:
+          path: 'fr/{title|slugify}.json'
+      en:
+        name: Solution (EN)
+        icon: apps
+        path: schemas/solution-en.json
+        create:
+          path: 'en/{title|slugify}.json'
+    _inputs:
+      title:
+        type: text
+        label: Titre
+      description:
+        type: textarea
+        label: Description
+        comment: Texte affiché sur la carte du catalogue.
+      image:
+        type: image
+        label: Image de la vignette
+        comment: >-
+          Optionnelle — vide, la carte affiche une vignette de remplacement
+          grise. Les téléversements atterrissent dans public/images/solutions/
+          (adresse servie telle quelle, /images/…).
+        options:
+          paths:
+            static: public
+            uploads: public/images/solutions
+      sector:
+        type: text
+        label: Secteur d'activité
+        comment: >-
+          Chip en haut de la vignette ET valeur du filtre « Secteurs
+          d'activité » : reprendre EXACTEMENT la graphie des autres fiches —
+          une variante (accent, majuscule) crée un filtre séparé.
+      solutionType:
+        type: text
+        label: Type de solution
+        comment: >-
+          Chip au pied de la carte ET valeur du filtre « Types de solution » —
+          même consigne de graphie exacte que le secteur.
+      featured:
+        type: switch
+        label: Solution vedette
+        comment: >-
+          Activé : la fiche alimente le grand panneau bleu nuit en tête de
+          catalogue. En cas de doublon, la première selon l'ordre d'affichage
+          gagne.
+      order:
+        type: number
+        label: Ordre d'affichage
+        comment: Croissant — les petits numéros d'abord (la vedette est à 0).
+      href:
+        type: text
+        label: Lien de la carte
+        comment: >-
+          SANS préfixe de langue (ex. /contact ou
+          /services/productivite/o-bureau) — le site ajoute /fr ou /en
+          automatiquement (convention navigation, l'INVERSE des sections de
+          page). Vide = carte sans lien.
+      docHref:
+        type: text
+        label: Lien « Documentation » (vedette)
+        comment: >-
+          Panneau vedette seulement. Sans préfixe de langue, comme le lien de
+          la carte.
+
+  # Textes du site (2026-08-11) — chaînes d'interface éditables (un JSON par
+  # langue dans src/data/site, patron de la collection navigation). Premier
+  # locataire : la page 404 (l'ancien texte « prototype » de ui.ts est retiré ;
+  # le user veut TOUT le texte éditable). Destiné à absorber d'autres chaînes
+  # de chrome au fil des lots (footer = P-13+).
+  site:
+    path: src/data/site
+    name: Textes du site
+    singular_name: Textes du site
+    description: >-
+      Textes qui s'affichent sur TOUTES les pages sans appartenir à aucune :
+      pied de page et bandeau de consentement (+ la page « introuvable »). Un
+      fichier par langue (fr.json / en.json). Le texte propre à une page
+      s'édite avec sa page ; le bandeau promo vit dans « Navigation ».
+    icon: translate
+    # Deux fichiers fixes (fr/en) — rien à ajouter/supprimer/renommer.
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    # Aperçu : l'ACCUEIL de la langue (2026-08-17) — le pied de page et le
+    # bandeau de consentement édités ici y sont visibles. [slug] = fr|en.
+    url: /[slug]/
+    disable_url: true
+    _enabled_editors:
+      - data
+    # ⚠️ Les _inputs de collection sont une carte PLATE par nom de champ : les
+    # clés génériques (title, label, href, text) sont partagées par les trois
+    # blocs — d'où des libellés volontairement génériques, qui se lisent bien
+    # partout. Les libellés précis vivent sur les clés de bloc.
+    _inputs:
+      # --- Pied de page (Footer.astro + pied allégé des campagnes) ----------
+      footer:
+        type: object
+        label: Pied de page
+        comment: >-
+          Affiché au bas de toutes les pages. Les colonnes de liens, les
+          coordonnées, les réseaux sociaux et les mentions légales.
+      columns:
+        type: array
+        label: Colonnes de liens
+        comment: Une colonne par thème (Expertises, Services, Produits, À propos).
+        options:
+          structures: _structures.footer_columns
+      # `links` existe sous DEUX formes : les boutons de la 404 (avec
+      # « principal ») et les liens d'une colonne de pied de page (sans). La
+      # carte plate ne peut en tenir qu'une → elle sert la 404, et
+      # _structures.footer_columns re-pointe SES `links` vers site_links à son
+      # propre niveau (qui prime — même mécanique que form_fields/faq_items).
+      links:
+        type: array
+        label: Boutons
+        comment: Liens proposés au visiteur (le « principal » est bleu).
+        options:
+          structures: _structures.site_buttons
+      contactTitle:
+        type: text
+        label: Titre de la colonne Contact
+      email:
+        type: text
+        label: Courriel affiché
+        comment: Sert aussi de destination du lien (mailto:).
+      phone:
+        type: text
+        label: Téléphone affiché
+        comment: Tel qu'il doit apparaître, avec espaces et tirets.
+      phoneHref:
+        type: text
+        label: Téléphone composable
+        comment: >-
+          Le même numéro SANS espace ni tiret, indicatif pays compris
+          (ex. +15148791919) — c'est ce que compose un téléphone mobile.
+      socialLabel:
+        type: text
+        label: Intitulé des réseaux sociaux
+      contactCta:
+        type: object
+        label: Bouton du pied de page
+        comment: La pastille bleue (accès au portail client).
+      social:
+        type: array
+        label: Réseaux sociaux
+        comment: >-
+          Liens texte. « # » = adresse non fournie (le lien ne mène nulle part)
+          — remplacer par l'adresse réelle de la page Victrix.
+        options:
+          structures: _structures.site_links
+      legal:
+        type: array
+        label: Mentions légales (barre du bas)
+        options:
+          structures: _structures.site_links
+      # --- Bandeau de consentement (Loi 25) ---------------------------------
+      consent:
+        type: object
+        label: Bandeau de consentement (Loi 25)
+        comment: >-
+          Affiché en bas de l'écran au premier passage, jusqu'au choix du
+          visiteur. Formulation à portée légale : valider les changements.
+      policyLabel:
+        type: text
+        label: Libellé du lien vers la politique
+      policyHref:
+        type: text
+        label: Lien vers la politique
+        comment: SANS préfixe de langue (/politique-confidentialite).
+      accept:
+        type: text
+        label: Bouton « Accepter »
+      refuse:
+        type: text
+        label: Bouton « Refuser »
+      # --- Page « introuvable » (erreur 404) --------------------------------
+      notFound:
+        type: object
+        label: Page « introuvable » (erreur 404)
+        comment: >-
+          Textes affichés quand un visiteur atteint une adresse inexistante.
+      metaTitle:
+        type: text
+        label: Titre d'onglet
+      metaDescription:
+        type: textarea
+        label: Description (moteurs de recherche)
+      eyebrow:
+        type: text
+        label: Surtitre
+      title:
+        type: text
+        label: Titre
+      text:
+        type: textarea
+        label: Texte
+      requestedLabel:
+        type: text
+        label: Étiquette « adresse demandée »
+        comment: Affichée devant l'adresse que le visiteur a demandée.
+      # --- Clés partagées par les trois blocs (carte plate) -----------------
+      label:
+        type: text
+        label: Libellé
+      href:
+        type: text
+        label: Lien
+        comment: >-
+          SANS préfixe de langue (/contact, pas /fr/contact) — le site ajoute
+          /fr ou /en tout seul.
+      primary:
+        type: switch
+        label: Bouton principal (bleu)
+
+  # Page Contact (2026-08-12) — contenu de /contact migré de
+  # src/i18n/content/contact.ts vers src/data/contact/{fr,en}.json (collection
+  # `contact`, patron « Textes du site » : fichiers verrouillés, éditeur de
+  # données). La mise en page et les numéros de téléphone cliquables restent
+  # dans le gabarit (src/pages/[lang]/contact.astro).
+  contact:
+    path: src/data/contact
+    name: Page Contact
+    singular_name: Page Contact
+    description: >-
+      Textes de la page Contact : héros, coordonnées, cartes bureaux et
+      formulaire. Un fichier par langue (fr.json / en.json). Les numéros de
+      téléphone cliquables sont gérés par l'équipe technique.
+    icon: contact_page
+    # Deux fichiers fixes (fr/en) — rien à ajouter/supprimer/renommer.
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    # Aperçu : la page Contact de la langue (2026-08-17, demande user :
+    # préversion partout). [slug] = fr|en (nom du fichier).
+    url: /[slug]/contact/
+    _enabled_editors:
+      - visual
+      - data
+    _inputs:
+      metaTitle:
+        type: text
+        label: Titre d'onglet
+      metaDescription:
+        type: textarea
+        label: Description (moteurs de recherche)
+      heroTitle:
+        type: text
+        label: Titre principal (H1)
+      heroSub:
+        type: textarea
+        label: Sous-titre du héros
+      infoTitle:
+        type: text
+        label: Titre de la carte Coordonnées
+      infoLabels:
+        type: object
+        label: Libellés des coordonnées
+        comment: >-
+          Les intitulés seulement — les numéros de téléphone eux-mêmes sont
+          gérés par l'équipe technique (neutres de langue).
+      tollFree:
+        type: text
+        label: Intitulé « Sans frais »
+      email:
+        type: text
+        label: Libellé « Courriel »
+      offices:
+        type: array
+        label: Cartes bureaux
+        comment: >-
+          GARDER L'ORDRE Québec, Montréal, Paris : le téléphone affiché au bas
+          de chaque carte est apparié par position.
+        options:
+          structures: _structures.contact_office_items
+      formTitle:
+        type: text
+        label: Titre de la section formulaire
+      formIntro:
+        type: textarea
+        label: Texte d'appui du formulaire
+      formBullets:
+        type: array
+        label: Puces cochées (arguments)
+      formBullets[*]:
+        type: text
+        label: Argument
+      reqNote:
+        type: text
+        label: Note « champs obligatoires » (lecteurs d'écran)
+      labels:
+        type: object
+        label: Libellés des champs du formulaire
+      # Les clés de `placeholders` portent les MÊMES noms que celles de
+      # `labels` (firstName, email…) — la carte plate _inputs partage donc
+      # leurs libellés ; l'objet parent, lui, précise le rôle.
+      placeholders:
+        type: object
+        label: Textes indicatifs des champs (placeholders)
+        comment: >-
+          Texte gris affiché dans les champs vides (« Votre prénom »,
+          « votre@courriel.com », « Écrire… »…). Les textes par défaut des
+          deux listes déroulantes se règlent dans « Libellés » ci-dessus.
+      firstName:
+        type: text
+        label: Libellé « Prénom »
+      lastName:
+        type: text
+        label: Libellé « Nom »
+      phone:
+        type: text
+        label: Libellé « Téléphone »
+      subject:
+        type: text
+        label: Question « Sujet »
+      subjectPlaceholder:
+        type: text
+        label: Texte par défaut de la liste Sujet
+      expertise:
+        type: text
+        label: Libellé « Expertise »
+      expertisePlaceholder:
+        type: text
+        label: Texte par défaut de la liste Expertise
+      request:
+        type: text
+        label: Libellé « Précisez votre demande »
+      message:
+        type: text
+        label: Libellé « Message »
+      subjectOptions:
+        type: array
+        label: Choix de la liste « Sujet »
+      subjectOptions[*]:
+        type: text
+        label: Choix
+      expertiseOptions:
+        type: array
+        label: Choix de la liste « Expertise »
+      expertiseOptions[*]:
+        type: text
+        label: Choix
+      consentText:
+        type: textarea
+        label: Texte de consentement (Loi 25)
+        comment: >-
+          Formulation à portée légale. Garder le lien tel quel : {privacy} est
+          remplacé automatiquement par l'adresse de la politique de
+          confidentialité dans la bonne langue.
+      submit:
+        type: text
+        label: Libellé du bouton d'envoi
+      statusMessage:
+        type: textarea
+        label: Message de confirmation (démo)
+        comment: Affiché sous le formulaire après l'envoi (mode démonstration).
+
+  # Page Carrières (2026-08-12) — contenu de /carrieres migré de
+  # src/i18n/content/carrieres.ts vers src/data/carrieres/{fr,en}.json. Les
+  # icônes sont des CLÉS FERMÉES dessinées en SVG par le gabarit (les listes
+  # des deux sélecteurs vivent dans les structures carriere_value_items /
+  # carriere_feature_items). Les photos de section (héros, équipe, RSE)
+  # restent dans le gabarit en attendant les visuels authentiques.
+  carrieres:
+    path: src/data/carrieres
+    name: Page Carrières
+    singular_name: Page Carrières
+    description: >-
+      Textes de la page Carrières : héros, Happy At Work, valeurs, atouts,
+      témoignages, responsabilité sociale et appel à l'action. Un fichier par
+      langue (fr.json / en.json).
+    icon: work
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    # Aperçu : la page Carrières de la langue (2026-08-17, demande user :
+    # préversion partout). [slug] = fr|en (nom du fichier).
+    url: /[slug]/carrieres/
+    _enabled_editors:
+      - visual
+      - data
+    # ⚠️ Carte PLATE par nom de champ (voir « Textes du site ») : les clés
+    # génériques (title, lead, text, label…) sont partagées par plusieurs
+    # blocs — libellés volontairement génériques. Les libellés fins des
+    # éléments de tableau vivent dans leurs structures.
+    _inputs:
+      metaTitle:
+        type: text
+        label: Titre d'onglet
+      metaDescription:
+        type: textarea
+        label: Description (moteurs de recherche)
+      hero:
+        type: object
+        label: Héros
+        comment: La photo de fond est gérée par l'équipe technique.
+      sub:
+        type: textarea
+        label: Sous-titre
+      ctaLabel:
+        type: text
+        label: Libellé du bouton
+        comment: Les boutons de la page mènent à la page Contact.
+      happy:
+        type: object
+        label: Carte « Happy At Work »
+      lead:
+        type: textarea
+        label: Texte d'appui
+      quote:
+        type: textarea
+        label: Citation
+      values:
+        type: object
+        label: Nos valeurs
+      eyebrow:
+        type: text
+        label: Surtitre
+      items:
+        type: array
+        label: Tuiles de valeurs
+        options:
+          structures: _structures.carriere_value_items
+      join:
+        type: object
+        label: Pourquoi rejoindre notre équipe
+        comment: La photo de la section est gérée par l'équipe technique.
+      cardTitle:
+        type: text
+        label: Titre de la carte flottante
+      cardText:
+        type: textarea
+        label: Texte de la carte flottante
+      features:
+        type: array
+        label: Atouts (grille 2×2)
+        options:
+          structures: _structures.carriere_feature_items
+      testimonials:
+        type: object
+        label: Témoignages
+      cards:
+        type: array
+        label: Cartes de témoignage
+        options:
+          structures: _structures.carriere_testimonial_items
+      social:
+        type: object
+        label: Responsabilité sociale
+        comment: La photo de la section est gérée par l'équipe technique.
+      engagementTitle:
+        type: text
+        label: Titre de l'engagement
+      engagementText:
+        type: textarea
+        label: Texte de l'engagement
+      partners:
+        type: array
+        label: Partenaires (pastilles texte)
+        comment: >-
+          Pastilles de remplacement en attendant les logos réels des
+          partenaires académiques.
+      partners[*]:
+        type: text
+        label: Nom du partenaire
+      cta:
+        type: object
+        label: Appel à l'action final
+      text:
+        type: textarea
+        label: Texte
+      label:
+        type: text
+        label: Libellé
+      title:
+        type: text
+        label: Titre
+      image:
+        type: image
+        label: Photo
+        comment: Partagée entre les deux langues — téléverser une seule fois.
+        options:
+          paths:
+            static: public
+            uploads: public/images/carrieres
+
+  # Pages système (2026-08-12) — textes des trois pages « outils » sans
+  # collection de contenu : index du blogue (/ressources), recherche
+  # (/recherche) et confirmation d'envoi (/merci). Le pendant par-page de
+  # « Textes du site » (qui ne porte que le transversal). Le bloc « Index du
+  # blogue » alimente aussi le fil d'Ariane des articles et le flux RSS.
+  pagesSysteme:
+    path: src/data/pages-systeme
+    name: Pages système
+    singular_name: Pages système
+    description: >-
+      Textes du centre de ressources (/ressources), de la page de recherche
+      (/recherche) et de la page de confirmation (/merci). Un fichier par
+      langue (fr.json / en.json).
+    icon: web
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    disable_url: true
+    _enabled_editors:
+      - data
+    _inputs:
+      ressources:
+        type: object
+        label: Centre de ressources (/ressources)
+        comment: >-
+          Le surtitre (« Centre de ressources ») sert aussi de nom de section
+          dans le fil d'Ariane des articles et de titre du flux RSS.
+      titleAccent:
+        type: text
+        label: Fin de titre (en bleu)
+        comment: >-
+          Suite du titre affichée en bleu sur la ligne suivante (ex. «
+          expertises TI »). Vide = titre d'un seul tenant.
+      subscribeLabel:
+        type: text
+        label: Bouton « S'abonner à l'infolettre »
+        comment: Le bouton du héros — il mène à la carte infolettre de la page.
+      searchPlaceholder:
+        type: text
+        label: Texte indicatif de la recherche
+        comment: Affiché dans le champ de recherche de la barre de filtres.
+      readMore:
+        type: text
+        label: Lien « Lire l'article » des cartes
+      byline:
+        type: text
+        label: Signature de l'article vedette
+        comment: Ex. « Par Victrix Expertise ». Vide = pas de signature.
+      expertCard:
+        type: object
+        label: Carte décorative du héros
+        comment: La carte vitrée à droite du héros (ex. « 500+ Experts »).
+      subtitle:
+        type: text
+        label: Sous-titre
+      newsletter:
+        type: object
+        label: Carte infolettre
+        comment: >-
+          La carte marine de la grille. DÉMO : l'inscription affiche la
+          confirmation sans envoi réel.
+      emailPlaceholder:
+        type: text
+        label: Texte indicatif du champ courriel
+      submitLabel:
+        type: text
+        label: Libellé du bouton d'envoi
+      confirmation:
+        type: textarea
+        label: Message de confirmation
+      cta:
+        type: object
+        label: Bandeau d'appel à l'action
+        comment: Le bandeau au bas de la page (titre, texte, deux boutons).
+      primaryLabel:
+        type: text
+        label: Bouton principal — libellé
+      primaryHref:
+        type: text
+        label: Bouton principal — lien
+        comment: SANS préfixe de langue (/contact, pas /fr/contact).
+      secondaryLabel:
+        type: text
+        label: Bouton secondaire — libellé
+      secondaryHref:
+        type: text
+        label: Bouton secondaire — lien
+        comment: SANS préfixe de langue (/contact, pas /fr/contact).
+      recherche:
+        type: object
+        label: Page de recherche (/recherche)
+      merci:
+        type: object
+        label: Page de confirmation (/merci)
+        comment: Affichée après l'envoi réussi d'un formulaire.
+      metaTitle:
+        type: text
+        label: Titre d'onglet
+      metaDescription:
+        type: textarea
+        label: Description (moteurs de recherche)
+      eyebrow:
+        type: text
+        label: Surtitre
+      title:
+        type: text
+        label: Titre
+      intro:
+        type: textarea
+        label: Texte d'introduction
+      filterAll:
+        type: text
+        label: Onglet « Tous » des filtres
+      noscript:
+        type: textarea
+        label: Message sans JavaScript
+        comment: Affiché seulement si le navigateur bloque JavaScript.
+      text:
+        type: textarea
+        label: Texte
+      links:
+        type: array
+        label: Boutons
+        comment: Liens proposés au visiteur (le « principal » est bleu).
+        options:
+          structures: _structures.site_buttons
+      label:
+        type: text
+        label: Libellé
+      href:
+        type: text
+        label: Lien
+        comment: >-
+          SANS préfixe de langue (/contact, pas /fr/contact) — le site ajoute
+          /fr ou /en tout seul.
+      primary:
+        type: switch
+        label: Bouton principal (bleu)
+
+  # URL redirects — exposes src/data/redirects.json, which the inline
+  # 'victrix:redirects' integration in astro.config.mjs turns into
+  # dist/_redirects (Cloudflare Pages format) at build time. A COLLECTION on
+  # the data folder is the documented way to make a data file editable in the
+  # sidebar ("Data folders function as collections by setting their path to a
+  # data directory") — `data_config` would NOT work here: its only documented
+  # purpose is feeding Select/Multiselect options, it creates no sidebar entry.
+  redirects:
+    path: src/data
+    # Only redirects.json is editable — the glob hides any other data file
+    # that later lands in src/data/.
+    glob:
+      - redirects.json
+    name: Redirections
+    singular_name: Redirection
+    description: >-
+      Redirections d'URL (ex. anciennes adresses WordPress vers les nouvelles
+      pages). ATTENTION : une entrée invalide — chemin sans « / » initial,
+      destination vide, doublon, redirection vers soi-même — fait échouer le
+      build. C'est un garde-fou volontaire : l'erreur de build nomme l'entrée
+      à corriger, rien de cassé n'atteint le site.
+    icon: alt_route
+    # Single dev-owned file: no add/delete/rename, and no preview URL (the
+    # JSON is not a page).
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    disable_url: true
+    # Data Editor only (and it opens by default — first value). The file is a
+    # root-level JSON array: supported by the Data Editor, but the array has
+    # no field NAME, so no _inputs/_structures can target the array itself —
+    # only its item fields below. The Data Editor's "+" clones the shape of
+    # existing rows, so the seeded /demo-redirection entry doubles as the row
+    # template: never empty the file completely.
+    _enabled_editors:
+      - data
+    _inputs:
+      de:
+        type: text
+        label: Ancienne URL
+        comment: >-
+          Chemin commençant par « / » (ex. /demo-redirection), sans domaine.
+      vers:
+        type: text
+        label: Nouvelle destination
+        comment: >-
+          Chemin du site (ex. /fr/) ou URL complète (https://…).
+      code:
+        type: select
+        label: Type de redirection
+        comment: >-
+          301 = permanente (transfère le référencement) ; 302 = temporaire.
+        options:
+          # STRING values — settled empirically 2026-07-15: the Data Editor
+          # rejects numeric select values outright ("This select input is
+          # misconfigured. This input must have a text value."), exactly the
+          # risk the round-2 review flagged. The editor therefore saves
+          # "code": "301" (string) into redirects.json; the build validator
+          # (astro.config.mjs, 'victrix:redirects') accepts the exact strings
+          # "301"/"302" and normalizes them to numbers for _redirects output.
+          # Anything else (303, free text…) still fails the build loudly —
+          # that's the guardrail. The seed entry uses the string form too so
+          # the select shows it as selected (a numeric 301 would not match).
+          values:
+            - "301"
+            - "302"
+
+  # Formulaires réutilisables (« forms v2 ») — un JSON par formulaire dans
+  # src/data/forms/fr|en/ (même nom de fichier = paire de traduction). Une
+  # section « Formulaire » d'une page les référence par leur identifiant (nom
+  # du fichier sans .json). LE DESTINATAIRE EST DÉFINI ICI, jamais dans la
+  # page : côté serveur, /api/forms résout destinataire/objet/champs depuis un
+  # registre embarqué au build (liste blanche) — le navigateur n'envoie qu'un
+  # identifiant. Validé au build (collection `forms`, src/content.config.ts).
+  forms:
+    path: src/data/forms
+    name: Formulaires
+    singular_name: Formulaire
+    description: >-
+      Définitions de formulaires réutilisables (destinataire, objet, champs).
+      Les dossiers fr/ et en/ contiennent les deux langues ; le même nom de
+      fichier relie une traduction à l'autre. Les pages y font référence par
+      l'identifiant (nom du fichier sans .json).
+    icon: dynamic_form
+    # Pas de page à prévisualiser (le JSON n'est pas une page).
+    disable_url: true
+    # Éditeur de données uniquement (JSON structuré, pas de corps markdown).
+    _enabled_editors:
+      - data
+    # « + Ajouter » : un gabarit par langue pour que le fichier atterrisse dans
+    # fr/ ou en/ avec un JSON valide (même logique que blog/landing).
+    schemas:
+      default:
+        name: Formulaire (FR)
+        icon: dynamic_form
+        path: schemas/form-fr.json
+        create:
+          path: 'fr/{name|slugify}.json'
+      en:
+        name: Formulaire (EN)
+        icon: dynamic_form
+        path: schemas/form-en.json
+        create:
+          path: 'en/{name|slugify}.json'
+    _inputs:
+      name:
+        type: text
+        label: Nom (interne)
+        comment: Affiché aux éditeurs seulement — jamais aux visiteurs.
+      toEmail:
+        type: text
+        label: Courriel destinataire
+        # P-16 : champ SENSIBLE — voir aussi guide-edition.md §Formulaires.
+        comment: >-
+          ⚠️ CHAMP SENSIBLE : cette adresse reçoit RÉELLEMENT les soumissions
+          de CE formulaire — une faute de frappe détourne les messages des
+          visiteurs. Vérifier deux fois avant de publier. Vide = le
+          destinataire global du site (variable FORMS_TO_EMAIL).
+      subject:
+        type: text
+        label: Objet du courriel
+        comment: Vide = objet générique.
+      submitLabel:
+        type: text
+        label: Libellé du bouton d'envoi
+      consentText:
+        type: textarea
+        label: Texte de consentement
+        comment: Mention Loi 25 affichée au-dessus du bouton (optionnelle).
+      fields:
+        type: array
+        label: Champs
+        comment: >-
+          Le nom technique de chaque champ dérive de son libellé — éviter deux
+          libellés identiques dans un même formulaire.
+        options:
+          structures: _structures.form_fields
+      # P-16 : label/required vivent désormais au niveau STRUCTURE
+      # (_structures.form_fields), avec tous les autres _inputs de champ.
+
+  # Bibliothèque de barres d'annonce (bandeau bleu au-dessus de l'en-tête,
+  # 2026-08-20 — remplace l'objet « announce » jadis embarqué dans la
+  # navigation) : un JSON par bannière dans src/data/annonces, textes FR et EN
+  # dans le MÊME fichier, fenêtre de diffusion PARTAGÉE. Une seule bannière
+  # s'affiche à la fois : parmi les bannières « Affichée » dont la fenêtre
+  # couvre le moment du build, la plus récemment COMMENCÉE gagne (égalité →
+  # nom de fichier). Validé au build (collection `annonces`,
+  # src/content.config.ts) ; sélection : src/lib/announce.ts.
+  annonces:
+    path: src/data/annonces
+    name: Barres d'annonce
+    singular_name: Barre d'annonce
+    description: >-
+      Bannières promotionnelles au-dessus de l'en-tête, textes FR et EN dans
+      le même fichier. Une seule s'affiche à la fois : parmi les bannières
+      « Affichée » dont la fenêtre couvre le moment de la publication, la plus
+      récemment commencée gagne. Lien SANS préfixe de langue (ex. /produits).
+    icon: campaign
+    # Pas de page à prévisualiser (le JSON n'est pas une page).
+    disable_url: true
+    # Éditeur de données uniquement (JSON structuré, pas de corps markdown).
+    _enabled_editors:
+      - data
+    # « + Ajouter » : gabarit avec TOUTES les clés (y compris startAt/endAt
+    # vides) — l'éditeur de données n'affiche que les clés présentes dans le
+    # fichier, un gabarit incomplet cacherait les contrôles de planification.
+    schemas:
+      default:
+        name: Barre d'annonce
+        icon: campaign
+        path: schemas/annonce.json
+        create:
+          path: '{title|slugify}.json'
+    _inputs:
+      title:
+        type: text
+        label: Nom (interne)
+        comment: Affiché aux éditeurs seulement — jamais aux visiteurs.
+      enabled:
+        type: switch
+        label: Affichée
+        comment: Désactivé = cette bannière ne s'affiche jamais, dates ou pas.
+      # Diffusion planifiée (marketing) : fenêtre [début, fin) évaluée à chaque
+      # PUBLICATION/reconstruction du site (rebuild quotidien automatique — voir
+      # guide-edition.md « Planifier »). L'éditeur visuel montre toujours une
+      # bannière « Affichée », fenêtre ou pas, pour pouvoir l'éditer.
+      startAt:
+        type: datetime
+        label: Diffuser à partir de
+        comment: >-
+          Vide = dès maintenant. La bannière apparaît au premier build suivant
+          cette date (heure UTC). Si plusieurs bannières sont actives en même
+          temps, la plus récemment commencée gagne.
+      endAt:
+        type: datetime
+        label: Retirer à partir de
+        comment: >-
+          Vide = jamais retirée. La bannière disparaît au premier build suivant
+          cette date (heure UTC).
+      fr:
+        type: object
+        label: Textes (FR)
+      en:
+        type: object
+        label: Textes (EN)
+      before:
+        type: text
+        label: Texte (avant la partie en gras)
+      strong:
+        type: text
+        label: Partie en gras
+      after:
+        type: textarea
+        label: Texte (après la partie en gras)
+      linkLabel:
+        type: text
+        label: Libellé du lien
+      linkHref:
+        type: text
+        label: Lien de l'annonce
+        comment: Sans préfixe de langue (ex. /produits). Commun aux deux langues.
+
+  # Navigation du site (menu principal, méga-menu, bouton
+  # portail) — un JSON par langue dans src/data/navigation, consommé par
+  # src/components/Header.astro et validé au build par la collection
+  # `navigation` (src/content.config.ts) : un lien invalide fait échouer le
+  # build en nommant le fichier fautif. ATTENTION CONVENTION : les liens
+  # internes sont stockés SANS préfixe de langue (/contact, pas /fr/contact) —
+  # le gabarit ajoute /fr ou /en au rendu. C'est l'INVERSE des sections de
+  # page (ctaHref = URL finale) ; les commentaires des champs le rappellent.
+  navigation:
+    path: src/data/navigation
+    name: Navigation
+    singular_name: Navigation
+    description: >-
+      Menu principal, méga-menu et bouton du portail (un fichier par langue).
+      Liens internes SANS préfixe de langue (ex. /contact) — le site ajoute
+      /fr ou /en automatiquement. La barre d'annonce a sa propre collection
+      « Barres d'annonce ».
+    icon: menu
+    # Two dev-owned files (fr.json / en.json): no add/delete/rename.
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    # Aperçu : l'ACCUEIL de la langue (2026-08-17) — le menu édité ici y est
+    # visible. [slug] = fr|en (nom du fichier).
+    url: /[slug]/
+    # Data Editor only (opens by default — first value). These are structured
+    # JSON files with no markdown body.
+    _enabled_editors:
+      - data
+    _inputs:
+      items:
+        type: array
+        label: Menu principal
+        comment: Entrées du menu d'en-tête, dans l'ordre d'affichage.
+        options:
+          structures: _structures.nav_links
+      portal:
+        type: object
+        label: Lien « Portail client »
+        comment: >-
+          Affiché en lien texte quand le bouton d'action ci-dessous est
+          renseigné (sinon il redevient le bouton).
+      visible:
+        type: switch
+        label: Visible
+      cta:
+        type: object
+        label: Bouton d'action de l'en-tête
+        comment: >-
+          Le bouton bleu à droite (ex. « Contact »). Lien sans préfixe de
+          langue.
+      mega:
+        type: object
+        label: Méga-menu
+        comment: >-
+          S'attache aux entrées du menu principal dont le lien correspond au
+          « Lien parent » (et aux « Liens parents supplémentaires »).
+      parentHref:
+        type: text
+        label: Lien parent
+        comment: >-
+          Doit correspondre au lien d'une entrée du menu principal (ex.
+          /expertises).
+      parentHrefs:
+        type: array
+        label: Liens parents supplémentaires
+        comment: >-
+          Autres entrées du menu qui ouvrent le MÊME panneau (ex. /services,
+          /produits). Chaque valeur doit correspondre au lien d'une entrée du
+          menu principal.
+      ariaLabel:
+        type: text
+        label: Libellé d'accessibilité
+      columns:
+        type: array
+        label: Colonnes
+        options:
+          structures: _structures.nav_columns
+      links:
+        type: array
+        label: Liens
+        options:
+          structures: _structures.nav_links
+      icon:
+        type: select
+        label: Icône
+        comment: >-
+          Champ hérité (plus affiché depuis la refonte 2026-08) — conservé pour
+          compatibilité.
+        options:
+          values:
+            - strategy
+            - cloud
+            - security
+            - productivity
+            - managed
+      # Re-skin chrome 2026-08-04 : carte mise en avant + bandeau bas du
+      # méga-menu (Figma « Composants »). Les deux blocs sont optionnels —
+      # vides/absents, le panneau affiche ses colonnes seules.
+      featured:
+        type: object
+        label: Carte mise en avant
+        comment: >-
+          Carte à droite du méga-menu Services (titre, texte, lien). Optionnelle.
+      body:
+        type: textarea
+        label: Texte
+      image:
+        type: image
+        label: Image (optionnelle)
+        comment: >-
+          Chemin public (ex. /images/nav/carte.jpg). Vide = pas d'image.
+        # Sans `paths` explicites, un téléversement tombait sur le repli global
+        # (src/assets/uploads) et enregistrait un chemin que Header.astro ne
+        # sert pas — corrigé 2026-08-12 : même patron public que les autres
+        # images servies telles quelles (static: public → l'adresse commence
+        # à /images/…).
+        options:
+          paths:
+            static: public
+            uploads: public/images/nav
+      stripe:
+        type: object
+        label: Bandeau bas du méga-menu
+        comment: >-
+          Bandeau sous les colonnes (texte court + 2 liens max). Optionnel.
+      text:
+        type: textarea
+        label: Texte
+      # Méga-menu Ressources : seuls les TEXTES sont éditables — les catégories
+      # (étiquettes du blogue) et les derniers articles sont générés au build
+      # depuis la collection Blogue (voir Header.astro).
+      megaRessources:
+        type: object
+        label: Méga-menu Ressources
+        comment: >-
+          Catégories et derniers articles sont automatiques (tirés du blogue) ;
+          seuls les textes ci-dessous s'éditent. S'attache à l'entrée du menu
+          dont le lien est identique au « Lien parent ».
+      intro:
+        type: textarea
+        label: Texte d'introduction
+      ctaLabel:
+        type: text
+        label: Libellé du bouton
+        comment: >-
+          Méga-menu Ressources : le bouton mène au centre de ressources (le
+          « Lien parent »). Carte mise en avant : le lien du champ « Lien ».
+      categoriesTitle:
+        type: text
+        label: Titre de la colonne Catégories
+      latestTitle:
+        type: text
+        label: Titre de la colonne Derniers articles
+      label:
+        type: text
+        label: Libellé
+      href:
+        type: text
+        label: Lien
+        comment: >-
+          Sans préfixe de langue (ex. /contact), ou URL https:// complète.
+      service:
+        type: text
+        label: Service (au lieu du lien)
+        comment: >-
+          Alternative à « Lien » pour une entrée du menu ou d'une colonne du
+          méga-menu : identifiant d'un service = nom du fichier dans
+          src/content/services/<langue>/ SANS « .json » (ex.
+          intelligence-artificielle). Renseigner SOIT « Lien » SOIT « Service »,
+          jamais les deux. Le site calcule l'URL /<langue>/services/<identifiant>
+          et VÉRIFIE que le service existe : un identifiant inconnu — ou les deux
+          champs remplis — bloque la publication avec un message clair.
+
+_structures:
+  # Section palette for the landing `sections` array. The VALUES are NOT
+  # written here: the CloudCannon postbuild `npx @bookshop/generate` appends
+  # one entry per component tagged `spec.structures: [sections]` in
+  # component-library/**/*.bookshop.yml, each carrying `_bookshop_name` as the
+  # matching key (generate hard-sets `id_key: _bookshop_name` and APPENDS to
+  # any existing values — verified in @bookshop/generate/lib/
+  # structure-connector.js — so hand-written values would only duplicate every
+  # palette entry under a mismatched id_key). Labels/descriptions/icons and
+  # picker polish live in the *.bookshop.yml specs; the seeded .md files carry
+  # `_bookshop_name` on each section so existing data matches the generated
+  # values. Only the keys below are OURS — generate preserves them.
+  sections:
+    # Card-picker modal when adding a section (nicer than a plain select).
+    style: modal
+    # CloudCannon's visual editor adds a `_bookshop_name` key to inserted
+    # components; the default remove_extra_inputs: true would strip it (and
+    # any future undeclared key) on edit — keep every key intact instead.
+    remove_extra_inputs: false
+
+  # Uniform sub-arrays: a single-value structure gives the "add" button the
+  # right shape even when the array starts empty. NOT tagged in any Bookshop
+  # spec, so generate leaves these untouched.
+  #
+  # Default values use EMPTY STRINGS ("") instead of blank YAML values: blank
+  # parses to null, and null fails the Zod `.optional()` string fields mid-edit.
+  # (Renommage d'affichage 2026-08-17 : la palette dit « Carte à icône » —
+  # la clé technique benefit_items ne change pas.)
+  benefit_items:
+    values:
+      - label: Carte à icône
+        icon: check_circle
+        preview:
+          icon: check_circle
+          text:
+            - key: title
+            - text: Carte à icône
+        value:
+          title: ''
+          description: ''
+          icon: ''
+        _inputs:
+          icon:
+            type: select
+            label: Icône (optionnelle)
+            options:
+              allow_empty: true
+              values:
+                - dossier
+                - personne
+                - groupe
+                - ampoule
+                - croissance
+                - losange
+                - organisation
+                - porteur
+                - destinataire
+            comment: >-
+              Tuile pictogramme au-dessus du titre. Vide = aucune.
+              organisation/porteur/destinataire = icônes pleines de la page
+              Expertises (approche en 3 angles).
+
+  # Cartes du bento d'expertises (section « Service — Bento d'expertises »,
+  # fidélité maquette expertise-mere.css 2026-08-05).
+  bento_items:
+    values:
+      - label: Carte bento
+        icon: dashboard
+        preview:
+          icon: dashboard
+          text:
+            - key: title
+            - text: Carte bento
+        value:
+          title: ''
+          text: ''
+          peau: blanche
+          taille: petite
+          icon: ''
+          image: ''
+          href: ''
+        _inputs:
+          text:
+            type: textarea
+            label: Texte
+          peau:
+            type: select
+            label: Peau de la carte
+            options:
+              allow_empty: false
+              values:
+                - blanche
+                - bleue
+                - ardoise
+          taille:
+            type: select
+            label: Taille dans la grille
+            options:
+              allow_empty: false
+              values:
+                - grande
+                - haute
+                - large
+                - petite
+            comment: >-
+              grande = 2 colonnes × 3 rangées (vitrine avec image) ; haute = 1×2 ;
+              large = 2×1 (icône à droite) ; petite = 1×1.
+          icon:
+            type: select
+            label: Icône
+            options:
+              allow_empty: true
+              values:
+                - fenetre
+                - graphique
+                - personnes
+                - engrenage
+                - document
+                - code
+          image:
+            type: text
+            label: Image (chemin public)
+            comment: "Cartes « grande » seulement. Ex. /images/services/… — servie telle quelle."
+          href:
+            type: text
+            label: Lien (optionnel)
+            comment: Rend la carte entière cliquable. URL finale, préfixe de langue inclus.
+
+  # Cartes outils (section « Service — Solutions exclusives »).
+  tool_items:
+    values:
+      - label: Carte outil
+        icon: widgets
+        preview:
+          icon: widgets
+          text:
+            - key: title
+            - text: Carte outil
+        value:
+          title: ''
+          text: ''
+          ctaLabel: ''
+          href: ''
+          icon: ''
+        _inputs:
+          text:
+            type: textarea
+            label: Texte
+          ctaLabel:
+            type: text
+            label: Libellé du lien
+          icon:
+            type: select
+            label: Icône
+            options:
+              allow_empty: true
+              values:
+                - calendrier
+                - etoile
+
+  # Tuiles statistiques (section « Produit — Valeur stratégique », fidélité
+  # maquette produit-enfant.css 2026-08-05). Clé DISTINCTE de stat_items
+  # (« Victrix en chiffres », {number,label}) : YAML garde la DERNIÈRE
+  # définition d'une clé dupliquée — sous un même nom, celle-ci serait écrasée.
+  stat_tiles:
+    values:
+      - label: Tuile statistique
+        icon: monitoring
+        preview:
+          icon: monitoring
+          text:
+            - key: value
+            - text: Tuile statistique
+        value:
+          value: ''
+          label: ''
+        # _inputs de STRUCTURE : `label` est aussi un nom de champ de formulaire
+        # au niveau collection — le libellé spécifique DOIT vivre ici (il prime).
+        _inputs:
+          value:
+            type: text
+            label: Valeur
+            comment: "Chiffre ou mot mis en avant (ex. « ROI », « 100 % »)."
+          label:
+            type: text
+            label: Étiquette
+            comment: "Petite ligne en majuscules sous la valeur."
+
+  # Cartes d'offre numérotées (section « Produit — Offres numérotées ») — la
+  # liste `bullets` de chaque carte pointe vers _structures.offer_bullets.
+  offer_items:
+    values:
+      - label: Carte d'offre
+        icon: format_list_numbered
+        preview:
+          icon: format_list_numbered
+          text:
+            - key: title
+            - text: Carte d'offre
+        value:
+          number: ''
+          title: ''
+          bullets: []
+        _inputs:
+          number:
+            type: text
+            label: Numéro
+            comment: "Affiché dans la tuile bleue (ex. « 1 »)."
+          bullets:
+            type: array
+            label: Points de la liste
+            options:
+              structures: _structures.offer_bullets
+
+  # Puces des cartes d'offre (icône + texte).
+  offer_bullets:
+    values:
+      - label: Point de liste
+        icon: check_circle
+        preview:
+          icon: check_circle
+          text:
+            - key: text
+            - text: Point de liste
+        value:
+          text: ''
+          icon: coche
+        _inputs:
+          text:
+            type: text
+            label: Texte
+          icon:
+            type: select
+            label: Icône
+            options:
+              allow_empty: false
+              values:
+                - coche
+                - document
+                - cible
+                - carte
+            comment: "coche = crochet cerclé ; document ; cible ; carte = feuille de route."
+
+  # Cartes de réalisation (section « Produit — Réalisations »).
+  realisation_items:
+    values:
+      - label: Carte de réalisation
+        icon: workspace_premium
+        preview:
+          icon: workspace_premium
+          text:
+            - key: title
+            - text: Carte de réalisation
+        value:
+          title: ''
+          text: ''
+          icon: ''
+        _inputs:
+          text:
+            type: textarea
+            label: Texte
+          icon:
+            type: select
+            label: Icône
+            options:
+              allow_empty: true
+              values:
+                - trousse
+                - casque
+                - groupe
+                - marteau
+            comment: "trousse = santé ; casque = services ; groupe = RH ; marteau = juridique. Vide = aucune."
+
+  # Cartes d'expertise ({number,title,accent,description,href}) pour la section
+  # « Accueil — Expertises ». Même logique que benefit_items : une structure à
+  # valeur unique donne au bouton « + » la bonne forme, même sur un tableau
+  # vide. Non taguée dans un spec Bookshop → generate n'y touche pas.
+  expertise_items:
+    values:
+      - label: Carte d'expertise
+        icon: category
+        preview:
+          icon: category
+          text:
+            - key: title
+            - text: Carte d'expertise
+        value:
+          number: ''
+          title: ''
+          accent: '#1a5bff'
+          description: ''
+          href: ''
+          image: ''
+          variant: claire
+          linkLabel: ''
+          wide: false
+        # _inputs de STRUCTURE (priment sur ceux de la collection — même
+        # mécanique que form_fields) : la peau de la carte est une clé fermée.
+        _inputs:
+          variant:
+            type: select
+            label: Peau de la carte
+            options:
+              allow_empty: false
+              values:
+                - claire
+                - image
+                - bleue
+                - nuit
+            comment: >-
+              claire = carte blanche bordée ; image = photo + voile navy (renseigner
+              « Image ») ; bleue = aplat bleu ; nuit = aplat marine.
+          linkLabel:
+            type: text
+            label: Libellé du lien (surcharge)
+            comment: Vide = libellé commun de la section (« Libellé du bouton des cartes »).
+          # Référence bento 2026-08-11 : carte large. (Le pictogramme `icon`
+          # est RETIRÉ du contrat le 2026-08-17 — correction user : aucun
+          # pictogramme dans les tuiles « Nos services ».)
+          wide:
+            type: switch
+            label: Carte large (2 colonnes)
+            comment: >-
+              Activée, la carte occupe 2 colonnes sur 3 (ex. Cybersécurité en
+              tête de grille). Une seule carte large par rangée.
+          # P-16 : la couleur d'accent est BORNÉE à la charte (plus de texte
+          # libre). Champ hérité — plus affiché depuis la refonte 2026-08 —
+          # mais tant qu'il vit au contrat, il ne doit accepter que la charte.
+          accent:
+            type: select
+            label: Couleur d'accent (héritée — plus affichée)
+            options:
+              allow_empty: false
+              values:
+                - '#1a5bff'
+                - '#0d1430'
+                - '#1a1f28'
+                - '#faf7f3'
+                - '#f2ece4'
+                - '#e9e1d6'
+            comment: >-
+              Les 6 ancres de la charte — #1a5bff Bleu Victrix, #0d1430 Bleu nuit,
+              #1a1f28 Anthracite, #faf7f3 Ivoire, #f2ece4 Beige, #e9e1d6 Sable.
+              Champ de l'ancien design, conservé pour compatibilité ; plus rendu.
+
+  # Cartes de la section « Solutions phares » (home-solutions, fidélité
+  # maquette accueil.css) — images = CHEMINS PUBLICS (ex. /images/home/…),
+  # contrairement à l'image de home-solution (relative, résolue par Astro).
+  solution_items:
+    values:
+      - label: Carte de solution
+        icon: dark_mode
+        preview:
+          icon: dark_mode
+          text:
+            - key: title
+            - text: Carte de solution
+        value:
+          title: ''
+          text: ''
+          image: ''
+          href: ''
+          ctaLabel: ''
+          icon: ''
+        _inputs:
+          text:
+            type: textarea
+            label: Texte
+          image:
+            type: text
+            label: Image (chemin public)
+            comment: "Ex. /images/home/sevoc.png — servie telle quelle."
+          ctaLabel:
+            type: text
+            label: Libellé du lien
+          icon:
+            type: select
+            label: Icône
+            options:
+              allow_empty: true
+              values:
+                - ecran
+                - bouclier
+                - nuage
+            comment: Icône décorative à gauche du titre (vide = aucune).
+
+  # Tuiles de caractéristiques de la section « Solution » (home-solution).
+  solution_features:
+    values:
+      - label: Tuile de caractéristique
+        icon: check_box
+        preview:
+          icon: check_box
+          text:
+            - key: label
+            - text: Tuile
+        value:
+          label: ''
+          text: ''
+        _inputs:
+          label:
+            type: text
+            label: Libellé (majuscules)
+          text:
+            type: textarea
+            label: Texte d'appui
+
+  form_fields:
+    values:
+      - label: Champ de formulaire
+        icon: edit_note
+        preview:
+          icon: edit_note
+          text:
+            - key: label
+            - text: Champ de formulaire
+        # Forme COMPLÈTE (P-05) : les clés étendues sont présentes avec des
+        # « formes vides » — options: [], value: '', showIf {field:'',…} —
+        # jamais null (un null casserait les .optional() zod en cours
+        # d'édition, voir l'entête _structures). Une clé laissée vide signifie
+        # simplement « sans objet pour ce type de champ ».
+        value:
+          label: ''
+          type: text
+          required: true
+          width: plein
+          options: []
+          value: ''
+          showIf:
+            field: ''
+            equals: ''
+        # Structure values support their own _inputs, and the "containing
+        # structure" level outranks the landing collection's _inputs in the
+        # configuration cascade — this re-exposes the form-field `type` select
+        # that the collection-level `type: hidden` (section discriminator)
+        # would otherwise hide. Les _inputs des clés étendues (options/value/
+        # showIf/field/equals) vivent AUSSI ici pour rester scopés aux champs
+        # de formulaire.
+        _inputs:
+          # P-16 : label/required déplacés ici depuis les _inputs de la
+          # collection forms — tous les _inputs de champ vivent au même niveau.
+          label:
+            type: text
+            label: Libellé du champ
+          required:
+            type: switch
+            label: Champ obligatoire
+          type:
+            type: select
+            label: Type de champ
+            comment: >-
+              text = texte court · email = courriel · tel = téléphone ·
+              textarea = texte long · select = liste déroulante · checkbox =
+              case à cocher (ex. consentement Loi 25) · hidden = champ caché.
+              Les clés « Options », « Valeur (champ caché) » et « Condition
+              d'affichage » ne s'appliquent qu'aux types indiqués dans leur
+              description.
+            options:
+              values:
+                - text
+                - email
+                - tel
+                - textarea
+                - select
+                - checkbox
+                - hidden
+          width:
+            type: select
+            label: Largeur du champ
+            comment: >-
+              plein = pleine largeur (défaut) · demi = demi-rangée — deux
+              champs « demi » consécutifs se placent côte à côte (ex. Prénom /
+              Nom). Présentation seulement.
+            options:
+              values:
+                - plein
+                - demi
+          options:
+            type: array
+            label: Options (liste déroulante)
+            comment: >-
+              Type « select » seulement — au moins une option; éviter les
+              virgules dans le texte d'une option. Ignoré pour les autres
+              types.
+          # Type d'entrée du tableau (notation documentée `nom[*]`) : sans
+          # lui, un tableau VIDE est « misconfigured » — CloudCannon ne sait
+          # pas quoi créer au « + Ajouter » (le clonage exige une entrée
+          # existante). Chaque option est une simple chaîne.
+          options[*]:
+            type: text
+            label: Option
+          value:
+            type: text
+            label: Valeur (champ caché)
+            comment: >-
+              Type « hidden » seulement. Jetons remplacés à la publication :
+              {{page.titre}}, {{page.chemin}}, {{page.slug}}, {{page.langue}}.
+              Un jeton {{url.utm_source}} (ou tout autre {{url.…}}, seul dans
+              la valeur) est rempli dans le navigateur du visiteur depuis
+              l'adresse de la page.
+          showIf:
+            type: object
+            label: Condition d'affichage
+            comment: >-
+              Laisser vide = champ toujours affiché. Sinon, le champ ne
+              s'affiche que si le champ pilote a la valeur attendue (le
+              serveur n'exige alors ce champ que lorsque la condition est
+              remplie).
+          field:
+            type: text
+            label: Champ pilote (libellé exact)
+            comment: >-
+              Recopier EXACTEMENT le libellé d'une liste déroulante ou d'une
+              case à cocher du même formulaire. Une faute de frappe bloque la
+              publication avec un message clair.
+          equals:
+            type: text
+            label: Valeur attendue
+            comment: >-
+              Une option de la liste pilote, ou « oui » pour une case à
+              cocher.
+
+  # Partenaires ({name, logo, description}) pour la section « Bandeau logos
+  # partenaires » (logo-banner). Même GOTCHA que faq_items : le tableau
+  # s'appelle AUSSI `items`, le spec logo-banner.bookshop.yml re-pointe son
+  # `items` vers CETTE structure.
+  logo_items:
+    values:
+      - label: Partenaire
+        icon: workspaces
+        preview:
+          icon: workspaces
+          text:
+            - key: name
+            - text: Partenaire
+        value:
+          name: ''
+          logo: ''
+          description: ''
+
+  # Chiffres ({number, label}) pour la section « Victrix en chiffres » (stats).
+  # Même GOTCHA `items` que ci-dessus — re-pointé par stats.bookshop.yml.
+  stat_items:
+    values:
+      - label: Chiffre
+        icon: insights
+        preview:
+          icon: insights
+          text:
+            - key: number
+            - text: Chiffre
+        value:
+          number: ''
+          label: ''
+
+  # Navigation (collection « navigation ») : formes des tableaux du menu.
+  # Même logique que benefit_items — une structure à valeur unique donne au
+  # bouton « + » la bonne forme, même sur un tableau vide. Non taguées dans un
+  # spec Bookshop → generate n'y touche pas.
+# Liens de l'en-tête de campagne en mode « personnalisé » (P-04). Structure
+  # dédiée avec ses PROPRES _inputs : au niveau collection, `label` est déjà
+  # « Libellé du champ » (formulaires) — le niveau structure prime (même
+  # mécanisme que form_fields).
+  header_links:
+    values:
+      - label: Lien d'en-tête
+        icon: link
+        preview:
+          icon: link
+          text:
+            - key: label
+            - text: Lien d'en-tête
+        value:
+          label: ''
+          href: ''
+        _inputs:
+          label:
+            type: text
+            label: Libellé du lien
+          href:
+            type: text
+            label: Lien
+            comment: >-
+              URL finale, préfixe de langue inclus (ex. « /fr/contact »).
+
+  nav_links:
+    values:
+      - label: Lien de navigation
+        icon: link
+        preview:
+          icon: link
+          text:
+            - key: label
+            - text: Lien de navigation
+        value:
+          label: ''
+          # Un lien porte SOIT href SOIT service (P-07, méga-menu dynamique E.3) —
+          # voir l'aide du champ « Service » (_inputs.service). Cette structure
+          # sert AUSSI les liens des colonnes du méga-menu (_inputs.links).
+          href: ''
+          service: ''
+
+  # ---------------------------------------------------------------------------
+  # Collection « Textes du site » (2026-08-11) — pied de page et 404.
+  # ---------------------------------------------------------------------------
+
+  # Lien simple {label, href} : liens d'une colonne de pied de page, réseaux
+  # sociaux, mentions légales. Href SANS préfixe de langue (sauf réseaux
+  # sociaux : URL externe complète, ou « # » tant qu'elle n'est pas fournie).
+  site_links:
+    values:
+      - label: Lien
+        icon: link
+        preview:
+          icon: link
+          text:
+            - key: label
+            - text: Lien
+        value:
+          label: ''
+          href: ''
+
+  # Bouton de la page « introuvable » {label, href, primary} — même forme que
+  # site_links + la bascule « bouton principal ».
+  site_buttons:
+    values:
+      - label: Bouton
+        icon: smart_button
+        preview:
+          icon: smart_button
+          text:
+            - key: label
+            - text: Bouton
+        value:
+          label: ''
+          href: ''
+          primary: false
+
+  # Colonne de liens du pied de page. Son `_inputs.links` de STRUCTURE prime
+  # sur celui de la collection (qui sert les boutons de la 404) — mécanique
+  # documentée plus haut pour form_fields et faq_items.
+  footer_columns:
+    values:
+      - label: Colonne du pied de page
+        icon: view_column
+        preview:
+          icon: view_column
+          text:
+            - key: title
+            - text: Colonne du pied de page
+        value:
+          title: ''
+          links: []
+        _inputs:
+          title:
+            type: text
+            label: Titre de la colonne
+          links:
+            type: array
+            label: Liens de la colonne
+            options:
+              structures: _structures.site_links
+
+  nav_columns:
+    values:
+      - label: Colonne du méga-menu
+        icon: view_column
+        preview:
+          icon: view_column
+          text:
+            - key: title
+            - text: Colonne du méga-menu
+        value:
+          title: ''
+          href: ''
+          icon: strategy
+          links: []
+
+  # FAQ items ({question, answer} pairs) for the « FAQ » Bookshop section.
+  # GOTCHA: the FAQ array is ALSO named `items` (frozen contract), and the
+  # collection-level `_inputs.items` above binds every `items` array to
+  # _structures.benefit_items — the WRONG shape here. faq.bookshop.yml must
+  # therefore re-point its own `items` at THIS structure via a spec-level
+  # `_inputs.items` (type: array + options.structures: _structures.faq_items):
+  # generate copies spec _inputs onto the palette entry, and that "containing
+  # structure" level outranks the collection's — the exact mechanism already
+  # used by form_fields to re-expose the field `type` select.
+  faq_items:
+    values:
+      - label: Question / réponse
+        icon: quiz
+        preview:
+          icon: quiz
+          text:
+            - key: question
+            - text: Question / réponse
+        value:
+          question: ''
+          answer: ''
+
+  # Cartes numérotées ({number, title, text, ctaLabel?, ctaHref?}) pour la
+  # section « numbered-cards » (P-07). Re-pointée par numbered-cards.bookshop.yml
+  # (même GOTCHA `items` que faq/logo/stats). Defaults en chaînes vides.
+  numbered_card_items:
+    values:
+      - label: Carte numérotée
+        icon: filter_1
+        preview:
+          icon: filter_1
+          text:
+            - key: title
+            - text: Carte numérotée
+        value:
+          number: ''
+          title: ''
+          text: ''
+          ctaLabel: ''
+          ctaHref: ''
+        _inputs:
+          number:
+            type: text
+            label: Numéro
+            comment: "Ex. « 01 » — affiché en gros chiffre pâle."
+          title:
+            type: text
+            label: Titre de la carte
+          text:
+            type: textarea
+            label: Texte de la carte
+          ctaLabel:
+            type: text
+            label: Libellé du bouton (optionnel)
+          ctaHref:
+            type: text
+            label: Lien du bouton (optionnel)
+            comment: "URL finale, préfixe de langue inclus (ex. /fr/contact)."
+
+  # Colonnes de technologies ({title, items[], subgroup?{label, items[]}}) pour
+  # la section « tech-columns » (P-07). Re-pointée par tech-columns.bookshop.yml.
+  # Les listes de chaînes déclarent leur type d'entrée par `items[*]` (leçon
+  # P-05 : un tableau vide sans type d'entrée est « misconfigured »).
+  tech_groups:
+    values:
+      - label: Colonne de technologies
+        icon: dns
+        preview:
+          icon: dns
+          text:
+            - key: title
+            - text: Colonne
+        value:
+          title: ''
+          items: []
+          subgroup:
+            label: ''
+            items: []
+        _inputs:
+          title:
+            type: text
+            label: Titre de la colonne
+          items:
+            type: array
+            label: Éléments
+            comment: "Une technologie / un outil par ligne."
+          items[*]:
+            type: text
+            label: Élément
+          subgroup:
+            type: object
+            label: Sous-groupe étiqueté (optionnel)
+            comment: >-
+              Ex. « Sources ouvertes et locales : » suivi de sa sous-liste.
+              Laisser l'étiquette et la liste vides pour ne pas l'afficher.
+          label:
+            type: text
+            label: Étiquette du sous-groupe
+
+  # ---- Structures des collections « Page Contact » / « Page Carrières »
+  # (2026-08-12). Chaque structure porte ses _inputs SCOPÉS — ils priment sur
+  # la carte plate de la collection (même mécanique que footer_columns), ce qui
+  # permet notamment deux sélecteurs d'icônes différents dans Carrières. ----
+
+  # Carte bureau de la page Contact {city, lines[], image}. L'ordre du tableau
+  # apparie les téléphones (gabarit) : Québec, Montréal, Paris.
+  contact_office_items:
+    values:
+      - label: Carte bureau
+        icon: location_city
+        preview:
+          icon: location_city
+          text:
+            - key: city
+            - text: Bureau
+        value:
+          city: ''
+          lines: []
+          image: ''
+        _inputs:
+          city:
+            type: text
+            label: Ville
+          lines:
+            type: array
+            label: Lignes d'adresse
+          lines[*]:
+            type: text
+            label: Ligne
+          image:
+            type: image
+            label: Photo du bureau
+            comment: Partagée entre les deux langues — téléverser une seule fois.
+            options:
+              paths:
+                static: public
+                uploads: public/images/contact
+
+  # Tuile de valeur de la page Carrières {icon, label}. Icônes en CLÉS FERMÉES
+  # dessinées en SVG par le gabarit (VALUE_ICONS, carrieres.astro) — en ajouter
+  # une = la dessiner là d'abord.
+  carriere_value_items:
+    values:
+      - label: Valeur
+        icon: stars
+        preview:
+          icon: stars
+          text:
+            - key: label
+            - text: Valeur
+        value:
+          icon: etoile
+          label: ''
+        _inputs:
+          icon:
+            type: select
+            label: Icône
+            comment: Liste fermée — les pictogrammes sont dessinés par le site.
+            options:
+              values:
+                - etoile
+                - groupe
+                - ampoule
+                - poignee
+                - insigne
+          label:
+            type: text
+            label: Libellé de la valeur
+
+  # Atout « Pourquoi rejoindre » {icon, title, text}. Mêmes règles de clés
+  # fermées (JOIN_ICONS, carrieres.astro).
+  carriere_feature_items:
+    values:
+      - label: Atout
+        icon: task_alt
+        preview:
+          icon: task_alt
+          text:
+            - key: title
+            - text: Atout
+        value:
+          icon: croissance
+          title: ''
+          text: ''
+        _inputs:
+          icon:
+            type: select
+            label: Icône
+            comment: Liste fermée — les pictogrammes sont dessinés par le site.
+            options:
+              values:
+                - croissance
+                - progression
+                - coeur
+                - formation
+          title:
+            type: text
+            label: Titre de l'atout
+          text:
+            type: textarea
+            label: Texte de l'atout
+
+  # Carte témoignage {image, quote, name, role} de la page Carrières.
+  carriere_testimonial_items:
+    values:
+      - label: Témoignage
+        icon: format_quote
+        preview:
+          icon: format_quote
+          text:
+            - key: name
+            - text: Témoignage
+        value:
+          image: ''
+          quote: ''
+          name: ''
+          role: ''
+        _inputs:
+          image:
+            type: image
+            label: Portrait
+            comment: Partagé entre les deux langues — téléverser une seule fois.
+            options:
+              paths:
+                static: public
+                uploads: public/images/carrieres
+          quote:
+            type: textarea
+            label: Citation
+          name:
+            type: text
+            label: Prénom
+          role:
+            type: text
+            label: Rôle / poste

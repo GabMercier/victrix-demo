@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { type Locale, localePaths } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
+import { getLocaleData } from '../../i18n/locale-data';
+
+/**
+ * /[lang]/recherche — recherche interne (P-06, Pagefind).
+ *
+ * L'index est généré au build par l'intégration 'victrix:pagefind'
+ * (astro.config.mjs) dans les DEUX modes de build; les assets vivent sous
+ * /pagefind/ (JS/CSS/WASM 100 % locaux — aucun service tiers, aucune requête
+ * externe, rien à déclarer côté Loi 25). Les langues sont partitionnées par
+ * <html lang> : cette page en FR ne remonte que des résultats FR, idem EN.
+ *
+ * noindex : les pages de résultats de recherche interne ne doivent jamais
+ * être indexées par les moteurs externes (bonne pratique SEO — Google la
+ * documente) ni entrer dans l'index Pagefind lui-même (data-pagefind-body
+ * suit !noindex dans BaseLayout). Exclue aussi du sitemap (astro.config.mjs).
+ *
+ * Serveur de dev : /pagefind/ n'existe pas (index = artefact de build) — le
+ * onerror du chargeur affiche une note à la place de l'interface. Sur un
+ * build (préversion, prod, CloudCannon), l'interface se charge normalement.
+ *
+ * ?q=<terme> est supporté (triggerSearch) — utile pour partager une recherche
+ * et pour le suivi « site search » des analytics (P-11).
+ */
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props as { lang: Locale };
+// GOTCHA Bookshop (voir merci.astro) : garder l'appel nu useTranslations(lang)
+// et atteindre t.search.* aux points d'usage.
+const t = useTranslations(lang);
+// Textes de la page ÉDITABLES AU CMS (collection `pagesSysteme`, bloc
+// `recherche` — migrés de ui.ts le 2026-08-12). L'interface Pagefind
+// (t.search.ui) et l'entrée du header restent dans ui.ts (interface).
+const sys = await getLocaleData('pagesSysteme', lang);
+
+const devNote =
+  lang === 'fr'
+    ? 'L’index de recherche est généré au build — il n’est pas disponible sur le serveur de développement. Lancez un build pour tester la recherche.'
+    : 'The search index is generated at build time — it is not available on the dev server. Run a build to try the search.';
+---
+
+<BaseLayout lang={lang} title={sys.recherche.metaTitle} description={sys.recherche.metaDescription} noindex>
+  <section class="search-page">
+    <div class="container search-page__inner">
+      <p class="search-page__eyebrow">{sys.recherche.eyebrow}</p>
+      <h1 class="search-page__title">{sys.recherche.title}</h1>
+      <p class="search-page__intro">{sys.recherche.intro}</p>
+
+      {/* Feuille de style de l'interface Pagefind — asset local produit par le
+          build (un <link rel="stylesheet"> dans le corps est valide HTML et
+          BaseLayout n'expose pas de slot <head>). 404 inoffensif en dev. */}
+      <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+
+      <div id="search" class="search-page__mount"></div>
+      <noscript><p class="search-page__note">{sys.recherche.noscript}</p></noscript>
+    </div>
+  </section>
+
+  {/* Suivi « Site Search » GA4 (P-11) — script GELÉ (contrat data-consent).
+      Deux sources : le paramètre ?q= (liens partagés / entrée du header) à
+      l'activation, et la saisie dans le champ Pagefind (écouteur document
+      délégué, debounce — le DOM Pagefind est injecté après coup). Garde
+      window.victrixSearchTrack : l'activation rejoue ce script à chaque
+      navigation vers /recherche (ClientRouter), l'écouteur ne doit s'attacher
+      qu'une fois par session. */}
+  <script is:inline type="text/plain" data-consent="analytics">
+    (function () {
+      const send = function (term) {
+        if (term && typeof window.gtag === 'function') {
+          window.gtag('event', 'search', { search_term: term });
+        }
+      };
+      send(new URLSearchParams(window.location.search).get('q'));
+      if (window.victrixSearchTrack) return;
+      window.victrixSearchTrack = { last: '', timer: 0 };
+      document.addEventListener('input', function (e) {
+        const el = e.target;
+        if (!el || !el.classList || !el.classList.contains('pagefind-ui__search-input')) return;
+        const state = window.victrixSearchTrack;
+        clearTimeout(state.timer);
+        state.timer = setTimeout(function () {
+          const v = (el.value || '').trim();
+          if (v && v !== state.last) {
+            state.last = v;
+            send(v);
+          }
+        }, 1500);
+      });
+    })();
+  </script>
+</BaseLayout>
+
+{/* Init Pagefind UI. define:vars ⇒ is:inline (CSP : 'unsafe-inline' déjà
+    permise sur /fr/*|/en/*; le WASM de Pagefind exige 'wasm-unsafe-eval' —
+    entrée CSP appliquée dans public/_headers, ligne OPS). data-astro-rerun :
+    le ClientRouter ré-exécute ce script après chaque swap (DOM neuf). Le
+    chargeur est dynamique avec onload/onerror : pas de course avec le script
+    externe, et le onerror couvre le serveur de dev (index absent). Aucun
+    écouteur document/window ici — le script doit rester ré-exécutable. */}
+<script define:vars={{ translations: t.search.ui, devNote }} data-astro-rerun>
+  (function () {
+    const mount = document.getElementById('search');
+    if (!mount) return;
+
+    function boot() {
+      if (!window.PagefindUI || mount.dataset.pagefindReady) return;
+      mount.dataset.pagefindReady = '1';
+      const ui = new window.PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        showImages: false,
+        autofocus: true,
+        translations: translations,
+      });
+      const q = new URLSearchParams(window.location.search).get('q');
+      if (q) ui.triggerSearch(q);
+    }
+
+    if (window.PagefindUI) {
+      boot();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = '/pagefind/pagefind-ui.js';
+    script.onload = boot;
+    script.onerror = function () {
+      const note = document.createElement('p');
+      note.className = 'search-page__note';
+      note.textContent = devNote;
+      mount.replaceChildren(note);
+    };
+    document.head.appendChild(script);
+  })();
+</script>
+
+<style>
+  .search-page {
+    padding-block: var(--space-8) var(--space-10);
+  }
+  .search-page__inner {
+    max-width: 860px;
+    margin-inline: auto;
+  }
+  .search-page__eyebrow {
+    color: var(--color-accent-blue);
+    font-size: var(--fs-200);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+  .search-page__title {
+    margin-bottom: var(--space-3);
+  }
+  .search-page__intro {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-6);
+  }
+  .search-page__note {
+    color: var(--color-text-muted);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-s);
+    padding: var(--space-4);
+  }
+  /* L'interface Pagefind est injectée au chargement : le CSS scopé d'Astro ne
+     peut pas la cibler, mais les variables CSS posées sur le point de montage
+     (présent dans le HTML statique) HÉRITENT vers tout le DOM injecté — c'est
+     le canal de personnalisation documenté de Pagefind. */
+  .search-page__mount {
+    --pagefind-ui-primary: var(--color-accent-blue);
+    --pagefind-ui-text: var(--color-navy);
+    --pagefind-ui-background: var(--color-white);
+    --pagefind-ui-border: var(--color-border);
+    --pagefind-ui-tag: var(--color-band);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: var(--radius-s);
+    --pagefind-ui-font: inherit;
+  }
+</style>

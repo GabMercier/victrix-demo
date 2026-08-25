@@ -1,0 +1,160 @@
+---
+/**
+ * Section « Bento des domaines d'expertise » — composant Bookshop, NOUVEAU
+ * 2026-08-05. FIDÉLITÉ MAQUETTE (docs/design/expertise-mere.css §Expertises
+ * Section (Bento Grid Style)) : tête deux colonnes (eyebrow 12/700 bleu +
+ * titre 40/700 à gauche ; intro 16/24 alignée à droite), grille bento 4
+ * colonnes (rangées de 96px, gouttière 16) — cartes à PEAU (blanche bordée /
+ * bleue / ardoise) et TAILLE :
+ *  - grande  : 2 colonnes × 3 rangées (carte vitrine, image optionnelle) ;
+ *  - haute   : 1 colonne × 2 rangées (icône ancrée en bas) ;
+ *  - large   : 2 colonnes × 1 rangée (texte à gauche, icône à droite) ;
+ *  - petite  : 1 colonne × 1 rangée (titre + icône).
+ * Bleus/ardoise = tokens (#1E47F4→primary, #515D82→secondary) ; bordure
+ * froide #C3C6D7 verbatim (précédent méga). Fond de section ivoire (surface).
+ *
+ * Props : { type: "expertise-bento", eyebrow?, title, intro?,
+ *           items: [{ title, text?, peau?, taille?, icon?, image?, href? }] }
+ * - `href` non vide → la carte entière devient un lien ;
+ * - images = chemins PUBLICS servis tels quels (browser-safe CloudCannon).
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface BentoItem {
+  title: string;
+  text?: string;
+  peau?: 'blanche' | 'bleue' | 'ardoise';
+  taille?: 'grande' | 'haute' | 'large' | 'petite';
+  icon?: 'fenetre' | 'graphique' | 'personnes' | 'engrenage' | 'document' | 'code' | '';
+  image?: string;
+  href?: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+  items: BentoItem[];
+}
+
+const { eyebrow, title, intro, items = [] } = Astro.props;
+
+// Pictogrammes (stroke 24px) par clé fermée du contrat.
+const ICONS: Record<string, string[]> = {
+  fenetre: ['M3 5h18v14H3V5Z', 'M3 9h18M8 5v4'],
+  graphique: ['M4 20V10M10 20V4M16 20v-7M20 20H3'],
+  personnes: [
+    'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+    'M3.5 19c.6-2.7 2.7-4.5 5.5-4.5s4.9 1.8 5.5 4.5',
+    'M15.5 5.6a3 3 0 0 1 0 4.8M17.5 14.9c1.6.6 2.7 1.9 3 4.1',
+  ],
+  engrenage: [
+    'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+    'M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 8.98 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 8.98a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1.03-1.56V3a2 2 0 1 1 4 0v.09c0 .68.4 1.3 1.03 1.56a1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V9c.26.63.88 1.03 1.56 1.03H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.56 1.03Z',
+  ],
+  document: ['M6 2h8l4 4v16H6V2Z', 'M14 2v4h4M9 12h6M9 16h6'],
+  code: ['m8 8-4 4 4 4M16 8l4 4-4 4', 'm13 5-2 14'],
+};
+
+const skins = {
+  blanche: {
+    card: 'bg-white border border-solid border-[#C3C6D7]',
+    title: 'text-on-surface',
+    text: 'text-on-surface-variant',
+    icon: 'text-primary',
+  },
+  bleue: { card: 'bg-primary', title: 'text-white', text: 'text-white/80', icon: 'text-white' },
+  ardoise: { card: 'bg-secondary', title: 'text-white', text: 'text-white/80', icon: 'text-white' },
+};
+
+const sizes = {
+  grande: 'md:col-span-2 md:row-span-3',
+  haute: 'md:row-span-2',
+  large: 'md:col-span-2 md:row-span-1',
+  petite: 'md:row-span-1',
+};
+---
+
+<section class="py-20 bg-surface">
+  <div class="container-site">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+      <div class="flex flex-col gap-2 max-w-[600px]">
+        {
+          eyebrow && (
+            <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary m-0 max-w-none">{eyebrow}</p>
+          )
+        }
+        <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-balance">
+          {title}
+        </h2>
+      </div>
+      {
+        intro && (
+          <p class="text-base leading-6 text-on-surface-variant m-0 max-w-[300px] lg:text-right">{intro}</p>
+        )
+      }
+    </div>
+    <ul role="list" class="grid grid-cols-1 md:grid-cols-4 md:auto-rows-[96px] gap-4 m-0 p-0 list-none">
+      {
+        items.map((item) => {
+          const skin = skins[item.peau ?? 'blanche'] ?? skins.blanche;
+          const size = sizes[item.taille ?? 'petite'] ?? sizes.petite;
+          const Tag = item.href ? 'a' : 'div';
+          const iconSvg = item.icon && ICONS[item.icon];
+          const isLarge = (item.taille ?? 'petite') === 'large';
+          const isGrande = (item.taille ?? 'petite') === 'grande';
+          return (
+            <li class:list={['m-0 min-h-[96px]', size]}>
+              <Tag
+                class:list={[
+                  'h-full rounded-sm p-6 no-underline flex',
+                  skin.card,
+                  isLarge
+                    ? 'flex-row items-center justify-between gap-6'
+                    : 'flex-col justify-between gap-4',
+                  item.href && 'transition-shadow hover:shadow-survol',
+                ]}
+                href={item.href || undefined}
+              >
+                <span class:list={['flex flex-col gap-2', isGrande && 'shrink-0']}>
+                  <span class:list={['block text-2xl leading-8 font-bold', skin.title]}>{item.title}</span>
+                  {item.text && (
+                    <span class:list={['block text-sm leading-5 max-w-[46ch]', skin.text]}>{item.text}</span>
+                  )}
+                </span>
+                {isGrande && item.image && (
+                  <img
+                    src={item.image}
+                    alt=""
+                    class="w-full grow min-h-0 object-cover rounded-sm"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
+                {iconSvg && (
+                  <span class:list={['shrink-0', skin.icon]}>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      {iconSvg.map((d) => (
+                        <path d={d} />
+                      ))}
+                    </svg>
+                  </span>
+                )}
+              </Tag>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>

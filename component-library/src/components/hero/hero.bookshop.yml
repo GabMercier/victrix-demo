@@ -1,0 +1,119 @@
+# =============================================================================
+# Spec Bookshop — section « Héros » (contrat landing GELÉ).
+# - `spec` : libellé/description/icône affichés dans la palette de composants
+#   de CloudCannon (éditeurs francophones — tout en français).
+# - `structures: [sections]` : le composant est proposé dans tout tableau
+#   `sections` du front matter — la clé du contrat landing (PAS `content_blocks`).
+# - `blueprint` : données initiales à l'ajout du composant ; c'est aussi la
+#   source des Structures générées par `npx @bookshop/generate` (postbuild
+#   CloudCannon). `type: hero` y figure pour satisfaire le discriminant du
+#   contrat ; il est masqué dans l'éditeur via `_inputs`.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Héros"
+  description: "Bandeau d'entête de la campagne : surtitre, titre, sous-titre et bouton d'appel à l'action. À placer en première position (il porte le <h1> de la page)."
+  icon: title
+  # Les clés de `spec` sont recopiées telles quelles sur la valeur de structure
+  # générée par `npx @bookshop/generate` (structure-builder.js étale `spec`) —
+  # le polissage du sélecteur CloudCannon vit donc ici, pas dans
+  # cloudcannon.config.yml (dont la palette `sections` est générée).
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/hero/preview.png"
+    text: Héros
+    subtext: Titre principal, sous-titre et bouton — toujours en premier
+  preview:
+    icon: title
+    text:
+      - key: title
+      - text: Héros
+
+blueprint:
+  type: hero
+  eyebrow: ""
+  title: "Titre de la campagne"
+  subtitle: ""
+  ctaLabel: ""
+  ctaHref: ""
+  titleAccent: ""
+  image: ""
+  cta2Label: ""
+  cta2Href: ""
+  eyebrowIcon: ""
+  ctaIcon: ""
+  fond: givre
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat landing — ne pas modifier."
+  eyebrow:
+    label: "Surtitre"
+    comment: "Courte ligne affichée au-dessus du titre (optionnel)."
+  title:
+    label: "Titre"
+  subtitle:
+    label: "Sous-titre"
+    comment: "Paragraphe d'appui sous le titre (optionnel)."
+  ctaLabel:
+    label: "Libellé du bouton"
+    comment: "Laisser vide pour masquer le bouton."
+  ctaHref:
+    label: "Lien du bouton"
+    comment: "URL de destination, p. ex. /fr/nous-joindre/."
+  titleAccent:
+    label: "Mots accentués du titre"
+    comment: "Sous-chaîne EXACTE du titre rendue en bleu (optionnel)."
+  image:
+    type: image
+    label: "Image (optionnelle)"
+    comment: >-
+      Visuel de droite (carte sur halo bleu flouté). Le fichier téléversé
+      atterrit dans public/images/sections/ (adresse servie telle quelle,
+      /images/…). Vide = héros en colonne texte seule.
+    options:
+      paths:
+        static: public
+        uploads: public/images/sections
+  cta2Label:
+    label: "Libellé du second bouton"
+    comment: "Bouton contour à droite du principal. Vide = absent."
+  cta2Href:
+    label: "Lien du second bouton"
+  eyebrowIcon:
+    type: select
+    label: "Icône du surtitre (optionnelle)"
+    options:
+      allow_empty: true
+      values:
+        - livre
+    comment: "Petit pictogramme devant le surtitre. Vide = aucun."
+  ctaIcon:
+    type: select
+    label: "Icône du bouton (optionnelle)"
+    options:
+      allow_empty: true
+      values:
+        - telechargement
+    comment: "Pictogramme à droite du libellé du bouton principal. Vide = aucun."
+  # « Fond de section » ÉTENDU au héros (2026-08-18, landing finale) : choix
+  # BORNÉ à la palette officielle — jamais de couleur libre (esprit P-16).
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      values:
+        - blanc
+        - givre
+        - ivoire
+        - beige
+        - sable
+    comment: "Couleur de fond de la section, bornée à la palette officielle : blanc · givre (gris très pâle) · ivoire · beige · sable."

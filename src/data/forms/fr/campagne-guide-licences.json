@@ -1,0 +1,100 @@
+{
+  "_schema": "default",
+  "name": "Campagne guide Licences Power Platform (FR)",
+  "toEmail": "",
+  "subject": "Demande du guide Licences Microsoft Power Platform",
+  "submitLabel": "Recevoir le guide",
+  "consentText": "En soumettant le formulaire, vous consentez à recevoir des communications de Victrix et acceptez sa politique de confidentialité (Loi 25).",
+  "fields": [
+    {
+      "label": "Prénom",
+      "type": "text",
+      "required": true,
+      "width": "demi",
+      "options": [],
+      "value": "",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "Nom",
+      "type": "text",
+      "required": true,
+      "width": "demi",
+      "options": [],
+      "value": "",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "Entreprise",
+      "type": "text",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "Courriel professionnel",
+      "type": "email",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "Je consens à ce que Victrix recueille et utilise mes renseignements pour traiter ma demande (Loi 25)",
+      "type": "checkbox",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "Page d'origine",
+      "type": "hidden",
+      "required": false,
+      "options": [],
+      "value": "{{page.titre}} ({{page.chemin}})",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "UTM — source",
+      "type": "hidden",
+      "required": false,
+      "options": [],
+      "value": "{{url.utm_source}}",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    },
+    {
+      "label": "UTM — campagne",
+      "type": "hidden",
+      "required": false,
+      "options": [],
+      "value": "{{url.utm_campaign}}",
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
+    }
+  ]
+}

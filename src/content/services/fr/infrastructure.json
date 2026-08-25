@@ -1,0 +1,41 @@
+{
+  "title": "Infrastructure",
+  "description": "Des fondations technologiques fiables, performantes et sécuritaires.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Infrastructure",
+      "subtitle": "Des fondations technologiques fiables, performantes et sécuritaires.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Page en préparation",
+      "paragraphs": [
+        "La présentation détaillée de notre offre en infrastructure sera publiée prochainement.",
+        "Entre-temps, consultez nos pages <a href=\"/fr/services/services-infonuagiques/\">infonuagique</a> et <a href=\"/fr/services/services-ti-geres/\">services gérés</a>, ou communiquez avec nos experts."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Parlons de votre infrastructure",
+      "body": "Évaluons ensemble vos besoins et les meilleures avenues.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "variant": "dark"
+    }
+  ]
+}

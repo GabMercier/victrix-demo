@@ -1,0 +1,86 @@
+---
+/**
+ * Section « Témoignage » — composant Bookshop (palette partagée).
+ *
+ * ⭐ PILOTE TAILWIND v4 (Phase 1 convergence, 2026-07-29) : premier composant
+ * re-skinné « Luminous Precision » — utilitaires Tailwind sur les tokens de
+ * src/styles/theme.css (@theme), ZÉRO CSS scopé (règle : pas d'hybride).
+ * Rendu : carte Level 2 de la charte (fond blanc, bordure douce, ombre
+ * ambiante teintée Bleu Nuit) sur bande Bleu Givré, typo Hanken Grotesk.
+ * Rappels liés à l'absence de preflight (voir theme.css) : `border-solid`
+ * explicite, `m-0`/`my-0` sur figure et blockquote (marges navigateur).
+ *
+ * Props : { type: "testimonial", quote, name, role?, organization?, photo? }
+ * - `type` est le discriminant du contrat de sections ; il arrive via le
+ *   spread {...section} depuis le renderer partagé et est ignoré ici.
+ *
+ * Contraintes / pièges (voir faq.astro pour le détail des conventions) :
+ * - <h2> interdit ici : un témoignage n'a pas de titre de section — le
+ *   blockquote est le contenu. Aucun impact sur la hiérarchie de titres.
+ * - `photo` est un CHEMIN (chaîne) servi tel quel — pas d'astro:assets
+ *   (composant rendu dans le navigateur par l'éditeur visuel). Vide ou
+ *   absente → pastille d'initiales générée en pur CSS/texte.
+ * - Éditeur visuel : les utilitaires vivent dans le CSS de build de la page
+ *   que l'éditeur charge — pas besoin de var(--token, secours) locales.
+ */
+
+interface Props {
+  quote: string;
+  name: string;
+  role?: string;
+  organization?: string;
+  photo?: string;
+}
+
+const { quote, name, role = '', organization = '', photo = '' } = Astro.props;
+
+// Pastille de secours : initiales dérivées du nom (« Jeanne Tremblay » → JT).
+const initials = (name ?? '')
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((part) => part[0].toUpperCase())
+  .join('');
+
+const attribution = [role, organization].filter((v) => v !== '').join(', ');
+---
+
+<section class="lp-testimonial bg-givre py-16 font-grotesk md:py-24">
+  <div class="mx-auto w-full max-w-[1200px] px-6">
+    <figure
+      class="mx-auto my-0 max-w-[760px] rounded-carte border border-solid border-bordure bg-white p-8 text-center shadow-ambiante md:p-12"
+    >
+      <blockquote class="relative m-0">
+        <span aria-hidden="true" class="block text-6xl font-bold leading-none text-royal">“</span>
+        <p class="m-0 mt-2 text-xl leading-snug font-medium tracking-tight text-balance text-nuit md:text-2xl">
+          {quote}
+        </p>
+      </blockquote>
+      <figcaption class="mt-8 flex items-center justify-center gap-3">
+        {
+          photo !== '' ? (
+            <img
+              class="h-14 w-14 flex-none rounded-full object-cover"
+              src={photo}
+              alt=""
+              width="56"
+              height="56"
+              loading="lazy"
+            />
+          ) : (
+            <span
+              aria-hidden="true"
+              class="inline-flex h-14 w-14 flex-none items-center justify-center rounded-full bg-nuit font-semibold text-white"
+            >
+              {initials}
+            </span>
+          )
+        }
+        <span class="flex flex-col items-start text-left">
+          <span class="font-semibold text-nuit">{name}</span>
+          {attribution !== '' && <span class="text-sm text-encre-douce">{attribution}</span>}
+        </span>
+      </figcaption>
+    </figure>
+  </div>
+</section>

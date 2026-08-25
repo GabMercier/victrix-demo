@@ -1,0 +1,147 @@
+{
+  "title": "Cybersecurity in the Healthcare Sector",
+  "description": "Discover our customized cybersecurity offering for the healthcare sector. Protect patient data and information systems against any attack.",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "",
+      "titleAccent": "",
+      "title": "Cybersecurity in the Healthcare Sector",
+      "titleHighlight": "Healthcare",
+      "lead": "Victrix offers a customized cybersecurity service for the healthcare sector. Protect patient data, your connected medical devices, and your information systems against all cyber threats.",
+      "ctaLabel": "Strengthen your cybersecurity",
+      "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
+      "imageAlt": ""
+    },
+    {
+      "type": "bento-metrics",
+      "title": "First-Class Cybersecurity and Confidentiality for Healthcare Organizations",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Extensive experience in the healthcare sector",
+        "text": "Our cybersecurity consultants understand the challenges healthcare providers face on a daily basis. We use cybersecurity best practices to <strong>protect your personal information</strong> and <strong>strengthen the security of your healthcare facility's systems</strong>.",
+        "watermark": "engrenage",
+        "stats": []
+      },
+      "aside": {
+        "icon": "insigne",
+        "title": "Personalized support",
+        "text": "To ensure optimal security for your healthcare organization, it is essential to achieve and maintain the highest standards — this is where professional support becomes indispensable.",
+        "linkLabel": "Talk to our experts",
+        "linkHref": "/en/contact"
+      }
+    },
+    {
+      "type": "numbered-cards",
+      "sectionTitle": "Cybersecurity Priorities for Healthcare Institutions",
+      "headingStyle": "plain",
+      "tone": "default",
+      "columns": "2",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Governance and Resilience",
+          "text": "Prepare healthcare facilities to deal with cyber threats and be able to conduct a cyber risk self-assessment."
+        },
+        {
+          "number": "02",
+          "title": "Resources and Sharing",
+          "text": "Identify and increase the number of professionals, ensure sufficient budget to strengthen cybersecurity and digital technology, and find a cybersecurity service tailored to specific and priority needs."
+        },
+        {
+          "number": "03",
+          "title": "Raising Awareness of Cybersecurity in Healthcare",
+          "text": "Raise awareness among senior management, raise awareness and train all employees, and implement cybersecurity crisis drills in case of phishing attacks or other threats."
+        },
+        {
+          "number": "04",
+          "title": "Operational Security",
+          "text": "Secure facility directories (AD) and medical equipment (IoT), manage exposure risks and access, and develop a business continuity and disaster recovery plan."
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "From Strategy to Cyber Resilience",
+      "paragraphs": [
+        "<strong>Strategy and governance</strong> — protect patient safety and personal data with our strategic approach: we identify your assets, analyze your risk, and ensure compliance to elevate the security of your sensitive medical data.",
+        "<strong>IT modernization</strong> — counter cyber threats and stay ahead of technological advances: virtualization, automation, and strategic orchestration, enhanced perimeter security with Zero Trust architecture, tailored hybrid cloud solutions, and highly secure networks.",
+        "<strong>Cloud and application optimization</strong> — secure infrastructure deployment (PaaS, SaaS, and IaaS), application transformation and optimization (DevOps/DevSecOps), process automation, and API security.",
+        "<strong>Tactical and operational support</strong> — security posture and maturity assessment, deployment of controls (EDR-XDR-MDR), identity and access management (IDaaS), cybersecurity audits, and 24/7 managed services.",
+        "<strong>Cyber resilience</strong> — backup and archiving, email security, regular updates to your IT security tools, security of your infrastructure, network, and work environments, plus expertise in crisis management and cyber insurance."
+      ],
+      "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Zero Trust", "label": "Enhanced perimeter security" },
+        { "value": "24/7", "label": "Audits and managed services" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
+    },
+    {
+      "type": "tech-columns",
+      "sectionTitle": "The Healthcare Ecosystem",
+      "groups": [
+        {
+          "title": "Agencies",
+          "items": [
+            "Digital Health Agency (ANS – France)",
+            "Digital Health Record (Quebec)",
+            "Quebec Health Agency"
+          ]
+        },
+        {
+          "title": "Ministries",
+          "items": [
+            "Quebec Ministry of Health and Social Services",
+            "CISSS (integrated health and social services centers) and regional variations"
+          ]
+        },
+        {
+          "title": "Centers and Institutions",
+          "items": [
+            "Integrated university centers",
+            "Private establishments"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "Our Technologies",
+      "fond": "givre",
+      "boxes": [
+        "Palo Alto",
+        "Checkpoint",
+        "Pulse Secure",
+        "CrowdStrike",
+        "Microsoft 365",
+        "Cisco",
+        "AlgoSec",
+        "AWS",
+        "ServiceNow",
+        "Proofpoint"
+      ]
+    },
+    {
+      "type": "cta",
+      "title": "Enhance the cybersecurity of your medical information",
+      "body": "Contact our team of experts and we will be happy to answer all your questions.",
+      "ctaLabel": "Contact our experts",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "slug": "cybersecurity/cybersecurity-healthcare",
+  "seoTitle": "Cybersecurity | Healthcare Sector"
+}

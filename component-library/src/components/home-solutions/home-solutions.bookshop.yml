@@ -1,0 +1,61 @@
+# =============================================================================
+# Spec Bookshop — section « Solutions phares » (accueil composable), NOUVELLE
+# 2026-08-04 (fidélité maquette accueil.css §SolutionsSection). Voir
+# home-hero.bookshop.yml pour les conventions communes. La grille `items`
+# pointe vers _structures.solution_items (cloudcannon.config.yml) — un
+# `type: array` explicite évite que @bookshop/generate fabrique une structure
+# inline générique (même garde-fou que expertises/benefits).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Accueil — Solutions phares"
+  description: "Trois cartes sombres photo + dégradé : icône, titre, texte et lien (ex. Ø Studio, SEvOC, Migration Azure)."
+  icon: dark_mode
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/home-solutions/preview.png"
+    text: "Accueil — Solutions phares"
+    subtext: Cartes sombres photo, icône, titre et lien
+  preview:
+    icon: dark_mode
+    text:
+      - key: title
+      - text: Solutions phares
+
+blueprint:
+  type: home-solutions
+  title: "Nos solutions phares"
+  ctaLabel: ""
+  ctaHref: ""
+  items:
+    - title: "Titre de la solution"
+      text: "Décrivez brièvement cette solution."
+      image: ""
+      href: "/fr/produits"
+      ctaLabel: "Découvrir"
+      icon: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat sections — ne pas modifier."
+  title:
+    label: "Titre de section"
+  ctaLabel:
+    label: "Libellé du lien de section"
+    comment: "Lien en haut à droite (ex. « Voir toutes nos solutions »). Vide = absent."
+  ctaHref:
+    label: "Lien de section"
+    comment: "URL finale, préfixe de langue inclus."
+  items:
+    type: array
+    label: "Cartes de solution"
+    comment: "Cartes sombres affichées en grille de 3."
+    options:
+      structures: _structures.solution_items

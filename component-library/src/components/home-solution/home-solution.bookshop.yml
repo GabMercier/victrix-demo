@@ -1,0 +1,74 @@
+# =============================================================================
+# Spec Bookshop — section « Solution phare » (accueil composable).
+# Voir home-hero.bookshop.yml pour les conventions communes. Le champ `image`
+# est téléversé via la config de la collection home (cloudcannon.config.yml,
+# _inputs.image + options.paths.uploads relatif) ; il est pré-résolu au build
+# par la page (getImage) — voir home-solution.astro.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Accueil — Solution phare"
+  description: "Bloc image + texte pour mettre en avant une offre : surtitre, titre, paragraphe et bouton, avec visuel à gauche."
+  icon: workspaces
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/home-solution/preview.png"
+    text: "Accueil — Solution phare"
+    subtext: Image à gauche, texte et bouton à droite
+  preview:
+    icon: workspaces
+    text:
+      - key: title
+      - text: Solution phare
+
+blueprint:
+  type: home-solution
+  eyebrow: ""
+  title: "Titre de la solution"
+  body: ""
+  ctaLabel: "En savoir plus"
+  ctaHref: "/fr/expertises/"
+  image: ""
+  statValue: ""
+  statLabel: ""
+  statText: ""
+  features: []
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat sections — ne pas modifier."
+  eyebrow:
+    label: "Surtitre"
+  title:
+    label: "Titre"
+  body:
+    label: "Texte"
+  ctaLabel:
+    label: "Libellé du bouton"
+  ctaHref:
+    label: "Lien du bouton"
+    comment: "URL finale, préfixe de langue inclus."
+  image:
+    label: "Image"
+  statValue:
+    label: "Carte flottante — valeur"
+    comment: "Ex. « 24/7 ». Vide = pas de carte flottante sur l'image."
+  statLabel:
+    label: "Carte flottante — libellé"
+  statText:
+    label: "Carte flottante — texte d'appui"
+  # Tuiles de caractéristiques (fidélité maquette « Libérez votre équipe ») —
+  # `type: array` explicite + structure dédiée (même garde-fou que items).
+  features:
+    type: array
+    label: "Tuiles de caractéristiques"
+    comment: "Petites tuiles sous le texte (ex. « M365 Écosystème »). Vide = aucune."
+    options:
+      structures: _structures.solution_features

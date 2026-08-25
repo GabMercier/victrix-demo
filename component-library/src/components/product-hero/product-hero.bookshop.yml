@@ -1,0 +1,97 @@
+# =============================================================================
+# Spec Bookshop — section « Héros catalogue produit » (palette partagée),
+# NOUVELLE 2026-08-24 (fidélité maquette docs/produits.css « Studio de
+# création »). Voir hero.bookshop.yml pour les conventions communes.
+# Rend le SEUL <h1> de la page — première position, jamais cumulé avec
+# service-hero.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Produit — Héros catalogue"
+  description: "Héros clair deux colonnes : pastille-badge, très grand titre à accent bleu, lead, boutons pilules ; photo inclinée sur halo bleu à droite."
+  icon: rocket_launch
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/product-hero/preview.png"
+    text: "Produit — Héros catalogue"
+    subtext: Badge, grand titre accentué, boutons pilules, photo inclinée
+  preview:
+    icon: rocket_launch
+    text:
+      - key: title
+      - text: Héros catalogue
+
+blueprint:
+  type: product-hero
+  badge: "Écosystème Microsoft 365"
+  title: "Titre du produit"
+  titleHighlight: ""
+  lead: ""
+  ctaLabel: "Demandez une consultation"
+  ctaHref: "/fr/contact"
+  cta2Label: ""
+  cta2Href: ""
+  image: ""
+  imageAlt: ""
+  fond: givre
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  badge:
+    label: "Badge (pastille)"
+    comment: "Pastille arrondie au-dessus du titre (ex. « Écosystème Microsoft 365 »). Rendu en majuscules. Vide = absente."
+  title:
+    label: "Titre"
+    comment: "Le titre principal (H1) de la page — cette section va en PREMIÈRE position."
+  titleHighlight:
+    label: "Portion du titre en bleu"
+    comment: "Sous-chaîne du titre rendue en bleu (première occurrence, ex. « Power Platform »). Vide = titre uniforme."
+  lead:
+    label: "Texte d'introduction"
+    comment: "Sous le titre. Peut contenir des <strong> (rendu HTML tel quel)."
+  ctaLabel:
+    label: "Bouton principal — libellé"
+    comment: "Bouton pilule bleu. Vide = absent."
+  ctaHref:
+    label: "Bouton principal — lien"
+    comment: "URL FINALE, préfixe de langue inclus (ex. « /fr/contact »)."
+  cta2Label:
+    label: "Bouton secondaire — libellé"
+    comment: "Bouton pilule contour. Vide = absent."
+  cta2Href:
+    label: "Bouton secondaire — lien"
+    comment: "URL FINALE, préfixe de langue inclus."
+  image:
+    type: image
+    label: "Photo (optionnelle)"
+    comment: >-
+      Carte photo inclinée à droite du texte, posée sur un halo bleu. Le
+      fichier téléversé atterrit dans public/images/sections/ (adresse servie
+      telle quelle, /images/…).
+    options:
+      paths:
+        static: public
+        uploads: public/images/sections
+  imageAlt:
+    label: "Texte alternatif de la photo"
+    comment: "Description pour l'accessibilité (laisser vide si l'image est purement décorative)."
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      values:
+        - blanc
+        - givre
+        - ivoire
+        - beige
+        - sable
+    comment: "Couleur de fond, bornée à la palette officielle. « givre » = rendu maquette."

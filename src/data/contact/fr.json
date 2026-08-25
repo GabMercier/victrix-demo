@@ -1,0 +1,69 @@
+{
+  "metaTitle": "Contact",
+  "metaDescription": "Communiquez avec Victrix : nos bureaux de Montréal, Québec et Paris, par téléphone, par courriel ou via notre formulaire.",
+  "heroTitle": "Contactez-nous !",
+  "heroSub": "Vous avez une question ou un projet ? N’hésitez pas à nous contacter. Nos experts sont là pour vous accompagner dans votre transformation numérique.",
+  "infoTitle": "Coordonnées",
+  "infoLabels": {
+    "tollFree": "Sans frais",
+    "email": "Courriel"
+  },
+  "offices": [
+    {
+      "city": "Québec",
+      "lines": ["330 Rue Saint-Vallier Est, #130", "Québec (QC), G1K 9C5"],
+      "image": "/images/contact/bureau-quebec.jpg"
+    },
+    {
+      "city": "Montréal",
+      "lines": ["1100 Boul. René-Lévesque O, #1900", "Montréal (QC), H3B 4N4"],
+      "image": "/images/contact/bureau-montreal.jpg"
+    },
+    {
+      "city": "Paris",
+      "lines": ["9-15 rue Rouget de Lisle", "Issy-les-Moulineaux, 92130"],
+      "image": "/images/contact/bureau-paris.jpg"
+    }
+  ],
+  "formTitle": "Prêt à faire évoluer votre organisation ?",
+  "formIntro": "Remplissez le formulaire et un de nos experts TI vous contactera dans les plus brefs délais pour discuter de vos défis et objectifs.",
+  "formBullets": [
+    "Consultation stratégique personnalisée",
+    "Expertise multidisciplinaire certifiée",
+    "Accompagnement de bout en bout"
+  ],
+  "reqNote": "Les champs marqués d’un astérisque (*) sont obligatoires.",
+  "labels": {
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Courriel",
+    "phone": "Téléphone",
+    "subject": "De quoi souhaitez-vous parler ?",
+    "subjectPlaceholder": "Sélectionnez un sujet",
+    "expertise": "Expertise",
+    "expertisePlaceholder": "Sélectionnez une expertise",
+    "request": "Précisez votre demande",
+    "message": "Message"
+  },
+  "placeholders": {
+    "firstName": "Votre prénom",
+    "lastName": "Votre nom",
+    "email": "votre@courriel.com",
+    "phone": "(418) 000 0000",
+    "request": "Écrire…",
+    "message": "Écrire…"
+  },
+  "subjectOptions": ["Un projet", "Une expertise", "Une carrière", "Autre"],
+  "expertiseOptions": [
+    "Conseil stratégique",
+    "Intelligence artificielle",
+    "Cybersécurité",
+    "Infonuagique",
+    "Infrastructure",
+    "Services gérés",
+    "Autre"
+  ],
+  "consentText": "En soumettant ce formulaire, vous consentez à recevoir des communications de Victrix et acceptez sa <a href=\"{privacy}\">politique de confidentialité</a>.",
+  "submit": "Envoyer le message",
+  "statusMessage": "Merci ! Votre message a bien été reçu. (Formulaire de démonstration — aucun envoi réel.)"
+}

@@ -1,0 +1,74 @@
+---
+/**
+ * Section « Encadré d'appel à l'action » — composant Bookshop (P-07).
+ * RE-SKIN DESIGN SYSTEM 2026-08-05 (landing-page.css §Contact CTA Section +
+ * recettes établies) — l'ancien thème navy/vert disparaît :
+ * - layout 'box' : encadré beige centré (surface-container, rayon 8) — titre
+ *   32/700, texte 16/26, bouton primaire rayon 2 (recette cta light) ;
+ * - layout 'banner-green' : BANDEAU PLEINE LARGEUR bg-primary py-64 — titre
+ *   16/24 blanc + texte 16/24 blanc/90 à gauche, bouton BLANC texte bleu à
+ *   droite (la maquette landing « Besoin d'un accompagnement sur mesure ? »).
+ *   La CLÉ 'banner-green' est conservée telle quelle (contrat gelé — le vert
+ *   n'existe plus dans le système, seule la peau change).
+ *
+ * Props : { type: "callout", title, body?, ctaLabel?, ctaHref?, layout? }
+ *
+ * Contraintes / pièges :
+ * - <h2> : le <h1> unique appartient au héros.
+ * - Le bouton n'est rendu que si le libellé ET le lien sont fournis.
+ * - Layout CALCULÉ (booléen) : toute valeur inattendue retombe sur 'box'.
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Props {
+  title: string;
+  body?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  layout?: 'box' | 'banner-green';
+}
+
+const { title, body, ctaLabel, ctaHref, layout = 'box' } = Astro.props;
+const isBanner = layout === 'banner-green';
+const hasCta = Boolean(ctaLabel && ctaHref);
+---
+
+{
+  isBanner ? (
+    <section class="bg-primary py-16">
+      <div class="container-site flex flex-wrap items-center justify-between gap-6">
+        <div class="flex flex-col gap-2 max-w-[576px]">
+          <h2 class="text-base leading-6 font-normal text-on-primary m-0">{title}</h2>
+          {body && <p class="text-base leading-6 text-on-primary/90 m-0 max-w-none">{body}</p>}
+        </div>
+        {hasCta && (
+          <a
+            class="shrink-0 inline-flex items-center justify-center bg-white text-primary px-8 py-4 rounded-xs text-base leading-6 no-underline hover:bg-primary-fixed transition-colors"
+            href={ctaHref}
+          >
+            {ctaLabel}
+          </a>
+        )}
+      </div>
+    </section>
+  ) : (
+    <section class="py-20 bg-surface">
+      <div class="container-site">
+        <div class="max-w-[860px] mx-auto bg-surface-container rounded-lg p-8 lg:p-12 text-center flex flex-col items-center gap-4">
+          <h2 class="text-[28px] leading-[1.2] lg:text-[32px] lg:leading-10 font-bold tracking-[-0.4px] text-on-surface m-0">
+            {title}
+          </h2>
+          {body && <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-[60ch]">{body}</p>}
+          {hasCta && (
+            <a
+              class="mt-2 inline-flex items-center justify-center bg-primary text-on-primary px-8 py-4 rounded-xs text-base leading-6 no-underline hover:bg-primary-container transition-colors"
+              href={ctaHref}
+            >
+              {ctaLabel}
+            </a>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}

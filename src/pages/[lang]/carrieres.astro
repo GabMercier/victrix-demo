@@ -1,0 +1,344 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { type Locale, localePaths, localizePath } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
+import { getLocaleData } from '../../i18n/locale-data';
+
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props as { lang: Locale };
+const t = useTranslations(lang);
+// Contenu ÉDITABLE AU CMS (collection `carrieres`, src/data/carrieres/<lang>.json
+// — migré de src/i18n/content/carrieres.ts le 2026-08-12 ; `testimonials.items`
+// y est devenu `testimonials.cards`, voir le schéma). Appel nu (gotcha
+// Bookshop, voir merci.astro) ; `c.…` aux points d'usage comme avant.
+const c = await getLocaleData('carrieres', lang);
+
+/**
+ * Page Carrières — FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/carriere.css +
+ * capture fournie par le user), lot « une page à la fois » :
+ *  - héros photo pleine largeur 560px + voile anthracite 40 %, H1 56/800
+ *    ls -1.12 blanc, sous-titre 18/29, bouton primaire 14/600 majuscules ;
+ *  - carte « Happy At Work » sur bande beige (surface-container) : tuile
+ *    insigne 192px bg-primary/5 bordée primary/20 rayon 12, titre 40/700,
+ *    citation italique à liseré gauche bleu 4px ;
+ *  - valeurs : eyebrow « CULTURE », 5 tuiles bordées (icône bleue + libellé
+ *    12/700 majuscules), survol bordure bleue ;
+ *  - « Pourquoi rejoindre notre équipe? » : photo 500px + carte flottante
+ *    bg-primary en bas-gauche, grille 2×2 d'atouts (icône pleine bleue,
+ *    titre 24/700, texte 16/26) ;
+ *  - témoignages sur bande sable (surface-container-high) : 2 cartes ivoire
+ *    centrées, portrait 96px rayon 12 bordé primary/10, guillemets décoratifs,
+ *    citation 18/29 italique, nom 24/700, rôle 12/700 bleu majuscules ;
+ *  - responsabilité sociale : texte + rangée partenaires (placeholders de la
+ *    maquette, opacité 60 %) à gauche, photo 400px à droite ;
+ *  - CTA final : aplat bg-primary centré max-768, bouton blanc texte bleu.
+ * Couleurs : export déjà Hanken/chaud → bleus/textes/fonds = TOKENS
+ * (#002FC7→primary, #1D46F3→primary-container [hover], #1C1C1A→on-surface,
+ * #444656→on-surface-variant, #F0EDEA→surface-container, #EBE8E4→
+ * surface-container-high, #E5E2DE→surface-container-highest, #747688→outline) ;
+ * bordures froides #C4C5D9 reprises VERBATIM (précédent méga/contact).
+ * Icônes Material des exports remplacées par des SVG inline (idiome du site —
+ * la police d'icônes n'est chargée que par /style-guide).
+ * La maquette n'a PAS de liste de postes : « Postulez » et le CTA final
+ * pointent vers /contact (Annexe B des arbitrages design).
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+
+const contactHref = localizePath('/contact', lang);
+
+// Pictogrammes trait (valeurs — stroke 1.8, viewBox 24) par clé fermée.
+const VALUE_ICONS: Record<string, string[]> = {
+  etoile: ['m12 3.5 2.5 5.2 5.7.7-4.2 4 1.1 5.6-5.1-2.8-5.1 2.8 1.1-5.6-4.2-4 5.7-.7L12 3.5Z'],
+  groupe: [
+    'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+    'M3.5 19c.6-2.7 2.7-4.5 5.5-4.5s4.9 1.8 5.5 4.5',
+    'M15.5 5.6a3 3 0 0 1 0 4.8M17.5 14.9c1.6.6 2.7 1.9 3 4.1',
+  ],
+  ampoule: [
+    'M12 3a6 6 0 0 0-3.4 10.9c.8.6 1.4 1.6 1.4 2.6h4c0-1 .6-2 1.4-2.6A6 6 0 0 0 12 3Z',
+    'M9.5 19.5h5',
+    'M10.5 22h3',
+  ],
+  poignee: [
+    'm11 17 2 2a1 1 0 1 0 3-3',
+    'm14 14 2.5 2.5a1 1 0 1 0 3-3l-3.9-3.9a3 3 0 0 0-4.2 0l-.9.9a1 1 0 1 1-3-3l2.8-2.8a5.8 5.8 0 0 1 7.1-.9l.5.3a2 2 0 0 0 1.4.2L21 4',
+    'm21 3 1 11h-2',
+    'M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3',
+    'M3 4h8',
+  ],
+  insigne: ['M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Z', 'm8.5 12 2.4 2.4 4.6-4.8'],
+};
+
+// Pictogrammes pleins (atouts « rejoindre » — fill, viewBox 24) par clé fermée.
+const JOIN_ICONS: Record<string, string[]> = {
+  croissance: ['M16 6h5v5l-1.87-1.87L14 14.3l-4-4-5.6 5.6L3 14.5l7-7 4 4 4.13-4.13L16 6Z'],
+  progression: ['M12 4a8 8 0 1 0 8 8h-2a6 6 0 1 1-1.76-4.24L14 10h6V4l-2.35 2.35A8 8 0 0 0 12 4Z'],
+  coeur: [
+    'M12 20.7C7.3 17.6 3 14.2 3 9.9 3 7.2 5.1 5 7.8 5c1.6 0 3.2.8 4.2 2.1C13 5.8 14.6 5 16.2 5 18.9 5 21 7.2 21 9.9c0 4.3-4.3 7.7-9 10.8Z',
+  ],
+  formation: ['m12 3 10 4.6-10 4.6L2 7.6 12 3Z', 'M5 12v4.3c0 1.5 3.1 2.7 7 2.7s7-1.2 7-2.7V12l-7 3.2L5 12Z'],
+};
+
+// Silhouette « jeunes talents » (responsabilité sociale — fill).
+const DIVERSITY_PATHS = [
+  'M9 10.5a2.75 2.75 0 1 0 0-5.5 2.75 2.75 0 0 0 0 5.5Z',
+  'M15.5 10.5a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z',
+  'M9 12.5c3 0 5.5 1.8 6 4.5v1H3v-1c.5-2.7 3-4.5 6-4.5Z',
+  'M15.5 12.7c2.6.2 4.6 1.8 5 4.3v1h-4v-1a6.2 6.2 0 0 0-1-4.3Z',
+];
+
+// Guillemets décoratifs des cartes témoignage (fill).
+const QUOTE_PATHS = [
+  'M10.7 7v4.6c0 3.7-2 6.2-5.6 7.4l-1-1.9c2.1-.8 3.3-2.1 3.6-3.9H4V7h6.7Z',
+  'M21 7v4.6c0 3.7-2 6.2-5.6 7.4l-1-1.9c2.1-.8 3.3-2.1 3.6-3.9h-3.7V7H21Z',
+];
+
+// Recettes partagées de la page (répétées si besoin ailleurs — pas d'abstraction).
+const cardBorder = 'border border-solid border-[#C4C5D9]';
+const h2Class = 'text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0';
+const capsLabel = 'text-xs font-bold uppercase tracking-[1.2px]';
+---
+
+<BaseLayout lang={lang} title={c.metaTitle} description={c.metaDescription} contentType="Page">
+  <Breadcrumbs
+    lang={lang}
+    items={[
+      { name: t.article.breadcrumbHome, path: localizePath('/', lang) },
+      { name: c.metaTitle },
+    ]}
+  />
+  <!-- Hero -->
+  <section class="relative flex items-center min-h-[560px] overflow-hidden">
+    <img
+      class="absolute inset-0 w-full h-full object-cover object-[50%_25%] border-0"
+      src="/images/carrieres/hero-vie-chez-victrix.jpg"
+      alt=""
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-on-surface/40" aria-hidden="true"></div>
+    <div class="relative z-10 w-full container-site py-24">
+      <div class="max-w-[672px] flex flex-col items-start gap-4">
+        <h1 class="text-[40px] leading-[1.2] lg:text-[56px] lg:leading-[70px] font-extrabold tracking-[-1.12px] text-on-primary m-0">
+          {c.hero.title}
+        </h1>
+        <p class="text-lg leading-[29px] text-on-primary/90 m-0 max-w-none">{c.hero.sub}</p>
+        <a
+          class="mt-4 inline-flex items-center bg-primary text-on-primary px-8 py-4 rounded-sm text-sm leading-none font-semibold tracking-[0.7px] uppercase no-underline shadow-lg hover:bg-primary-container transition-colors"
+          href={contactHref}
+        >
+          {c.hero.ctaLabel}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Happy At Work -->
+  <section class="bg-surface-container py-20">
+    <div class="container-site">
+      <div class:list={['bg-white rounded-sm p-8 md:p-12 flex flex-col md:flex-row items-center gap-6 md:gap-10', cardBorder]}>
+        <div
+          class="shrink-0 size-32 md:size-48 rounded-xl bg-primary/5 border-4 border-solid border-primary/20 flex items-center justify-center"
+        >
+          <svg class="text-primary size-14 md:size-16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+            <path
+              fill-rule="evenodd"
+              d="M12 2.5a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm0 3.1 1.1 2.3 2.5.4-1.8 1.8.4 2.5L12 11.4l-2.2 1.2.4-2.5-1.8-1.8 2.5-.4L12 5.6Z"
+            />
+            <path d="m7.7 15.2-1.8 6.3 6.1-2.7 6.1 2.7-1.8-6.3a8.2 8.2 0 0 1-8.6 0Z" />
+          </svg>
+        </div>
+        <div class="text-center md:text-left">
+          <h2 class:list={[h2Class, 'mb-2']}>{c.happy.title}</h2>
+          <p class="text-base leading-[26px] text-on-surface-variant m-0 mb-4 max-w-none">{c.happy.lead}</p>
+          <p class="text-base leading-[26px] text-on-surface-variant italic m-0 max-w-none border-0 border-l-4 border-solid border-primary pl-4 text-left">
+            {c.happy.quote}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Valeurs -->
+  <section class="bg-surface py-20">
+    <div class="container-site flex flex-col gap-8">
+      <div class="text-center">
+        <p class:list={[capsLabel, 'text-primary m-0 mb-2 max-w-none']}>{c.values.eyebrow}</p>
+        <h2 class:list={[h2Class, 'text-center']}>{c.values.title}</h2>
+      </div>
+      <ul role="list" class="grid grid-cols-2 md:grid-cols-5 gap-6 m-0 p-0 list-none">
+        {
+          c.values.items.map((item, i) => (
+            <li
+              class:list={[
+                'm-0 flex flex-col items-center text-center gap-2 p-4 border border-solid border-[#C4C5D9] hover:border-primary transition-colors',
+                i === c.values.items.length - 1 && 'col-span-2 md:col-span-1',
+              ]}
+            >
+              <svg
+                class="text-primary"
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                {(VALUE_ICONS[item.icon] ?? []).map((d) => (
+                  <path d={d} />
+                ))}
+              </svg>
+              <span class:list={[capsLabel, 'text-on-surface']}>{item.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Pourquoi rejoindre notre équipe? -->
+  <section class="py-20">
+    <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div class="relative rounded-sm overflow-hidden h-[400px] lg:h-[500px]">
+        <img
+          class="w-full h-full object-cover border-0"
+          src="/images/carrieres/equipe-environnement.jpg"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute bottom-0 left-0 max-w-[80%] bg-primary text-on-primary p-8">
+          <h3 class="text-2xl leading-[31px] font-bold m-0 mb-2">{c.join.cardTitle}</h3>
+          <p class="text-base leading-[26px] opacity-90 m-0 max-w-none">{c.join.cardText}</p>
+        </div>
+      </div>
+      <div>
+        <h2 class:list={[h2Class, 'mb-4']}>{c.join.title}</h2>
+        <p class="text-lg leading-[29px] text-on-surface-variant m-0 mb-8 max-w-none">{c.join.lead}</p>
+        <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-8 m-0 p-0 list-none">
+          {
+            c.join.features.map((feature) => (
+              <li class="m-0 flex items-start gap-4">
+                <svg
+                  class="shrink-0 mt-1 text-primary"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  {(JOIN_ICONS[feature.icon] ?? []).map((d) => (
+                    <path d={d} />
+                  ))}
+                </svg>
+                <div>
+                  <h3 class="text-2xl leading-[31px] font-bold text-on-surface m-0 mb-1">{feature.title}</h3>
+                  <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none">{feature.text}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Témoignages -->
+  <section class="bg-surface-container-high py-20 overflow-hidden">
+    <div class="container-site flex flex-col gap-12 lg:gap-20">
+      <h2 class:list={[h2Class, 'text-center']}>{c.testimonials.title}</h2>
+      <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-6 m-0 p-0 list-none">
+        {
+          c.testimonials.cards.map((t) => (
+            <li class:list={['m-0 relative bg-surface rounded-sm p-8 lg:p-12 flex flex-col items-center text-center', cardBorder]}>
+              <svg
+                class="absolute top-8 left-8 text-primary/20 opacity-50"
+                width="42"
+                height="42"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                focusable="false"
+              >
+                {QUOTE_PATHS.map((d) => (
+                  <path d={d} />
+                ))}
+              </svg>
+              <span class="block size-24 rounded-xl overflow-hidden border-4 border-solid border-primary/10 mb-6">
+                <img class="w-full h-full object-cover border-0" src={t.image} alt="" loading="lazy" decoding="async" />
+              </span>
+              <blockquote class="m-0 mb-8 relative z-10">
+                <p class="text-lg leading-[29px] italic text-on-surface m-0 max-w-none">{t.quote}</p>
+              </blockquote>
+              <div class="mt-auto">
+                <h3 class="text-2xl leading-8 font-bold text-on-surface m-0">{t.name}</h3>
+                <p class:list={[capsLabel, 'text-primary m-0 mt-1 max-w-none']}>{t.role}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Responsabilité sociale -->
+  <section class="py-20">
+    <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div>
+        <h2 class:list={[h2Class, 'mb-4']}>{c.social.title}</h2>
+        <p class="text-lg leading-[29px] text-on-surface-variant m-0 mb-4 max-w-none">{c.social.lead}</p>
+        <p class="m-0 max-w-none flex items-center gap-3">
+          <svg class="shrink-0 text-primary" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+            {DIVERSITY_PATHS.map((d) => <path d={d} />)}
+          </svg>
+          <span class="text-base leading-[26px] font-bold text-on-surface">{c.social.engagementTitle}</span>
+        </p>
+        <p class="text-base leading-[26px] text-on-surface-variant m-0 mt-4 max-w-none">{c.social.engagementText}</p>
+        <div class="flex gap-6 mt-8 opacity-60">
+          {
+            c.social.partners.map((partner) => (
+              <div class="h-12 w-32 bg-surface-container-highest rounded-xs flex items-center justify-center text-base font-bold text-outline">
+                {partner}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class="rounded-sm overflow-hidden h-[400px]">
+        <img
+          class="w-full h-full object-cover border-0"
+          src="/images/carrieres/responsabilite-sociale.jpg"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="bg-primary py-20">
+    <div class="container-site">
+      <div class="max-w-[768px] mx-auto flex flex-col items-center text-center gap-4">
+        <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-primary m-0">
+          {c.cta.title}
+        </h2>
+        <p class="text-lg leading-[29px] text-on-primary/90 m-0 max-w-none">{c.cta.text}</p>
+        <a
+          class="mt-4 inline-flex items-center bg-white text-primary px-10 py-4 rounded-sm text-sm leading-none font-bold tracking-[1.4px] uppercase no-underline hover:bg-primary-fixed transition-colors"
+          href={contactHref}
+        >
+          {c.cta.label}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

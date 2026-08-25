@@ -1,0 +1,76 @@
+{
+  "items": [
+    { "label": "Discover Victrix", "href": "/decouvrir" },
+    { "label": "Expertise", "href": "/expertises" },
+    { "label": "Services", "href": "/services" },
+    { "label": "Products", "href": "/produits" },
+    { "label": "Careers", "href": "/carrieres" },
+    { "label": "Resources", "href": "/ressources" }
+  ],
+  "portal": { "label": "Client portal", "visible": true },
+  "cta": { "label": "Contact", "href": "/contact" },
+  "mega": {
+    "parentHref": "/expertises",
+    "parentHrefs": ["/services", "/produits"],
+    "ariaLabel": "Expertise, Services and Products submenu",
+    "columns": [
+      {
+        "title": "Expertise",
+        "href": "/expertises",
+        "icon": "strategy",
+        "links": [
+          { "label": "Strategic consulting", "href": "/services/conseil-strategique" },
+          { "label": "Artificial intelligence", "service": "intelligence-artificielle" },
+          { "label": "Infrastructure", "href": "/services/infrastructure" },
+          { "label": "Sectors", "href": "/secteurs" }
+        ]
+      },
+      {
+        "title": "Services",
+        "href": "/services",
+        "icon": "cloud",
+        "links": [
+          { "label": "Application services", "href": "/services/services-applicatifs" },
+          { "label": "Cloud computing", "href": "/services/services-infonuagiques" },
+          { "label": "Cybersecurity", "href": "/services/cybersecurite" },
+          { "label": "AI projects", "href": "/services/projets-en-ia" },
+          { "label": "Managed services", "href": "/services/services-ti-geres" }
+        ]
+      },
+      {
+        "title": "Products",
+        "href": "/produits",
+        "icon": "productivity",
+        "links": [
+          { "label": "O bureau", "href": "/services/productivity-consulting/office-booking" },
+          { "label": "Employee platform & intranet", "href": "/services/productivity-consulting/employee-platform-intranet" },
+          { "label": "Copilot Studio", "href": "/services/productivity-consulting/copilot-studio" },
+          { "label": "IT procurement", "href": "/services/it-procurement" },
+          { "label": "Solutions catalogue", "href": "/solutions" }
+        ]
+      }
+    ],
+    "featured": {
+      "title": "AI projects",
+      "body": "See how we turn data into strategic advantage through artificial intelligence.",
+      "ctaLabel": "See the projects",
+      "href": "/services/intelligence-artificielle",
+      "image": "/images/home/expertise-intelligence-artificielle.jpg"
+    },
+    "stripe": {
+      "text": "Québec expertise, recognized internationally.",
+      "links": [
+        { "label": "Case studies", "href": "/ressources" },
+        { "label": "2024 white paper", "href": "/ressources" }
+      ]
+    }
+  },
+  "megaRessources": {
+    "parentHref": "/ressources",
+    "ariaLabel": "Resources submenu",
+    "intro": "Discover our resources: articles, news, videos and more.",
+    "ctaLabel": "Resources center",
+    "categoriesTitle": "Categories",
+    "latestTitle": "Latest articles"
+  }
+}

@@ -1,0 +1,200 @@
+---
+/**
+ * Section « Bento métriques » — composant Bookshop, NOUVEAU 2026-08-24.
+ * FIDÉLITÉ MAQUETTE (docs/produits.css §Section - Value Proposition & Metrics
+ * (Bento Grid), « Studio de création » — style catalogue/produit) : tête
+ * centrée (H2 36/40 ls -0.9 + intro 16/24 max 672), puis grille bento 2/3+1/3 —
+ *  - carte SOMBRE (2 colonnes) : aplat Bleu nuit rayon 24, titre 30/36 blanc,
+ *    texte 16/26 (max 448), rangée de puces-métriques « verre » (fond blanc
+ *    10 % + blur 2, libellé 12 + valeur 20/700), grand pictogramme en
+ *    FILIGRANE blanc 10 % débordant en bas à droite ;
+ *  - carte CLAIRE (1 colonne) : fond gris perle rayon 24 bordé froid, tuile
+ *    icône 48 bleue sur bleu 10 % rayon 12, titre 20/28, texte 14/20, lien
+ *    bleu 14/700 à flèche, calé au bas de la carte.
+ * Couleurs = TOKENS (#001B44→on-primary-fixed [Bleu nuit], #EDEEEF→
+ * surface-container, #00020A→on-surface, #44474F→on-surface-variant,
+ * #0038E6→primary) ; texte atténué de la carte sombre #7084B3→blanc 70 %
+ * (idiome a11y des aplats nuit — voir cta variante « nuit ») ; bordure froide
+ * rgba(197,198,208,.3) VERBATIM (famille C4C5D9).
+ *
+ * Props : { type: "bento-metrics", title, intro?, fond?,
+ *           featured: { title, text?, watermark?, stats: [{value,label}] },
+ *           aside?: { icon?, title, text?, linkLabel?, linkHref? } }
+ * - `watermark` (carte sombre) en clé fermée « eclair » | « engrenage » |
+ *   « graphique » | "" (vide = pas de filigrane) ;
+ * - `icon` (carte claire) en clé fermée « insigne » | « bouclier » |
+ *   « etoile » | "" — clés DISTINCTES à dessein : un même nom de champ
+ *   partagerait sa config _inputs CloudCannon (chemins imbriqués non
+ *   supportés, gotcha consigné 2026-07-20) ;
+ * - `stats` : mêmes {value,label} que strategic-value (_structures.stat_tiles).
+ *
+ * Contraintes / pièges :
+ * - <h2> de section, <h3> par carte : le <h1> unique appartient au héros.
+ * - `featured`/`aside` peuvent être absents PENDANT l'édition CloudCannon —
+ *   chaque carte est gardée (rien ne rend tant que l'objet n'existe pas).
+ * - `featured.text` peut contenir des <strong> → set:html (contenu de dépôt).
+ * - Filigrane : parent `overflow-hidden isolate` + `-z-10` (patron cta).
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  title: string;
+  intro?: string;
+  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  featured?: {
+    title: string;
+    text?: string;
+    watermark?: 'eclair' | 'engrenage' | 'graphique' | '';
+    stats?: Stat[];
+  };
+  aside?: {
+    icon?: 'insigne' | 'bouclier' | 'etoile' | '';
+    title: string;
+    text?: string;
+    linkLabel?: string;
+    linkHref?: string;
+  };
+}
+
+const { title, intro, fond = 'blanc', featured, aside } = Astro.props;
+
+// « Fond de section » : clé fermée → utilitaire de la palette officielle.
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
+
+const stats = featured?.stats ?? [];
+
+// Pictogrammes trait (viewBox 24) par clé fermée — filigrane de la carte
+// sombre (rendu en grand, trait fin 1.2).
+const WATERMARKS: Record<string, string[]> = {
+  eclair: ['M13 2 4.5 13.5h6L11 22l8.5-11.5h-6L13 2Z'],
+  engrenage: [
+    'M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z',
+    'M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.1-1.51 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.51-1.1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34h.09a1.7 1.7 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.51 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87v.09a1.7 1.7 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z',
+  ],
+  graphique: ['M4 20h16', 'M7 20v-6', 'M12 20V8', 'M17 20V9'],
+};
+
+// Pictogrammes trait (stroke 1.8, viewBox 24) — tuile de la carte claire.
+const ICONS: Record<string, string[]> = {
+  insigne: ['M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Z', 'm8.5 12 2.4 2.4 4.6-4.8'],
+  bouclier: ['M12 3 5 5.5v5c0 4.4 3 8.1 7 9.5 4-1.4 7-5.1 7-9.5v-5L12 3Z', 'm9.5 11.8 1.9 1.9 3.4-3.6'],
+  etoile: ['m12 3.5 2.5 5.2 5.7.7-4.2 4 1.1 5.6-5.1-2.8-5.1 2.8 1.1-5.6-4.2-4 5.7-.7L12 3.5Z'],
+};
+
+const watermark = featured?.watermark ? WATERMARKS[featured.watermark] : undefined;
+const asideIcon = aside?.icon ? ICONS[aside.icon] : undefined;
+---
+
+<section class:list={['py-20 lg:py-24', FONDS[fond] ?? FONDS.blanc]}>
+  <div class="container-site flex flex-col gap-12 lg:gap-16">
+    <div class="max-w-[672px] mx-auto flex flex-col items-center text-center gap-4">
+      <h2 class="text-[28px] leading-[1.15] lg:text-4xl lg:leading-10 font-bold tracking-[-0.9px] text-on-surface m-0 text-balance">
+        {title}
+      </h2>
+      {intro && <p class="text-base leading-6 text-on-surface-variant m-0 max-w-none">{intro}</p>}
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {
+        featured && (
+          <div class="relative overflow-hidden isolate lg:col-span-2 bg-on-primary-fixed rounded-3xl p-8 lg:p-10 flex flex-col gap-8">
+            {watermark && (
+              <svg
+                class="absolute -right-8 -bottom-10 text-white opacity-10 -z-10"
+                width="190"
+                height="190"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                {watermark.map((d) => (
+                  <path d={d} />
+                ))}
+              </svg>
+            )}
+            <div class="flex flex-col gap-4">
+              <h3 class="text-2xl leading-8 lg:text-[30px] lg:leading-9 font-bold text-white m-0">{featured.title}</h3>
+              {featured.text && <p class="text-base leading-[26px] text-white/70 m-0 max-w-[448px]" set:html={featured.text} />}
+            </div>
+            {stats.length > 0 && (
+              <ul role="list" class="flex flex-wrap gap-4 m-0 mt-auto p-0 list-none">
+                {stats.map((stat) => (
+                  <li class="m-0 bg-white/10 backdrop-blur-[2px] rounded-lg px-4 py-2 flex flex-col">
+                    <span class="text-xs leading-4 text-white/70">{stat.label}</span>
+                    <span class="text-xl leading-7 font-bold text-white">{stat.value}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )
+      }
+      {
+        aside && (
+          <div class="bg-surface-container border border-solid border-[#C5C6D0]/30 rounded-3xl p-8 lg:p-10 flex flex-col items-start">
+            {asideIcon && (
+              <span class="size-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                <svg
+                  class="text-primary"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  {asideIcon.map((d) => (
+                    <path d={d} />
+                  ))}
+                </svg>
+              </span>
+            )}
+            <h3 class="text-xl leading-7 font-bold text-on-surface m-0 mb-2">{aside.title}</h3>
+            {aside.text && <p class="text-sm leading-5 text-on-surface-variant m-0 max-w-none">{aside.text}</p>}
+            {aside.linkLabel && aside.linkHref && (
+              <a
+                class="no-underline inline-flex items-center gap-2 pt-6 mt-auto text-sm leading-5 font-bold text-primary hover:text-primary-container transition-colors"
+                href={aside.linkHref}
+              >
+                {aside.linkLabel}
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M5 12h14m0 0-6-6m6 6-6 6" />
+                </svg>
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

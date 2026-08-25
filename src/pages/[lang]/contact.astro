@@ -1,151 +1,462 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { type Locale, localePaths, localizePath } from '../../i18n/config';
-import { contactContent } from '../../i18n/content/contact';
+import { useTranslations } from '../../i18n/ui';
+import { getLocaleData } from '../../i18n/locale-data';
 
 export const getStaticPaths = localePaths;
 
 const { lang } = Astro.props as { lang: Locale };
-const c = contactContent[lang];
+const t = useTranslations(lang);
+// Contenu ÉDITABLE AU CMS (collection `contact`, src/data/contact/<lang>.json —
+// migré de src/i18n/content/contact.ts le 2026-08-12). Appel nu (gotcha
+// Bookshop, voir merci.astro) ; `c.…` aux points d'usage comme avant.
+const c = await getLocaleData('contact', lang);
 
-// Locale-neutral coordinates, zipped with the localized office cards by index.
+/**
+ * Page Contact — FIDÉLITÉ MAQUETTE FINALE 2026-08-18
+ * (docs/design/export2/contactfinal.css + capture fournie par le user) :
+ *  - héros centré IVOIRE (py 120) : H1 56/800 ls -1.12 navy + sous-titre
+ *    18/29 centré — l'eyebrow de l'ancienne maquette est SUPPRIMÉ ;
+ *  - bande BLANCHE : 4 colonnes ÉGALES gap 16 — carte Coordonnées blanche
+ *    (titre bleu, 2 rangées tél/courriel SEULEMENT — la mini-grille des
+ *    villes de l'ancienne maquette est supprimée) + 3 cartes bureaux BEIGE
+ *    (photo ~2:1 rayon 2, ville 24/700 + adresse flush, tél bleu en pied) ;
+ *    cartes : rayon 8, ombre 0 1px 2px 25 %, SANS bordure ;
+ *  - section formulaire IVOIRE (py 60) 2 colonnes ≈1:2 gap 16 : titre
+ *    40/700 + intro + puces cochées bleues à gauche ; panneau BEIGE rayon 2
+ *    sans bordure à droite (champs 50px blancs rayon 2 bordure neutral-400,
+ *    selects à chevron custom neutral-600, consentement 14px, bouton primaire
+ *    PLEINE LARGEUR h 56 rayon 4 + flèche).
+ * Couleurs : 100 % tokens — #002FC7→primary (décision user 2026-08-18 :
+ * teinte proche = token en place), #00105B→on-primary-fixed,
+ * #1C1C1A→on-surface, #444656→on-surface-variant, #FAF7F4→ivoire,
+ * #F1E8DF→beige, #AAB2C0→neutral-400, #545F71→on-surface-variant.
+ * Les verbatims de l'ancienne maquette (#C4C5D9, #F0EDEA) sont PURGÉS.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé (l'ancienne
+ * feuille de la page est supprimée).
+ *
+ * PORTAGE /api/forms FAIT (2026-08-17 — docs/formulaires.md §10) : DEUX MODES,
+ * même règle que la section « form » (form.astro) :
+ *  - PUBLIC_FORMS_ENABLED absente → MAQUETTE inchangée (aucun `action`, le
+ *    script en bas simule la confirmation — il se repère par
+ *    [data-contact-form], attribut posé seulement dans ce mode) ;
+ *  - PUBLIC_FORMS_ENABLED="1" → vrai <form method="POST" action="/api/forms">
+ *    avec le contrat de champs §4 : `lang`, `source`, `_formId: contact`
+ *    (le serveur dérive requis/courriels/cases et la liste blanche des selects
+ *    DEPUIS la définition src/data/forms/<lang>/contact.json), pot de miel
+ *    `website`, bannière ?erreur=1, widget Turnstile si la clé est posée,
+ *    data-astro-reload (POST natif urlencoded, vrai suivi du 303 vers /merci).
+ * Les `name` des champs sont DÉRIVÉS de la définition (fieldName partagé) et
+ * deux garde-fous de build cassent la compilation si la page et la définition
+ * divergent (libellés, options des selects) — une dérive silencieuse ferait
+ * rejeter des soumissions légitimes.
+ */
+import { getEntry } from 'astro:content';
+import { fieldName } from '../../lib/forms/field-name';
+
+// Locale-neutral coordinates (template-only, mirrors the office cards order).
 const officePhones = [
-  { phone: '514 879-1919', tel: '+15148791919' },
-  { phone: '418 780-8181', tel: '+14187808181' },
+  { phone: '418-780-8181', tel: '+14187808181' },
+  { phone: '514-879-1919', tel: '+15148791919' },
   { phone: '+33 1 74 90 50 40', tel: '+33174905040' },
 ];
 
 const consentHtml = c.consentText.replace('{privacy}', localizePath('/politique-confidentialite', lang));
+
+// --- Formulaire réel : définition, noms de champs, garde-fous ---------------
+const formDefEntry = await getEntry('forms', `${lang}/contact`);
+if (!formDefEntry) {
+  throw new Error(
+    `[contact] définition introuvable : src/data/forms/${lang}/contact.json — la page Contact exige un formulaire « contact » par langue.`,
+  );
+}
+const formDef = formDefEntry.data;
+const defNames = new Map(formDef.fields.map((f, i) => [f.label, fieldName(f.label, i)]));
+/** Nom HTML d'un champ, par LIBELLÉ exact de la définition (garde-fou build). */
+const nameFor = (label: string): string => {
+  const name = defNames.get(label);
+  if (!name) {
+    throw new Error(
+      `[contact] champ « ${label} » absent de src/data/forms/${lang}/contact.json — réaligner la définition avec la page (libellés identiques, à l'accent près).`,
+    );
+  }
+  return name;
+};
+/** Les options d'un select de la page doivent égaler celles de la définition. */
+const assertSameOptions = (label: string, options: string[]): void => {
+  const defOptions = formDef.fields.find((f) => f.label === label)?.options ?? [];
+  const same =
+    options.length === defOptions.length && options.every((opt, i) => opt === defOptions[i]);
+  if (!same) {
+    throw new Error(
+      `[contact] options de « ${label} » désalignées entre src/data/contact/${lang}.json (page) et src/data/forms/${lang}/contact.json (définition — la liste blanche du serveur).`,
+    );
+  }
+};
+assertSameOptions(c.labels.subject, c.subjectOptions);
+assertSameOptions(c.labels.expertise, c.expertiseOptions);
+// La case de consentement est identifiée par TYPE (son libellé de définition
+// est interne — la page affiche son propre texte riche avec le lien).
+const consentDefField = formDef.fields.find((f) => f.type === 'checkbox');
+if (!consentDefField) {
+  throw new Error(
+    `[contact] la définition src/data/forms/${lang}/contact.json doit contenir une case à cocher (consentement Loi 25).`,
+  );
+}
+const consentName = nameFor(consentDefField.label);
+
+// Mode fonctionnel (mêmes drapeaux que form.astro — parité stricte sans clés).
+const env = import.meta.env ?? {};
+const formsEnabled = env.PUBLIC_FORMS_ENABLED === '1';
+const turnstileSiteKey = formsEnabled ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+const pagePath = Astro.url?.pathname ?? '';
+
+// Pot de miel : idiome « visuellement masqué » EN LIGNE (patron form.astro).
+const honeypotStyle =
+  'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;';
+const errorBannerStyle =
+  'border:1px solid var(--color-error);background-color:var(--color-error-container);color:var(--color-on-error-container);';
+const errorMessage =
+  lang === 'en'
+    ? 'Your message could not be sent. Please check your answers and try again.'
+    : 'Votre message n’a pas pu être envoyé. Vérifiez vos réponses, puis réessayez.';
+
+// Recettes partagées de la page (répétées si besoin ailleurs — pas d'abstraction).
+const cardShadow = 'shadow-[0_1px_2px_rgba(0,0,0,0.25)]';
+const labelClass = 'block text-base font-bold text-on-surface';
+const inputClass =
+  'w-full h-[50px] px-3 bg-white border border-solid border-neutral-400 rounded-sm text-base text-on-surface-variant placeholder:text-on-surface-variant focus-visible:border-primary focus-visible:outline-none';
+const phoneIcon =
+  'M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z';
 ---
 
-<BaseLayout lang={lang} title={c.metaTitle} description={c.metaDescription}>
+<BaseLayout lang={lang} title={c.metaTitle} description={c.metaDescription} contentType="Page">
+  <Breadcrumbs
+    lang={lang}
+    items={[
+      { name: t.article.breadcrumbHome, path: localizePath('/', lang) },
+      { name: c.metaTitle },
+    ]}
+  />
+  {/* LocalBusiness ×3 (2026-08-17, F3.2) — un schéma par bureau, depuis le
+      MÊME contenu CMS que les cartes (collection contact) : adresse, ville,
+      téléphone (apparié par position, comme les cartes), photo. */}
+  {
+    c.offices.map((office, i) => (
+      <JsonLd
+        slot="head"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'LocalBusiness',
+          name: `Les Solutions Victrix — ${office.city}`,
+          parentOrganization: { '@type': 'Organization', name: 'Les Solutions Victrix' },
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: office.lines.join(', '),
+            addressLocality: office.city,
+            addressCountry: office.city === 'Paris' ? 'FR' : 'CA',
+          },
+          ...(officePhones[i] ? { telephone: officePhones[i].tel } : {}),
+          ...(office.image ? { image: new URL(office.image, Astro.site).href } : {}),
+          url: new URL(Astro.url.pathname, Astro.site).href,
+        }}
+      />
+    ))
+  }
   <!-- Hero -->
-  <section class="c-hero">
-    <div class="container">
-      <h1 class="c-hero__title">{c.heroTitle}</h1>
-      <p class="c-hero__sub">{c.heroSub}</p>
+  <section class="bg-ivoire py-20 lg:py-30">
+    <div class="container-site flex flex-col items-center text-center gap-4">
+      {/* H1 #00105B maquette → bleu-800 #072c88 (le token BLEU le plus proche —
+          on-primary-fixed #0b1334 rendait presque noir, écart signalé user). */}
+      <h1 class="text-[40px] leading-[1.1] lg:text-[56px] lg:leading-[62px] font-extrabold tracking-[-1.12px] text-bleu-800 m-0">
+        {c.heroTitle}
+      </h1>
+      <p class="text-lg leading-[29px] text-on-surface-variant max-w-[672px] m-0">{c.heroSub}</p>
     </div>
   </section>
 
-  <!-- Contact card: coordinates + form -->
-  <section class="c-card-wrap">
-    <div class="container">
-      <div class="c-card">
-        <!-- Coordinates panel -->
-        <div class="c-info">
-          <h2 class="c-info__title">{c.infoTitle}</h2>
-          <ul role="list" class="c-info__list">
-            <li><span>{c.infoLabels.montreal}</span> <a href="tel:+15148791919">514 879-1919</a></li>
-            <li><span>{c.infoLabels.quebec}</span> <a href="tel:+14187808181">418 780-8181</a></li>
-            <li><span>{c.infoLabels.paris}</span> <a href="tel:+33174905040">+33 1 74 90 50 40</a></li>
-            <li><span>{c.infoLabels.tollFree}</span> <a href="tel:+18886808181">1 888 680-8181</a></li>
-          </ul>
-          <p class="c-info__email">
-            <a href="mailto:contact@victrix.ca">contact@victrix.ca</a>
-          </p>
-          <div class="c-info__social">
-            <a href="#" class="c-info__sociallink" aria-label={c.infoLabels.facebookAria}>
-              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path fill="currentColor" d="M14 9h2.5V6H14c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v7h3v-7H16l.5-3h-3V9.5C13.5 9.2 13.7 9 14 9z" />
-              </svg>
-            </a>
-            <a href="#" class="c-info__sociallink" aria-label={c.infoLabels.linkedinAria}>
-              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path fill="currentColor" d="M6.94 7.5a1.94 1.94 0 1 1 0-3.88 1.94 1.94 0 0 1 0 3.88zM5.2 9h3.5v11H5.2V9zm5.6 0h3.35v1.5h.05c.47-.85 1.6-1.75 3.3-1.75 3.53 0 4.18 2.2 4.18 5.05V20h-3.5v-4.9c0-1.17-.02-2.67-1.7-2.67-1.7 0-1.96 1.28-1.96 2.59V20h-3.5V9z" />
-              </svg>
-            </a>
+  <!-- Coordonnées + bureaux -->
+  <section class="bg-white py-20">
+    <div class="container-site grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+      <!-- Carte coordonnées -->
+      <div class:list={['bg-white rounded-lg p-6 flex flex-col gap-8', cardShadow]}>
+        <h2 class="text-2xl font-bold text-primary m-0">{c.infoTitle}</h2>
+        <div class="flex flex-col gap-4">
+          <div class="flex items-start gap-4">
+            <svg class="shrink-0 mt-1 text-primary" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d={phoneIcon} />
+            </svg>
+            <p class="m-0 max-w-none">
+              <span class="block text-base font-bold text-on-surface">{c.infoLabels.tollFree}</span>
+              <a class="text-base text-on-surface-variant no-underline hover:text-primary" href="tel:+18886808181">1-888-680-8181</a>
+            </p>
+          </div>
+          <div class="flex items-start gap-4">
+            <svg class="shrink-0 mt-1 text-primary" width="20" height="16" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <rect x="2" y="2" width="20" height="16" rx="2" />
+              <path d="m2 4 10 8L22 4" />
+            </svg>
+            <p class="m-0 max-w-none">
+              <span class="block text-base font-bold text-on-surface">{c.infoLabels.email}</span>
+              <a class="text-base text-on-surface-variant no-underline hover:text-primary" href="mailto:contact@victrix.ca">contact@victrix.ca</a>
+            </p>
           </div>
         </div>
-
-        <!-- Form -->
-        <div class="c-form">
-          <h2 class="c-form__title">{c.formTitle}</h2>
-          <p class="c-form__req" id="req-note">{c.reqNote}</p>
-
-          <form class="form" aria-describedby="req-note" data-contact-form>
-            <div class="form__row">
-              <div class="field">
-                <label for="firstname">{c.labels.firstName} <span aria-hidden="true">*</span></label>
-                <input id="firstname" name="firstname" type="text" autocomplete="given-name" required />
-              </div>
-              <div class="field">
-                <label for="lastname">{c.labels.lastName} <span aria-hidden="true">*</span></label>
-                <input id="lastname" name="lastname" type="text" autocomplete="family-name" required />
-              </div>
-            </div>
-
-            <div class="form__row">
-              <div class="field">
-                <label for="email">{c.labels.email} <span aria-hidden="true">*</span></label>
-                <input id="email" name="email" type="email" autocomplete="email" required />
-              </div>
-              <div class="field">
-                <label for="phone">{c.labels.phone}</label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" />
-              </div>
-            </div>
-
-            <fieldset class="field field--group">
-              <legend>{c.labels.subjectLegend} <span aria-hidden="true">*</span></legend>
-              <div class="radio-row">
-                <label class="radio"><input type="radio" name="subject" value="projet" required /> {c.labels.subjectProjet}</label>
-                <label class="radio"><input type="radio" name="subject" value="expertise" /> {c.labels.subjectExpertise}</label>
-                <label class="radio"><input type="radio" name="subject" value="autre" /> {c.labels.subjectAutre}</label>
-              </div>
-            </fieldset>
-
-            <div class="field">
-              <label for="message">{c.labels.message} <span aria-hidden="true">*</span></label>
-              <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-
-            <div class="field field--check">
-              <label class="check">
-                <input type="checkbox" name="consent" required />
-                <span set:html={consentHtml} />
-              </label>
-            </div>
-
-            <button type="submit" class="btn btn--primary form__submit">{c.submit}</button>
-
-            <p class="form__status" data-form-status data-success={c.statusMessage} role="status" aria-live="polite" hidden></p>
-          </form>
-        </div>
       </div>
+
+      <!-- Cartes bureaux -->
+      {
+        c.offices.map((office, i) => (
+          <article class:list={['bg-beige rounded-lg p-4 flex flex-col gap-4', cardShadow]}>
+            <img
+              class="w-full aspect-[252/128] object-cover rounded-sm border-0"
+              src={office.image}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <div>
+              <h3 class="text-2xl font-bold text-on-surface m-0">{office.city}</h3>
+              <address class="not-italic text-base leading-[26px] text-on-surface-variant m-0">
+                {office.lines.map((line) => (
+                  <span class="block">{line}</span>
+                ))}
+              </address>
+            </div>
+            {officePhones[i] && (
+              <a
+                class="mt-auto inline-flex items-center gap-2 text-base font-bold text-primary no-underline hover:text-primary-container"
+                href={`tel:${officePhones[i].tel}`}
+              >
+                <svg class="shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                  <path d={phoneIcon} />
+                </svg>
+                {officePhones[i].phone}
+              </a>
+            )}
+          </article>
+        ))
+      }
     </div>
   </section>
 
-  <!-- Offices -->
-  <section class="offices">
-    <div class="container">
-      <h2 class="offices__title">{c.officesTitle}</h2>
-      <div class="offices__map" role="img" aria-label={c.mapAria}>
-        <span class="offices__map-note">{c.mapNote}</span>
+  <!-- Formulaire -->
+  <section class="bg-ivoire py-15">
+    <div class="container-site grid grid-cols-1 lg:grid-cols-[minmax(0,376fr)_minmax(0,792fr)] gap-10 lg:gap-4 items-start">
+      <div class="flex flex-col gap-4">
+        <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-balance">
+          {c.formTitle}
+        </h2>
+        <p class="text-lg leading-[29px] text-on-surface-variant m-0 max-w-none">{c.formIntro}</p>
+        <ul role="list" class="flex flex-col gap-4 m-0 p-0 pt-4 list-none">
+          {
+            c.formBullets.map((bullet) => (
+              <li class="m-0 flex items-center gap-2">
+                <svg class="shrink-0 text-primary" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="m8.5 12 2.5 2.5 4.5-5" />
+                </svg>
+                <span class="text-base font-bold text-primary">{bullet}</span>
+              </li>
+            ))
+          }
+        </ul>
       </div>
-      <ul role="list" class="offices__grid">
-        {
-          c.offices.map((o, i) => (
-            <li class="office">
-              <h3 class="office__city">{o.city}</h3>
-              <address class="office__addr">
-                {o.lines.map((l) => (
-                  <span>{l}</span>
-                ))}
-                {officePhones[i] && <a href={`tel:${officePhones[i].tel}`}>{officePhones[i].phone}</a>}
-              </address>
-            </li>
-          ))
-        }
-      </ul>
+
+      <div class="bg-beige rounded-sm p-6 sm:p-8 lg:p-12">
+        <p class="sr-only" id="req-note">{c.reqNote}</p>
+        <form
+          class="flex flex-col gap-6"
+          aria-describedby="req-note"
+          data-contact-form={formsEnabled ? undefined : ''}
+          method={formsEnabled ? 'POST' : undefined}
+          action={formsEnabled ? '/api/forms' : undefined}
+          data-astro-reload={formsEnabled ? '' : undefined}
+        >
+          {
+            formsEnabled && (
+              <>
+                {/* Bannière d'erreur + mini-script FRÈRES ADJACENTS (le script se
+                    repère par previousElementSibling) — patron form.astro. */}
+                <p class="m-0 max-w-none px-4 py-3 rounded text-sm leading-normal" role="alert" hidden style={errorBannerStyle}>
+                  {errorMessage}
+                </p>
+                <script is:inline data-astro-rerun>
+                  // Révèle la bannière au retour d'un échec (« ?erreur=1 »).
+                  {
+                    const s = document.currentScript;
+                    const b = s && s.previousElementSibling;
+                    if (b && /[?&]erreur=/.test(location.search)) b.removeAttribute('hidden');
+                  }
+                </script>
+                <input type="hidden" name="lang" value={lang} />
+                <input type="hidden" name="source" value={pagePath} />
+                <input type="hidden" name="_formId" value="contact" />
+                {/* Pot de miel `website` — voir honeypotStyle. */}
+                <div aria-hidden="true" style={honeypotStyle}>
+                  <label for="contact-website">Site Web</label>
+                  <input id="contact-website" type="text" name="website" tabindex="-1" autocomplete="off" />
+                </div>
+              </>
+            )
+          }
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-6">
+            <div class="flex flex-col gap-2">
+              <label class={labelClass} for="firstname">{c.labels.firstName}<span aria-hidden="true">*</span></label>
+              <input class={inputClass} id="firstname" name={formsEnabled ? nameFor(c.labels.firstName) : 'firstname'} type="text" autocomplete="given-name" placeholder={c.placeholders.firstName} required />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class={labelClass} for="lastname">{c.labels.lastName}<span aria-hidden="true">*</span></label>
+              <input class={inputClass} id="lastname" name={formsEnabled ? nameFor(c.labels.lastName) : 'lastname'} type="text" autocomplete="family-name" placeholder={c.placeholders.lastName} required />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class={labelClass} for="email">{c.labels.email}<span aria-hidden="true">*</span></label>
+              <input class={inputClass} id="email" name={formsEnabled ? nameFor(c.labels.email) : 'email'} type="email" autocomplete="email" placeholder={c.placeholders.email} required />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class={labelClass} for="phone">{c.labels.phone}</label>
+              <input class={inputClass} id="phone" name={formsEnabled ? nameFor(c.labels.phone) : 'phone'} type="tel" autocomplete="tel" placeholder={c.placeholders.phone} />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class={labelClass} for="subject">{c.labels.subject}<span aria-hidden="true">*</span></label>
+              <span class="relative block">
+                <select class:list={[inputClass, 'appearance-none pr-10']} id="subject" name={formsEnabled ? nameFor(c.labels.subject) : 'subject'} required>
+                  <option value="">{c.labels.subjectPlaceholder}</option>
+                  {c.subjectOptions.map((opt) => (
+                    <option value={opt}>{opt}</option>
+                  ))}
+                </select>
+                <svg class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class={labelClass} for="expertise">{c.labels.expertise}<span aria-hidden="true">*</span></label>
+              <span class="relative block">
+                <select class:list={[inputClass, 'appearance-none pr-10']} id="expertise" name={formsEnabled ? nameFor(c.labels.expertise) : 'expertise'} required>
+                  <option value="">{c.labels.expertisePlaceholder}</option>
+                  {c.expertiseOptions.map((opt) => (
+                    <option value={opt}>{opt}</option>
+                  ))}
+                </select>
+                <svg class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label class={labelClass} for="request">{c.labels.request}</label>
+            <input class={inputClass} id="request" name={formsEnabled ? nameFor(c.labels.request) : 'request'} type="text" placeholder={c.placeholders.request} />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label class={labelClass} for="message">{c.labels.message}<span aria-hidden="true">*</span></label>
+            <textarea
+              class="w-full h-[120px] p-3 bg-white border border-solid border-neutral-400 rounded-sm text-base text-on-surface-variant placeholder:text-on-surface-variant resize-y focus-visible:border-primary focus-visible:outline-none"
+              id="message"
+              name={formsEnabled ? nameFor(c.labels.message) : 'message'}
+              placeholder={c.placeholders.message}
+              required
+            ></textarea>
+          </div>
+
+          <div class="flex items-start gap-3 py-2">
+            <input
+              class="size-4 mt-1 shrink-0 bg-white border border-solid border-neutral-600 rounded-sm accent-[var(--color-primary)]"
+              id="consent"
+              name={formsEnabled ? consentName : 'consent'}
+              value="oui"
+              type="checkbox"
+              required
+            />
+            <label class="text-sm leading-6 text-on-surface-variant" for="consent">
+              <span set:html={consentHtml} />
+            </label>
+          </div>
+
+          {
+            turnstileSiteKey && (
+              <>
+                {/* Widget Turnstile — CSP appliquée le 2026-08-17 (public/_headers). */}
+                <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-language={lang} />
+                <script is:inline async defer src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
+              </>
+            )
+          }
+
+          <button
+            type="submit"
+            class="w-full inline-flex items-center justify-center gap-2.5 bg-primary text-on-primary px-8 py-4 rounded text-base leading-6 font-semibold border-0 cursor-pointer shadow-controle hover:bg-primary-container transition-colors"
+          >
+            {c.submit}
+            {/* Avion en papier (même pictogramme que le bouton form.astro). */}
+            <svg class="shrink-0" width="15" height="12" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M2 10L22 2l-6.5 16-4-7L2 10z" />
+              <path d="M11.5 11L22 2" />
+            </svg>
+          </button>
+
+          <p
+            class="m-0 max-w-none px-4 py-3 rounded bg-primary-fixed border border-solid border-primary text-on-primary-fixed font-medium"
+            data-form-status
+            data-success={c.statusMessage}
+            role="status"
+            aria-live="polite"
+            hidden
+          >
+          </p>
+        </form>
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <script>
   // Demo-only submission: validate natively, then confirm inline (no backend).
-  // Re-bound on astro:page-load — the DOM is swapped on each client-side
-  // navigation while this module executes only once per session.
+  // MODE MAQUETTE SEULEMENT : [data-contact-form] n'est posé que quand
+  // PUBLIC_FORMS_ENABLED est absente — en mode réel, ce module ne trouve rien
+  // et le POST natif suit son cours (303 → /merci). Re-bound on
+  // astro:page-load — the DOM is swapped on each client-side navigation while
+  // this module executes only once per session.
   document.addEventListener('astro:page-load', () => {
+    // Préremplissage par l'URL (2026-08-18) — liens « Découvrir » du catalogue
+    // de solutions (?sujet=&produit=), réutilisable par toute page :
+    //  - ?sujet=     → sélectionne l'option EXACTE du select « De quoi
+    //                  souhaitez-vous parler ? » (valeur inconnue : ignorée) ;
+    //  - ?expertise= → même mécanique sur le select « Expertise » ;
+    //  - ?produit=   → remplit « Précisez votre demande » avec le nom du
+    //                  produit et fait défiler jusqu'au formulaire.
+    // Fonctionne dans les DEUX modes (maquette et /api/forms réel) : les ids
+    // des champs sont identiques, seuls les attributs name changent.
+    {
+      const params = new URLSearchParams(location.search);
+      const setSelect = (id: string, value: string | null) => {
+        const select = document.getElementById(id) as HTMLSelectElement | null;
+        if (!select || !value) return false;
+        const match = Array.from(select.options).some((opt) => opt.value === value);
+        if (match) select.value = value;
+        return match;
+      };
+      const subjectSet = setSelect('subject', params.get('sujet'));
+      const expertiseSet = setSelect('expertise', params.get('expertise'));
+      const produit = params.get('produit');
+      const request = document.getElementById('request') as HTMLInputElement | null;
+      let produitSet = false;
+      if (produit && request && !request.value) {
+        request.value = produit;
+        produitSet = true;
+      }
+      if (subjectSet || expertiseSet || produitSet) {
+        document.querySelector('form[aria-describedby="req-note"]')?.scrollIntoView({ block: 'start' });
+      }
+    }
+
     const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
     const status = document.querySelector<HTMLParagraphElement>('[data-form-status]');
     if (form && status) {
@@ -163,261 +474,3 @@ const consentHtml = c.consentText.replace('{privacy}', localizePath('/politique-
     }
   });
 </script>
-
-<style>
-  /* ---------- Hero ---------- */
-  .c-hero {
-    background-color: var(--color-navy);
-    color: var(--color-text-invert);
-    text-align: center;
-    padding-block: var(--space-9) var(--space-10);
-  }
-  .c-hero__title {
-    color: var(--color-text-invert);
-  }
-  .c-hero__sub {
-    margin: var(--space-4) auto 0;
-    max-width: 46ch;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: var(--fs-400);
-  }
-
-  /* ---------- Card (pulled up over hero) ---------- */
-  .c-card-wrap {
-    background: linear-gradient(var(--color-navy) 90px, var(--color-bg) 90px);
-  }
-  .c-card {
-    display: grid;
-    grid-template-columns: 1fr;
-    overflow: hidden;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    background-color: var(--color-bg);
-  }
-  @media (min-width: 820px) {
-    .c-card {
-      grid-template-columns: 0.8fr 1.2fr;
-    }
-  }
-
-  .c-info {
-    background-color: var(--color-accent-blue);
-    color: var(--color-white);
-    padding: var(--space-7) var(--space-6);
-  }
-  .c-info__title {
-    color: var(--color-white);
-    font-size: var(--fs-500);
-    margin-bottom: var(--space-5);
-  }
-  .c-info__list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    margin: 0 0 var(--space-5);
-  }
-  .c-info__list li {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space-4);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-    padding-bottom: var(--space-3);
-  }
-  .c-info__list span {
-    font-weight: var(--fw-semibold);
-  }
-  .c-info__list a,
-  .c-info__email a {
-    color: var(--color-white);
-    text-decoration: none;
-  }
-  .c-info__list a:hover,
-  .c-info__email a:hover {
-    text-decoration: underline;
-  }
-  .c-info__email {
-    margin-bottom: var(--space-5);
-    font-weight: var(--fw-semibold);
-  }
-  .c-info__social {
-    display: flex;
-    gap: var(--space-3);
-  }
-  .c-info__sociallink {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: var(--radius-pill);
-    color: var(--color-white);
-  }
-  .c-info__sociallink:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-  }
-
-  /* ---------- Form ---------- */
-  .c-form {
-    padding: var(--space-7) var(--space-6);
-  }
-  .c-form__title {
-    font-size: var(--fs-500);
-  }
-  .c-form__req {
-    margin-top: var(--space-2);
-    color: var(--color-text-muted);
-    font-size: var(--fs-200);
-  }
-  .form {
-    margin-top: var(--space-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
-  }
-  .form__row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-  }
-  @media (min-width: 560px) {
-    .form__row {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  .field {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-  .field label,
-  .field legend {
-    font-weight: var(--fw-semibold);
-    font-size: var(--fs-200);
-    color: var(--color-navy);
-  }
-  .field > input,
-  .field > textarea {
-    width: 100%;
-    padding: 0.7em 0.9em;
-    border: 1px solid var(--color-grey-500);
-    border-radius: var(--radius-md);
-    background-color: var(--color-bg);
-  }
-  .field > input:focus-visible,
-  .field > textarea:focus-visible {
-    border-color: var(--color-accent-blue);
-  }
-  .field textarea {
-    resize: vertical;
-  }
-  .field--group {
-    border: 0;
-    padding: 0;
-    margin: 0;
-  }
-  .radio-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-2);
-  }
-  .radio,
-  .check {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-weight: var(--fw-regular);
-    color: var(--color-text);
-  }
-  .check {
-    align-items: flex-start;
-    font-size: var(--fs-200);
-  }
-  .check input {
-    margin-top: 0.2em;
-    flex-shrink: 0;
-  }
-  .form__submit {
-    align-self: flex-start;
-  }
-  .form__status {
-    margin: 0;
-    padding: var(--space-3) var(--space-4);
-    border-radius: var(--radius-md);
-    background-color: rgba(36, 251, 142, 0.15);
-    border: 1px solid var(--color-accent-green);
-    color: var(--color-navy);
-    font-weight: var(--fw-medium);
-  }
-  .form__status[hidden] {
-    display: none;
-  }
-
-  /* ---------- Offices ---------- */
-  .offices {
-    padding-block: var(--space-9);
-  }
-  .offices__title {
-    text-align: center;
-    margin-bottom: var(--space-6);
-  }
-  .offices__map {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 240px;
-    border-radius: var(--radius-lg);
-    background:
-      repeating-linear-gradient(0deg, var(--color-grey-100) 0 39px, var(--color-grey-200) 39px 40px),
-      repeating-linear-gradient(90deg, var(--color-grey-100) 0 39px, var(--color-grey-200) 39px 40px);
-    border: 1px solid var(--color-border);
-    margin-bottom: var(--space-6);
-  }
-  .offices__map-note {
-    background-color: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-pill);
-    padding: var(--space-2) var(--space-4);
-    color: var(--color-text-muted);
-    font-size: var(--fs-200);
-  }
-  .offices__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-    margin: 0;
-  }
-  @media (min-width: 700px) {
-    .offices__grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  .office {
-    padding: var(--space-5);
-    border: 1px solid var(--color-border);
-    border-left: 3px solid var(--color-accent-blue);
-    border-radius: var(--radius-md);
-  }
-  .office__city {
-    font-size: var(--fs-500);
-    color: var(--color-navy);
-    margin-bottom: var(--space-3);
-  }
-  .office__addr {
-    font-style: normal;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-    color: var(--color-text-muted);
-  }
-  .office__addr a {
-    margin-top: var(--space-2);
-    color: var(--color-link);
-    font-weight: var(--fw-semibold);
-    text-decoration: none;
-  }
-  .office__addr a:hover {
-    color: var(--color-accent-blue);
-  }
-</style>

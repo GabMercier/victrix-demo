@@ -1,0 +1,3082 @@
+/* Page ressource */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 1280px;
+height: 2289.64px;
+left: 550px;
+top: 3977px;
+overflow-y: scroll;
+
+background: linear-gradient(0deg, #F9F9F9, #F9F9F9), #FFFFFF;
+
+
+/* Main */
+
+width: 1280px;
+height: 2289.64px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Hero Section */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 24px;
+
+position: absolute;
+max-width: 1280px;
+height: 400px;
+left: 0px;
+right: 0px;
+top: 128px;
+
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 48px;
+
+width: 1232px;
+height: 400px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 1px 0px 0px;
+gap: 24px;
+
+width: 592px;
+height: 325px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Background */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 4px 12px;
+
+width: 182.58px;
+height: 24px;
+
+background: #CCE5FF;
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 158.58px;
+height: 16px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+
+color: #001D31;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Heading 1 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 592px;
+height: 112px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Perspectives et expertises TI */
+
+width: 592px;
+height: 112px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 48px;
+line-height: 56px;
+/* ou 117% */
+display: flex;
+align-items: center;
+letter-spacing: -0.96px;
+
+color: #000D2E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 576px;
+max-width: 576px;
+height: 56px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 550.84px;
+height: 56px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 28px;
+/* ou 156% */
+display: flex;
+align-items: center;
+
+color: #45464E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 8px 0px 0px;
+
+width: 592px;
+height: 60px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Button */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 16px 32px;
+gap: 12px;
+isolation: isolate;
+
+width: 304.58px;
+height: 52px;
+
+background: #000D2E;
+border-radius: 8px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Button:shadow */
+
+position: absolute;
+left: 0px;
+right: -0.01px;
+top: 0px;
+bottom: 0px;
+
+background: rgba(255, 255, 255, 0.002);
+box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -2px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Text */
+
+width: 208.58px;
+height: 20px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+text-align: center;
+text-transform: uppercase;
+
+color: #FFFFFF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 20px;
+height: 16px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+z-index: 2;
+
+
+/* Icon */
+
+width: 20px;
+height: 16px;
+
+background: #FFFFFF;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 80px 0px 64px;
+isolation: isolate;
+
+width: 592px;
+height: 400px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* Gradient+Blur */
+
+position: absolute;
+left: 0px;
+right: 0px;
+top: 0px;
+bottom: 0px;
+
+background: linear-gradient(45deg, rgba(0, 85, 255, 0.1) 0%, rgba(0, 85, 255, 0) 100%);
+filter: blur(32px);
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Overlay+Border+OverlayBlur */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: flex-start;
+padding: 32px;
+isolation: isolate;
+
+width: 256px;
+height: 256px;
+
+background: rgba(255, 255, 255, 0.7);
+border: 2px solid #E2E2E2;
+backdrop-filter: blur(6px);
+/* Remarque : la propriété backdrop-filter bénéficie d'un niveau de prise en charge minimum par les navigateurs */
+border-radius: 12px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 16px;
+
+width: 188px;
+height: 44.33px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 188px;
+height: 28.33px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 188px;
+height: 28.33px;
+
+background: #0055FF;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 188px;
+height: 24px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+z-index: 1;
+
+
+/* 500+ Experts */
+
+width: 188px;
+height: 24px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+
+color: #000D2E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 188px;
+height: 16px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+z-index: 2;
+
+
+/* Partageant leur savoir */
+
+width: 188px;
+height: 16px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+
+color: #45464E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 104.45px;
+height: 140px;
+right: -8px;
+bottom: -8px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+z-index: 3;
+
+
+/* Text */
+
+width: 104.45px;
+height: 140px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 900;
+font-size: 140px;
+line-height: 140px;
+/* identique à la hauteur de la zone de texte, ou 100% */
+display: flex;
+align-items: center;
+
+color: rgba(0, 85, 255, 0.05);
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Section - Bento Grid Articles */
+
+position: absolute;
+height: 1011.64px;
+left: 24px;
+right: 24px;
+top: 772px;
+
+
+
+/* Main Featured Article */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 24px;
+
+position: absolute;
+height: 495.98px;
+left: 0px;
+right: 421.33px;
+top: 0px;
+
+
+
+/* Overlay+Border+Shadow */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+width: 810.67px;
+height: 455.98px;
+
+background: rgba(255, 255, 255, 0.002);
+border: 1px solid #E2E2E2;
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+border-radius: 12px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* AP1WRLt77ZMJPw4NofUJ8xUXah2ZZJIltFObFLubP_JYDo8N0VWNCphviUHqM3Q8ZoYiD44L-ANg3IPLregZrYhemPSBPV-DWGooszfwfd3Vf4xKAayweQwyJV-xD7y3XAb9b--y7gNptD34yfqDS7Mj63ifAa-33rOQB1aa_vZa3_KOOs-4onnW0cS_-qgxF2YmXz8uYk3F_RM45Hgo5_XVioWuP6k6qnxTgmbjoxuC5_evcaqv9hOGs_7lKQ */
+
+width: 808.67px;
+height: 453.98px;
+
+background: url(.png);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Gradient */
+
+position: absolute;
+left: 1px;
+right: 1.01px;
+top: 1px;
+bottom: 1px;
+
+background: linear-gradient(0deg, rgba(0, 13, 46, 0.9) 0%, rgba(0, 13, 46, 0.2) 50%, rgba(0, 13, 46, 0) 100%);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 1px 0px 16px;
+gap: 16px;
+
+position: absolute;
+height: 137px;
+left: 33px;
+right: 33.01px;
+bottom: 33px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+z-index: 2;
+
+
+/* Background */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 4px 12px;
+
+width: 137.17px;
+height: 24px;
+
+background: #0055FF;
+border-radius: 8px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 113.17px;
+height: 16px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #FFFFFF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Heading 2 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 744.66px;
+height: 80px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* ServiceNow & AI: Transforming Your Organization’s Performance */
+
+width: 744.66px;
+height: 80px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 40px;
+/* ou 125% */
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px 8px;
+gap: 532.11px;
+
+width: 810.67px;
+height: 16px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 238.53px;
+height: 16px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 147.09px;
+height: 16px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 147.09px;
+height: 16px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #000D2E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 3.78px;
+height: 16px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 3.78px;
+height: 16px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #45464E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 55.66px;
+height: 16px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 55.66px;
+height: 16px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #45464E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 16px;
+height: 16px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 16px;
+height: 16px;
+
+background: #0055FF;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Secondary Highlight */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+position: absolute;
+height: 503.98px;
+left: 842.67px;
+right: 0px;
+top: 0px;
+
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 24px;
+
+width: 389.33px;
+height: 366.98px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Overlay+Border+Shadow */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+width: 389.33px;
+height: 342.98px;
+
+background: rgba(255, 255, 255, 0.002);
+border: 1px solid #E2E2E2;
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+border-radius: 12px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* AP1WRLt5ijUu7AejAOoqFyCBm_0Gye2MhYqxSh-tZ4Nlcj2XBjnwUyTPknpZziECe4MTpMebQY21HTXE-JERpq-6JhjqcnaST8JvmBajueff8NvianBUeY9nJv9uwt4khRB08CqdXjwiPSUdX5tKKinMyH_dvxGFsNOp_2g91zw6Hsp5NKtS3mBQ0A_bMfrVBVY8TYpdKxfac1yN45DB7qbz9zGvS0HD2U5Rxky5UwPtmiFXaYzrXtUgFAtYiMk */
+
+width: 387.33px;
+height: 340.98px;
+
+background: url(.png);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Overlay */
+
+position: absolute;
+left: 1px;
+right: 0.99px;
+top: 1px;
+bottom: 1px;
+
+background: rgba(0, 13, 46, 0.1);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 5px 0px 0px;
+gap: 12px;
+
+width: 389.33px;
+height: 137px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Text */
+
+width: 103.72px;
+height: 16px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+letter-spacing: 1.2px;
+text-transform: uppercase;
+
+color: #0055FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Heading 3 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 389.33px;
+height: 40px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* An Exclusive Partnership with a Canadian Leader in Extended Reality */
+
+width: 389.33px;
+height: 40px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 20px;
+/* ou 125% */
+display: flex;
+align-items: center;
+
+color: #000D2E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 0px 0px;
+
+width: 389.33px;
+height: 52px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Victrix s'associe à AGC pour propulser l'adoption des technologies de réalité étendue dans le… */
+
+width: 389.33px;
+height: 48px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* ou 150% */
+display: flex;
+align-items: center;
+
+color: #45464E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Three Columns Grid */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+height: 475.66px;
+left: 0px;
+right: 842.67px;
+top: 535.98px;
+
+
+
+/* Background+Border */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 0px;
+
+width: 389.33px;
+height: 475.66px;
+
+background: #FFFFFF;
+border: 1px solid #E2E2E2;
+border-radius: 12px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+
+width: 387.33px;
+height: 193.66px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* AP1WRLtI4mx6AYkJN3l0G-tCvBqGSMHM50MVukukrWIF6UA3z53sauzh68jtLakBpzuVwTOXqPEVgq8GIJnvJSXojSh6OpxlTlaC1LVINObOqOqCAFuWIqAL88vFuMcOLccrObV3GOuLWDNSL_VqjkzDV3Jbg6nRgK392qXEchf3HicHh__IdcMHIrlyUQWKWgJ_bQsEPEfcxgW3ITeT1ycUc6H61Qr1NbAMwJPmBeemQBUdtZIuuDaaHF8N8Q */
+
+width: 387.33px;
+height: 193.66px;
+
+background: url(.png);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 32px;
+gap: 8px;
+
+width: 387.33px;
+height: 280px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 323.33px;
+height: 16px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* MIGRATION & CLOUD */
+
+width: 323.33px;
+height: 16px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #0055FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Heading 4 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 323.33px;
+height: 60px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Getting Ready For the End of Windows 10 Support */
+
+width: 323.33px;
+height: 60px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* ou 150% */
+display: flex;
+align-items: center;
+
+color: #000D2E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 0px 0px;
+
+width: 323.33px;
+height: 80px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Une migration stratégique essentielle pour assurer la pérennité et la sécurité de votre infrastructure… */
+
+width: 323.33px;
+height: 72px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* ou 150% */
+display: flex;
+align-items: center;
+
+color: #45464E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 16px 0px 0px;
+gap: 8px;
+
+width: 323.33px;
+height: 36px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 85.28px;
+height: 20px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+
+color: #0055FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 15px;
+height: 10.5px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 15px;
+height: 10.5px;
+
+background: #0055FF;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+height: 475.66px;
+left: 421.33px;
+right: 421.33px;
+top: 535.98px;
+
+
+
+/* Background+Border */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 0px;
+
+width: 389.33px;
+height: 475.66px;
+
+background: #FFFFFF;
+border: 1px solid #E2E2E2;
+border-radius: 12px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+
+width: 387.33px;
+height: 193.66px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* AP1WRLtjYKIl4tk6DcjvZys4QbFyYgxVVjRzh_GwqaD8c5AN9xG29PIJllKoErm8IYW2YEz7VWFC4xcnKXtP3dmyWp_UZqFfwvyi4h8AP17hCZD602o_rgley2GqScyepX7aFrDZWS7QEfJv1NQHdVvtAI5Z1HMVlswOFFk-xszZlkWht2Ax4Lhoy4OcUrBgqcONyQa0pJQAfDcr2V4Ilqxv3cTRoTbikQ1zhy3TpHBASW_c2DudrGDgB5iNkDU */
+
+width: 387.33px;
+height: 193.66px;
+
+background: url(.png);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 32px;
+gap: 8px;
+
+width: 387.33px;
+height: 280px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 323.33px;
+height: 16px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* GOUVERNANCE & QUALITÉ */
+
+width: 323.33px;
+height: 16px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #0055FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Heading 4 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 323.33px;
+height: 60px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Victrix Renews Its ISO 27001 and ISO 9001 Certifications */
+
+width: 323.33px;
+height: 60px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* ou 150% */
+display: flex;
+align-items: center;
+
+color: #000D2E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 0px 0px;
+
+width: 323.33px;
+height: 80px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Un double sceau d'excellence réaffirmant notre engagement envers la sécurité de l'information et la qualité de */
+
+width: 323.33px;
+height: 72px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* ou 150% */
+display: flex;
+align-items: center;
+
+color: #45464E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 16px 0px 0px;
+gap: 8px;
+
+width: 323.33px;
+height: 36px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 85.28px;
+height: 20px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+
+color: #0055FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 15px;
+height: 10.5px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 15px;
+height: 10.5px;
+
+background: #0055FF;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Newsletter Bento Card */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+height: 472.66px;
+left: 842.67px;
+right: 0px;
+top: 535.98px;
+
+
+
+/* Background+Border+Shadow */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 71.83px 32px;
+isolation: isolate;
+
+width: 389.33px;
+height: 472.66px;
+
+background: #000D2E;
+border: 1px solid rgba(0, 85, 255, 0.2);
+box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+border-radius: 12px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 24px;
+
+width: 323.33px;
+height: 68px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 323.33px;
+height: 44px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 323.33px;
+height: 44px;
+
+background: #0055FF;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Heading 4:margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 16px;
+
+width: 323.33px;
+height: 40px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Heading 4 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 323.33px;
+height: 24px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Restez à l'affût des tendances */
+
+width: 323.33px;
+height: 24px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 32px;
+
+width: 323.33px;
+height: 104px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+z-index: 2;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 323.33px;
+height: 72px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Recevez mensuellement nos meilleures analyses et conseils d'experts directement dans votre boîte mail. */
+
+width: 323.33px;
+height: 72px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* ou 150% */
+display: flex;
+align-items: center;
+
+color: #E2E2E2;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 149.2px;
+height: 200px;
+right: -19.01px;
+bottom: -19px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+z-index: 3;
+
+
+/* Text */
+
+width: 149.2px;
+height: 200px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 900;
+font-size: 200px;
+line-height: 200px;
+/* identique à la hauteur de la zone de texte, ou 100% */
+display: flex;
+align-items: center;
+
+color: rgba(0, 85, 255, 0.05);
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Form */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 16px;
+
+width: 323.33px;
+height: 115px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+z-index: 4;
+
+
+/* Input */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 14px 16px 15px;
+
+width: 323.33px;
+height: 51px;
+
+background: rgba(255, 255, 255, 0.1);
+border: 1px solid rgba(255, 255, 255, 0.2);
+border-radius: 4px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 289.33px;
+height: 20px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* votre@courriel.com */
+
+width: 289.33px;
+height: 20px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte */
+display: flex;
+align-items: center;
+
+color: rgba(255, 255, 255, 0.5);
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Button */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 12px 0px;
+isolation: isolate;
+
+width: 323.33px;
+height: 48px;
+
+background: #0055FF;
+border-radius: 4px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Button:shadow */
+
+position: absolute;
+left: 0px;
+right: -0.01px;
+top: 0px;
+bottom: 0px;
+
+background: rgba(255, 255, 255, 0.002);
+box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -2px rgba(0, 0, 0, 0.1);
+border-radius: 4px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Text */
+
+width: 90.3px;
+height: 24px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+text-align: center;
+text-transform: uppercase;
+
+color: #FFFFFF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* CTAs Section */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 80px;
+gap: 48px;
+isolation: isolate;
+
+position: absolute;
+height: 266px;
+left: 24px;
+right: 24px;
+top: 1903.64px;
+
+background: #F3F3F3;
+border: 1px solid #E2E2E2;
+border-radius: 16px;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 223.81px;
+height: 300px;
+right: -49px;
+bottom: -49px;
+
+opacity: 0.03;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Text */
+
+width: 223.81px;
+height: 300px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 900;
+font-size: 300px;
+line-height: 300px;
+/* identique à la hauteur de la zone de texte, ou 100% */
+display: flex;
+align-items: center;
+
+color: rgba(0, 85, 255, 0.05);
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 24px;
+
+width: 595.78px;
+max-width: 672px;
+height: 104px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Heading 2 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 595.78px;
+height: 24px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 371.41px;
+height: 24px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+
+color: #000D2E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 595.78px;
+height: 56px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 595.78px;
+height: 56px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 28px;
+/* ou 156% */
+display: flex;
+align-items: center;
+
+color: #45464E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 24px;
+
+width: 412.21px;
+height: 100px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+z-index: 2;
+
+
+/* Button */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 20px 40px;
+gap: 12px;
+
+width: 182.36px;
+height: 100px;
+
+background: #0055FF;
+border-radius: 8px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 72.36px;
+height: 60px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* ou 143% */
+display: flex;
+align-items: center;
+text-align: center;
+text-transform: uppercase;
+
+color: #FFFFFF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 18px;
+height: 20px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 18px;
+height: 20px;
+
+background: #FFFFFF;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Button */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 28px 40px;
+gap: 11.98px;
+
+width: 205.85px;
+height: 100px;
+
+border: 2px solid #000D2E;
+border-radius: 8px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 89.87px;
+height: 40px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* ou 143% */
+display: flex;
+align-items: center;
+text-align: center;
+text-transform: uppercase;
+
+color: #000D2E;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 20px;
+height: 20px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 20px;
+height: 20px;
+
+background: #000D2E;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Section - Search & Filter Bar:margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 64px;
+
+position: absolute;
+height: 165px;
+left: 0px;
+right: 0px;
+top: 608px;
+
+
+
+/* Section - Search & Filter Bar */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 1280px;
+height: 101px;
+
+background: rgba(249, 249, 249, 0.9);
+border-width: 1px 0px;
+border-style: solid;
+border-color: #E2E2E2;
+backdrop-filter: blur(6px);
+/* Remarque : la propriété backdrop-filter bénéficie d'un niveau de prise en charge minimum par les navigateurs */
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 24px;
+gap: 239.28px;
+
+width: 1280px;
+max-width: 1280px;
+height: 99px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+
+width: 608.72px;
+height: 36px;
+overflow: scroll;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Button */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 8px 24px;
+
+width: 82.11px;
+height: 36px;
+
+background: #0055FF;
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 34.11px;
+height: 20px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Button:margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 8px;
+
+width: 111.98px;
+height: 36px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Button */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 8px 24px;
+
+width: 103.98px;
+height: 36px;
+
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 55.98px;
+height: 20px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #1A1C1C;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Button:margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 8px;
+
+width: 157.77px;
+height: 36px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Button */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 8px 24px;
+
+width: 149.77px;
+height: 36px;
+
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 101.77px;
+height: 20px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #1A1C1C;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Button:margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 8px;
+
+width: 151.14px;
+height: 36px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Button */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 8px 24px;
+
+width: 143.14px;
+height: 36px;
+
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 95.14px;
+height: 20px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #1A1C1C;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Button:margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 8px;
+
+width: 105.72px;
+height: 36px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Button */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 8px 24px;
+
+width: 97.72px;
+height: 36px;
+
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 49.72px;
+height: 20px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #1A1C1C;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+width: 384px;
+height: 51px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Input */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 14px 16px 15px 48px;
+
+width: 384px;
+height: 51px;
+
+background: #FFFFFF;
+border: 1px solid #E2E2E2;
+border-radius: 8px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 318px;
+height: 20px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Rechercher une expertise... */
+
+width: 318px;
+height: 20px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte */
+display: flex;
+align-items: center;
+
+color: #6B7280;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 18px;
+left: 16px;
+top: 26%;
+bottom: 26%;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Icon */
+
+width: 18px;
+height: 18px;
+
+background: #45464E;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;

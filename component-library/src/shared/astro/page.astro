@@ -1,0 +1,100 @@
+---
+/**
+ * Shared Bookshop page renderer — the documented CloudCannon pattern for
+ * "page building" (see the Bookshop Astro guide: a single component maps an
+ * array of content blocks to Bookshop components via import.meta.glob).
+ *
+ * WHY THIS EXISTS: live editing only connects when Bookshop components are
+ * rendered inside a `bookshop:live` boundary at the CALL SITE — the landing
+ * route renders `<Page bookshop:live contentBlocks={...} />`. Rendering the
+ * components directly (the previous approach) produced pages with zero
+ * Bookshop markers: the CloudCannon post-build reported "No live editing
+ * connected as no pages contained Bookshop components" and click-on-the-page
+ * editing stayed dead. Keep every Bookshop component render inside this file.
+ *
+ * Lookup key: `block.type`, NOT `_bookshop_name` — the zod landing schema
+ * strips unknown keys (src/content.config.ts), so `_bookshop_name` never
+ * survives into `page.data.sections`. The two values are identical by the
+ * frozen contract (hero|benefits|cta|form|faq); `_bookshop_name` is kept as a
+ * fallback for any future data source that bypasses zod.
+ *
+ * No wrapper element on purpose: sections land as direct children of the
+ * layout, exactly like the previous inline map (HTML parity).
+ *
+ * `enrich` (optional): a per-`type` map of BUILD-ONLY props merged into the
+ * matching block before it is spread to its component — the seam that keeps
+ * component-library components browser-safe. The home page uses it to inject
+ * astro:assets-resolved image data (solution image, latest-article covers)
+ * that a component rendered in CloudCannon's browser editor cannot compute. It
+ * is absent on the campaign route (and in the editor's live re-render), where
+ * `enrich?.[type] ?? {}` spreads nothing — byte-identical to the previous
+ * `<Component {...block} />`. NOT part of the frontmatter, so it never touches
+ * the `bookshop:live` binding (the marker still traces only `contentBlocks`).
+ *
+ * One section type is BUILD-GATED on its enrichment: `related-posts` must
+ * receive a resolved `cards` array (only the services route provides it). A
+ * related-posts section on any other route fails the build via the guard in the
+ * map below, instead of shipping the component's placeholder cards to prod.
+ */
+const { contentBlocks, enrich } = Astro.props;
+
+// Rendu de BUILD (SSR) vs re-rendu NAVIGATEUR de l'éditeur visuel. Le bundle
+// d'édition live compile ce fichier pour le navigateur, où import.meta.env
+// peut être absent (précédent : form.astro) — d'où l'accès défensif. Sert au
+// garde-fou related-posts ci-dessous : il ne doit JAMAIS se déclencher dans
+// l'éditeur (enrich y est TOUJOURS absent — même sur une page de services
+// légitime), sinon « Error rendering page! » sur toute page qui porte la
+// section (bogue corrigé le 2026-07-30).
+const isBuildRender = Boolean((import.meta.env ?? {}).SSR);
+
+// Typed in the frontmatter on purpose: generic annotations inside template
+// expressions (`(block: Record<string, unknown>) => …`) are misparsed by the
+// Astro compiler as JSX tags. Keep template expressions annotation-free.
+type Block = Record<string, unknown>;
+const blocks: Block[] = contentBlocks ?? [];
+
+// Eagerly import every Bookshop component and index it by its Bookshop name
+// ("hero/hero.astro" → "hero" — the duplicated dir/file name collapses, per
+// Bookshop's naming convention).
+const componentImports = import.meta.glob('../../components/**/*.astro', { eager: true });
+// `any` is deliberate: the values are Astro component factories whose props
+// are validated upstream by the zod landing schema, not by TS at this seam.
+const components: Record<string, any> = {};
+for (const [path, mod] of Object.entries(componentImports)) {
+  const parts = path.replace('../../components/', '').split('.')[0].split('/');
+  if (parts.length > 1 && parts[parts.length - 1] === parts[parts.length - 2]) parts.pop();
+  components[parts.join('/')] = (mod as { default: unknown }).default;
+}
+---
+
+{
+  /* Unknown section types can't happen through the zod schema; the guard
+     degrades a future data-source failure to "section skipped" instead of a
+     build crash deep inside the renderer. */
+  blocks.map((block) => {
+    const type = (block.type ?? block._bookshop_name) as string;
+    const Component = components[type];
+    // Build-only enrichment (see header). `{...{}}` when absent → no change.
+    const extra = (enrich?.[type] ?? {}) as Block;
+    // Garde-fou BUILD SEULEMENT (constat #2) : la section « ressources liées »
+    // n'affiche de VRAIES cartes que si la route les a résolues au build
+    // (enrich.cards = tableau, éventuellement vide). Sans cet apport — section
+    // posée sur une route qui n'alimente PAS related-posts (accueil, campagnes)
+    // — le composant retomberait sur ses cartes FACTICES en production. On
+    // casse le build (même philosophie que formId/navHref/service) plutôt que
+    // d'expédier des placeholders. Seule src/pages/[lang]/services/[slug].astro
+    // alimente related-posts. (Tableau vide = valide : 0 article résolu, le
+    // composant ne rend rien — constat #4.) `isBuildRender` est ESSENTIEL : dans
+    // le re-rendu navigateur de l'éditeur visuel, enrich est TOUJOURS absent —
+    // y compris sur un service légitime — et le composant doit alors montrer sa
+    // maquette factice éditable, pas une erreur de rendu.
+    if (isBuildRender && type === 'related-posts' && !Array.isArray(extra.cards)) {
+      throw new Error(
+        `[related-posts] Section « ressources liées » sur une page qui ne résout pas ses cartes au build ` +
+          `(enrich['related-posts'] absent). Cette section n'est supportée que sur les pages de services ` +
+          `(src/pages/[lang]/services/[slug].astro) : l'y retirer, ou la déplacer sur un service.`,
+      );
+    }
+    return Component ? <Component {...block} {...extra} /> : null;
+  })
+}

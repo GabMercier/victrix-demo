@@ -1,0 +1,76 @@
+{
+  "items": [
+    { "label": "Découvrir Victrix", "href": "/decouvrir" },
+    { "label": "Expertises", "href": "/expertises" },
+    { "label": "Services", "href": "/services" },
+    { "label": "Produits", "href": "/produits" },
+    { "label": "Carrière", "href": "/carrieres" },
+    { "label": "Ressources", "href": "/ressources" }
+  ],
+  "portal": { "label": "Portail client", "visible": true },
+  "cta": { "label": "Contact", "href": "/contact" },
+  "mega": {
+    "parentHref": "/expertises",
+    "parentHrefs": ["/services", "/produits"],
+    "ariaLabel": "Sous-menu Expertises, Services et Produits",
+    "columns": [
+      {
+        "title": "Expertises",
+        "href": "/expertises",
+        "icon": "strategy",
+        "links": [
+          { "label": "Conseil stratégique", "href": "/services/conseil-strategique" },
+          { "label": "Intelligence artificielle", "service": "intelligence-artificielle" },
+          { "label": "Infrastructure", "href": "/services/infrastructure" },
+          { "label": "Secteurs", "href": "/secteurs" }
+        ]
+      },
+      {
+        "title": "Services",
+        "href": "/services",
+        "icon": "cloud",
+        "links": [
+          { "label": "Services applicatifs", "href": "/services/services-applicatifs" },
+          { "label": "Infonuagique", "href": "/services/services-infonuagiques" },
+          { "label": "Cybersécurité", "href": "/services/cybersecurite" },
+          { "label": "Projet en IA", "href": "/services/projets-en-ia" },
+          { "label": "Services gérés", "href": "/services/services-ti-geres" }
+        ]
+      },
+      {
+        "title": "Produits",
+        "href": "/produits",
+        "icon": "productivity",
+        "links": [
+          { "label": "O bureau", "href": "/services/productivite/o-bureau" },
+          { "label": "Plateforme employé Intranet", "href": "/services/productivite/plateforme-employe-intranet" },
+          { "label": "Copilot Studio", "href": "/services/productivite/copilot-studio" },
+          { "label": "Approvisionnement TI", "href": "/services/approvisionnement-ti" },
+          { "label": "Catalogue de solutions", "href": "/solutions" }
+        ]
+      }
+    ],
+    "featured": {
+      "title": "Projets en IA",
+      "body": "Découvrez comment nous transformons les données en avantages stratégiques grâce à l’intelligence artificielle.",
+      "ctaLabel": "Voir les projets",
+      "href": "/services/intelligence-artificielle",
+      "image": "/images/home/expertise-intelligence-artificielle.jpg"
+    },
+    "stripe": {
+      "text": "Expertise québécoise reconnue à l’international.",
+      "links": [
+        { "label": "Études de cas", "href": "/ressources" },
+        { "label": "Livre blanc 2024", "href": "/ressources" }
+      ]
+    }
+  },
+  "megaRessources": {
+    "parentHref": "/ressources",
+    "ariaLabel": "Sous-menu Ressources",
+    "intro": "Découvrez nos ressources : articles, actualités, vidéos et plus encore.",
+    "ctaLabel": "Centre de ressources",
+    "categoriesTitle": "Catégories",
+    "latestTitle": "Derniers articles"
+  }
+}

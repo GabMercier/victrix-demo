@@ -1,0 +1,243 @@
+{
+  "title": "Licenses and Equipments",
+  "description": "Discover Victrix’s IT procurement services. Benefit from tailored support for the purchase, management, and renewal of your software licenses and hardware assets.",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "IT Procurement Services",
+      "eyebrowStyle": "badge",
+      "titleAccent": "",
+      "title": "Licenses and Equipments",
+      "titleHighlight": "Licenses",
+      "lead": "Victrix offers reliable, compliant IT purchasing and procurement services in partnership with the world’s leading software publishers and hardware manufacturers. Our experts support you in selecting, integrating, and managing your IT assets, as well as renewing your licenses.",
+      "ctaLabel": "Talk to an expert",
+      "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2025/03/linkedin-carre-24.png",
+      "imageAlt": ""
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Strategic, Secure, and Managed IT Procurement",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "A value-added reseller",
+        "text": "Victrix is a value-added reseller for organizations and government agencies — a partner that combines <strong>technical know-how, security, and governance</strong>.",
+        "watermark": "engrenage",
+        "stats": []
+      },
+      "aside": {
+        "icon": "bouclier",
+        "title": "From cybersecurity to cloud computing",
+        "text": "Through automation, network, and connectivity, Victrix helps you build a high-performance, consistent, and secure infrastructure.",
+        "linkLabel": "See our Cybersecurity expertise",
+        "linkHref": "/en/services/cybersecurity"
+      }
+    },
+    {
+      "type": "offer-cards",
+      "title": "Purchase, Management, and Renewal",
+      "intro": "Benefit from tailored support for the purchase, management, and renewal of your software licenses and hardware assets.",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Analysis and Selection of IT Solutions",
+          "bullets": [
+            { "text": "Assessment of your real IT needs", "icon": "coche" },
+            { "text": "Comparison of market options", "icon": "coche" },
+            { "text": "Purchase recommendations aligned with your performance and security priorities", "icon": "coche" },
+            { "text": "An IT environment that remains consistent, compliant, and easy to manage", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Proactive Renewal and Contract Management",
+          "bullets": [
+            { "text": "Monitoring of expiration dates", "icon": "coche" },
+            { "text": "Contract renegotiation", "icon": "coche" },
+            { "text": "License compliance", "icon": "coche" },
+            { "text": "Analysis of subscription or purchase options based on your priorities", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Support, Integration, and Deployment",
+          "bullets": [
+            { "text": "Seamless integration within your existing environments", "icon": "coche" },
+            { "text": "Coordination with your internal teams and technology partners", "icon": "coche" },
+            { "text": "Support, warranty management, upgrades, and technical monitoring after go live", "icon": "coche" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tech-columns",
+      "sectionTitle": "Cybersecurity and Identity Protection",
+      "groups": [
+        {
+          "title": "Check Point",
+          "items": [
+            "AI Security: generative AI, AI apps, autonomous agents, and data leak prevention via prompts and models",
+            "Unified control and centralized policies",
+            "Distributed deployment: data center, cloud, branch offices, and remote users",
+            "Comprehensive protection of the digital workspace: users, endpoints, browsers, collaboration tools, and AI usage",
+            "Management of external and internal exposure",
+            "Threat Intelligence",
+            "Dark Web monitoring",
+            "Risk prioritization and automated remediation"
+          ]
+        },
+        {
+          "title": "CrowdStrike",
+          "items": [
+            "Endpoint protection",
+            "Threat intelligence",
+            "Cloud security",
+            "Identity management",
+            "Log management and observability",
+            "Managed monitoring, detection, and response"
+          ]
+        },
+        {
+          "title": "Palo Alto Networks",
+          "items": [
+            "Network security",
+            "Secure access",
+            "Cloud security",
+            "Zero Trust architecture",
+            "Automated detection and response",
+            "Threat intelligence"
+          ]
+        },
+        {
+          "title": "Zscaler",
+          "items": [
+            "Cloud security",
+            "Zero Trust architecture",
+            "SaaS application protection",
+            "Data protection, risk management, and compliance",
+            "Threat defense",
+            "User experience monitoring and diagnostics"
+          ]
+        },
+        {
+          "title": "Microsoft",
+          "items": [
+            "Microsoft 365 E5 Security",
+            "Microsoft Defender",
+            "Microsoft Sentinel",
+            "Microsoft Entra ID",
+            "Microsoft Purview"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tech-columns",
+      "sectionTitle": "Network and Connectivity",
+      "groups": [
+        {
+          "title": "Cisco",
+          "items": [
+            "Network infrastructure and connectivity",
+            "Network security",
+            "Cloud services, data centers, and virtualization",
+            "Unified communications",
+            "Observability"
+          ]
+        },
+        {
+          "title": "HPE Networking",
+          "items": [
+            "Routers and switches",
+            "Operating systems",
+            "Secure access",
+            "Wireless and cloud access points",
+            "Network security and access policies",
+            "Zero Trust architecture",
+            "AI-driven network operations, support, and assistance"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tech-columns",
+      "sectionTitle": "Cloud Computing, Automation, and Virtualization",
+      "groups": [
+        {
+          "title": "Microsoft",
+          "items": [
+            "Microsoft 365: Teams, Outlook, SharePoint, OneDrive",
+            "Dynamics 365: Sales, Customer Service, Customer Insights, Field Service, and Contact Center",
+            "Power Platform: Power Apps, Power Automate, Power BI, and Power Pages",
+            "Azure: Active Directory, Virtual Desktop, OpenAI/AI Services, and Storage/VPN/Compute",
+            "Copilot for M365",
+            "Copilot Studio",
+            "Security: Microsoft 365 E5 Security, Microsoft Defender, Microsoft Sentinel, Microsoft Entra ID, and Microsoft Purview"
+          ]
+        },
+        {
+          "title": "ServiceNow",
+          "items": [
+            "IT service, operations, and asset management (ITSM/ITOM/ITAM)",
+            "Portfolio management (SPM/APM)",
+            "Customer service management (CSM)",
+            "HR service delivery (HRSD)",
+            "Process automation",
+            "Security operations management (SecOps)",
+            "Governance, risk, and compliance (GRC)",
+            "Field service management (FSM)"
+          ]
+        },
+        {
+          "title": "Dell Technologies",
+          "items": [
+            "Servers and infrastructure",
+            "Endpoint protection",
+            "Data storage and protection",
+            "Hyperconvergence and virtualization",
+            "Workstations (laptops and desktops, tablets, professional monitors, and accessories)",
+            "Artificial intelligence initiatives"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "Victrix: Your Trusted Partner",
+      "paragraphs": [
+        "We rely on strong partnerships with the world’s leading publishers and manufacturers. Our certifications and multi-sector experience enable us to <strong>advise you</strong> and <strong>ensure the compliance</strong>, <strong>security</strong>, and <strong>performance</strong> of your IT environments.",
+        "We offer personalized support from planning to production, including license management and renewals."
+      ],
+      "image": "",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Continuity", "label": "Of your business operations" },
+        { "value": "Compliance", "label": "Licenses and contracts" },
+        { "value": "Predictability", "label": "Of your IT expenses" },
+        { "value": "Security", "label": "Of your IT environments" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
+    },
+    {
+      "type": "cta",
+      "title": "Ready to Purchase IT Hardware and Licenses Tailored to Your Organization’s Needs?",
+      "body": "Assess your requirements, modernize your infrastructure, and simplify IT asset purchasing and management with a certified partner that places security and performance at the core of every project.",
+      "ctaLabel": "Consult a specialist",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "slug": "it-procurement",
+  "seoTitle": "IT Procurement | Licenses and Hardware Purchase and Management"
+}

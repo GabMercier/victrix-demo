@@ -1,0 +1,115 @@
+# =============================================================================
+# Spec Bookshop — section « Valeur stratégique » (palette partagée),
+# NOUVELLE 2026-08-05 (fidélité maquette produit-enfant.css). Voir
+# hero.bookshop.yml pour les conventions communes. La rangée `stats` pointe
+# vers _structures.stat_tiles (cloudcannon.config.yml) — clé DISTINCTE de
+# _structures.stat_items (stats.bookshop.yml, forme {number,label}) : les deux
+# formes diffèrent ({value,label} ici) et un même nom serait écrasé par la
+# seconde définition YAML.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Produit — Valeur stratégique"
+  description: "Deux colonnes : image sur halo bleu à gauche ; titre à liseré bleu, paragraphes et tuiles statistiques à droite."
+  icon: insights
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/strategic-value/preview.png"
+    text: "Produit — Valeur stratégique"
+    subtext: Image + halo, paragraphes et tuiles statistiques
+  preview:
+    icon: insights
+    text:
+      - key: title
+      - text: Valeur stratégique
+
+blueprint:
+  type: strategic-value
+  title: "Valeur stratégique"
+  fond: ""
+  paragraphs:
+    - "Décrivez la valeur de la solution pour le client."
+  image: ""
+  imageAlt: ""
+  stats:
+    - value: "ROI"
+      label: "Optimisation rapide"
+  variant: produit
+  badge: ""
+  bullets: []
+  cardTitle: ""
+  cardText: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre"
+  paragraphs:
+    type: array
+    label: "Paragraphes"
+    comment: "Un paragraphe par entrée. Peut contenir des <strong> (rendu HTML tel quel)."
+  image:
+    type: image
+    label: "Image (optionnelle)"
+    comment: >-
+      Visuel posé sur un halo bleu flouté, à gauche du texte. Le fichier
+      téléversé atterrit dans public/images/sections/ (adresse servie telle
+      quelle, /images/…).
+    options:
+      paths:
+        static: public
+        uploads: public/images/sections
+  imageAlt:
+    label: "Texte alternatif de l'image"
+    comment: "Description pour l'accessibilité (laisser vide si l'image est purement décorative)."
+  stats:
+    # `type: array` explicite — voir benefits.bookshop.yml (sans lui, generate
+    # fabriquerait une structure inline concurrente de _structures.stat_tiles).
+    type: array
+    label: "Tuiles statistiques"
+    comment: "Rangée sous les paragraphes (ex. « ROI / Optimisation rapide »). Vide = absente."
+    options:
+      structures: _structures.stat_tiles
+  variant:
+    type: select
+    label: "Variante"
+    options:
+      allow_empty: false
+      values:
+        - produit
+        - vitrine
+    comment: "« produit » = image à gauche, titre 40 px ; « vitrine » = bande sable, texte à gauche/image encadrée blanc à droite, tuiles verre (patron landing Ø Studio)."
+  badge:
+    label: "Badge (optionnel)"
+    comment: "Chip bleu majuscules au-dessus du titre (ex. « INNOVATION »). Vide = absent."
+  bullets:
+    type: array
+    label: "Puces cochées"
+    comment: "Liste à coches bleues sous les tuiles. Vide = absente."
+  cardTitle:
+    label: "Titre de la carte flottante"
+    comment: "Carte blanche posée sur l'image (rendue si l'image est fournie). Vide = absente."
+  cardText:
+    label: "Texte de la carte flottante"
+  # « Fond de section » (2026-08-17, extension produit-child.css) : choix
+  # BORNÉ à la palette officielle — 5 fonds clairs (esprit P-16).
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: true
+      values:
+        - blanc
+        - givre
+        - ivoire
+        - beige
+        - sable
+    comment: "Couleur de fond de la section, bornée à la palette officielle. Vide = défaut du bloc (blanc, ou gris perle en variante vitrine)."

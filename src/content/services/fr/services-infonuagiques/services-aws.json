@@ -1,0 +1,164 @@
+{
+  "title": "Services AWS par des experts infonuagiques",
+  "description": "Bénéficiez de l'expertise AWS de Victrix pour améliorer l'architecture, la productivité et la performance opérationnelle de votre entreprise.",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "",
+      "titleAccent": "",
+      "title": "Services AWS par des experts infonuagiques",
+      "titleHighlight": "AWS",
+      "lead": "Profitez d'un modèle de service qui favorise l'évolution et simplifie la gestion grâce à notre expertise AWS. Nos spécialistes en solutions infonuagiques conçoivent des stratégies de migration sur mesure pour vous propulser vers la plateforme Amazon Web Services en douceur et en toute sécurité.",
+      "ctaLabel": "Parlons de vos projets",
+      "ctaHref": "/fr/contact",
+      "image": "/wp-content/uploads/2023/10/aws2-1.jpg",
+      "imageAlt": ""
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Pourquoi choisir la solution infonuagique AWS pour son organisation ?",
+      "intro": "Amazon Web Services (AWS) est une plateforme infonuagique populaire auprès d'organisations de toutes tailles : infrastructure infonuagique, sécurité, analyse et sauvegarde de données, développement d'applications sur mesure, et bien plus encore.",
+      "fond": "blanc",
+      "featured": {
+        "title": "Flexibilité, sécurité et évolutivité",
+        "text": "La <strong>plateforme AWS</strong> offre aux organisations toute la flexibilité, la sécurité, l'accessibilité et l'évolutivité nécessaires pour améliorer leur performance opérationnelle. Nos spécialistes possèdent une expertise AWS de pointe avec <strong>Amazon EC2 (IaaS)</strong>, <strong>Amazon Elastic Beanstalk (PaaS)</strong> et toutes les <strong>solutions SaaS d'AWS</strong>.",
+        "watermark": "graphique",
+        "stats": []
+      },
+      "aside": {
+        "icon": "insigne",
+        "title": "Partenariat AWS",
+        "text": "Faites confiance à notre équipe pour assurer une migration efficace de vos applications vers AWS.",
+        "linkLabel": "Rencontrez un expert AWS",
+        "linkHref": "/fr/contact"
+      }
+    },
+    {
+      "type": "strategic-value",
+      "title": "Assurez une migration fluide, sécuritaire et efficace",
+      "paragraphs": [
+        "<strong>Analyse complète — Recommandations basées sur notre expertise AWS — Accompagnement sur mesure</strong>",
+        "Victrix va bien au-delà de l'<a href=\"/expertise/services-ti-geres/\">offre de services gérés</a> traditionnelle avec ses <strong>services spécialisés AWS</strong>. Nous offrons aux organisations la possibilité de développer une plateforme de productivité évolutive qui simplifie la gestion des charges de travail, sécurise les données et améliore la performance opérationnelle en général."
+      ],
+      "image": "",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Évolutivité", "label": "Un modèle de service qui favorise l'évolution" },
+        { "value": "Simplicité", "label": "Une gestion des charges de travail simplifiée" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": "givre"
+    },
+    {
+      "type": "numbered-cards",
+      "sectionTitle": "Notre méthodologie éprouvée",
+      "headingStyle": "plain",
+      "intro": "Découvrez notre méthodologie éprouvée pour assurer le succès de votre projet de transformation numérique avec la <strong>plateforme infonuagique AWS</strong>.",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Analyse et évaluation de la situation technologique",
+          "text": "Évaluation de la faisabilité, analyse et optimisation des coûts, fiabilisation des charges de travail et des applications."
+        },
+        {
+          "number": "02",
+          "title": "Préparation de la stratégie et recommandations",
+          "text": "Planification pour une migration fluide (gestion des risques), objectifs d'excellence opérationnelle, de sécurité optimale, de conformité et de performance, respect des 6 R de migration et adaptation aux enjeux selon le contexte de l'organisation."
+        },
+        {
+          "number": "03",
+          "title": "Accompagnement personnalisé",
+          "text": "Application de correctifs à l'architecture en place, migration et déploiement du premier service identifié, suivi sur le déroulement de la migration et vue globale sur son état."
+        }
+      ]
+    },
+    {
+      "type": "tech-columns",
+      "sectionTitle": "Nos services AWS",
+      "groups": [
+        {
+          "title": "Analyse et optimisation",
+          "items": [
+            "OLA : optimisation et évaluation de la conformité des licences",
+            "Analyse et optimisation des coûts",
+            "Analyse des interdépendances (Cloudamize)",
+            "Évaluation des performances et de l'utilisation des ressources",
+            "Analyse complète de la posture de sécurité",
+            "Visualisation des dépendances et performances des applications de l'environnement sur site"
+          ]
+        },
+        {
+          "title": "Analyse de migration",
+          "items": [
+            "Évaluation et analyse de faisabilité",
+            "Analyse des défis de migration de bases de données",
+            "Évaluation et analyse de l'architecture des charges de travail et applications dans AWS",
+            "Analyse, identification et gestion des accès aux ressources AWS",
+            "Analyse et évaluation de la préparation à la migration infonuagique"
+          ]
+        },
+        {
+          "title": "Stratégie de migration",
+          "items": [
+            "Respect des 6 R de la migration",
+            "Migration IaaS, PaaS et SaaS",
+            "Gestion de migrations lift and shift, de serveurs et de centres de données",
+            "Solutions de sauvegarde de données et de reprise après sinistre",
+            "Migration sécurisée avec AWS CloudEndure et la famille AWS Snow"
+          ]
+        },
+        {
+          "title": "Multicloud",
+          "items": [
+            "Stratégie personnalisée en fonction des besoins et objectifs spécifiques",
+            "Contrôles de sécurité robustes conçus pour les environnements multi-cloud",
+            "Migration fluide, sécurisée et efficace",
+            "Simplification de la surveillance, de la conformité et de la gouvernance"
+          ]
+        },
+        {
+          "title": "Sécurité infonuagique",
+          "items": [
+            "Stratégie de sécurité sur mesure",
+            "Protection contre les menaces sur les identités",
+            "Sécurisation des appareils, terminaux et applications",
+            "Chiffrement et protection des centres de données",
+            "Conformité et sécurisation des charges de travail",
+            "Conception d'un périmètre de sécurité réseau robuste",
+            "Conformité avec les exigences de sécurité (ISO, PCI, Loi 25 et RGPD)",
+            "Solutions de sécurité « cloud native »"
+          ]
+        },
+        {
+          "title": "Transformation organisationnelle",
+          "items": [
+            "Modernisation d'environnement avec postes de travail virtuels (AWS WorkSpaces)",
+            "Gestion centralisée des applications depuis n'importe quel appareil",
+            "Mobilité et sécurité avec Amazon WorkLink",
+            "Gestion des points d'accès",
+            "Amélioration de la collaboration avec une gestion de documents sécurisée et gérée (WorkDocs)",
+            "Protection des données avec AWS Backup"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "title": "Victrix, votre partenaire stratégique pour une migration vers AWS",
+      "body": "Démarrez votre projet de migration vers AWS et assurez-en le succès avec l'expertise de Victrix.",
+      "ctaLabel": "Contactez un expert AWS",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "seoTitle": "Expertise AWS | Services aux entreprises"
+}

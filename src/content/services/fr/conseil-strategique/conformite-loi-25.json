@@ -1,0 +1,59 @@
+{
+  "title": "Loi 25: Êtes-vous en conformité?",
+  "description": "Victrix aide les grandes organisations à assurer leur conformité à la loi 25 sur la protection des renseignements personnels. Êtes-vous conforme?",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "",
+      "titleAccent": "",
+      "title": "Loi 25: Êtes-vous en conformité?",
+      "titleHighlight": "conformité",
+      "lead": "Avec l’entrée en vigueur des nouvelles dispositions de la Loi 25, la mise en conformité n’est pas seulement obligatoire : c’est une question de crédibilité et de sécurité pour votre entreprise.",
+      "ctaLabel": "Assurez votre conformité",
+      "ctaHref": "/fr/contact",
+      "image": "/wp-content/uploads/2023/05/andras-vas-bd7gnnwjbku-unsplash-scaled.jpg",
+      "imageAlt": ""
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Pourquoi choisir Victrix ?",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Transformer les défis réglementaires en avantages compétitifs",
+        "text": "Face aux risques de sanctions et aux attentes accrues de vos clients, la conformité est désormais indissociable de votre réputation.",
+        "watermark": "",
+        "stats": []
+      },
+      "aside": {
+        "icon": "bouclier",
+        "title": "Évaluation personnalisée",
+        "text": "Pour une évaluation complète et personnalisée de votre conformité à la Loi 25, contactez-nous.",
+        "linkLabel": "Contactez-nous",
+        "linkHref": "/fr/contact"
+      }
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Ressources liées",
+      "tags": [
+        "Cybersécurité",
+        "Conseil stratégique"
+      ],
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
+    },
+    {
+      "type": "cta",
+      "title": "Votre entreprise est-elle conforme ?",
+      "body": "Notre expertise vous permettra de transformer les défis réglementaires en avantages compétitifs.",
+      "ctaLabel": "Contactez-nous",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "seoTitle": "Loi 25: votre entreprise est-elle conforme?"
+}

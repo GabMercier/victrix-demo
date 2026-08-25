@@ -1,0 +1,133 @@
+{
+  "title": "Product page demo",
+  "description": "Catalogue \"product page\" recipe (Studio de création mockup): catalogue hero, metrics bento, offers, strategic value, case studies and call to action.",
+  "noindex": true,
+  "sections": [
+    {
+      "type": "product-hero",
+      "badge": "Microsoft 365 ecosystem",
+      "title": "Power Platform and Dynamics 365 creation studio",
+      "titleHighlight": "Power Platform",
+      "lead": "Get expert guidance and bring your ideas to life with Ø Studio, your Power Platform and Dynamics 365 consulting and development experts.",
+      "ctaLabel": "Request a consultation",
+      "ctaHref": "/en/contact",
+      "cta2Label": "Discover our applications",
+      "cta2Href": "/en/solutions",
+      "image": "/images/solutions/legacy-vers-power-apps.jpg",
+      "imageAlt": "",
+      "fond": "givre"
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Ship applications at full speed",
+      "intro": "Say goodbye to repetitive tasks with process automation and unlock your teams' potential.",
+      "fond": "blanc",
+      "featured": {
+        "title": "Operational optimization",
+        "text": "From operations management to administrative support, the Ø Studio offering meets the requirements of every line of business.",
+        "watermark": "eclair",
+        "stats": [
+          { "value": "4.5×", "label": "Acceleration" },
+          { "value": "-40%", "label": "Cost reduction" }
+        ]
+      },
+      "aside": {
+        "icon": "insigne",
+        "title": "Microsoft certified",
+        "text": "Our certified advisors maximize your integrated M365 tools for immediate return on investment.",
+        "linkLabel": "See the expertise",
+        "linkHref": "/en/services/productivity-consulting"
+      }
+    },
+    {
+      "type": "offer-cards",
+      "title": "Two practices, one team",
+      "intro": "From needs assessment to application delivery, Ø Studio covers the full cycle.",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Consulting and integration",
+          "bullets": [
+            { "text": "Identify and quantify business needs", "icon": "coche" },
+            { "text": "Analyze usage and behaviours", "icon": "coche" },
+            { "text": "Define specifications and best practices", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Application development",
+          "bullets": [
+            { "text": "Build scalable applications for your employees", "icon": "coche" },
+            { "text": "Deliver turnkey solutions", "icon": "coche" },
+            { "text": "Develop mobile and web applications", "icon": "coche" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "Microsoft Power Platform governance",
+      "paragraphs": [
+        "Frame citizen development without slowing innovation: full visibility over environments, optimal licence management and friendly dashboards for everyone."
+      ],
+      "image": "/images/solutions/gestion-idees.jpg",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Security", "label": "Compliance and full visibility" },
+        { "value": "Savings", "label": "Optimal licence management" },
+        { "value": "Innovation", "label": "Automation and faster adoption" },
+        { "value": "Experience", "label": "Friendly reports for everyone" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
+    },
+    {
+      "type": "realisations",
+      "title": "Our portfolio of deliveries",
+      "intro": "Our specialists master Power Apps, Power Automate, Power BI and Power Pages to deliver solutions tailored to each sector.",
+      "linkLabel": "Browse the full catalogue",
+      "linkHref": "/en/solutions",
+      "items": [
+        {
+          "title": "Industrial modernization",
+          "text": "Maintenance process automation with Dynamics 365.",
+          "icon": "marteau"
+        },
+        {
+          "title": "Employee intranet",
+          "text": "Unified collaborative platform built on SharePoint and Power Pages.",
+          "icon": "groupe"
+        },
+        {
+          "title": "Healthcare",
+          "text": "Timesheets and clinical tracking in Power Apps.",
+          "icon": "trousse"
+        },
+        {
+          "title": "Citizen services",
+          "text": "Citizen request portal built on Power Pages.",
+          "icon": "casque"
+        }
+      ],
+      "fond": "blanc"
+    },
+    {
+      "type": "cta",
+      "title": "Have a project in mind?",
+      "body": "Let Ø Studio propel you toward Microsoft Power Platform and make the most of your Microsoft 365 investment.",
+      "ctaLabel": "Let's meet",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "seoTitle": "Demo — product page recipe"
+}

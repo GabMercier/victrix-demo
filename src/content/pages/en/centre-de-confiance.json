@@ -1,0 +1,41 @@
+{
+  "title": "Trust centre",
+  "description": "Security, compliance and data protection.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Trust centre",
+      "subtitle": "Security, compliance and data protection.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Content in preparation",
+      "paragraphs": [
+        "This page will bring together our commitments on security, compliance and the protection of personal information.",
+        "For any question about our practices, contact our team."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Questions about our practices?",
+      "body": "Our team will be glad to answer.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "variant": "light"
+    }
+  ]
+}

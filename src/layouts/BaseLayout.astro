@@ -1,10 +1,18 @@
 ---
 import '../styles/global.css';
+// Thème Tailwind v4 « Luminous Precision » (Phase 1) — utilitaires + tokens
+// @theme, SANS preflight (cohabitation avec les styles existants — voir
+// l'entête de theme.css). Importé après global.css; les tokens portent des
+// noms distincts des legacy, aucune interférence.
+import '../styles/theme.css';
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
+import JsonLd from '../components/JsonLd.astro';
 import { type Locale, defaultLocale, otherLocale, htmlLang, swapLocale } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
+import { getActiveAnnounceId } from '../lib/announce';
 
 interface Props {
   /** Page locale. Required so chrome, <html lang>, and hreflang are correct. */
@@ -27,6 +35,22 @@ interface Props {
    * non-mirrored paths (e.g. the portal) pass this explicitly.
    */
   altLocalePath?: string;
+  /**
+   * When true, emits <meta name="robots" content="noindex, nofollow"> — used
+   * by campaign landing pages (src/content/landing), which default to noindex.
+   */
+  noindex?: boolean;
+  /**
+   * Type de contenu pour le FILTRE de la recherche interne (2026-08-17) —
+   * valeur du filtre « Type » de Pagefind, posée sur <main> à côté de
+   * data-pagefind-body. Par ROUTE (le fichier de route EST le type) :
+   * « Service », « Article », « Page »… Même graphie FR/EN (mots communs).
+   * Absent → la page n'a pas de valeur de filtre (elle disparaît des
+   * résultats quand un filtre est actif) — donner un type à toute page
+   * indexable. L'interface Pagefind affiche le groupe automatiquement dès
+   * que l'index contient des filtres.
+   */
+  contentType?: string;
 }
 
 const {
@@ -38,10 +62,18 @@ const {
   publishedTime,
   tags,
   altLocalePath,
+  noindex = false,
+  contentType,
 } = Astro.props;
 
 const t = useTranslations(lang);
 const other = otherLocale[lang];
+
+// Id de la bannière d'annonce active (collection `annonces`) — pour le script
+// anti-flash ci-dessous. Constant pour tout le build (un seul « maintenant »
+// dans src/lib/announce.ts) → le script inline reste identique sur toutes les
+// pages, propriété dont dépend le ClientRouter (voir le commentaire du script).
+const activeAnnounceId = await getActiveAnnounceId();
 
 const SITE_NAME = t.siteName;
 const fullTitle = title ? `${title} — ${SITE_NAME}` : SITE_NAME;
@@ -56,6 +88,45 @@ const enURL = lang === 'en' ? canonicalURL : altURL;
 const ogImageURL = new URL(image, Astro.site);
 const ogLocale = lang === 'fr' ? 'fr_CA' : 'en_CA';
 const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
+
+// Organization JSON-LD — the ONE sitewide structured-data block, emitted on
+// every page (frozen contract). Absolute URLs are required by schema.org
+// consumers, hence `new URL(..., Astro.site)` like the canonical/OG URLs above.
+// `logo` = public/images/logo-victrix.png (1200×379, fond blanc), rendu du
+// SVG de marque src/assets/victrix-logo.svg avec les fills de la charte
+// (.lv-mark #0b1334 / .lv-tag #7b889d — le SVG source n'a pas de couleurs,
+// elles sont injectées par Logo.astro à l'affichage). Régénérer via sharp si
+// le logo change.
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Les Solutions Victrix',
+  url: new URL('/', Astro.site).href,
+  logo: new URL('/images/logo-victrix.png', Astro.site).href,
+};
+
+// P-11 — GA4 sous consentement Loi 25 (2026-08-17). PUBLIC_GA4_ID absent →
+// AUCUNE balise rendue (zéro requête, parité stricte avec l'existant).
+// Présent → deux balises GELÉES (type="text/plain" data-consent="analytics"),
+// que ConsentBanner (activateGatedScripts) dégèle à l'acceptation du bandeau
+// PUIS à chaque astro:page-load — le re-config gtag à chaque navigation envoie
+// le page_view de la page courante (suivi SPA voulu; gtag.js re-injecté vient
+// du cache navigateur). La CSP (public/_headers) autorise googletagmanager +
+// google-analytics depuis l'édition OPS-CSP du même jour. Accès défensif
+// import.meta.env : patron form.astro (bundle Bookshop navigateur).
+const env = import.meta.env ?? {};
+const GA4_ID = typeof env.PUBLIC_GA4_ID === 'string' ? env.PUBLIC_GA4_ID.trim() : '';
+// Amorce construite ici (un script inline Astro n'interpole pas {}) — injectée
+// via set:html. GA4_ID vient de l'environnement de build (opérateur), pas
+// d'une saisie visiteur.
+const ga4Bootstrap = GA4_ID
+  ? [
+      'window.dataLayer = window.dataLayer || [];',
+      'window.gtag = function () { window.dataLayer.push(arguments); };',
+      "window.gtag('js', new Date());",
+      `window.gtag('config', '${GA4_ID}');`,
+    ].join('\n')
+  : '';
 ---
 
 <!doctype html>
@@ -70,19 +141,29 @@ const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
     <link rel="alternate" hreflang="fr-CA" href={frURL} />
     <link rel="alternate" hreflang="en-CA" href={enURL} />
     <link rel="alternate" hreflang="x-default" href={frURL} />
+    <!-- Flux RSS des ressources (P-14) — découverte automatique du flux. -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${SITE_NAME} — RSS`}
+      href={new URL(`/${lang}/rss.xml`, Astro.site)}
+    />
 
     {/* Icons + theme — official Victrix favicon */}
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#002c46" />
+    {/* = --color-nuit (un <meta> ne peut pas consommer var()) — audit P-16. */}
+    <meta name="theme-color" content="#0d1430" />
 
-    {/* Preload the primary fonts to cut layout shift on first paint */}
-    <link rel="preload" href="/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin />
+    {/* Preload the primary font to cut layout shift on first paint —
+        Hanken Grotesk variable couvre 100-900 en un seul fichier. */}
+    <link rel="preload" href="/fonts/InterVariable-subset.woff2" as="font" type="font/woff2" crossorigin />
 
     <title>{fullTitle}</title>
     <meta name="description" content={metaDescription} />
+    {/* Unindexed pages (e.g. campaign landings) opt out of search engines. */}
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     {/* Open Graph */}
     <meta property="og:type" content={ogType} />
@@ -106,23 +187,57 @@ const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageURL} />
 
+    {/* Organization structured data (JSON-LD) — see orgSchema above. Pages add
+        their own page-level schemas (e.g. BlogPosting) separately. */}
+    <JsonLd schema={orgSchema} />
+
+    {/* Schémas JSON-LD par page (P-12 : BreadcrumbList, BlogPosting…) — les
+        routes les injectent via slot="head". Jamais dans le slot par défaut :
+        il atterrit dans <main>, où le comptage d'enfants (design:previews) et
+        le périmètre data-pagefind-body supposent « 1 enfant = 1 section ». */}
+    <slot name="head" />
+
+    {/* GA4 (P-11) — balises GELÉES tant que le visiteur n'a pas accepté le
+        bandeau Loi 25 (contrat data-consent, voir ConsentBanner.astro). Rien
+        n'est rendu sans PUBLIC_GA4_ID. L'amorce définit window.gtag AVANT les
+        scripts d'événements des pages (ordre du document — /merci, /recherche). */}
+    {GA4_ID && (
+      <script
+        is:inline
+        type="text/plain"
+        data-consent="analytics"
+        async
+        data-src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+      />
+    )}
+    {GA4_ID && (
+      <script is:inline type="text/plain" data-consent="analytics" set:html={ga4Bootstrap} />
+    )}
+
     {/* SPA-like navigation: swaps page content client-side with a crossfade,
         persists across the site, respects prefers-reduced-motion. Inline
         scripts below re-apply state on astro:after-swap; component scripts
         re-bind on astro:page-load. */}
     <ClientRouter />
 
-    {/* Hide the announcement bar before first paint if it was dismissed this
-        session — prevents a flash/layout jump on every navigation. The swap
-        resets <html> attributes from the incoming static page, so the class is
-        re-applied on astro:after-swap (fires before the new page paints). This
-        script is identical on every page, so the router runs it only once —
-        the document-level listener never double-registers. */}
-    <script is:inline>
+    {/* Hide the announcement bar before first paint if THIS banner was
+        dismissed this session — prevents a flash/layout jump on every
+        navigation. The stored value is the dismissed banner's ID (annonces
+        collection): a different banner going live must reappear despite an
+        earlier dismissal. The swap resets <html> attributes from the incoming
+        static page, so the class is re-applied on astro:after-swap (fires
+        before the new page paints). `activeAnnounceId` is constant across the
+        whole build, so this script stays identical on every page and the
+        router runs it only once — the document-level listener never
+        double-registers. */}
+    <script is:inline define:vars={{ activeAnnounceId }}>
       (() => {
         const applyDismissed = () => {
           try {
-            if (sessionStorage.getItem('victrix-announce') === 'closed') {
+            if (
+              activeAnnounceId &&
+              sessionStorage.getItem('victrix-announce') === activeAnnounceId
+            ) {
               document.documentElement.classList.add('announce-dismissed');
             }
           } catch {}
@@ -135,14 +250,34 @@ const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
   <body>
     <a class="skip-link" href="#main-content">{t.skipLink}</a>
 
-    <!-- Global header (a page can override it by filling the "header" slot). -->
+    <!-- Global header (a page can override it by filling the "header" slot —
+         P-04 : la route campagnes y place CampaignHeader en mode réduit). -->
     <slot name="header"><Header lang={lang} altLocalePath={altPath} /></slot>
 
-    <main id="main-content">
+    {/* data-pagefind-body — périmètre de la recherche interne (P-06) : seules
+        les pages indexables (pas de noindex) entrent dans l'index Pagefind, et
+        seulement leur <main> (jamais le chrome header/footer). Dès qu'une page
+        porte l'attribut, toutes celles qui ne le portent pas sont exclues.
+        data-pagefind-filter (2026-08-17) : filtre « Type » depuis l'attribut
+        data-content-type (prop contentType) — l'interface de /recherche
+        l'affiche automatiquement. Le slot par défaut suit le contrat « 1
+        enfant = 1 section » (comptage design:previews) avec DEUX exceptions
+        par attribut : script/style/link et [data-crumbs] (fil d'Ariane —
+        src/components/Breadcrumbs.astro). */}
+    <main
+      id="main-content"
+      data-pagefind-body={noindex ? undefined : ''}
+      data-pagefind-filter={!noindex && contentType ? 'Type[data-content-type]' : undefined}
+      data-content-type={!noindex && contentType ? contentType : undefined}
+    >
       <slot />
     </main>
 
     <!-- Global footer (a page can override it by filling the "footer" slot). -->
     <slot name="footer"><Footer lang={lang} /></slot>
+
+    <!-- Bandeau de consentement Loi 25 (P-10) — sur toutes les pages ; les
+         scripts analytiques (P-11) resteront gated sur ce consentement. -->
+    <ConsentBanner lang={lang} />
   </body>
 </html>

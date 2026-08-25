@@ -1,0 +1,80 @@
+{
+  "title": "Service sections demo",
+  "description": "Demo page for the service palette sections: service hero, numbered cards, callout, feature boxes, tech columns, rich text and related resources.",
+  "noindex": true,
+  "sections": [
+    {
+      "_bookshop_name": "service-hero",
+      "type": "service-hero",
+      "eyebrow": "Demo",
+      "titleAccent": "The “service” sections",
+      "title": "of the composable palette",
+      "lead": "Service hero, numbered cards, call-to-action callout, feature boxes, technology columns, rich text and related resources — seven reusable blocks.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "sectionTitle": "Our three-step approach",
+      "headingStyle": "underline",
+      "intro": "",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        { "number": "01", "title": "Assess", "text": "A clear picture of the current state and the gaps to close." },
+        { "number": "02", "title": "Plan", "text": "A prioritized roadmap aligned with your business goals." },
+        { "number": "03", "title": "Deploy", "text": "A progressive, measured and supported rollout." }
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "title": "Ready to move forward?",
+      "body": "Let's talk about your challenges and the best way to address them.",
+      "ctaLabel": "Book a call",
+      "ctaHref": "/en/contact",
+      "layout": "banner-green"
+    },
+    {
+      "_bookshop_name": "feature-boxes",
+      "type": "feature-boxes",
+      "sectionTitle": "What the engagement covers",
+      "subtitle": "A clear scope, adapted to your organization.",
+      "boxes": ["Strategy and governance", "Architecture and integration", "Security and compliance", "Training and adoption"]
+    },
+    {
+      "_bookshop_name": "tech-columns",
+      "type": "tech-columns",
+      "sectionTitle": "Technologies we master",
+      "groups": [
+        { "title": "Cloud", "items": ["Microsoft Azure", "Microsoft 365", "AWS"] },
+        {
+          "title": "Data and AI",
+          "items": ["Power BI", "Copilot Studio"],
+          "subgroup": { "label": "Open source:", "items": ["Python", "PostgreSQL"] }
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "A proven approach",
+      "paragraphs": [
+        "For more than 25 years, our teams have supported Quebec organizations through their most <strong>transformative</strong> technology projects.",
+        "Every engagement starts with listening: understanding your business challenges before talking solutions."
+      ]
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Related resources",
+      "tags": ["Our articles"],
+      "ctaLabel": "See all resources",
+      "ctaHref": "/en/ressources"
+    }
+  ]
+}

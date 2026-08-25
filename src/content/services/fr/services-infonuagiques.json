@@ -1,0 +1,190 @@
+{
+  "title": "Services infonuagiques",
+  "description": "Migrez vers une solution infonuagique adaptée à votre réalité d'affaires. Victrix accélère et simplifie votre transition avec des services infonuagiques sur mesure.",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "",
+      "titleAccent": "",
+      "title": "Services infonuagiques",
+      "titleHighlight": "infonuagiques",
+      "lead": "Pour améliorer la réactivité de vos équipes, la flexibilité de votre infrastructure et la rentabilité de vos technologies, l'infonuagique est la solution à privilégier. Modernisez votre informatique avec une approche sur mesure, basée sur l'accélération, du démarrage du projet à sa réalisation.",
+      "ctaLabel": "Parlons de vos projets",
+      "ctaHref": "/fr/contact",
+      "image": "/wp-content/uploads/2022/02/services-infonuagiques-pour-entreprise.jpg",
+      "imageAlt": ""
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Solutions et services infonuagiques",
+      "intro": "Nos services infonuagiques sont conçus pour répondre aux défis uniques de votre organisation — de la sélection de votre solution infonuagique à la migration des charges et l'optimisation continue de votre environnement.",
+      "fond": "blanc",
+      "featured": {
+        "title": "Une stratégie de migration planifiée",
+        "text": "Une stratégie de migration planifiée garantit une transition sans heurt, avec un impact minimal sur vos environnements. Notre mission : <strong>garantir votre excellence opérationnelle</strong> en appliquant les meilleures pratiques de conformité, de sécurité des données et de performance — les modèles <strong>Well Architected Framework (WAF)</strong> et <strong>Cloud Adoption Framework (CAF)</strong> encadrent tous vos projets de migration infonuagique.",
+        "watermark": "graphique",
+        "stats": []
+      },
+      "aside": {
+        "icon": "etoile",
+        "title": "Conseil stratégique",
+        "text": "Bénéficiez de notre expertise en conseil stratégique pour assurer le succès de tous vos projets de transformation numérique.",
+        "linkLabel": "Découvrir le conseil stratégique",
+        "linkHref": "/fr/services/conseil-strategique"
+      }
+    },
+    {
+      "type": "strategic-value",
+      "title": "Nos solutions infonuagiques",
+      "paragraphs": [
+        "De l'<strong>hébergement de fichiers et de données sensibles</strong> au <strong>déploiement d'un serveur infonuagique</strong> pour entreprise sur mesure, Victrix est là pour répondre à vos besoins. Nos experts en infonuagique vous proposent des solutions de confiance pour moderniser et propulser votre entreprise.",
+        "<strong>Victrix accélère votre migration Microsoft Azure.</strong> Notre méthodologie basée sur le <strong>Cloud Adoption Framework de Microsoft</strong> vous permet de faire vos premiers pas dans la migration de vos applications et serveurs, avec un stockage Azure sécurisé et toutes les fonctions innovantes de Microsoft. <a href=\"/expertise/services-infonuagiques/migration-vers-azure/\">Découvrez la migration vers Microsoft Azure</a>",
+        "<strong>Tirez parti de la plateforme AWS Enterprise grâce à Victrix.</strong> Notre expertise avec Amazon EC2 (IaaS), AWS Elastic Beanstalk (PaaS) et les solutions SaaS AWS nous permet d'assurer <strong>un déplacement efficace des applications</strong> vers un modèle de service qui favorise l'évolution et simplifie la gestion. <a href=\"/expertise/services-infonuagiques/services-aws/\">Découvrez la migration vers AWS</a>"
+      ],
+      "image": "",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Azure", "label": "Migration accélérée avec le Cloud Adoption Framework" },
+        { "value": "AWS", "label": "Expertise EC2, Elastic Beanstalk et solutions SaaS" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": "givre"
+    },
+    {
+      "type": "numbered-cards",
+      "sectionTitle": "Notre stratégie d'accélération : services IaaS — SaaS — PaaS",
+      "headingStyle": "plain",
+      "intro": "Intégration et livraison en mode continu : identification des opportunités (planification, vision, calcul des coûts), preuve de concept (expérimentation et validation), puis accélération de la migration vers l'infonuagique.",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Démarrage",
+          "text": "Rencontre de démarrage : compréhension du projet, calendrier de réalisation et participation des parties prenantes, prérequis techniques, rôles requis par atelier et par comité."
+        },
+        {
+          "number": "02",
+          "title": "Définition",
+          "text": "Identification, définition et priorisation des opportunités de migration ; analyse de l'infrastructure."
+        },
+        {
+          "number": "03",
+          "title": "Faisabilité",
+          "text": "Préparation de l'analyse d'opportunité et de faisabilité : contexte organisationnel, compréhension des enjeux technologiques et d'affaires, inventaire des actifs TI, cartographie des interdépendances et analyse des licences."
+        },
+        {
+          "number": "04",
+          "title": "Concept",
+          "text": "Preuve de concept : architecture et stratégie de déploiement, mise en place, réalisation et documentation."
+        },
+        {
+          "number": "05",
+          "title": "Gradation",
+          "text": "Analyse et proposition des options de gradation à privilégier, puis gradation des systèmes."
+        },
+        {
+          "number": "06",
+          "title": "Itérations",
+          "text": "Accélération en mode itératif : analyse des besoins, des opportunités et de la cartographie ; mise en place (déploiement, sécurisation et gouvernance) ; migration (cartographie, classification, migration et test) ; optimisation et gouvernance."
+        }
+      ]
+    },
+    {
+      "type": "tech-columns",
+      "sectionTitle": "Nos expertises et services infonuagiques",
+      "groups": [
+        {
+          "title": "Analyse",
+          "items": [
+            "Analyse d'opportunité et de faisabilité",
+            "Externalisation des services",
+            "Audit de sécurité",
+            "Validation d'infrastructure infonuagique"
+          ]
+        },
+        {
+          "title": "Migration des charges",
+          "items": [
+            "Engagement sur le respect des 6 R de migration appropriés",
+            "PaaS, SaaS, IaaS",
+            "Dématérialisation et migration des données",
+            "Stratégie de continuité et plan de relève",
+            "Sauvegarde de données"
+          ]
+        },
+        {
+          "title": "Multicloud",
+          "items": [
+            "Infrastructure hybride",
+            "Vigie et évolution",
+            "Sécurité infonuagique et conformité",
+            "GIA centralisée"
+          ]
+        },
+        {
+          "title": "Sécurité Azure/AWS Enterprise",
+          "items": [
+            "Gestion et sécurité de l'identité",
+            "Gestion de la conformité",
+            "SIEM/SOAR",
+            "Protection contre les cybermenaces",
+            "Accompagnement dans l'implantation et l'exploitation des services"
+          ]
+        },
+        {
+          "title": "Transformation numérique",
+          "items": [
+            "Bureau moderne VDI/AVD/W365",
+            "Migration et automatisation"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "Nos partenaires",
+      "fond": "givre",
+      "boxes": [
+        "Palo Alto",
+        "Checkpoint",
+        "Pulse Secure",
+        "CrowdStrike",
+        "Microsoft 365",
+        "Cisco",
+        "Aruba",
+        "Imprivata",
+        "AlgoSec",
+        "AWS",
+        "OVH Cloud",
+        "Service Now"
+      ]
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Ressources liées",
+      "tags": [
+        "Infonuagique"
+      ],
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
+    },
+    {
+      "type": "cta",
+      "title": "Victrix, votre partenaire stratégique en solutions et services infonuagiques",
+      "body": "Faites appel à notre expertise pour vos projets de migration vers AWS ou Azure et bénéficiez d'un stockage infonuagique sécurisé, flexible et accessible, grâce à notre pratique multi-cloud.",
+      "ctaLabel": "Rencontrez nos experts",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "seoTitle": "Services infonuagiques adaptés à vos enjeux | Expertise"
+}

@@ -1,13 +1,27 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { Image, getImage } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import JsonLd from '../../../components/JsonLd.astro';
 import { defaultLocale, otherLocale, htmlLang, localizePath } from '../../../i18n/config';
 import { useTranslations } from '../../../i18n/ui';
-import { postLocale, postUrlSlug, findCounterpart } from '../../../i18n/blog';
+import { getLocaleData } from '../../../i18n/locale-data';
+import {
+  postLocale,
+  postUrlSlug,
+  findCounterpart,
+  filterPublished,
+  getPostsByLocale,
+} from '../../../i18n/blog';
+import { coverForCard, coverSmall } from '../../../lib/images/cover-derivative';
+import { breadcrumbSchema } from '../../../lib/seo/breadcrumb';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  // Drafts get NO route on the public build; the STATIC_ONLY (CloudCannon
+  // editing) build keeps them so editors can preview an unpublished article.
+  // Filtering the WHOLE list before mapping also keeps findCounterpart() from
+  // pairing with a draft translation — its language switch falls back to the
+  // other locale's Ressources index until the translation is published.
+  const posts = filterPublished(await getCollection('blog'));
   return posts.map((post) => {
     const lang = postLocale(post) ?? defaultLocale;
     const other = otherLocale[lang];
@@ -27,22 +41,58 @@ export async function getStaticPaths() {
 
 const { post, lang, altLocalePath } = Astro.props;
 const t = useTranslations(lang);
+// Nom public de la section « Ressources » (fil d'Ariane) — vient du bloc
+// `ressources` de la collection `pagesSysteme` (éditable au CMS, 2026-08-12),
+// la même source que le titre de l'index du blogue.
+const sys = await getLocaleData('pagesSysteme', lang);
 const { Content } = await render(post);
 
 // Format the calendar date in the page locale, in UTC (so 2026-05-28 doesn't
 // roll back a day in timezones behind UTC).
 const dateFmt = new Intl.DateTimeFormat(htmlLang[lang], { dateStyle: 'long', timeZone: 'UTC' });
 
-const ogImage = await getImage({
-  src: post.data.coverImage,
-  width: 1200,
-  height: 630,
-  fit: 'cover',
-  position: 'center',
-  format: 'jpeg',
-});
+// Couverture = chemin public servi tel quel (contenu migré de WordPress —
+// voir le schéma blog). Pas de dérivé astro:assets : og:image et JSON-LD
+// pointent l'original en URL absolue; sans couverture, BaseLayout retombe
+// sur son image OG par défaut.
+const coverUrl = post.data.coverImage
+  ? new URL(post.data.coverImage, Astro.site).href
+  : undefined;
 
 const ressourcesHref = localizePath('/ressources', lang);
+
+// Colonne latérale « Nos derniers articles » (parité victrix.ca) : les 2 plus
+// récents, article courant exclu.
+const latestPosts = (await getPostsByLocale(lang)).filter((p) => p.id !== post.id).slice(0, 2);
+
+// BlogPosting JSON-LD (via the frozen JsonLd contract — src/components/
+// JsonLd.astro). Search engines require ABSOLUTE URLs in structured data,
+// hence new URL(…, Astro.site): the image is the same 1200×630 derivative as
+// og:image above. Author and publisher are both the Organization — this blog
+// has no per-author bylines. This block is the one deliberate addition to the
+// public HTML of this page (JSON-LD is allowed by the workstream brief).
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  datePublished: post.data.date.toISOString(),
+  inLanguage: htmlLang[lang],
+  image: coverUrl ?? new URL('/og-image.png', Astro.site).href,
+  author: { '@type': 'Organization', name: 'Les Solutions Victrix' },
+  publisher: { '@type': 'Organization', name: 'Les Solutions Victrix' },
+};
+
+// BreadcrumbList JSON-LD (P-12) — reflet machine du fil d'Ariane visible
+// ci-dessous (Accueil › Ressources › article). Même canal JsonLd que
+// BlogPosting ; URLs absolues, dernier élément sans `item`.
+const crumbsSchema = breadcrumbSchema(
+  [
+    { name: t.article.breadcrumbHome, path: localizePath('/', lang) },
+    { name: sys.ressources.eyebrow, path: `${ressourcesHref}/` },
+    { name: post.data.title },
+  ],
+  Astro.site!,
+);
 
 // Absolute canonical URL for the share buttons — keep the trailing slash so it
 // matches og:url (the no-slash form 308-redirects on Cloudflare Pages).
@@ -68,19 +118,32 @@ const shareLinks = [
 
 <BaseLayout
   lang={lang}
-  title={post.data.title}
+  title={post.data.seoTitle || post.data.title}
   description={post.data.excerpt}
-  image={ogImage.src}
+  image={post.data.coverImage}
   ogType="article"
   publishedTime={post.data.date.toISOString()}
   tags={post.data.tags}
   altLocalePath={altLocalePath}
+  noindex={post.data.noindex}
+  contentType="Article"
 >
+  <JsonLd slot="head" schema={articleSchema} />
+  <JsonLd slot="head" schema={crumbsSchema} />
   <article class="article">
     <div class="container article__inner">
-      <header class="article__head">
-        <a class="article__back" href={ressourcesHref}>{t.article.back}</a>
+      {/* Fil d'Ariane (parité victrix.ca) — remplace l'ancien lien retour. */}
+      <nav class="article__crumbs" aria-label={t.article.breadcrumbAria}>
+        <a href={localizePath('/', lang)}>{t.article.breadcrumbHome}</a>
+        <span aria-hidden="true">›</span>
+        <a href={ressourcesHref}>{sys.ressources.eyebrow}</a>
+        <span aria-hidden="true">›</span>
+        <span class="article__crumb-current" aria-current="page">{post.data.title}</span>
+      </nav>
 
+      <div class="article__layout">
+        <div class="article__main">
+      <header class="article__head">
         {
           post.data.tags.length > 0 && (
             <ul role="list" class="article__tags">
@@ -94,20 +157,39 @@ const shareLinks = [
         <h1>{post.data.title}</h1>
 
         <p class="article__meta">
-          <time datetime={post.data.date.toISOString()}>
+          {/* data-pagefind-meta/sort : expose la date de l'article à la
+              recherche interne (P-06). AFFICHAGE : meta « date » sans [attr] =
+              le TEXTE de l'élément (date formatée dans la langue de la page) —
+              un meta sur [datetime] montrerait l'ISO brut dans les résultats.
+              TRI : reste sur l'attribut datetime (ISO), trié correctement. */}
+          <time
+            datetime={post.data.date.toISOString()}
+            data-pagefind-meta="date"
+            data-pagefind-sort="date[datetime]"
+          >
             {dateFmt.format(post.data.date)}
           </time>
         </p>
       </header>
 
-      <Image
-        class="article__cover"
-        src={post.data.coverImage}
-        alt=""
-        widths={[600, 900, 1200]}
-        sizes="(min-width: 800px) 760px, 100vw"
-        loading="eager"
-      />
+      {
+        post.data.coverImage && (
+          <img
+            class="article__cover"
+            src={post.data.coverImage}
+            srcset={
+              coverSmall(post.data.coverImage)
+                ? `${coverSmall(post.data.coverImage)} 800w, ${post.data.coverImage} 1600w`
+                : undefined
+            }
+            sizes="(min-width: 800px) 800px, 100vw"
+            alt=""
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        )
+      }
 
       <div class="prose article__body">
         <Content />
@@ -161,6 +243,39 @@ const shareLinks = [
 
         <a class="btn btn--outline" href={ressourcesHref}>{t.article.backBtn}</a>
       </footer>
+        </div>
+
+        {
+          latestPosts.length > 0 && (
+            <aside class="article__aside" aria-label={t.article.latestTitle} data-pagefind-ignore>
+              <h2 class="article__aside-title">{t.article.latestTitle}</h2>
+              {latestPosts.map((p) => {
+                const href = localizePath(`/ressources/${postUrlSlug(p)}/`, lang);
+                return (
+                  <article class="aside-card">
+                    {p.data.coverImage && (
+                      <a class="aside-card__media" href={href} tabindex="-1" aria-hidden="true">
+                        <img src={coverForCard(p.data.coverImage)} alt="" loading="lazy" decoding="async" />
+                      </a>
+                    )}
+                    <div class="aside-card__body">
+                      <h3 class="aside-card__title">
+                        <a href={href}>{p.data.title}</a>
+                      </h3>
+                      <p class="aside-card__date">
+                        <time datetime={p.data.date.toISOString()}>{dateFmt.format(p.data.date)}</time>
+                      </p>
+                      <a class="btn btn--outline aside-card__btn" href={href}>
+                        {t.article.readMore}
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
+            </aside>
+          )
+        }
+      </div>
     </div>
   </article>
 </BaseLayout>
@@ -190,37 +305,175 @@ const shareLinks = [
   .article {
     padding-block: var(--space-7) var(--space-9);
   }
+  /* Deux colonnes dès 1100px : contenu (≤ 800px, largeur de lecture
+     inchangée) + colonne « derniers articles » (parité victrix.ca). */
   .article__inner {
+    /* Largeur de LECTURE inchangée malgré l'élargissement global du
+       conteneur (2026-08-17) : la paire 800px + 300px et son space-between
+       se disloqueraient sur un conteneur 1920. */
+    max-width: min(var(--container-max), 1280px);
+  }
+  .article__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+    justify-content: center;
+  }
+  .article__main {
     max-width: 800px;
+    width: 100%;
+    margin-inline: auto;
+  }
+  @media (min-width: 1100px) {
+    .article__layout {
+      grid-template-columns: minmax(0, 800px) 300px;
+      justify-content: space-between;
+    }
+    .article__main {
+      margin-inline: 0;
+    }
   }
   .article__head {
     margin-bottom: var(--space-6);
   }
-  .article__back {
-    display: inline-block;
-    margin-bottom: var(--space-5);
+
+  /* Fil d'Ariane */
+  .article__crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+    font-size: var(--fs-100);
+    color: var(--color-text-muted);
+  }
+  .article__crumbs a {
     color: var(--color-text-muted);
     text-decoration: none;
-    font-size: var(--fs-200);
-    font-weight: var(--fw-medium);
   }
-  .article__back:hover {
+  .article__crumbs a:hover {
     color: var(--color-accent-blue);
+  }
+  .article__crumb-current {
+    color: var(--color-navy);
+    font-weight: var(--fw-medium);
+    max-width: 48ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Colonne « Nos derniers articles » */
+  .article__aside {
+    display: grid;
+    gap: var(--space-5);
+    align-self: start;
+  }
+  @media (min-width: 1100px) {
+    .article__aside {
+      position: sticky;
+      top: calc(76px + var(--space-5));
+    }
+  }
+  .article__aside-title {
+    font-size: var(--fs-500);
+    color: var(--color-navy);
+    margin: 0;
+  }
+  .aside-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-l);
+    overflow: hidden;
+    background-color: var(--color-bg);
+  }
+  .aside-card__media {
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: var(--color-band);
+  }
+  .aside-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .aside-card__body {
+    padding: var(--space-4);
+    display: grid;
+    gap: var(--space-3);
+  }
+  .aside-card__title {
+    font-size: var(--fs-300);
+    line-height: var(--lh-snug);
+    margin: 0;
+  }
+  .aside-card__title a {
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+  .aside-card__title a:hover {
+    color: var(--color-accent-blue);
+  }
+  .aside-card__date {
+    margin: 0;
+    font-size: var(--fs-100);
+    color: var(--color-text-muted);
+  }
+  .aside-card__btn {
+    justify-self: start;
+    font-size: var(--fs-200);
+  }
+
+  /* ---------- Mise en forme du corps (parité victrix.ca) ----------
+     Le corps vient du Markdown migré (rendu <Content /> global) — :global()
+     obligatoire pour styler au travers de la frontière scoped. */
+  .article__body :global(h2) {
+    color: var(--color-navy);
+    position: relative;
+    padding-bottom: var(--space-3);
+  }
+  .article__body :global(h2)::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 72px;
+    height: 3px;
+    background-color: var(--color-accent-green);
+  }
+  .article__body :global(h3) {
+    color: var(--color-navy);
+  }
+  /* CTA : lien autonome marqué au câblage (wire-blog.mjs) → bouton marine,
+     comme les appels à l'action des articles victrix.ca. */
+  .article__body :global(.article-cta) {
+    display: inline-block;
+    background-color: var(--color-navy);
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-200);
+    padding: 0.7em 1.5em;
+    border-radius: var(--radius-pill);
+  }
+  .article__body :global(.article-cta):hover {
+    background-color: var(--color-accent-blue);
+    color: var(--color-white);
   }
   .article__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2);
+    gap: var(--space-2) var(--space-4);
     margin: 0 0 var(--space-4);
   }
+  /* Catégories — même recette que les cartes du centre de ressources
+     (refonte 2026-08-18) : libellé bleu MAJUSCULES, sans capsule. */
   .tag {
     font-size: var(--fs-100);
     font-weight: var(--fw-semibold);
-    color: var(--color-navy);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-pill);
-    padding: 0.2em 0.7em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent-blue);
   }
   .article__head h1 {
     max-width: 22ch;
@@ -235,7 +488,7 @@ const shareLinks = [
     height: auto;
     max-height: 440px;
     object-fit: cover;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-l);
     margin-bottom: var(--space-7);
   }
   .article__foot {

@@ -1,0 +1,99 @@
+{
+  "title": "Office booking app",
+  "description": "Manage your workspaces with ease using O bureau, the easiest-to-use office booking app. Request a demo today.",
+  "sections": [
+    {
+      "type": "product-hero",
+      "badge": "Microsoft 365 ecosystem",
+      "title": "O bureau, our office booking application",
+      "titleHighlight": "O bureau",
+      "lead": "Discover our office booking application: easy to use and set up, it will help you manage your office space in no time!",
+      "ctaLabel": "Request a consultation",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "image": "/wp-content/uploads/2023/08/obureau-mobile-1.png",
+      "imageAlt": "",
+      "fond": "givre"
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "Benefits",
+      "subtitle": "",
+      "fond": "blanc",
+      "boxes": [
+        "Simplify reservations",
+        "Improve office management",
+        "Access relevant reports",
+        "Track office attendance"
+      ]
+    },
+    {
+      "type": "offer-cards",
+      "title": "A simple, ergonomic application to manage your workspaces",
+      "intro": "",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "For employees",
+          "bullets": [
+            { "text": "Reserve an office according to your needs", "icon": "coche" },
+            { "text": "Change, cancel or confirm your reservation", "icon": "coche" },
+            { "text": "Create a recurring reservation", "icon": "coche" },
+            { "text": "Link the reservation to your Outlook calendar", "icon": "coche" },
+            { "text": "Confirm your presence with a unique office code", "icon": "coche" },
+            { "text": "View your colleagues' reservations and select an office near them", "icon": "coche" },
+            { "text": "Designate a colleague to delegate reservations", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "For office managers",
+          "bullets": [
+            { "text": "Create and manage offices, zones, floors, and buildings", "icon": "coche" },
+            { "text": "Manage specific features and equipment available for an office", "icon": "coche" },
+            { "text": "Manage office and zone availability", "icon": "coche" },
+            { "text": "View reports on space utilization, busy periods, and employee attendance", "icon": "coche" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "Microsoft technology",
+      "paragraphs": [
+        "<strong>O bureau integrates with your Microsoft 365 and Power Platform environment.</strong>",
+        "Get full visibility for informed decision-making regarding the management of your workspace."
+      ],
+      "image": "/wp-content/uploads/2023/08/obureau-mobile-1.png",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Deployment", "label": "Rapid, with a one-time setup cost" },
+        { "value": "Teams", "label": "Native integration with Microsoft Teams" },
+        { "value": "Autonomy", "label": "Manage and evolve the solution yourself" },
+        { "value": "Bilingual", "label": "French / English application" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
+    },
+    {
+      "type": "cta",
+      "title": "Adopt an office application",
+      "body": "Victrix offers a turnkey application to meet your workspace management needs.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "slug": "productivity-consulting/office-booking",
+  "seoTitle": "Office Booking Application | Productivity"
+}

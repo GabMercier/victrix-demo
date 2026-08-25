@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+# CloudCannon post-build hook — runs ONLY on CloudCannon's build machines,
+# after the site build. Generates CloudCannon Structures from the Bookshop
+# component specs (component-library/**/*.bookshop.yml) so the visual editor's
+# "+ Ajouter une section" palette mirrors the component library. See the
+# `_structures.sections` header comment in cloudcannon.config.yml for how the
+# generated values merge with the hand-written keys there (generate hard-sets
+# id_key: _bookshop_name and appends values, preserving style/remove_extra_inputs).
+npx @bookshop/generate

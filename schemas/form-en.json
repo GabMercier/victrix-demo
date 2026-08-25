@@ -1,0 +1,36 @@
+{
+  "name": "",
+  "toEmail": "",
+  "subject": "",
+  "submitLabel": "Send",
+  "consentText": "",
+  "fields": [
+    {
+      "label": "Full name",
+      "type": "text",
+      "required": true,
+      "width": "plein",
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Email",
+      "type": "email",
+      "required": true,
+      "width": "plein",
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Message",
+      "type": "textarea",
+      "required": false,
+      "width": "plein",
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+# Reconstruction planifiée du site — fait « paraître » les contenus programmés
+# (articles à date future, fenêtre de la bannière d'annonce) sans intervention
+# humaine : un site statique n'applique ces règles qu'au moment d'un BUILD.
+#
+# BRANCHEMENT (tâche OPS, une fois) : créer le secret d'action GitHub
+# `REBUILD_HOOK_URL` avec l'URL d'un déclencheur de build de l'hébergeur —
+# CloudCannon : Site Settings → Builds → Build Hooks (POST); Cloudflare Pages :
+# Settings → Builds & deployments → Deploy hooks. Sans le secret, le workflow
+# tourne à vide (message + succès) — inoffensif tant que l'OPS n'a pas branché.
+# Détails : docs/operations.md § « Publication planifiée ».
+name: Reconstruction planifiée (contenus programmés)
+
+on:
+  schedule:
+    # Tous les jours à 06:17 UTC (~02:17 heure de Montréal) : les contenus
+    # datés « aujourd'hui » paraissent en début de journée. Minute décalée
+    # (GitHub déconseille l'heure pile, surcharge des runners partagés).
+    - cron: '17 6 * * *'
+  # Déclenchement manuel (onglet Actions) — pratique pour faire paraître un
+  # contenu programmé sans attendre le passage quotidien.
+  workflow_dispatch: {}
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Déclencher le build de l'hébergeur
+        env:
+          HOOK: ${{ secrets.REBUILD_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "Secret REBUILD_HOOK_URL absent — rien à déclencher (voir docs/operations.md § Publication planifiée)."
+            exit 0
+          fi
+          curl --fail --silent --show-error --request POST "$HOOK"
+          echo "Build déclenché."

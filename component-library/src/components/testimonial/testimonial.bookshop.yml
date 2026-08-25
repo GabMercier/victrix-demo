@@ -1,0 +1,60 @@
+# =============================================================================
+# Spec Bookshop — section « Témoignage » (palette partagée, ajout du 17 juil.).
+# Voir hero.bookshop.yml pour les conventions communes (structures `sections`,
+# discriminant `type` masqué, libellés français pour la palette CloudCannon).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Témoignage"
+  description: "Citation d'un client ou partenaire avec nom, fonction et photo optionnelle — preuve sociale pour les pages de vente et de campagne."
+  icon: format_quote
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/testimonial/preview.png"
+    text: Témoignage
+    subtext: Citation avec attribution (photo optionnelle)
+  preview:
+    icon: format_quote
+    text:
+      - key: name
+      - text: Témoignage
+
+blueprint:
+  type: testimonial
+  quote: "Rédigez ici la citation du client — une ou deux phrases percutantes."
+  name: "Prénom Nom"
+  role: "Titre ou fonction"
+  organization: "Organisation"
+  photo: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  quote:
+    type: textarea
+    label: "Citation"
+    comment: "Texte brut, sans guillemets — ils sont ajoutés par le gabarit."
+  name:
+    label: "Nom"
+  role:
+    label: "Titre / fonction"
+  organization:
+    label: "Organisation"
+  photo:
+    type: image
+    label: "Photo (optionnelle)"
+    comment: >-
+      Vide → pastille d'initiales générée automatiquement. Le fichier téléversé
+      atterrit dans public/images/sections/ et l'adresse enregistrée commence
+      par /images/… (servie telle quelle).
+    options:
+      paths:
+        static: public
+        uploads: public/images/sections

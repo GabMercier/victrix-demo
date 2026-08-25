@@ -1,0 +1,50 @@
+{
+  "ressources": {
+    "eyebrow": "Centre de ressources",
+    "title": "Perspectives et",
+    "titleAccent": "expertises TI",
+    "intro": "Découvrez nos derniers articles, études de cas et livres blancs pour rester à l'avant-garde de la transformation numérique.",
+    "filterAll": "Tous",
+    "subscribeLabel": "S'abonner à l'infolettre",
+    "searchPlaceholder": "Rechercher une expertise...",
+    "readMore": "Lire l'article",
+    "byline": "Par Victrix Expertise",
+    "expertCard": {
+      "title": "500+ Experts",
+      "subtitle": "Partageant leur savoir"
+    },
+    "newsletter": {
+      "title": "Restez à l'affût des tendances",
+      "text": "Recevez mensuellement nos meilleures analyses et conseils d'experts directement dans votre boîte mail.",
+      "emailPlaceholder": "votre@courriel.com",
+      "submitLabel": "S'inscrire",
+      "confirmation": "Merci ! Votre inscription à l'infolettre est confirmée."
+    },
+    "cta": {
+      "title": "Prêt à transformer votre vision technologique ?",
+      "text": "Nos experts sont disponibles pour discuter de vos défis et élaborer une stratégie sur mesure adaptée à vos objectifs d'affaires.",
+      "primaryLabel": "Prendre rendez-vous",
+      "primaryHref": "/contact",
+      "secondaryLabel": "Nous contacter",
+      "secondaryHref": "/contact"
+    }
+  },
+  "recherche": {
+    "metaTitle": "Recherche",
+    "metaDescription": "Recherchez dans l’ensemble du contenu du site Victrix : services, expertises, articles et pages.",
+    "eyebrow": "Recherche",
+    "title": "Rechercher sur le site",
+    "intro": "Trouvez un service, une expertise, un article ou une page.",
+    "noscript": "La recherche nécessite JavaScript. Vous pouvez aussi parcourir le site via le menu ou consulter le centre de ressources."
+  },
+  "merci": {
+    "metaTitle": "Merci",
+    "metaDescription": "Votre message a bien été envoyé à l’équipe Victrix.",
+    "title": "Merci !",
+    "text": "Votre message a été envoyé. Notre équipe vous répondra dans les meilleurs délais.",
+    "links": [
+      { "label": "Retour à l’accueil", "href": "/", "primary": true },
+      { "label": "Consulter le centre de ressources", "href": "/ressources", "primary": false }
+    ]
+  }
+}

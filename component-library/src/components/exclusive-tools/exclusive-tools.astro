@@ -1,0 +1,145 @@
+---
+/**
+ * Section « Solutions exclusives » — composant Bookshop, NOUVEAU 2026-08-05.
+ * FIDÉLITÉ MAQUETTE (docs/design/expertise-mere.css §Outils Exclusifs
+ * Section) : fond beige (surface-container-low) py-80, tête à gauche (titre
+ * 40/700 ls -0.4 + intro 18/29), CARTE VEDETTE blanche bordée rayon 8 en deux
+ * colonnes (badge chip bleu pâle 12/700, titre 40/700, texte 16/24, lien
+ * 16/700 bleu + flèche ; image pleine hauteur à droite), puis grille de
+ * cartes outils (tuile icône 48 bleu pâle / pictogramme ardoise, titre
+ * 24/700, texte 16/24, lien). Bleus/ardoise = tokens ; bordure froide
+ * #C3C6D7 verbatim (précédent méga).
+ *
+ * Props : { type: "exclusive-tools", title, intro?, featured?, items: [...] }
+ * - featured { badge?, title, text?, ctaLabel?, href?, image? } — optionnel ;
+ * - items [{ title, text?, ctaLabel?, href?, icon? }] avec icônes en clé
+ *   fermée « calendrier » | « etoile » | "" ;
+ * - images = chemins PUBLICS servis tels quels (browser-safe CloudCannon).
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface FeaturedTool {
+  badge?: string;
+  title: string;
+  text?: string;
+  ctaLabel?: string;
+  href?: string;
+  image?: string;
+}
+
+interface ToolItem {
+  title: string;
+  text?: string;
+  ctaLabel?: string;
+  href?: string;
+  icon?: 'calendrier' | 'etoile' | '';
+}
+
+interface Props {
+  title: string;
+  intro?: string;
+  featured?: FeaturedTool;
+  items: ToolItem[];
+}
+
+const { title, intro, featured, items = [] } = Astro.props;
+
+// Pictogrammes (stroke 24px) par clé fermée du contrat.
+const ICONS: Record<string, string[]> = {
+  calendrier: ['M4 6h16v15H4V6Z', 'M4 10h16M8 3v5M16 3v5'],
+  etoile: ['M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9'],
+};
+
+const linkClass =
+  'inline-flex items-center gap-2 text-base font-bold text-primary no-underline hover:text-primary-container';
+const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
+---
+
+<section class="py-20 bg-surface-container-low">
+  <div class="container-site flex flex-col gap-16">
+    <div class="max-w-[672px] flex flex-col gap-4">
+      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
+        {title}
+      </h2>
+      {intro && <p class="text-lg leading-[29px] text-on-surface-variant m-0 max-w-none">{intro}</p>}
+    </div>
+
+    {
+      featured && (
+        <div class="bg-white border border-solid border-[#C3C6D7] rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2">
+          <div class="p-8 lg:p-12 flex flex-col items-start gap-4">
+            {featured.badge && (
+              <span class="inline-flex items-center px-3 py-1 rounded-sm bg-primary-fixed text-primary text-xs font-bold uppercase tracking-[1.2px]">
+                {featured.badge}
+              </span>
+            )}
+            <h3 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
+              {featured.title}
+            </h3>
+            {featured.text && <p class="text-base leading-6 text-on-surface-variant m-0 max-w-none">{featured.text}</p>}
+            {featured.ctaLabel && featured.href && (
+              <a class:list={[linkClass, 'pt-2']} href={featured.href}>
+                {featured.ctaLabel}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d={arrow} />
+                </svg>
+              </a>
+            )}
+          </div>
+          {featured.image && (
+            <img
+              src={featured.image}
+              alt=""
+              class="w-full h-full min-h-[240px] object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+        </div>
+      )
+    }
+
+    {
+      items.length > 0 && (
+        <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-12 m-0 p-0 list-none">
+          {items.map((item) => {
+            const iconSvg = item.icon && ICONS[item.icon];
+            return (
+              <li class="m-0 bg-white border border-solid border-[#C3C6D7] rounded-lg p-10 flex flex-col items-start gap-4">
+                {iconSvg && (
+                  <span class="size-12 rounded-sm bg-primary-fixed text-secondary flex items-center justify-center mb-2">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      {iconSvg.map((d) => (
+                        <path d={d} />
+                      ))}
+                    </svg>
+                  </span>
+                )}
+                <h3 class="text-2xl leading-8 font-bold text-on-surface m-0">{item.title}</h3>
+                {item.text && <p class="text-base leading-6 text-on-surface-variant m-0 max-w-none">{item.text}</p>}
+                {item.ctaLabel && item.href && (
+                  <a class:list={[linkClass, 'pt-2']} href={item.href}>
+                    {item.ctaLabel}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                      <path d={arrow} />
+                    </svg>
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      )
+    }
+  </div>
+</section>

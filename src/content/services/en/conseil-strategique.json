@@ -1,0 +1,160 @@
+{
+  "title": "Strategic Consulting",
+  "description": "Secure the success of your projects. Our strategic consulting encompasses all our expertises: Cybersecurity, AI, Cloud, Productivity, and Managed Services.",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "",
+      "titleAccent": "",
+      "title": "Strategic Consulting",
+      "titleHighlight": "Strategic",
+      "lead": "Our strategic consulting services span across all of our areas of expertise: Productivity, Artificial Intelligence, Cloud, Cybersecurity, and Managed Services. The involvement of our leaders and our multidisciplinary expertise will ensure the success of your strategic projects.",
+      "ctaLabel": "Let's talk about your projects",
+      "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2022/05/strategic-advice.png",
+      "imageAlt": ""
+    },
+    {
+      "type": "bento-metrics",
+      "title": "What Sets Us Apart",
+      "intro": "We offer a strategic and innovative approach.",
+      "fond": "blanc",
+      "featured": {
+        "title": "Digital Transformation",
+        "text": "Our goal is to accelerate your project with <strong>tangible and measurable results</strong>.",
+        "watermark": "graphique",
+        "stats": []
+      },
+      "aside": {
+        "icon": "etoile",
+        "title": "Multidisciplinary Team",
+        "text": "Our seasoned strategy and technology consultants will help you achieve your goals. Victrix offers a human approach and has at heart the well-being of its teams.",
+        "linkLabel": "Be part of the team",
+        "linkHref": "/en/carrieres"
+      }
+    },
+    {
+      "type": "offer-cards",
+      "title": "Our Strategic Consulting Expertise",
+      "intro": "",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Strategy",
+          "bullets": [
+            { "text": "Master plan / evolution plan", "icon": "coche" },
+            { "text": "Financial set-up for a major project", "icon": "coche" },
+            { "text": "Governance", "icon": "coche" },
+            { "text": "Business case / opportunity study", "icon": "coche" },
+            { "text": "Support / decision making", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Technological Roadmap",
+          "bullets": [
+            { "text": "Power Platform", "icon": "coche" },
+            { "text": "Outsourcing of services (security, SIEM, infrastructure)", "icon": "coche" },
+            { "text": "Cloud container (Azure, Red Hat, etc.)", "icon": "coche" },
+            { "text": "Multi-vendor security", "icon": "coche" },
+            { "text": "Hybrid cloud", "icon": "coche" },
+            { "text": "CTI and workstations dematerialization", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Strategic Positioning",
+          "bullets": [
+            { "text": "IoT", "icon": "coche" },
+            { "text": "Hybrid cloud", "icon": "coche" },
+            { "text": "SASE / ZTNA", "icon": "coche" },
+            { "text": "User development", "icon": "coche" },
+            { "text": "Low code / no code / automation", "icon": "coche" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "numbered-cards",
+      "sectionTitle": "Our Methodology",
+      "headingStyle": "underline",
+      "intro": "Our methodology involves our executive team throughout the project and peer review to present you with the approach best suited to your needs.",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Understand",
+          "text": "Assessment and discovery workshops, questionnaires: business, IT and users' needs, systems used, contracts, expertise, constraints, initiatives, issues, and guiding principles."
+        },
+        {
+          "number": "02",
+          "title": "Prioritize",
+          "text": "Scope review, policy and strategy workshops: trends, comparables, best practices, and presentation to management."
+        },
+        {
+          "number": "03",
+          "title": "Plan",
+          "text": "Timeframe for implementation, priorities, availability, internal and external resources."
+        },
+        {
+          "number": "04",
+          "title": "Budget",
+          "text": "Sequence, efforts, timeline and costs, technology choices."
+        },
+        {
+          "number": "05",
+          "title": "Activate",
+          "text": "Resource allocation, project launch, change management, communication, and continuous feedback."
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "The Benefits of Our Strategic Consulting",
+      "paragraphs": [
+        "They trusted us: <strong>Microsoft</strong>, <strong>Amazon</strong>, and <strong>Red Hat</strong>."
+      ],
+      "image": "",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Diversity", "label": "Diversified portfolio" },
+        { "value": "Rigour", "label": "Peer review" },
+        { "value": "Experience", "label": "Seasoned management specialists" },
+        { "value": "Technology", "label": "Technology expertise" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Related resources",
+      "tags": [
+        "Strategic consulting"
+      ],
+      "ctaLabel": "See all resources",
+      "ctaHref": "/en/ressources"
+    },
+    {
+      "type": "cta",
+      "title": "Meet Our Experts",
+      "body": "Secure the success of your strategic projects with Victrix.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "slug": "strategic-advice",
+  "seoTitle": "Strategic Consulting | Multidisciplinary Expertise"
+}

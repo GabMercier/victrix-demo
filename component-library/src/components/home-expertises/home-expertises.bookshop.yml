@@ -1,0 +1,73 @@
+# =============================================================================
+# Spec Bookshop — section « Expertises » (accueil composable).
+# Voir home-hero.bookshop.yml pour les conventions communes. La grille de cartes
+# `items` pointe vers _structures.expertise_items (cloudcannon.config.yml) — un
+# `type: array` explicite évite que @bookshop/generate fabrique une structure
+# inline générique et vide la carte d'exemple (même garde-fou que benefits).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Accueil — Expertises"
+  description: "Tuiles d'expertise image + voile Bleu nuit (titre, description, lien) — patron de la maquette Accueil. Les champs numéro/accent sont hérités et ne sont plus rendus."
+  icon: grid_view
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/home-expertises/preview.png"
+    text: "Accueil — Expertises"
+    subtext: Tuiles image + voile navy, titre et lien
+  preview:
+    icon: grid_view
+    text:
+      - key: sectionTitle
+      - text: Expertises
+
+blueprint:
+  type: home-expertises
+  sectionTitle: "Nos expertises"
+  intro: ""
+  learnMore: "En savoir plus"
+  ctaLabel: ""
+  ctaHref: ""
+  items:
+    - number: "01"
+      title: "Première expertise"
+      accent: "#1a5bff"
+      description: "Décrivez brièvement cette expertise."
+      href: "/fr/expertises/"
+      image: ""
+      variant: claire
+      linkLabel: ""
+      # Référence bento 2026-08-11 : carte large (2 col). Pictogramme retiré
+      # du contrat le 2026-08-17 (correction user : tuiles sans icônes).
+      wide: false
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat sections — ne pas modifier."
+  sectionTitle:
+    label: "Titre de section"
+  intro:
+    label: "Paragraphe d'appui"
+    comment: "Affiché sous le titre (optionnel)."
+  learnMore:
+    label: "Libellé du lien des tuiles"
+    comment: "Ex. « En savoir plus » — commun à toutes les tuiles (une carte peut le surcharger)."
+  ctaLabel:
+    label: "Libellé du lien de section"
+    comment: "Lien en haut à droite (ex. « Voir toutes nos expertises »). Vide = absent."
+  ctaHref:
+    label: "Lien de section"
+    comment: "URL finale, préfixe de langue inclus."
+  items:
+    type: array
+    label: "Cartes d'expertise"
+    comment: "Cartes affichées en grille."
+    options:
+      structures: _structures.expertise_items

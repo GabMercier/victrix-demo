@@ -1,0 +1,146 @@
+{
+  "title": "Cybersécurité dans le secteur de la santé",
+  "description": "Découvrez notre offre de cybersécurité sur mesure pour le secteur de la santé. Protégez les données des patients et systèmes d’information contre toute attaque.",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "",
+      "titleAccent": "",
+      "title": "Cybersécurité dans le secteur de la santé",
+      "titleHighlight": "santé",
+      "lead": "Victrix offre un service de cybersécurité sur mesure pour le secteur de la santé. Protégez les données des patients, vos appareils médicaux connectés et vos systèmes d’information contre toutes les menaces informatiques.",
+      "ctaLabel": "Élevez votre cybersécurité",
+      "ctaHref": "/fr/contact",
+      "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
+      "imageAlt": ""
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Une cybersécurité et une confidentialité de premier ordre pour les organismes de santé",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Une expérience approfondie du domaine de la santé",
+        "text": "Nos consultants cyber comprennent les exigences auxquelles font face les prestataires de soins de santé au quotidien. Nous usons des meilleures pratiques de cybersécurité pour <strong>protéger vos renseignements personnels</strong> et <strong>renforcer la sécurité des systèmes</strong> de votre établissement de santé.",
+        "watermark": "engrenage",
+        "stats": []
+      },
+      "aside": {
+        "icon": "insigne",
+        "title": "Un accompagnement personnalisé",
+        "text": "Pour garantir un niveau de sécurité optimal à votre organisme de soins de santé, il est essentiel d’atteindre et de maintenir les normes les plus élevées — c’est là où l’accompagnement professionnel devient indispensable.",
+        "linkLabel": "Parlez à nos experts",
+        "linkHref": "/fr/contact"
+      }
+    },
+    {
+      "type": "numbered-cards",
+      "sectionTitle": "Les priorités de cybersécurité des établissements de santé",
+      "headingStyle": "plain",
+      "tone": "default",
+      "columns": "2",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Gouvernance et résilience",
+          "text": "Préparer l’établissement de santé à faire face aux cybermenaces et être en mesure de réaliser une auto-évaluation des cyberrisques."
+        },
+        {
+          "number": "02",
+          "title": "Ressources et mutualisation",
+          "text": "Identifier et augmenter le nombre de professionnels, assurer un budget suffisant pour renforcer la cybersécurité et le numérique, et trouver un service de cybersécurité adapté aux besoins spécifiques et prioritaires."
+        },
+        {
+          "number": "03",
+          "title": "Sensibilisation à la cybersécurité en santé",
+          "text": "Sensibiliser les hauts dirigeants, sensibiliser et former l’ensemble des employés, et mettre en place des exercices de crise en cas d’attaque par hameçonnage ou autres menaces."
+        },
+        {
+          "number": "04",
+          "title": "Sécurité opérationnelle",
+          "text": "Sécuriser les annuaires d’établissements (AD) et les équipements médicaux (IoT), gérer les risques d’exposition et les accès, et développer un plan de reprise des activités et relève."
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "Un accompagnement de la stratégie à la cyber-résilience",
+      "paragraphs": [
+        "<strong>Stratégie et gouvernance</strong> — protéger la sécurité des patients et leurs données personnelles grâce à notre approche stratégique : nous identifions vos actifs, analysons votre risque et assurons votre conformité pour élever le niveau de sécurité de vos données médicales sensibles.",
+        "<strong>Modernisation des TI</strong> — contrer les cybermenaces et rester au-devant des progrès technologiques : virtualisation, automatisation et orchestration stratégique, sécurité périmétrique renforcée par l’architecture Zero Trust, solutions cloud hybrides adaptées et réseaux hautement sécurisés.",
+        "<strong>Infonuagique et optimisation des applications</strong> — déploiement sécurisé d’infrastructures (PaaS, SaaS et IaaS), transformation et optimisation d’applications (DevOps/DevSecOps), automatisation des processus et sécurité des API.",
+        "<strong>Accompagnement tactique et opérationnel</strong> — évaluation de votre posture et maturité de sécurité, déploiement de contrôles (EDR-XDR-MDR), gestion des identités et accès (IDaaS), audits de cybersécurité et services gérés 24/7.",
+        "<strong>Cyber-résilience</strong> — sauvegarde et archivage, sécurité de la messagerie, mise à jour régulière de vos outils de sécurité, sécurité des infrastructures, du réseau et des environnements de travail, et expertise en gestion de crise et cyber-assurance."
+      ],
+      "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Zero Trust", "label": "Sécurité périmétrique renforcée" },
+        { "value": "24/7", "label": "Audits et services gérés" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
+    },
+    {
+      "type": "tech-columns",
+      "sectionTitle": "L’écosystème de la santé",
+      "groups": [
+        {
+          "title": "Agences",
+          "items": [
+            "Agence du numérique en santé (ANS – France)",
+            "Dossier de santé numérique (Québec)",
+            "Agence santé Québec"
+          ]
+        },
+        {
+          "title": "Ministères",
+          "items": [
+            "Ministère de la Santé et des Services sociaux du Québec",
+            "CISSS (centres intégrés de santé et de services sociaux) et déclinaisons régionales"
+          ]
+        },
+        {
+          "title": "Centres et établissements",
+          "items": [
+            "Centres intégrés universitaires",
+            "Établissements privés"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "Nos technologies",
+      "fond": "givre",
+      "boxes": [
+        "Palo Alto",
+        "Checkpoint",
+        "Pulse Secure",
+        "CrowdStrike",
+        "Microsoft 365",
+        "Cisco",
+        "AlgoSec",
+        "AWS",
+        "ServiceNow",
+        "Proofpoint"
+      ]
+    },
+    {
+      "type": "cta",
+      "title": "Élevez la cybersécurité de vos informations médicales",
+      "body": "Contactez notre équipe d’experts et nous répondrons à toutes vos questions avec grand plaisir.",
+      "ctaLabel": "Contactez nos experts",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "seoTitle": "Cybersécurité | Secteur de la santé"
+}

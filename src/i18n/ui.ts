@@ -1,12 +1,20 @@
 /**
- * UI / chrome dictionary — everything outside the page bodies & content
- * collections: header, footer, blog index, article controls, 404.
+ * UI / chrome dictionary — INTERFACE strings only (accessibility labels,
+ * header entries, Pagefind UI, article share controls). Page and chrome
+ * CONTENT has been progressively moved to CMS-editable collections: footer/
+ * consent/404 → `site` (2026-08-11), blog index & RSS / search page / merci →
+ * `pagesSysteme`, Contact → `contact`, Carrières → `carrieres` (2026-08-12).
  *
  * `fr` is the source of truth; `en` is typed against it (`UI`), so the two
  * locales can never drift out of shape — a missing/extra key fails the build.
  * Internal hrefs are stored without a locale and prefixed at render via
  * `localizePath()`. Page-body copy lives in `src/i18n/content/*` and the
  * `home`/`blog` content collections, not here.
+ *
+ * Navigation CONTENT (menu items, mega menu, announcement bar, portal button)
+ * was migrated to src/data/navigation/<lang>.json — the `navigation`
+ * collection (src/content.config.ts), editable in CloudCannon. Only
+ * accessibility strings (interface, not content) remain under `nav`/`announce`.
  */
 
 import type { Locale } from './config';
@@ -18,169 +26,87 @@ const fr = {
   skipLink: 'Aller au contenu principal',
 
   nav: {
-    items: [
-      { label: 'Découvrir Victrix', href: '/decouvrir' },
-      { label: 'Expertises', href: '/expertises' },
-      { label: 'Produits', href: '/produits' },
-      { label: 'Carrière', href: '/carrieres' },
-      { label: 'Contact', href: '/contact' },
-      { label: 'Ressources', href: '/ressources' },
-    ],
-    portal: 'Portail client',
     brandAria: 'Victrix — Accueil',
     openMenu: 'Ouvrir le menu',
     closeMenu: 'Fermer le menu',
     langGroupAria: 'Choix de la langue',
-    // Mega menu under "Expertises" (desktop) — mirrors victrix.ca's dropdown.
-    // `parentHref` matches the nav item above; `icon` keys map to the inline
-    // SVGs in Header.astro.
-    mega: {
-      parentHref: '/expertises',
-      ariaLabel: 'Sous-menu Expertises',
-      columns: [
-        {
-          title: 'Conseil stratégique',
-          href: '/expertises/consultation-strategique',
-          icon: 'strategy',
-          links: [
-            { label: 'Conformité Loi 25', href: '/expertises/consultation-strategique/conformite-loi-25' },
-          ],
-        },
-        {
-          title: 'Infonuagique',
-          href: '/expertises/infonuagique',
-          icon: 'cloud',
-          links: [
-            { label: 'Microsoft Azure', href: '/expertises/infonuagique/microsoft-azure' },
-            { label: 'Amazon Web Services', href: '/expertises/infonuagique/amazon-web-services' },
-          ],
-        },
-        {
-          title: 'Cybersécurité',
-          href: '/expertises/cybersecurite',
-          icon: 'security',
-          links: [
-            { label: 'Centre opérationnel de sécurité (SOC) évolutif', href: '/expertises/cybersecurite/soc-evolutif' },
-            { label: 'Tests d’intrusion', href: '/expertises/cybersecurite/tests-intrusion' },
-            { label: 'IoT et OT', href: '/expertises/cybersecurite/iot-ot' },
-          ],
-        },
-        {
-          title: 'Productivité',
-          href: '/expertises/productivite',
-          icon: 'productivity',
-          links: [
-            { label: 'Ø Studio', href: '/produits' },
-            { label: 'Intelligence artificielle', href: '/expertises/intelligence-artificielle' },
-            { label: 'Plateforme employé et intranet', href: '/produits/intranet' },
-            { label: 'ServiceNow', href: '/expertises/productivite/servicenow' },
-            { label: 'Dynamics 365 Field Service', href: '/expertises/productivite/dynamics-365-field-service' },
-            { label: 'Copilot pour Microsoft 365', href: '/expertises/productivite/copilot-microsoft-365' },
-            { label: 'Copilot Studio', href: '/expertises/productivite/copilot-studio' },
-            { label: 'O bureau', href: '/produits/reservation-bureau' },
-          ],
-        },
-        {
-          title: 'Services gérés',
-          href: '/expertises/services-geres',
-          icon: 'managed',
-          links: [
-            { label: 'Services TI gérés', href: '/expertises/services-geres/services-ti-geres' },
-            { label: 'Environnement Microsoft 365', href: '/expertises/services-geres/environnement-microsoft-365' },
-          ],
-        },
-      ],
-    },
   },
 
   announce: {
-    before: 'Découvrez ',
-    strong: 'Ø Studio',
-    after:
-      ', notre catalogue d’applications et de services pour accélérer votre productivité.',
-    linkLabel: 'En savoir plus →',
-    linkHref: '/produits',
     close: 'Fermer l’annonce',
   },
 
-  footer: {
-    columns: [
-      {
-        title: 'Expertises',
-        links: [
-          { label: 'Consultation stratégique', href: '/expertises/consultation-strategique' },
-          { label: 'Infonuagique', href: '/expertises/infonuagique' },
-          { label: 'Cybersécurité', href: '/expertises/cybersecurite' },
-          { label: 'Productivité', href: '/expertises/productivite' },
-          { label: 'Intelligence artificielle', href: '/expertises/intelligence-artificielle' },
-          { label: 'Services gérés', href: '/expertises/services-geres' },
-        ],
-      },
-      {
-        title: 'Produits',
-        links: [
-          { label: 'Licences et équipements', href: '/produits/licences-equipements' },
-          { label: 'Intranet — Plateforme d’expérience employé', href: '/produits/intranet' },
-          { label: 'Application de réservation de bureau', href: '/produits/reservation-bureau' },
-        ],
-      },
-      {
-        title: 'À propos',
-        links: [
-          { label: 'Carrières & Vie@Victrix', href: '/carrieres' },
-          { label: 'Blogue', href: '/ressources' },
-          { label: 'Tarification', href: '/tarification' },
-        ],
-      },
-    ],
-    contactTitle: 'Contact',
-    addressName: 'Les Solutions Victrix',
-    addressLines: ['1100, boul. René-Lévesque Ouest, bureau 1900', 'Montréal (Québec) H3B 4N4'],
-    socialLabel: 'Suivez-nous :',
-    facebookAria: 'Victrix sur Facebook',
-    linkedinAria: 'Victrix sur LinkedIn',
-    legal: [
-      { label: 'Conditions d’utilisation', href: '/conditions-utilisation' },
-      { label: 'Politique de confidentialité', href: '/politique-confidentialite' },
-    ],
+  // Recherche interne (P-06) — entrée du header + interface Pagefind. Les
+  // TEXTES de la page /recherche (titre, intro, noscript…) sont DÉMÉNAGÉS vers
+  // la collection `pagesSysteme` (src/data/pages-systeme/{fr,en}.json, bloc
+  // `recherche`, éditable au CMS — 2026-08-12). Restent ici : l'entrée du
+  // header (interface) et le bloc `ui`, passé tel quel aux traductions de
+  // l'interface Pagefind (clés officielles de PagefindUI; [SEARCH_TERM]/
+  // [COUNT] = jetons Pagefind).
+  search: {
+    navLabel: 'Recherche',
+    navAria: 'Rechercher sur le site',
+    ui: {
+      placeholder: 'Rechercher…',
+      clear_search: 'Effacer',
+      load_more: 'Afficher plus de résultats',
+      search_label: 'Rechercher sur ce site',
+      filters_label: 'Filtres',
+      zero_results: 'Aucun résultat pour [SEARCH_TERM]',
+      many_results: '[COUNT] résultats pour [SEARCH_TERM]',
+      one_result: '[COUNT] résultat pour [SEARCH_TERM]',
+      alt_search: 'Aucun résultat pour [SEARCH_TERM]. Résultats pour [DIFFERENT_TERM] :',
+      search_suggestion: 'Aucun résultat pour [SEARCH_TERM]. Essayez :',
+      searching: 'Recherche de [SEARCH_TERM]…',
+    },
   },
 
+  // Pied de page : CONTENU (colonnes, coordonnées, réseaux, mentions légales)
+  // DÉMÉNAGÉ vers la collection `site` (src/data/site/{fr,en}.json, éditable au
+  // CMS — 2026-08-11) : le pied de page est transversal, il n'appartient à
+  // aucune page. Seule l'ÉTIQUETTE D'ACCESSIBILITÉ reste ici.
+  footer: {
+    backToTop: 'Retour en haut de page',
+  },
+
+  // Bandeau de consentement Loi 25 (P-10) : FORMULATION déménagée vers la
+  // collection `site` (éditable au CMS — 2026-08-11 ; portée légale). Seule
+  // l'étiquette de région (accessibilité) reste ici.
+  consent: {
+    ariaLabel: 'Consentement aux témoins',
+  },
+
+  // Index du blogue : les TEXTES (surtitre, titre, intro, libellé « Tous »)
+  // sont DÉMÉNAGÉS vers la collection `pagesSysteme` (bloc `ressources`,
+  // éditable au CMS — 2026-08-12) ; ce bloc alimente aussi le fil d'Ariane des
+  // articles et le flux RSS. Seule l'étiquette d'accessibilité reste ici.
   blog: {
-    eyebrow: 'Ressources',
-    title: 'Le blogue Victrix',
-    intro:
-      'Analyses, bonnes pratiques et points de vue de nos experts pour accompagner la transformation numérique de votre organisation.',
+    filterAria: 'Filtrer par catégorie',
   },
 
   article: {
     back: '← Toutes les ressources',
-    shareLabel: 'Partager :',
+    shareLabel: 'Partager :',
     shareLinkedin: 'Partager sur LinkedIn',
     shareX: 'Partager sur X',
     shareFacebook: 'Partager sur Facebook',
     copyLink: 'Copier le lien',
-    copied: 'Lien copié !',
+    copied: 'Lien copié !',
     backBtn: '← Retour aux ressources',
+    latestTitle: 'Nos derniers articles',
+    readMore: 'Lire l’article',
+    breadcrumbHome: 'Accueil',
+    breadcrumbAria: 'Fil d’Ariane',
   },
 
   home: {
     learnMore: 'En savoir plus',
   },
 
-  notFound: {
-    metaTitle: 'Page en construction',
-    metaDescription:
-      'Cette section du site Victrix est en cours de construction. Découvrez les pages déjà en ligne.',
-    eyebrow: 'Erreur 404',
-    title: 'Page en construction',
-    text: 'La page que vous cherchez n’est pas encore en ligne — ou n’existe pas. Ce site est un prototype : plusieurs sections sont toujours en cours de réalisation. Merci de votre patience !',
-    requestedLabel: 'Adresse demandée :',
-    links: [
-      { label: 'Retour à l’accueil', href: '/', primary: true },
-      { label: 'Consulter le blogue', href: '/ressources', primary: false },
-      { label: 'Nous joindre', href: '/contact', primary: false },
-    ],
-  },
+  // merci : DÉMÉNAGÉ vers la collection `pagesSysteme` (src/data/pages-systeme/
+  // {fr,en}.json, bloc `merci`, éditable au CMS — 2026-08-12).
+  // notFound : DÉMÉNAGÉ vers la collection `site` (src/data/site/{fr,en}.json,
+  // éditable au CMS — 2026-08-11). src/pages/404.astro lit la collection.
 };
 
 type UI = typeof fr;
@@ -192,134 +118,50 @@ const en: UI = {
   skipLink: 'Skip to main content',
 
   nav: {
-    items: [
-      { label: 'Discover Victrix', href: '/decouvrir' },
-      { label: 'Expertise', href: '/expertises' },
-      { label: 'Products', href: '/produits' },
-      { label: 'Careers', href: '/carrieres' },
-      { label: 'Contact', href: '/contact' },
-      { label: 'Resources', href: '/ressources' },
-    ],
-    portal: 'Client portal',
     brandAria: 'Victrix — Home',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     langGroupAria: 'Language',
-    mega: {
-      parentHref: '/expertises',
-      ariaLabel: 'Expertise submenu',
-      columns: [
-        {
-          title: 'Strategic consulting',
-          href: '/expertises/consultation-strategique',
-          icon: 'strategy',
-          links: [
-            { label: 'Law 25 compliance', href: '/expertises/consultation-strategique/conformite-loi-25' },
-          ],
-        },
-        {
-          title: 'Cloud computing',
-          href: '/expertises/infonuagique',
-          icon: 'cloud',
-          links: [
-            { label: 'Microsoft Azure', href: '/expertises/infonuagique/microsoft-azure' },
-            { label: 'Amazon Web Services', href: '/expertises/infonuagique/amazon-web-services' },
-          ],
-        },
-        {
-          title: 'Cybersecurity',
-          href: '/expertises/cybersecurite',
-          icon: 'security',
-          links: [
-            { label: 'Scalable Security Operations Centre (SOC)', href: '/expertises/cybersecurite/soc-evolutif' },
-            { label: 'Penetration testing', href: '/expertises/cybersecurite/tests-intrusion' },
-            { label: 'IoT and OT', href: '/expertises/cybersecurite/iot-ot' },
-          ],
-        },
-        {
-          title: 'Productivity',
-          href: '/expertises/productivite',
-          icon: 'productivity',
-          links: [
-            { label: 'Ø Studio', href: '/produits' },
-            { label: 'Artificial intelligence', href: '/expertises/intelligence-artificielle' },
-            { label: 'Employee platform and intranet', href: '/produits/intranet' },
-            { label: 'ServiceNow', href: '/expertises/productivite/servicenow' },
-            { label: 'Dynamics 365 Field Service', href: '/expertises/productivite/dynamics-365-field-service' },
-            { label: 'Copilot for Microsoft 365', href: '/expertises/productivite/copilot-microsoft-365' },
-            { label: 'Copilot Studio', href: '/expertises/productivite/copilot-studio' },
-            { label: 'O bureau', href: '/produits/reservation-bureau' },
-          ],
-        },
-        {
-          title: 'Managed services',
-          href: '/expertises/services-geres',
-          icon: 'managed',
-          links: [
-            { label: 'Managed IT services', href: '/expertises/services-geres/services-ti-geres' },
-            { label: 'Microsoft 365 environment', href: '/expertises/services-geres/environnement-microsoft-365' },
-          ],
-        },
-      ],
-    },
   },
 
   announce: {
-    before: 'Discover ',
-    strong: 'Ø Studio',
-    after: ', our catalogue of apps and services to accelerate your productivity.',
-    linkLabel: 'Learn more →',
-    linkHref: '/produits',
     close: 'Dismiss announcement',
   },
 
-  footer: {
-    columns: [
-      {
-        title: 'Expertise',
-        links: [
-          { label: 'Strategic consulting', href: '/expertises/consultation-strategique' },
-          { label: 'Cloud computing', href: '/expertises/infonuagique' },
-          { label: 'Cybersecurity', href: '/expertises/cybersecurite' },
-          { label: 'Productivity', href: '/expertises/productivite' },
-          { label: 'Artificial intelligence', href: '/expertises/intelligence-artificielle' },
-          { label: 'Managed services', href: '/expertises/services-geres' },
-        ],
-      },
-      {
-        title: 'Products',
-        links: [
-          { label: 'Licensing and equipment', href: '/produits/licences-equipements' },
-          { label: 'Intranet — Employee experience platform', href: '/produits/intranet' },
-          { label: 'Desk booking app', href: '/produits/reservation-bureau' },
-        ],
-      },
-      {
-        title: 'About',
-        links: [
-          { label: 'Careers & Life@Victrix', href: '/carrieres' },
-          { label: 'Blog', href: '/ressources' },
-          { label: 'Pricing', href: '/tarification' },
-        ],
-      },
-    ],
-    contactTitle: 'Contact',
-    addressName: 'Les Solutions Victrix',
-    addressLines: ['1100, boul. René-Lévesque Ouest, Suite 1900', 'Montréal (Québec) H3B 4N4'],
-    socialLabel: 'Follow us:',
-    facebookAria: 'Victrix on Facebook',
-    linkedinAria: 'Victrix on LinkedIn',
-    legal: [
-      { label: 'Terms of use', href: '/conditions-utilisation' },
-      { label: 'Privacy policy', href: '/politique-confidentialite' },
-    ],
+  // Internal search (P-06) — header entry + Pagefind UI. The /recherche page
+  // texts moved to the `pagesSysteme` collection (see the FR comments). The
+  // `ui` block is handed verbatim to the Pagefind UI translations.
+  search: {
+    navLabel: 'Search',
+    navAria: 'Search this site',
+    ui: {
+      placeholder: 'Search…',
+      clear_search: 'Clear',
+      load_more: 'Load more results',
+      search_label: 'Search this site',
+      filters_label: 'Filters',
+      zero_results: 'No results for [SEARCH_TERM]',
+      many_results: '[COUNT] results for [SEARCH_TERM]',
+      one_result: '[COUNT] result for [SEARCH_TERM]',
+      alt_search: 'No results for [SEARCH_TERM]. Showing results for [DIFFERENT_TERM] instead:',
+      search_suggestion: 'No results for [SEARCH_TERM]. Try one of the following:',
+      searching: 'Searching for [SEARCH_TERM]…',
+    },
   },
 
+  // Footer content + consent wording moved to the `site` collection — see the
+  // FR comments. Only the accessibility strings remain here.
+  footer: {
+    backToTop: 'Back to top',
+  },
+
+  consent: {
+    ariaLabel: 'Cookie consent',
+  },
+
+  // Blog index texts moved to the `pagesSysteme` collection (see FR comments).
   blog: {
-    eyebrow: 'Resources',
-    title: 'The Victrix blog',
-    intro:
-      "Analysis, best practices and insights from our experts to support your organization's digital transformation.",
+    filterAria: 'Filter by category',
   },
 
   article: {
@@ -331,26 +173,18 @@ const en: UI = {
     copyLink: 'Copy link',
     copied: 'Link copied!',
     backBtn: '← Back to resources',
+    latestTitle: 'Our latest articles',
+    readMore: 'Read article',
+    breadcrumbHome: 'Home',
+    breadcrumbAria: 'Breadcrumb',
   },
 
   home: {
     learnMore: 'Learn more',
   },
 
-  notFound: {
-    metaTitle: 'Page under construction',
-    metaDescription:
-      'This section of the Victrix site is under construction. Explore the pages already online.',
-    eyebrow: 'Error 404',
-    title: 'Page under construction',
-    text: "The page you're looking for isn't online yet — or doesn't exist. This site is a prototype: several sections are still being built. Thanks for your patience!",
-    requestedLabel: 'Requested address:',
-    links: [
-      { label: 'Back to home', href: '/', primary: true },
-      { label: 'Visit the blog', href: '/ressources', primary: false },
-      { label: 'Contact us', href: '/contact', primary: false },
-    ],
-  },
+  // merci: moved to the `pagesSysteme` collection (see the FR comments).
+  // notFound : voir la collection `site` (miroir du commentaire FR).
 };
 
 export const ui: Record<Locale, UI> = { fr, en };

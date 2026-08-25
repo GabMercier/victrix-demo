@@ -1,0 +1,147 @@
+{
+  "title": "ServiceNow",
+  "description": "Victrix is your ServiceNow partner from purchasing to managed services. Get tailored professional services and maximize the value of your service platform.",
+  "sections": [
+    {
+      "type": "product-hero",
+      "badge": "ServiceNow platform",
+      "title": "Get the most out of ServiceNow: your platform amplified by Victrix’s expertise",
+      "titleHighlight": "ServiceNow",
+      "lead": "Victrix, your certified ServiceNow partner, supports you from platform acquisition to upgrade services. Take advantage of our accelerated deployment approach and expertise to gain maximum value from your service platform.",
+      "ctaLabel": "Request a consultation",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "image": "/wp-content/uploads/2024/11/servicenow-banniere-.png",
+      "imageAlt": "",
+      "fond": "givre"
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Our ServiceNow expertise",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Accelerate your digital transformation",
+        "text": "Our expertise in strategy development and technological support enables organizations across various sectors to <strong>accelerate their digital transformation</strong> and focus on their long-term business objectives and growth.",
+        "watermark": "graphique",
+        "stats": []
+      },
+      "aside": {
+        "icon": "insigne",
+        "title": "End-to-end support",
+        "text": "Licensing, deployment, support, and evolution services: accelerated development with added value and bilingual service, in French and English.",
+        "linkLabel": "Talk to a ServiceNow expert",
+        "linkHref": "/en/contact"
+      }
+    },
+    {
+      "type": "numbered-cards",
+      "sectionTitle": "Accelerated deployment of your ServiceNow platform",
+      "headingStyle": "underline",
+      "intro": "Our ServiceNow experts focus on the elements that bring the most value to your service platform implementation. As a result, we propose an <strong>efficient deployment formula</strong> tailored to your organization’s specific needs.",
+      "tone": "default",
+      "columns": "2",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Identification of your organization’s key business processes",
+          "text": ""
+        },
+        {
+          "number": "02",
+          "title": "Faster project planning",
+          "text": ""
+        },
+        {
+          "number": "03",
+          "title": "Implementation, co-development, and quality assurance",
+          "text": ""
+        },
+        {
+          "number": "04",
+          "title": "Operation and adoption",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "offer-cards",
+      "title": "End-to-end services, from acquisition to deployment",
+      "intro": "Let our ServiceNow experts guide you through every stage of your digital transformation project. Our specialists simplify your ServiceNow journey by implementing best practices for this automation and services platform, recognized as a market leader.",
+      "fond": "givre",
+      "ctaLabel": "Accelerate your ServiceNow deployment",
+      "ctaHref": "/en/contact",
+      "items": [
+        {
+          "number": "01",
+          "title": "ServiceNow consulting",
+          "bullets": [
+            { "text": "Study and analysis of your needs to recommend essential ServiceNow modules and their deployment sequence", "icon": "document" },
+            { "text": "For existing customers, an overview of how the solutions are being used, review and adjustment to maximize platform use", "icon": "cible" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Expert services for the development and deployment of your solution",
+          "bullets": [
+            { "text": "Strategic deployment and project management support", "icon": "coche" },
+            { "text": "Implementation of ServiceNow ITSM and ITOM foundation", "icon": "coche" },
+            { "text": "Expertise in business modules: Security (SecOps), Operational Technology (OT), Human Resources (HR), Portfolio Management (SPM), IT Asset Management (ITAM), Risk and Business Continuity Management (IRM/BCM), Development on AppEngine", "icon": "coche" },
+            { "text": "Proposal of accelerated pathways and co-development with your IT teams", "icon": "coche" },
+            { "text": "ServiceNow support, discovery and evolution services", "icon": "coche" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "AI governance and oversight",
+      "paragraphs": [
+        "With ServiceNow’s AI Control Tower, Victrix helps your organization oversee and govern AI across the enterprise.",
+        "Gain <strong>complete visibility into your models</strong>, <strong>data</strong>, and <strong>processes</strong> to ensure every AI initiative stays aligned with your business goals — scalable governance to support your innovation ambitions."
+      ],
+      "image": "/wp-content/uploads/2024/11/servicenow-banniere-.png",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Centralization", "label": "AI models, datasets, and use cases" },
+        { "value": "Performance", "label": "Tracking of the value generated by AI" },
+        { "value": "Compliance", "label": "Automated risk management" },
+        { "value": "Integration", "label": "Direct with your ServiceNow workflows" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "A partnership that delivers value",
+      "subtitle": "ServiceNow focuses entirely on developing its product, and relies on its network of trusted partners for all its implementations. Working with a partner like Victrix is therefore crucial for implementing your service platform, so that you can reap all its benefits. Victrix is a certified ServiceNow Partner:",
+      "fond": "blanc",
+      "boxes": [
+        "Purchase, integration, and customization of your ServiceNow solution",
+        "Diverse team working on the platform’s modules for extensive deployment expertise",
+        "Integration of the cloud offering catalog for professional services",
+        "Victrix is qualified by the ministère de la Cybersécurité et du Numérique (MCN)",
+        "Strong partnerships to complement our expertise",
+        "Cross-functional expertise: cybersecurity, cloud solutions, artificial intelligence, and application deployment"
+      ]
+    },
+    {
+      "type": "cta",
+      "title": "Ensure the success of your ServiceNow solution with Victrix",
+      "body": "Get the most of your investment and outpace your competitors with a simple, accelerated, and affordable digital transformation with Victrix.",
+      "ctaLabel": "Talk to a ServiceNow expert",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "slug": "productivity-consulting/servicenow",
+  "seoTitle": "ServiceNow Partner | Consulting & Services"
+}

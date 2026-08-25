@@ -1,0 +1,60 @@
+# =============================================================================
+# Spec Bookshop — section « Bento des domaines d'expertise » (palette
+# partagée), NOUVELLE 2026-08-05 (fidélité maquette expertise-mere.css). Voir
+# hero.bookshop.yml pour les conventions communes. La grille `items` pointe
+# vers _structures.bento_items (cloudcannon.config.yml) — `type: array`
+# explicite, même garde-fou que benefits.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Service — Bento d'expertises"
+  description: "Grille bento 4 colonnes de cartes à peau (blanche, bleue, ardoise) et taille (grande, haute, large, petite) : domaines d'expertise d'une page mère."
+  icon: dashboard
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/expertise-bento/preview.png"
+    text: "Service — Bento d'expertises"
+    subtext: Grille bento de cartes (peaux et tailles variées)
+  preview:
+    icon: dashboard
+    text:
+      - key: title
+      - text: Bento d'expertises
+
+blueprint:
+  type: expertise-bento
+  eyebrow: ""
+  title: "Titre de la section"
+  intro: ""
+  items:
+    - title: "Domaine d'expertise"
+      text: ""
+      peau: blanche
+      taille: petite
+      icon: ""
+      image: ""
+      href: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  eyebrow:
+    label: "Surtitre (optionnel)"
+  title:
+    label: "Titre"
+  intro:
+    label: "Paragraphe d'appui"
+    comment: "Aligné à droite du titre (optionnel)."
+  items:
+    type: array
+    label: "Cartes du bento"
+    comment: "Placées dans une grille 4 colonnes selon leur taille, dans l'ordre."
+    options:
+      structures: _structures.bento_items

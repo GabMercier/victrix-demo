@@ -1,0 +1,234 @@
+---
+/**
+ * Section « Valeur stratégique » — composant Bookshop, NOUVEAU 2026-08-05.
+ * FIDÉLITÉ MAQUETTE (docs/design/produit-enfant.css §Section - Strategic
+ * Value, « Page Produit - Enfant ») : fond ivoire (surface) py-80, deux
+ * colonnes centrées gap-80 — à gauche l'image bordée rayon 4 posée sur un
+ * HALO bleu flouté (aplat primary 5 % débordant de 16 px, blur 20) ; à droite
+ * titre 40/700 ls -0.4 + LISERÉ bleu 64×4, paragraphes 16/26, puis rangée de
+ * tuiles statistiques (fond beige clair, liseré GAUCHE bleu 4 px, valeur
+ * 24/700 bleue, étiquette 12/700 majuscules ls 1.2). Bleus/neutres chauds =
+ * tokens (export Hanken/chaud) ; bordure froide #C4C5D9 verbatim (précédent
+ * méga/benefits).
+ *
+ * VARIANTE « vitrine » AJOUTÉE 2026-08-05 (docs/design/landing-page.css
+ * §Studio Section + capture « Landing page ») : fond sable
+ * (surface-container-high), TEXTE À GAUCHE / IMAGE À DROITE — badge chip
+ * bg-primary 10/700 majuscules, tête compacte 16-18, tuiles statistiques
+ * « verre » (blanc 60 % bordé blanc, backdrop-blur), liste à puces cochées,
+ * image encadrée BLANC 4 px rayon 16 sur halo primary/10 blur-50, carte
+ * FLOTTANTE blanche en bas-gauche de l'image (icône groupe + titre 16/700 +
+ * texte 14/20).
+ *
+ * Props : { type: "strategic-value", title, paragraphs: [...], image?,
+ *           imageAlt?, stats?: [{ value, label }], variant?, badge?,
+ *           bullets?: [...], cardTitle?, cardText? }
+ * - Champs AJOUTÉS 2026-08-05, tous par défaut vides (contenu existant
+ *   intact) : `variant` « produit » (défaut) | « vitrine » ; `badge` chip ;
+ *   `bullets` liste cochée ; `cardTitle/cardText` carte flottante (rendue si
+ *   titre non vide ET image présente).
+ * - `paragraphs` : chaque entrée rendue en <p set:html> (peut contenir des
+ *   <strong> — contenu de dépôt, même politique que rich-text) ;
+ * - `image` = chemin PUBLIC servi tel quel (browser-safe CloudCannon).
+ *
+ * Contraintes / pièges :
+ * - <h2> de section : le <h1> unique appartient au héros.
+ * - Liseré gauche des tuiles : `border-0 border-l-4 border-solid` OBLIGATOIRE
+ *   (sans preflight, border-solid seul réveille la largeur UA « medium » sur
+ *   les côtés non nuls — piège consigné au lot chrome).
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  title: string;
+  paragraphs: string[];
+  image?: string;
+  imageAlt?: string;
+  stats?: Stat[];
+  variant?: 'produit' | 'vitrine';
+  badge?: string;
+  bullets?: string[];
+  cardTitle?: string;
+  cardText?: string;
+  fond?: '' | 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+}
+
+const {
+  title,
+  paragraphs = [],
+  image,
+  imageAlt,
+  stats = [],
+  variant = 'produit',
+  badge = '',
+  bullets = [],
+  cardTitle = '',
+  cardText = '',
+  fond = '',
+} = Astro.props;
+
+const vitrine = variant === 'vitrine';
+const hasCard = Boolean(cardTitle && image);
+
+// « Fond de section » ÉTENDU 2026-08-17 (produit-child.css §Strategic Value,
+// lavis chauds) : clé fermée → utilitaire de la palette officielle. '' =
+// défaut historique — il dépend de la `variant`, d'où la clé vide.
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
+---
+
+<section
+  class:list={[
+    'py-20',
+    FONDS[fond] ?? (vitrine ? 'bg-surface-container-high' : 'bg-surface'),
+  ]}
+>
+  <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    {/* Ordre produit-child.css (2026-08-17) : TEXTE à gauche, image à droite
+        (mobile : texte puis image — order-2 à tous les points de rupture). */}
+    {
+      image && !vitrine && (
+        <div class="relative isolate order-2">
+          <span class="absolute -inset-4 bg-primary/5 blur-[20px] rounded-lg -z-10" aria-hidden="true" />
+          <img
+            src={image}
+            alt={imageAlt ?? ''}
+            class="w-full h-auto border border-solid border-[#C4C5D9] rounded-sm shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      )
+    }
+    <div class="flex flex-col items-start gap-4">
+      {
+        badge && (
+          <p class="m-0 max-w-none bg-primary text-on-primary text-[10px] leading-[15px] font-bold uppercase tracking-[1px] px-3 py-1 rounded-xs">
+            {badge}
+          </p>
+        )
+      }
+      {
+        vitrine ? (
+          <h2 class="text-lg leading-7 font-bold text-on-surface m-0">{title}</h2>
+        ) : (
+          <>
+            <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
+              {title}
+            </h2>
+            <span class="w-16 h-1 bg-primary" aria-hidden="true" />
+          </>
+        )
+      }
+      {
+        paragraphs.map((paragraph) => (
+          <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none pt-2" set:html={paragraph} />
+        ))
+      }
+      {
+        stats.length > 0 && (
+          <div class="self-stretch flex flex-col sm:flex-row gap-4 pt-4">
+            {stats.map((stat) => (
+              <div
+                class:list={[
+                  'flex-1 flex flex-col',
+                  vitrine
+                    ? 'bg-white/60 border border-solid border-white backdrop-blur-sm rounded-xs p-4 gap-0'
+                    : 'bg-surface-container-low border-0 border-l-4 border-solid border-primary p-6 gap-3',
+                ]}
+              >
+                <p class="text-2xl leading-8 font-bold text-primary m-0">{stat.value}</p>
+                <p
+                  class:list={[
+                    'm-0 max-w-none',
+                    vitrine
+                      ? 'text-base leading-6 text-on-surface-variant'
+                      : 'text-xs font-bold uppercase tracking-[1.2px] text-on-surface-variant',
+                  ]}
+                >
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        )
+      }
+      {
+        bullets.length > 0 && (
+          <ul role="list" class="flex flex-col gap-4 m-0 p-0 pt-4 list-none">
+            {bullets.map((bullet) => (
+              <li class="m-0 flex items-start gap-4">
+                <svg
+                  class="shrink-0 mt-0.5 text-primary"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="m8.5 12 2.5 2.5 4.5-5" />
+                </svg>
+                <span class="text-base leading-6 text-on-surface">{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+    {
+      image && vitrine && (
+        <div class="relative isolate lg:ml-8 mb-8 lg:mb-0">
+          <span class="absolute inset-0 bg-primary/10 blur-[50px] rounded-xl -z-10" aria-hidden="true" />
+          <img
+            src={image}
+            alt={imageAlt ?? ''}
+            class="w-full h-auto border-4 border-solid border-white rounded-2xl shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)]"
+            loading="lazy"
+            decoding="async"
+          />
+          {hasCard && (
+            <div class="absolute -left-4 lg:-left-8 -bottom-8 max-w-[280px] bg-white border border-solid border-[#E5E2DE] rounded p-6 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] flex flex-col gap-2">
+              <p class="m-0 max-w-none flex items-center gap-3">
+                <svg
+                  class="shrink-0 text-primary"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                  <path d="M3.5 19c.6-2.7 2.7-4.5 5.5-4.5s4.9 1.8 5.5 4.5" />
+                  <path d="M15.5 5.6a3 3 0 0 1 0 4.8M17.5 14.9c1.6.6 2.7 1.9 3 4.1" />
+                </svg>
+                <span class="text-base leading-6 font-bold text-on-surface">{cardTitle}</span>
+              </p>
+              {cardText && <p class="text-sm leading-5 text-on-surface-variant m-0 max-w-none">{cardText}</p>}
+            </div>
+          )}
+        </div>
+      )
+    }
+  </div>
+</section>

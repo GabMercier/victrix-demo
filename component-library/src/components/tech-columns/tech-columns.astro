@@ -1,0 +1,64 @@
+---
+/**
+ * Section « Colonnes de technologies » — composant Bookshop (P-07).
+ * RE-SKIN DESIGN SYSTEM 2026-08-05 : tête centrée 40/700 + liseré bleu 64×4
+ * (patron des têtes landing — l'ancien liseré vert disparaît), colonnes en
+ * cartes blanches bordées #C4C5D9 rayon 4 p-32, titres de colonne 24/700,
+ * listes à puces aux MARQUEURS bleus (primary).
+ *
+ * Props : { type: "tech-columns", sectionTitle,
+ *           groups: [{ title, items: string[], subgroup?: { label, items } }] }
+ *
+ * Contraintes / pièges :
+ * - <h2> de section, <h3> par colonne : le <h1> unique appartient au héros.
+ * - `groups = []` en secours pour ne pas planter l'éditeur pendant la saisie.
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Group {
+  title: string;
+  items: string[];
+  subgroup?: { label: string; items: string[] };
+}
+interface Props {
+  sectionTitle: string;
+  groups: Group[];
+}
+
+const { sectionTitle, groups = [] } = Astro.props;
+---
+
+<section class="py-20 bg-surface">
+  <div class="container-site">
+    <div class="mx-auto text-center flex flex-col items-center gap-4">
+      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
+        {sectionTitle}
+      </h2>
+      <span class="w-16 h-1 bg-primary" aria-hidden="true"></span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+      {
+        groups.map((group) => (
+          <div class="bg-white border border-solid border-[#C4C5D9] rounded-sm p-8">
+            <h3 class="text-2xl leading-8 font-bold text-on-surface m-0 mb-4 text-center">{group.title}</h3>
+            <ul role="list" class="list-disc pl-6 m-0 flex flex-col gap-2 text-base leading-[26px] text-on-surface-variant [&_li]:m-0 [&_li::marker]:text-primary">
+              {(group.items ?? []).map((it) => (
+                <li>{it}</li>
+              ))}
+              {group.subgroup && (group.subgroup.label || (group.subgroup.items ?? []).length > 0) && (
+                <li>
+                  {group.subgroup.label}
+                  <ul role="list" class="list-disc pl-6 mt-2 flex flex-col gap-2">
+                    {(group.subgroup.items ?? []).map((s) => (
+                      <li>{s}</li>
+                    ))}
+                  </ul>
+                </li>
+              )}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,616 @@
+---
+/**
+ * Section « Formulaire » — composant Bookshop (contrat landing).
+ *
+ * Props : { type: "form", title, intro?, submitLabel, consentText?, variant?,
+ *           fields: [{ label, type: "text"|"email"|"tel"|"textarea"|"select"|
+ *           "checkbox"|"hidden", required, width?, options?, value?, showIf? }] }
+ * - `type` (au niveau section) est le discriminant du contrat landing ; il
+ *   arrive via le spread {...section} et est volontairement ignoré ici.
+ *
+ * RE-SKIN 2026-08-04 (maquettes Figma form1/form2, docs/design/form*.css) :
+ * 100 % utilitaires Tailwind (règle no-hybride, la feuille scopée historique
+ * est supprimée — la parité visuelle n'est plus un gate depuis la bascule).
+ * Deux VARIANTES (`variant`, défaut « carte ») :
+ * - carte  (form1) : carte blanche à liseré bleu 4px en tête, ombre portée,
+ *   titre/intro centrés discrets DANS la carte, champs à bordure `outline`
+ *   rayon 2px, bouton PLEINE LARGEUR avec icône d'envoi ;
+ * - panneau (form2) : panneau beige (surface-container), champs à bordure
+ *   `outline-variant` rayon 4px, bouton en largeur auto.
+ * `fields[].width: "demi"` : le champ occupe une demi-rangée (grille 2
+ * colonnes ≥sm — deux « demi » consécutifs partagent une rangée, ex.
+ * Prénom / Nom). Présentation seulement, le serveur l'ignore.
+ *
+ * P-05 — types de champ étendus, conditions d'affichage, champs auto-peuplés :
+ * - checkbox : name dérivé du libellé, value="oui" fixe ; requise = doit être
+ *   cochée (validation native + `_requis`). La LISTE des cases voyage dans le
+ *   champ caché `_cases` (le serveur en a besoin : une case non cochée est
+ *   ABSENTE du POST — reflet « oui »/« non » dans le courriel, Loi 25) ; avec
+ *   `_formId`, le serveur re-dérive cette liste de la définition.
+ * - select : options de la définition + première option vide « Choisir… » ;
+ *   avec `_formId`, le serveur rejette toute valeur hors liste.
+ * - hidden : jamais affiché, jamais requis ; `value` accepte les jetons
+ *   {{page.titre|chemin|slug|langue}} — résolus ICI depuis le prop
+ *   `pageContext` (injecté par la route via le seam enrich ; absent dans
+ *   l'éditeur visuel → chaîne vide) — et {{url.<param>}} EXACT (rendu en
+ *   hidden vide + data-url-param, rempli au chargement par le mini-script,
+ *   tronqué à 200 caractères). Voir src/lib/forms/hidden-tokens.ts.
+ * - showIf {field, equals} (field = LIBELLÉ exact du pilote, validé au
+ *   build) : le wrapper porte data-showif-field/-equals ; un mini-script
+ *   masque ET désactive (disabled = non soumis, exclu de la validation
+ *   native — c'est LE mécanisme) le champ tant que la condition n'est pas
+ *   satisfaite. Un requis conditionnel n'a PAS l'attribut required initial ni
+ *   d'entrée dans `_requis` : le serveur ne l'exige que via la définition
+ *   (formulaires liés) — docs/formulaires.md §5. Les deux mini-scripts
+ *   suivent le patron de la bannière d'erreur (is:inline + data-astro-rerun
+ *   + bloc {}) et se repèrent par closest('form').
+ *
+ * DEUX MODES (contrat « formulaires » — voir docs/formulaires.md) :
+ * - Par défaut (PUBLIC_FORMS_ENABLED absente) : MAQUETTE NON FONCTIONNELLE —
+ *   <form> sans `action`, bouton d'envoi désactivé, rien n'est soumis ni
+ *   collecté.
+ * - PUBLIC_FORMS_ENABLED="1" : vrai <form method="POST" action="/api/forms">,
+ *   aucun JavaScript requis pour soumettre (POST natif), avec les champs
+ *   cachés du contrat de champs (docs/formulaires.md §4) : `lang`, `source`,
+ *   pot de miel `website`, plus `_requis` / `_courriels` (noms séparés par
+ *   des virgules) pour annoncer au serveur les champs requis et les champs
+ *   courriel. Deux compléments navigateur, dans ce mode SEULEMENT :
+ *   · `data-astro-reload` sur le <form> — sans lui, le routeur ClientRouter
+ *     (BaseLayout) intercepte la soumission et posterait le corps en
+ *     multipart/form-data, format que /api/forms (URLSearchParams) ne sait
+ *     pas lire. L'attribut redonne la main au navigateur : POST urlencoded
+ *     natif, vrai suivi du 303.
+ *   · bannière d'erreur : /api/forms renvoie vers la page source avec
+ *     « ?erreur=1 » après un échec (validation ou Turnstile) ; un mini-script
+ *     is:inline révèle alors la bannière. Compatible CSP GELÉE ('unsafe-inline'
+ *     déjà dans script-src de /fr/* et /en/* — public/_headers).
+ * - PUBLIC_TURNSTILE_SITE_KEY définie EN PLUS : widget Cloudflare Turnstile
+ *   (script challenges.cloudflare.com/turnstile/v0/api.js). ATTENTION CSP :
+ *   public/_headers est GELÉ — activer Turnstile en production exige d'y
+ *   ajouter `script-src` + `frame-src https://challenges.cloudflare.com`
+ *   (documenté docs/formulaires.md §7, PAS appliqué).
+ * - NE PAS définir PUBLIC_FORMS_ENABLED dans l'environnement de build
+ *   CloudCannon (STATIC_ONLY) : /api/forms y est force-prérendu.
+ *
+ * Contraintes / pièges :
+ * - <h2> : le <h1> unique appartient au héros (le titre est volontairement
+ *   discret — 16px centré, patron form1).
+ * - Chaque <label> est lié à son champ par for/id ; base d'identifiants
+ *   dérivée du titre (opérations de chaînes seulement — exécutable dans le
+ *   navigateur, l'éditeur visuel CloudCannon rend les composants côté client).
+ * - Les `name` des champs visibles (mode fonctionnel) dérivent du LIBELLÉ
+ *   (field-name.ts, logique PARTAGÉE avec le serveur) ; en mode maquette les
+ *   champs gardent leurs `name` historiques (id).
+ * - ÉDITEUR VISUEL CLOUDCANNON : son bundle ne remplace que les expressions
+ *   EXACTES `import.meta.env.PUBLIC_X` — d'où `import.meta.env ?? {}` et
+ *   `Astro.url?.pathname` ci-dessous.
+ * - GOTCHA Bookshop : le moteur retire les <script>…</script> PAR REGEX avant
+ *   de compiler — un script unique enfant d'une expression {cond && (…)}
+ *   laisserait un « ( ) » orphelin qui casse le build CloudCannon. Les
+ *   mini-scripts restent DANS le fragment formsEnabled, jamais seuls.
+ * - `fields = []` en secours pour ne pas planter l'éditeur pendant la saisie.
+ * - Pot de miel / bannière d'erreur : styles EN LIGNE fonctionnels (masquage
+ *   robuste aux robots ; paire rouge littérale, pas de rôle « erreur » au
+ *   thème).
+ */
+import { fieldName } from '../../../../src/lib/forms/field-name';
+import { resolveHiddenValue } from '../../../../src/lib/forms/hidden-tokens';
+
+interface FormField {
+  label: string;
+  type: 'text' | 'email' | 'tel' | 'textarea' | 'select' | 'checkbox' | 'hidden';
+  required: boolean;
+  /** Présentation : « demi » = demi-rangée (grille 2 colonnes ≥sm). */
+  width?: 'plein' | 'demi';
+  /** select seulement : les choix offerts. */
+  options?: string[];
+  /** hidden seulement : valeur émise (jetons — voir l'entête). */
+  value?: string;
+  /** Condition d'affichage — field = LIBELLÉ exact du champ pilote. */
+  showIf?: { field: string; equals: string };
+}
+
+interface Props {
+  title: string;
+  intro?: string;
+  submitLabel: string;
+  consentText?: string;
+  /** « carte » (form1, défaut) ou « panneau » (form2) — voir l'entête. */
+  variant?: 'carte' | 'panneau';
+  /**
+   * « Fond de section » (2026-08-18, landing-pagefinal.txt : bande SABLE).
+   * '' = défaut historique du bloc (givre en carte, blanc en panneau).
+   */
+  fond?: '' | 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  fields: FormField[];
+  /**
+   * FORMS V2 — référence un formulaire de src/data/forms/<lang>/<formId>.json.
+   * Non vide → champs/submitLabel/consentText viennent de la DÉFINITION,
+   * résolue au build par la route via le seam `enrich` (resolvedForms
+   * ci-dessous). Vide/absent → mode historique inline, rendu inchangé.
+   */
+  formId?: string;
+  /**
+   * Injecté PAR LA ROUTE via `enrich` (build seulement — jamais présent dans
+   * l'éditeur visuel, où le composant affiche alors une note et la maquette) :
+   * carte formId → définition, déjà validée (id inconnu = échec de build).
+   */
+  resolvedForms?: Record<
+    string,
+    { submitLabel: string; consentText: string; fields: FormField[] }
+  >;
+  /**
+   * Injecté PAR LA ROUTE via `enrich` (build seulement) : contexte de la page
+   * hôte pour les jetons {{page.*}} des champs cachés. Absent dans l'éditeur
+   * visuel → les jetons se résolvent en chaîne vide (repli : chemin/langue
+   * depuis Astro.url quand disponibles).
+   */
+  pageContext?: { titre?: string; chemin?: string; slug?: string; langue?: string };
+}
+
+const {
+  title,
+  intro,
+  submitLabel,
+  consentText,
+  variant = 'carte',
+  fond = '',
+  fields = [],
+  formId = '',
+  resolvedForms,
+  pageContext,
+} = Astro.props;
+
+// Résolution forms v2 : la définition prime quand `formId` est posé ET résolu
+// (build). Sans formId, les trois `eff*` valent EXACTEMENT les props inline.
+const formDef = formId !== '' ? resolvedForms?.[formId] : undefined;
+const effFields = formDef ? formDef.fields : fields;
+const effSubmitLabel = formDef && formDef.submitLabel !== '' ? formDef.submitLabel : submitLabel;
+const effConsentText = formDef && formDef.consentText !== '' ? formDef.consentText : consentText;
+// Éditeur visuel : formId posé mais non résolu (enrich absent du navigateur) —
+// une note l'explique, la maquette inline reste affichée.
+const formIdPendingNote = formId !== '' && !formDef;
+
+// Base d'identifiants stables pour lier <label for> et <input id>.
+const idBase =
+  'lp-form-' +
+  ((title ?? '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'champ');
+
+// --- Mode fonctionnel (drapeaux d'environnement — voir l'entête) ------------
+const env = (import.meta.env ?? {}) as unknown as Record<string, string | undefined>;
+const formsEnabled = env.PUBLIC_FORMS_ENABLED === '1';
+// Le widget n'a de sens que si le formulaire soumet réellement quelque part.
+const turnstileSiteKey = formsEnabled ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+
+// Contexte de page pour les champs cachés `lang` / `source`.
+const pagePath = Astro.url?.pathname ?? '';
+const formLang = pagePath.split('/')[1] === 'en' ? 'en' : 'fr';
+
+// `name` stable dérivé du libellé — logique PARTAGÉE avec le serveur.
+const fieldNames = effFields.map((field, i) => fieldName(field.label, i));
+
+// Condition d'affichage ACTIVE (field non vide — la « forme vide » que pose
+// l'éditeur CloudCannon, {field:'', equals:''}, signifie « pas de condition »).
+const activeShowIf = (field: FormField) =>
+  field.showIf && field.showIf.field.trim() !== '' ? field.showIf : null;
+
+// Listes annoncées au serveur (contrat de champs §4) — voir l'entête.
+const requiredNames = effFields
+  .map((field, i) =>
+    field.required && field.type !== 'hidden' && !activeShowIf(field) ? fieldNames[i] : null,
+  )
+  .filter((name): name is string => name !== null)
+  .join(',');
+const emailNames = effFields
+  .map((field, i) => (field.type === 'email' ? fieldNames[i] : null))
+  .filter((name): name is string => name !== null)
+  .join(',');
+const caseNames = effFields
+  .map((field, i) => (field.type === 'checkbox' ? fieldNames[i] : null))
+  .filter((name): name is string => name !== null)
+  .join(',');
+
+// Jetons des champs cachés (P-05).
+const hiddenResolved = effFields.map((field) =>
+  field.type === 'hidden'
+    ? resolveHiddenValue(field.value ?? '', {
+        titre: pageContext?.titre ?? '',
+        chemin: pageContext?.chemin ?? pagePath,
+        slug: pageContext?.slug ?? '',
+        langue: pageContext?.langue ?? formLang,
+      })
+    : null,
+);
+
+// Attributs data-showif-* du wrapper d'un champ conditionnel (mode
+// fonctionnel seulement — la maquette montre tout).
+const showIfAttrs = (field: FormField) => {
+  const cond = formsEnabled ? activeShowIf(field) : null;
+  if (!cond) return {};
+  const pilotIndex = effFields.findIndex((f) => f.label === cond.field);
+  if (pilotIndex === -1) return {};
+  return { 'data-showif-field': fieldNames[pilotIndex], 'data-showif-equals': cond.equals };
+};
+// Requis conditionnel : marqué pour que le mini-script pose/retire `required`.
+const condRequiredAttr = (field: FormField) =>
+  formsEnabled && field.required && activeShowIf(field) ? '' : undefined;
+
+// Pot de miel : idiome « visuellement masqué » EN LIGNE — pas display:none
+// (trop de robots l'ignorent). position:absolute le sort du flux de la
+// grille ; aria-hidden + tabindex=-1 le soustraient aux lecteurs d'écran.
+const honeypotStyle =
+  'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;';
+
+// Bannière d'erreur « ?erreur=1 » : rôles d'erreur du thème (P-16 — le
+// commentaire « pas de rôle erreur » était périmé, theme.css les définit).
+// display:none initial via `hidden`.
+const errorBannerStyle =
+  'border:1px solid var(--color-error);background-color:var(--color-error-container);color:var(--color-on-error-container);';
+const errorMessage =
+  formLang === 'en'
+    ? 'Your message could not be sent. Please check your answers and try again.'
+    : 'Votre message n’a pas pu être envoyé. Vérifiez vos réponses, puis réessayez.';
+
+// --- Recettes visuelles par variante (maquettes form1 / form2 ; carte
+// AJUSTÉE 2026-08-18 sur landing-pagefinal.txt : bordures neutral-400,
+// strip bleu-800, titre 20/24 bold, gouttière demi-champs 12px, bouton
+// rayon 4 + ombre contrôle + semi-gras) --------------------------------------
+const isCard = variant !== 'panneau';
+const inputClass = isCard
+  ? 'w-full text-body-md text-on-surface bg-surface-container-lowest border border-solid border-neutral-400 rounded-sm px-3 py-3 placeholder:text-outline'
+  : 'w-full text-body-md text-on-surface bg-surface-container-lowest border border-solid border-outline-variant rounded px-3 py-3 placeholder:text-outline';
+const labelClass = 'font-bold text-body-md text-on-surface';
+const fieldClass = (field: FormField) =>
+  ['flex flex-col gap-2', field.width === 'demi' ? 'sm:col-span-1' : 'sm:col-span-2'].join(' ');
+const submitClass = isCard
+  ? 'sm:col-span-2 w-full inline-flex items-center justify-center gap-2 py-4 px-10 bg-primary text-on-primary text-body-md font-semibold rounded border-0 shadow-controle transition-colors hover:bg-primary-container cursor-pointer disabled:opacity-55 disabled:cursor-not-allowed'
+  : 'sm:col-span-2 justify-self-start inline-flex items-center justify-center gap-2 py-4 px-10 bg-primary text-on-primary text-body-md rounded-sm border-0 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] transition-colors hover:bg-primary-container cursor-pointer disabled:opacity-55 disabled:cursor-not-allowed';
+
+// « Fond de section » : clé fermée → utilitaire de la palette officielle ;
+// '' = rendu historique de la variante (carte = givre, panneau = blanc).
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
+const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surface');
+---
+
+{/* id="formulaire" : ancre stable pour les CTA de héros (« Télécharger le
+    guide » → #formulaire). Première section form de la page seulement en
+    pratique — deux forms sur une même page partageraient l'ancre. */}
+<section id="formulaire" class:list={['py-section-gap', fondClass]}>
+  <div class="container-site">
+    <div
+      class:list={[
+        'mx-auto',
+        isCard
+          ? 'relative overflow-hidden max-w-[736px] bg-surface-container-lowest border border-solid border-neutral-400 rounded-lg shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] p-6 sm:p-8'
+          : 'max-w-[760px] bg-surface-container rounded-sm p-6 sm:p-12',
+      ]}
+    >
+      {isCard && <span class="absolute top-0 inset-x-0 h-1 bg-bleu-800" aria-hidden="true" />}
+
+      <div class="flex flex-col gap-2 mb-10">
+        <h2
+          class:list={[
+            'text-center text-on-surface m-0 max-w-none',
+            isCard ? 'text-xl leading-6 font-bold' : 'text-body-md font-normal',
+          ]}
+        >
+          {title}
+        </h2>
+        {intro && (
+          <p class="text-body-md text-center text-on-surface-variant m-0 max-w-none mx-auto">
+            {intro}
+          </p>
+        )}
+      </div>
+
+      <!-- Maquette : formulaire volontairement SANS `action` — le backend de
+           formulaires est un chantier séparé (workstream ultérieur). -->
+      <form
+        class:list={['grid grid-cols-1 sm:grid-cols-2', isCard ? 'gap-x-3 gap-y-6' : 'gap-4']}
+        method={formsEnabled ? 'POST' : undefined}
+        action={formsEnabled ? '/api/forms' : undefined}
+        data-astro-reload={formsEnabled ? '' : undefined}
+      >
+        {
+          formsEnabled && (
+            <>
+              {/* Bannière d'erreur + mini-script : FRÈRES ADJACENTS obligatoires
+                  (le script se repère par previousElementSibling).
+                  data-astro-rerun : sans lui, les scripts déjà exécutés sont
+                  sautés lors d'une navigation du routeur. Le bloc { } est
+                  essentiel : ré-exécuté dans le MÊME contexte global, un
+                  `const` de premier niveau planterait en redéclaration. */}
+              <p
+                class="sm:col-span-2 m-0 max-w-none px-4 py-3 rounded-lg text-sm leading-normal"
+                role="alert"
+                hidden
+                style={errorBannerStyle}
+              >
+                {errorMessage}
+              </p>
+              <script is:inline data-astro-rerun>
+                // Révèle la bannière (l'élément précédent) au retour d'un échec
+                // d'envoi — /api/forms redirige vers la page source + ?erreur=1.
+                {
+                  const s = document.currentScript;
+                  const b = s && s.previousElementSibling;
+                  if (b && /[?&]erreur=/.test(location.search)) b.removeAttribute('hidden');
+                }
+              </script>
+              <input type="hidden" name="lang" value={formLang} />
+              <input type="hidden" name="source" value={pagePath} />
+              {formDef && <input type="hidden" name="_formId" value={formId} />}
+              {requiredNames && <input type="hidden" name="_requis" value={requiredNames} />}
+              {emailNames && <input type="hidden" name="_courriels" value={emailNames} />}
+              {caseNames && <input type="hidden" name="_cases" value={caseNames} />}
+              {/* Pot de miel `website` — voir honeypotStyle dans l'entête. */}
+              <div aria-hidden="true" style={honeypotStyle}>
+                <label for={`${idBase}-website`}>Site Web</label>
+                <input
+                  id={`${idBase}-website`}
+                  type="text"
+                  name="website"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
+              {/* Les deux mini-scripts P-05 vivent DANS ce fragment et SANS
+                  enveloppe conditionnelle propre — gotcha Bookshop de
+                  l'entête (retrait des scripts par regex). Inertes quand le
+                  formulaire n'a ni champ conditionnel ni jeton url. */}
+              <script is:inline data-astro-rerun>
+                // Champs conditionnels (showIf) — ergonomie SEULEMENT : le
+                // serveur ré-évalue depuis la définition. Un champ masqué est
+                // aussi DÉSACTIVÉ (disabled = non soumis, exclu de la
+                // validation native) ; `required` suit la condition
+                // (data-showif-required).
+                {
+                  const f = document.currentScript && document.currentScript.closest('form');
+                  if (f) {
+                    const run = () => {
+                      const rows = f.querySelectorAll('[data-showif-field]');
+                      const apply = () => {
+                        rows.forEach((row) => {
+                          const pilot = f.elements.namedItem(
+                            row.getAttribute('data-showif-field') || '',
+                          );
+                          const value = !pilot
+                            ? ''
+                            : pilot.type === 'checkbox'
+                              ? pilot.checked
+                                ? pilot.value
+                                : ''
+                              : pilot.value || '';
+                          const on =
+                            value.trim() === (row.getAttribute('data-showif-equals') || '').trim();
+                          // hidden seul ne suffit pas : le wrapper pose
+                          // display:flex (style d'auteur > feuille UA) — le
+                          // style EN LIGNE tranche.
+                          row.hidden = !on;
+                          row.style.display = on ? '' : 'none';
+                          row.querySelectorAll('input, select, textarea').forEach((el) => {
+                            el.disabled = !on;
+                            if (el.hasAttribute('data-showif-required')) el.required = on;
+                          });
+                        });
+                      };
+                      f.addEventListener('change', apply);
+                      apply();
+                    };
+                    if (document.readyState === 'loading') {
+                      document.addEventListener('DOMContentLoaded', run);
+                    } else {
+                      run();
+                    }
+                  }
+                }
+              </script>
+              <script is:inline data-astro-rerun>
+                // Jetons url — remplit les champs cachés marqués
+                // data-url-param depuis la barre d'adresse (ex. utm_source),
+                // tronqué à 200 caractères. Purement informatif (courriel).
+                {
+                  const f = document.currentScript && document.currentScript.closest('form');
+                  if (f) {
+                    const run = () => {
+                      const params = new URLSearchParams(location.search);
+                      f.querySelectorAll('input[type="hidden"][data-url-param]').forEach((el) => {
+                        const value = params.get(el.getAttribute('data-url-param') || '');
+                        if (value) el.value = value.slice(0, 200);
+                      });
+                    };
+                    if (document.readyState === 'loading') {
+                      document.addEventListener('DOMContentLoaded', run);
+                    } else {
+                      run();
+                    }
+                  }
+                }
+              </script>
+            </>
+          )
+        }
+        {
+          formIdPendingNote && (
+            <p class="sm:col-span-2 m-0 max-w-none px-4 py-2 border border-dashed border-outline-variant rounded-lg text-on-surface-variant text-sm">
+              Formulaire lié : « {formId} » — ses champs réels s'affichent à la
+              publication (définition dans la collection Formulaires).
+            </p>
+          )
+        }
+        {
+          effFields.map((field, i) => {
+            const id = `${idBase}-${i}`;
+            if (field.type === 'hidden') {
+              // Jamais affiché, jamais requis — valeur = jetons résolus.
+              const resolved = hiddenResolved[i];
+              return (
+                <input
+                  type="hidden"
+                  name={formsEnabled ? fieldNames[i] : id}
+                  value={resolved ? resolved.value : ''}
+                  data-url-param={resolved?.urlParam ?? undefined}
+                />
+              );
+            }
+            if (field.type === 'checkbox') {
+              // Case à cocher (consentement Loi 25…) — label cliquable qui
+              // ENGLOBE la case.
+              return (
+                <div class={fieldClass(field)} {...showIfAttrs(field)}>
+                  <label
+                    class:list={[
+                      'flex items-start gap-3 cursor-pointer text-on-surface-variant',
+                      isCard ? 'text-sm leading-5' : 'text-body-md leading-relaxed',
+                    ]}
+                    for={id}
+                  >
+                    <input
+                      type="checkbox"
+                      id={id}
+                      name={formsEnabled ? fieldNames[i] : id}
+                      value="oui"
+                      required={field.required && !activeShowIf(field)}
+                      data-showif-required={condRequiredAttr(field)}
+                      class="size-4 mt-1 flex-none accent-primary"
+                    />
+                    <span>
+                      {field.label}
+                      {field.required && <span aria-hidden="true">&nbsp;*</span>}
+                    </span>
+                  </label>
+                </div>
+              );
+            }
+            return (
+              <div class={fieldClass(field)} {...showIfAttrs(field)}>
+                <label class={labelClass} for={id}>
+                  {field.label}
+                  {field.required && <span aria-hidden="true">&nbsp;*</span>}
+                </label>
+                {field.type === 'textarea' ? (
+                  <textarea
+                    class:list={[inputClass, 'resize-y min-h-[122px]']}
+                    id={id}
+                    name={formsEnabled ? fieldNames[i] : id}
+                    rows="5"
+                    required={field.required && !activeShowIf(field)}
+                    data-showif-required={condRequiredAttr(field)}
+                  />
+                ) : field.type === 'select' ? (
+                  <span class="relative block">
+                    <select
+                      class:list={[inputClass, 'appearance-none pr-10 h-[50px]']}
+                      id={id}
+                      name={formsEnabled ? fieldNames[i] : id}
+                      required={field.required && !activeShowIf(field)}
+                      data-showif-required={condRequiredAttr(field)}
+                    >
+                      <option value="">{formLang === 'en' ? 'Choose…' : 'Choisir…'}</option>
+                      {(field.options ?? []).map((opt) => (
+                        <option value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                    <svg
+                      class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline"
+                      width="12"
+                      height="8"
+                      viewBox="0 0 12 8"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M1 1.5L6 6.5l5-5" />
+                    </svg>
+                  </span>
+                ) : (
+                  <input
+                    class:list={[inputClass, 'h-[50px]']}
+                    id={id}
+                    name={formsEnabled ? fieldNames[i] : id}
+                    type={field.type}
+                    required={field.required && !activeShowIf(field)}
+                    data-showif-required={condRequiredAttr(field)}
+                  />
+                )}
+              </div>
+            );
+          })
+        }
+
+        {
+          effConsentText && (
+            <p
+              class:list={[
+                'sm:col-span-2 m-0 max-w-none text-on-surface-variant',
+                isCard ? 'text-sm leading-5' : 'text-body-md leading-relaxed',
+              ]}
+            >
+              {effConsentText}
+            </p>
+          )
+        }
+
+        {
+          turnstileSiteKey && (
+            <>
+              {/* Widget Turnstile — data-language cale la langue du widget sur
+                  celle de la page. RAPPEL CSP (gelée) : script-src + frame-src
+                  https://challenges.cloudflare.com à ajouter le jour de
+                  l'activation (docs/formulaires.md §7). */}
+              <div
+                class="cf-turnstile sm:col-span-2"
+                data-sitekey={turnstileSiteKey}
+                data-language={formLang}
+              />
+              <script
+                is:inline
+                async
+                defer
+                src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+              ></script>
+            </>
+          )
+        }
+
+        <!-- Bouton volontairement désactivé : le backend de formulaires est un
+             chantier séparé (workstream ultérieur) — cette maquette n'envoie rien. -->
+        <button class={submitClass} type="submit" disabled={!formsEnabled}>
+          {effSubmitLabel}
+          {
+            isCard && (
+              <svg
+                width="19"
+                height="16"
+                viewBox="0 0 24 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M2 10L22 2l-6.5 16-4-7L2 10z" />
+                <path d="M11.5 11L22 2" />
+              </svg>
+            )
+          }
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

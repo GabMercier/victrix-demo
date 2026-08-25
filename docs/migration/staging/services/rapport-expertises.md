@@ -1,0 +1,211 @@
+# Rapport de conversion — expertises WordPress → staging services
+
+> Généré par `scripts/migration/convert-expertises.mjs` — rejouable. Sortie : `docs/migration/staging/services/{fr,en}/<hiérarchie>.json`.
+> ⚠️ ZONE DE STAGING : rien n'est branché. Mapping v1 : service-hero (widget Intro_Text_Img) + rich-text
+> (blocs éditeur découpés aux <h2> + moisson des widgets custom MAG — voir entête du script).
+> La recomposition en sections riches (numbered-cards, feature-boxes, callout…) = travail éditorial ultérieur.
+
+- Expertises source (hors corbeille) : **78** · converties : **55** · Brizy reportées (itération dédiée) : **23**
+- Brouillons convertis (décision §16 Q1) : 5 (fr/cybersecurite/securite-informatique, fr/cybersecurite/portail-cybersecurite, fr/conseil-strategique-test, en/cybersecurity/cybersecurity-portal, fr/cybersecurite/internet-des-objets-iot)
+- Sans traduction : 6 (fr/cybersecurite/securite-informatique, fr/cybersecurite/portail-cybersecurite, fr/conseil-strategique-test, en/cybersecurity/cybersecurity-portal, fr/cybersecurite/internet-des-objets-iot, fr/productivite/o-bureau/documents-o-bureau)
+- Pages protégées par mot de passe : —
+- Pages avec `[victrix_table]` (plugin custom à réimplémenter) : —
+- Pages quasi vides après conversion (à inspecter) : fr/conseil-strategique/conformite-loi-25 (1 paragraphes), en/strategic-advice/law-25-compliance (1 paragraphes)
+- Médias référencés (héros + corps) : **142**
+
+## Formulaires Gravity Forms référencés (→ mapper vers src/data/forms/)
+
+Aucun.
+
+## Pages Brizy reportées
+
+- en/it-procurement/check-point
+- fr/approvisionnement-ti/check-point
+- fr/approvisionnement-ti/solutions-microsoft
+- en/it-procurement/microsoft-solutions
+- fr/approvisionnement-ti/servicenow
+- en/it-procurement/servicenow
+- fr/approvisionnement-ti/crowdstrike-falcon
+- en/it-procurement/crowdstrike-falcon
+- fr/productivite/o-bureau/demo-o-bureau
+- en/productivity-consulting/office-booking/landing-demo-obureau
+- fr/approvisionnement-ti/zscaler
+- en/it-procurement/zscaler
+- en/it-procurement/cisco
+- fr/approvisionnement-ti/cisco
+- fr/approvisionnement-ti/palo-alto-networks
+- en/it-procurement/palo-alto-networks
+- fr/approvisionnement-ti/dell-technologies
+- en/it-procurement/dell-technologies
+- fr/approvisionnement-ti/hpe-networking
+- en/it-procurement/hpe-networking
+- fr/productivite/o-bureau/documents-o-bureau
+- fr/intelligence-artificielle/accompagnement-ia
+- en/artificial-intelligence/landing-ai-consulting
+
+## Avertissements par page
+
+- **fr/cybersecurite/securite-informatique** : balise inattendue retirée : <\/h3> ×2 · balise inattendue retirée : <\/p> ×2
+- **fr/cybersecurite/portail-cybersecurite** : balise inattendue retirée : <\/p> ×10 · balise inattendue retirée : <\/strong> ×3 · balise inattendue retirée : <\/span> ×11 · balise inattendue retirée : <\/h3> ×4 · balise inattendue retirée : <\/li> ×10 · balise inattendue retirée : <\/ul> ×2
+- **fr/conseil-strategique-test** : balise inattendue retirée : <\/span> ×71 · balise inattendue retirée : <\/p> ×2 · balise inattendue retirée : <\/strong> ×5 · balise inattendue retirée : <\/h3> ×6 · balise inattendue retirée : <\/li> ×26 · balise inattendue retirée : <\/ul> ×5
+- **fr/productivite/o-studio** : widget MAG_Call_Expert_register_Widget sans texte exploitable
+- **fr/conseil-strategique/conformite-loi-25** : balise inattendue retirée : <\/h2> · balise inattendue retirée : <\/p>
+- **en/strategic-advice/law-25-compliance** : balise inattendue retirée : <\/h2>
+- **en/cybersecurity/cybersecurity-portal** : balise inattendue retirée : <\/p> ×7 · balise inattendue retirée : <\/strong> ×5 · balise inattendue retirée : <\/span> ×6 · balise inattendue retirée : <\/h3> ×4 · balise inattendue retirée : <\/li> ×10 · balise inattendue retirée : <\/ul> ×2
+- **fr/cybersecurite/internet-des-objets-iot** : balise inattendue retirée : <\/span> ×2 · balise inattendue retirée : <\/h2> · balise inattendue retirée : <\/p>
+- **en/cybersecurity/zero-trust** : balise inattendue retirée : <\/h2> · balise inattendue retirée : <\/p>
+- **fr/cybersecurite/internet-des-objets-service-iot** : balise inattendue retirée : <\/h2> ×4 · balise inattendue retirée : <\/strong> ×6 · balise inattendue retirée : <\/h3> ×5 · balise inattendue retirée : <\/li> ×5 · balise inattendue retirée : <\/ul> · balise inattendue retirée : <\/p> ×10 · balise inattendue retirée : <\/span>
+- **en/cybersecurity/cybersecurity-healthcare** : balise inattendue retirée : <\/li> ×11 · balise inattendue retirée : <\/ul> ×4 · balise inattendue retirée : <\/span> ×2 · balise inattendue retirée : <\/h3>
+- **fr/productivite/copilot-microsoft-365** : balise inattendue retirée : <\/h3> ×2 · balise inattendue retirée : <\/div> · balise inattendue retirée : <\/p> ×7 · balise inattendue retirée : <\/h2> · balise inattendue retirée : <\/a> ×2 · balise inattendue retirée : <\/span>
+- **fr/intelligence-artificielle** : balise inattendue retirée : <center> ×2 · balise inattendue retirée : </center> ×2
+- **en/artificial-intelligence** : balise inattendue retirée : <center> ×2 · balise inattendue retirée : </center> ×2
+- **fr/intelligence-artificielle/analyse-opportunites-ia** : balise inattendue retirée : <\/span> ×7 · balise inattendue retirée : <\/h3> ×14
+- **fr/productivite/dynamics-365-field-service** : table HTML conservée telle quelle (à vérifier au rendu)
+- **en/productivity-consulting/dynamics-365-field-service** : table HTML conservée telle quelle (à vérifier au rendu)
+- **fr/intelligence-artificielle/accompagnement** : table HTML conservée telle quelle (à vérifier au rendu)
+- **en/artificial-intelligence/consulting** : table HTML conservée telle quelle (à vérifier au rendu)
+
+## Médias référencés
+
+- /wp-content/uploads/2022/02/conseil-strategique-positionnement.jpg
+- /wp-content/uploads/2022/02/conseil-strategique-roadmap.jpg
+- /wp-content/uploads/2022/02/conseil-strategique-strategies.jpg
+- /wp-content/uploads/2022/02/conseil-strategique-victrix-scaled.jpg
+- /wp-content/uploads/2022/02/logo-amazon.svg
+- /wp-content/uploads/2022/02/logo-aws.svg
+- /wp-content/uploads/2022/02/logo-red-hat.svg
+- /wp-content/uploads/2022/02/securite.jpg
+- /wp-content/uploads/2022/02/services-infonuagiques-pour-entreprise.jpg
+- /wp-content/uploads/2022/02/solution-sevoc-intro.jpg
+- /wp-content/uploads/2022/03/fournisseur-de-services-geres-ti.jpg
+- /wp-content/uploads/2022/04/home-a-propos.jpg
+- /wp-content/uploads/2022/05/cloud-based-services-provider-for-business.png
+- /wp-content/uploads/2022/05/istock-1356386941.jpg
+- /wp-content/uploads/2022/05/istock-508289586.jpg
+- /wp-content/uploads/2022/05/istock-996082438-scaled.jpg
+- /wp-content/uploads/2022/05/logo-aruba.svg
+- /wp-content/uploads/2022/05/logo-checkpoint.svg
+- /wp-content/uploads/2022/05/logo-cisco.svg
+- /wp-content/uploads/2022/05/logo-crowdstrike.svg
+- /wp-content/uploads/2022/05/logo-imprivata.svg
+- /wp-content/uploads/2022/05/logo-microsoft.svg
+- /wp-content/uploads/2022/05/logo-paloalto.svg
+- /wp-content/uploads/2022/05/logo-pulse-secure.svg
+- /wp-content/uploads/2022/05/obureau-en.png
+- /wp-content/uploads/2022/05/obureau.png
+- /wp-content/uploads/2022/05/sevoc-methodo-1.png
+- /wp-content/uploads/2022/05/sevoc-methodo-2.png
+- /wp-content/uploads/2022/05/sevoc-methodo-3.png
+- /wp-content/uploads/2022/05/strategic-advice.png
+- /wp-content/uploads/2022/05/techno-1-ms-onenote.svg
+- /wp-content/uploads/2022/05/techno-10-ms-power-automate.svg
+- /wp-content/uploads/2022/05/techno-2-ms-stream.svg
+- /wp-content/uploads/2022/05/techno-3-power-bi.svg
+- /wp-content/uploads/2022/05/techno-4-ms-teams.svg
+- /wp-content/uploads/2022/05/techno-5-ms-sharepoint.svg
+- /wp-content/uploads/2022/05/techno-6-ms-forms.svg
+- /wp-content/uploads/2022/05/techno-7-ms-planner.svg
+- /wp-content/uploads/2022/05/techno-8-ms-onedrive.svg
+- /wp-content/uploads/2022/05/techno-9-ms-powerapps.svg
+- /wp-content/uploads/2023/05/andras-vas-bd7gnnwjbku-unsplash-scaled.jpg
+- /wp-content/uploads/2023/06/algosec_logo.svg
+- /wp-content/uploads/2023/07/victrix-lambda.jpg
+- /wp-content/uploads/2023/08/azure_infonuagique-300x225-2.png
+- /wp-content/uploads/2023/08/azure_infonuagique.jpg
+- /wp-content/uploads/2023/08/carlos-muza-hpjsku2uysu-unsplash-e1692773163122.jpg
+- /wp-content/uploads/2023/08/cybersecurity2.png
+- /wp-content/uploads/2023/08/dylan-gillis-kdeqa3atnby-unsplash-scaled.jpg
+- /wp-content/uploads/2023/08/espacetravail-1.png
+- /wp-content/uploads/2023/08/experience-gestionnaire-obureau.png
+- /wp-content/uploads/2023/08/istock-1347880350-scaled-e1692072784452.jpg
+- /wp-content/uploads/2023/08/istock-1447107841-scaled.jpg
+- /wp-content/uploads/2023/08/istock-508289586.jpg
+- /wp-content/uploads/2023/08/lambda.png
+- /wp-content/uploads/2023/08/mia-baker-jjhvyxm34ny-unsplash-scaled-e1698140417136.jpg
+- /wp-content/uploads/2023/08/microsoftlogo.png
+- /wp-content/uploads/2023/08/microsoftteams-image-10.png
+- /wp-content/uploads/2023/08/mirosoft_azure-138x300-2.png
+- /wp-content/uploads/2023/08/mirosoft_azure.png
+- /wp-content/uploads/2023/08/obureau-mobile-1.png
+- /wp-content/uploads/2023/08/obureau-mobile.png
+- /wp-content/uploads/2023/08/plan-de-travail-1.jpg
+- /wp-content/uploads/2023/08/priscilla-du-preez-nnmba7y1ymk-unsplash-scaled-e1692770800497.jpg
+- /wp-content/uploads/2023/08/vackground-com-aguc-v_d1ii-unsplash-3-scaled.jpg
+- /wp-content/uploads/2023/09/bg-o-studio-1-scaled.jpg
+- /wp-content/uploads/2023/09/bg-o-studio-24x.png
+- /wp-content/uploads/2023/09/boook.png
+- /wp-content/uploads/2023/09/macbook-mockup-1-scaled.jpg
+- /wp-content/uploads/2023/09/o-studio-victrix-white-1.png
+- /wp-content/uploads/2023/09/victrix-img-01.png
+- /wp-content/uploads/2023/09/victrix-img-02.png
+- /wp-content/uploads/2023/10/aws2-1.jpg
+- /wp-content/uploads/2023/10/aws2-1.png
+- /wp-content/uploads/2023/10/aws4.png
+- /wp-content/uploads/2023/10/azuree3.png
+- /wp-content/uploads/2023/10/gestion-des-processus-et-productivite.png
+- /wp-content/uploads/2023/10/istock-1454530428.png
+- /wp-content/uploads/2023/10/priscilla-du-preez-nnmba7y1ymk-unsplash-1-scaled-e1699542797747.jpg
+- /wp-content/uploads/2023/10/public-sector1.png
+- /wp-content/uploads/2023/10/select-light-partner.png
+- /wp-content/uploads/2023/11/berkeley-communications-weddt-u3q3o-unsplash-2.jpg
+- /wp-content/uploads/2023/11/certified_iso_eng.png
+- /wp-content/uploads/2023/11/gestion-des-processus-et-productivite.jpg
+- /wp-content/uploads/2023/11/logo_ovh.png
+- /wp-content/uploads/2023/11/office.png
+- /wp-content/uploads/2023/11/service-now-logo.png
+- /wp-content/uploads/2023/11/victrix_certifie_iso.png
+- /wp-content/uploads/2023/11/victrix_sevoc-e1700062842600.png
+- /wp-content/uploads/2024/05/benjamin-child-gwe0dlvd9e0-unsplash-scaled.jpg
+- /wp-content/uploads/2024/05/certification-test-pentest.png
+- /wp-content/uploads/2024/05/harmony-why-harmony-3-600x400px.png
+- /wp-content/uploads/2024/05/internet-of-things-7256292_1280.jpg
+- /wp-content/uploads/2024/05/maximalfocus-haktxidk36i-unsplash-scaled.jpg
+- /wp-content/uploads/2024/05/quantum-iot-protect-band.png
+- /wp-content/uploads/2024/05/signature-mail.jpg
+- /wp-content/uploads/2024/06/ales-nesetril-im7lzjxelhg-unsplash-1.png
+- /wp-content/uploads/2024/06/istock-1462139281-1.png
+- /wp-content/uploads/2024/06/signature-01-english-e1724866402122.png
+- /wp-content/uploads/2024/07/1200px-proofpoint_r_logo.png
+- /wp-content/uploads/2024/07/616dd9d2cbea0f25d4b95837_ceh-small.png
+- /wp-content/uploads/2024/07/ales-nesetril-im7lzjxelhg-unsplash-1.png
+- /wp-content/uploads/2024/07/ccsk.png
+- /wp-content/uploads/2024/07/cgeit.png
+- /wp-content/uploads/2024/07/cisa.png
+- /wp-content/uploads/2024/07/cism-2.svg
+- /wp-content/uploads/2024/07/comptia_security_2bce-1.png
+- /wp-content/uploads/2024/07/crisc.png
+- /wp-content/uploads/2024/07/grc.png
+- /wp-content/uploads/2024/07/grcprofessional.png
+- /wp-content/uploads/2024/07/image.png
+- /wp-content/uploads/2024/07/isc2_cissp_rgb_badge-600x600-1.png
+- /wp-content/uploads/2024/07/iso27001.png
+- /wp-content/uploads/2024/07/iso27005.png
+- /wp-content/uploads/2024/07/iso27034.png
+- /wp-content/uploads/2024/07/istock-114321879-scaled.jpg
+- /wp-content/uploads/2024/07/istock-1165052026-1.jpg
+- /wp-content/uploads/2024/07/istock-1462139281-1.png
+- /wp-content/uploads/2024/07/juniper-logo.png
+- /wp-content/uploads/2024/07/zscaler-logo.svg
+- /wp-content/uploads/2024/08/istock-1494104649-scaled.jpg
+- /wp-content/uploads/2024/08/victrix-scaled.jpg
+- /wp-content/uploads/2024/10/m365copilot_herobanner_apps_blog-feature-1.jpg
+- /wp-content/uploads/2024/11/banniere-victrix-x-service-now-1.png
+- /wp-content/uploads/2024/11/plan-de-travail-5-100-1-scaled.jpg
+- /wp-content/uploads/2024/11/plan-de-travailcscq5-100-1-scaled.jpg
+- /wp-content/uploads/2024/11/plan-de-travailfzecscq5-100-scaled.jpg
+- /wp-content/uploads/2024/11/servicenow-banniere-.png
+- /wp-content/uploads/2024/11/victrix-x-servicenow-en.png
+- /wp-content/uploads/2024/12/modern-urban-architecture-2024-09-18-06-16-04-utc-2-scaled.jpg
+- /wp-content/uploads/2025/03/linkedin-carre-24.png
+- /wp-content/uploads/2025/03/plan-de-travail-1.jpg
+- /wp-content/uploads/2025/06/sevoc-certification.png
+- /wp-content/uploads/2025/06/victrix-secov-en.png
+- /wp-content/uploads/2025/06/victrix-secov-fr.png
+- /wp-content/uploads/2025/10/freepik__adjust__18305-1.png
+- /wp-content/uploads/2026/06/construction-workers-collaborate-on-project-at-bui-2026-03-16-22-44-53-utc-1-scaled.jpg
+- /wp-content/uploads/2026/06/designation-securite.png
+- /wp-content/uploads/2026/06/site-manager-walk-down-with-engineer-to-check-prec-2026-03-09-23-57-29-utc-1-scaled.jpg
+- /wp-content/uploads/2026/06/smiling-construction-worker-at-building-site-with-2026-03-17-01-20-41-utc-1-scaled.jpg
+- /wp-content/uploads/2026/07/happy-colleagues-at-modern-office-workplace-lookin-2026-01-09-09-28-57-utc-1-scaled.jpg
+- /wp-content/uploads/2026/07/sea-lighthouse-with-the-moon-2026-03-25-00-59-08-utc-1-scaled.jpg
+- /wp-content/uploads/2026/07/smiling-colleagues-sitting-on-steps-in-office-2026-03-25-03-17-09-utc-1-scaled.jpg

@@ -1,0 +1,67 @@
+---
+/**
+ * Section « Victrix en chiffres » — composant Bookshop (palette partagée).
+ * RE-SKIN DESIGN SYSTEM 2026-08-05 : bande beige (surface-container-low),
+ * titre centré 40/700 ls -0.4, tuiles statistiques au patron strategic-value —
+ * fond blanc, LISERÉ GAUCHE bleu 4 px, valeur 40/700 bleue, étiquette 12/700
+ * majuscules ls 1.2. L'ancien thème navy/vert disparaît.
+ *
+ * Props : { type: "stats", title?, items: [{ number, label }] }
+ * - `number` est une CHAÎNE affichée telle quelle (« 25+ », « 99,9 % ») —
+ *   aucun formatage numérique imposé, le marketing garde la main.
+ *
+ * Contraintes / pièges :
+ * - `items = []` en secours (édition en direct CloudCannon).
+ * - <h2> optionnel : rendu seulement si un titre est fourni.
+ * - Liseré gauche : `border-0 border-l-4 border-solid` OBLIGATOIRE (piège
+ *   border-solid/UA-medium sans preflight, consigné au lot chrome).
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+
+interface StatItem {
+  number: string;
+  label: string;
+}
+
+interface Props {
+  title?: string;
+  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  items: StatItem[];
+}
+
+const { title = '', fond = 'givre', items = [] } = Astro.props;
+
+// « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
+// de la palette officielle (aucune couleur libre — esprit P-16). Défaut =
+// rendu historique (givre #f9fafb, ex-bg-surface-container-low).
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
+---
+
+<section class:list={['py-20', FONDS[fond] ?? FONDS.givre]}>
+  <div class="container-site flex flex-col gap-12">
+    {
+      title !== '' && (
+        <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
+          {title}
+        </h2>
+      )
+    }
+    <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 m-0 p-0 list-none">
+      {
+        items.map((item) => (
+          <li class="m-0 bg-white border-0 border-l-4 border-solid border-primary p-6 flex flex-col gap-3 shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+            <p class="text-[40px] leading-[48px] font-bold text-primary m-0">{item.number}</p>
+            <p class="text-xs font-bold uppercase tracking-[1.2px] text-on-surface-variant m-0 max-w-none">{item.label}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

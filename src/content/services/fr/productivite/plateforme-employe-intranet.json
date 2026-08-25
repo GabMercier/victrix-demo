@@ -1,0 +1,100 @@
+{
+  "title": "Plateforme Expérience Employé",
+  "description": "Bénéficiez de l'expertise en développement numérique de Victrix pour bâtir une plateforme employé intranet moderne basée sur Microsoft 365 et l'IA.",
+  "sections": [
+    {
+      "type": "product-hero",
+      "badge": "Écosystème Microsoft 365",
+      "title": "L’IA au service de l’expérience employé",
+      "titleHighlight": "expérience employé",
+      "lead": "Optimisez votre communication interne et boostez la productivité grâce à une plateforme moderne intégrant Microsoft 365 et l’IA. Offrez à vos employés un accès simplifié aux informations, un onboarding fluide et une collaboration renforcée.",
+      "ctaLabel": "Demandez une consultation",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "image": "/wp-content/uploads/2023/08/vackground-com-aguc-v_d1ii-unsplash-3-scaled.jpg",
+      "imageAlt": "",
+      "fond": "givre"
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Réinventez votre intranet",
+      "intro": "Votre projet d’intranet est l’occasion parfaite pour exploiter l’IA de manière responsable et innovante.",
+      "fond": "blanc",
+      "featured": {
+        "title": "Perte de temps et inefficacité",
+        "text": "Une communication interne inefficace entraîne un faible taux d’adoption des outils et un manque d’engagement des équipes. Les employés jonglent entre plusieurs plateformes, rendant l’accès aux ressources plus complexe — et sans un accès rapide aux bonnes informations, ils se retrouvent bloqués.",
+        "watermark": "engrenage",
+        "stats": [
+          { "value": "30 %", "label": "Du temps passé à chercher des informations" }
+        ]
+      },
+      "aside": {
+        "icon": "etoile",
+        "title": "Agent conversationnel RH avec l’IA",
+        "text": "Gain de temps pour les équipes RH grâce à l’automatisation des réponses et une réduction des erreurs humaines.",
+        "linkLabel": "",
+        "linkHref": ""
+      }
+    },
+    {
+      "type": "numbered-cards",
+      "sectionTitle": "La plateforme pour une expérience employé unifiée et moderne",
+      "headingStyle": "underline",
+      "intro": "Victrix vous aide à développer un outil de communication interne qui va bien au-delà de l’intranet traditionnel. En exploitant les capacités de l’<a href=\"/expertise/intelligence-artificielle/\">intelligence artificielle</a> de Microsoft, nous transformons votre environnement numérique en une expérience fluide et engageante. Les piliers de l’offre Plateforme employé de Victrix :",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Environnement global accessible et complet",
+          "text": "Création d’une navigation et d’une architecture tenant compte de l’ensemble de l’espace de travail numérique de l’employé."
+        },
+        {
+          "number": "02",
+          "title": "Recherche d’information et partage de connaissances simplifiés",
+          "text": "Réduire la distance entre l’utilisateur et l’information recherchée."
+        },
+        {
+          "number": "03",
+          "title": "Expérience personnalisée",
+          "text": "Parcours et contenus adaptés aux différents segments d’utilisateurs."
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "Les avantages de notre offre intranet moderne",
+      "paragraphs": [
+        "Victrix ne se limite pas à l’intégration d’un simple intranet d’entreprise. Nous développons une plateforme personnalisée pour favoriser la productivité et la collaboration, propulsée par l’IA et parfaitement adaptée à vos besoins organisationnels — une offre flexible, évolutive, adaptée à votre stratégie numérique.",
+        "Avec les <a href=\"/expertise/productivite/\">experts en productivité</a> chez Victrix à vos côtés, améliorer l’expérience employé devient une réalité accessible et efficace."
+      ],
+      "image": "/wp-content/uploads/2023/08/vackground-com-aguc-v_d1ii-unsplash-3-scaled.jpg",
+      "imageAlt": "",
+      "stats": [
+        { "value": "M365 + Viva", "label": "Expertise reconnue : Teams, SharePoint, Copilot" },
+        { "value": "Agent IA", "label": "Intégré pour répondre aux questions courantes des employés" },
+        { "value": "UX / UI", "label": "Équipe permanente experte en design et communication" },
+        { "value": "Expérience", "label": "Environnements complexes, privés ou publics" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
+    },
+    {
+      "type": "cta",
+      "title": "Discutons d’une vision modernisée de votre plateforme expérience employé",
+      "body": "Rehaussez l’expérience employé avec un intranet moderne basé sur Microsoft 365 et Viva.",
+      "ctaLabel": "Discutez avec un expert",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "seoTitle": "L’IA au service de l’expérience employé et de l'intranet"
+}

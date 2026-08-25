@@ -1,0 +1,17 @@
+[
+  {
+    "de": "/demo-redirection",
+    "vers": "/fr",
+    "code": "301"
+  },
+  {
+    "de": "/expertise/*",
+    "vers": "/fr/services/:splat",
+    "code": "301"
+  },
+  {
+    "de": "/en/expertise/*",
+    "vers": "/en/services/:splat",
+    "code": "301"
+  }
+]

@@ -1,0 +1,169 @@
+{
+  "title": "Centre opérationnel de sécurité (SOC) évolutif",
+  "description": "Détection, réponse et amélioration continue de votre posture de sécurité avec SEvOC, notre centre opérationnel de sécurité (SOC) évolutif.",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "",
+      "titleAccent": "",
+      "title": "Centre opérationnel de sécurité (SOC) évolutif",
+      "titleHighlight": "évolutif",
+      "lead": "Protégez aujourd’hui. Évoluez demain. Détection, réponse et amélioration continue de votre posture de sécurité avec SEvOC, notre SOC évolutif à visage humain, conçu pour accompagner la croissance et la transformation de votre organisation.",
+      "ctaLabel": "Parlons de vos projets",
+      "ctaHref": "/fr/contact",
+      "image": "/wp-content/uploads/2022/02/solution-sevoc-intro.jpg",
+      "imageAlt": ""
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Ce que vous offre le SEvOC de Victrix",
+      "intro": "Un service SOC 24/7, bilingue, avec des experts attitrés à votre environnement.",
+      "fond": "blanc",
+      "featured": {
+        "title": "Surveillance continue, réponse accélérée",
+        "text": "Accélérez votre cybersécurité et optimisez l’ensemble de vos outils de sécurité. À la différence d’un SOC classique, notre <strong>offre évolutive et modulaire</strong> vous permet de rester à la fine pointe des technologies de sécurité.",
+        "watermark": "eclair",
+        "stats": [
+          { "value": "+ 300 000", "label": "terminaux protégés" },
+          { "value": "+ 100", "label": "clients servis activement" },
+          { "value": "24/7/365", "label": "surveillance humaine continue" }
+        ]
+      },
+      "aside": {
+        "icon": "bouclier",
+        "title": "Les avantages de notre service SOC",
+        "text": "Faites face à l’accroissement des menaces avancées, complétez votre équipe de sécurité interne avec nos experts et simplifiez l’intégration de nouvelles entités dans un contexte de croissance ou de fusion.",
+        "linkLabel": "Découvrez notre expertise cybersécurité",
+        "linkHref": "/fr/services/cybersecurite"
+      }
+    },
+    {
+      "type": "offer-cards",
+      "title": "Ce que le SEvOC fait pour votre organisation",
+      "intro": "Prise en charge, opérations et évolution : une offre modulaire qui couvre l’ensemble du cycle.",
+      "fond": "givre",
+      "ctaLabel": "Parlez à un expert du SEvOC",
+      "ctaHref": "/fr/contact",
+      "items": [
+        {
+          "number": "01",
+          "title": "Prise en charge",
+          "bullets": [
+            { "text": "Intégration fluide dans vos outils existants", "icon": "coche" },
+            { "text": "Prise en charge de vos équipements de sécurité", "icon": "coche" },
+            { "text": "Accompagnement en gestion de crise et remédiation", "icon": "coche" },
+            { "text": "Gouvernance et production d’indicateurs opérationnels stratégiques", "icon": "coche" },
+            { "text": "Feuille de route d’évolution", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Opérations",
+          "bullets": [
+            { "text": "Surveillance 24/7/365 des alertes de sécurité, opérée exclusivement par des analystes bilingues", "icon": "coche" },
+            { "text": "Mise en œuvre d’une approche Zero Trust : contrôle systématique des identités, comportements et accès", "icon": "coche" },
+            { "text": "Gestion des vulnérabilités", "icon": "coche" },
+            { "text": "Configuration, maintenance, automatisation intelligente et orchestration, avec supervision humaine à chaque étape", "icon": "coche" },
+            { "text": "Veille des menaces ciblant votre organisation (threat intelligence)", "icon": "coche" },
+            { "text": "Analyse, triage et réponse aux incidents de sécurité", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Évolution",
+          "bullets": [
+            { "text": "Mise à jour, amélioration et consolidation", "icon": "coche" },
+            { "text": "Offre distincte pour les fusions-acquisitions (M&A) : sécurisation accélérée des environnements acquis", "icon": "coche" },
+            { "text": "Création de tenants enfants sous contrôle du SOC parent", "icon": "coche" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "Des services qui se distinguent de la sécurité gérée traditionnelle",
+      "paragraphs": [
+        "Victrix n’est pas qu’un <a href=\"/expertise/services-ti-geres/\">fournisseur de services gérés</a>, et le SEvOC n’est pas un SOC comme les autres. Voici ce qui fait la force de notre équipe.",
+        "<strong>Expertise technologique</strong> — partenariat Microsoft Sentinel, partenariat CrowdStrike ELP (seul MSSP francophone autorisé), <a href=\"/certification-iso-27001-iso-9001/\">certification ISO/IEC 27001</a> et gestion d’environnements hybrides ou complexes.",
+        "<strong>Service humain, local et enraciné</strong> — surveillance opérée 100 % localement, sans externalisation, avec interaction directe entre vos équipes internes et nos analystes attitrés ; rapports personnalisés, comités de suivi et conseils basés sur la configuration de votre environnement.",
+        "<strong>Approche flexible, collaborative et évolutive</strong> — évolution continue de la posture de sécurité (lignes directrices, revue de configurations, accompagnement dans la maturité) et accès à toute la profondeur de Victrix : appui direct de nos équipes spécialisées en infrastructure, <a href=\"/expertise/services-infonuagiques/\">infonuagique</a>, gouvernance et réseau, sans sous-traitance externe."
+      ],
+      "image": "/wp-content/uploads/2022/02/solution-sevoc-intro.jpg",
+      "imageAlt": "",
+      "stats": [
+        { "value": "+30", "label": "clients en partenariat Microsoft Sentinel" },
+        { "value": "+20 000", "label": "terminaux gérés avec CrowdStrike" },
+        { "value": "90 %", "label": "des clients adaptent leur configuration sur nos recommandations" },
+        { "value": "100 %", "label": "surveillance opérée localement" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
+    },
+    {
+      "type": "numbered-cards",
+      "sectionTitle": "Vos bénéfices concrets avec SEvOC",
+      "headingStyle": "plain",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Visualisation",
+          "text": "Complète des activités suspectes et diminution des faux positifs."
+        },
+        {
+          "number": "02",
+          "title": "Réduction",
+          "text": "Du temps de détection des menaces et de remédiation."
+        },
+        {
+          "number": "03",
+          "title": "Accélération",
+          "text": "De l’intégration des nouvelles technologies."
+        },
+        {
+          "number": "04",
+          "title": "Diminution",
+          "text": "Des risques opérationnels et des efforts de gestion de cybersécurité."
+        },
+        {
+          "number": "05",
+          "title": "Libération",
+          "text": "Des tâches routinières pour votre personnel."
+        },
+        {
+          "number": "06",
+          "title": "Amélioration",
+          "text": "Continue de votre posture de cybersécurité."
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Ressources liées",
+      "tags": [
+        "Cybersécurité",
+        "Services gérés"
+      ],
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
+    },
+    {
+      "type": "cta",
+      "title": "Bénéficiez de notre SOC évolutif dédié",
+      "body": "Contactez-nous pour découvrir comment l’approche axée client du SEvOC peut vous faire gagner en efficacité et sérénité — nous modulons notre offre en fonction des besoins uniques de votre organisation.",
+      "ctaLabel": "Prenez rendez-vous",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "seoTitle": "Centre opérationnel de sécurité | SOC évolutif"
+}

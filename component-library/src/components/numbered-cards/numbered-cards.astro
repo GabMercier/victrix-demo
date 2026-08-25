@@ -1,0 +1,123 @@
+---
+/**
+ * Section « Cartes numérotées » — composant Bookshop (P-07).
+ * RE-SKIN DESIGN SYSTEM 2026-08-05 (patron offer-cards, produit-enfant.css) :
+ * cartes blanches bordées #C4C5D9 rayon 4 p-32 avec TUILE NUMÉRO 48 px
+ * bg-primary (blanc 20/700), titre 24/700, texte 16/26, CTA primaire rayon 2 ;
+ * tête centrée 40/700 — headingStyle 'underline' = liseré BLEU 64×4 (patron
+ * des têtes landing ; l'ancien liseré vert disparaît) ; leadCard = carte
+ * blanche à liseré bleu HAUT 4 px ; tone 'tint' = bande beige
+ * (surface-container-low).
+ *
+ * Props : { type: "numbered-cards", sectionTitle, headingStyle?, intro?,
+ *           leadCard?: { title, text }, tone?, columns?, cardStyle?,
+ *           items: [{ number, title, text, ctaLabel?, ctaHref? }] }
+ *
+ * Contraintes / pièges :
+ * - <h2> de section, <h3> par carte : le <h1> unique appartient au héros.
+ * - `items = []` en secours pour ne pas planter l'éditeur pendant la saisie.
+ * - Classes de variante CALCULÉES (jamais de valeur brute dans le DOM) : toute
+ *   valeur inattendue retombe sur le défaut.
+ * - Liseré haut leadCard : `border-0 border-t-4 border-solid` OBLIGATOIRE
+ *   (piège border-solid/UA-medium sans preflight, consigné au lot chrome).
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface CardItem {
+  number: string;
+  title: string;
+  text: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+interface Props {
+  sectionTitle: string;
+  headingStyle?: 'plain' | 'underline';
+  intro?: string;
+  leadCard?: { title: string; text: string };
+  tone?: 'default' | 'tint';
+  columns?: '2' | '3';
+  cardStyle?: 'default' | 'center';
+  items: CardItem[];
+}
+
+const {
+  sectionTitle,
+  headingStyle = 'plain',
+  intro,
+  leadCard,
+  tone = 'default',
+  columns = '3',
+  cardStyle = 'default',
+  items = [],
+} = Astro.props;
+
+const centered = cardStyle === 'center';
+---
+
+<section class:list={['py-20', tone === 'tint' ? 'bg-surface-container-low' : 'bg-surface']}>
+  <div class="container-site">
+    <div class="mx-auto text-center flex flex-col items-center gap-4">
+      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
+        {sectionTitle}
+      </h2>
+      {headingStyle === 'underline' && <span class="w-16 h-1 bg-primary" aria-hidden="true"></span>}
+      {
+        intro && (
+          <p
+            class="text-lg leading-[29px] text-on-surface-variant m-0 max-w-[80ch] [&_strong]:text-on-surface"
+            set:html={intro}
+          />
+        )
+      }
+    </div>
+    {
+      leadCard && (leadCard.title || leadCard.text) && (
+        <div class="max-w-[760px] mx-auto mt-8 mb-4 p-8 text-center bg-white border-solid border-t-4 border-x border-b border-[#C4C5D9] border-t-primary rounded-sm shadow-[0_1px_2px_rgba(0,0,0,0.05)] flex flex-col gap-3">
+          {leadCard.title && <h3 class="text-2xl leading-8 font-bold text-on-surface m-0">{leadCard.title}</h3>}
+          {leadCard.text && (
+            <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-[65ch] mx-auto">{leadCard.text}</p>
+          )}
+        </div>
+      )
+    }
+    <ul
+      role="list"
+      class:list={[
+        'grid grid-cols-1 gap-6 m-0 mt-12 p-0 list-none',
+        columns === '2' ? 'md:grid-cols-2' : 'md:grid-cols-3',
+      ]}
+    >
+      {
+        items.map((item) => (
+          <li
+            class:list={[
+              'm-0 bg-white border border-solid border-[#C4C5D9] rounded-sm p-8 flex flex-col gap-3',
+              centered && 'text-center items-center',
+            ]}
+          >
+            <p
+              class="m-0 max-w-none size-12 rounded-xs bg-primary text-on-primary flex items-center justify-center text-xl font-bold"
+              aria-hidden="true"
+            >
+              {item.number}
+            </p>
+            <h3 class="text-2xl leading-8 font-bold text-on-surface m-0 pt-1">{item.title}</h3>
+            <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none grow">{item.text}</p>
+            {item.ctaLabel && item.ctaHref && (
+              <a
+                class:list={[
+                  'mt-2 inline-flex items-center justify-center bg-primary text-on-primary px-6 py-3 rounded-xs text-sm font-semibold leading-none no-underline hover:bg-primary-container transition-colors',
+                  centered ? 'self-center' : 'self-start',
+                ]}
+                href={item.ctaHref}
+              >
+                {item.ctaLabel}
+              </a>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

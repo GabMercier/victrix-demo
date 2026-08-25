@@ -1,0 +1,276 @@
+/**
+ * Thème Tailwind v4 — design system « export2 » (décision v3, 2026-08-14).
+ * RÉFÉRENCE UNIQUE : docs/design/export2/design-tokens.tokens.json (export
+ * Figma Design Tokens du designer) + les 5 exports composant
+ * (docs/design/export2/Code/{header, footer, mega-menu, card-services,
+ * card-solutions}). Cette livraison REMPLACE l'arbitrage v2 du 2026-08-04
+ * (planche DesignSystemVictrix.png) : les « neutres froids maquette » jadis
+ * consignés comme divergences deviennent l'échelle OFFICIELLE (--color-neutral-*),
+ * et la police passe de Hanken Grotesk à INTER (variable, auto-hébergée).
+ * Les secondaires chauds (ivoire/beige/sable) survivent comme accents.
+ * Page de référence vivante : /fr/style-guide.
+ *
+ * IMPORTS GRANULAIRES, SANS PREFLIGHT (cohabitation) : le reset Tailwind
+ * changerait le rendu des composants legacy pas encore re-skinnés; on ne
+ * charge que le thème et les utilitaires. Conséquences à connaître tant que
+ * le preflight est absent :
+ *  - `border` ne pose pas border-style → toujours ajouter `border-solid`;
+ *  - les marges par défaut du navigateur restent (poser m-0 où il faut).
+ * Le preflight sera (re)évalué à la fin du re-skin par lots.
+ *
+ * COLLISIONS tokens.css : levées le 2026-08-04 (audit §4) — les variables
+ * legacy homonymes ont été RENOMMÉES (--color-surface → --color-band,
+ * --radius-sm/md/lg → --radius-s/m/l, --shadow-sm/md/lg → --shadow-1/2/3).
+ * Règle : ne jamais réutiliser un nom de token @theme dans le :root non-couché
+ * de tokens.css.
+ *
+ * RÈGLE DE COHABITATION (inchangée) : un composant est soit re-skinné Tailwind
+ * (zéro CSS scopé), soit intact (var(--token) legacy re-mappés) — jamais
+ * d'hybride.
+ */
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* Inter — variable (100–900), auto-hébergée (CSP : pas de Google Fonts CDN).
+   Fichier : public/fonts/InterVariable.woff2 (rsms.me/inter, OFL). Remplace
+   Hanken Grotesk (décision v3 — export2 : fontFamily "Inter" sur les 24
+   styles de texte du tokens.json). */
+/* SOUS-ENSEMBLE (2026-08-19, Lighthouse) : InterVariable-subset.woff2 = les
+   caractères réellement utilisés par le site + plages latines complètes,
+   généré par scripts/subset-inter.mjs (345 Ko → 107 Ko, axe de graisse
+   conservé). L'original InterVariable.woff2 reste dans public/fonts comme
+   source pour régénérer. Le preload de BaseLayout pointe le même fichier. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/InterVariable-subset.woff2') format('woff2');
+}
+
+/* Les classes `dark:` des maquettes portées restent INERTES tant qu'aucune
+   stratégie dark n'est décidée : variante activable uniquement sous un
+   ancêtre .dark explicite — jamais via prefers-color-scheme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* ---- Typo ------------------------------------------------------------- */
+  --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  /* Alias historique conservé (markup re-skinné : `font-grotesk`) — pointe
+     désormais sur Inter pour éviter une passe de renommage du markup. */
+  --font-grotesk: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* ---- Primitives export2 (design-tokens.tokens.json) -------------------- */
+  /* Bleu primaire — color.primaire.bleu.* */
+  --color-bleu-50: #f2f5fd; /* tokens.json « 050 » — nommé -50 pour suivre la convention v4 */
+  --color-bleu-100: #dfe7fb;
+  --color-bleu-200: #b8cbf9;
+  --color-bleu-300: #81a3f8;
+  --color-bleu-400: #497bf8;
+  --color-bleu-500: #1a5bff; /* Bleu Victrix — actions, liens, marque */
+  --color-bleu-600: #0043eb; /* hover/états d'action */
+  --color-bleu-700: #0337ba;
+  --color-bleu-800: #072c88;
+  --color-bleu-900: #09215d;
+
+  /* Neutres froids — color.neutral.* (remplace l'échelle chaude v2 ;
+     les gris « verbatim maquette » deviennent des tokens officiels) */
+  --color-neutral-50: #f9fafb; /* tokens.json « 050 » — écrase le neutral-50 v4 par défaut */
+  --color-neutral-100: #f3f4f7;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #cdd2da;
+  --color-neutral-400: #aab2c0;
+  --color-neutral-500: #7b889d;
+  --color-neutral-600: #545f71;
+  --color-neutral-700: #404957;
+  --color-neutral-800: #30353f;
+  --color-neutral-900: #21242a;
+  --color-neutral-950: #16181b;
+
+  /* Secondaires chauds (accents) — color.secondaire.* + noir anthracite */
+  --color-ivoire: #faf7f4;
+  --color-beige: #f1e8df;
+  --color-sable: #ebe0d5;
+  --color-anthracite: #1a2029;
+
+  /* ---- Alias français du pilote — ré-ancrés export2. Utilisés par les
+     composants déjà re-skinnés (testimonial). */
+  --color-nuit: #0b1334; /* semantic.background.bleu — surfaces sombres */
+  --color-royal: #1a5bff; /* bleu-500 — action, accents */
+  --color-royal-profond: #0043eb; /* bleu-600 — états/hover d'action */
+  --color-celeste: #81a3f8; /* bleu-300 — accents doux, chips */
+  --color-givre: #f9fafb; /* neutral-050 — surfaces structurantes claires */
+  --color-bordure: #e5e7eb; /* neutral-200 — bordure des cartes */
+  --color-encre: #21242a; /* neutral-900 — texte courant */
+  --color-encre-douce: #545f71; /* neutral-600 — texte secondaire */
+
+  /* ---- Rôles Material des exports v2, ré-ancrés sur l'échelle export2
+     (les NOMS restent — tout le markup re-skinné les consomme). ----------- */
+  /* Neutres */
+  --color-surface: #ffffff; /* canvas : blanc (les bandes claires = 050/100) */
+  --color-background: #ffffff;
+  --color-surface-bright: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f9fafb; /* neutral-050 — pied de page, panneaux */
+  --color-surface-container: #f3f4f7; /* neutral-100 — bandeaux (stripe méga) */
+  --color-surface-container-high: #e5e7eb; /* neutral-200 */
+  --color-surface-container-highest: #cdd2da; /* neutral-300 */
+  --color-surface-variant: #f3f4f7;
+  --color-surface-dim: #e5e7eb;
+  --color-on-surface: #21242a; /* neutral-900 */
+  --color-on-background: #21242a;
+  --color-on-surface-variant: #545f71; /* neutral-600 */
+  --color-outline: #7b889d; /* neutral-500 — séparateurs appuyés (méga, footer) */
+  --color-outline-variant: #e5e7eb; /* neutral-200 — bordures 1px de cartes */
+  --color-inverse-surface: #30353f;
+  --color-inverse-on-surface: #f3f4f7;
+  --color-surface-tint: #1a5bff;
+
+  /* Bleus de marque */
+  --color-primary: #1a5bff; /* bleu-500 — actions, liens, marque */
+  --color-on-primary: #ffffff;
+  --color-primary-container: #0043eb; /* bleu-600 — hover/états accentués */
+  --color-on-primary-container: #dfe7fb; /* bleu-100 */
+  --color-inverse-primary: #81a3f8; /* bleu-300 */
+  --color-primary-fixed: #b8cbf9; /* bleu-200 — fonds de pastilles (chip portail) */
+  --color-primary-fixed-dim: #81a3f8; /* bleu-300 — accents sur fonds sombres */
+  --color-on-primary-fixed: #0b1334; /* Bleu nuit — texte fort, overlays, bandes */
+  --color-on-primary-fixed-variant: #0337ba; /* bleu-700 */
+
+  /* Ardoise (secondary) — re-teintée sur les neutres froids */
+  --color-secondary: #545f71; /* neutral-600 */
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #e5e7eb;
+  --color-on-secondary-container: #404957;
+  --color-secondary-fixed: #f3f4f7;
+  --color-secondary-fixed-dim: #cdd2da;
+  --color-on-secondary-fixed: #0b1334;
+  --color-on-secondary-fixed-variant: #404957;
+
+  /* Gris techniques (tertiary) */
+  --color-tertiary: #404957; /* neutral-700 */
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #545f71;
+  --color-on-tertiary-container: #e5e7eb;
+  --color-tertiary-fixed: #e5e7eb;
+  --color-tertiary-fixed-dim: #cdd2da;
+  --color-on-tertiary-fixed: #16181b;
+  --color-on-tertiary-fixed-variant: #404957;
+
+  /* Erreurs — inchangées (aucune contradiction export2) */
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  /* ---- Échelle typographique sémantique — tailles/graisses du tokens.json
+     export2 (font.display / heading / body / label). Alias --font-* car le
+     markup pose `font-<style> text-<style>`. */
+  --text-display: 56px; /* display.regular.xl : 56/62/800/-0.672px */
+  --text-display--line-height: 1.107;
+  --text-display--font-weight: 800;
+  --text-display--letter-spacing: -0.012em;
+  --text-headline-lg: 40px; /* heading.h1 : 40/48/700 */
+  --text-headline-lg--line-height: 1.2;
+  --text-headline-lg--font-weight: 700;
+  --text-headline-lg--letter-spacing: 0;
+  --text-headline-lg-mobile: 32px; /* heading.h2 */
+  --text-headline-lg-mobile--line-height: 1.2;
+  --text-headline-lg-mobile--font-weight: 700;
+  --text-headline-md: 24px; /* heading.h3 : 24/28.8/700 */
+  --text-headline-md--line-height: 1.2;
+  --text-headline-md--font-weight: 700;
+  --text-headline-sm: 20px; /* heading.h4 : 20/24/700 — titres de cartes */
+  --text-headline-sm--line-height: 1.2;
+  --text-headline-sm--font-weight: 700;
+  --text-body-lg: 20px; /* body.regular.l : 20/28/400 */
+  --text-body-lg--line-height: 1.4;
+  --text-body-lg--font-weight: 400;
+  --text-body-md: 16px; /* body.regular.m : 16/24/400 */
+  --text-body-md--line-height: 1.5;
+  --text-body-md--font-weight: 400;
+  --text-label-caps: 14px; /* label.overline.s : 14/20/600/1.4px uppercase */
+  --text-label-caps--line-height: 1.43;
+  --text-label-caps--font-weight: 600;
+  --text-label-caps--letter-spacing: 0.1em;
+  --text-button: 14px; /* exports : boutons 14/600 */
+  --text-button--line-height: 1;
+  --text-button--font-weight: 600;
+  --text-button--letter-spacing: 0;
+
+  --font-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-lg: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-lg-mobile: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-md: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-sm: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-body-lg: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-body-md: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-label-caps: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-button: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  /* Alias NUS des configs d'export (sans fontSize appariée). */
+  --font-headline: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-label: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* ---- Espacement nommé (inchangé : base 8px, sections 80, conteneur 1280).
+     ⚠️ --spacing-container-max fait résoudre `max-w-container-max` (1280px,
+     correct) — vigilance si un futur export nomme un spacing homonyme d'une
+     taille --container-*. */
+  /* ÉLARGI 2026-08-17 (retour user : « remplir le viewport ») : 1280 → 1920.
+     Les maquettes sont des planches 1280 où le contenu OCCUPE TOUT le cadre ;
+     à 2560 de large, le site plafonné à 1280 flottait dans le blanc. 1920 =
+     75 % d'un écran 2560, plein cadre jusqu'au 1080p. C'EST LE CADRAN UNIQUE
+     (container-site + .container legacy via tokens.css) — ajuster ici. */
+  --spacing-container-max: 1920px;
+  --spacing-gutter: 24px;
+  --spacing-margin-x: 32px;
+  --spacing-section-gap: 80px;
+  --spacing-stack-sm: 8px;
+  --spacing-stack-md: 16px;
+  --spacing-stack-lg: 32px;
+
+  /* ---- Rayons (export2 : cartes services/solutions 4px, carte vedette du
+     méga 8px — l'échelle v4 4/8px déjà en place convient). */
+  --radius-sm: 0.125rem;
+  --radius: 0.25rem; /* boutons, cartes, images */
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem; /* carte vedette, grands conteneurs */
+  --radius-xl: 0.75rem;
+
+  /* ---- Élévation — effets export2 (effect.normal/hover/active pour les
+     contrôles) + ombres de surface des exports composant. */
+  --shadow-controle: 0 1px 2px rgb(0 0 0 / 0.25); /* effect.normal — boutons */
+  --shadow-controle-survol: 0 4px 4px rgb(0 0 0 / 0.34); /* effect.hover */
+  --shadow-controle-active: 0 1px 1px rgb(0 0 0 / 0.18); /* effect.active */
+  --shadow-ambiante: 0 4px 12px rgb(28 27 27 / 0.05); /* carte services */
+  --shadow-surelevee: 0 10px 30px rgb(0 0 0 / 0.05); /* panneau méga */
+  --shadow-survol: 0 4px 20px rgb(0 0 0 / 0.05); /* « lift » cartes */
+
+  /* ---- Animations — marquee du bandeau technologies (tech-marquee) : le
+     contenu est DOUBLÉ dans le markup, -50 % boucle sans couture. Pause au
+     survol et motion-reduce gérés par utilitaires dans le composant. */
+  --animate-marquee: marquee 40s linear infinite;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* Conteneur de section UNIQUE (lot chrome 2026-08-04) : 1280px centré,
+   gouttière 16px mobile / 32px ≥md. Remplace l'assemblage
+   `max-w-container-max mx-auto px-margin-x` (gouttière fixe 32px) partout —
+   la version legacy `.container` de global.css est alignée sur les mêmes
+   valeurs via --container-pad (tokens.css). */
+@utility container-site {
+  width: 100%;
+  max-width: var(--spacing-container-max);
+  margin-inline: auto;
+  padding-inline: 16px;
+  @media (width >= 48rem) {
+    /* Gouttière PROPORTIONNELLE (élargissement 2026-08-17) : 3.75vw = les
+       48px de la planche 1280 (expertisesparent.css padding 0 48), plancher
+       32px (ex-fixe), plafond 96px sur très large. */
+    padding-inline: clamp(var(--spacing-margin-x), 3.75vw, 96px);
+  }
+}

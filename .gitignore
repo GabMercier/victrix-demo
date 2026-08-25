@@ -13,3 +13,10 @@ yarn-error.log*
 .env.production
 # macOS / editor
 .DS_Store
+# Playwright MCP session artifacts (screenshots/traces from browser-driven demos)
+.playwright-mcp/
+# Playwright test output
+test-results/
+playwright-report/
+# local STATIC_ONLY build workaround output (isolated-copy builds during the EBUSY issue)
+dist-static/

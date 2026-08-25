@@ -1,0 +1,41 @@
+{
+  "title": "Infrastructure",
+  "description": "Reliable, high-performance and secure technology foundations.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Infrastructure",
+      "subtitle": "Reliable, high-performance and secure technology foundations.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Page in preparation",
+      "paragraphs": [
+        "The detailed presentation of our infrastructure offering will be published soon.",
+        "In the meantime, see our <a href=\"/en/services/services-infonuagiques/\">cloud</a> and <a href=\"/en/services/services-ti-geres/\">managed services</a> pages, or contact our experts."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Let’s talk about your infrastructure",
+      "body": "Let’s assess your needs and the best options together.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "variant": "dark"
+    }
+  ]
+}

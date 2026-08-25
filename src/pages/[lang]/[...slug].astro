@@ -1,0 +1,155 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  type Locale,
+  defaultLocale,
+  otherLocale,
+  localizePath,
+  isLocale,
+  htmlLang,
+} from '../../i18n/config';
+import { getPostsByLocale, postUrlSlug } from '../../i18n/blog';
+// Le renderer Bookshop partagé mappe chaque section à son composant. Les
+// sections DOIVENT passer par lui — avec la directive `bookshop:live` — pour
+// que l'édition visuelle CloudCannon se branche (voir l'entête du renderer).
+import Page from '../../../component-library/src/shared/astro/page.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
+import { useTranslations } from '../../i18n/ui';
+
+/**
+ * Pages génériques (collection `pages`, 2026-08-11) — une route statique par
+ * entrée de src/content/pages/<locale>/<slug>.json, rendue depuis son tableau
+ * `sections`. RÉPLIQUE FIDÈLE de la route services
+ * (src/pages/[lang]/services/[...slug].astro) SANS le préfixe d'URL : la
+ * collection porte les pages de PREMIER NIVEAU (/decouvrir, /expertises,
+ * /produits, /secteurs, /tarification, /centre-de-confiance, pages légales…).
+ *
+ * ROUTE ATTRAPE-TOUT ([...slug]) : Astro donne priorité aux routes plus
+ * spécifiques (index, contact, carrieres, solutions, services/[...slug],
+ * ressources/*, campagnes/*, portail/*…) — cette route ne génère QUE les
+ * chemins des entrées de la collection, elle n'attrape rien d'autre en build
+ * statique. Tout ce qui est load-bearing dans la route services l'est ici
+ * aussi : variable LITTÉRALE `frontmatter`, seam `enrich` (formulaires liés +
+ * jetons {{page.*}} + ressources liées), build-gate formId, altLocalePath par
+ * fichier homonyme.
+ */
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  const formEntries = await getCollection('forms');
+
+  const paths = [];
+  for (const page of pages) {
+    const seg = page.id.split('/')[0];
+    const lang: Locale = isLocale(seg) ? seg : defaultLocale;
+    // Chemin de FICHIER (clé d'appariement FR/EN) vs slug d'URL : `data.slug`
+    // le surcharge (même logique que services/blog).
+    const filePath = page.id.slice(page.id.indexOf('/') + 1);
+    const slug = page.data.slug || filePath;
+    const other = otherLocale[lang];
+
+    const counterpart = pages.find((p) => p.id === `${other}/${filePath}`);
+    const altLocalePath = counterpart
+      ? localizePath(`/${counterpart.data.slug || filePath}/`, other)
+      : localizePath('/', other);
+
+    // Carte formId → définition pour la langue + garde-fou build (patron
+    // services/campagnes : un formId introuvable ÉCHOUE le build en nommant
+    // la page et le fichier attendu).
+    const resolvedForms = Object.fromEntries(
+      formEntries
+        .filter((entry) => entry.id.startsWith(`${lang}/`))
+        .map((entry) => [entry.id.slice(lang.length + 1), entry.data]),
+    );
+    for (const section of page.data.sections) {
+      if (section.type === 'form' && section.formId && !resolvedForms[section.formId]) {
+        throw new Error(
+          `[pages] ${page.id} : formId « ${section.formId} » introuvable — attendu src/data/forms/${lang}/${section.formId}.json (collection Formulaires)`,
+        );
+      }
+    }
+
+    const enrich: Record<string, Record<string, unknown>> = {};
+
+    // Ressources liées — patron exact de la route services (une seule section
+    // par page, garde-fou build identique).
+    const relatedSections = page.data.sections.filter((s) => s.type === 'related-posts');
+    if (relatedSections.length > 1) {
+      throw new Error(
+        `[pages] ${page.id} : ${relatedSections.length} sections « ressources liées » — une seule par page est supportée (enrich est indexé par type : les mêmes cartes seraient injectées partout). En retirer.`,
+      );
+    }
+    const relatedSection = relatedSections[0];
+    if (relatedSection && 'tags' in relatedSection) {
+      const wanted = relatedSection.tags.map((t) => t.toLowerCase());
+      const posts = (await getPostsByLocale(lang))
+        .filter((post) =>
+          [...post.data.tags, ...post.data.topics].some((t) => wanted.includes(t.toLowerCase())),
+        )
+        .slice(0, 3);
+      const dateFmt = new Intl.DateTimeFormat(htmlLang[lang], {
+        dateStyle: 'long',
+        timeZone: 'UTC',
+      });
+      const cards = await Promise.all(
+        posts.map(async (post) => {
+          return {
+            href: localizePath(`/ressources/${postUrlSlug(post)}`, lang),
+            title: post.data.title,
+            excerpt: post.data.excerpt,
+            tags: post.data.tags,
+            dateISO: post.data.date.toISOString(),
+            dateLabel: dateFmt.format(post.data.date),
+            img: { src: post.data.coverImage ?? '' },
+          };
+        }),
+      );
+      enrich['related-posts'] = { cards };
+    }
+
+    enrich.form = {
+      resolvedForms,
+      pageContext: {
+        titre: page.data.title,
+        chemin: `/${lang}/${slug}/`,
+        slug,
+        langue: lang,
+      },
+    };
+
+    // `frontmatter` est LOAD-BEARING pour l'édition live CloudCannon — voir
+    // src/pages/[lang]/campagnes/[slug].astro:43-50. Ne pas renommer.
+    paths.push({
+      params: { lang, slug },
+      props: { page, lang, altLocalePath, frontmatter: page.data, enrich },
+    });
+  }
+  return paths;
+}
+
+const { page, lang, altLocalePath, frontmatter, enrich } = Astro.props;
+
+// Fil d'Ariane (2026-08-17) — le MÊME tableau alimente le fil VISIBLE
+// (Breadcrumbs.astro) et le balisage BreadcrumbList (P-12). Collection plate :
+// Accueil → page courante, pas de niveau intermédiaire.
+const crumbs = [
+  { name: useTranslations(lang).article.breadcrumbHome, path: localizePath('/', lang) },
+  { name: page.data.title },
+];
+const crumbsSchema = breadcrumbSchema(crumbs, Astro.site!);
+---
+
+<BaseLayout
+  lang={lang}
+  title={page.data.seoTitle || page.data.title}
+  description={page.data.description}
+  noindex={page.data.noindex}
+  altLocalePath={altLocalePath}
+  contentType="Page"
+>
+  <JsonLd slot="head" schema={crumbsSchema} />
+  <Breadcrumbs lang={lang} items={crumbs} />
+  <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} />
+</BaseLayout>

@@ -1,0 +1,215 @@
+---
+/**
+ * Section « Expertises » (bento « Nos services ») — composant Bookshop.
+ * FIDÉLITÉ MAQUETTE 2026-08-04, RE-ANCRÉE 2026-08-14 sur export2
+ * (docs/design/export2/Code/card-services — décision v3) :
+ * grille 3 colonnes × N rangées de cartes 300px rayon 4, QUATRE PEAUX par
+ * carte (`items[].variant`) —
+ *  - image  : photo + fond navy (mix-blend overlay 60 %), titre 30/700 blanc
+ *             ancré en bas ;
+ *  - claire : carte services export2 — blanche bordée neutral-200, ombre
+ *             ambiante, icône bleue 32, titre 20/700 neutral-900, texte 14
+ *             neutral-600, lien « En voir plus » 14/600 bleu + flèche ;
+ *  - bleue  : aplat Bleu Victrix + grand « V » de marque en filigrane (blanc
+ *             10 %, ancré à droite, rogné par la carte — demande user
+ *             2026-08-11, remplace l'ancien carré arrondi), texte bleu pâle,
+ *             lien blanc ;
+ *  - nuit   : aplat anthracite #1A2029 (export2 homepage.css 2026-08-17 —
+ *             « Noir Anthracite », remplace le navy), texte #9CA3AF, lien blanc.
+ * Peau « image » SANS image renseignée : le même « V » filigrane sert de
+ * visuel de remplacement sur l'aplat navy (placeholder de marque).
+ * Rangée de tête : titre 48/700 ls -0.96 + paragraphe d'appui SOUS le titre,
+ * lien « Voir toutes nos expertises → » 12/700 majuscules bleu à droite.
+ * Neutres froids maquette tels quels ; bleus/navy = tokens (décision méga).
+ * CORRECTION 2026-08-17 (retour user sur maquette) : AUCUN pictogramme dans
+ * les tuiles — le champ `icon` (référence bento 2026-08-11) est RETIRÉ du
+ * contrat et du rendu.
+ *
+ * Props : { type: "home-expertises", sectionTitle, intro?, learnMore,
+ *           ctaLabel?, ctaHref?, items: [{ number, title, accent, description,
+ *           href, image?, variant?, linkLabel?, wide? }] }
+ * - `variant` défaut « claire » ; `linkLabel` vide = `learnMore` commun ;
+ * - `number`/`accent` hérités (jamais rendus) ; images = chemins PUBLICS
+ *   (browser-safe, éditeur visuel CloudCannon).
+ *
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface ExpertiseItem {
+  number: string;
+  title: string;
+  accent: string;
+  description: string;
+  href: string;
+  image?: string;
+  variant?: 'image' | 'claire' | 'bleue' | 'nuit';
+  linkLabel?: string;
+  // Référence bento 2026-08-11 : carte large (2 colonnes).
+  wide?: boolean;
+}
+
+interface Props {
+  sectionTitle: string;
+  intro?: string;
+  learnMore: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  items: ExpertiseItem[];
+}
+
+const { sectionTitle, intro, learnMore, ctaLabel, ctaHref, items = [] } = Astro.props;
+
+// Recettes par peau — la carte entière est cliquable via le lien étiré du CTA.
+// Rayon 4px + lien 14/600 sentence-case avec flèche qui glisse (export2).
+const cardBase = 'group relative h-[300px] rounded overflow-hidden flex flex-col';
+const linkBase =
+  "inline-flex items-center gap-1 text-sm font-semibold no-underline hover:underline after:content-[''] after:absolute after:inset-0";
+const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
+// « V » de marque en filigrane (peau bleue + remplacement d'image manquante) :
+// glyphe Hanken 340px, ancré à droite et rogné par overflow-hidden. Blanc 10 %
+// sur les aplat foncés ; gris sur le placeholder clair (image manquante).
+const watermarkBase =
+  'absolute -right-12 -bottom-20 text-[340px] leading-none font-black select-none -z-10';
+---
+
+<section class="py-24 bg-white">
+  <div class="container-site">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+      <div class="max-w-xl flex flex-col gap-6">
+        <h2 class="text-[48px] leading-none font-bold tracking-[-0.96px] text-on-primary-fixed m-0">
+          {sectionTitle}
+        </h2>
+        {intro && <p class="text-base leading-6 text-neutral-600 m-0 max-w-none">{intro}</p>}
+      </div>
+      {
+        ctaLabel && ctaHref && (
+          <a
+            class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
+            href={ctaHref}
+          >
+            {ctaLabel}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <path d={arrow} stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        )
+      }
+    </div>
+    <ul role="list" class="grid grid-cols-1 md:grid-cols-3 gap-6 m-0 p-0 list-none">
+      {
+        items.map((item) => {
+          const variant = item.variant || 'claire';
+          const label = item.linkLabel || learnMore;
+          return (
+            <li class:list={['m-0', item.wide && 'md:col-span-2']}>
+              {variant === 'image' ? (
+                <a
+                  class:list={[
+                    cardBase,
+                    'justify-end p-8 no-underline isolate',
+                    item.image ? 'bg-on-primary-fixed' : 'bg-neutral-100',
+                  ]}
+                  href={item.href}
+                >
+                  {item.image ? (
+                    <img
+                      src={item.image}
+                      alt=""
+                      class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-60 transition-transform duration-300 group-hover:scale-105 -z-10"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <span class:list={[watermarkBase, 'text-black/[0.06]']} aria-hidden="true">
+                      V
+                    </span>
+                  )}
+                  <span
+                    class:list={[
+                      'block text-[30px] leading-9 font-bold tracking-[-0.6px]',
+                      item.image ? 'text-white' : 'text-on-primary-fixed',
+                    ]}
+                  >
+                    {item.title}
+                  </span>
+                  {item.description && (
+                    <span
+                      class:list={[
+                        'block mt-2 text-base leading-6 max-w-[52ch]',
+                        item.image ? 'text-white/75' : 'text-neutral-600',
+                      ]}
+                    >
+                      {item.description}
+                    </span>
+                  )}
+                </a>
+              ) : variant === 'bleue' ? (
+                <div class:list={[cardBase, 'justify-between p-10 bg-primary isolate']}>
+                  <span class:list={[watermarkBase, 'text-white/10']} aria-hidden="true">
+                    V
+                  </span>
+                  <span class="flex flex-col gap-4">
+                    <span class="block text-2xl leading-8 font-bold tracking-[-0.48px] text-white">
+                      {item.title}
+                    </span>
+                    <span class="block text-base leading-6 text-bleu-100">{item.description}</span>
+                  </span>
+                  <a class:list={[linkBase, 'text-white']} href={item.href}>
+                    {label}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                      <path d={arrow} stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                </div>
+              ) : variant === 'nuit' ? (
+                /* Peau nuit = « Noir Anthracite » #1A2029 (export2 homepage.css
+                   §ServicesGrid, 2026-08-17) — remplace le navy on-primary-fixed. */
+                <div class:list={[cardBase, 'justify-between p-10 bg-anthracite']}>
+                  <span class="flex flex-col gap-4">
+                    <span class="block text-2xl leading-8 font-bold tracking-[-0.48px] text-white">
+                      {item.title}
+                    </span>
+                    <span class="block text-base leading-6 text-neutral-400">{item.description}</span>
+                  </span>
+                  <a class:list={[linkBase, 'text-white']} href={item.href}>
+                    {label}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                      <path d={arrow} stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                </div>
+              ) : (
+                <div
+                  class:list={[
+                    cardBase,
+                    'justify-between p-8 bg-white border border-solid border-neutral-200 shadow-ambiante transition-shadow hover:shadow-survol',
+                  ]}
+                >
+                  <span class="flex flex-col gap-3">
+                    <span class="flex flex-col gap-1">
+                      <span class="block text-xl leading-6 font-bold text-neutral-900">{item.title}</span>
+                      <span class="block text-sm leading-relaxed text-neutral-600">{item.description}</span>
+                    </span>
+                  </span>
+                  <a class:list={[linkBase, 'text-primary']} href={item.href}>
+                    {label}
+                    <svg
+                      class="transition-transform duration-200 group-hover:translate-x-0.5"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d={arrow} stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                </div>
+              )}
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>

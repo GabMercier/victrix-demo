@@ -1,0 +1,103 @@
+# =============================================================================
+# Spec Bookshop — section « Service — Héros » (palette partagée, P-07).
+# Voir hero.bookshop.yml pour les conventions communes.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Service — Héros"
+  description: "Bannière de page service : photo de fond voilée de Bleu nuit, surtitre, titre, paragraphe d'introduction et jusqu'à deux boutons. Porte le seul <h1> — à placer en PREMIÈRE position."
+  icon: rocket_launch
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/service-hero/preview.png"
+    text: "Service — Héros"
+    subtext: Photo voilée Bleu nuit, titre blanc, deux boutons (h1 de la page)
+  preview:
+    icon: rocket_launch
+    text:
+      - key: title
+      - text: Héros de service
+
+blueprint:
+  type: service-hero
+  eyebrow: ""
+  eyebrowStyle: texte
+  titleAccent: ""
+  title: "Titre du service"
+  titleHighlight: ""
+  lead: ""
+  ctaLabel: ""
+  ctaHref: ""
+  cta2Label: ""
+  cta2Href: ""
+  overlay: voile
+  image: ""
+  imageAlt: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  eyebrow:
+    label: "Surtitre (optionnel)"
+  eyebrowStyle:
+    type: select
+    label: "Style du surtitre"
+    comment: "« texte » : texte bleu pâle (défaut) ; « badge » : chip bleu plein (page produit)."
+    options:
+      allow_empty: false
+      values:
+        - texte
+        - badge
+  titleAccent:
+    label: "Début du titre — accentué (optionnel)"
+    comment: "Affiché en bloc au-dessus de la suite du titre."
+  title:
+    label: "Titre"
+  titleHighlight:
+    label: "Mots du titre en bleu clair (optionnel)"
+    comment: "Sous-chaîne EXACTE du titre, rendue en bleu clair (ex. « Automatisez »). Vide = titre uniforme."
+  lead:
+    type: textarea
+    label: "Paragraphe d'introduction (optionnel)"
+    comment: "Peut contenir des <strong> (rendu HTML tel quel)."
+  ctaLabel:
+    label: "Libellé du bouton (optionnel)"
+  ctaHref:
+    label: "Lien du bouton (optionnel)"
+    comment: "URL finale, préfixe de langue inclus (ex. /fr/contact)."
+  cta2Label:
+    label: "Libellé du second bouton (optionnel)"
+    comment: "Bouton « verre » translucide à droite du principal. Vide = absent."
+  cta2Href:
+    label: "Lien du second bouton"
+    comment: "URL finale, préfixe de langue inclus."
+  overlay:
+    type: select
+    label: "Voile sur la photo"
+    comment: "« voile » : Bleu nuit uniforme (défaut) ; « degrade » : dégradé anthracite gauche→droite (page produit) ; « blanc » : héros CLAIR — fondu blanc/beige sur la photo, titre foncé, accent bleu (page expertise mère)."
+    options:
+      allow_empty: false
+      values:
+        - voile
+        - degrade
+        - blanc
+  image:
+    type: image
+    label: "Photo de fond (optionnelle)"
+    comment: >-
+      Photo pleine largeur voilée de Bleu nuit. Le fichier téléversé atterrit
+      dans public/images/sections/ (adresse servie telle quelle, /images/…).
+    options:
+      paths:
+        static: public
+        uploads: public/images/sections
+  imageAlt:
+    label: "Texte alternatif de l'image"
+    comment: "Description pour l'accessibilité (laisser vide si l'image est purement décorative)."

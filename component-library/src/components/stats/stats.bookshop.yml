@@ -1,0 +1,68 @@
+# =============================================================================
+# Spec Bookshop — section « Victrix en chiffres » (palette partagée, ajout du
+# 17 juil.). Preuves sociales chiffrées exigées par le cahier des charges.
+# Voir hero.bookshop.yml pour les conventions communes.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Victrix en chiffres"
+  description: "Bande de statistiques sur fond marine (années d'expérience, clients, taux de satisfaction…) — les chiffres sont des textes libres (« 25+ », « 99,9 % »)."
+  icon: insights
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/stats/preview.png"
+    text: Victrix en chiffres
+    subtext: Statistiques en preuve sociale (fond marine)
+  preview:
+    icon: insights
+    text:
+      - key: title
+      - text: Victrix en chiffres
+
+blueprint:
+  type: stats
+  title: "Victrix en chiffres"
+  fond: givre
+  items:
+    - number: "25+"
+      label: "années d'expérience"
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre (optionnel)"
+  # « Fond de section » (2026-08-17, pilote 6 blocs) : choix BORNÉ à la
+  # palette officielle — 5 fonds clairs, jamais de couleur libre (esprit P-16).
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      values:
+        - blanc
+        - givre
+        - ivoire
+        - beige
+        - sable
+    comment: "Couleur de fond de la section, bornée à la palette officielle : blanc · givre (gris très pâle) · ivoire · beige · sable."
+  items:
+    # `type: array` explicite + structure déclarée à la main dans
+    # cloudcannon.config.yml (_structures.stat_items) — même bail-out et même
+    # re-pointage du `items` de collection que faq.bookshop.yml.
+    type: array
+    label: "Chiffres"
+    options:
+      structures: _structures.stat_items
+  number:
+    label: "Chiffre"
+    comment: "Texte libre — ex. « 25+ », « 99,9 % », « 3 bureaux »."
+  label:
+    label: "Libellé"

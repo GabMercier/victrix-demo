@@ -1,0 +1,35 @@
+---
+/**
+ * Section « Partenaires » — composant Bookshop (accueil composable).
+ *
+ * Props : { type: "home-partners", title, names: string[] }
+ * `names = []` en secours pendant l'édition live. Voir home-hero.astro pour
+ * les conventions communes.
+ *
+ * RE-SKIN 2026-08-04 (lot chrome) : 100 % utilitaires Tailwind (règle
+ * no-hybride). Titre en label-caps discret centré (bande de noms nus — un
+ * headline-lg pèserait trop), noms atténués, rythme unifié py-section-gap
+ * (était 48px), conteneur container-site.
+ */
+interface Props {
+  title: string;
+  names: string[];
+}
+
+const { title, names = [] } = Astro.props;
+---
+
+<section class="py-section-gap bg-surface" aria-label={title}>
+  <div class="container-site">
+    <h2 class="text-center font-label-caps text-label-caps uppercase text-on-surface-variant m-0 mb-8">
+      {title}
+    </h2>
+    <ul role="list" class="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 m-0 p-0">
+      {
+        names.map((name) => (
+          <li class="font-headline-md text-headline-md text-outline">{name}</li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

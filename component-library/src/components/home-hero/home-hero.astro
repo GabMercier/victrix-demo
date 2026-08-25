@@ -1,0 +1,102 @@
+---
+/**
+ * Section « Bannière d'accueil » — composant Bookshop (accueil composable).
+ * FIDÉLITÉ MAQUETTE 2026-08-04 (docs/design/accueil.css §HeroSection, capture
+ * fournie par le user) : héros photo pleine largeur, dégradé BLANC
+ * gauche→droite (90deg, blanc → 80 % → transparent), surtitre 12/700 ls 1.2
+ * Bleu Victrix, titre 60/800 lh 1 ls -1.2 navy avec MOT ACCENTUÉ en bleu
+ * (`titleAccent` — sous-chaîne du titre), sous-titre 18/28, double CTA
+ * (primaire rayon 4 + flèche ; secondaire blanc translucide bordé).
+ * Neutres froids de la maquette repris tels quels (décision user, passe méga) ;
+ * bleus/navy = tokens de marque. Police = Hanken (Inter de l'export = artefact).
+ *
+ * Props : { type: "home-hero", eyebrow?, title, titleAccent?, subtitle,
+ *           ctaLabel, ctaHref, image?, cta2Label?, cta2Href? } — chaîne vide =
+ * absent (convention du dépôt) ; l'ancien contenu reste valide. `image` est un
+ * chemin PUBLIC servi tel quel (browser-safe pour l'éditeur CloudCannon).
+ *
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ * Rend le SEUL <h1> de la page : à garder en première position.
+ */
+interface Props {
+  eyebrow?: string;
+  title: string;
+  titleAccent?: string;
+  subtitle: string;
+  ctaLabel: string;
+  ctaHref: string;
+  image?: string;
+  cta2Label?: string;
+  cta2Href?: string;
+}
+
+const { eyebrow, title, titleAccent, subtitle, ctaLabel, ctaHref, image, cta2Label, cta2Href } =
+  Astro.props;
+
+// Le mot accentué est rendu en bleu là où il apparaît dans le titre (première
+// occurrence) ; accent absent ou introuvable = titre uniforme, aucune casse.
+const accentIndex = titleAccent ? title.indexOf(titleAccent) : -1;
+const titleParts =
+  accentIndex >= 0 && titleAccent
+    ? {
+        before: title.slice(0, accentIndex),
+        accent: titleAccent,
+        after: title.slice(accentIndex + titleAccent.length),
+      }
+    : null;
+---
+
+<section class="relative min-h-[600px] lg:min-h-[750px] flex items-center overflow-hidden bg-white">
+  {
+    image && (
+      <div class="absolute inset-0" aria-hidden="true">
+        <img src={image} alt="" class="w-full h-full object-cover" loading="eager" decoding="async" fetchpriority="high" />
+        <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
+      </div>
+    )
+  }
+  <div class="relative z-10 container-site py-24 lg:py-32">
+    <div class="max-w-2xl flex flex-col items-start gap-6">
+      {
+        eyebrow && (
+          <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary m-0 max-w-none">{eyebrow}</p>
+        )
+      }
+      <h1 class="text-[40px] leading-[1.05] lg:text-[60px] lg:leading-[60px] font-extrabold tracking-[-1.2px] text-on-primary-fixed m-0 text-balance">
+        {
+          titleParts ? (
+            <>
+              {titleParts.before}
+              <span class="text-primary">{titleParts.accent}</span>
+              {titleParts.after}
+            </>
+          ) : (
+            title
+          )
+        }
+      </h1>
+      <p class="text-lg leading-7 text-[#545F71] m-0 max-w-xl pt-2">{subtitle}</p>
+      <div class="flex flex-wrap items-start gap-4 pt-4">
+        <a
+          class="no-underline bg-primary text-on-primary px-8 py-[17px] rounded font-semibold text-base leading-6 inline-flex items-center gap-2 hover:bg-primary-container transition-colors"
+          href={ctaHref}
+        >
+          {ctaLabel}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        {
+          cta2Label && cta2Href && (
+            <a
+              class="no-underline bg-white/50 border border-solid border-[#D1D5DB] text-on-primary-fixed px-8 py-4 rounded font-semibold text-base leading-6 inline-flex items-center hover:bg-white transition-colors"
+              href={cta2Href}
+            >
+              {cta2Label}
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

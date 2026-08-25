@@ -1,0 +1,83 @@
+# =============================================================================
+# Spec Bookshop — section « Appel à l'action » (contrat landing GELÉ).
+# Voir hero.bookshop.yml pour les conventions communes (structures `sections`,
+# discriminant `type` masqué, libellés français pour la palette CloudCannon).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Appel à l'action"
+  description: "Bandeau incitatif : titre, texte optionnel et bouton. Variante pâle (défaut) ou marine."
+  icon: campaign
+  # Polissage du sélecteur CloudCannon — voir hero.bookshop.yml (les clés de
+  # `spec` sont recopiées sur la valeur de structure générée).
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/cta/preview.png"
+    text: Appel à l'action
+    subtext: Bande de conversion avec bouton (variante pâle ou foncée)
+  preview:
+    icon: campaign
+    text:
+      - key: title
+      - text: Appel à l'action
+
+blueprint:
+  type: cta
+  title: "Prêt à passer à l'action ?"
+  body: ""
+  ctaLabel: "Nous joindre"
+  ctaHref: "/fr/nous-joindre/"
+  cta2Label: ""
+  cta2Href: ""
+  variant: light
+  fond: blanc
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat landing — ne pas modifier."
+  title:
+    label: "Titre"
+  body:
+    label: "Texte"
+    comment: "Paragraphe d'appui sous le titre (optionnel)."
+  ctaLabel:
+    label: "Libellé du bouton"
+  ctaHref:
+    label: "Lien du bouton"
+    comment: "URL de destination, p. ex. /fr/nous-joindre/."
+  cta2Label:
+    label: "Libellé du second bouton (optionnel)"
+    comment: "Bouton contour à droite du principal. Vide = absent."
+  cta2Href:
+    label: "Lien du second bouton"
+    comment: "URL de destination, préfixe de langue inclus."
+  variant:
+    type: select
+    label: "Variante"
+    comment: "« light » : bandeau pâle (défaut) ; « dark » : bandeau bleu ; « nuit » : panneau anthracite centré (page produit)."
+    options:
+      values:
+        - light
+        - dark
+        - nuit
+  # « Fond de section » (2026-08-17, pilote 6 blocs) : lavis DERRIÈRE le
+  # panneau (le panneau garde sa « Variante ») — borné à la palette officielle.
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      values:
+        - blanc
+        - givre
+        - ivoire
+        - beige
+        - sable
+    comment: "Couleur de fond de la section, bornée à la palette officielle : blanc · givre (gris très pâle) · ivoire · beige · sable."

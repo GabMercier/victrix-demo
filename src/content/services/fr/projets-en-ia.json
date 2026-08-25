@@ -1,0 +1,41 @@
+{
+  "title": "Projets en IA",
+  "description": "De l’idéation au déploiement : des projets d’intelligence artificielle qui livrent de la valeur.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Projets en IA",
+      "subtitle": "De l’idéation au déploiement : des projets d’intelligence artificielle qui livrent de la valeur.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Page en préparation",
+      "paragraphs": [
+        "La présentation détaillée de nos projets en intelligence artificielle sera publiée prochainement.",
+        "Découvrez dès maintenant notre expertise en <a href=\"/fr/services/intelligence-artificielle/\">intelligence artificielle</a> ou communiquez avec nos experts."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Un projet en IA ?",
+      "body": "Discutons de vos cas d’usage et de leur potentiel.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "variant": "dark"
+    }
+  ]
+}

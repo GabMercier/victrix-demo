@@ -1,0 +1,41 @@
+{
+  "title": "Application services",
+  "description": "Design, modernize and maintain your business applications.",
+  "noindex": true,
+  "seoTitle": "",
+  "sections": [
+    {
+      "_bookshop_name": "hero",
+      "type": "hero",
+      "eyebrow": "",
+      "title": "Application services",
+      "subtitle": "Design, modernize and maintain your business applications.",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "titleAccent": "",
+      "image": "",
+      "cta2Label": "",
+      "cta2Href": "",
+      "eyebrowIcon": "",
+      "ctaIcon": ""
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Page in preparation",
+      "paragraphs": [
+        "The detailed presentation of our application services will be published soon.",
+        "Our teams already support many organizations — contact us to discuss your application projects."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "An application project?",
+      "body": "Let’s talk about your business applications and their evolution.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "variant": "dark"
+    }
+  ]
+}

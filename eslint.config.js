@@ -39,5 +39,6 @@ export default tseslint.config(
       'astro/jsx-a11y/label-has-associated-control': 'warn',
     },
   },
+
 );
 

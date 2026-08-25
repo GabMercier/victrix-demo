@@ -1,14 +1,30 @@
 ---
+import { getEntry, getCollection } from 'astro:content';
 import Logo from './Logo.astro';
 import { type Locale, defaultLocale, otherLocale, localizePath, swapLocale } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
+import { resolveNavHref } from '../lib/navigation/service-links';
+import { getPostsByLocale, postUrlSlug, blogCategories } from '../i18n/blog';
+import { getActiveAnnounce } from '../lib/announce';
 
 /**
  * Global site header: dismissible announcement bar, logo, primary navigation,
  * a working FR/EN language switcher, and an accessible mobile drawer menu.
- * Locale-aware: labels come from the UI dictionary, internal hrefs are
- * localized, and the language switch links to the equivalent page in the
- * other locale (`altLocalePath`, provided by the layout).
+ * Locale-aware. CONTENT (menu items, mega menu, portal button) comes from the
+ * `navigation` collection — src/data/navigation/<lang>.json, editable in
+ * CloudCannon; hrefs are stored locale-less and localized here. The
+ * announcement bar comes from the `annonces` collection (schedulable banner
+ * library — src/lib/announce.ts picks the active one).
+ * Only accessibility strings stay in the UI dictionary (src/i18n/ui.ts).
+ * This is site chrome rendered at build — astro:content is fine here (the
+ * browser-safe rule only applies to Bookshop section components).
+ *
+ * RE-SKIN 2026-08-04 (lot chrome), RE-ANCRÉ 2026-08-14 sur export2
+ * (docs/design/export2/Code/{header,mega-menu} — décision v3) : 100 %
+ * utilitaires Tailwind (règle no-hybride). Les classes .site-header,
+ * .primary-nav, .site-header__search, .lang-switch, .announcement, etc. sont
+ * des HOOKS NUS (zéro CSS) : e2e (header-variants.spec.ts), script ci-dessous
+ * et global.css (html.announce-dismissed .announcement) s'y accrochent.
  */
 
 interface Props {
@@ -20,35 +36,150 @@ interface Props {
 const { lang = defaultLocale, altLocalePath } = Astro.props;
 const t = useTranslations(lang);
 
-const navItems = t.nav.items.map((item) => ({
-  label: item.label,
-  href: localizePath(item.href, lang),
-  // The "Expertises" item carries the mega menu (desktop only).
-  mega: item.href === t.nav.mega.parentHref ? t.nav.mega : undefined,
+const navEntry = await getEntry('navigation', lang);
+if (!navEntry) {
+  throw new Error(`[navigation] Fichier manquant : src/data/navigation/${lang}.json`);
+}
+const nav = navEntry.data;
+
+// Slugs de la collection `services` POUR CETTE LANGUE — méga-menu dynamique
+// (P-07, E.3). Un lien de navigation portant un `service` est résolu vers
+// /<lang>/services/<slug> et VALIDÉ contre cet ensemble : un service inexistant
+// FAIT ÉCHOUER le build (src/lib/navigation/service-links.ts, prouvé par test).
+// La navigation reste la source de l'ordre et des libellés; la collection est
+// la source de vérité des URLs. Tant qu'aucun lien ne porte de `service` (cas
+// actuel), le rendu du header est identique à l'octet.
+const serviceEntries = await getCollection('services');
+const serviceSlugs = new Set(
+  serviceEntries
+    .filter((entry) => entry.id.startsWith(`${lang}/`))
+    .map((entry) => entry.id.slice(lang.length + 1)),
+);
+
+// L'entrée qui PORTE le méga-menu est celle dont l'URL RÉSOLUE égale le
+// « parentHref » résolu — comparaison sur les URLs finales (localisées), pas
+// sur les valeurs brutes : un item converti en lien `service` (href vide, URL
+// /<lang>/services/<slug>) doit encore accrocher son méga-menu. parentHref est
+// un href simple (schéma navHref) → resolveNavHref le localise.
+const megaParentHref = resolveNavHref({ href: nav.mega.parentHref }, lang, serviceSlugs);
+// Fidélité maquette : le même panneau peut s'accrocher à PLUSIEURS entrées
+// (parentHrefs supplémentaires — Expertises + Services + Produits).
+const megaParentSet = new Set([
+  megaParentHref,
+  ...(nav.mega.parentHrefs ?? []).map((h) => resolveNavHref({ href: h }, lang, serviceSlugs)),
+]);
+
+// Carte mise en avant + bandeau bas du méga-menu Services (Figma
+// « Composants ») — blocs OPTIONNELS de la nav, hrefs localisés ici.
+const megaFeatured = nav.mega.featured
+  ? { ...nav.mega.featured, href: resolveNavHref({ href: nav.mega.featured.href }, lang, serviceSlugs) }
+  : undefined;
+const megaStripe = nav.mega.stripe
+  ? {
+      text: nav.mega.stripe.text,
+      links: nav.mega.stripe.links.map((l) => ({
+        label: l.label,
+        href: resolveNavHref({ href: l.href }, lang, serviceSlugs),
+      })),
+    }
+  : undefined;
+
+// Méga-menu RESSOURCES (parité victrix.ca) — contenu GÉNÉRÉ AU BUILD : les
+// catégories viennent des étiquettes réelles du blogue (blogCategories — même
+// source que les onglets de filtre de l'index Ressources) et les « derniers
+// articles » de la collection. La nav ne porte que les textes (voir le schéma
+// navigation dans content.config.ts). Un lien de catégorie cible l'index
+// filtré : /<lang>/ressources/?categorie=<étiquette>.
+const megaRes = nav.megaRessources;
+const megaResParentHref = megaRes
+  ? resolveNavHref({ href: megaRes.parentHref }, lang, serviceSlugs)
+  : undefined;
+const blogPosts = megaRes ? await getPostsByLocale(lang) : [];
+const resCategories = blogCategories(blogPosts).map((tag) => ({
+  label: tag,
+  href: `${megaResParentHref}/?categorie=${encodeURIComponent(tag)}`,
+}));
+// Correction 2026-08-17 : DEUX cartes AVEC image de couverture (les 4 titres
+// en liste débordaient de leur rangée h-10 — chevauchement visuel). L'image
+// vient du frontmatter `coverImage` (chemin public servi tel quel).
+const resLatest = blogPosts.slice(0, 2).map((post) => ({
+  title: post.data.title,
+  href: localizePath(`/ressources/${postUrlSlug(post)}/`, lang),
+  image: post.data.coverImage ?? '',
 }));
 
-// Mega-menu column icons (24×24 stroke outlines, colored via currentColor) —
-// keyed by the `icon` names used in the ui dictionary.
-const megaIcons: Record<string, string> = {
-  strategy:
-    '<path d="M3 21h18M5 18h14M7 18v-7m3.5 7v-7m3 7v-7m3.5 7v-7M3.5 8L12 3l8.5 5h-17z"/>',
-  cloud:
-    '<path d="M7 18a4.5 4.5 0 1 1 .63-8.96A6 6 0 0 1 19.2 10.6 3.8 3.8 0 0 1 18 18H7z"/>',
-  security:
-    '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/>',
-  productivity:
-    '<path d="M5.5 14.5l4 4c5-2 8.5-5.2 9.5-10.7l.3-3.6-3.6.3C10.2 5.5 7 9 5.5 14.5z"/><circle cx="14" cy="10" r="1.7"/><path d="M5.5 14.5L3 21l6.5-2.5"/>',
-  managed:
-    '<circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3m0 13v3M2.5 12h3m13 0h3M5.2 5.2l2.1 2.1m9.4 9.4l2.1 2.1m0-13.6l-2.1 2.1M7.3 16.7l-2.1 2.1"/>',
-};
+// Chaque entrée porte au plus une CLÉ de panneau (« main » = le méga partagé
+// Expertises·Services·Produits, « ressources » = le méga Ressources). Les
+// panneaux sont rendus UNE SEULE FOIS hors des <li> (voir plus bas) : passer
+// d'un onglet à l'autre du MÊME panneau ne le ferme/rouvre plus (demande
+// 2026-08-04) — il ne se referme que si le contenu change ou si l'entrée
+// survolée n'a pas de sous-menu.
+const navItems = nav.items.map((item) => {
+  // Résout un lien vers un service (validé) ou localise l'href brut (défaut).
+  const href = resolveNavHref(item, lang, serviceSlugs);
+  const megaKey = megaParentSet.has(href)
+    ? 'main'
+    : megaRes && href === megaResParentHref
+      ? 'ressources'
+      : undefined;
+  return { label: item.label, href, megaKey };
+});
+
+// Ancrage DOM de chaque panneau : dans le DERNIER <li> qui le déclenche —
+// l'ordre de tabulation reste « déclencheurs du panneau, puis ses liens »
+// (un panneau rendu après le <ul> serait inatteignable au clavier : Tab
+// passerait par Carrière/Ressources qui ferment/remplacent le panneau).
+const megaPanelAnchor: Record<string, number> = {};
+navItems.forEach((item, i) => {
+  if (item.megaKey) megaPanelAnchor[item.megaKey] = i;
+});
+
+// Garde-fou build : le méga-menu DOIT s'accrocher à une entrée du menu. Un
+// « parentHref » orphelin (aucune entrée ne correspond) ferait disparaître le
+// méga-menu SILENCIEUSEMENT — on casse le build en nommant le fichier et la
+// valeur fautive (rien de cassé n'atteint le site).
+if (!navItems.some((item) => item.megaKey === 'main')) {
+  throw new Error(
+    `[navigation] ${lang}.json : « parentHref » (${nav.mega.parentHref}) ne correspond à aucune entrée du menu principal — le méga-menu ne s'afficherait nulle part. Aligner « Lien parent » sur le lien (ou le service) d'une entrée du menu.`,
+  );
+}
+// Chaque parent SUPPLÉMENTAIRE doit aussi accrocher une entrée — un parent
+// orphelin serait ignoré en silence (même philosophie de garde-fou).
+const megaOrphans = [...megaParentSet].filter((h) => !navItems.some((i) => i.href === h));
+if (megaOrphans.length > 0) {
+  throw new Error(
+    `[navigation] ${lang}.json : « parentHrefs » du méga-menu — ${megaOrphans.join(', ')} ne correspond(ent) à aucune entrée du menu principal. Aligner chaque valeur sur le lien d'une entrée du menu.`,
+  );
+}
+// Même garde-fou pour le méga-menu Ressources (quand il est configuré).
+if (megaRes && !navItems.some((item) => item.megaKey === 'ressources')) {
+  throw new Error(
+    `[navigation] ${lang}.json : « parentHref » du méga-menu Ressources (${megaRes.parentHref}) ne correspond à aucune entrée du menu principal — le panneau ne s'afficherait nulle part.`,
+  );
+}
 
 // The portal lives under the locale prefix, like every other page.
 const portal = {
-  label: t.nav.portal,
+  label: nav.portal.label,
+  visible: nav.portal.visible,
   href: localizePath('/portail', lang),
 };
 
-const announceLink = localizePath(t.announce.linkHref, lang);
+// Bouton d'action du header (maquette : « Contact » en bouton bleu, le portail
+// devient un lien texte). Absent du JSON → repli historique : le portail
+// reste le bouton.
+const headerCta = nav.cta
+  ? { label: nav.cta.label, href: resolveNavHref({ href: nav.cta.href }, lang, serviceSlugs) }
+  : null;
+
+// Recherche interne (P-06) : icône dans les actions du header (desktop) +
+// lien dans le tiroir mobile. Chaînes d'interface (pas du contenu) → ui.ts.
+const searchHref = localizePath('/recherche', lang);
+
+// Bannière d'annonce : bibliothèque planifiable (collection `annonces`) — la
+// sélection (fenêtre, priorité, STATIC_ONLY) vit dans src/lib/announce.ts.
+// `null` = aucune bannière active ce build.
+const announce = await getActiveAnnounce(lang);
 
 // Active-state matching against the localized current path.
 const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
@@ -61,85 +192,276 @@ const isCurrent = (href: string) => {
 const alt = altLocalePath ?? swapLocale(Astro.url.pathname, otherLocale[lang]);
 const frHref = lang === 'fr' ? Astro.url.pathname : alt;
 const enHref = lang === 'en' ? Astro.url.pathname : alt;
+
+// Recettes utilitaires partagées dans CE composant (répétées verbatim côté
+// campagnes — composants autonomes, pas d'abstraction partagée).
+// Bouton primaire export2 (Code/header) : rayon 4px, 12/24, 14/600, ombre
+// effet « normal », hover bleu-600 (= primary-container).
+const ctaClass =
+  'inline-flex items-center justify-center px-6 py-3 rounded bg-primary text-on-primary text-sm font-semibold no-underline shadow-controle hover:bg-primary-container transition-colors';
+// Panneau méga : rendu une seule fois par clé, ouvert via data-open (JS).
+// Les gris froids jadis « verbatim maquette » (#F8F9FA/#C5C6D0/#EDEEEF) sont
+// devenus l'échelle neutral-* officielle (export2, décision v3 2026-08-14) —
+// la divergence consignée le 2026-08-04 est levée, tout passe par tokens.
+// « Jamais de défilement » (demande user 2026-08-17) : flex-col + groupe
+// nommé `group/mega` — quand le menu déborde du viewport, le script pose
+// data-fit (paddings compacts via group-data-[fit]/mega:*) et une min-height
+// jusqu'au bas de l'écran ; le bandeau bas est poussé au BORD BAS via
+// mt-auto. Menu qui tient = hauteur naturelle, comportement inchangé.
+const megaPanelClass =
+  'group/mega absolute top-full inset-x-0 flex flex-col bg-white border-0 border-t border-solid border-neutral-300/10 shadow-surelevee invisible opacity-0 -translate-y-1.5 pointer-events-none transition-[opacity,transform] duration-150 data-[open]:visible data-[open]:opacity-100 data-[open]:translate-y-0 data-[open]:pointer-events-auto motion-reduce:transition-none motion-reduce:translate-y-0';
+// Tête de colonne (export mega-menu .overline + .divider) : 12/600 uppercase
+// ls 0.5px neutral-800, filet appuyé neutral-500.
+const megaHeadClass =
+  'block text-xs font-semibold uppercase tracking-[0.5px] text-neutral-800 no-underline pb-2 border-0 border-b border-solid border-outline hover:text-primary';
+// Lien de colonne (export .menu-list) : 14px neutral-800, hauteur 40px,
+// indicateur bleu 6px à gauche au survol (remplace l'ancienne flèche).
+const megaLinkClass =
+  'relative flex items-center h-10 pl-3.5 pr-2 text-sm text-neutral-800 no-underline transition-colors hover:text-primary before:content-[""] before:absolute before:left-0 before:inset-y-0 before:w-1.5 before:rounded-[1px] before:bg-primary before:opacity-0 before:transition-opacity hover:before:opacity-100';
+const langLinkClass = 'no-underline p-1 text-sm';
 ---
 
-<!-- Announcement bar (editable / dismissible) -->
-<div class="announcement" data-announcement>
-  <div class="container announcement__inner">
-    <p class="announcement__text">
-      {t.announce.before}<strong>{t.announce.strong}</strong>{t.announce.after}
-      <a class="announcement__link" href={announceLink}>{t.announce.linkLabel}</a>
-    </p>
-    <button
-      type="button"
-      class="announcement__close"
-      data-announce-close
-      aria-label={t.announce.close}
+<!-- Announcement bar (editable / dismissible; « Affichée » switch + fenêtre planifiée in the CMS) -->
+{
+  announce && (
+    <div
+      class="announcement bg-primary text-on-primary text-sm"
+      data-announcement
+      data-announce-id={announce.id}
     >
-      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-        <path
-          d="M2 2l12 12M14 2L2 14"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-        ></path>
-      </svg>
-    </button>
-  </div>
-</div>
+      <div class="container-site flex items-center justify-center gap-4 py-2">
+        <p class="m-0 max-w-none text-center">
+          {announce.before}<strong class="font-semibold">{announce.strong}</strong>{announce.after}
+          <a class="text-on-primary font-semibold underline whitespace-nowrap" href={announce.href}>
+            {announce.linkLabel}
+          </a>
+        </p>
+        <button
+          type="button"
+          class="shrink-0 inline-flex p-1 bg-transparent border-0 text-on-primary cursor-pointer rounded"
+          data-announce-close
+          aria-label={t.announce.close}
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            <path
+              d="M2 2l12 12M14 2L2 14"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  )
+}
 
-<header class="site-header">
-  <div class="container site-header__inner">
-    <a class="site-header__brand" href={localizePath('/', lang)} aria-label={t.nav.brandAria}>
+<!-- Barre BLANCHE, hauteur 72px + ombre « normal » (export2 Code/header). -->
+<header class="site-header sticky top-0 z-50 bg-white shadow-controle">
+  <div class="container-site flex items-center justify-between gap-6 min-h-[72px]">
+    <a
+      class="site-header__brand inline-flex items-center shrink-0 [--logo-height:40px]"
+      href={localizePath('/', lang)}
+      aria-label={t.nav.brandAria}
+    >
       <Logo variant="dark" />
     </a>
 
-    <nav class="primary-nav" aria-label="Navigation">
-      <ul role="list" class="primary-nav__list">
+    <nav class="primary-nav hidden lg:block" aria-label="Navigation">
+      <ul role="list" class="flex items-center gap-[clamp(1rem,2vw,2.5rem)]">
         {
-          navItems.map((item) => (
-            <li class:list={[{ 'has-mega': !!item.mega }]} data-mega={item.mega ? '' : undefined}>
+          navItems.map((item, i) => (
+            <li class:list={[{ 'py-6 -my-6': !!item.megaKey }]} data-mega={item.megaKey}>
               <a
-                class="primary-nav__link"
+                class="text-base font-normal text-neutral-600 no-underline whitespace-nowrap py-2 px-2 rounded transition-colors hover:text-primary hover:bg-primary/5 aria-[current=page]:text-primary aria-[current=page]:font-semibold aria-[current=page]:shadow-[inset_0_-2px_0_0_var(--color-primary)]"
                 href={item.href}
                 aria-current={isCurrent(item.href) ? 'page' : undefined}
-                aria-haspopup={item.mega ? 'true' : undefined}
-                aria-expanded={item.mega ? 'false' : undefined}
+                aria-haspopup={item.megaKey ? 'true' : undefined}
+                aria-expanded={item.megaKey ? 'false' : undefined}
+                aria-controls={item.megaKey ? `mega-${item.megaKey}` : undefined}
               >
                 {item.label}
               </a>
-              {item.mega && (
-                <div class="mega" aria-label={item.mega.ariaLabel}>
-                  <div class="container mega__grid">
-                    {item.mega.columns.map((col) => (
-                      <div class="mega__col">
-                        <a class="mega__title" href={localizePath(col.href, lang)}>
+              {/* Panneau « main » — UN rendu, PARTAGÉ entre Expertises·Services·
+                  Produits : passer d'un onglet à l'autre ré-ouvre le MÊME
+                  panneau (no-op, aucun fondu fermer/rouvrir). Absolute → ancré
+                  sur le <header> sticky, donc toujours « collant ». */}
+              {item.megaKey === 'main' && megaPanelAnchor.main === i && (
+                <div
+                  id="mega-main"
+                  class={megaPanelClass}
+                  data-mega-panel="main"
+                  aria-label={nav.mega.ariaLabel}
+                >
+                  <div
+                    class:list={[
+                      'container-site grid gap-x-10 gap-y-8',
+                      megaFeatured
+                        ? 'grid-cols-[repeat(3,minmax(0,1fr))_minmax(240px,1fr)]'
+                        : 'grid-cols-5',
+                      megaStripe ? 'pt-10 pb-10' : 'py-10',
+                      'group-data-[fit]/mega:py-6',
+                    ]}
+                  >
+                    {megaFeatured && (
+                      <div class="col-start-4 row-start-1 row-span-2 self-start relative overflow-hidden bg-surface-container-low border border-solid border-neutral-300 rounded-lg p-6 flex flex-col items-start gap-1">
+                        {/* Halo décoratif bleu du coin supérieur droit (maquette). */}
+                        <span
+                          class="absolute -top-8 -right-8 size-32 rounded-full bg-[rgba(0,56,230,0.05)] blur-[20px] pointer-events-none"
+                          aria-hidden="true"
+                        />
+                        <span class="size-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                           <svg
-                            width="24"
-                            height="24"
+                            width="22"
+                            height="22"
                             viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            fill="currentColor"
                             aria-hidden="true"
                             focusable="false"
-                            set:html={megaIcons[col.icon]}
-                          />
-                          <span>{col.title}</span>
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M12 2.5c-4.14 0-7.5 3.36-7.5 7.5 0 2.2.95 4.18 2.5 5.6V21.5h5.5v-2h2c.83 0 1.5-.67 1.5-1.5v-2.5h1.9c.56 0 .93-.6.68-1.1L17.5 11.2A7.5 7.5 0 0 0 12 2.5ZM12 7.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-.5-2.3h1v1.5h-1Zm0 7.1h1v1.5h-1Zm3.3-3.3h1.5v1h-1.5Zm-7.1 0h1.5v1H7.7Z"
+                            />
+                          </svg>
+                        </span>
+                        <p class="text-base font-bold text-on-surface pt-3 m-0 max-w-none">
+                          {megaFeatured.title}
+                        </p>
+                        {megaFeatured.body && (
+                          <p class="text-sm leading-normal text-neutral-700 m-0 max-w-none">
+                            {megaFeatured.body}
+                          </p>
+                        )}
+                        <a
+                          class="inline-flex items-center gap-1 text-sm font-semibold text-primary no-underline mt-2 hover:underline"
+                          href={megaFeatured.href}
+                        >
+                          {megaFeatured.ctaLabel}
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path d="M2 8h11M9 3.5L13.5 8 9 12.5" />
+                          </svg>
                         </a>
-                        <ul role="list" class="mega__list">
+                        {/* Mode ajusté (menu > viewport) : l'illustration de la
+                            carte vedette saute — c'est elle qui fait déborder
+                            le panneau sur les fenêtres basses. */}
+                        {megaFeatured.image && (
+                          <img
+                            class="w-full rounded mt-6 group-data-[fit]/mega:hidden"
+                            src={megaFeatured.image}
+                            alt=""
+                            loading="lazy"
+                          />
+                        )}
+                      </div>
+                    )}
+                    {nav.mega.columns.map((col) => (
+                      <div>
+                        <a class={megaHeadClass} href={localizePath(col.href, lang)}>
+                          {col.title}
+                        </a>
+                        <ul role="list" class="mt-4 flex flex-col gap-2">
                           {col.links.map((link) => (
                             <li>
-                              <a class="mega__link" href={localizePath(link.href, lang)}>
-                                {link.label}
+                              <a class={megaLinkClass} href={resolveNavHref(link, lang, serviceSlugs)}>
+                                <span>{link.label}</span>
                               </a>
                             </li>
                           ))}
                         </ul>
                       </div>
                     ))}
+                  </div>
+                  {megaStripe && (
+                    <div class="mt-auto bg-surface-container border-0 border-t border-solid border-neutral-300/10 py-4">
+                      <div class="container-site flex flex-wrap items-center justify-between gap-4">
+                        <p class="text-sm font-semibold text-neutral-700 m-0 max-w-none">
+                          {megaStripe.text}
+                        </p>
+                        {megaStripe.links.length > 0 && (
+                          <div class="flex items-center gap-6">
+                            {megaStripe.links.map((l) => (
+                              <a
+                                class="text-sm font-semibold text-primary no-underline hover:underline"
+                                href={l.href}
+                              >
+                                {l.label}
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+              {megaRes && item.megaKey === 'ressources' && megaPanelAnchor.ressources === i && (
+                <div
+                  id="mega-ressources"
+                  class={megaPanelClass}
+                  data-mega-panel="ressources"
+                  aria-label={megaRes.ariaLabel}
+                >
+                  <div class="container-site grid grid-cols-[minmax(220px,1fr)_minmax(160px,0.8fr)_2fr] gap-10 py-10 group-data-[fit]/mega:py-6 group-data-[fit]/mega:gap-6">
+                    <div>
+                      <p class="text-body-md text-on-surface-variant max-w-[32ch] m-0 mb-6">
+                        {megaRes.intro}
+                      </p>
+                      <a class={ctaClass} href={megaResParentHref}>
+                        {megaRes.ctaLabel}
+                      </a>
+                    </div>
+                    <div>
+                      <p class:list={[megaHeadClass, 'm-0 max-w-none']}>
+                        {megaRes.categoriesTitle}
+                      </p>
+                      <ul role="list" class="mt-4 flex flex-col gap-2">
+                        {resCategories.map((cat) => (
+                          <li>
+                            <a class={megaLinkClass} href={cat.href}>
+                              <span>{cat.label}</span>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <p class:list={[megaHeadClass, 'm-0 max-w-none']}>
+                        {megaRes.latestTitle}
+                      </p>
+                      <ul role="list" class="mt-4 grid grid-cols-2 gap-6 max-w-[640px]">
+                        {resLatest.map((article) => (
+                          <li>
+                            <a class="group flex flex-col gap-3 no-underline" href={article.href}>
+                              <span class="block aspect-video overflow-hidden rounded bg-surface-container">
+                                {article.image && (
+                                  <img
+                                    src={article.image}
+                                    alt=""
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none"
+                                  />
+                                )}
+                              </span>
+                              <span class="text-sm leading-normal font-semibold text-neutral-800 transition-colors group-hover:text-primary">
+                                {article.title}
+                              </span>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               )}
@@ -149,40 +471,127 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
       </ul>
     </nav>
 
-    <div class="site-header__actions">
-      <a class="btn btn--primary site-header__portal" href={portal.href}>
-        {portal.label}
+    <div class="flex items-center gap-4 lg:gap-6">
+      <!-- Maquette : seule L'AUTRE langue est proposée (« EN » sur les pages FR). -->
+      <div
+        class="lang-switch hidden lg:flex items-center text-sm"
+        role="group"
+        aria-label={t.nav.langGroupAria}
+      >
+        {
+          lang === 'fr' ? (
+            <a
+              class:list={['lang-switch__link font-semibold text-neutral-600 hover:text-primary', langLinkClass]}
+              href={enHref}
+              lang="en"
+            >
+              EN
+            </a>
+          ) : (
+            <a
+              class:list={['lang-switch__link font-semibold text-neutral-600 hover:text-primary', langLinkClass]}
+              href={frHref}
+              lang="fr"
+            >
+              FR
+            </a>
+          )
+        }
+      </div>
+
+      <a
+        class="site-header__search hidden lg:flex items-center justify-center size-[34px] rounded-full text-neutral-600 hover:text-primary hover:bg-neutral-600/10 transition-colors aria-[current=page]:text-primary"
+        href={searchHref}
+        aria-label={t.search.navAria}
+        aria-current={isCurrent(searchHref) ? 'page' : undefined}
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle cx="10.5" cy="10.5" r="6.5"></circle>
+          <path d="M15.5 15.5L21 21"></path>
+        </svg>
       </a>
 
-      <div class="lang-switch" role="group" aria-label={t.nav.langGroupAria}>
-        <a class:list={['lang-switch__link', { 'is-active': lang === 'fr' }]} href={frHref} aria-current={lang === 'fr' ? 'true' : undefined} lang="fr">FR</a>
-        <span class="lang-switch__sep" aria-hidden="true">|</span>
-        <a class:list={['lang-switch__link', { 'is-active': lang === 'en' }]} href={enHref} aria-current={lang === 'en' ? 'true' : undefined} lang="en">EN</a>
-      </div>
+      {
+        portal.visible &&
+          (headerCta ? (
+            <a
+              class="site-header__portal hidden lg:inline-flex text-base font-semibold text-neutral-600 no-underline whitespace-nowrap hover:text-primary"
+              href={portal.href}
+            >
+              {portal.label}
+            </a>
+          ) : (
+            <a class:list={['site-header__portal hidden lg:inline-flex', ctaClass]} href={portal.href}>
+              {portal.label}
+            </a>
+          ))
+      }
+
+      {
+        headerCta && (
+          <a class:list={['site-header__cta hidden lg:inline-flex', ctaClass]} href={headerCta.href}>
+            {headerCta.label}
+          </a>
+        )
+      }
 
       <button
         type="button"
-        class="nav-toggle"
+        class="lg:hidden size-11 inline-flex items-center justify-center bg-transparent border-0 cursor-pointer text-on-primary-fixed"
         data-nav-toggle
         aria-expanded="false"
         aria-controls="mobile-nav"
         aria-label={t.nav.openMenu}
       >
-        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M3 5h18M3 12h18M3 19h18" />
+        </svg>
       </button>
     </div>
   </div>
 </header>
 
 <!-- Mobile drawer -->
-<div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
-  <div class="mobile-nav__backdrop" data-nav-close></div>
-  <nav class="mobile-nav__panel" aria-label="Navigation">
-    <div class="mobile-nav__head">
-      <a class="site-header__brand" href={localizePath('/', lang)} aria-label={t.nav.brandAria}>
+<div class="fixed inset-0 z-[200]" id="mobile-nav" data-mobile-nav hidden>
+  <div class="absolute inset-0 bg-on-primary-fixed/55" data-nav-close></div>
+  <nav
+    class="absolute inset-y-0 right-0 h-full w-[min(86vw,360px)] overflow-y-auto bg-surface-container-lowest shadow-surelevee p-6 flex flex-col gap-6"
+    aria-label="Navigation"
+  >
+    <div class="flex items-center justify-between [--logo-height:34px]">
+      <a
+        class="site-header__brand inline-flex items-center"
+        href={localizePath('/', lang)}
+        aria-label={t.nav.brandAria}
+      >
         <Logo variant="dark" />
       </a>
-      <button type="button" class="nav-close" data-nav-close aria-label={t.nav.closeMenu}>
+      <button
+        type="button"
+        class="size-11 inline-flex items-center justify-center bg-transparent border-0 cursor-pointer text-on-primary-fixed"
+        data-nav-close
+        aria-label={t.nav.closeMenu}
+      >
         <svg width="22" height="22" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
           <path
             d="M2 2l12 12M14 2L2 14"
@@ -194,12 +603,12 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
       </button>
     </div>
 
-    <ul role="list" class="mobile-nav__list">
+    <ul role="list" class="flex flex-col gap-1">
       {
         navItems.map((item) => (
           <li>
             <a
-              class="mobile-nav__link"
+              class="mobile-nav__link block px-2 py-3 rounded text-lg font-medium text-on-primary-fixed no-underline hover:bg-surface-container-low hover:text-primary aria-[current=page]:text-primary aria-[current=page]:font-semibold"
               href={item.href}
               aria-current={isCurrent(item.href) ? 'page' : undefined}
             >
@@ -208,14 +617,66 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
           </li>
         ))
       }
+      <li>
+        <a
+          class="mobile-nav__link block px-2 py-3 rounded text-lg font-medium text-on-primary-fixed no-underline hover:bg-surface-container-low hover:text-primary aria-[current=page]:text-primary aria-[current=page]:font-semibold"
+          href={searchHref}
+          aria-current={isCurrent(searchHref) ? 'page' : undefined}
+        >
+          {t.search.navLabel}
+        </a>
+      </li>
     </ul>
 
-    <a class="btn btn--primary mobile-nav__portal" href={portal.href}>{portal.label}</a>
+    <div class="flex flex-col items-start gap-4">
+      {
+        headerCta && (
+          <a class:list={['mobile-nav__cta self-start', ctaClass]} href={headerCta.href}>
+            {headerCta.label}
+          </a>
+        )
+      }
+      {
+        portal.visible &&
+          (headerCta ? (
+            <a
+              class="mobile-nav__portal text-base font-semibold text-neutral-600 no-underline hover:text-primary"
+              href={portal.href}
+            >
+              {portal.label}
+            </a>
+          ) : (
+            <a class:list={['mobile-nav__portal self-start', ctaClass]} href={portal.href}>
+              {portal.label}
+            </a>
+          ))
+      }
+    </div>
 
-    <div class="lang-switch lang-switch--mobile" role="group" aria-label={t.nav.langGroupAria}>
-      <a class:list={['lang-switch__link', { 'is-active': lang === 'fr' }]} href={frHref} aria-current={lang === 'fr' ? 'true' : undefined} lang="fr">FR</a>
-      <span class="lang-switch__sep" aria-hidden="true">|</span>
-      <a class:list={['lang-switch__link', { 'is-active': lang === 'en' }]} href={enHref} aria-current={lang === 'en' ? 'true' : undefined} lang="en">EN</a>
+    <div
+      class="lang-switch lang-switch--mobile flex items-center text-sm mt-auto"
+      role="group"
+      aria-label={t.nav.langGroupAria}
+    >
+      {
+        lang === 'fr' ? (
+          <a
+            class:list={['lang-switch__link font-semibold text-neutral-600 hover:text-primary', langLinkClass]}
+            href={enHref}
+            lang="en"
+          >
+            EN
+          </a>
+        ) : (
+          <a
+            class:list={['lang-switch__link font-semibold text-neutral-600 hover:text-primary', langLinkClass]}
+            href={frHref}
+            lang="fr"
+          >
+            FR
+          </a>
+        )
+      }
     </div>
   </nav>
 </div>
@@ -236,6 +697,50 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
 
   // Leaving the page with the drawer open: restore scroll + drop the focus trap.
   document.addEventListener('astro:before-swap', () => closeDrawer?.());
+
+  // Escape GLOBAL : ferme tout méga ouvert à la SOURIS (le gestionnaire par
+  // <li> ne couvre que le cas clavier — keydown ne remonte que depuis
+  // l'élément focalisé). Niveau module (une seule fois), requête le DOM
+  // courant : compatible avec les swaps du ClientRouter.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll<HTMLElement>('[data-mega-panel]').forEach((p) => {
+      delete p.dataset.open;
+      delete p.dataset.fit;
+      p.style.minHeight = ''; // retire le mode ajusté (menu > viewport)
+    });
+    document.querySelectorAll<HTMLLIElement>('[data-mega]').forEach((li) => {
+      li.querySelector<HTMLAnchorElement>('a[aria-haspopup]')?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // « Jamais de défilement » (demande user 2026-08-17, précisée : la règle
+  // est LE MENU TIENT-IL, pas une largeur) : à l'ouverture on mesure — si le
+  // panneau déborde sous le bas du viewport, il passe en mode AJUSTÉ
+  // (data-fit : paddings compacts via group-data-[fit]/mega) et s'ÉTIRE
+  // jusqu'au bas de l'écran (min-height depuis son bord haut — sous
+  // l'en-tête collant, bannière incluse) : son bandeau bas (mt-auto) colle
+  // au bord, tout est visible sans défiler, comme un menu mobile. S'il
+  // tient : hauteur naturelle, comportement inchangé. min-height (pas
+  // height) : le contenu n'est jamais rogné. Niveau module (une seule fois,
+  // requêtes DOM au moment de l'événement) — compatible ClientRouter, comme
+  // le Escape global ci-dessus.
+  const sizeMegaPanel = (p: HTMLElement) => {
+    delete p.dataset.fit;
+    p.style.minHeight = '';
+    const avail = window.innerHeight - p.getBoundingClientRect().top;
+    if (p.scrollHeight > avail) {
+      p.dataset.fit = '';
+      p.style.minHeight = `${Math.max(0, avail)}px`;
+    }
+  };
+  // Un redimensionnement panneau ouvert re-mesure (entre ou sort du mode
+  // ajusté sans fermer/rouvrir).
+  window.addEventListener('resize', () => {
+    document.querySelectorAll<HTMLElement>('[data-mega-panel]').forEach((p) => {
+      if ('open' in p.dataset) sizeMegaPanel(p);
+    });
+  });
 
   document.addEventListener('astro:page-load', bindHeader);
 
@@ -302,7 +807,7 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
       .forEach((el) => el.addEventListener('click', close));
     // Close (then navigate) when a drawer link is activated.
     drawer
-      .querySelectorAll('.mobile-nav__link, .mobile-nav__portal')
+      .querySelectorAll('.mobile-nav__link, .mobile-nav__portal, .mobile-nav__cta')
       .forEach((el) => el.addEventListener('click', close));
 
     closeDrawer = () => {
@@ -311,47 +816,108 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
   }
 
   // --- Mega menu ----------------------------------------------------------
-  // Open/close is CSS-driven (:hover / :focus-within); JS only syncs
-  // aria-expanded and lets Escape close the panel (until pointer/focus leaves).
-  document.querySelectorAll<HTMLLIElement>('[data-mega]').forEach((li) => {
-    const trigger = li.querySelector<HTMLAnchorElement>('.primary-nav__link');
-    const setExpanded = (v: boolean) => trigger?.setAttribute('aria-expanded', String(v));
-    const reopenable = () => {
-      li.classList.remove('mega-closed');
-    };
-    li.addEventListener('mouseenter', () => setExpanded(true));
-    li.addEventListener('focusin', () => setExpanded(true));
-    li.addEventListener('mouseleave', () => {
-      setExpanded(false);
-      reopenable();
+  // Les panneaux sont rendus UNE FOIS par clé ([data-mega-panel="main|
+  // ressources"]) et PARTAGÉS entre leurs déclencheurs ([data-mega="<clé>"]) :
+  // passer d'Expertises à Services à Produits ré-ouvre le MÊME panneau — no-op,
+  // donc aucun fondu fermer/rouvrir (demande 2026-08-04). Le panneau change en
+  // fondu quand le CONTENU change (→ Ressources) et se ferme quand le pointeur
+  // atteint une entrée de nav SANS sous-menu, quitte la zone du header (barre
+  // OU panneau — le panneau est un descendant du <header>), à Escape, ou quand
+  // le focus sort de la nav. Escape marque data-mega-closed sur le déclencheur
+  // pour ne pas rouvrir tant que le pointeur/focus ne l'a pas quitté.
+  const megaItems = Array.from(document.querySelectorAll<HTMLLIElement>('[data-mega]'));
+  const megaPanels = Array.from(document.querySelectorAll<HTMLElement>('[data-mega-panel]'));
+  const headerEl = document.querySelector<HTMLElement>('header.site-header');
+  const navEl = document.querySelector<HTMLElement>('nav.primary-nav');
+  const megaTrigger = (li: HTMLLIElement) => li.querySelector<HTMLAnchorElement>('a[aria-haspopup]');
+  const closeAllMegas = () => {
+    megaPanels.forEach((p) => {
+      delete p.dataset.open;
+      delete p.dataset.fit;
+      p.style.minHeight = '';
     });
-    li.addEventListener('focusout', (e) => {
-      if (!li.contains(e.relatedTarget as Node)) {
-        setExpanded(false);
-        reopenable();
+    megaItems.forEach((li) => megaTrigger(li)?.setAttribute('aria-expanded', 'false'));
+  };
+  const openMega = (li: HTMLLIElement) => {
+    if ('megaClosed' in li.dataset) return; // fermé par Escape — attendre la sortie
+    const key = li.dataset.mega;
+    megaPanels.forEach((p) => {
+      if (p.dataset.megaPanel === key) {
+        p.dataset.open = '';
+        sizeMegaPanel(p); // mode ajusté si le menu déborde du viewport (module)
+      } else {
+        delete p.dataset.open;
+        delete p.dataset.fit;
+        p.style.minHeight = '';
       }
+    });
+    // Tous les déclencheurs du panneau ouvert sont « expanded » (ils
+    // contrôlent le même panneau), les autres non.
+    megaItems.forEach((other) =>
+      megaTrigger(other)?.setAttribute('aria-expanded', other.dataset.mega === key ? 'true' : 'false'),
+    );
+  };
+  megaItems.forEach((li) => {
+    li.addEventListener('mouseenter', () => openMega(li));
+    li.addEventListener('focusin', () => openMega(li));
+    // Quitter l'ÉLÉMENT ne ferme pas (sortie du header, entrée sans sous-menu
+    // ou changement de contenu) — on redevient seulement ré-ouvrable après un
+    // Escape.
+    li.addEventListener('mouseleave', () => {
+      delete li.dataset.megaClosed;
     });
     li.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        // Focus first: it fires focusin (→ expanded=true), which the two
-        // lines below then correct — the reverse order would leave
-        // aria-expanded="true" on a hidden panel.
-        trigger?.focus();
-        li.classList.add('mega-closed');
-        setExpanded(false);
+        // Focus d'abord : focusin (→ ouvre) est corrigé par les deux lignes
+        // suivantes — l'ordre inverse laisserait aria-expanded="true" sur un
+        // panneau masqué.
+        megaTrigger(li)?.focus();
+        li.dataset.megaClosed = '';
+        closeAllMegas();
       }
     });
   });
+  // Une entrée de nav SANS sous-menu ferme le panneau ouvert (souris ET
+  // clavier). :scope > ul > li : NE PAS attraper les <li> des listes de liens
+  // DANS les panneaux (un survol de lien fermerait son propre panneau).
+  navEl?.querySelectorAll<HTMLLIElement>(':scope > ul > li:not([data-mega])').forEach((li) => {
+    li.addEventListener('mouseenter', closeAllMegas);
+    li.addEventListener('focusin', closeAllMegas);
+  });
+  // Clavier : le panneau est partagé entre plusieurs <li> — c'est la sortie
+  // du focus de la NAV entière (déclencheurs + panneaux) qui ferme.
+  navEl?.addEventListener('focusout', (e) => {
+    const navRoot = e.currentTarget as HTMLElement;
+    if (!navRoot.contains(e.relatedTarget as Node)) closeAllMegas();
+  });
+  // Escape depuis un lien DU panneau : refocaliser le déclencheur (sinon le
+  // focus resterait sur un lien masqué) puis fermer.
+  megaPanels.forEach((panel) => {
+    panel.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const li = megaItems.find((l) => l.dataset.mega === panel.dataset.megaPanel);
+      if (li) {
+        megaTrigger(li)?.focus();
+        li.dataset.megaClosed = '';
+      }
+      closeAllMegas();
+    });
+  });
+  // La sortie RÉELLE de la zone du header (barre + panneau) ferme tout.
+  headerEl?.addEventListener('mouseleave', closeAllMegas);
 
   // --- Announcement bar dismissal ----------------------------------------
   // The dismissed state is applied pre-paint by a blocking script in <head>
   // (adds .announce-dismissed on <html>); here we only handle the close click.
+  // Stored value = the dismissed banner's ID (not a flag): a DIFFERENT banner
+  // going live mid-session must reappear even after this one was closed.
   const announceClose = document.querySelector<HTMLButtonElement>('[data-announce-close]');
   if (announceClose) {
     announceClose.addEventListener('click', () => {
       document.documentElement.classList.add('announce-dismissed');
+      const id = announceClose.closest<HTMLElement>('[data-announcement]')?.dataset.announceId;
       try {
-        sessionStorage.setItem('victrix-announce', 'closed');
+        sessionStorage.setItem('victrix-announce', id ?? 'closed');
       } catch {
         /* sessionStorage unavailable — banner still hides for this page view */
       }
@@ -359,360 +925,3 @@ const enHref = lang === 'en' ? Astro.url.pathname : alt;
   }
   }
 </script>
-
-<style>
-  /* ---------- Announcement bar ---------- */
-  .announcement {
-    background-color: var(--color-accent-blue);
-    color: var(--color-white);
-    font-size: var(--fs-200);
-  }
-  .announcement__inner {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-    justify-content: center;
-    padding-block: var(--space-2);
-  }
-  .announcement__text {
-    margin: 0;
-    max-width: none;
-    text-align: center;
-  }
-  .announcement__link {
-    color: var(--color-white);
-    font-weight: var(--fw-semibold);
-    text-decoration: underline;
-    white-space: nowrap;
-  }
-  .announcement__close {
-    flex-shrink: 0;
-    display: inline-flex;
-    padding: var(--space-1);
-    background: transparent;
-    border: 0;
-    color: var(--color-white);
-    cursor: pointer;
-    border-radius: var(--radius-sm);
-  }
-
-  /* ---------- Header bar ---------- */
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background-color: var(--color-white);
-    border-bottom: 1px solid var(--color-border);
-  }
-  .site-header__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-5);
-    min-height: 76px;
-  }
-  .site-header__brand {
-    display: inline-flex;
-    align-items: center;
-    flex-shrink: 0;
-    --logo-height: 40px;
-  }
-
-  /* ---------- Primary (desktop) nav ---------- */
-  .primary-nav {
-    display: none;
-  }
-  .primary-nav__list {
-    display: flex;
-    align-items: center;
-    gap: clamp(var(--space-4), 2vw, var(--space-6));
-    margin: 0;
-  }
-  .primary-nav__link {
-    color: var(--color-navy);
-    font-weight: var(--fw-medium);
-    text-decoration: none;
-    padding-block: var(--space-2);
-    white-space: nowrap;
-  }
-  .primary-nav__link:hover {
-    color: var(--color-accent-blue);
-  }
-  .primary-nav__link[aria-current='page'] {
-    color: var(--color-accent-blue);
-    font-weight: var(--fw-semibold);
-    box-shadow: inset 0 -2px 0 0 var(--color-accent-blue);
-  }
-
-  /* ---------- Mega menu (desktop) ----------
-     The panel is a child of its nav <li>, so li:hover / :focus-within keeps it
-     open while the pointer or focus is inside. Negative margin + padding
-     stretch the li's hover area to the header's edges so the pointer never
-     crosses a "dead" gap on its way down to the panel. Positioned against
-     .site-header (sticky ⇒ containing block), spanning its full width. */
-  .has-mega {
-    padding-block: var(--space-5);
-    margin-block: calc(-1 * var(--space-5));
-  }
-  .mega {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: var(--color-white);
-    border-top: 1px solid var(--color-border);
-    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-    box-shadow: 0 28px 48px -16px rgb(8 57 87 / 0.28);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-6px);
-    pointer-events: none;
-    transition:
-      opacity 0.16s ease,
-      transform 0.16s ease,
-      visibility 0s linear 0.16s;
-  }
-  .has-mega:hover .mega,
-  .has-mega:focus-within .mega {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    pointer-events: auto;
-    transition-delay: 0s;
-  }
-  /* Escape closes the panel until the pointer/focus leaves the item. */
-  .has-mega.mega-closed .mega {
-    display: none;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .mega {
-      transition: none;
-      transform: none;
-    }
-  }
-  .mega__grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: var(--space-6);
-    padding-block: var(--space-7);
-  }
-  .mega__title {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    color: var(--color-navy);
-    font-size: var(--fs-200);
-    font-weight: var(--fw-semibold);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-  .mega__title svg {
-    flex-shrink: 0;
-    color: var(--color-accent-blue);
-  }
-  .mega__title:hover span {
-    color: var(--color-accent-blue);
-  }
-  .mega__list {
-    margin: var(--space-4) 0 0;
-    padding-left: calc(24px + var(--space-3));
-    display: grid;
-    gap: var(--space-3);
-  }
-  .mega__link {
-    color: var(--color-text-muted);
-    text-decoration: none;
-    font-size: var(--fs-200);
-    line-height: 1.4;
-    display: inline-block;
-  }
-  .mega__link:hover {
-    color: var(--color-accent-blue);
-  }
-
-  /* ---------- Right-side actions ---------- */
-  .site-header__actions {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-  }
-  .site-header__portal {
-    display: none;
-  }
-  /* The header portal button is accent blue on victrix.ca (the global
-     .btn--primary stays navy elsewhere). */
-  .site-header__portal,
-  .mobile-nav__portal {
-    background-color: var(--color-accent-blue);
-  }
-  .site-header__portal:hover,
-  .mobile-nav__portal:hover {
-    background-color: var(--color-accent-blue-600);
-  }
-
-  .lang-switch {
-    display: none;
-    align-items: center;
-    gap: var(--space-2);
-    color: var(--color-grey-600);
-    font-size: var(--fs-200);
-  }
-  .lang-switch__link {
-    color: var(--color-grey-600);
-    text-decoration: none;
-    text-transform: lowercase;
-    padding: var(--space-1);
-  }
-  .lang-switch__link.is-active {
-    color: var(--color-navy);
-    font-weight: var(--fw-semibold);
-  }
-  .lang-switch__link:hover {
-    color: var(--color-accent-blue);
-  }
-
-  /* ---------- Hamburger toggle ---------- */
-  .nav-toggle {
-    position: relative;
-    width: 44px;
-    height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    color: var(--color-navy);
-  }
-  .nav-toggle__bars,
-  .nav-toggle__bars::before,
-  .nav-toggle__bars::after {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: currentColor;
-    border-radius: 2px;
-  }
-  .nav-toggle__bars {
-    position: relative;
-  }
-  .nav-toggle__bars::before {
-    position: absolute;
-    top: -7px;
-  }
-  .nav-toggle__bars::after {
-    position: absolute;
-    top: 7px;
-  }
-
-  /* ---------- Mobile drawer ---------- */
-  .mobile-nav {
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-  }
-  .mobile-nav[hidden] {
-    display: none;
-  }
-  .mobile-nav__backdrop {
-    position: absolute;
-    inset: 0;
-    background-color: rgba(8, 57, 87, 0.55);
-    animation: announce-fade 0.2s ease;
-  }
-  .mobile-nav__panel {
-    position: absolute;
-    inset-block: 0;
-    inset-inline-end: 0;
-    width: min(86vw, 360px);
-    height: 100%;
-    overflow-y: auto;
-    background-color: var(--color-white);
-    box-shadow: var(--shadow-lg);
-    padding: var(--space-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
-    animation: drawer-in 0.25s ease;
-  }
-  .mobile-nav__head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    --logo-height: 34px;
-  }
-  .nav-close {
-    width: 44px;
-    height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    color: var(--color-navy);
-  }
-  .mobile-nav__list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-    margin: 0;
-  }
-  .mobile-nav__link {
-    display: block;
-    padding: var(--space-3) var(--space-2);
-    color: var(--color-navy);
-    font-weight: var(--fw-medium);
-    font-size: var(--fs-400);
-    text-decoration: none;
-    border-radius: var(--radius-sm);
-  }
-  .mobile-nav__link:hover {
-    background-color: var(--color-surface);
-    color: var(--color-accent-blue);
-  }
-  .mobile-nav__link[aria-current='page'] {
-    color: var(--color-accent-blue);
-    font-weight: var(--fw-semibold);
-  }
-  .mobile-nav__portal {
-    align-self: flex-start;
-  }
-  .lang-switch--mobile {
-    display: flex;
-    margin-top: auto;
-  }
-
-  @keyframes announce-fade {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  @keyframes drawer-in {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  /* ---------- Desktop breakpoint ---------- */
-  @media (min-width: 1024px) {
-    .primary-nav {
-      display: block;
-    }
-    .site-header__portal,
-    .lang-switch {
-      display: flex;
-    }
-    .nav-toggle {
-      display: none;
-    }
-  }
-</style>

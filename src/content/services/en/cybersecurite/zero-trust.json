@@ -1,0 +1,93 @@
+{
+  "title": "Move to the Zero Trust Cybersecurity Model",
+  "description": "Adopt the Zero Trust cybersecurity model with Victrix. Reduce the risk of attack and simplify identity management for your organization.",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "",
+      "titleAccent": "",
+      "title": "Move to the Zero Trust Cybersecurity Model",
+      "titleHighlight": "Zero Trust",
+      "lead": "The Zero Trust model takes a \"never trust, always verify\" approach: each user and device is continuously verified and authorized, minimizing security risks and opportunities for successful attacks. Victrix can help you implement it and improve your security posture.",
+      "ctaLabel": "Schedule a meeting",
+      "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2024/05/benjamin-child-gwe0dlvd9e0-unsplash-scaled.jpg",
+      "imageAlt": ""
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Why Adopt the Zero Trust Model?",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "The ideal solution for critical systems and data",
+        "text": "At Victrix, we consider the Zero Trust model to be <strong>one of the most popular cybersecurity frameworks</strong> for protecting critical systems and data.",
+        "watermark": "graphique",
+        "stats": [
+          { "value": "60%", "label": "of enterprises will use Zero Trust solutions instead of VPNs by 2025 (Gartner)" }
+        ]
+      },
+      "aside": {
+        "icon": "etoile",
+        "title": "Harmony Connect, Check Point's SASE solution",
+        "text": "Harmony SASE combines workplace security and network optimization in a single cloud-based platform designed for the modern enterprise.",
+        "linkLabel": "Contact us about Harmony Connect",
+        "linkHref": "/en/contact"
+      }
+    },
+    {
+      "type": "numbered-cards",
+      "sectionTitle": "Benefits of the Zero Trust Model for Your Organization",
+      "headingStyle": "plain",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        { "number": "01", "title": "Seamless user experience", "text": "" },
+        { "number": "02", "title": "Continuous auditing", "text": "" },
+        { "number": "03", "title": "Least privilege principle", "text": "" },
+        { "number": "04", "title": "Micro-segmentation", "text": "" },
+        { "number": "05", "title": "Monitoring and analysis", "text": "" },
+        { "number": "06", "title": "Granular security policies", "text": "" },
+        { "number": "07", "title": "Dynamic trust", "text": "" }
+      ]
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "Victrix: Secure Your Data with the Zero Trust Model",
+      "fond": "givre",
+      "boxes": [
+        "Sensitive data identification",
+        "ZTNA solutions selection",
+        "Segmentation and isolation of the network, restriction of access",
+        "Least privilege data access",
+        "Continuous verification of confidence level",
+        "In-session traffic control",
+        "Data and application protection",
+        "Threat detection"
+      ]
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Related resources",
+      "tags": [
+        "Cybersecurity"
+      ],
+      "ctaLabel": "See all resources",
+      "ctaHref": "/en/ressources"
+    },
+    {
+      "type": "cta",
+      "title": "Continuously Improve Your Security Posture",
+      "body": "If you have questions about protecting your cybersecurity or Zero Trust architecture, please contact us: our cybersecurity experts will work with you to implement the best solutions to keep your organization safe.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "slug": "cybersecurity/zero-trust",
+  "seoTitle": "Move to the Zero Trust Cybersecurity Model"
+}

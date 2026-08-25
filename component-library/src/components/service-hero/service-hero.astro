@@ -1,0 +1,200 @@
+---
+/**
+ * Section « Héros de service » — composant Bookshop (P-07).
+ * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/expertise-mere.css §Hero Section,
+ * « Page Expertise - Mère ») : héros SOMBRE pleine largeur — photo de fond +
+ * voile Bleu nuit 40 %, contenu aligné à gauche : eyebrow 12/700 ls 1.2 bleu
+ * pâle, H1 56/800 lh 1.25 ls -1.12 blanc, lead 18/29 ivoire, double CTA
+ * (primaire rayon 2 + flèche ; secondaire « verre » blanc 10 % bordé blanc
+ * 20 % + backdrop-blur). Bleus/navy/ivoire = tokens (export Hanken/chaud).
+ *
+ * VARIANTE « produit enfant » (docs/design/produit-enfant.css §Hero Section,
+ * « Page Produit - Enfant », 2026-08-05) — trois ajouts ADDITIFS :
+ *  - `eyebrowStyle: "badge"` : surtitre en CHIP bleu plein (12/700 ls 1.2
+ *    blanc, rayon 2) au lieu du texte bleu pâle ;
+ *  - `overlay: "degrade"` : voile en DÉGRADÉ anthracite gauche→droite (80 % →
+ *    transparent) au lieu du voile Bleu nuit uniforme, hauteur 640 ;
+ *  - `overlay: "blanc"` (AJOUTÉ 2026-08-17, expertisesparent.css §HeroSection
+ *    — retour user « le héros doit être clair ») : héros CLAIR — double
+ *    dégradé verbatim maquette (blanc 90° + beige #F1E8DF≈token beige 105°)
+ *    sur la photo, titre neutral-900, accent titleHighlight en BLEU-500
+ *    (primary — pas le bleu pâle des héros sombres), lead neutral-600,
+ *    bouton 2 « Button-M-transparent » (blanc 50 %, bordure neutral-300,
+ *    texte neutral-800, blur 6), hauteur 600 ;
+ *  - `titleHighlight` : sous-chaîne du titre rendue en bleu clair (première
+ *    occurrence — patron home-hero) ; vide ou introuvable = titre uniforme.
+ *
+ * Props : { type: "service-hero", eyebrow?, eyebrowStyle?, titleAccent?,
+ *           title, titleHighlight?, lead?, ctaLabel?, ctaHref?, cta2Label?,
+ *           cta2Href?, overlay?, image?, imageAlt? }
+ * - `image` = chemin PUBLIC servi tel quel, désormais PHOTO DE FOND (l'ancien
+ *   rendu la posait à droite du texte) ; sans image : aplat Bleu nuit.
+ * - `imageAlt` conservé au contrat (image décorative désormais — alt="").
+ * - `titleAccent` : surtitre accentué en bloc au-dessus du titre (hérité).
+ * - cta2* : NOUVEAUX (chaîne vide = absent).
+ *
+ * Contraintes / pièges :
+ * - Rend le SEUL <h1> de la page → à placer en PREMIÈRE position.
+ * - `lead` peut contenir des <strong> → rendu set:html (contenu de dépôt).
+ * - Browser-safe (éditeur visuel CloudCannon) : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Props {
+  eyebrow?: string;
+  eyebrowStyle?: 'texte' | 'badge';
+  titleAccent?: string;
+  title: string;
+  titleHighlight?: string;
+  lead?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  cta2Label?: string;
+  cta2Href?: string;
+  overlay?: 'voile' | 'degrade' | 'blanc';
+  image?: string;
+  imageAlt?: string;
+}
+
+const {
+  eyebrow,
+  eyebrowStyle = 'texte',
+  titleAccent,
+  title,
+  titleHighlight,
+  lead,
+  ctaLabel,
+  ctaHref,
+  cta2Label,
+  cta2Href,
+  overlay = 'voile',
+  image,
+} = Astro.props;
+
+// Toute valeur inattendue (édition en cours au CMS) retombe sur le défaut.
+const gradient = overlay === 'degrade';
+const blanc = overlay === 'blanc';
+const badge = eyebrowStyle === 'badge';
+
+// Sous-chaîne accentuée rendue en bleu clair là où elle apparaît dans le titre
+// (première occurrence — patron home-hero) ; absente ou introuvable = titre
+// uniforme, aucune casse.
+const highlightIndex = titleHighlight ? title.indexOf(titleHighlight) : -1;
+const titleParts =
+  highlightIndex >= 0 && titleHighlight
+    ? {
+        before: title.slice(0, highlightIndex),
+        accent: titleHighlight,
+        after: title.slice(highlightIndex + titleHighlight.length),
+      }
+    : null;
+---
+
+<section
+  class:list={[
+    'relative min-h-[600px] flex items-center overflow-hidden isolate',
+    blanc ? 'bg-ivoire' : 'bg-on-primary-fixed',
+    blanc ? 'lg:min-h-[600px]' : gradient ? 'lg:min-h-[640px]' : 'lg:min-h-[716px]',
+  ]}
+>
+  {
+    image && (
+      <img
+        src={image}
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover -z-20"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+    )
+  }
+  {/* Voile « blanc » : DEUX dégradés superposés, valeurs verbatim maquette
+      (expertisesparent.css §HeroSection Overlay ×2) — lavis beige chaud par
+      dessus le fondu blanc gauche→droite. #F1E8DF = token beige. */}
+  <div
+    class:list={[
+      'absolute inset-0 -z-10',
+      blanc
+        ? 'bg-[linear-gradient(105deg,#F1E8DF_15.7%,rgba(241,232,223,0.6)_29.37%,rgba(241,232,223,0.1)_67.12%),linear-gradient(90deg,#FFFFFF_0%,rgba(255,255,255,0.8)_50%,rgba(255,255,255,0)_100%)]'
+        : gradient
+          ? 'bg-gradient-to-r from-on-surface/80 to-transparent'
+          : 'bg-on-primary-fixed/40',
+    ]}
+    aria-hidden="true"
+  >
+  </div>
+  <div class="container-site py-24 w-full">
+    <div class="max-w-[688px] flex flex-col items-start gap-4">
+      {
+        eyebrow &&
+          (badge ? (
+            <p class="inline-flex items-center bg-primary text-white text-xs font-bold uppercase tracking-[1.2px] px-3 py-1 rounded-sm m-0 max-w-none">
+              {eyebrow}
+            </p>
+          ) : (
+            <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary-fixed m-0 max-w-none">{eyebrow}</p>
+          ))
+      }
+      <h1
+        class:list={[
+          'text-[36px] leading-[1.25] lg:text-[56px] lg:leading-[70px] font-extrabold tracking-[-1.12px] m-0 text-balance',
+          blanc ? 'text-neutral-900' : 'text-white',
+        ]}
+      >
+        {titleAccent && <span class="block">{titleAccent}</span>}
+        {
+          titleParts ? (
+            <>
+              {titleParts.before}
+              {/* Héros clair : accent en BLEU-500 plein (maquette) ; héros
+                  sombres : bleu pâle lisible sur photo foncée (inchangé). */}
+              <span class={blanc ? 'text-primary' : 'text-primary-fixed-dim'}>{titleParts.accent}</span>
+              {titleParts.after}
+            </>
+          ) : (
+            title
+          )
+        }
+      </h1>
+      {lead && (
+        <p
+          class:list={[
+            'text-lg leading-[29px] m-0 max-w-[672px] pt-1',
+            blanc ? 'text-neutral-600' : 'text-surface-container-low',
+          ]}
+          set:html={lead}
+        />
+      )}
+      {
+        ((ctaLabel && ctaHref) || (cta2Label && cta2Href)) && (
+          <div class="flex flex-wrap items-center gap-4 pt-6">
+            {ctaLabel && ctaHref && (
+              <a
+                class="no-underline bg-primary text-on-primary px-8 py-4 rounded-sm text-sm font-semibold tracking-[0.28px] leading-none inline-flex items-center gap-2 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] hover:bg-primary-container transition-colors"
+                href={ctaHref}
+              >
+                {ctaLabel}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                  <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            )}
+            {cta2Label && cta2Href && (
+              <a
+                class:list={[
+                  'no-underline border border-solid backdrop-blur-[6px] px-8 py-[18px] rounded-sm text-sm font-semibold tracking-[0.28px] leading-none inline-flex items-center transition-colors',
+                  blanc
+                    ? 'bg-white/50 border-neutral-300 text-neutral-800 hover:bg-white/80'
+                    : 'bg-white/10 border-white/20 text-white hover:bg-white/20',
+                ]}
+                href={cta2Href}
+              >
+                {cta2Label}
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

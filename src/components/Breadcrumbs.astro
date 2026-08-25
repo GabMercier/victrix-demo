@@ -1,0 +1,63 @@
+---
+/**
+ * Fil d'Ariane VISIBLE (2026-08-17) — bande légère au-dessus des sections des
+ * pages services et des pages génériques. Le gabarit article garde son fil
+ * scopé historique (parité victrix.ca) ; la décision P-12 « JSON-LD seulement »
+ * est levée depuis le design system v3 (le redesign n'est plus préempté).
+ *
+ * La route émet le balisage BreadcrumbList via breadcrumbSchema avec le MÊME
+ * tableau `items` que ce composant — fil visible ≡ balisage, aucune divergence
+ * possible.
+ *
+ * [data-crumbs] est LOAD-BEARING : la bande vit en enfant direct de <main>
+ * (avant les sections composables) et le comptage « 1 enfant = 1 section » de
+ * scripts/design/generate-section-previews.mjs l'exclut par cet attribut —
+ * même mécanique que script/style/link. Ne pas le retirer.
+ */
+import type { BreadcrumbItem } from '../lib/seo/breadcrumb';
+import type { Locale } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: Locale;
+  /** Accueil d'abord, page courante en dernier (sans `path`). */
+  items: BreadcrumbItem[];
+}
+
+const { lang, items } = Astro.props;
+const t = useTranslations(lang);
+---
+
+{/* data-pagefind-ignore : le fil vit DANS <main data-pagefind-body> — sans
+    l'exclusion, « Accueil › … » entrerait dans l'index de recherche de chaque
+    page (précédent : l'aside des articles). */}
+<nav
+  data-crumbs
+  data-pagefind-ignore
+  aria-label={t.article.breadcrumbAria}
+  class="bg-white border-0 border-b border-solid border-neutral-200"
+>
+  <div
+    class="container-site flex flex-wrap items-center gap-2 py-3 text-sm text-on-surface-variant"
+  >
+    {
+      items.map((item, i) => (
+        <>
+          {i > 0 && <span aria-hidden="true">›</span>}
+          {item.path ? (
+            <a
+              class="no-underline text-on-surface-variant hover:text-primary transition-colors"
+              href={item.path}
+            >
+              {item.name}
+            </a>
+          ) : (
+            <span class="font-medium text-on-surface" aria-current="page">
+              {item.name}
+            </span>
+          )}
+        </>
+      ))
+    }
+  </div>
+</nav>

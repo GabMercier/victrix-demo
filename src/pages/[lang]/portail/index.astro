@@ -1,28 +1,21 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PortalLogin from '../../../components/PortalLogin.astro';
-import { type Locale, isLocale, defaultLocale, otherLocale, localizePath } from '../../../i18n/config';
-import { auth } from '../../../lib/auth';
+import { type Locale, localePaths, localizePath, otherLocale } from '../../../i18n/config';
 
 /**
  * Client-portal login entry, localized: /fr/portail and /en/portail.
- * On-demand (reads the session/query at request time). Lives under the locale
- * prefix so the "prefix both" i18n routing serves it (non-prefixed pages 404).
+ *
+ * 2026-08-18 — la MAQUETTE MOCK du portail est RETIRÉE (décision user) : plus
+ * de tableau de bord, plus de routes /auth/*, plus de middleware ni de
+ * session. Seule cette page de connexion (VISUELLE, bouton désactivé)
+ * subsiste — elle est désormais PRÉRENDUE comme le reste du site. Le plan de
+ * l'implémentation réelle (Entra ID + Dataverse) reste docs/portail-auth.md ;
+ * l'ancien prototype OIDC/PKCE-shaped vit dans l'historique git.
  */
-export const prerender = false;
+export const getStaticPaths = localePaths;
 
-const lang: Locale = isLocale(Astro.params.lang) ? Astro.params.lang : defaultLocale;
-
-// Already signed in? Skip the login and go to the dashboard.
-const existing = await auth.getSession(Astro.request);
-if (existing) return Astro.redirect(localizePath('/portail/tableau-de-bord', lang));
-
-const dashboard = localizePath('/portail/tableau-de-bord', lang);
-const rawReturn = Astro.url.searchParams.get('returnTo');
-const returnTo =
-  rawReturn && rawReturn.startsWith('/') && !rawReturn.startsWith('//') ? rawReturn : dashboard;
-const redirected = Astro.url.searchParams.has('returnTo');
-const error = Astro.url.searchParams.has('error');
+const { lang } = Astro.props as { lang: Locale };
 
 const title = lang === 'fr' ? 'Mon portail' : 'My portal';
 const description =
@@ -31,11 +24,14 @@ const description =
     : 'Sign in to your Victrix client portal to access your contracts, services and documents.';
 ---
 
+{/* noindex : le portail reste hors des moteurs et hors de la recherche
+    interne Pagefind (le data-pagefind-body de BaseLayout suit !noindex). */}
 <BaseLayout
   lang={lang}
   altLocalePath={localizePath('/portail', otherLocale[lang])}
   title={title}
   description={description}
+  noindex
 >
-  <PortalLogin lang={lang} returnTo={returnTo} redirected={redirected} error={error} />
+  <PortalLogin lang={lang} />
 </BaseLayout>

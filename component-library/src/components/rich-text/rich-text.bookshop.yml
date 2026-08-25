@@ -1,0 +1,63 @@
+# =============================================================================
+# Spec Bookshop — section « Texte enrichi » (palette partagée, P-07).
+# Voir hero.bookshop.yml pour les conventions communes.
+#
+# `paragraphs` = tableau de CHAÎNES : type d'entrée déclaré par `paragraphs[*]`
+# (leçon P-05 sur les tableaux vides « misconfigured »).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Texte enrichi"
+  description: "Titre centré et un ou plusieurs paragraphes en colonne étroite (bloc de conclusion, mise en contexte). Les paragraphes peuvent contenir des <strong>."
+  icon: notes
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/rich-text/preview.png"
+    text: "Texte enrichi"
+    subtext: Titre + paragraphes en colonne étroite
+  preview:
+    icon: notes
+    text:
+      - key: title
+      - text: Texte enrichi
+
+blueprint:
+  type: rich-text
+  title: "Titre du bloc"
+  fond: blanc
+  paragraphs:
+    - "Premier paragraphe. Peut contenir des <strong> pour la mise en gras."
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre (optionnel)"
+  # « Fond de section » (2026-08-17, pilote 6 blocs) : choix BORNÉ à la
+  # palette officielle — 5 fonds clairs, jamais de couleur libre (esprit P-16).
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      values:
+        - blanc
+        - givre
+        - ivoire
+        - beige
+        - sable
+    comment: "Couleur de fond de la section, bornée à la palette officielle : blanc · givre (gris très pâle) · ivoire · beige · sable."
+  paragraphs:
+    type: array
+    label: "Paragraphes"
+  paragraphs[*]:
+    type: textarea
+    label: "Paragraphe"
+    comment: "Peut contenir des <strong> (rendu HTML tel quel)."

@@ -1,0 +1,1157 @@
+{
+  "locations": {
+    "primary_navigation": 2,
+    "footer_navigation": 4,
+    "legal_navigation": 3,
+    "surmenu_navigation": 0,
+    "footerapropos_navigation": 0
+  },
+  "menus": [
+    {
+      "termId": 2,
+      "name": "Menu principal",
+      "location": "primary_navigation",
+      "itemCount": 31,
+      "tree": [
+        {
+          "id": 72,
+          "order": 1,
+          "parentItem": 0,
+          "label": "Découvrir Victrix",
+          "object": "page",
+          "targetId": 57,
+          "url": "https://www.victrix.ca/decouvrir-victrix/",
+          "targetStatus": "publish",
+          "children": []
+        },
+        {
+          "id": 2158,
+          "order": 2,
+          "parentItem": 0,
+          "label": "Expertises",
+          "object": "expertise",
+          "targetId": 105,
+          "url": "https://www.victrix.ca/expertise/conseil-strategique/",
+          "targetStatus": "publish",
+          "children": [
+            {
+              "id": 5470,
+              "order": 3,
+              "parentItem": 2158,
+              "label": "Conseil stratégique",
+              "object": "expertise",
+              "targetId": 105,
+              "url": "https://www.victrix.ca/expertise/conseil-strategique/",
+              "targetStatus": "publish",
+              "children": [
+                {
+                  "id": 5483,
+                  "order": 4,
+                  "parentItem": 5470,
+                  "label": "Conformité Loi 25",
+                  "object": "expertise",
+                  "targetId": 5454,
+                  "url": "https://www.victrix.ca/expertise/conseil-strategique/conformite-loi-25/",
+                  "targetStatus": "publish",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 5909,
+              "order": 5,
+              "parentItem": 2158,
+              "label": "Infonuagique",
+              "object": "expertise",
+              "targetId": 5780,
+              "url": "https://www.victrix.ca/expertise/services-infonuagiques/",
+              "targetStatus": "publish",
+              "children": [
+                {
+                  "id": 5473,
+                  "order": 6,
+                  "parentItem": 5909,
+                  "label": "Microsoft Azure",
+                  "object": "expertise",
+                  "targetId": 5457,
+                  "url": "https://www.victrix.ca/expertise/services-infonuagiques/migration-vers-azure/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 5984,
+                  "order": 7,
+                  "parentItem": 5909,
+                  "label": "Amazon Web Services",
+                  "object": "expertise",
+                  "targetId": 5523,
+                  "url": "https://www.victrix.ca/expertise/services-infonuagiques/services-aws/",
+                  "targetStatus": "publish",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 6486,
+              "order": 8,
+              "parentItem": 2158,
+              "label": "Cybersécurité",
+              "object": "expertise",
+              "targetId": 6373,
+              "url": "https://www.victrix.ca/expertise/cybersecurite/",
+              "targetStatus": "publish",
+              "children": [
+                {
+                  "id": 5475,
+                  "order": 9,
+                  "parentItem": 6486,
+                  "label": "Centre opérationnel de sécurité (SOC) évolutif",
+                  "object": "expertise",
+                  "targetId": 5458,
+                  "url": "https://www.victrix.ca/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 6315,
+                  "order": 10,
+                  "parentItem": 6486,
+                  "label": "Tests d’intrusion",
+                  "object": "expertise",
+                  "targetId": 6305,
+                  "url": "https://www.victrix.ca/expertise/cybersecurite/test-intrusion-pentest/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 6412,
+                  "order": 11,
+                  "parentItem": 6486,
+                  "label": "IoT et OT",
+                  "object": "expertise",
+                  "targetId": 6375,
+                  "url": "https://www.victrix.ca/expertise/cybersecurite/internet-des-objets-service-iot/",
+                  "targetStatus": "publish",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 5898,
+              "order": 12,
+              "parentItem": 2158,
+              "label": "Productivité",
+              "object": "expertise",
+              "targetId": 5789,
+              "url": "https://www.victrix.ca/expertise/productivite/",
+              "targetStatus": "publish",
+              "children": [
+                {
+                  "id": 5776,
+                  "order": 13,
+                  "parentItem": 5898,
+                  "label": "Ø Studio",
+                  "object": "expertise",
+                  "targetId": 5453,
+                  "url": "https://www.victrix.ca/expertise/productivite/o-studio/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 7468,
+                  "order": 14,
+                  "parentItem": 5898,
+                  "label": "Intelligence Artificielle",
+                  "object": "expertise",
+                  "targetId": 7460,
+                  "url": "https://www.victrix.ca/expertise/intelligence-artificielle/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 5488,
+                  "order": 15,
+                  "parentItem": 5898,
+                  "label": "Plateforme employé et intranet",
+                  "object": "expertise",
+                  "targetId": 5486,
+                  "url": "https://www.victrix.ca/expertise/productivite/plateforme-employe-intranet/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 6712,
+                  "order": 16,
+                  "parentItem": 5898,
+                  "label": "ServiceNow",
+                  "object": "expertise",
+                  "targetId": 6690,
+                  "url": "https://www.victrix.ca/expertise/productivite/servicenow/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 14726,
+                  "order": 17,
+                  "parentItem": 5898,
+                  "label": "Dynamics 365 Field Service",
+                  "object": "expertise",
+                  "targetId": 14718,
+                  "url": "https://www.victrix.ca/expertise/productivite/dynamics-365-field-service/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 6894,
+                  "order": 18,
+                  "parentItem": 5898,
+                  "label": "Copilot pour Microsoft 365",
+                  "object": "expertise",
+                  "targetId": 6875,
+                  "url": "https://www.victrix.ca/expertise/productivite/copilot-microsoft-365/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 6652,
+                  "order": 19,
+                  "parentItem": 5898,
+                  "label": "Copilot Studio",
+                  "object": "expertise",
+                  "targetId": 6369,
+                  "url": "https://www.victrix.ca/expertise/productivite/copilot-studio/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 13898,
+                  "order": 20,
+                  "parentItem": 5898,
+                  "label": "O bureau",
+                  "object": "expertise",
+                  "targetId": 5455,
+                  "url": "https://www.victrix.ca/expertise/productivite/o-bureau/",
+                  "targetStatus": "publish",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 7112,
+              "order": 21,
+              "parentItem": 2158,
+              "label": "Services gérés",
+              "object": "expertise",
+              "targetId": 7098,
+              "url": "https://www.victrix.ca/expertise/services-ti-geres/",
+              "targetStatus": "publish",
+              "children": [
+                {
+                  "id": 6884,
+                  "order": 22,
+                  "parentItem": 7112,
+                  "label": "Services TI gérés",
+                  "object": "custom",
+                  "targetId": null,
+                  "url": "https://www.victrix.ca/expertise/services-ti-geres/",
+                  "targetStatus": null,
+                  "children": []
+                },
+                {
+                  "id": 5480,
+                  "order": 23,
+                  "parentItem": 7112,
+                  "label": "Environnement Microsoft 365",
+                  "object": "expertise",
+                  "targetId": 5456,
+                  "url": "https://www.victrix.ca/expertise/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/",
+                  "targetStatus": "publish",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 5481,
+          "order": 24,
+          "parentItem": 0,
+          "label": "Produits",
+          "object": "custom",
+          "targetId": null,
+          "url": "https://o-studio-catalogue.victrix.ca",
+          "targetStatus": null,
+          "children": [
+            {
+              "id": 7245,
+              "order": 25,
+              "parentItem": 5481,
+              "label": "Catalogue Ø Studio",
+              "object": "custom",
+              "targetId": null,
+              "url": "https://o-studio-catalogue.victrix.ca",
+              "targetStatus": null,
+              "children": []
+            },
+            {
+              "id": 7819,
+              "order": 26,
+              "parentItem": 5481,
+              "label": "Licences et matériels",
+              "object": "expertise",
+              "targetId": 7688,
+              "url": "https://www.victrix.ca/expertise/approvisionnement-ti/",
+              "targetStatus": "publish",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 532,
+          "order": 27,
+          "parentItem": 0,
+          "label": "Carrière",
+          "object": "page",
+          "targetId": 483,
+          "url": "https://www.victrix.ca/carriere/",
+          "targetStatus": "publish",
+          "children": []
+        },
+        {
+          "id": 70,
+          "order": 28,
+          "parentItem": 0,
+          "label": "Contact",
+          "object": "page",
+          "targetId": 62,
+          "url": "https://www.victrix.ca/contact/",
+          "targetStatus": "publish",
+          "children": []
+        },
+        {
+          "id": 69,
+          "order": 29,
+          "parentItem": 0,
+          "label": "Ressources",
+          "object": "page",
+          "targetId": 64,
+          "url": "https://www.victrix.ca/ressources/",
+          "targetStatus": "publish",
+          "children": []
+        },
+        {
+          "id": 68,
+          "order": 30,
+          "parentItem": 0,
+          "label": "Portail client",
+          "object": "page",
+          "targetId": 66,
+          "url": "https://www.victrix.ca/mon-portail/",
+          "targetStatus": "publish",
+          "children": []
+        },
+        {
+          "id": 917,
+          "order": 31,
+          "parentItem": 0,
+          "label": "Langues",
+          "object": "custom",
+          "targetId": null,
+          "url": "#pll_switcher",
+          "targetStatus": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "termId": 4,
+      "name": "Footer",
+      "location": "footer_navigation",
+      "itemCount": 16,
+      "tree": [
+        {
+          "id": 900,
+          "order": 1,
+          "parentItem": 0,
+          "label": "Expertises",
+          "object": "custom",
+          "targetId": null,
+          "url": "#",
+          "targetStatus": null,
+          "children": [
+            {
+              "id": 899,
+              "order": 2,
+              "parentItem": 900,
+              "label": "Conseil stratégique",
+              "object": "expertise",
+              "targetId": 105,
+              "url": "https://www.victrix.ca/expertise/conseil-strategique/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 5911,
+              "order": 3,
+              "parentItem": 900,
+              "label": "Infonuagique",
+              "object": "expertise",
+              "targetId": 5780,
+              "url": "https://www.victrix.ca/expertise/services-infonuagiques/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 6487,
+              "order": 4,
+              "parentItem": 900,
+              "label": "Cybersécurité",
+              "object": "expertise",
+              "targetId": 6373,
+              "url": "https://www.victrix.ca/expertise/cybersecurite/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 5910,
+              "order": 5,
+              "parentItem": 900,
+              "label": "Productivité",
+              "object": "expertise",
+              "targetId": 5789,
+              "url": "https://www.victrix.ca/expertise/productivite/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 7465,
+              "order": 6,
+              "parentItem": 900,
+              "label": "Intelligence artificielle",
+              "object": "expertise",
+              "targetId": 7460,
+              "url": "https://www.victrix.ca/expertise/intelligence-artificielle/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 7113,
+              "order": 7,
+              "parentItem": 900,
+              "label": "Services gérés",
+              "object": "expertise",
+              "targetId": 7098,
+              "url": "https://www.victrix.ca/expertise/services-ti-geres/",
+              "targetStatus": "publish",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 901,
+          "order": 8,
+          "parentItem": 0,
+          "label": "Produits",
+          "object": "custom",
+          "targetId": null,
+          "url": "https://o-studio-catalogue.victrix.ca",
+          "targetStatus": null,
+          "children": [
+            {
+              "id": 7821,
+              "order": 9,
+              "parentItem": 901,
+              "label": "Licences et matériels",
+              "object": "expertise",
+              "targetId": 7688,
+              "url": "https://www.victrix.ca/expertise/approvisionnement-ti/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 5491,
+              "order": 10,
+              "parentItem": 901,
+              "label": "Plateforme employé et intranet",
+              "object": "expertise",
+              "targetId": 5486,
+              "url": "https://www.victrix.ca/expertise/productivite/plateforme-employe-intranet/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 5492,
+              "order": 11,
+              "parentItem": 901,
+              "label": "O bureau",
+              "object": "expertise",
+              "targetId": 5455,
+              "url": "https://www.victrix.ca/expertise/productivite/o-bureau/",
+              "targetStatus": "publish",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 912,
+          "order": 12,
+          "parentItem": 0,
+          "label": " ",
+          "object": "custom",
+          "targetId": null,
+          "url": "#",
+          "targetStatus": null,
+          "children": [
+            {
+              "id": 907,
+              "order": 13,
+              "parentItem": 912,
+              "label": "À propos",
+              "object": "page",
+              "targetId": 57,
+              "url": "https://www.victrix.ca/decouvrir-victrix/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 906,
+              "order": 14,
+              "parentItem": 912,
+              "label": "Carrière & Vie@Victrix",
+              "object": "page",
+              "targetId": 483,
+              "url": "https://www.victrix.ca/carriere/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 908,
+              "order": 15,
+              "parentItem": 912,
+              "label": "Ressources",
+              "object": "page",
+              "targetId": 64,
+              "url": "https://www.victrix.ca/ressources/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 13903,
+              "order": 16,
+              "parentItem": 912,
+              "label": "Tarification",
+              "object": "page",
+              "targetId": 11508,
+              "url": "https://www.victrix.ca/liste-prix-check-point/",
+              "targetStatus": "publish",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "termId": 3,
+      "name": "Legal",
+      "location": "legal_navigation",
+      "itemCount": 2,
+      "tree": [
+        {
+          "id": 910,
+          "order": 1,
+          "parentItem": 0,
+          "label": "Conditions d’utilisation",
+          "object": "page",
+          "targetId": 36,
+          "url": "https://www.victrix.ca/conditions-dutilisation/",
+          "targetStatus": "publish",
+          "children": []
+        },
+        {
+          "id": 909,
+          "order": 2,
+          "parentItem": 0,
+          "label": "Politique de confidentialité",
+          "object": "page",
+          "targetId": 3,
+          "url": "https://www.victrix.ca/politique-de-confidentialite/",
+          "targetStatus": "publish",
+          "children": []
+        }
+      ]
+    },
+    {
+      "termId": 54,
+      "name": "Legal EN",
+      "location": null,
+      "itemCount": 2,
+      "tree": [
+        {
+          "id": 3002,
+          "order": 1,
+          "parentItem": 0,
+          "label": "Terms of use",
+          "object": "page",
+          "targetId": 2979,
+          "url": "https://www.victrix.ca/en/terms-of-use/",
+          "targetStatus": "publish",
+          "children": []
+        },
+        {
+          "id": 3001,
+          "order": 2,
+          "parentItem": 0,
+          "label": "Privacy Policy",
+          "object": "page",
+          "targetId": 2980,
+          "url": "https://www.victrix.ca/en/privacy-policy/",
+          "targetStatus": "publish",
+          "children": []
+        }
+      ]
+    },
+    {
+      "termId": 53,
+      "name": "Footer EN",
+      "location": null,
+      "itemCount": 16,
+      "tree": [
+        {
+          "id": 3003,
+          "order": 1,
+          "parentItem": 0,
+          "label": "Expertises",
+          "object": "custom",
+          "targetId": null,
+          "url": "#",
+          "targetStatus": null,
+          "children": [
+            {
+              "id": 3007,
+              "order": 2,
+              "parentItem": 3003,
+              "label": "Strategic Consulting",
+              "object": "expertise",
+              "targetId": 2993,
+              "url": "https://www.victrix.ca/en/expertise/strategic-advice/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 3004,
+              "order": 3,
+              "parentItem": 3003,
+              "label": "Cloud",
+              "object": "expertise",
+              "targetId": 2984,
+              "url": "https://www.victrix.ca/en/expertise/cloud-services-provider/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 3006,
+              "order": 4,
+              "parentItem": 3003,
+              "label": "Cybersecurity",
+              "object": "expertise",
+              "targetId": 2985,
+              "url": "https://www.victrix.ca/en/expertise/cybersecurity/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 3005,
+              "order": 5,
+              "parentItem": 3003,
+              "label": "Productivity",
+              "object": "expertise",
+              "targetId": 2986,
+              "url": "https://www.victrix.ca/en/expertise/productivity-consulting/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 7464,
+              "order": 6,
+              "parentItem": 3003,
+              "label": "Artificial Intelligence",
+              "object": "expertise",
+              "targetId": 7461,
+              "url": "https://www.victrix.ca/en/expertise/artificial-intelligence/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 7116,
+              "order": 7,
+              "parentItem": 3003,
+              "label": "Managed Services",
+              "object": "expertise",
+              "targetId": 7115,
+              "url": "https://www.victrix.ca/en/expertise/managed-it-services/",
+              "targetStatus": "publish",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 5515,
+          "order": 8,
+          "parentItem": 0,
+          "label": "Products",
+          "object": "custom",
+          "targetId": null,
+          "url": "https://o-studio-catalogue.victrix.ca",
+          "targetStatus": null,
+          "children": [
+            {
+              "id": 7822,
+              "order": 9,
+              "parentItem": 5515,
+              "label": "Licenses and Equipments",
+              "object": "expertise",
+              "targetId": 7721,
+              "url": "https://www.victrix.ca/en/expertise/it-procurement/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 5575,
+              "order": 10,
+              "parentItem": 5515,
+              "label": "Intranet—Employee Experience Platform",
+              "object": "expertise",
+              "targetId": 5526,
+              "url": "https://www.victrix.ca/en/expertise/productivity-consulting/employee-platform-intranet/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 5516,
+              "order": 11,
+              "parentItem": 5515,
+              "label": "Office booking app",
+              "object": "expertise",
+              "targetId": 5462,
+              "url": "https://www.victrix.ca/en/expertise/productivity-consulting/office-booking/",
+              "targetStatus": "publish",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 3012,
+          "order": 12,
+          "parentItem": 0,
+          "label": " ",
+          "object": "custom",
+          "targetId": null,
+          "url": "#",
+          "targetStatus": null,
+          "children": [
+            {
+              "id": 3013,
+              "order": 13,
+              "parentItem": 3012,
+              "label": "About us",
+              "object": "page",
+              "targetId": 2945,
+              "url": "https://www.victrix.ca/en/discover-victrix/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 3014,
+              "order": 14,
+              "parentItem": 3012,
+              "label": "Careers & Life@Victrix",
+              "object": "page",
+              "targetId": 2952,
+              "url": "https://www.victrix.ca/en/careers/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 3015,
+              "order": 15,
+              "parentItem": 3012,
+              "label": "Blog",
+              "object": "page",
+              "targetId": 2968,
+              "url": "https://www.victrix.ca/en/resources-center/",
+              "targetStatus": "publish",
+              "children": []
+            },
+            {
+              "id": 13904,
+              "order": 16,
+              "parentItem": 3012,
+              "label": "Pricing",
+              "object": "page",
+              "targetId": 11515,
+              "url": "https://www.victrix.ca/en/check-point-price-list/",
+              "targetStatus": "publish",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "termId": 55,
+      "name": "MainMenu EN",
+      "location": null,
+      "itemCount": 31,
+      "tree": [
+        {
+          "id": 3017,
+          "order": 1,
+          "parentItem": 0,
+          "label": "Discover Victrix",
+          "object": "page",
+          "targetId": 2945,
+          "url": "https://www.victrix.ca/en/discover-victrix/",
+          "targetStatus": "publish",
+          "children": []
+        },
+        {
+          "id": 3018,
+          "order": 2,
+          "parentItem": 0,
+          "label": "Expertises",
+          "object": "expertise",
+          "targetId": 2993,
+          "url": "https://www.victrix.ca/en/expertise/strategic-advice/",
+          "targetStatus": "publish",
+          "children": [
+            {
+              "id": 5501,
+              "order": 3,
+              "parentItem": 3018,
+              "label": "Strategic Consulting",
+              "object": "expertise",
+              "targetId": 2993,
+              "url": "https://www.victrix.ca/en/expertise/strategic-advice/",
+              "targetStatus": "publish",
+              "children": [
+                {
+                  "id": 7556,
+                  "order": 4,
+                  "parentItem": 5501,
+                  "label": "Law 25 Compliance",
+                  "object": "expertise",
+                  "targetId": 5520,
+                  "url": "https://www.victrix.ca/en/expertise/strategic-advice/law-25-compliance/",
+                  "targetStatus": "publish",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 5502,
+              "order": 5,
+              "parentItem": 3018,
+              "label": "Cloud",
+              "object": "expertise",
+              "targetId": 2984,
+              "url": "https://www.victrix.ca/en/expertise/cloud-services-provider/",
+              "targetStatus": "publish",
+              "children": [
+                {
+                  "id": 5503,
+                  "order": 6,
+                  "parentItem": 5502,
+                  "label": "Microsoft Azure",
+                  "object": "expertise",
+                  "targetId": 5463,
+                  "url": "https://www.victrix.ca/en/expertise/cloud-services-provider/azure-migration/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 5986,
+                  "order": 7,
+                  "parentItem": 5502,
+                  "label": "Amazon Web Services",
+                  "object": "expertise",
+                  "targetId": 5497,
+                  "url": "https://www.victrix.ca/en/expertise/cloud-services-provider/aws-services/",
+                  "targetStatus": "publish",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 5504,
+              "order": 8,
+              "parentItem": 3018,
+              "label": "Cybersecurity",
+              "object": "expertise",
+              "targetId": 2985,
+              "url": "https://www.victrix.ca/en/expertise/cybersecurity/",
+              "targetStatus": "publish",
+              "children": [
+                {
+                  "id": 5505,
+                  "order": 9,
+                  "parentItem": 5504,
+                  "label": "Scalable Security Operations Center",
+                  "object": "expertise",
+                  "targetId": 5464,
+                  "url": "https://www.victrix.ca/en/expertise/cybersecurity/scalable-security-operations-center/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 6417,
+                  "order": 10,
+                  "parentItem": 5504,
+                  "label": "OT and IoT",
+                  "object": "expertise",
+                  "targetId": 6349,
+                  "url": "https://www.victrix.ca/en/expertise/cybersecurity/internet-of-things-iot/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 6418,
+                  "order": 11,
+                  "parentItem": 5504,
+                  "label": "Pentest",
+                  "object": "expertise",
+                  "targetId": 6350,
+                  "url": "https://www.victrix.ca/en/expertise/cybersecurity/pentest/",
+                  "targetStatus": "publish",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 5506,
+              "order": 12,
+              "parentItem": 3018,
+              "label": "Productivity",
+              "object": "expertise",
+              "targetId": 2986,
+              "url": "https://www.victrix.ca/en/expertise/productivity-consulting/",
+              "targetStatus": "publish",
+              "children": [
+                {
+                  "id": 5507,
+                  "order": 13,
+                  "parentItem": 5506,
+                  "label": "Ø Studio",
+                  "object": "expertise",
+                  "targetId": 5465,
+                  "url": "https://www.victrix.ca/en/expertise/productivity-consulting/o-studio/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 7469,
+                  "order": 14,
+                  "parentItem": 5506,
+                  "label": "Artificial Intelligence",
+                  "object": "expertise",
+                  "targetId": 7461,
+                  "url": "https://www.victrix.ca/en/expertise/artificial-intelligence/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 5572,
+                  "order": 15,
+                  "parentItem": 5506,
+                  "label": "Intranet — Employee Experience Platform",
+                  "object": "expertise",
+                  "targetId": 5526,
+                  "url": "https://www.victrix.ca/en/expertise/productivity-consulting/employee-platform-intranet/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 6711,
+                  "order": 16,
+                  "parentItem": 5506,
+                  "label": "ServiceNow",
+                  "object": "expertise",
+                  "targetId": 6710,
+                  "url": "https://www.victrix.ca/en/expertise/productivity-consulting/servicenow/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 14727,
+                  "order": 17,
+                  "parentItem": 5506,
+                  "label": "Dynamics 365 Field Service",
+                  "object": "expertise",
+                  "targetId": 14723,
+                  "url": "https://www.victrix.ca/en/expertise/productivity-consulting/dynamics-365-field-service/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 6893,
+                  "order": 18,
+                  "parentItem": 5506,
+                  "label": "Copilot for Microsoft 365",
+                  "object": "expertise",
+                  "targetId": 6878,
+                  "url": "https://www.victrix.ca/en/expertise/productivity-consulting/copilot-for-microsoft-365/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 6653,
+                  "order": 19,
+                  "parentItem": 5506,
+                  "label": "Copilot Studio",
+                  "object": "expertise",
+                  "targetId": 6503,
+                  "url": "https://www.victrix.ca/en/expertise/productivity-consulting/copilot-studio/",
+                  "targetStatus": "publish",
+                  "children": []
+                },
+                {
+                  "id": 5508,
+                  "order": 20,
+                  "parentItem": 5506,
+                  "label": "Office booking app",
+                  "object": "expertise",
+                  "targetId": 5462,
+                  "url": "https://www.victrix.ca/en/expertise/productivity-consulting/office-booking/",
+                  "targetStatus": "publish",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 7117,
+              "order": 21,
+              "parentItem": 3018,
+              "label": "Managed Services",
+              "object": "expertise",
+              "targetId": 7115,
+              "url": "https://www.victrix.ca/en/expertise/managed-it-services/",
+              "targetStatus": "publish",
+              "children": [
+                {
+                  "id": 6886,
+                  "order": 22,
+                  "parentItem": 7117,
+                  "label": "Managed IT Services",
+                  "object": "custom",
+                  "targetId": null,
+                  "url": "https://www.victrix.ca/en/expertise/managed-it-services/",
+                  "targetStatus": null,
+                  "children": []
+                },
+                {
+                  "id": 5510,
+                  "order": 23,
+                  "parentItem": 7117,
+                  "label": "M365 Ecosystem",
+                  "object": "expertise",
+                  "targetId": 5461,
+                  "url": "https://www.victrix.ca/en/expertise/managed-it-services/maximize-the-use-of-your-m365-ecosystem/",
+                  "targetStatus": "publish",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 5511,
+          "order": 24,
+          "parentItem": 0,
+          "label": "Products",
+          "object": "custom",
+          "targetId": null,
+          "url": "https://o-studio-catalogue.victrix.ca/",
+          "targetStatus": null,
+          "children": [
+            {
+              "id": 7246,
+              "order": 25,
+              "parentItem": 5511,
+              "label": "Ø Studio App Store",
+              "object": "custom",
+              "targetId": null,
+              "url": "https://o-studio-catalogue.victrix.ca/",
+              "targetStatus": null,
+              "children": []
+            },
+            {
+              "id": 7820,
+              "order": 26,
+              "parentItem": 5511,
+              "label": "Licenses and Equipments",
+              "object": "expertise",
+              "targetId": 7721,
+              "url": "https://www.victrix.ca/en/expertise/it-procurement/",
+              "targetStatus": "publish",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 3019,
+          "order": 27,
+          "parentItem": 0,
+          "label": "Careers",
+          "object": "page",
+          "targetId": 2952,
+          "url": "https://www.victrix.ca/en/careers/",
+          "targetStatus": "publish",
+          "children": []
+        },
+        {
+          "id": 3546,
+          "order": 28,
+          "parentItem": 0,
+          "label": "Contact",
+          "object": "page",
+          "targetId": 3526,
+          "url": "https://www.victrix.ca/en/contact/",
+          "targetStatus": "publish",
+          "children": []
+        },
+        {
+          "id": 3021,
+          "order": 29,
+          "parentItem": 0,
+          "label": "Resources",
+          "object": "page",
+          "targetId": 2968,
+          "url": "https://www.victrix.ca/en/resources-center/",
+          "targetStatus": "publish",
+          "children": []
+        },
+        {
+          "id": 3022,
+          "order": 30,
+          "parentItem": 0,
+          "label": "My Portal",
+          "object": "page",
+          "targetId": 2973,
+          "url": "https://www.victrix.ca/en/customer-portal/",
+          "targetStatus": "publish",
+          "children": []
+        },
+        {
+          "id": 3023,
+          "order": 31,
+          "parentItem": 0,
+          "label": "Langues",
+          "object": "custom",
+          "targetId": null,
+          "url": "#pll_switcher",
+          "targetStatus": null,
+          "children": []
+        }
+      ]
+    }
+  ]
+}

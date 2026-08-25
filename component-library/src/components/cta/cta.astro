@@ -1,0 +1,150 @@
+---
+/**
+ * Section « Appel à l'action » — composant Bookshop (contrat landing GELÉ,
+ * enrichi ADDITIVEMENT).
+ * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/expertise-mere.css §CTA Section) :
+ * PANNEAU arrondi 8 dans le conteneur —
+ *  - variant "dark"  : aplat Bleu Victrix, titre 40/700 blanc, corps 18/29
+ *    blanc 80 %, bouton BLANC texte bleu rayon 2, décor cercles (plein +
+ *    tireté) en filigrane à droite ;
+ *  - variant "light" : panneau beige (surface-container), titre navy, bouton
+ *    primaire — même géométrie ;
+ *  - `fond` (2026-08-17, pilote 6 blocs) : lavis de la SECTION derrière le
+ *    panneau, borné à la palette (blanc/givre/ivoire/beige/sable).
+ *  - variant "nuit"  : NOUVEAU (produit-enfant.css §CTA Section, 2026-08-05) —
+ *    aplat anthracite (on-surface), contenu CENTRÉ (max 768), sans décor,
+ *    bouton primaire + second bouton CONTOUR blanc.
+ * Bleus/navy/anthracite = tokens (export Hanken/chaud, #002FC8→primary,
+ * #1C1C1A→on-surface).
+ *
+ * Props : { type: "cta", title, body?, ctaLabel, ctaHref, cta2Label?,
+ *           cta2Href?, variant? }
+ * (contrat GELÉ intact — `cta2*` et la valeur « nuit » sont ADDITIFS ; toute
+ * valeur inattendue de `variant` retombe sur "light" ; cta2 vide = absent.)
+ *
+ * Contraintes / pièges :
+ * - <h2> : le <h1> unique appartient au héros.
+ * - Bouton contour : `border border-solid` (piège UA-medium sans preflight).
+ * - Browser-safe : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Props {
+  title: string;
+  body?: string;
+  ctaLabel: string;
+  ctaHref: string;
+  cta2Label?: string;
+  cta2Href?: string;
+  variant?: 'light' | 'dark' | 'nuit';
+  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+}
+
+const {
+  title,
+  body,
+  ctaLabel,
+  ctaHref,
+  cta2Label,
+  cta2Href,
+  variant = 'light',
+  fond = 'blanc',
+} = Astro.props;
+const dark = variant === 'dark';
+const nuit = variant === 'nuit';
+
+// « Fond de section » (2026-08-17, pilote 6 blocs) : lavis DERRIÈRE le
+// panneau (le panneau garde sa `variant`). Clé fermée → utilitaire de la
+// palette officielle ; défaut = rendu historique (blanc, ex-bg-surface).
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
+---
+
+<section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
+  <div class="container-site">
+    <div
+      class:list={[
+        'relative overflow-hidden rounded-lg p-10 lg:p-20 isolate',
+        nuit ? 'bg-on-surface' : dark ? 'bg-primary' : 'bg-surface-container',
+      ]}
+    >
+      <!-- Décor : grand cercle tireté + cercle plein, filigrane à droite (pas en « nuit »). -->
+      {
+        !nuit && (
+          <svg
+            class:list={[
+              'absolute -right-24 top-1/2 -translate-y-1/2 -z-10',
+              dark ? 'text-white/20' : 'text-primary/10',
+            ]}
+            width="460"
+            height="460"
+            viewBox="0 0 460 460"
+            fill="none"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <circle cx="230" cy="230" r="180" stroke="currentColor" stroke-width="2.3" stroke-dasharray="14 14" />
+            <circle cx="230" cy="230" r="120" stroke="currentColor" stroke-width="1.2" />
+          </svg>
+        )
+      }
+      <div
+        class:list={[
+          'flex flex-col gap-6',
+          nuit ? 'max-w-[768px] mx-auto items-center text-center' : 'max-w-[576px] items-start',
+        ]}
+      >
+        <h2
+          class:list={[
+            'text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] m-0 text-balance',
+            dark || nuit ? 'text-white' : 'text-on-surface',
+          ]}
+        >
+          {title}
+        </h2>
+        {
+          body && (
+            <p
+              class:list={[
+                'text-lg leading-[29px] m-0 max-w-none',
+                dark || nuit ? 'text-white/80' : 'text-on-surface-variant',
+              ]}
+            >
+              {body}
+            </p>
+          )
+        }
+        <div class:list={['flex flex-wrap items-center gap-4 mt-2', nuit && 'justify-center']}>
+          <a
+            class:list={[
+              'no-underline px-10 py-5 rounded-sm text-sm font-semibold tracking-[0.28px] leading-none inline-flex items-center shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] transition-colors',
+              dark ? 'bg-white text-primary hover:bg-primary-fixed' : 'bg-primary text-on-primary hover:bg-primary-container',
+            ]}
+            href={ctaHref}
+          >
+            {ctaLabel}
+          </a>
+          {
+            cta2Label && cta2Href && (
+              <a
+                class:list={[
+                  'no-underline px-10 py-[19px] rounded-sm text-sm font-semibold tracking-[0.28px] leading-none inline-flex items-center border border-solid transition-colors',
+                  dark || nuit
+                    ? 'border-white text-white hover:bg-white/10'
+                    : 'border-primary text-primary hover:bg-primary/5',
+                ]}
+                href={cta2Href}
+              >
+                {cta2Label}
+              </a>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

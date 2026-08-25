@@ -1,0 +1,198 @@
+{
+  "title": "La cybersécurité au service de vos affaires",
+  "description": "Services de cybersécurité adaptés à votre réalité opérationnelle et réglementaire. Gestion du risque, protection des données et conformité avec Victrix.",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "",
+      "titleAccent": "",
+      "title": "La cybersécurité au service de vos affaires",
+      "titleHighlight": "cybersécurité",
+      "lead": "Sécurisation des actifs, gestion des risques et mise en conformité réglementaire : Victrix vous accompagne dans la mise en place d’une stratégie de cybersécurité adaptée à votre réalité organisationnelle et aux exigences réglementaires de votre secteur.",
+      "ctaLabel": "Renforcez votre cybersécurité",
+      "ctaHref": "/fr/contact",
+      "image": "/wp-content/uploads/2024/12/modern-urban-architecture-2024-09-18-06-16-04-utc-2-scaled.jpg",
+      "imageAlt": ""
+    },
+    {
+      "type": "bento-metrics",
+      "title": "La cybersécurité, un atout stratégique intégré à tous nos projets",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Victrix, votre fournisseur de services de cybersécurité",
+        "text": "Faites confiance à Victrix pour <strong>protéger vos données sensibles</strong>, <strong>assurer la sécurité de vos systèmes</strong> et <strong>prendre en charge le déploiement de solutions technologiques</strong> qui protégeront votre entreprise contre les cybermenaces.",
+        "watermark": "eclair",
+        "stats": [
+          { "value": "21+", "label": "années d’expérience" },
+          { "value": "+300", "label": "experts" },
+          { "value": "+7500", "label": "projets" }
+        ]
+      },
+      "aside": {
+        "icon": "bouclier",
+        "title": "Certification ISO 27001:2022",
+        "text": "Nous détenons la certification ISO 27001:2022, attestant que nos pratiques respectent les plus hauts standards internationaux en gestion de la sécurité de l’information.",
+        "linkLabel": "Parlons de vos projets",
+        "linkHref": "/fr/contact"
+      }
+    },
+    {
+      "type": "numbered-cards",
+      "sectionTitle": "Notre service de cybersécurité : la réponse à tous vos enjeux",
+      "headingStyle": "plain",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "L’évolution des menaces informatiques",
+          "text": "Des cyberattaques de plus en plus sophistiquées et ciblées."
+        },
+        {
+          "number": "02",
+          "title": "Manque de ressources spécialisées",
+          "text": "Équipes internes débordées et pénurie d’expertises."
+        },
+        {
+          "number": "03",
+          "title": "Complexité croissante des TI",
+          "text": "Environnements hybrides difficiles à sécuriser efficacement."
+        },
+        {
+          "number": "04",
+          "title": "Pression réglementaire",
+          "text": "Complexité de la mise en conformité et sanctions coûteuses infligées en cas de non-respect."
+        },
+        {
+          "number": "05",
+          "title": "Impacts des incidents de cybersécurité",
+          "text": "Interruptions des opérations, pertes financières et dommages à la réputation."
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "Un service de cybersécurité de bout-en-bout",
+      "paragraphs": [
+        "<a href=\"/expertise/conseil-strategique/\">Services-conseils</a> en sécurité adaptés à vos besoins et votre croissance.",
+        "Accompagnement pour la mise en conformité aux normes ISO 27001/2, <a href=\"/directive-nis2/\">NIS2</a>, SOC2, <a href=\"/expertise/conseil-strategique/conformite-loi-25/\">Loi 25</a>, RGPD, PCI, <a href=\"/reglementation-dora/\">DORA</a> et plus encore.",
+        "<a href=\"/expertise/services-infonuagiques/\">Services infonuagiques</a> avec un niveau de protection renforcé.",
+        "Évolution de votre posture de sécurité et mise en œuvre d’un plan de reprise et continuité (PCA/PRA) pour une réponse aux incidents rapide et efficace."
+      ],
+      "image": "/wp-content/uploads/2024/12/modern-urban-architecture-2024-09-18-06-16-04-utc-2-scaled.jpg",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Sécurité", "label": "Sécurisation de vos actifs" },
+        { "value": "Risques", "label": "Gestion du risque et de la conformité" },
+        { "value": "Conformité", "label": "ISO, NIS2, Loi 25, RGPD, DORA" },
+        { "value": "Résilience", "label": "Plan de reprise et continuité (PCA/PRA)" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "Nos partenaires technologies",
+      "fond": "givre",
+      "boxes": [
+        "Palo Alto",
+        "Checkpoint",
+        "CrowdStrike",
+        "Microsoft 365",
+        "Cisco",
+        "AlgoSec",
+        "AWS",
+        "ServiceNow",
+        "Proofpoint",
+        "ZScaler",
+        "Juniper"
+      ]
+    },
+    {
+      "type": "realisations",
+      "title": "Une expertise au service des secteurs public et privé",
+      "intro": "Nous aidons les organisations du secteur privé et public à atteindre leurs objectifs de sécurité de l’information.",
+      "fond": "blanc",
+      "linkLabel": "Cybersécurité pour le secteur de la santé",
+      "linkHref": "/fr/services/cybersecurite/cybersecurite-sante",
+      "items": [
+        {
+          "title": "Secteur public",
+          "text": "Ministères, municipalités, services publics et sociaux.",
+          "icon": "groupe"
+        },
+        {
+          "title": "Santé",
+          "text": "Cliniques privées, hôpitaux, CISSS, CLSC.",
+          "icon": "trousse"
+        },
+        {
+          "title": "Industriel",
+          "text": "Manufacturier, technologie, aérospatial.",
+          "icon": "marteau"
+        },
+        {
+          "title": "Finance",
+          "text": "Institutions financières, assurances.",
+          "icon": "casque"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "title": "En savoir plus sur nos services de cybersécurité",
+      "fond": "givre",
+      "items": [
+        {
+          "question": "Quelles sont les offres de cybersécurité de Victrix ?",
+          "answer": "La cybersécurité est inscrite dans l’ADN de Victrix. Nous accompagnons les organisations grâce à un accompagnement stratégique et créateur de valeur. Parmi nos offres : tests d’intrusion (Pentest), audit GRC (gestion du risque et de la conformité), développement de plan de continuité et de relève (PCA/PRA), mise en place du modèle Zero Trust, mise en conformité à la Loi 25, au RGPD, à DORA et aux autres normes en matière de protection des données personnelles, évaluation et sécurisation de votre inventaire IoT (Internet des objets), et gestion des identités et accès avec le modèle SASE."
+        },
+        {
+          "question": "Que fait Victrix pour assurer la sécurité opérationnelle ?",
+          "answer": "Victrix supporte les efforts de cybersécurité du secteur public et privé à travers l’évaluation de la posture et de la maturité de sécurité, le déploiement de contrôles (EDR-XDR-MDR), la gestion des identités et accès (IDaaS) et la gestion opérationnelle, incluant des audits de cybersécurité et des services gérés 24/7."
+        },
+        {
+          "question": "Est-ce que Victrix peut aider mon organisation à sécuriser l’infonuagique ?",
+          "answer": "Victrix est votre partenaire stratégique pour bénéficier de services de cybersécurité infonuagique tels que le déploiement sécurisé d’infrastructures (PaaS, SaaS et IaaS), la transformation et l’optimisation d’applications (DevOps/DevSecOps), la protection des API et l’automatisation des processus."
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Ressources liées",
+      "tags": [
+        "Cybersécurité"
+      ],
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
+    },
+    {
+      "type": "form",
+      "title": "Évaluation posture sécurité",
+      "intro": "Obtenez un portrait clair de votre posture de sécurité — un de nos experts vous recontacte rapidement.",
+      "submitLabel": "Envoyer ma demande",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "campagne-evaluation",
+      "fields": []
+    },
+    {
+      "type": "cta",
+      "title": "Faites face à la croissance des cyberrisques en toute confiance",
+      "body": "Nous aidons les organisations à rentabiliser leurs investissements en matière de sécurité, avec une stratégie adaptée à votre réalité organisationnelle.",
+      "ctaLabel": "Demander une évaluation",
+      "ctaHref": "#formulaire",
+      "cta2Label": "Nous joindre",
+      "cta2Href": "/fr/contact",
+      "variant": "nuit"
+    }
+  ],
+  "seoTitle": "La cybersécurité au service de vos affaires | Expertise"
+}

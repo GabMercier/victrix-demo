@@ -1,16 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { ui } from '../i18n/ui';
 import { localizePath } from '../i18n/config';
+import { getSiteText } from '../i18n/site';
 
 /**
  * Not-found page. A static site has a single 404.html that can be served for any
  * path, so the locale isn't known at build time: we render French (the default)
  * and a tiny client script swaps the copy + links to English when the requested
  * path is under /en/.
+ *
+ * TEXTES ÉDITABLES AU CMS (2026-08-11) : les chaînes vivent dans la collection
+ * `site` (src/data/site/{fr,en}.json, déclarée à CloudCannon) — plus dans
+ * ui.ts. Le garde-fou zod exige le bloc notFound dans les DEUX langues ; le
+ * garde-fou « fichier de langue manquant » vit dans getSiteText (i18n/site.ts).
+ * Cette page lit les DEUX langues : elle rend le FR et bascule en EN côté
+ * client selon le chemin demandé.
  */
-const fr = ui.fr.notFound;
-const en = ui.en.notFound;
+const fr = (await getSiteText('fr')).notFound;
+const en = (await getSiteText('en')).notFound;
 
 const links = fr.links.map((l, i) => ({
   primary: l.primary,
@@ -29,7 +36,10 @@ const enData = {
 };
 ---
 
-<BaseLayout lang="fr" title={fr.metaTitle} description={fr.metaDescription}>
+{/* noindex : une page 404 n'a rien à faire dans les moteurs (elle est servie
+    avec un statut 404, la meta est une ceinture de plus) NI dans la recherche
+    interne Pagefind (l'attribut data-pagefind-body suit !noindex). */}
+<BaseLayout lang="fr" title={fr.metaTitle} description={fr.metaDescription} noindex>
   <section class="nf">
     <div class="container nf__inner">
       <span class="nf__badge" aria-hidden="true">
@@ -124,7 +134,7 @@ const enData = {
     width: 88px;
     height: 88px;
     border-radius: var(--radius-pill);
-    background-color: var(--color-surface);
+    background-color: var(--color-band);
     color: var(--color-navy);
     margin-bottom: var(--space-5);
   }
@@ -151,9 +161,9 @@ const enData = {
     font-size: var(--fs-200);
   }
   .nf__requested code {
-    background-color: var(--color-surface);
+    background-color: var(--color-band);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-s);
     padding: 0.15em 0.5em;
     color: var(--color-navy);
   }

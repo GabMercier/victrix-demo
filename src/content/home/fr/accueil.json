@@ -1,89 +1,156 @@
 {
-  "hero": {
-    "eyebrow": "Services-conseils en TI",
-    "title": "Victrix, votre partenaire de confiance en services-conseils et solutions TI",
-    "subtitle": "Renforcez votre cybersécurité et optimisez vos processus avec Victrix. Profitez de notre expertise de pointe en gestion des TI, en infonuagique et en gouvernance de l’IA pour propulser votre organisation et rester à l’avant-garde technologique de votre secteur.",
-    "ctaLabel": "Découvrir Victrix",
-    "ctaHref": "/decouvrir"
-  },
-  "iso": {
-    "title": "Certifié ISO 27001",
-    "subtitle": "La sécurité de l’information au cœur de toutes nos pratiques."
-  },
-  "expertises": {
-    "sectionTitle": "Nos expertises",
-    "items": [
-      {
-        "number": "01",
-        "title": "Cybersécurité",
-        "accent": "#B45309",
-        "description": "Audit, gouvernance, surveillance, gestion des identités (IAM), automatisation — SevOC.",
-        "href": "/expertises/cybersecurite"
-      },
-      {
-        "number": "02",
-        "title": "Infonuagique",
-        "accent": "#2350E0",
-        "description": "Feuille de route multinuage, étude d’opportunité (IaaS, PaaS, SaaS), analyse de la posture de sécurité, migration vers une plateforme infonuagique (AWS, Azure).",
-        "href": "/expertises/infonuagique"
-      },
-      {
-        "number": "03",
-        "title": "Productivité",
-        "accent": "#1F8A4C",
-        "description": "BI et Power BI, développement Microsoft 365, gestion et automatisation des processus.",
-        "href": "/expertises/productivite"
-      },
-      {
-        "number": "04",
-        "title": "Intelligence artificielle",
-        "accent": "#0E7C86",
-        "description": "Exploration et analyse des opportunités, développement d’agents et de solutions d’IA sur mesure, adoption sécurisée de l’IA générative.",
-        "href": "/expertises/intelligence-artificielle"
-      },
-      {
-        "number": "05",
-        "title": "Consultation stratégique",
-        "accent": "#5C6068",
-        "description": "Stratégie, feuille de route technologique, positionnement stratégique.",
-        "href": "/expertises/consultation-strategique"
-      },
-      {
-        "number": "06",
-        "title": "Services gérés",
-        "accent": "#C2410C",
-        "description": "Services gérés de sécurité et d’infonuagique.",
-        "href": "/expertises/services-geres"
-      }
-    ]
-  },
-  "solutions": {
-    "eyebrow": "Nos solutions phares",
-    "title": "SevOC",
-    "body": "Le SevOC prend en charge les opérations de sécurité de votre organisation. Contrairement à un SOC traditionnel, notre offre modulaire et évolutive vous permet de rester à l’avant-garde des technologies de sécurité.",
-    "ctaLabel": "Découvrir le SevOC",
-    "ctaHref": "/expertises/cybersecurite",
-    "image": "../sevoc.png"
-  },
-  "partners": {
-    "title": "Nos partenaires",
-    "names": [
-      "Imprivata",
-      "AlgoSec",
-      "AWS",
-      "OVHcloud",
-      "ServiceNow"
-    ]
-  },
-  "experts": {
-    "title": "Rencontrez nos experts",
-    "subtitle": "N’hésitez pas à nous contacter pour discuter de vos projets.",
-    "ctaLabel": "Réserver une plage horaire",
-    "ctaHref": "/contact"
-  },
-  "articles": {
-    "title": "Nos derniers articles",
-    "ctaLabel": "Voir toutes les ressources",
-    "ctaHref": "/ressources"
-  }
+  "sections": [
+    {
+      "_bookshop_name": "home-hero",
+      "type": "home-hero",
+      "eyebrow": "Cabinet-conseil • Technologies • IA",
+      "title": "Propulsez votre entreprise avec des TI qui font vraiment la différence.",
+      "titleAccent": "vraiment",
+      "subtitle": "De la cybersécurité à l'IA, Victrix transforme vos enjeux technologiques en solutions concrètes, sécurisées et performantes.",
+      "ctaLabel": "Découvrir nos expertises",
+      "ctaHref": "/fr/expertises",
+      "image": "/images/home/hero-accueil.jpg",
+      "cta2Label": "Parler à un expert",
+      "cta2Href": "/fr/contact"
+    },
+    {
+      "_bookshop_name": "home-expertises",
+      "type": "home-expertises",
+      "sectionTitle": "Nos services",
+      "intro": "Des expertises complémentaires pour couvrir l'ensemble de vos besoins technologiques.",
+      "learnMore": "En savoir plus",
+      "ctaLabel": "Voir toutes nos expertises",
+      "ctaHref": "/fr/expertises",
+      "items": [
+        {
+          "number": "01",
+          "title": "Cybersécurité",
+          "accent": "#1a5bff",
+          "description": "Protégez vos actifs numériques contre les menaces d'aujourd'hui et de demain.",
+          "href": "/fr/services/cybersecurite",
+          "image": "/images/home/expertise-cybersecurite.jpg",
+          "variant": "image",
+          "linkLabel": "",
+          "wide": true
+        },
+        {
+          "number": "03",
+          "title": "IA & Automatisation",
+          "accent": "#1a5bff",
+          "description": "Exploitez le potentiel de l'IA générative pour vos processus d'affaires.",
+          "href": "/fr/services/intelligence-artificielle",
+          "image": "",
+          "variant": "bleue",
+          "linkLabel": "Découvrir",
+          "wide": false
+        },
+        {
+          "number": "04",
+          "title": "Migration Cloud",
+          "accent": "#1a5bff",
+          "description": "Modernisez vos infrastructures avec agilité.",
+          "href": "/fr/services/services-infonuagiques",
+          "image": "",
+          "variant": "image",
+          "linkLabel": "",
+          "wide": false
+        },
+        {
+          "number": "05",
+          "title": "Conseil Stratégique",
+          "accent": "#1a5bff",
+          "description": "Accompagnement de la haute direction dans les choix technologiques.",
+          "href": "/fr/services/conseil-strategique",
+          "image": "",
+          "variant": "claire",
+          "linkLabel": "",
+          "wide": false
+        },
+        {
+          "number": "06",
+          "title": "Services Gérés",
+          "accent": "#1a5bff",
+          "description": "Paix d'esprit et performance 24/7/365.",
+          "href": "/fr/services/services-ti-geres",
+          "image": "",
+          "variant": "nuit",
+          "linkLabel": "",
+          "wide": false
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "home-solution",
+      "type": "home-solution",
+      "eyebrow": "",
+      "title": "Libérez votre équipe des contraintes opérationnelles",
+      "body": "Nos services gérés vous permettent de vous concentrer sur votre cœur de métier pendant que nos experts veillent sur la performance de vos systèmes.",
+      "ctaLabel": "Parler à un expert",
+      "ctaHref": "/fr/contact",
+      "image": "../equipe.jpg",
+      "statValue": "24/7",
+      "statLabel": "Services gérés",
+      "statText": "Support proactif et gestion complète de votre écosystème M365.",
+      "features": [
+        {
+          "label": "M365 Écosystème",
+          "text": "Maximisez l'utilisation de vos licences et outils collaboratifs."
+        },
+        {
+          "label": "Sécurité Infra",
+          "text": "Surveillance continue et remédiation rapide des incidents."
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "home-solutions",
+      "type": "home-solutions",
+      "title": "Nos solutions phares",
+      "ctaLabel": "Voir toutes nos solutions",
+      "ctaHref": "/fr/produits",
+      "items": [
+        {
+          "title": "Ø Studio",
+          "text": "Ø Studio offre une équipe multidisciplinaire pour automatiser vos processus et réaliser vos développements applicatifs à haute vitesse !",
+          "image": "/images/home/expertise-productivite.jpg",
+          "href": "/fr/services/productivite/o-bureau",
+          "ctaLabel": "Découvrir Ø Studio",
+          "icon": "ecran"
+        },
+        {
+          "title": "SEvOC",
+          "text": "Le SEvOC prend en charge les opérations de sécurité de votre organisation. Notre offre évolutive et modulaire vous permet de rester à l'avant-garde.",
+          "image": "/images/home/sevoc.png",
+          "href": "/fr/services/cybersecurite",
+          "ctaLabel": "Découvrir SEvOC",
+          "icon": "bouclier"
+        },
+        {
+          "title": "Migration Azure",
+          "text": "Victrix accélère votre transition vers Azure. Basée sur le Framework Microsoft Cloud Adoption, notre méthode sécurise vos premiers pas.",
+          "image": "/images/home/expertise-infonuagique.jpg",
+          "href": "/fr/services/services-infonuagiques",
+          "ctaLabel": "Découvrir Azure",
+          "icon": "nuage"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "home-latest",
+      "type": "home-latest",
+      "title": "Ressources et perspectives",
+      "subtitle": "Découvrez nos derniers articles, études de cas et webinaires techniques.",
+      "readMoreLabel": "Lire la suite",
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
+    },
+    {
+      "_bookshop_name": "home-experts",
+      "type": "home-experts",
+      "title": "Prêt à faire évoluer votre organisation ?",
+      "subtitle": "Discutons de vos enjeux et découvrons comment Victrix peut vous aider à aller plus loin dans votre transformation numérique.",
+      "ctaLabel": "Parler à un expert",
+      "ctaHref": "/fr/contact"
+    }
+  ]
 }

@@ -1,0 +1,4727 @@
+/* Catalogue Victrix */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px 0px 0px 97px;
+isolation: isolate;
+
+position: absolute;
+width: 1280px;
+height: 2127.5px;
+left: 476px;
+top: 597px;
+overflow-y: scroll;
+
+background: linear-gradient(0deg, #F8F9FA, #F8F9FA), #FFFFFF;
+
+
+/* Main Content Area */
+
+width: 1024px;
+height: 2127.5px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Header - TopNavBar */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px 32px;
+
+position: absolute;
+height: 64px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+background: #F8F9FA;
+border-bottom: 1px solid #C5C6D0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 32px;
+
+width: 960px;
+height: 40px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 145.83px;
+height: 24px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 145.83px;
+height: 24px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+width: 448px;
+max-width: 448px;
+height: 40px;
+
+border-radius: 8px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Input */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 9px 16px 10px 40px;
+
+width: 448px;
+height: 40px;
+
+background: #F3F4F5;
+border-radius: 8px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 392px;
+height: 21px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Rechercher une application... */
+
+width: 392px;
+height: 21px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 21px;
+/* identique à la hauteur de la zone de texte */
+display: flex;
+align-items: center;
+
+color: #6B7280;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 18px;
+left: 12px;
+top: 20%;
+bottom: 20%;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Icon */
+
+width: 18px;
+height: 18px;
+
+background: #44474F;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Main */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 32px;
+gap: 40px;
+
+position: absolute;
+max-width: 1440px;
+height: 1974.5px;
+left: -78px;
+right: 78px;
+top: 77px;
+
+
+
+/* Hero Featured Section */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 48px;
+gap: 32px;
+
+width: 960px;
+height: 538px;
+
+background: #001B44;
+box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 8px 10px -6px rgba(0, 0, 0, 0.1);
+border-radius: 12px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 1px 0px 0px;
+gap: 24px;
+
+width: 400px;
+height: 442px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Background */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 4px 12px;
+
+width: 187.98px;
+height: 24px;
+
+background: #3256FF;
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 163.98px;
+height: 16px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+letter-spacing: 1.2px;
+text-transform: uppercase;
+
+color: #EAEAFF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Heading 2 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 400px;
+height: 144px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ø Bureau — Réservation de bureaux */
+
+width: 400px;
+height: 144px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 800;
+font-size: 48px;
+line-height: 48px;
+/* ou 100% */
+display: flex;
+align-items: center;
+letter-spacing: -1.2px;
+
+color: #FFFFFF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 400px;
+max-width: 576px;
+height: 117px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Simple à piloter et à mettre en place, notre application vous aidera à gérer vos bureaux en un instant. Optimisez l'espace et facilitez le travail hybride pour vos équipes. */
+
+width: 400px;
+height: 117px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 29px;
+/* ou 162% */
+display: flex;
+align-items: center;
+
+color: #D8E2FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 16px;
+
+width: 400px;
+height: 84px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Button */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 17.5px 51.43px 18.5px 51.42px;
+
+width: 191.81px;
+height: 84px;
+
+background: #0038E6;
+border-radius: 12px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 88.96px;
+height: 48px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* ou 150% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Button */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px 39.36px;
+
+width: 192.19px;
+height: 84px;
+
+border: 2px solid #D8E2FF;
+border-radius: 12px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 109.47px;
+height: 48px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* ou 150% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #D8E2FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Overlay+Border+Shadow */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+width: 432px;
+height: 243px;
+
+background: rgba(255, 255, 255, 0.002);
+border: 1px solid rgba(255, 255, 255, 0.1);
+box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+border-radius: 8px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* AB6AXuCQg6geOLA-xn05vqKFOqYl6tX41e_64eqTjji1kjA3mG2mvW5iBtJY9PW5QEA2JngLG6l8a37i_HvlAMvoWn2Six7P4EmioO567ukL0dpmJDizo5rn6_VlAtYGwULJgwTY1f1X2dQyqOu_9oimVG1Uug13VgyQifR6QaNMntVkjsK5ywAEQcXw8W4vy-LsSNRj2DqygpgHaMod2DEjgWLx94eCkJFtbeoh0O-JeijLKsJCqxwqzubx3sfUt1e_A5oEmvV-S4AuWdc */
+
+width: 430px;
+height: 241px;
+
+background: url(.jpg);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Gradient */
+
+position: absolute;
+left: 1px;
+right: 1px;
+top: 1px;
+bottom: 1px;
+
+background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Filters Section */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: flex-end;
+padding: 0px;
+gap: 24px;
+
+width: 960px;
+height: 80px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 16px;
+
+width: 760.29px;
+height: 80px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Container */
+
+width: 369.13px;
+height: 80px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Label → Secteurs d'activité */
+
+position: absolute;
+width: 116.34px;
+height: 20px;
+left: 4px;
+top: 2px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+
+color: #44474F;
+
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+position: absolute;
+height: 48px;
+left: 0px;
+right: 0px;
+top: 32px;
+
+
+
+/* Options */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 16px;
+isolation: isolate;
+
+width: 369.13px;
+height: 48px;
+
+background: #F3F4F5;
+border: 1px solid #C5C6D0;
+border-radius: 8px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* image clip */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 12px 9px 12px 336.13px;
+
+position: absolute;
+left: 0px;
+right: 0px;
+top: 0px;
+bottom: 0px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* image */
+
+width: 24px;
+height: 24px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 30%;
+right: 30%;
+top: 40%;
+bottom: 40%;
+
+border: 1.8px solid #6B7280;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 335.13px;
+height: 24px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+z-index: 1;
+
+
+/* Tous les secteurs */
+
+width: 335.13px;
+height: 24px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+
+color: #191C1D;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 12px;
+right: 12px;
+top: 25%;
+bottom: 25%;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Icon */
+
+width: 12px;
+height: 7.4px;
+
+background: #44474F;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+width: 369.14px;
+height: 80px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Label → Types de solution */
+
+position: absolute;
+width: 110.64px;
+height: 20px;
+left: 4px;
+top: 2px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+
+color: #44474F;
+
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+position: absolute;
+height: 48px;
+left: 0px;
+right: 0px;
+top: 32px;
+
+
+
+/* Options */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 16px;
+isolation: isolate;
+
+width: 369.14px;
+height: 48px;
+
+background: #F3F4F5;
+border: 1px solid #C5C6D0;
+border-radius: 8px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* image clip */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 12px 9px 12px 336.14px;
+
+position: absolute;
+left: 0px;
+right: 0px;
+top: 0px;
+bottom: 0px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* image */
+
+width: 24px;
+height: 24px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 30%;
+right: 30%;
+top: 40%;
+bottom: 40%;
+
+border: 1.8px solid #6B7280;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 335.14px;
+height: 24px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+z-index: 1;
+
+
+/* Toutes les solutions */
+
+width: 335.14px;
+height: 24px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+
+color: #191C1D;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 12px;
+right: 12px;
+top: 25%;
+bottom: 25%;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Icon */
+
+width: 12px;
+height: 7.4px;
+
+background: #44474F;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 175.71px;
+height: 48px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Button */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px 24px;
+gap: 7.99px;
+
+width: 119.71px;
+height: 48px;
+
+background: #E1E3E4;
+border-radius: 8px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 18px;
+height: 12px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 18px;
+height: 12px;
+
+background: #191C1D;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 45.72px;
+height: 24px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #191C1D;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Button */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 48px;
+height: 48px;
+
+background: #F3F4F5;
+border: 1px solid #C5C6D0;
+border-radius: 8px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 18px;
+height: 18px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 18px;
+height: 18px;
+
+background: #191C1D;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Section - Grid Layout */
+
+width: 960px;
+height: 910.5px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Card Template */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+position: absolute;
+left: 0px;
+right: 738px;
+top: 0px;
+bottom: 448px;
+
+background: #FFFFFF;
+border: 1px solid #C5C6D0;
+border-radius: 12px;
+
+
+/* Background */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+width: 220px;
+height: 192px;
+
+background: #F3F4F5;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 1;
+
+
+/* AB6AXuBXg_kcqa8d09iDaBVNBOSkghkO6aq9DXhbe_E-YVVvGaVAWRQpKkSObW5qGclxBydZ0ZUqxVtTOcp3I3eoTL-WkA05auS7SOyEKXB5uhWRWVbU1ZCIMvNPbtbSOGrMVWv8zH3N4pBe26T1UYy6zq1BnJU7G0olNw62rynItR1qY3KdI0balojTJUzAHEUQhj1c2n8Smoc3nLX5cZ3NGje9SkzKLVwIWPeb_8dvrvrPDFqJb77dYI9s9_frtcS_G8UDlpoLZn-deSY */
+
+width: 220px;
+height: 192px;
+
+background: url(.jpg);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+z-index: 0;
+
+
+/* Overlay+Shadow+OverlayBlur */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 12px;
+
+position: absolute;
+width: 89.19px;
+height: 23px;
+left: 12px;
+top: 12px;
+
+background: rgba(255, 255, 255, 0.9);
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+backdrop-filter: blur(4px);
+/* Remarque : la propriété backdrop-filter bénéficie d'un niveau de prise en charge minimum par les navigateurs */
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Text */
+
+width: 65.19px;
+height: 15px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 15px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: flex-start;
+padding: 24px;
+
+width: 220px;
+height: 268.5px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Heading 3:margin */
+
+width: 172px;
+height: 79.5px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Heading 3 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+height: 68px;
+left: 0px;
+right: 0px;
+top: -1px;
+
+
+
+/* Text */
+
+width: 141.77px;
+height: 68px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+/* ou 125% */
+display: flex;
+align-items: center;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 24px;
+
+width: 172px;
+height: 84px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 172px;
+height: 60px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Optimise le traitement des requêtes, assure un suivi transparent en temps réel… */
+
+width: 172px;
+height: 60px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+/* ou 143% */
+display: flex;
+align-items: center;
+
+color: #44474F;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* HorizontalBorder */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 16px 0px 0px;
+gap: 0px;
+
+width: 172px;
+height: 57px;
+
+border-top: 1px solid #C5C6D0;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Overlay */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 26.36px 4px 8px;
+
+width: 86.91px;
+height: 40px;
+
+background: rgba(234, 234, 255, 0.1);
+border-radius: 4px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 52.55px;
+height: 32px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 16px;
+/* ou 133% */
+display: flex;
+align-items: center;
+
+color: #3256FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Link */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7.99px;
+
+width: 80.4px;
+height: 20px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 63.08px;
+height: 20px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+
+color: #0038E6;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 9.33px;
+height: 9.33px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 9.33px;
+height: 9.33px;
+
+background: #0038E6;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Card 2 */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+position: absolute;
+left: 246px;
+right: 492px;
+top: 0px;
+bottom: 448px;
+
+background: #FFFFFF;
+border: 1px solid #C5C6D0;
+border-radius: 12px;
+
+
+/* Background */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+width: 220px;
+height: 192px;
+
+background: #F3F4F5;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 1;
+
+
+/* AB6AXuAh6UJs-1h1pQO4OeBB8_95geZn6spVwY5MwLeWn4QXz_AWMeL-VjUxdmt2CgG8_TOkfMj1WuzmzyJ1McXHvEn0qDQRHAm7y_sHto5LT0-s7M2pVmp17RhGZmg8GPyDtOhuUFcV-sZ_-FnN0Lb3fiT4IyJfptlLB2C-aD_GR0wr1qwskrNF9a-slx-ohRB15ABhBVf7jovGx43L5lxXb2fDAGG07zhce2bFuTmZNY1a5cD_ex9SQ4hCB1ijdaGOnwqJpZSJIl5d1J8 */
+
+width: 220px;
+height: 192px;
+
+background: url(.jpg);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+z-index: 0;
+
+
+/* Overlay+Shadow+OverlayBlur */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 12px;
+
+position: absolute;
+width: 97.39px;
+height: 23px;
+left: 12px;
+top: 12px;
+
+background: rgba(255, 255, 255, 0.9);
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+backdrop-filter: blur(4px);
+/* Remarque : la propriété backdrop-filter bénéficie d'un niveau de prise en charge minimum par les navigateurs */
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Text */
+
+width: 73.39px;
+height: 15px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 15px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: flex-start;
+padding: 24px;
+
+width: 220px;
+height: 268.5px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Heading 3:margin */
+
+width: 172px;
+height: 57px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Heading 3 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0.75px;
+
+position: absolute;
+height: 45.75px;
+left: 0px;
+right: 0px;
+top: -0.75px;
+
+
+
+/* Text */
+
+width: 111.58px;
+height: 45px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+/* ou 125% */
+display: flex;
+align-items: center;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 24px;
+
+width: 172px;
+height: 84px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 172px;
+height: 60px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Permet aux citoyens de soumettre leurs requêtes, tandis que le personnel… */
+
+width: 172px;
+height: 60px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+/* ou 143% */
+display: flex;
+align-items: center;
+
+color: #44474F;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: flex-start;
+padding: 22.5px 0px 0px;
+
+width: 172px;
+height: 79.5px;
+min-height: 57px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* HorizontalBorder */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 16px 2.84217e-14px 0px 0px;
+
+width: 172px;
+height: 57px;
+
+border-top: 1px solid #C5C6D0;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Overlay */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 32.19px 4px 8px;
+
+width: 86.91px;
+height: 40px;
+
+background: rgba(234, 234, 255, 0.1);
+border-radius: 4px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px -2.84217e-14px;
+
+
+/* Text */
+
+width: 46.72px;
+height: 32px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 16px;
+/* ou 133% */
+display: flex;
+align-items: center;
+
+color: #3256FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Link */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7.99px;
+
+width: 80.4px;
+height: 20px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 63.08px;
+height: 20px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+
+color: #0038E6;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 9.33px;
+height: 9.33px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 9.33px;
+height: 9.33px;
+
+background: #0038E6;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Card 3 */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+position: absolute;
+left: 492px;
+right: 246px;
+top: 0px;
+bottom: 448px;
+
+background: #FFFFFF;
+border: 1px solid #C5C6D0;
+border-radius: 12px;
+
+
+/* Background */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+width: 220px;
+height: 192px;
+
+background: #F3F4F5;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 1;
+
+
+/* AB6AXuD0WlrRiR0t7jwRjpRioARuVFWwEO9xIs8mm4o2alfb8bqTEzsaeJVYLMBIlqeOMwR0YEo5t9MqzmTJPRKo9ooNrmMOkqzVAzIfRBopZht54nbA5XnA4GYSHFXi1r5z4jOTbqRu0x70bESksWnRyp8rRJg093DnPVz-3f2P1d4BRVZ9VKF6ZZwobBpdsSzpn1Blj3M-WyCTIs94rMgIai2idiG6qhal79rKw6GnHv3oK1QmxZPFiB08ItaqRxKUFgMHfwXDBLWDAXo */
+
+width: 220px;
+height: 192px;
+
+background: url(.jpg);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+z-index: 0;
+
+
+/* Overlay+Shadow+OverlayBlur */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 12px;
+
+position: absolute;
+width: 65.61px;
+height: 23px;
+left: 12px;
+top: 12px;
+
+background: rgba(255, 255, 255, 0.9);
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+backdrop-filter: blur(4px);
+/* Remarque : la propriété backdrop-filter bénéficie d'un niveau de prise en charge minimum par les navigateurs */
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Text */
+
+width: 41.61px;
+height: 15px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 15px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: flex-start;
+padding: 24px;
+
+width: 220px;
+height: 268.5px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Heading 3:margin */
+
+width: 172px;
+height: 57px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Heading 3 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0.75px;
+
+position: absolute;
+height: 45.75px;
+left: 0px;
+right: 0px;
+top: -0.75px;
+
+
+
+/* Text */
+
+width: 141.77px;
+height: 45px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+/* ou 125% */
+display: flex;
+align-items: center;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 24px;
+
+width: 172px;
+height: 84px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 172px;
+height: 60px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Centralise vos demandes, automatise les approbations et simplifie la */
+
+width: 172px;
+height: 60px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+/* ou 143% */
+display: flex;
+align-items: center;
+
+color: #44474F;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: flex-start;
+padding: 38.5px 0px 0px;
+
+width: 172px;
+height: 79.5px;
+min-height: 41px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* HorizontalBorder */
+
+box-sizing: border-box;
+
+width: 172px;
+height: 41px;
+
+border-top: 1px solid #C5C6D0;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Overlay */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 8px;
+
+position: absolute;
+width: 98.47px;
+height: 24px;
+left: 0px;
+top: calc(50% - 24px/2 + 8.5px);
+
+background: rgba(234, 234, 255, 0.1);
+border-radius: 4px;
+
+
+/* Text */
+
+width: 82.47px;
+height: 16px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+
+color: #3256FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Link */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+position: absolute;
+width: 80.41px;
+height: 20px;
+left: 98.47px;
+top: calc(50% - 20px/2 + 8.5px);
+
+
+
+/* Text */
+
+width: 63.08px;
+height: 20px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+
+color: #0038E6;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 9.33px;
+height: 9.33px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 9.33px;
+height: 9.33px;
+
+background: #0038E6;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Card 4 */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+position: absolute;
+left: 738px;
+right: 0px;
+top: 0px;
+bottom: 448px;
+
+background: #FFFFFF;
+border: 1px solid #C5C6D0;
+border-radius: 12px;
+
+
+/* Background */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+width: 220px;
+height: 192px;
+
+background: #F3F4F5;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 1;
+
+
+/* AB6AXuAYikPJCpjRq9_IEmx52vlHJjzOmr-7CsOSgP5iDb0-d-HlWUs4Y5HT9FO48DPfVf6tzl76FI6Tdx11LJbhchivqB-IfwFCHIuAIn31VQDi0vlEooGZpllDDLKNDuS7dTyiQCojSmMVpmP5JS9Nyu-5Ad59Tdf5repqMARGqoxR7bqPZDOiPfsrTk2UFtCy-eO8hUFP7SO9ufoTprm9arRCcvNPKEQGRJLlrH1Jq4BM8u8OOyj_gTHnSsdVQx0sHEC27OKLo5v7QmA */
+
+width: 220px;
+height: 192px;
+
+background: url(.jpg);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+z-index: 0;
+
+
+/* Overlay+Shadow+OverlayBlur */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 12px;
+
+position: absolute;
+width: 82.05px;
+height: 23px;
+left: 12px;
+top: 12px;
+
+background: rgba(255, 255, 255, 0.9);
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+backdrop-filter: blur(4px);
+/* Remarque : la propriété backdrop-filter bénéficie d'un niveau de prise en charge minimum par les navigateurs */
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Text */
+
+width: 58.05px;
+height: 15px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 15px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: flex-start;
+padding: 24px;
+
+width: 220px;
+height: 268.5px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Heading 3:margin */
+
+width: 172px;
+height: 34.5px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Heading 3 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+height: 23px;
+left: 0px;
+right: 0px;
+top: -1px;
+
+
+
+/* Text */
+
+width: 143.58px;
+height: 23px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+/* identique à la hauteur de la zone de texte, ou 125% */
+display: flex;
+align-items: center;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 24px;
+
+width: 172px;
+height: 84px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 172px;
+height: 60px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Favorise l’innovation au sein des organisations. Les employés peuvent… */
+
+width: 172px;
+height: 60px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+/* ou 143% */
+display: flex;
+align-items: center;
+
+color: #44474F;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: flex-start;
+padding: 61px 0px 0px;
+
+width: 172px;
+height: 102px;
+min-height: 41px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* HorizontalBorder */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 16px 0px 0px;
+gap: 5.85px;
+
+width: 172px;
+height: 41px;
+
+border-top: 1px solid #C5C6D0;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Overlay */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 8px;
+
+width: 81.06px;
+height: 24px;
+
+background: rgba(234, 234, 255, 0.1);
+border-radius: 4px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 65.06px;
+height: 16px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+
+color: #3256FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Link */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7.99px;
+
+width: 80.4px;
+height: 20px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 63.08px;
+height: 20px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+
+color: #0038E6;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 9.33px;
+height: 9.33px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 9.33px;
+height: 9.33px;
+
+background: #0038E6;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Card 5 */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+position: absolute;
+left: 0px;
+right: 738px;
+top: 486.5px;
+bottom: 0px;
+
+background: #FFFFFF;
+border: 1px solid #C5C6D0;
+border-radius: 12px;
+
+
+/* Background */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+width: 220px;
+height: 192px;
+
+background: #F3F4F5;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 1;
+
+
+/* AB6AXuA3ijff-6nQIs3jRGadj8cUs9y0HthrxGae527iZRJQJL_cXmvHydPjih190uEoGbT2XhlMLCiVJduyG6el8g4EaZPROBvAxIDXrPaeFNYI0i_tnGGpTpL1Sx5EWzB0kMCOG2nezdlg07eCN30-ddju_Q9V3lIm1_dWW4s7tcsF1px8349WsdzmS8S47-o832WWogJaCXa-ySHXl56pM_YqO4NFSyecviqDja4TrX3jckndt8myUrLxNLfyVEK_lKnRtFdh2RbQEf4 */
+
+width: 220px;
+height: 192px;
+
+background: url(.jpg);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+z-index: 0;
+
+
+/* Overlay+Shadow+OverlayBlur */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 12px;
+
+position: absolute;
+width: 78.7px;
+height: 23px;
+left: 12px;
+top: 12px;
+
+background: rgba(255, 255, 255, 0.9);
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+backdrop-filter: blur(4px);
+/* Remarque : la propriété backdrop-filter bénéficie d'un niveau de prise en charge minimum par les navigateurs */
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Text */
+
+width: 54.7px;
+height: 15px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 15px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: flex-start;
+padding: 24px;
+
+width: 220px;
+height: 230px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Heading 3:margin */
+
+width: 172px;
+height: 57px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Heading 3 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0.75px;
+
+position: absolute;
+height: 45.75px;
+left: 0px;
+right: 0px;
+top: -0.75px;
+
+
+
+/* Text */
+
+width: 168.47px;
+height: 45px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+/* ou 125% */
+display: flex;
+align-items: center;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 24px;
+
+width: 172px;
+height: 84px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 172px;
+height: 60px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Facilite la consultation des emplois du temps et offre aux enseignants une… */
+
+width: 172px;
+height: 60px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+/* ou 143% */
+display: flex;
+align-items: center;
+
+color: #44474F;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* HorizontalBorder */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 16px 0px 0px;
+gap: 27.02px;
+
+width: 172px;
+height: 41px;
+
+border-top: 1px solid #C5C6D0;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Overlay */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 8px;
+
+width: 59.89px;
+height: 24px;
+
+background: rgba(234, 234, 255, 0.1);
+border-radius: 4px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 43.89px;
+height: 16px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+
+color: #3256FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Link */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7.99px;
+
+width: 80.4px;
+height: 20px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 63.08px;
+height: 20px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+
+color: #0038E6;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 9.33px;
+height: 9.33px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 9.33px;
+height: 9.33px;
+
+background: #0038E6;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Card 6 */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+position: absolute;
+left: 246px;
+right: 492px;
+top: 486.5px;
+bottom: 0px;
+
+background: #FFFFFF;
+border: 1px solid #C5C6D0;
+border-radius: 12px;
+
+
+/* Background */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+width: 220px;
+height: 192px;
+
+background: #F3F4F5;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 1;
+
+
+/* AB6AXuCD4FJRnLqqenNXwgmy81Bol5PhLVTY59OqIh_AHxTLP-cA79gKyOScUf3JeMRekKWhK6eG3Z1aAykThQZaP75XIIOmTUpG1lSlcZZ8GNODMlLXE7ua_BVouU9Rek9buHVkw8lw1zMs_7Aw5lbQX9sEyKThrLBPLnLQxR5ZRzTu02C_yRwrl3YGHS93jUkrYDb1P0yJLrCuvWVWifU2EMRyFZNl7nQTw_SVGKQ5OJmYHBzIt9S17sfInKlZJPY8Ly92-cw6lfKlss0 */
+
+width: 220px;
+height: 192px;
+
+background: url(.jpg);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+z-index: 0;
+
+
+/* Overlay+Shadow+OverlayBlur */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 12px;
+
+position: absolute;
+width: 102.56px;
+height: 23px;
+left: 12px;
+top: 12px;
+
+background: rgba(255, 255, 255, 0.9);
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+backdrop-filter: blur(4px);
+/* Remarque : la propriété backdrop-filter bénéficie d'un niveau de prise en charge minimum par les navigateurs */
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Text */
+
+width: 78.56px;
+height: 15px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 15px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: flex-start;
+padding: 24px;
+
+width: 220px;
+height: 230px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Heading 3:margin */
+
+width: 172px;
+height: 57px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Heading 3 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0.75px;
+
+position: absolute;
+height: 45.75px;
+left: 0px;
+right: 0px;
+top: -0.75px;
+
+
+
+/* Text */
+
+width: 151.84px;
+height: 45px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+/* ou 125% */
+display: flex;
+align-items: center;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 24px;
+
+width: 172px;
+height: 84px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 172px;
+height: 60px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Modernisez vos applications héritées tout en préservant leurs… */
+
+width: 172px;
+height: 60px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+/* ou 143% */
+display: flex;
+align-items: center;
+
+color: #44474F;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* HorizontalBorder */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 16px 2.84217e-14px 0px 0px;
+gap: 19.36px;
+
+width: 172px;
+height: 41px;
+
+border-top: 1px solid #C5C6D0;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Overlay */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 8px;
+
+width: 67.55px;
+height: 24px;
+
+background: rgba(234, 234, 255, 0.1);
+border-radius: 4px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 51.55px;
+height: 16px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+
+color: #3256FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Link */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7.99px;
+
+width: 80.4px;
+height: 20px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 63.08px;
+height: 20px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+
+color: #0038E6;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 9.33px;
+height: 9.33px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 9.33px;
+height: 9.33px;
+
+background: #0038E6;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Card 7 */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+position: absolute;
+left: 492px;
+right: 246px;
+top: 486.5px;
+bottom: 0px;
+
+background: #FFFFFF;
+border: 1px solid #C5C6D0;
+border-radius: 12px;
+
+
+/* Background */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+width: 220px;
+height: 192px;
+
+background: #F3F4F5;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 1;
+
+
+/* AB6AXuB6nDYKAnyP3X3ormrZh30bFXthiLyFbBR88AOKIQuJGPu6-K2rzA-HiCX2zTNW6eK4aIMdZc-Rv8ocGNGzdIQSvh5UPXzi-pG66_Z8e3gwcxF8jAHJNwby92A2j4lUCr8z2zxObe2C2pXl95KxMfqL--MQWO3IkWTeRD2XJ2muZ8oisMQkHSkkVs8jdzUvSjD_R859yGJgIsKOMGtm4iEEfiUwjhY91jytKWkIxOHnVhCOImkILXVMUWneyAFvnVVZ27vLBne1SvA */
+
+width: 220px;
+height: 192px;
+
+background: url(.jpg);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+z-index: 0;
+
+
+/* Overlay+Shadow+OverlayBlur */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 12px;
+
+position: absolute;
+width: 72.03px;
+height: 23px;
+left: 12px;
+top: 12px;
+
+background: rgba(255, 255, 255, 0.9);
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+backdrop-filter: blur(4px);
+/* Remarque : la propriété backdrop-filter bénéficie d'un niveau de prise en charge minimum par les navigateurs */
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Text */
+
+width: 48.03px;
+height: 15px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 15px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: flex-start;
+padding: 24px;
+
+width: 220px;
+height: 230px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Heading 3:margin */
+
+width: 172px;
+height: 57px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Heading 3 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0.75px;
+
+position: absolute;
+height: 45.75px;
+left: 0px;
+right: 0px;
+top: -0.75px;
+
+
+
+/* Text */
+
+width: 133.2px;
+height: 45px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+/* ou 125% */
+display: flex;
+align-items: center;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 24px;
+
+width: 172px;
+height: 84px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 172px;
+height: 60px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Permet à vos équipes d’enregistrer leur temps de travail en quelques clics et */
+
+width: 172px;
+height: 60px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+/* ou 143% */
+display: flex;
+align-items: center;
+
+color: #44474F;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* HorizontalBorder */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 16px 2.84217e-14px 0px 0px;
+gap: 5.57px;
+
+width: 172px;
+height: 41px;
+
+border-top: 1px solid #C5C6D0;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Overlay */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 8px;
+
+width: 81.34px;
+height: 24px;
+
+background: rgba(234, 234, 255, 0.1);
+border-radius: 4px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 65.34px;
+height: 16px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+
+color: #3256FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Link */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7.99px;
+
+width: 80.4px;
+height: 20px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 63.08px;
+height: 20px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+
+color: #0038E6;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 9.33px;
+height: 9.33px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 9.33px;
+height: 9.33px;
+
+background: #0038E6;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Card 8 */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+position: absolute;
+left: 738px;
+right: 0px;
+top: 486.5px;
+bottom: 0px;
+
+background: #FFFFFF;
+border: 1px solid #C5C6D0;
+border-radius: 12px;
+
+
+/* Background */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+isolation: isolate;
+
+width: 220px;
+height: 192px;
+
+background: #F3F4F5;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+z-index: 1;
+
+
+/* AB6AXuA-YM1nv0tRBbjF2MZANOgAXWj7FRlID7dIGrB7FwFCa0dQ497vWhHBCW3XNWmb4-PwkodBBpQ3xsROgCKZ2DqzzC50vANXEpasM1K7fRBHyliKu-sweht62R7p9OO1KH5otN8XvTcRYlSPxjXs0td9aGW4bZS19PluwyEVVACyAoyjfm8Rq0CPzah6pcxIrevXJVNRY4RnXvdb2NanTrOkC2a_w82OTgIDT-rsW43EFVSsaCyrHWZY9JjBY5uubltJdUv1UAWRnkY */
+
+width: 220px;
+height: 192px;
+
+background: url(.jpg);
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+z-index: 0;
+
+
+/* Overlay+Shadow+OverlayBlur */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 12px;
+
+position: absolute;
+width: 37.03px;
+height: 23px;
+left: 12px;
+top: 12px;
+
+background: rgba(255, 255, 255, 0.9);
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+backdrop-filter: blur(4px);
+/* Remarque : la propriété backdrop-filter bénéficie d'un niveau de prise en charge minimum par les navigateurs */
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Text */
+
+width: 13.03px;
+height: 15px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 15px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+text-transform: uppercase;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: flex-start;
+padding: 24px;
+
+width: 220px;
+height: 230px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Heading 3:margin */
+
+width: 172px;
+height: 57px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Heading 3 */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0.75px;
+
+position: absolute;
+height: 45.75px;
+left: 0px;
+right: 0px;
+top: -0.75px;
+
+
+
+/* Text */
+
+width: 96.19px;
+height: 45px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+/* ou 125% */
+display: flex;
+align-items: center;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 24px;
+
+width: 172px;
+height: 84px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 172px;
+height: 60px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Permet aux employés de s’inscrire et suivre leurs formations, tandis que les… */
+
+width: 172px;
+height: 60px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+/* ou 143% */
+display: flex;
+align-items: center;
+
+color: #44474F;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* HorizontalBorder */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 16px 0px 0px;
+gap: 15.22px;
+
+width: 172px;
+height: 41px;
+
+border-top: 1px solid #C5C6D0;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Overlay */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 4px 8px;
+
+width: 71.69px;
+height: 24px;
+
+background: rgba(234, 234, 255, 0.1);
+border-radius: 4px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 55.69px;
+height: 16px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 16px;
+/* identique à la hauteur de la zone de texte, ou 133% */
+display: flex;
+align-items: center;
+
+color: #3256FF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Link */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7.99px;
+
+width: 80.4px;
+height: 20px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 63.08px;
+height: 20px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+/* identique à la hauteur de la zone de texte, ou 143% */
+display: flex;
+align-items: center;
+
+color: #0038E6;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 9.33px;
+height: 9.33px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 9.33px;
+height: 9.33px;
+
+background: #0038E6;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Section - Bottom CTA */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 40px;
+
+width: 960px;
+height: 262px;
+
+background: #EDEEEF;
+border-radius: 16px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Heading 2 → Vous ne trouvez pas la solution parfaite ? */
+
+width: 561.47px;
+height: 36px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 36px;
+/* identique à la hauteur de la zone de texte, ou 120% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #00020A;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 24px 0px 0px;
+
+width: 672px;
+max-width: 672px;
+height: 72px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px 0.33px 0px 0.31px;
+
+width: 672px;
+max-width: 672px;
+height: 48px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 671.36px;
+height: 48px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* ou 150% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #44474F;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Margin */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 24px 0px 0px;
+
+width: 425.81px;
+height: 74px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 16px;
+
+width: 425.81px;
+height: 50px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Link */
+
+box-sizing: border-box;
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 12px 24px;
+gap: 7.99px;
+
+width: 198.15px;
+height: 50px;
+
+background: #FFFFFF;
+border: 1px solid #C5C6D0;
+border-radius: 12px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 18px;
+height: 18px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Icon */
+
+width: 18px;
+height: 18px;
+
+background: #0038E6;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Text */
+
+width: 122.16px;
+height: 24px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #191C1D;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Button */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 12.5px 32px 13.5px;
+isolation: isolate;
+
+width: 211.66px;
+height: 50px;
+
+background: #0038E6;
+border-radius: 12px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Button:shadow */
+
+position: absolute;
+left: 0px;
+right: 0px;
+top: 0px;
+bottom: 0px;
+
+background: rgba(255, 255, 255, 0.002);
+box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+border-radius: 12px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Text */
+
+width: 147.66px;
+height: 24px;
+
+font-family: 'Hanken Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+/* identique à la hauteur de la zone de texte, ou 150% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Floating Action Button (FAB) Suppression check: Should be here on Dashboard/Home */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+right: 32px;
+bottom: 32px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Button */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+isolation: isolate;
+
+width: 56px;
+height: 56px;
+
+background: #0038E6;
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Button:shadow */
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 0px;
+top: 0px;
+
+background: rgba(255, 255, 255, 0.002);
+box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 8px 10px -6px rgba(0, 0, 0, 0.1);
+border-radius: 9999px;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Container */
+
+/* Mise en page automatique */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 25px;
+height: 25px;
+
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Icon */
+
+width: 25px;
+height: 25px;
+
+background: #FFFFFF;
+
+/* À l'intérieur de l'auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;

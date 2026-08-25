@@ -1,0 +1,148 @@
+# =============================================================================
+# Spec Bookshop — section « Formulaire » (contrat landing GELÉ).
+# Voir hero.bookshop.yml pour les conventions communes (structures `sections`,
+# discriminant `type` masqué, libellés français pour la palette CloudCannon).
+#
+# GOTCHA `type` : le discriminant de section ET le type de champ s'appellent
+# tous deux `type` (contrat gelé). CloudCannon n'a PAS de clés-chemins
+# (« fields[*].type » serait ignoré) : le `type` de champ est ré-exposé au
+# niveau plus spécifique de la cascade — _structures.form_fields.values[0]
+# ._inputs dans cloudcannon.config.yml (la structure conteneure prime sur les
+# _inputs de la collection). D'où le `type: array` explicite sur `fields`
+# ci-dessous : il lie le tableau à cette structure partagée ET empêche
+# `npx @bookshop/generate` de fabriquer une structure inline concurrente
+# (bail-out vérifié dans @bookshop/generate/lib/structure-builder.js,
+# generateDeepStructures).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Formulaire"
+  description: "Formulaire de contact : maquette non fonctionnelle par défaut (bouton désactivé) ; devient un vrai formulaire (POST /api/forms, anti-pourriel, courriel) quand le site est construit avec PUBLIC_FORMS_ENABLED=1 — voir docs/formulaires.md."
+  icon: edit_note
+  # Les clés de `spec` sont recopiées telles quelles sur la valeur de structure
+  # générée (structure-builder.js étale `spec`) — le polissage du sélecteur
+  # CloudCannon vit donc ici, pas dans cloudcannon.config.yml.
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/form/preview.png"
+    text: Formulaire
+    subtext: Maquette par défaut — fonctionnel si PUBLIC_FORMS_ENABLED=1
+  preview:
+    icon: edit_note
+    text:
+      - key: title
+      - text: Formulaire
+
+blueprint:
+  type: form
+  title: "Parlez-nous de votre projet"
+  intro: ""
+  formId: ""
+  submitLabel: "Envoyer"
+  consentText: ""
+  variant: carte
+  fond: ""
+  # Forme COMPLÈTE P-05 (comme schemas/form-*.json et _structures.form_fields) :
+  # CloudCannon ne matérialise les inputs que pour les clés PRÉSENTES — sans
+  # elles, un champ seed passé à « select » n'offrirait jamais ses Options.
+  fields:
+    - label: "Nom complet"
+      type: text
+      required: true
+      width: plein
+      options: []
+      value: ""
+      showIf:
+        field: ""
+        equals: ""
+    - label: "Courriel"
+      type: email
+      required: true
+      width: plein
+      options: []
+      value: ""
+      showIf:
+        field: ""
+        equals: ""
+    - label: "Message"
+      type: textarea
+      required: false
+      width: plein
+      options: []
+      value: ""
+      showIf:
+        field: ""
+        equals: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat landing — ne pas modifier."
+  title:
+    label: "Titre"
+  intro:
+    label: "Introduction"
+    comment: "Paragraphe optionnel sous le titre."
+  formId:
+    label: "Formulaire lié (identifiant)"
+    comment: >-
+      Identifiant d'un formulaire de la collection « Formulaires » (nom du
+      fichier sans .json, ex. « contact ») : ses champs, bouton, consentement
+      ET DESTINATAIRE remplacent alors ceux définis ci-dessous. Vide = les
+      champs ci-dessous. Un identifiant inexistant bloque la publication avec
+      un message clair.
+  submitLabel:
+    label: "Libellé du bouton d'envoi"
+  consentText:
+    label: "Texte de consentement"
+    comment: "Petit texte affiché au-dessus du bouton (optionnel)."
+  # `variant` est AUSSI le nom du select light/dark de la section CTA — ce
+  # _inputs de STRUCTURE prime sur celui de la collection (même mécanique que
+  # le `type` de champ, voir le GOTCHA d'entête).
+  variant:
+    type: select
+    label: "Style du formulaire"
+    comment: >-
+      carte = carte blanche à liseré bleu, bouton pleine largeur (maquette
+      « guide ») · panneau = panneau beige, bouton en largeur auto (maquette
+      « contact »).
+    options:
+      values:
+        - carte
+        - panneau
+  # « Fond de section » ÉTENDU au formulaire (2026-08-18, landing finale) :
+  # choix BORNÉ à la palette officielle (esprit P-16).
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: true
+      values:
+        - blanc
+        - givre
+        - ivoire
+        - beige
+        - sable
+    comment: "Couleur de fond de la bande derrière le formulaire. Vide = défaut du bloc (gris très pâle en carte, blanc en panneau)."
+  fields:
+    # `type: array` explicite — voir le GOTCHA d'entête (bail-out de generate +
+    # liaison à la structure partagée qui ré-expose le type de champ).
+    type: array
+    label: "Champs"
+    # Le `name` HTML de chaque champ dérive du libellé (slug sans accents) en
+    # mode fonctionnel : « Courriel » → "courriel" (validé comme courriel côté
+    # serveur). Éviter deux libellés identiques dans un même formulaire.
+    comment: "Champs du formulaire. Envoi réel seulement si le site est construit avec PUBLIC_FORMS_ENABLED=1 (sinon maquette)."
+    options:
+      structures: _structures.form_fields
+  label:
+    label: "Libellé du champ"
+  required:
+    type: switch
+    label: "Obligatoire"

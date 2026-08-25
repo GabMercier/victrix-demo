@@ -1,74 +1,551 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import BlogCard from '../../../components/BlogCard.astro';
-import { type Locale, localePaths } from '../../../i18n/config';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { type Locale, htmlLang, localePaths, localizePath } from '../../../i18n/config';
 import { useTranslations } from '../../../i18n/ui';
-import { getPostsByLocale } from '../../../i18n/blog';
+import { getLocaleData } from '../../../i18n/locale-data';
+import { getPostsByLocale, filterPublished, blogCategories, postUrlSlug } from '../../../i18n/blog';
+import { coverForCard, coverSmall } from '../../../lib/images/cover-derivative';
 
 export const getStaticPaths = localePaths;
 
 const { lang } = Astro.props as { lang: Locale };
 const t = useTranslations(lang);
+// Textes de la page ÉDITABLES AU CMS (collection `pagesSysteme`, bloc
+// `ressources` — étendu le 2026-08-18 pour la refonte « Centre de
+// ressources » : héros, recherche, carte infolettre, bandeau CTA). Seule
+// l'étiquette d'accessibilité du filtre (t.blog.filterAria) reste dans ui.ts.
+const sys = await getLocaleData('pagesSysteme', lang);
+const r = sys.ressources;
 
-const posts = await getPostsByLocale(lang);
+/**
+ * Page « Centre de ressources » — FIDÉLITÉ MAQUETTE 2026-08-18
+ * (docs/design/export2/« ressources parent.txt » + capture fournie) :
+ *  - héros clair : chip bleu pâle, H1 48/700 ls -0.96 dont la FIN passe en
+ *    bleu, intro 18, bouton marine « S'abonner à l'infolettre » (ancre vers la
+ *    carte infolettre) + carte décorative vitrée à droite (≥ lg) ;
+ *  - barre collante filtres + recherche : pilules (« Tous » = pilule bleue
+ *    pleine), champ « Rechercher une expertise... » à droite ;
+ *  - grille bento : article VEDETTE (photo pleine carte, lavis marine,
+ *    badge catégorie bleu, titre blanc) sur 2 colonnes + cartes standard
+ *    (catégorie bleue MAJUSCULES, titre, extrait, « Lire l'article → ») +
+ *    carte INFOLETTRE marine insérée en 4ᵉ position (toujours visible,
+ *    inscription DÉMO sans envoi réel) ;
+ *  - bandeau CTA : panneau gris bordé, filigrane « V », deux boutons.
+ * Couleurs 100 % tokens : #0055FF→primary, #000D2E→nuit/on-primary-fixed,
+ * #F9F9F9→neutral-50, #CCE5FF→bleu-100, #E2E2E2→bordure. RÈGLE no-hybride :
+ * utilitaires Tailwind, zéro CSS scopé (l'ancienne feuille est supprimée).
+ *
+ * Filtrage CLIENT (page statique), comme avant : catégorie (pilules,
+ * `?categorie=` partageable — c'est ce que ciblent les liens du méga-menu
+ * Ressources) + NOUVEAU champ de recherche plein-texte (title+extrait+
+ * étiquettes, attribut data-search). La carte infolettre n'a pas de
+ * data-tags : elle reste visible quel que soit le filtre.
+ */
+
+// Drafts never reach this listing on the public build; the STATIC_ONLY
+// (CloudCannon editing) build keeps them so editors can preview.
+const posts = filterPublished(await getPostsByLocale(lang));
+const categories = blogCategories(posts);
+
+const dateFmt = new Intl.DateTimeFormat(htmlLang[lang], { dateStyle: 'long', timeZone: 'UTC' });
+const postHref = (post: (typeof posts)[number]) =>
+  localizePath(`/ressources/${postUrlSlug(post)}/`, lang);
+const searchIndex = (post: (typeof posts)[number]) =>
+  `${post.data.title} ${post.data.excerpt} ${post.data.tags.join(' ')}`.toLowerCase();
+
+// Vedette = article le plus récent ; « standard » = le reste. La carte
+// infolettre s'insère après les deux premières cartes standard (4ᵉ tuile).
+const [featured, ...rest] = posts;
+
+const pageTitle = [r.title, r.titleAccent].filter(Boolean).join(' ');
+
+// --- Infolettre RÉELLE (2026-08-19) — même patron deux modes que la page
+// contact (docs/formulaires.md §10) :
+//  - PUBLIC_FORMS_ENABLED absente → MAQUETTE : pas d'action, le script en bas
+//    simule la confirmation ([data-newsletter-form] n'est posé que dans ce
+//    mode) ;
+//  - PUBLIC_FORMS_ENABLED="1" → vrai <form method="POST" action="/api/forms">
+//    avec `_formId: infolettre` : le serveur dérive requis/courriels depuis
+//    src/data/forms/<langue>/infolettre.json, pot de miel `website`, widget
+//    Turnstile si la clé est posée, 303 vers /merci, ?erreur=1 au retour.
+// Le nom du champ courriel est DÉRIVÉ de la définition (fieldName partagé) —
+// un désalignement page↔définition casse le build, jamais les soumissions.
+import { getEntry } from 'astro:content';
+import { fieldName } from '../../../lib/forms/field-name';
+
+const newsletterDefEntry = await getEntry('forms', `${lang}/infolettre`);
+if (!newsletterDefEntry) {
+  throw new Error(
+    `[ressources] définition introuvable : src/data/forms/${lang}/infolettre.json — la carte infolettre exige un formulaire « infolettre » par langue.`,
+  );
+}
+const newsletterEmailIndex = newsletterDefEntry.data.fields.findIndex((f) => f.type === 'email');
+if (newsletterEmailIndex === -1) {
+  throw new Error(
+    `[ressources] la définition src/data/forms/${lang}/infolettre.json doit contenir un champ courriel.`,
+  );
+}
+const newsletterEmailName = fieldName(
+  newsletterDefEntry.data.fields[newsletterEmailIndex].label,
+  newsletterEmailIndex,
+);
+
+// Mode fonctionnel (mêmes drapeaux que contact.astro — parité stricte).
+const env = import.meta.env ?? {};
+const formsEnabled = env.PUBLIC_FORMS_ENABLED === '1';
+const turnstileSiteKey = formsEnabled ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+const pagePath = Astro.url?.pathname ?? '';
+// Pot de miel : idiome « visuellement masqué » EN LIGNE (patron form.astro).
+const honeypotStyle =
+  'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;';
+const newsletterError =
+  lang === 'en'
+    ? 'Your subscription could not be sent. Please check your email address and try again.'
+    : 'Votre inscription n’a pas pu être envoyée. Vérifiez votre adresse courriel, puis réessayez.';
+
+// Recettes partagées de la page (répétées si besoin ailleurs — pas d'abstraction).
+const categoryClass =
+  'm-0 max-w-none text-xs leading-4 font-semibold uppercase tracking-[1.2px] text-primary';
+const cardClass =
+  'relative h-full bg-white border border-solid border-bordure rounded-xl overflow-hidden flex flex-col shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)]';
+const pillBase =
+  'inline-flex items-center justify-center px-6 py-2 rounded-full text-sm leading-5 font-bold cursor-pointer border-0 transition-colors';
 ---
 
-<BaseLayout lang={lang} title={t.blog.title} description={t.blog.intro}>
-  <div class="container blog">
-    <header class="blog__head">
-      <p class="eyebrow">{t.blog.eyebrow}</p>
-      <h1>{t.blog.title}</h1>
-      <p class="blog__intro">{t.blog.intro}</p>
-    </header>
+<BaseLayout lang={lang} title={pageTitle} description={r.intro} contentType="Page">
+  <Breadcrumbs
+    lang={lang}
+    items={[
+      { name: t.article.breadcrumbHome, path: localizePath('/', lang) },
+      { name: r.eyebrow },
+    ]}
+  />
 
-    <ul role="list" class="blog__grid">
+  <!-- Héros -->
+  <section class="bg-neutral-50">
+    <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-14 lg:py-20">
+      <div class="flex flex-col items-start gap-6">
+        <p class="m-0 max-w-none bg-bleu-100 text-bleu-900 rounded-full px-3 py-1 text-xs leading-4 font-medium uppercase tracking-[0.6px]">
+          {r.eyebrow}
+        </p>
+        <h1 class="m-0 text-4xl lg:text-5xl leading-[1.16] font-bold tracking-[-0.96px] text-nuit">
+          {r.title}
+          {r.titleAccent && <span class="block text-primary">{r.titleAccent}</span>}
+        </h1>
+        <p class="m-0 text-lg leading-[28px] text-on-surface-variant max-w-[576px]">{r.intro}</p>
+        <a
+          class="mt-2 inline-flex items-center gap-3 bg-nuit text-white px-8 py-4 rounded-lg text-sm leading-5 font-bold uppercase tracking-[0.5px] no-underline shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] hover:bg-primary transition-colors"
+          href="#infolettre"
+        >
+          {r.subscribeLabel}
+          <svg class="shrink-0" width="20" height="16" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="2" y="2" width="20" height="16" rx="2" />
+            <path d="m2 4 10 8L22 4" />
+          </svg>
+        </a>
+      </div>
+
+      {/* Carte décorative vitrée (maquette) — purement visuelle. */}
+      <div class="relative hidden lg:flex items-center justify-center py-10" aria-hidden="true">
+        <span class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/10 to-transparent blur-2xl"></span>
+        <div class="relative w-64 h-64 bg-white/70 border-2 border-solid border-bordure backdrop-blur-md rounded-xl p-8 flex flex-col justify-end overflow-hidden">
+          <svg class="text-primary mb-4" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M3 17l6-6 4 4 8-8" />
+            <path d="M14 7h7v7" />
+          </svg>
+          <p class="m-0 max-w-none text-base leading-6 text-nuit">{r.expertCard.title}</p>
+          <p class="m-0 max-w-none text-xs leading-4 font-medium text-on-surface-variant">
+            {r.expertCard.subtitle}
+          </p>
+          <span class="absolute -right-2 -bottom-10 text-[140px] leading-none font-black text-primary/5 select-none">V</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Barre filtres + recherche (collante sous l'en-tête) -->
+  <div class="sticky top-20 z-30 border-y border-solid border-bordure bg-neutral-50/90 backdrop-blur-sm">
+    <div class="container-site flex flex-wrap items-center justify-between gap-4 py-4 lg:py-5">
+      <div
+        class="flex flex-wrap items-center gap-2 overflow-x-auto"
+        role="group"
+        aria-label={t.blog.filterAria}
+        data-blog-filters
+      >
+        <button
+          type="button"
+          class:list={[pillBase, 'is-active']}
+          data-filter=""
+          aria-pressed="true"
+        >
+          {r.filterAll}
+        </button>
+        {
+          categories.map((cat) => (
+            <button type="button" class={pillBase} data-filter={cat} aria-pressed="false">
+              {cat}
+            </button>
+          ))
+        }
+      </div>
+
+      <label class="relative block w-full sm:w-96 max-w-full">
+        <span class="sr-only">{r.searchPlaceholder}</span>
+        <svg
+          class="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle cx="10.5" cy="10.5" r="6.5" />
+          <path d="M15.5 15.5L21 21" />
+        </svg>
+        <input
+          class="w-full h-[51px] pl-12 pr-4 bg-white border border-solid border-bordure rounded-lg text-base text-on-surface placeholder:text-neutral-500 focus-visible:border-primary focus-visible:outline-none"
+          type="search"
+          placeholder={r.searchPlaceholder}
+          autocomplete="off"
+          data-blog-search
+        />
+      </label>
+    </div>
+  </div>
+
+  <!-- Grille bento -->
+  <section class="bg-neutral-50 py-10 lg:py-14">
+    <ul role="list" class="container-site grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 m-0 p-0 list-none" data-blog-grid>
       {
-        posts.map((post) => (
-          <li>
-            <BlogCard post={post} lang={lang} headingLevel="h2" />
+        featured && (
+          <li
+            class="m-0 md:col-span-2"
+            data-tags={featured.data.tags.join('|')}
+            data-search={searchIndex(featured)}
+          >
+            <article class="relative h-full min-h-[320px] lg:min-h-[456px] rounded-xl overflow-hidden border border-solid border-bordure shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+              {featured.data.coverImage && (
+                <img
+                  class="absolute inset-0 w-full h-full object-cover border-0"
+                  src={featured.data.coverImage}
+                  srcset={
+                    coverSmall(featured.data.coverImage)
+                      ? `${coverSmall(featured.data.coverImage)} 800w, ${featured.data.coverImage} 1600w`
+                      : undefined
+                  }
+                  sizes="(min-width: 768px) 66vw, 100vw"
+                  alt=""
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              )}
+              <span
+                class="absolute inset-0 bg-gradient-to-t from-nuit/90 via-nuit/25 to-transparent"
+                aria-hidden="true"
+              />
+              <div class="relative h-full flex flex-col justify-end items-start gap-4 p-6 lg:p-8">
+                {featured.data.tags.length > 0 && (
+                  <p class="m-0 max-w-none bg-primary text-white rounded-lg px-3 py-1 text-xs leading-4 font-medium uppercase tracking-[0.5px]">
+                    {featured.data.tags[0]}
+                  </p>
+                )}
+                <h2 class="m-0 text-2xl lg:text-[32px] lg:leading-10 font-bold text-white max-w-[744px]">
+                  <a class="text-white no-underline after:content-[''] after:absolute after:inset-0" href={postHref(featured)}>
+                    {featured.data.title}
+                  </a>
+                </h2>
+                <p class="m-0 max-w-none flex flex-wrap items-center gap-4 text-xs leading-4 font-medium uppercase tracking-[0.5px] text-white/80">
+                  {r.byline && <span class="text-white">{r.byline}</span>}
+                  {r.byline && <span aria-hidden="true">·</span>}
+                  <time datetime={featured.data.date.toISOString()}>
+                    {dateFmt.format(featured.data.date)}
+                  </time>
+                </p>
+              </div>
+            </article>
           </li>
+        )
+      }
+
+      {
+        rest.map((post, i) => (
+          <>
+            <li class="m-0" data-tags={post.data.tags.join('|')} data-search={searchIndex(post)}>
+              <article class={cardClass}>
+                <div class="relative aspect-[2/1] bg-neutral-100 overflow-hidden">
+                  {/* Dérivé 800 px + lazy PARTOUT (2026-08-19) : sur mobile ces
+                      cartes sont sous le pli — les charger tôt gonflait le
+                      graphe pré-LCP de la simulation Lighthouse. Seule la
+                      vedette reste eager/fetchpriority. */}
+                  {post.data.coverImage && (
+                    <img
+                      class="w-full h-full object-cover border-0"
+                      src={coverForCard(post.data.coverImage)}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                </div>
+                <div class="p-6 lg:p-8 grow flex flex-col items-start gap-2">
+                  {post.data.tags.length > 0 && <p class={categoryClass}>{post.data.tags[0]}</p>}
+                  <h2 class="m-0 text-xl leading-[30px] font-normal text-nuit">
+                    <a
+                      class="text-nuit no-underline hover:text-primary after:content-[''] after:absolute after:inset-0"
+                      href={postHref(post)}
+                    >
+                      {post.data.title}
+                    </a>
+                  </h2>
+                  <p class="m-0 max-w-none text-xs leading-4 text-on-surface-variant">
+                    <time datetime={post.data.date.toISOString()}>{dateFmt.format(post.data.date)}</time>
+                  </p>
+                  <p class="m-0 max-w-none text-base leading-6 text-on-surface-variant line-clamp-3">
+                    {post.data.excerpt}
+                  </p>
+                  <p class="m-0 max-w-none mt-auto pt-4 inline-flex items-center gap-2 text-sm leading-5 font-bold text-primary">
+                    {r.readMore}
+                    <svg width="15" height="12" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                      <path d="M2 10h20m0 0-7-7m7 7-7 7" />
+                    </svg>
+                  </p>
+                </div>
+              </article>
+            </li>
+
+            {/* Carte infolettre — 4ᵉ tuile (après vedette + 2 cartes). Sans
+                data-tags : jamais masquée par le filtre ni la recherche. */}
+            {i === 1 && (
+              <li class="m-0" id="infolettre">
+                <div class="relative h-full bg-nuit border border-solid border-primary/20 rounded-xl overflow-hidden p-8 flex flex-col justify-center gap-4 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)]">
+                  <svg class="text-primary" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                    <path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2Z" />
+                    <path d="M19 14l.9 2.6L22.5 17l-2.6.9L19 20.5l-.9-2.6-2.6-.9 2.6-.9L19 14Z" />
+                  </svg>
+                  <h2 class="m-0 text-base leading-6 font-normal text-white">{r.newsletter.title}</h2>
+                  <p class="m-0 max-w-none text-base leading-6 text-neutral-200">{r.newsletter.text}</p>
+                  <form
+                    class="flex flex-col gap-4"
+                    data-newsletter-form={formsEnabled ? undefined : ''}
+                    novalidate={formsEnabled ? undefined : true}
+                    method={formsEnabled ? 'POST' : undefined}
+                    action={formsEnabled ? '/api/forms' : undefined}
+                    data-astro-reload={formsEnabled ? '' : undefined}
+                  >
+                    {
+                      formsEnabled && (
+                        <>
+                          {/* Bannière d'erreur + mini-script FRÈRES ADJACENTS
+                              (previousElementSibling) — patron contact.astro. */}
+                          <p
+                            class="m-0 max-w-none px-4 py-3 rounded text-sm leading-normal bg-white/10 border border-solid border-white/30 text-white"
+                            role="alert"
+                            hidden
+                          >
+                            {newsletterError}
+                          </p>
+                          <script is:inline data-astro-rerun>
+                            {
+                              const s = document.currentScript;
+                              const b = s && s.previousElementSibling;
+                              if (b && /[?&]erreur=/.test(location.search)) b.removeAttribute('hidden');
+                            }
+                          </script>
+                          <input type="hidden" name="lang" value={lang} />
+                          <input type="hidden" name="source" value={pagePath} />
+                          <input type="hidden" name="_formId" value="infolettre" />
+                          {/* Pot de miel `website` — voir honeypotStyle. */}
+                          <div aria-hidden="true" style={honeypotStyle}>
+                            <label for="infolettre-website">Site Web</label>
+                            <input
+                              id="infolettre-website"
+                              type="text"
+                              name="website"
+                              tabindex="-1"
+                              autocomplete="off"
+                            />
+                          </div>
+                        </>
+                      )
+                    }
+                    <label class="block">
+                      <span class="sr-only">{r.newsletter.emailPlaceholder}</span>
+                      <input
+                        class="w-full h-[51px] px-4 bg-white/10 border border-solid border-white/20 rounded text-base text-white placeholder:text-white/50 focus-visible:border-primary focus-visible:outline-none"
+                        type="email"
+                        name={formsEnabled ? newsletterEmailName : 'email'}
+                        autocomplete="email"
+                        placeholder={r.newsletter.emailPlaceholder}
+                        required
+                      />
+                    </label>
+                    {
+                      turnstileSiteKey && (
+                        <>
+                          {/* Widget Turnstile — CSP déjà en place (public/_headers). */}
+                          <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-language={lang} />
+                          <script is:inline async defer src="https://challenges.cloudflare.com/turnstile/v0/api.js" />
+                        </>
+                      )
+                    }
+                    <button
+                      type="submit"
+                      class="w-full inline-flex items-center justify-center bg-primary text-white px-4 py-3 rounded text-base leading-6 uppercase font-medium border-0 cursor-pointer shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] hover:bg-primary-container transition-colors"
+                    >
+                      {r.newsletter.submitLabel}
+                    </button>
+                    {/* Consentement Loi 25 — vient du formulaire « infolettre »
+                        (Formulaires → Infolettre → Texte de consentement) ;
+                        vide = pas de ligne. */}
+                    {newsletterDefEntry.data.consentText && (
+                      <p class="m-0 max-w-none text-xs leading-4 text-neutral-300">
+                        {newsletterDefEntry.data.consentText}
+                      </p>
+                    )}
+                    <p
+                      class="m-0 max-w-none text-sm leading-5 font-medium text-white"
+                      data-newsletter-status
+                      data-success={r.newsletter.confirmation}
+                      role="status"
+                      aria-live="polite"
+                      hidden
+                    >
+                    </p>
+                  </form>
+                  <span class="absolute -right-4 -bottom-14 text-[200px] leading-none font-black text-primary/5 select-none pointer-events-none" aria-hidden="true">V</span>
+                </div>
+              </li>
+            )}
+          </>
         ))
       }
     </ul>
-  </div>
+  </section>
+
+  <!-- Bandeau d'appel à l'action -->
+  <section class="bg-neutral-50 pb-14 lg:pb-20">
+    <div class="container-site">
+      <div class="relative overflow-hidden bg-neutral-100 border border-solid border-bordure rounded-2xl p-8 lg:p-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+        <div class="relative max-w-[672px] flex flex-col gap-4">
+          <h2 class="m-0 text-base leading-6 font-normal text-nuit">{r.cta.title}</h2>
+          <p class="m-0 max-w-none text-lg leading-[28px] text-on-surface-variant">{r.cta.text}</p>
+        </div>
+        <div class="relative flex flex-wrap items-center gap-6 shrink-0">
+          <a
+            class="inline-flex items-center justify-center gap-3 bg-primary text-white px-10 py-5 rounded-lg text-sm leading-5 font-bold uppercase tracking-[0.5px] text-center no-underline hover:bg-primary-container transition-colors"
+            href={localizePath(r.cta.primaryHref, lang)}
+          >
+            {r.cta.primaryLabel}
+            <svg class="shrink-0" width="16" height="18" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <rect x="2" y="4" width="20" height="20" rx="2" />
+              <path d="M2 10h20M7 2v4m10-4v4" />
+            </svg>
+          </a>
+          <a
+            class="inline-flex items-center justify-center gap-3 border-2 border-solid border-nuit text-nuit px-10 py-5 rounded-lg text-sm leading-5 font-bold uppercase tracking-[0.5px] text-center no-underline hover:bg-nuit hover:text-white transition-colors"
+            href={localizePath(r.cta.secondaryHref, lang)}
+          >
+            {r.cta.secondaryLabel}
+            <svg class="shrink-0" width="18" height="16" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <rect x="2" y="2" width="20" height="16" rx="2" />
+              <path d="m2 4 10 8L22 4" />
+            </svg>
+          </a>
+        </div>
+        <span class="absolute -right-8 -bottom-24 text-[300px] leading-none font-black text-primary/5 select-none pointer-events-none" aria-hidden="true">V</span>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
-<style>
-  .blog {
-    padding-block: var(--space-8) var(--space-9);
-  }
-  .blog__head {
-    max-width: 60ch;
-    margin-bottom: var(--space-7);
-  }
-  .eyebrow {
-    margin-bottom: var(--space-3);
-    color: var(--color-accent);
-    font-weight: var(--fw-semibold);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: var(--fs-200);
-  }
-  .blog__intro {
-    margin-top: var(--space-4);
-    font-size: var(--fs-400);
-    color: var(--color-text-muted);
-  }
+<script>
+  // Filtre par catégorie + recherche plein-texte — s'exécute au chargement ET
+  // après chaque navigation ClientRouter (astro:page-load). `?categorie=` est
+  // lu à l'arrivée (liens du méga-menu Ressources) et maintenu à jour au clic
+  // (lien partageable) ; la recherche reste locale (pas d'URL).
+  document.addEventListener('astro:page-load', () => {
+    const group = document.querySelector<HTMLElement>('[data-blog-filters]');
+    const grid = document.querySelector<HTMLElement>('[data-blog-grid]');
+    if (!group || !grid) return;
+    const buttons = Array.from(group.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+    const search = document.querySelector<HTMLInputElement>('[data-blog-search]');
 
-  .blog__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-    margin: 0;
-  }
-  @media (min-width: 640px) {
-    .blog__grid {
-      grid-template-columns: repeat(2, 1fr);
+    let currentCat = '';
+    const apply = () => {
+      const q = (search?.value ?? '').trim().toLowerCase();
+      buttons.forEach((b) => {
+        const active = (b.dataset.filter ?? '') === currentCat;
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-pressed', String(active));
+      });
+      // Seules les tuiles d'articles portent data-tags — la carte infolettre
+      // n'en a pas et reste toujours visible.
+      grid.querySelectorAll<HTMLLIElement>('li[data-tags]').forEach((li) => {
+        const tags = (li.dataset.tags ?? '').split('|');
+        const catOk = currentCat === '' || tags.includes(currentCat);
+        const qOk = q === '' || (li.dataset.search ?? '').includes(q);
+        li.hidden = !(catOk && qOk);
+      });
+      const url = new URL(window.location.href);
+      if (currentCat) url.searchParams.set('categorie', currentCat);
+      else url.searchParams.delete('categorie');
+      history.replaceState(null, '', url);
+    };
+
+    buttons.forEach((b) =>
+      b.addEventListener('click', () => {
+        currentCat = b.dataset.filter ?? '';
+        apply();
+      }),
+    );
+    search?.addEventListener('input', apply);
+
+    const initial = new URL(window.location.href).searchParams.get('categorie') ?? '';
+    // Une catégorie inconnue dans l'URL (article retiré, faute de frappe)
+    // retombe sur « Tous » — jamais une grille vide inexpliquée.
+    if (initial && buttons.some((b) => b.dataset.filter === initial)) {
+      currentCat = initial;
+      apply();
     }
-  }
-  @media (min-width: 1000px) {
-    .blog__grid {
-      grid-template-columns: repeat(3, 1fr);
+
+    // Inscription infolettre — DÉMO (aucun backend d'infolettre) : validation
+    // native puis confirmation inline, même patron que le formulaire contact
+    // en mode maquette.
+    const form = document.querySelector<HTMLFormElement>('[data-newsletter-form]');
+    const status = document.querySelector<HTMLParagraphElement>('[data-newsletter-status]');
+    if (form && status) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        status.hidden = false;
+        status.textContent = status.dataset.success ?? '';
+        form.reset();
+      });
     }
+  });
+</script>
+
+<style>
+  /* Pilules de filtre — l'état actif est posé par le script (classe
+     .is-active) : la recette utilitaire ne peut pas suivre un état runtime. */
+  [data-blog-filters] button {
+    background-color: transparent;
+    color: var(--color-on-surface);
+  }
+  [data-blog-filters] button:hover {
+    background-color: var(--color-bleu-100);
+  }
+  [data-blog-filters] button.is-active {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
   }
 </style>

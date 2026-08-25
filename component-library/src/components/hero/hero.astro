@@ -1,0 +1,188 @@
+---
+/**
+ * Section « Héros » — composant Bookshop (contrat landing GELÉ, enrichi).
+ * RE-SKIN DESIGN SYSTEM 2026-08-05 (docs/design/landing-page.css + capture
+ * « Landing page ») : héros CLAIR sur bande beige (surface-container-low),
+ * deux colonnes — à gauche eyebrow majuscules bleu (ls 1.6, icône livre
+ * optionnelle), H1 56/800 ls -1.12 avec sous-chaîne accentuée en bleu
+ * (`titleAccent`, patron home-hero), sous-titre 16/24, deux CTA rayon 2
+ * (primaire + contour #747688) ; à droite carte image sur HALO bleu flouté
+ * (aplat primary/5 débordant 16 px, blur 32) bordée blanc/50, ombre 2xl.
+ * Sans image : colonne texte seule (les campagnes existantes restent valides).
+ *
+ * Props : { type: "hero", eyebrow?, title, subtitle?, ctaLabel?, ctaHref?,
+ *           titleAccent?, image?, cta2Label?, cta2Href?, eyebrowIcon?, ctaIcon?,
+ *           fond? }
+ * - Champs AJOUTÉS 2026-08-05 (contrat gelé intact, tous par défaut vides) :
+ *   `titleAccent` sous-chaîne du titre rendue text-primary ; `image` chemin
+ *   PUBLIC servi tel quel ; `cta2Label/cta2Href` bouton contour ; `eyebrowIcon`
+ *   clé fermée « livre » | "" ; `ctaIcon` clé fermée « telechargement » | "".
+ * - `fond` AJOUTÉ 2026-08-18 (landing-pagefinal.txt : héros IVOIRE) : lavis de
+ *   section borné à la palette (patron « Fond de section » du 2026-08-17) ;
+ *   défaut « givre » = rendu historique (surface-container-low).
+ *
+ * Contraintes / pièges :
+ * - Cette section rend le SEUL <h1> de la page : première position dans
+ *   `sections` ; les autres sections titrent en <h2>.
+ * - Aucun script client (éditeur visuel CloudCannon) ; browser-safe.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  titleAccent?: string;
+  image?: string;
+  cta2Label?: string;
+  cta2Href?: string;
+  eyebrowIcon?: 'livre' | '';
+  ctaIcon?: 'telechargement' | '';
+  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+}
+
+const {
+  eyebrow,
+  title,
+  subtitle,
+  ctaLabel,
+  ctaHref,
+  titleAccent = '',
+  image = '',
+  cta2Label = '',
+  cta2Href = '',
+  eyebrowIcon = '',
+  ctaIcon = '',
+  fond = 'givre',
+} = Astro.props;
+
+// « Fond de section » (patron 2026-08-17) : clé fermée → utilitaire de la
+// palette officielle ; défaut = rendu historique du bloc (givre).
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
+
+// Sous-chaîne accentuée (patron home-hero) : introuvable → titre uniforme.
+const accentIndex = titleAccent ? title.indexOf(titleAccent) : -1;
+const titleParts =
+  accentIndex >= 0 && titleAccent
+    ? {
+        before: title.slice(0, accentIndex),
+        accent: titleAccent,
+        after: title.slice(accentIndex + titleAccent.length),
+      }
+    : null;
+
+const hasCta = Boolean(ctaLabel && ctaHref);
+const hasCta2 = Boolean(cta2Label && cta2Href);
+---
+
+<section class:list={['py-20 lg:py-24', FONDS[fond] ?? FONDS.givre]}>
+  <div
+    class:list={[
+      'container-site',
+      image ? 'grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-6 items-center' : 'flex flex-col items-start',
+    ]}
+  >
+    <div class="flex flex-col items-start gap-6 max-w-[576px]">
+      {
+        eyebrow && (
+          <p class="m-0 max-w-none flex items-center gap-2 text-base leading-6 uppercase tracking-[1.6px] text-primary">
+            {eyebrowIcon === 'livre' && (
+              <svg
+                class="shrink-0"
+                width="17"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 5.5C10.5 4 8.5 3.5 6 3.5c-1.2 0-2.2.15-3 .4v14.6c.8-.25 1.8-.4 3-.4 2.5 0 4.5.5 6 2 1.5-1.5 3.5-2 6-2 1.2 0 2.2.15 3 .4V3.9c-.8-.25-1.8-.4-3-.4-2.5 0-4.5.5-6 2Z" />
+                <path d="M12 5.5v14.6" />
+              </svg>
+            )}
+            {eyebrow}
+          </p>
+        )
+      }
+      <h1 class="text-[40px] leading-[1.15] lg:text-[56px] lg:leading-[62px] font-extrabold tracking-[-1.12px] text-on-surface m-0">
+        {
+          titleParts ? (
+            <>
+              {titleParts.before}
+              <span class="text-primary">{titleParts.accent}</span>
+              {titleParts.after}
+            </>
+          ) : (
+            title
+          )
+        }
+      </h1>
+      {subtitle && <p class="text-base leading-6 text-on-surface-variant m-0 max-w-[533px]">{subtitle}</p>}
+      {
+        (hasCta || hasCta2) && (
+          <div class="flex flex-wrap gap-4 pt-2">
+            {hasCta && (
+              <a
+                class="inline-flex items-center justify-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-xs text-base leading-6 no-underline hover:bg-primary-container transition-colors"
+                href={ctaHref}
+              >
+                {ctaLabel}
+                {ctaIcon === 'telechargement' && (
+                  <svg
+                    class="shrink-0"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5" />
+                    <path d="M4.5 20h15" />
+                  </svg>
+                )}
+              </a>
+            )}
+            {hasCta2 && (
+              <a
+                class="inline-flex items-center justify-center border border-solid border-outline text-on-surface px-8 py-4 rounded-xs text-base leading-6 no-underline hover:border-primary hover:text-primary transition-colors"
+                href={cta2Href}
+              >
+                {cta2Label}
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+    {
+      image && (
+        <div class="relative isolate">
+          <span class="absolute -inset-4 bg-primary/5 blur-[32px] rounded-xl -z-10" aria-hidden="true" />
+          <img
+            src={image}
+            alt=""
+            class="w-full h-auto border border-solid border-white/50 rounded-lg shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      )
+    }
+  </div>
+</section>

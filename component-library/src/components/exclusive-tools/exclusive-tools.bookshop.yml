@@ -1,0 +1,68 @@
+# =============================================================================
+# Spec Bookshop — section « Solutions exclusives » (palette partagée),
+# NOUVELLE 2026-08-05 (fidélité maquette expertise-mere.css). Voir
+# hero.bookshop.yml pour les conventions communes. La grille `items` pointe
+# vers _structures.tool_items (cloudcannon.config.yml).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Service — Solutions exclusives"
+  description: "Carte vedette (badge, titre, texte, lien, image) suivie d'une grille de cartes outils (icône, titre, texte, lien) — ex. Ø Studio, O bureau."
+  icon: widgets
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/exclusive-tools/preview.png"
+    text: "Service — Solutions exclusives"
+    subtext: Carte vedette + grille de cartes outils
+  preview:
+    icon: widgets
+    text:
+      - key: title
+      - text: Solutions exclusives
+
+blueprint:
+  type: exclusive-tools
+  title: "Titre de la section"
+  intro: ""
+  featured:
+    badge: ""
+    title: "Solution vedette"
+    text: ""
+    ctaLabel: ""
+    href: ""
+    image: ""
+  items:
+    - title: "Outil"
+      text: ""
+      ctaLabel: ""
+      href: ""
+      icon: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre"
+  intro:
+    label: "Introduction"
+    comment: "Paragraphe optionnel sous le titre de section."
+  featured:
+    label: "Carte vedette"
+    comment: "Grande carte deux colonnes en tête de grille (optionnelle)."
+  badge:
+    type: text
+    label: "Badge"
+    comment: "Chip au-dessus du titre (ex. « Exclusivité Victrix »). Vide = absent."
+  items:
+    type: array
+    label: "Cartes outils"
+    comment: "Cartes en grille de 2 sous la carte vedette."
+    options:
+      structures: _structures.tool_items

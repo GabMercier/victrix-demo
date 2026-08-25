@@ -1,0 +1,59 @@
+{
+  "title": "Law 25: Are you compliant?",
+  "description": "Victrix helps large organizations ensure their compliance with Law 25 on personal information protection. Are you compliant?",
+  "sections": [
+    {
+      "type": "service-hero",
+      "eyebrow": "",
+      "titleAccent": "",
+      "title": "Law 25: Are you compliant?",
+      "titleHighlight": "compliant",
+      "lead": "With the new provisions of Law 25 now in effect, compliance is not only mandatory: it is a matter of credibility and security for your organization.",
+      "ctaLabel": "Ensure Law 25 compliance",
+      "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2023/05/andras-vas-bd7gnnwjbku-unsplash-scaled.jpg",
+      "imageAlt": ""
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Why Choose Victrix?",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Turn regulatory challenges into competitive advantages",
+        "text": "Given the risk of penalties and your customers' heightened expectations, compliance is now inextricably linked to your reputation.",
+        "watermark": "",
+        "stats": []
+      },
+      "aside": {
+        "icon": "bouclier",
+        "title": "Personalized assessment",
+        "text": "For a comprehensive and personalized assessment of your compliance with Law 25, contact us.",
+        "linkLabel": "Contact us",
+        "linkHref": "/en/contact"
+      }
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "title": "Related resources",
+      "tags": [
+        "Cybersecurity",
+        "Strategic consulting"
+      ],
+      "ctaLabel": "See all resources",
+      "ctaHref": "/en/ressources"
+    },
+    {
+      "type": "cta",
+      "title": "Is your organization compliant?",
+      "body": "Our expertise will enable you to turn regulatory challenges into competitive advantages.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "slug": "strategic-advice/law-25-compliance"
+}
