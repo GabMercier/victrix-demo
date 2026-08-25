@@ -7,18 +7,31 @@
       "eyebrow": "",
       "titleAccent": "",
       "title": "Law 25: Are you compliant?",
-      "lead": "Law 25: Is Your Organization Compliant? With the new provisions of Law 25 now in effect, compliance is not only mandatory, it is a matter of credibility and security for your organization. Given the risk of penalties and your customers' heightened expectations, compliance is now inextricably linked to your reputation. Ensure Law 25 compliance with Victrix",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "titleHighlight": "compliant",
+      "lead": "With the new provisions of Law 25 now in effect, compliance is not only mandatory: it is a matter of credibility and security for your organization.",
+      "ctaLabel": "Ensure Law 25 compliance",
+      "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2023/05/andras-vas-bd7gnnwjbku-unsplash-scaled.jpg",
       "imageAlt": ""
     },
     {
-      "type": "rich-text",
+      "type": "bento-metrics",
       "title": "Why Choose Victrix?",
-      "paragraphs": [
-        "Contact us for a personalized assessment! Our expertise will enable you to turn regulatory challenges into competitive advantages. For a comprehensive and personalized assessment of your compliance with Law 25, contact us."
-      ]
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Turn regulatory challenges into competitive advantages",
+        "text": "Given the risk of penalties and your customers' heightened expectations, compliance is now inextricably linked to your reputation.",
+        "watermark": "",
+        "stats": []
+      },
+      "aside": {
+        "icon": "bouclier",
+        "title": "Personalized assessment",
+        "text": "For a comprehensive and personalized assessment of your compliance with Law 25, contact us.",
+        "linkLabel": "Contact us",
+        "linkHref": "/en/contact"
+      }
     },
     {
       "_bookshop_name": "related-posts",
@@ -30,6 +43,16 @@
       ],
       "ctaLabel": "See all resources",
       "ctaHref": "/en/ressources"
+    },
+    {
+      "type": "cta",
+      "title": "Is your organization compliant?",
+      "body": "Our expertise will enable you to turn regulatory challenges into competitive advantages.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
   ],
   "slug": "strategic-advice/law-25-compliance"

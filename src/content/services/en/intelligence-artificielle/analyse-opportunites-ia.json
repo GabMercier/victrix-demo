@@ -7,18 +7,38 @@
       "eyebrow": "",
       "titleAccent": "",
       "title": "Artificial Intelligence Opportunity Analysis",
-      "lead": "Artificial Intelligence Opportunity Analysis Leverage your data and optimize your processes for a secure, cost-effective AI adoption that is perfectly aligned with your business objectives. nnDo you want AI to quickly deliver concrete, measurable value across your organization? You have the ideas, the data, and the drive, but you need a clear , secure framework that is aligned with your business priorities ?nnTake advantage of the expertise of Victrix’s artificial intelligence consultants and our AI opportunity analysis service . We help you clarify your priorities, identify the most promising AI use cases, and build a strategic roadmap for a secure and profitable adoption of artificial intelligence.nnWith Victrix’s support, transform your ideas into concrete , measurable AI projects , backed by strong governance .nn Talk to an AI expert",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "titleHighlight": "Opportunity",
+      "lead": "Leverage your data and optimize your processes for a secure, cost-effective AI adoption that is perfectly aligned with your business objectives.",
+      "ctaLabel": "Talk to an AI expert",
+      "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2025/10/freepik__adjust__18305-1.png",
       "imageAlt": ""
     },
     {
-      "type": "rich-text",
-      "title": "",
-      "paragraphs": [
-        "Why Explore Your AI Opportunities?",
-        "At Victrix, our experts offer personalized AI support that gives you the precision you need to build a solid AI adoption strategy. Here's what our <strong>AI opportunity analysis service</strong> can do for your organization.",
+      "type": "bento-metrics",
+      "title": "Why Explore Your AI Opportunities?",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Transform your ideas into concrete, measurable AI projects",
+        "text": "Do you want AI to quickly deliver concrete, measurable value across your organization? You have the ideas, the data, and the drive — you need a clear, secure framework aligned with your business priorities, backed by <strong>strong governance</strong>.",
+        "watermark": "eclair",
+        "stats": []
+      },
+      "aside": {
+        "icon": "etoile",
+        "title": "Not sure how to start with AI?",
+        "text": "Our experts support you every step of the way to ensure the success of all your digital transformation projects with AI.",
+        "linkLabel": "Consult a specialist",
+        "linkHref": "/en/contact"
+      }
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "What Our AI Opportunity Analysis Can Do",
+      "subtitle": "At Victrix, our experts offer personalized AI support that gives you the precision you need to build a solid AI adoption strategy.",
+      "fond": "givre",
+      "boxes": [
         "Prioritize promising and measurable artificial intelligence projects",
         "Exclude initiatives that are risky or misaligned with your objectives",
         "Identify uses for AI in your business to accelerate your processes and make more informed decisions",
@@ -27,49 +47,57 @@
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Not sure how to start integrating AI into your business?",
-      "paragraphs": [
-        "Our experts support you every step of the way to ensure the success of all your digital transformation projects with AI. \n&nbsp\n<a href=\"/en/contact/\">\nConsult a specialist\n</a>"
+      "type": "numbered-cards",
+      "sectionTitle": "The Key Steps in Our Approach",
+      "headingStyle": "plain",
+      "intro": "Our AI opportunity analysis process consists of four clear steps.",
+      "tone": "default",
+      "columns": "2",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Start",
+          "text": "Defining the vision and mobilizing stakeholders."
+        },
+        {
+          "number": "02",
+          "title": "Diagnosis",
+          "text": "Analysis of the current state and exploration of AI use cases."
+        },
+        {
+          "number": "03",
+          "title": "Evaluation",
+          "text": "Analysis of opportunities, measuring value, feasibility, and risks."
+        },
+        {
+          "number": "04",
+          "title": "Roadmap",
+          "text": "Prioritization of projects and structured adoption plan."
+        }
       ]
     },
     {
-      "type": "rich-text",
-      "title": "The key steps in our approach",
-      "paragraphs": [
-        "Our <strong>AI opportunity analysis process</strong> consists of four clear steps."
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Start",
-      "paragraphs": [
-        "Defining the vision and mobilizing stakeholders.",
-        "<strong>Diagnosis</strong>",
-        "Analysis of the current state and exploration of AI use cases.",
-        "<strong>Evaluation</strong>",
-        "Analysis of the current state and exploration of AI use cases.",
-        "<strong>Roadmap</strong>",
-        "Prioritization of projects and structured adoption plan."
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Concrete benefits for your organization",
-      "paragraphs": [
-        "Rapid impact and maximized return on investment",
-        "Clear vision and enhanced strategic alignment",
-        "Reduced risks and easier adoption of AI",
-        "Access to multidisciplinary expertise to guide your projects"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Take action with Victrix",
+      "type": "strategic-value",
+      "title": "Concrete Benefits for Your Organization",
       "paragraphs": [
         "With <strong>Victrix as your strategic partner</strong>, you combine technological expertise and tailored support to optimize the value of artificial intelligence within your organization.",
-        "Let's Meet Contact us to start your AI exploration and build a clear roadmap for your projects."
-      ]
+        "We help you clarify your priorities, identify the most promising AI use cases, and build a strategic roadmap for a secure and profitable adoption of artificial intelligence."
+      ],
+      "image": "",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Impact", "label": "Maximized return on investment" },
+        { "value": "Vision", "label": "Enhanced strategic alignment" },
+        { "value": "Risk", "label": "Reduced risks, easier AI adoption" },
+        { "value": "Expertise", "label": "Multidisciplinary guidance for your projects" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
     },
     {
       "_bookshop_name": "related-posts",
@@ -80,6 +108,16 @@
       ],
       "ctaLabel": "See all resources",
       "ctaHref": "/en/ressources"
+    },
+    {
+      "type": "cta",
+      "title": "Take Action with Victrix",
+      "body": "Contact us to start your AI exploration and build a clear roadmap for your projects.",
+      "ctaLabel": "Let's meet",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
   ],
   "slug": "artificial-intelligence/ai-opportunity-analysis",

@@ -1,116 +1,222 @@
 {
-  "title": "Dynamics 365 Field Service",
+  "title": "Dynamics 365 Field Service",
   "description": "Implémentation Dynamics 365 Field Service. Optimisez vos opérations terrain: planification, résolution au premier appel et ROI prouvé. Planifiez une consultation.",
   "sections": [
     {
-      "type": "service-hero",
-      "eyebrow": "",
-      "titleAccent": "",
-      "title": "Dynamics 365 Field Service",
-      "lead": "Implémentation Dynamics 365 Field Service Structurez et optimisez la gestion de vos opérations terrain Coordonnez vos interventions, vos techniciens et vos ressources dans un seul système. Victrix implémente Dynamics 365 Field Service pour vous donner une visibilité en temps réel sur le terrain, accélérer la résolution des demandes et rehausser l'expérience de vos clients comme de vos employés.nn Planifiez une consultation",
+      "type": "product-hero",
+      "badge": "Écosystème Microsoft 365",
+      "title": "Implémentation Dynamics 365 Field Service",
+      "titleHighlight": "Dynamics 365 Field Service",
+      "lead": "Structurez et optimisez la gestion de vos opérations terrain : coordonnez vos interventions, vos techniciens et vos ressources dans un seul système. Victrix implémente Dynamics 365 Field Service pour vous donner une visibilité en temps réel sur le terrain, accélérer la résolution des demandes et rehausser l’expérience de vos clients comme de vos employés.",
+      "ctaLabel": "Demandez une consultation",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "image": "/wp-content/uploads/2026/06/site-manager-walk-down-with-engineer-to-check-prec-2026-03-09-23-57-29-utc-1-scaled.jpg",
+      "imageAlt": "",
+      "fond": "givre"
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "Les enjeux de gestion des opérations terrain",
+      "subtitle": "Papier, feuilles de calcul ou appels de coordination : vos équipes terrain doivent-elles composer avec des outils manuels et déconnectés ? À mesure que le volume de demandes augmente, les limites deviennent critiques pour les organisations québécoises à fortes opérations terrain — secteur manufacturier avancé, énergie, services publics, télécommunications, secteur public et municipalités, santé.",
+      "fond": "blanc",
+      "boxes": [
+        "Planification lourde et rigide qui se désynchronise au moindre imprévu",
+        "Visibilité limitée en temps réel sur les techniciens et l’état des interventions",
+        "Communication ralentie entre le bureau, le terrain et le client",
+        "Imputabilité difficile sur qui fait quoi, et où",
+        "Charge de coordination qui pèse sur vos équipes",
+        "Expérience client affaiblie, faute de transparence et de suivi des demandes"
+      ]
+    },
+    {
+      "type": "offer-cards",
+      "title": "Encadrer, structurer et optimiser vos interventions terrain",
+      "intro": "D365 Field Service vous aide à mieux planifier, mieux coordonner et mieux suivre vos interventions, de la création d’une demande jusqu’à sa complétion. La solution centralise vos données opérationnelles et automatise la planification pour gagner en efficacité, réduire les efforts manuels et améliorer l’expérience client.",
+      "fond": "givre",
       "ctaLabel": "",
       "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Ce que la solution prend en charge",
+          "bullets": [
+            { "text": "Ordres de travail : création, assignation et suivi de bout en bout", "icon": "coche" },
+            { "text": "Planification et répartition des ressources : la bonne équipe dans le bon véhicule, selon les compétences, permis, certifications et équipements requis", "icon": "coche" },
+            { "text": "Optimisation des horaires et des déplacements : ajustement des imprévus, comme les intempéries, et trajets efficaces", "icon": "coche" },
+            { "text": "Visibilité en temps réel : géolocalisation des équipes et suivi des techniciens sur la route", "icon": "coche" },
+            { "text": "Inspection et validation des travaux sur place, au moyen de l’application mobile", "icon": "coche" },
+            { "text": "Gestion des actifs clients, avec l’historique de service accessible", "icon": "coche" },
+            { "text": "Assistance intégrée par l’IA : un assistant de planification intelligent soutient vos répartiteurs", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Une expérience terrain rehaussée pour vos techniciens",
+          "bullets": [
+            { "text": "Les bons outils et les bonnes données, au bon moment, pour livrer un service de qualité à chaque intervention", "icon": "cible" },
+            { "text": "Augmentez le taux de résolution au premier appel en envoyant le technicien le plus compétent pour résoudre le problème", "icon": "coche" },
+            { "text": "Assurez le suivi en temps réel des techniciens et informez vos clients de l’heure d’arrivée estimée", "icon": "coche" },
+            { "text": "Déclenchez des flux de travail et des ordres de travail automatisés en fonction des actions des clients et des données analysées", "icon": "coche" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Des résultats qui parlent d’eux-mêmes",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Étude Forrester Total Economic Impact™ (2023)",
+        "text": "Selon l’étude Forrester commandée par Microsoft, les organisations qui adoptent Dynamics 365 Field Service obtiennent :",
+        "watermark": "graphique",
+        "stats": [
+          { "value": "6 mois", "label": "Rentabilisation de la solution" },
+          { "value": "+14 %", "label": "De productivité des techniciens" },
+          { "value": "+100 h", "label": "Économisées grâce à une gestion efficace" },
+          { "value": "346 %", "label": "De rendement sur trois ans" }
+        ]
+      },
+      "aside": {
+        "icon": "etoile",
+        "title": "Découvrez l’impact sur vos propres opérations terrain",
+        "text": "Présentez-nous vos enjeux terrain et nous vous montrerons comment Dynamics 365 Field Service s’applique à votre contexte.",
+        "linkLabel": "Planifiez une consultation",
+        "linkHref": "/fr/contact"
+      }
+    },
+    {
+      "type": "strategic-value",
+      "title": "Pourquoi choisir Victrix",
+      "paragraphs": [
+        "On ne se contente pas d’activer des fonctionnalités : <strong>on bâtit votre solution avec vous</strong>. Notre accompagnement personnalisé vous suit du début jusqu’à la livraison, pour que la solution reflète votre réalité et que vos équipes s’y retrouvent.",
+        "Notre <strong>équipe multidisciplinaire</strong> (gouvernance, <a href=\"/expertise/cybersecurite/\">cybersécurité</a>, <a href=\"/expertise/services-infonuagiques/\">infonuagique</a>, <a href=\"/expertise/services-ti-geres/\">services TI gérés</a> et Power Platform) travaille ensemble sur votre projet. Le budget et l’échéancier seront confirmés avec notre équipe, car ils varient selon votre contexte et vos besoins.",
+        "Victrix détient les <a href=\"/certification-iso-27001-iso-9001/\">certifications ISO/IEC 27001:2022 (sécurité de l’information) et ISO 9001:2015</a> (gestion de la qualité)."
+      ],
       "image": "/wp-content/uploads/2026/06/site-manager-walk-down-with-engineer-to-check-prec-2026-03-09-23-57-29-utc-1-scaled.jpg",
-      "imageAlt": ""
+      "imageAlt": "",
+      "stats": [
+        { "value": "Bilingue", "label": "Livraison en français ou bilingue, par une équipe d’ici" },
+        { "value": "Sur mesure", "label": "Composants taillés pour votre réalité, expertise Power Pages reconnue" },
+        { "value": "Éprouvé", "label": "Un modèle transparent : on bâtit avec vous" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
     },
     {
-      "type": "rich-text",
-      "title": "Les enjeux de gestion des opérations terrain pour les organisations québécoises",
-      "paragraphs": [
-        "<strong>Papier, feuilles de calcul ou appels de coordination</strong>: vos équipes terrain doivent-elles composer avec des outils manuels et déconnectés? À mesure que le volume de demandes augmente, les limites deviennent critiques:",
-        "<ul><li>Planification lourde et ridgide qui se désynchronise au moindre imprévu.</li>\n<li>Visibilité limitée en temps réel sur les techniciens et l'état des interventions.</li>\n<li>Communication ralentie entre le bureau, le terrain et le client.</li>\n<li>Imputabilité difficile sur qui fait quoi, et où.</li>\n<li>Charge de coordination qui pèse sur vos équipes.</li>\n<li>Expérience client affaiblie, faute de transparence et suivi des demandes.</li></ul>",
-        "Ces enjeux touchent particulièrement les organisations à fortes opérations terrain telles que <strong>le secteur manufacturier avancé, l’énergie, les services publics, les télécommunications, le secteur public et les municipalités, et la santé</strong>."
+      "type": "numbered-cards",
+      "sectionTitle": "Notre démarche d’implémentation Dynamics 365 Field Service",
+      "headingStyle": "underline",
+      "intro": "Notre démarche structurée vous accompagne de bout en bout, du cadrage initial jusqu’à l’adoption.",
+      "tone": "tint",
+      "columns": "2",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Diagnostic et démarrage",
+          "text": "Nous analysons vos processus terrain actuels, validons vos besoins et établissons les objectifs et le plan de projet."
+        },
+        {
+          "number": "02",
+          "title": "Exécution itérative",
+          "text": "Nous configurons la solution par cycles courts, avec des points de suivi réguliers pour garder le projet aligné sur vos priorités."
+        },
+        {
+          "number": "03",
+          "title": "Déploiement",
+          "text": "Nous mettons la solution en production et préparons vos équipes à l’utiliser."
+        },
+        {
+          "number": "04",
+          "title": "Stabilisation",
+          "text": "Nous assurons le bon fonctionnement, ajustons au besoin et soutenons l’adoption après le go-live."
+        }
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Pourquoi choisir Victrix pour votre implémentation Dynamics 365 Field Service",
-      "paragraphs": [
-        "On ne se contente pas d'activer des fonctionnalités: <strong>on bâtit votre solution avec vous</strong>. Notre accompagnement personnalisé vous suit du début jusqu'à la livraison, pour que la solution reflète votre réalité et que vos équipes s'y retrouvent.",
-        "<ul><li>Une livraison en français ou bilingue, par une équipe d'ici.</li>\n <li>Des composants taillés sur mesure pour votre réalité, dont une expertise reconnue des portails Power Pages.</li>\n <li>Un modèle éprouvé et une approche transparente, où l'on bâtit avec vous plutôt que d'activer des fonctionnalités à l'aveugle.</li></ul>",
-        "Notre <strong>équipe multidisciplinaire</strong> (gouvernance, <a href=\"/expertise/cybersecurite/\">cybersécurité</a>, <a href=\"/expertise/services-infonuagiques/\">infonuagique</a>, <a href=\"/expertise/services-ti-geres/\">services TI gérés</a> et Power Platform) travaille ensemble sur votre projet. Le budget et l'échéancier seront confirmés avec notre équipe, car ils varient selon votre contexte et vos besoins.",
-        "<strong>Nos certifications et désignations</strong>",
-        "Victrix détient les <a href=\"/certification-iso-27001-iso-9001/\">certifications ISO/IEC 27001:2022 (sécurité de l'information) et ISO 9001:2015</a> (gestion de la qualité)."
+      "type": "offer-cards",
+      "title": "Ce qui est inclus dans notre offre d’implémentation",
+      "intro": "Échéancier à titre indicatif : environ 18 semaines*, confirmé après l’analyse. L’offre pose une base solide que vous faites évoluer au rythme de vos besoins — selon vos priorités, nous pouvons analyser et chiffrer séparément les éléments du second volet. * Certaines limites et précisions s’appliquent aux éléments marqués d’un astérisque ; elles seront confirmées lors de l’analyse.",
+      "fond": "givre",
+      "ctaLabel": "Obtenez une proposition à votre mesure",
+      "ctaHref": "/fr/contact",
+      "items": [
+        {
+          "number": "01",
+          "title": "Activités et livrables inclus",
+          "bullets": [
+            { "text": "Échéancier détaillé et plan de projet", "icon": "coche" },
+            { "text": "Rapports de suivi aux deux semaines", "icon": "coche" },
+            { "text": "Rapport d’observations et recommandations sur vos processus actuels", "icon": "coche" },
+            { "text": "Cahier des charges", "icon": "coche" },
+            { "text": "Schéma d’architecture cible", "icon": "coche" },
+            { "text": "Modèle de données relationnelles", "icon": "coche" },
+            { "text": "Implémentation de la solution Dynamics 365 Field Service (un seul flux de travail)*", "icon": "coche" },
+            { "text": "Intégrations* et migrations*", "icon": "coche" },
+            { "text": "Formation*", "icon": "coche" },
+            { "text": "Go-live et support post-déploiement*", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Une base évolutive pour vos prochaines phases",
+          "bullets": [
+            { "text": "L’optimisation du planificateur par l’IA (analysée et évaluée à part)", "icon": "carte" },
+            { "text": "Un portail client, grâce à notre expertise des portails Power Pages", "icon": "carte" },
+            { "text": "La gestion du service client", "icon": "carte" },
+            { "text": "La gestion des inventaires", "icon": "carte" },
+            { "text": "Des automatisations sur mesure", "icon": "carte" }
+          ]
+        }
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Dynamics 365 Field Service: encadrer, structurer et optimiser vos interventions terrain",
-      "paragraphs": [
-        "D365 Field Service vous aide à <strong>mieux planifier, mieux coordonner et mieux suivre vos interventions</strong>, de la création d’une demande jusqu’à sa complétion. La solution centralise vos données opérationnelles et automatise la planification pour gagner en efficacité, réduire les efforts manuels et améliorer l’expérience client.",
-        "<strong>Ce que la solution prend en charge</strong>",
-        "<ul><li>Ordres de travail: création, assignation et suivi de bout en bout.</li>\n<li>Planification et répartition des ressources: la bonne équipe dans le bon véhicule, selon les compétences, permis, certifications et équipements requis.</li>\n<li>Optimisation des horaires et des déplacements: ajustement des imprévus, comme les intempéries, et trajets efficaces.</li>\n<li>Visibilité en temps réel: géolocalisation des équipes et suivi des techniciens sur la route.</li>\n<li>Inspection et validation des travaux sur place, au moyen de l'application mobile.</li>\n<li>Gestion des actifs clients, avec l'historique de service accessible.</li>\n<li>Assistance intégrée par l'IA: un assistant de planification intelligent soutient vos répartiteurs.</li></ul>",
-        "<strong>Avant et après l'implémentation Dynamics 365 Field Service</strong>",
-        "<table style=\"width: 100%; border-collapse: collapse; background-color: #ffffff;\">\n<tbody>\n<tr style=\"background-color: #f2f5f8;\">\n<th scope=\"col\" style=\"width: 50%; padding: 10px 12px; text-align: left; vertical-align: top; border-right: 1px solid #002c46; border-bottom: 1px solid #002c46;\">Sans solution intégrée</th>\n<th scope=\"col\" style=\"width: 50%; padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid #002c46;\">Avec Dynamics 365 Field Service</th>\n</tr>\n<tr>\n<td style=\"padding: 10px 12px; vertical-align: top; border-right: 1px solid #002c46; border-bottom: 1px solid #002c46;\">Visibilité limitée sur les opérations terrain et les données clients</td>\n<td style=\"padding: 10px 12px; vertical-align: top; border-bottom: 1px solid #002c46;\">Visibilité en temps réel sur les opérations et les données clients</td>\n</tr>\n<tr style=\"background-color: #f2f5f8;\">\n<td style=\"padding: 10px 12px; vertical-align: top; border-right: 1px solid #002c46; border-bottom: 1px solid #002c46;\">Aucun historique d'actif ni de service antérieur</td>\n<td style=\"padding: 10px 12px; vertical-align: top; border-bottom: 1px solid #002c46;\">Historique d'actif et de service disponible pour rehausser la qualité</td>\n</tr>\n<tr>\n<td style=\"padding: 10px 12px; vertical-align: top; border-right: 1px solid #002c46; border-bottom: 1px solid #002c46;\">Planification des ressources et déplacements difficiles à optimiser</td>\n<td style=\"padding: 10px 12px; vertical-align: top; border-bottom: 1px solid #002c46;\">Planification optimisée et orchestration efficace des déplacements</td>\n</tr>\n<tr style=\"background-color: #f2f5f8;\">\n<td style=\"padding: 10px 12px; vertical-align: top; border-right: 1px solid #002c46; border-bottom: 1px solid #002c46;\">Inspections et validations manuelles, non connectées</td>\n<td style=\"padding: 10px 12px; vertical-align: top; border-bottom: 1px solid #002c46;\">Inspections et validations connectées, centralisées et sécurisées</td>\n</tr>\n<tr>\n<td style=\"padding: 10px 12px; vertical-align: top; border-right: 1px solid #002c46;\">Coordination manuelle des rendez-vous et des imprévus</td>\n<td style=\"padding: 10px 12px; vertical-align: top;\">Coordination centralisée et gestion fluide des changements</td>\n</tr>\n</tbody>\n</table>"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Une expérience terrain rehaussée pour vos techniciens sur la route",
-      "paragraphs": [
-        "Vos techniciens sont le cœur de votre service. Dynamics 365 Field Service leur donne <strong>les bons outils et les bonnes données</strong>, <strong>au bon moment</strong>, pour livrer un service de qualité à chaque intervention.",
-        "<ul><li>Augmentez le taux de résolution au premier appel en envoyant le technicien le plus compétent pour résoudre le problème.</li>\n<li>Assurez le suivi en temps réel des techniciens et informez vos clients de l'heure d'arrivée estimée.</li>\n<li>Déclenchez des flux de travail et des ordres de travail automatisés en fonction des actions des clients et des données analysées.</li></ul>",
-        "<strong>Découvrez l’impact sur vos propres opérations terrain </strong> Présentez-nous vos enjeux terrain et nous vous montrerons comment Dynamics 365 Field Service s’applique à votre contexte."
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Des résultats qui parlent d'eux-mêmes",
-      "paragraphs": [
-        "Selon l'<a href=\"https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2024/02/05/forrester-study-finds-346-roi-when-modernizing-service-operations-with-dynamics-365-field-service/\">étude Forrester Total Economic Impact™ commandée par Microsoft (2023)</a>, les organisations qui adoptent Dynamics 365 Field Service obtiennent:"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "6 mois",
-      "paragraphs": [
-        "rentabilisation de la solution",
-        "<strong>+14 %</strong>",
-        "de productivité des techniciens une fois implémenté",
-        "<strong>+100 h</strong>",
-        "économisées grâce à une gestion efficace",
-        "<strong>346 %</strong>",
-        "de rendement sur trois ans"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Notre démarche d'implémentation Dynamics 365 Field Service",
-      "paragraphs": [
-        "Notre démarche structurée vous accompagne de bout en bout, du cadrage initial jusqu'à l'adoption.",
-        "Diagnostic et démarrage Nous analysons vos processus terrain actuels, validons vos besoins et établissons les objectifs et le plan de projet.",
-        "Exécution itérative Nous configurons la solution par cycles courts, avec des points de suivi réguliers pour garder le projet aligné sur vos priorités.",
-        "Déploiement Nous mettons la solution en production et préparons vos équipes à l'utiliser.",
-        "Stabilisation Nous assurons le bon fonctionnement, ajustons au besoin et soutenons l'adoption après le go-live.",
-        "<strong>Ce qui est inclus dans notre offre d'implémentation Dynamics 365 Field Service</strong>",
-        "Échéancier à titre indicatif: environ<strong> 18 semaines*</strong>, confirmé après l'analyse.",
-        "<strong>Activités et livrables inclus:</strong>",
-        "<ul><li>Échéancier détaillé et plan de projet</li>\n <li>Rapports de suivi aux deux semaines</li>\n <li>Rapport d'observations et recommandations sur vos processus actuels</li>\n <li>Cahier des charges</li>\n <li>Schéma d'architecture cible</li>\n <li>Modèle de données relationnelles</li>\n <li>Implémentation de la solution Dynamics 365 Field Service (un seul flux de travail)*</li>\n <li>Intégrations* et migrations*</li>\n <li>Formation*</li>\n <li>Go-live et support post-déploiement*</li></ul>",
-        "* <em>Certaines limites et précisions s'appliquent aux éléments marqués d'un astérisque; elles seront confirmées lors de l'analyse.</em>",
-        "<strong>Une base évolutive pour vos prochaines phases</strong>",
-        "L'offre pose <strong>une base solide que vous faites évoluer au rythme de vos besoins</strong>. Selon vos priorités, nous pouvons analyser et chiffrer séparément:",
-        "<ul><li>l'optimisation du planificateur par l'IA (analysée et évaluée à part)</li>\n<li>un portail client, grâce à notre expertise des portails Power Pages</li>\n<li>la gestion du service client</li>\n<li>la gestion des inventaires</li>\n<li>des automatisations sur mesure</li></ul>",
-        "<strong>Obtenez une proposition à votre mesure </strong> Partagez-nous votre contexte et notre équipe vous prépare une proposition adaptée à vos besoins et votre échéancier."
-      ]
-    },
-    {
-      "type": "rich-text",
+      "type": "faq",
       "title": "Questions fréquentes sur Dynamics 365 Field Service",
-      "paragraphs": [
-        "<strong>Qu'est-ce que Dynamics 365 Field Service ?</strong>",
-        "<strong>Dynamics 365 Field Service</strong> est une solution Microsoft qui aide les organisations à <strong>optimiser la gestion de leurs opérations terrain </strong>: ordres de travail, planification, répartition des ressources et suivi des techniciens, dans un seul système connecté.",
-        "<strong>Combien de temps prend une implémentation ?</strong>",
-        "<strong>L'échéancier indicatif est d'environ 18 semaines.</strong> Il est confirmé après l'analyse, car il varie selon la portée, vos processus et vos besoins.",
-        "<strong>Les licences Microsoft Dynamics 365 Field Service sont-elles comprises dans l'offre ?</strong>",
-        "Non. L'offre couvre les services d'implémentation. Les licences Dynamics 365 relèvent d'un abonnement Microsoft distinct. <strong>Victrix peut vous aider à les acquérir en fonction de vos besoins. </strong>",
-        "<strong>Peut-on déployer uniquement les fonctionnalités dont nous avons besoin ?</strong>",
-        "<strong>Oui.</strong> Nous déployons d'abord ce dont vous avez besoin, puis la plateforme évolue avec vous, sans besoin d'une nouvelle implémentation.",
-        "<strong>Comment gérez-vous la conduite du changement et l'adoption ?</strong>",
-        "Nous offrons un accompagnement personnalisé qui comprend <strong>la formation par rôle, la documentation et un support bilingue après le go-live</strong>. L'application mobile de Dynamics 365 Field Service, simple à prendre en main, facilite aussi l'adoption sur le terrain.",
-        "<strong>Quel est l'investissement requis ?</strong>",
-        "<strong>L'offre débute à 85 000 $. </strong>Le budget et l'échéancier sont confirmés après l'analyse, car ils varient selon votre contexte et vos besoins.",
-        "<strong>Prêts à structurer et optimiser vos opérations terrain ?</strong> Discutons de vos opérations terrain et de la façon dont Dynamics 365 Field Service peut les transformer."
+      "fond": "blanc",
+      "items": [
+        {
+          "question": "Qu’est-ce que Dynamics 365 Field Service ?",
+          "answer": "Dynamics 365 Field Service est une solution Microsoft qui aide les organisations à optimiser la gestion de leurs opérations terrain : ordres de travail, planification, répartition des ressources et suivi des techniciens, dans un seul système connecté."
+        },
+        {
+          "question": "Combien de temps prend une implémentation ?",
+          "answer": "L’échéancier indicatif est d’environ 18 semaines. Il est confirmé après l’analyse, car il varie selon la portée, vos processus et vos besoins."
+        },
+        {
+          "question": "Les licences Microsoft Dynamics 365 Field Service sont-elles comprises dans l’offre ?",
+          "answer": "Non. L’offre couvre les services d’implémentation. Les licences Dynamics 365 relèvent d’un abonnement Microsoft distinct. Victrix peut vous aider à les acquérir en fonction de vos besoins."
+        },
+        {
+          "question": "Peut-on déployer uniquement les fonctionnalités dont nous avons besoin ?",
+          "answer": "Oui. Nous déployons d’abord ce dont vous avez besoin, puis la plateforme évolue avec vous, sans besoin d’une nouvelle implémentation."
+        },
+        {
+          "question": "Comment gérez-vous la conduite du changement et l’adoption ?",
+          "answer": "Nous offrons un accompagnement personnalisé qui comprend la formation par rôle, la documentation et un support bilingue après le go-live. L’application mobile de Dynamics 365 Field Service, simple à prendre en main, facilite aussi l’adoption sur le terrain."
+        },
+        {
+          "question": "Quel est l’investissement requis ?",
+          "answer": "L’offre débute à 85 000 $. Le budget et l’échéancier sont confirmés après l’analyse, car ils varient selon votre contexte et vos besoins."
+        }
       ]
+    },
+    {
+      "type": "cta",
+      "title": "Prêts à structurer et optimiser vos opérations terrain ?",
+      "body": "Discutons de vos opérations terrain et de la façon dont Dynamics 365 Field Service peut les transformer.",
+      "ctaLabel": "Planifiez une consultation",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
   ],
   "seoTitle": "Implémentation Dynamics 365 Field Service | Services"

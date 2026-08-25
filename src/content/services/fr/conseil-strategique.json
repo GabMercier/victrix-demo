@@ -7,81 +7,132 @@
       "eyebrow": "",
       "titleAccent": "",
       "title": "Conseil stratégique",
-      "lead": "Conseil stratégique Notre savoir-faire en matière de conseil stratégique est transversal à nos domaines d’expertise : Productivité , Intelligence artificielle , Infonuagique , Cybersécurité et Services gérés .nnL’implication de nos dirigeants et nos expertises multidisciplinaires sont mises à votre service pour assurer le succès de vos projets stratégiques.nn Parlons de vos projets",
-      "ctaLabel": "En savoir plus",
-      "ctaHref": "#",
+      "titleHighlight": "stratégique",
+      "lead": "Notre savoir-faire en conseil stratégique est transversal à nos domaines d’expertise : productivité, intelligence artificielle, infonuagique, cybersécurité et services gérés. L’implication de nos dirigeants et nos expertises multidisciplinaires sont mises à votre service pour assurer le succès de vos projets stratégiques.",
+      "ctaLabel": "Parlons de vos projets",
+      "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2022/02/conseil-strategique-victrix-scaled.jpg",
       "imageAlt": ""
     },
     {
-      "type": "rich-text",
+      "type": "bento-metrics",
       "title": "Notre différenciateur",
-      "paragraphs": [
-        "Nous vous offrons une approche stratégique innovante",
-        "<strong>ÉQUIPE PLURIDISCIPLINAIRE</strong>",
-        "Nos conseillers chevronnés en stratégie et technologie vous aideront à atteindre vos objectifs",
-        "<strong>MÉTHODOLOGIE ÉPROUVÉE</strong>",
-        "Notre méthodologie implique notre équipe de direction en cours de projet et un challenge des pairs afin de vous présenter l’approche la mieux adaptée à vos besoins",
-        "<strong>TRANSFORMATION NUMÉRIQUE</strong>",
-        "Notre objectif est d’accélérer la réalisation de votre projet avec des résultats tangibles et mesurables"
-      ]
+      "intro": "Nous vous offrons une approche stratégique innovante.",
+      "fond": "blanc",
+      "featured": {
+        "title": "Transformation numérique",
+        "text": "Notre objectif est d’accélérer la réalisation de votre projet avec des <strong>résultats tangibles et mesurables</strong>.",
+        "watermark": "graphique",
+        "stats": []
+      },
+      "aside": {
+        "icon": "etoile",
+        "title": "Équipe pluridisciplinaire",
+        "text": "Nos conseillers chevronnés en stratégie et technologie vous aideront à atteindre vos objectifs. Victrix propose une approche humaine ayant à cœur le bien-être de ses équipes.",
+        "linkLabel": "Faites partie de l’équipe",
+        "linkHref": "/fr/carrieres"
+      }
     },
     {
-      "type": "rich-text",
+      "type": "offer-cards",
       "title": "Nos expertises en conseil stratégique",
-      "paragraphs": [
-        "<strong>Stratégies</strong>",
-        "<ul><li>Plan directeur / plan d’évolution</li>\n<li>Montage financier pour projet d’envergure</li>\n<li>Gouvernance</li>\n<li>Analyse de rentabilité/étude d’opportunité</li>\n<li>Accompagnement / prise de décision</li></ul>",
-        "<strong>Feuille de route technologique</strong>",
-        "<ul><li>Power Platform</li>\n<li>Externalisation des services (sécurité, SIEM, infrastructure)</li>\n<li>Conteneur infonuagique (Azure, Red Hat, etc.)</li>\n<li>Sécurité multifournisseur</li>\n<li>Infonuagique hybride</li>\n<li>Dématérialisation des CTI et des postes de travail</li></ul>",
-        "<strong>Positionnement stratégique</strong>",
-        "<ul><li>IoT</li>\n<li>Infonuagique hybride</li>\n<li>SASE / ZTNA</li>\n<li>Développement utilisateur</li>\n<li>Low code / no code / automatisation</li></ul>"
+      "intro": "",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Stratégies",
+          "bullets": [
+            { "text": "Plan directeur / plan d’évolution", "icon": "coche" },
+            { "text": "Montage financier pour projet d’envergure", "icon": "coche" },
+            { "text": "Gouvernance", "icon": "coche" },
+            { "text": "Analyse de rentabilité / étude d’opportunité", "icon": "coche" },
+            { "text": "Accompagnement / prise de décision", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Feuille de route technologique",
+          "bullets": [
+            { "text": "Power Platform", "icon": "coche" },
+            { "text": "Externalisation des services (sécurité, SIEM, infrastructure)", "icon": "coche" },
+            { "text": "Conteneur infonuagique (Azure, Red Hat, etc.)", "icon": "coche" },
+            { "text": "Sécurité multifournisseur", "icon": "coche" },
+            { "text": "Infonuagique hybride", "icon": "coche" },
+            { "text": "Dématérialisation des CTI et des postes de travail", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Positionnement stratégique",
+          "bullets": [
+            { "text": "IoT", "icon": "coche" },
+            { "text": "Infonuagique hybride", "icon": "coche" },
+            { "text": "SASE / ZTNA", "icon": "coche" },
+            { "text": "Développement utilisateur", "icon": "coche" },
+            { "text": "Low code / no code / automatisation", "icon": "coche" }
+          ]
+        }
       ]
     },
     {
-      "type": "rich-text",
+      "type": "numbered-cards",
+      "sectionTitle": "Notre méthodologie",
+      "headingStyle": "underline",
+      "intro": "Notre méthodologie implique notre équipe de direction en cours de projet et un challenge des pairs afin de vous présenter l’approche la mieux adaptée à vos besoins.",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Comprendre",
+          "text": "Ateliers d’évaluation et de découverte, questionnaires : besoins d’affaires, TI et utilisateurs, systèmes utilisés, contrats, expertise, contraintes, initiatives, problèmes et principes directeurs."
+        },
+        {
+          "number": "02",
+          "title": "Prioriser",
+          "text": "Révision de l’étendue, ateliers d’orientation et de stratégie : tendances, comparables, meilleures pratiques et présentation à la direction."
+        },
+        {
+          "number": "03",
+          "title": "Planifier",
+          "text": "Calendrier de réalisation, priorités, disponibilités, ressources internes et externes."
+        },
+        {
+          "number": "04",
+          "title": "Budgéter",
+          "text": "Séquence, efforts, échéancier et coûts, choix technologiques."
+        },
+        {
+          "number": "05",
+          "title": "Activer",
+          "text": "Affectation des ressources, lancement des projets, gestion du changement, communication et rétroaction en continu."
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
       "title": "Les avantages de notre conseil stratégique",
       "paragraphs": [
-        "<strong>Réalisations diversifiées</strong>",
-        "<strong>Challenge des pairs</strong>",
-        "<strong>Spécialistes en gestion chevronnés</strong>",
-        "<strong>Expertise technologique</strong>"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Notre nméthodologie",
-      "paragraphs": [
-        "<strong>Comprendre</strong>",
-        "Ateliers d'évaluation et de découverte<br> Questionnaires<br> Besoins d'affaires, TI et utilisateurs<br> Systèmes utilisés<br> Contrats, expertise, contraintes, initiatives, problèmes<br> Principes directeurs n",
-        "<strong>Prioriser</strong>",
-        "Révision de l'étendue<br> Ateliers d’orientation et de stratégie<br> Tendances<br> Comparables<br> Meilleures pratiques<br> Présentation à la direction n",
-        "<strong>Planifier</strong>",
-        "Calendrier de réalisation<br> Priorités<br> Disponibilités<br> Ressources internes et externes n",
-        "<strong>Budgéter</strong>",
-        "Séquence<br> Efforts<br> Échéancier et coûts<br> Choix technologiques n",
-        "<strong>Activer</strong>",
-        "Affectation des ressources<br> Lancement des projets<br> Gestion du changement<br> Communication<br> Rétroaction en continu n",
-        "Rencontrez nos experts Contactez-nous pour parler de vos projets ! n"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Ils nous fontnconfiance",
-      "paragraphs": [
-        "<strong>Microsoft</strong>",
-        "<strong>Amazon</strong>",
-        "<strong>Red Hat</strong>"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Vie chez Victrix",
-      "paragraphs": [
-        "Victrix propose une approche humaine ayant à coeur le bien être de ses équipes.",
-        "<a href=\"/carriere/\">Faites partie de l'équipe</a>",
-        "Assurez le succès de vos projets stratégiques avec Victrix n"
-      ]
+        "Ils nous font confiance : <strong>Microsoft</strong>, <strong>Amazon</strong> et <strong>Red Hat</strong>."
+      ],
+      "image": "",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Diversité", "label": "Réalisations diversifiées" },
+        { "value": "Rigueur", "label": "Challenge des pairs" },
+        { "value": "Expérience", "label": "Spécialistes en gestion chevronnés" },
+        { "value": "Technologie", "label": "Expertise technologique" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
     },
     {
       "_bookshop_name": "related-posts",
@@ -92,6 +143,16 @@
       ],
       "ctaLabel": "Voir toutes les ressources",
       "ctaHref": "/fr/ressources"
+    },
+    {
+      "type": "cta",
+      "title": "Rencontrez nos experts",
+      "body": "Assurez le succès de vos projets stratégiques avec Victrix.",
+      "ctaLabel": "Contactez-nous",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
   ],
   "seoTitle": "Conseil stratégique | Expertise multidisciplinaire"

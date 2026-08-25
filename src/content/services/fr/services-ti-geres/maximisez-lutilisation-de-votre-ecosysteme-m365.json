@@ -7,54 +7,112 @@
       "eyebrow": "",
       "titleAccent": "",
       "title": "Maximisez l’utilisation de votre écosystème M365",
-      "lead": "Maximisez l’utilisation de votre écosystème M365 Notre solution de gestion Microsoft 365 prend en charge les opérations de gestion et de sécurité afin de nous assurer de la conformité de votre environnement. Notre offre est un complément évolutif qui vous permet de rester à la fine pointe des technologies avec notre volet Vigie et évolution. Rencontrons-nous n",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "titleHighlight": "écosystème M365",
+      "lead": "Notre solution de gestion Microsoft 365 prend en charge les opérations de gestion et de sécurité afin d'assurer la conformité de votre environnement.",
+      "ctaLabel": "Rencontrons-nous",
+      "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2023/08/istock-508289586.jpg",
       "imageAlt": ""
     },
     {
-      "type": "rich-text",
-      "title": "Notre approche",
-      "paragraphs": [
-        "<strong>Support technique et conseil</strong>",
-        "<strong>Gestion opérationnelle</strong>",
-        "<strong>Optimisation des coûts</strong>",
-        "<strong>Vigie et évolution</strong>",
-        "<strong>Sécurité et conformité</strong>"
-      ]
-    },
-    {
-      "type": "rich-text",
+      "type": "bento-metrics",
       "title": "Comment la gestion Microsoft 365 peut vous aider",
-      "paragraphs": [
-        "<ul><li>Accéder à des compétences qui ne sont pas disponibles</li>\n <li>Améliorer votre sécurité</li>\n <li>Augmenter votre capacité d’innovation</li>\n <li>Mieux utiliser vos ressources internes</li>\n <li>Réduire vos coûts</li></ul>"
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Mieux utiliser vos ressources internes",
+        "text": "Accédez à des compétences qui ne sont pas disponibles, améliorez votre sécurité, augmentez votre capacité d'innovation et réduisez vos coûts.",
+        "watermark": "engrenage",
+        "stats": []
+      },
+      "aside": {
+        "icon": "etoile",
+        "title": "Un complément évolutif",
+        "text": "Notre offre vous permet de rester à la fine pointe des technologies avec notre volet Vigie et évolution.",
+        "linkLabel": "",
+        "linkHref": ""
+      }
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "Notre approche",
+      "fond": "givre",
+      "boxes": [
+        "Support technique et conseil",
+        "Gestion opérationnelle",
+        "Optimisation des coûts",
+        "Vigie et évolution",
+        "Sécurité et conformité"
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Les avantages du service de gestion M365 de Victrix",
-      "paragraphs": [
-        "<strong>Proactivité</strong>",
-        "Permettre à votre équipe de se concentrer sur le cœur métier de votre organisation",
-        "<strong>Sécurité</strong>",
-        "Tirer profit de nos systèmes NOC et SOC pour vous protéger contre les cybermenacesn",
-        "<strong>Vigie et évolution</strong>",
-        "Garantir un service rapide et efficace, une vigie constante et une évolution de votre environnement"
+      "type": "numbered-cards",
+      "sectionTitle": "Les avantages du service de gestion M365 de Victrix",
+      "headingStyle": "plain",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Proactivité",
+          "text": "Permettre à votre équipe de se concentrer sur le cœur de métier de votre organisation."
+        },
+        {
+          "number": "02",
+          "title": "Sécurité",
+          "text": "Tirer profit de nos systèmes NOC et SOC pour vous protéger contre les cybermenaces."
+        },
+        {
+          "number": "03",
+          "title": "Vigie et évolution",
+          "text": "Garantir un service rapide et efficace, une vigie constante et une évolution de votre environnement."
+        }
       ]
     },
     {
-      "type": "rich-text",
+      "type": "offer-cards",
       "title": "Notre méthodologie",
-      "paragraphs": [
-        "<strong>Conformité technique</strong>",
-        "Validation de la conformité de l’environnement M365, incluant les éléments de sécurité, d'identité, de sauvegarde n",
-        "<strong>Intégration du service</strong>",
-        "Documentation technique, arrimage avec votre équipe, définition des KPI, procédures et processus n",
-        "<strong>Démarrage du service</strong>",
-        "Réponse et escalade des incidents, des problèmes, des changements n",
-        "Vous avez des doutes ? Contactez-nous pour parler de vos projets! n"
+      "intro": "",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Conformité technique",
+          "bullets": [
+            { "text": "Validation de la conformité de l'environnement M365", "icon": "coche" },
+            { "text": "Éléments de sécurité, d'identité et de sauvegarde", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Intégration du service",
+          "bullets": [
+            { "text": "Documentation technique", "icon": "document" },
+            { "text": "Arrimage avec votre équipe", "icon": "coche" },
+            { "text": "Définition des KPI, procédures et processus", "icon": "cible" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Démarrage du service",
+          "bullets": [
+            { "text": "Réponse et escalade des incidents, des problèmes et des changements", "icon": "coche" }
+          ]
+        }
       ]
+    },
+    {
+      "type": "cta",
+      "title": "Vous avez des doutes ?",
+      "body": "Contactez-nous pour parler de vos projets.",
+      "ctaLabel": "Contactez-nous",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
   ],
   "seoTitle": "Services Gérés Microsoft 365 | Expertise"

@@ -4,85 +4,238 @@
   "sections": [
     {
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Services d’approvisionnement en TI",
+      "eyebrowStyle": "badge",
       "titleAccent": "",
       "title": "Licences et matériels",
-      "lead": "n html {n scroll-behavior: smooth!important; /* Enables smooth scrolling */n }n Services d'approvisionnement en TI Acquisition et gestion de licences et d'équipements informatiques Un approvisionnement TI stratégique, sécurisé et géré avec Victrix Victrix offre des services d'achat et d'approvisionnement informatique fiables et conformes, en partenariat avec les plus grands éditeurs et fabricants mondiaux. nnNos experts vous accompagnent dans la sélection, l'intégration et la gestion continue de vos équipements informatiques, ainsi que le renouvellement de vos licences.nnDe la cybersécurité à l’infonuagique , en passant par l'automatisation, le réseau et la connectivité, Victrix vous aide à bâtir une infrastructure performante, cohérente et sécurisée.nn Échangez avec un expert",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "titleHighlight": "Licences",
+      "lead": "Victrix offre des services d’achat et d’approvisionnement informatique fiables et conformes, en partenariat avec les plus grands éditeurs et fabricants mondiaux. Nos experts vous accompagnent dans la sélection, l’intégration et la gestion continue de vos équipements informatiques, ainsi que le renouvellement de vos licences.",
+      "ctaLabel": "Échangez avec un expert",
+      "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2025/03/linkedin-carre-24.png",
       "imageAlt": ""
     },
     {
-      "type": "rich-text",
-      "title": "Cybersécurité et protection des identités",
-      "paragraphs": [
-        "<strong>Check Point</strong>",
-        "<strong>→ </strong>Sécurité IA: IA générative, applications IA, agents autonomes et prévention des fuites de données via les prompts et modèles <strong>→ </strong>Contrôle unifié et politiques centralisées <strong>→ </strong>Déploiement distribué: centre de données, nuage, filiales et utilisateurs distants <strong>→ </strong>Protection complète de l'espace de travail numérique: utilisateurs, terminaux, navigateurs, outils collaboratifs et usage de l'IA <strong>→ </strong>Gestion de l'exposition externe et interne <strong>→ </strong>Renseignement sur les menaces <em>(Threat Intelligence)</em> <strong>→ </strong>Surveillance du Dark Web <strong>→ </strong>Priorisation du risque et remédiation automatisée <a href=\"/expertise/approvisionnement-ti/check-point/\">Explorez les solutions Check Point</a> n",
-        "<strong>CrowdStrike</strong>",
-        "<strong>→ </strong>Protection des terminaux <strong>→ </strong>Intelligence des menaces <strong>→ </strong>Sécurité infonuagique <strong>→ </strong>Gestion des identités <strong>→</strong>Gestion des journaux et observabilité <strong>→ </strong>Surveillance, détection et réponse gérées <a href=\"/expertise/approvisionnement-ti/crowdstrike-falcon/\">Explorez les solutions CrowdStrike</a> n",
-        "<strong>Palo Alto Networks</strong>",
-        "<strong>→ </strong>Sécurité réseau <strong>→ </strong>Accès sécurisé <strong>→ </strong>Sécurité infonuagique <strong>→ </strong>Architecture zéro confiance (<em>Zero Trust</em>) <strong>→ </strong>Automatisation de la détection et de la réponse <strong>→ </strong>Renseignement sur les menaces (<em>Threat Intelligence</em>) <a href=\"/expertise/approvisionnement-ti/palo-alto-networks/\">Explorez les solutions Palo Alto Networks</a> n",
-        "<strong>Zscaler</strong>",
-        "<strong>→ </strong>Sécurité infonuagique <strong>→ </strong>Architecture zéro confiance (<em>Zero Trust</em>) <strong>→ </strong>Protection des applications SaaS <strong>→ </strong>Protection des données, gestion des risques et conformité <strong>→ </strong>Défense contre les menaces <strong>→ </strong>Surveillance et diagnostic de l'expérience utilisateur <a href=\"/expertise/approvisionnement-ti/zscaler/\">Explorez les solutions Zscaler</a> n",
-        "<strong>Microsoft</strong>",
-        "<strong>→ </strong>Microsoft 365 E5 Security <strong>→ </strong>Microsoft Defender <strong>→ </strong>Microsoft Sentinel <strong>→ </strong>Microsoft Entra ID <strong>→ </strong>Microsoft Purview <a href=\"/expertise/approvisionnement-ti/solutions-microsoft/\">Explorez les solutions Microsoft</a> n"
+      "type": "bento-metrics",
+      "title": "Un approvisionnement TI stratégique, sécurisé et géré",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Revendeur à valeur ajoutée",
+        "text": "Victrix agit comme revendeur à valeur ajoutée auprès des organisations et agences gouvernementales — un partenaire capable de conjuguer <strong>expertise technique, sécurité et gouvernance</strong>.",
+        "watermark": "engrenage",
+        "stats": []
+      },
+      "aside": {
+        "icon": "bouclier",
+        "title": "De la cybersécurité à l’infonuagique",
+        "text": "En passant par l’automatisation, le réseau et la connectivité, Victrix vous aide à bâtir une infrastructure performante, cohérente et sécurisée.",
+        "linkLabel": "Voir l’expertise Cybersécurité",
+        "linkHref": "/fr/services/cybersecurite"
+      }
+    },
+    {
+      "type": "offer-cards",
+      "title": "Achat, gestion et renouvellement",
+      "intro": "Profitez d’un accompagnement sur mesure pour l’achat, la gestion et le renouvellement de vos licences et matériels.",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Analyse et sélection de solutions TI",
+          "bullets": [
+            { "text": "Évaluation de vos besoins informatiques réels", "icon": "coche" },
+            { "text": "Comparaison des offres du marché", "icon": "coche" },
+            { "text": "Recommandations d’acquisition alignées sur vos priorités de performance et de sécurité", "icon": "coche" },
+            { "text": "Un environnement TI cohérent, conforme et facile à gérer", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Gestion proactive des renouvellements et contrats",
+          "bullets": [
+            { "text": "Surveillance des échéances", "icon": "coche" },
+            { "text": "Renégociation", "icon": "coche" },
+            { "text": "Conformité des licences", "icon": "coche" },
+            { "text": "Analyse des options d’abonnement ou d’achat selon vos priorités", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Accompagnement, intégration et déploiement",
+          "bullets": [
+            { "text": "Intégration fluide dans vos environnements existants", "icon": "coche" },
+            { "text": "Coordination avec vos équipes internes et vos partenaires technologiques", "icon": "coche" },
+            { "text": "Support, gestion des garanties, mises à niveau et suivi technique après la mise en service", "icon": "coche" }
+          ]
+        }
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Réseau et connectivité",
-      "paragraphs": [
-        "<strong>Cisco</strong>",
-        "<strong>→ </strong>Infrastructure réseau et connectivité <strong>→ </strong>Sécurité réseau <strong>→ </strong>Services infonuagiques, centres de données et virtualisation <strong>→ </strong>Communications unifiées <strong>→ </strong>Observabilité <a href=\"/expertise/approvisionnement-ti/cisco/\">Explorez les solutions Cisco</a> n",
-        "<strong>HPE Networking</strong>",
-        "<strong>→ </strong>Routeurs et commutateurs <strong>→ </strong>Systèmes d'exploitation <strong>→ </strong>Accès sécurisé <strong>→ </strong>Points d'accès sans fil et infonuagique <strong>→ </strong>Sécurité réseau et politiques d'accès <strong>→ </strong>Architecture zéro confiance (<em>Zero Trust</em>) <strong>→ </strong>Opérations, assistance et assurance réseau pilotée par l'IA <a href=\"/expertise/approvisionnement-ti/hpe-networking/\">Explorez les solutions HPE Networking</a> n"
+      "type": "tech-columns",
+      "sectionTitle": "Cybersécurité et protection des identités",
+      "groups": [
+        {
+          "title": "Check Point",
+          "items": [
+            "Sécurité IA : IA générative, applications IA, agents autonomes et prévention des fuites de données via les prompts et modèles",
+            "Contrôle unifié et politiques centralisées",
+            "Déploiement distribué : centre de données, nuage, filiales et utilisateurs distants",
+            "Protection complète de l’espace de travail numérique : utilisateurs, terminaux, navigateurs, outils collaboratifs et usage de l’IA",
+            "Gestion de l’exposition externe et interne",
+            "Renseignement sur les menaces (Threat Intelligence)",
+            "Surveillance du Dark Web",
+            "Priorisation du risque et remédiation automatisée"
+          ]
+        },
+        {
+          "title": "CrowdStrike",
+          "items": [
+            "Protection des terminaux",
+            "Intelligence des menaces",
+            "Sécurité infonuagique",
+            "Gestion des identités",
+            "Gestion des journaux et observabilité",
+            "Surveillance, détection et réponse gérées"
+          ]
+        },
+        {
+          "title": "Palo Alto Networks",
+          "items": [
+            "Sécurité réseau",
+            "Accès sécurisé",
+            "Sécurité infonuagique",
+            "Architecture zéro confiance (Zero Trust)",
+            "Automatisation de la détection et de la réponse",
+            "Renseignement sur les menaces (Threat Intelligence)"
+          ]
+        },
+        {
+          "title": "Zscaler",
+          "items": [
+            "Sécurité infonuagique",
+            "Architecture zéro confiance (Zero Trust)",
+            "Protection des applications SaaS",
+            "Protection des données, gestion des risques et conformité",
+            "Défense contre les menaces",
+            "Surveillance et diagnostic de l’expérience utilisateur"
+          ]
+        },
+        {
+          "title": "Microsoft",
+          "items": [
+            "Microsoft 365 E5 Security",
+            "Microsoft Defender",
+            "Microsoft Sentinel",
+            "Microsoft Entra ID",
+            "Microsoft Purview"
+          ]
+        }
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Infonuagique, automatisation et virtualisation",
-      "paragraphs": [
-        "<strong>Microsoft</strong>",
-        "<strong>→ </strong><a href=\"/expertise/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/\">Microsoft 365</a> : Teams, Outlook, SharePoint, OneDrive <strong>→ </strong>Dynamics 365 : Sales, Customer Service, Customer Insights, <a href=\"/expertise/productivite/dynamics-365-field-service/\">Field Service</a> et Contact Center <strong>→ </strong>Power Platform : Power Apps, Power Automate, Power BI et Power Pages <strong>→ </strong>Azure : Active Directory, Virtual Desktop, OpenAI/AI Services et Storage/VPN/Compute <strong>→ </strong><a href=\"/expertise/productivite/copilot-microsoft-365/\">Copilot pour M365</a> <strong>→ </strong><a href=\"/expertise/productivite/copilot-studio/\">Copilot Studio</a> <strong>→ </strong>Sécurité : Microsoft 365 E5 Security, Microsoft Defender, Microsoft Sentinel, Microsoft Entra ID et Microsoft Purview <a href=\"/expertise/approvisionnement-ti/solutions-microsoft/\">Explorez les solutions Microsoft</a> n",
-        "<strong>ServiceNow</strong>",
-        "<strong>→ </strong>Gestion des services, opérations et ressources informatiques (ITSM/ITOM/ITAM) <strong>→ </strong>Gestion des portefeuilles (SPM/APM) <strong>→ </strong>Gestion de l'expérience client (CSM) <strong>→ </strong>Automatisation et amélioration des services aux employés (HRSD) <strong>→ </strong>Automatisation des processus <strong>→ </strong>Gestion des opérations de sécurité (SecOps) <strong>→ </strong>Gouvernance, risques et conformité (GRC) <strong>→ </strong>Gestion des interventions sur le terrain (FSM) <a href=\"/expertise/approvisionnement-ti/servicenow/\">Explorez les solutions ServiceNow</a> n",
-        "<strong>Dell Technologies</strong>",
-        "<strong>→ </strong>Serveurs et infrastructures <strong>→ </strong>Protection des terminaux <strong>→ </strong>Stockage et protection des données <strong>→ </strong>Hyperconvergence et virtualisation <strong>→ </strong>Postes de travail (ordinateurs portables et de bureau, tablettes, moniteurs professionnels et autres accessoires) <strong>→ </strong>Initiatives liées à <a href=\"/expertise/intelligence-artificielle/\">l'intelligence artificielle</a> <a href=\"/expertise/approvisionnement-ti/dell-technologies/\">Explorez les solutions Dell Technologies</a> n"
+      "type": "tech-columns",
+      "sectionTitle": "Réseau et connectivité",
+      "groups": [
+        {
+          "title": "Cisco",
+          "items": [
+            "Infrastructure réseau et connectivité",
+            "Sécurité réseau",
+            "Services infonuagiques, centres de données et virtualisation",
+            "Communications unifiées",
+            "Observabilité"
+          ]
+        },
+        {
+          "title": "HPE Networking",
+          "items": [
+            "Routeurs et commutateurs",
+            "Systèmes d’exploitation",
+            "Accès sécurisé",
+            "Points d’accès sans fil et infonuagique",
+            "Sécurité réseau et politiques d’accès",
+            "Architecture zéro confiance (Zero Trust)",
+            "Opérations, assistance et assurance réseau pilotée par l’IA"
+          ]
+        }
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Vous avez besoin d'aide pour la sélection et l'achat de votre matériel TI?",
-      "paragraphs": [
-        "Avec Victrix, vous choisissez un partenaire capable de conjuguer expertise technique, sécurité et gouvernance.\n \n<a href=\"#pg-7688-8\">\nConsultez un spécialiste\n</a>"
+      "type": "tech-columns",
+      "sectionTitle": "Infonuagique, automatisation et virtualisation",
+      "groups": [
+        {
+          "title": "Microsoft",
+          "items": [
+            "Microsoft 365 : Teams, Outlook, SharePoint, OneDrive",
+            "Dynamics 365 : Sales, Customer Service, Customer Insights, Field Service et Contact Center",
+            "Power Platform : Power Apps, Power Automate, Power BI et Power Pages",
+            "Azure : Active Directory, Virtual Desktop, OpenAI/AI Services et Storage/VPN/Compute",
+            "Copilot pour M365",
+            "Copilot Studio",
+            "Sécurité : Microsoft 365 E5 Security, Microsoft Defender, Microsoft Sentinel, Microsoft Entra ID et Microsoft Purview"
+          ]
+        },
+        {
+          "title": "ServiceNow",
+          "items": [
+            "Gestion des services, opérations et ressources informatiques (ITSM/ITOM/ITAM)",
+            "Gestion des portefeuilles (SPM/APM)",
+            "Gestion de l’expérience client (CSM)",
+            "Automatisation et amélioration des services aux employés (HRSD)",
+            "Automatisation des processus",
+            "Gestion des opérations de sécurité (SecOps)",
+            "Gouvernance, risques et conformité (GRC)",
+            "Gestion des interventions sur le terrain (FSM)"
+          ]
+        },
+        {
+          "title": "Dell Technologies",
+          "items": [
+            "Serveurs et infrastructures",
+            "Protection des terminaux",
+            "Stockage et protection des données",
+            "Hyperconvergence et virtualisation",
+            "Postes de travail (ordinateurs portables et de bureau, tablettes, moniteurs professionnels et autres accessoires)",
+            "Initiatives liées à l’intelligence artificielle"
+          ]
+        }
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Analyse et sélection de solutions TI",
+      "type": "strategic-value",
+      "title": "Victrix : votre partenaire de confiance",
       "paragraphs": [
-        "<strong>Avec Victrix, la sélection et l'achat de licences et d'équipements TI deviennent un processus simple, sécurisé et adapté à vos besoins informatiques réels.</strong> Victrix agit comme revendeur à valeur ajoutée auprès des organisations et agences gouvernementales. Nos experts <strong>évaluent vos besoins</strong>, <strong>comparent les offres du marché</strong>, et <strong>recommandent l'acquisition du matériel informatique</strong> qui s'aligne parfaitement avec vos priorités de performance et de sécurité. Notre approche assure que votre environnement TI reste cohérent, conforme et facile à gérer.",
-        "<strong>Gestion proactive des renouvellements et contrats</strong>",
-        "<strong>Victrix prend en charge la gestion et le renouvellement de licences TI et de contrats.</strong> Notre service de gestion des actifs informatiques couvre : nn<ul>n t<li><strong>• Surveillance des échéances</strong></li>n t<li><strong>• Renégociation</strong></li>n t<li><strong>• Conformité des licences</strong></li>n t<li><strong>• Analyse des options d'abonnement ou d'achat </strong>selon vos priorités</li></ul>n n Notre approche assure la continuité de vos opérations, le respect de la conformité et la prévisibilité de vos dépenses TI.",
-        "<strong>Accompagnement, intégration et déploiement</strong>",
-        "<strong>Avec Victrix, tirez parti d’un accompagnement de bout en bout pour le déploiement de vos solutions TI.</strong> Nos experts assurent une intégration fluide dans vos environnements existants, en coordination avec vos équipes internes et vos partenaires technologiques. Après la mise en service, nous prenons en charge le support, la gestion des garanties, les mises à niveau et le suivi technique pour maintenir la performance et la conformité de vos systèmes."
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Victrix : votre partenaire de confiance pour l'acquisition et la gestion de licences et d'équipements informatiques",
-      "paragraphs": [
-        "Nous nous appuyons sur des partenariats solides avec les principaux éditeurs et fabricants mondiaux. Nos certifications et notre expérience multisectorielle nous permettent de <strong>vous conseiller </strong>et de <strong>garantir la conformité</strong>, la <strong>sécurité</strong> et la <strong>performance</strong> de vos environnements informatiques.",
+        "Nous nous appuyons sur des partenariats solides avec les principaux éditeurs et fabricants mondiaux. Nos certifications et notre expérience multisectorielle nous permettent de <strong>vous conseiller</strong> et de <strong>garantir la conformité</strong>, la <strong>sécurité</strong> et la <strong>performance</strong> de vos environnements informatiques.",
         "Nous offrons un accompagnement personnalisé de la planification à la production, y compris la gestion et le renouvellement des licences."
-      ]
+      ],
+      "image": "",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Continuité", "label": "De vos opérations" },
+        { "value": "Conformité", "label": "Des licences et des contrats" },
+        { "value": "Prévisibilité", "label": "De vos dépenses TI" },
+        { "value": "Sécurité", "label": "De vos environnements informatiques" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
     },
     {
-      "type": "rich-text",
-      "title": "Vous êtes prêts à acheter le matériel et les licences TI adaptés à vos besoins ?",
-      "paragraphs": [
-        "Évaluez vos besoins, modernisez votre infrastructure et simplifiez la gestion de vos licences et matériels avec un partenaire certifié qui place la sécurité et la performance au cœur de chaque projet."
-      ]
+      "type": "cta",
+      "title": "Prêts à acheter le matériel et les licences TI adaptés à vos besoins ?",
+      "body": "Évaluez vos besoins, modernisez votre infrastructure et simplifiez la gestion de vos licences et matériels avec un partenaire certifié qui place la sécurité et la performance au cœur de chaque projet.",
+      "ctaLabel": "Consultez un spécialiste",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
   ],
   "seoTitle": "Approvisionnement TI | Achat et gestion de licences et matériels"

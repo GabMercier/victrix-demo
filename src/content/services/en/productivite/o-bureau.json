@@ -3,45 +3,95 @@
   "description": "Manage your workspaces with ease using O bureau, the easiest-to-use office booking app. Request a demo today.",
   "sections": [
     {
-      "type": "service-hero",
-      "eyebrow": "",
-      "titleAccent": "",
-      "title": "Office booking app",
-      "lead": "O bureau, Our Office Booking Application Discover our office booking application . Easy to use and set up, our app will help you manage your office space in no time!nn Request a demo",
+      "type": "product-hero",
+      "badge": "Microsoft 365 ecosystem",
+      "title": "O bureau, our office booking application",
+      "titleHighlight": "O bureau",
+      "lead": "Discover our office booking application: easy to use and set up, it will help you manage your office space in no time!",
+      "ctaLabel": "Request a consultation",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "image": "/wp-content/uploads/2023/08/obureau-mobile-1.png",
+      "imageAlt": "",
+      "fond": "givre"
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "Benefits",
+      "subtitle": "",
+      "fond": "blanc",
+      "boxes": [
+        "Simplify reservations",
+        "Improve office management",
+        "Access relevant reports",
+        "Track office attendance"
+      ]
+    },
+    {
+      "type": "offer-cards",
+      "title": "A simple, ergonomic application to manage your workspaces",
+      "intro": "",
+      "fond": "givre",
       "ctaLabel": "",
       "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "For employees",
+          "bullets": [
+            { "text": "Reserve an office according to your needs", "icon": "coche" },
+            { "text": "Change, cancel or confirm your reservation", "icon": "coche" },
+            { "text": "Create a recurring reservation", "icon": "coche" },
+            { "text": "Link the reservation to your Outlook calendar", "icon": "coche" },
+            { "text": "Confirm your presence with a unique office code", "icon": "coche" },
+            { "text": "View your colleagues' reservations and select an office near them", "icon": "coche" },
+            { "text": "Designate a colleague to delegate reservations", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "For office managers",
+          "bullets": [
+            { "text": "Create and manage offices, zones, floors, and buildings", "icon": "coche" },
+            { "text": "Manage specific features and equipment available for an office", "icon": "coche" },
+            { "text": "Manage office and zone availability", "icon": "coche" },
+            { "text": "View reports on space utilization, busy periods, and employee attendance", "icon": "coche" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "Microsoft technology",
+      "paragraphs": [
+        "<strong>O bureau integrates with your Microsoft 365 and Power Platform environment.</strong>",
+        "Get full visibility for informed decision-making regarding the management of your workspace."
+      ],
       "image": "/wp-content/uploads/2023/08/obureau-mobile-1.png",
-      "imageAlt": ""
+      "imageAlt": "",
+      "stats": [
+        { "value": "Deployment", "label": "Rapid, with a one-time setup cost" },
+        { "value": "Teams", "label": "Native integration with Microsoft Teams" },
+        { "value": "Autonomy", "label": "Manage and evolve the solution yourself" },
+        { "value": "Bilingual", "label": "French / English application" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
     },
     {
-      "type": "rich-text",
-      "title": "BENEFITS",
-      "paragraphs": [
-        "<strong>Simplify reservations</strong>",
-        "<strong>Improve office management</strong>",
-        "<strong>Access relevant reports</strong>",
-        "<strong>Track office attendance</strong>"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "A SIMPLE, ERGONOMIC APPLICATION TO MANAGE YOUR WORKSPACES",
-      "paragraphs": [
-        "<strong>For employees</strong>",
-        "<ul><li>Reserve an office according to your needs</li>\n<li>Change, cancel or confirm your reservation</li>\n<li>Create a recurring reservation</li>\n<li>Link the reservation to your Outlook calendar</li>\n<li>Confirm your presence with a unique office code</li>\n<li>View your colleagues' reservations and select an office near them</li>\n<li>Designate a colleague to delegate reservations</li></ul>",
-        "<strong>For office managers</strong>",
-        "<ul><li>Create and manage offices, zones, floors, and buildings</li>\n<li>Manage specific features and equipment available for an office</li>\n<li>Manage office and zone availability</li>\n<li>View reports on space utilization, busy periods, and employee attendance</li></ul>"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "MICROSOFT TECHNOLOGY",
-      "paragraphs": [
-        "O bureau integrates with your Microsoft 365 and Power Platform environment",
-        "<strong>THE BENEFITS OF OUR OFFICE RESERVATION APPLICATION INCLUDE</strong>",
-        "<ul><li>One time setup cost</li>\n<li>Full visibility for informed decision-making regarding the management of your workspace</li>\n<li>Rapid deployment</li>\n<li>Native integration with Microsoft Teams</li>\n<li>Autonomous management and evolution of the solution</li>\n<li>Bilingual app, french/english</li></ul>",
-        "Adopt an Office Application Victrix offers a turnkey application to meet your workspace management needs. n"
-      ]
+      "type": "cta",
+      "title": "Adopt an office application",
+      "body": "Victrix offers a turnkey application to meet your workspace management needs.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
   ],
   "slug": "productivity-consulting/office-booking",

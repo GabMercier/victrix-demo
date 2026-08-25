@@ -7,89 +7,140 @@
       "eyebrow": "",
       "titleAccent": "",
       "title": "Scalable Security Operations Center",
-      "lead": "Scalable Security Operations Center (SOC) Protect Today. Evolve Tomorrow. Detect, respond, and continuously improve your security posture with SEvOC, our scalable Security Operations Center (SOC) with a distinctly human approach, built to support the growth and transformation of your organization.nn Let's talk about your projects",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "titleHighlight": "Scalable",
+      "lead": "Protect Today. Evolve Tomorrow. Detect, respond, and continuously improve your security posture with SEvOC, our scalable SOC with a distinctly human approach, built to support the growth and transformation of your organization.",
+      "ctaLabel": "Let's talk about your projects",
+      "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2022/02/solution-sevoc-intro.jpg",
       "imageAlt": ""
     },
     {
-      "type": "rich-text",
-      "title": "SEvOC Key Figures",
-      "paragraphs": [
-        "<strong>+ 300,000</strong>",
-        "endpoints protected",
-        "<strong>+ 100</strong>",
-        "customers actively served",
-        "<strong>24/7/365</strong>",
-        "continuous human monitoring"
-      ]
-    },
-    {
-      "type": "rich-text",
+      "type": "bento-metrics",
       "title": "What Victrix's SEvOC Has to Offer",
-      "paragraphs": [
-        "<strong>Continuous monitoring, accelerated incident response, and <a href=\"/en/expertise/cybersecurity/\">enhanced cybersecurity</a>. 24/7, bilingual SOC service with experts dedicated to your environment.</strong>",
-        "Accelerate your cybersecurity and optimize all your security tools. Unlike a traditional SOC, <strong>our scalable, modular offering</strong> keeps you at the forefront of security technologies.",
-        "<strong>Benefits of Our SOC Service</strong>",
-        "➜ Deal with the increase in advanced cyber threats (<a href=\"/en/ransomware-protection-tips/\">ransomware</a>, targeted attacks, attacks undetected by conventional approaches)",
-        "➜ Respond rapidly to security alerts",
-        "➜ Supplement your in-house security team with our experts to ensure the evolution and maintenance of your tools (EDR, SIEM, CSPM)",
-        "➜ Simplify the integration of your new entities in a context of growth or merger",
-        "➜ Achieve your strategic objectives while ensuring cybersecurity"
-      ]
+      "intro": "A 24/7, bilingual SOC service with experts dedicated to your environment.",
+      "fond": "blanc",
+      "featured": {
+        "title": "Continuous monitoring, accelerated response",
+        "text": "Accelerate your cybersecurity and optimize all your security tools. Unlike a traditional SOC, <strong>our scalable, modular offering</strong> keeps you at the forefront of security technologies.",
+        "watermark": "eclair",
+        "stats": [
+          { "value": "+ 300,000", "label": "endpoints protected" },
+          { "value": "+ 100", "label": "customers actively served" },
+          { "value": "24/7/365", "label": "continuous human monitoring" }
+        ]
+      },
+      "aside": {
+        "icon": "bouclier",
+        "title": "Benefits of Our SOC Service",
+        "text": "Deal with the increase in advanced cyber threats, supplement your in-house security team with our experts, and simplify the integration of new entities in a context of growth or merger.",
+        "linkLabel": "Discover our cybersecurity expertise",
+        "linkHref": "/en/services/cybersecurity"
+      }
     },
     {
-      "type": "rich-text",
+      "type": "offer-cards",
       "title": "What SEvOC Brings to Your Organization",
-      "paragraphs": [
-        "<strong>SUPPORT</strong>",
-        "• <strong>Seamless integration</strong> into your existing toolsnn• <strong>Management</strong> of your security equipmentnn• <strong>Guidance</strong> in crisis management and remediationnn• <strong>Governance and production</strong> of strategic operational indicatorsnn• <strong>Evolution</strong> roadmap",
-        "<strong>OPERATIONS</strong>",
-        "• <strong>24/7/365 monitoring</strong> of security alerts, operated exclusively by bilingual security analystsnn• <strong>Implementation</strong> of a Zero Trust approach: systematic control of identity, behavior, and accessnn•<strong> Vulnerability management</strong>nn• <strong>Configuration, maintenance, intelligent automation, and orchestration</strong>: controlled use of AI and orchestration via automation tools, with human supervision at every stagenn• <strong>Monitoring the threat landscape</strong> targeting your organization (threat intelligence)nn• <strong>Analysis, triage, and response</strong> to security incidents",
-        "<strong>EVOLUTION</strong>",
-        "• <strong>Updates, enhancements, and consolidation</strong>nn• <strong>Distinctive approach to mergers and acquisitions</strong> (M&A): accelerated securing of acquired environments, with the creation of child tenants under the control of the parent SOC",
-        "Interested? Have Any Questions? Contact us to discuss any project that requires a scalable SOC"
+      "intro": "Support, operations, and evolution: a modular offering that covers the full cycle.",
+      "fond": "givre",
+      "ctaLabel": "Talk to a SEvOC expert",
+      "ctaHref": "/en/contact",
+      "items": [
+        {
+          "number": "01",
+          "title": "Support",
+          "bullets": [
+            { "text": "Seamless integration into your existing tools", "icon": "coche" },
+            { "text": "Management of your security equipment", "icon": "coche" },
+            { "text": "Guidance in crisis management and remediation", "icon": "coche" },
+            { "text": "Governance and production of strategic operational indicators", "icon": "coche" },
+            { "text": "Evolution roadmap", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Operations",
+          "bullets": [
+            { "text": "24/7/365 monitoring of security alerts, operated exclusively by bilingual security analysts", "icon": "coche" },
+            { "text": "Implementation of a Zero Trust approach: systematic control of identity, behavior, and access", "icon": "coche" },
+            { "text": "Vulnerability management", "icon": "coche" },
+            { "text": "Configuration, maintenance, intelligent automation, and orchestration, with human supervision at every stage", "icon": "coche" },
+            { "text": "Monitoring the threat landscape targeting your organization (threat intelligence)", "icon": "coche" },
+            { "text": "Analysis, triage, and response to security incidents", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Evolution",
+          "bullets": [
+            { "text": "Updates, enhancements, and consolidation", "icon": "coche" },
+            { "text": "Distinctive approach to mergers and acquisitions (M&A): accelerated securing of acquired environments", "icon": "coche" },
+            { "text": "Creation of child tenants under the control of the parent SOC", "icon": "coche" }
+          ]
+        }
       ]
     },
     {
-      "type": "rich-text",
+      "type": "strategic-value",
       "title": "Services Beyond Traditional Managed Security",
       "paragraphs": [
-        "Victrix is not just a <a href=\"/en/expertise/managed-it-services/\">managed services provider</a>. SEvOC is not just another SOC. Here’s what makes our SOC team so strong.",
-        "<strong>Technological Expertise</strong>",
-        "<strong>• Microsoft Sentinel Partnership</strong> — +30 active customers. \n <strong>• CrowdStrike ELP Partnership</strong> — +20,000 managed endpoints, only authorized French-speaking managed security service provider (MSSP). \n <strong>• We hold <a href=\"/en/iso-27001-iso-9001-certifications/\">ISO/IEC 27001:2022 and ISO 9001:2015 certification</a></strong> — information security backed by international best practices. \n <strong>• Management of hybrid or complex environments. </strong>",
-        "<strong>Local, Rooted, Human Service</strong>",
-        "<strong>• 100% locally operated, non-outsourced monitoring</strong>, with direct interaction between your internal teams and our security analysts assigned to your environment. \n <strong>• Customized reports, monitoring committees, and advice</strong> based on your environment's configuration — 90% of our customers adapt their configuration based on SEvOC recommendations.",
-        "<strong>Flexible, Collaborative, and Evolutive Approach</strong>",
-        "<strong>• Continuous evolution of the security posture</strong>: definition and updating guidelines, configuration review, maturity coaching. \n <strong>• Access to the full depth of Victrix</strong>: direct support from our specialized infrastructure, <a href=\"/en/expertise/cloud-services-provider/\">cloud</a>, governance, and network teams, with no external outsourcing. \n \n <a href=\"/en/contact/\">Talk to a SEvOC expert</a>"
-      ]
+        "Victrix is not just a <a href=\"/en/expertise/managed-it-services/\">managed services provider</a>, and SEvOC is not just another SOC. Here's what makes our SOC team so strong.",
+        "<strong>Technological expertise</strong> — Microsoft Sentinel partnership, CrowdStrike ELP partnership (only authorized French-speaking MSSP), <a href=\"/en/iso-27001-iso-9001-certifications/\">ISO/IEC 27001:2022 and ISO 9001:2015 certification</a>, and management of hybrid or complex environments.",
+        "<strong>Local, rooted, human service</strong> — 100% locally operated, non-outsourced monitoring, with direct interaction between your internal teams and our security analysts assigned to your environment; customized reports, monitoring committees, and advice based on your environment's configuration.",
+        "<strong>Flexible, collaborative, and evolutive approach</strong> — continuous evolution of the security posture (guidelines, configuration review, maturity coaching) and access to the full depth of Victrix: direct support from our specialized infrastructure, <a href=\"/en/expertise/cloud-services-provider/\">cloud</a>, governance, and network teams, with no external outsourcing."
+      ],
+      "image": "/wp-content/uploads/2022/02/solution-sevoc-intro.jpg",
+      "imageAlt": "",
+      "stats": [
+        { "value": "+30", "label": "active Microsoft Sentinel customers" },
+        { "value": "+20,000", "label": "managed CrowdStrike endpoints" },
+        { "value": "90%", "label": "of customers adapt their configuration based on our recommendations" },
+        { "value": "100%", "label": "locally operated monitoring" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
     },
     {
-      "type": "rich-text",
-      "title": "Concrete Benefits of SEvOC",
-      "paragraphs": [
-        "<strong>VISUALIZATION</strong>",
-        "of suspicious activity and fewer false positives",
-        "<strong>REDUCTION</strong>",
-        "threat detection and remediation time",
-        "<strong>ACCELERATION</strong>",
-        "of new technology integration",
-        "<strong>MINIMIZATION</strong>",
-        "of operational risks and the burden of cybersecurity management",
-        "<strong>ELIMINATION</strong>",
-        "of repetitive tasks for your staff",
-        "<strong>CONSOLIDATION</strong>",
-        "and continuous strengthening of your security posture"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "An Adaptative Cybersecurity Solution",
-      "paragraphs": [
-        "Consult the experts at our <strong>Scalable Security Operations Center</strong> (SEvOC) to find out how we tailor our SOC offering to your organization's unique needs.",
-        "<a href=\"/en/contact/\">Schedule a consultation</a>",
-        "Benefit From Our Dedicated, Scalable SOC Contact us to find out how SEvOC's customer-focused approach can help you achieve greater efficiency and peace of mind. n"
+      "type": "numbered-cards",
+      "sectionTitle": "Concrete Benefits of SEvOC",
+      "headingStyle": "plain",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Visualization",
+          "text": "Of suspicious activity, with fewer false positives."
+        },
+        {
+          "number": "02",
+          "title": "Reduction",
+          "text": "In threat detection and remediation time."
+        },
+        {
+          "number": "03",
+          "title": "Acceleration",
+          "text": "Of new technology integration."
+        },
+        {
+          "number": "04",
+          "title": "Minimization",
+          "text": "Of operational risks and the burden of cybersecurity management."
+        },
+        {
+          "number": "05",
+          "title": "Elimination",
+          "text": "Of repetitive tasks for your staff."
+        },
+        {
+          "number": "06",
+          "title": "Consolidation",
+          "text": "And continuous strengthening of your security posture."
+        }
       ]
     },
     {
@@ -102,6 +153,16 @@
       ],
       "ctaLabel": "See all resources",
       "ctaHref": "/en/ressources"
+    },
+    {
+      "type": "cta",
+      "title": "Benefit From Our Dedicated, Scalable SOC",
+      "body": "Contact us to find out how SEvOC's customer-focused approach can help you achieve greater efficiency and peace of mind — we tailor our SOC offering to your organization's unique needs.",
+      "ctaLabel": "Schedule a consultation",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
   ],
   "slug": "cybersecurity/scalable-security-operations-center",

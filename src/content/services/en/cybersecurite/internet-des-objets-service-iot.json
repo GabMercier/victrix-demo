@@ -7,59 +7,97 @@
       "eyebrow": "",
       "titleAccent": "",
       "title": "Internet of Things — OT & IoT Security Services",
-      "lead": "OT & IoT Security Services Secure your organization's connected devices (Internet of Things and operational technologies) with our comprehensive cybersecurity offering for OT and IoT.nnOur OT and IOT security service includes analysis of your needs, implementation of advanced security measures and continuous real-time monitoring to reduce the risk of attacks and guarantee the integrity of your personal data.nn Talk to an IoT expert",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "titleHighlight": "OT & IoT Security",
+      "lead": "Secure your organization's connected devices — Internet of Things and operational technologies — with our comprehensive cybersecurity offering for OT and IoT. From needs analysis to continuous real-time monitoring, we reduce the risk of attacks and guarantee the integrity of your data.",
+      "ctaLabel": "Talk to an IoT expert",
+      "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2024/07/istock-1165052026-1.jpg",
       "imageAlt": ""
     },
     {
-      "type": "rich-text",
+      "type": "bento-metrics",
       "title": "Why Secure Your Organization's Connected Objects?",
-      "paragraphs": [
-        "<strong>IoT cybersecurity</strong> is a major issue for organizations. The growing number of devices and objects connected to the network expands your attack surface and increases your vulnerability. \n Enhance devices security and reduce the risk of data breaches with Victrix's industry-leading OT and IoT security service."
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "Reduce your attack surface",
+        "text": "<strong>IoT cybersecurity</strong> is a major issue for organizations. The growing number of devices and objects connected to the network expands your attack surface and increases your vulnerability.",
+        "watermark": "eclair",
+        "stats": [
+          { "value": "+12", "label": "strategic and specialized partners" },
+          { "value": "360°", "label": "of IT expertise" },
+          { "value": "+7,500", "label": "private and public sector projects" }
+        ]
+      },
+      "aside": {
+        "icon": "bouclier",
+        "title": "An industry-leading security service",
+        "text": "Enhance device security and reduce the risk of data breaches with Victrix's industry-leading OT and IoT security service.",
+        "linkLabel": "Discover our cybersecurity expertise",
+        "linkHref": "/en/services/cybersecurity"
+      }
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "Our Approach",
+      "subtitle": "Victrix performs a comprehensive analysis of your infrastructure to identify security risks and improve the resilience of IoT environments.",
+      "fond": "givre",
+      "boxes": [
+        "Needs and strategy assessment",
+        "Inventory and risk analysis",
+        "Security implementation",
+        "Monitoring and incident response",
+        "Review and continuous improvement"
       ]
     },
     {
-      "type": "rich-text",
-      "title": "How Victrix Assesses Your Level of OT and IoT Security",
-      "paragraphs": [
-        "Victrix performs a comprehensive analysis of your infrastructure to <strong>identify security risks and improve the resilience </strong>of IoT environments.nn Our Approach <li>Needs and strategy assessment</li>nnt<li>Inventory and risk analysis</li>nnt<li>Security implementation</li>nnt<li>Monitoring and incident response</li>nnt<li>Review and continuous improvement</li>n"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "Benefits of our OT and IoT Security Services for Organizations",
-      "paragraphs": [
-        "<strong>+12</strong>",
-        "strategic and specialized partners",
-        "<strong>360</strong>",
-        "degrees of IT expertise",
-        "<strong>+7,500</strong>",
-        "private and public sector projects"
-      ]
-    },
-    {
-      "type": "rich-text",
+      "type": "offer-cards",
       "title": "Victrix Ensures the Security of IoT and OT Systems",
-      "paragraphs": [
-        "<strong>IoT Inventory and Assessment</strong>",
-        "In-depth assessment of your specific needs and the current state of your IoT network security. Our evaluation includes an <strong>inventory of connected objects and identification of the associated vulnerabilities</strong> for devices connected to the network. n",
-        "<strong>IoT Design Services and Implementation of Your Security Architecture</strong>",
-        "Definition of a <strong>secure IoT architecture tailored to your needs</strong>, taking scalability and performance into account. n",
-        "<strong>IoT Device Management, Continuous Monitoring and Proactive Maintenance</strong>",
-        "Thanks to our rapid intervention procedures, we can respond to any unauthorized access or failure of your operating systems. We also offer <strong>comprehensive technical support</strong>, including proactive maintenance plans and regular updates to your security software. n",
-        "<strong>Training and Personalized Support for Organizations</strong>",
-        "By organizing training sessions for your teams, your employees become familiar with IoT best practices. Our personalized support during this transition phase also <strong>ensures successful adoption</strong> of new technologies. n"
+      "intro": "Complete support, from the assessment of your IoT networks to the adoption of new technologies by your teams.",
+      "fond": "blanc",
+      "ctaLabel": "Talk to an IoT expert",
+      "ctaHref": "/en/contact",
+      "items": [
+        {
+          "number": "01",
+          "title": "Assessment, design, and implementation",
+          "bullets": [
+            { "text": "In-depth assessment of your specific needs and the current state of your IoT network security", "icon": "coche" },
+            { "text": "Inventory of connected objects and identification of the associated vulnerabilities", "icon": "coche" },
+            { "text": "Definition of a secure IoT architecture tailored to your needs, taking scalability and performance into account", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Management, monitoring, and support",
+          "bullets": [
+            { "text": "Rapid intervention procedures to respond to any unauthorized access or failure", "icon": "coche" },
+            { "text": "Comprehensive technical support, including proactive maintenance plans and regular security software updates", "icon": "coche" },
+            { "text": "Training sessions to familiarize your teams with IoT best practices", "icon": "coche" },
+            { "text": "Personalized support to ensure successful adoption of new technologies", "icon": "coche" }
+          ]
+        }
       ]
     },
     {
-      "type": "rich-text",
+      "type": "strategic-value",
       "title": "Sector-Specific Expertise in OT/IoT and Cybersecurity",
       "paragraphs": [
-        "Our tailored IoT security service addresses the specific challenges of OT and IoT within your industry. Our <strong>cybersecurity experts</strong> have in-depth knowledge of industrial systems, enabling them to counter threats specific to your industry, ensure business continuity and guarantee the security of your IoT environments and connected devices.",
-        "Victrix Is Your Strategic Partner for an Enhanced, Scalable IoT Service Protect your data, assets, and connected objects with our premier managed IoT security services. Victrix offers <strong>personalized, robust and reliable IoT as a service</strong> to provide your organization with an optimal level of protection. Contact Victrix to strengthen your security posture in the age of the IoT. n"
-      ]
+        "Our tailored IoT security service addresses the specific challenges of OT and IoT within your industry. Our <strong>cybersecurity experts</strong> have in-depth knowledge of industrial systems, enabling them to counter threats specific to your industry, ensure business continuity, and guarantee the security of your IoT environments and connected devices.",
+        "Victrix is your strategic partner for an enhanced, scalable IoT service: <strong>personalized, robust, and reliable IoT as a service</strong> to provide your organization with an optimal level of protection."
+      ],
+      "image": "/wp-content/uploads/2024/07/istock-1165052026-1.jpg",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Tailored", "label": "A service adapted to your industry" },
+        { "value": "Continuity", "label": "Your operations and IoT environments protected" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
     },
     {
       "_bookshop_name": "related-posts",
@@ -70,6 +108,16 @@
       ],
       "ctaLabel": "See all resources",
       "ctaHref": "/en/ressources"
+    },
+    {
+      "type": "cta",
+      "title": "Strengthen your security posture in the age of the IoT",
+      "body": "Protect your data, assets, and connected objects with our cybersecurity experts.",
+      "ctaLabel": "Contact Victrix",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
   ],
   "slug": "cybersecurity/internet-of-things-iot",

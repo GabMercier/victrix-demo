@@ -7,38 +7,64 @@
       "eyebrow": "",
       "titleAccent": "",
       "title": "Passez au modèle de cybersécurité Zero Trust",
-      "lead": "Passez au modèle de cybersécurité Zero Trust Le modèle Zero Trust adopte une approche \"ne jamais faire confiance, toujours vérifier\", en veillant à ce que chaque utilisateur et chaque appareil soient vérifiés et autorisés en continu, minimisant ainsi les risques de sécurité et les possibilités d'attaques réussies.nnVictrix vous aide à mettre en place le modèle Zero Trust et à améliorer votre posture de sécurité.n Planifiez un rendez-vous",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "titleHighlight": "Zero Trust",
+      "lead": "Le modèle Zero Trust adopte une approche « ne jamais faire confiance, toujours vérifier » : chaque utilisateur et chaque appareil sont vérifiés et autorisés en continu, minimisant les risques de sécurité et les possibilités d’attaques réussies. Victrix vous aide à le mettre en place et à améliorer votre posture de sécurité.",
+      "ctaLabel": "Planifiez un rendez-vous",
+      "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2024/05/benjamin-child-gwe0dlvd9e0-unsplash-scaled.jpg",
       "imageAlt": ""
     },
     {
-      "type": "rich-text",
-      "title": "Les 7 avantages du modèle Zero Trust",
-      "paragraphs": [
-        "Chez Victrix, nous considérons le modèle Zero Trust comme <strong>l’un des cadres les plus populaires en matière de cybersécurité. </strong>C'est la solution idéale pour la protection des systèmes et des données critiques.",
-        "<strong>1. Une expérience utilisateur sans faille\n2. Vérification continue\n3. Principe du moindre privilège\n4. Micro-segmentation\n5. Surveillance et analyse\n6. Politiques de sécurité granulaires\n7. Confiance dynamique</strong>",
-        "<strong>En 2025, 60 % des entreprises utiliseront des solutions « Zero Trust » au lieu du VPN*</strong>",
-        "Nos experts cyber sont disponibles pour répondre à vos questions et vous guider vers la meilleure solution.\n<em>*Statistique de Gartner</em>"
+      "type": "bento-metrics",
+      "title": "Pourquoi adopter le modèle Zero Trust ?",
+      "intro": "",
+      "fond": "blanc",
+      "featured": {
+        "title": "La solution idéale pour vos systèmes et données critiques",
+        "text": "Chez Victrix, nous considérons le modèle Zero Trust comme <strong>l’un des cadres les plus populaires en matière de cybersécurité</strong> pour la protection des systèmes et des données critiques.",
+        "watermark": "graphique",
+        "stats": [
+          { "value": "60 %", "label": "des entreprises utiliseront des solutions Zero Trust au lieu du VPN en 2025 (Gartner)" }
+        ]
+      },
+      "aside": {
+        "icon": "etoile",
+        "title": "Harmony Connect, la solution SASE de Check Point",
+        "text": "Harmony SASE rassemble la sécurité de l’espace de travail et l’optimisation du réseau au sein d’une plateforme unique basée sur le cloud et conçue pour l’entreprise moderne.",
+        "linkLabel": "Contactez-nous au sujet d’Harmony Connect",
+        "linkHref": "/fr/contact"
+      }
+    },
+    {
+      "type": "numbered-cards",
+      "sectionTitle": "Les 7 avantages du modèle Zero Trust",
+      "headingStyle": "plain",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        { "number": "01", "title": "Une expérience utilisateur sans faille", "text": "" },
+        { "number": "02", "title": "Vérification continue", "text": "" },
+        { "number": "03", "title": "Principe du moindre privilège", "text": "" },
+        { "number": "04", "title": "Micro-segmentation", "text": "" },
+        { "number": "05", "title": "Surveillance et analyse", "text": "" },
+        { "number": "06", "title": "Politiques de sécurité granulaires", "text": "" },
+        { "number": "07", "title": "Confiance dynamique", "text": "" }
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Victrix: Sécurisez vos données avec le modèle Zero Trust",
-      "paragraphs": [
-        "<strong>Identification des données sensibles</strong>",
-        "<strong>Sélection des solutions ZTNA</strong>",
-        "<strong>Segmentation du réseau et isolement, restriction des accès</strong>",
-        "<strong>Accès aux données basé sur le principe du moindre privilège</strong>",
-        "<strong>Vérification continue du niveau de confiance</strong>",
-        "<strong>Inspection du trafic en session</strong>",
-        "<strong>Protection des données et applications</strong>",
-        "<strong>Détection des menaces</strong>",
-        "<strong>Découvrez Harmony Connect, la solution SASE de Check Point</strong>",
-        "Harmony SASE rassemble la sécurité de l’espace de travail et l’optimisation du réseau au sein d’une plateforme unique basée sur le cloud et conçue pour l’entreprise moderne.",
-        "<a href=\"/contact/\">Contactez-nous au sujet d'Harmony Connect</a>",
-        "Victrix, votre partenaire stratégique pour l'amélioration continue de votre posture de sécurité Pour toutes questions concernant la protection de votre cybersécurité ou l’architecture Zero Trust, contactez-nous.<br> Nos experts en cybersécurité vous accompagneront pour mettre en place les meilleures solutions et assurer la sécurité de votre entreprise.  n"
+      "type": "feature-boxes",
+      "sectionTitle": "Victrix: sécurisez vos données avec le modèle Zero Trust",
+      "fond": "givre",
+      "boxes": [
+        "Identification des données sensibles",
+        "Sélection des solutions ZTNA",
+        "Segmentation du réseau et isolement, restriction des accès",
+        "Accès aux données basé sur le principe du moindre privilège",
+        "Vérification continue du niveau de confiance",
+        "Inspection du trafic en session",
+        "Protection des données et applications",
+        "Détection des menaces"
       ]
     },
     {
@@ -50,6 +76,16 @@
       ],
       "ctaLabel": "Voir toutes les ressources",
       "ctaHref": "/fr/ressources"
+    },
+    {
+      "type": "cta",
+      "title": "Améliorez en continu votre posture de sécurité",
+      "body": "Pour toutes questions concernant la protection de votre cybersécurité ou l’architecture Zero Trust, contactez-nous : nos experts vous accompagneront pour mettre en place les meilleures solutions et assurer la sécurité de votre entreprise.",
+      "ctaLabel": "Contactez-nous",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
   ],
   "seoTitle": "Passez au modèle de cybersécurité Zero Trust"

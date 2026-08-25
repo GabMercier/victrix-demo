@@ -3,45 +3,95 @@
   "description": "Gérez vos espaces de travail facilement avec O bureau, l'application de réservation de bureau la plus simple à piloter.",
   "sections": [
     {
-      "type": "service-hero",
-      "eyebrow": "",
-      "titleAccent": "",
-      "title": "O bureau",
-      "lead": "O bureau, notre application de réservation de bureau Découvrez notre application de réservation de bureau . Simple à piloter et à mettre en place, notre application vous aidera à gérer vos bureaux en un instant !nn Demandez une démonstration",
+      "type": "product-hero",
+      "badge": "Écosystème Microsoft 365",
+      "title": "O bureau, notre application de réservation de bureau",
+      "titleHighlight": "O bureau",
+      "lead": "Découvrez notre application de réservation de bureau : simple à piloter et à mettre en place, elle vous aidera à gérer vos bureaux en un instant !",
+      "ctaLabel": "Demandez une consultation",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "image": "/wp-content/uploads/2023/08/obureau-mobile.png",
+      "imageAlt": "",
+      "fond": "givre"
+    },
+    {
+      "type": "feature-boxes",
+      "sectionTitle": "Les bénéfices",
+      "subtitle": "",
+      "fond": "blanc",
+      "boxes": [
+        "Simplifier les réservations",
+        "Améliorer la gestion des bureaux",
+        "Accéder à des rapports pertinents",
+        "Suivre la présence au bureau"
+      ]
+    },
+    {
+      "type": "offer-cards",
+      "title": "Une application simple et ergonomique pour gérer vos espaces de travail",
+      "intro": "",
+      "fond": "givre",
       "ctaLabel": "",
       "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Pour les employés",
+          "bullets": [
+            { "text": "Réserver un bureau en fonction de vos besoins", "icon": "coche" },
+            { "text": "Modifier, annuler ou confirmer votre réservation", "icon": "coche" },
+            { "text": "Créer une réservation récurrente", "icon": "coche" },
+            { "text": "Connecter la réservation à votre agenda Outlook", "icon": "coche" },
+            { "text": "Confirmer votre présence avec le code unique du bureau", "icon": "coche" },
+            { "text": "Consulter les réservations de vos collègues et choisir un bureau près d’eux", "icon": "coche" },
+            { "text": "Désigner un collègue comme délégué pour les réservations", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Pour les gestionnaires de bureaux",
+          "bullets": [
+            { "text": "Créer et gérer les bureaux, zones, étages et immeubles", "icon": "coche" },
+            { "text": "Gérer les spécificités et équipements disponibles pour un bureau", "icon": "coche" },
+            { "text": "Gérer la disponibilité des bureaux et zones", "icon": "coche" },
+            { "text": "Consulter des rapports sur les taux d’occupation des espaces, les périodes achalandées et le taux de présence de chaque employé", "icon": "coche" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "Une technologie Microsoft",
+      "paragraphs": [
+        "<strong>L’application O bureau est intégrée à votre environnement Microsoft 365 et Power Platform.</strong>",
+        "Profitez d’une visibilité complète pour une prise de décision éclairée sur la gestion de votre parc immobilier."
+      ],
       "image": "/wp-content/uploads/2023/08/obureau-mobile.png",
-      "imageAlt": ""
+      "imageAlt": "",
+      "stats": [
+        { "value": "Déploiement", "label": "Rapide, avec un frais unique d’installation" },
+        { "value": "Teams", "label": "Intégration native à Microsoft Teams" },
+        { "value": "Autonomie", "label": "Pilotage et évolution de la solution" },
+        { "value": "Bilingue", "label": "Application français / anglais" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
     },
     {
-      "type": "rich-text",
-      "title": "LES BÉNÉFICES",
-      "paragraphs": [
-        "<strong>Simplifier les réservations</strong>",
-        "<strong>Améliorer la gestion des bureaux</strong>",
-        "<strong>Accéder à des rapports pertinents</strong>",
-        "<strong>Suivre la présence au bureau</strong>"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "UNE APPLICATION SIMPLE ET ERGONOMIQUE POUR GÉRER VOS ESPACES DE TRAVAIL",
-      "paragraphs": [
-        "<strong>Pour les employés</strong>",
-        "<ul><li>Réserver un bureau en fonction de vos besoins </li>\n<li>Modifier, annuler ou confirmer votre réservation</li>\n<li>Créer une réservation récurrente</li>\n<li>Connecter la réservation à votre agenda Outlook  </li>\n<li>Confirmer votre présence avec le code unique du bureau</li>\n<li>Consulter les réservations de vos collègues et choisir un bureau près d’eux </li>\n<li>Désigner un collègue comme délégué pour les réservations</li></ul>",
-        "<strong>Pour les gestionnaires de bureaux</strong>",
-        "<ul><li>Créer et gérer les bureaux, zones, étages et immeubles </li>\n<li>Gérer les spécificités et équipements disponibles pour un bureau </li>\n<li>Gérer la disponibilité des bureaux et zones </li>\n<li>Consulter des rapports sur les taux d’occupation des espaces, les périodes achalandées et le taux de présence de chaque employé</li></ul>"
-      ]
-    },
-    {
-      "type": "rich-text",
-      "title": "UNE TECHNOLOGIE MICROSOFT",
-      "paragraphs": [
-        "L’application O bureau est intégrée à votre environnement Microsoft 365 et Power Platform",
-        "<strong>LES AVANTAGES DE NOTRE APPLICATION DE RÉSERVATION DE BUREAU</strong>",
-        "<ul><li>Frais unique d’installation </li>\n<li>Visibilité complète pour une prise de décision éclairée sur la gestion de votre parc immobilier </li>\n<li>Déploiement rapide </li>\n<li>Intégration native à Microsoft Teams </li>\n<li>Autonomie de pilotage et d’évolution de la solution</li>\n<li>Application bilingue français/anglais</li></ul>",
-        "Adoptez O bureau Victrix vous offre une application clé en main pour répondre à vos besoins de gestion des espaces de travail.<br> n"
-      ]
+      "type": "cta",
+      "title": "Adoptez O bureau",
+      "body": "Victrix vous offre une application clé en main pour répondre à vos besoins de gestion des espaces de travail.",
+      "ctaLabel": "Demandez une démonstration",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
   ],
   "seoTitle": "Application de réservation de bureau | O bureau"
