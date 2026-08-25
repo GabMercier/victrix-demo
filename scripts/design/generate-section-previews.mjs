@@ -44,7 +44,7 @@ const COMPONENTS_DIR = join(ROOT, 'component-library', 'src', 'components');
 
 // ---------------------------------------------------------------------------
 // Pages sources (FR) — fichier de contenu → URL rendue. L'union couvre TOUS
-// les types de la palette (30 au 2026-08-07) ; le garde-fou plus bas le
+// les types de la palette (32 au 2026-08-24) ; le garde-fou plus bas le
 // prouve à chaque exécution.
 // ---------------------------------------------------------------------------
 const SOURCES = [
@@ -52,6 +52,9 @@ const SOURCES = [
   { file: 'src/content/landing/fr/evaluation-securite.md', url: '/fr/campagnes/evaluation-securite/' },
   { file: 'src/content/home/fr/accueil.json', url: '/fr/' },
   { file: 'src/content/services/fr/demo-sections.json', url: '/fr/services/demo-sections/' },
+  // Recette « page produit » (2026-08-24) : première occurrence de
+  // product-hero + bento-metrics (maquette docs/produits.css).
+  { file: 'src/content/services/fr/demo-produit.json', url: '/fr/services/demo-produit/' },
 ];
 
 /** Sections (frontmatter YAML ou JSON) d'un fichier de contenu. */

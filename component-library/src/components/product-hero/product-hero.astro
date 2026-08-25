@@ -1,0 +1,160 @@
+---
+/**
+ * Section « Héros catalogue produit » — composant Bookshop, NOUVEAU 2026-08-24.
+ * FIDÉLITÉ MAQUETTE (docs/produits.css §Hero Section, « Studio de création
+ * Power Platform et Dynamics 365 » — style catalogue/produit) : héros CLAIR
+ * deux colonnes —
+ *  - à gauche : pastille-badge arrondie (point bleu + libellé 12/700
+ *    majuscules ls 0.6), H1 GÉANT 72/72 700 ls -3.6 avec sous-chaîne accent
+ *    bleue (patron titleHighlight de service-hero/home-hero), lead 20/32,
+ *    deux boutons PILULES (primaire plein à ombre bleue ; secondaire contour
+ *    2 px anthracite) ;
+ *  - à droite : carte photo inclinée 2°, rayon 16, ombre 2xl, posée sur un
+ *    halo bleu flouté (blur 60).
+ * Couleurs = TOKENS (#F8F9FA→givre [fond par défaut], #00020A→on-surface,
+ * #44474F→on-surface-variant, #0038E6→primary, ombre bleue rgba(0,56,230,.2)
+ * →rgba(26,91,255,.2) [rgb du token primary]) ; bordure de carte froide
+ * rgba(197,198,208,.3) VERBATIM (famille C4C5D9, précédent méga/réalisations).
+ * AJUSTEMENT a11y AA : badge = fond primary/20 + texte primary-container
+ * (la maquette — texte #0038E6 sur fond bleu 30 % — plafonne à ≈4.3:1).
+ *
+ * Props : { type: "product-hero", badge?, title, titleHighlight?, lead?,
+ *           ctaLabel?, ctaHref?, cta2Label?, cta2Href?, image?, imageAlt?,
+ *           fond? }
+ * - `image` = chemin PUBLIC servi tel quel (browser-safe, règle des sections) ;
+ *   sans image, la colonne droite est absente (le texte occupe la largeur).
+ * - `titleHighlight` : sous-chaîne du titre rendue en bleu (première
+ *   occurrence) ; vide ou introuvable = titre uniforme.
+ * - `fond` : palette officielle des fonds clairs ; défaut « givre » (maquette).
+ *
+ * Contraintes / pièges :
+ * - Rend le SEUL <h1> de la page → à placer en PREMIÈRE position (comme
+ *   service-hero — ne pas cumuler les deux sur une même page).
+ * - `lead` peut contenir des <strong> → rendu set:html (contenu de dépôt).
+ * - Image chargée eager/fetchpriority=high (LCP) — une seule section héros
+ *   par page, règle « une seule image eager » respectée.
+ * - Boutons PILULES (rounded-full) : géométrie propre au style catalogue
+ *   produit de cette maquette — distincte des boutons rayon 2 de la charte.
+ * - Browser-safe (éditeur visuel CloudCannon) : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Props {
+  badge?: string;
+  title: string;
+  titleHighlight?: string;
+  lead?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  cta2Label?: string;
+  cta2Href?: string;
+  image?: string;
+  imageAlt?: string;
+  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+}
+
+const {
+  badge,
+  title,
+  titleHighlight,
+  lead,
+  ctaLabel,
+  ctaHref,
+  cta2Label,
+  cta2Href,
+  image,
+  imageAlt,
+  fond = 'givre',
+} = Astro.props;
+
+// « Fond de section » : clé fermée → utilitaire de la palette officielle.
+const FONDS: Record<string, string> = {
+  blanc: 'bg-white',
+  givre: 'bg-givre',
+  ivoire: 'bg-ivoire',
+  beige: 'bg-beige',
+  sable: 'bg-sable',
+};
+
+// Sous-chaîne accentuée rendue en bleu là où elle apparaît dans le titre
+// (première occurrence — patron home-hero/service-hero) ; absente ou
+// introuvable = titre uniforme, aucune casse.
+const highlightIndex = titleHighlight ? title.indexOf(titleHighlight) : -1;
+const titleParts =
+  highlightIndex >= 0 && titleHighlight
+    ? {
+        before: title.slice(0, highlightIndex),
+        accent: titleHighlight,
+        after: title.slice(highlightIndex + titleHighlight.length),
+      }
+    : null;
+---
+
+<section class:list={['py-20 lg:py-24 overflow-hidden', FONDS[fond] ?? FONDS.givre]}>
+  <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="flex flex-col items-start gap-6">
+      {
+        badge && (
+          <p class="inline-flex items-center gap-2 bg-primary/20 border border-solid border-primary/20 rounded-full px-3 py-1 m-0 max-w-none">
+            <span class="size-2 rounded-full bg-primary" aria-hidden="true" />
+            <span class="text-xs leading-4 font-bold uppercase tracking-[0.6px] text-primary-container">{badge}</span>
+          </p>
+        )
+      }
+      <h1
+        class="text-[40px] leading-[1.05] tracking-[-1.6px] lg:text-[72px] lg:leading-none lg:tracking-[-3.6px] font-bold text-on-surface m-0 text-balance"
+      >
+        {
+          titleParts ? (
+            <>
+              {titleParts.before}
+              <span class="text-primary">{titleParts.accent}</span>
+              {titleParts.after}
+            </>
+          ) : (
+            title
+          )
+        }
+      </h1>
+      {lead && <p class="text-xl leading-8 text-on-surface-variant m-0 max-w-[512px]" set:html={lead} />}
+      {
+        ((ctaLabel && ctaHref) || (cta2Label && cta2Href)) && (
+          <div class="flex flex-wrap items-center gap-4 pt-4">
+            {ctaLabel && ctaHref && (
+              <a
+                class="no-underline inline-flex items-center bg-primary text-on-primary rounded-full px-8 py-4 text-base leading-6 font-bold shadow-[0_10px_15px_-3px_rgba(26,91,255,0.2),0_4px_6px_-4px_rgba(26,91,255,0.2)] hover:bg-primary-container transition-colors"
+                href={ctaHref}
+              >
+                {ctaLabel}
+              </a>
+            )}
+            {cta2Label && cta2Href && (
+              <a
+                class="no-underline inline-flex items-center border-2 border-solid border-on-surface text-on-surface rounded-full px-8 py-4 text-base leading-6 font-bold hover:bg-on-surface hover:text-white transition-colors"
+                href={cta2Href}
+              >
+                {cta2Label}
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+    {
+      image && (
+        <div class="relative isolate w-full max-w-[512px] lg:justify-self-end">
+          <div class="absolute -inset-8 rounded-full bg-primary/5 blur-[60px] -z-10" aria-hidden="true" />
+          <div class="rotate-2 rounded-2xl overflow-hidden border border-solid border-[#C5C6D0]/30 shadow-2xl bg-white">
+            <img
+              src={image}
+              alt={imageAlt ?? ''}
+              class="w-full h-auto aspect-[4/3] object-cover border-0"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>

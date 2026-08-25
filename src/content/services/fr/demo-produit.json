@@ -1,0 +1,133 @@
+{
+  "title": "Démonstration page produit",
+  "description": "Recette « page produit » du catalogue (maquette Studio de création) : héros catalogue, bento métriques, offres, valeur stratégique, réalisations et appel à l'action.",
+  "noindex": true,
+  "sections": [
+    {
+      "type": "product-hero",
+      "badge": "Écosystème Microsoft 365",
+      "title": "Studio de création Power Platform et Dynamics 365",
+      "titleHighlight": "Power Platform",
+      "lead": "Obtenez des conseils et donnez vie à vos idées avec Ø Studio, vos experts en conseil et développement Power Platform et Dynamics 365.",
+      "ctaLabel": "Demandez une consultation",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "Découvrez nos applications",
+      "cta2Href": "/fr/solutions",
+      "image": "/images/solutions/legacy-vers-power-apps.jpg",
+      "imageAlt": "",
+      "fond": "givre"
+    },
+    {
+      "type": "bento-metrics",
+      "title": "Déployez des applications à la vitesse grand V",
+      "intro": "Dites adieu aux tâches répétitives grâce à l'automatisation des processus et libérez le potentiel de vos équipes.",
+      "fond": "blanc",
+      "featured": {
+        "title": "Optimisation opérationnelle",
+        "text": "De la gestion de vos opérations au soutien à vos services administratifs, l'offre Ø Studio répond aux exigences de tous vos secteurs d'activités.",
+        "watermark": "eclair",
+        "stats": [
+          { "value": "4,5×", "label": "Accélération" },
+          { "value": "-40 %", "label": "Réduction des coûts" }
+        ]
+      },
+      "aside": {
+        "icon": "insigne",
+        "title": "Certifiés Microsoft",
+        "text": "Nos conseillers certifiés maximisent vos outils M365 intégrés pour un retour sur investissement immédiat.",
+        "linkLabel": "Voir l'expertise",
+        "linkHref": "/fr/services/productivite"
+      }
+    },
+    {
+      "type": "offer-cards",
+      "title": "Deux volets, une même équipe",
+      "intro": "Du cadrage des besoins à la livraison d'applications, Ø Studio couvre le cycle complet.",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Conseil et intégration",
+          "bullets": [
+            { "text": "Identifier et quantifier les besoins d'affaires", "icon": "coche" },
+            { "text": "Analyser l'utilisation et les comportements", "icon": "coche" },
+            { "text": "Définir les spécifications et les bonnes pratiques", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Développement d'applications",
+          "bullets": [
+            { "text": "Créer des applications évolutives pour vos employés", "icon": "coche" },
+            { "text": "Mettre en œuvre des solutions clés en main", "icon": "coche" },
+            { "text": "Développer des applications mobiles et web", "icon": "coche" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "strategic-value",
+      "title": "Gouvernance Microsoft Power Platform",
+      "paragraphs": [
+        "Encadrez le développement citoyen sans freiner l'innovation : visibilité complète sur les environnements, gestion optimale des licences et tableaux de bord conviviaux pour tous."
+      ],
+      "image": "/images/solutions/gestion-idees.jpg",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Sécurité", "label": "Conformité et visibilité complète" },
+        { "value": "Économies", "label": "Gestion optimale des licences" },
+        { "value": "Innovation", "label": "Automatisation et adoption accélérée" },
+        { "value": "Expérience", "label": "Rapports conviviaux pour tous" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
+    },
+    {
+      "type": "realisations",
+      "title": "Notre book de réalisations",
+      "intro": "Nos spécialistes maîtrisent Power Apps, Power Automate, Power BI et Power Pages pour livrer des solutions adaptées à chaque secteur.",
+      "linkLabel": "Consultez le catalogue complet",
+      "linkHref": "/fr/solutions",
+      "items": [
+        {
+          "title": "Modernisation industrielle",
+          "text": "Automatisation des processus de maintenance via Dynamics 365.",
+          "icon": "marteau"
+        },
+        {
+          "title": "Intranet employé",
+          "text": "Plateforme collaborative unifiée basée sur SharePoint et Power Pages.",
+          "icon": "groupe"
+        },
+        {
+          "title": "Santé",
+          "text": "Feuilles de temps et suivi clinique dans Power Apps.",
+          "icon": "trousse"
+        },
+        {
+          "title": "Services aux citoyens",
+          "text": "Portail de requêtes citoyennes bâti sur Power Pages.",
+          "icon": "casque"
+        }
+      ],
+      "fond": "blanc"
+    },
+    {
+      "type": "cta",
+      "title": "Vous avez un projet ?",
+      "body": "Laissez Ø Studio vous propulser vers Microsoft Power Platform et rentabiliser votre investissement Microsoft 365.",
+      "ctaLabel": "Rencontrons-nous",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
+    }
+  ],
+  "seoTitle": "Démonstration — recette page produit"
+}

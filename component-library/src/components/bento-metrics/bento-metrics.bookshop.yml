@@ -1,0 +1,102 @@
+# =============================================================================
+# Spec Bookshop — section « Bento métriques » (palette partagée), NOUVELLE
+# 2026-08-24 (fidélité maquette docs/produits.css « Studio de création »).
+# Voir hero.bookshop.yml pour les conventions communes. La rangée `stats`
+# pointe vers _structures.stat_tiles (cloudcannon.config.yml — même forme
+# {value,label} que strategic-value). `watermark` (carte sombre) et `icon`
+# (carte claire) sont des clés DISTINCTES à dessein : un même nom partagerait
+# sa config _inputs (chemins imbriqués non supportés — gotcha 2026-07-20).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Produit — Bento métriques"
+  description: "Tête centrée puis grille bento : carte Bleu nuit (titre, texte, puces-métriques verre, pictogramme filigrane) + carte claire (icône, titre, texte, lien)."
+  icon: dashboard
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/bento-metrics/preview.png"
+    text: "Produit — Bento métriques"
+    subtext: Carte Bleu nuit à métriques + carte claire à lien
+  preview:
+    icon: dashboard
+    text:
+      - key: title
+      - text: Bento métriques
+
+blueprint:
+  type: bento-metrics
+  title: "Titre de la section"
+  intro: ""
+  fond: blanc
+  featured:
+    title: "Carte principale"
+    text: ""
+    watermark: ""
+    stats:
+      - value: "4,5×"
+        label: "Accélération"
+  aside:
+    icon: ""
+    title: "Carte secondaire"
+    text: ""
+    linkLabel: ""
+    linkHref: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre"
+  intro:
+    label: "Introduction"
+    comment: "Paragraphe centré sous le titre de section. Vide = absent."
+  featured:
+    label: "Carte sombre (principale)"
+    comment: "Grande carte Bleu nuit, 2 colonnes sur 3."
+  aside:
+    label: "Carte claire (secondaire)"
+    comment: "Carte grise à icône et lien, 1 colonne sur 3. Laisser les champs vides pour une carte minimale."
+  text:
+    label: "Texte"
+    comment: "Peut contenir des <strong> (rendu HTML tel quel) dans la carte sombre."
+  watermark:
+    type: select
+    label: "Pictogramme filigrane"
+    options:
+      allow_empty: true
+      values:
+        - eclair
+        - engrenage
+        - graphique
+    comment: "Grand pictogramme décoratif en bas à droite de la carte sombre. Vide = aucun."
+  stats:
+    # `type: array` explicite — voir benefits.bookshop.yml (sans lui, generate
+    # fabriquerait une structure inline concurrente de _structures.stat_tiles).
+    type: array
+    label: "Puces-métriques"
+    comment: "Rangée de puces « verre » au bas de la carte sombre (ex. « Accélération / 4,5× »). Vide = absente."
+    options:
+      structures: _structures.stat_tiles
+  icon:
+    type: select
+    label: "Icône de la carte claire"
+    options:
+      allow_empty: true
+      values:
+        - insigne
+        - bouclier
+        - etoile
+    comment: "Tuile bleue en tête de la carte claire. Vide = aucune."
+  linkLabel:
+    label: "Lien — libellé"
+    comment: "Lien à flèche au bas de la carte claire (ex. « Voir l'expertise »). Vide = absent."
+  linkHref:
+    label: "Lien — URL"
+    comment: "URL FINALE, préfixe de langue inclus (ex. « /fr/services/productivite/ »)."

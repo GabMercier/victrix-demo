@@ -526,6 +526,58 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       image: z.string().optional(),
       imageAlt: z.string().optional(),
     }),
+    // ---- Sections « catalogue produit » (fidélité maquette docs/produits.css
+    // « Studio de création Power Platform et Dynamics 365 », 2026-08-24) —
+    // recette des pages ENFANTS produits/services (patron copilot-studio).
+    // Règles habituelles : images = chemins PUBLICS (browser-safe), textes
+    // enrichis rendus set:html, fonds bornés à la palette officielle. ----
+    // Héros catalogue : héros CLAIR deux colonnes — pastille-badge, très grand
+    // titre à accent bleu, lead, boutons pilules ; photo inclinée sur halo
+    // bleu à droite. Rend le SEUL <h1> (première position, jamais cumulé avec
+    // service-hero).
+    z.object({
+      type: z.literal('product-hero'),
+      badge: z.string().default(''),
+      title: z.string(),
+      // Sous-chaîne du titre rendue en bleu (première occurrence — patron
+      // home-hero/service-hero) ; vide = titre uniforme.
+      titleHighlight: z.string().default(''),
+      lead: z.string().default(''),
+      ctaLabel: z.string().default(''),
+      ctaHref: z.string().default(''),
+      cta2Label: z.string().default(''),
+      cta2Href: z.string().default(''),
+      image: z.string().default(''),
+      imageAlt: z.string().default(''),
+      fond: fondClair.default('givre'),
+    }),
+    // Bento métriques : tête centrée + carte Bleu nuit (titre, texte,
+    // puces-métriques « verre », pictogramme filigrane) + carte claire (tuile
+    // icône, titre, texte, lien). `watermark`/`icon` : clés DISTINCTES à
+    // dessein (un même nom partagerait sa config _inputs CloudCannon — les
+    // chemins imbriqués n'y sont pas supportés, gotcha 2026-07-20).
+    z.object({
+      type: z.literal('bento-metrics'),
+      title: z.string(),
+      intro: z.string().default(''),
+      fond: fondClair.default('blanc'),
+      featured: z.object({
+        title: z.string(),
+        text: z.string().default(''),
+        watermark: z.enum(['eclair', 'engrenage', 'graphique', '']).default(''),
+        // Mêmes tuiles {value,label} que strategic-value (_structures.stat_tiles).
+        stats: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
+      }),
+      aside: z
+        .object({
+          icon: z.enum(['insigne', 'bouclier', 'etoile', '']).default(''),
+          title: z.string(),
+          text: z.string().default(''),
+          linkLabel: z.string().default(''),
+          linkHref: z.string().default(''),
+        })
+        .optional(),
+    }),
     // ---- Sections « page expertise mère » (fidélité maquette
     // expertise-mere.css, 2026-08-05). Partagées comme toute la palette ;
     // images = chemins PUBLICS (browser-safe). ----
