@@ -5,43 +5,73 @@
   "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
+      "type": "service-hero",
+      "eyebrow": "Since 2003",
+      "eyebrowStyle": "badge",
+      "titleAccent": "",
       "title": "Discover Victrix",
-      "subtitle": "Renowned for its high-quality services and distinctive customer experience, Victrix offers a proven approach that combines excellence, agility and proximity.",
+      "titleHighlight": "Victrix",
+      "lead": "Renowned for its high-quality services and distinctive customer experience, Victrix offers a proven approach that combines excellence, agility and proximity.",
       "ctaLabel": "Let's meet",
       "ctaHref": "/en/contact",
-      "titleAccent": "",
-      "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "cta2Label": "Join the team",
+      "cta2Href": "/en/carrieres",
+      "overlay": "blanc",
+      "image": "/images/carrieres/hero-vie-chez-victrix.jpg",
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
+      "type": "strategic-value",
       "title": "Our culture",
       "paragraphs": [
         "At Victrix, we know that traditional ways of doing things are no longer sufficient to achieve the highest levels of performance and exceed the expectations of our customers, partners and employees."
-      ]
+      ],
+      "image": "/images/carrieres/equipe-environnement.jpg",
+      "imageAlt": "",
+      "stats": [],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
     },
     {
-      "_bookshop_name": "benefits",
+      "type": "bento-metrics",
+      "title": "Victrix at a glance",
+      "intro": "",
+      "fond": "givre",
+      "featured": {
+        "title": "A local IT force with international reach",
+        "text": "Founded in 2003, Victrix grew through successive acquisitions and joined the Alan Allman Associates international ecosystem in 2019.",
+        "watermark": "graphique",
+        "stats": [
+          { "value": "2003", "label": "Foundation of Victrix" },
+          { "value": "3", "label": "Offices" },
+          { "value": "ISO", "label": "27001 and 9001" }
+        ]
+      },
+      "aside": {
+        "icon": "insigne",
+        "title": "Happy At Work",
+        "text": "Victrix is HappyIndex® AtWork certified as a company \"where people are happy to work\".",
+        "linkLabel": "Life at Victrix",
+        "linkHref": "/en/carrieres"
+      }
+    },
+    {
       "type": "benefits",
       "title": "Our values",
       "intro": "",
       "items": [
-        { "title": "Excellence", "description": "", "icon": "" },
-        { "title": "Collaboration", "description": "", "icon": "" },
-        { "title": "Innovation", "description": "", "icon": "" },
-        { "title": "Commitment", "description": "", "icon": "" },
-        { "title": "Integrity", "description": "", "icon": "" }
+        { "title": "Excellence", "description": "", "icon": "losange" },
+        { "title": "Collaboration", "description": "", "icon": "groupe" },
+        { "title": "Innovation", "description": "", "icon": "ampoule" },
+        { "title": "Commitment", "description": "", "icon": "porteur" },
+        { "title": "Integrity", "description": "", "icon": "dossier" }
       ]
     },
     {
-      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Our history",
       "intro": "More than twenty years of growth, acquisitions and international expansion.",
@@ -59,17 +89,19 @@
         { "number": "2016", "title": "Acquisition of Noverka Conseil", "text": "" },
         { "number": "2017", "title": "Acquisition of VisionTI", "text": "" },
         { "number": "2019", "title": "Victrix joins the Alan Allman Associates international ecosystem", "text": "" },
-        { "number": "2023", "title": "Société Conseil Lambda joins Victrix", "text": "" }
+        { "number": "2023", "title": "Société Conseil Lambda joins Victrix", "text": "" },
+        { "number": "2024", "title": "By joining forces with COMITEM, Victrix expands its offering in France", "text": "" }
       ]
     },
     {
-      "_bookshop_name": "cta",
       "type": "cta",
       "title": "We are recruiting the experts of tomorrow!",
       "body": "Interested? Do not hesitate to contact us.",
       "ctaLabel": "Our opportunities",
       "ctaHref": "/en/carrieres",
-      "variant": "dark"
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
   ]
 }

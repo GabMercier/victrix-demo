@@ -1,0 +1,96 @@
+{
+  "_schema": "default",
+  "name": "Consultation Ø Studio (FR)",
+  "toEmail": "",
+  "subject": "Demande de consultation — Ø Studio",
+  "submitLabel": "Demander une consultation",
+  "consentText": "Les renseignements fournis sont recueillis et utilisés uniquement pour traiter votre demande, conformément à la Loi 25 sur la protection des renseignements personnels dans le secteur privé.",
+  "fields": [
+    {
+      "label": "Nom complet",
+      "type": "text",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Courriel professionnel",
+      "type": "email",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Organisation",
+      "type": "text",
+      "required": false,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Votre besoin",
+      "type": "select",
+      "required": true,
+      "options": [
+        "Développement d'applications",
+        "Automatisation de processus",
+        "Gouvernance Power Platform",
+        "Dynamics 365",
+        "Autre"
+      ],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Précisez votre besoin",
+      "type": "text",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "Votre besoin", "equals": "Autre" }
+    },
+    {
+      "label": "Message",
+      "type": "textarea",
+      "required": false,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Je consens à ce que Victrix recueille et utilise mes renseignements pour traiter ma demande (Loi 25)",
+      "type": "checkbox",
+      "required": true,
+      "options": [],
+      "value": "",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "Page d'origine",
+      "type": "hidden",
+      "required": false,
+      "options": [],
+      "value": "{{page.titre}} ({{page.chemin}})",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "UTM — source",
+      "type": "hidden",
+      "required": false,
+      "options": [],
+      "value": "{{url.utm_source}}",
+      "showIf": { "field": "", "equals": "" }
+    },
+    {
+      "label": "UTM — campagne",
+      "type": "hidden",
+      "required": false,
+      "options": [],
+      "value": "{{url.utm_campaign}}",
+      "showIf": { "field": "", "equals": "" }
+    }
+  ]
+}

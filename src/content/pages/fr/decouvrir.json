@@ -5,43 +5,73 @@
   "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
+      "type": "service-hero",
+      "eyebrow": "Depuis 2003",
+      "eyebrowStyle": "badge",
+      "titleAccent": "",
       "title": "Découvrir Victrix",
-      "subtitle": "Réputée pour offrir des services de grande qualité et une expérience client distinctive de premier ordre, Victrix propose une approche éprouvée conjuguant excellence, agilité et proximité.",
+      "titleHighlight": "Victrix",
+      "lead": "Réputée pour offrir des services de grande qualité et une expérience client distinctive de premier ordre, Victrix propose une approche éprouvée conjuguant excellence, agilité et proximité.",
       "ctaLabel": "Rencontrons-nous",
       "ctaHref": "/fr/contact",
-      "titleAccent": "",
-      "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "cta2Label": "Se joindre à l'équipe",
+      "cta2Href": "/fr/carrieres",
+      "overlay": "blanc",
+      "image": "/images/carrieres/hero-vie-chez-victrix.jpg",
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
+      "type": "strategic-value",
       "title": "Notre culture",
       "paragraphs": [
         "Chez Victrix, nous savons que les façons de faire traditionnelles ne suffisent plus pour atteindre les plus hauts niveaux de rendement et surpasser les attentes de nos clients, partenaires et employés."
-      ]
+      ],
+      "image": "/images/carrieres/equipe-environnement.jpg",
+      "imageAlt": "",
+      "stats": [],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
     },
     {
-      "_bookshop_name": "benefits",
+      "type": "bento-metrics",
+      "title": "Victrix en un coup d'œil",
+      "intro": "",
+      "fond": "givre",
+      "featured": {
+        "title": "Une force TI d'ici, une portée internationale",
+        "text": "Fondée en 2003, Victrix a grandi par acquisitions successives et a rejoint l'écosystème international Alan Allman Associates en 2019.",
+        "watermark": "graphique",
+        "stats": [
+          { "value": "2003", "label": "Création de Victrix" },
+          { "value": "3", "label": "Bureaux" },
+          { "value": "ISO", "label": "27001 et 9001" }
+        ]
+      },
+      "aside": {
+        "icon": "insigne",
+        "title": "Happy At Work",
+        "text": "Victrix est certifiée HappyIndex® AtWork des entreprises « où l'on est heureux de travailler ».",
+        "linkLabel": "La vie chez Victrix",
+        "linkHref": "/fr/carrieres"
+      }
+    },
+    {
       "type": "benefits",
       "title": "Nos valeurs",
       "intro": "",
       "items": [
-        { "title": "Excellence", "description": "", "icon": "" },
-        { "title": "Collaboration", "description": "", "icon": "" },
-        { "title": "Innovation", "description": "", "icon": "" },
-        { "title": "Engagement", "description": "", "icon": "" },
-        { "title": "Intégrité", "description": "", "icon": "" }
+        { "title": "Excellence", "description": "", "icon": "losange" },
+        { "title": "Collaboration", "description": "", "icon": "groupe" },
+        { "title": "Innovation", "description": "", "icon": "ampoule" },
+        { "title": "Engagement", "description": "", "icon": "porteur" },
+        { "title": "Intégrité", "description": "", "icon": "dossier" }
       ]
     },
     {
-      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Notre histoire",
       "intro": "Plus de vingt ans de croissance, d'acquisitions et d'expansion internationale.",
@@ -64,13 +94,14 @@
       ]
     },
     {
-      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Nous recrutons les experts de demain !",
       "body": "Intéressés ? N'hésitez pas à nous contacter.",
       "ctaLabel": "C'est par ici",
       "ctaHref": "/fr/carrieres",
-      "variant": "dark"
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
   ]
 }

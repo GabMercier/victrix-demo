@@ -3,65 +3,167 @@
   "description": "Deploy business applications at lightning speed with Ø Studio, your consulting and application development studio for Microsoft Power Platform and Dynamics 365.",
   "sections": [
     {
-      "type": "service-hero",
-      "eyebrow": "",
-      "titleAccent": "",
-      "title": "Ø Studio",
-      "lead": "Ø Studio Power Platform and Dynamics 365 Creation Studio Get tailored advice and bring your ideas to life with Ø Studio, your experts in Power Platform and Dynamics 365 consulting and development.nnØ Studio helps you create unique digital experiences to boost efficiency and accelerate business development.nn Request a consultation Browse our app store",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "product-hero",
+      "badge": "Microsoft 365 ecosystem",
+      "title": "Power Platform and Dynamics 365 creation studio",
+      "titleHighlight": "Power Platform",
+      "lead": "Get tailored advice and bring your ideas to life with Ø Studio, your experts in Power Platform and Dynamics 365 consulting and development — unique digital experiences to boost efficiency and accelerate business growth.",
+      "ctaLabel": "Request a consultation",
+      "ctaHref": "#formulaire",
+      "cta2Label": "Browse our applications",
+      "cta2Href": "/en/solutions",
       "image": "/wp-content/uploads/2023/09/bg-o-studio-1-scaled.jpg",
-      "imageAlt": ""
+      "imageAlt": "",
+      "fond": "givre"
     },
     {
-      "type": "rich-text",
-      "title": "Deploy Business Applications at Lightning Speed",
-      "paragraphs": [
-        "<em><strong>Say goodbye to repetitive tasks with process automation!</strong></em>",
-        "From operations management to the support of your administrative services, the Ø Studio offering enables you to meet the requirements of the different branches of your business. Get support from our <strong>Microsoft certified consultants and application developers</strong> to free up your IT teams, automate your business processes, and <a href=\"/en/expertise/managed-it-services/maximize-the-use-of-your-m365-ecosystem/\">maximize the use of Microsoft 365</a>.",
-        "Ø Studio is a true value creator for your organization. We offer you the speed of development and increased delivery capacity you need to modernize your business solutions, develop the governance of your tools or automate workflows.",
-        "Benefit from Ø Studio’s expertise to develop and implement customized, sustainable and scalable digital solutions to meet all your business challenges.",
-        "n"
+      "type": "bento-metrics",
+      "title": "Deploy business applications at lightning speed",
+      "intro": "Say goodbye to repetitive tasks with process automation and unlock your teams' potential.",
+      "fond": "blanc",
+      "featured": {
+        "title": "Operational optimization",
+        "text": "From operations management to the support of your administrative services, the Ø Studio offering meets the requirements of the different branches of your business — with development speed and increased delivery capacity to match.",
+        "watermark": "eclair",
+        "stats": [
+          { "value": "4.5×", "label": "Acceleration" },
+          { "value": "-40%", "label": "Cost reduction" }
+        ]
+      },
+      "aside": {
+        "icon": "insigne",
+        "title": "Microsoft certified",
+        "text": "Our Microsoft certified consultants and developers free up your IT teams and maximize the use of the Microsoft 365 tools already included in your licences.",
+        "linkLabel": "See the Productivity expertise",
+        "linkHref": "/en/services/productivity-consulting"
+      }
+    },
+    {
+      "type": "offer-cards",
+      "title": "Consulting, integration and development",
+      "intro": "With Ø Studio by your side, Power Apps development, process automation, and tool governance are all easily achievable goals.",
+      "fond": "givre",
+      "ctaLabel": "Discover your options",
+      "ctaHref": "#formulaire",
+      "items": [
+        {
+          "number": "01",
+          "title": "Consulting and platform integration",
+          "bullets": [
+            { "text": "Identify and quantify needs and objectives", "icon": "coche" },
+            { "text": "Analyze the use of key features and user behaviors", "icon": "coche" },
+            { "text": "Define functional specifications: good practices, roles and responsibilities", "icon": "coche" },
+            { "text": "Identify processes to automate and necessary integrations", "icon": "coche" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Application development",
+          "bullets": [
+            { "text": "Create scalable apps to support your employees", "icon": "coche" },
+            { "text": "Implement tailored or bespoke business solutions", "icon": "coche" },
+            { "text": "Modernize your solutions and develop the governance of your tools", "icon": "coche" }
+          ]
+        }
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Microsoft Power Platform and Dynamics 365 Governance",
+      "type": "strategic-value",
+      "title": "Microsoft Power Platform and Dynamics 365 governance",
       "paragraphs": [
-        "<strong>Turn your ideas into innovative digital solutions. </strong>",
-        "Our <strong>Dynamics 365 and Microsoft Power Platform consulting and creation studio </strong>allows you to customize and extend the capabilities of your apps for Windows and create bespoke digital solutions."
+        "<strong>Turn your ideas into innovative digital solutions.</strong> Our Dynamics 365 and Microsoft Power Platform consulting and creation studio allows you to customize and extend the capabilities of your apps and create bespoke digital solutions.",
+        "Strengthen security and compliance with complete visibility and continuous monitoring, reduce costs through optimal licence and resource management, and simplify adoption across the organization."
+      ],
+      "image": "/images/solutions/gestion-idees.jpg",
+      "imageAlt": "",
+      "stats": [
+        { "value": "Security", "label": "Complete visibility and continuous monitoring" },
+        { "value": "Savings", "label": "Optimal licence management" },
+        { "value": "Innovation", "label": "Automation of repetitive tasks" },
+        { "value": "Experience", "label": "User-friendly dashboards and reports" }
+      ],
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": "",
+      "fond": ""
+    },
+    {
+      "type": "realisations",
+      "title": "Our portfolio of achievements",
+      "intro": "More than a simple consulting and application development service, the Ø Studio team excels with Power Platform tools: Power Apps, Power Automate, Power BI and Power Pages — delivering solutions tailored to your organization.",
+      "linkLabel": "Browse our application catalogue",
+      "linkHref": "/en/solutions",
+      "items": [
+        {
+          "title": "Field timesheets",
+          "text": "Mobile entry and automated approvals for field crews.",
+          "icon": "marteau"
+        },
+        {
+          "title": "Training management",
+          "text": "Employee learning paths and certification tracking in Power Apps.",
+          "icon": "groupe"
+        },
+        {
+          "title": "Citizen requests",
+          "text": "Request portal with processing tracking built on Power Pages.",
+          "icon": "casque"
+        },
+        {
+          "title": "Legacy application modernization",
+          "text": "Migration of aging applications to Power Apps and Dataverse.",
+          "icon": "trousse"
+        }
+      ],
+      "fond": "blanc"
+    },
+    {
+      "type": "faq",
+      "title": "FAQ — Dynamics 365 & Microsoft Power Platform development",
+      "fond": "givre",
+      "items": [
+        {
+          "question": "Does Ø Studio offer mobile application development?",
+          "answer": "Yes. Our Microsoft application development services consider accessibility from mobile devices and cybersecurity as core components of the app development process. If you want a web or mobile application designed with Microsoft Power Platform or Dynamics 365, we can help."
+        },
+        {
+          "question": "What are the steps to creating an application?",
+          "answer": "Proper planning before design is essential, whether it's heavy-code development or no-code/low-code app creation: define objectives and business needs, review requirements and user behavior, present a demo or proof of value, analyze the gaps, then present findings and an implementation proposal. We also offer several high-performance, ready-to-use solutions."
+        },
+        {
+          "question": "What are the benefits of M365 tool governance with Ø Studio?",
+          "answer": "Stronger security and compliance through complete visibility and continuous monitoring, reduced costs through licence and resource management, automation of repetitive tasks, simpler adoption, management of roles, access and approvals, and a better user experience with friendly dashboards and reports."
+        }
       ]
     },
     {
-      "type": "rich-text",
-      "title": "Consulting and Platform Integration",
-      "paragraphs": [
-        "<ul>n t<li>Identify and quantify needs and objectives</li>n t<li>Analyze the use of key features and user behaviors</li>n t<li>Define functional specifications such as good practices, roles and responsibilities</li>n t<li>Identify processes to automate and necessary integrations</li></ul>",
-        "<strong>Application Development</strong>",
-        "<ul>n t<li>Create scalable apps to support your employees</li>n t<li>Implement tailored or bespoke business solutions</li></ul>",
-        "With Ø Studio by your side, Power Apps development, process automation, and tool governance are all easily achievable goals. Get ready to boost the performance and productivity of your teams! \n <a href=\"/en/contact/\">Discover your options</a>"
-      ]
+      "type": "related-posts",
+      "title": "Related resources",
+      "tags": ["Productivity"],
+      "ctaLabel": "See all resources",
+      "ctaHref": "/en/ressources"
     },
     {
-      "type": "rich-text",
-      "title": "Our Portfolio of Achievements",
-      "paragraphs": [
-        "More than a simple <strong>consulting and application development service</strong>, the Ø Studio team excels with Power Platform tools: Power Apps, Power Automate, Power BI, and Power Pages.",
-        "Our specialists will help you optimize your Dynamics 365 and Power Platform tools so that you can leverage their full potential.\n <a href=\"https://o-studio-catalogue.victrix.ca/\">Browse our app store</a>",
-        "<strong>Got a Project?</strong> Let Ø Studio propel you towards Microsoft Power Platform and maximize your Microsoft 365 investment."
-      ]
+      "type": "form",
+      "title": "Request a consultation",
+      "intro": "Tell us about your Power Platform or Dynamics 365 project — a member of the Ø Studio team will get back to you quickly.",
+      "submitLabel": "Request a consultation",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "o-studio",
+      "fields": []
     },
     {
-      "type": "rich-text",
-      "title": "FAQ — Dynamics 365 & Microsoft Power Platform Development",
-      "paragraphs": [
-        "<strong>Does Ø Studio Offer Mobile Application Development?</strong>",
-        "Yes. Our Microsoft application development services consider accessibility from mobile devices and <a href=\"/en/expertise/cybersecurity/\">cybersecurity</a> as core components of the app development process. If you want a web application designed and developed with Microsoft Power Platform or Dynamics 365, we can help.",
-        "<strong>What Are the Steps to Creating an Application?</strong>",
-        "Proper planning before design is essential, whether it’s heavy-code development or no-code/low-code app creation. Here are the <strong>5 steps to successful Dynamics 365 and Microsoft Power Platform application development</strong>:n<ul>n t<li>Define objectives: identify and quantify business needs</li>n t<li>Review requirements and user behavior, and identify key users</li>n t<li>Present a demo or proof of value</li>n t<li>Analyze gaps between requirements and the demo or proof of value</li>n t<li>Present findings and an implementation proposal</li></ul> We also offer several high-performance, ready-to-use digital solutions. <a href=\"https://o-studio-catalogue.victrix.ca/\">Discover our applications here</a>.",
-        "<strong>Benefits of M365 Tool Governance with Ø Studio</strong>",
-        "<ul><li>Strengthen security and compliance with complete visibility and continuous monitoring</li><li>Reduce costs effectively (license and resource management to minimize unnecessary expenses)</li><li>Automate repetitive tasks and accelerate innovation</li><li>Simplify adoption</li><li>Enhance user experience with user-friendly dashboards and reports</li><li>Manage roles, access, and approvals</li></ul>n"
-      ]
+      "type": "cta",
+      "title": "Got a project?",
+      "body": "Let Ø Studio propel you towards Microsoft Power Platform and maximize your Microsoft 365 investment.",
+      "ctaLabel": "Let's meet",
+      "ctaHref": "#formulaire",
+      "cta2Label": "Contact us",
+      "cta2Href": "/en/contact",
+      "variant": "nuit"
     }
   ],
   "slug": "productivity-consulting/o-studio",

@@ -21,6 +21,7 @@ jamais publié) · ✅ présumé exact (confirmer quand même).
 | « **500+ Experts** » | **carte du héros /ressources — VISIBLE en ligne** (Pages système → Centre de ressources) | ❓ prioritaire | |
 | « +30 spécialistes » (Ø Studio) | campagne Licences Power Platform (section Ø Studio) | ❓ chiffre du studio, pas de l'entreprise — cohabite avec les deux ci-dessus | |
 | « +100 projets réussis » (Ø Studio) | même section | ❓ | |
+| « 4,5× Accélération » et « -40 % Réduction des coûts » (Ø Studio) | **page /services/productivite/o-studio (bento métriques, 2026-08-24)** + démo interne `demo-produit` | ❓ chiffres repris de la MAQUETTE designer (produits.css) — jamais validés ; si non confirmables, remplacer par des valeurs sûres ou retirer les puces (champ CMS `stats`) | |
 | « 50 millions de dollars canadiens de chiffre d'affaires » | article blogue « Nomination du CEO » (contenu migré WordPress) | ✅ contenu d'époque — laisser tel quel ou dater | |
 | « 3 bureaux — Québec, Montréal, Paris » | landing démo + page Contact | ✅ | |
 | « +225 000 points de terminaison gérés à travers le Canada » | service Services TI gérés | ❓ | |
@@ -32,9 +33,9 @@ jamais publié) · ✅ présumé exact (confirmer quand même).
 
 | Affirmation actuelle | Où | Statut | Valeur officielle |
 |---|---|---|---|
-| Certification ISO 27001 | landing démo interne ; évoquée aussi dans la campagne Évaluation sécurité (« cadres reconnus comme ISO 27001 » — simple référence, OK) | ❓ Victrix est-elle certifiée, ou vise-t-elle la conformité ? | |
+| Certification ISO 27001 | landing démo interne ; évoquée aussi dans la campagne Évaluation sécurité (« cadres reconnus comme ISO 27001 » — simple référence, OK) ; **« ISO 27001 et 9001 » sur /decouvrir (bento, 2026-08-24 — source : article blogue « Certification ISO 27001 et ISO 9001 » migré)** | ❓ Victrix est-elle certifiée, ou vise-t-elle la conformité ? (l'article migré affirme la certification) | |
 | Microsoft Solutions Partner | landing démo interne | ❓ niveau exact du partenariat ? | |
-| HappyIndex® AtWork **2024** | page Carrières (héros) | ❓ millésime à rafraîchir (2026 ?) | |
+| HappyIndex® AtWork **2024** | page Carrières (héros) ; **repris sans millésime sur /decouvrir (carte bento, 2026-08-24)** | ❓ millésime à rafraîchir (2026 ?) | |
 | Partenaires nommés : Imprivata, AlgoSec, AWS, OVHcloud, ServiceNow | landing démo interne (section partenaires) | 🎭 valider commercialement AVANT tout affichage public | |
 | Logos « Microsoft, AWS, Cisco, ServiceNow » (fichiers logos vides) | landing démo interne | 🎭 | |
 | Témoignage « Marie Lavoie, VP TI » | landing démo interne | 🎭 personnage inventé — ne jamais publier ; remplacer par un vrai témoignage autorisé ou retirer | |
@@ -62,6 +63,7 @@ valider par le conseiller juridique en une seule passe** :
 | Évaluation sécurité | « Les renseignements fournis sont recueillis et utilisés uniquement pour traiter votre demande, conformément à la Loi 25… » | existant |
 | Guide licences | « En soumettant le formulaire, vous consentez à recevoir des communications de Victrix et acceptez sa politique de confidentialité (Loi 25). » | existant |
 | **Infolettre** | « En vous inscrivant, vous consentez à recevoir l'infolettre de Victrix par courriel. Vous pouvez retirer votre consentement en tout temps. Vos renseignements sont traités conformément à la politique de confidentialité (Loi 25). » | **ébauche 2026-08-20 — à valider** |
+| **Consultation Ø Studio** | « Les renseignements fournis sont recueillis et utilisés uniquement pour traiter votre demande, conformément à la Loi 25… » | **copie du texte Évaluation sécurité, 2026-08-24 — même passe de validation** |
 
 Question juridique connexe : l'infolettre étant une communication commerciale
 récurrente, confirmer que la mécanique de retrait (désabonnement) prévue
