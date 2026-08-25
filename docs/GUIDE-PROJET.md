@@ -6,7 +6,8 @@
 ## La vision en trois phrases
 
 Remplacer le site WordPress actuel par une fondation moderne — **Astro (site
-statique) + CloudCannon (édition visuelle) + Cloudflare Pages (hébergement)** —
+statique) + CloudCannon (édition visuelle ET hébergement ; Cloudflare Pages =
+infra héritée du spike, à décommissionner au go-live)** —
 qui donne au marketing son autonomie d'édition, une vitesse et une sécurité
 maximales par construction, et un coût récurrent quasi nul. La stratégie est
 **« fonctionnel d'abord »** : livrer une v1 complète sur le design actuel, puis
@@ -31,6 +32,7 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 | 28 juil. | **Recherche interne livrée (P-06, Pagefind)** — index statique au build, FR/EN séparés, page `/recherche` + icône header; passée AVANT P-04 (priorité utilisateur). **Stratégie SEO sans plugins documentée** pour le marketing. CSP : ajout ciblé `'wasm-unsafe-eval'` (wasm local Pagefind). | `seo-strategie.md` + ligne P-06 de `plan-prompts.md` |
 | 30 juil. | **Architecture consolidée : les expertises SONT les services** (collection legacy supprimée, 301 vers `/services/…`, menu « Services ») — préfixe d'URL FINAL à trancher en Phase 2 (`/expertise` WP vs `/services`). **Sveltia retiré** (Phase 3). **Planification marketing livrée** : bannière promo à fenêtre de dates + articles à date future différés + rebuild quotidien (secret OPS `REBUILD_HOOK_URL` à brancher). Barre latérale CloudCannon groupée. | journal `plan-prompts.md` 30/07 + `operations.md` §7bis + digest `docs/digests/` |
 | 4 août | **Maquettes finales + design system reçus** (`docs/design/` : .fig, 5 exports HTML, planche) ; images rapatriées en local (5 déjà mortes côté Google, à ré-exporter du .fig). **Références de la refonte tranchées (v2)** : STRUCTURE des pages = exports HTML · SYSTÈME visuel = planche `DesignSystemVictrix.png` — rôles Material conservés, valeurs ré-ancrées sur les 6 couleurs de la planche (Bleu Victrix `#1A5BFF`, Bleu nuit, ivoire/beige/sable, anthracite ; dérivés à valider) ; `rounded-full` reste rond (artefact d'export signalé). **Pipeline Figma→Tailwind v4 REVALIDÉ** sur un port complet, puis **BASCULE GLOBALE DU SITE sur le nouveau système** (le WordPress reste la prod publique ; notre version EST la refonte) : tokens legacy re-mappés sur les ancres (re-peau instantanée de toutes les pages), Hanken Grotesk partout (Montserrat retirée), collisions `tokens.css`/@theme levées par renommage, **design-lab PURGÉ** — la page `/fr/style-guide` devient la référence vivante « Design System Victrix ». Reste : re-skin fin composant par composant (accents hérités, nouvelles sections des maquettes). | `arbitrages-design-a-trancher.md` (v2) + `analyse-reception-maquettes-finales.md` + `audit-tokens-figma.md` §5 |
+| 25 août | **Flux de publication à deux étages activé** : deux sites CloudCannon — édition/staging sur `spike/cloudcannon` (« Vic-demo ») et **production sur `main`, hébergée chez CloudCannon** (conforme au périmètre du 17 juil. ; le vrai victrix.ca WordPress reste en ligne pendant la transition) ; promotion par le bouton **Publish**. Cloudflare Pages rétrogradé : infra héritée du spike (préversions de branche + test des POST `/api/forms`), à décommissionner au go-live. Deux chantiers découverts, bloquants pour le go-live seulement : l'hébergement CloudCannon ignore `_redirects`/`_headers` (générer `.cloudcannon/routing.json`) et `STATIC_ONLY` porte aussi la politique « aperçu » (brouillons visibles, dates ignorées — à scinder, p. ex. `EDITOR_PREVIEW`). | `operations.md` §5–§6 + `DEPLOYMENT.md` §6–§7 |
 
 ## Ce qui fonctionne aujourd'hui (démontrable)
 
@@ -100,7 +102,7 @@ est argumenté face aux sceptiques dans `analyse-criteres.md`.
 | `roadmap.md` | Feuille de route par jalons (M0→M4) — **OBSOLÈTE** (antérieure au pivot ; bannière posée le 2026-08-07 — ne rien planifier depuis ce fichier). |
 | `portail-auth.md` | Plan directeur du portail client (Entra External ID). |
 | `i18n-architecture.md` | Architecture bilingue (URLs, slugs, SEO). |
-| `DEPLOYMENT.md` | Déploiement Cloudflare Pages. |
+| `DEPLOYMENT.md` | Hébergement CloudCannon (staging → production), contraintes de routage, liste go-live. |
 | `Proposition-Refonte-victrix.docx` | La proposition d'origine (options A/B/C, TCO 4 ans). |
 
 ## Les 10 critères marketing — état réel

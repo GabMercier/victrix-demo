@@ -25,9 +25,8 @@
 2. Modifier le texte dans l'éditeur; l'aperçu se met à jour.
 3. Champs utiles dans le panneau :
    - **Brouillon** : activé = l'article est visible dans l'aperçu CloudCannon
-     mais **absent du site public** — et absent aussi des adresses de
-     préversion de branche, sauf option `DRAFTS_VISIBLE` activée par l'équipe
-     technique (voir « Publier et partager un aperçu »). Désactiver pour
+     et sur l'adresse de test du site de travail, mais **absent du site
+     public** (voir « Publier et partager un aperçu »). Désactiver pour
      publier.
    - **Image de couverture** : glisser-déposer; l'optimisation (format, tailles,
      compression) est automatique au moment de la publication.
@@ -420,20 +419,30 @@ directement dans la section (mode historique), mais sans destinataire propre.
 
 ## Publier et partager un aperçu
 
-- **Save = publier** (sur la branche de travail) : commit → construction →
-  en ligne, le tout en quelques minutes.
-- **Partager une page non publique** : chaque branche de travail a son adresse
-  de préversion complète (`https://<branche>.victrix-demo.pages.dev/…`),
-  partageable par lien, non indexée par les moteurs. Idéal pour faire valider
-  une campagne avant sa vraie mise en ligne.
-- ⚠️ **Cas particulier des articles en Brouillon** : la préversion de branche
-  est construite comme le site public, donc un article encore en **Brouillon**
-  n'y apparaît **pas** (le lien partagé mènerait à une page introuvable) — à
-  moins que l'équipe technique n'ait activé `DRAFTS_VISIBLE` sur
-  l'environnement de préversion (action ponctuelle, voir `.env.example`). Sans
-  cette option : désactiver « Brouillon » sur la branche de travail (la
-  branche joue alors le rôle de brouillon), faire valider par lien, puis
-  fusionner pour publier.
+Le site vit en deux étages : un **site de travail** (là où toutes les
+sauvegardes atterrissent) et un **site de production** (ce que verront les
+visiteurs). Rien ne part en production tout seul.
+
+- **Save = enregistrer sur le site de travail** : commit → construction →
+  visible sur l'adresse de test en quelques minutes. La production ne bouge
+  pas.
+- **Publish = mettre en production** : le bouton **Publish** pousse d'un coup
+  toutes les modifications accumulées du site de travail vers le site de
+  production. C'est le geste conscient de mise en ligne — tant qu'on ne
+  clique pas, la production reste telle quelle. (Et tout étant versionné,
+  l'équipe technique peut annuler une publication au besoin.)
+- **Partager une page non publique** : l'adresse de test du site de travail
+  (domaine `cloudvent.net`, jamais indexée par les moteurs) se partage par
+  lien — idéal pour faire valider une campagne avant de la publier. Les
+  articles en **Brouillon** y sont visibles aussi (même politique que
+  l'aperçu de l'éditeur) ; le lien partagé montre donc exactement ce qui
+  attend d'être publié. Au besoin, l'équipe technique peut aussi créer un
+  lien de revue restreint (Client Sharing).
+- ⚠️ **Pendant la transition** (tant que le vrai victrix.ca WordPress est en
+  ligne) : le site de production de cette plateforme n'est pas encore public
+  (adresse de test non indexée) et montre lui aussi, temporairement, les
+  brouillons et les contenus à date future — l'équipe technique corrigera ce
+  comportement avant la vraie mise en ligne.
 
 ## Les pièges connus (et pourquoi ce n'est pas grave)
 
