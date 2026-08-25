@@ -2,40 +2,82 @@
   "title": "Centre de confiance",
   "description": "Sécurité, conformité et protection de vos données.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Centre de confiance",
-      "subtitle": "Sécurité, conformité et protection de vos données.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Centre de confiance",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "Centre de confiance",
+      "titleHighlight": "confiance",
+      "lead": "Sécurité, conformité et protection de vos données : nos engagements, réunis en un seul endroit.",
+      "ctaLabel": "Nous joindre",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "Politique de confidentialité",
+      "cta2Href": "/fr/politique-confidentialite",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Contenu en préparation",
-      "paragraphs": [
-        "Cette page regroupera nos engagements en matière de sécurité, de conformité et de protection des renseignements personnels.",
-        "Pour toute question sur nos pratiques, communiquez avec notre équipe."
+      "type": "benefits",
+      "title": "Nos engagements",
+      "intro": "Le contenu détaillé de cette page est en préparation.",
+      "fond": "blanc",
+      "headingStyle": "titre",
+      "items": [
+        {
+          "icon": "losange",
+          "title": "Sécurité de l’information",
+          "description": "Des pratiques encadrées par notre certification ISO 27001:2022 et appliquées à l’ensemble de nos opérations."
+        },
+        {
+          "icon": "personne",
+          "title": "Protection des renseignements personnels",
+          "description": "Des pratiques alignées sur la Loi 25 : consentement, transparence et minimisation des données."
+        },
+        {
+          "icon": "dossier",
+          "title": "Transparence",
+          "description": "Nos politiques sont publiques et tenues à jour — et notre équipe répond à vos questions."
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
+      "type": "numbered-cards",
+      "sectionTitle": "Nos politiques",
+      "headingStyle": "underline",
+      "intro": "",
+      "tone": "default",
+      "columns": "2",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Politique de confidentialité",
+          "text": "Ce que nous recueillons, pourquoi, et vos droits.",
+          "ctaLabel": "Lire la politique",
+          "ctaHref": "/fr/politique-confidentialite"
+        },
+        {
+          "number": "02",
+          "title": "Conditions d’utilisation",
+          "text": "Le cadre d’utilisation du site et de nos services.",
+          "ctaLabel": "Lire les conditions",
+          "ctaHref": "/fr/conditions-utilisation"
+        }
+      ]
+    },
+    {
       "type": "cta",
       "title": "Des questions sur nos pratiques ?",
       "body": "Notre équipe vous répondra avec plaisir.",
       "ctaLabel": "Nous joindre",
       "ctaHref": "/fr/contact",
-      "variant": "light"
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

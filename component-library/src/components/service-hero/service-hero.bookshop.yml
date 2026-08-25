@@ -37,6 +37,7 @@ blueprint:
   overlay: voile
   image: ""
   imageAlt: ""
+  imagePosition: centre
 
 preview:
 
@@ -101,3 +102,16 @@ _inputs:
   imageAlt:
     label: "Texte alternatif de l'image"
     comment: "Description pour l'accessibilité (laisser vide si l'image est purement décorative)."
+  imagePosition:
+    type: select
+    label: "Point focal de la photo"
+    comment: >-
+      Quelle bande de la photo reste visible quand l'écran la recadre.
+      « centre » (défaut) ; « haut » : garde le haut de la photo — recommandé
+      pour les photos de groupe (visages) ; « bas » : garde le bas.
+    options:
+      allow_empty: false
+      values:
+        - centre
+        - haut
+        - bas

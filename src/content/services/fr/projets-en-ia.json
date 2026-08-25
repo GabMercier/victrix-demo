@@ -2,40 +2,77 @@
   "title": "Projets en IA",
   "description": "De l’idéation au déploiement : des projets d’intelligence artificielle qui livrent de la valeur.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Projets en IA",
-      "subtitle": "De l’idéation au déploiement : des projets d’intelligence artificielle qui livrent de la valeur.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Services",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "Projets en IA",
+      "titleHighlight": "IA",
+      "lead": "De l’idéation au déploiement : des projets d’intelligence artificielle qui livrent de la valeur. Nos experts encadrent chaque étape, du cas d’usage à l’adoption.",
+      "ctaLabel": "Parlons de vos cas d’usage",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "Voir l’expertise IA",
+      "cta2Href": "/fr/services/intelligence-artificielle",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Page en préparation",
-      "paragraphs": [
-        "La présentation détaillée de nos projets en intelligence artificielle sera publiée prochainement.",
-        "Découvrez dès maintenant notre expertise en <a href=\"/fr/services/intelligence-artificielle/\">intelligence artificielle</a> ou communiquez avec nos experts."
+      "type": "offer-cards",
+      "title": "Nos interventions types",
+      "intro": "Le détail de l’offre sera publié prochainement — voici comment nous intervenons.",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Cadrage et cas d’usage",
+          "bullets": [
+            { "text": "Identification des occasions à fort impact" },
+            { "text": "Évaluation de la valeur et des risques" },
+            { "text": "Feuille de route réaliste" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Mise en œuvre",
+          "bullets": [
+            { "text": "Prototypes et preuves de concept" },
+            { "text": "Intégration à vos données et systèmes" },
+            { "text": "Passage à l’échelle encadré" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Adoption et gouvernance",
+          "bullets": [
+            { "text": "Formation des équipes" },
+            { "text": "Encadrement responsable de l’IA" },
+            { "text": "Mesure des retombées" }
+          ]
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
+      "type": "related-posts",
+      "title": "Ressources liées",
+      "tags": ["Intelligence artificielle"],
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
+    },
+    {
       "type": "cta",
       "title": "Un projet en IA ?",
-      "body": "Discutons de vos cas d’usage et de leur potentiel.",
+      "body": "Parlons de vos cas d’usage et de leur potentiel.",
       "ctaLabel": "Nous joindre",
       "ctaHref": "/fr/contact",
-      "variant": "dark"
+      "cta2Label": "Découvrir Victrix",
+      "cta2Href": "/fr/decouvrir",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

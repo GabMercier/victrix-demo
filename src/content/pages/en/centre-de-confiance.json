@@ -2,40 +2,82 @@
   "title": "Trust centre",
   "description": "Security, compliance and data protection.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Trust centre",
-      "subtitle": "Security, compliance and data protection.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Trust centre",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "Trust centre",
+      "titleHighlight": "Trust",
+      "lead": "Security, compliance and data protection: our commitments, in one place.",
+      "ctaLabel": "Contact us",
+      "ctaHref": "/en/contact",
+      "cta2Label": "Privacy policy",
+      "cta2Href": "/en/politique-confidentialite",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Content in preparation",
-      "paragraphs": [
-        "This page will bring together our commitments on security, compliance and the protection of personal information.",
-        "For any question about our practices, contact our team."
+      "type": "benefits",
+      "title": "Our commitments",
+      "intro": "The detailed content of this page is in preparation.",
+      "fond": "blanc",
+      "headingStyle": "titre",
+      "items": [
+        {
+          "icon": "losange",
+          "title": "Information security",
+          "description": "Practices governed by our ISO 27001:2022 certification and applied across all our operations."
+        },
+        {
+          "icon": "personne",
+          "title": "Protection of personal information",
+          "description": "Practices aligned with Québec’s Law 25: consent, transparency and data minimization."
+        },
+        {
+          "icon": "dossier",
+          "title": "Transparency",
+          "description": "Our policies are public and kept up to date — and our team answers your questions."
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
+      "type": "numbered-cards",
+      "sectionTitle": "Our policies",
+      "headingStyle": "underline",
+      "intro": "",
+      "tone": "default",
+      "columns": "2",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Privacy policy",
+          "text": "What we collect, why, and your rights.",
+          "ctaLabel": "Read the policy",
+          "ctaHref": "/en/politique-confidentialite"
+        },
+        {
+          "number": "02",
+          "title": "Terms of use",
+          "text": "The framework governing the use of the site and our services.",
+          "ctaLabel": "Read the terms",
+          "ctaHref": "/en/conditions-utilisation"
+        }
+      ]
+    },
+    {
       "type": "cta",
       "title": "Questions about our practices?",
       "body": "Our team will be glad to answer.",
       "ctaLabel": "Contact us",
       "ctaHref": "/en/contact",
-      "variant": "light"
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

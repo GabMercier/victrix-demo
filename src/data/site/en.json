@@ -4,7 +4,7 @@
       {
         "title": "Expertise",
         "links": [
-          { "label": "Strategic consulting", "href": "/services/conseil-strategique" },
+          { "label": "Strategic consulting", "href": "/services/strategic-advice" },
           { "label": "Artificial intelligence", "href": "/services/intelligence-artificielle" },
           { "label": "Infrastructure", "href": "/services/infrastructure" },
           { "label": "Sectors", "href": "/secteurs" }
@@ -14,21 +14,21 @@
         "title": "Services",
         "links": [
           { "label": "Application services", "href": "/services/services-applicatifs" },
-          { "label": "Cloud computing", "href": "/services/services-infonuagiques" },
-          { "label": "Cybersecurity", "href": "/services/cybersecurite" },
+          { "label": "Cloud computing", "href": "/services/cloud-services-provider" },
+          { "label": "Cybersecurity", "href": "/services/cybersecurity" },
           { "label": "AI projects", "href": "/services/projets-en-ia" },
-          { "label": "Managed services", "href": "/services/services-ti-geres" }
+          { "label": "Managed services", "href": "/services/managed-it-services" }
         ]
       },
       {
         "title": "Products",
         "links": [
-          { "label": "Desk booking app", "href": "/services/productivite/o-bureau" },
+          { "label": "Desk booking app", "href": "/services/productivity-consulting/office-booking" },
           {
             "label": "Employee platform",
-            "href": "/services/productivite/plateforme-employe-intranet"
+            "href": "/services/productivity-consulting/employee-platform-intranet"
           },
-          { "label": "IT procurement", "href": "/services/approvisionnement-ti" },
+          { "label": "IT procurement", "href": "/services/it-procurement" },
           { "label": "Solutions catalogue", "href": "/solutions" },
           { "label": "Pricing", "href": "/tarification" }
         ]

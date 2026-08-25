@@ -2,40 +2,59 @@
   "title": "Tarification",
   "description": "Des modèles d’affaires flexibles, adaptés à votre contexte.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Tarification",
-      "subtitle": "Des modèles d’affaires flexibles, adaptés à votre contexte.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Tarification",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "Tarification",
+      "titleHighlight": "",
+      "lead": "Des modèles d’affaires flexibles, adaptés à votre contexte. Chaque mandat étant unique, l’offre est bâtie avec vous.",
+      "ctaLabel": "Obtenez une estimation",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "Nos services",
+      "cta2Href": "/fr/services",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Détails à venir",
-      "paragraphs": [
-        "Les détails de nos modèles de tarification seront publiés prochainement.",
-        "Chaque mandat étant unique, nous préparons une offre adaptée à vos besoins — parlons-en."
+      "type": "numbered-cards",
+      "sectionTitle": "Comment nous bâtissons une proposition",
+      "headingStyle": "underline",
+      "intro": "Les détails de nos modèles de tarification seront publiés prochainement.",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Comprendre le mandat",
+          "text": "Portée, échéancier, contraintes : un cadrage clair avant toute chose."
+        },
+        {
+          "number": "02",
+          "title": "Proposer le bon modèle",
+          "text": "Forfait, régie ou service récurrent — le modèle suit la nature du travail."
+        },
+        {
+          "number": "03",
+          "title": "Suivre en toute transparence",
+          "text": "Des jalons et des rapports qui montrent où va chaque dollar."
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Obtenez une estimation",
       "body": "Décrivez votre projet : nous vous reviendrons rapidement avec une proposition.",
       "ctaLabel": "Nous joindre",
       "ctaHref": "/fr/contact",
-      "variant": "dark"
+      "cta2Label": "Nos services",
+      "cta2Href": "/fr/services",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

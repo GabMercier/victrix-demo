@@ -2,40 +2,57 @@
   "title": "Industries",
   "description": "Deep knowledge of the realities of public and private organizations.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Industries",
-      "subtitle": "Deep knowledge of the realities of public and private organizations.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Industries",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "Industries",
+      "titleHighlight": "",
+      "lead": "Deep knowledge of the realities of public and private organizations, built mandate after mandate since 2003.",
+      "ctaLabel": "Let’s talk about your industry",
+      "ctaHref": "/en/contact",
+      "cta2Label": "Our services",
+      "cta2Href": "/en/services",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Content in preparation",
-      "paragraphs": [
-        "This page will soon present the industries we serve and our track record in each.",
-        "In the meantime, contact us to discuss the challenges specific to your industry."
+      "type": "benefits",
+      "title": "Different realities, the same standard",
+      "intro": "The detailed presentation of the industries we serve will be published soon.",
+      "fond": "blanc",
+      "headingStyle": "titre",
+      "items": [
+        {
+          "icon": "organisation",
+          "title": "Public sector",
+          "description": "Regulatory frameworks, procurement and continuity of service: we know the rules of the game."
+        },
+        {
+          "icon": "croissance",
+          "title": "Private companies",
+          "description": "Growth, productivity and cost control: technology in the service of your business goals."
+        },
+        {
+          "icon": "losange",
+          "title": "Regulated organizations",
+          "description": "Security, compliance and traceability built into solutions from day one."
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Your industry, our experts",
       "body": "Let’s talk about the technology challenges specific to your field.",
       "ctaLabel": "Contact us",
       "ctaHref": "/en/contact",
-      "variant": "dark"
+      "cta2Label": "Discover Victrix",
+      "cta2Href": "/en/decouvrir",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

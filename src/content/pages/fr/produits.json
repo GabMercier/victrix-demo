@@ -2,40 +2,63 @@
   "title": "Nos produits",
   "description": "Des solutions éprouvées pour accélérer la productivité de vos équipes.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Nos produits",
-      "subtitle": "Des solutions éprouvées pour accélérer la productivité de vos équipes.",
-      "ctaLabel": "",
-      "ctaHref": "",
-      "titleAccent": "",
+      "type": "product-hero",
+      "badge": "Nos produits",
+      "title": "Des produits éprouvés, soutenus par nos experts",
+      "titleHighlight": "produits éprouvés",
+      "lead": "Des solutions conçues, déployées et soutenues par nos équipes pour accélérer la productivité de vos organisations.",
+      "ctaLabel": "Demander une démonstration",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "Voir le catalogue de solutions",
+      "cta2Href": "/fr/solutions",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": "",
+      "fond": "givre"
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Gamme complète en préparation",
-      "paragraphs": [
-        "La présentation détaillée de nos produits — Ø Studio, O bureau, plateforme employé — sera publiée prochainement.",
-        "Découvrez dès maintenant notre <a href=\"/fr/solutions/\">catalogue de solutions</a> ou nos pages produit déjà en ligne, comme <a href=\"/fr/services/productivite/o-bureau/\">O bureau</a>."
+      "type": "numbered-cards",
+      "sectionTitle": "Trois produits phares",
+      "headingStyle": "underline",
+      "intro": "La présentation détaillée de la gamme sera publiée prochainement — les pages produit sont déjà en ligne.",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Ø Studio",
+          "text": "Le studio de création Power Platform et Dynamics 365 : des applications d’affaires livrées à la vitesse grand V.",
+          "ctaLabel": "Découvrir Ø Studio",
+          "ctaHref": "/fr/services/productivite/o-studio"
+        },
+        {
+          "number": "02",
+          "title": "O bureau",
+          "text": "La réservation de bureaux et d’espaces pensée pour le travail hybride.",
+          "ctaLabel": "Découvrir O bureau",
+          "ctaHref": "/fr/services/productivite/o-bureau"
+        },
+        {
+          "number": "03",
+          "title": "Plateforme employé Intranet",
+          "text": "Un intranet moderne qui centralise l’information et rapproche vos équipes.",
+          "ctaLabel": "Découvrir la plateforme",
+          "ctaHref": "/fr/services/productivite/plateforme-employe-intranet"
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Une démonstration ?",
       "body": "Nos équipes vous présenteront les produits adaptés à vos besoins.",
       "ctaLabel": "Nous joindre",
       "ctaHref": "/fr/contact",
-      "variant": "dark"
+      "cta2Label": "Approvisionnement TI",
+      "cta2Href": "/fr/services/approvisionnement-ti",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

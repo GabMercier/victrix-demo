@@ -2,40 +2,84 @@
   "title": "Application services",
   "description": "Design, modernize and maintain your business applications.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Application services",
-      "subtitle": "Design, modernize and maintain your business applications.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Services",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "Application services",
+      "titleHighlight": "Application",
+      "lead": "Design, modernize and maintain your business applications. Our teams already support many organizations in the evolution of their application portfolio.",
+      "ctaLabel": "Let’s talk about your projects",
+      "ctaHref": "/en/contact",
+      "cta2Label": "See all our services",
+      "cta2Href": "/en/services",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Page in preparation",
-      "paragraphs": [
-        "The detailed presentation of our application services will be published soon.",
-        "Our teams already support many organizations — contact us to discuss your application projects."
+      "type": "offer-cards",
+      "title": "What we take care of",
+      "intro": "An overview of our typical engagements — the detailed offering will be published soon.",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Design and development",
+          "bullets": [
+            { "text": "Custom business applications" },
+            { "text": "Integration with your existing systems" },
+            { "text": "Carefully crafted user experience" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Application modernization",
+          "bullets": [
+            { "text": "Application portfolio assessment" },
+            { "text": "Migration to the cloud" },
+            { "text": "Progressive overhaul, without disruption" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Maintenance and evolution",
+          "bullets": [
+            { "text": "Full life-cycle ownership" },
+            { "text": "Continuous fixes and improvements" },
+            { "text": "Monitoring and governance" }
+          ]
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
+      "type": "numbered-cards",
+      "sectionTitle": "Our approach",
+      "headingStyle": "underline",
+      "intro": "",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        { "number": "01", "title": "Understand", "text": "Your processes, your systems and your business priorities come first." },
+        { "number": "02", "title": "Deliver", "text": "Short milestones, concrete and measurable deliverables." },
+        { "number": "03", "title": "Evolve", "text": "Support that lasts well beyond go-live." }
+      ]
+    },
+    {
       "type": "cta",
       "title": "An application project?",
       "body": "Let’s talk about your business applications and their evolution.",
       "ctaLabel": "Contact us",
       "ctaHref": "/en/contact",
-      "variant": "dark"
+      "cta2Label": "Discover Victrix",
+      "cta2Href": "/en/decouvrir",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

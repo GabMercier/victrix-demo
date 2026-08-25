@@ -525,6 +525,12 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // Bleu nuit (plus une image à droite du texte).
       image: z.string().optional(),
       imageAlt: z.string().optional(),
+      // Point focal du recadrage object-cover (2026-08-25) : le héros fait
+      // 600 px de haut — sur écran large, cover rogne le haut et le bas de la
+      // photo. « haut » garde les visages d'une photo de groupe (réglage
+      // 50 % 25 %, même valeur que le héros Carrières) ; « centre » = défaut
+      // (comportement historique de toutes les pages existantes).
+      imagePosition: z.enum(['centre', 'haut', 'bas']).default('centre'),
     }),
     // ---- Sections « catalogue produit » (fidélité maquette docs/produits.css
     // « Studio de création Power Platform et Dynamics 365 », 2026-08-24) —

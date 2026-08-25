@@ -2,40 +2,84 @@
   "title": "Services applicatifs",
   "description": "Concevoir, moderniser et maintenir vos applications d’affaires.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Services applicatifs",
-      "subtitle": "Concevoir, moderniser et maintenir vos applications d’affaires.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Services",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "Services applicatifs",
+      "titleHighlight": "applicatifs",
+      "lead": "Concevoir, moderniser et maintenir vos applications d’affaires. Nos équipes accompagnent déjà de nombreuses organisations dans l’évolution de leur parc applicatif.",
+      "ctaLabel": "Parlons de vos projets",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "Voir tous nos services",
+      "cta2Href": "/fr/services",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Page en préparation",
-      "paragraphs": [
-        "La présentation détaillée de nos services applicatifs sera publiée prochainement.",
-        "Nos équipes accompagnent déjà de nombreuses organisations — communiquez avec nous pour discuter de vos projets applicatifs."
+      "type": "offer-cards",
+      "title": "Ce que nous prenons en charge",
+      "intro": "Un aperçu de nos interventions types — le détail de l’offre sera publié prochainement.",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Conception et développement",
+          "bullets": [
+            { "text": "Applications d’affaires sur mesure" },
+            { "text": "Intégration à vos systèmes existants" },
+            { "text": "Expérience utilisateur soignée" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Modernisation applicative",
+          "bullets": [
+            { "text": "Évaluation du parc applicatif" },
+            { "text": "Migration vers l’infonuagique" },
+            { "text": "Refonte progressive, sans rupture" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Maintenance et évolution",
+          "bullets": [
+            { "text": "Prise en charge du cycle de vie" },
+            { "text": "Corrections et améliorations en continu" },
+            { "text": "Suivi et gouvernance" }
+          ]
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
+      "type": "numbered-cards",
+      "sectionTitle": "Notre approche",
+      "headingStyle": "underline",
+      "intro": "",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        { "number": "01", "title": "Comprendre", "text": "Vos processus, vos systèmes et vos priorités d’affaires d’abord." },
+        { "number": "02", "title": "Livrer", "text": "Des jalons courts, des livrables concrets et mesurables." },
+        { "number": "03", "title": "Faire évoluer", "text": "Un accompagnement qui dure au-delà de la mise en service." }
+      ]
+    },
+    {
       "type": "cta",
       "title": "Un projet applicatif ?",
       "body": "Parlons de vos applications d’affaires et de leur évolution.",
       "ctaLabel": "Nous joindre",
       "ctaHref": "/fr/contact",
-      "variant": "dark"
+      "cta2Label": "Découvrir Victrix",
+      "cta2Href": "/fr/decouvrir",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

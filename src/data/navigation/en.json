@@ -19,7 +19,7 @@
         "href": "/expertises",
         "icon": "strategy",
         "links": [
-          { "label": "Strategic consulting", "href": "/services/conseil-strategique" },
+          { "label": "Strategic consulting", "href": "/services/strategic-advice" },
           { "label": "Artificial intelligence", "service": "intelligence-artificielle" },
           { "label": "Infrastructure", "href": "/services/infrastructure" },
           { "label": "Sectors", "href": "/secteurs" }
@@ -31,10 +31,10 @@
         "icon": "cloud",
         "links": [
           { "label": "Application services", "href": "/services/services-applicatifs" },
-          { "label": "Cloud computing", "href": "/services/services-infonuagiques" },
-          { "label": "Cybersecurity", "href": "/services/cybersecurite" },
+          { "label": "Cloud computing", "href": "/services/cloud-services-provider" },
+          { "label": "Cybersecurity", "href": "/services/cybersecurity" },
           { "label": "AI projects", "href": "/services/projets-en-ia" },
-          { "label": "Managed services", "href": "/services/services-ti-geres" }
+          { "label": "Managed services", "href": "/services/managed-it-services" }
         ]
       },
       {

@@ -26,10 +26,17 @@
  *
  * Props : { type: "service-hero", eyebrow?, eyebrowStyle?, titleAccent?,
  *           title, titleHighlight?, lead?, ctaLabel?, ctaHref?, cta2Label?,
- *           cta2Href?, overlay?, image?, imageAlt? }
+ *           cta2Href?, overlay?, image?, imageAlt?, imagePosition? }
  * - `image` = chemin PUBLIC servi tel quel, désormais PHOTO DE FOND (l'ancien
  *   rendu la posait à droite du texte) ; sans image : aplat Bleu nuit.
  * - `imageAlt` conservé au contrat (image décorative désormais — alt="").
+ * - `imagePosition` (AJOUTÉ 2026-08-25) : point focal du recadrage
+ *   object-cover. Le héros fait 600 px de haut : au-delà de ~900 px de large,
+ *   cover rogne le HAUT et le BAS de la photo — « haut » garde les visages
+ *   d'une photo de groupe (même réglage 50 % 25 % que le héros Carrières),
+ *   « centre » (défaut) reproduit l'existant. Valeurs BORNÉES mappées sur des
+ *   classes LITTÉRALES ci-dessous (JIT Tailwind ne génère pas les classes
+ *   arbitraires construites dynamiquement).
  * - `titleAccent` : surtitre accentué en bloc au-dessus du titre (hérité).
  * - cta2* : NOUVEAUX (chaîne vide = absent).
  *
@@ -53,6 +60,7 @@ interface Props {
   overlay?: 'voile' | 'degrade' | 'blanc';
   image?: string;
   imageAlt?: string;
+  imagePosition?: 'centre' | 'haut' | 'bas';
 }
 
 const {
@@ -68,12 +76,21 @@ const {
   cta2Href,
   overlay = 'voile',
   image,
+  imagePosition = 'centre',
 } = Astro.props;
 
 // Toute valeur inattendue (édition en cours au CMS) retombe sur le défaut.
 const gradient = overlay === 'degrade';
 const blanc = overlay === 'blanc';
 const badge = eyebrowStyle === 'badge';
+
+// Point focal du recadrage : classes LITTÉRALES (voir l'en-tête — JIT).
+const positionClass =
+  imagePosition === 'haut'
+    ? 'object-[50%_25%]'
+    : imagePosition === 'bas'
+      ? 'object-[50%_75%]'
+      : 'object-center';
 
 // Sous-chaîne accentuée rendue en bleu clair là où elle apparaît dans le titre
 // (première occurrence — patron home-hero) ; absente ou introuvable = titre
@@ -101,7 +118,7 @@ const titleParts =
       <img
         src={image}
         alt=""
-        class="absolute inset-0 w-full h-full object-cover -z-20"
+        class:list={['absolute inset-0 w-full h-full object-cover -z-20', positionClass]}
         loading="eager"
         decoding="async"
         fetchpriority="high"

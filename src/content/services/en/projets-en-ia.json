@@ -2,40 +2,77 @@
   "title": "AI projects",
   "description": "From ideation to deployment: artificial intelligence projects that deliver value.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "AI projects",
-      "subtitle": "From ideation to deployment: artificial intelligence projects that deliver value.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Services",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "AI projects",
+      "titleHighlight": "AI",
+      "lead": "From ideation to deployment: artificial intelligence projects that deliver value. Our experts guide every step, from use case to adoption.",
+      "ctaLabel": "Let’s talk about your use cases",
+      "ctaHref": "/en/contact",
+      "cta2Label": "See the AI expertise",
+      "cta2Href": "/en/services/intelligence-artificielle",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Page in preparation",
-      "paragraphs": [
-        "The detailed presentation of our artificial intelligence projects will be published soon.",
-        "Explore our <a href=\"/en/services/intelligence-artificielle/\">artificial intelligence</a> expertise today, or contact our experts."
+      "type": "offer-cards",
+      "title": "Our typical engagements",
+      "intro": "The detailed offering will be published soon — here is how we work.",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Scoping and use cases",
+          "bullets": [
+            { "text": "Identification of high-impact opportunities" },
+            { "text": "Value and risk assessment" },
+            { "text": "A realistic roadmap" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Implementation",
+          "bullets": [
+            { "text": "Prototypes and proofs of concept" },
+            { "text": "Integration with your data and systems" },
+            { "text": "Controlled scale-up" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Adoption and governance",
+          "bullets": [
+            { "text": "Team training" },
+            { "text": "Responsible AI practices" },
+            { "text": "Measured outcomes" }
+          ]
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
+      "type": "related-posts",
+      "title": "Related resources",
+      "tags": ["Artificial intelligence"],
+      "ctaLabel": "See all resources",
+      "ctaHref": "/en/ressources"
+    },
+    {
       "type": "cta",
       "title": "An AI project?",
       "body": "Let’s discuss your use cases and their potential.",
       "ctaLabel": "Contact us",
       "ctaHref": "/en/contact",
-      "variant": "dark"
+      "cta2Label": "Discover Victrix",
+      "cta2Href": "/en/decouvrir",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

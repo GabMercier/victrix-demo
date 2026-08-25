@@ -2,40 +2,77 @@
   "title": "Infrastructure",
   "description": "Des fondations technologiques fiables, performantes et sécuritaires.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Infrastructure",
-      "subtitle": "Des fondations technologiques fiables, performantes et sécuritaires.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Services",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "Infrastructure",
+      "titleHighlight": "",
+      "lead": "Des fondations technologiques fiables, performantes et sécuritaires — des centres de données à l’infonuagique.",
+      "ctaLabel": "Évaluons vos besoins",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "Services infonuagiques",
+      "cta2Href": "/fr/services/services-infonuagiques",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Page en préparation",
-      "paragraphs": [
-        "La présentation détaillée de notre offre en infrastructure sera publiée prochainement.",
-        "Entre-temps, consultez nos pages <a href=\"/fr/services/services-infonuagiques/\">infonuagique</a> et <a href=\"/fr/services/services-ti-geres/\">services gérés</a>, ou communiquez avec nos experts."
+      "type": "offer-cards",
+      "title": "Ce que nous prenons en charge",
+      "intro": "Un aperçu de nos interventions types — le détail de l’offre sera publié prochainement.",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Environnements infonuagiques",
+          "bullets": [
+            { "text": "Architecture et migration" },
+            { "text": "Optimisation des coûts" },
+            { "text": "Sécurité intégrée dès la conception" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Réseaux et centres de données",
+          "bullets": [
+            { "text": "Conception et évolution des réseaux" },
+            { "text": "Virtualisation et stockage" },
+            { "text": "Performance et disponibilité" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Continuité et résilience",
+          "bullets": [
+            { "text": "Sauvegarde et relève" },
+            { "text": "Plans de continuité" },
+            { "text": "Surveillance proactive" }
+          ]
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
+      "type": "related-posts",
+      "title": "Ressources liées",
+      "tags": ["Infonuagique"],
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
+    },
+    {
       "type": "cta",
       "title": "Parlons de votre infrastructure",
-      "body": "Évaluons ensemble vos besoins et les meilleures avenues.",
+      "body": "Évaluons ensemble vos besoins et les meilleures options.",
       "ctaLabel": "Nous joindre",
       "ctaHref": "/fr/contact",
-      "variant": "dark"
+      "cta2Label": "Services TI gérés",
+      "cta2Href": "/fr/services/services-ti-geres",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

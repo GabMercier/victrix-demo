@@ -2,40 +2,77 @@
   "title": "Infrastructure",
   "description": "Reliable, high-performance and secure technology foundations.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Infrastructure",
-      "subtitle": "Reliable, high-performance and secure technology foundations.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Services",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "Infrastructure",
+      "titleHighlight": "",
+      "lead": "Reliable, high-performance and secure technology foundations — from data centres to the cloud.",
+      "ctaLabel": "Let’s assess your needs",
+      "ctaHref": "/en/contact",
+      "cta2Label": "Cloud services",
+      "cta2Href": "/en/services/cloud-services-provider",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Page in preparation",
-      "paragraphs": [
-        "The detailed presentation of our infrastructure offering will be published soon.",
-        "In the meantime, see our <a href=\"/en/services/services-infonuagiques/\">cloud</a> and <a href=\"/en/services/services-ti-geres/\">managed services</a> pages, or contact our experts."
+      "type": "offer-cards",
+      "title": "What we take care of",
+      "intro": "An overview of our typical engagements — the detailed offering will be published soon.",
+      "fond": "givre",
+      "ctaLabel": "",
+      "ctaHref": "",
+      "items": [
+        {
+          "number": "01",
+          "title": "Cloud environments",
+          "bullets": [
+            { "text": "Architecture and migration" },
+            { "text": "Cost optimization" },
+            { "text": "Security by design" }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Networks and data centres",
+          "bullets": [
+            { "text": "Network design and evolution" },
+            { "text": "Virtualization and storage" },
+            { "text": "Performance and availability" }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Continuity and resilience",
+          "bullets": [
+            { "text": "Backup and recovery" },
+            { "text": "Business continuity plans" },
+            { "text": "Proactive monitoring" }
+          ]
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
+      "type": "related-posts",
+      "title": "Related resources",
+      "tags": ["Cloud computing"],
+      "ctaLabel": "See all resources",
+      "ctaHref": "/en/ressources"
+    },
+    {
       "type": "cta",
       "title": "Let’s talk about your infrastructure",
       "body": "Let’s assess your needs and the best options together.",
       "ctaLabel": "Contact us",
       "ctaHref": "/en/contact",
-      "variant": "dark"
+      "cta2Label": "Managed IT services",
+      "cta2Href": "/en/services/managed-it-services",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

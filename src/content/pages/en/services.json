@@ -2,40 +2,86 @@
   "title": "Our services",
   "description": "From strategic consulting to managed services: end-to-end support.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Our services",
-      "subtitle": "From strategic consulting to managed services: end-to-end support.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Services",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "Our services",
+      "titleHighlight": "services",
+      "lead": "From strategic consulting to managed services: end-to-end support, delivered by teams based in Québec.",
+      "ctaLabel": "Let’s talk about your needs",
+      "ctaHref": "/en/contact",
+      "cta2Label": "Solutions catalogue",
+      "cta2Href": "/en/solutions",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Full catalogue in preparation",
-      "paragraphs": [
-        "The overview of our services will be published soon.",
-        "Several service pages are already online — <a href=\"/en/services/conseil-strategique/\">strategic consulting</a>, <a href=\"/en/services/services-infonuagiques/\">cloud services</a>, <a href=\"/en/services/services-ti-geres/\">managed services</a> — and our <a href=\"/en/solutions/\">solutions catalogue</a> is available."
+      "type": "numbered-cards",
+      "sectionTitle": "Six service families",
+      "headingStyle": "underline",
+      "intro": "The detailed overview is on its way — each family already has its page.",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Strategic consulting",
+          "text": "Align technology with your business goals.",
+          "ctaLabel": "Learn more",
+          "ctaHref": "/en/services/strategic-advice"
+        },
+        {
+          "number": "02",
+          "title": "Application services",
+          "text": "Design, modernize and maintain your applications.",
+          "ctaLabel": "Learn more",
+          "ctaHref": "/en/services/services-applicatifs"
+        },
+        {
+          "number": "03",
+          "title": "Cloud services",
+          "text": "Migrate, operate and optimize your cloud environments.",
+          "ctaLabel": "Learn more",
+          "ctaHref": "/en/services/cloud-services-provider"
+        },
+        {
+          "number": "04",
+          "title": "Cybersecurity",
+          "text": "Protect your assets and your business continuity.",
+          "ctaLabel": "Learn more",
+          "ctaHref": "/en/services/cybersecurity"
+        },
+        {
+          "number": "05",
+          "title": "AI projects",
+          "text": "Guide your use cases from prototype to adoption.",
+          "ctaLabel": "Learn more",
+          "ctaHref": "/en/services/projets-en-ia"
+        },
+        {
+          "number": "06",
+          "title": "Managed IT services",
+          "text": "Hand operations to a team that never stops watching.",
+          "ctaLabel": "Learn more",
+          "ctaHref": "/en/services/managed-it-services"
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Let’s talk about your needs",
       "body": "Tell us about your context: we will build the right support for you.",
       "ctaLabel": "Contact us",
       "ctaHref": "/en/contact",
-      "variant": "dark"
+      "cta2Label": "Industries",
+      "cta2Href": "/en/secteurs",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

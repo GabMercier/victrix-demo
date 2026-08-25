@@ -2,40 +2,63 @@
   "title": "Our products",
   "description": "Proven solutions to accelerate your teams’ productivity.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Our products",
-      "subtitle": "Proven solutions to accelerate your teams’ productivity.",
-      "ctaLabel": "",
-      "ctaHref": "",
-      "titleAccent": "",
+      "type": "product-hero",
+      "badge": "Our products",
+      "title": "Proven products, backed by our experts",
+      "titleHighlight": "Proven products",
+      "lead": "Solutions designed, deployed and supported by our teams to accelerate your organization’s productivity.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "cta2Label": "See the solutions catalogue",
+      "cta2Href": "/en/solutions",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": "",
+      "fond": "givre"
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Full range in preparation",
-      "paragraphs": [
-        "The detailed presentation of our products — Ø Studio, O bureau, employee platform — will be published soon.",
-        "Explore our <a href=\"/en/solutions/\">solutions catalogue</a> today, or product pages already online such as <a href=\"/en/services/productivity-consulting/o-bureau/\">O bureau</a>."
+      "type": "numbered-cards",
+      "sectionTitle": "Three flagship products",
+      "headingStyle": "underline",
+      "intro": "The detailed presentation of the range will be published soon — the product pages are already online.",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Ø Studio",
+          "text": "The Power Platform and Dynamics 365 creation studio: business applications delivered at high velocity.",
+          "ctaLabel": "Discover Ø Studio",
+          "ctaHref": "/en/services/productivity-consulting/o-studio"
+        },
+        {
+          "number": "02",
+          "title": "O bureau",
+          "text": "Desk and space booking designed for hybrid work.",
+          "ctaLabel": "Discover O bureau",
+          "ctaHref": "/en/services/productivity-consulting/office-booking"
+        },
+        {
+          "number": "03",
+          "title": "Employee platform & intranet",
+          "text": "A modern intranet that centralizes information and brings your teams closer.",
+          "ctaLabel": "Discover the platform",
+          "ctaHref": "/en/services/productivity-consulting/employee-platform-intranet"
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Want a demo?",
       "body": "Our teams will walk you through the products that fit your needs.",
       "ctaLabel": "Contact us",
       "ctaHref": "/en/contact",
-      "variant": "dark"
+      "cta2Label": "IT procurement",
+      "cta2Href": "/en/services/it-procurement",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

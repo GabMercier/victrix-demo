@@ -2,40 +2,57 @@
   "title": "Secteurs d’activité",
   "description": "Une connaissance fine des réalités des organisations publiques et privées.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Secteurs d’activité",
-      "subtitle": "Une connaissance fine des réalités des organisations publiques et privées.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Secteurs",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "Secteurs d’activité",
+      "titleHighlight": "Secteurs",
+      "lead": "Une connaissance fine des réalités des organisations publiques et privées, bâtie mandat après mandat depuis 2003.",
+      "ctaLabel": "Parlons de votre secteur",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "Nos services",
+      "cta2Href": "/fr/services",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Contenu en préparation",
-      "paragraphs": [
-        "Cette page présentera bientôt les secteurs que nous servons et nos réalisations dans chacun.",
-        "Entre-temps, communiquez avec nous pour discuter des enjeux propres à votre secteur."
+      "type": "benefits",
+      "title": "Des réalités différentes, une même exigence",
+      "intro": "La présentation détaillée des secteurs servis sera publiée prochainement.",
+      "fond": "blanc",
+      "headingStyle": "titre",
+      "items": [
+        {
+          "icon": "organisation",
+          "title": "Secteur public",
+          "description": "Cadres réglementaires, approvisionnement et continuité de service : nous connaissons les règles du jeu."
+        },
+        {
+          "icon": "croissance",
+          "title": "Entreprises privées",
+          "description": "Croissance, productivité et maîtrise des coûts : la technologie au service de vos objectifs d’affaires."
+        },
+        {
+          "icon": "losange",
+          "title": "Organisations réglementées",
+          "description": "Sécurité, conformité et traçabilité intégrées dès la conception des solutions."
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Votre secteur, nos experts",
       "body": "Parlons des défis technologiques propres à votre domaine.",
       "ctaLabel": "Nous joindre",
       "ctaHref": "/fr/contact",
-      "variant": "dark"
+      "cta2Label": "Découvrir Victrix",
+      "cta2Href": "/fr/decouvrir",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

@@ -2,40 +2,59 @@
   "title": "Pricing",
   "description": "Flexible business models tailored to your context.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Pricing",
-      "subtitle": "Flexible business models tailored to your context.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Pricing",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "Pricing",
+      "titleHighlight": "",
+      "lead": "Flexible business models tailored to your context. Every mandate is unique — the offer is built with you.",
+      "ctaLabel": "Get an estimate",
+      "ctaHref": "/en/contact",
+      "cta2Label": "Our services",
+      "cta2Href": "/en/services",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Details coming soon",
-      "paragraphs": [
-        "The details of our pricing models will be published soon.",
-        "Every mandate is unique: we prepare an offer tailored to your needs — let’s talk."
+      "type": "numbered-cards",
+      "sectionTitle": "How we build a proposal",
+      "headingStyle": "underline",
+      "intro": "The details of our pricing models will be published soon.",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Understand the mandate",
+          "text": "Scope, timeline, constraints: clear framing before anything else."
+        },
+        {
+          "number": "02",
+          "title": "Propose the right model",
+          "text": "Fixed price, time and materials or recurring service — the model follows the nature of the work."
+        },
+        {
+          "number": "03",
+          "title": "Track with full transparency",
+          "text": "Milestones and reports that show where every dollar goes."
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Get an estimate",
       "body": "Describe your project and we will come back to you quickly with a proposal.",
       "ctaLabel": "Contact us",
       "ctaHref": "/en/contact",
-      "variant": "dark"
+      "cta2Label": "Our services",
+      "cta2Href": "/en/services",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }

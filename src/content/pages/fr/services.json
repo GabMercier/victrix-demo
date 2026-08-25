@@ -2,40 +2,86 @@
   "title": "Nos services",
   "description": "Du conseil stratégique aux services gérés : un accompagnement de bout en bout.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
-      "_bookshop_name": "hero",
-      "type": "hero",
-      "eyebrow": "",
-      "title": "Nos services",
-      "subtitle": "Du conseil stratégique aux services gérés : un accompagnement de bout en bout.",
-      "ctaLabel": "",
-      "ctaHref": "",
+      "type": "service-hero",
+      "eyebrow": "Services",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
+      "title": "Nos services",
+      "titleHighlight": "services",
+      "lead": "Du conseil stratégique aux services gérés : un accompagnement de bout en bout, par des équipes établies au Québec.",
+      "ctaLabel": "Parlons de vos besoins",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "Catalogue de solutions",
+      "cta2Href": "/fr/solutions",
+      "overlay": "voile",
       "image": "",
-      "cta2Label": "",
-      "cta2Href": "",
-      "eyebrowIcon": "",
-      "ctaIcon": ""
+      "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "title": "Catalogue complet en préparation",
-      "paragraphs": [
-        "La vue d’ensemble de nos services sera publiée prochainement.",
-        "Plusieurs pages de services sont déjà en ligne — <a href=\"/fr/services/conseil-strategique/\">conseil stratégique</a>, <a href=\"/fr/services/services-infonuagiques/\">infonuagique</a>, <a href=\"/fr/services/services-ti-geres/\">services gérés</a> — et notre <a href=\"/fr/solutions/\">catalogue de solutions</a> est disponible."
+      "type": "numbered-cards",
+      "sectionTitle": "Six familles de services",
+      "headingStyle": "underline",
+      "intro": "La vue d’ensemble détaillée arrive — chaque famille a déjà sa page.",
+      "tone": "default",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Conseil stratégique",
+          "text": "Aligner la technologie sur vos objectifs d’affaires.",
+          "ctaLabel": "En savoir plus",
+          "ctaHref": "/fr/services/conseil-strategique"
+        },
+        {
+          "number": "02",
+          "title": "Services applicatifs",
+          "text": "Concevoir, moderniser et maintenir vos applications.",
+          "ctaLabel": "En savoir plus",
+          "ctaHref": "/fr/services/services-applicatifs"
+        },
+        {
+          "number": "03",
+          "title": "Services infonuagiques",
+          "text": "Migrer, exploiter et optimiser vos environnements en nuage.",
+          "ctaLabel": "En savoir plus",
+          "ctaHref": "/fr/services/services-infonuagiques"
+        },
+        {
+          "number": "04",
+          "title": "Cybersécurité",
+          "text": "Protéger vos actifs et votre continuité d’affaires.",
+          "ctaLabel": "En savoir plus",
+          "ctaHref": "/fr/services/cybersecurite"
+        },
+        {
+          "number": "05",
+          "title": "Projets en IA",
+          "text": "Encadrer vos cas d’usage, du prototype à l’adoption.",
+          "ctaLabel": "En savoir plus",
+          "ctaHref": "/fr/services/projets-en-ia"
+        },
+        {
+          "number": "06",
+          "title": "Services TI gérés",
+          "text": "Confier l’exploitation à une équipe qui veille en continu.",
+          "ctaLabel": "En savoir plus",
+          "ctaHref": "/fr/services/services-ti-geres"
+        }
       ]
     },
     {
-      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Parlons de vos besoins",
       "body": "Décrivez-nous votre contexte : nous bâtirons l’accompagnement qui vous convient.",
       "ctaLabel": "Nous joindre",
       "ctaHref": "/fr/contact",
-      "variant": "dark"
+      "cta2Label": "Secteurs d’activité",
+      "cta2Href": "/fr/secteurs",
+      "variant": "nuit"
     }
-  ]
+  ],
+  "seoTitle": ""
 }
