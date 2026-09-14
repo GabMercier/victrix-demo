@@ -1,8 +1,8 @@
 {
+  "_schema": "default",
   "title": "Découvrir Victrix",
   "description": "Réputée pour offrir des services de grande qualité et une expérience client distinctive de premier ordre, Victrix propose une approche éprouvée conjuguant excellence, agilité et proximité.",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
       "type": "service-hero",
@@ -14,7 +14,7 @@
       "lead": "Réputée pour offrir des services de grande qualité et une expérience client distinctive de premier ordre, Victrix propose une approche éprouvée conjuguant excellence, agilité et proximité.",
       "ctaLabel": "Rencontrons-nous",
       "ctaHref": "/fr/contact",
-      "cta2Label": "Se joindre à l'équipe",
+      "cta2Label": "Rejoignez notre équipe",
       "cta2Href": "/fr/carrieres",
       "overlay": "blanc",
       "image": "/images/sections/decouvrir-hero.jpg",
@@ -40,22 +40,31 @@
     {
       "type": "bento-metrics",
       "title": "Victrix en un coup d'œil",
-      "intro": "",
+      "intro": "Nous nous engageons à être le cabinet-conseil TI le plus réputé au Canada, en façonnant une culture d’entreprise où nos employés, partenaires et clients peuvent aller au bout de leurs ambitions.",
       "fond": "givre",
       "featured": {
-        "title": "Une force TI d'ici, une portée internationale",
+        "title": "Une force TI d'ici avec une portée internationale",
         "text": "Fondée en 2003, Victrix a grandi par acquisitions successives et a rejoint l'écosystème international Alan Allman Associates en 2019.",
         "watermark": "graphique",
         "stats": [
-          { "value": "2003", "label": "Création de Victrix" },
-          { "value": "3", "label": "Bureaux" },
-          { "value": "ISO", "label": "27001 et 9001" }
+          {
+            "value": "2003",
+            "label": "Création de Victrix"
+          },
+          {
+            "value": "3",
+            "label": "Bureaux"
+          },
+          {
+            "value": "ISO",
+            "label": "IEC 27001:2022 et 9001:2015"
+          }
         ]
       },
       "aside": {
         "icon": "insigne",
         "title": "Happy At Work",
-        "text": "Victrix est certifiée HappyIndex® AtWork des entreprises « où l'on est heureux de travailler ».",
+        "text": "Victrix est certifiée HappyIndex® AtWork des entreprises « où l'on est heureux de travailler ».",
         "linkLabel": "La vie chez Victrix",
         "linkHref": "/fr/carrieres"
       }
@@ -65,11 +74,31 @@
       "title": "Nos valeurs",
       "intro": "",
       "items": [
-        { "title": "Excellence", "description": "", "icon": "losange" },
-        { "title": "Collaboration", "description": "", "icon": "groupe" },
-        { "title": "Innovation", "description": "", "icon": "ampoule" },
-        { "title": "Engagement", "description": "", "icon": "porteur" },
-        { "title": "Intégrité", "description": "", "icon": "dossier" }
+        {
+          "title": "Excellence",
+          "description": "",
+          "icon": "losange"
+        },
+        {
+          "title": "Collaboration",
+          "description": "",
+          "icon": "groupe"
+        },
+        {
+          "title": "Innovation",
+          "description": "",
+          "icon": "ampoule"
+        },
+        {
+          "title": "Engagement",
+          "description": "",
+          "icon": "porteur"
+        },
+        {
+          "title": "Intégrité",
+          "description": "",
+          "icon": "dossier"
+        }
       ]
     },
     {
@@ -78,27 +107,83 @@
       "intro": "Plus de vingt ans de croissance, d'acquisitions et d'expansion internationale.",
       "columns": "3",
       "items": [
-        { "number": "2003", "title": "Création de Victrix", "text": "" },
-        { "number": "2004", "title": "Acquisition d'ELFIQ Networks", "text": "Acquisition de la division de services conseils TI du Groupe 3-Soft" },
-        { "number": "2007", "title": "Acquisition de Cogeti Informatique", "text": "Acquisition d'Informatique Stratégique · Acquisition de Noxent" },
-        { "number": "2008", "title": "Acquisition de Compu-Sys", "text": "" },
-        { "number": "2009", "title": "Acquisition d'IPtel", "text": "" },
-        { "number": "2010", "title": "Acquisition d'Expra Solutions", "text": "" },
-        { "number": "2011", "title": "Acquisition de Progilan", "text": "" },
-        { "number": "2012", "title": "Acquisition de Teltech", "text": "" },
-        { "number": "2015", "title": "Acquisition d'AGRM", "text": "" },
-        { "number": "2016", "title": "Acquisition de Noverka Conseil", "text": "" },
-        { "number": "2017", "title": "Acquisition de VisionTI", "text": "" },
-        { "number": "2019", "title": "Victrix rejoint l'écosystème international Alan Allman Associates", "text": "" },
-        { "number": "2023", "title": "La Société Conseil Lambda rejoint Victrix", "text": "" },
-        { "number": "2024", "title": "En se rapprochant de COMITEM, Victrix étend son offre en France", "text": "" }
+        {
+          "number": "2003",
+          "title": "Création de Victrix",
+          "text": ""
+        },
+        {
+          "number": "2004",
+          "title": "Acquisition d'ELFIQ Networks et de la division de services-conseils TI du groupe 3-Soft",
+          "text": null
+        },
+        {
+          "number": "2007",
+          "title": "Acquisition de Cogeti Informatique, d'Informatique Stratégique et de Noxent",
+          "text": null
+        },
+        {
+          "number": "2008",
+          "title": "Acquisition de Compu-Sys",
+          "text": ""
+        },
+        {
+          "number": "2009",
+          "title": "Acquisition d'IPtel",
+          "text": ""
+        },
+        {
+          "number": "2010",
+          "title": "Acquisition d'Expra Solutions",
+          "text": ""
+        },
+        {
+          "number": "2011",
+          "title": "Acquisition de Progilan",
+          "text": ""
+        },
+        {
+          "number": "2012",
+          "title": "Acquisition de Teltech",
+          "text": ""
+        },
+        {
+          "number": "2015",
+          "title": "Acquisition d'AGRM",
+          "text": ""
+        },
+        {
+          "number": "2016",
+          "title": "Acquisition de Noverka Conseil",
+          "text": ""
+        },
+        {
+          "number": "2017",
+          "title": "Acquisition de VisionTI",
+          "text": ""
+        },
+        {
+          "number": "2019",
+          "title": "Victrix rejoint l'écosystème international Alan Allman Associates",
+          "text": "15 cabinets-conseils · Plus de 3 300 experts"
+        },
+        {
+          "number": "2023",
+          "title": "La Société Conseil Lambda rejoint Victrix",
+          "text": ""
+        },
+        {
+          "number": "2024",
+          "title": "En se rapprochant de COMITEM, Victrix étend son offre en France",
+          "text": ""
+        }
       ]
     },
     {
       "type": "cta",
-      "title": "Nous recrutons les experts de demain !",
-      "body": "Intéressés ? N'hésitez pas à nous contacter.",
-      "ctaLabel": "C'est par ici",
+      "title": "Nous recrutons les experts de demain!",
+      "body": "Intéressés? N'hésitez pas à nous contacter.",
+      "ctaLabel": "Nos opportunités",
       "ctaHref": "/fr/carrieres",
       "cta2Label": "",
       "cta2Href": "",
