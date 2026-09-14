@@ -3,11 +3,11 @@
     {
       "_bookshop_name": "home-hero",
       "type": "home-hero",
-      "eyebrow": "Consulting firm • Technology • AI",
-      "title": "Propel your business with IT that truly makes a difference.",
-      "titleAccent": "truly",
-      "subtitle": "From cybersecurity to AI, Victrix turns your technology challenges into concrete, secure and high-performing solutions.",
-      "ctaLabel": "Discover our expertise",
+      "eyebrow": "IT Consulting Firm • Technology • AI",
+      "title": "Accelerate Your Organization with IT Engineered for What's Next.",
+      "titleAccent": "Engineered",
+      "subtitle": "Turn technology challenges into solutions built to last. From cybersecurity to AI, with cloud, managed services and application services along the way, Victrix takes charge of what drives you forward.",
+      "ctaLabel": "Explore our expertise",
       "ctaHref": "/en/expertises",
       "image": "/images/home/hero-accueil.jpg",
       "cta2Label": "Talk to an expert",
@@ -16,11 +16,11 @@
     {
       "_bookshop_name": "home-expertises",
       "type": "home-expertises",
-      "sectionTitle": "Our services",
-      "intro": "Complementary areas of expertise covering all of your technology needs.",
+      "sectionTitle": "Our Services",
+      "intro": "Complementary IT services that work together or stand alone, covering all of your technology needs.",
       "learnMore": "Learn more",
-      "ctaLabel": "See all our expertise",
-      "ctaHref": "/en/expertises",
+      "ctaLabel": "View all services",
+      "ctaHref": "/en/services",
       "items": [
         {
           "number": "01",
