@@ -1,17 +1,18 @@
 {
-  "title": "Our products",
+  "_schema": "default",
+  "title": "Our Products",
   "description": "Proven solutions to accelerate your teams’ productivity.",
   "noindex": true,
   "sections": [
     {
       "type": "product-hero",
-      "badge": "Our products",
-      "title": "Proven products, backed by our experts",
-      "titleHighlight": "Proven products",
+      "badge": "Our Products",
+      "title": "Proven Products, Backed by Our Experts",
+      "titleHighlight": "Proven Products,",
       "lead": "Solutions designed, deployed and supported by our teams to accelerate your organization’s productivity.",
       "ctaLabel": "Request a demo",
       "ctaHref": "/en/contact",
-      "cta2Label": "See the solutions catalogue",
+      "cta2Label": "Browse the solutions catalogue",
       "cta2Href": "/en/solutions",
       "image": "",
       "imageAlt": "",
@@ -19,20 +20,13 @@
     },
     {
       "type": "numbered-cards",
-      "sectionTitle": "Three flagship products",
+      "sectionTitle": "Our Flagship Solutions",
       "headingStyle": "underline",
       "intro": "The detailed presentation of the range will be published soon — the product pages are already online.",
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
       "items": [
-        {
-          "number": "01",
-          "title": "Ø Studio",
-          "text": "The Power Platform and Dynamics 365 creation studio: business applications delivered at high velocity.",
-          "ctaLabel": "Discover Ø Studio",
-          "ctaHref": "/en/services/productivity-consulting/o-studio"
-        },
         {
           "number": "02",
           "title": "O bureau",
@@ -42,10 +36,24 @@
         },
         {
           "number": "03",
-          "title": "Employee platform & intranet",
+          "title": "Employee Platform Intranet",
           "text": "A modern intranet that centralizes information and brings your teams closer.",
           "ctaLabel": "Discover the platform",
           "ctaHref": "/en/services/productivity-consulting/employee-platform-intranet"
+        },
+        {
+          "number": "01",
+          "title": "IT Procurement",
+          "text": "Acquisition and management of software licences and equipment,  in partnership with the world’s leading software publishers and hardware manufacturers.",
+          "ctaLabel": "Discover the products",
+          "ctaHref": "/en/services/productivity-consulting/o-studio"
+        },
+        {
+          "number": "",
+          "title": "Solutions Catalogue",
+          "text": "Custom solutions developed by our experts to address our clients' unique challenges.",
+          "ctaLabel": "Discover our solutions",
+          "ctaHref": "/en/solutions/"
         }
       ]
     },
@@ -55,10 +63,9 @@
       "body": "Our teams will walk you through the products that fit your needs.",
       "ctaLabel": "Contact us",
       "ctaHref": "/en/contact",
-      "cta2Label": "IT procurement",
-      "cta2Href": "/en/services/it-procurement",
+      "cta2Label": null,
+      "cta2Href": null,
       "variant": "nuit"
     }
-  ],
-  "seoTitle": ""
+  ]
 }
