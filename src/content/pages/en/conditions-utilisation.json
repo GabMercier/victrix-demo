@@ -23,6 +23,15 @@
     {
       "_bookshop_name": "rich-text",
       "type": "rich-text",
+      "title": null,
+      "fond": "blanc",
+      "paragraphs": [
+        "Please read these terms of use carefully before browsing this website. By using this site, you agree to be bound by them in full."
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
       "title": "Introduction",
       "fond": "blanc",
       "paragraphs": [
@@ -44,7 +53,10 @@
       "title": "Intellectual property notice",
       "fond": "blanc",
       "paragraphs": [
-        "The Website as well as the information it contains, or grants access to, are protected under copyright law. Unless proper authorization has been obtained, any and all forms of broadcast, publication, or adaptation of the Website’s content are strictly prohibited. \nShould you ever copy, download, or print any part of the information displayed on the Website in violation of these Terms and Conditions, you shall forthwith lose the right to use said Website, and, at VICTRIX’s sole and absolute discretion, forward and/or destroy any and all copies of the information you have reproduced illegally. \nIt goes without saying that all rights, titles, and interests relating to the Website (whether or not they are explicitly referred to hereunder) are owned by VICTRIX and no one else. No use of the Website, regardless of nature or scope, will ever bestow any rights, titles, or interests upon you. \nHence, any use of the Website for any unauthorized purposes may amount to a violation of these Terms and Conditions and bring about the filing of civil proceedings against you."
+        "The Website as well as the information it contains, or grants access to, are protected under copyright law. Unless proper authorization has been obtained, any and all forms of broadcast, publication, or adaptation of the Website’s content are strictly prohibited. ",
+        "Should you ever copy, download, or print any part of the information displayed on the Website in violation of these Terms and Conditions, you shall forthwith lose the right to use said Website, and, at VICTRIX’s sole and absolute discretion, forward and/or destroy any and all copies of the information you have reproduced illegally. ",
+        "It goes without saying that all rights, titles, and interests relating to the Website (whether or not they are explicitly referred to hereunder) are owned by VICTRIX and no one else. ",
+        "No use of the Website, regardless of nature or scope, will ever bestow any rights, titles, or interests upon you. \nHence, any use of the Website for any unauthorized purposes may amount to a violation of these Terms and Conditions and bring about the filing of civil proceedings against you."
       ]
     },
     {
@@ -53,7 +65,8 @@
       "title": "Protection of personal information",
       "fond": "blanc",
       "paragraphs": [
-        "VICTRIX complies in the most rigorous manner with the laws and regulations of the Parliaments of Canada and Québec pertaining to the protection of privacy and personal information. \nAlthough VICTRIX may have to collect personal information about you, it will use it for the sole purposes of communicating with you, provide you with the services you have ordered, or submit information that might be of interest to you. No other use of your personal information shall ever be allowed unless you have previously agreed to it. You can also let us know that you do not want to receive any kind of additional information or content."
+        "VICTRIX complies in the most rigorous manner with the laws and regulations of the Parliaments of Canada and Québec pertaining to the protection of privacy and personal information. ",
+        "Although VICTRIX may have to collect personal information about you, it will use it for the sole purposes of communicating with you, provide you with the services you have ordered, or submit information that might be of interest to you. No other use of your personal information shall ever be allowed unless you have previously agreed to it. You can also let us know that you do not want to receive any kind of additional information or content."
       ]
     },
     {
