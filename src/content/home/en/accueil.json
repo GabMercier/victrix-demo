@@ -105,21 +105,21 @@
     {
       "_bookshop_name": "home-solutions",
       "type": "home-solutions",
-      "title": "Our flagship solutions",
+      "title": "Our Signature Solutions",
       "ctaLabel": null,
       "ctaHref": null,
       "items": [
         {
           "title": "Ø Studio",
-          "text": "Ø Studio offers a multidisciplinary team to automate your processes and deliver your application developments at high speed!",
+          "text": "Ø Studio is Victrix's application development studio, specializing in Power Platform and Dynamics 365. Its multidisciplinary team automates your processes and delivers your applications, turnkey or custom-built, at full speed.",
           "image": "/images/home/expertise-productivite.jpg",
-          "href": "/en/services/productivity-consulting/office-booking",
+          "href": "/en/productivite/services/o-studio/",
           "ctaLabel": "Discover Ø Studio",
           "icon": "ecran"
         },
         {
           "title": "SEvOC",
-          "text": "SEvOC takes charge of your organization's security operations. Our scalable, modular offering keeps you at the leading edge.",
+          "text": "A traditional SOC hands you alerts and stops there. SEvOC takes them off your hands and keeps your security posture improving, backed by dedicated bilingual analysts and our infrastructure and cloud teams.",
           "image": "/images/home/sevoc.png",
           "href": "/en/services/cybersecurity",
           "ctaLabel": "Discover SEvOC",
@@ -127,7 +127,7 @@
         },
         {
           "title": "Azure Migration",
-          "text": "Victrix accelerates your transition to Azure. Based on the Microsoft Cloud Adoption Framework, our method secures your first steps.",
+          "text": "Victrix accelerates your move to Azure. Our methodology, grounded in Microsoft's Cloud Adoption Framework, de-risks every stage of migrating your application and servers.",
           "image": "/images/home/expertise-infonuagique.jpg",
           "href": "/en/services/cloud-services-provider",
           "ctaLabel": "Discover Azure",
@@ -138,18 +138,18 @@
     {
       "_bookshop_name": "home-latest",
       "type": "home-latest",
-      "title": "Resources and insights",
-      "subtitle": "Discover our latest articles, case studies and technical webinars.",
-      "readMoreLabel": "Read more",
-      "ctaLabel": "See all resources",
+      "title": "Resources and News",
+      "subtitle": "Keep up with our experts: articles, webinars, white papers and Victrix news.",
+      "readMoreLabel": "View",
+      "ctaLabel": "Browse all resources",
       "ctaHref": "/en/ressources"
     },
     {
       "_bookshop_name": "home-experts",
       "type": "home-experts",
-      "title": "Ready to move your organization forward?",
-      "subtitle": "Let's discuss your challenges and see how Victrix can help you go further in your digital transformation.",
-      "ctaLabel": "Talk to an expert",
+      "title": "Ready to Take the Next Step?",
+      "subtitle": "Let's talk about your challenges and how Victrix can advance your digital transformation.",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact"
     }
   ]
