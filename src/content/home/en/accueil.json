@@ -18,15 +18,15 @@
       "type": "home-expertises",
       "sectionTitle": "Our Services",
       "intro": "Complementary IT services that work together or stand alone, covering all of your technology needs.",
-      "learnMore": "Learn more",
-      "ctaLabel": "View all services",
+      "learnMore": "Discover",
+      "ctaLabel": "Browse our services",
       "ctaHref": "/en/services",
       "items": [
         {
           "number": "01",
           "title": "Cybersecurity",
           "accent": "#1a5bff",
-          "description": "Protect your digital assets against today's and tomorrow's threats.",
+          "description": "Protect your digital assets and prove regulatory compliance.",
           "href": "/en/services/cybersecurity",
           "image": "/images/home/expertise-cybersecurite.jpg",
           "variant": "image",
@@ -35,10 +35,10 @@
         },
         {
           "number": "03",
-          "title": "AI & Automation",
+          "title": "AI and Automation",
           "accent": "#1a5bff",
-          "description": "Harness the potential of generative AI for your business processes.",
-          "href": "/en/services/intelligence-artificielle",
+          "description": "Put AI to work in your business processes, within a clear governance framework.",
+          "href": "/en/services/artificial-intelligence",
           "image": "",
           "variant": "bleue",
           "linkLabel": "Discover",
@@ -46,9 +46,9 @@
         },
         {
           "number": "04",
-          "title": "Cloud Migration",
+          "title": "Cloud ",
           "accent": "#1a5bff",
-          "description": "Modernize your infrastructure with agility.",
+          "description": "Modernize your infrastructure and scale your cloud environments at your own pace.",
           "href": "/en/services/cloud-services-provider",
           "image": "",
           "variant": "image",
@@ -57,10 +57,10 @@
         },
         {
           "number": "05",
-          "title": "Strategic Consulting",
+          "title": "Application Services",
           "accent": "#1a5bff",
-          "description": "Guidance for senior leadership in technology decisions.",
-          "href": "/en/services/strategic-advice",
+          "description": "Build, modernize and maintain the applications that run your operations.",
+          "href": "/en/services/application-services",
           "image": "",
           "variant": "claire",
           "linkLabel": "",
@@ -70,7 +70,7 @@
           "number": "06",
           "title": "Managed Services",
           "accent": "#1a5bff",
-          "description": "Peace of mind and performance 24/7/365.",
+          "description": "Simplify day-to-day IT management with support available around the clock.",
           "href": "/en/services/managed-it-services",
           "image": "",
           "variant": "nuit",
@@ -83,22 +83,22 @@
       "_bookshop_name": "home-solution",
       "type": "home-solution",
       "eyebrow": "",
-      "title": "Free your team from operational constraints",
-      "body": "Our managed services let you focus on your core business while our experts watch over the performance of your systems.",
+      "title": "Free Your Team from Day-to-Day Operations",
+      "body": "Your team focus on what moves the business forward. Our experts handle performance and uptime.",
       "ctaLabel": "Talk to an expert",
       "ctaHref": "/en/contact",
       "image": "../equipe.jpg",
-      "statValue": "24/7",
-      "statLabel": "Managed services",
-      "statText": "Proactive support and complete management of your M365 ecosystem.",
+      "statValue": "24/7/365",
+      "statLabel": "Managed Services",
+      "statText": "Proactive support and end-to-end management of your IT environments..",
       "features": [
         {
-          "label": "M365 Ecosystem",
+          "label": "Microsoft 365",
           "text": "Maximize the use of your licences and collaboration tools."
         },
         {
-          "label": "Infra Security",
-          "text": "Continuous monitoring and rapid incident remediation."
+          "label": "Infrastructure Security",
+          "text": "Continuous monitoring and rapid incident resolution."
         }
       ]
     },
@@ -106,8 +106,8 @@
       "_bookshop_name": "home-solutions",
       "type": "home-solutions",
       "title": "Our flagship solutions",
-      "ctaLabel": "See all our solutions",
-      "ctaHref": "/en/produits",
+      "ctaLabel": null,
+      "ctaHref": null,
       "items": [
         {
           "title": "Ø Studio",
