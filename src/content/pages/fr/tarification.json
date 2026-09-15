@@ -1,4 +1,5 @@
 {
+  "_schema": "default",
   "title": "Tarification",
   "description": "Des modèles d’affaires flexibles, adaptés à votre contexte.",
   "noindex": true,
@@ -13,7 +14,7 @@
       "lead": "Des modèles d’affaires flexibles, adaptés à votre contexte. Chaque mandat étant unique, l’offre est bâtie avec vous.",
       "ctaLabel": "Obtenez une estimation",
       "ctaHref": "/fr/contact",
-      "cta2Label": "Nos services",
+      "cta2Label": "Explorez nos services",
       "cta2Href": "/fr/services",
       "overlay": "voile",
       "image": "",
@@ -49,12 +50,11 @@
       "type": "cta",
       "title": "Obtenez une estimation",
       "body": "Décrivez votre projet : nous vous reviendrons rapidement avec une proposition.",
-      "ctaLabel": "Nous joindre",
+      "ctaLabel": "Contactez-nous",
       "ctaHref": "/fr/contact",
-      "cta2Label": "Nos services",
-      "cta2Href": "/fr/services",
+      "cta2Label": null,
+      "cta2Href": null,
       "variant": "nuit"
     }
-  ],
-  "seoTitle": ""
+  ]
 }
