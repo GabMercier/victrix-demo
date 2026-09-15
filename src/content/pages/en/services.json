@@ -1,6 +1,7 @@
 {
+  "_schema": "default",
   "title": "Our services",
-  "description": "From strategic consulting to managed services: end-to-end support.",
+  "description": "End-to-end support, delivered by local teams in Canada : cybersecurity, AI, application services, cloud and managed services.",
   "noindex": true,
   "sections": [
     {
@@ -82,6 +83,5 @@
       "cta2Href": "/en/secteurs",
       "variant": "nuit"
     }
-  ],
-  "seoTitle": ""
+  ]
 }

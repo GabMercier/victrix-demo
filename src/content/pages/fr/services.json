@@ -1,6 +1,7 @@
 {
+  "_schema": "default",
   "title": "Nos services",
-  "description": "Du conseil stratégique aux services gérés : un accompagnement de bout en bout.",
+  "description": "Des services complémentaires pour couvrir tous vos besoins technologiques: cybersécurité, IA, services applicatifs, infonuagique et services gérés.",
   "noindex": true,
   "sections": [
     {
@@ -11,17 +12,17 @@
       "title": "Nos services",
       "titleHighlight": "services",
       "lead": "Du conseil stratégique aux services gérés : un accompagnement de bout en bout, par des équipes établies au Québec.",
-      "ctaLabel": "Parlons de vos besoins",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
-      "cta2Label": "Catalogue de solutions",
-      "cta2Href": "/fr/solutions",
+      "cta2Label": null,
+      "cta2Href": null,
       "overlay": "voile",
       "image": "",
       "imageAlt": ""
     },
     {
       "type": "numbered-cards",
-      "sectionTitle": "Six familles de services",
+      "sectionTitle": "Cinq familles de services",
       "headingStyle": "underline",
       "intro": "La vue d’ensemble détaillée arrive — chaque famille a déjà sa page.",
       "tone": "default",
@@ -30,45 +31,38 @@
       "items": [
         {
           "number": "01",
-          "title": "Conseil stratégique",
-          "text": "Aligner la technologie sur vos objectifs d’affaires.",
-          "ctaLabel": "En savoir plus",
-          "ctaHref": "/fr/services/conseil-strategique"
+          "title": "Cybersécurité",
+          "text": "Protégez vos actifs numériques et démontrez votre conformité réglementaire.",
+          "ctaLabel": "Découvrez le service",
+          "ctaHref": "/fr/services/cybersecurite"
         },
         {
           "number": "02",
-          "title": "Services applicatifs",
-          "text": "Concevoir, moderniser et maintenir vos applications.",
-          "ctaLabel": "En savoir plus",
-          "ctaHref": "/fr/services/services-applicatifs"
+          "title": "IA et automatisation",
+          "text": "Exploitez le potentiel de l'IA dans vos processus d'affaires avec un cadre de gouvernance clair.",
+          "ctaLabel": "Découvrez le service",
+          "ctaHref": "/fr/services/intelligence-artificielle"
         },
         {
           "number": "03",
           "title": "Services infonuagiques",
-          "text": "Migrer, exploiter et optimiser vos environnements en nuage.",
-          "ctaLabel": "En savoir plus",
+          "text": "Modernisez vos infrastructures et faites évoluer vos environnements infonuagiques à votre rythme.",
+          "ctaLabel": "Découvrez le service",
           "ctaHref": "/fr/services/services-infonuagiques"
         },
         {
           "number": "04",
-          "title": "Cybersécurité",
-          "text": "Protéger vos actifs et votre continuité d’affaires.",
-          "ctaLabel": "En savoir plus",
-          "ctaHref": "/fr/services/cybersecurite"
+          "title": "Service applicatifs",
+          "text": "Concevez, modernisez et maintenez les applications qui soutiennent vos opérations.",
+          "ctaLabel": "Découvrez le service",
+          "ctaHref": "/fr/services/services-applicatifs"
         },
         {
           "number": "05",
-          "title": "Projets en IA",
-          "text": "Encadrer vos cas d’usage, du prototype à l’adoption.",
-          "ctaLabel": "En savoir plus",
-          "ctaHref": "/fr/services/projets-en-ia"
-        },
-        {
-          "number": "06",
-          "title": "Services TI gérés",
-          "text": "Confier l’exploitation à une équipe qui veille en continu.",
-          "ctaLabel": "En savoir plus",
-          "ctaHref": "/fr/services/services-ti-geres"
+          "title": "Services gérés",
+          "text": "Simplifiez la gestion de vos TI au quotidien avec des équipes disponibles en tout temps.",
+          "ctaLabel": "Découvrez le service",
+          "ctaHref": "/fr/services/services-geres"
         }
       ]
     },
@@ -82,6 +76,5 @@
       "cta2Href": "/fr/secteurs",
       "variant": "nuit"
     }
-  ],
-  "seoTitle": ""
+  ]
 }
