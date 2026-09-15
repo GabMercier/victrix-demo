@@ -1,19 +1,20 @@
 {
+  "_schema": "default",
   "title": "Secteurs d’activité",
   "description": "Une connaissance fine des réalités des organisations publiques et privées.",
   "noindex": true,
   "sections": [
     {
       "type": "service-hero",
-      "eyebrow": "Secteurs",
+      "eyebrow": "Expertise sectorielle",
       "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Secteurs d’activité",
       "titleHighlight": "Secteurs",
-      "lead": "Une connaissance fine des réalités des organisations publiques et privées, bâtie mandat après mandat depuis 2003.",
-      "ctaLabel": "Parlons de votre secteur",
+      "lead": "Une connaissance fine de la réalité des organisations publiques et privées, bâtie mandat après mandat depuis 2003.",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
-      "cta2Label": "Nos services",
+      "cta2Label": "Explorez nos services",
       "cta2Href": "/fr/services",
       "overlay": "voile",
       "image": "",
@@ -22,24 +23,69 @@
     {
       "type": "benefits",
       "title": "Des réalités différentes, une même exigence",
-      "intro": "La présentation détaillée des secteurs servis sera publiée prochainement.",
+      "intro": "Approvisionnement encadré, pression sur les coûts, rareté des talents et exigences de conformité : chaque secteur impose ses propres règles. Nous partons des vôtres. Les pages détaillées par secteur arrivent bientôt.",
       "fond": "blanc",
       "headingStyle": "titre",
       "items": [
         {
           "icon": "organisation",
-          "title": "Secteur public",
-          "description": "Cadres réglementaires, approvisionnement et continuité de service : nous connaissons les règles du jeu."
+          "title": "Secteur public et parapublic",
+          "description": "Appels d'offres, souveraineté des données et continuité du service aux citoyens."
+        },
+        {
+          "icon": "organisation",
+          "title": "Santé",
+          "description": "Données cliniques protégées, systèmes interopérables et disponibilité sans interruption."
         },
         {
           "icon": "croissance",
-          "title": "Entreprises privées",
-          "description": "Croissance, productivité et maîtrise des coûts : la technologie au service de vos objectifs d’affaires."
+          "title": "Services financiers",
+          "description": "Surveillance des régulateurs, prévention del a fraude et disponibilité des transactions."
         },
         {
           "icon": "losange",
-          "title": "Organisations réglementées",
-          "description": "Sécurité, conformité et traçabilité intégrées dès la conception des solutions."
+          "title": "Défense",
+          "description": "Habilitations, marchandises contrôlées et environnements cloisonnées en territoire souverain."
+        },
+        {
+          "icon": "losange",
+          "title": "Énergie",
+          "description": "Technologies opérationnelles, infrastructures essentielles et exploitation qui ne s'arrête jamais."
+        },
+        {
+          "icon": "losange",
+          "title": "Télécommunications",
+          "description": "Réseaux à grande échelle, disponibilité de niveau opérateur et volumes en hausse."
+        },
+        {
+          "icon": "organisation",
+          "title": "Industrie et fabrication",
+          "description": "Équipements connectés, lignes de production continues et sécurité des environnements industriels."
+        },
+        {
+          "icon": "losange",
+          "title": "Agroalimentaire",
+          "description": "Traçabilité des lots, salubrité et chaîne de froid, où tout arrêt coûte cher."
+        },
+        {
+          "icon": "losange",
+          "title": "Transport et logistique",
+          "description": "Flottes, entrepôts et suivi en temps réel sur toute la chaîne d'approvisionnement."
+        },
+        {
+          "icon": "organisation",
+          "title": "Commerce de détail",
+          "description": "Points de vente, commerce en ligne, pointes saisonnières et sécurité des paiements."
+        },
+        {
+          "icon": "losange",
+          "title": "Ingénierie et construction",
+          "description": "Chantiers connectés, main-d'œuvre mobile et fichiers de conception lourds à partager."
+        },
+        {
+          "icon": "organisation",
+          "title": "Services professionnels",
+          "description": "Confidentialité des dossiers clients, collaboration sécurisée et mobilité des équipes."
         }
       ]
     },
@@ -47,12 +93,11 @@
       "type": "cta",
       "title": "Votre secteur, nos experts",
       "body": "Parlons des défis technologiques propres à votre domaine.",
-      "ctaLabel": "Nous joindre",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
-      "cta2Label": "Découvrir Victrix",
+      "cta2Label": "Découvrez Victrix",
       "cta2Href": "/fr/decouvrir",
       "variant": "nuit"
     }
-  ],
-  "seoTitle": ""
+  ]
 }

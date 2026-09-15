@@ -1,19 +1,20 @@
 {
+  "_schema": "default",
   "title": "Industries",
   "description": "Deep knowledge of the realities of public and private organizations.",
   "noindex": true,
   "sections": [
     {
       "type": "service-hero",
-      "eyebrow": "Industries",
+      "eyebrow": "Industry Expertise",
       "eyebrowStyle": "texte",
       "titleAccent": "",
-      "title": "Industries",
-      "titleHighlight": "",
-      "lead": "Deep knowledge of the realities of public and private organizations, built mandate after mandate since 2003.",
-      "ctaLabel": "Let’s talk about your industry",
+      "title": "Industries We Serve",
+      "titleHighlight": "Industries",
+      "lead": "Deep knowledge of public and private organizations, earned engagement after engagement since 2003.",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
-      "cta2Label": "Our services",
+      "cta2Label": "Explore our services",
       "cta2Href": "/en/services",
       "overlay": "voile",
       "image": "",
@@ -21,38 +22,82 @@
     },
     {
       "type": "benefits",
-      "title": "Different realities, the same standard",
-      "intro": "The detailed presentation of the industries we serve will be published soon.",
+      "title": "Different Realities, the Same Standard",
+      "intro": "Regulated procurement, cost pressure, the talent shortage and compliance requirements: every industry sets its own rules. We start with yours.",
       "fond": "blanc",
       "headingStyle": "titre",
       "items": [
         {
           "icon": "organisation",
-          "title": "Public sector",
-          "description": "Regulatory frameworks, procurement and continuity of service: we know the rules of the game."
+          "title": "Public Sector",
+          "description": "Public tenders, data sovereignty and uninterrupted service to citizens."
+        },
+        {
+          "icon": "organisation",
+          "title": "Healthcare",
+          "description": "Protected clinical data, interoperable systems and availability that never pauses."
         },
         {
           "icon": "croissance",
-          "title": "Private companies",
-          "description": "Growth, productivity and cost control: technology in the service of your business goals."
+          "title": "Financial Services",
+          "description": "Regulatory oversight, fraud prevention and transaction availability."
         },
         {
           "icon": "losange",
-          "title": "Regulated organizations",
-          "description": "Security, compliance and traceability built into solutions from day one."
+          "title": "Defence",
+          "description": "Security clearances, controlled goods and segmented environments on sovereign ground."
+        },
+        {
+          "icon": "losange",
+          "title": "Energy",
+          "description": "Operational technology, critical infrastructure and operations that never stop."
+        },
+        {
+          "icon": "losange",
+          "title": "Telecommunications",
+          "description": "Large-scale networks, carrier-grade availability and rising traffic volumes."
+        },
+        {
+          "icon": "organisation",
+          "title": "Industry and Manufacturing",
+          "description": "Connected equipment, continuous production lines and industrial environments to secure."
+        },
+        {
+          "icon": "losange",
+          "title": "Food and Beverage",
+          "description": "Lot traceability, food safety and cold chain, where any stoppage is costly."
+        },
+        {
+          "icon": "losange",
+          "title": "Transportation and Logistics",
+          "description": "Fleets, warehouses and real-time tracking across the supply chain."
+        },
+        {
+          "icon": "organisation",
+          "title": "Retail",
+          "description": "Point of sale, e-commerce, seasonal peaks and payment security."
+        },
+        {
+          "icon": "losange",
+          "title": "Engineering and Construction",
+          "description": "Connected job sites, a mobile workforce and heavy design files to share."
+        },
+        {
+          "icon": "organisation",
+          "title": "Professional Services",
+          "description": "Client confidentiality, secure collaboration and teams on the move."
         }
       ]
     },
     {
       "type": "cta",
-      "title": "Your industry, our experts",
-      "body": "Let’s talk about the technology challenges specific to your field.",
-      "ctaLabel": "Contact us",
+      "title": "Your Industry, Our Experts",
+      "body": "Let’s talk about the technology challenges that come with your industry.",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "Discover Victrix",
       "cta2Href": "/en/decouvrir",
       "variant": "nuit"
     }
-  ],
-  "seoTitle": ""
+  ]
 }
