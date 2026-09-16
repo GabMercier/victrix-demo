@@ -4,17 +4,17 @@
   "description": "Découvrez nos services d'approvisionnement TI. Profitez d'un accompagnement sur mesure pour l'achat, la gestion et le renouvellement de vos licences et matériels.",
   "noindex": false,
   "slug": "",
-  "seoTitle": "Approvisionnement TI | Achat et gestion de licences et matériels",
+  "seoTitle": "Approvisionnement TI | Achat et gestion de licences et matériels | Victrix",
   "sections": [
     {
       "type": "service-hero",
       "eyebrow": "Services d’approvisionnement en TI",
       "eyebrowStyle": "badge",
       "titleAccent": "",
-      "title": "Licences et matériels",
-      "titleHighlight": "Licences",
+      "title": "Acquisition et gestion de licences et d'équipements informatiques",
+      "titleHighlight": "Acquisition et gestion",
       "lead": "Victrix offre des services d’achat et d’approvisionnement informatique fiables et conformes, en partenariat avec les plus grands éditeurs et fabricants mondiaux. Nos experts vous accompagnent dans la sélection, l’intégration et la gestion continue de vos équipements informatiques, ainsi que le renouvellement de vos licences.",
-      "ctaLabel": "Échangez avec un expert",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2025/03/linkedin-carre-24.png",
       "imageAlt": ""
@@ -22,25 +22,25 @@
     {
       "type": "bento-metrics",
       "title": "Un approvisionnement TI stratégique, sécurisé et géré",
-      "intro": "",
+      "intro": "De la cybersécurité à l’infonuagique, en passant par l’automatisation, le réseau et la connectivité, Victrix vous aide à bâtir une infrastructure performante, cohérente et sécurisée.",
       "fond": "blanc",
       "featured": {
         "title": "Revendeur à valeur ajoutée",
-        "text": "Victrix agit comme revendeur à valeur ajoutée auprès des organisations et agences gouvernementales — un partenaire capable de conjuguer <strong>expertise technique, sécurité et gouvernance</strong>.",
+        "text": "Victrix agit comme revendeur à valeur ajoutée auprès des organisations et agences gouvernementales. Nous sommes votre partenaire capable de conjuguer <strong>expertise technique, sécurité et gouvernance</strong>.",
         "watermark": "engrenage",
         "stats": []
       },
       "aside": {
         "icon": "bouclier",
-        "title": "De la cybersécurité à l’infonuagique",
-        "text": "En passant par l’automatisation, le réseau et la connectivité, Victrix vous aide à bâtir une infrastructure performante, cohérente et sécurisée.",
-        "linkLabel": "Voir l’expertise Cybersécurité",
-        "linkHref": "/fr/services/cybersecurite"
+        "title": "Un processus simple, sécurisé, adapté a vos besoins TI réels",
+        "text": "Nos experts évaluent vos besoins, comparent les offres du marché et recommandent l'acquisition du matériel informatique qui s'aligne parfaitement avec vos priorités de performances et de sécurité.",
+        "linkLabel": null,
+        "linkHref": null
       }
     },
     {
       "type": "offer-cards",
-      "title": "Achat, gestion et renouvellement",
+      "title": "Approvisionnement TI, gestion et renouvellement",
       "intro": "Profitez d’un accompagnement sur mesure pour l’achat, la gestion et le renouvellement de vos licences et matériels.",
       "fond": "givre",
       "ctaLabel": "",
@@ -244,7 +244,7 @@
     },
     {
       "type": "strategic-value",
-      "title": "Victrix : votre partenaire de confiance",
+      "title": "Victrix : votre partenaire de confiance ",
       "paragraphs": [
         "Nous nous appuyons sur des partenariats solides avec les principaux éditeurs et fabricants mondiaux. Nos certifications et notre expérience multisectorielle nous permettent de <strong>vous conseiller</strong> et de <strong>garantir la conformité</strong>, la <strong>sécurité</strong> et la <strong>performance</strong> de vos environnements informatiques.",
         "Nous offrons un accompagnement personnalisé de la planification à la production, y compris la gestion et le renouvellement des licences."
