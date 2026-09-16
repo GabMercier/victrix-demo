@@ -1,10 +1,14 @@
 name: CI
 
+# `spike/cloudcannon` = branche d'ÉDITION : chaque sauvegarde CloudCannon y
+# commite directement, sans vérification avant le build de l'hébergeur. Le CI
+# y tourne donc aussi (second signal, dans GitHub, quand une sauvegarde casse
+# le build — incident des champs `null` du 14 sept. 2026).
 on:
   push:
-    branches: [main]
+    branches: [main, spike/cloudcannon]
   pull_request:
-    branches: [main]
+    branches: [main, spike/cloudcannon]
 
 permissions:
   contents: read

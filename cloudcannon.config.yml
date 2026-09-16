@@ -130,9 +130,13 @@ collections_config:
     _inputs:
       title:
         type: text
+        options:
+          empty_type: string
         label: Titre
       slug:
         type: text
+        options:
+          empty_type: string
         label: Slug (URL)
         comment: >-
           Segment d'URL propre à la langue. FR : reprendre le nom de fichier ;
@@ -158,12 +162,16 @@ collections_config:
           listes. Désactiver pour publier.
       excerpt:
         type: textarea
+        options:
+          empty_type: string
         label: Extrait
         comment: >-
           Sert aussi de description SEO (résultats Google, partages) et de
           texte des cartes du centre de ressources.
       seoTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre SEO (surcharge)
         comment: >-
           Remplace le titre dans l'onglet du navigateur et les résultats
@@ -176,6 +184,8 @@ collections_config:
           de la recherche interne. Désactivé par défaut.
       wpUrl:
         type: text
+        options:
+          empty_type: string
         label: Ancienne URL WordPress (référence)
         comment: >-
           Trace de migration — n'affecte pas le site (les redirections se
@@ -187,6 +197,7 @@ collections_config:
           Partagée entre les deux langues — téléverser une seule fois, le même
           fichier sert au FR et à l'EN. Optionnelle (article sans image).
         options:
+          empty_type: string
           paths:
             # Contenu migré (2026-07-29) : les couvertures sont des CHEMINS
             # PUBLICS servis tels quels (/wp-content/uploads/… — même
@@ -210,6 +221,8 @@ collections_config:
       # créer au « + Ajouter » (même patron que options[*]/items[*] plus bas).
       tags[*]:
         type: text
+        options:
+          empty_type: string
         label: Étiquette
       topics:
         type: array
@@ -222,6 +235,8 @@ collections_config:
           PAS les filtres du blogue.
       topics[*]:
         type: text
+        options:
+          empty_type: string
         label: Thème
 
   home:
@@ -279,43 +294,65 @@ collections_config:
         hidden: true
       title:
         type: text
+        options:
+          empty_type: string
         label: Titre
       subtitle:
         type: textarea
+        options:
+          empty_type: string
         label: Sous-titre
       eyebrow:
         type: text
+        options:
+          empty_type: string
         label: Surtitre
       ctaLabel:
         type: text
+        options:
+          empty_type: string
         label: Texte du bouton
       ctaHref:
         type: text
+        options:
+          empty_type: string
         label: Lien du bouton
         comment: >-
           URL finale, préfixe de langue inclus (ex. /fr/decouvrir) — les
           sections sont rendues telles quelles, sans ajout du préfixe.
       sectionTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre de section
       titleAccent:
         type: text
+        options:
+          empty_type: string
         label: Mot accentué du titre
         comment: >-
           Sous-chaîne du titre affichée en bleu (ex. « vraiment »). Vide =
           titre uniforme.
       intro:
         type: textarea
+        options:
+          empty_type: string
         label: Paragraphe d'appui
       learnMore:
         type: text
+        options:
+          empty_type: string
         label: Libellé du bouton des cartes
       readMoreLabel:
         type: text
+        options:
+          empty_type: string
         label: Libellé « Lire la suite »
         comment: Lien au bas de chaque carte d'article. Vide = absent.
       body:
         type: textarea
+        options:
+          empty_type: string
         label: Texte
       # Cartes d'expertise (tableau `items` de la section « Expertises »).
       # NB : la section « Solutions phares » porte AUSSI un tableau `items` —
@@ -335,6 +372,8 @@ collections_config:
           structures: _structures.solution_features
       number:
         type: text
+        options:
+          empty_type: string
         label: Numéro (hérité — plus affiché)
         comment: "Champ de l'ancien design, conservé pour compatibilité."
       accent:
@@ -344,6 +383,7 @@ collections_config:
         type: select
         label: Couleur d'accent (héritée — plus affichée)
         options:
+          empty_type: string
           allow_empty: false
           values:
             - '#1a5bff'
@@ -356,9 +396,13 @@ collections_config:
         comment: "Les 6 ancres de la charte (#1a5bff Bleu Victrix, #0d1430 Bleu nuit, #1a1f28 Anthracite, #faf7f3 Ivoire, #f2ece4 Beige, #e9e1d6 Sable). Champ de l'ancien design, conservé pour compatibilité ; plus rendu."
       description:
         type: textarea
+        options:
+          empty_type: string
         label: Description
       href:
         type: text
+        options:
+          empty_type: string
         label: Lien
       names:
         type: array
@@ -367,11 +411,14 @@ collections_config:
       # tableau vide offre « + Ajouter » au lieu de « misconfigured ».
       names[*]:
         type: text
+        options:
+          empty_type: string
         label: Nom du partenaire
       image:
         type: image
         label: Image
         options:
+          empty_type: string
           paths:
             # Images live beside the locale folders (src/content/home); the
             # SAVED value must stay relative to the JSON file ("../<fichier>")
@@ -436,12 +483,16 @@ collections_config:
     _inputs:
       title:
         type: text
+        options:
+          empty_type: string
         label: Titre
         comment: >-
           Titre de la page (onglet + SEO), d'une section ou d'une carte,
           selon le contexte.
       slug:
         type: text
+        options:
+          empty_type: string
         label: Adresse de la page (segment d'URL)
         comment: >-
           Le dernier segment de l'adresse : /fr/campagnes/<segment>/.
@@ -451,6 +502,8 @@ collections_config:
           brise pas l'appariement FR/EN.
       description:
         type: textarea
+        options:
+          empty_type: string
         label: Description
         comment: >-
           Au niveau de la page : description pour les moteurs de recherche et
@@ -481,6 +534,7 @@ collections_config:
           · personnalise = liens bornés + interrupteurs. Bouton : ctaLabel /
           ctaHref vides = bouton « Portail client » du site.
         options:
+          empty_type: string
           values:
             - complet
             - allege
@@ -514,6 +568,7 @@ collections_config:
           complet (défaut) = pied de page normal du site · allege = logo +
           barre légale seulement (campagne payante).
         options:
+          empty_type: string
           values:
             - complet
             - allege
@@ -536,23 +591,35 @@ collections_config:
         hidden: true
       eyebrow:
         type: text
+        options:
+          empty_type: string
         label: Surtitre
         comment: Petit libellé affiché au-dessus du titre du héros (optionnel).
       subtitle:
         type: textarea
+        options:
+          empty_type: string
         label: Sous-titre
       intro:
         type: textarea
+        options:
+          empty_type: string
         label: Introduction
         comment: Court paragraphe sous le titre de la section (optionnel).
       body:
         type: textarea
+        options:
+          empty_type: string
         label: Texte
       ctaLabel:
         type: text
+        options:
+          empty_type: string
         label: Libellé du bouton
       ctaHref:
         type: text
+        options:
+          empty_type: string
         label: Lien du bouton
         comment: >-
           URL finale, préfixe de langue inclus (ex. « /fr/contact ») — les
@@ -562,6 +629,7 @@ collections_config:
         label: Variante
         comment: « light » = bande pâle ; « dark » = bande marine foncée.
         options:
+          empty_type: string
           values:
             - light
             - dark
@@ -582,15 +650,21 @@ collections_config:
           structures: _structures.form_fields
       submitLabel:
         type: text
+        options:
+          empty_type: string
         label: Libellé du bouton d'envoi
       consentText:
         type: textarea
+        options:
+          empty_type: string
         label: Texte de consentement
         comment: >-
           Mention affichée sous les champs (ex. consentement Loi 25 sur la
           protection des renseignements personnels).
       label:
         type: text
+        options:
+          empty_type: string
         label: Libellé du champ
       required:
         type: switch
@@ -598,9 +672,13 @@ collections_config:
       # FAQ section fields (cascade — only the FAQ items use these names).
       question:
         type: text
+        options:
+          empty_type: string
         label: Question
       answer:
         type: textarea
+        options:
+          empty_type: string
         label: Réponse
         comment: >-
           Texte simple, sans HTML — la réponse est aussi publiée en données
@@ -665,12 +743,16 @@ collections_config:
     _inputs:
       title:
         type: text
+        options:
+          empty_type: string
         label: Titre
         comment: >-
           Titre de la page (onglet + SEO). Selon le contexte, sert aussi de
           libellé à certaines sections ou cartes.
       description:
         type: textarea
+        options:
+          empty_type: string
         label: Description
         comment: >-
           Description pour les moteurs de recherche et les partages.
@@ -683,6 +765,8 @@ collections_config:
           un service des résultats de recherche.
       seoTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre SEO (surcharge)
         comment: >-
           Remplace le titre dans l'onglet du navigateur et les résultats
@@ -749,12 +833,16 @@ collections_config:
     _inputs:
       title:
         type: text
+        options:
+          empty_type: string
         label: Titre
         comment: >-
           Titre de la page (onglet + SEO). Selon le contexte, sert aussi de
           libellé à certaines sections.
       description:
         type: textarea
+        options:
+          empty_type: string
         label: Description
         comment: >-
           Description pour les moteurs de recherche et les partages.
@@ -767,6 +855,8 @@ collections_config:
           automatiquement.
       seoTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre SEO (surcharge)
         comment: >-
           Remplace le titre dans l'onglet du navigateur et les résultats
@@ -831,9 +921,13 @@ collections_config:
     _inputs:
       title:
         type: text
+        options:
+          empty_type: string
         label: Titre
       description:
         type: textarea
+        options:
+          empty_type: string
         label: Description
         comment: Texte affiché sur la carte du catalogue.
       image:
@@ -844,11 +938,14 @@ collections_config:
           grise. Les téléversements atterrissent dans public/images/solutions/
           (adresse servie telle quelle, /images/…).
         options:
+          empty_type: string
           paths:
             static: public
             uploads: public/images/solutions
       sector:
         type: text
+        options:
+          empty_type: string
         label: Secteur d'activité
         comment: >-
           Chip en haut de la vignette ET valeur du filtre « Secteurs
@@ -856,6 +953,8 @@ collections_config:
           une variante (accent, majuscule) crée un filtre séparé.
       solutionType:
         type: text
+        options:
+          empty_type: string
         label: Type de solution
         comment: >-
           Chip au pied de la carte ET valeur du filtre « Types de solution » —
@@ -873,6 +972,8 @@ collections_config:
         comment: Croissant — les petits numéros d'abord (la vedette est à 0).
       href:
         type: text
+        options:
+          empty_type: string
         label: Lien de la carte
         comment: >-
           SANS préfixe de langue (ex. /contact ou
@@ -881,6 +982,8 @@ collections_config:
           page). Vide = carte sans lien.
       docHref:
         type: text
+        options:
+          empty_type: string
         label: Lien « Documentation » (vedette)
         comment: >-
           Panneau vedette seulement. Sans préfixe de langue, comme le lien de
@@ -942,23 +1045,33 @@ collections_config:
           structures: _structures.site_buttons
       contactTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre de la colonne Contact
       email:
         type: text
+        options:
+          empty_type: string
         label: Courriel affiché
         comment: Sert aussi de destination du lien (mailto:).
       phone:
         type: text
+        options:
+          empty_type: string
         label: Téléphone affiché
         comment: Tel qu'il doit apparaître, avec espaces et tirets.
       phoneHref:
         type: text
+        options:
+          empty_type: string
         label: Téléphone composable
         comment: >-
           Le même numéro SANS espace ni tiret, indicatif pays compris
           (ex. +15148791919) — c'est ce que compose un téléphone mobile.
       socialLabel:
         type: text
+        options:
+          empty_type: string
         label: Intitulé des réseaux sociaux
       contactCta:
         type: object
@@ -986,16 +1099,24 @@ collections_config:
           visiteur. Formulation à portée légale : valider les changements.
       policyLabel:
         type: text
+        options:
+          empty_type: string
         label: Libellé du lien vers la politique
       policyHref:
         type: text
+        options:
+          empty_type: string
         label: Lien vers la politique
         comment: SANS préfixe de langue (/politique-confidentialite).
       accept:
         type: text
+        options:
+          empty_type: string
         label: Bouton « Accepter »
       refuse:
         type: text
+        options:
+          empty_type: string
         label: Bouton « Refuser »
       # --- Page « introuvable » (erreur 404) --------------------------------
       notFound:
@@ -1005,29 +1126,45 @@ collections_config:
           Textes affichés quand un visiteur atteint une adresse inexistante.
       metaTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre d'onglet
       metaDescription:
         type: textarea
+        options:
+          empty_type: string
         label: Description (moteurs de recherche)
       eyebrow:
         type: text
+        options:
+          empty_type: string
         label: Surtitre
       title:
         type: text
+        options:
+          empty_type: string
         label: Titre
       text:
         type: textarea
+        options:
+          empty_type: string
         label: Texte
       requestedLabel:
         type: text
+        options:
+          empty_type: string
         label: Étiquette « adresse demandée »
         comment: Affichée devant l'adresse que le visiteur a demandée.
       # --- Clés partagées par les trois blocs (carte plate) -----------------
       label:
         type: text
+        options:
+          empty_type: string
         label: Libellé
       href:
         type: text
+        options:
+          empty_type: string
         label: Lien
         comment: >-
           SANS préfixe de langue (/contact, pas /fr/contact) — le site ajoute
@@ -1063,18 +1200,28 @@ collections_config:
     _inputs:
       metaTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre d'onglet
       metaDescription:
         type: textarea
+        options:
+          empty_type: string
         label: Description (moteurs de recherche)
       heroTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre principal (H1)
       heroSub:
         type: textarea
+        options:
+          empty_type: string
         label: Sous-titre du héros
       infoTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre de la carte Coordonnées
       infoLabels:
         type: object
@@ -1084,9 +1231,13 @@ collections_config:
           gérés par l'équipe technique (neutres de langue).
       tollFree:
         type: text
+        options:
+          empty_type: string
         label: Intitulé « Sans frais »
       email:
         type: text
+        options:
+          empty_type: string
         label: Libellé « Courriel »
       offices:
         type: array
@@ -1098,18 +1249,26 @@ collections_config:
           structures: _structures.contact_office_items
       formTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre de la section formulaire
       formIntro:
         type: textarea
+        options:
+          empty_type: string
         label: Texte d'appui du formulaire
       formBullets:
         type: array
         label: Puces cochées (arguments)
       formBullets[*]:
         type: text
+        options:
+          empty_type: string
         label: Argument
       reqNote:
         type: text
+        options:
+          empty_type: string
         label: Note « champs obligatoires » (lecteurs d'écran)
       labels:
         type: object
@@ -1126,45 +1285,69 @@ collections_config:
           deux listes déroulantes se règlent dans « Libellés » ci-dessus.
       firstName:
         type: text
+        options:
+          empty_type: string
         label: Libellé « Prénom »
       lastName:
         type: text
+        options:
+          empty_type: string
         label: Libellé « Nom »
       phone:
         type: text
+        options:
+          empty_type: string
         label: Libellé « Téléphone »
       subject:
         type: text
+        options:
+          empty_type: string
         label: Question « Sujet »
       subjectPlaceholder:
         type: text
+        options:
+          empty_type: string
         label: Texte par défaut de la liste Sujet
       expertise:
         type: text
+        options:
+          empty_type: string
         label: Libellé « Expertise »
       expertisePlaceholder:
         type: text
+        options:
+          empty_type: string
         label: Texte par défaut de la liste Expertise
       request:
         type: text
+        options:
+          empty_type: string
         label: Libellé « Précisez votre demande »
       message:
         type: text
+        options:
+          empty_type: string
         label: Libellé « Message »
       subjectOptions:
         type: array
         label: Choix de la liste « Sujet »
       subjectOptions[*]:
         type: text
+        options:
+          empty_type: string
         label: Choix
       expertiseOptions:
         type: array
         label: Choix de la liste « Expertise »
       expertiseOptions[*]:
         type: text
+        options:
+          empty_type: string
         label: Choix
       consentText:
         type: textarea
+        options:
+          empty_type: string
         label: Texte de consentement (Loi 25)
         comment: >-
           Formulation à portée légale. Garder le lien tel quel : {privacy} est
@@ -1172,9 +1355,13 @@ collections_config:
           confidentialité dans la bonne langue.
       submit:
         type: text
+        options:
+          empty_type: string
         label: Libellé du bouton d'envoi
       statusMessage:
         type: textarea
+        options:
+          empty_type: string
         label: Message de confirmation (démo)
         comment: Affiché sous le formulaire après l'envoi (mode démonstration).
 
@@ -1209,9 +1396,13 @@ collections_config:
     _inputs:
       metaTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre d'onglet
       metaDescription:
         type: textarea
+        options:
+          empty_type: string
         label: Description (moteurs de recherche)
       hero:
         type: object
@@ -1219,9 +1410,13 @@ collections_config:
         comment: La photo de fond est gérée par l'équipe technique.
       sub:
         type: textarea
+        options:
+          empty_type: string
         label: Sous-titre
       ctaLabel:
         type: text
+        options:
+          empty_type: string
         label: Libellé du bouton
         comment: Les boutons de la page mènent à la page Contact.
       happy:
@@ -1229,15 +1424,21 @@ collections_config:
         label: Carte « Happy At Work »
       lead:
         type: textarea
+        options:
+          empty_type: string
         label: Texte d'appui
       quote:
         type: textarea
+        options:
+          empty_type: string
         label: Citation
       values:
         type: object
         label: Nos valeurs
       eyebrow:
         type: text
+        options:
+          empty_type: string
         label: Surtitre
       items:
         type: array
@@ -1250,9 +1451,13 @@ collections_config:
         comment: La photo de la section est gérée par l'équipe technique.
       cardTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre de la carte flottante
       cardText:
         type: textarea
+        options:
+          empty_type: string
         label: Texte de la carte flottante
       features:
         type: array
@@ -1273,9 +1478,13 @@ collections_config:
         comment: La photo de la section est gérée par l'équipe technique.
       engagementTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre de l'engagement
       engagementText:
         type: textarea
+        options:
+          empty_type: string
         label: Texte de l'engagement
       partners:
         type: array
@@ -1285,24 +1494,33 @@ collections_config:
           partenaires académiques.
       partners[*]:
         type: text
+        options:
+          empty_type: string
         label: Nom du partenaire
       cta:
         type: object
         label: Appel à l'action final
       text:
         type: textarea
+        options:
+          empty_type: string
         label: Texte
       label:
         type: text
+        options:
+          empty_type: string
         label: Libellé
       title:
         type: text
+        options:
+          empty_type: string
         label: Titre
       image:
         type: image
         label: Photo
         comment: Partagée entre les deux langues — téléverser une seule fois.
         options:
+          empty_type: string
           paths:
             static: public
             uploads: public/images/carrieres
@@ -1336,23 +1554,33 @@ collections_config:
           dans le fil d'Ariane des articles et de titre du flux RSS.
       titleAccent:
         type: text
+        options:
+          empty_type: string
         label: Fin de titre (en bleu)
         comment: >-
           Suite du titre affichée en bleu sur la ligne suivante (ex. «
           expertises TI »). Vide = titre d'un seul tenant.
       subscribeLabel:
         type: text
+        options:
+          empty_type: string
         label: Bouton « S'abonner à l'infolettre »
         comment: Le bouton du héros — il mène à la carte infolettre de la page.
       searchPlaceholder:
         type: text
+        options:
+          empty_type: string
         label: Texte indicatif de la recherche
         comment: Affiché dans le champ de recherche de la barre de filtres.
       readMore:
         type: text
+        options:
+          empty_type: string
         label: Lien « Lire l'article » des cartes
       byline:
         type: text
+        options:
+          empty_type: string
         label: Signature de l'article vedette
         comment: Ex. « Par Victrix Expertise ». Vide = pas de signature.
       expertCard:
@@ -1361,6 +1589,8 @@ collections_config:
         comment: La carte vitrée à droite du héros (ex. « 500+ Experts »).
       subtitle:
         type: text
+        options:
+          empty_type: string
         label: Sous-titre
       newsletter:
         type: object
@@ -1370,12 +1600,18 @@ collections_config:
           confirmation sans envoi réel.
       emailPlaceholder:
         type: text
+        options:
+          empty_type: string
         label: Texte indicatif du champ courriel
       submitLabel:
         type: text
+        options:
+          empty_type: string
         label: Libellé du bouton d'envoi
       confirmation:
         type: textarea
+        options:
+          empty_type: string
         label: Message de confirmation
       cta:
         type: object
@@ -1383,16 +1619,24 @@ collections_config:
         comment: Le bandeau au bas de la page (titre, texte, deux boutons).
       primaryLabel:
         type: text
+        options:
+          empty_type: string
         label: Bouton principal — libellé
       primaryHref:
         type: text
+        options:
+          empty_type: string
         label: Bouton principal — lien
         comment: SANS préfixe de langue (/contact, pas /fr/contact).
       secondaryLabel:
         type: text
+        options:
+          empty_type: string
         label: Bouton secondaire — libellé
       secondaryHref:
         type: text
+        options:
+          empty_type: string
         label: Bouton secondaire — lien
         comment: SANS préfixe de langue (/contact, pas /fr/contact).
       recherche:
@@ -1404,28 +1648,44 @@ collections_config:
         comment: Affichée après l'envoi réussi d'un formulaire.
       metaTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre d'onglet
       metaDescription:
         type: textarea
+        options:
+          empty_type: string
         label: Description (moteurs de recherche)
       eyebrow:
         type: text
+        options:
+          empty_type: string
         label: Surtitre
       title:
         type: text
+        options:
+          empty_type: string
         label: Titre
       intro:
         type: textarea
+        options:
+          empty_type: string
         label: Texte d'introduction
       filterAll:
         type: text
+        options:
+          empty_type: string
         label: Onglet « Tous » des filtres
       noscript:
         type: textarea
+        options:
+          empty_type: string
         label: Message sans JavaScript
         comment: Affiché seulement si le navigateur bloque JavaScript.
       text:
         type: textarea
+        options:
+          empty_type: string
         label: Texte
       links:
         type: array
@@ -1435,9 +1695,13 @@ collections_config:
           structures: _structures.site_buttons
       label:
         type: text
+        options:
+          empty_type: string
         label: Libellé
       href:
         type: text
+        options:
+          empty_type: string
         label: Lien
         comment: >-
           SANS préfixe de langue (/contact, pas /fr/contact) — le site ajoute
@@ -1485,11 +1749,15 @@ collections_config:
     _inputs:
       de:
         type: text
+        options:
+          empty_type: string
         label: Ancienne URL
         comment: >-
           Chemin commençant par « / » (ex. /demo-redirection), sans domaine.
       vers:
         type: text
+        options:
+          empty_type: string
         label: Nouvelle destination
         comment: >-
           Chemin du site (ex. /fr/) ou URL complète (https://…).
@@ -1499,6 +1767,7 @@ collections_config:
         comment: >-
           301 = permanente (transfère le référencement) ; 302 = temporaire.
         options:
+          empty_type: string
           # STRING values — settled empirically 2026-07-15: the Data Editor
           # rejects numeric select values outright ("This select input is
           # misconfigured. This input must have a text value."), exactly the
@@ -1553,10 +1822,14 @@ collections_config:
     _inputs:
       name:
         type: text
+        options:
+          empty_type: string
         label: Nom (interne)
         comment: Affiché aux éditeurs seulement — jamais aux visiteurs.
       toEmail:
         type: text
+        options:
+          empty_type: string
         label: Courriel destinataire
         # P-16 : champ SENSIBLE — voir aussi guide-edition.md §Formulaires.
         comment: >-
@@ -1566,13 +1839,19 @@ collections_config:
           destinataire global du site (variable FORMS_TO_EMAIL).
       subject:
         type: text
+        options:
+          empty_type: string
         label: Objet du courriel
         comment: Vide = objet générique.
       submitLabel:
         type: text
+        options:
+          empty_type: string
         label: Libellé du bouton d'envoi
       consentText:
         type: textarea
+        options:
+          empty_type: string
         label: Texte de consentement
         comment: Mention Loi 25 affichée au-dessus du bouton (optionnelle).
       fields:
@@ -1622,6 +1901,8 @@ collections_config:
     _inputs:
       title:
         type: text
+        options:
+          empty_type: string
         label: Nom (interne)
         comment: Affiché aux éditeurs seulement — jamais aux visiteurs.
       enabled:
@@ -1653,18 +1934,28 @@ collections_config:
         label: Textes (EN)
       before:
         type: text
+        options:
+          empty_type: string
         label: Texte (avant la partie en gras)
       strong:
         type: text
+        options:
+          empty_type: string
         label: Partie en gras
       after:
         type: textarea
+        options:
+          empty_type: string
         label: Texte (après la partie en gras)
       linkLabel:
         type: text
+        options:
+          empty_type: string
         label: Libellé du lien
       linkHref:
         type: text
+        options:
+          empty_type: string
         label: Lien de l'annonce
         comment: Sans préfixe de langue (ex. /produits). Commun aux deux langues.
 
@@ -1727,6 +2018,8 @@ collections_config:
           « Lien parent » (et aux « Liens parents supplémentaires »).
       parentHref:
         type: text
+        options:
+          empty_type: string
         label: Lien parent
         comment: >-
           Doit correspondre au lien d'une entrée du menu principal (ex.
@@ -1740,6 +2033,8 @@ collections_config:
           menu principal.
       ariaLabel:
         type: text
+        options:
+          empty_type: string
         label: Libellé d'accessibilité
       columns:
         type: array
@@ -1758,6 +2053,7 @@ collections_config:
           Champ hérité (plus affiché depuis la refonte 2026-08) — conservé pour
           compatibilité.
         options:
+          empty_type: string
           values:
             - strategy
             - cloud
@@ -1774,6 +2070,8 @@ collections_config:
           Carte à droite du méga-menu Services (titre, texte, lien). Optionnelle.
       body:
         type: textarea
+        options:
+          empty_type: string
         label: Texte
       image:
         type: image
@@ -1786,6 +2084,7 @@ collections_config:
         # images servies telles quelles (static: public → l'adresse commence
         # à /images/…).
         options:
+          empty_type: string
           paths:
             static: public
             uploads: public/images/nav
@@ -1796,6 +2095,8 @@ collections_config:
           Bandeau sous les colonnes (texte court + 2 liens max). Optionnel.
       text:
         type: textarea
+        options:
+          empty_type: string
         label: Texte
       # Méga-menu Ressources : seuls les TEXTES sont éditables — les catégories
       # (étiquettes du blogue) et les derniers articles sont générés au build
@@ -1809,29 +2110,43 @@ collections_config:
           dont le lien est identique au « Lien parent ».
       intro:
         type: textarea
+        options:
+          empty_type: string
         label: Texte d'introduction
       ctaLabel:
         type: text
+        options:
+          empty_type: string
         label: Libellé du bouton
         comment: >-
           Méga-menu Ressources : le bouton mène au centre de ressources (le
           « Lien parent »). Carte mise en avant : le lien du champ « Lien ».
       categoriesTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre de la colonne Catégories
       latestTitle:
         type: text
+        options:
+          empty_type: string
         label: Titre de la colonne Derniers articles
       label:
         type: text
+        options:
+          empty_type: string
         label: Libellé
       href:
         type: text
+        options:
+          empty_type: string
         label: Lien
         comment: >-
           Sans préfixe de langue (ex. /contact), ou URL https:// complète.
       service:
         type: text
+        options:
+          empty_type: string
         label: Service (au lieu du lien)
         comment: >-
           Alternative à « Lien » pour une entrée du menu ou d'une colonne du
@@ -1888,6 +2203,7 @@ _structures:
             type: select
             label: Icône (optionnelle)
             options:
+              empty_type: string
               allow_empty: true
               values:
                 - dossier
@@ -1926,11 +2242,14 @@ _structures:
         _inputs:
           text:
             type: textarea
+            options:
+              empty_type: string
             label: Texte
           peau:
             type: select
             label: Peau de la carte
             options:
+              empty_type: string
               allow_empty: false
               values:
                 - blanche
@@ -1940,6 +2259,7 @@ _structures:
             type: select
             label: Taille dans la grille
             options:
+              empty_type: string
               allow_empty: false
               values:
                 - grande
@@ -1953,6 +2273,7 @@ _structures:
             type: select
             label: Icône
             options:
+              empty_type: string
               allow_empty: true
               values:
                 - fenetre
@@ -1963,10 +2284,14 @@ _structures:
                 - code
           image:
             type: text
+            options:
+              empty_type: string
             label: Image (chemin public)
             comment: "Cartes « grande » seulement. Ex. /images/services/… — servie telle quelle."
           href:
             type: text
+            options:
+              empty_type: string
             label: Lien (optionnel)
             comment: Rend la carte entière cliquable. URL finale, préfixe de langue inclus.
 
@@ -1989,14 +2314,19 @@ _structures:
         _inputs:
           text:
             type: textarea
+            options:
+              empty_type: string
             label: Texte
           ctaLabel:
             type: text
+            options:
+              empty_type: string
             label: Libellé du lien
           icon:
             type: select
             label: Icône
             options:
+              empty_type: string
               allow_empty: true
               values:
                 - calendrier
@@ -2023,10 +2353,14 @@ _structures:
         _inputs:
           value:
             type: text
+            options:
+              empty_type: string
             label: Valeur
             comment: "Chiffre ou mot mis en avant (ex. « ROI », « 100 % »)."
           label:
             type: text
+            options:
+              empty_type: string
             label: Étiquette
             comment: "Petite ligne en majuscules sous la valeur."
 
@@ -2048,6 +2382,8 @@ _structures:
         _inputs:
           number:
             type: text
+            options:
+              empty_type: string
             label: Numéro
             comment: "Affiché dans la tuile bleue (ex. « 1 »)."
           bullets:
@@ -2072,11 +2408,14 @@ _structures:
         _inputs:
           text:
             type: text
+            options:
+              empty_type: string
             label: Texte
           icon:
             type: select
             label: Icône
             options:
+              empty_type: string
               allow_empty: false
               values:
                 - coche
@@ -2102,11 +2441,14 @@ _structures:
         _inputs:
           text:
             type: textarea
+            options:
+              empty_type: string
             label: Texte
           icon:
             type: select
             label: Icône
             options:
+              empty_type: string
               allow_empty: true
               values:
                 - trousse
@@ -2145,6 +2487,7 @@ _structures:
             type: select
             label: Peau de la carte
             options:
+              empty_type: string
               allow_empty: false
               values:
                 - claire
@@ -2156,6 +2499,8 @@ _structures:
               « Image ») ; bleue = aplat bleu ; nuit = aplat marine.
           linkLabel:
             type: text
+            options:
+              empty_type: string
             label: Libellé du lien (surcharge)
             comment: Vide = libellé commun de la section (« Libellé du bouton des cartes »).
           # Référence bento 2026-08-11 : carte large. (Le pictogramme `icon`
@@ -2174,6 +2519,7 @@ _structures:
             type: select
             label: Couleur d'accent (héritée — plus affichée)
             options:
+              empty_type: string
               allow_empty: false
               values:
                 - '#1a5bff'
@@ -2209,18 +2555,25 @@ _structures:
         _inputs:
           text:
             type: textarea
+            options:
+              empty_type: string
             label: Texte
           image:
             type: text
+            options:
+              empty_type: string
             label: Image (chemin public)
             comment: "Ex. /images/home/sevoc.png — servie telle quelle."
           ctaLabel:
             type: text
+            options:
+              empty_type: string
             label: Libellé du lien
           icon:
             type: select
             label: Icône
             options:
+              empty_type: string
               allow_empty: true
               values:
                 - ecran
@@ -2244,9 +2597,13 @@ _structures:
         _inputs:
           label:
             type: text
+            options:
+              empty_type: string
             label: Libellé (majuscules)
           text:
             type: textarea
+            options:
+              empty_type: string
             label: Texte d'appui
 
   form_fields:
@@ -2285,6 +2642,8 @@ _structures:
           # collection forms — tous les _inputs de champ vivent au même niveau.
           label:
             type: text
+            options:
+              empty_type: string
             label: Libellé du champ
           required:
             type: switch
@@ -2300,6 +2659,7 @@ _structures:
               d'affichage » ne s'appliquent qu'aux types indiqués dans leur
               description.
             options:
+              empty_type: string
               values:
                 - text
                 - email
@@ -2316,6 +2676,7 @@ _structures:
               champs « demi » consécutifs se placent côte à côte (ex. Prénom /
               Nom). Présentation seulement.
             options:
+              empty_type: string
               values:
                 - plein
                 - demi
@@ -2332,9 +2693,13 @@ _structures:
           # existante). Chaque option est une simple chaîne.
           options[*]:
             type: text
+            options:
+              empty_type: string
             label: Option
           value:
             type: text
+            options:
+              empty_type: string
             label: Valeur (champ caché)
             comment: >-
               Type « hidden » seulement. Jetons remplacés à la publication :
@@ -2352,6 +2717,8 @@ _structures:
               remplie).
           field:
             type: text
+            options:
+              empty_type: string
             label: Champ pilote (libellé exact)
             comment: >-
               Recopier EXACTEMENT le libellé d'une liste déroulante ou d'une
@@ -2359,6 +2726,8 @@ _structures:
               publication avec un message clair.
           equals:
             type: text
+            options:
+              empty_type: string
             label: Valeur attendue
             comment: >-
               Une option de la liste pilote, ou « oui » pour une case à
@@ -2420,9 +2789,13 @@ _structures:
         _inputs:
           label:
             type: text
+            options:
+              empty_type: string
             label: Libellé du lien
           href:
             type: text
+            options:
+              empty_type: string
             label: Lien
             comment: >-
               URL finale, préfixe de langue inclus (ex. « /fr/contact »).
@@ -2498,6 +2871,8 @@ _structures:
         _inputs:
           title:
             type: text
+            options:
+              empty_type: string
             label: Titre de la colonne
           links:
             type: array
@@ -2563,19 +2938,29 @@ _structures:
         _inputs:
           number:
             type: text
+            options:
+              empty_type: string
             label: Numéro
             comment: "Ex. « 01 » — affiché en gros chiffre pâle."
           title:
             type: text
+            options:
+              empty_type: string
             label: Titre de la carte
           text:
             type: textarea
+            options:
+              empty_type: string
             label: Texte de la carte
           ctaLabel:
             type: text
+            options:
+              empty_type: string
             label: Libellé du bouton (optionnel)
           ctaHref:
             type: text
+            options:
+              empty_type: string
             label: Lien du bouton (optionnel)
             comment: "URL finale, préfixe de langue inclus (ex. /fr/contact)."
 
@@ -2600,13 +2985,19 @@ _structures:
         _inputs:
           year:
             type: text
+            options:
+              empty_type: string
             label: Année
             comment: "Ex. « 2003 » — affichée en gros dans la case."
           title:
             type: text
+            options:
+              empty_type: string
             label: Titre du jalon
           text:
             type: textarea
+            options:
+              empty_type: string
             label: Détail (optionnel)
           accent:
             type: switch
@@ -2635,6 +3026,8 @@ _structures:
         _inputs:
           title:
             type: text
+            options:
+              empty_type: string
             label: Titre de la colonne
           items:
             type: array
@@ -2642,6 +3035,8 @@ _structures:
             comment: "Une technologie / un outil par ligne."
           items[*]:
             type: text
+            options:
+              empty_type: string
             label: Élément
           subgroup:
             type: object
@@ -2651,6 +3046,8 @@ _structures:
               Laisser l'étiquette et la liste vides pour ne pas l'afficher.
           label:
             type: text
+            options:
+              empty_type: string
             label: Étiquette du sous-groupe
 
   # ---- Structures des collections « Page Contact » / « Page Carrières »
@@ -2676,18 +3073,23 @@ _structures:
         _inputs:
           city:
             type: text
+            options:
+              empty_type: string
             label: Ville
           lines:
             type: array
             label: Lignes d'adresse
           lines[*]:
             type: text
+            options:
+              empty_type: string
             label: Ligne
           image:
             type: image
             label: Photo du bureau
             comment: Partagée entre les deux langues — téléverser une seule fois.
             options:
+              empty_type: string
               paths:
                 static: public
                 uploads: public/images/contact
@@ -2713,6 +3115,7 @@ _structures:
             label: Icône
             comment: Liste fermée — les pictogrammes sont dessinés par le site.
             options:
+              empty_type: string
               values:
                 - etoile
                 - groupe
@@ -2721,6 +3124,8 @@ _structures:
                 - insigne
           label:
             type: text
+            options:
+              empty_type: string
             label: Libellé de la valeur
 
   # Atout « Pourquoi rejoindre » {icon, title, text}. Mêmes règles de clés
@@ -2744,6 +3149,7 @@ _structures:
             label: Icône
             comment: Liste fermée — les pictogrammes sont dessinés par le site.
             options:
+              empty_type: string
               values:
                 - croissance
                 - progression
@@ -2751,9 +3157,13 @@ _structures:
                 - formation
           title:
             type: text
+            options:
+              empty_type: string
             label: Titre de l'atout
           text:
             type: textarea
+            options:
+              empty_type: string
             label: Texte de l'atout
 
   # Carte témoignage {image, quote, name, role} de la page Carrières.
@@ -2777,15 +3187,22 @@ _structures:
             label: Portrait
             comment: Partagé entre les deux langues — téléverser une seule fois.
             options:
+              empty_type: string
               paths:
                 static: public
                 uploads: public/images/carrieres
           quote:
             type: textarea
+            options:
+              empty_type: string
             label: Citation
           name:
             type: text
+            options:
+              empty_type: string
             label: Prénom
           role:
             type: text
+            options:
+              empty_type: string
             label: Rôle / poste

@@ -1,5 +1,47 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection as astroDefineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+
+/**
+ * Tolérance aux champs VIDÉS dans CloudCannon (incident du 14 sept. 2026).
+ *
+ * Quand un éditeur efface un champ texte, CloudCannon enregistre `null` — pas
+ * `""`. Tous nos schémas déclarent `z.string()` / `.optional()` / `.default()`
+ * qui refusent `null` → `InvalidContentEntryDataError`, et le premier fichier
+ * touché fait tomber TOUT le build de l'hébergeur (18 champs / 9 fichiers le
+ * 14 sept., 26 / 13 le 15). Les composants traitent déjà `""` comme « absent »,
+ * donc `null → ""` est la conversion sûre — appliquée EN UN SEUL ENDROIT, avant
+ * validation, à toutes les collections : on remplace `defineCollection` par
+ * une version qui pré-traite les données (fonction-schéma `({ image }) => …`
+ * ou objet-schéma, les deux formes du fichier). Les seuls champs non-texte
+ * (interrupteurs, nombres, dates) ne reçoivent jamais `null` du CMS — les
+ * switches écrivent `false`, le seul `z.number()` (solutions.order) a son
+ * propre repli ci-dessous. Ceinture et bretelles côté CMS :
+ * `empty_type: string` sur les entrées texte de cloudcannon.config.yml.
+ */
+function nullsToEmpty(value: unknown): unknown {
+  if (value === null) return '';
+  if (Array.isArray(value)) return value.map(nullsToEmpty);
+  // Objets SIMPLES seulement : le frontmatter Markdown arrive avec de vrais
+  // `Date` (champ `date:` des articles) qu'il ne faut surtout pas aplatir.
+  if (typeof value === 'object' && Object.getPrototypeOf(value) === Object.prototype) {
+    return Object.fromEntries(
+      Object.entries(value as Record<string, unknown>).map(([k, v]) => [k, nullsToEmpty(v)]),
+    );
+  }
+  return value;
+}
+
+type CollectionConfig = Parameters<typeof astroDefineCollection>[0];
+const defineCollection = ((config: CollectionConfig) => {
+  const { schema } = config;
+  const tolerant =
+    typeof schema === 'function'
+      ? (ctx: Parameters<typeof schema>[0]) => z.preprocess(nullsToEmpty, schema(ctx))
+      : schema
+        ? z.preprocess(nullsToEmpty, schema)
+        : schema;
+  return astroDefineCollection({ ...config, schema: tolerant } as CollectionConfig);
+}) as typeof astroDefineCollection;
 
 /**
  * Content collections (Astro Content Layer).
@@ -982,7 +1024,9 @@ const solutions = defineCollection({
     // catalogue (la première trouvée dans l'ordre `order` gagne).
     featured: z.boolean().default(false),
     // Ordre d'affichage dans la grille (croissant).
-    order: z.number().default(999),
+    // Seul nombre du CMS : un champ vidé arrive en `""` (voir nullsToEmpty) →
+    // retombe sur le défaut plutôt que de casser le build.
+    order: z.preprocess((v) => (v === '' ? undefined : v), z.number().default(999)),
     href: z.string().default(''),
     docHref: z.string().default(''),
   }),

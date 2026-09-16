@@ -30,7 +30,7 @@
           "href": "/fr/services/cybersecurite",
           "image": "/images/home/expertise-cybersecurite.jpg",
           "variant": "image",
-          "linkLabel": null,
+          "linkLabel": "",
           "wide": true
         },
         {
@@ -52,7 +52,7 @@
           "href": "/fr/services/services-infonuagiques",
           "image": "",
           "variant": "image",
-          "linkLabel": null,
+          "linkLabel": "",
           "wide": false
         },
         {
@@ -60,7 +60,7 @@
           "title": "Services applicatifs",
           "accent": "#1a5bff",
           "description": "Concevez, modernisez et maintenez les applications qui soutiennent vos opérations.",
-          "href": "fr/services/services-applicatifs/",
+          "href": "/fr/services/services-applicatifs",
           "image": "",
           "variant": "claire",
           "linkLabel": "",
@@ -106,14 +106,14 @@
       "_bookshop_name": "home-solutions",
       "type": "home-solutions",
       "title": "Nos solutions phares",
-      "ctaLabel": null,
-      "ctaHref": null,
+      "ctaLabel": "",
+      "ctaHref": "",
       "items": [
         {
           "title": "Ø Studio",
           "text": "Ø Studio est le studio de développement applicatif de Victrix, spécialisé en Power Platform et Dynamics 365. Son équipe multidisciplinaire automatise vos processus et livre vos applications, clés en main ou sur mesure, à vitesse grand V.",
           "image": "/images/home/expertise-productivite.jpg",
-          "href": "/fr/productivite/services/o-studio/",
+          "href": "/fr/services/productivite/o-studio",
           "ctaLabel": "Découvrez Ø Studio",
           "icon": "ecran"
         },
@@ -121,7 +121,7 @@
           "title": "SEvOC",
           "text": "Un SOC traditionnel se limite à livrer des alertes. Le SEvOC les prend en charge et fait évoluer votre posture de sécurité, avec des analystes bilingues attitrés à votre environnement et l'appui direct de nos équipes infrastructure et infonuagique.",
           "image": "/images/home/sevoc.png",
-          "href": "/fr/cybersecurite/services/centre-operationnel-de-securite-evolutif/",
+          "href": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
           "ctaLabel": "Découvrez SEvOC",
           "icon": "bouclier"
         },
@@ -129,7 +129,7 @@
           "title": "Migration vers Azure",
           "text": "Victrix accélère votre transition vers Azure. Notre méthodologie, fondée sur le Cloud Adoption Framework de Microsoft, sécurise chaque étape de la migration de vos applications et de vos serveurs.",
           "image": "/images/home/expertise-infonuagique.jpg",
-          "href": "/fr/services-infonuagiques/services/migration-vers-azure/",
+          "href": "/fr/services/services-infonuagiques/migration-vers-azure",
           "ctaLabel": "Découvrez Azure",
           "icon": "nuage"
         }
