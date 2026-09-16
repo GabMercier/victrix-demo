@@ -1,12 +1,14 @@
 {
+  "_schema": "default",
   "title": "Loi 25: Êtes-vous en conformité?",
   "description": "Victrix aide les grandes organisations à assurer leur conformité à la loi 25 sur la protection des renseignements personnels. Êtes-vous conforme?",
+  "noindex": false,
   "sections": [
     {
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
-      "title": "Loi 25: Êtes-vous en conformité?",
+      "title": "Loi 25 : Êtes-vous en conformité?",
       "titleHighlight": "conformité",
       "lead": "Avec l’entrée en vigueur des nouvelles dispositions de la Loi 25, la mise en conformité n’est pas seulement obligatoire : c’est une question de crédibilité et de sécurité pour votre entreprise.",
       "ctaLabel": "Assurez votre conformité",
@@ -16,8 +18,8 @@
     },
     {
       "type": "bento-metrics",
-      "title": "Pourquoi choisir Victrix ?",
-      "intro": "",
+      "title": "Pourquoi choisir Victrix?",
+      "intro": "Victrix est votre cabinet-conseil TI de confiance. Notre expertise en cybersécurité et nos connaissances approfondies des exigences de votre secteur nous permettent de vous offrir un accompagnement de bout en bout pour votre mise en conformité à la Loi 25.",
       "fond": "blanc",
       "featured": {
         "title": "Transformer les défis réglementaires en avantages compétitifs",
@@ -28,8 +30,8 @@
       "aside": {
         "icon": "bouclier",
         "title": "Évaluation personnalisée",
-        "text": "Pour une évaluation complète et personnalisée de votre conformité à la Loi 25, contactez-nous.",
-        "linkLabel": "Contactez-nous",
+        "text": "Nous offrons une évaluation complète et personnalisée de votre conformité à la Loi 25.",
+        "linkLabel": "Planifiez une consultation",
         "linkHref": "/fr/contact"
       }
     },
@@ -41,19 +43,18 @@
         "Cybersécurité",
         "Conseil stratégique"
       ],
-      "ctaLabel": "Voir toutes les ressources",
+      "ctaLabel": "Explorez toutes nos ressources",
       "ctaHref": "/fr/ressources"
     },
     {
       "type": "cta",
-      "title": "Votre entreprise est-elle conforme ?",
+      "title": "Votre entreprise est-elle conforme?",
       "body": "Notre expertise vous permettra de transformer les défis réglementaires en avantages compétitifs.",
-      "ctaLabel": "Contactez-nous",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit"
     }
-  ],
-  "seoTitle": "Loi 25: votre entreprise est-elle conforme?"
+  ]
 }
