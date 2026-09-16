@@ -1,0 +1,75 @@
+# =============================================================================
+# Spec Bookshop — section « Ligne du temps » (palette partagée).
+# Voir hero.bookshop.yml pour les conventions communes.
+#
+# Le sous-tableau `items` est re-pointé vers _structures.timeline_items
+# (déclarée à la main dans cloudcannon.config.yml) — même GOTCHA que
+# numbered-cards/faq/stats : sans re-pointage, le `items` générique cascade.
+#
+# Plafond rendu : 24 jalons (6 rangées de 4 en serpentin desktop) — les
+# suivants sont ignorés (classes littérales JIT, voir timeline.astro).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Ligne du temps"
+  description: "Chronologie en serpentin (desktop) ou en colonne (mobile) : une case par année, jalons marquants mis en évidence (case Bleu nuit). Pensée pour « Notre histoire »."
+  icon: timeline
+  picker_preview:
+    # Vignette du sélecteur « Add Section » — clé image pointée EXPLICITEMENT
+    # sur l'URL déterministe où @bookshop/generate reloge preview.png au
+    # postbuild (même patron que numbered-cards, 2026-08-17).
+    image: "/_cloudcannon/bookshop_thumbs/timeline/preview.png"
+    text: "Ligne du temps"
+    subtext: Chronologie serpentin, une case par année
+  preview:
+    icon: timeline
+    text:
+      - key: title
+      - text: Ligne du temps
+
+blueprint:
+  type: timeline
+  title: "Notre histoire"
+  intro: ""
+  tone: default
+  items:
+    - year: "2003"
+      title: "Création de l'entreprise"
+      text: ""
+      accent: true
+    - year: "2010"
+      title: "Un jalon de croissance"
+      text: "Une phrase de détail optionnelle."
+      accent: false
+    - year: "2019"
+      title: "Un jalon marquant"
+      text: ""
+      accent: true
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre de la section"
+  intro:
+    type: textarea
+    label: "Introduction (optionnelle)"
+    comment: "Court paragraphe sous le titre. Peut contenir des <strong>."
+  tone:
+    type: select
+    label: "Fond de section"
+    comment: "« default » = blanc ; « tint » = gris pâle."
+    options:
+      values:
+        - default
+        - tint
+  items:
+    type: array
+    label: "Jalons"
+    comment: "Ordre chronologique conseillé. Maximum affiché : 24 jalons."
+    options:
+      structures: _structures.timeline_items

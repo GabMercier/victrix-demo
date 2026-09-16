@@ -31,6 +31,21 @@
       ]
     },
     {
+      "_bookshop_name": "timeline",
+      "type": "timeline",
+      "title": "Timeline (demo)",
+      "intro": "Serpentine chronology: key milestones stand out.",
+      "tone": "tint",
+      "items": [
+        { "year": "2003", "title": "Company founded", "text": "", "accent": true },
+        { "year": "2008", "title": "First acquisition", "text": "An optional detail sentence.", "accent": false },
+        { "year": "2012", "title": "Team growth", "text": "", "accent": false },
+        { "year": "2016", "title": "New office", "text": "", "accent": false },
+        { "year": "2019", "title": "International expansion", "text": "", "accent": true },
+        { "year": "2023", "title": "New offering", "text": "", "accent": true }
+      ]
+    },
+    {
       "_bookshop_name": "callout",
       "type": "callout",
       "title": "Ready to move forward?",

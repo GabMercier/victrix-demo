@@ -43,6 +43,21 @@
       ]
     },
     {
+      "_bookshop_name": "timeline",
+      "type": "timeline",
+      "title": "Ligne du temps (démo)",
+      "intro": "Chronologie en serpentin : les jalons marquants sont mis en évidence.",
+      "tone": "tint",
+      "items": [
+        { "year": "2003", "title": "Création de l'entreprise", "text": "", "accent": true },
+        { "year": "2008", "title": "Première acquisition", "text": "Une phrase de détail optionnelle.", "accent": false },
+        { "year": "2012", "title": "Croissance des équipes", "text": "", "accent": false },
+        { "year": "2016", "title": "Nouveau bureau", "text": "", "accent": false },
+        { "year": "2019", "title": "Expansion internationale", "text": "", "accent": true },
+        { "year": "2023", "title": "Nouvelle offre", "text": "", "accent": true }
+      ]
+    },
+    {
       "_bookshop_name": "callout",
       "type": "callout",
       "title": "Prêt à passer à l'action ?",

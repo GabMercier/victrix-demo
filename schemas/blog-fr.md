@@ -10,12 +10,16 @@
 #  - slug reste vide au départ : l'URL retombe alors sur le nom de fichier
 #    (src/i18n/blog.ts). Le renseigner (FR = nom de fichier) pour que le lien
 #    d'aperçu CloudCannon ({slug} dans l'URL de la collection) soit exact.
+#  - seoTitle/noindex : pré-exposés pour que les champs SEO apparaissent dès
+#    la création (sinon ils n'apparaissent qu'après un premier enregistrement).
 title: "Nouvel article"
 slug: ""
 date: 2026-01-01
 excerpt: ""
 coverImage: ""
 tags: []
+seoTitle: ""
+noindex: false
 ---
 
 Contenu de l'article…

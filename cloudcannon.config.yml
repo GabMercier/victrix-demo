@@ -41,6 +41,8 @@ paths:
 # 2026-07-30) : le CONTENU du site d'abord, les outils marketing ensuite, la
 # configuration à la fin. Une collection absente d'un groupe resterait visible
 # sous « Autres » — garder cette liste alignée sur collections_config.
+# Recette éditeur 2026-09-09 : la Navigation (méga-menu) est rangée avec le
+# contenu du site, à côté des Textes du site (qui portent le pied de page).
 collection_groups:
   - heading: Contenu du site
     collections:
@@ -51,6 +53,7 @@ collection_groups:
       - blog
       - contact
       - carrieres
+      - navigation
       - site
       - pagesSysteme
   - heading: Marketing
@@ -58,7 +61,6 @@ collection_groups:
       - landing
       - forms
       - annonces
-      - navigation
   - heading: Configuration
     collections:
       - redirects
@@ -706,7 +708,10 @@ collections_config:
   # désactiver « Masquer des moteurs de recherche » quand la page est prête.
   pages:
     path: src/content/pages
-    name: Pages
+    # « Pages générales » plutôt que « Pages » (recette éditeur 2026-09-09 :
+    # l'appellation nue laissait croire que TOUTES les pages du site vivaient
+    # ici, alors que services/solutions/articles ont leurs collections).
+    name: Pages générales
     singular_name: Page
     description: >-
       Pages générales du site (Découvrir, Expertises, Produits, Secteurs,
@@ -2573,6 +2578,40 @@ _structures:
             type: text
             label: Lien du bouton (optionnel)
             comment: "URL finale, préfixe de langue inclus (ex. /fr/contact)."
+
+  # Jalons de la « Ligne du temps » ({year, title, text, accent}) — section
+  # timeline (Notre histoire de Découvrir). Re-pointée par timeline.bookshop.yml.
+  timeline_items:
+    values:
+      - label: Jalon
+        icon: flag
+        preview:
+          icon: flag
+          text:
+            - key: year
+            - text: Jalon
+          subtext:
+            - key: title
+        value:
+          year: ''
+          title: ''
+          text: ''
+          accent: false
+        _inputs:
+          year:
+            type: text
+            label: Année
+            comment: "Ex. « 2003 » — affichée en gros dans la case."
+          title:
+            type: text
+            label: Titre du jalon
+          text:
+            type: textarea
+            label: Détail (optionnel)
+          accent:
+            type: switch
+            label: Mettre en évidence
+            comment: "Case accentuée (fond Bleu nuit + gros point) pour les jalons marquants."
 
   # Colonnes de technologies ({title, items[], subgroup?{label, items[]}}) pour
   # la section « tech-columns » (P-07). Re-pointée par tech-columns.bookshop.yml.

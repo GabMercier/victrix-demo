@@ -11,12 +11,16 @@
 #    (src/i18n/blog.ts). Fill it in (EN = the English slug) so the CloudCannon
 #    preview link ({slug} in the collection URL) is exact. Pair the
 #    translation by reusing the SAME FILENAME as the fr/ counterpart.
+#  - seoTitle/noindex: pre-exposed so the SEO fields show up at creation time
+#    (otherwise they only appear after a first save).
 title: "New article"
 slug: ""
 date: 2026-01-01
 excerpt: ""
 coverImage: ""
 tags: []
+seoTitle: ""
+noindex: false
 ---
 
 Article content…

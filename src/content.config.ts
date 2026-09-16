@@ -783,6 +783,25 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // l'éditeur visuel (données injectées absentes).
       tags: z.array(z.string()).default([]),
     }),
+    z.object({
+      type: z.literal('timeline'),
+      title: z.string(),
+      intro: z.string().optional(),
+      tone: z.enum(['default', 'tint']).default('default'),
+      // Jalons chronologiques (serpentin desktop, vertical mobile). Plafond
+      // rendu : 24 jalons (6 rangées de 4 — classes littérales JIT, voir le
+      // composant). `accent` = jalon marquant (carte Bleu nuit + gros point).
+      items: z
+        .array(
+          z.object({
+            year: z.string(),
+            title: z.string().default(''),
+            text: z.string().default(''),
+            accent: z.boolean().default(false),
+          }),
+        )
+        .default([]),
+    }),
   ]);
 }
 

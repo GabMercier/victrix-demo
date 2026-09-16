@@ -73,25 +73,25 @@
       ]
     },
     {
-      "type": "numbered-cards",
-      "sectionTitle": "Notre histoire",
+      "type": "timeline",
+      "title": "Notre histoire",
       "intro": "Plus de vingt ans de croissance, d'acquisitions et d'expansion internationale.",
-      "columns": "3",
+      "tone": "default",
       "items": [
-        { "number": "2003", "title": "Création de Victrix", "text": "" },
-        { "number": "2004", "title": "Acquisition d'ELFIQ Networks", "text": "Acquisition de la division de services conseils TI du Groupe 3-Soft" },
-        { "number": "2007", "title": "Acquisition de Cogeti Informatique", "text": "Acquisition d'Informatique Stratégique · Acquisition de Noxent" },
-        { "number": "2008", "title": "Acquisition de Compu-Sys", "text": "" },
-        { "number": "2009", "title": "Acquisition d'IPtel", "text": "" },
-        { "number": "2010", "title": "Acquisition d'Expra Solutions", "text": "" },
-        { "number": "2011", "title": "Acquisition de Progilan", "text": "" },
-        { "number": "2012", "title": "Acquisition de Teltech", "text": "" },
-        { "number": "2015", "title": "Acquisition d'AGRM", "text": "" },
-        { "number": "2016", "title": "Acquisition de Noverka Conseil", "text": "" },
-        { "number": "2017", "title": "Acquisition de VisionTI", "text": "" },
-        { "number": "2019", "title": "Victrix rejoint l'écosystème international Alan Allman Associates", "text": "" },
-        { "number": "2023", "title": "La Société Conseil Lambda rejoint Victrix", "text": "" },
-        { "number": "2024", "title": "En se rapprochant de COMITEM, Victrix étend son offre en France", "text": "" }
+        { "year": "2003", "title": "Création de Victrix", "text": "", "accent": true },
+        { "year": "2004", "title": "Acquisition d'ELFIQ Networks", "text": "Acquisition de la division de services conseils TI du Groupe 3-Soft", "accent": false },
+        { "year": "2007", "title": "Acquisition de Cogeti Informatique", "text": "Acquisition d'Informatique Stratégique · Acquisition de Noxent", "accent": true },
+        { "year": "2008", "title": "Acquisition de Compu-Sys", "text": "", "accent": false },
+        { "year": "2009", "title": "Acquisition d'IPtel", "text": "", "accent": false },
+        { "year": "2010", "title": "Acquisition d'Expra Solutions", "text": "", "accent": false },
+        { "year": "2011", "title": "Acquisition de Progilan", "text": "", "accent": false },
+        { "year": "2012", "title": "Acquisition de Teltech", "text": "", "accent": false },
+        { "year": "2015", "title": "Acquisition d'AGRM", "text": "", "accent": false },
+        { "year": "2016", "title": "Acquisition de Noverka Conseil", "text": "", "accent": true },
+        { "year": "2017", "title": "Acquisition de VisionTI", "text": "", "accent": false },
+        { "year": "2019", "title": "Victrix rejoint l'écosystème international Alan Allman Associates", "text": "", "accent": true },
+        { "year": "2023", "title": "La Société Conseil Lambda rejoint Victrix", "text": "", "accent": true },
+        { "year": "2024", "title": "En se rapprochant de COMITEM, Victrix étend son offre en France", "text": "", "accent": false }
       ]
     },
     {

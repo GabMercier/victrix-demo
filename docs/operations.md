@@ -278,15 +278,25 @@ Pages Function Cloudflare) n'y tourne pas. Répartition :
   production** (site `main` → Site Settings → Builds). Posable dès que ce
   site existe — balises gelées, elles ne s'exécutent qu'après le
   consentement Loi 25.
-- **Les 6 clés formulaires** (le reste du tableau) : en attente de la
-  décision « backend formulaires » — où fera-t-on tourner `/api/forms` au
-  go-live ? Options : (a) conserver un déploiement Cloudflare minimal
-  SEULEMENT pour ce endpoint (les formulaires pointent alors une URL
-  absolue) ; (b) porter vers Azure Functions
-  (`docs/options-editeur-hebergement.md` §3.3) ; (c) service SaaS de
-  formulaires. **Ne poser `PUBLIC_FORMS_ENABLED` sur AUCUN build tant que
-  cette décision n'est pas prise** — les sections « form » deviendraient de
-  vrais POST sans récepteur.
+- **Les 6 clés formulaires** (le reste du tableau) : **décision prise le
+  2026-08-25 — spike CloudCannon Forms d'abord, fallback Worker Cloudflare.**
+  Le spike (~0,5 j, `docs/plan-convergence-migration.md` Phase 4) vérifie :
+  destinataire par formulaire, redirect `/merci` PAR LANGUE, stockage des
+  soumissions au dashboard, anti-pourriel + impact CSP, case Loi 25, tokens
+  `{{page.*}}`/`{{url.*}}`. Points à ne pas perdre silencieusement (forces
+  du `/api/forms` actuel) : validation serveur des requis, whitelist des
+  `select`, sujet résolu de la définition, courriel de confirmation
+  visiteur (P-08). Si un point bloque → fallback : Worker Cloudflare dédié
+  réutilisant `src/pages/api/forms.ts` + SMTP2GO tel quel (une modif alors
+  requise : 303 `/merci` en URL ABSOLUE vers le site de production, sinon
+  le visiteur reste sur le domaine du worker). Les 6 clés atterrissent là
+  où le spike conclut. **État des comptes au 2026-08-25 : NI SMTP2GO NI
+  Turnstile créés** (voir « Où créer les comptes/clés » ci-dessous). En
+  attendant, la vérification de bout en bout reste possible sur la
+  préversion Cloudflare `victrix-demo.pages.dev` (poser les clés dans
+  Pages → redéployer). **Ne poser `PUBLIC_FORMS_ENABLED` sur AUCUN build
+  CloudCannon** — hébergement statique, les sections « form »
+  deviendraient de vrais POST sans récepteur.
 
 Référence des variables (inchangée) :
 

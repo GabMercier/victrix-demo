@@ -8,16 +8,17 @@ import { type Locale, localePaths, localizePath, otherLocale } from '../../../i1
  *
  * 2026-08-18 — la MAQUETTE MOCK du portail est RETIRÉE (décision user) : plus
  * de tableau de bord, plus de routes /auth/*, plus de middleware ni de
- * session. Seule cette page de connexion (VISUELLE, bouton désactivé)
- * subsiste — elle est désormais PRÉRENDUE comme le reste du site. Le plan de
- * l'implémentation réelle (Entra ID + Dataverse) reste docs/portail-auth.md ;
- * l'ancien prototype OIDC/PKCE-shaped vit dans l'historique git.
+ * session. 2026-09-10 — carte ÉPURÉE (recette user) : formulaire seul, bouton
+ * ACTIF sans destination (parité site actuel), vue « Mot de passe oublié ».
+ * Page PRÉRENDUE comme le reste du site. Le plan de l'implémentation réelle
+ * (Entra ID + Dataverse) reste docs/portail-auth.md ; l'ancien prototype
+ * OIDC/PKCE-shaped vit dans l'historique git.
  */
 export const getStaticPaths = localePaths;
 
 const { lang } = Astro.props as { lang: Locale };
 
-const title = lang === 'fr' ? 'Mon portail' : 'My portal';
+const title = lang === 'fr' ? 'Portail client' : 'Client portal';
 const description =
   lang === 'fr'
     ? 'Connectez-vous à votre portail client Victrix pour accéder à vos contrats, services et documents.'

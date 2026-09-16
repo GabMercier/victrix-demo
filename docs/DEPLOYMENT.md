@@ -65,9 +65,12 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
   editor-preview content policy.
 - `PUBLIC_GA4_ID` — may be set on the **production** CloudCannon site once it
   exists (`operations.md` §7ter).
-- The 6 forms keys — parked until the forms-backend decision
-  (`operations.md` §7ter). **Never set `PUBLIC_FORMS_ENABLED` on any
-  CloudCannon build** — the POST would have no receiver.
+- The 6 forms keys — backend decided 2026-08-25: CloudCannon Forms spike
+  first, dedicated Cloudflare Worker as fallback (`operations.md` §7ter);
+  the keys land wherever the spike concludes. Until then they may be set on
+  the legacy Cloudflare Pages project for end-to-end verification. **Never
+  set `PUBLIC_FORMS_ENABLED` on any CloudCannon build** — the POST would
+  have no receiver.
 - Portal variables — none are read today (mock removed 2026-08-18); they
   arrive with the real portal work (`docs/portail-auth.md` §7).
 
@@ -76,8 +79,10 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
 - [ ] `/` redirects to `/fr` on the Cloudflare preview (CloudCannon: pending
       `routing.json`, see §6); `/fr` and `/en` load styled.
 - [ ] FR⇄EN language switch lands on the mirrored page.
-- [ ] `/fr/portail` renders the visual login page (button disabled — the
-      interactive portal is out of scope for this version).
+- [ ] `/fr/portail` renders the visual login page (sign-in button enabled but
+      leads nowhere — parity with the current site; « Mot de passe oublié »
+      swaps to the email-only reset form. The interactive portal is out of
+      scope for this version).
 - [ ] `sitemap-index.xml` lists FR + EN pages; `hreflang`/canonical present in `<head>`.
 - [ ] Drafts/scheduled content: remember the §7 caveat — the production
       cloudvent URL currently shows drafts (STATIC_ONLY build). Acceptable
@@ -122,8 +127,10 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
 - [ ] Generate `.cloudcannon/routing.json` (redirects from
       `src/data/redirects.json` + headers mirroring `public/_headers`) and
       verify 301s + CSP/HSTS on the production URL.
-- [ ] Decide + wire the forms backend (`operations.md` §7ter); set the 6 keys
-      there; only then set `PUBLIC_FORMS_ENABLED` on the production build.
+- [ ] Wire the forms backend — decided 2026-08-25: CloudCannon Forms spike
+      first, Cloudflare Worker fallback (`operations.md` §7ter); set the 6
+      keys there; only then set `PUBLIC_FORMS_ENABLED` on the production
+      build.
 - [ ] `astro.config.mjs` `site:` → real domain; `public/robots.txt` `Sitemap:`
       line; re-validate canonical/OG URLs and share cards.
 - [ ] Custom domain on the CloudCannon production site; DNS + 301s from the old
@@ -136,4 +143,8 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
       OAuth worker (`sveltia-cms-auth.…workers.dev`, tombstone note in
       `public/_headers`).
 - [ ] Final WordPress export before decommission: Gravity Forms entries + the 5
-      protected PDFs (see `docs/content-inventory.md` / migration notes).
+      protected PDFs + the **full media library** — copy `wp-content/uploads/`
+      via SFTP/hosting file manager (includes `dlm_uploads/`; the 943-item
+      inventory is `docs/migration/urls-medias.csv`). WP's Tools → Export only
+      emits metadata XML, never the files (see `docs/content-inventory.md` /
+      migration notes).

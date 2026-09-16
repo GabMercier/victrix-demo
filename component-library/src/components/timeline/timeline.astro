@@ -1,0 +1,265 @@
+---
+/**
+ * Section « Ligne du temps » — composant Bookshop (demande user 2026-09-10 :
+ * « Notre histoire » de Découvrir Victrix en serpentin).
+ *
+ * DESSIN : desktop (lg+) = SERPENTIN sur 4 colonnes — la ligne parcourt la
+ * rangée, descend sur le bord extérieur et repart en sens inverse à la rangée
+ * suivante (G→D, puis D→G, etc.). Chaque jalon = un point sur la ligne + une
+ * case (année en gros, titre, détail optionnel). Mobile (<lg) = colonne
+ * verticale classique (ligne à gauche, cases empilées). Les deux rendus sont
+ * des DOM séparés (hidden/lg:hidden) — même contenu, layouts simples chacun.
+ *
+ * `accent: true` = jalon marquant : case Bleu nuit (bg-on-primary-fixed,
+ * patron de la carte sombre bento-metrics) + gros point bleu cerclé.
+ *
+ * Props : { type: "timeline", title, intro?, tone?, items: [{ year, title?,
+ *           text?, accent? }] }
+ *
+ * Contraintes / pièges :
+ * - <h2> de section, <h3> par jalon (année + titre) : le <h1> unique
+ *   appartient au héros.
+ * - PLAFOND 24 JALONS (6 rangées × 4) : le placement en grille passe par des
+ *   classes LITTÉRALES (COL_START/ROW_START — JIT Tailwind ne génère pas les
+ *   classes construites dynamiquement) ; au-delà, les jalons sont ignorés.
+ * - Continuité de la ligne : la grille desktop est SANS gap (gouttières via
+ *   px-3 des cellules) et les segments sont dessinés PAR CELLULE — ne pas
+ *   ajouter de gap-x/gap-y sous peine de couper la ligne.
+ * - Expressions du gabarit SANS annotations ni destructuration de paramètre
+ *   (le compilateur Astro les perd/misparse — cf. page.astro) : tout est
+ *   précalculé et typé dans le frontmatter (PlacedCell/MobileCell).
+ * - `items = []` en secours pour ne pas planter l'éditeur pendant la saisie ;
+ *   toute valeur inattendue retombe sur le défaut.
+ * - Browser-safe (éditeur visuel CloudCannon) : aucun import, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface TimelineItem {
+  year: string;
+  title?: string;
+  text?: string;
+  accent?: boolean;
+}
+interface Props {
+  title: string;
+  intro?: string;
+  tone?: 'default' | 'tint';
+  items: TimelineItem[];
+}
+interface PlacedCell {
+  item: TimelineItem;
+  colClass: string;
+  rowClass: string;
+  padClass: string;
+  isTurnOut: boolean;
+  isTurnIn: boolean;
+  turnRight: boolean;
+  lineClass: string;
+}
+interface MobileCell {
+  item: TimelineItem;
+  vLineClass: string;
+}
+
+const { title, intro, tone = 'default', items = [] } = Astro.props;
+
+// Serpentin : 4 colonnes ; rangées paires G→D, impaires D→G (colonne visuelle
+// inversée). Classes littérales uniquement — d'où le plafond de 6 rangées.
+const COLS = 4;
+const COL_START = ['lg:col-start-1', 'lg:col-start-2', 'lg:col-start-3', 'lg:col-start-4'];
+const ROW_START = [
+  'lg:row-start-1',
+  'lg:row-start-2',
+  'lg:row-start-3',
+  'lg:row-start-4',
+  'lg:row-start-5',
+  'lg:row-start-6',
+];
+const capped = items.slice(0, COLS * ROW_START.length);
+const N = capped.length;
+const lastRow = N > 0 ? Math.floor((N - 1) / COLS) : 0;
+
+const placed: PlacedCell[] = capped.map((item: TimelineItem, i: number) => {
+  const row = Math.floor(i / COLS);
+  const col = i % COLS;
+  const visualCol = row % 2 === 0 ? col : COLS - 1 - col;
+  const hasNextRow = (row + 1) * COLS < N;
+  // Fin de rangée pleine → la ligne descend sur le bord extérieur ; début de
+  // rangée suivante → elle y redescend du haut de la cellule jusqu'à la ligne.
+  const isTurnOut = col === COLS - 1 && hasNextRow;
+  const isTurnIn = col === 0 && row > 0;
+  const turnRight = isTurnOut ? row % 2 === 0 : row % 2 === 1;
+  // Segment horizontal : pleine largeur par défaut, taillé au point aux deux
+  // extrémités de la ligne (départ du 1er jalon, arrivée du dernier).
+  let lineClass = 'left-0 right-0';
+  if (N < 2) lineClass = 'hidden';
+  else if (i === 0) lineClass = 'left-1/2 right-0';
+  else if (i === N - 1) lineClass = row % 2 === 0 ? 'left-0 right-1/2' : 'left-1/2 right-0';
+  return {
+    item,
+    colClass: COL_START[visualCol],
+    rowClass: ROW_START[row],
+    padClass: row === lastRow ? 'lg:pb-0' : 'lg:pb-14',
+    isTurnOut,
+    isTurnIn,
+    turnRight,
+    lineClass,
+  };
+});
+
+// Rendu mobile : mêmes jalons, classe de la ligne verticale précalculée ici.
+const mobile: MobileCell[] = capped.map((item: TimelineItem, i: number) => ({
+  item,
+  vLineClass:
+    N < 2 ? 'hidden' : i === 0 ? 'top-[9px] bottom-0' : i === N - 1 ? 'top-0 h-[9px]' : 'top-0 bottom-0',
+}));
+---
+
+<section class:list={['py-20', tone === 'tint' ? 'bg-surface-container-low' : 'bg-surface']}>
+  <div class="container-site">
+    <div class="mx-auto text-center flex flex-col items-center gap-4">
+      <h2
+        class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance"
+      >
+        {title}
+      </h2>
+      {
+        intro && (
+          <p
+            class="text-lg leading-[29px] text-on-surface-variant m-0 max-w-[80ch] [&_strong]:text-on-surface"
+            set:html={intro}
+          />
+        )
+      }
+    </div>
+
+    {/* ——— Desktop : serpentin 4 colonnes ——— */}
+    <ol role="list" class="hidden lg:grid grid-cols-4 mt-14 m-0 p-0 list-none">
+      {
+        placed.map((cell) => (
+          <li class:list={['relative m-0 max-w-none px-3 pt-0', cell.colClass, cell.rowClass, cell.padClass]}>
+            <span class:list={['absolute top-2 h-0.5 bg-[#C4C5D9]', cell.lineClass]} aria-hidden="true" />
+            {cell.isTurnOut && (
+              <span
+                class:list={['absolute top-[9px] bottom-0 w-0.5 bg-[#C4C5D9]', cell.turnRight ? 'right-0' : 'left-0']}
+                aria-hidden="true"
+              />
+            )}
+            {cell.isTurnIn && (
+              <span
+                class:list={['absolute top-0 h-[9px] w-0.5 bg-[#C4C5D9]', cell.turnRight ? 'right-0' : 'left-0']}
+                aria-hidden="true"
+              />
+            )}
+            <span
+              class:list={[
+                'absolute left-1/2 -translate-x-1/2',
+                cell.item.accent
+                  ? 'top-0 size-[18px] rounded-full bg-primary ring-4 ring-primary/20'
+                  : 'top-0.5 size-3.5 rounded-full bg-white border-2 border-solid border-[#C4C5D9]',
+              ]}
+              aria-hidden="true"
+            />
+            <div
+              class:list={[
+                'mt-8 rounded-lg p-5 h-[calc(100%-2rem)] flex flex-col gap-1.5',
+                cell.item.accent
+                  ? 'bg-on-primary-fixed shadow-[0_10px_24px_rgba(0,27,68,0.18)]'
+                  : 'bg-white border border-solid border-[#C4C5D9]',
+              ]}
+            >
+              <h3 class="m-0 flex flex-col gap-1.5">
+                <span
+                  class:list={[
+                    'block font-extrabold tracking-[-0.4px]',
+                    cell.item.accent ? 'text-[26px] leading-8 text-white' : 'text-xl leading-7 text-primary',
+                  ]}
+                >
+                  {cell.item.year}
+                </span>
+                {cell.item.title && (
+                  <span
+                    class:list={[
+                      'block text-sm leading-5 font-semibold',
+                      cell.item.accent ? 'text-white' : 'text-on-surface',
+                    ]}
+                  >
+                    {cell.item.title}
+                  </span>
+                )}
+              </h3>
+              {cell.item.text && (
+                <p
+                  class:list={[
+                    'm-0 max-w-none text-[13px] leading-[19px]',
+                    cell.item.accent ? 'text-white/70' : 'text-on-surface-variant',
+                  ]}
+                >
+                  {cell.item.text}
+                </p>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    {/* ——— Mobile : colonne verticale, ligne à gauche ——— */}
+    <ol role="list" class="lg:hidden flex flex-col mt-10 m-0 p-0 list-none">
+      {
+        mobile.map((m) => (
+          <li class="relative m-0 max-w-none pl-9 pb-8 last:pb-0">
+            <span class:list={['absolute left-2 w-0.5 bg-[#C4C5D9]', m.vLineClass]} aria-hidden="true" />
+            <span
+              class:list={[
+                'absolute',
+                m.item.accent
+                  ? 'left-0 top-0 size-[18px] rounded-full bg-primary ring-4 ring-primary/20'
+                  : 'left-0.5 top-0.5 size-3.5 rounded-full bg-white border-2 border-solid border-[#C4C5D9]',
+              ]}
+              aria-hidden="true"
+            />
+            <div
+              class:list={[
+                'rounded-lg flex flex-col gap-1.5 p-5',
+                m.item.accent
+                  ? 'bg-on-primary-fixed shadow-[0_10px_24px_rgba(0,27,68,0.18)]'
+                  : 'bg-white border border-solid border-[#C4C5D9]',
+              ]}
+            >
+              <h3 class="m-0 flex flex-col gap-1">
+                <span
+                  class:list={[
+                    'block font-extrabold tracking-[-0.4px]',
+                    m.item.accent ? 'text-2xl leading-8 text-white' : 'text-xl leading-7 text-primary',
+                  ]}
+                >
+                  {m.item.year}
+                </span>
+                {m.item.title && (
+                  <span
+                    class:list={[
+                      'block text-sm leading-5 font-semibold',
+                      m.item.accent ? 'text-white' : 'text-on-surface',
+                    ]}
+                  >
+                    {m.item.title}
+                  </span>
+                )}
+              </h3>
+              {m.item.text && (
+                <p
+                  class:list={[
+                    'm-0 max-w-none text-[13px] leading-[19px]',
+                    m.item.accent ? 'text-white/70' : 'text-on-surface-variant',
+                  ]}
+                >
+                  {m.item.text}
+                </p>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

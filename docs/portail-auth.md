@@ -3,7 +3,10 @@
 > Status 2026-08-18 : **prototype mock RETIRÉ du site (décision user).** Le
 > tableau de bord, les routes `/auth/*`, le middleware de garde, `src/lib/auth`
 > et `src/lib/data` sont supprimés — seule la **page de connexion visuelle**
-> (`/fr/portail`, prérendue, bouton désactivé) subsiste. Le code du prototype
+> (`/fr/portail`, prérendue) subsiste. MàJ 2026-09-10 (recette user) : carte
+> épurée (formulaire seul), bouton **actif mais sans destination** (parité
+> avec le site actuel), vue « Mot de passe oublié » (courriel seul) ; rien
+> n'est jamais soumis (champs sans `name`, forms sans `action`). Le code du prototype
 > (OIDC/PKCE-shaped, session cookie signée, données mock) vit dans
 > l'**historique git** (avant le commit de retrait) et ce document reste le
 > **plan de l'implémentation réelle** (Entra ID + Dataverse, §7).
