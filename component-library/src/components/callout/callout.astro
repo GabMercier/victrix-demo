@@ -1,4 +1,5 @@
 ---
+import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Encadré d'appel à l'action » — composant Bookshop (P-07).
  * RE-SKIN DESIGN SYSTEM 2026-08-05 (landing-page.css §Contact CTA Section +
@@ -39,7 +40,7 @@ const hasCta = Boolean(ctaLabel && ctaHref);
       <div class="container-site flex flex-wrap items-center justify-between gap-6">
         <div class="flex flex-col gap-2 max-w-[576px]">
           <h2 class="text-base leading-6 font-normal text-on-primary m-0">{title}</h2>
-          {body && <p class="text-base leading-6 text-on-primary/90 m-0 max-w-none">{body}</p>}
+          {hasRichText(body) && <div class="rich text-base leading-6 text-on-primary/90 max-w-none" set:html={blockHtml(body)} />}
         </div>
         {hasCta && (
           <a
@@ -58,7 +59,7 @@ const hasCta = Boolean(ctaLabel && ctaHref);
           <h2 class="text-[28px] leading-[1.2] lg:text-[32px] lg:leading-10 font-bold tracking-[-0.4px] text-on-surface m-0">
             {title}
           </h2>
-          {body && <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-[60ch]">{body}</p>}
+          {hasRichText(body) && <div class="rich text-base leading-[26px] text-on-surface-variant max-w-[60ch]" set:html={blockHtml(body)} />}
           {hasCta && (
             <a
               class="mt-2 inline-flex items-center justify-center bg-primary text-on-primary px-8 py-4 rounded-xs text-base leading-6 no-underline hover:bg-primary-container transition-colors"

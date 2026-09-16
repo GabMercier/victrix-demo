@@ -1,4 +1,5 @@
 ---
+import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Offres numérotées » — composant Bookshop, NOUVEAU 2026-08-05.
  * FIDÉLITÉ MAQUETTE (docs/design/produit-enfant.css §Section - Nos Offres
@@ -75,7 +76,7 @@ const ICONS: Record<string, string[]> = {
       <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
         {title}
       </h2>
-      {intro && <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none">{intro}</p>}
+      {hasRichText(intro) && <div class="rich text-base leading-[26px] text-on-surface-variant max-w-none" set:html={blockHtml(intro)} />}
     </div>
     <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-6 m-0 p-0 list-none">
       {

@@ -1,4 +1,5 @@
 ---
+import { inlineHtml } from '../../shared/rich';
 /**
  * Section « Solutions phares » — composant Bookshop (accueil composable),
  * NOUVEAU 2026-08-04, RE-ANCRÉ 2026-08-14 sur export2
@@ -109,7 +110,7 @@ const ICONS: Record<string, string[]> = {
                     )}
                     <span class="text-headline-md text-white">{item.title}</span>
                   </p>
-                  <p class="text-sm leading-normal text-white m-0 max-w-none">{item.text}</p>
+                  <p class="text-sm leading-normal text-white m-0 max-w-none" set:html={inlineHtml(item.text)} />
                 </div>
                 <a
                   class="inline-flex items-center gap-1 text-sm font-semibold text-white underline underline-offset-4 decoration-1 transition-opacity hover:opacity-80 after:content-[''] after:absolute after:inset-0"

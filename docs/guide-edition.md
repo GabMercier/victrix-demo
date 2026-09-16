@@ -95,6 +95,33 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
 > vous êtes dans l'éditeur de *contenu* (le corps de texte, vide sur une
 > landing). Basculez sur l'**éditeur visuel** avec les icônes en haut à droite.
 
+## Mettre en forme un texte (gras, italique, liens, listes)
+
+Depuis le 16 septembre 2026, **les textes des sections se mettent en forme
+sans HTML** : chapeau d'un héros, introduction d'une section, texte d'une
+carte, citation, réponse de FAQ, paragraphes d'un bloc « Texte riche »… Le
+champ affiche une petite barre d'outils.
+
+- **Champs courts** (texte de carte, citation, chapeau de carte) : gras,
+  italique, lien. Le texte reste sur un seul paragraphe — c'est voulu, il vit
+  dans un élément dont la mise en page est fixe.
+- **Champs longs** (introduction, texte d'appel à l'action, chapeau de héros,
+  réponse de FAQ, paragraphes du bloc Texte riche) : en plus, paragraphes,
+  listes à puces ou numérotées, citation, petits titres (niveau 3 et 4).
+- **Liens** : bouton « lien » de la barre, adresse complète avec la langue
+  (`/fr/services/cybersecurite`) ou adresse externe. Pour ouvrir dans un nouvel
+  onglet, cocher l'option du lien.
+- **Ce qui est retiré à la publication** : tout ce qui n'est pas dans la liste
+  ci-dessus (couleurs, tailles, tableaux, images, code collé depuis Word). Le
+  texte est conservé, la mise en page du site aussi. Coller du texte depuis
+  Word ou un site fonctionne donc sans risque.
+- **Boutons dans un texte** : un lien portant le style « bouton » s'affiche
+  comme un bouton pilule de la charte (en cours de branchement dans la barre
+  d'outils — en attendant, les sections gardent leurs champs « Bouton »).
+
+Le corps des articles du centre de ressources garde son éditeur de contenu
+(Markdown), plus complet.
+
 ## Traduire : créer en FR, dupliquer vers EN (et inversement)
 
 La règle unique : **même nom de fichier dans `fr/` et `en/` = même page dans

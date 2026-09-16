@@ -1,4 +1,5 @@
 ---
+import { blockHtml } from '../../shared/rich';
 /**
  * Section « FAQ » — composant Bookshop (contrat landing GELÉ).
  * RE-SKIN DESIGN SYSTEM 2026-08-05 : fond ivoire (surface), titre centré
@@ -73,7 +74,8 @@ const faqSchema = {
     name: item.question,
     acceptedAnswer: {
       '@type': 'Answer',
-      text: item.answer,
+      // Données structurées = texte nu (la réponse peut porter du HTML enrichi).
+      text: item.answer.replace(/<[^>]+>/g, '').trim(),
     },
   })),
 };
@@ -106,7 +108,7 @@ const faqSchema = {
                 <path d="m6 9 6 6 6-6" />
               </svg>
             </summary>
-            <p class="m-0 max-w-none px-6 pb-6 text-base leading-[26px] text-on-surface-variant">{item.answer}</p>
+            <div class="rich max-w-none px-6 pb-6 text-base leading-[26px] text-on-surface-variant" set:html={blockHtml(item.answer)} />
           </details>
         ))
       }

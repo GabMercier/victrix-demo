@@ -1,4 +1,5 @@
 ---
+import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
 /**
  * Section « Expertises » (bento « Nos services ») — composant Bookshop.
  * FIDÉLITÉ MAQUETTE 2026-08-04, RE-ANCRÉE 2026-08-14 sur export2
@@ -78,7 +79,7 @@ const watermarkBase =
         <h2 class="text-[48px] leading-none font-bold tracking-[-0.96px] text-on-primary-fixed m-0">
           {sectionTitle}
         </h2>
-        {intro && <p class="text-base leading-6 text-neutral-600 m-0 max-w-none">{intro}</p>}
+        {hasRichText(intro) && <div class="rich text-base leading-6 text-neutral-600 max-w-none" set:html={blockHtml(intro)} />}
       </div>
       {
         ctaLabel && ctaHref && (
@@ -137,9 +138,8 @@ const watermarkBase =
                         'block mt-2 text-base leading-6 max-w-[52ch]',
                         item.image ? 'text-white/75' : 'text-neutral-600',
                       ]}
-                    >
-                      {item.description}
-                    </span>
+                      set:html={inlineHtml(item.description)}
+                    />
                   )}
                 </a>
               ) : variant === 'bleue' ? (
@@ -151,7 +151,7 @@ const watermarkBase =
                     <span class="block text-2xl leading-8 font-bold tracking-[-0.48px] text-white">
                       {item.title}
                     </span>
-                    <span class="block text-base leading-6 text-bleu-100">{item.description}</span>
+                    <span class="block text-base leading-6 text-bleu-100" set:html={inlineHtml(item.description)} />
                   </span>
                   <a class:list={[linkBase, 'text-white']} href={item.href}>
                     {label}
@@ -168,7 +168,7 @@ const watermarkBase =
                     <span class="block text-2xl leading-8 font-bold tracking-[-0.48px] text-white">
                       {item.title}
                     </span>
-                    <span class="block text-base leading-6 text-neutral-400">{item.description}</span>
+                    <span class="block text-base leading-6 text-neutral-400" set:html={inlineHtml(item.description)} />
                   </span>
                   <a class:list={[linkBase, 'text-white']} href={item.href}>
                     {label}
@@ -187,7 +187,7 @@ const watermarkBase =
                   <span class="flex flex-col gap-3">
                     <span class="flex flex-col gap-1">
                       <span class="block text-xl leading-6 font-bold text-neutral-900">{item.title}</span>
-                      <span class="block text-sm leading-relaxed text-neutral-600">{item.description}</span>
+                      <span class="block text-sm leading-relaxed text-neutral-600" set:html={inlineHtml(item.description)} />
                     </span>
                   </span>
                   <a class:list={[linkBase, 'text-primary']} href={item.href}>

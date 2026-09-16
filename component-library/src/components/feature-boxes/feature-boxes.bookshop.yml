@@ -42,9 +42,31 @@ _inputs:
   sectionTitle:
     label: "Titre de la section"
   subtitle:
+    type: html
     label: "Sous-titre (optionnel)"
   # « Fond de section » (2026-08-17, pilote 6 blocs) : choix BORNÉ à la
   # palette officielle — 5 fonds clairs, jamais de couleur libre (esprit P-16).
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   fond:
     type: select
     label: "Fond de section"

@@ -59,3 +59,28 @@ _inputs:
     comment: "Cartes sombres affichées en grille de 3."
     options:
       structures: _structures.solution_items
+
+  text:
+    type: html
+    label: "Texte"
+    comment: "Texte enrichi EN LIGNE (gras, italique, lien) — rendu dans un paragraphe existant."
+    options:
+      format: p
+      bulletedlist: false
+      numberedlist: false
+      blockquote: false
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string

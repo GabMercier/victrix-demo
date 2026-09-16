@@ -55,8 +55,30 @@ _inputs:
     label: "Portion du titre en bleu"
     comment: "Sous-chaîne du titre rendue en bleu (première occurrence, ex. « Power Platform »). Vide = titre uniforme."
   lead:
+    type: html
     label: "Texte d'introduction"
     comment: "Sous le titre. Peut contenir des <strong> (rendu HTML tel quel)."
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   ctaLabel:
     label: "Bouton principal — libellé"
     comment: "Bouton pilule bleu. Vide = absent."

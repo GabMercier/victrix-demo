@@ -1,4 +1,5 @@
 ---
+import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Héros de service » — composant Bookshop (P-07).
  * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/expertise-mere.css §Hero Section,
@@ -174,13 +175,13 @@ const titleParts =
           )
         }
       </h1>
-      {lead && (
-        <p
+      {hasRichText(lead) && (
+        <div
           class:list={[
-            'text-lg leading-[29px] m-0 max-w-[672px] pt-1',
+            'rich text-lg leading-[29px] max-w-[672px] pt-1',
             blanc ? 'text-neutral-600' : 'text-surface-container-low',
           ]}
-          set:html={lead}
+          set:html={blockHtml(lead)}
         />
       )}
       {

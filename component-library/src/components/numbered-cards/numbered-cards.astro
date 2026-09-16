@@ -1,4 +1,5 @@
 ---
+import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
 /**
  * Section « Cartes numérotées » — composant Bookshop (P-07).
  * RE-SKIN DESIGN SYSTEM 2026-08-05 (patron offer-cards, produit-enfant.css) :
@@ -63,10 +64,10 @@ const centered = cardStyle === 'center';
       </h2>
       {headingStyle === 'underline' && <span class="w-16 h-1 bg-primary" aria-hidden="true"></span>}
       {
-        intro && (
-          <p
-            class="text-lg leading-[29px] text-on-surface-variant m-0 max-w-[80ch] [&_strong]:text-on-surface"
-            set:html={intro}
+        hasRichText(intro) && (
+          <div
+            class="rich text-lg leading-[29px] text-on-surface-variant max-w-[80ch] [&_strong]:text-on-surface"
+            set:html={blockHtml(intro)}
           />
         )
       }
@@ -103,7 +104,7 @@ const centered = cardStyle === 'center';
               {item.number}
             </p>
             <h3 class="text-2xl leading-8 font-bold text-on-surface m-0 pt-1">{item.title}</h3>
-            <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none grow">{item.text}</p>
+            <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none grow" set:html={inlineHtml(item.text)} />
             {item.ctaLabel && item.ctaHref && (
               <a
                 class:list={[

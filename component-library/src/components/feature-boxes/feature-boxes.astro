@@ -1,4 +1,5 @@
 ---
+import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Boîtes de domaines » — composant Bookshop (P-07).
  * RE-SKIN DESIGN SYSTEM 2026-08-05 : tête centrée (H2 40/700 ls -0.4 +
@@ -43,7 +44,7 @@ const FONDS: Record<string, string> = {
         {sectionTitle}
       </h2>
       <span class="w-16 h-1 bg-primary" aria-hidden="true"></span>
-      {subtitle && <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-[672px]">{subtitle}</p>}
+      {hasRichText(subtitle) && <div class="rich text-base leading-[26px] text-on-surface-variant max-w-[672px]" set:html={blockHtml(subtitle)} />}
     </div>
     <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-0 p-0 list-none">
       {

@@ -60,8 +60,30 @@ _inputs:
   title:
     label: "Titre"
   subtitle:
+    type: html
     label: "Sous-titre"
     comment: "Paragraphe d'appui sous le titre (optionnel)."
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   ctaLabel:
     label: "Libellé du bouton"
     comment: "Laisser vide pour masquer le bouton."

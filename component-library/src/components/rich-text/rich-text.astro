@@ -1,4 +1,5 @@
 ---
+import { blockHtml } from '../../shared/rich';
 /**
  * Section « Texte enrichi » — composant Bookshop (P-07).
  * RE-SKIN DESIGN SYSTEM 2026-08-05 : fond ivoire (surface), titre centré
@@ -46,9 +47,9 @@ const FONDS: Record<string, string> = {
     }
     {
       paragraphs.map((p) => (
-        <p
-          class="text-lg leading-[29px] text-on-surface-variant m-0 max-w-none pt-2 [&_strong]:text-on-surface"
-          set:html={p}
+        <div
+          class="rich text-lg leading-[29px] text-on-surface-variant max-w-none pt-2 [&_strong]:text-on-surface"
+          set:html={blockHtml(p)}
         />
       ))
     }

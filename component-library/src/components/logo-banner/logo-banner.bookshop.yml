@@ -67,5 +67,26 @@ _inputs:
         static: public
         uploads: public/images/sections
   description:
-    type: textarea
+    type: html
     label: "Descriptif court (optionnel)"
+
+    options:
+      format: p
+      bulletedlist: false
+      numberedlist: false
+      blockquote: false
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string

@@ -2274,8 +2274,26 @@ _structures:
           href: ''
         _inputs:
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Texte
           peau:
@@ -2346,8 +2364,26 @@ _structures:
           icon: ''
         _inputs:
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Texte
           ctaLabel:
@@ -2473,8 +2509,26 @@ _structures:
           icon: ''
         _inputs:
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Texte
           icon:
@@ -2587,8 +2641,26 @@ _structures:
           icon: ''
         _inputs:
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Texte
           image:
@@ -2634,8 +2706,26 @@ _structures:
               empty_type: string
             label: Libellé (majuscules)
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Texte d'appui
 
@@ -2981,8 +3071,26 @@ _structures:
               empty_type: string
             label: Titre de la carte
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Texte de la carte
           ctaLabel:
@@ -3028,8 +3136,26 @@ _structures:
               empty_type: string
             label: Titre du jalon
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Détail (optionnel)
           accent:

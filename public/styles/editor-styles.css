@@ -1,0 +1,9 @@
+/* Styles proposés dans la barre d'outils des champs « texte enrichi »
+   CloudCannon (option `styles` des entrées html, Phase 1 2026-09-16).
+   Chaque classe ci-dessous apparaît dans le menu « Styles » de l'éditeur ;
+   seules celles-ci survivent au filtre du build (component-library/src/
+   shared/rich.ts → ALLOWED_LINK_CLASSES). Les vraies règles visuelles vivent
+   dans src/styles/global.css (a.btn, a.btn-outline) — ce fichier ne sert
+   qu'à l'éditeur. */
+a.btn { display: inline-block; padding: 0.6em 1.3em; border-radius: 9999px; background: #1a5bff; color: #fff; text-decoration: none; font-weight: 600; }
+a.btn-outline { display: inline-block; padding: 0.6em 1.3em; border-radius: 9999px; border: 2px solid #1a5bff; color: #1a5bff; text-decoration: none; font-weight: 600; }

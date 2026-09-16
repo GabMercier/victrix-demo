@@ -55,8 +55,30 @@ _inputs:
   title:
     label: "Titre"
   intro:
+    type: html
     label: "Introduction"
     comment: "Paragraphe centré sous le titre de section. Vide = absent."
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   featured:
     label: "Carte sombre (principale)"
     comment: "Grande carte Bleu nuit, 2 colonnes sur 3."
@@ -64,8 +86,29 @@ _inputs:
     label: "Carte claire (secondaire)"
     comment: "Carte grise à icône et lien, 1 colonne sur 3. Laisser les champs vides pour une carte minimale."
   text:
+    type: html
     label: "Texte"
     comment: "Peut contenir des <strong> (rendu HTML tel quel) dans la carte sombre."
+    options:
+      format: p
+      bulletedlist: false
+      numberedlist: false
+      blockquote: false
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   watermark:
     type: select
     label: "Pictogramme filigrane"

@@ -1,5 +1,6 @@
 import { defineCollection as astroDefineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { sanitizeRichHtml } from '../component-library/src/shared/rich';
 
 /**
  * Tolérance aux champs VIDÉS dans CloudCannon (incident du 14 sept. 2026).
@@ -20,6 +21,10 @@ import { glob } from 'astro/loaders';
  */
 function nullsToEmpty(value: unknown): unknown {
   if (value === null) return '';
+  // Texte enrichi (Phase 1, 2026-09-16) : toute chaîne portant du HTML passe le
+  // filtre liste-blanche AU BUILD (component-library/src/shared/rich.ts) —
+  // un collage depuis Word ou une balise inconnue ne peut pas casser la page.
+  if (typeof value === 'string') return value.indexOf('<') === -1 ? value : sanitizeRichHtml(value);
   if (Array.isArray(value)) return value.map(nullsToEmpty);
   // Objets SIMPLES seulement : le frontmatter Markdown arrive avec de vrais
   // `Date` (champ `date:` des articles) qu'il ne faut surtout pas aplatir.

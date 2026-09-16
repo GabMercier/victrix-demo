@@ -1,4 +1,5 @@
 ---
+import { blockHtml, inlineHtml } from '../../shared/rich';
 /**
  * Section « Bento des domaines d'expertise » — composant Bookshop, NOUVEAU
  * 2026-08-05. FIDÉLITÉ MAQUETTE (docs/design/expertise-mere.css §Expertises
@@ -89,7 +90,7 @@ const sizes = {
       </div>
       {
         intro && (
-          <p class="text-base leading-6 text-on-surface-variant m-0 max-w-[300px] lg:text-right">{intro}</p>
+          <div class="rich text-base leading-6 text-on-surface-variant max-w-[300px] lg:text-right" set:html={blockHtml(intro)} />
         )
       }
     </div>
@@ -118,7 +119,7 @@ const sizes = {
                 <span class:list={['flex flex-col gap-2', isGrande && 'shrink-0']}>
                   <span class:list={['block text-2xl leading-8 font-bold', skin.title]}>{item.title}</span>
                   {item.text && (
-                    <span class:list={['block text-sm leading-5 max-w-[46ch]', skin.text]}>{item.text}</span>
+                    <span class:list={['block text-sm leading-5 max-w-[46ch]', skin.text]} set:html={inlineHtml(item.text)} />
                   )}
                 </span>
                 {isGrande && item.image && (

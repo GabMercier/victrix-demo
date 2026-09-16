@@ -1,4 +1,5 @@
 ---
+import { inlineHtml } from '../../shared/rich';
 /**
  * Section « Témoignage » — composant Bookshop (palette partagée).
  *
@@ -52,9 +53,7 @@ const attribution = [role, organization].filter((v) => v !== '').join(', ');
     >
       <blockquote class="relative m-0">
         <span aria-hidden="true" class="block text-6xl font-bold leading-none text-royal">“</span>
-        <p class="m-0 mt-2 text-xl leading-snug font-medium tracking-tight text-balance text-nuit md:text-2xl">
-          {quote}
-        </p>
+        <p class="m-0 mt-2 text-xl leading-snug font-medium tracking-tight text-balance text-nuit md:text-2xl" set:html={inlineHtml(quote)} />
       </blockquote>
       <figcaption class="mt-8 flex items-center justify-center gap-3">
         {

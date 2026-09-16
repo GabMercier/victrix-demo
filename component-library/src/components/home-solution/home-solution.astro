@@ -1,4 +1,5 @@
 ---
+import { blockHtml } from '../../shared/rich';
 /**
  * Section « Solution / efficacité opérationnelle » — composant Bookshop.
  * FIDÉLITÉ MAQUETTE 2026-08-04 (docs/design/accueil.css
@@ -118,7 +119,7 @@ const hasStat = Boolean(statValue);
         <h2 class="text-[36px] leading-none lg:text-[48px] lg:leading-[48px] font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0 text-balance">
           {title}
         </h2>
-        <p class="text-base leading-[26px] text-[#545F71] m-0 max-w-none">{body}</p>
+        <div class="rich text-base leading-[26px] text-[#545F71] max-w-none" set:html={blockHtml(body)} />
         {
           features.length > 0 && (
             <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full m-0 p-0 pt-2 list-none">
