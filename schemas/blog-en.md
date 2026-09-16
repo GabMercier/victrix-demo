@@ -21,6 +21,8 @@ coverImage: ""
 tags: []
 seoTitle: ""
 noindex: false
+topics: []
+wpUrl: ""
 ---
 
 Article content…

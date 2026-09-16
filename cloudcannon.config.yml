@@ -112,17 +112,27 @@ collections_config:
     # workflow: create (or Duplicate) the same filename in the other locale
     # folder. Schema `path`s are relative to the repo root; `create.path`s are
     # relative to the collection path.
+    # RÈGLE (incident du 16 sept. 2026) : à l'enregistrement, CloudCannon
+    # SUPPRIME toute clé absente du gabarit (`remove_extra_inputs` vaut true
+    # par défaut) — 23 clés perdues (slug EN, seoTitle) sur 22 fichiers lors
+    # des saisies de Julie. Deux garde-fous, à respecter pour TOUTE collection :
+    #   1. chaque gabarit schemas/* porte TOUTES les clés que les fichiers
+    #      réels peuvent contenir (audit : comparer les clés du gabarit à
+    #      celles des fichiers de la collection) ;
+    #   2. `remove_extra_inputs: false` sur chaque entrée `schemas.*`.
     schemas:
       default:
         name: Article (FR)
         icon: post_add
         path: schemas/blog-fr.md
+        remove_extra_inputs: false
         create:
           path: 'fr/{title|slugify}.md'
       en:
         name: Article (EN)
         icon: post_add
         path: schemas/blog-en.md
+        remove_extra_inputs: false
         create:
           path: 'en/{title|slugify}.md'
     # French labels mirroring the Sveltia config (public/admin/config.yml —
@@ -461,12 +471,14 @@ collections_config:
         name: Campagne (FR)
         icon: campaign
         path: schemas/landing-fr.md
+        remove_extra_inputs: false
         create:
           path: 'fr/{title|slugify}.md'
       en:
         name: Campaign (EN)
         icon: campaign
         path: schemas/landing-en.md
+        remove_extra_inputs: false
         create:
           path: 'en/{title|slugify}.md'
     # Collection card shown in the CloudCannon file browser.
@@ -732,12 +744,14 @@ collections_config:
         name: Service (FR)
         icon: rocket_launch
         path: schemas/service-fr.json
+        remove_extra_inputs: false
         create:
           path: 'fr/{title|slugify}.json'
       en:
         name: Service (EN)
         icon: rocket_launch
         path: schemas/service-en.json
+        remove_extra_inputs: false
         create:
           path: 'en/{title|slugify}.json'
     _inputs:
@@ -749,6 +763,18 @@ collections_config:
         comment: >-
           Titre de la page (onglet + SEO). Selon le contexte, sert aussi de
           libellé à certaines sections ou cartes.
+      slug:
+        type: text
+        options:
+          empty_type: string
+        label: Adresse de la page (segments d'URL)
+        comment: >-
+          Segment(s) après /<langue>/services/ — surtout pour la version EN
+          (ex. cybersecurity/zero-trust). Peut contenir des « / » pour un
+          service imbriqué. Vide = le nom du fichier (cas normal en FR). Le
+          NOM DE FICHIER reste ce qui apparie FR et EN — changer l'adresse ne
+          rompt pas la traduction ; changer une adresse déjà publiée exige une
+          redirection (collection Redirections).
       description:
         type: textarea
         options:
@@ -822,12 +848,14 @@ collections_config:
         name: Page (FR)
         icon: description
         path: schemas/page-fr.json
+        remove_extra_inputs: false
         create:
           path: 'fr/{title|slugify}.json'
       en:
         name: Page (EN)
         icon: description
         path: schemas/page-en.json
+        remove_extra_inputs: false
         create:
           path: 'en/{title|slugify}.json'
     _inputs:
@@ -910,12 +938,14 @@ collections_config:
         name: Solution (FR)
         icon: apps
         path: schemas/solution-fr.json
+        remove_extra_inputs: false
         create:
           path: 'fr/{title|slugify}.json'
       en:
         name: Solution (EN)
         icon: apps
         path: schemas/solution-en.json
+        remove_extra_inputs: false
         create:
           path: 'en/{title|slugify}.json'
     _inputs:
@@ -1811,12 +1841,14 @@ collections_config:
         name: Formulaire (FR)
         icon: dynamic_form
         path: schemas/form-fr.json
+        remove_extra_inputs: false
         create:
           path: 'fr/{name|slugify}.json'
       en:
         name: Formulaire (EN)
         icon: dynamic_form
         path: schemas/form-en.json
+        remove_extra_inputs: false
         create:
           path: 'en/{name|slugify}.json'
     _inputs:
@@ -1896,6 +1928,7 @@ collections_config:
         name: Barre d'annonce
         icon: campaign
         path: schemas/annonce.json
+        remove_extra_inputs: false
         create:
           path: '{title|slugify}.json'
     _inputs:

@@ -20,6 +20,8 @@ coverImage: ""
 tags: []
 seoTitle: ""
 noindex: false
+topics: []
+wpUrl: ""
 ---
 
 Contenu de l'article…
