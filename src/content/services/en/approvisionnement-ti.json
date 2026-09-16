@@ -4,17 +4,17 @@
   "description": "Discover Victrix’s IT procurement services. Benefit from tailored support for the purchase, management, and renewal of your software licenses and hardware assets.",
   "noindex": false,
   "slug": "it-procurement",
-  "seoTitle": "IT Procurement | Licenses and Hardware Purchase and Management",
+  "seoTitle": "IT Procurement | Licenses and Hardware Purchase and Management | Victrix",
   "sections": [
     {
       "type": "service-hero",
       "eyebrow": "IT Procurement Services",
       "eyebrowStyle": "badge",
       "titleAccent": "",
-      "title": "Licenses and Equipments",
-      "titleHighlight": "Licenses",
+      "title": "Acquisition and Management of Software Licenses and Equipment",
+      "titleHighlight": "Acquisition and Management",
       "lead": "Victrix offers reliable, compliant IT purchasing and procurement services in partnership with the world’s leading software publishers and hardware manufacturers. Our experts support you in selecting, integrating, and managing your IT assets, as well as renewing your licenses.",
-      "ctaLabel": "Talk to an expert",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2025/03/linkedin-carre-24.png",
       "imageAlt": ""
@@ -22,25 +22,25 @@
     {
       "type": "bento-metrics",
       "title": "Strategic, Secure, and Managed IT Procurement",
-      "intro": "",
+      "intro": "From cybersecurity to cloud computing, automation, network, and connectivity, Victrix helps you build a high-performance, consistent, and secure infrastructure.",
       "fond": "blanc",
       "featured": {
         "title": "A value-added reseller",
-        "text": "Victrix is a value-added reseller for organizations and government agencies — a partner that combines <strong>technical know-how, security, and governance</strong>.",
+        "text": "Victrix is a value-added reseller for organizations and government agencies. We are your partner that combines <strong>technical know-how, security, and governance</strong>.",
         "watermark": "engrenage",
         "stats": []
       },
       "aside": {
         "icon": "bouclier",
-        "title": "From cybersecurity to cloud computing",
-        "text": "Through automation, network, and connectivity, Victrix helps you build a high-performance, consistent, and secure infrastructure.",
-        "linkLabel": "See our Cybersecurity expertise",
-        "linkHref": "/en/services/cybersecurity"
+        "title": "A simple, secure process aligned with your IT requirements",
+        "text": "Our experts assess your needs, compare market options, and recommend IT licenses and hardware purchases that perfectly align with your performance and security priorities.",
+        "linkLabel": null,
+        "linkHref": null
       }
     },
     {
       "type": "offer-cards",
-      "title": "Purchase, Management, and Renewal",
+      "title": "IT Procurement, Management, and Renewal",
       "intro": "Benefit from tailored support for the purchase, management, and renewal of your software licenses and hardware assets.",
       "fond": "givre",
       "ctaLabel": "",
