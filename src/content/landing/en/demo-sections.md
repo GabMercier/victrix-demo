@@ -1,24 +1,38 @@
 ---
-slug: demo-sections
 _schema: default
+slug: demo-sections
 title: Demo new sections
 description: Demo page for the Testimonial, Partner logos, Stats and Video sections.
 noindex: true
+header:
+  mode: allege
+  links: []
+  ctaLabel: ''
+  ctaHref: ''
+  showAnnounce: false
+  showLangSwitch: true
+  showSearch: false
+footerMode: complet
 sections:
   - _bookshop_name: hero
     type: hero
     eyebrow: Demo
     title: The new palette sections
-    subtitle: >-
-      Testimonial, partner logo banner, social-proof numbers and a video facade
-      — four reusable blocks for any composable page.
+    subtitle: Testimonial, partner logo banner, social-proof numbers and a video
+      facade — four reusable blocks for any composable page.
     ctaLabel: Contact us
     ctaHref: /en/contact
+    titleAccent: ''
+    image: ''
+    cta2Label: ''
+    cta2Href: ''
+    eyebrowIcon: ''
+    ctaIcon: ''
+    fond: givre
   - _bookshop_name: testimonial
     type: testimonial
-    quote: >-
-      Victrix transformed our security posture in a few months — a rigorous team
-      that listens and speaks the language of business.
+    quote: Victrix transformed our security posture in a few months — a rigorous
+      team that listens and speaks the language of business.
     name: Marie Lavoie
     role: VP, Information Technology
     organization: Quebec-based company
@@ -43,6 +57,7 @@ sections:
   - _bookshop_name: stats
     type: stats
     title: Victrix in numbers
+    fond: givre
     items:
       - number: 25+
         label: years of experience
@@ -60,14 +75,13 @@ sections:
   - _bookshop_name: faq
     type: faq
     title: Frequently asked questions
+    fond: blanc
     items:
       - question: How long does a security assessment take?
-        answer: >-
-          Two to four weeks depending on the size of the environment, executive
+        answer: Two to four weeks depending on the size of the environment, executive
           report included.
       - question: Do you work with SMBs?
-        answer: >-
-          Yes — our managed services and assessments scale to organizations of
+        answer: Yes — our managed services and assessments scale to organizations of
           every size.
   - _bookshop_name: form
     type: form
@@ -76,5 +90,7 @@ sections:
     formId: campagne-evaluation
     submitLabel: Send
     consentText: ''
+    variant: carte
+    fond: ''
     fields: []
 ---
