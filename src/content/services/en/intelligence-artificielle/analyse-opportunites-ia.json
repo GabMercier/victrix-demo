@@ -1,6 +1,8 @@
 {
+  "_schema": "default",
   "title": "Artificial Intelligence Opportunity Analysis",
   "description": "Victrix is your strategic partner for AI opportunity analysis, the identification of high-impact use cases, and secure, cost-effective adoption.",
+  "noindex": false,
   "sections": [
     {
       "type": "service-hero",
@@ -9,7 +11,7 @@
       "title": "Artificial Intelligence Opportunity Analysis",
       "titleHighlight": "Opportunity",
       "lead": "Leverage your data and optimize your processes for a secure, cost-effective AI adoption that is perfectly aligned with your business objectives.",
-      "ctaLabel": "Talk to an AI expert",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2025/10/freepik__adjust__18305-1.png",
       "imageAlt": ""
@@ -21,7 +23,7 @@
       "fond": "blanc",
       "featured": {
         "title": "Transform your ideas into concrete, measurable AI projects",
-        "text": "Do you want AI to quickly deliver concrete, measurable value across your organization? You have the ideas, the data, and the drive — you need a clear, secure framework aligned with your business priorities, backed by <strong>strong governance</strong>.",
+        "text": "Do you want AI to quickly deliver concrete, measurable value across your organization? You have the ideas, the data, and the drive: you need a clear, secure framework aligned with your business priorities, backed by <strong>strong governance</strong>.",
         "watermark": "eclair",
         "stats": []
       },
@@ -87,10 +89,22 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Impact", "label": "Maximized return on investment" },
-        { "value": "Vision", "label": "Enhanced strategic alignment" },
-        { "value": "Risk", "label": "Reduced risks, easier AI adoption" },
-        { "value": "Expertise", "label": "Multidisciplinary guidance for your projects" }
+        {
+          "value": "Impact",
+          "label": "Maximized return on investment"
+        },
+        {
+          "value": "Vision",
+          "label": "Enhanced strategic alignment"
+        },
+        {
+          "value": "Risk",
+          "label": "Reduced risks, easier AI adoption"
+        },
+        {
+          "value": "Expertise",
+          "label": "Multidisciplinary guidance for your projects"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -113,13 +127,11 @@
       "type": "cta",
       "title": "Take Action with Victrix",
       "body": "Contact us to start your AI exploration and build a clear roadmap for your projects.",
-      "ctaLabel": "Let's meet",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit"
     }
-  ],
-  "slug": "artificial-intelligence/ai-opportunity-analysis",
-  "seoTitle": "Artificial Intelligence Opportunity Analysis and Exploration"
+  ]
 }

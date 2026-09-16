@@ -1,6 +1,8 @@
 {
+  "_schema": "default",
   "title": "Analyse des opportunités en intelligence artificielle",
   "description": "Victrix est votre partenaire stratégique pour l’analyse des opportunités IA, l’identification de cas d’usage à fort impact et une adoption sécuritaire et rentable.",
+  "noindex": false,
   "sections": [
     {
       "type": "service-hero",
@@ -9,7 +11,7 @@
       "title": "Analyse des opportunités en intelligence artificielle",
       "titleHighlight": "opportunités",
       "lead": "Exploitez vos données et optimisez vos processus pour une adoption de l’IA sécuritaire, rentable et parfaitement adaptée à vos objectifs d’affaires.",
-      "ctaLabel": "Échangez avec un expert en IA",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2025/10/freepik__adjust__18305-1.png",
       "imageAlt": ""
@@ -21,13 +23,13 @@
       "fond": "blanc",
       "featured": {
         "title": "Transformez vos idées en projets concrets et mesurables",
-        "text": "Vous voulez que l’IA apporte rapidement une valeur concrète et mesurable dans votre organisation ? Vous avez les idées, les données et la volonté — il vous faut un cadre clair, sécuritaire et aligné sur vos priorités d’affaires, porté par une <strong>gouvernance solide</strong>.",
+        "text": "Vous voulez que l’IA apporte rapidement une valeur concrète et mesurable dans votre organisation? Vous avez les idées, les données et la volonté : il vous faut un cadre clair, sécuritaire et aligné sur vos priorités d’affaires, porté par une <strong>gouvernance solide</strong>.",
         "watermark": "eclair",
         "stats": []
       },
       "aside": {
         "icon": "etoile",
-        "title": "Comment commencer à utiliser l’IA ?",
+        "title": "Vous vous demandez comment commencer à utiliser l’IA?",
         "text": "Nos experts vous accompagnent à chaque étape pour assurer le succès de tous vos projets de transformation numérique avec l’IA.",
         "linkLabel": "Consultez un spécialiste",
         "linkHref": "/fr/contact"
@@ -87,10 +89,22 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Impact", "label": "Retour sur investissement maximisé" },
-        { "value": "Vision", "label": "Alignement stratégique renforcé" },
-        { "value": "Risques", "label": "Réduction des risques, adoption facilitée" },
-        { "value": "Expertise", "label": "Multidisciplinaire, pour guider vos projets" }
+        {
+          "value": "Impact",
+          "label": "Retour sur investissement maximisé"
+        },
+        {
+          "value": "Vision",
+          "label": "Alignement stratégique renforcé"
+        },
+        {
+          "value": "Risques",
+          "label": "Réduction des risques, adoption facilitée"
+        },
+        {
+          "value": "Expertise",
+          "label": "Multidisciplinaire, pour guider vos projets"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -113,12 +127,11 @@
       "type": "cta",
       "title": "Passez à l’action avec Victrix",
       "body": "Contactez-nous pour démarrer votre exploration IA et bâtir une feuille de route claire pour vos projets.",
-      "ctaLabel": "Rencontrez nos experts",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit"
     }
-  ],
-  "seoTitle": "Exploration et analyse des opportunités en IA"
+  ]
 }
