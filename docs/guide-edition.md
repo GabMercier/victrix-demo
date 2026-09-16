@@ -368,6 +368,14 @@ Ce que vous contrôlez, page par page :
   partout.
 - **Description** (« Extrait » sur le blogue) : 120–155 caractères, orientée
   clic — c'est le texte affiché sous le lien dans Google et les partages.
+- **Élément qui porte le H1 (SEO)** : sur le héros de la page (héros de
+  service, de produit, de campagne, d'accueil), choisir si le **grand titre**
+  (défaut) ou le **surtitre** (la petite ligne au-dessus, la pastille sur un
+  produit) est le H1 lu par les moteurs. Avec « surtitre », le surtitre devient
+  le H1 et le grand titre passe en H2 : rien ne change à l'écran. Utile quand
+  le grand titre est une accroche et que le mot-clé doit être le H1. Un
+  surtitre vide = le titre reste le H1. Une page ne doit avoir qu'un seul
+  héros : deux H1 bloquent la publication.
 - **Masquer des moteurs de recherche** (`noindex`) : campagnes masquées par
   défaut (trafic payant), tout le reste indexé par défaut. N'y toucher que
   pour retirer temporairement une page des résultats.

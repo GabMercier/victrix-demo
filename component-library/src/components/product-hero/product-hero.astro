@@ -41,6 +41,8 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  */
 interface Props {
   badge?: string;
+  /** Quel élément porte le <h1> : le titre (défaut) ou la pastille (SEO). */
+  h1Element?: 'titre' | 'badge';
   title: string;
   titleHighlight?: string;
   lead?: string;
@@ -54,6 +56,7 @@ interface Props {
 }
 
 const {
+  h1Element = 'titre',
   badge,
   title,
   titleHighlight,
@@ -80,6 +83,12 @@ const FONDS: Record<string, string> = {
 // (première occurrence — patron home-hero/service-hero) ; absente ou
 // introuvable = titre uniforme, aucune casse.
 const highlightIndex = titleHighlight ? title.indexOf(titleHighlight) : -1;
+// Contrôle du H1 (Phase 2, 2026-09-16) : « badge » = le badge (pastille) porte le <h1>
+// (mot-clé SEO court) et le grand titre passe en <h2> — styles inchangés.
+// Sans badge (pastille), le titre reste le H1 : jamais de page sans H1.
+const badgeIsH1 = h1Element === 'badge' && !!badge;
+const BadgeTag = badgeIsH1 ? 'h1' : 'p';
+const TitleTag = badgeIsH1 ? 'h2' : 'h1';
 const titleParts =
   highlightIndex >= 0 && titleHighlight
     ? {
@@ -95,13 +104,13 @@ const titleParts =
     <div class="flex flex-col items-start gap-6">
       {
         badge && (
-          <p class="inline-flex items-center gap-2 bg-primary/20 border border-solid border-primary/20 rounded-full px-3 py-1 m-0 max-w-none">
+          <BadgeTag class="inline-flex items-center gap-2 bg-primary/20 border border-solid border-primary/20 rounded-full px-3 py-1 m-0 max-w-none">
             <span class="size-2 rounded-full bg-primary" aria-hidden="true" />
             <span class="text-xs leading-4 font-bold uppercase tracking-[0.6px] text-primary-container">{badge}</span>
-          </p>
+          </BadgeTag>
         )
       }
-      <h1
+      <TitleTag
         class="text-[40px] leading-[1.05] tracking-[-1.6px] lg:text-[72px] lg:leading-none lg:tracking-[-3.6px] font-bold text-on-surface m-0 text-balance"
       >
         {
@@ -115,7 +124,7 @@ const titleParts =
             title
           )
         }
-      </h1>
+      </TitleTag>
       {hasRichText(lead) && <div class="rich text-xl leading-8 text-on-surface-variant max-w-[512px]" set:html={blockHtml(lead)} />}
       {
         ((ctaLabel && ctaHref) || (cta2Label && cta2Href)) && (

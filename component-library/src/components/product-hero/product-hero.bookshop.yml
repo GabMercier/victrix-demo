@@ -27,6 +27,7 @@ spec:
 
 blueprint:
   type: product-hero
+  h1Element: titre
   badge: "Écosystème Microsoft 365"
   title: "Titre du produit"
   titleHighlight: ""
@@ -117,3 +118,14 @@ _inputs:
         - beige
         - sable
     comment: "Couleur de fond, bornée à la palette officielle. « givre » = rendu maquette."
+
+  # Contrôle du H1 (Phase 2, 2026-09-16 — demande SEO de Julie, recette 09/09 pt 6).
+  h1Element:
+    type: select
+    label: "Élément qui porte le H1 (SEO)"
+    options:
+      allow_empty: false
+      values:
+        - titre
+        - badge
+    comment: "« titre » = le grand titre est le H1 de la page (défaut). « badge » = le pastille devient le H1 (mot-clé court pour les moteurs) et le grand titre passe en H2 — l'apparence ne change pas. Sans pastille, le titre reste le H1."

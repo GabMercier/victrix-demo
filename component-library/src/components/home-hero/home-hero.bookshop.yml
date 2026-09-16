@@ -27,6 +27,7 @@ spec:
 
 blueprint:
   type: home-hero
+  h1Element: titre
   eyebrow: "Services-conseils en TI"
   title: "Titre de la bannière"
   titleAccent: ""
@@ -89,3 +90,14 @@ _inputs:
   cta2Href:
     label: "Lien du second bouton"
     comment: "URL finale, préfixe de langue inclus."
+
+  # Contrôle du H1 (Phase 2, 2026-09-16 — demande SEO de Julie, recette 09/09 pt 6).
+  h1Element:
+    type: select
+    label: "Élément qui porte le H1 (SEO)"
+    options:
+      allow_empty: false
+      values:
+        - titre
+        - surtitre
+    comment: "« titre » = le grand titre est le H1 de la page (défaut). « surtitre » = le surtitre devient le H1 (mot-clé court pour les moteurs) et le grand titre passe en H2 — l'apparence ne change pas. Sans surtitre, le titre reste le H1."

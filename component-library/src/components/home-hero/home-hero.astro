@@ -21,6 +21,8 @@ import { blockHtml } from '../../shared/rich';
  */
 interface Props {
   eyebrow?: string;
+  /** Quel élément porte le <h1> : le titre (défaut) ou le surtitre (SEO). */
+  h1Element?: 'titre' | 'surtitre';
   title: string;
   titleAccent?: string;
   subtitle: string;
@@ -31,7 +33,7 @@ interface Props {
   cta2Href?: string;
 }
 
-const { eyebrow, title, titleAccent, subtitle, ctaLabel, ctaHref, image, cta2Label, cta2Href } =
+const { eyebrow, h1Element = 'titre', title, titleAccent, subtitle, ctaLabel, ctaHref, image, cta2Label, cta2Href } =
   Astro.props;
 
 // Le mot accentué est rendu en bleu là où il apparaît dans le titre (première
@@ -45,6 +47,13 @@ const titleParts =
         after: title.slice(accentIndex + titleAccent.length),
       }
     : null;
+// Contrôle du H1 (Phase 2, 2026-09-16) : « surtitre » = le surtitre porte le <h1>
+// (mot-clé SEO court) et le grand titre passe en <h2> — styles inchangés.
+// Sans surtitre, le titre reste le H1 : jamais de page sans H1.
+const eyebrowIsH1 = h1Element === 'surtitre' && !!eyebrow;
+const EyebrowTag = eyebrowIsH1 ? 'h1' : 'p';
+const TitleTag = eyebrowIsH1 ? 'h2' : 'h1';
+
 ---
 
 <section class="relative min-h-[600px] lg:min-h-[750px] flex items-center overflow-hidden bg-white">
@@ -60,10 +69,10 @@ const titleParts =
     <div class="max-w-2xl flex flex-col items-start gap-6">
       {
         eyebrow && (
-          <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary m-0 max-w-none">{eyebrow}</p>
+          <EyebrowTag class="text-xs font-bold uppercase tracking-[1.2px] text-primary m-0 max-w-none">{eyebrow}</EyebrowTag>
         )
       }
-      <h1 class="text-[40px] leading-[1.05] lg:text-[60px] lg:leading-[60px] font-extrabold tracking-[-1.2px] text-on-primary-fixed m-0 text-balance">
+      <TitleTag class="text-[40px] leading-[1.05] lg:text-[60px] lg:leading-[60px] font-extrabold tracking-[-1.2px] text-on-primary-fixed m-0 text-balance">
         {
           titleParts ? (
             <>
@@ -75,7 +84,7 @@ const titleParts =
             title
           )
         }
-      </h1>
+      </TitleTag>
       <div class="rich text-lg leading-7 text-[#545F71] max-w-xl pt-2" set:html={blockHtml(subtitle)} />
       <div class="flex flex-wrap items-start gap-4 pt-4">
         <a
