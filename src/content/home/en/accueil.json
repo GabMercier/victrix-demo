@@ -3,11 +3,11 @@
     {
       "_bookshop_name": "home-hero",
       "type": "home-hero",
-      "eyebrow": "Consulting firm • Technology • AI",
-      "title": "Propel your business with IT that truly makes a difference.",
-      "titleAccent": "truly",
-      "subtitle": "From cybersecurity to AI, Victrix turns your technology challenges into concrete, secure and high-performing solutions.",
-      "ctaLabel": "Discover our expertise",
+      "eyebrow": "IT Consulting Firm • Technology • AI",
+      "title": "Accelerate Your Organization with IT Engineered for What's Next.",
+      "titleAccent": "Engineered",
+      "subtitle": "Turn technology challenges into solutions built to last. From cybersecurity to AI, with cloud, managed services and application services along the way, Victrix takes charge of what drives you forward.",
+      "ctaLabel": "Explore our expertise",
       "ctaHref": "/en/expertises",
       "image": "/images/home/hero-accueil.jpg",
       "cta2Label": "Talk to an expert",
@@ -16,17 +16,17 @@
     {
       "_bookshop_name": "home-expertises",
       "type": "home-expertises",
-      "sectionTitle": "Our services",
-      "intro": "Complementary areas of expertise covering all of your technology needs.",
-      "learnMore": "Learn more",
-      "ctaLabel": "See all our expertise",
-      "ctaHref": "/en/expertises",
+      "sectionTitle": "Our Services",
+      "intro": "Complementary IT services that work together or stand alone, covering all of your technology needs.",
+      "learnMore": "Discover",
+      "ctaLabel": "Browse our services",
+      "ctaHref": "/en/services",
       "items": [
         {
           "number": "01",
           "title": "Cybersecurity",
           "accent": "#1a5bff",
-          "description": "Protect your digital assets against today's and tomorrow's threats.",
+          "description": "Protect your digital assets and prove regulatory compliance.",
           "href": "/en/services/cybersecurity",
           "image": "/images/home/expertise-cybersecurite.jpg",
           "variant": "image",
@@ -35,10 +35,10 @@
         },
         {
           "number": "03",
-          "title": "AI & Automation",
+          "title": "AI and Automation",
           "accent": "#1a5bff",
-          "description": "Harness the potential of generative AI for your business processes.",
-          "href": "/en/services/intelligence-artificielle",
+          "description": "Put AI to work in your business processes, within a clear governance framework.",
+          "href": "/en/services/artificial-intelligence",
           "image": "",
           "variant": "bleue",
           "linkLabel": "Discover",
@@ -46,9 +46,9 @@
         },
         {
           "number": "04",
-          "title": "Cloud Migration",
+          "title": "Cloud ",
           "accent": "#1a5bff",
-          "description": "Modernize your infrastructure with agility.",
+          "description": "Modernize your infrastructure and scale your cloud environments at your own pace.",
           "href": "/en/services/cloud-services-provider",
           "image": "",
           "variant": "image",
@@ -57,10 +57,10 @@
         },
         {
           "number": "05",
-          "title": "Strategic Consulting",
+          "title": "Application Services",
           "accent": "#1a5bff",
-          "description": "Guidance for senior leadership in technology decisions.",
-          "href": "/en/services/strategic-advice",
+          "description": "Build, modernize and maintain the applications that run your operations.",
+          "href": "/en/services/application-services",
           "image": "",
           "variant": "claire",
           "linkLabel": "",
@@ -70,7 +70,7 @@
           "number": "06",
           "title": "Managed Services",
           "accent": "#1a5bff",
-          "description": "Peace of mind and performance 24/7/365.",
+          "description": "Simplify day-to-day IT management with support available around the clock.",
           "href": "/en/services/managed-it-services",
           "image": "",
           "variant": "nuit",
@@ -83,43 +83,43 @@
       "_bookshop_name": "home-solution",
       "type": "home-solution",
       "eyebrow": "",
-      "title": "Free your team from operational constraints",
-      "body": "Our managed services let you focus on your core business while our experts watch over the performance of your systems.",
+      "title": "Free Your Team from Day-to-Day Operations",
+      "body": "Your team focus on what moves the business forward. Our experts handle performance and uptime.",
       "ctaLabel": "Talk to an expert",
       "ctaHref": "/en/contact",
       "image": "../equipe.jpg",
-      "statValue": "24/7",
-      "statLabel": "Managed services",
-      "statText": "Proactive support and complete management of your M365 ecosystem.",
+      "statValue": "24/7/365",
+      "statLabel": "Managed Services",
+      "statText": "Proactive support and end-to-end management of your IT environments..",
       "features": [
         {
-          "label": "M365 Ecosystem",
+          "label": "Microsoft 365",
           "text": "Maximize the use of your licences and collaboration tools."
         },
         {
-          "label": "Infra Security",
-          "text": "Continuous monitoring and rapid incident remediation."
+          "label": "Infrastructure Security",
+          "text": "Continuous monitoring and rapid incident resolution."
         }
       ]
     },
     {
       "_bookshop_name": "home-solutions",
       "type": "home-solutions",
-      "title": "Our flagship solutions",
-      "ctaLabel": "See all our solutions",
-      "ctaHref": "/en/produits",
+      "title": "Our Signature Solutions",
+      "ctaLabel": null,
+      "ctaHref": null,
       "items": [
         {
           "title": "Ø Studio",
-          "text": "Ø Studio offers a multidisciplinary team to automate your processes and deliver your application developments at high speed!",
+          "text": "Ø Studio is Victrix's application development studio, specializing in Power Platform and Dynamics 365. Its multidisciplinary team automates your processes and delivers your applications, turnkey or custom-built, at full speed.",
           "image": "/images/home/expertise-productivite.jpg",
-          "href": "/en/services/productivity-consulting/office-booking",
+          "href": "/en/productivite/services/o-studio/",
           "ctaLabel": "Discover Ø Studio",
           "icon": "ecran"
         },
         {
           "title": "SEvOC",
-          "text": "SEvOC takes charge of your organization's security operations. Our scalable, modular offering keeps you at the leading edge.",
+          "text": "A traditional SOC hands you alerts and stops there. SEvOC takes them off your hands and keeps your security posture improving, backed by dedicated bilingual analysts and our infrastructure and cloud teams.",
           "image": "/images/home/sevoc.png",
           "href": "/en/services/cybersecurity",
           "ctaLabel": "Discover SEvOC",
@@ -127,7 +127,7 @@
         },
         {
           "title": "Azure Migration",
-          "text": "Victrix accelerates your transition to Azure. Based on the Microsoft Cloud Adoption Framework, our method secures your first steps.",
+          "text": "Victrix accelerates your move to Azure. Our methodology, grounded in Microsoft's Cloud Adoption Framework, de-risks every stage of migrating your application and servers.",
           "image": "/images/home/expertise-infonuagique.jpg",
           "href": "/en/services/cloud-services-provider",
           "ctaLabel": "Discover Azure",
@@ -138,18 +138,18 @@
     {
       "_bookshop_name": "home-latest",
       "type": "home-latest",
-      "title": "Resources and insights",
-      "subtitle": "Discover our latest articles, case studies and technical webinars.",
-      "readMoreLabel": "Read more",
-      "ctaLabel": "See all resources",
+      "title": "Resources and News",
+      "subtitle": "Keep up with our experts: articles, webinars, white papers and Victrix news.",
+      "readMoreLabel": "View",
+      "ctaLabel": "Browse all resources",
       "ctaHref": "/en/ressources"
     },
     {
       "_bookshop_name": "home-experts",
       "type": "home-experts",
-      "title": "Ready to move your organization forward?",
-      "subtitle": "Let's discuss your challenges and see how Victrix can help you go further in your digital transformation.",
-      "ctaLabel": "Talk to an expert",
+      "title": "Ready to Take the Next Step?",
+      "subtitle": "Let's talk about your challenges and how Victrix can advance your digital transformation.",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact"
     }
   ]

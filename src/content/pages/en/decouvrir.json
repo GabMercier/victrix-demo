@@ -1,8 +1,8 @@
 {
+  "_schema": "default",
   "title": "Discover Victrix",
-  "description": "Renowned for its high-quality services and distinctive customer experience, Victrix offers a proven approach that combines excellence, agility and proximity.",
+  "description": "Victrix is the IT partner of the largest companies in Canada, specializing in cybersecurity, managed services, AI, cloud and application services. ",
   "noindex": true,
-  "seoTitle": "",
   "sections": [
     {
       "type": "service-hero",
@@ -14,7 +14,7 @@
       "lead": "Renowned for its high-quality services and distinctive customer experience, Victrix offers a proven approach that combines excellence, agility and proximity.",
       "ctaLabel": "Let's meet",
       "ctaHref": "/en/contact",
-      "cta2Label": "Join the team",
+      "cta2Label": "Join our team",
       "cta2Href": "/en/carrieres",
       "overlay": "blanc",
       "image": "/images/sections/decouvrir-hero.jpg",
@@ -23,7 +23,7 @@
     },
     {
       "type": "strategic-value",
-      "title": "Our culture",
+      "title": "Our Culture",
       "paragraphs": [
         "At Victrix, we know that traditional ways of doing things are no longer sufficient to achieve the highest levels of performance and exceed the expectations of our customers, partners and employees."
       ],
@@ -39,17 +39,26 @@
     },
     {
       "type": "bento-metrics",
-      "title": "Victrix at a glance",
-      "intro": "",
+      "title": "Victrix at a Glance",
+      "intro": "We are committed to being Canada's leading IT consulting firm by shaping a corporate culture where employees, partners and clients can achieve their ambitions.",
       "fond": "givre",
       "featured": {
-        "title": "A local IT force with international reach",
+        "title": "A Local IT Force with International Reach",
         "text": "Founded in 2003, Victrix grew through successive acquisitions and joined the Alan Allman Associates international ecosystem in 2019.",
         "watermark": "graphique",
         "stats": [
-          { "value": "2003", "label": "Foundation of Victrix" },
-          { "value": "3", "label": "Offices" },
-          { "value": "ISO", "label": "27001 and 9001" }
+          {
+            "value": "2003",
+            "label": "Foundation of Victrix"
+          },
+          {
+            "value": "3",
+            "label": "Offices"
+          },
+          {
+            "value": "ISO",
+            "label": "IEC 27001:2022 and 9001:2015"
+          }
         ]
       },
       "aside": {
@@ -62,22 +71,48 @@
     },
     {
       "type": "benefits",
-      "title": "Our values",
-      "intro": "",
+      "title": "Our Values",
+      "intro": null,
       "items": [
-        { "title": "Excellence", "description": "", "icon": "losange" },
-        { "title": "Collaboration", "description": "", "icon": "groupe" },
-        { "title": "Innovation", "description": "", "icon": "ampoule" },
-        { "title": "Commitment", "description": "", "icon": "porteur" },
-        { "title": "Integrity", "description": "", "icon": "dossier" }
+        {
+          "title": "Excellence",
+          "description": "",
+          "icon": "losange"
+        },
+        {
+          "title": "Collaboration",
+          "description": "",
+          "icon": "groupe"
+        },
+        {
+          "title": "Innovation",
+          "description": "",
+          "icon": "ampoule"
+        },
+        {
+          "title": "Commitment",
+          "description": "",
+          "icon": "porteur"
+        },
+        {
+          "title": "Integrity",
+          "description": "",
+          "icon": "dossier"
+        }
       ]
     },
     {
+<<<<<<< HEAD
       "type": "timeline",
       "title": "Our history",
+=======
+      "type": "numbered-cards",
+      "sectionTitle": "Our History",
+>>>>>>> 1624c7138d6468b46cebfc6f3a85d589659102ae
       "intro": "More than twenty years of growth, acquisitions and international expansion.",
       "tone": "default",
       "items": [
+<<<<<<< HEAD
         { "year": "2003", "title": "Foundation of Victrix", "text": "", "accent": true },
         { "year": "2004", "title": "Acquisition of ELFIQ Networks", "text": "Acquisition of the IT consulting services division of 3-Soft Group", "accent": false },
         { "year": "2007", "title": "Acquisition of Cogeti Informatique", "text": "Acquisition of Informatique Stratégique · Acquisition of Noxent", "accent": true },
@@ -92,11 +127,83 @@
         { "year": "2019", "title": "Victrix joins the Alan Allman Associates international ecosystem", "text": "", "accent": true },
         { "year": "2023", "title": "Société Conseil Lambda joins Victrix", "text": "", "accent": true },
         { "year": "2024", "title": "By joining forces with COMITEM, Victrix expands its offering in France", "text": "", "accent": false }
+=======
+        {
+          "number": "2003",
+          "title": "Foundation of Victrix",
+          "text": ""
+        },
+        {
+          "number": "2004",
+          "title": "Acquisition of ELFIQ Networks and the IT Consulting Services Division of 3-Soft Group",
+          "text": null
+        },
+        {
+          "number": "2007",
+          "title": "Acquisition of Cogeti Informatique, Informatique Stratégique and Noxent",
+          "text": null
+        },
+        {
+          "number": "2008",
+          "title": "Acquisition of Compu-Sys",
+          "text": ""
+        },
+        {
+          "number": "2009",
+          "title": "Acquisition of IPtel",
+          "text": ""
+        },
+        {
+          "number": "2010",
+          "title": "Acquisition of Expra Solutions",
+          "text": ""
+        },
+        {
+          "number": "2011",
+          "title": "Acquisition of Progilan",
+          "text": ""
+        },
+        {
+          "number": "2012",
+          "title": "Acquisition of Teltech",
+          "text": ""
+        },
+        {
+          "number": "2015",
+          "title": "Acquisition of AGRM",
+          "text": ""
+        },
+        {
+          "number": "2016",
+          "title": "Acquisition of Noverka Conseil",
+          "text": ""
+        },
+        {
+          "number": "2017",
+          "title": "Acquisition of VisionTI",
+          "text": ""
+        },
+        {
+          "number": "2019",
+          "title": "Victrix Joins the Alan Allman Associates International Ecosystem",
+          "text": "15 consulting firms · Over 3,300 experts"
+        },
+        {
+          "number": "2023",
+          "title": "Société Conseil Lambda Joins Victrix",
+          "text": ""
+        },
+        {
+          "number": "2024",
+          "title": "By Joining Forces with Comitem, Victrix Expands Its Offering in France",
+          "text": ""
+        }
+>>>>>>> 1624c7138d6468b46cebfc6f3a85d589659102ae
       ]
     },
     {
       "type": "cta",
-      "title": "We are recruiting the experts of tomorrow!",
+      "title": "We Are Recruiting the Experts of Tomorrow!",
       "body": "Interested? Do not hesitate to contact us.",
       "ctaLabel": "Our opportunities",
       "ctaHref": "/en/carrieres",

@@ -8,18 +8,33 @@
   },
   "happy": {
     "title": "Happy At Work",
-    "lead": "Victrix est certifiée HappyIndex® AtWork 2024 des entreprises «où l’on est heureux de travailler».",
+    "lead": "Victrix est certifiée HappyIndex® AtWork 2024 des entreprises « où l’on est heureux de travailler ».",
     "quote": "Cette distinction est décernée à la suite d’une enquête participative, qui permet aux salariés de s’exprimer anonymement sur leur expérience au quotidien dans l’entreprise."
   },
   "values": {
     "eyebrow": "Culture",
     "title": "Nos valeurs",
     "items": [
-      { "icon": "etoile", "label": "Excellence" },
-      { "icon": "groupe", "label": "Collaboration" },
-      { "icon": "ampoule", "label": "Innovation" },
-      { "icon": "poignee", "label": "Engagement" },
-      { "icon": "insigne", "label": "Intégrité" }
+      {
+        "icon": "etoile",
+        "label": "Excellence"
+      },
+      {
+        "icon": "groupe",
+        "label": "Collaboration"
+      },
+      {
+        "icon": "ampoule",
+        "label": "Innovation"
+      },
+      {
+        "icon": "poignee",
+        "label": "Engagement"
+      },
+      {
+        "icon": "insigne",
+        "label": "Intégrité"
+      }
     ]
   },
   "join": {
@@ -54,14 +69,14 @@
     "title": "Ce que nos experts disent",
     "cards": [
       {
-        "image": "/images/carrieres/temoignage-mikael.png",
-        "quote": "«Victrix me permet de sortir de ma zone de confort et de relever de nouveaux défis sur le plan personnel et professionnel.»",
+        "image": "/images/carrieres/temoignage-daniel.png",
+        "quote": "« Victrix me permet de sortir de ma zone de confort et de relever de nouveaux défis sur le plan personnel et professionnel. »",
         "name": "Mikaël",
-        "role": "Architecte Cloud"
+        "role": "Architecte infonuagique"
       },
       {
-        "image": "/images/carrieres/temoignage-daniel.png",
-        "quote": "«Victrix me permet de faire de la formation continue. Le parcours est étonnamment bonifié et me permet de devenir encore meilleur dans mon domaine.»",
+        "image": "/images/carrieres/temoignage-mikael.png",
+        "quote": "« Victrix me permet de faire de la formation continue. Le parcours est étonnamment bonifié et me permet de devenir encore meilleur dans mon domaine. »",
         "name": "Daniel",
         "role": "Conseiller"
       }
@@ -69,10 +84,13 @@
   },
   "social": {
     "title": "Notre responsabilité sociale et nos engagements",
-    "lead": "Des activités à buts sociaux et associatifs sont organisées tous les mois afin de célébrer nos succès et nous retrouver tous ensemble pour créer des moments mémorables.",
-    "engagementTitle": "Engagement pour les jeunes talents",
+    "lead": "Des activités à buts sociaux et associatifs sont organisées tous les mois afin de célébrer nos succès et de nous retrouver tous ensemble pour créer des moments professionnels mémorables.",
+    "engagementTitle": "Victrix s'engage pour les jeunes talents",
     "engagementText": "Nous collaborons activement avec les institutions académiques pour soutenir la relève en TI.",
-    "partners": ["Partner 1", "Partner 2"]
+    "partners": [
+      "Partner 1",
+      "Partner 2"
+    ]
   },
   "cta": {
     "title": "Vous souhaitez en apprendre davantage sur nos opportunités de carrière?",

@@ -8,44 +8,59 @@
   },
   "happy": {
     "title": "Happy At Work",
-    "lead": "Victrix is HappyIndex® AtWork 2024 certified among companies “where people are happy to work”.",
+    "lead": "Victrix has been awarded the HappyIndex®AtWork label.",
     "quote": "This distinction is awarded following a participative survey that lets employees speak anonymously about their day-to-day experience within the company."
   },
   "values": {
     "eyebrow": "Culture",
-    "title": "Our values",
+    "title": "Our Values",
     "items": [
-      { "icon": "etoile", "label": "Excellence" },
-      { "icon": "groupe", "label": "Collaboration" },
-      { "icon": "ampoule", "label": "Innovation" },
-      { "icon": "poignee", "label": "Commitment" },
-      { "icon": "insigne", "label": "Integrity" }
+      {
+        "icon": "etoile",
+        "label": "Excellence"
+      },
+      {
+        "icon": "groupe",
+        "label": "Collaboration"
+      },
+      {
+        "icon": "ampoule",
+        "label": "Innovation"
+      },
+      {
+        "icon": "poignee",
+        "label": "Commitment"
+      },
+      {
+        "icon": "insigne",
+        "label": "Integrity"
+      }
     ]
   },
   "join": {
-    "title": "Why join our team?",
-    "lead": "Victrix values its employees and offers a rewarding work environment. We are always looking for talented, motivated people.",
+    "title": "Why Join Our Team?",
+    "lead": "Victrix values its employees and provides a stimulating and rewarding work environment. We are always looking for talented, motivated people.",
     "cardTitle": "A stimulating environment",
     "cardText": "Contribute to our success and thrive within a passionate team.",
     "features": [
       {
         "icon": "croissance",
-        "title": "Personal development",
+        "title": "Personal Development",
         "text": "Ongoing support for your professional aspirations."
       },
       {
         "icon": "progression",
-        "title": "Career growth",
+        "title": "Career Growth",
         "text": "Real opportunities for advancement within the group."
       },
       {
         "icon": "coeur",
-        "title": "Well-being at work",
+        "title": "Well-Being at Work",
         "text": "A respected balance between professional and personal life."
       },
       {
         "icon": "formation",
-        "title": "Skills and training",
+        "title": "Skills and Training",
         "text": "Training programs to stay at the leading edge of IT."
       }
     ]
@@ -54,8 +69,8 @@
     "title": "What our experts say",
     "cards": [
       {
-        "image": "/images/carrieres/temoignage-mikael.png",
-        "quote": "“Victrix lets me step out of my comfort zone and take on new challenges, both personally and professionally.”",
+        "image": "/images/carrieres/temoignage-daniel.png",
+        "quote": "“Victrix allows me to step out of my comfort zone and take on new challenges, both personally and professionally.”",
         "name": "Mikaël",
         "role": "Cloud Architect"
       },
@@ -68,15 +83,18 @@
     ]
   },
   "social": {
-    "title": "Our social responsibility and commitments",
-    "lead": "Social and community activities are organized every month to celebrate our successes and bring everyone together to create memorable moments.",
-    "engagementTitle": "Committed to young talent",
+    "title": "Our Social Responsibility and Commitments",
+    "lead": "Social and community activities are organized every month to celebrate our successes and bring everyone together to create memorable professional moments.",
+    "engagementTitle": "Victrix Supports Young IT Talent",
     "engagementText": "We actively collaborate with academic institutions to support the next generation in IT.",
-    "partners": ["Partner 1", "Partner 2"]
+    "partners": [
+      "Partner 1",
+      "Partner 2"
+    ]
   },
   "cta": {
-    "title": "Want to learn more about our career opportunities?",
-    "text": "Write to us or schedule a meeting with our recruitment teams today.",
+    "title": "Would You Like to Know More About Our Career Opportunities?",
+    "text": "Drop us a line or schedule a meeting with our recruitment teams today.",
     "label": "Contact us"
   }
 }

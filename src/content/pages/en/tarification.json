@@ -1,4 +1,5 @@
 {
+  "_schema": "default",
   "title": "Pricing",
   "description": "Flexible business models tailored to your context.",
   "noindex": true,
@@ -13,7 +14,7 @@
       "lead": "Flexible business models tailored to your context. Every mandate is unique — the offer is built with you.",
       "ctaLabel": "Get an estimate",
       "ctaHref": "/en/contact",
-      "cta2Label": "Our services",
+      "cta2Label": "Explore our services",
       "cta2Href": "/en/services",
       "overlay": "voile",
       "image": "",
@@ -51,10 +52,9 @@
       "body": "Describe your project and we will come back to you quickly with a proposal.",
       "ctaLabel": "Contact us",
       "ctaHref": "/en/contact",
-      "cta2Label": "Our services",
-      "cta2Href": "/en/services",
+      "cta2Label": null,
+      "cta2Href": null,
       "variant": "nuit"
     }
-  ],
-  "seoTitle": ""
+  ]
 }
