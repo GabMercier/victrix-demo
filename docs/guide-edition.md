@@ -234,8 +234,15 @@ est fixe — vous changez les mots et les photos, le site garde sa forme.
 
 - **Page Contact** — héros, intitulés de la carte Coordonnées, les trois
   cartes bureaux (ville, adresse, photo), la section formulaire (titre, texte
-  d'appui, puces, libellés des champs, choix des listes Sujet/Expertise, texte
-  de consentement, bouton). **Garder l'ordre Québec, Montréal, Paris** des
+  d'appui, puces, libellés des champs, choix des listes Sujet/Service, texte
+  de consentement, bouton). ⚠️ **Les deux listes déroulantes (Sujet, Service)
+  et leurs libellés existent à DEUX endroits** : ici (ce que la page affiche)
+  et dans **Formulaires → Contact** (ce que le serveur accepte — la liste
+  blanche anti-pourriel). Modifier un libellé ou un choix d'un côté sans
+  l'autre **bloque la publication** avec le message « options … désalignées »
+  (arrivé le 16 sept. 2026 : « Expertise » renommé « Service » côté page
+  seulement). Faites toujours la même modification aux deux endroits, dans le
+  même ordre, sans espace en trop. **Garder l'ordre Québec, Montréal, Paris** des
   cartes bureaux : le téléphone affiché au bas de chaque carte est apparié par
   position. Les numéros de téléphone eux-mêmes (cliquables) sont gérés par
   l'équipe technique. Dans le texte de consentement, laisser `{privacy}` tel

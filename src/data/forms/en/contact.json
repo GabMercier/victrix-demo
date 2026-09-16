@@ -13,7 +13,10 @@
       "width": "demi",
       "options": [],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "Last name",
@@ -22,7 +25,10 @@
       "width": "demi",
       "options": [],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "Email",
@@ -31,7 +37,10 @@
       "width": "demi",
       "options": [],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "Phone",
@@ -40,33 +49,46 @@
       "width": "demi",
       "options": [],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "What would you like to talk about?",
       "type": "select",
       "required": true,
       "width": "demi",
-      "options": ["A project", "An area of expertise", "A career", "Other"],
+      "options": [
+        "A project",
+        "An area of expertise",
+        "A career",
+        "Other"
+      ],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
-      "label": "Expertise",
+      "label": "Service",
       "type": "select",
       "required": true,
       "width": "demi",
       "options": [
-        "Strategic consulting",
-        "Artificial intelligence",
         "Cybersecurity",
-        "Cloud computing",
-        "Infrastructure",
+        "Artificial intelligence",
+        "Cloud",
+        "Application services",
         "Managed services",
         "Other"
       ],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "Tell us more about your request",
@@ -74,7 +96,10 @@
       "required": false,
       "options": [],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "Message",
@@ -82,7 +107,10 @@
       "required": true,
       "options": [],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     },
     {
       "label": "Consent (Law 25)",
@@ -90,7 +118,10 @@
       "required": true,
       "options": [],
       "value": "",
-      "showIf": { "field": "", "equals": "" }
+      "showIf": {
+        "field": "",
+        "equals": ""
+      }
     }
   ]
 }
