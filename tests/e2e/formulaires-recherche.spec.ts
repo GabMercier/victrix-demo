@@ -17,8 +17,11 @@ test.describe('formulaires (mode maquette) + recherche + fil d’Ariane', () => 
     // du dev), aucun envoi possible.
     const form = page.locator('form[data-contact-form]');
     await expect(form).toHaveCount(1);
+    // Le bouton est ciblé par son rôle, PAS par son libellé : « Envoyer le
+    // message » / « Soumettre » est un texte éditable au CMS (page Contact) —
+    // Julie l'a changé le 16 sept. 2026 et le test a cassé le CI.
     // Soumission vide → la validation native bloque, le statut reste caché.
-    await page.getByRole('button', { name: 'Envoyer le message' }).click();
+    await form.locator('button[type="submit"]').click();
     await expect(page.locator('[data-form-status]')).toBeHidden();
     // Remplir tous les requis puis soumettre → confirmation simulée visible.
     await page.fill('#firstname', 'Test');
@@ -28,7 +31,7 @@ test.describe('formulaires (mode maquette) + recherche + fil d’Ariane', () => 
     await page.selectOption('#expertise', 'Cybersécurité');
     await page.fill('#message', 'Message de test e2e.');
     await page.check('#consent');
-    await page.getByRole('button', { name: 'Envoyer le message' }).click();
+    await form.locator('button[type="submit"]').click();
     await expect(page.locator('[data-form-status]')).toBeVisible();
   });
 
