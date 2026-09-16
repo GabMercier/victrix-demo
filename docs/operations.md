@@ -8,12 +8,26 @@
 
 ## 1. Avant de commencer une session
 
-CloudCannon committe directement sur `spike/cloudcannon` (chaque sauvegarde
-dans l'éditeur visuel devient un commit) — toujours tirer avant de travailler
-pour ne pas repartir d'une base périmée :
+**Trois branches depuis le 2026-09-16** (une journée de collisions entre
+sauvegardes CloudCannon et pushs de dev a tranché) :
+
+| Branche | Rôle | Qui y écrit | Comment |
+|---|---|---|---|
+| `main` | production (site CloudCannon de prod) | personne à la main | avance uniquement par le bouton **Publish** (§6) |
+| `staging` (ex-`spike/cloudcannon`) | édition (site CloudCannon d'édition, aperçu lawful-hare) | Julie et les éditeurs via CloudCannon — **chaque sauvegarde = un commit direct** | les devs n'y arrivent que par **PR depuis `dev`** (fusion côté GitHub : plus de push rejeté) ; correctif d'une ligne toléré en direct |
+| `dev` | intégration des développeurs | Gabriel et tout futur dev | branches courtes `feat/*` → PR → `dev` ; aperçu Cloudflare `dev.victrix-demo.pages.dev` (infra héritée) |
+
+Règles : **jamais** de `rebase` ni de `push --force` sur `staging`/`main` ; le
+contenu et le code vivent dans les mêmes branches (on fusionne, on ne réécrit
+pas l'historique de l'édition) ; ramener `staging` dans `dev` (`git merge`)
+avant chaque promotion pour résoudre les conflits de son côté.
+
+Avant de travailler :
 
 ```
-git pull --rebase origin spike/cloudcannon
+git switch dev
+git pull --no-rebase origin dev
+git merge origin/staging      # le contenu des éditeurs, toujours à jour
 npm install
 ```
 
@@ -103,16 +117,23 @@ silencieusement, sans « ÉCHEC » dans le résumé robocopy) :
 `Test-Path C:\Users\<vous>\vvbuild\node_modules\astro\dist\cli\index.js`
 doit renvoyer `True` avant de faire confiance à la copie.
 
-## 4. Publier (commit + push)
+## 4. Publier (commit + push + PR vers `staging`)
 
 Aucun commit/push automatique — vous gardez la main sur l'historique Git.
-Une fois le portail qualité vert :
+Une fois le portail qualité vert, sur `dev` (ou une branche `feat/*`) :
 
 ```
 git add <fichiers>
 git commit -m "…"
-git push
+git push origin dev
 ```
+
+Puis **promotion vers l'édition** : PR GitHub `dev → staging` (CI vert requis ;
+GitHub fusionne côté serveur, même si Julie a sauvegardé entre-temps — un
+conflit réel se résout dans `dev` après `git merge origin/staging`). La fusion
+déclenche le build du site d'édition (§5) ; relecture sur lawful-hare, puis
+**Publish** (§6). Un correctif d'une ligne peut aller directement sur
+`staging`, suivi d'un `git merge origin/staging` dans `dev`.
 
 ## 5. Ce qui se passe automatiquement après le push
 
@@ -124,7 +145,8 @@ git push
   bouton Publish (§6).
 - **Cloudflare Pages (infra héritée du spike)** : tant que le projet
   `victrix-demo` reste connecté au dépôt, chaque push construit aussi une
-  préversion de branche à `https://spike-cloudcannon.victrix-demo.pages.dev`
+  préversion de branche à `https://staging.victrix-demo.pages.dev` (et
+  `https://dev.victrix-demo.pages.dev` pour la branche d'intégration)
   (build avec adaptateur — pas `STATIC_ONLY`). Conservée pour une raison
   précise : c'est le seul endroit où un vrai POST `/api/forms` peut tourner
   (§8) et où `_redirects`/`_headers` sont appliqués (contrainte routage :
@@ -134,7 +156,7 @@ git push
 
 ```
 curl -I https://lawful-hare.cloudvent.net/fr/merci/
-curl -I https://spike-cloudcannon.victrix-demo.pages.dev/demo-redirection
+curl -I https://staging.victrix-demo.pages.dev/demo-redirection
 ```
 
 Attendu : `/fr/merci/` → `200` avec `x-robots-tag: noindex` (le domaine de
@@ -153,7 +175,7 @@ transition.
 
 | Étage | Branche | Site CloudCannon | URL |
 |---|---|---|---|
-| Édition (staging) | `spike/cloudcannon` | « Vic-demo » (existant) | `lawful-hare.cloudvent.net` |
+| Édition (staging) | `staging` (ex-`spike/cloudcannon`, renommée le 2026-09-16) | « Victrix · Édition » (ex-« Vic-demo ») | `lawful-hare.cloudvent.net` |
 | Production | `main` | créé le 2026-08-25 (mise en place ci-dessous) | `overt-pineapple.cloudvent.net` ; domaine réel au go-live |
 
 Mise en place (une fois, dans l'UI CloudCannon) :
@@ -167,7 +189,7 @@ Mise en place (une fois, dans l'UI CloudCannon) :
 2. **Lier la publication** : sur le site d'édition → Site Settings → Files →
    Publishing → choisir le site `main` comme cible. Le bouton **Publish**
    apparaît alors pour les éditeurs.
-3. **Premier Publish** : fusionne `spike/cloudcannon` dans `main` et
+3. **Premier Publish** : fusionne `staging` dans `main` et
    reconstruit le site de production. Sans aucun effet sur le vrai
    victrix.ca ; l'URL cloudvent de production est noindex de toute façon.
 

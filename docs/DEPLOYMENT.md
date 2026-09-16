@@ -7,12 +7,15 @@ CMS *and* host.** Two CloudCannon sites on one repo:
 
 | Stage | Branch | CloudCannon site | URL |
 |---|---|---|---|
-| Editing (staging) | `spike/cloudcannon` | « Vic-demo » (existing) | lawful-hare.cloudvent.net (noindex) |
+| Dev integration | `dev` | none (Cloudflare branch preview `dev.victrix-demo.pages.dev`, legacy) | developers only: `feat/*` → PR → `dev` → PR → `staging` |
+| Editing (staging) | `staging` (renamed from `spike/cloudcannon` 2026-09-16) | « Victrix · Édition » (ex-« Vic-demo ») | lawful-hare.cloudvent.net (noindex) |
 | Production | `main` | production site (setup: `operations.md` §6) | overt-pineapple.cloudvent.net; real domain at DNS cutover |
 
-Editors **Save** to staging; the **Publish** button in CloudCannon merges
-`spike/cloudcannon` into `main` and rebuilds the production site. Day-to-day
-ritual: `docs/operations.md` §5–§6. The live victrix.ca (WordPress) stays
+Editors **Save** to `staging`; developers land on `staging` only through a
+GitHub PR from `dev` (server-side merge — no more push races with CloudCannon
+saves); the **Publish** button in CloudCannon merges `staging` into `main`
+and rebuilds the production site. Day-to-day ritual: `docs/operations.md`
+§4–§6. The live victrix.ca (WordPress) stays
 untouched until DNS cutover.
 
 **Cloudflare Pages (`victrix-demo` → victrix-demo.pages.dev) is legacy spike
@@ -48,7 +51,7 @@ npm run preview    # smoke-test the built output
 
 ## 2. Deploy
 
-Nothing manual. Push to `spike/cloudcannon` → CloudCannon rebuilds the staging
+Nothing manual. Merge into `staging` (PR from `dev`) → CloudCannon rebuilds the staging
 site (`STATIC_ONLY=1` + Bookshop postbuild) and Cloudflare Pages builds a
 legacy branch preview. **Publish** in CloudCannon (staging site → Site
 Settings → Files → Publishing) advances `main` → the production site rebuilds.
@@ -137,8 +140,7 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
       WordPress URLs (ADO **#1438** — domaine + DNS + rollback).
 - [ ] `REBUILD_HOOK_URL` GitHub secret → production-site build hook
       (`operations.md` §7bis) so scheduled content publishes daily.
-- [ ] Optional: rename branch `spike/cloudcannon` → `staging` (re-bind the
-      CloudCannon editing site; update docs/URLs).
+- [x] Branch `spike/cloudcannon` renamed `staging` + `dev` created (2026-09-16).
 - [ ] Decommission: Cloudflare Pages project `victrix-demo` + the old Sveltia
       OAuth worker (`sveltia-cms-auth.…workers.dev`, tombstone note in
       `public/_headers`).

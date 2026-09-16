@@ -1,14 +1,18 @@
 name: CI
 
-# `spike/cloudcannon` = branche d'ÉDITION : chaque sauvegarde CloudCannon y
-# commite directement, sans vérification avant le build de l'hébergeur. Le CI
-# y tourne donc aussi (second signal, dans GitHub, quand une sauvegarde casse
-# le build — incident des champs `null` du 14 sept. 2026).
+# Trois branches (modèle du 16 sept. 2026, docs/operations.md §5) :
+#  - `staging` (ex-`spike/cloudcannon`) = branche d'ÉDITION : chaque
+#    sauvegarde CloudCannon y commite directement, sans vérification avant le
+#    build de l'hébergeur → le CI y tourne (second signal quand une sauvegarde
+#    casse le build — incidents `null` et clés supprimées des 14-16 sept.) ;
+#  - `dev` = intégration des développeurs (branches feat/* → PR → dev), promue
+#    vers `staging` par PR ;
+#  - `main` = production, avancée uniquement par le bouton Publish CloudCannon.
 on:
   push:
-    branches: [main, spike/cloudcannon]
+    branches: [main, staging, dev]
   pull_request:
-    branches: [main, spike/cloudcannon]
+    branches: [main, staging, dev]
 
 permissions:
   contents: read

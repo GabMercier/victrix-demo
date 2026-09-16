@@ -1,7 +1,7 @@
 # Guide de l'éditeur — publier sur le site Victrix
 
-> Pour l'équipe marketing. Version du **7 août 2026** (branche
-> `spike/cloudcannon`). Le principe à retenir : **vous éditez le contenu, les
+> Pour l'équipe marketing. Version du **16 septembre 2026** (branche
+> `staging`, l'ancienne `spike/cloudcannon` renommée). Le principe à retenir : **vous éditez le contenu, les
 > gabarits garantissent la forme** — vous ne pouvez pas casser la mise en page.
 > Captures d'écran à ajouter.
 
