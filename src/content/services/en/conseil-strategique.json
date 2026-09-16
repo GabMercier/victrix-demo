@@ -1,6 +1,10 @@
 {
+  "_schema": "default",
   "title": "Strategic Consulting",
-  "description": "Secure the success of your projects. Our strategic consulting encompasses all our expertises: Cybersecurity, AI, Cloud, Productivity, and Managed Services.",
+  "description": "Secure the success of your projects. Our strategic consulting encompasses all our expertises: Cybersecurity, AI, Cloud, Application Services and Managed Services.",
+  "noindex": false,
+  "slug": "strategic-advice",
+  "seoTitle": "Strategic Consulting | Multidisciplinary Expertise | Victrix",
   "sections": [
     {
       "type": "service-hero",
@@ -8,8 +12,8 @@
       "titleAccent": "",
       "title": "Strategic Consulting",
       "titleHighlight": "Strategic",
-      "lead": "Our strategic consulting services span across all of our areas of expertise: Productivity, Artificial Intelligence, Cloud, Cybersecurity, and Managed Services. The involvement of our leaders and our multidisciplinary expertise will ensure the success of your strategic projects.",
-      "ctaLabel": "Let's talk about your projects",
+      "lead": "Our strategic consulting services span across all of our areas of expertise: Cybersecurity, Artificial Intelligence, Cloud, IT Governance, Application Services and Productivity. The involvement of our leaders and our multidisciplinary expertise will ensure the success of your strategic projects.",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2022/05/strategic-advice.png",
       "imageAlt": ""
@@ -28,9 +32,9 @@
       "aside": {
         "icon": "etoile",
         "title": "Multidisciplinary Team",
-        "text": "Our seasoned strategy and technology consultants will help you achieve your goals. Victrix offers a human approach and has at heart the well-being of its teams.",
-        "linkLabel": "Be part of the team",
-        "linkHref": "/en/carrieres"
+        "text": "Our seasoned strategy and technology consultants will help you achieve your goals. ",
+        "linkLabel": null,
+        "linkHref": null
       }
     },
     {
@@ -45,34 +49,82 @@
           "number": "01",
           "title": "Strategy",
           "bullets": [
-            { "text": "Master plan / evolution plan", "icon": "coche" },
-            { "text": "Financial set-up for a major project", "icon": "coche" },
-            { "text": "Governance", "icon": "coche" },
-            { "text": "Business case / opportunity study", "icon": "coche" },
-            { "text": "Support / decision making", "icon": "coche" }
+            {
+              "text": "Master plan / evolution plan",
+              "icon": "coche"
+            },
+            {
+              "text": "Financial set-up for a major project",
+              "icon": "coche"
+            },
+            {
+              "text": "Governance",
+              "icon": "coche"
+            },
+            {
+              "text": "Business case / opportunity study",
+              "icon": "coche"
+            },
+            {
+              "text": "Support / decision making",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Technological Roadmap",
           "bullets": [
-            { "text": "Power Platform", "icon": "coche" },
-            { "text": "Outsourcing of services (security, SIEM, infrastructure)", "icon": "coche" },
-            { "text": "Cloud container (Azure, Red Hat, etc.)", "icon": "coche" },
-            { "text": "Multi-vendor security", "icon": "coche" },
-            { "text": "Hybrid cloud", "icon": "coche" },
-            { "text": "CTI and workstations dematerialization", "icon": "coche" }
+            {
+              "text": "Power Platform",
+              "icon": "coche"
+            },
+            {
+              "text": "Outsourcing of services (security, SIEM, infrastructure)",
+              "icon": "coche"
+            },
+            {
+              "text": "Cloud container (Azure, Red Hat, etc.)",
+              "icon": "coche"
+            },
+            {
+              "text": "Multi-vendor security",
+              "icon": "coche"
+            },
+            {
+              "text": "Hybrid cloud",
+              "icon": "coche"
+            },
+            {
+              "text": "CTI and workstations dematerialization",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Strategic Positioning",
           "bullets": [
-            { "text": "IoT", "icon": "coche" },
-            { "text": "Hybrid cloud", "icon": "coche" },
-            { "text": "SASE / ZTNA", "icon": "coche" },
-            { "text": "User development", "icon": "coche" },
-            { "text": "Low code / no code / automation", "icon": "coche" }
+            {
+              "text": "IoT",
+              "icon": "coche"
+            },
+            {
+              "text": "Hybrid cloud",
+              "icon": "coche"
+            },
+            {
+              "text": "SASE / ZTNA",
+              "icon": "coche"
+            },
+            {
+              "text": "User development",
+              "icon": "coche"
+            },
+            {
+              "text": "Low code / no code / automation",
+              "icon": "coche"
+            }
           ]
         }
       ]
@@ -122,10 +174,22 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Diversity", "label": "Diversified portfolio" },
-        { "value": "Rigour", "label": "Peer review" },
-        { "value": "Experience", "label": "Seasoned management specialists" },
-        { "value": "Technology", "label": "Technology expertise" }
+        {
+          "value": "Diversity",
+          "label": "Diversified portfolio"
+        },
+        {
+          "value": "Rigour",
+          "label": "Peer review"
+        },
+        {
+          "value": "Experience",
+          "label": "Seasoned management specialists"
+        },
+        {
+          "value": "Technology",
+          "label": "Technology expertise"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -146,15 +210,13 @@
     },
     {
       "type": "cta",
-      "title": "Meet Our Experts",
-      "body": "Secure the success of your strategic projects with Victrix.",
-      "ctaLabel": "Contact us",
+      "title": "Secure the success of your strategic projects with Victrix.",
+      "body": null,
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit"
     }
-  ],
-  "slug": "strategic-advice",
-  "seoTitle": "Strategic Consulting | Multidisciplinary Expertise"
+  ]
 }
