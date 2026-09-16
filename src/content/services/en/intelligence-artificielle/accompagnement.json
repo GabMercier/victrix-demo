@@ -1,15 +1,17 @@
 {
+  "_schema": "default",
   "title": "Artificial Intelligence Consulting",
-  "description": "Structure, govern, and succeed with AI with Victrix's artificial intelligence consulting, from vision to execution. Schedule an AI consultation.",
+  "description": "Structure, govern, and succeed with AI with Victrix's artificial intelligence consulting, from vision to execution. Schedule a consultation.",
+  "noindex": false,
   "sections": [
     {
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Strategic AI Consulting for Canadian Organizations",
       "titleAccent": "",
-      "title": "Artificial Intelligence Consulting",
-      "titleHighlight": "Artificial Intelligence",
+      "title": "Structure, Govern, and Succeed with AI",
+      "titleHighlight": "Succeed",
       "lead": "Victrix delivers strategic, hands-on artificial intelligence consulting, from vision to execution. We start with your real business needs, prioritize what matters, and put the right expertise behind it.",
-      "ctaLabel": "Schedule an AI consultation",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2026/07/sea-lighthouse-with-the-moon-2026-03-25-00-59-08-utc-1-scaled.jpg",
       "imageAlt": ""
@@ -20,8 +22,8 @@
       "intro": "Artificial intelligence is moving fast inside your organization, usually faster than the rules meant to govern it. Simply starting this conversation puts you ahead of competitors who haven't.",
       "fond": "blanc",
       "featured": {
-        "title": "Blind spots that start to cost you",
-        "text": "Adoption happens in pockets: tools pile up, use cases scatter, and decisions lack direction. As the requests keep coming, the blind spots add up — scattered initiatives that are hard to prioritize and rarely tied to business goals, little visibility into your teams’ current use of AI, a rising tide of tool and licence requests with no way to vet or approve them, real questions about privacy, reliability, and accountability, expectations that blur the line between quick wins and lasting change, and governance you need to define before you invest further.",
+        "title": "Blind Spots That Start to Cost You",
+        "text": "Adoption happens in pockets — tools pile up, use cases scatter, and decisions lack direction. As the requests keep coming, the blind spots add up: scattered initiatives that are hard to prioritize and rarely tied to business goals, little visibility into your teams’ current use of AI, a rising tide of tool and licence requests with no way to vet or approve them, real questions about privacy, reliability, and accountability, expectations that blur the line between quick wins and lasting change, and governance you need to define before you invest further.",
         "watermark": "graphique",
         "stats": []
       },
@@ -29,8 +31,8 @@
         "icon": "etoile",
         "title": "Your people already know AI",
         "text": "They have tried the tools and folded generative AI into their day-to-day. The real work isn’t overcoming resistance but turning that momentum into tangible results and building your approach around the value it creates.",
-        "linkLabel": "Explore our AI expertise",
-        "linkHref": "/en/services/intelligence-artificielle"
+        "linkLabel": null,
+        "linkHref": null
       }
     },
     {
@@ -45,10 +47,22 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Business first", "label": "Business needs before the technology" },
-        { "value": "Execution", "label": "From strategy through delivery" },
-        { "value": "Security", "label": "Cybersecurity and infrastructure in our DNA" },
-        { "value": "Pragmatic", "label": "Accessible, close to your teams" }
+        {
+          "value": "Business first",
+          "label": "Business needs before the technology"
+        },
+        {
+          "value": "Execution",
+          "label": "From strategy through delivery"
+        },
+        {
+          "value": "Security",
+          "label": "Cybersecurity and infrastructure in our DNA"
+        },
+        {
+          "value": "Pragmatic",
+          "label": "Accessible, close to your teams"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -94,9 +108,9 @@
     },
     {
       "type": "numbered-cards",
-      "sectionTitle": "Our AI Consulting Process: From Vision to Applied Initiatives",
+      "sectionTitle": "Our AI Consulting Process: from Vision to Applied Initiatives",
       "headingStyle": "plain",
-      "intro": "One clear path takes you from first ideas to live initiatives: every step moves you toward governed, value-creating AI, with people firmly in the loop. Engagements typically run about 12 months and flex to your context, with budget and timeline confirmed after the analysis.",
+      "intro": "One clear path takes you from first ideas to live initiatives: every step moves you toward governed, value-creating AI, with people firmly in the loop. Engagements typically run about 12 months and flex to your context, with budget and timeline confirmed after the analysis. ",
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -152,40 +166,88 @@
       "title": "AI Consulting That Delivers Real Gains for Everyone",
       "intro": "AI changes how we work, but people are what make it pay off. With Victrix’s strategic, hands-on consulting, every group gains something concrete.",
       "fond": "beige",
-      "ctaLabel": "See the impact on your operations",
-      "ctaHref": "/en/contact",
+      "ctaLabel": null,
+      "ctaHref": null,
       "items": [
         {
           "number": "01",
           "title": "Leadership",
           "bullets": [
-            { "text": "Clearer, more confident decisions", "icon": "coche" },
-            { "text": "Visibility into what’s happening with AI", "icon": "coche" },
-            { "text": "Governance you can trust", "icon": "coche" },
-            { "text": "Alignment with business priorities", "icon": "coche" }
+            {
+              "text": "Clearer, more confident decisions",
+              "icon": "coche"
+            },
+            {
+              "text": "Visibility into what’s happening with AI",
+              "icon": "coche"
+            },
+            {
+              "text": "Governance you can trust",
+              "icon": "coche"
+            },
+            {
+              "text": "Alignment with business priorities",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "IT",
           "bullets": [
-            { "text": "Coordinated, coherent adoption", "icon": "coche" },
-            { "text": "Governed use", "icon": "coche" },
-            { "text": "Protected data", "icon": "coche" },
-            { "text": "Architecture ready to scale", "icon": "coche" }
+            {
+              "text": "Coordinated, coherent adoption",
+              "icon": "coche"
+            },
+            {
+              "text": "Governed use",
+              "icon": "coche"
+            },
+            {
+              "text": "Protected data",
+              "icon": "coche"
+            },
+            {
+              "text": "Architecture ready to scale",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Business lines",
           "bullets": [
-            { "text": "Renewed ownership of business processes", "icon": "coche" },
-            { "text": "Real productivity gains", "icon": "coche" },
-            { "text": "Sharper skills", "icon": "coche" },
-            { "text": "A better employee experience", "icon": "coche" }
+            {
+              "text": "Renewed ownership of business processes",
+              "icon": "coche"
+            },
+            {
+              "text": "Real productivity gains",
+              "icon": "coche"
+            },
+            {
+              "text": "Sharper skills",
+              "icon": "coche"
+            },
+            {
+              "text": "A better employee experience",
+              "icon": "coche"
+            }
           ]
         }
       ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "See the Impact of AI on Your Operations",
+      "body": "Tell us your challenges and your AI ambitions and we will show you exactly how our artificial intelligence consulting fits your context.",
+      "ctaLabel": "Schedule a consultation",
+      "ctaHref": "/en/contact/",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "light",
+      "fond": "blanc"
     },
     {
       "type": "rich-text",
@@ -201,40 +263,52 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Get a Proposal Built for You",
+      "body": "Share your context and we will build a proposal around your needs, your maturity and your timeline.",
+      "ctaLabel": "Schedule a consultation",
+      "ctaHref": "/en/contact/",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "light",
+      "fond": "blanc"
+    },
+    {
       "type": "faq",
       "title": "Frequently Asked Questions About AI Consulting",
       "fond": "givre",
       "items": [
         {
-          "question": "What is strategic artificial intelligence consulting?",
+          "question": "What Is Strategic Artificial Intelligence Consulting?",
           "answer": "Strategic AI consulting is a structured approach that helps your organization govern and deliver its move into AI. It starts with your business needs, prioritizes high-value initiatives, and moves the right projects forward with the right expertise."
         },
         {
-          "question": "How is this different from buying a tool like Microsoft Copilot?",
+          "question": "How Is This Different from Buying a Tool Like Microsoft Copilot?",
           "answer": "It starts with the need, not the tool. We work from the use case, then pick the approach most likely to succeed. The tool supports the strategy; it doesn't set it."
         },
         {
-          "question": "How long does the engagement last?",
+          "question": "How Long Does the Engagement Last?",
           "answer": "Typically about 12 months, in stages. We confirm the timeline after the analysis, since it depends on your scope, your processes, and your priorities."
         },
         {
-          "question": "Are AI licences and usage credits included?",
+          "question": "Are AI Licences and Usage Credits Included?",
           "answer": "No. The engagement covers advisory, AI strategy, and delivery. Licences and usage credits are separate subscriptions, and we can help you assess what you need."
         },
         {
-          "question": "We already have an AI committee. What is Victrix's role?",
+          "question": "We Already Have an AI Committee. What Is Victrix's Role?",
           "answer": "Victrix is the specialized partner that brings perspective, speed, and a big-picture view. We don't decide for you; we help you structure the work and reach measurable gains."
         },
         {
-          "question": "How do you handle security and compliance?",
+          "question": "How Do You Handle Security and Compliance?",
           "answer": "AI remains bound by the laws that already apply, including Canadian privacy laws such as Quebec's Law 25. Our cybersecurity and infrastructure DNA lets us govern how AI is used, protect your data, and keep people at the heart of every decision. We build on the recognized principles of responsible AI: respect for rights and freedoms, privacy protection and data governance, governance and social dialogue, human oversight and transparency, sustainable development."
         },
         {
-          "question": "What is the required investment?",
+          "question": "What Is the Required Investment?",
           "answer": "We take it step by step: a master plan first, then a few high-value initiatives. From there, the pace follows your resources and priorities."
         },
         {
-          "question": "Does Victrix's AI consulting adapt to my industry?",
+          "question": "Does Victrix's AI Consulting Adapt to My Industry?",
           "answer": "Our strategic, applied artificial intelligence consulting adapts to a wide range of industries, including engineering, legal, advanced manufacturing, construction, consulting, tourism, and more. Reach out to our AI consultants to see how Victrix can help you turn your AI ambitions into reality."
         }
       ]
@@ -246,7 +320,7 @@
       "tags": [
         "Artificial intelligence"
       ],
-      "ctaLabel": "See all resources",
+      "ctaLabel": "Browse all resources",
       "ctaHref": "/en/ressources"
     },
     {
@@ -259,7 +333,5 @@
       "cta2Href": "",
       "variant": "nuit"
     }
-  ],
-  "slug": "artificial-intelligence/consulting",
-  "seoTitle": "Strategic Artificial Intelligence Consulting | Services"
+  ]
 }
