@@ -1,30 +1,30 @@
 {
   "_schema": "default",
-  "title": "Nos services",
-  "description": "Des services complémentaires pour couvrir tous vos besoins technologiques: cybersécurité, IA, services applicatifs, infonuagique et services gérés.",
+  "title": "Nos services ",
+  "description": "Cybersécurité, IA, services applicatifs, infonuagique et services gérés. Nos équipes prennent en charge vos environnements TI du diagnostic à l'exploitation.",
   "noindex": true,
   "sections": [
     {
       "type": "service-hero",
-      "eyebrow": "Services",
+      "eyebrow": "Services-conseils TI",
       "eyebrowStyle": "texte",
       "titleAccent": "",
-      "title": "Nos services",
-      "titleHighlight": "services",
-      "lead": "Du conseil stratégique aux services gérés : un accompagnement de bout en bout, par des équipes établies au Québec.",
+      "title": "Nos services ",
+      "titleHighlight": "services ",
+      "lead": "Nos équipes prennent en charge vos environnements TI, du diagnostic à l'exploitation, et les font évoluer au rythme de vos priorités.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
-      "cta2Label": "",
-      "cta2Href": "",
+      "cta2Label": "Découvrez nos expertises",
+      "cta2Href": "/fr/expertises",
       "overlay": "voile",
       "image": "",
       "imageAlt": ""
     },
     {
       "type": "numbered-cards",
-      "sectionTitle": "Cinq familles de services",
+      "sectionTitle": "Ce que nous prenons en charge",
       "headingStyle": "underline",
-      "intro": "La vue d’ensemble détaillée arrive — chaque famille a déjà sa page.",
+      "intro": "Nos services se déploient ensemble ou séparément, selon ce que vos équipes couvrent déjà.",
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -32,48 +32,58 @@
         {
           "number": "01",
           "title": "Cybersécurité",
-          "text": "Protégez vos actifs numériques et démontrez votre conformité réglementaire.",
-          "ctaLabel": "Découvrez le service",
+          "text": "Protégez vos actifs numériques et démontrez votre conformité : SEvOC (SOC), tests d'intrusion, sécurité OT et IoT, gestion des identités et accès.",
+          "ctaLabel": "Découvrez nos services de cybersécurité",
           "ctaHref": "/fr/services/cybersecurite"
         },
         {
           "number": "02",
           "title": "IA et automatisation",
-          "text": "Exploitez le potentiel de l'IA dans vos processus d'affaires avec un cadre de gouvernance clair.",
-          "ctaLabel": "Découvrez le service",
+          "text": "Exploitez l'IA dans vos processus d'affaires avec un cadre de gouvernance clair : analyse d'opportunités, agents sur mesure, Copilot pour Microsoft 365.",
+          "ctaLabel": "Découvrez nos services en IA",
           "ctaHref": "/fr/services/intelligence-artificielle"
         },
         {
           "number": "03",
-          "title": "Services infonuagiques",
-          "text": "Modernisez vos infrastructures et faites évoluer vos environnements infonuagiques à votre rythme.",
-          "ctaLabel": "Découvrez le service",
+          "title": "Infonuagique",
+          "text": "Modernisez vos infrastructures à votre rythme : migration, multinuage, environnements hybrides, sauvegarde et relève.",
+          "ctaLabel": "Découvrez nos services infonuagiques",
           "ctaHref": "/fr/services/services-infonuagiques"
         },
         {
           "number": "04",
-          "title": "Service applicatifs",
-          "text": "Concevez, modernisez et maintenez les applications qui soutiennent vos opérations.",
-          "ctaLabel": "Découvrez le service",
+          "title": "Services applicatifs",
+          "text": "Concevez, modernisez et maintenez vos applications d'affaires : Ø Studio (Développement Power Platform et Dynamics 365), Microsoft 365, ServiceNow.",
+          "ctaLabel": "Découvrez nos services applicatifs",
           "ctaHref": "/fr/services/services-applicatifs"
         },
         {
           "number": "05",
           "title": "Services gérés",
-          "text": "Simplifiez la gestion de vos TI au quotidien avec des équipes disponibles en tout temps.",
-          "ctaLabel": "Découvrez le service",
+          "text": "Simplifiez la gestion de vos TI au quotidien : gouvernance TI, impartition, soutien technique, gestion des infrastructures, du réseau et des systèmes.",
+          "ctaLabel": "Découvrez nos services gérés",
           "ctaHref": "/fr/services/services-geres"
         }
       ]
     },
     {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Derrière chaque service, des équipes et des preuves",
+      "fond": "blanc",
+      "paragraphs": [
+        "Nos services s'appuient sur des certifications reconnues, des partenariats technologiques de premier plan et des équipes qui connaissent les contraintes de votre industrie. Tout est documenté.",
+        "Nos expertises | Nos secteurs d'activité"
+      ]
+    },
+    {
       "type": "cta",
       "title": "Parlons de vos besoins",
-      "body": "Décrivez-nous votre contexte : nous bâtirons l’accompagnement qui vous convient.",
-      "ctaLabel": "Nous joindre",
+      "body": "Décrivez-nous ce que vous avez déjà en place. Nous bâtirons la prise en charge qui vous convient.",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
-      "cta2Label": "Secteurs d’activité",
-      "cta2Href": "/fr/secteurs",
+      "cta2Label": null,
+      "cta2Href": null,
       "variant": "nuit"
     }
   ]

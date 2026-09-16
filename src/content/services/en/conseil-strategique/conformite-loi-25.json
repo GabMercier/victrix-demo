@@ -1,12 +1,14 @@
 {
-  "title": "Law 25: Are you compliant?",
+  "_schema": "default",
+  "title": "Law 25: Are You Compliant?",
   "description": "Victrix helps large organizations ensure their compliance with Law 25 on personal information protection. Are you compliant?",
+  "noindex": false,
   "sections": [
     {
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
-      "title": "Law 25: Are you compliant?",
+      "title": "Law 25: Are You Compliant?",
       "titleHighlight": "compliant",
       "lead": "With the new provisions of Law 25 now in effect, compliance is not only mandatory: it is a matter of credibility and security for your organization.",
       "ctaLabel": "Ensure Law 25 compliance",
@@ -17,7 +19,7 @@
     {
       "type": "bento-metrics",
       "title": "Why Choose Victrix?",
-      "intro": "",
+      "intro": "Victrix is your trusted IT consulting firm. Our expertise in cybersecurity and our in-depth knowledge of your industry’s requirements enable us to provide you with end-to-end support for your compliance with Law 25.",
       "fond": "blanc",
       "featured": {
         "title": "Turn regulatory challenges into competitive advantages",
@@ -28,8 +30,8 @@
       "aside": {
         "icon": "bouclier",
         "title": "Personalized assessment",
-        "text": "For a comprehensive and personalized assessment of your compliance with Law 25, contact us.",
-        "linkLabel": "Contact us",
+        "text": "We offer comprehensive and personalized assessment of your compliance with Law 25.",
+        "linkLabel": "Schedule a consultation",
         "linkHref": "/en/contact"
       }
     },
@@ -54,6 +56,5 @@
       "cta2Href": "",
       "variant": "nuit"
     }
-  ],
-  "slug": "strategic-advice/law-25-compliance"
+  ]
 }
