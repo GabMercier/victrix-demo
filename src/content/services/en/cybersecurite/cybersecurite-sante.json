@@ -1,8 +1,10 @@
 {
   "title": "Cybersecurity in the Healthcare Sector",
   "description": "Discover our customized cybersecurity offering for the healthcare sector. Protect patient data and information systems against any attack.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "First-Class Cybersecurity and Confidentiality for Healthcare Organizations",
       "intro": "",
@@ -34,6 +37,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Cybersecurity Priorities for Healthcare Institutions",
       "headingStyle": "plain",
@@ -64,6 +68,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "From Strategy to Cyber Resilience",
       "paragraphs": [
@@ -87,6 +92,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "The Healthcare Ecosystem",
       "groups": [
@@ -115,6 +121,7 @@
       ]
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Technologies",
       "fond": "givre",
@@ -132,6 +139,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Enhance the cybersecurity of your medical information",
       "body": "Contact our team of experts and we will be happy to answer all your questions.",

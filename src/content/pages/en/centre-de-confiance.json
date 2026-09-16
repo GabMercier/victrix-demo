@@ -4,8 +4,10 @@
   "description": "Security, compliance and data protection: our commitments, in one place.",
   "noindex": true,
   "seoTitle": "",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Trust centre",
       "eyebrowStyle": "texte",
@@ -22,6 +24,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "benefits",
       "type": "benefits",
       "title": "Our commitments",
       "intro": "The detailed content of this page is in preparation.",
@@ -46,6 +49,7 @@
       ]
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Our policies",
       "headingStyle": "underline",
@@ -71,6 +75,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Questions about our practices?",
       "body": "Our team will be glad to answer.",

@@ -2,8 +2,10 @@
   "title": "Productivity Consulting",
   "description": "Looking to improve your company’s efficiency? Victrix offers customized productivity consulting and innovative productivity tools. Discover our solutions!",
   "slug": "productivity-consulting",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -19,6 +21,7 @@
       "overlay": "blanc"
     },
     {
+      "_bookshop_name": "benefits",
       "type": "benefits",
       "title": "Our human approach",
       "intro": "Our specialists use a proactive approach to help you get the most out of every working hour by reconciling the realities of the three main stakeholders.",
@@ -41,6 +44,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-marquee",
       "type": "tech-marquee",
       "ariaLabel": "Technologies we master",
       "items": [
@@ -57,6 +61,7 @@
       ]
     },
     {
+      "_bookshop_name": "exclusive-tools",
       "type": "exclusive-tools",
       "title": "Our exclusive productivity solutions",
       "intro": "Victrix develops its own applications to meet the specific challenges of modern work.",
@@ -86,6 +91,7 @@
       ]
     },
     {
+      "_bookshop_name": "expertise-bento",
       "type": "expertise-bento",
       "eyebrow": "Areas of expertise",
       "title": "A 360° view of your digital productivity",
@@ -148,6 +154,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Ready to move your organization forward?",
       "body": "Let's discuss your challenges and see how Victrix can help you go further in your digital transformation and performance improvement.",

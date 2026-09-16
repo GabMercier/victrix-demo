@@ -4,6 +4,7 @@ slug: licences-power-platform
 # switch). See the FR file for the design provenance (landing-page.css).
 title: "Microsoft Power Platform licensing: making sense of it all"
 description: "A complete guide to choosing the right Microsoft Power Platform licences: licence types, service tiers, and alignment with your business needs."
+seoH1: ""
 noindex: true
 # Full chrome: header/footerMode blocks ABSENT (route default) — the final
 # maquette shows the full site navigation and footer (2026-08-18).

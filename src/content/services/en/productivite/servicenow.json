@@ -1,8 +1,10 @@
 {
   "title": "ServiceNow",
   "description": "Victrix is your ServiceNow partner from purchasing to managed services. Get tailored professional services and maximize the value of your service platform.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "ServiceNow platform",
       "title": "Get the most out of ServiceNow: your platform amplified by Victrix’s expertise",
@@ -17,6 +19,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Our ServiceNow expertise",
       "intro": "",
@@ -36,6 +39,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Accelerated deployment of your ServiceNow platform",
       "headingStyle": "underline",
@@ -67,6 +71,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "End-to-end services, from acquisition to deployment",
       "intro": "Let our ServiceNow experts guide you through every stage of your digital transformation project. Our specialists simplify your ServiceNow journey by implementing best practices for this automation and services platform, recognized as a market leader.",
@@ -96,6 +101,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "AI governance and oversight",
       "paragraphs": [
@@ -118,6 +124,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "A partnership that delivers value",
       "subtitle": "ServiceNow focuses entirely on developing its product, and relies on its network of trusted partners for all its implementations. Working with a partner like Victrix is therefore crucial for implementing your service platform, so that you can reap all its benefits. Victrix is a certified ServiceNow Partner:",
@@ -132,6 +139,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Ensure the success of your ServiceNow solution with Victrix",
       "body": "Get the most of your investment and outpace your competitors with a simple, accelerated, and affordable digital transformation with Victrix.",

@@ -9,6 +9,7 @@ slug: ''
 # la palette générée par @bookshop/generate (Zod l'ignore).
 title: "Nouvelle campagne"
 description: ""
+seoH1: ""
 noindex: true
 # P-04 — en-tête/pied de page de campagne : « complet » = chrome normal du
 # site. Chaînes vides, jamais null (règle CloudCannon/zod du dépôt).

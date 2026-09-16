@@ -4,8 +4,10 @@
   "description": "Sécurité, conformité et protection de vos données : nos engagements, réunis en un seul endroit.",
   "noindex": true,
   "seoTitle": "",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Centre de confiance",
       "eyebrowStyle": "texte",
@@ -22,6 +24,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "benefits",
       "type": "benefits",
       "title": "Nos engagements",
       "intro": "Le contenu détaillé de cette page est en préparation.",
@@ -46,6 +49,7 @@
       ]
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Nos politiques",
       "headingStyle": "underline",
@@ -71,6 +75,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Des questions sur nos pratiques?",
       "body": "Notre équipe vous répondra avec plaisir.",

@@ -1,8 +1,10 @@
 {
   "title": "Migration vers Microsoft Azure",
   "description": "Améliorez votre posture de sécurité, votre productivité et vos performances avec la migration vers Microsoft Azure, une expertise infonuagique de Victrix.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Pourquoi choisir la migration vers Azure pour son organisation ?",
       "intro": "Microsoft Azure est une plateforme infonuagique proposant de nombreux services pour déployer, gérer et optimiser vos applications et ressources technologiques : infrastructure, sécurité infonuagique, analyse et sauvegarde de données, développement d'applications sur mesure, et bien plus encore.",
@@ -34,6 +37,7 @@
       }
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Les avantages de l'environnement infonuagique Azure",
       "paragraphs": [
@@ -55,6 +59,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Notre méthodologie Cloud Adoption Framework",
       "headingStyle": "plain",
@@ -91,6 +96,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Nos services de migration et de gestion Azure",
       "groups": [
@@ -168,6 +174,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Victrix, votre partenaire stratégique pour une migration vers Azure réussie",
       "body": "Pour une migration rapide, efficace et sécuritaire vers Microsoft Azure, faites appel aux services personnalisés de Victrix.",

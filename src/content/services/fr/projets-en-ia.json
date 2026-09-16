@@ -2,8 +2,10 @@
   "title": "Projets en IA",
   "description": "De l’idéation au déploiement : des projets d’intelligence artificielle qui livrent de la valeur.",
   "noindex": true,
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Services",
       "eyebrowStyle": "texte",
@@ -20,6 +22,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Nos interventions types",
       "intro": "Le détail de l’offre sera publié prochainement — voici comment nous intervenons.",
@@ -57,6 +60,7 @@
       ]
     },
     {
+      "_bookshop_name": "related-posts",
       "type": "related-posts",
       "title": "Ressources liées",
       "tags": ["Intelligence artificielle"],
@@ -64,6 +68,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Un projet en IA ?",
       "body": "Parlons de vos cas d’usage et de leur potentiel.",

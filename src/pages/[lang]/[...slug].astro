@@ -151,5 +151,5 @@ const crumbsSchema = breadcrumbSchema(crumbs, Astro.site!);
 >
   <JsonLd slot="head" schema={crumbsSchema} />
   <Breadcrumbs lang={lang} items={crumbs} />
-  <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} />
+  <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} seoH1={frontmatter.seoH1} />
 </BaseLayout>

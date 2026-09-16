@@ -2,8 +2,10 @@
   "title": "Services applicatifs",
   "description": "Concevoir, moderniser et maintenir vos applications d’affaires.",
   "noindex": true,
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Services",
       "eyebrowStyle": "texte",
@@ -20,6 +22,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Ce que nous prenons en charge",
       "intro": "Un aperçu de nos interventions types — le détail de l’offre sera publié prochainement.",
@@ -57,6 +60,7 @@
       ]
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Notre approche",
       "headingStyle": "underline",
@@ -71,6 +75,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Un projet applicatif ?",
       "body": "Parlons de vos applications d’affaires et de leur évolution.",

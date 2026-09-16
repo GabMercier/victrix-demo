@@ -1,8 +1,10 @@
 {
   "title": "Passez au modèle de cybersécurité Zero Trust",
   "description": "Adoptez le modèle cybersécurité Zero Trust avec Victrix. Réduisez vos risques d’attaques et simplifiez la gestion des identités pour votre organisation.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Pourquoi adopter le modèle Zero Trust ?",
       "intro": "",
@@ -36,6 +39,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Les 7 avantages du modèle Zero Trust",
       "headingStyle": "plain",
@@ -53,6 +57,7 @@
       ]
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Victrix: sécurisez vos données avec le modèle Zero Trust",
       "fond": "givre",
@@ -78,6 +83,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Améliorez en continu votre posture de sécurité",
       "body": "Pour toutes questions concernant la protection de votre cybersécurité ou l’architecture Zero Trust, contactez-nous : nos experts vous accompagneront pour mettre en place les meilleures solutions et assurer la sécurité de votre entreprise.",

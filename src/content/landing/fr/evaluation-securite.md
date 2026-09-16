@@ -14,6 +14,7 @@ slug: evaluation-securite
 #    clés inconnues) — elle n'atteint jamais les composants.
 title: "Évaluation de votre posture de sécurité"
 description: "Obtenez un portrait clair de vos défenses actuelles : une évaluation menée par les experts Victrix, des constats concrets et un plan d'action priorisé."
+seoH1: ""
 noindex: true
 # P-04 — chrome allégé (campagne payante) : logo + un bouton, pied de page
 # réduit à la barre légale. ctaLabel/ctaHref vides → bouton portail ; ici un

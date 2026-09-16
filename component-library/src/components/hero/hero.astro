@@ -30,8 +30,8 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  */
 interface Props {
   eyebrow?: string;
-  /** Quel élément porte le <h1> : le titre (défaut) ou le surtitre (SEO). */
-  h1Element?: 'titre' | 'surtitre';
+  /** Vrai quand la page porte déjà son <h1> (champ « H1 SEO » de la page) : le grand titre passe en <h2>, styles inchangés. */
+  h1Taken?: boolean;
   title: string;
   subtitle?: string;
   ctaLabel?: string;
@@ -47,7 +47,7 @@ interface Props {
 
 const {
   eyebrow,
-  h1Element = 'titre',
+  h1Taken = false,
   title,
   subtitle,
   ctaLabel,
@@ -84,12 +84,11 @@ const titleParts =
 
 const hasCta = Boolean(ctaLabel && ctaHref);
 const hasCta2 = Boolean(cta2Label && cta2Href);
-// Contrôle du H1 (Phase 2, 2026-09-16) : « surtitre » = le surtitre porte le <h1>
-// (mot-clé SEO court) et le grand titre passe en <h2> — styles inchangés.
-// Sans surtitre, le titre reste le H1 : jamais de page sans H1.
-const eyebrowIsH1 = h1Element === 'surtitre' && !!eyebrow;
-const EyebrowTag = eyebrowIsH1 ? 'h1' : 'p';
-const TitleTag = eyebrowIsH1 ? 'h2' : 'h1';
+// H1 de la page (2026-09-16) : le grand titre est le <h1>, sauf si la page
+// porte déjà un « H1 SEO » (prop h1Taken, posée par shared/astro/page.astro
+// qui rend alors le <h1> masqué) — il passe en <h2>, styles inchangés.
+// Jamais de page sans H1.
+const TitleTag = h1Taken ? 'h2' : 'h1';
 
 ---
 
@@ -103,7 +102,7 @@ const TitleTag = eyebrowIsH1 ? 'h2' : 'h1';
     <div class="flex flex-col items-start gap-6 max-w-[576px]">
       {
         eyebrow && (
-          <EyebrowTag class="m-0 max-w-none flex items-center gap-2 text-base leading-6 uppercase tracking-[1.6px] text-primary">
+          <p class="m-0 max-w-none flex items-center gap-2 text-base leading-6 uppercase tracking-[1.6px] text-primary">
             {eyebrowIcon === 'livre' && (
               <svg
                 class="shrink-0"
@@ -123,7 +122,7 @@ const TitleTag = eyebrowIsH1 ? 'h2' : 'h1';
               </svg>
             )}
             {eyebrow}
-          </EyebrowTag>
+          </p>
         )
       }
       <TitleTag class="text-[40px] leading-[1.15] lg:text-[56px] lg:leading-[62px] font-extrabold tracking-[-1.12px] text-on-surface m-0">

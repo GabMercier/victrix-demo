@@ -1,8 +1,10 @@
 {
   "title": "Cybersécurité dans le secteur de la santé",
   "description": "Découvrez notre offre de cybersécurité sur mesure pour le secteur de la santé. Protégez les données des patients et systèmes d’information contre toute attaque.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Une cybersécurité et une confidentialité de premier ordre pour les organismes de santé",
       "intro": "",
@@ -34,6 +37,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Les priorités de cybersécurité des établissements de santé",
       "headingStyle": "plain",
@@ -64,6 +68,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Un accompagnement de la stratégie à la cyber-résilience",
       "paragraphs": [
@@ -87,6 +92,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "L’écosystème de la santé",
       "groups": [
@@ -115,6 +121,7 @@
       ]
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Nos technologies",
       "fond": "givre",
@@ -132,6 +139,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Élevez la cybersécurité de vos informations médicales",
       "body": "Contactez notre équipe d’experts et nous répondrons à toutes vos questions avec grand plaisir.",

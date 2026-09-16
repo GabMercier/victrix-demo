@@ -1,8 +1,10 @@
 {
   "title": "Acceleration of Your Azure Migration",
   "description": "Strengthen your security posture, improve productivity, and boost performance by migrating to Microsoft Azure, supported by Victrix’s cloud expertise.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Why Choose Azure Migration for Your Organization?",
       "intro": "Microsoft Azure is a cloud computing platform offering comprehensive services for deploying, managing, and optimizing your enterprise applications and IT resources: infrastructure, security, data analysis and backup, custom application development, and much more.",
@@ -34,6 +37,7 @@
       }
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Benefits of the Azure Cloud Environment",
       "paragraphs": [
@@ -55,6 +59,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Our Cloud Adoption Framework Methodology",
       "headingStyle": "plain",
@@ -91,6 +96,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Our Azure Migration and Managed Services",
       "groups": [
@@ -167,6 +173,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Victrix, Your Strategic Partner for a Successful Migration to Azure",
       "body": "For a fast, efficient, and secure migration to Microsoft Azure, take advantage of Victrix's customized services.",

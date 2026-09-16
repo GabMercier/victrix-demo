@@ -4,8 +4,10 @@
   "description": "Flexible business models tailored to your context.",
   "noindex": true,
   "seoTitle": "",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Pricing",
       "eyebrowStyle": "texte",
@@ -22,6 +24,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "How we build a proposal",
       "headingStyle": "underline",
@@ -48,6 +51,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Get an estimate",
       "body": "Describe your project and we will come back to you quickly with a proposal.",

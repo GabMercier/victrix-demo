@@ -4,8 +4,10 @@
   "description": "Cybersecurity, AI, application services, cloud and managed services. Our teams take charge of your IT environments, from assessment through to daily operations.",
   "noindex": true,
   "seoTitle": "",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "IT Services and Consulting",
       "eyebrowStyle": "texte",
@@ -22,6 +24,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "What We Cover",
       "headingStyle": "underline",
@@ -78,6 +81,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Let’s Talk About Your Needs",
       "body": "Tell us what you already have in place. We'll propose the scope that fits.",

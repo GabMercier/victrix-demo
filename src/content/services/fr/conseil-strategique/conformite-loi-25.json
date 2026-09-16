@@ -4,8 +4,10 @@
   "description": "Victrix aide les grandes organisations à assurer leur conformité à la loi 25 sur la protection des renseignements personnels. Êtes-vous conforme?",
   "noindex": false,
   "seoTitle": "Loi 25: votre entreprise est-elle conforme?",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -18,6 +20,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Pourquoi choisir Victrix?",
       "intro": "Victrix est votre cabinet-conseil TI de confiance. Notre expertise en cybersécurité et nos connaissances approfondies des exigences de votre secteur nous permettent de vous offrir un accompagnement de bout en bout pour votre mise en conformité à la Loi 25.",
@@ -48,6 +51,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Votre entreprise est-elle conforme?",
       "body": "Notre expertise vous permettra de transformer les défis réglementaires en avantages compétitifs.",

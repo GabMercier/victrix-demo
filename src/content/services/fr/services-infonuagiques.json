@@ -1,8 +1,10 @@
 {
   "title": "Services infonuagiques",
   "description": "Migrez vers une solution infonuagique adaptée à votre réalité d'affaires. Victrix accélère et simplifie votre transition avec des services infonuagiques sur mesure.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Solutions et services infonuagiques",
       "intro": "Nos services infonuagiques sont conçus pour répondre aux défis uniques de votre organisation — de la sélection de votre solution infonuagique à la migration des charges et l'optimisation continue de votre environnement.",
@@ -34,6 +37,7 @@
       }
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Nos solutions infonuagiques",
       "paragraphs": [
@@ -55,6 +59,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Notre stratégie d'accélération : services IaaS — SaaS — PaaS",
       "headingStyle": "plain",
@@ -96,6 +101,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Nos expertises et services infonuagiques",
       "groups": [
@@ -147,6 +153,7 @@
       ]
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Nos partenaires",
       "fond": "givre",
@@ -176,6 +183,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Victrix, votre partenaire stratégique en solutions et services infonuagiques",
       "body": "Faites appel à notre expertise pour vos projets de migration vers AWS ou Azure et bénéficiez d'un stockage infonuagique sécurisé, flexible et accessible, grâce à notre pratique multi-cloud.",

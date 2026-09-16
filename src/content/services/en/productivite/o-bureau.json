@@ -1,8 +1,10 @@
 {
   "title": "Office booking app",
   "description": "Manage your workspaces with ease using O bureau, the easiest-to-use office booking app. Request a demo today.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Microsoft 365 ecosystem",
       "title": "O bureau, our office booking application",
@@ -17,6 +19,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Benefits",
       "subtitle": "",
@@ -29,6 +32,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "A simple, ergonomic application to manage your workspaces",
       "intro": "",
@@ -62,6 +66,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Microsoft technology",
       "paragraphs": [
@@ -84,6 +89,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Adopt an office application",
       "body": "Victrix offers a turnkey application to meet your workspace management needs.",

@@ -5,6 +5,7 @@ title: Assess your security posture
 description: >-
   Get a clear picture of your current defences: an assessment led by Victrix
   experts, concrete findings and a prioritized action plan.
+seoH1: ""
 noindex: true
 # P-04 — light chrome (paid campaign): logo + one button, footer reduced to
 # the legal bar. Empty ctaLabel/ctaHref → portal button; here a dedicated

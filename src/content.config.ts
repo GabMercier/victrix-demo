@@ -273,10 +273,6 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     // ---- Campaign landing sections (frozen contract) ----
     z.object({
       type: z.literal('hero'),
-      // Contrôle du H1 (Phase 2, 2026-09-16) : « titre » (défaut) = le grand
-      // titre est le <h1> ; « surtitre » = le surtitre devient le <h1> (mot-clé
-      // SEO court) et le titre passe en <h2>, styles inchangés.
-      h1Element: z.enum(['titre', 'surtitre']).default('titre'),
       eyebrow: z.string().optional(),
       title: z.string(),
       subtitle: z.string().optional(),
@@ -418,10 +414,6 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     // ---- Home sections (composable home — mirror the home-* components) ----
     z.object({
       type: z.literal('home-hero'),
-      // Contrôle du H1 (Phase 2, 2026-09-16) : « titre » (défaut) = le grand
-      // titre est le <h1> ; « surtitre » = le surtitre devient le <h1> (mot-clé
-      // SEO court) et le titre passe en <h2>, styles inchangés.
-      h1Element: z.enum(['titre', 'surtitre']).default('titre'),
       eyebrow: z.string().optional(),
       title: z.string(),
       // Fidélité maquette accueil.css (2026-08-04) : sous-chaîne du titre
@@ -551,10 +543,6 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     // — même politique que la page expertise d'origine (contenu de dépôt). ----
     z.object({
       type: z.literal('service-hero'),
-      // Contrôle du H1 (Phase 2, 2026-09-16) : « titre » (défaut) = le grand
-      // titre est le <h1> ; « surtitre » = le surtitre devient le <h1> (mot-clé
-      // SEO court) et le titre passe en <h2>, styles inchangés.
-      h1Element: z.enum(['titre', 'surtitre']).default('titre'),
       eyebrow: z.string().optional(),
       // Fidélité maquette produit-enfant.css (2026-08-05) : « badge » = chip
       // bleu plein au lieu du texte bleu pâle.
@@ -602,10 +590,6 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     // service-hero).
     z.object({
       type: z.literal('product-hero'),
-      // Contrôle du H1 (Phase 2, 2026-09-16) : « titre » (défaut) = le grand
-      // titre est le <h1> ; « badge » = la pastille (badge) devient le <h1> (mot-clé
-      // SEO court) et le titre passe en <h2>, styles inchangés.
-      h1Element: z.enum(['titre', 'badge']).default('titre'),
       badge: z.string().default(''),
       title: z.string(),
       // Sous-chaîne du titre rendue en bleu (première occurrence — patron
@@ -877,6 +861,11 @@ const home = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/home' }),
   schema: ({ image }) =>
     z.object({
+      // H1 SEO de la page (2026-09-16, demande de Julie) : vide = le grand titre
+      // du héros est le <h1> ; renseigné = ce texte devient le <h1> de la page
+      // (masqué à l'écran, rendu par component-library/src/shared/astro/
+      // page.astro) et le grand titre du héros passe en <h2>, styles inchangés.
+      seoH1: z.string().optional(),
       sections: z.array(sectionsSchema(image)),
     }),
 });
@@ -962,6 +951,11 @@ const landing = defineCollection({
       // Shared `sections` union (see sectionsSchema above) — the same palette
       // the home page uses; the campaign route (src/pages/[lang]/campagnes/
       // [slug].astro) renders it through the shared Bookshop renderer.
+      // H1 SEO de la page (2026-09-16, demande de Julie) : vide = le grand titre
+      // du héros est le <h1> ; renseigné = ce texte devient le <h1> de la page
+      // (masqué à l'écran, rendu par component-library/src/shared/astro/
+      // page.astro) et le grand titre du héros passe en <h2>, styles inchangés.
+      seoH1: z.string().optional(),
       sections: z.array(sectionsSchema(image)),
     }),
 });
@@ -1004,6 +998,11 @@ const services = defineCollection({
       // <title> SEO hérité de WordPress (suffixe « | Victrix » retiré au
       // câblage — BaseLayout appose déjà le nom du site).
       seoTitle: z.string().optional(),
+      // H1 SEO de la page (2026-09-16, demande de Julie) : vide = le grand titre
+      // du héros est le <h1> ; renseigné = ce texte devient le <h1> de la page
+      // (masqué à l'écran, rendu par component-library/src/shared/astro/
+      // page.astro) et le grand titre du héros passe en <h2>, styles inchangés.
+      seoH1: z.string().optional(),
       sections: z.array(sectionsSchema(image)),
     }),
 });
@@ -1329,6 +1328,11 @@ const pages = defineCollection({
       noindex: z.boolean().default(true),
       slug: z.string().optional(),
       seoTitle: z.string().optional(),
+      // H1 SEO de la page (2026-09-16, demande de Julie) : vide = le grand titre
+      // du héros est le <h1> ; renseigné = ce texte devient le <h1> de la page
+      // (masqué à l'écran, rendu par component-library/src/shared/astro/
+      // page.astro) et le grand titre du héros passe en <h2>, styles inchangés.
+      seoH1: z.string().optional(),
       sections: z.array(sectionsSchema(image)),
     }),
 });

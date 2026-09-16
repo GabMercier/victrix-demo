@@ -1,8 +1,10 @@
 {
   "title": "Internet of Things — OT & IoT Security Services",
   "description": "Strengthen the security of your organization's connected objects with the IoT security service designed by Victrix's cybersecurity experts.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Why Secure Your Organization's Connected Objects?",
       "intro": "",
@@ -38,6 +41,7 @@
       }
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Approach",
       "subtitle": "Victrix performs a comprehensive analysis of your infrastructure to identify security risks and improve the resilience of IoT environments.",
@@ -51,6 +55,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Victrix Ensures the Security of IoT and OT Systems",
       "intro": "Complete support, from the assessment of your IoT networks to the adoption of new technologies by your teams.",
@@ -80,6 +85,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Sector-Specific Expertise in OT/IoT and Cybersecurity",
       "paragraphs": [
@@ -110,6 +116,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Strengthen your security posture in the age of the IoT",
       "body": "Protect your data, assets, and connected objects with our cybersecurity experts.",

@@ -1,8 +1,10 @@
 {
   "title": "Plateforme Expérience Employé",
   "description": "Bénéficiez de l'expertise en développement numérique de Victrix pour bâtir une plateforme employé intranet moderne basée sur Microsoft 365 et l'IA.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Écosystème Microsoft 365",
       "title": "L’IA au service de l’expérience employé",
@@ -17,6 +19,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Réinventez votre intranet",
       "intro": "Votre projet d’intranet est l’occasion parfaite pour exploiter l’IA de manière responsable et innovante.",
@@ -38,6 +41,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "La plateforme pour une expérience employé unifiée et moderne",
       "headingStyle": "underline",
@@ -64,6 +68,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Les avantages de notre offre intranet moderne",
       "paragraphs": [
@@ -86,6 +91,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Discutons d’une vision modernisée de votre plateforme expérience employé",
       "body": "Rehaussez l’expérience employé avec un intranet moderne basé sur Microsoft 365 et Viva.",

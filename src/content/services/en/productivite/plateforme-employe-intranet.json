@@ -1,8 +1,10 @@
 {
   "title": "EMPLOYEE EXPERIENCE PLATFORM",
   "description": "Leverage Victrix's digital development expertise to build a modern intranet employee platform based on Microsoft 365 and AI.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Microsoft 365 ecosystem",
       "title": "An AI-powered employee experience",
@@ -17,6 +19,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Reinvent your intranet",
       "intro": "Your intranet project is the perfect opportunity to use AI in a responsible and innovative way.",
@@ -38,6 +41,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "The platform for a unified, modern employee experience",
       "headingStyle": "underline",
@@ -64,6 +68,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Benefits of our modern intranet offering",
       "paragraphs": [
@@ -86,6 +91,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Let’s discuss a modernized version of your employee experience platform",
       "body": "Elevate the employee experience with a modern intranet based on Microsoft 365 and Viva.",

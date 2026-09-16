@@ -4,8 +4,10 @@
   "description": "Solutions designed, deployed and supported by our teams to accelerate your organization's productivity.",
   "noindex": true,
   "seoTitle": "",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Our Products",
       "title": "Proven Products, Backed by Our Experts",
@@ -20,6 +22,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Our Flagship Solutions",
       "headingStyle": "underline",
@@ -59,6 +62,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Want a demo?",
       "body": "Our teams will walk you through the products that fit your needs.",

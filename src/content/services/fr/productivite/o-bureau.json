@@ -1,8 +1,10 @@
 {
   "title": "O bureau",
   "description": "Gérez vos espaces de travail facilement avec O bureau, l'application de réservation de bureau la plus simple à piloter.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Écosystème Microsoft 365",
       "title": "O bureau, notre application de réservation de bureau",
@@ -17,6 +19,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Les bénéfices",
       "subtitle": "",
@@ -29,6 +32,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Une application simple et ergonomique pour gérer vos espaces de travail",
       "intro": "",
@@ -62,6 +66,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Une technologie Microsoft",
       "paragraphs": [
@@ -84,6 +89,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Adoptez O bureau",
       "body": "Victrix vous offre une application clé en main pour répondre à vos besoins de gestion des espaces de travail.",

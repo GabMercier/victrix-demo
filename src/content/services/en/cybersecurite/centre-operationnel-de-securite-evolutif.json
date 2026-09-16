@@ -1,8 +1,10 @@
 {
   "title": "Scalable Security Operations Center",
   "description": "Detect, respond, and continuously improve your security posture with SEvOC, our scalable Security Operations Center (SOC).",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "What Victrix's SEvOC Has to Offer",
       "intro": "A 24/7, bilingual SOC service with experts dedicated to your environment.",
@@ -38,6 +41,7 @@
       }
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "What SEvOC Brings to Your Organization",
       "intro": "Support, operations, and evolution: a modular offering that covers the full cycle.",
@@ -80,6 +84,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Services Beyond Traditional Managed Security",
       "paragraphs": [
@@ -104,6 +109,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Concrete Benefits of SEvOC",
       "headingStyle": "plain",
@@ -155,6 +161,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Benefit From Our Dedicated, Scalable SOC",
       "body": "Contact us to find out how SEvOC's customer-focused approach can help you achieve greater efficiency and peace of mind — we tailor our SOC offering to your organization's unique needs.",

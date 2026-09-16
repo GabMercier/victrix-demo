@@ -1,8 +1,10 @@
 {
   "title": "Services Gérés",
   "description": "Sécurisez, optimisez et gouvernez vos TI avec nos services gérés adaptés. Surveillance, support et automatisation, pour une performance sans compromis.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "rich-text",
       "type": "rich-text",
       "fond": "givre",
       "paragraphs": [
@@ -24,6 +27,7 @@
       ]
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Pourquoi choisir Victrix pour vos services gérés",
       "intro": "",
@@ -43,6 +47,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "L'externalisation, votre avantage stratégique pour rester compétitifs face aux défis actuels",
       "headingStyle": "plain",
@@ -78,6 +83,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Une couverture de services gérés axée sur la sécurité et l'amélioration continue",
       "intro": "Assurez la continuité, la sécurité et l'optimisation de votre environnement TI et allégez la charge de vos équipes internes. En tant que fournisseur de services gérés, Victrix prend en charge l'administration, la surveillance et l'évolution de vos infrastructures.",
@@ -121,6 +127,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Victrix : une prise en charge qui résout vos défis de gestion TI",
       "paragraphs": [
@@ -143,6 +150,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "faq",
       "type": "faq",
       "title": "En savoir plus sur nos services gérés TI",
       "fond": "givre",
@@ -172,6 +180,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Victrix, votre partenaire stratégique pour des services gérés adaptés à votre organisation",
       "body": "Intéressés ? Des questions ? Contactez-nous dès aujourd'hui pour parler de vos projets.",

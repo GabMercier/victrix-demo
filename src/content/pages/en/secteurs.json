@@ -4,8 +4,10 @@
   "description": "Victrix has extensive industry expertise. Discover all the industries served by our experts.",
   "noindex": true,
   "seoTitle": "",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Industry Expertise",
       "eyebrowStyle": "texte",
@@ -22,6 +24,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "benefits",
       "type": "benefits",
       "title": "Different Realities, the Same Standard",
       "intro": "Regulated procurement, cost pressure, the talent shortage and compliance requirements: every industry sets its own rules. We start with yours.",
@@ -91,6 +94,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Your Industry, Our Experts",
       "body": "Let’s talk about the technology challenges that come with your industry.",

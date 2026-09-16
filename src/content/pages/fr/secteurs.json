@@ -4,8 +4,10 @@
   "description": "Victrix possède une expertise sectorielle approfondie. Découvrez tous les secteurs d'activité pris en charge par nos experts.",
   "noindex": true,
   "seoTitle": "",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Expertise sectorielle",
       "eyebrowStyle": "texte",
@@ -22,6 +24,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "benefits",
       "type": "benefits",
       "title": "Des réalités différentes, une même exigence",
       "intro": "Approvisionnement encadré, pression sur les coûts, rareté des talents et exigences de conformité : chaque secteur impose ses propres règles. Nous partons des vôtres. Les pages détaillées par secteur arrivent bientôt.",
@@ -91,6 +94,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Votre secteur, nos experts",
       "body": "Parlons des défis technologiques propres à votre domaine.",

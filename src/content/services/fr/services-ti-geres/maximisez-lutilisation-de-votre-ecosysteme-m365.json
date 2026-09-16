@@ -1,8 +1,10 @@
 {
   "title": "Maximisez l’utilisation de votre écosystème M365",
   "description": "Maximisez l'utilisation de M365 avec nos services gérés Microsoft 365. Victrix se charge des opérations de gestion et sécurité pour assurer votre conformité.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Comment la gestion Microsoft 365 peut vous aider",
       "intro": "",
@@ -34,6 +37,7 @@
       }
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Notre approche",
       "fond": "givre",
@@ -46,6 +50,7 @@
       ]
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Les avantages du service de gestion M365 de Victrix",
       "headingStyle": "plain",
@@ -71,6 +76,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Notre méthodologie",
       "intro": "",
@@ -105,6 +111,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Vous avez des doutes ?",
       "body": "Contactez-nous pour parler de vos projets.",

@@ -1,8 +1,10 @@
 {
   "title": "Maximize the use of your M365 ecosystem",
   "description": "Get the most out of M365 with our Microsoft 365 managed services. Victrix takes care of management and security operations to ensure your compliance.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "How Microsoft 365 Managed Services Help Your Business",
       "intro": "",
@@ -34,6 +37,7 @@
       }
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Approach",
       "fond": "givre",
@@ -46,6 +50,7 @@
       ]
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Benefits of Victrix's M365 Managed Services",
       "headingStyle": "plain",
@@ -71,6 +76,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Our Methodology",
       "intro": "",
@@ -105,6 +111,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Any questions?",
       "body": "Contact us to discuss your projects.",

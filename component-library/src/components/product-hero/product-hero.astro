@@ -41,8 +41,8 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  */
 interface Props {
   badge?: string;
-  /** Quel élément porte le <h1> : le titre (défaut) ou la pastille (SEO). */
-  h1Element?: 'titre' | 'badge';
+  /** Vrai quand la page porte déjà son <h1> (champ « H1 SEO » de la page) : le grand titre passe en <h2>, styles inchangés. */
+  h1Taken?: boolean;
   title: string;
   titleHighlight?: string;
   lead?: string;
@@ -56,7 +56,7 @@ interface Props {
 }
 
 const {
-  h1Element = 'titre',
+  h1Taken = false,
   badge,
   title,
   titleHighlight,
@@ -83,12 +83,11 @@ const FONDS: Record<string, string> = {
 // (première occurrence — patron home-hero/service-hero) ; absente ou
 // introuvable = titre uniforme, aucune casse.
 const highlightIndex = titleHighlight ? title.indexOf(titleHighlight) : -1;
-// Contrôle du H1 (Phase 2, 2026-09-16) : « badge » = le badge (pastille) porte le <h1>
-// (mot-clé SEO court) et le grand titre passe en <h2> — styles inchangés.
-// Sans badge (pastille), le titre reste le H1 : jamais de page sans H1.
-const badgeIsH1 = h1Element === 'badge' && !!badge;
-const BadgeTag = badgeIsH1 ? 'h1' : 'p';
-const TitleTag = badgeIsH1 ? 'h2' : 'h1';
+// H1 de la page (2026-09-16) : le grand titre est le <h1>, sauf si la page
+// porte déjà un « H1 SEO » (prop h1Taken, posée par shared/astro/page.astro
+// qui rend alors le <h1> masqué) — il passe en <h2>, styles inchangés.
+// Jamais de page sans H1.
+const TitleTag = h1Taken ? 'h2' : 'h1';
 const titleParts =
   highlightIndex >= 0 && titleHighlight
     ? {
@@ -104,10 +103,10 @@ const titleParts =
     <div class="flex flex-col items-start gap-6">
       {
         badge && (
-          <BadgeTag class="inline-flex items-center gap-2 bg-primary/20 border border-solid border-primary/20 rounded-full px-3 py-1 m-0 max-w-none">
+          <p class="inline-flex items-center gap-2 bg-primary/20 border border-solid border-primary/20 rounded-full px-3 py-1 m-0 max-w-none">
             <span class="size-2 rounded-full bg-primary" aria-hidden="true" />
             <span class="text-xs leading-4 font-bold uppercase tracking-[0.6px] text-primary-container">{badge}</span>
-          </BadgeTag>
+          </p>
         )
       }
       <TitleTag

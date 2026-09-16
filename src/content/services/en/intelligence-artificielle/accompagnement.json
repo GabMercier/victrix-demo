@@ -5,8 +5,10 @@
   "noindex": false,
   "slug": "artificial-intelligence/consulting",
   "seoTitle": "Strategic Artificial Intelligence Consulting | Services",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Strategic AI Consulting for Canadian Organizations",
       "titleAccent": "",
@@ -19,6 +21,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "The AI Challenges Facing Canadian Organizations",
       "intro": "Artificial intelligence is moving fast inside your organization, usually faster than the rules meant to govern it. Simply starting this conversation puts you ahead of competitors who haven't.",
@@ -38,6 +41,7 @@
       }
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Why Choose Victrix for Your Artificial Intelligence Consulting",
       "paragraphs": [
@@ -74,6 +78,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "realisations",
       "type": "realisations",
       "title": "Examples of Initiatives",
       "intro": "Concrete initiatives born from our strategic, applied AI consulting.",
@@ -109,6 +114,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Our AI Consulting Process: from Vision to Applied Initiatives",
       "headingStyle": "plain",
@@ -150,6 +156,7 @@
       ]
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "What Our Artificial Intelligence Consulting Includes",
       "subtitle": "Whether you’re sizing up AI tools, working from a specific use case, or want the full picture — roadmap, governance, and concrete initiatives — Victrix is your partner for strategic AI consulting.",
@@ -164,6 +171,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "AI Consulting That Delivers Real Gains for Everyone",
       "intro": "AI changes how we work, but people are what make it pay off. With Victrix’s strategic, hands-on consulting, every group gains something concrete.",
@@ -252,6 +260,7 @@
       "fond": "blanc"
     },
     {
+      "_bookshop_name": "rich-text",
       "type": "rich-text",
       "title": "The AI Opportunity for Canadian Organizations",
       "fond": "blanc",
@@ -277,6 +286,7 @@
       "fond": "blanc"
     },
     {
+      "_bookshop_name": "faq",
       "type": "faq",
       "title": "Frequently Asked Questions About AI Consulting",
       "fond": "givre",
@@ -326,6 +336,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Ready to Turn Your AI Ambitions Into Business Results?",
       "body": "Victrix takes you from vision to execution with a structured, responsible, pragmatic, and genuinely accessible approach. Share your context and we will build a proposal around your needs, your maturity, and your timeline.",

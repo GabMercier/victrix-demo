@@ -1,8 +1,10 @@
 {
   "title": "Cloud Services for Businesses",
   "description": "Migrate to a cloud solution tailored to your business reality. Victrix accelerates and simplifies your transition with customized cloud services.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Cloud Solutions and Services",
       "intro": "Our cloud services are designed to meet the unique challenges of your organization — from selecting your cloud solution to migrating workloads and continuously optimizing your cloud environment.",
@@ -34,6 +37,7 @@
       }
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Our Cloud Solutions",
       "paragraphs": [
@@ -55,6 +59,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Our Acceleration Strategy: IaaS — SaaS — PaaS Services",
       "headingStyle": "plain",
@@ -96,6 +101,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Our Cloud Services and Expertise",
       "groups": [
@@ -147,6 +153,7 @@
       ]
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Partners",
       "fond": "givre",
@@ -176,6 +183,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Victrix, Your Strategic Partner for Cloud Services and Solutions",
       "body": "Leverage our expertise for your AWS or Azure migration projects to benefit from secure, flexible, and accessible cloud storage through our multi-cloud practice.",

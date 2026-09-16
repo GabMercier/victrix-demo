@@ -1,8 +1,10 @@
 {
   "title": "Productivité",
   "description": "Améliorez la productivité en entreprise avec des outils de productivité à la fine pointe de la technologie. Découvrez nos solutions!",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -18,6 +20,7 @@
       "overlay": "blanc"
     },
     {
+      "_bookshop_name": "benefits",
       "type": "benefits",
       "title": "Notre approche humaine",
       "intro": "Nos spécialistes utilisent une approche proactive pour vous aider à tirer le maximum des heures travaillées en conciliant les réalités des trois grands acteurs.",
@@ -40,6 +43,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-marquee",
       "type": "tech-marquee",
       "ariaLabel": "Technologies maîtrisées",
       "items": [
@@ -56,6 +60,7 @@
       ]
     },
     {
+      "_bookshop_name": "exclusive-tools",
       "type": "exclusive-tools",
       "title": "Nos solutions de productivité exclusives",
       "intro": "Victrix développe ses propres applications pour répondre aux défis spécifiques du travail moderne.",
@@ -85,6 +90,7 @@
       ]
     },
     {
+      "_bookshop_name": "expertise-bento",
       "type": "expertise-bento",
       "eyebrow": "Domaines d'expertise",
       "title": "Une vision 360° de votre productivité numérique",
@@ -147,6 +153,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Prêt à faire évoluer votre organisation ?",
       "body": "Discutons de vos enjeux et découvrons comment Victrix peut vous aider à aller plus loin dans votre transformation numérique et l'amélioration de vos performances.",

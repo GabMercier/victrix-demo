@@ -1,8 +1,10 @@
 {
   "title": "Dynamics 365 Field Service",
   "description": "Dynamics 365 Field Service Implementation. Optimize your field operations: scheduling, first-time fix, and proven ROI. Schedule a consultation.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Microsoft 365 ecosystem",
       "title": "Dynamics 365 Field Service implementation",
@@ -17,6 +19,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Field service management challenges",
       "subtitle": "Paper, spreadsheets or coordination calls: are your field teams still working with manual, disconnected tools? As request volumes grow, the limitations become critical for Canadian organizations with heavy field operations — advanced manufacturing, energy, utilities, telecommunications, the public sector and municipalities, and healthcare.",
@@ -31,6 +34,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Manage, structure and optimize your field operations",
       "intro": "D365 Field Service helps you plan, coordinate and track your jobs more effectively, from the moment a request is created through to completion. The solution centralizes your operational data and automates scheduling to improve efficiency, reduce manual effort and enhance the customer experience.",
@@ -64,6 +68,7 @@
       ]
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Results that speak for themselves",
       "intro": "",
@@ -88,6 +93,7 @@
       }
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Why choose Victrix",
       "paragraphs": [
@@ -110,6 +116,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Our Dynamics 365 Field Service implementation approach",
       "headingStyle": "underline",
@@ -141,6 +148,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "What’s included in our implementation service",
       "intro": "Indicative timeline: approximately 18 weeks*, confirmed after the analysis. The offer establishes a solid base that you grow at the pace of your needs — depending on your priorities, we can scope and price the second set separately. * Certain limits and clarifications apply to the items marked with an asterisk; they will be confirmed during the analysis.",
@@ -178,6 +186,7 @@
       ]
     },
     {
+      "_bookshop_name": "faq",
       "type": "faq",
       "title": "Frequently asked questions about Dynamics 365 Field Service",
       "fond": "blanc",
@@ -209,6 +218,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Ready to structure and optimize your field operations?",
       "body": "Let’s talk about your field operations and how Dynamics 365 Field Service can transform them.",

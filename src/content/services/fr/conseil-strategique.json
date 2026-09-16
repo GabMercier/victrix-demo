@@ -5,8 +5,10 @@
   "noindex": false,
   "slug": "",
   "seoTitle": "Conseil stratégique | Expertise multidisciplinaire | Victrix",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -19,6 +21,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Notre différenciateur",
       "intro": "Nous vous offrons une approche stratégique innovante.",
@@ -38,6 +41,7 @@
       }
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Nos expertises en conseil stratégique",
       "intro": "",
@@ -130,6 +134,7 @@
       ]
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Notre méthodologie",
       "headingStyle": "underline",
@@ -166,6 +171,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Les avantages de notre conseil stratégique",
       "paragraphs": [
@@ -209,6 +215,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Assurez le succès de vos projets stratégiques",
       "body": null,

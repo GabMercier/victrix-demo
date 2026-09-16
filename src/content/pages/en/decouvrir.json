@@ -4,8 +4,10 @@
   "description": "Victrix is the IT partner of the largest companies in Canada, specializing in cybersecurity, managed services, AI, cloud and application services. ",
   "noindex": true,
   "seoTitle": "",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Since 2003",
       "eyebrowStyle": "badge",
@@ -23,6 +25,7 @@
       "imagePosition": "haut"
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Our Culture",
       "paragraphs": [
@@ -39,6 +42,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Victrix at a Glance",
       "intro": "We are committed to being Canada's leading IT consulting firm by shaping a corporate culture where employees, partners and clients can achieve their ambitions.",
@@ -71,6 +75,7 @@
       }
     },
     {
+      "_bookshop_name": "benefits",
       "type": "benefits",
       "title": "Our Values",
       "intro": "",
@@ -103,6 +108,7 @@
       ]
     },
     {
+      "_bookshop_name": "timeline",
       "type": "timeline",
       "title": "Our History",
       "intro": "More than twenty years of growth, acquisitions and international expansion.",
@@ -125,6 +131,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "We Are Recruiting the Experts of Tomorrow!",
       "body": "Interested? Do not hesitate to contact us.",

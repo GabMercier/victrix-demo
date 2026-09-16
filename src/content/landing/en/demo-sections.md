@@ -3,6 +3,7 @@ _schema: default
 slug: demo-sections
 title: Demo new sections
 description: Demo page for the Testimonial, Partner logos, Stats and Video sections.
+seoH1: ""
 noindex: true
 header:
   mode: allege

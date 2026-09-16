@@ -4,8 +4,10 @@
   "description": "Des solutions conçues, déployées et soutenues par nos équipes pour accélérer la productivité de votre organisation.",
   "noindex": true,
   "seoTitle": "",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Nos produits",
       "title": "Des produits éprouvés, soutenus par nos experts",
@@ -20,6 +22,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Nos solutions phares",
       "headingStyle": "underline",
@@ -59,6 +62,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Une démonstration?",
       "body": "Nos équipes vous présenteront les produits adaptés à vos besoins.",

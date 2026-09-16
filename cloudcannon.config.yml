@@ -291,6 +291,17 @@ collections_config:
     # spec, which @bookshop/generate copies onto the palette entries (that
     # "containing structure" level outranks these collection-level fallbacks).
     _inputs:
+      seoH1:
+        type: text
+        options:
+          empty_type: string
+        label: H1 SEO (optionnel)
+        comment: >-
+          Le titre H1 lu par les moteurs de recherche. Vide = le grand titre du
+          héros est le H1 (défaut). Renseigné = ce texte devient le H1 de la
+          page (invisible à l'écran, lu par Google et les lecteurs d'écran) et
+          le grand titre passe en H2 : rien ne change visuellement. Un seul H1
+          par page.
       sections:
         type: array
         label: Sections
@@ -527,6 +538,17 @@ collections_config:
           Activé par défaut : les pages de campagne (trafic payant) restent
           hors des résultats de recherche. Désactiver seulement si la page
           doit être indexée.
+      seoH1:
+        type: text
+        options:
+          empty_type: string
+        label: H1 SEO (optionnel)
+        comment: >-
+          Le titre H1 lu par les moteurs de recherche. Vide = le grand titre du
+          héros est le H1 (défaut). Renseigné = ce texte devient le H1 de la
+          page (invisible à l'écran, lu par Google et les lecteurs d'écran) et
+          le grand titre passe en H2 : rien ne change visuellement. Un seul H1
+          par page.
       # ---- P-04 : en-tête / pied de page de campagne. Le bloc `header` est
       # optionnel — sans lui (ou en mode « complet »), la page garde l'en-tête
       # normal du site. Le CTA du bloc réutilise les noms ctaLabel/ctaHref des
@@ -797,6 +819,17 @@ collections_config:
         comment: >-
           Remplace le titre dans l'onglet du navigateur et les résultats
           Google. Vide = le titre de la page.
+      seoH1:
+        type: text
+        options:
+          empty_type: string
+        label: H1 SEO (optionnel)
+        comment: >-
+          Le titre H1 lu par les moteurs de recherche. Vide = le grand titre du
+          héros est le H1 (défaut). Renseigné = ce texte devient le H1 de la
+          page (invisible à l'écran, lu par Google et les lecteurs d'écran) et
+          le grand titre passe en H2 : rien ne change visuellement. Un seul H1
+          par page.
       sections:
         type: array
         label: Sections
@@ -889,6 +922,17 @@ collections_config:
         comment: >-
           Remplace le titre dans l'onglet du navigateur et les résultats
           Google. Vide = le titre de la page.
+      seoH1:
+        type: text
+        options:
+          empty_type: string
+        label: H1 SEO (optionnel)
+        comment: >-
+          Le titre H1 lu par les moteurs de recherche. Vide = le grand titre du
+          héros est le H1 (défaut). Renseigné = ce texte devient le H1 de la
+          page (invisible à l'écran, lu par Google et les lecteurs d'écran) et
+          le grand titre passe en H2 : rien ne change visuellement. Un seul H1
+          par page.
       sections:
         type: array
         label: Sections

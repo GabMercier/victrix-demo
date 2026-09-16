@@ -1,8 +1,10 @@
 {
   "title": "Copilot Studio",
   "description": "Take advantage of our personalized, secure support for Microsoft Copilot Studio implementation. Accelerate adoption with Victrix.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Artificial intelligence",
       "eyebrowStyle": "badge",
@@ -19,6 +21,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Strategic value",
       "paragraphs": [
@@ -40,6 +43,7 @@
       "fond": "ivoire"
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Our Copilot Studio offers",
       "intro": "A structured approach to guarantee successful adoption and an immediate impact on your operations.",
@@ -86,6 +90,7 @@
       "fond": "beige"
     },
     {
+      "_bookshop_name": "realisations",
       "type": "realisations",
       "title": "Copilot Studio success stories",
       "intro": "See how Victrix concretely applies generative AI across different industries.",
@@ -116,6 +121,7 @@
       "fond": "ivoire"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Ready to transform your organisation?",
       "body": "Deploy Copilot Studio step by step with Victrix. We provide strategic support tailored to your real priorities.",

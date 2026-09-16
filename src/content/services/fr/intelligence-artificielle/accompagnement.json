@@ -4,8 +4,10 @@
   "description": "Structurez, gouvernez et concrétisez vos initiatives IA avec l’accompagnement en intelligence artificielle de Victrix. Planifiez une consultation.",
   "noindex": false,
   "seoTitle": "Accompagnement en intelligence artificielle | Services",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Accompagnement en intelligence artificielle",
       "titleAccent": "",
@@ -18,6 +20,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Les enjeux de l’IA pour les organisations québécoises",
       "intro": "L’intelligence artificielle progresse rapidement au sein de votre organisation, souvent plus vite que le cadre censé l’encadrer. En lançant cette réflexion, vous vous distinguez déjà de la concurrence.",
@@ -37,6 +40,7 @@
       }
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Pourquoi choisir Victrix pour votre accompagnement en intelligence artificielle",
       "paragraphs": [
@@ -73,6 +77,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "realisations",
       "type": "realisations",
       "title": "Exemples d’initiatives",
       "intro": "Des initiatives concrètes découlant de notre accompagnement stratégique et appliqué en IA.",
@@ -108,6 +113,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Notre démarche : de la vision aux initiatives appliquées",
       "headingStyle": "plain",
@@ -149,6 +155,7 @@
       ]
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Ce qui est inclus dans notre accompagnement",
       "subtitle": "Que vous soyez à l’évaluation des outils d’IA, ayez un cas d’usage précis ou souhaitiez un plan complet — feuille de route, gouvernance et initiatives concrètes —, Victrix est votre partenaire pour un accompagnement stratégique en IA.",
@@ -163,6 +170,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Un accompagnement où chacun bénéficie de gains concrets",
       "intro": "L’IA change nos façons de travailler, mais c’est l’humain qui en maximise la valeur. Avec l’accompagnement stratégique et appliqué de Victrix, chacun y trouve des gains concrets.",
@@ -251,6 +259,7 @@
       "fond": "blanc"
     },
     {
+      "_bookshop_name": "rich-text",
       "type": "rich-text",
       "title": "L’opportunité de l’IA pour les organisations canadiennes",
       "fond": "blanc",
@@ -276,6 +285,7 @@
       "fond": "blanc"
     },
     {
+      "_bookshop_name": "faq",
       "type": "faq",
       "title": "Questions fréquentes sur l’accompagnement en intelligence artificielle",
       "fond": "givre",
@@ -325,6 +335,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Prêts à transformer vos ambitions IA en résultats d’affaires?",
       "body": "Victrix vous accompagne de la vision à la concrétisation avec une approche structurée, responsable, pragmatique et accessible. Partagez-nous votre contexte : notre équipe vous préparera une proposition adaptée à vos besoins, à votre maturité et à votre échéancier.",

@@ -2,8 +2,10 @@
   "title": "AI projects",
   "description": "From ideation to deployment: artificial intelligence projects that deliver value.",
   "noindex": true,
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Services",
       "eyebrowStyle": "texte",
@@ -20,6 +22,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Our typical engagements",
       "intro": "The detailed offering will be published soon — here is how we work.",
@@ -57,6 +60,7 @@
       ]
     },
     {
+      "_bookshop_name": "related-posts",
       "type": "related-posts",
       "title": "Related resources",
       "tags": ["Artificial intelligence"],
@@ -64,6 +68,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "An AI project?",
       "body": "Let’s discuss your use cases and their potential.",

@@ -228,5 +228,5 @@ const serviceSchema = page.data.noindex
   <JsonLd slot="head" schema={crumbsSchema} />
   {serviceSchema && <JsonLd slot="head" schema={serviceSchema} />}
   <Breadcrumbs lang={lang} items={crumbs} />
-  <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} />
+  <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} seoH1={frontmatter.seoH1} />
 </BaseLayout>

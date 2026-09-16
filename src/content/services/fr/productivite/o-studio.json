@@ -1,8 +1,10 @@
 {
   "title": "Ø Studio",
   "description": "Optimisez votre infrastructure TI avec nos experts en développement Microsoft Power Platform. Ø Studio, solution innovante exclusive à Victrix.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Écosystème Microsoft 365",
       "title": "Studio de création Power Platform et Dynamics 365",
@@ -17,6 +19,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Déployez des applications à la vitesse grand V",
       "intro": "Dites adieu aux tâches répétitives grâce à l'automatisation des processus et libérez le potentiel de vos équipes.",
@@ -39,6 +42,7 @@
       }
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Conseil, intégration et développement",
       "intro": "Avec le Ø Studio à vos côtés, le développement Power Apps, l'automatisation de processus et la gouvernance de vos outils sont des objectifs facilement réalisables.",
@@ -68,6 +72,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Gouvernance Microsoft Power Platform et Dynamics 365",
       "paragraphs": [
@@ -90,6 +95,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "realisations",
       "type": "realisations",
       "title": "Notre book de réalisations",
       "intro": "Plus qu'une simple offre de conseil et de développement d'applications, l'équipe Ø Studio maîtrise parfaitement Power Apps, Power Automate, Power BI et Power Pages — pour des solutions adaptées aux besoins de votre organisation.",
@@ -120,6 +126,7 @@
       "fond": "blanc"
     },
     {
+      "_bookshop_name": "faq",
       "type": "faq",
       "title": "FAQ — Développement d'applications Power Platform et Dynamics 365",
       "fond": "givre",
@@ -139,6 +146,7 @@
       ]
     },
     {
+      "_bookshop_name": "related-posts",
       "type": "related-posts",
       "title": "Ressources liées",
       "tags": ["Productivité"],
@@ -146,6 +154,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "form",
       "type": "form",
       "title": "Demandez une consultation",
       "intro": "Parlez-nous de votre projet Power Platform ou Dynamics 365 — un membre de l'équipe Ø Studio vous recontacte rapidement.",
@@ -156,6 +165,7 @@
       "fields": []
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Vous avez un projet ?",
       "body": "Laissez Ø Studio vous propulser vers Microsoft Power Platform et rentabiliser votre investissement Microsoft 365.",

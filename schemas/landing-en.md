@@ -9,6 +9,7 @@ slug: ''
 # @bookshop/generate-built palette (Zod strips it).
 title: "New campaign"
 description: ""
+seoH1: ""
 noindex: true
 # P-04 — campaign header/footer: "complet" = the site's normal chrome.
 # Empty strings, never null (repo-wide CloudCannon/zod rule).

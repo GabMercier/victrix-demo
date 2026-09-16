@@ -2,8 +2,10 @@
   "title": "Démonstration page produit",
   "description": "Recette « page produit » du catalogue (maquette Studio de création) : héros catalogue, bento métriques, offres, valeur stratégique, réalisations et appel à l'action.",
   "noindex": true,
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Écosystème Microsoft 365",
       "title": "Studio de création Power Platform et Dynamics 365",
@@ -18,6 +20,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Déployez des applications à la vitesse grand V",
       "intro": "Dites adieu aux tâches répétitives grâce à l'automatisation des processus et libérez le potentiel de vos équipes.",
@@ -40,6 +43,7 @@
       }
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Deux volets, une même équipe",
       "intro": "Du cadrage des besoins à la livraison d'applications, Ø Studio couvre le cycle complet.",
@@ -68,6 +72,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Gouvernance Microsoft Power Platform",
       "paragraphs": [
@@ -89,6 +94,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "realisations",
       "type": "realisations",
       "title": "Notre book de réalisations",
       "intro": "Nos spécialistes maîtrisent Power Apps, Power Automate, Power BI et Power Pages pour livrer des solutions adaptées à chaque secteur.",
@@ -119,6 +125,7 @@
       "fond": "blanc"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Vous avez un projet ?",
       "body": "Laissez Ø Studio vous propulser vers Microsoft Power Platform et rentabiliser votre investissement Microsoft 365.",

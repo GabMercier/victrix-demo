@@ -2,8 +2,10 @@
   "title": "Product page demo",
   "description": "Catalogue \"product page\" recipe (Studio de création mockup): catalogue hero, metrics bento, offers, strategic value, case studies and call to action.",
   "noindex": true,
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Microsoft 365 ecosystem",
       "title": "Power Platform and Dynamics 365 creation studio",
@@ -18,6 +20,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Ship applications at full speed",
       "intro": "Say goodbye to repetitive tasks with process automation and unlock your teams' potential.",
@@ -40,6 +43,7 @@
       }
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Two practices, one team",
       "intro": "From needs assessment to application delivery, Ø Studio covers the full cycle.",
@@ -68,6 +72,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Microsoft Power Platform governance",
       "paragraphs": [
@@ -89,6 +94,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "realisations",
       "type": "realisations",
       "title": "Our portfolio of deliveries",
       "intro": "Our specialists master Power Apps, Power Automate, Power BI and Power Pages to deliver solutions tailored to each sector.",
@@ -119,6 +125,7 @@
       "fond": "blanc"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Have a project in mind?",
       "body": "Let Ø Studio propel you toward Microsoft Power Platform and make the most of your Microsoft 365 investment.",

@@ -1,8 +1,10 @@
 {
   "title": "Services AWS par des experts infonuagiques",
   "description": "Bénéficiez de l'expertise AWS de Victrix pour améliorer l'architecture, la productivité et la performance opérationnelle de votre entreprise.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Pourquoi choisir la solution infonuagique AWS pour son organisation ?",
       "intro": "Amazon Web Services (AWS) est une plateforme infonuagique populaire auprès d'organisations de toutes tailles : infrastructure infonuagique, sécurité, analyse et sauvegarde de données, développement d'applications sur mesure, et bien plus encore.",
@@ -34,6 +37,7 @@
       }
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Assurez une migration fluide, sécuritaire et efficace",
       "paragraphs": [
@@ -54,6 +58,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Notre méthodologie éprouvée",
       "headingStyle": "plain",
@@ -80,6 +85,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Nos services AWS",
       "groups": [
@@ -150,6 +156,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Victrix, votre partenaire stratégique pour une migration vers AWS",
       "body": "Démarrez votre projet de migration vers AWS et assurez-en le succès avec l'expertise de Victrix.",

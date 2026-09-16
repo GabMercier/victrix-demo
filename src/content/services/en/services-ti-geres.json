@@ -1,8 +1,10 @@
 {
   "title": "Managed Services",
   "description": "Secure, optimize, and manage your IT infrastructure with our tailored managed services. Monitoring, support, and automation for uncompromising performance.",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +17,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "rich-text",
       "type": "rich-text",
       "fond": "givre",
       "paragraphs": [
@@ -24,6 +27,7 @@
       ]
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Why Choose Victrix for Your Managed IT Services",
       "intro": "",
@@ -43,6 +47,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Outsourcing is your strategic advantage to remain competitive against today's challenges",
       "headingStyle": "plain",
@@ -78,6 +83,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Comprehensive Managed Services Focused on Security and Continuous Improvement",
       "intro": "Ensure continuity, security, and optimization of your IT environment while reducing the burden on your internal teams. As your managed service provider, Victrix handles administration, monitoring, and the ongoing evolution of your infrastructure.",
@@ -121,6 +127,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Victrix: Solving Your IT Management Challenges",
       "paragraphs": [
@@ -143,6 +150,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "faq",
       "type": "faq",
       "title": "Learn More About Our Managed IT Services",
       "fond": "givre",
@@ -172,6 +180,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Victrix is your strategic partner for managed services tailored to your organization",
       "body": "Interested? Have questions? Contact us today to discuss your projects.",

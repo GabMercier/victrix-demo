@@ -90,7 +90,7 @@ export async function getStaticPaths() {
 
 const { lang, frontmatter, enrich } = Astro.props as {
   lang: Locale;
-  frontmatter: { sections: unknown[] };
+  frontmatter: { sections: unknown[]; seoH1?: string };
   enrich: Record<string, Record<string, unknown>>;
 };
 
@@ -111,5 +111,5 @@ const description =
        (see getStaticPaths); it is not part of the frontmatter, so it never
        affects the live binding. */
   }
-  <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} />
+  <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} seoH1={frontmatter.seoH1} />
 </BaseLayout>

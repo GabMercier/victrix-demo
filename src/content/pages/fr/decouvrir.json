@@ -4,8 +4,10 @@
   "description": "Victrix est le partenaire TI stratégique des grandes entreprises du Québec, spécialisé en cybersécurité, services gérés, IA, infonuagique et services applicatifs.",
   "noindex": true,
   "seoTitle": "",
+  "seoH1": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Depuis 2003",
       "eyebrowStyle": "badge",
@@ -23,6 +25,7 @@
       "imagePosition": "haut"
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Notre culture",
       "paragraphs": [
@@ -39,6 +42,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Victrix en un coup d'œil",
       "intro": "Nous nous engageons à être le cabinet-conseil TI le plus réputé au Canada, en façonnant une culture d’entreprise où nos employés, partenaires et clients peuvent aller au bout de leurs ambitions.",
@@ -71,6 +75,7 @@
       }
     },
     {
+      "_bookshop_name": "benefits",
       "type": "benefits",
       "title": "Nos valeurs",
       "intro": "",
@@ -103,6 +108,7 @@
       ]
     },
     {
+      "_bookshop_name": "timeline",
       "type": "timeline",
       "title": "Notre histoire",
       "intro": "Plus de vingt ans de croissance, d'acquisitions et d'expansion internationale.",
@@ -125,6 +131,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Nous recrutons les experts de demain!",
       "body": "Intéressés? N'hésitez pas à nous contacter.",
