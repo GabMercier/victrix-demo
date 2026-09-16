@@ -1,6 +1,10 @@
 {
+  "_schema": "default",
   "title": "Licenses and Equipments",
   "description": "Discover Victrix’s IT procurement services. Benefit from tailored support for the purchase, management, and renewal of your software licenses and hardware assets.",
+  "noindex": false,
+  "slug": "it-procurement",
+  "seoTitle": "IT Procurement | Licenses and Hardware Purchase and Management",
   "sections": [
     {
       "type": "service-hero",
@@ -46,29 +50,62 @@
           "number": "01",
           "title": "Analysis and Selection of IT Solutions",
           "bullets": [
-            { "text": "Assessment of your real IT needs", "icon": "coche" },
-            { "text": "Comparison of market options", "icon": "coche" },
-            { "text": "Purchase recommendations aligned with your performance and security priorities", "icon": "coche" },
-            { "text": "An IT environment that remains consistent, compliant, and easy to manage", "icon": "coche" }
+            {
+              "text": "Assessment of your real IT needs",
+              "icon": "coche"
+            },
+            {
+              "text": "Comparison of market options",
+              "icon": "coche"
+            },
+            {
+              "text": "Purchase recommendations aligned with your performance and security priorities",
+              "icon": "coche"
+            },
+            {
+              "text": "An IT environment that remains consistent, compliant, and easy to manage",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Proactive Renewal and Contract Management",
           "bullets": [
-            { "text": "Monitoring of expiration dates", "icon": "coche" },
-            { "text": "Contract renegotiation", "icon": "coche" },
-            { "text": "License compliance", "icon": "coche" },
-            { "text": "Analysis of subscription or purchase options based on your priorities", "icon": "coche" }
+            {
+              "text": "Monitoring of expiration dates",
+              "icon": "coche"
+            },
+            {
+              "text": "Contract renegotiation",
+              "icon": "coche"
+            },
+            {
+              "text": "License compliance",
+              "icon": "coche"
+            },
+            {
+              "text": "Analysis of subscription or purchase options based on your priorities",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Support, Integration, and Deployment",
           "bullets": [
-            { "text": "Seamless integration within your existing environments", "icon": "coche" },
-            { "text": "Coordination with your internal teams and technology partners", "icon": "coche" },
-            { "text": "Support, warranty management, upgrades, and technical monitoring after go live", "icon": "coche" }
+            {
+              "text": "Seamless integration within your existing environments",
+              "icon": "coche"
+            },
+            {
+              "text": "Coordination with your internal teams and technology partners",
+              "icon": "coche"
+            },
+            {
+              "text": "Support, warranty management, upgrades, and technical monitoring after go live",
+              "icon": "coche"
+            }
           ]
         }
       ]
@@ -215,10 +252,22 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Continuity", "label": "Of your business operations" },
-        { "value": "Compliance", "label": "Licenses and contracts" },
-        { "value": "Predictability", "label": "Of your IT expenses" },
-        { "value": "Security", "label": "Of your IT environments" }
+        {
+          "value": "Continuity",
+          "label": "Of your business operations"
+        },
+        {
+          "value": "Compliance",
+          "label": "Licenses and contracts"
+        },
+        {
+          "value": "Predictability",
+          "label": "Of your IT expenses"
+        },
+        {
+          "value": "Security",
+          "label": "Of your IT environments"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -231,13 +280,11 @@
       "type": "cta",
       "title": "Ready to Purchase IT Hardware and Licenses Tailored to Your Organization’s Needs?",
       "body": "Assess your requirements, modernize your infrastructure, and simplify IT asset purchasing and management with a certified partner that places security and performance at the core of every project.",
-      "ctaLabel": "Consult a specialist",
+      "ctaLabel": "Plan your IT purchases",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit"
     }
-  ],
-  "slug": "it-procurement",
-  "seoTitle": "IT Procurement | Licenses and Hardware Purchase and Management"
+  ]
 }

@@ -1,6 +1,10 @@
 {
+  "_schema": "default",
   "title": "Licences et matériels",
   "description": "Découvrez nos services d'approvisionnement TI. Profitez d'un accompagnement sur mesure pour l'achat, la gestion et le renouvellement de vos licences et matériels.",
+  "noindex": false,
+  "slug": "",
+  "seoTitle": "Approvisionnement TI | Achat et gestion de licences et matériels",
   "sections": [
     {
       "type": "service-hero",
@@ -46,29 +50,62 @@
           "number": "01",
           "title": "Analyse et sélection de solutions TI",
           "bullets": [
-            { "text": "Évaluation de vos besoins informatiques réels", "icon": "coche" },
-            { "text": "Comparaison des offres du marché", "icon": "coche" },
-            { "text": "Recommandations d’acquisition alignées sur vos priorités de performance et de sécurité", "icon": "coche" },
-            { "text": "Un environnement TI cohérent, conforme et facile à gérer", "icon": "coche" }
+            {
+              "text": "Évaluation de vos besoins informatiques réels",
+              "icon": "coche"
+            },
+            {
+              "text": "Comparaison des offres du marché",
+              "icon": "coche"
+            },
+            {
+              "text": "Recommandations d’acquisition alignées sur vos priorités de performance et de sécurité",
+              "icon": "coche"
+            },
+            {
+              "text": "Un environnement TI cohérent, conforme et facile à gérer",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Gestion proactive des renouvellements et contrats",
           "bullets": [
-            { "text": "Surveillance des échéances", "icon": "coche" },
-            { "text": "Renégociation", "icon": "coche" },
-            { "text": "Conformité des licences", "icon": "coche" },
-            { "text": "Analyse des options d’abonnement ou d’achat selon vos priorités", "icon": "coche" }
+            {
+              "text": "Surveillance des échéances",
+              "icon": "coche"
+            },
+            {
+              "text": "Renégociation",
+              "icon": "coche"
+            },
+            {
+              "text": "Conformité des licences",
+              "icon": "coche"
+            },
+            {
+              "text": "Analyse des options d’abonnement ou d’achat selon vos priorités",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Accompagnement, intégration et déploiement",
           "bullets": [
-            { "text": "Intégration fluide dans vos environnements existants", "icon": "coche" },
-            { "text": "Coordination avec vos équipes internes et vos partenaires technologiques", "icon": "coche" },
-            { "text": "Support, gestion des garanties, mises à niveau et suivi technique après la mise en service", "icon": "coche" }
+            {
+              "text": "Intégration fluide dans vos environnements existants",
+              "icon": "coche"
+            },
+            {
+              "text": "Coordination avec vos équipes internes et vos partenaires technologiques",
+              "icon": "coche"
+            },
+            {
+              "text": "Support, gestion des garanties, mises à niveau et suivi technique après la mise en service",
+              "icon": "coche"
+            }
           ]
         }
       ]
@@ -215,10 +252,22 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Continuité", "label": "De vos opérations" },
-        { "value": "Conformité", "label": "Des licences et des contrats" },
-        { "value": "Prévisibilité", "label": "De vos dépenses TI" },
-        { "value": "Sécurité", "label": "De vos environnements informatiques" }
+        {
+          "value": "Continuité",
+          "label": "De vos opérations"
+        },
+        {
+          "value": "Conformité",
+          "label": "Des licences et des contrats"
+        },
+        {
+          "value": "Prévisibilité",
+          "label": "De vos dépenses TI"
+        },
+        {
+          "value": "Sécurité",
+          "label": "De vos environnements informatiques"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -229,14 +278,13 @@
     },
     {
       "type": "cta",
-      "title": "Prêts à acheter le matériel et les licences TI adaptés à vos besoins ?",
+      "title": "Prêts à acheter le matériel et les licences TI adaptés à vos besoins?",
       "body": "Évaluez vos besoins, modernisez votre infrastructure et simplifiez la gestion de vos licences et matériels avec un partenaire certifié qui place la sécurité et la performance au cœur de chaque projet.",
-      "ctaLabel": "Consultez un spécialiste",
+      "ctaLabel": "Planifiez vos achats TI",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit"
     }
-  ],
-  "seoTitle": "Approvisionnement TI | Achat et gestion de licences et matériels"
+  ]
 }
