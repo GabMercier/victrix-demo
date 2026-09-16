@@ -1,86 +1,89 @@
 {
   "_schema": "default",
-  "title": "Our services",
-  "description": "End-to-end support, delivered by local teams in Canada : cybersecurity, AI, application services, cloud and managed services.",
+  "title": "Our Services",
+  "description": "Cybersecurity, AI, application services, cloud and managed services. Our teams take charge of your IT environments, from assessment through to daily operations.",
   "noindex": true,
   "sections": [
     {
       "type": "service-hero",
-      "eyebrow": "Services",
+      "eyebrow": "IT Services and Consulting",
       "eyebrowStyle": "texte",
       "titleAccent": "",
-      "title": "Our services",
-      "titleHighlight": "services",
-      "lead": "From strategic consulting to managed services: end-to-end support, delivered by teams based in Québec.",
-      "ctaLabel": "Let’s talk about your needs",
+      "title": "Our Services",
+      "titleHighlight": "Services",
+      "lead": "Our teams take charge of your IT environments, from assessment through to daily operations, and move them forward on the priorities you set.",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
-      "cta2Label": "Solutions catalogue",
-      "cta2Href": "/en/solutions",
+      "cta2Label": "See our expertise",
+      "cta2Href": "/en/expertise",
       "overlay": "voile",
       "image": "",
       "imageAlt": ""
     },
     {
       "type": "numbered-cards",
-      "sectionTitle": "Six service families",
+      "sectionTitle": "What We Cover",
       "headingStyle": "underline",
-      "intro": "The detailed overview is on its way — each family already has its page.",
+      "intro": "Complementary services, deployed together or on their own, around what your teams already cover.",
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
       "items": [
         {
           "number": "01",
-          "title": "Strategic consulting",
-          "text": "Align technology with your business goals.",
-          "ctaLabel": "Learn more",
-          "ctaHref": "/en/services/strategic-advice"
+          "title": "Cybersecurity",
+          "text": "Protect your digital assets and prove regulatory compliance: SEvOC (SOC), penetration testing, OT and IoT security, identity and access management.",
+          "ctaLabel": "Explore our cybersecurity services",
+          "ctaHref": "/en/services/cybersecurity"
         },
         {
           "number": "02",
-          "title": "Application services",
-          "text": "Design, modernize and maintain your applications.",
-          "ctaLabel": "Learn more",
-          "ctaHref": "/en/services/services-applicatifs"
+          "title": "AI and Automation",
+          "text": "Put AI to work in your business processes with clear governance in place: opportunity assessment, custom agents, Copilot for Microsoft 365.",
+          "ctaLabel": "Explore our AI services",
+          "ctaHref": "/en/services/artificial-intelligence"
         },
         {
           "number": "03",
-          "title": "Cloud services",
-          "text": "Migrate, operate and optimize your cloud environments.",
-          "ctaLabel": "Learn more",
+          "title": "Cloud ",
+          "text": "Modernize your infrastructure at your own pace: migration, multicloud, hybrid environments, backup and disaster recovery.",
+          "ctaLabel": "Explore our cloud services",
           "ctaHref": "/en/services/cloud-services-provider"
         },
         {
           "number": "04",
-          "title": "Cybersecurity",
-          "text": "Protect your assets and your business continuity.",
-          "ctaLabel": "Learn more",
-          "ctaHref": "/en/services/cybersecurity"
+          "title": "Application Services",
+          "text": "Build, modernize and maintain your business applications: Ø Studio (Power Platform and Dynamics 365 development), Microsoft 365, ServiceNow.",
+          "ctaLabel": "Explore our application services",
+          "ctaHref": "/en/services/application-services"
         },
         {
           "number": "05",
-          "title": "AI projects",
-          "text": "Guide your use cases from prototype to adoption.",
-          "ctaLabel": "Learn more",
-          "ctaHref": "/en/services/projets-en-ia"
-        },
-        {
-          "number": "06",
-          "title": "Managed IT services",
-          "text": "Hand operations to a team that never stops watching.",
-          "ctaLabel": "Learn more",
-          "ctaHref": "/en/services/managed-it-services"
+          "title": "Managed Services",
+          "text": "Simplify day-to-day IT management: IT governance, outsourcing, technical support, infrastructure, network and systems management.",
+          "ctaLabel": "Explore our managed services",
+          "ctaHref": "/en/services/managed services"
         }
       ]
     },
     {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "What Stands Behind Every Service",
+      "fond": "blanc",
+      "paragraphs": [
+        "Our services are backed by recognized certifications, top-tier technology partnerships and teams who know what your industry demands. All of it is documented.",
+        "Our expertise | Our industries"
+      ]
+    },
+    {
       "type": "cta",
-      "title": "Let’s talk about your needs",
-      "body": "Tell us about your context: we will build the right support for you.",
-      "ctaLabel": "Contact us",
+      "title": "Let’s Talk About Your Needs",
+      "body": "Tell us what you already have in place. We'll propose the scope that fits.",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
-      "cta2Label": "Industries",
-      "cta2Href": "/en/secteurs",
+      "cta2Label": null,
+      "cta2Href": null,
       "variant": "nuit"
     }
   ]
