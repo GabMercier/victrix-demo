@@ -1,6 +1,8 @@
 import { defineCollection as astroDefineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { sanitizeRichHtml } from '../component-library/src/shared/rich';
+import { FOND_KEYS } from '../component-library/src/shared/fonds';
+import { CONTACT_SERVICE_KEYS, CONTACT_SUJET_KEYS } from './lib/contact/presets';
 
 /**
  * Tolérance aux champs VIDÉS dans CloudCannon (incident du 14 sept. 2026).
@@ -267,8 +269,12 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
   // feature-boxes, rich-text ; ÉTENDU le jour même à strategic-value,
   // offer-cards, realisations — lavis chauds de produit-child.css) ; le
   // DÉFAUT de chaque bloc = son rendu historique (blanc ou givre) — zéro
-  // churn visuel sur l'existant.
-  const fondClair = z.enum(['blanc', 'givre', 'ivoire', 'beige', 'sable']);
+  // churn visuel sur l'existant. Palette ÉTENDUE à 10 fonds le 2026-09-17 —
+  // source unique component-library/src/shared/fonds.ts (clés, classes,
+  // pastilles) ; « sable » ré-accordé, gris/bleus/« pierre » ajoutés.
+  const fondClair = z.enum(FOND_KEYS);
+  // Variante « '' = défaut historique du bloc » (form, faq) — même liste.
+  const fondClairOuVide = z.enum(['', ...FOND_KEYS]);
   return z.discriminatedUnion('type', [
     // ---- Campaign landing sections (frozen contract) ----
     z.object({
@@ -336,7 +342,10 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       cta2Href: z.string().default(''),
       // « nuit » (produit-enfant.css) : panneau anthracite, contenu centré,
       // sans décor — les deux valeurs historiques sont inchangées.
-      variant: z.enum(['light', 'dark', 'nuit']).default('light'),
+      // « primaire » (2026-09-17, ex-CTA final de la page Carrières) : aplat
+      // Bleu Victrix PLEINE LARGEUR, contenu centré, bouton blanc en
+      // majuscules — `fond` sans effet dans cette variante.
+      variant: z.enum(['light', 'dark', 'nuit', 'primaire']).default('light'),
       // Fond de la SECTION derrière le panneau (le panneau garde sa `variant`).
       fond: fondClair.default('blanc'),
     }),
@@ -361,7 +370,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // SABLE derrière la carte). '' = défaut historique du bloc (givre en
       // carte, blanc en panneau) — le défaut dépend de la variante, d'où la
       // clé vide (patron strategic-value).
-      fond: z.enum(['', 'blanc', 'givre', 'ivoire', 'beige', 'sable']).default(''),
+      fond: fondClairOuVide.default(''),
       // Schéma de champ PARTAGÉ avec la collection `forms` (formFieldCore,
       // défini plus haut) + règles croisées (options de select, conditions).
       fields: z.array(formFieldCore).superRefine(formFieldRules),
@@ -725,7 +734,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // « Fond de section » ÉTENDU 2026-08-17 (produit-child.css : lavis
       // chauds). '' = défaut historique du bloc (blanc, ou gris perle en
       // variante vitrine) — le défaut dépend de la variante, d'où la clé vide.
-      fond: z.enum(['', 'blanc', 'givre', 'ivoire', 'beige', 'sable']).default(''),
+      fond: fondClairOuVide.default(''),
     }),
     // Offres numérotées : cartes « verre » à tuile numéro bleue et liste à
     // puces icônes, bouton primaire centré sous la grille.
@@ -839,6 +848,94 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // l'éditeur visuel (données injectées absentes).
       tags: z.array(z.string()).default([]),
     }),
+    // ---- Sections de la page Carrières (2026-09-17 — conversion de la route
+    // fixe src/pages/[lang]/carrieres.astro en page « Pages générales »
+    // composée de sections, fidélité maquette docs/design/carriere.css).
+    // Règles habituelles : images = chemins PUBLICS (uploads
+    // public/images/carrieres, browser-safe), textes riches inline (gras/
+    // italique/lien), icônes en CLÉS FERMÉES dessinées par les composants
+    // ('' toléré = aucun pictogramme, patron hero.eyebrowIcon). ----
+    z.object({
+      type: z.literal('photo-hero'),
+      title: z.string(),
+      sub: z.string().default(''),
+      ctaLabel: z.string().default(''),
+      ctaHref: z.string().default(''),
+      image: z.string().default(''),
+      imageAlt: z.string().default(''),
+      // Défaut « haut » = réglage 50 % 25 % historique de la page Carrières.
+      imagePosition: z.enum(['centre', 'haut', 'bas']).default('haut'),
+    }),
+    z.object({
+      type: z.literal('award-card'),
+      title: z.string(),
+      lead: z.string().default(''),
+      quote: z.string().default(''),
+      // Défaut « perle » (#f3f4f7) = l'ancien bg-surface-container de la page.
+      fond: fondClair.default('perle'),
+    }),
+    z.object({
+      type: z.literal('value-tiles'),
+      eyebrow: z.string().default(''),
+      title: z.string(),
+      fond: fondClair.default('blanc'),
+      items: z
+        .array(
+          z.object({
+            icon: z.enum(['etoile', 'groupe', 'ampoule', 'poignee', 'insigne', '']).default(''),
+            label: z.string().default(''),
+          }),
+        )
+        .default([]),
+    }),
+    z.object({
+      type: z.literal('photo-features'),
+      title: z.string(),
+      lead: z.string().default(''),
+      cardTitle: z.string().default(''),
+      cardText: z.string().default(''),
+      image: z.string().default(''),
+      imageAlt: z.string().default(''),
+      fond: fondClair.default('blanc'),
+      items: z
+        .array(
+          z.object({
+            icon: z.enum(['croissance', 'progression', 'coeur', 'formation', '']).default(''),
+            title: z.string().default(''),
+            text: z.string().default(''),
+          }),
+        )
+        .default([]),
+    }),
+    z.object({
+      type: z.literal('testimonial-cards'),
+      title: z.string().default(''),
+      // Défaut « brume » (#e5e7eb) = l'ancien bg-surface-container-high.
+      fond: fondClair.default('brume'),
+      items: z
+        .array(
+          z.object({
+            image: z.string().default(''),
+            quote: z.string().default(''),
+            name: z.string().default(''),
+            role: z.string().default(''),
+          }),
+        )
+        .default([]),
+    }),
+    z.object({
+      type: z.literal('text-photo'),
+      title: z.string(),
+      lead: z.string().default(''),
+      engagementTitle: z.string().default(''),
+      engagementText: z.string().default(''),
+      // Pastilles texte (placeholders de la maquette) en attendant les logos
+      // réels des partenaires académiques.
+      partners: z.array(z.string()).default([]),
+      image: z.string().default(''),
+      imageAlt: z.string().default(''),
+      fond: fondClair.default('blanc'),
+    }),
     z.object({
       type: z.literal('timeline'),
       title: z.string(),
@@ -857,6 +954,36 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           }),
         )
         .default([]),
+    }),
+    z.object({
+      // Catalogue de solutions (2026-09-17) : CHROME de la page catalogue
+      // (ex-route fixe solutions.astro + src/i18n/content/solutions.ts). Les
+      // fiches (cartes + vedette) viennent de la collection `solutions`,
+      // résolues AU BUILD par src/pages/[lang]/[...slug].astro (seam enrich,
+      // patron related-posts) ; le composant reste browser-safe et affiche
+      // une maquette factice dans l'éditeur visuel. Valable sur une page
+      // générale seulement, une par page (garde-fous route + renderer).
+      type: z.literal('solutions-catalogue'),
+      title: z.string().default(''),
+      searchPlaceholder: z.string().default(''),
+      searchAria: z.string().default(''),
+      featuredBadge: z.string().default(''),
+      featuredCta: z.string().default(''),
+      featuredDoc: z.string().default(''),
+      sectorLabel: z.string().default(''),
+      sectorAll: z.string().default(''),
+      typeLabel: z.string().default(''),
+      typeAll: z.string().default(''),
+      discover: z.string().default(''),
+      emptyMessage: z.string().default(''),
+      ctaTitle: z.string().default(''),
+      // HTML inline (gras/italique/lien).
+      ctaText: z.string().default(''),
+      ctaPhone: z.string().default(''),
+      ctaPhoneHref: z.string().default(''),
+      ctaButton: z.string().default(''),
+      // URL COMPLÈTE avec langue (convention des sections), ex. /fr/contact.
+      ctaButtonHref: z.string().default(''),
     }),
   ]);
 }
@@ -1012,6 +1139,12 @@ const services = defineCollection({
       // (masqué à l'écran, rendu par component-library/src/shared/astro/
       // page.astro) et le grand titre du héros passe en <h2>, styles inchangés.
       seoH1: z.string().optional(),
+      // Préremplissage du formulaire Contact par les boutons de la page
+      // (2026-09-17, src/lib/contact/presets.ts) : CLÉS neutres résolues en
+      // libellés de la langue au rendu ; '' = défaut de la route (services :
+      // « Un projet » + famille du service ; pages générales : aucun).
+      contactSujet: z.enum(['', ...CONTACT_SUJET_KEYS]).default(''),
+      contactService: z.enum(['', ...CONTACT_SERVICE_KEYS]).default(''),
       sections: z.array(sectionsSchema(image)),
     }),
 });
@@ -1347,6 +1480,12 @@ const pages = defineCollection({
       // (masqué à l'écran, rendu par component-library/src/shared/astro/
       // page.astro) et le grand titre du héros passe en <h2>, styles inchangés.
       seoH1: z.string().optional(),
+      // Préremplissage du formulaire Contact par les boutons de la page
+      // (2026-09-17, src/lib/contact/presets.ts) : CLÉS neutres résolues en
+      // libellés de la langue au rendu ; '' = défaut de la route (services :
+      // « Un projet » + famille du service ; pages générales : aucun).
+      contactSujet: z.enum(['', ...CONTACT_SUJET_KEYS]).default(''),
+      contactService: z.enum(['', ...CONTACT_SERVICE_KEYS]).default(''),
       sections: z.array(sectionsSchema(image)),
     }),
 });
@@ -1502,91 +1641,6 @@ const contact = defineCollection({
 });
 
 /**
- * Page Carrières (2026-08-12) — contenu de la page /carrieres, un JSON par
- * langue dans src/data/carrieres (même patron que `contact`). Migré de
- * src/i18n/content/carrieres.ts. Les icônes restent des CLÉS FERMÉES rendues
- * en SVG par le gabarit (jamais de markup dans le contenu) — un choix hors
- * liste casse le build avec un message clair. Les photos de section (héros,
- * équipe, responsabilité sociale) restent dans le gabarit (re-skin à venir
- * avec les visuels authentiques) ; seuls les portraits des témoignages sont
- * du contenu.
- */
-const carrieres = defineCollection({
-  loader: glob({ pattern: '*.json', base: './src/data/carrieres' }),
-  schema: z.object({
-    metaTitle: z.string().min(1),
-    metaDescription: z.string().min(1),
-    hero: z.object({
-      title: z.string().min(1),
-      sub: z.string().min(1),
-      ctaLabel: z.string().min(1),
-    }),
-    happy: z.object({
-      title: z.string().min(1),
-      lead: z.string().min(1),
-      quote: z.string().min(1),
-    }),
-    values: z.object({
-      eyebrow: z.string().min(1),
-      title: z.string().min(1),
-      items: z
-        .array(
-          z.object({
-            icon: z.enum(['etoile', 'groupe', 'ampoule', 'poignee', 'insigne']),
-            label: z.string().min(1),
-          }),
-        )
-        .min(1),
-    }),
-    join: z.object({
-      title: z.string().min(1),
-      lead: z.string().min(1),
-      cardTitle: z.string().min(1),
-      cardText: z.string().min(1),
-      features: z
-        .array(
-          z.object({
-            icon: z.enum(['croissance', 'progression', 'coeur', 'formation']),
-            title: z.string().min(1),
-            text: z.string().min(1),
-          }),
-        )
-        .min(1),
-    }),
-    // `cards` (pas `items`) : la carte _inputs de CloudCannon est PLATE par nom
-    // de champ — un second `items` de forme différente (values.items) entrerait
-    // en collision. Nom distinct = configuration d'éditeur sans ambiguïté.
-    testimonials: z.object({
-      title: z.string().min(1),
-      cards: z
-        .array(
-          z.object({
-            image: z.string().default(''),
-            quote: z.string().min(1),
-            name: z.string().min(1),
-            role: z.string().min(1),
-          }),
-        )
-        .min(1),
-    }),
-    social: z.object({
-      title: z.string().min(1),
-      lead: z.string().min(1),
-      engagementTitle: z.string().min(1),
-      engagementText: z.string().min(1),
-      // Pastilles texte (placeholders de la maquette) en attendant les logos
-      // réels des partenaires académiques.
-      partners: z.array(z.string().min(1)),
-    }),
-    cta: z.object({
-      title: z.string().min(1),
-      text: z.string().min(1),
-      label: z.string().min(1),
-    }),
-  }),
-});
-
-/**
  * Pages système (2026-08-12) — textes des trois pages « outils » qui n'ont pas
  * de collection de contenu où vivre : l'index du blogue (/ressources), la
  * recherche (/recherche) et la confirmation d'envoi (/merci). Un JSON par
@@ -1676,6 +1730,5 @@ export const collections = {
   pages,
   site,
   contact,
-  carrieres,
   pagesSysteme,
 };

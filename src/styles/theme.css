@@ -90,7 +90,12 @@
   /* Secondaires chauds (accents) — color.secondaire.* + noir anthracite */
   --color-ivoire: #faf7f4;
   --color-beige: #f1e8df;
-  --color-sable: #ebe0d5;
+  /* « sable » RÉ-ACCORDÉ le 2026-09-17 (demande user : le jeton Figma #ebe0d5
+     tirait trop vers l'orange) → grège plus neutre. « pierre » = grège plus
+     soutenu, ajouté le même jour pour la palette « Fond de section »
+     (component-library/src/shared/fonds.ts = liste des clés + pastilles). */
+  --color-sable: #e9e2d9;
+  --color-pierre: #dcd5cc;
   --color-anthracite: #1a2029;
 
   /* ---- Alias français du pilote — ré-ancrés export2. Utilisés par les

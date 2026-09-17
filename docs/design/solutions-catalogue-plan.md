@@ -10,8 +10,8 @@
 | --- | --- |
 | Collection `solutions` (schéma zod) | `src/content.config.ts` |
 | Entrées de démonstration (9 FR + 9 EN, appariées par nom de fichier) | `src/content/solutions/{fr,en}/*.json` |
-| Page catalogue FR/EN | `src/pages/[lang]/solutions.astro` |
-| Libellés du chrome de page (FR/EN) | `src/i18n/content/solutions.ts` |
+| Page catalogue FR/EN (depuis le 2026-09-17 : page générale à sections, route attrape-tout `src/pages/[lang]/[...slug].astro` qui résout les fiches via `enrich`) | `src/content/pages/{fr,en}/solutions.json` |
+| Chrome de page (FR/EN) — section Bookshop « Catalogue de solutions », éditable dans Pages générales (ex-`src/i18n/content/solutions.ts` + `src/pages/[lang]/solutions.astro`, supprimés) | `component-library/src/components/solutions-catalogue/` |
 
 Rendu : barre outil (titre + **recherche client**), panneau **vedette** bleu
 nuit (`featured: true`, première par `order`), **filtres** Secteurs/Types

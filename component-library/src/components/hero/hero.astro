@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Héros » — composant Bookshop (contrat landing GELÉ, enrichi).
@@ -42,7 +43,7 @@ interface Props {
   cta2Href?: string;
   eyebrowIcon?: 'livre' | '';
   ctaIcon?: 'telechargement' | '';
-  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  fond?: FondKey;
 }
 
 const {
@@ -63,13 +64,7 @@ const {
 
 // « Fond de section » (patron 2026-08-17) : clé fermée → utilitaire de la
 // palette officielle ; défaut = rendu historique du bloc (givre).
-const FONDS: Record<string, string> = {
-  blanc: 'bg-white',
-  givre: 'bg-givre',
-  ivoire: 'bg-ivoire',
-  beige: 'bg-beige',
-  sable: 'bg-sable',
-};
+const FONDS: Record<string, string> = FOND_CLASSES;
 
 // Sous-chaîne accentuée (patron home-hero) : introuvable → titre uniforme.
 const accentIndex = titleAccent ? title.indexOf(titleAccent) : -1;

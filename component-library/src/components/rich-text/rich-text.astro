@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml } from '../../shared/rich';
 /**
  * Section « Texte enrichi » — composant Bookshop (P-07).
@@ -18,7 +19,7 @@ import { blockHtml } from '../../shared/rich';
  */
 interface Props {
   title?: string;
-  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  fond?: FondKey;
   paragraphs: string[];
 }
 
@@ -27,13 +28,7 @@ const { title, fond = 'blanc', paragraphs = [] } = Astro.props;
 // « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
 // de la palette officielle (aucune couleur libre — esprit P-16). Défaut =
 // rendu historique (blanc, ex-bg-surface).
-const FONDS: Record<string, string> = {
-  blanc: 'bg-white',
-  givre: 'bg-givre',
-  ivoire: 'bg-ivoire',
-  beige: 'bg-beige',
-  sable: 'bg-sable',
-};
+const FONDS: Record<string, string> = FOND_CLASSES;
 ---
 
 <section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>

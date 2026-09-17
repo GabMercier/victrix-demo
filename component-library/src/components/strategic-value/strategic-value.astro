@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { inlineHtml } from '../../shared/rich';
 /**
  * Section « Valeur stratégique » — composant Bookshop, NOUVEAU 2026-08-05.
@@ -56,7 +57,7 @@ interface Props {
   bullets?: string[];
   cardTitle?: string;
   cardText?: string;
-  fond?: '' | 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  fond?: '' | FondKey;
 }
 
 const {
@@ -79,13 +80,7 @@ const hasCard = Boolean(cardTitle && image);
 // « Fond de section » ÉTENDU 2026-08-17 (produit-child.css §Strategic Value,
 // lavis chauds) : clé fermée → utilitaire de la palette officielle. '' =
 // défaut historique — il dépend de la `variant`, d'où la clé vide.
-const FONDS: Record<string, string> = {
-  blanc: 'bg-white',
-  givre: 'bg-givre',
-  ivoire: 'bg-ivoire',
-  beige: 'bg-beige',
-  sable: 'bg-sable',
-};
+const FONDS: Record<string, string> = FOND_CLASSES;
 ---
 
 <section

@@ -2,7 +2,9 @@
   "title": "Démonstration sections services",
   "description": "Page de démonstration des sections de la palette services : en-tête de service, cartes numérotées, encadré, boîtes, colonnes techno, texte enrichi et ressources liées.",
   "noindex": true,
-  "seoH1": "",
+  "seoH1": "Démonstration sections services",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
       "_bookshop_name": "service-hero",
@@ -305,6 +307,122 @@
           "icon": "marteau"
         }
       ]
+    },
+    {
+      "_bookshop_name": "photo-hero",
+      "type": "photo-hero",
+      "title": "Héros photo",
+      "sub": "Photo pleine largeur voilée d’anthracite, titre blanc et bouton en majuscules.",
+      "ctaLabel": "Postulez",
+      "ctaHref": "/fr/contact",
+      "image": "/images/carrieres/hero-vie-chez-victrix.jpg",
+      "imageAlt": "",
+      "imagePosition": "haut"
+    },
+    {
+      "_bookshop_name": "award-card",
+      "type": "award-card",
+      "title": "Carte distinction",
+      "lead": "Carte blanche bordée sur bande grise : insigne bleu, titre, chapeau.",
+      "quote": "Citation en italique avec un liseré bleu à gauche.",
+      "fond": "perle"
+    },
+    {
+      "_bookshop_name": "value-tiles",
+      "type": "value-tiles",
+      "eyebrow": "Surtitre",
+      "title": "Tuiles de valeurs",
+      "fond": "blanc",
+      "items": [
+        {
+          "icon": "etoile",
+          "label": "Excellence"
+        },
+        {
+          "icon": "groupe",
+          "label": "Collaboration"
+        },
+        {
+          "icon": "ampoule",
+          "label": "Innovation"
+        },
+        {
+          "icon": "poignee",
+          "label": "Engagement"
+        },
+        {
+          "icon": "insigne",
+          "label": "Intégrité"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "photo-features",
+      "type": "photo-features",
+      "title": "Photo + atouts",
+      "lead": "Photo avec carte flottante bleue à gauche, titre, chapeau et grille 2×2 d’atouts à droite.",
+      "cardTitle": "Carte flottante",
+      "cardText": "Titre et texte posés sur la photo.",
+      "image": "/images/carrieres/equipe-environnement.jpg",
+      "imageAlt": "",
+      "fond": "blanc",
+      "items": [
+        {
+          "icon": "croissance",
+          "title": "Croissance",
+          "text": "Atout à icône croissance."
+        },
+        {
+          "icon": "progression",
+          "title": "Progression",
+          "text": "Atout à icône progression."
+        },
+        {
+          "icon": "coeur",
+          "title": "Cœur",
+          "text": "Atout à icône cœur."
+        },
+        {
+          "icon": "formation",
+          "title": "Formation",
+          "text": "Atout à icône toque."
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "testimonial-cards",
+      "type": "testimonial-cards",
+      "title": "Cartes témoignages",
+      "fond": "brume",
+      "items": [
+        {
+          "image": "/images/carrieres/temoignage-daniel.png",
+          "quote": "« Première citation en italique, portrait au-dessus, prénom et rôle en dessous. »",
+          "name": "Prénom",
+          "role": "Rôle / poste"
+        },
+        {
+          "image": "/images/carrieres/temoignage-mikael.png",
+          "quote": "« Seconde citation — deux cartes par rangée sur bande grise. »",
+          "name": "Prénom",
+          "role": "Rôle / poste"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "text-photo",
+      "type": "text-photo",
+      "title": "Texte + photo",
+      "lead": "Titre, chapeau, ligne d’engagement et pastilles partenaires à gauche ; photo à droite.",
+      "engagementTitle": "Ligne d’engagement (pictogramme + titre)",
+      "engagementText": "Texte d’engagement sous la ligne.",
+      "partners": [
+        "Partner 1",
+        "Partner 2"
+      ],
+      "image": "/images/carrieres/responsabilite-sociale.jpg",
+      "imageAlt": "",
+      "fond": "blanc"
     }
   ]
 }

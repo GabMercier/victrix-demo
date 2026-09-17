@@ -1,0 +1,101 @@
+# =============================================================================
+# Spec Bookshop — section « Héros photo » (palette partagée, 2026-09-17 —
+# conversion de la page Carrières en page « sections »).
+# Voir hero.bookshop.yml pour les conventions communes (structures `sections`,
+# discriminant `type` masqué, libellés français pour la palette CloudCannon).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Héros photo"
+  description: "Bannière photo pleine largeur voilée d'anthracite : grand titre blanc, sous-titre et bouton en majuscules (page Carrières). Porte le <h1> — à placer en PREMIÈRE position."
+  icon: panorama
+  picker_preview:
+    # Vignette du sélecteur « Add Section » : URL déterministe où
+    # @bookshop/generate reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/photo-hero/preview.png"
+    text: Héros photo
+    subtext: Photo voilée d'anthracite, titre blanc, bouton en majuscules (h1 de la page)
+  preview:
+    icon: panorama
+    text:
+      - key: title
+      - text: Héros photo
+
+blueprint:
+  type: photo-hero
+  title: "La vie chez Victrix"
+  sub: "Parcourez nos offres d'emploi et trouvez l'opportunité que vous attendiez!"
+  ctaLabel: "Postulez"
+  ctaHref: "/fr/contact"
+  image: "/images/carrieres/hero-vie-chez-victrix.jpg"
+  imageAlt: ""
+  imagePosition: haut
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre"
+    comment: "Grand titre blanc (h1 de la page)."
+  sub:
+    type: html
+    label: "Sous-titre (optionnel)"
+    comment: "Une ligne d'appui sous le titre — gras, italique, lien."
+    options:
+      format: p
+      bulletedlist: false
+      numberedlist: false
+      blockquote: false
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
+  ctaLabel:
+    label: "Libellé du bouton (optionnel)"
+    comment: "Affiché en majuscules. Vide = pas de bouton."
+  ctaHref:
+    label: "Lien du bouton"
+    comment: "URL finale, préfixe de langue inclus (ex. /fr/contact)."
+  image:
+    type: image
+    label: "Photo de fond"
+    comment: >-
+      Photo pleine largeur voilée d'anthracite. Le fichier téléversé atterrit
+      dans public/images/carrieres/ (adresse servie telle quelle, /images/…).
+      Vide = aplat anthracite.
+    options:
+      empty_type: string
+      paths:
+        static: public
+        uploads: public/images/carrieres
+  imageAlt:
+    label: "Texte alternatif de la photo"
+    comment: "Description pour l'accessibilité (laisser vide si la photo est purement décorative)."
+  imagePosition:
+    type: select
+    label: "Point focal de la photo"
+    comment: >-
+      Quelle bande de la photo reste visible quand l'écran la recadre.
+      « haut » (défaut) garde le haut de la photo — recommandé pour les photos
+      de groupe (visages) ; « centre » ; « bas » garde le bas.
+    options:
+      allow_empty: false
+      values:
+        - haut
+        - centre
+        - bas

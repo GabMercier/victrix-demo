@@ -55,6 +55,10 @@ const SOURCES = [
   // Recette « page produit » (2026-08-24) : première occurrence de
   // product-hero + bento-metrics (maquette docs/produits.css).
   { file: 'src/content/services/fr/demo-produit.json', url: '/fr/services/demo-produit/' },
+  // Catalogue de solutions (2026-09-17) : section solutions-catalogue, valable
+  // sur une page générale seulement (la route services ne l'enrichit pas →
+  // pas de démo possible dans demo-sections) — la page réelle sert de source.
+  { file: 'src/content/pages/fr/solutions.json', url: '/fr/solutions/' },
 ];
 
 /** Sections (frontmatter YAML ou JSON) d'un fichier de contenu. */
@@ -132,9 +136,13 @@ for (const [url, entries] of byUrl) {
   // garde comptage et indexation alignés sur les sections. [data-crumbs] : le
   // fil d'Ariane visible (src/components/Breadcrumbs.astro, 2026-08-17) vit en
   // enfant direct de <main> AVANT les sections — exclu par attribut pour la
-  // même raison.
+  // même raison. h1.sr-only : le « H1 SEO » de PAGE (champ seoH1, rendu par
+  // component-library/src/shared/astro/page.astro AVANT les sections, masqué
+  // à l'écran) — exclu depuis le 2026-09-17 : la vitrine services le porte
+  // pour que ses DEUX héros (service-hero + photo-hero) rendent des <h2>, un
+  // seul <h1> par page (garde-fou victrix:h1-guard).
   const rendered = page.locator(
-    '#main-content > :not(script):not(style):not(link):not([data-crumbs])',
+    '#main-content > :not(script):not(style):not(link):not([data-crumbs]):not(h1.sr-only)',
   );
   const childCount = await rendered.count();
   const expected = entries[0].total;

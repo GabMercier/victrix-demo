@@ -1,0 +1,182 @@
+# =============================================================================
+# Spec Bookshop — section « Catalogue de solutions » (2026-09-17).
+# Voir hero.bookshop.yml pour les conventions communes (structures `sections`,
+# discriminant `type` masqué, libellés français) et related-posts.bookshop.yml
+# pour les conventions des sections DYNAMIQUES.
+#
+# SECTION DYNAMIQUE : seul le CHROME de la page catalogue s'édite ici (titre,
+# recherche, libellés des filtres et de la vedette, message vide, appel à
+# l'action bas). Les FICHES (cartes + vedette) viennent de la collection
+# Solutions, résolues AU BUILD par la route des pages générales ; dans
+# l'éditeur visuel, une vedette et trois cartes factices tiennent lieu
+# d'aperçu. Valable UNIQUEMENT sur une page générale (collection Pages
+# générales) — une seule par page.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Catalogue de solutions"
+  description: "Chrome du catalogue : les fiches viennent de la collection Solutions. Titre, recherche, filtres, vedette, message vide et appel à l'action bas. Une seule par page, sur une page générale."
+  icon: apps
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
+    # lit plus le preview_image légal posé par @bookshop/generate — on
+    # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
+    # reloge le preview.png du composant au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/solutions-catalogue/preview.png"
+    text: Catalogue de solutions
+    subtext: Chrome du catalogue (fiches automatiques depuis Solutions)
+  preview:
+    icon: apps
+    text:
+      - key: title
+      - text: Catalogue de solutions
+
+blueprint:
+  type: solutions-catalogue
+  title: "Catalogue de solutions"
+  searchPlaceholder: "Rechercher une application..."
+  searchAria: "Rechercher une application dans le catalogue"
+  featuredBadge: "Application vedette"
+  featuredCta: "Découvrir l’application"
+  featuredDoc: "Voir la documentation"
+  sectorLabel: "Secteurs d’activité"
+  sectorAll: "Tous les secteurs"
+  typeLabel: "Types de solution"
+  typeAll: "Toutes les solutions"
+  discover: "Découvrir"
+  emptyMessage: "Aucune solution ne correspond à vos filtres."
+  ctaTitle: "Vous ne trouvez pas la solution parfaite ?"
+  ctaText: "Nos experts ont déjà développé plus de 100 solutions personnalisées pour répondre aux défis uniques de nos clients. Ensemble, créons celle qu’il vous faut !"
+  ctaPhone: "+1 418-780-8181"
+  ctaPhoneHref: "tel:+14187808181"
+  ctaButton: "Contacter un expert"
+  ctaButtonHref: "/fr/contact"
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    type: text
+    label: "Titre de la page"
+    comment: "Affiché dans la barre d'outils, à gauche de la recherche. C'est le titre principal (H1) de la page, sauf si un « H1 SEO » est renseigné dans les réglages de la page."
+    options:
+      empty_type: string
+  searchPlaceholder:
+    type: text
+    label: "Texte d'invite de la recherche"
+    comment: "Texte grisé dans le champ de recherche."
+    options:
+      empty_type: string
+  searchAria:
+    type: text
+    label: "Libellé accessible de la recherche"
+    comment: "Lu par les lecteurs d'écran (le champ n'a pas d'étiquette visible)."
+    options:
+      empty_type: string
+  featuredBadge:
+    type: text
+    label: "Badge de la solution vedette"
+    comment: "Pilule bleue en haut du panneau bleu nuit (ex. « Application vedette »). La solution affichée est la fiche marquée « Solution vedette » dans Solutions."
+    options:
+      empty_type: string
+  featuredCta:
+    type: text
+    label: "Bouton principal de la vedette"
+    comment: "Mène au lien de la fiche vedette (formulaire de contact prérempli si le lien est /contact)."
+    options:
+      empty_type: string
+  featuredDoc:
+    type: text
+    label: "Bouton documentation de la vedette"
+    comment: "Affiché seulement si la fiche vedette a un lien de documentation."
+    options:
+      empty_type: string
+  sectorLabel:
+    type: text
+    label: "Étiquette du filtre Secteurs"
+    options:
+      empty_type: string
+  sectorAll:
+    type: text
+    label: "Option « tous » du filtre Secteurs"
+    options:
+      empty_type: string
+  typeLabel:
+    type: text
+    label: "Étiquette du filtre Types"
+    options:
+      empty_type: string
+  typeAll:
+    type: text
+    label: "Option « tous » du filtre Types"
+    options:
+      empty_type: string
+  discover:
+    type: text
+    label: "Lien des cartes"
+    comment: "Libellé du lien fléché au pied de chaque carte (ex. « Découvrir »)."
+    options:
+      empty_type: string
+  emptyMessage:
+    type: text
+    label: "Message quand aucune solution ne correspond"
+    comment: "Affiché sous la grille quand les filtres ou la recherche ne laissent aucune carte."
+    options:
+      empty_type: string
+  ctaTitle:
+    type: text
+    label: "Appel à l'action — titre"
+    comment: "Panneau gris en bas du catalogue."
+    options:
+      empty_type: string
+  ctaText:
+    type: html
+    label: "Appel à l'action — texte"
+    options:
+      format: p
+      bulletedlist: false
+      numberedlist: false
+      blockquote: false
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
+  ctaPhone:
+    type: text
+    label: "Appel à l'action — bouton téléphone (libellé)"
+    comment: "Vide = bouton masqué."
+    options:
+      empty_type: string
+  ctaPhoneHref:
+    type: text
+    label: "Appel à l'action — bouton téléphone (lien)"
+    comment: "Ex. tel:+14187808181 (sans espaces ni tirets)."
+    options:
+      empty_type: string
+  ctaButton:
+    type: text
+    label: "Appel à l'action — bouton contact (libellé)"
+    comment: "Vide = bouton masqué."
+    options:
+      empty_type: string
+  ctaButtonHref:
+    type: text
+    label: "Appel à l'action — bouton contact (lien)"
+    comment: "URL de destination, préfixe de langue inclus (ex. /fr/contact). Vers la page contact, le formulaire arrive prérempli avec le sujet de la page (réglage « Sujet du formulaire de contact »)."
+    options:
+      empty_type: string

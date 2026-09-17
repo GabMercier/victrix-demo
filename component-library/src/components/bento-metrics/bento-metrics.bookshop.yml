@@ -132,10 +132,13 @@ _inputs:
     label: "Icône de la carte claire"
     options:
       allow_empty: true
-      values:
-        - insigne
-        - bouclier
-        - etoile
+      values: _select_data.icones_bento
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
     comment: "Tuile bleue en tête de la carte claire. Vide = aucune."
   linkLabel:
     label: "Lien — libellé"

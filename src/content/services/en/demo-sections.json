@@ -2,7 +2,9 @@
   "title": "Service sections demo",
   "description": "Demo page for the service palette sections: service hero, numbered cards, callout, feature boxes, tech columns, rich text and related resources.",
   "noindex": true,
-  "seoH1": "",
+  "seoH1": "Services sections demo",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
       "_bookshop_name": "service-hero",
@@ -91,6 +93,122 @@
       "tags": ["Our articles"],
       "ctaLabel": "See all resources",
       "ctaHref": "/en/ressources"
+    },
+    {
+      "_bookshop_name": "photo-hero",
+      "type": "photo-hero",
+      "title": "Photo hero",
+      "sub": "Full-width photo with a charcoal overlay, white title and uppercase button.",
+      "ctaLabel": "Apply",
+      "ctaHref": "/en/contact",
+      "image": "/images/carrieres/hero-vie-chez-victrix.jpg",
+      "imageAlt": "",
+      "imagePosition": "haut"
+    },
+    {
+      "_bookshop_name": "award-card",
+      "type": "award-card",
+      "title": "Award card",
+      "lead": "Bordered white card on a grey band: blue badge, title, lead.",
+      "quote": "Italic quote with a blue left border.",
+      "fond": "perle"
+    },
+    {
+      "_bookshop_name": "value-tiles",
+      "type": "value-tiles",
+      "eyebrow": "Eyebrow",
+      "title": "Value tiles",
+      "fond": "blanc",
+      "items": [
+        {
+          "icon": "etoile",
+          "label": "Excellence"
+        },
+        {
+          "icon": "groupe",
+          "label": "Collaboration"
+        },
+        {
+          "icon": "ampoule",
+          "label": "Innovation"
+        },
+        {
+          "icon": "poignee",
+          "label": "Commitment"
+        },
+        {
+          "icon": "insigne",
+          "label": "Integrity"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "photo-features",
+      "type": "photo-features",
+      "title": "Photo + features",
+      "lead": "Photo with a floating blue card on the left; title, lead and a 2×2 grid of features on the right.",
+      "cardTitle": "Floating card",
+      "cardText": "Title and text laid over the photo.",
+      "image": "/images/carrieres/equipe-environnement.jpg",
+      "imageAlt": "",
+      "fond": "blanc",
+      "items": [
+        {
+          "icon": "croissance",
+          "title": "Growth",
+          "text": "Feature with the growth icon."
+        },
+        {
+          "icon": "progression",
+          "title": "Progression",
+          "text": "Feature with the progression icon."
+        },
+        {
+          "icon": "coeur",
+          "title": "Heart",
+          "text": "Feature with the heart icon."
+        },
+        {
+          "icon": "formation",
+          "title": "Training",
+          "text": "Feature with the graduation icon."
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "testimonial-cards",
+      "type": "testimonial-cards",
+      "title": "Testimonial cards",
+      "fond": "brume",
+      "items": [
+        {
+          "image": "/images/carrieres/temoignage-daniel.png",
+          "quote": "“First italic quote, portrait above, first name and role below.”",
+          "name": "First name",
+          "role": "Role / position"
+        },
+        {
+          "image": "/images/carrieres/temoignage-mikael.png",
+          "quote": "“Second quote — two cards per row on a grey band.”",
+          "name": "First name",
+          "role": "Role / position"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "text-photo",
+      "type": "text-photo",
+      "title": "Text + photo",
+      "lead": "Title, lead, commitment line and partner chips on the left; photo on the right.",
+      "engagementTitle": "Commitment line (icon + title)",
+      "engagementText": "Commitment text under the line.",
+      "partners": [
+        "Partner 1",
+        "Partner 2"
+      ],
+      "image": "/images/carrieres/responsabilite-sociale.jpg",
+      "imageAlt": "",
+      "fond": "blanc"
     }
   ]
 }

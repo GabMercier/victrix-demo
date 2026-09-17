@@ -106,6 +106,17 @@ for (const [path, mod] of Object.entries(componentImports)) {
           `(src/pages/[lang]/services/[slug].astro) : l'y retirer, ou la déplacer sur un service.`,
       );
     }
+    // Même garde-fou pour le catalogue de solutions (2026-09-17) : ses fiches
+    // (enrich.cards + enrich.featured) ne sont résolues que par la route des
+    // pages générales (src/pages/[lang]/[...slug].astro). Ailleurs, le
+    // composant expédierait sa maquette factice « Exemple » en production.
+    if (isBuildRender && type === 'solutions-catalogue' && !Array.isArray(extra.cards)) {
+      throw new Error(
+        `[solutions-catalogue] Section « catalogue de solutions » sur une page qui ne résout pas ses fiches au build ` +
+          `(enrich['solutions-catalogue'] absent). Cette section n'est supportée que sur les pages générales ` +
+          `(src/pages/[lang]/[...slug].astro, collection pages) : l'y retirer, ou la déplacer sur une page générale.`,
+      );
+    }
     // `h1Taken` : seuls les héros le lisent (grand titre en <h2> quand la page
     // porte son H1 SEO) ; les autres composants ignorent la prop.
     return Component ? <Component {...block} {...extra} h1Taken={h1Taken} /> : null;

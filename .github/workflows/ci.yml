@@ -40,6 +40,11 @@ jobs:
       - name: Unit tests
         run: npm run test
 
+      # Pastilles/vignettes de l'éditeur (public/images/cms) à jour et listes
+      # _select_data alignées sur les dessins des composants (2026-09-17).
+      - name: CMS previews (fonds + icônes)
+        run: npm run cms:previews:check
+
       - name: Build
         run: npm run build
 

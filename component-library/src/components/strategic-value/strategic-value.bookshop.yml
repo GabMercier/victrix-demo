@@ -127,12 +127,19 @@ _inputs:
     label: "Fond de section"
     options:
       allow_empty: true
-      values:
-        - blanc
-        - givre
-        - ivoire
-        - beige
-        - sable
+      # Palette partagée (2026-09-17) : liste d'objets {cle, libelle, couleur, apercu}
+      # définie UNE fois dans cloudcannon.config.yml (_select_data.fonds) — la valeur
+      # enregistrée reste la clé texte ; l'éditeur affiche libellé + pastille.
+      values: _select_data.fonds
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+        icon: square
+        icon_color:
+          - key: couleur
     comment: "Couleur de fond de la section, bornée à la palette officielle. Vide = défaut du bloc (blanc, ou gris perle en variante vitrine)."
 
   paragraphs[*]:

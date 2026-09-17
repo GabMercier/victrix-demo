@@ -15,7 +15,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "design:previews": "node scripts/design/generate-section-previews.mjs"
+    "design:previews": "node scripts/design/generate-section-previews.mjs",
+    "cms:previews": "node scripts/design/generate-cms-previews.mjs",
+    "cms:previews:check": "node scripts/design/generate-cms-previews.mjs --check"
   },
   "engines": {
     "node": ">=20.3.0"

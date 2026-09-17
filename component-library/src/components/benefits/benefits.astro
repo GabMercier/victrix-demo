@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
 /**
  * Section « Cartes à icônes » (clé technique `benefits` — renommage
@@ -49,7 +50,7 @@ interface Props {
   title: string;
   intro?: string;
   headingStyle?: 'titre' | 'compact';
-  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  fond?: FondKey;
   items: BenefitItem[];
 }
 
@@ -59,13 +60,7 @@ const compact = headingStyle === 'compact';
 // « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
 // de la palette officielle (aucune couleur libre — esprit P-16). 5 fonds
 // CLAIRS seulement ; défaut = rendu historique du bloc (blanc).
-const FONDS: Record<string, string> = {
-  blanc: 'bg-white',
-  givre: 'bg-givre',
-  ivoire: 'bg-ivoire',
-  beige: 'bg-beige',
-  sable: 'bg-sable',
-};
+const FONDS: Record<string, string> = FOND_CLASSES;
 
 // Pictogrammes (stroke 24px) par clé fermée du contrat.
 const ICONS: Record<string, string[]> = {

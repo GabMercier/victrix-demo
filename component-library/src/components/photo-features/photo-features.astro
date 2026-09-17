@@ -1,0 +1,128 @@
+---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { hasRichText, inlineHtml } from '../../shared/rich';
+/**
+ * Section « Photo + atouts » — composant Bookshop (2026-09-17, conversion de
+ * la page Carrières en page « sections »).
+ * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/carriere.css §Pourquoi rejoindre,
+ * ex-bloc de src/pages/[lang]/carrieres.astro repris VERBATIM) : deux
+ * colonnes — à gauche la photo 500 px (rayon 2) avec une CARTE FLOTTANTE
+ * bleue en bas-gauche (titre 24/700 + texte 16/26 blanc 90 %) ; à droite le
+ * titre 40/700, le chapeau 18/29 gris et une grille 2×2 d'atouts (icône
+ * PLEINE bleue 22 px, titre 24/700, texte 16/26).
+ *
+ * Props : { type: "photo-features", title, lead?, cardTitle?, cardText?,
+ *           image?, imageAlt?, fond?, items: [{ icon, title, text }] }
+ * - `image` = chemin PUBLIC servi tel quel (uploads public/images/carrieres) ;
+ *   vide = cadre gris (la carte flottante reste lisible).
+ * - Carte flottante rendue seulement si `cardTitle` est rempli.
+ * - `icon` : clé FERMÉE (croissance, progression, cœur, formation) — tracés
+ *   ci-dessous (carte ICONS, fill, viewBox 24). Vide/inconnue = puce sans
+ *   pictogramme. Ajouter une icône = la dessiner ICI + zod + `_select_data.
+ *   icones_carrieres_atouts` + `npm run cms:previews` (groupe
+ *   « carrieres-atouts »).
+ * - `lead`, `cardText`, `text` : textes enrichis INLINE.
+ * - `fond` : palette partagée ; défaut « blanc » (rendu historique).
+ *
+ * Contraintes / pièges :
+ * - <h2> = titre de section ; cartes et atouts = <h3>.
+ * - `items = []` en secours (édition en direct CloudCannon).
+ * - Browser-safe : aucun astro:assets, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface FeatureItem {
+  icon?: 'croissance' | 'progression' | 'coeur' | 'formation' | '';
+  title: string;
+  text?: string;
+}
+
+interface Props {
+  title: string;
+  lead?: string;
+  cardTitle?: string;
+  cardText?: string;
+  image?: string;
+  imageAlt?: string;
+  fond?: FondKey;
+  items?: FeatureItem[];
+}
+
+const {
+  title,
+  lead = '',
+  cardTitle = '',
+  cardText = '',
+  image = '',
+  imageAlt = '',
+  fond = 'blanc',
+  items = [],
+} = Astro.props;
+
+// « Fond de section » : clé fermée → utilitaire de la palette officielle.
+const FONDS: Record<string, string> = FOND_CLASSES;
+
+// Pictogrammes pleins (fill, viewBox 24) par clé fermée — ex-JOIN_ICONS.
+const ICONS: Record<string, string[]> = {
+  croissance: ['M16 6h5v5l-1.87-1.87L14 14.3l-4-4-5.6 5.6L3 14.5l7-7 4 4 4.13-4.13L16 6Z'],
+  progression: ['M12 4a8 8 0 1 0 8 8h-2a6 6 0 1 1-1.76-4.24L14 10h6V4l-2.35 2.35A8 8 0 0 0 12 4Z'],
+  coeur: [
+    'M12 20.7C7.3 17.6 3 14.2 3 9.9 3 7.2 5.1 5 7.8 5c1.6 0 3.2.8 4.2 2.1C13 5.8 14.6 5 16.2 5 18.9 5 21 7.2 21 9.9c0 4.3-4.3 7.7-9 10.8Z',
+  ],
+  formation: ['m12 3 10 4.6-10 4.6L2 7.6 12 3Z', 'M5 12v4.3c0 1.5 3.1 2.7 7 2.7s7-1.2 7-2.7V12l-7 3.2L5 12Z'],
+};
+---
+
+<section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
+  <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div class="relative rounded-sm overflow-hidden h-[400px] lg:h-[500px] bg-surface-container-high">
+      {image && <img class="w-full h-full object-cover border-0" src={image} alt={imageAlt} loading="lazy" decoding="async" />}
+      {
+        cardTitle && (
+          <div class="absolute bottom-0 left-0 max-w-[80%] bg-primary text-on-primary p-8">
+            <h3 class="text-2xl leading-[31px] font-bold m-0 mb-2">{cardTitle}</h3>
+            {hasRichText(cardText) && (
+              <p class="text-base leading-[26px] opacity-90 m-0 max-w-none" set:html={inlineHtml(cardText)} />
+            )}
+          </div>
+        )
+      }
+    </div>
+    <div>
+      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 mb-4">
+        {title}
+      </h2>
+      {
+        hasRichText(lead) && (
+          <p class="text-lg leading-[29px] text-on-surface-variant m-0 mb-8 max-w-none" set:html={inlineHtml(lead)} />
+        )
+      }
+      <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-8 m-0 p-0 list-none">
+        {
+          items.map((feature) => (
+            <li class="m-0 flex items-start gap-4">
+              <svg
+                class="shrink-0 mt-1 text-primary"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                focusable="false"
+              >
+                {(ICONS[feature.icon ?? ''] ?? []).map((d) => (
+                  <path d={d} />
+                ))}
+              </svg>
+              <div>
+                <h3 class="text-2xl leading-[31px] font-bold text-on-surface m-0 mb-1">{feature.title}</h3>
+                {hasRichText(feature.text) && (
+                  <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(feature.text)} />
+                )}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

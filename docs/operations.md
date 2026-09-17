@@ -50,15 +50,24 @@ Voir §3.1 pour vérifier sans arrêter le serveur de dev.
 
 ## 3. Portail qualité avant de pousser
 
-Cinq commandes, dans cet ordre — toutes doivent sortir propres :
+Six commandes, dans cet ordre — toutes doivent sortir propres :
 
 ```
 npm run lint
 npm test
+npm run cms:previews:check
 npm run type-check
 npm run build
 STATIC_ONLY=1 npm run build
 ```
+
+`cms:previews:check` (2026-09-17) vérifie que les pastilles de la palette
+« Fond de section » et les vignettes d'icônes de l'éditeur
+(`public/images/cms/`) sont à jour et que les listes `_select_data` de
+`cloudcannon.config.yml` correspondent EXACTEMENT aux clés dessinées dans les
+composants (et à `component-library/src/shared/fonds.ts`). Après avoir ajouté
+une teinte ou une icône : `npm run cms:previews` régénère les fichiers, puis
+committer `public/images/cms/`.
 
 | Commande | Attendu | Constaté au 14 juillet 2026 |
 |---|---|---|

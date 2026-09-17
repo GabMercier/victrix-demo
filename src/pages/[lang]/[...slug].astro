@@ -18,6 +18,7 @@ import JsonLd from '../../components/JsonLd.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
 import { useTranslations } from '../../i18n/ui';
+import { CONTACT_SUJET_LABELS } from '../../lib/contact/presets';
 
 /**
  * Pages génériques (collection `pages`, 2026-08-11) — une route statique par
@@ -28,8 +29,9 @@ import { useTranslations } from '../../i18n/ui';
  * /produits, /secteurs, /tarification, /centre-de-confiance, pages légales…).
  *
  * ROUTE ATTRAPE-TOUT ([...slug]) : Astro donne priorité aux routes plus
- * spécifiques (index, contact, carrieres, solutions, services/[...slug],
- * ressources/*, campagnes/*, portail/*…) — cette route ne génère QUE les
+ * spécifiques (index, contact, services/[...slug],
+ * ressources/*, campagnes/*, portail/*…) — le catalogue /solutions est une
+ * page générale depuis le 2026-09-17 (section solutions-catalogue) — cette route ne génère QUE les
  * chemins des entrées de la collection, elle n'attrape rien d'autre en build
  * statique. Tout ce qui est load-bearing dans la route services l'est ici
  * aussi : variable LITTÉRALE `frontmatter`, seam `enrich` (formulaires liés +
@@ -109,6 +111,48 @@ export async function getStaticPaths() {
       enrich['related-posts'] = { cards };
     }
 
+    // Catalogue de solutions (2026-09-17) — ex-route fixe solutions.astro
+    // convertie en section de page générale. Les fiches viennent de la
+    // collection `solutions` (tri `order`, vedette = première `featured`),
+    // liens localisés ; un lien /contact transporte `?sujet=` (libellé de la
+    // langue de la clé « projet », src/lib/contact/presets.ts — la page
+    // contact ignore un sujet inconnu, tolérant) et `?produit=` (nom de la
+    // solution). Une seule section par page (enrich indexé par type) ; le
+    // renderer partagé casse le build si la section est posée ailleurs.
+    const catalogueSections = page.data.sections.filter((s) => s.type === 'solutions-catalogue');
+    if (catalogueSections.length > 1) {
+      throw new Error(
+        `[pages] ${page.id} : ${catalogueSections.length} sections « catalogue de solutions » — une seule par page est supportée (enrich est indexé par type : les mêmes fiches seraient injectées partout). En retirer.`,
+      );
+    }
+    if (catalogueSections.length === 1) {
+      const subjectProject = CONTACT_SUJET_LABELS[lang].projet;
+      const contactHref = (href: string, productTitle: string): string => {
+        if (!href) return '';
+        const base = localizePath(href, lang);
+        if (!/^\/contact\/?$/.test(href)) return base;
+        const params = new URLSearchParams({ sujet: subjectProject, produit: productTitle });
+        return `${base}?${params.toString()}`;
+      };
+      const solutionEntries = (await getCollection('solutions'))
+        .filter((entry) => entry.id.startsWith(`${lang}/`))
+        .sort((a, b) => a.data.order - b.data.order);
+      const toCard = (entry: (typeof solutionEntries)[number]) => ({
+        title: entry.data.title,
+        description: entry.data.description,
+        image: entry.data.image,
+        sector: entry.data.sector,
+        solutionType: entry.data.solutionType,
+        href: contactHref(entry.data.href, entry.data.title),
+        docHref: entry.data.docHref ? localizePath(entry.data.docHref, lang) : '',
+      });
+      const featuredEntry = solutionEntries.find((entry) => entry.data.featured);
+      enrich['solutions-catalogue'] = {
+        featured: featuredEntry ? toCard(featuredEntry) : null,
+        cards: solutionEntries.filter((entry) => entry !== featuredEntry).map(toCard),
+      };
+    }
+
     enrich.form = {
       resolvedForms,
       pageContext: {
@@ -148,6 +192,7 @@ const crumbsSchema = breadcrumbSchema(crumbs, Astro.site!);
   noindex={page.data.noindex}
   altLocalePath={altLocalePath}
   contentType="Page"
+  contactPreset={{ sujet: page.data.contactSujet, service: page.data.contactService }}
 >
   <JsonLd slot="head" schema={crumbsSchema} />
   <Breadcrumbs lang={lang} items={crumbs} />

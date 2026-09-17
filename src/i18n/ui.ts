@@ -3,13 +3,15 @@
  * header entries, Pagefind UI, article share controls). Page and chrome
  * CONTENT has been progressively moved to CMS-editable collections: footer/
  * consent/404 → `site` (2026-08-11), blog index & RSS / search page / merci →
- * `pagesSysteme`, Contact → `contact`, Carrières → `carrieres` (2026-08-12).
+ * `pagesSysteme`, Contact → `contact` (2026-08-12), Carrières → page
+ * « sections » de la collection `pages` (2026-09-17).
  *
  * `fr` is the source of truth; `en` is typed against it (`UI`), so the two
  * locales can never drift out of shape — a missing/extra key fails the build.
  * Internal hrefs are stored without a locale and prefixed at render via
- * `localizePath()`. Page-body copy lives in `src/i18n/content/*` and the
- * `home`/`blog` content collections, not here.
+ * `localizePath()`. Page-body copy lives in the content collections
+ * (`home`, `pages`, `services`, `blog`…), not here — the last per-page module
+ * (`src/i18n/content/solutions.ts`) was migrated to a CMS page on 2026-09-17.
  *
  * Navigation CONTENT (menu items, mega menu, announcement bar, portal button)
  * was migrated to src/data/navigation/<lang>.json — the `navigation`

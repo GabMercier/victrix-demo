@@ -1,0 +1,99 @@
+---
+import { hasRichText, inlineHtml } from '../../shared/rich';
+/**
+ * Section « Héros photo » — composant Bookshop (2026-09-17, conversion de la
+ * page Carrières en page « sections »).
+ * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/carriere.css §Hero, ex-héros de
+ * src/pages/[lang]/carrieres.astro repris VERBATIM) : photo pleine largeur
+ * 560 px + voile ANTHRACITE 40 % (on-surface — pas le Bleu nuit de
+ * service-hero), H1 56/800 ls -1.12 blanc, sous-titre 18/29 blanc 90 %,
+ * bouton primaire 14/600 MAJUSCULES ls 0.7 sans flèche. Ces trois écarts
+ * (hauteur, voile, bouton) justifient un composant distinct de `service-hero`
+ * (~30 pages) plutôt qu'une variante de plus.
+ *
+ * Props : { type: "photo-hero", title, sub?, ctaLabel?, ctaHref?, image?,
+ *           imageAlt?, imagePosition? }
+ * - `image` = chemin PUBLIC servi tel quel (uploads public/images/carrieres) ;
+ *   vide = aplat anthracite (le voile reste, la page garde sa forme).
+ * - `imageAlt` : alt de la photo (vide = décorative, alt="").
+ * - `imagePosition` : point focal du recadrage object-cover — « haut »
+ *   (DÉFAUT : réglage 50 % 25 % historique de la page Carrières, garde les
+ *   visages d'une photo de groupe), « centre », « bas ». Classes LITTÉRALES
+ *   (JIT Tailwind).
+ * - `sub` : texte enrichi INLINE (gras/italique/lien) rendu dans le <p>.
+ * - Bouton : rendu seulement si libellé ET lien sont remplis.
+ *
+ * Contraintes / pièges :
+ * - Rend le <h1> de la page → à placer en PREMIÈRE position ; `h1Taken`
+ *   (posé par shared/astro/page.astro quand la page porte un « H1 SEO »)
+ *   le rétrograde en <h2>, styles inchangés.
+ * - Browser-safe (éditeur visuel CloudCannon) : aucun astro:assets, aucun
+ *   script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Props {
+  title: string;
+  /** Vrai quand la page porte déjà son <h1> (champ « H1 SEO » de la page) : le grand titre passe en <h2>, styles inchangés. */
+  h1Taken?: boolean;
+  sub?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  image?: string;
+  imageAlt?: string;
+  imagePosition?: 'centre' | 'haut' | 'bas';
+}
+
+const {
+  title,
+  h1Taken = false,
+  sub = '',
+  ctaLabel = '',
+  ctaHref = '',
+  image = '',
+  imageAlt = '',
+  imagePosition = 'haut',
+} = Astro.props;
+
+// Point focal du recadrage : classes LITTÉRALES (voir l'en-tête — JIT).
+const positionClass =
+  imagePosition === 'centre' ? 'object-center' : imagePosition === 'bas' ? 'object-[50%_75%]' : 'object-[50%_25%]';
+
+// H1 de la page, sauf « H1 SEO » de page (h1Taken) → <h2>, mêmes styles.
+const TitleTag = h1Taken ? 'h2' : 'h1';
+---
+
+<section class="relative flex items-center min-h-[560px] overflow-hidden bg-on-surface">
+  {
+    image && (
+      <img
+        class:list={['absolute inset-0 w-full h-full object-cover border-0', positionClass]}
+        src={image}
+        alt={imageAlt}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    )
+  }
+  <div class="absolute inset-0 bg-on-surface/40" aria-hidden="true"></div>
+  <div class="relative z-10 w-full container-site py-24">
+    <div class="max-w-[672px] flex flex-col items-start gap-4">
+      <TitleTag
+        class="text-[40px] leading-[1.2] lg:text-[56px] lg:leading-[70px] font-extrabold tracking-[-1.12px] text-on-primary m-0"
+      >
+        {title}
+      </TitleTag>
+      {hasRichText(sub) && <p class="text-lg leading-[29px] text-on-primary/90 m-0 max-w-none" set:html={inlineHtml(sub)} />}
+      {
+        ctaLabel && ctaHref && (
+          <a
+            class="mt-4 inline-flex items-center bg-primary text-on-primary px-8 py-4 rounded-sm text-sm leading-none font-semibold tracking-[0.7px] uppercase no-underline shadow-lg hover:bg-primary-container transition-colors"
+            href={ctaHref}
+          >
+            {ctaLabel}
+          </a>
+        )
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,72 @@
+# =============================================================================
+# Spec Bookshop — section « Tuiles de valeurs » (palette partagée, 2026-09-17
+# — conversion de la page Carrières en page « sections »).
+# Voir hero.bookshop.yml pour les conventions communes. Les tuiles vivent dans
+# la structure `_structures.value_tile_items` (cloudcannon.config.yml) — icône
+# à liste fermée avec vignette (`_select_data.icones_carrieres_valeurs`).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Tuiles de valeurs"
+  description: "Surtitre, titre centré et rangée de tuiles bordées (pictogramme bleu + libellé en majuscules) — nos valeurs, notre culture."
+  icon: stars
+  picker_preview:
+    image: "/_cloudcannon/bookshop_thumbs/value-tiles/preview.png"
+    text: Tuiles de valeurs
+    subtext: Rangée de tuiles icône + libellé (jusqu'à 5 par rangée)
+  preview:
+    icon: stars
+    text:
+      - key: title
+      - text: Tuiles de valeurs
+
+blueprint:
+  type: value-tiles
+  eyebrow: "Culture"
+  title: "Nos valeurs"
+  fond: blanc
+  items:
+    - icon: etoile
+      label: "Excellence"
+    - icon: groupe
+      label: "Collaboration"
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  eyebrow:
+    label: "Surtitre (optionnel)"
+    comment: "Courte ligne bleue en majuscules au-dessus du titre (ex. « Culture »)."
+  title:
+    label: "Titre"
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      # Palette partagée : liste d'objets {cle, libelle, couleur, apercu}
+      # définie UNE fois dans cloudcannon.config.yml (_select_data.fonds).
+      values: _select_data.fonds
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+        icon: square
+        icon_color:
+          - key: couleur
+    comment: "Couleur de fond de la section, bornée à la palette officielle (pastilles dans la liste)."
+  items:
+    # `type: array` explicite + structure déclarée à la main dans
+    # cloudcannon.config.yml (_structures.value_tile_items) — même bail-out
+    # que stats.bookshop.yml.
+    type: array
+    label: "Tuiles"
+    comment: "Une tuile par valeur (icône + libellé). Cinq tuiles remplissent une rangée."
+    options:
+      structures: _structures.value_tile_items

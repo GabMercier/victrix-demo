@@ -1,0 +1,110 @@
+---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { hasRichText, inlineHtml } from '../../shared/rich';
+/**
+ * Section « Texte + photo » — composant Bookshop (2026-09-17, conversion de
+ * la page Carrières en page « sections »).
+ * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/carriere.css §Responsabilité
+ * sociale, ex-bloc de src/pages/[lang]/carrieres.astro repris VERBATIM) :
+ * deux colonnes — à gauche titre 40/700, chapeau 18/29 gris, ligne
+ * « engagement » (pictogramme plein bleu 22 px + titre 16/700), texte
+ * d'engagement 16/26, rangée de PASTILLES partenaires (placeholders texte de
+ * la maquette, opacité 60 %) ; à droite la photo 400 px (rayon 2).
+ *
+ * Props : { type: "text-photo", title, lead?, engagementTitle?,
+ *           engagementText?, partners?: string[], image?, imageAlt?, fond? }
+ * - `partners` : tableau de CHAÎNES (« Partner 1 »…) rendues en pastilles
+ *   grises — placeholders assumés en attendant les logos réels des
+ *   partenaires académiques ; vide = rangée absente.
+ * - Ligne engagement rendue seulement si `engagementTitle` est rempli ; le
+ *   pictogramme « jeunes talents » est un tracé fixe du composant.
+ * - `image` = chemin PUBLIC servi tel quel (uploads public/images/carrieres) ;
+ *   vide = cadre gris.
+ * - `lead`, `engagementText` : textes enrichis INLINE.
+ * - `fond` : palette partagée ; défaut « blanc » (rendu historique).
+ *
+ * Contraintes / pièges :
+ * - <h2> : le <h1> unique appartient au héros.
+ * - `partners = []` en secours (édition en direct CloudCannon).
+ * - Browser-safe : aucun astro:assets, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Props {
+  title: string;
+  lead?: string;
+  engagementTitle?: string;
+  engagementText?: string;
+  partners?: string[];
+  image?: string;
+  imageAlt?: string;
+  fond?: FondKey;
+}
+
+const {
+  title,
+  lead = '',
+  engagementTitle = '',
+  engagementText = '',
+  partners = [],
+  image = '',
+  imageAlt = '',
+  fond = 'blanc',
+} = Astro.props;
+
+// « Fond de section » : clé fermée → utilitaire de la palette officielle.
+const FONDS: Record<string, string> = FOND_CLASSES;
+
+// Silhouette « jeunes talents » (fill).
+const DIVERSITY_PATHS = [
+  'M9 10.5a2.75 2.75 0 1 0 0-5.5 2.75 2.75 0 0 0 0 5.5Z',
+  'M15.5 10.5a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z',
+  'M9 12.5c3 0 5.5 1.8 6 4.5v1H3v-1c.5-2.7 3-4.5 6-4.5Z',
+  'M15.5 12.7c2.6.2 4.6 1.8 5 4.3v1h-4v-1a6.2 6.2 0 0 0-1-4.3Z',
+];
+---
+
+<section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
+  <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div>
+      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 mb-4">
+        {title}
+      </h2>
+      {
+        hasRichText(lead) && (
+          <p class="text-lg leading-[29px] text-on-surface-variant m-0 mb-4 max-w-none" set:html={inlineHtml(lead)} />
+        )
+      }
+      {
+        engagementTitle && (
+          <p class="m-0 max-w-none flex items-center gap-3">
+            <svg class="shrink-0 text-primary" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              {DIVERSITY_PATHS.map((d) => (
+                <path d={d} />
+              ))}
+            </svg>
+            <span class="text-base leading-[26px] font-bold text-on-surface">{engagementTitle}</span>
+          </p>
+        )
+      }
+      {
+        hasRichText(engagementText) && (
+          <p class="text-base leading-[26px] text-on-surface-variant m-0 mt-4 max-w-none" set:html={inlineHtml(engagementText)} />
+        )
+      }
+      {
+        partners.length > 0 && (
+          <div class="flex flex-wrap gap-6 mt-8 opacity-60">
+            {partners.map((partner) => (
+              <div class="h-12 w-32 bg-surface-container-highest rounded-xs flex items-center justify-center text-base font-bold text-outline">
+                {partner}
+              </div>
+            ))}
+          </div>
+        )
+      }
+    </div>
+    <div class="rounded-sm overflow-hidden h-[400px] bg-surface-container-high">
+      {image && <img class="w-full h-full object-cover border-0" src={image} alt={imageAlt} loading="lazy" decoding="async" />}
+    </div>
+  </div>
+</section>

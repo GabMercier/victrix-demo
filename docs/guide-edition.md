@@ -66,21 +66,37 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
 3. **+ Ajouter une section** propose la palette : **une trentaine de
    sections** (héros, cartes à icônes, FAQ, formulaire, appel à l'action,
    témoignage, bandeau logos, chiffres, vidéo, grilles bento, tuiles, cartes
-   d'offre, réalisations…), chacune avec sa **vignette d'aperçu** dans le
+   d'offre, réalisations… et, depuis le 17 sept. 2026, les sections de la
+   page Carrières : héros photo, carte distinction, tuiles de valeurs,
+   photo + atouts, cartes témoignages, texte + photo), chacune avec sa
+   **vignette d'aperçu** dans le
    sélecteur. Glisser pour réordonner; chaque section a ses champs (textes,
    boutons, questions…). Deux vitrines pour tout voir :
-   `/fr/campagnes/demo-sections/` et `/fr/style-guide/`.
+   `/fr/campagnes/demo-sections/` et `/fr/style-guide/`. Exception : la
+   section **« Catalogue de solutions »** (chrome du catalogue, fiches
+   automatiques) n'est valable que sur une **page générale** — posée sur une
+   campagne ou un service, la publication est bloquée avec un message clair.
 4. **Fond de section** : plusieurs sections (héros, cartes à icônes, appel à
    l'action, FAQ, chiffres, tuiles, texte riche, formulaire, valeur
-   stratégique, cartes d'offre, réalisations) offrent un sélecteur « Fond de
-   section » **borné à la palette officielle** : blanc · givre (gris très
-   pâle) · ivoire · beige · sable. Laisser la valeur par défaut = le rendu
-   historique de la section ; aucune couleur libre n'est possible (c'est
-   voulu — cohérence de la charte).
-5. Par défaut la page est **non indexée** (invisible des moteurs de recherche —
+   stratégique, cartes d'offre, réalisations, héros produit) offrent un
+   sélecteur « Fond de section » **borné à la palette officielle** — dix
+   fonds clairs, chacun avec sa **pastille de couleur** dans la liste :
+   blanc · givre (gris très pâle) · perle (gris pâle) · brume (gris clair) ·
+   bleu pâle · bleu clair · ivoire · beige · sable (grège) · pierre (grège
+   soutenu). Laisser la valeur par défaut = le rendu historique de la
+   section ; aucune couleur libre n'est possible (c'est voulu — cohérence de
+   la charte). Depuis le 17 sept. 2026, « sable » est un grège plus neutre
+   (l'ancienne teinte tirait vers l'orange) : les pages qui l'utilisaient
+   ont changé de teinte d'elles-mêmes, rien à refaire.
+5. **Icônes** : les champs « Icône » (cartes à icônes, tuiles bento,
+   réalisations, chiffres en style carte, puces d'offre…) sont des listes
+   déroulantes qui montrent la **vignette de chaque pictogramme** à côté de
+   son nom. La bibliothèque est dessinée pour le site ; demander une icône
+   manquante à l'équipe technique (elle est ajoutée au dessin ET à la liste).
+6. Par défaut la page est **non indexée** (invisible des moteurs de recherche —
    voulu pour les campagnes). L'interrupteur « noindex » est là si une page
    doit un jour être indexée.
-6. **Adresse de la page** : le champ « Adresse de la page (segment d'URL) »
+7. **Adresse de la page** : le champ « Adresse de la page (segment d'URL) »
    choisit le dernier segment de l'adresse (`/fr/campagnes/<segment>/`) —
    minuscules, chiffres et traits d'union seulement (ex.
    `offre-licences-2026`). Vide = le nom du fichier. Changer l'adresse ne
@@ -89,7 +105,7 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
    même adresse (la publication est bloquée avec un message clair). Sur une
    page déjà en ligne, prévoir une **redirection** de l'ancienne adresse
    (voir « Gérer les redirections »).
-7. **Save** → en ligne en quelques minutes à `/fr/campagnes/<segment>/`.
+8. **Save** → en ligne en quelques minutes à `/fr/campagnes/<segment>/`.
 
 > ⚠️ Si vous arrivez sur une **page blanche avec une barre d'outils de texte** :
 > vous êtes dans l'éditeur de *contenu* (le corps de texte, vide sur une
@@ -121,8 +137,7 @@ champ affiche une petite barre d'outils.
 
 La même barre d'outils (gras, italique, lien — un seul paragraphe) est
 aussi sur les textes **hors sections** : sous-titre et texte d'appui de la
-page **Contact**, tous les textes de **Carrières** (chapeau, citations,
-atouts, engagement), la description des **Solutions**, les textes
+page **Contact**, la description des **Solutions**, les textes
 d'introduction et d'appel des **Pages système** (centre de ressources,
 recherche, merci) et le **texte de consentement** des formulaires — pratique
 pour y glisser le lien vers la politique de confidentialité.
@@ -215,19 +230,32 @@ relie les deux versions (voir « Traduire »).
 > les infobulles des champs le rappellent. Un lien mal formé bloque la
 > publication avec un message clair, comme pour les redirections.
 
+Réglages de la page (panneau latéral, sous les sections) : Titre, Adresse de
+la page (segments d'URL — surtout pour l'EN), Description, Masquer des
+moteurs, Titre SEO, H1 SEO, et les deux champs **Contact — sujet / service
+présélectionné** (voir « Page Contact » : vides = « Un projet » + la famille
+du service).
+
 ## Modifier les pages générales (Découvrir, Produits, Tarification…)
 
-**Pages** dans la barre latérale : les pages générales du site — Découvrir
-Victrix, Nos expertises, Nos services, Nos produits, Secteurs d'activité,
-Tarification, Centre de confiance et les pages légales. Elles se composent par
-sections, exactement comme les pages Services.
+**Pages générales** dans la barre latérale : les pages générales du site —
+Découvrir Victrix, Nos expertises, Nos services, Nos produits, Secteurs
+d'activité, Tarification, Centre de confiance, **Carrières** (depuis le
+17 sept. 2026) et les pages légales. Elles se composent par sections,
+exactement comme les pages Services.
 
 - Plusieurs de ces pages sont aujourd'hui des **placeholders** (texte
   d'attente officiel). Remplacer les sections par le vrai contenu, puis
   désactiver « **Masquer des moteurs de recherche** » : la page devient
   indexable et entre au sitemap automatiquement.
 - Même règle de traduction que partout : le même nom de fichier dans `fr/` et
-  `en/` relie les deux langues.
+  `en/` relie les deux langues. Le champ **Adresse de la page** permet à la
+  version EN d'avoir son propre segment d'URL (ex. `discover`) sans rompre
+  l'appariement.
+- Mêmes réglages de page que les Services (Titre SEO, H1 SEO, **Contact —
+  sujet / service présélectionné**) ; sur une page générale, les deux champs
+  Contact sont vides par défaut = aucun choix prérempli dans les listes (le
+  libellé du bouton et la page d'origine, eux, sont toujours transmis).
 
 ## Modifier les textes du site (pied de page, bandeau de consentement)
 
@@ -257,15 +285,17 @@ Deux points d'attention :
 L'année du copyright se met à jour toute seule à chaque publication.
 
 **Ce qui ne se trouve PAS ici** : le texte propre à une page s'édite **avec sa
-page** (Pages, Services, Solutions, Blogue — et les collections **Page
-Contact**, **Page Carrières** et **Pages système** ci-dessous) ; le **bandeau
-promotionnel** du haut se modifie dans **Navigation**.
+page** (Pages générales — Carrières comprise —, Services, Solutions, Blogue —
+et les collections **Page Contact** et **Pages système** ci-dessous) ; le
+**bandeau promotionnel** du haut se modifie dans **Navigation**.
 
 ## Modifier les pages Contact et Carrières
 
-**Page Contact** et **Page Carrières** dans la barre latérale : tout le texte
-de ces deux pages, un fichier par langue (`fr` / `en`). La mise en page, elle,
-est fixe — vous changez les mots et les photos, le site garde sa forme.
+**Page Contact** dans la barre latérale : tout le texte de la page, un fichier
+par langue (`fr` / `en`). La mise en page, elle, est fixe — vous changez les
+mots et les photos, le site garde sa forme. **Carrières**, elle, est depuis le
+17 sept. 2026 une page de **Pages générales** composée de sections (voir la
+puce plus bas).
 
 - **Page Contact** — héros, intitulés de la carte Coordonnées, les trois
   cartes bureaux (ville, adresse, photo), la section formulaire (titre, texte
@@ -291,12 +321,40 @@ est fixe — vous changez les mots et les photos, le site garde sa forme.
   configurer : cela vaut aussi pour les liens que vous ajoutez dans un
   texte. Pour un formulaire de campagne (section « Formulaire »), le même
   suivi se fait avec un **champ caché** dont la valeur est `{{url.cta}}`.
-- **Page Carrières** — héros, carte « Happy At Work », valeurs (icône à liste
-  fermée + libellé), atouts « Pourquoi rejoindre » (icône + titre + texte),
-  témoignages (portrait, citation, prénom, rôle), responsabilité sociale et
-  appel à l'action final. Les **photos de section** (héros, équipe, RSE) sont
-  gérées par l'équipe technique en attendant les visuels authentiques ; les
-  **portraits des témoignages**, eux, se téléversent ici.
+  **Listes déroulantes préremplies** (depuis le 17 sept. 2026) : les deux
+  listes « De quoi souhaitez-vous parler ? » et « Service » arrivent aussi
+  déjà choisies. Sur une **page Services**, le sujet est « Un projet » et le
+  service suit la famille de la page (Cybersécurité, Intelligence
+  artificielle, Infonuagique, Services applicatifs [Productivité comprise],
+  Services gérés) ; la page Carrières présélectionne « Une carrière » (via
+  son champ « Contact — sujet présélectionné ») ; le catalogue
+  de solutions « Un projet » + le nom de la solution. Deux champs de page,
+  **« Contact — sujet présélectionné »** et **« Contact — service
+  présélectionné »** (réglages de la page, à côté du H1 SEO — pages Services
+  et Pages générales), permettent de forcer un autre choix ; vides = les
+  défauts ci-dessus (aucun choix sur une page générale). Si une option des
+  listes est renommée sur la page Contact, le préremplissage correspondant
+  cesse silencieusement (jamais d'erreur) — prévenir l'équipe technique pour
+  réaligner.
+- **Carrières** — depuis le 17 sept. 2026, une page de **Pages générales**
+  (`fr/carrieres`, `en/carrieres`) composée de sept sections, éditables dans
+  l'éditeur visuel comme les autres pages : **héros photo** (photo, titre,
+  sous-titre, bouton « Postulez »), **carte distinction** (Happy At Work :
+  insigne, titre, chapeau, citation à liseré), **tuiles de valeurs** (surtitre,
+  titre, tuiles icône à liste fermée + libellé), **photo + atouts** (photo,
+  carte flottante bleue, titre, chapeau, grille 2×2 d'atouts icône + titre +
+  texte), **cartes témoignages** (portrait, citation, prénom, rôle), **texte +
+  photo** (responsabilité sociale : titre, chapeau, ligne d'engagement,
+  pastilles partenaires, photo) et **appel à l'action** en variante
+  « primaire » (aplat bleu, bouton blanc). **Toutes les photos** (héros,
+  équipe, responsabilité sociale, portraits) sont maintenant des champs image
+  — elles se téléversent dans `images/carrieres`. Mêmes réglages de page que
+  les autres pages générales (Titre SEO, H1 SEO, Adresse, Masquer des
+  moteurs) ; le champ **« Contact — sujet présélectionné »** est réglé sur
+  « Une carrière » : les boutons « Postulez » et « Contactez-nous » mènent à
+  la page Contact avec ce sujet déjà choisi (le changer ou le vider ici
+  suffit). Les fonds gris des sections (carte distinction, témoignages) sont
+  des « Fond de section » de la palette — modifiables, comme partout.
 
 Comme partout : liens internes **sans préfixe de langue**, et une valeur
 invalide (ex. une icône hors liste) **bloque la publication** avec un message
@@ -323,9 +381,25 @@ qui n'ont pas de fiche de contenu propre, un fichier par langue, trois blocs :
 
 ## Gérer le catalogue de solutions
 
-**Solutions** dans la barre latérale : une fiche = une carte du catalogue
-(`/fr/solutions/`). Même règle de traduction que partout : le même nom de
-fichier dans `fr/` et `en/` relie les deux langues.
+Le catalogue est en deux morceaux :
+
+- **La page** (titre de la barre d'outils, texte d'invite de la recherche,
+  libellés des filtres et de leur option « tous », badge et boutons de la
+  solution vedette, message « aucune solution », appel à l'action du bas —
+  titre, texte, bouton téléphone, bouton contact) s'édite dans **Pages
+  générales → « Catalogue de solutions »**, dans l'éditeur visuel, comme
+  toute page générale : la page contient une seule section **« Catalogue de
+  solutions »** qui porte tous ces textes. Les réglages de page (titre,
+  description, H1 SEO, « Sujet du formulaire de contact » — « Un projet »
+  par défaut) s'appliquent aussi. Dans l'éditeur, les cartes et la vedette
+  affichées sont des **exemples** (« Exemple : … ») : les vraies fiches
+  apparaissent au build. Ne pas ajouter de deuxième section « Catalogue de
+  solutions » (une seule par page), ni la poser sur une campagne ou un
+  service (page générale seulement).
+- **Les fiches** — **Solutions** dans la barre latérale : une fiche = une
+  carte du catalogue (`/fr/solutions/`). Même règle de traduction que
+  partout : le même nom de fichier dans `fr/` et `en/` relie les deux
+  langues.
 
 - **Secteur d'activité** et **Type de solution** : ces deux champs alimentent
   les chips de la carte ET les **filtres** de la page. Reprendre **exactement**
@@ -360,7 +434,7 @@ range pour vous :
 | Images de sections (héros, bento, cartes…) | `images/sections` |
 | Fiche du catalogue de solutions | `images/solutions` |
 | Cartes bureaux (Page Contact) | `images/contact` |
-| Portraits de témoignages (Page Carrières) | `images/carrieres` |
+| Photos et portraits de la page Carrières (héros photo, photo + atouts, texte + photo, cartes témoignages) | `images/carrieres` |
 | Carte du méga-menu (Navigation) | `images/nav` |
 
 Trois règles simples :
@@ -525,17 +599,18 @@ visiteurs). Rien ne part en production tout seul.
 ## Ce que vous contrôlez — et ce qui est verrouillé (et pourquoi)
 
 **Vous contrôlez le contenu** : textes, images, ordre des sections d'une
-page, articles, fiches de solutions, pages Contact et Carrières, textes du
-site et pages système, formulaires, menu et barres d'annonce, pied de page,
-redirections, réglages SEO page par page. C'est le cœur du site et il est
-entre vos mains.
+page (Carrières comprise, depuis le 17 sept. 2026 — photos incluses),
+articles, fiches de solutions, page Contact, textes du site et pages système,
+formulaires, menu et barres d'annonce, pied de page, redirections, réglages
+SEO page par page. C'est le cœur du site et il est entre vos mains.
 
-Trois exceptions, techniques ou temporaires, restent côté équipe : le
+Deux exceptions, techniques ou temporaires, restent côté équipe : le
 **chrome du catalogue de solutions** (titres et libellés de filtres de
-`/solutions`), certaines **photos de section** de la page Carrières (héros,
-équipe, RSE — en attendant les visuels authentiques) et les micro-textes
-d'interface (boutons de partage d'article, interface de recherche, chaînes
-d'accessibilité).
+`/solutions`) et les micro-textes d'interface (boutons de partage d'article,
+interface de recherche, chaînes d'accessibilité). Sur la page Carrières, les
+**pastilles « Partner 1 / 2 »** de la section texte + photo restent des textes
+provisoires : les vrais logos des partenaires académiques viendront avec une
+évolution de la section.
 
 **Certaines valeurs sont des listes fermées** (un menu déroulant plutôt qu'un
 champ libre). Ce n'est pas une limitation gratuite : chaque liste garantit la
@@ -544,7 +619,9 @@ champ libre). Ce n'est pas une limitation gratuite : chaque liste garantit la
 | Champ | Pourquoi une liste fermée |
 |---|---|
 | Peau de carte (« claire / image / bleue / nuit ») | seules ces variantes existent dans le design |
-| Icônes (cartes à icônes, réalisations…) | l'icône vient d'une bibliothèque dessinée pour le site |
+| Icônes (cartes à icônes, réalisations…) | l'icône vient d'une bibliothèque dessinée pour le site — la liste montre la vignette de chacune |
+| Fond de section | dix fonds clairs de la charte, pastille de couleur dans la liste |
+| Contact — sujet / service présélectionné | les valeurs doivent exister dans les listes de la page Contact (fr et en) |
 | Type de champ de formulaire | chaque type a son comportement serveur (validation, courriel) |
 | Couleur d'accent | bornée aux couleurs de la **charte** — pas de couleur libre, la cohérence visuelle est garantie d'avance |
 

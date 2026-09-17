@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Offres numérotées » — composant Bookshop, NOUVEAU 2026-08-05.
@@ -38,7 +39,7 @@ interface OfferItem {
 interface Props {
   title: string;
   intro?: string;
-  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  fond?: FondKey;
   ctaLabel?: string;
   ctaHref?: string;
   items: OfferItem[];
@@ -49,13 +50,7 @@ const { title, intro, fond = 'givre', ctaLabel, ctaHref, items = [] } = Astro.pr
 // « Fond de section » ÉTENDU 2026-08-17 (produit-child.css §Nos Offres,
 // lavis chauds) : clé fermée → utilitaire de la palette officielle. Défaut =
 // rendu historique (givre #f9fafb, ex-bg-surface-container-low).
-const FONDS: Record<string, string> = {
-  blanc: 'bg-white',
-  givre: 'bg-givre',
-  ivoire: 'bg-ivoire',
-  beige: 'bg-beige',
-  sable: 'bg-sable',
-};
+const FONDS: Record<string, string> = FOND_CLASSES;
 
 // Pictogrammes (stroke 24px) par clé fermée du contrat.
 const ICONS: Record<string, string[]> = {

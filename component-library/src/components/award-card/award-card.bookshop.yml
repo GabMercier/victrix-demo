@@ -1,0 +1,102 @@
+# =============================================================================
+# Spec Bookshop — section « Carte distinction » (palette partagée, 2026-09-17
+# — conversion de la page Carrières en page « sections »).
+# Voir hero.bookshop.yml pour les conventions communes.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Carte distinction"
+  description: "Carte blanche bordée sur bande grise : insigne bleu à gauche, titre, chapeau et citation à liseré (certification Happy At Work)."
+  icon: workspace_premium
+  picker_preview:
+    image: "/_cloudcannon/bookshop_thumbs/award-card/preview.png"
+    text: Carte distinction
+    subtext: Insigne, titre, chapeau et citation à liseré bleu
+  preview:
+    icon: workspace_premium
+    text:
+      - key: title
+      - text: Carte distinction
+
+blueprint:
+  type: award-card
+  title: "Happy At Work"
+  lead: "Victrix est certifiée HappyIndex® AtWork des entreprises « où l'on est heureux de travailler »."
+  quote: "Cette distinction est décernée à la suite d'une enquête participative auprès des salariés."
+  fond: perle
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre"
+  lead:
+    type: html
+    label: "Chapeau (optionnel)"
+    comment: "Une ou deux phrases sous le titre — gras, italique, lien."
+    options:
+      format: p
+      bulletedlist: false
+      numberedlist: false
+      blockquote: false
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
+  quote:
+    type: html
+    label: "Citation à liseré (optionnelle)"
+    comment: "Texte en italique avec un liseré bleu à gauche."
+    options:
+      format: p
+      bulletedlist: false
+      numberedlist: false
+      blockquote: false
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      # Palette partagée : liste d'objets {cle, libelle, couleur, apercu}
+      # définie UNE fois dans cloudcannon.config.yml (_select_data.fonds).
+      values: _select_data.fonds
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+        icon: square
+        icon_color:
+          - key: couleur
+    comment: "Couleur de fond de la section, bornée à la palette officielle (pastilles dans la liste). Défaut « perle » = rendu historique de la page Carrières."

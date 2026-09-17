@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
 /**
  * Section « Formulaire » — composant Bookshop (contrat landing).
@@ -134,7 +135,7 @@ interface Props {
    * « Fond de section » (2026-08-18, landing-pagefinal.txt : bande SABLE).
    * '' = défaut historique du bloc (givre en carte, blanc en panneau).
    */
-  fond?: '' | 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  fond?: '' | FondKey;
   fields: FormField[];
   /**
    * FORMS V2 — référence un formulaire de src/data/forms/<lang>/<formId>.json.
@@ -289,13 +290,7 @@ const submitClass = isCard
 
 // « Fond de section » : clé fermée → utilitaire de la palette officielle ;
 // '' = rendu historique de la variante (carte = givre, panneau = blanc).
-const FONDS: Record<string, string> = {
-  blanc: 'bg-white',
-  givre: 'bg-givre',
-  ivoire: 'bg-ivoire',
-  beige: 'bg-beige',
-  sable: 'bg-sable',
-};
+const FONDS: Record<string, string> = FOND_CLASSES;
 const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surface');
 ---
 

@@ -13,6 +13,8 @@ import JsonLd from '../components/JsonLd.astro';
 import { type Locale, defaultLocale, otherLocale, htmlLang, swapLocale } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 import { getActiveAnnounceId } from '../lib/announce';
+import { getLocaleData } from '../i18n/locale-data';
+import { resolveContactPreset, type ContactPresetKeys } from '../lib/contact/presets';
 
 interface Props {
   /** Page locale. Required so chrome, <html lang>, and hreflang are correct. */
@@ -51,6 +53,16 @@ interface Props {
    * que l'index contient des filtres.
    */
   contentType?: string;
+  /**
+   * Préremplissage du formulaire Contact par les boutons de la page
+   * (2026-09-17, src/lib/contact/presets.ts) : CLÉS neutres (sujet, service)
+   * résolues ici en libellés de la langue et vérifiées contre les options
+   * réelles de la page Contact, puis posées sur <body data-contact-sujet /
+   * data-contact-service>. Le script « provenance des CTA » ci-dessous les
+   * ajoute (?sujet= / ?expertise=) à tout lien vers Contact hors chrome.
+   * Absent ou vide → rien de posé, comportement historique.
+   */
+  contactPreset?: ContactPresetKeys;
 }
 
 const {
@@ -64,7 +76,13 @@ const {
   altLocalePath,
   noindex = false,
   contentType,
+  contactPreset,
 } = Astro.props;
+
+const contactLabels =
+  contactPreset && (contactPreset.sujet || contactPreset.service)
+    ? resolveContactPreset(lang, contactPreset, await getLocaleData('contact', lang))
+    : { sujet: '', service: '' };
 
 const t = useTranslations(lang);
 const other = otherLocale[lang];
@@ -253,10 +271,15 @@ const ga4Bootstrap = GA4_ID
         deux champs cachés (cta, provenance) transmis avec le message. Aucun
         composant à modifier : le lien est complété AU CLIC, en phase de capture
         (avant le ClientRouter, qui lit alors l'adresse déjà complétée). Sans
-        JavaScript, le lien reste un lien vers Contact. Un lien qui porte déjà
-        ?cta= ou ?produit= (catalogue de solutions) est laissé tel quel. Script
+        JavaScript, le lien reste un lien vers Contact. Un paramètre déjà
+        présent sur le lien (?cta=, ?sujet=, ?expertise= — ex. catalogue de
+        solutions) est laissé tel quel. Listes déroulantes (2026-09-17) : les
+        libellés posés par la route sur <body data-contact-sujet /
+        data-contact-service> deviennent ?sujet= / ?expertise= (préremplissage
+        des listes « De quoi souhaitez-vous parler ? » et « Service »). Script
         identique sur toutes les pages → le routeur ne l'exécute qu'une fois ;
-        l'écouteur est posé sur document, il survit aux navigations. */}
+        l'écouteur est posé sur document, il survit aux navigations (le
+        ClientRouter remplace <body>, donc ses attributs suivent la page). */}
     <script is:inline>
       document.addEventListener(
         'click',
@@ -271,18 +294,31 @@ const ga4Bootstrap = GA4_ID
             return;
           }
           if (u.origin !== location.origin || !/^\/(fr|en)\/contact\/?$/.test(u.pathname)) return;
-          if (u.searchParams.has('cta') || u.searchParams.has('produit')) return;
-          const label = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
-          if (!label) return;
-          u.searchParams.set('cta', label);
-          u.searchParams.set('de', document.title.replace(/\s+—\s+[^—]+$/, '').trim().slice(0, 120));
-          a.setAttribute('href', u.pathname + u.search + u.hash);
+          let changed = false;
+          const ds = document.body.dataset;
+          if (ds.contactSujet && !u.searchParams.has('sujet')) {
+            u.searchParams.set('sujet', ds.contactSujet);
+            changed = true;
+          }
+          if (ds.contactService && !u.searchParams.has('expertise')) {
+            u.searchParams.set('expertise', ds.contactService);
+            changed = true;
+          }
+          if (!u.searchParams.has('cta') && !u.searchParams.has('produit')) {
+            const label = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+            if (label) {
+              u.searchParams.set('cta', label);
+              u.searchParams.set('de', document.title.replace(/\s+—\s+[^—]+$/, '').trim().slice(0, 120));
+              changed = true;
+            }
+          }
+          if (changed) a.setAttribute('href', u.pathname + u.search + u.hash);
         },
         true,
       );
     </script>
   </head>
-  <body>
+  <body data-contact-sujet={contactLabels.sujet || undefined} data-contact-service={contactLabels.service || undefined}>
     <a class="skip-link" href="#main-content">{t.skipLink}</a>
 
     <!-- Global header (a page can override it by filling the "header" slot —

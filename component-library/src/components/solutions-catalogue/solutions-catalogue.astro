@@ -1,0 +1,502 @@
+---
+import { inlineHtml } from '../../shared/rich';
+/**
+ * Section « Catalogue de solutions » — composant Bookshop (2026-09-17).
+ * Conversion de l'ancienne route fixe src/pages/[lang]/solutions.astro (textes
+ * codés dans src/i18n/content/solutions.ts, tous deux SUPPRIMÉS) en section
+ * éditable d'une page générale (collection `pages`, route attrape-tout
+ * src/pages/[lang]/[...slug].astro). Rendu IDENTIQUE à la page d'origine :
+ * FIDÉLITÉ MAQUETTE Ø Studio 2026-08-05 (docs/design/solutions-catalogue.css,
+ * organisation complète : docs/design/solutions-catalogue-plan.md) —
+ *  - barre outil : titre 16/700 + champ de recherche (fond #F3F4F5 rayon 8) ;
+ *  - panneau VEDETTE bleu nuit (on-primary-fixed) rayon 12 : badge pilule
+ *    bleu, titre 48/800 blanc, texte 18/29 bleu pâle, bouton primaire +
+ *    bouton contour (rayon 12), visuel à droite (fond lavé sous lg) ;
+ *  - filtres : selects « Secteurs d'activité » / « Types de solution »
+ *    construits sur les valeurs DISTINCTES des cartes (ordre d'apparition) ;
+ *  - grille de cartes blanches bordées #C5C6D0 rayon 12, vignette 4:3 (fond
+ *    #F3F4F5 si pas d'image) + chip secteur, titre 18/700, texte 14/20, pied
+ *    bordé — chip type lavande + lien « Découvrir → » bleu ;
+ *  - message vide ; panneau CTA bas #EDEEEF rayon 16 centré (titre 30/700,
+ *    bouton téléphone contour + bouton contact primaire).
+ * COULEURS : famille froide de la maquette verbatim (#F8F9FA/#F3F4F5/#C5C6D0/
+ * #00020A/#44474F/#EDEEEF/#EAEAFF) ; bleus = tokens (primary,
+ * on-primary-fixed, primary-fixed).
+ *
+ * CTA bas CONSERVÉ ICI (décision 2026-09-17) : le composant `cta` existant
+ * (panneau rayon 8, décor cercles, boutons rayon 2 px-10 py-5, pas d'icône
+ * téléphone) ne reproduit pas ce panneau gris rayon 16 centré à deux petits
+ * boutons — les 6 champs cta* restent dans cette section pour une parité
+ * pixel. `ctaButtonHref` stocke une URL COMPLÈTE avec langue (convention des
+ * sections) ; BaseLayout enrichit le lien /contact au clic (cta/de + préréglage
+ * `contactSujet` de la page).
+ *
+ * Props ÉDITABLES (chrome, tous `string`) : title (= <h1> de la page, ou
+ * <h2> si `h1Taken`), searchPlaceholder, searchAria, featuredBadge,
+ * featuredCta, featuredDoc, sectorLabel, sectorAll, typeLabel, typeAll,
+ * discover, emptyMessage, ctaTitle, ctaText (html inline), ctaPhone,
+ * ctaPhoneHref, ctaButton, ctaButtonHref.
+ *
+ * SECTION DYNAMIQUE — patron EXACT de related-posts. Les FICHES viennent de
+ * la collection `solutions` (src/content/solutions/<lang>/*.json), LUE AU BUILD
+ * par la route attrape-tout qui trie par `order`, isole la vedette
+ * (`featured`), localise les liens (localizePath) et pré-remplit `?sujet=`
+ * `&produit=` sur les liens /contact — puis injecte `featured` + `cards` via
+ * le seam `enrich` du renderer partagé. Ce composant n'importe donc NI
+ * astro:content NI astro:assets ni l'i18n du site : il reste compilable pour
+ * le navigateur par l'éditeur visuel CloudCannon.
+ *  - Au build (`cards` fourni) : vraies fiches ; `featured` null = pas de
+ *    panneau vedette ; tableau vide = grille vide, chrome rendu quand même
+ *    (contrairement à related-posts : la page EST le catalogue) et script
+ *    inerte, comme l'ancienne route.
+ *  - En édition live (navigateur, `cards` absent) : MAQUETTE FACTICE — une
+ *    vedette et trois cartes « Exemple » — pour que tous les textes de chrome
+ *    s'éditent en contexte ; les vraies fiches réapparaissent au build.
+ *  - Garde-fou build dans shared/astro/page.astro : section posée sur une
+ *    route qui n'alimente pas ce type → erreur de build nommée.
+ *
+ * Filtrage CLIENT (script module ci-dessous, lié sur astro:page-load —
+ * compatible ClientRouter) : selects + recherche masquent les cartes via
+ * data-*, ?secteur=&type= maintenus à l'URL (replaceState). Le moteur Bookshop
+ * retire les <script> par regex avant de compiler pour l'éditeur : le script
+ * vit à la RACINE du composant (jamais seul enfant d'une expression — gotcha
+ * form.astro) et la maquette de l'éditeur n'en a pas besoin.
+ *
+ * PARITÉ / a11y : un seul élément racine (le script est hissé par Astro —
+ * requis par scripts/design/generate-section-previews.mjs) ; titre en <h1>
+ * (la page n'a pas de héros : cette section porte le H1, sauf H1 SEO) ;
+ * vedette et CTA en <h2>, cartes en <h3>.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Card {
+  title: string;
+  // HTML inline (gras/italique/lien) déjà filtré au build.
+  description: string;
+  // Chemin PUBLIC ("" = vignette de remplacement grise).
+  image: string;
+  sector: string;
+  solutionType: string;
+  // Liens LOCALISÉS et déjà enrichis (?sujet=&produit=) par la route ; "" = masqué.
+  href: string;
+  docHref: string;
+}
+interface Props {
+  title?: string;
+  searchPlaceholder?: string;
+  searchAria?: string;
+  featuredBadge?: string;
+  featuredCta?: string;
+  featuredDoc?: string;
+  sectorLabel?: string;
+  sectorAll?: string;
+  typeLabel?: string;
+  typeAll?: string;
+  discover?: string;
+  emptyMessage?: string;
+  ctaTitle?: string;
+  ctaText?: string;
+  ctaPhone?: string;
+  ctaPhoneHref?: string;
+  ctaButton?: string;
+  ctaButtonHref?: string;
+  h1Taken?: boolean;
+  featured?: Card | null;
+  cards?: Card[];
+}
+
+const {
+  title = '',
+  searchPlaceholder = '',
+  searchAria = '',
+  featuredBadge = '',
+  featuredCta = '',
+  featuredDoc = '',
+  sectorLabel = '',
+  sectorAll = '',
+  typeLabel = '',
+  typeAll = '',
+  discover = '',
+  emptyMessage = '',
+  ctaTitle = '',
+  ctaText = '',
+  ctaPhone = '',
+  ctaPhoneHref = '',
+  ctaButton = '',
+  ctaButtonHref = '',
+  h1Taken = false,
+  featured = null,
+  cards,
+} = Astro.props;
+
+// Repli éditeur : maquette factice quand aucune fiche n'est injectée (rendu
+// dans le navigateur par l'éditeur visuel). Jamais utilisée au build (garde-fou
+// dans shared/astro/page.astro).
+const isLive = !Array.isArray(cards);
+const PLACEHOLDER_FEATURED: Card = {
+  title: 'Exemple : application vedette',
+  description:
+    'Aperçu de l’éditeur — la fiche marquée « Solution vedette » dans la collection Solutions remplit ce panneau au build.',
+  image: '',
+  sector: 'Exemple',
+  solutionType: 'Exemple',
+  href: '#',
+  docHref: '#',
+};
+const PLACEHOLDER_CARDS: Card[] = [
+  {
+    title: 'Exemple : fiche de solution',
+    description: 'Les fiches de la collection Solutions s’affichent ici au build, triées par ordre d’affichage.',
+    image: '',
+    sector: 'Secteur A',
+    solutionType: 'Type 1',
+    href: '#',
+    docHref: '',
+  },
+  {
+    title: 'Exemple : deuxième fiche',
+    description: 'Le secteur et le type de chaque fiche alimentent les chips et les filtres.',
+    image: '',
+    sector: 'Secteur B',
+    solutionType: 'Type 2',
+    href: '#',
+    docHref: '',
+  },
+  {
+    title: 'Exemple : troisième fiche',
+    description: 'Le lien « Découvrir » mène au lien de la fiche (formulaire de contact prérempli).',
+    image: '',
+    sector: 'Secteur A',
+    solutionType: 'Type 1',
+    href: '#',
+    docHref: '',
+  },
+];
+const shownFeatured: Card | null = isLive ? PLACEHOLDER_FEATURED : featured;
+const shownCards: Card[] = isLive ? PLACEHOLDER_CARDS : cards;
+
+// Valeurs distinctes, ordre de première apparition (options des filtres).
+const sectors = [...new Set(shownCards.map((card) => card.sector))];
+const types = [...new Set(shownCards.map((card) => card.solutionType))];
+
+// Index de recherche d'une carte : titre + description sans balises.
+const searchIndex = (card: Card): string =>
+  `${card.title} ${card.description.replace(/<[^>]+>/g, '')}`.toLowerCase();
+
+// H1 de la page : cette section ouvre la page catalogue (pas de héros) — sauf
+// si la page porte déjà un « H1 SEO » (prop h1Taken, posée par
+// shared/astro/page.astro) : le titre passe en <h2>, styles inchangés.
+const TitleTag = h1Taken ? 'h2' : 'h1';
+
+const selectClass =
+  'w-full sm:w-56 h-10 appearance-none pl-3 pr-9 bg-white border border-solid border-[#C5C6D0] rounded-lg text-sm text-[#00020A] cursor-pointer focus-visible:border-primary focus-visible:outline-none';
+---
+
+<div class="bg-[#F8F9FA]">
+  <!-- Barre outil : titre + recherche -->
+  <div class="border-0 border-b border-solid border-[#C5C6D0]/60 bg-[#F8F9FA]">
+    <div class="container-site h-16 flex items-center justify-between gap-6">
+      <TitleTag class="text-base font-bold text-[#00020A] m-0">{title}</TitleTag>
+      <span class="relative block w-full max-w-md">
+        <svg
+          class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#44474F]"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-3.8-3.8"></path>
+        </svg>
+        <input
+          class="w-full h-10 pl-10 pr-4 bg-[#F3F4F5] border-0 rounded-lg text-base text-[#00020A] placeholder:text-[#6B7280] focus-visible:outline-2 focus-visible:outline-primary"
+          type="search"
+          placeholder={searchPlaceholder}
+          aria-label={searchAria}
+          data-solutions-search
+        />
+      </span>
+    </div>
+  </div>
+
+  <div class="container-site py-8 flex flex-col gap-10 pb-20">
+    <!-- Panneau vedette -->
+    {
+      shownFeatured && (
+        <section class="relative overflow-hidden bg-on-primary-fixed rounded-xl p-8 lg:p-12 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)]">
+          {/* <lg : la photo devient le FOND du panneau sous un lavis navy
+              (dégradé gauche→droite) au lieu de s'empiler sous le texte —
+              demande user 2026-08-18. ≥lg : colonne image proportionnelle
+              (5/12). */}
+          {shownFeatured.image && (
+            <div class="absolute inset-0 lg:hidden" aria-hidden="true">
+              <img
+                class="w-full h-full object-cover border-0"
+                src={shownFeatured.image}
+                alt=""
+                loading="eager"
+                decoding="async"
+              />
+              <span class="absolute inset-0 bg-gradient-to-r from-on-primary-fixed via-on-primary-fixed/90 to-on-primary-fixed/55" />
+            </div>
+          )}
+          <div class:list={['relative grid grid-cols-1 gap-8 items-center', shownFeatured.image && 'lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]']}>
+            <div class="flex flex-col items-start gap-6">
+              <p class="m-0 max-w-none inline-flex items-center gap-2 bg-primary text-on-primary text-xs leading-4 font-bold uppercase tracking-[0.6px] px-3 py-1 rounded-full">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                  <path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z" />
+                </svg>
+                {featuredBadge}
+              </p>
+              <h2 class="text-4xl lg:text-5xl leading-none font-extrabold text-white m-0">{shownFeatured.title}</h2>
+              <p class="text-lg leading-[29px] text-primary-fixed m-0 max-w-[576px]" set:html={inlineHtml(shownFeatured.description)} />
+              <div class="flex flex-wrap gap-4 pt-2">
+                {shownFeatured.href && (
+                  <a
+                    class="inline-flex items-center justify-center text-center bg-primary text-on-primary px-10 py-4 rounded-xl text-base font-bold leading-6 no-underline hover:bg-primary-container transition-colors"
+                    href={shownFeatured.href}
+                  >
+                    {featuredCta}
+                  </a>
+                )}
+                {shownFeatured.docHref && (
+                  <a
+                    class="inline-flex items-center justify-center text-center border-2 border-solid border-primary-fixed text-primary-fixed px-8 py-4 rounded-xl text-base font-bold leading-6 no-underline hover:bg-primary-fixed/10 transition-colors"
+                    href={shownFeatured.docHref}
+                  >
+                    {featuredDoc}
+                  </a>
+                )}
+              </div>
+            </div>
+            {shownFeatured.image && (
+              <img
+                class="hidden lg:block w-full h-auto rounded-lg border-0"
+                src={shownFeatured.image}
+                alt=""
+                loading="eager"
+                decoding="async"
+              />
+            )}
+          </div>
+        </section>
+      )
+    }
+
+    <!-- Filtres -->
+    <section class="flex flex-wrap items-end gap-6" aria-label={`${sectorLabel} / ${typeLabel}`}>
+      <div class="flex flex-col gap-1.5">
+        <label class="text-sm leading-5 text-[#44474F]" for="filtre-secteur">{sectorLabel}</label>
+        <span class="relative block">
+          <select class={selectClass} id="filtre-secteur" data-solutions-filter="sector">
+            <option value="">{sectorAll}</option>
+            {sectors.map((sector) => <option value={sector}>{sector}</option>)}
+          </select>
+          <svg
+            class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#6B7280]"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </span>
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <label class="text-sm leading-5 text-[#44474F]" for="filtre-type">{typeLabel}</label>
+        <span class="relative block">
+          <select class={selectClass} id="filtre-type" data-solutions-filter="type">
+            <option value="">{typeAll}</option>
+            {types.map((type) => <option value={type}>{type}</option>)}
+          </select>
+          <svg
+            class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#6B7280]"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </span>
+      </div>
+    </section>
+
+    <!-- Grille -->
+    <section>
+      <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 m-0 p-0 list-none">
+        {
+          shownCards.map((card) => (
+            <li
+              class="m-0 bg-white border border-solid border-[#C5C6D0] rounded-xl overflow-hidden flex flex-col"
+              data-solutions-card
+              data-sector={card.sector}
+              data-type={card.solutionType}
+              data-search={searchIndex(card)}
+            >
+              <div class="relative aspect-[4/3] bg-[#F3F4F5]">
+                {card.image && (
+                  <img
+                    class="w-full h-full object-cover border-0"
+                    src={card.image}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
+                {/* Léger dégradé en tête : le chip secteur reste lisible
+                    sur photos claires (demande user 2026-08-18). */}
+                <span
+                  class="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/25 to-transparent pointer-events-none"
+                  aria-hidden="true"
+                />
+
+                <p class="absolute top-3 left-3 m-0 max-w-none bg-white/90 shadow-[0_1px_2px_rgba(0,0,0,0.05)] rounded-full px-3 py-1 text-[10px] leading-4 font-bold uppercase tracking-[0.5px] text-[#00020A]">
+                  {card.sector}
+                </p>
+              </div>
+              <div class="p-6 grow flex flex-col">
+                <h3 class="text-lg leading-[22px] font-bold text-[#00020A] m-0 mb-3">{card.title}</h3>
+                <p class="text-sm leading-5 text-[#44474F] m-0 max-w-none mb-6" set:html={inlineHtml(card.description)} />
+                <div class="mt-auto pt-4 border-0 border-t border-solid border-[#C5C6D0] flex items-center justify-between gap-2">
+                  <p class="m-0 max-w-none bg-[#EAEAFF]/60 rounded px-2 py-1 text-xs leading-4 font-semibold text-primary">
+                    {card.solutionType}
+                  </p>
+                  {card.href && (
+                    <a
+                      class="inline-flex items-center gap-2 text-sm font-bold text-primary no-underline hover:text-primary-container"
+                      href={card.href}
+                    >
+                      {discover}
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M5 12h14m0 0-6-6m6 6-6 6" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="m-0 max-w-none text-base text-[#44474F] text-center py-12" data-solutions-empty hidden>
+        {emptyMessage}
+      </p>
+    </section>
+
+    <!-- CTA bas -->
+    <section class="bg-[#EDEEEF] rounded-2xl p-10 flex flex-col items-center text-center gap-4">
+      <h2 class="text-[26px] leading-9 lg:text-[30px] font-bold text-[#00020A] m-0">{ctaTitle}</h2>
+      <p class="text-sm leading-5 text-[#44474F] m-0 max-w-[576px]" set:html={inlineHtml(ctaText)} />
+      <div class="flex flex-wrap justify-center gap-4 pt-2">
+        {
+          ctaPhone && ctaPhoneHref && (
+            <a
+              class="inline-flex items-center gap-2 bg-white border border-solid border-[#C5C6D0] rounded-lg px-6 py-3 text-sm font-bold text-[#00020A] no-underline hover:border-primary hover:text-primary transition-colors"
+              href={ctaPhoneHref}
+            >
+              <svg class="shrink-0 text-primary" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z" />
+              </svg>
+              {ctaPhone}
+            </a>
+          )
+        }
+        {
+          ctaButton && ctaButtonHref && (
+            <a
+              class="inline-flex items-center justify-center bg-primary text-on-primary rounded-lg px-6 py-3 text-sm font-bold no-underline hover:bg-primary-container transition-colors"
+              href={ctaButtonHref}
+            >
+              {ctaButton}
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+  // Filtrage client du catalogue (patron du filtre catégories de /ressources) :
+  // re-lié sur astro:page-load (le DOM est remplacé par ClientRouter, le module
+  // ne s'exécute qu'une fois par session). ?secteur=&type= lus à l'arrivée et
+  // maintenus via replaceState ; la recherche reste hors URL (éphémère).
+  document.addEventListener('astro:page-load', () => {
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-solutions-card]'));
+    const sectorSelect = document.querySelector<HTMLSelectElement>('[data-solutions-filter="sector"]');
+    const typeSelect = document.querySelector<HTMLSelectElement>('[data-solutions-filter="type"]');
+    const search = document.querySelector<HTMLInputElement>('[data-solutions-search]');
+    const empty = document.querySelector<HTMLElement>('[data-solutions-empty]');
+    // Pas de catalogue sur cette page, ou collection vide (module hissé une
+    // fois par session ; parité avec l'ancienne route : rien à filtrer).
+    if (cards.length === 0) return;
+
+    const apply = () => {
+      const sector = sectorSelect?.value ?? '';
+      const type = typeSelect?.value ?? '';
+      const query = (search?.value ?? '').trim().toLowerCase();
+      let visible = 0;
+      for (const card of cards) {
+        const show =
+          (sector === '' || card.dataset.sector === sector) &&
+          (type === '' || card.dataset.type === type) &&
+          (query === '' || (card.dataset.search ?? '').includes(query));
+        // Style inline, PAS l'attribut hidden : la classe utilitaire `flex`
+        // de la carte (style auteur) bat la règle UA [hidden]{display:none}.
+        card.style.display = show ? '' : 'none';
+        if (show) visible += 1;
+      }
+      if (empty) empty.hidden = visible > 0;
+      const url = new URL(window.location.href);
+      if (sector) url.searchParams.set('secteur', sector);
+      else url.searchParams.delete('secteur');
+      if (type) url.searchParams.set('type', type);
+      else url.searchParams.delete('type');
+      history.replaceState(null, '', url);
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const initialSector = params.get('secteur') ?? '';
+    const initialType = params.get('type') ?? '';
+    if (sectorSelect && initialSector && Array.from(sectorSelect.options).some((o) => o.value === initialSector)) {
+      sectorSelect.value = initialSector;
+    }
+    if (typeSelect && initialType && Array.from(typeSelect.options).some((o) => o.value === initialType)) {
+      typeSelect.value = initialType;
+    }
+
+    sectorSelect?.addEventListener('change', apply);
+    typeSelect?.addEventListener('change', apply);
+    search?.addEventListener('input', apply);
+    apply();
+  });
+</script>

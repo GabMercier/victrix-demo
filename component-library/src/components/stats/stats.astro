@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 /**
  * Section « Victrix en chiffres » — composant Bookshop (palette partagée).
  * RE-SKIN DESIGN SYSTEM 2026-08-05 : bande beige (surface-container-low),
@@ -42,7 +43,7 @@ interface StatItem {
 interface Props {
   title?: string;
   style?: 'bande' | 'carte';
-  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  fond?: FondKey;
   items: StatItem[];
 }
 
@@ -52,13 +53,7 @@ const carte = style === 'carte';
 // « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
 // de la palette officielle (aucune couleur libre — esprit P-16). Défaut =
 // rendu historique (givre #f9fafb, ex-bg-surface-container-low).
-const FONDS: Record<string, string> = {
-  blanc: 'bg-white',
-  givre: 'bg-givre',
-  ivoire: 'bg-ivoire',
-  beige: 'bg-beige',
-  sable: 'bg-sable',
-};
+const FONDS: Record<string, string> = FOND_CLASSES;
 
 // Pictogrammes trait 24 px (style « carte ») — mêmes conventions que les
 // cartes à icônes (benefits.astro) : chemins `d` dessinés au trait, currentColor.

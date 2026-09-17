@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Héros catalogue produit » — composant Bookshop, NOUVEAU 2026-08-24.
@@ -52,7 +53,7 @@ interface Props {
   cta2Href?: string;
   image?: string;
   imageAlt?: string;
-  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  fond?: FondKey;
 }
 
 const {
@@ -71,13 +72,7 @@ const {
 } = Astro.props;
 
 // « Fond de section » : clé fermée → utilitaire de la palette officielle.
-const FONDS: Record<string, string> = {
-  blanc: 'bg-white',
-  givre: 'bg-givre',
-  ivoire: 'bg-ivoire',
-  beige: 'bg-beige',
-  sable: 'bg-sable',
-};
+const FONDS: Record<string, string> = FOND_CLASSES;
 
 // Sous-chaîne accentuée rendue en bleu là où elle apparaît dans le titre
 // (première occurrence — patron home-hero/service-hero) ; absente ou

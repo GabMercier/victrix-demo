@@ -1,0 +1,136 @@
+# =============================================================================
+# Spec Bookshop — section « Texte + photo » (palette partagée, 2026-09-17 —
+# conversion de la page Carrières en page « sections »).
+# Voir hero.bookshop.yml pour les conventions communes.
+# `partners` = tableau de CHAÎNES : type d'entrée déclaré par `partners[*]`
+# (leçon P-05 sur les tableaux vides « misconfigured », patron rich-text).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Texte + photo"
+  description: "Titre, chapeau, ligne d'engagement (pictogramme + titre + texte) et pastilles partenaires à gauche ; photo à droite — responsabilité sociale."
+  icon: volunteer_activism
+  picker_preview:
+    image: "/_cloudcannon/bookshop_thumbs/text-photo/preview.png"
+    text: Texte + photo
+    subtext: Titre, chapeau, engagement, pastilles partenaires ; photo à droite
+  preview:
+    icon: volunteer_activism
+    text:
+      - key: title
+      - text: Texte + photo
+
+blueprint:
+  type: text-photo
+  title: "Notre responsabilité sociale et nos engagements"
+  lead: "Des activités à buts sociaux et associatifs sont organisées tous les mois."
+  engagementTitle: "Victrix s'engage pour les jeunes talents"
+  engagementText: "Nous collaborons activement avec les institutions académiques pour soutenir la relève en TI."
+  partners:
+    - "Partner 1"
+    - "Partner 2"
+  image: "/images/carrieres/responsabilite-sociale.jpg"
+  imageAlt: ""
+  fond: blanc
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre"
+  lead:
+    type: html
+    label: "Chapeau (optionnel)"
+    comment: "Paragraphe d'introduction sous le titre — gras, italique, lien."
+    options:
+      format: p
+      bulletedlist: false
+      numberedlist: false
+      blockquote: false
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
+  engagementTitle:
+    label: "Engagement — titre (optionnel)"
+    comment: "Ligne en gras précédée du pictogramme « jeunes talents ». Vide = ligne absente."
+  engagementText:
+    type: html
+    label: "Engagement — texte"
+    options:
+      format: p
+      bulletedlist: false
+      numberedlist: false
+      blockquote: false
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
+  partners:
+    type: array
+    label: "Partenaires (pastilles)"
+    comment: "Noms affichés en pastilles grises (texte seulement — en attendant les logos). Vide = rangée absente."
+  partners[*]:
+    type: text
+    label: "Partenaire"
+    options:
+      empty_type: string
+  image:
+    type: image
+    label: "Photo"
+    comment: >-
+      Photo de droite (recadrée en 400 px de haut). Le fichier téléversé
+      atterrit dans public/images/carrieres/ (adresse servie telle quelle,
+      /images/…).
+    options:
+      empty_type: string
+      paths:
+        static: public
+        uploads: public/images/carrieres
+  imageAlt:
+    label: "Texte alternatif de la photo"
+    comment: "Description pour l'accessibilité (laisser vide si la photo est purement décorative)."
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      # Palette partagée : liste d'objets {cle, libelle, couleur, apercu}
+      # définie UNE fois dans cloudcannon.config.yml (_select_data.fonds).
+      values: _select_data.fonds
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+        icon: square
+        icon_color:
+          - key: couleur
+    comment: "Couleur de fond de la section, bornée à la palette officielle (pastilles dans la liste)."
