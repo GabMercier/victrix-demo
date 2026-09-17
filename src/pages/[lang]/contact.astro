@@ -56,6 +56,7 @@ const c = await getLocaleData('contact', lang);
  */
 import { getEntry } from 'astro:content';
 import { fieldName } from '../../lib/forms/field-name';
+import { formAction, formsBackend, resolveInboxKey } from '../../lib/forms/mode';
 
 // Locale-neutral coordinates (template-only, mirrors the office cards order).
 const officePhones = [
@@ -110,8 +111,11 @@ const consentName = nameFor(consentDefField.label);
 
 // Mode fonctionnel (mêmes drapeaux que form.astro — parité stricte sans clés).
 const env = import.meta.env ?? {};
-const formsEnabled = env.PUBLIC_FORMS_ENABLED === '1';
-const turnstileSiteKey = formsEnabled ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+// 'none' = maquette, 'worker' = /api/forms, 'inbox' = boîte CloudCannon (src/lib/forms/mode.ts).
+const backend = formsBackend(env);
+const formsEnabled = backend !== 'none';
+const turnstileSiteKey = backend === 'worker' ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+const inboxKey = backend === 'inbox' ? resolveInboxKey(formDefEntry.data.inboxKey, env) : '';
 const pagePath = Astro.url?.pathname ?? '';
 
 // Pot de miel : idiome « visuellement masqué » EN LIGNE (patron form.astro).
@@ -273,7 +277,7 @@ const phoneIcon =
           aria-describedby="req-note"
           data-contact-form={formsEnabled ? undefined : ''}
           method={formsEnabled ? 'POST' : undefined}
-          action={formsEnabled ? '/api/forms' : undefined}
+          action={formAction(backend, lang)}
           data-astro-reload={formsEnabled ? '' : undefined}
         >
           {
@@ -295,6 +299,7 @@ const phoneIcon =
                 <input type="hidden" name="lang" value={lang} />
                 <input type="hidden" name="source" value={pagePath} />
                 <input type="hidden" name="_formId" value="contact" />
+                {inboxKey && <input type="hidden" name="inbox_key" value={inboxKey} />}
                 {/* Pot de miel `website` — voir honeypotStyle. */}
                 <div aria-hidden="true" style={honeypotStyle}>
                   <label for="contact-website">Site Web</label>

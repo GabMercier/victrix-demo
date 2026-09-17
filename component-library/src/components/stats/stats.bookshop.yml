@@ -26,6 +26,7 @@ spec:
 blueprint:
   type: stats
   title: "Victrix en chiffres"
+  style: bande
   fond: givre
   items:
     - number: "25+"
@@ -39,6 +40,16 @@ _inputs:
     comment: "Discriminant technique du contrat de sections — ne pas modifier."
   title:
     label: "Titre (optionnel)"
+  # Style (2026-09-16, parité site WordPress — page Services gérés).
+  style:
+    type: select
+    label: "Style"
+    options:
+      allow_empty: false
+      values:
+        - bande
+        - carte
+    comment: "« bande » = pleine largeur, tuiles à liseré bleu (jusqu'à 4 par rangée). « carte » = une carte blanche centrée qui chevauche le bas du héros, 3 chiffres avec pictogramme — à placer juste après le héros."
   # « Fond de section » (2026-08-17, pilote 6 blocs) : choix BORNÉ à la
   # palette officielle — 5 fonds clairs, jamais de couleur libre (esprit P-16).
   fond:

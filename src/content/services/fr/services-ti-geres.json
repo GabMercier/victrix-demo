@@ -17,13 +17,27 @@
       "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "fond": "givre",
-      "paragraphs": [
-        "<strong>+225 000</strong> points de terminaison gérés à travers le Canada",
-        "<strong>99,9 %</strong> de respect des accords de services (SLA)",
-        "<strong>ZÉRO</strong> attaque réussie"
+      "_bookshop_name": "stats",
+      "type": "stats",
+      "title": "",
+      "style": "carte",
+      "fond": "blanc",
+      "items": [
+        {
+          "number": "+225 000",
+          "label": "points de terminaison gérés à travers le Canada",
+          "icon": "groupe"
+        },
+        {
+          "number": "99,9 %",
+          "label": "de respect des accords de services (SLA)",
+          "icon": "engrenages"
+        },
+        {
+          "number": "ZÉRO",
+          "label": "attaque réussie",
+          "icon": "bouclier"
+        }
       ]
     },
     {

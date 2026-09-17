@@ -69,7 +69,8 @@ les routes : sans GET, un endpoint POST-seulement n'émettrait aucun fichier.
 
 | Variable | Côté | Effet si définie | Effet si absente |
 | --- | --- | --- | --- |
-| `PUBLIC_FORMS_ENABLED` | build (client) | `"1"` → les sections « form » deviennent de vrais formulaires POST `/api/forms` | maquette actuelle : bouton désactivé, zéro changement visuel |
+| `PUBLIC_FORMS_ENABLED` | build (client) | `"1"` → les sections « form » deviennent de vrais formulaires POST `/api/forms` ; `"inbox"` (2026-09-16) → vrais formulaires POST vers la page Merci de la langue, captés par les **boîtes de réception CloudCannon** (Inbox) du site — aucun récepteur à déployer, ni Turnstile ni SMTP2GO | maquette actuelle : bouton désactivé, zéro changement visuel |
+| `PUBLIC_FORMS_INBOX_KEY` | build (client) | mode `inbox` seulement : clé de la boîte par défaut du site, émise dans le champ caché `inbox_key` (une par environnement, ex. `dev-marketing-contact`) ; une définition de formulaire la surcharge par son champ « Boîte de réception CloudCannon » (`inboxKey`) | pas de champ caché : boîte par défaut du site |
 | `PUBLIC_TURNSTILE_SITE_KEY` | build (client) | avec formulaires actifs : le widget Turnstile s'affiche (script `challenges.cloudflare.com/turnstile/v0/api.js`) | pas de widget |
 | `TURNSTILE_SECRET_KEY` | exécution (Function) | `/api/forms` vérifie le jeton via `siteverify` | vérification sautée (pot de miel seul) |
 | `SMTP2GO_API_KEY` | exécution (Function) | envoi réel (avec les deux suivantes) | **mode démo** (voir §6) |

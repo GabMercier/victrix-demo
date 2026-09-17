@@ -70,6 +70,17 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  *   public/_headers est GELÉ — activer Turnstile en production exige d'y
  *   ajouter `script-src` + `frame-src https://challenges.cloudflare.com`
  *   (documenté docs/formulaires.md §7, PAS appliqué).
+ * - PUBLIC_FORMS_ENABLED="inbox" (2026-09-16) : vrai <form method="POST"> dont
+ *   l'action est la page Merci de la langue (/fr/merci/ ou /en/merci/) :
+ *   l'hébergement CloudCannon capte le POST, l'enregistre dans la boîte de
+ *   réception (Inbox) liée au site, le transmet aux destinataires configurés
+ *   là-bas, puis redirige vers l'action. Le champ caché `inbox_key` choisit
+ *   la boîte : clé de la définition du formulaire (champ « Boîte de
+ *   réception CloudCannon »), sinon PUBLIC_FORMS_INBOX_KEY (clé par défaut
+ *   du site, une par environnement), sinon rien = boîte par défaut du site.
+ *   Ni Turnstile ni listes _requis/_courriels/_cases (propres au worker) ;
+ *   le pot de miel reste émis (champ vide, inoffensif). Voir
+ *   src/lib/forms/mode.ts et docs/formulaires.md §3.
  * - NE PAS définir PUBLIC_FORMS_ENABLED dans l'environnement de build
  *   CloudCannon (STATIC_ONLY) : /api/forms y est force-prérendu.
  *
@@ -96,6 +107,7 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  */
 import { fieldName } from '../../../../src/lib/forms/field-name';
 import { resolveHiddenValue } from '../../../../src/lib/forms/hidden-tokens';
+import { formAction, formsBackend, resolveInboxKey } from '../../../../src/lib/forms/mode';
 
 interface FormField {
   label: string;
@@ -138,7 +150,7 @@ interface Props {
    */
   resolvedForms?: Record<
     string,
-    { submitLabel: string; consentText: string; fields: FormField[] }
+    { submitLabel: string; consentText: string; fields: FormField[]; inboxKey?: string }
   >;
   /**
    * Injecté PAR LA ROUTE via `enrich` (build seulement) : contexte de la page
@@ -182,13 +194,18 @@ const idBase =
 
 // --- Mode fonctionnel (drapeaux d'environnement — voir l'entête) ------------
 const env = (import.meta.env ?? {}) as unknown as Record<string, string | undefined>;
-const formsEnabled = env.PUBLIC_FORMS_ENABLED === '1';
-// Le widget n'a de sens que si le formulaire soumet réellement quelque part.
-const turnstileSiteKey = formsEnabled ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+// Mode (voir src/lib/forms/mode.ts) : 'none' = maquette, 'worker' = /api/forms,
+// 'inbox' = boîte de réception CloudCannon (action = page Merci de la langue).
+const backend = formsBackend(env);
+const formsEnabled = backend !== 'none';
+const inboxMode = backend === 'inbox';
+// Turnstile n'a de vérificateur que côté worker (/api/forms) — jamais en inbox.
+const turnstileSiteKey = backend === 'worker' ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
 
 // Contexte de page pour les champs cachés `lang` / `source`.
 const pagePath = Astro.url?.pathname ?? '';
 const formLang = pagePath.split('/')[1] === 'en' ? 'en' : 'fr';
+const inboxKey = inboxMode ? resolveInboxKey(formDef?.inboxKey, env) : '';
 
 // `name` stable dérivé du libellé — logique PARTAGÉE avec le serveur.
 const fieldNames = effFields.map((field, i) => fieldName(field.label, i));
@@ -316,7 +333,7 @@ const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surf
       <form
         class:list={['grid grid-cols-1 sm:grid-cols-2', isCard ? 'gap-x-3 gap-y-6' : 'gap-4']}
         method={formsEnabled ? 'POST' : undefined}
-        action={formsEnabled ? '/api/forms' : undefined}
+        action={formAction(backend, formLang)}
         data-astro-reload={formsEnabled ? '' : undefined}
       >
         {
@@ -348,9 +365,12 @@ const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surf
               <input type="hidden" name="lang" value={formLang} />
               <input type="hidden" name="source" value={pagePath} />
               {formDef && <input type="hidden" name="_formId" value={formId} />}
-              {requiredNames && <input type="hidden" name="_requis" value={requiredNames} />}
-              {emailNames && <input type="hidden" name="_courriels" value={emailNames} />}
-              {caseNames && <input type="hidden" name="_cases" value={caseNames} />}
+              {/* Inbox CloudCannon : la clé choisit la boîte de réception (voir l'entête). */}
+              {inboxKey && <input type="hidden" name="inbox_key" value={inboxKey} />}
+              {/* Listes de contrôle propres au worker /api/forms — inutiles en inbox. */}
+              {!inboxMode && requiredNames && <input type="hidden" name="_requis" value={requiredNames} />}
+              {!inboxMode && emailNames && <input type="hidden" name="_courriels" value={emailNames} />}
+              {!inboxMode && caseNames && <input type="hidden" name="_cases" value={caseNames} />}
               {/* Pot de miel `website` — voir honeypotStyle dans l'entête. */}
               <div aria-hidden="true" style={honeypotStyle}>
                 <label for={`${idBase}-website`}>Site Web</label>

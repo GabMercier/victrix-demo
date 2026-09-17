@@ -73,6 +73,7 @@ const pageTitle = [r.title, r.titleAccent].filter(Boolean).join(' ');
 // un désalignement page↔définition casse le build, jamais les soumissions.
 import { getEntry } from 'astro:content';
 import { fieldName } from '../../../lib/forms/field-name';
+import { formAction, formsBackend, resolveInboxKey } from '../../../lib/forms/mode';
 
 const newsletterDefEntry = await getEntry('forms', `${lang}/infolettre`);
 if (!newsletterDefEntry) {
@@ -93,8 +94,11 @@ const newsletterEmailName = fieldName(
 
 // Mode fonctionnel (mêmes drapeaux que contact.astro — parité stricte).
 const env = import.meta.env ?? {};
-const formsEnabled = env.PUBLIC_FORMS_ENABLED === '1';
-const turnstileSiteKey = formsEnabled ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+// 'none' = maquette, 'worker' = /api/forms, 'inbox' = boîte CloudCannon (src/lib/forms/mode.ts).
+const backend = formsBackend(env);
+const formsEnabled = backend !== 'none';
+const turnstileSiteKey = backend === 'worker' ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+const inboxKey = backend === 'inbox' ? resolveInboxKey(newsletterDefEntry.data.inboxKey, env) : '';
 const pagePath = Astro.url?.pathname ?? '';
 // Pot de miel : idiome « visuellement masqué » EN LIGNE (patron form.astro).
 const honeypotStyle =
@@ -335,7 +339,7 @@ const pillBase =
                     data-newsletter-form={formsEnabled ? undefined : ''}
                     novalidate={formsEnabled ? undefined : true}
                     method={formsEnabled ? 'POST' : undefined}
-                    action={formsEnabled ? '/api/forms' : undefined}
+                    action={formAction(backend, lang)}
                     data-astro-reload={formsEnabled ? '' : undefined}
                   >
                     {
@@ -360,6 +364,7 @@ const pillBase =
                           <input type="hidden" name="lang" value={lang} />
                           <input type="hidden" name="source" value={pagePath} />
                           <input type="hidden" name="_formId" value="infolettre" />
+                          {inboxKey && <input type="hidden" name="inbox_key" value={inboxKey} />}
                           {/* Pot de miel `website` — voir honeypotStyle. */}
                           <div aria-hidden="true" style={honeypotStyle}>
                             <label for="infolettre-website">Site Web</label>

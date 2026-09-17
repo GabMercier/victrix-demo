@@ -2,6 +2,7 @@
   "_schema": "default",
   "name": "Infolettre (FR)",
   "toEmail": "",
+  "inboxKey": "",
   "subject": "Inscription à l'infolettre",
   "submitLabel": "S'inscrire",
   "consentText": "En vous inscrivant, vous consentez à recevoir l’infolettre de Victrix par courriel. Vous pouvez retirer votre consentement en tout temps. Vos renseignements sont traités conformément à la politique de confidentialité (Loi 25).",

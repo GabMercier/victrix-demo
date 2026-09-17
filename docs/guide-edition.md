@@ -409,6 +409,16 @@ clés d'envoi ne sont pas configurées (action technique ponctuelle, voir
 notification courriel à l'adresse choisie, et redirection du visiteur vers la
 page « Merci ».
 
+**Boîtes de réception CloudCannon (mode retenu pour l'essai, sept. 2026)** :
+les envois arrivent dans une « boîte de réception » (Inbox) du site
+CloudCannon, qui les conserve et les transmet aux adresses réglées dans cette
+boîte (Site → Inboxes). Dans ce mode, c'est LÀ que se règlent les
+destinataires — le champ « Courriel destinataire » du formulaire ne sert
+qu'au mode « worker ». Le champ **« Boîte de réception CloudCannon (clé) »**
+d'un formulaire reste vide sauf pour envoyer CE formulaire vers une autre
+boîte que celle du site (ex. les candidatures vers une boîte RH) : y coller
+la clé affichée par CloudCannon dans la boîte visée.
+
 **Composer un formulaire réutilisable** (collection **Formulaires** de la
 barre latérale — recommandé) : un fichier = un formulaire, avec son
 destinataire et son objet de courriel; les pages y font référence par le champ

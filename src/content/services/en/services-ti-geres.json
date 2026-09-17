@@ -17,13 +17,27 @@
       "imageAlt": ""
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "fond": "givre",
-      "paragraphs": [
-        "<strong>+225 000</strong> endpoints managed across Canada",
-        "<strong>99,9%</strong> SLA compliance",
-        "<strong>ZERO</strong> successful attacks"
+      "_bookshop_name": "stats",
+      "type": "stats",
+      "title": "",
+      "style": "carte",
+      "fond": "blanc",
+      "items": [
+        {
+          "number": "+225 000",
+          "label": "endpoints managed across Canada",
+          "icon": "groupe"
+        },
+        {
+          "number": "99.9%",
+          "label": "SLA compliance",
+          "icon": "engrenages"
+        },
+        {
+          "number": "ZERO",
+          "label": "successful attacks",
+          "icon": "bouclier"
+        }
       ]
     },
     {

@@ -399,8 +399,17 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('stats'),
       title: z.string().optional(),
+      // « carte » (2026-09-16) : carte centrée qui chevauche le héros, 3 chiffres
+      // avec pictogramme (parité WordPress, page Services gérés). Défaut = bande.
+      style: z.enum(['bande', 'carte']).default('bande'),
       fond: fondClair.default('givre'),
-      items: z.array(z.object({ number: z.string(), label: z.string() })),
+      items: z.array(
+        z.object({
+          number: z.string(),
+          label: z.string(),
+          icon: z.enum(['groupe', 'engrenages', 'bouclier', 'croissance', '']).default(''),
+        }),
+      ),
     }),
     z.object({
       type: z.literal('video'),
@@ -1287,6 +1296,11 @@ const forms = defineCollection({
       .email('Courriel destinataire invalide')
       .or(z.literal(''))
       .default(''),
+    // Boîte de réception CloudCannon (mode PUBLIC_FORMS_ENABLED=inbox, 2026-09-16) :
+    // clé de l'Inbox qui reçoit CE formulaire (champ caché `inbox_key`). Vide =
+    // la clé par défaut du site (PUBLIC_FORMS_INBOX_KEY), sinon la boîte par
+    // défaut. Voir src/lib/forms/mode.ts.
+    inboxKey: z.string().default(''),
     subject: z.string().default(''),
     submitLabel: z.string().min(1, 'Libellé du bouton requis'),
     consentText: z.string().default(''),

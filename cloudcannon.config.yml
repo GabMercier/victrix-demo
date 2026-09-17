@@ -1913,6 +1913,18 @@ collections_config:
           de CE formulaire — une faute de frappe détourne les messages des
           visiteurs. Vérifier deux fois avant de publier. Vide = le
           destinataire global du site (variable FORMS_TO_EMAIL).
+      inboxKey:
+        type: text
+        options:
+          empty_type: string
+        label: Boîte de réception CloudCannon (clé)
+        comment: >-
+          Réglage technique (mode « inbox » de l'hébergement CloudCannon) : clé
+          de la boîte de réception (Inbox) qui reçoit les envois de CE formulaire
+          — les destinataires courriel se règlent dans cette boîte, côté
+          CloudCannon. Vide = la boîte par défaut du site (recommandé, sauf si
+          un formulaire doit aller ailleurs, ex. les candidatures aux RH).
+
       subject:
         type: text
         options:
@@ -2932,6 +2944,23 @@ _structures:
         value:
           number: ''
           label: ''
+          icon: ''
+        _inputs:
+          icon:
+            type: select
+            label: Pictogramme (style « carte » seulement)
+            options:
+              empty_type: string
+              allow_empty: true
+              values:
+                - groupe
+                - engrenages
+                - bouclier
+                - croissance
+            comment: >-
+              Affiché au-dessus du chiffre quand la section est en style
+              « carte » : groupe (personnes), engrenages (service/horloge),
+              bouclier (sécurité), croissance. Vide = aucun.
 
   # Navigation (collection « navigation ») : formes des tableaux du menu.
   # Même logique que benefit_items — une structure à valeur unique donne au

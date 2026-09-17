@@ -316,15 +316,18 @@ Pages Function Cloudflare) n'y tourne pas. Répartition :
   Turnstile créés** (voir « Où créer les comptes/clés » ci-dessous). En
   attendant, la vérification de bout en bout reste possible sur la
   préversion Cloudflare `victrix-demo.pages.dev` (poser les clés dans
-  Pages → redéployer). **Ne poser `PUBLIC_FORMS_ENABLED` sur AUCUN build
-  CloudCannon** — hébergement statique, les sections « form »
-  deviendraient de vrais POST sans récepteur.
+  Pages → redéployer). **Sur un build CloudCannon, ne jamais poser `PUBLIC_FORMS_ENABLED=1`**
+  (hébergement statique, aucun `/api/forms`) — poser
+  `PUBLIC_FORMS_ENABLED=inbox` + `PUBLIC_FORMS_INBOX_KEY=<clé>` une fois une
+  boîte de réception (Inbox) attachée au site (spike démarré le 2026-09-16 sur
+  le site dev, boîte `dev-marketing-contact`).
 
 Référence des variables (inchangée) :
 
 | Variable | Valeur | Effet |
 |---|---|---|
-| `PUBLIC_FORMS_ENABLED` | `1` | Les sections « form » deviennent de vrais formulaires POST |
+| `PUBLIC_FORMS_ENABLED` | `1` ou `inbox` | `1` : vrais formulaires POST vers `/api/forms` (worker) ; `inbox` : vrais formulaires POST captés par les boîtes de réception CloudCannon du site (action = page Merci) — **c'est la valeur pour les sites CloudCannon** |
+| `PUBLIC_FORMS_INBOX_KEY` | clé de la boîte (ex. `dev-marketing-contact`) | Mode `inbox` : boîte par défaut du site ; un formulaire peut la surcharger (champ « Boîte de réception CloudCannon ») |
 | `PUBLIC_TURNSTILE_SITE_KEY` | clé de site Turnstile | Widget anti-pourriel affiché |
 | `TURNSTILE_SECRET_KEY` | clé secrète Turnstile | Vérification serveur du jeton |
 | `SMTP2GO_API_KEY` | clé API SMTP2GO | Envoi réel des courriels |
