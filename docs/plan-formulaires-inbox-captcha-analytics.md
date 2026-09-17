@@ -33,11 +33,13 @@ Fichiers : `component-library/src/components/form/form.astro`,
 `src/pages/[lang]/contact.astro`, `src/pages/[lang]/ressources/index.astro`,
 `src/lib/forms/mode.ts` (+ tests).
 
-- [ ] `_subject` : champ caché = `subject` de la définition (ex. « Message du site — formulaire de contact ») ; mini-script (même patron que la bannière d'erreur) qui compose à la soumission « [Contact] Une carrière · Services applicatifs — Prénom Nom ». Sans JS : l'objet fixe.
-- [ ] `_replyto` : champ caché recopié depuis le champ courriel (mini-script). Répondre au courriel de notification répond au visiteur.
-- [ ] Pot de miel : `website` → `_gotcha` en mode inbox (CloudCannon ne filtre que ce nom ; le nôtre est ignoré et s'affiche « left blank » dans le courriel).
-- [ ] Champs cachés APRÈS les champs visibles (le courriel commence par prénom/nom, pas par lang/source) ; `_formId` retiré en mode inbox (propre au worker).
+- [x] `_subject` : un objet DIFFÉRENT par message (sinon Gmail/Outlook enfilent toutes les notifications dans une seule conversation) avec un PRÉFIXE stable pour les règles de classement de la boîte courriel (décision 2026-09-17). Format : `[contact/carriere] Une carrière · Services applicatifs — Prénom Nom`. Le crochet contient des clés NEUTRES (identifiant du formulaire + clé du sujet, mêmes clés que `src/lib/contact/presets.ts`) : une seule règle « objet contient [contact/carriere] » classe les messages FR et EN ; la partie lisible reprend les libellés de la langue du visiteur. Formulaires sans liste de sujets : `[infolettre] courriel`, `[campagne/evaluation-securite] Prénom Nom`. Composé à la soumission par un mini-script (même patron que la bannière d'erreur) ; sans JS : `[contact]` suivi du `subject` de la définition. Classement ensuite dans la boîte : libellés Gmail (`Contact/Carrière`) ou règles Outlook (dossier ou catégorie, règles serveur possibles sur une boîte partagée), y compris un transfert automatique par catégorie (ex. `[contact/carriere]` → RH) — une seule boîte CloudCannon, une seule cible courriel.
+- [x] `_replyto` : champ caché recopié depuis le champ courriel (mini-script). Répondre au courriel de notification répond au visiteur.
+- [x] Pot de miel : `website` → `_gotcha` en mode inbox (CloudCannon ne filtre que ce nom ; le nôtre est ignoré et s'affiche « left blank » dans le courriel).
+- [x] Champs cachés APRÈS les champs visibles (le courriel commence par prénom/nom, pas par lang/source) ; `_formId` retiré en mode inbox (propre au worker).
 - [ ] Test : soumission dev → objet et Reply-To corrects, `_gotcha` rempli → onglet Pourriel.
+
+**Livré côté code le 2026-09-17 (non commité)** : `src/lib/forms/inbox.ts` (format, pur, 6 tests) + `inbox-client.ts` (lecture du DOM à la soumission, module hissé lié sur `astro:page-load`, piloté par les attributs `data-inbox-*` du `<form>`) ; les trois gabarits (form.astro, contact.astro, ressources/index.astro) émettent `_subject` statique, `_gotcha`, les champs cachés en fin de formulaire, plus `data-key` (clé neutre presets) sur les options du sujet de la page Contact ; docs formulaires.md §4.2, guide-edition, commentaire CMS « Objet du courriel ». À vérifier sur le site dev après build : objet, Reply-To, et si `_subject`/`_replyto`/`_gotcha` apparaissent aussi dans le tableau du courriel. Le garde-fou `npm run check:bookshop` (CI + gate §3) est livré en même temps.
 
 Options (à décider) :
 - `name` = libellé humain en mode inbox (« Prénom » au lieu de `prenom` dans le courriel). Coût faible, mais divergence avec le worker.

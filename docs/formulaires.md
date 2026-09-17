@@ -126,6 +126,36 @@ registre connaît les formulaires, pas les pages) — c'est une valeur
 de plus. Un champ `hidden` n'est jamais requis (un jeton peut légitimement se
 résoudre en chaîne vide).
 
+### 4.2 Mode « inbox » (CloudCannon) — champs spéciaux de la boîte
+
+En mode `PUBLIC_FORMS_ENABLED=inbox`, le POST est capté par l'hébergement
+CloudCannon (pas par `/api/forms`) : les listes `_requis`/`_courriels`/
+`_cases` et `_formId` ne sont **pas** émises, et les champs cachés sont
+placés **après** les champs visibles (le courriel de notification liste les
+champs dans l'ordre du formulaire — prénom/nom d'abord). Champs propres à
+CloudCannon (2026-09-17, `src/lib/forms/inbox.ts` + `inbox-client.ts`) :
+
+| Champ | Valeur | Rôle |
+| --- | --- | --- |
+| `inbox_key` | clé de boîte (définition > `PUBLIC_FORMS_INBOX_KEY`) | boîte visée (absent = boîte par défaut du site) |
+| `_subject` | au build : `[clé] <objet de la définition>` ; à la soumission (JS) : `[contact/carriere] Une carrière · Services applicatifs — Prénom Nom`, `[infolettre] courriel`, `[campagne-evaluation] Prénom Nom` | **objet du courriel** — un objet DIFFÉRENT par message (sinon Gmail/Outlook enfilent tout dans une seule conversation) avec un **préfixe neutre** entre crochets (identifiant du formulaire + clé du sujet, mêmes clés que `src/lib/contact/presets.ts`) pour les règles de classement de la boîte courriel — une règle FR/EN confondus, insensible aux libellés renommés au CMS |
+| `_replyto` | courriel saisi (posé par JS à la soumission, jamais vide) | Reply-To de la notification = répondre au visiteur |
+| `_gotcha` | vide (pot de miel, remplace `website`) | CloudCannon **rejette** la soumission si rempli (onglet Pourriel) — `website` n'est pas reconnu là-bas |
+
+Composition de `_subject` : attributs `data-inbox-*` sur le `<form>` (préfixe,
+liste « sujet » dont l'option choisie porte `data-key`, champs de détail,
+champs du nom, repli courriel), lus par `bindInboxForms` (module hissé, lié
+sur `astro:page-load`, inerte sans `[data-inbox-form]`). Sans JavaScript :
+objet statique, toujours filtrable par le préfixe. Format et replis : tests
+`inbox.test.ts`. Non vérifié côté CloudCannon : si les champs `_subject`/
+`_replyto`/`_gotcha` s'affichent aussi dans le tableau du courriel.
+
+Classement ensuite dans la boîte courriel (une seule boîte CloudCannon, une
+seule cible) : Gmail → filtre « objet contient `[contact/carriere]` » →
+libellé imbriqué ; Outlook → règle → dossier/catégorie (règles serveur
+possibles sur une boîte partagée), y compris un transfert automatique par
+catégorie (ex. `[contact/carriere]` → RH).
+
 ## 5. Validation côté serveur (limites du contrat)
 
 - charge utile totale < **25 Ko** (vérifiée sur le corps brut avant analyse,

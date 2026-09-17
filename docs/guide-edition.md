@@ -514,6 +514,18 @@ barre latérale — recommandé) : un fichier = un formulaire, avec son
 destinataire et son objet de courriel; les pages y font référence par le champ
 « Formulaire lié » de la section.
 
+**Objet des notifications (mode boîte CloudCannon)** : chaque message reçoit
+un objet **unique**, préfixé d'une clé entre crochets, par exemple
+`[contact/carriere] Une carrière · Services applicatifs — Prénom Nom`,
+`[contact/projet] Un projet · Cybersécurité — Marie Tremblay`,
+`[infolettre] marie@exemple.com`. La clé ne change jamais (même en anglais,
+même si une option de liste est renommée) : c'est elle qui sert aux règles de
+classement de la boîte courriel — Gmail : filtre « objet contient
+`[contact/carriere]` » → libellé ; Outlook : règle → dossier ou catégorie,
+ou transfert automatique (ex. les carrières vers les RH). Le champ « Objet du
+courriel » du formulaire n'est que l'objet de repli. Répondre à une
+notification répond directement au visiteur (Reply-To).
+
 La **carte infolettre** du centre de ressources s'appuie sur le formulaire
 « Infolettre » de cette collection : son **« Courriel destinataire »** est
 l'adresse qui reçoit les inscriptions (vide = le destinataire global). Ses

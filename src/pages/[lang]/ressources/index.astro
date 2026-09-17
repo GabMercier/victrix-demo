@@ -69,11 +69,17 @@ const pageTitle = [r.title, r.titleAccent].filter(Boolean).join(' ');
 //    avec `_formId: infolettre` : le serveur dérive requis/courriels depuis
 //    src/data/forms/<langue>/infolettre.json, pot de miel `website`, widget
 //    Turnstile si la clé est posée, 303 vers /merci, ?erreur=1 au retour.
+//  - PUBLIC_FORMS_ENABLED="inbox" → POST vers /<lang>/merci/ capté par la boîte
+//    CloudCannon : pas de `_formId`, pot de miel `_gotcha`, champs cachés après
+//    le courriel, `_subject` = « [infolettre] <courriel> » recomposé à la
+//    soumission + `_replyto` (src/lib/forms/inbox.ts, inbox-client.ts,
+//    docs/formulaires.md §4.2).
 // Le nom du champ courriel est DÉRIVÉ de la définition (fieldName partagé) —
 // un désalignement page↔définition casse le build, jamais les soumissions.
 import { getEntry } from 'astro:content';
 import { fieldName } from '../../../lib/forms/field-name';
 import { formAction, formsBackend, resolveInboxKey } from '../../../lib/forms/mode';
+import { inboxSubjectStatic } from '../../../lib/forms/inbox';
 import { inlineHtml } from '../../../../component-library/src/shared/rich';
 
 const newsletterDefEntry = await getEntry('forms', `${lang}/infolettre`);
@@ -101,6 +107,19 @@ const formsEnabled = backend !== 'none';
 const turnstileSiteKey = backend === 'worker' ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
 const inboxKey = backend === 'inbox' ? resolveInboxKey(newsletterDefEntry.data.inboxKey, env) : '';
 const pagePath = Astro.url?.pathname ?? '';
+const inboxMode = backend === 'inbox';
+// Objet du courriel (mode inbox) : « [infolettre] <courriel> » à la soumission.
+const inboxSubject = inboxMode
+  ? inboxSubjectStatic('infolettre', newsletterDefEntry.data.subject)
+  : '';
+const inboxAttrs = inboxMode
+  ? {
+      'data-inbox-form': '',
+      'data-inbox-prefix': 'infolettre',
+      'data-inbox-fallback': newsletterEmailName,
+      'data-inbox-replyto': newsletterEmailName,
+    }
+  : {};
 // Pot de miel : idiome « visuellement masqué » EN LIGNE (patron form.astro).
 const honeypotStyle =
   'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;';
@@ -342,6 +361,7 @@ const pillBase =
                     method={formsEnabled ? 'POST' : undefined}
                     action={formAction(backend, lang)}
                     data-astro-reload={formsEnabled ? '' : undefined}
+                    {...inboxAttrs}
                   >
                     {
                       formsEnabled && (
@@ -362,21 +382,8 @@ const pillBase =
                               if (b && /[?&]erreur=/.test(location.search)) b.removeAttribute('hidden');
                             }
                           </script>
-                          <input type="hidden" name="lang" value={lang} />
-                          <input type="hidden" name="source" value={pagePath} />
-                          <input type="hidden" name="_formId" value="infolettre" />
-                          {inboxKey && <input type="hidden" name="inbox_key" value={inboxKey} />}
-                          {/* Pot de miel `website` — voir honeypotStyle. */}
-                          <div aria-hidden="true" style={honeypotStyle}>
-                            <label for="infolettre-website">Site Web</label>
-                            <input
-                              id="infolettre-website"
-                              type="text"
-                              name="website"
-                              tabindex="-1"
-                              autocomplete="off"
-                            />
-                          </div>
+                          {/* Champs cachés et pot de miel : APRÈS le courriel
+                              (fragment plus bas) — ordre du courriel CloudCannon. */}
                         </>
                       )
                     }
@@ -391,6 +398,32 @@ const pillBase =
                         required
                       />
                     </label>
+                    {
+                      formsEnabled && (
+                        <>
+                          {/* Champs cachés + pot de miel après le courriel (ordre du
+                              courriel CloudCannon). `_formId` = worker seulement ;
+                              `_subject` (recomposé à la soumission) et `inbox_key` = boîte. */}
+                          <input type="hidden" name="lang" value={lang} />
+                          <input type="hidden" name="source" value={pagePath} />
+                          {!inboxMode && <input type="hidden" name="_formId" value="infolettre" />}
+                          {inboxKey && <input type="hidden" name="inbox_key" value={inboxKey} />}
+                          {inboxMode && <input type="hidden" name="_subject" value={inboxSubject} />}
+                          {/* Pot de miel — `_gotcha` en inbox (seul nom filtré par
+                              CloudCannon), `website` côté worker ; voir honeypotStyle. */}
+                          <div aria-hidden="true" style={honeypotStyle}>
+                            <label for="infolettre-website">Site Web</label>
+                            <input
+                              id="infolettre-website"
+                              type="text"
+                              name={inboxMode ? '_gotcha' : 'website'}
+                              tabindex="-1"
+                              autocomplete="off"
+                            />
+                          </div>
+                        </>
+                      )
+                    }
                     {
                       turnstileSiteKey && (
                         <>
@@ -538,6 +571,14 @@ const pillBase =
       });
     }
   });
+</script>
+
+<script>
+  // Mode inbox : objet « [infolettre] <courriel> » + Reply-To composés à la
+  // soumission (src/lib/forms/inbox-client.ts — logique PARTAGÉE avec
+  // form.astro et contact.astro) ; inerte sans [data-inbox-form].
+  import { bindInboxForms } from '../../../lib/forms/inbox-client';
+  document.addEventListener('astro:page-load', () => bindInboxForms(document));
 </script>
 
 <style>

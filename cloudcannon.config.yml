@@ -2122,7 +2122,14 @@ collections_config:
         options:
           empty_type: string
         label: Objet du courriel
-        comment: Vide = objet générique.
+        comment: >-
+          Vide = objet générique. Mode boîte CloudCannon : objet de REPLI —
+          chaque notification reçoit automatiquement un objet unique préfixé
+          d'une clé entre crochets pour le classement dans la boîte courriel
+          (ex. « [contact/carriere] Une carrière · Services applicatifs —
+          Prénom Nom », « [infolettre] courriel ») ; ce texte n'apparaît que
+          si le visiteur n'a rien saisi ou sans JavaScript, sous la forme
+          « [identifiant du formulaire] Objet ».
       submitLabel:
         type: text
         options:

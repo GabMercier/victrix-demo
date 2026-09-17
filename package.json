@@ -17,7 +17,8 @@
     "test:e2e": "playwright test",
     "design:previews": "node scripts/design/generate-section-previews.mjs",
     "cms:previews": "node scripts/design/generate-cms-previews.mjs",
-    "cms:previews:check": "node scripts/design/generate-cms-previews.mjs --check"
+    "cms:previews:check": "node scripts/design/generate-cms-previews.mjs --check",
+    "check:bookshop": "node scripts/check-bookshop-strip.mjs"
   },
   "engines": {
     "node": ">=20.3.0"

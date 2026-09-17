@@ -49,6 +49,14 @@ const c = await getLocaleData('contact', lang);
  *    DEPUIS la définition src/data/forms/<lang>/contact.json), pot de miel
  *    `website`, bannière ?erreur=1, widget Turnstile si la clé est posée,
  *    data-astro-reload (POST natif urlencoded, vrai suivi du 303 vers /merci).
+ *  - PUBLIC_FORMS_ENABLED="inbox" (2026-09-16/17) → POST vers /<lang>/merci/
+ *    capté par la boîte CloudCannon (`inbox_key`) : pas de `_formId`, pot de
+ *    miel `_gotcha`, champs cachés APRÈS les champs visibles, `_subject` =
+ *    objet catégorisé recomposé à la soumission (« [contact/carriere] Une
+ *    carrière · Services applicatifs — Prénom Nom », clé neutre du sujet
+ *    portée par l'option choisie via data-key — presets.ts) et `_replyto` =
+ *    courriel du visiteur (src/lib/forms/inbox.ts + inbox-client.ts,
+ *    docs/formulaires.md §4.2).
  * Les `name` des champs sont DÉRIVÉS de la définition (fieldName partagé) et
  * deux garde-fous de build cassent la compilation si la page et la définition
  * divergent (libellés, options des selects) — une dérive silencieuse ferait
@@ -57,6 +65,8 @@ const c = await getLocaleData('contact', lang);
 import { getEntry } from 'astro:content';
 import { fieldName } from '../../lib/forms/field-name';
 import { formAction, formsBackend, resolveInboxKey } from '../../lib/forms/mode';
+import { inboxSubjectStatic } from '../../lib/forms/inbox';
+import { CONTACT_SUJET_KEYS, CONTACT_SUJET_LABELS } from '../../lib/contact/presets';
 import { inlineHtml } from '../../../component-library/src/shared/rich';
 
 // Locale-neutral coordinates (template-only, mirrors the office cards order).
@@ -118,6 +128,24 @@ const formsEnabled = backend !== 'none';
 const turnstileSiteKey = backend === 'worker' ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
 const inboxKey = backend === 'inbox' ? resolveInboxKey(formDefEntry.data.inboxKey, env) : '';
 const pagePath = Astro.url?.pathname ?? '';
+const inboxMode = backend === 'inbox';
+// Objet catégorisé (mode inbox) : la clé NEUTRE du sujet choisi (presets.ts)
+// voyage sur l'option (data-key) ; inbox-client.ts la lit à la soumission.
+const sujetKeyByLabel = new Map(
+  CONTACT_SUJET_KEYS.map((key) => [CONTACT_SUJET_LABELS[lang][key], key]),
+);
+const inboxSubject = inboxMode ? inboxSubjectStatic('contact', formDef.subject) : '';
+const inboxAttrs = inboxMode
+  ? {
+      'data-inbox-form': '',
+      'data-inbox-prefix': 'contact',
+      'data-inbox-sujet': nameFor(c.labels.subject),
+      'data-inbox-details': [nameFor(c.labels.subject), nameFor(c.labels.expertise)].join(','),
+      'data-inbox-name': [nameFor(c.labels.firstName), nameFor(c.labels.lastName)].join(','),
+      'data-inbox-fallback': nameFor(c.labels.email),
+      'data-inbox-replyto': nameFor(c.labels.email),
+    }
+  : {};
 
 // Pot de miel : idiome « visuellement masqué » EN LIGNE (patron form.astro).
 const honeypotStyle =
@@ -280,6 +308,7 @@ const phoneIcon =
           method={formsEnabled ? 'POST' : undefined}
           action={formAction(backend, lang)}
           data-astro-reload={formsEnabled ? '' : undefined}
+          {...inboxAttrs}
         >
           {
             formsEnabled && (
@@ -297,19 +326,9 @@ const phoneIcon =
                     if (b && /[?&]erreur=/.test(location.search)) b.removeAttribute('hidden');
                   }
                 </script>
-                <input type="hidden" name="lang" value={lang} />
-                <input type="hidden" name="source" value={pagePath} />
-                <input type="hidden" name="_formId" value="contact" />
-                {inboxKey && <input type="hidden" name="inbox_key" value={inboxKey} />}
-                {/* Provenance du CTA (?cta= / ?de=, posés au clic par BaseLayout) —
-                    remplis par le script de préremplissage ci-dessous. */}
-                <input type="hidden" name="cta" id="contact-cta" value="" />
-                <input type="hidden" name="provenance" id="contact-provenance" value="" />
-                {/* Pot de miel `website` — voir honeypotStyle. */}
-                <div aria-hidden="true" style={honeypotStyle}>
-                  <label for="contact-website">Site Web</label>
-                  <input id="contact-website" type="text" name="website" tabindex="-1" autocomplete="off" />
-                </div>
+                {/* Champs cachés et pot de miel : APRÈS les champs visibles
+                    (fragment plus bas) — le courriel CloudCannon suit l'ordre
+                    du formulaire. */}
               </>
             )
           }
@@ -336,7 +355,9 @@ const phoneIcon =
                 <select class:list={[inputClass, 'appearance-none pr-10']} id="subject" name={formsEnabled ? nameFor(c.labels.subject) : 'subject'} required>
                   <option value="">{c.labels.subjectPlaceholder}</option>
                   {c.subjectOptions.map((opt) => (
-                    <option value={opt}>{opt}</option>
+                    <option value={opt} data-key={inboxMode ? sujetKeyByLabel.get(opt) : undefined}>
+                      {opt}
+                    </option>
                   ))}
                 </select>
                 <svg class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -391,6 +412,31 @@ const phoneIcon =
           </div>
 
           {
+            formsEnabled && (
+              <>
+                {/* Champs cachés + pot de miel APRÈS les champs visibles (ordre du
+                    courriel CloudCannon). `_formId` = worker seulement ; `_subject`
+                    (objet, recomposé à la soumission) et `inbox_key` = boîte. */}
+                <input type="hidden" name="lang" value={lang} />
+                <input type="hidden" name="source" value={pagePath} />
+                {!inboxMode && <input type="hidden" name="_formId" value="contact" />}
+                {inboxKey && <input type="hidden" name="inbox_key" value={inboxKey} />}
+                {inboxMode && <input type="hidden" name="_subject" value={inboxSubject} />}
+                {/* Provenance du CTA (?cta= / ?de=, posés au clic par BaseLayout) —
+                    remplis par le script de préremplissage ci-dessous. */}
+                <input type="hidden" name="cta" id="contact-cta" value="" />
+                <input type="hidden" name="provenance" id="contact-provenance" value="" />
+                {/* Pot de miel — `_gotcha` en inbox (seul nom filtré par CloudCannon),
+                    `website` côté worker ; voir honeypotStyle. */}
+                <div aria-hidden="true" style={honeypotStyle}>
+                  <label for="contact-website">Site Web</label>
+                  <input id="contact-website" type="text" name={inboxMode ? '_gotcha' : 'website'} tabindex="-1" autocomplete="off" />
+                </div>
+              </>
+            )
+          }
+
+          {
             turnstileSiteKey && (
               <>
                 {/* Widget Turnstile — CSP appliquée le 2026-08-17 (public/_headers). */}
@@ -428,6 +474,11 @@ const phoneIcon =
 </BaseLayout>
 
 <script>
+  // Mode inbox : objet du courriel + Reply-To composés à la soumission
+  // (src/lib/forms/inbox-client.ts — logique PARTAGÉE avec form.astro et la
+  // carte infolettre) ; inerte sans [data-inbox-form] (maquette, worker).
+  import { bindInboxForms } from '../../lib/forms/inbox-client';
+
   // Demo-only submission: validate natively, then confirm inline (no backend).
   // MODE MAQUETTE SEULEMENT : [data-contact-form] n'est posé que quand
   // PUBLIC_FORMS_ENABLED est absente — en mode réel, ce module ne trouve rien
@@ -435,6 +486,8 @@ const phoneIcon =
   // astro:page-load — the DOM is swapped on each client-side navigation while
   // this module executes only once per session.
   document.addEventListener('astro:page-load', () => {
+    bindInboxForms(document);
+
     // Préremplissage par l'URL (2026-08-18) — liens « Découvrir » du catalogue
     // de solutions (?sujet=&produit=), réutilisable par toute page :
     //  - ?sujet=     → sélectionne l'option EXACTE du select « De quoi

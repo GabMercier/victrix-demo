@@ -45,6 +45,12 @@ jobs:
       - name: CMS previews (fonds + icônes)
         run: npm run cms:previews:check
 
+      # Rejoue l'étape Bookshop du build CloudCannon (retrait des scripts par
+      # regex + compilation) sur chaque composant — seule étape que le build
+      # Astro local ne couvre pas (incident du 2026-09-17, operations.md §8).
+      - name: Bookshop (moteur de l'éditeur visuel)
+        run: npm run check:bookshop
+
       - name: Build
         run: npm run build
 
