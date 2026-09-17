@@ -58,9 +58,15 @@ import { inlineHtml } from '../../shared/rich';
  * Filtrage CLIENT (script module ci-dessous, lié sur astro:page-load —
  * compatible ClientRouter) : selects + recherche masquent les cartes via
  * data-*, ?secteur=&type= maintenus à l'URL (replaceState). Le moteur Bookshop
- * retire les <script> par regex avant de compiler pour l'éditeur : le script
- * vit à la RACINE du composant (jamais seul enfant d'une expression — gotcha
- * form.astro) et la maquette de l'éditeur n'en a pas besoin.
+ * retire les balises script par regex avant de compiler pour l'éditeur : le
+ * script vit à la RACINE du composant (jamais seul enfant d'une expression —
+ * gotcha form.astro) et la maquette de l'éditeur n'en a pas besoin.
+ * PIÈGE (build CloudCannon rouge le 2026-09-17) : ne JAMAIS écrire une balise
+ * script ouvrante littérale (chevron + nom) dans un commentaire — la regex
+ * de @bookshop/astro-engine (builder.js) part de cette occurrence jusqu'au
+ * PREMIER « fin de script » réel du fichier et emporte tout entre les deux,
+ * y compris la fermeture de ce commentaire (erreur esbuild « Expected
+ * end of multi-line comment »). Écrire « balise script » en toutes lettres.
  *
  * PARITÉ / a11y : un seul élément racine (le script est hissé par Astro —
  * requis par scripts/design/generate-section-previews.mjs) ; titre en <h1>

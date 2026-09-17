@@ -97,10 +97,13 @@ import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
  * - ÉDITEUR VISUEL CLOUDCANNON : son bundle ne remplace que les expressions
  *   EXACTES `import.meta.env.PUBLIC_X` — d'où `import.meta.env ?? {}` et
  *   `Astro.url?.pathname` ci-dessous.
- * - GOTCHA Bookshop : le moteur retire les <script>…</script> PAR REGEX avant
- *   de compiler — un script unique enfant d'une expression {cond && (…)}
- *   laisserait un « ( ) » orphelin qui casse le build CloudCannon. Les
- *   mini-scripts restent DANS le fragment formsEnabled, jamais seuls.
+ * - GOTCHA Bookshop : le moteur retire les balises script (ouvrante à
+ *   fermante) PAR REGEX avant de compiler — un script unique enfant d'une
+ *   expression {cond && (…)} laisserait un « ( ) » orphelin qui casse le
+ *   build CloudCannon. Les mini-scripts restent DANS le fragment
+ *   formsEnabled, jamais seuls. Et ne JAMAIS écrire une balise script
+ *   ouvrante littérale dans un commentaire (piège solutions-catalogue.astro,
+ *   2026-09-17 : la regex avale tout jusqu'au premier vrai script fermant).
  * - `fields = []` en secours pour ne pas planter l'éditeur pendant la saisie.
  * - Pot de miel / bannière d'erreur : styles EN LIGNE fonctionnels (masquage
  *   robuste aux robots ; paire rouge littérale, pas de rôle « erreur » au
