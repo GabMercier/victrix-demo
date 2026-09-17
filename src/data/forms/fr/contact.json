@@ -2,7 +2,7 @@
   "_schema": "default",
   "name": "Contact (FR)",
   "toEmail": "",
-  "inboxKey": "",
+  "inboxKey": "dev-marketing-contact",
   "subject": "Message du site — formulaire de contact",
   "submitLabel": "Envoyer le message",
   "consentText": "",
@@ -95,6 +95,7 @@
       "label": "Précisez votre demande",
       "type": "text",
       "required": false,
+      "width": "plein",
       "options": [],
       "value": "",
       "showIf": {
@@ -106,6 +107,7 @@
       "label": "Message",
       "type": "textarea",
       "required": true,
+      "width": "plein",
       "options": [],
       "value": "",
       "showIf": {
@@ -117,6 +119,7 @@
       "label": "Consentement (Loi 25)",
       "type": "checkbox",
       "required": true,
+      "width": "plein",
       "options": [],
       "value": "",
       "showIf": {
