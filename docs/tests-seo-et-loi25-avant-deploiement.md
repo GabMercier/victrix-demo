@@ -34,11 +34,40 @@ reformuler le titre visible. Si l'équipe veut zéro zone grise, deux options
 à trancher : retirer le champ, ou le rendre **visible** en surtitre du héros
 (l'approche « élément qui porte le H1 » retirée le 16 septembre).
 
+**Options et coûts (mesurés le 2026-09-17 sur le code et le contenu).**
+
+| Option | Ce que voit le visiteur | Coût | Avis |
+|---|---|---|---|
+| A. Statu quo : « H1 SEO » masqué, exception | rien ne change | 0 | zone grise, mais inutilisée sur les pages réelles |
+| B. Retirer le champ : le H1 est toujours le grand titre du héros | rien ne change | ~1 h (page.astro, 4 schémas, 4 entrées CMS, 4 gabarits, clé retirée de 86 fichiers, guide) | **recommandé** : aucune ambiguïté, le mot-clé va dans le « Titre SEO » et le titre du héros |
+| C. H1 sur le surtitre (petit texte au-dessus du titre), au choix par page | le petit surtitre devient le H1, le grand titre un H2 ; styles inchangés | ~½ j (recréer le select retiré le 16 sept. sur les 4 héros + schémas + spécifications + guide, et nettoyer le champ « H1 SEO ») | légitime techniquement (la taille CSS n'a aucune importance pour Google ni pour les lecteurs d'écran), mais **18 des 41 pages FR n'ont pas de surtitre** et « Écosystème Microsoft 365 » sert de surtitre à 6 pages, « Services » à 3 : des H1 identiques d'une page à l'autre, ce que les outils SEO signalent en « H1 dupliqué » |
+
+Pourquoi B suffit : le H1 pèse peu ; ce qui compte est le `<title>` (champ
+« Titre SEO »), la description et le contenu. La règle éditoriale du guide
+(§ « Bien référencer une page ») demande déjà que le titre du héros porte le
+mot-clé principal ; si un titre marketing ne le fait pas, c'est le titre
+qu'on ajuste, pas la balise.
+
 **Comment on le confirmera.** Après la bascule, Search Console →
 Inspection de l'URL → « Afficher la page explorée » montre le HTML rendu par
 Google, H1 compris. Dès maintenant, l'outil Google « Test des résultats
-enrichis » sur une URL cloudvent affiche aussi le HTML rendu. Le crawl
-Screaming Frog (§3.1) donne la colonne H1-1 de chaque page.
+enrichis » (search.google.com/test/rich-results) sur
+`https://vocal-wren.cloudvent.net/fr/services/demo-sections/` (la page démo
+qui porte le H1 masqué ; l'en-tête noindex n'empêche pas le test) affiche
+le HTML rendu par Google : chercher `<h1 class="sr-only">` dans l'onglet
+« HTML ». Le crawl Screaming Frog (§3.1) donne la colonne H1-1 de chaque
+page.
+
+**Où tester le score SEO.** Aucune URL publique ne convient aujourd'hui :
+les sites CloudCannon (`*.cloudvent.net`) portent l'en-tête noindex (§2), et
+la préversion Cloudflare `victrix-demo.pages.dev`, qui n'a pas cet en-tête,
+est **périmée** (404 sur les routes actuelles au 2026-09-17, lien avec le
+dépôt vraisemblablement perdu) : ne pas s'y fier. Deux voies : la recette
+locale du §2 (résultat ci-dessous), ou relier de nouveau le projet
+Cloudflare Pages à la branche `dev` (tableau de bord Cloudflare, ~15 min),
+en sachant que cette préversion est alors explorable et indexable par
+Google (aucun en-tête noindex, `robots.txt` ouvert) — infrastructure
+héritée à décommissionner à la bascule.
 
 ## 2. Pourquoi Lighthouse affiche ~70 en SEO sur cloudvent
 
