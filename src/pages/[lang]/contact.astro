@@ -301,6 +301,10 @@ const phoneIcon =
                 <input type="hidden" name="source" value={pagePath} />
                 <input type="hidden" name="_formId" value="contact" />
                 {inboxKey && <input type="hidden" name="inbox_key" value={inboxKey} />}
+                {/* Provenance du CTA (?cta= / ?de=, posés au clic par BaseLayout) —
+                    remplis par le script de préremplissage ci-dessous. */}
+                <input type="hidden" name="cta" id="contact-cta" value="" />
+                <input type="hidden" name="provenance" id="contact-provenance" value="" />
                 {/* Pot de miel `website` — voir honeypotStyle. */}
                 <div aria-hidden="true" style={honeypotStyle}>
                   <label for="contact-website">Site Web</label>
@@ -438,6 +442,10 @@ const phoneIcon =
     //  - ?expertise= → même mécanique sur le select « Expertise » ;
     //  - ?produit=   → remplit « Précisez votre demande » avec le nom du
     //                  produit et fait défiler jusqu'au formulaire.
+    //  - ?cta= / ?de= (2026-09-16, posés AU CLIC par le script de BaseLayout
+    //                  sur tout lien vers Contact) → « Précisez votre demande »
+    //                  reçoit « <bouton> — <page> » si vide, et les champs
+    //                  cachés cta / provenance partent avec le message.
     // Fonctionne dans les DEUX modes (maquette et /api/forms réel) : les ids
     // des champs sont identiques, seuls les attributs name changent.
     {
@@ -458,7 +466,20 @@ const phoneIcon =
         request.value = produit;
         produitSet = true;
       }
-      if (subjectSet || expertiseSet || produitSet) {
+      const cta = (params.get('cta') ?? '').trim().slice(0, 80);
+      const de = (params.get('de') ?? '').trim().slice(0, 120);
+      let ctaSet = false;
+      if (cta) {
+        const ctaField = document.getElementById('contact-cta') as HTMLInputElement | null;
+        const deField = document.getElementById('contact-provenance') as HTMLInputElement | null;
+        if (ctaField) ctaField.value = cta;
+        if (deField) deField.value = de;
+        if (request && !request.value) {
+          request.value = de ? `${cta} — ${de}` : cta;
+          ctaSet = true;
+        }
+      }
+      if (subjectSet || expertiseSet || produitSet || ctaSet) {
         document.querySelector('form[aria-describedby="req-note"]')?.scrollIntoView({ block: 'start' });
       }
     }

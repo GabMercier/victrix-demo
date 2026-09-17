@@ -283,6 +283,14 @@ est fixe — vous changez les mots et les photos, le site garde sa forme.
   l'équipe technique. Dans le texte de consentement, laisser `{privacy}` tel
   quel : il devient automatiquement le lien vers la politique de
   confidentialité dans la bonne langue.
+  **Provenance des boutons** (depuis le 16 sept. 2026) : tout bouton ou lien
+  du site qui mène à la page Contact (hors menu et pied de page) transmet le
+  libellé cliqué et la page d'origine. Le champ « Précisez votre demande »
+  arrive prérempli (ex. « Échangez avec un expert — Services gérés ») et le
+  message reçu contient deux lignes « cta » et « provenance ». Rien à
+  configurer : cela vaut aussi pour les liens que vous ajoutez dans un
+  texte. Pour un formulaire de campagne (section « Formulaire »), le même
+  suivi se fait avec un **champ caché** dont la valeur est `{{url.cta}}`.
 - **Page Carrières** — héros, carte « Happy At Work », valeurs (icône à liste
   fermée + libellé), atouts « Pourquoi rejoindre » (icône + titre + texte),
   témoignages (portrait, citation, prénom, rôle), responsabilité sociale et
