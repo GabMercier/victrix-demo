@@ -74,6 +74,7 @@ const pageTitle = [r.title, r.titleAccent].filter(Boolean).join(' ');
 import { getEntry } from 'astro:content';
 import { fieldName } from '../../../lib/forms/field-name';
 import { formAction, formsBackend, resolveInboxKey } from '../../../lib/forms/mode';
+import { inlineHtml } from '../../../../component-library/src/shared/rich';
 
 const newsletterDefEntry = await getEntry('forms', `${lang}/infolettre`);
 if (!newsletterDefEntry) {
@@ -117,7 +118,7 @@ const pillBase =
   'inline-flex items-center justify-center px-6 py-2 rounded-full text-sm leading-5 font-bold cursor-pointer border-0 transition-colors';
 ---
 
-<BaseLayout lang={lang} title={pageTitle} description={r.intro} contentType="Page">
+<BaseLayout lang={lang} title={pageTitle} description={r.intro.replace(/<[^>]+>/g, '')} contentType="Page">
   <Breadcrumbs
     lang={lang}
     items={[
@@ -137,7 +138,7 @@ const pillBase =
           {r.title}
           {r.titleAccent && <span class="block text-primary">{r.titleAccent}</span>}
         </h1>
-        <p class="m-0 text-lg leading-[28px] text-on-surface-variant max-w-[576px]">{r.intro}</p>
+        <p class="m-0 text-lg leading-[28px] text-on-surface-variant max-w-[576px]" set:html={inlineHtml(r.intro)} />
         <a
           class="mt-2 inline-flex items-center gap-3 bg-nuit text-white px-8 py-4 rounded-lg text-sm leading-5 font-bold uppercase tracking-[0.5px] no-underline shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] hover:bg-primary transition-colors"
           href="#infolettre"
@@ -333,7 +334,7 @@ const pillBase =
                     <path d="M19 14l.9 2.6L22.5 17l-2.6.9L19 20.5l-.9-2.6-2.6-.9 2.6-.9L19 14Z" />
                   </svg>
                   <h2 class="m-0 text-base leading-6 font-normal text-white">{r.newsletter.title}</h2>
-                  <p class="m-0 max-w-none text-base leading-6 text-neutral-200">{r.newsletter.text}</p>
+                  <p class="m-0 max-w-none text-base leading-6 text-neutral-200" set:html={inlineHtml(r.newsletter.text)} />
                   <form
                     class="flex flex-col gap-4"
                     data-newsletter-form={formsEnabled ? undefined : ''}
@@ -410,7 +411,7 @@ const pillBase =
                         vide = pas de ligne. */}
                     {newsletterDefEntry.data.consentText && (
                       <p class="m-0 max-w-none text-xs leading-4 text-neutral-300">
-                        {newsletterDefEntry.data.consentText}
+                        <Fragment set:html={inlineHtml(newsletterDefEntry.data.consentText)} />
                       </p>
                     )}
                     <p
@@ -439,7 +440,7 @@ const pillBase =
       <div class="relative overflow-hidden bg-neutral-100 border border-solid border-bordure rounded-2xl p-8 lg:p-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
         <div class="relative max-w-[672px] flex flex-col gap-4">
           <h2 class="m-0 text-base leading-6 font-normal text-nuit">{r.cta.title}</h2>
-          <p class="m-0 max-w-none text-lg leading-[28px] text-on-surface-variant">{r.cta.text}</p>
+          <p class="m-0 max-w-none text-lg leading-[28px] text-on-surface-variant" set:html={inlineHtml(r.cta.text)} />
         </div>
         <div class="relative flex flex-wrap items-center gap-6 shrink-0">
           <a

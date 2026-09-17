@@ -57,6 +57,7 @@ const c = await getLocaleData('contact', lang);
 import { getEntry } from 'astro:content';
 import { fieldName } from '../../lib/forms/field-name';
 import { formAction, formsBackend, resolveInboxKey } from '../../lib/forms/mode';
+import { inlineHtml } from '../../../component-library/src/shared/rich';
 
 // Locale-neutral coordinates (template-only, mirrors the office cards order).
 const officePhones = [
@@ -178,7 +179,7 @@ const phoneIcon =
       <h1 class="text-[40px] leading-[1.1] lg:text-[56px] lg:leading-[62px] font-extrabold tracking-[-1.12px] text-bleu-800 m-0">
         {c.heroTitle}
       </h1>
-      <p class="text-lg leading-[29px] text-on-surface-variant max-w-[672px] m-0">{c.heroSub}</p>
+      <p class="text-lg leading-[29px] text-on-surface-variant max-w-[672px] m-0" set:html={inlineHtml(c.heroSub)} />
     </div>
   </section>
 
@@ -254,7 +255,7 @@ const phoneIcon =
         <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-balance">
           {c.formTitle}
         </h2>
-        <p class="text-lg leading-[29px] text-on-surface-variant m-0 max-w-none">{c.formIntro}</p>
+        <p class="text-lg leading-[29px] text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(c.formIntro)} />
         <ul role="list" class="flex flex-col gap-4 m-0 p-0 pt-4 list-none">
           {
             c.formBullets.map((bullet) => (

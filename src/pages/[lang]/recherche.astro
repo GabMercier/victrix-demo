@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { type Locale, localePaths } from '../../i18n/config';
 import { useTranslations } from '../../i18n/ui';
 import { getLocaleData } from '../../i18n/locale-data';
+import { inlineHtml } from '../../../component-library/src/shared/rich';
 
 /**
  * /[lang]/recherche — recherche interne (P-06, Pagefind).
@@ -47,7 +48,7 @@ const devNote =
     <div class="container search-page__inner">
       <p class="search-page__eyebrow">{sys.recherche.eyebrow}</p>
       <h1 class="search-page__title">{sys.recherche.title}</h1>
-      <p class="search-page__intro">{sys.recherche.intro}</p>
+      <p class="search-page__intro" set:html={inlineHtml(sys.recherche.intro)} />
 
       {/* Feuille de style de l'interface Pagefind — asset local produit par le
           build (un <link rel="stylesheet"> dans le corps est valide HTML et

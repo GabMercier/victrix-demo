@@ -4,6 +4,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { type Locale, localePaths, localizePath } from '../../i18n/config';
 import { useTranslations } from '../../i18n/ui';
 import { getLocaleData } from '../../i18n/locale-data';
+import { inlineHtml } from '../../../component-library/src/shared/rich';
 
 export const getStaticPaths = localePaths;
 
@@ -125,7 +126,7 @@ const capsLabel = 'text-xs font-bold uppercase tracking-[1.2px]';
         <h1 class="text-[40px] leading-[1.2] lg:text-[56px] lg:leading-[70px] font-extrabold tracking-[-1.12px] text-on-primary m-0">
           {c.hero.title}
         </h1>
-        <p class="text-lg leading-[29px] text-on-primary/90 m-0 max-w-none">{c.hero.sub}</p>
+        <p class="text-lg leading-[29px] text-on-primary/90 m-0 max-w-none" set:html={inlineHtml(c.hero.sub)} />
         <a
           class="mt-4 inline-flex items-center bg-primary text-on-primary px-8 py-4 rounded-sm text-sm leading-none font-semibold tracking-[0.7px] uppercase no-underline shadow-lg hover:bg-primary-container transition-colors"
           href={contactHref}
@@ -153,10 +154,10 @@ const capsLabel = 'text-xs font-bold uppercase tracking-[1.2px]';
         </div>
         <div class="text-center md:text-left">
           <h2 class:list={[h2Class, 'mb-2']}>{c.happy.title}</h2>
-          <p class="text-base leading-[26px] text-on-surface-variant m-0 mb-4 max-w-none">{c.happy.lead}</p>
-          <p class="text-base leading-[26px] text-on-surface-variant italic m-0 max-w-none border-0 border-l-4 border-solid border-primary pl-4 text-left">
-            {c.happy.quote}
-          </p>
+          <p class="text-base leading-[26px] text-on-surface-variant m-0 mb-4 max-w-none" set:html={inlineHtml(c.happy.lead)} />
+          <p class="text-base leading-[26px] text-on-surface-variant italic m-0 max-w-none border-0 border-l-4 border-solid border-primary pl-4 text-left"
+            set:html={inlineHtml(c.happy.quote)}
+          />
         </div>
       </div>
     </div>
@@ -216,12 +217,12 @@ const capsLabel = 'text-xs font-bold uppercase tracking-[1.2px]';
         />
         <div class="absolute bottom-0 left-0 max-w-[80%] bg-primary text-on-primary p-8">
           <h3 class="text-2xl leading-[31px] font-bold m-0 mb-2">{c.join.cardTitle}</h3>
-          <p class="text-base leading-[26px] opacity-90 m-0 max-w-none">{c.join.cardText}</p>
+          <p class="text-base leading-[26px] opacity-90 m-0 max-w-none" set:html={inlineHtml(c.join.cardText)} />
         </div>
       </div>
       <div>
         <h2 class:list={[h2Class, 'mb-4']}>{c.join.title}</h2>
-        <p class="text-lg leading-[29px] text-on-surface-variant m-0 mb-8 max-w-none">{c.join.lead}</p>
+        <p class="text-lg leading-[29px] text-on-surface-variant m-0 mb-8 max-w-none" set:html={inlineHtml(c.join.lead)} />
         <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-8 m-0 p-0 list-none">
           {
             c.join.features.map((feature) => (
@@ -241,7 +242,7 @@ const capsLabel = 'text-xs font-bold uppercase tracking-[1.2px]';
                 </svg>
                 <div>
                   <h3 class="text-2xl leading-[31px] font-bold text-on-surface m-0 mb-1">{feature.title}</h3>
-                  <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none">{feature.text}</p>
+                  <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(feature.text)} />
                 </div>
               </li>
             ))
@@ -276,7 +277,7 @@ const capsLabel = 'text-xs font-bold uppercase tracking-[1.2px]';
                 <img class="w-full h-full object-cover border-0" src={t.image} alt="" loading="lazy" decoding="async" />
               </span>
               <blockquote class="m-0 mb-8 relative z-10">
-                <p class="text-lg leading-[29px] italic text-on-surface m-0 max-w-none">{t.quote}</p>
+                <p class="text-lg leading-[29px] italic text-on-surface m-0 max-w-none" set:html={inlineHtml(t.quote)} />
               </blockquote>
               <div class="mt-auto">
                 <h3 class="text-2xl leading-8 font-bold text-on-surface m-0">{t.name}</h3>
@@ -294,14 +295,14 @@ const capsLabel = 'text-xs font-bold uppercase tracking-[1.2px]';
     <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <div>
         <h2 class:list={[h2Class, 'mb-4']}>{c.social.title}</h2>
-        <p class="text-lg leading-[29px] text-on-surface-variant m-0 mb-4 max-w-none">{c.social.lead}</p>
+        <p class="text-lg leading-[29px] text-on-surface-variant m-0 mb-4 max-w-none" set:html={inlineHtml(c.social.lead)} />
         <p class="m-0 max-w-none flex items-center gap-3">
           <svg class="shrink-0 text-primary" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
             {DIVERSITY_PATHS.map((d) => <path d={d} />)}
           </svg>
           <span class="text-base leading-[26px] font-bold text-on-surface">{c.social.engagementTitle}</span>
         </p>
-        <p class="text-base leading-[26px] text-on-surface-variant m-0 mt-4 max-w-none">{c.social.engagementText}</p>
+        <p class="text-base leading-[26px] text-on-surface-variant m-0 mt-4 max-w-none" set:html={inlineHtml(c.social.engagementText)} />
         <div class="flex gap-6 mt-8 opacity-60">
           {
             c.social.partners.map((partner) => (
@@ -331,7 +332,7 @@ const capsLabel = 'text-xs font-bold uppercase tracking-[1.2px]';
         <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-primary m-0">
           {c.cta.title}
         </h2>
-        <p class="text-lg leading-[29px] text-on-primary/90 m-0 max-w-none">{c.cta.text}</p>
+        <p class="text-lg leading-[29px] text-on-primary/90 m-0 max-w-none" set:html={inlineHtml(c.cta.text)} />
         <a
           class="mt-4 inline-flex items-center bg-white text-primary px-10 py-4 rounded-sm text-sm leading-none font-bold tracking-[1.4px] uppercase no-underline hover:bg-primary-fixed transition-colors"
           href={contactHref}

@@ -5,6 +5,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { type Locale, localePaths, localizePath } from '../../i18n/config';
 import { useTranslations } from '../../i18n/ui';
 import { solutionsContent } from '../../i18n/content/solutions';
+import { inlineHtml } from '../../../component-library/src/shared/rich';
 
 export const getStaticPaths = localePaths;
 
@@ -140,7 +141,7 @@ const contactHref = (href: string, productTitle: string): string => {
                   {c.featuredBadge}
                 </p>
                 <h2 class="text-4xl lg:text-5xl leading-none font-extrabold text-white m-0">{featured.data.title}</h2>
-                <p class="text-lg leading-[29px] text-primary-fixed m-0 max-w-[576px]">{featured.data.description}</p>
+                <p class="text-lg leading-[29px] text-primary-fixed m-0 max-w-[576px]" set:html={inlineHtml(featured.data.description)} />
                 <div class="flex flex-wrap gap-4 pt-2">
                   {featured.data.href && (
                     <a
@@ -236,7 +237,7 @@ const contactHref = (href: string, productTitle: string): string => {
                 data-solutions-card
                 data-sector={entry.data.sector}
                 data-type={entry.data.solutionType}
-                data-search={`${entry.data.title} ${entry.data.description}`.toLowerCase()}
+                data-search={`${entry.data.title} ${entry.data.description.replace(/<[^>]+>/g, '')}`.toLowerCase()}
               >
                 <div class="relative aspect-[4/3] bg-[#F3F4F5]">
                   {entry.data.image && (
@@ -261,7 +262,7 @@ const contactHref = (href: string, productTitle: string): string => {
                 </div>
                 <div class="p-6 grow flex flex-col">
                   <h3 class="text-lg leading-[22px] font-bold text-[#00020A] m-0 mb-3">{entry.data.title}</h3>
-                  <p class="text-sm leading-5 text-[#44474F] m-0 max-w-none mb-6">{entry.data.description}</p>
+                  <p class="text-sm leading-5 text-[#44474F] m-0 max-w-none mb-6" set:html={inlineHtml(entry.data.description)} />
                   <div class="mt-auto pt-4 border-0 border-t border-solid border-[#C5C6D0] flex items-center justify-between gap-2">
                     <p class="m-0 max-w-none bg-[#EAEAFF]/60 rounded px-2 py-1 text-xs leading-4 font-semibold text-primary">
                       {entry.data.solutionType}

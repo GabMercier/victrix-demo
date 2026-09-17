@@ -1,5 +1,5 @@
 ---
-import { blockHtml, hasRichText } from '../../shared/rich';
+import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
 /**
  * Section « Formulaire » — composant Bookshop (contrat landing).
  *
@@ -577,9 +577,8 @@ const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surf
                 'sm:col-span-2 m-0 max-w-none text-on-surface-variant',
                 isCard ? 'text-sm leading-5' : 'text-body-md leading-relaxed',
               ]}
-            >
-              {effConsentText}
-            </p>
+              set:html={inlineHtml(effConsentText)}
+            />
           )
         }
 

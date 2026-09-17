@@ -119,6 +119,14 @@ champ affiche une petite barre d'outils.
   comme un bouton pilule de la charte (en cours de branchement dans la barre
   d'outils — en attendant, les sections gardent leurs champs « Bouton »).
 
+La même barre d'outils (gras, italique, lien — un seul paragraphe) est
+aussi sur les textes **hors sections** : sous-titre et texte d'appui de la
+page **Contact**, tous les textes de **Carrières** (chapeau, citations,
+atouts, engagement), la description des **Solutions**, les textes
+d'introduction et d'appel des **Pages système** (centre de ressources,
+recherche, merci) et le **texte de consentement** des formulaires — pratique
+pour y glisser le lien vers la politique de confidentialité.
+
 Le corps des articles du centre de ressources garde son éditeur de contenu
 (Markdown), plus complet.
 
