@@ -105,12 +105,12 @@
     },
     {
       "type": "cta",
-      "title": "Un projet applicatif ?",
+      "title": "Un projet applicatif?",
       "body": "Parlons de vos applications d’affaires et de leur évolution.",
-      "ctaLabel": "Nous joindre",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
-      "cta2Label": "Découvrir Victrix",
-      "cta2Href": "/fr/decouvrir",
+      "cta2Label": null,
+      "cta2Href": null,
       "variant": "nuit"
     }
   ]
