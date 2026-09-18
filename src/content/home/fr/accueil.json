@@ -89,7 +89,7 @@
       "ctaLabel": "Parlez à un expert",
       "ctaHref": "/fr/contact",
       "image": "../equipe.jpg",
-      "statValue": "24/7/365",
+      "statValue": "24 / 7 / 365",
       "statLabel": "Services gérés",
       "statText": "Soutien proactif et gestion complète de vos environnements TI.",
       "features": [
@@ -112,11 +112,11 @@
       "items": [
         {
           "title": "Ø Studio",
-          "text": "Ø Studio est le studio de développement applicatif de Victrix, spécialisé en Power Platform et Dynamics 365. Son équipe multidisciplinaire automatise vos processus et livre vos applications, clés en main ou sur mesure, à vitesse grand V.",
+          "text": "Ø&nbsp;Studio est le studio de développement applicatif de Victrix, spécialisé en Power Platform et Dynamics 365. Son équipe multidisciplinaire automatise vos processus et livre vos applications, clés en main ou sur mesure, à vitesse grand V.",
           "image": "/images/home/expertise-productivite.jpg",
           "href": "/fr/services/productivite/o-studio",
           "ctaLabel": "Découvrez Ø Studio",
-          "icon": "ecran"
+          "icon": ""
         },
         {
           "title": "SEvOC",
