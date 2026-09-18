@@ -1,16 +1,20 @@
 {
+  "_schema": "default",
   "title": "Productivité",
-  "description": "Améliorez la productivité en entreprise avec des outils de productivité à la fine pointe de la technologie. Découvrez nos solutions!",
+  "description": "Améliorez la productivité en entreprise avec des outils de productivité et des solutions d'affaires innovantes.",
+  "noindex": false,
+  "slug": "",
+  "seoTitle": "Améliorez la productivité en entreprise | Expertise | Victrix",
   "sections": [
     {
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
-      "title": "Améliorer la productivité en entreprise",
-      "lead": "À la recherche d'une idée pour améliorer la productivité de votre entreprise? Avec des années d'expérience, Victrix vous propose une approche humaine et orientée client qui considère vos besoins d'affaires et se concentre sur vos utilisateurs.",
-      "ctaLabel": "Rencontrons-nous",
+      "title": "Améliorez la productivité en entreprise",
+      "lead": "À la recherche de solutions pour améliorer la productivité de votre entreprise? Avec des années d'expérience, Victrix vous propose une approche humaine et orientée client qui considère vos besoins d'affaires et se concentre sur vos utilisateurs.",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
-      "cta2Label": "Découvrir nos solutions",
+      "cta2Label": "Découvrez nos solutions",
       "cta2Href": "/fr/produits",
       "image": "/images/sections/expertises-hero.jpg",
       "imageAlt": "",
@@ -63,22 +67,22 @@
         "badge": "Exclusivité Victrix",
         "title": "Ø Studio",
         "text": "Propulsez-vous vers la Power Platform avec un accompagnement adapté à vos besoins. Le Ø Studio vous offre rapidité de développement et gain en capacité de livraison afin de migrer vos applications ou automatiser vos processus.",
-        "ctaLabel": "Élevez votre taux de productivité avec le Ø Studio",
-        "href": "/fr/services/productivite/o-bureau",
+        "ctaLabel": "Découvrez Ø Studio",
+        "href": "/services/o-studio/",
         "image": "/images/sections/expertises-ostudio.png"
       },
       "items": [
         {
           "title": "O bureau",
           "text": "Simplifiez les réservations, améliorez la gestion et automatisez les rapports d'utilisation de vos bureaux grâce à notre application de gestion de réservation facile à implémenter.",
-          "ctaLabel": "Gérer la réservation efficacement",
+          "ctaLabel": "Découvrez O bureau",
           "href": "/fr/services/productivite/o-bureau",
           "icon": ""
         },
         {
           "title": "Plateforme employé",
           "text": "Offrez à votre personnel ce qu'il y a de mieux en matière d'intranet. Augmentez la productivité au travail en centralisant les outils et les connaissances.",
-          "ctaLabel": "Déployer un intranet moderne",
+          "ctaLabel": "Découvrez la plateforme employé",
           "href": "/fr/services/productivite/plateforme-employe-intranet",
           "icon": ""
         }
@@ -150,7 +154,7 @@
       "type": "cta",
       "title": "Prêt à faire évoluer votre organisation ?",
       "body": "Discutons de vos enjeux et découvrons comment Victrix peut vous aider à aller plus loin dans votre transformation numérique et l'amélioration de vos performances.",
-      "ctaLabel": "Réservez un créneau avec un expert",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "variant": "dark"
     },
@@ -164,6 +168,5 @@
       "ctaLabel": "Voir toutes les ressources",
       "ctaHref": "/fr/ressources"
     }
-  ],
-  "seoTitle": "Améliorez la productivité en entreprise | Expertise"
+  ]
 }
