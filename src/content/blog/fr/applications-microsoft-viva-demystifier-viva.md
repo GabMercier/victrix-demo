@@ -11,7 +11,7 @@ wpUrl: "/applications-microsoft-viva-demystifier-viva/"
 ---
 ![Les applications Microsoft Viva pour élever l’expérience employé à tous les niveaux.](/wp-content/uploads/2024/02/microsoft-viva_image-article.png)
 
-Connaissez-vous bien les **applications Microsoft Viva**et savez-vous comment mettre à profit leurs fonctionnalités? Les organisations à la recherche de solutions pour améliorer leur communication interne, la productivité et l’engagement de leurs employés ont tout à gagner à l’[intégration d’une plateforme expérience employé](/expertise/productivite/plateforme-employe-intranet/) aussi performante que Viva.
+Connaissez-vous bien les **applications Microsoft Viva**et savez-vous comment mettre à profit leurs fonctionnalités? Les organisations à la recherche de solutions pour améliorer leur communication interne, la productivité et l’engagement de leurs employés ont tout à gagner à l’[intégration d’une plateforme expérience employé](/fr/services/productivite/plateforme-employe-intranet/) aussi performante que Viva.
 
 Avec une suite d’applications performantes et une équipe spécialisée dans les solutions de productivité pour entreprise, votre organisation bénéficiera d'**une voie claire vers le succès**.
 
@@ -23,7 +23,7 @@ Le prix de Microsoft Viva varie en fonction du degré de personnalisation ainsi 
 
 Certaines fonctionnalités de Viva Connections, Engage et Learning sont même accessibles sans frais additionnels à l'intérieur même des licences Microsoft 365 que vous détenez peut-être déjà. Les suites Microsoft offrent beaucoup d’applications et de fonctionnalités, trop souvent non utilisées par les organisations. Nos experts peuvent vous aider à mieux exploiter et rentabiliser les outils Microsoft.
 
-<a class="article-cta" href="/contact/">Contactez nos experts Microsoft</a>
+<a class="article-cta" href="/fr/contact/">Contactez nos experts Microsoft</a>
 
 ### Comment configurer Microsoft Viva pour une expérience personnalisée?
 
@@ -73,7 +73,7 @@ Nous recommandons donc de faire appel à une équipe spécialisée dans les solu
 - Aligner les équipes et leur travail avec les priorités stratégiques de l’entreprise
 - Suivi de la progression et des performances
 
-Avec une série d’applications complète pour **gérer l’engagement,**[**améliorer la productivité**](/expertise/productivite/)**et simplifier les communications**, Viva est une ressource puissante pour toute entreprise moderne. Voici d’ailleurs quelques-uns des principaux avantages d’intégrer les outils Viva à vos flux de travail.
+Avec une série d’applications complète pour **gérer l’engagement,**[**améliorer la productivité**](/fr/services/productivite/)**et simplifier les communications**, Viva est une ressource puissante pour toute entreprise moderne. Voici d’ailleurs quelques-uns des principaux avantages d’intégrer les outils Viva à vos flux de travail.
 
 - Une stratégie de communication interne bidirectionnelle efficace
 - Centralisation des ressources sous une même plateforme pour favoriser les échanges et améliorer la productivité
@@ -86,4 +86,4 @@ Avec une série d’applications complète pour **gérer l’engagement,**[**am�
 
 Pour offrir la meilleure plateforme expérience employé à vos équipes, choisissez la suite Microsoft Viva. Les experts en solutions Microsoft chez Victrix **vous accompagnent à toutes les étapes de votre projet d’intégration de Viva**. 
  Faites confiance à notre équipe pour développer les outils qui simplifieront le flux de travail quotidien de vos employés. 
- [Prenez rendez-vous pour discuter de votre projet](/contact/)
+ [Prenez rendez-vous pour discuter de votre projet](/fr/contact/)

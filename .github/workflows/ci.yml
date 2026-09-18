@@ -54,6 +54,14 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Liens internes (2026-09-18) : tout <a href> interne du site construit
+      # doit mener à une page de dist/ — deux incidents de liens cassés saisis
+      # dans l'éditeur en trois jours (anciennes URL WordPress, préfixe de
+      # langue oublié). Bloquant ici ; simple avertissement sur CloudCannon
+      # (.cloudcannon/postbuild). Réparation mécanique : npm run fix:links.
+      - name: Liens internes
+        run: npm run check:links -- --strict
+
       # Non-blocking for now: the current highs are transitive via wrangler
       # (build-time tooling), and the fix requires the @astrojs/cloudflare v14 /
       # Astro 7 jump. Tracked in the roadmap. Keep visible without failing CI.

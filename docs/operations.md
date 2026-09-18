@@ -92,6 +92,19 @@ bascule se corrige avec `node scripts/migrate-icons-bank.mjs` (rejouable ;
 | `npm run type-check` | 0 erreur | 0 erreur, 3 indices (`hints`) sans gravité |
 | `npm run build` | build Cloudflare complet (`dist/_worker.js` + `_redirects` + `_routes.json`) | OK — `_worker.js` présent, 1 redirection CMS écrite et exclue du worker |
 | `STATIC_ONLY=1 npm run build` | build 100 % statique (aucun `_worker.js`), 23 pages | OK — 23 page(s) built, aucun `_worker.js` dans `dist/` |
+| `npm run check:links` (après le build ; `-- --strict` en CI) | 0 lien interne cassé dans `dist/` | 18 sept. 2026 : 75 cibles fautives à l'introduction (liens d'origine WordPress dans les articles), 0 après `npm run fix:links` |
+
+**Liens internes (2026-09-18).** `scripts/check-internal-links.mjs` relève chaque
+`<a href>` interne du site CONSTRUIT et vérifie que la cible existe dans
+`dist/` : CASSÉ (erreur en mode strict — CI) ou REDIRIGÉ (rattrapé par
+`_redirects`, que l'hébergement CloudCannon ignore — avertissement). Pour chaque
+cible il nomme les fichiers de contenu à corriger. Sur CloudCannon il tourne dans
+`.cloudcannon/postbuild` en simple avertissement (journal de build). Réparation
+mécanique et rejouable : `npm run fix:links` (`-- --check` pour lister sans
+écrire) — ne retient une destination que si elle existe dans `dist/`, et ne
+touche jamais aux liens stockés SANS préfixe de langue dans un champ JSON
+(navigation, fiches de solutions). Exceptions documentées : constante `ALLOW` du
+garde-fou (aujourd'hui les trois pages « document » de WordPress non migrées).
 
 ### 3.1 — Si `npm run dev` tourne déjà (le cas courant)
 

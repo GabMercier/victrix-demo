@@ -11,11 +11,11 @@ wpUrl: "/en/servicenow-itom/"
 ---
 IT operations are under pressure. ITOM teams must juggle the complexities of a **growing infrastructure**, **sprawling cloud resources**, **increasing security risks** and the burden of **reducing downtime**. But legacy tools can’t keep up—they're slow, fragmented, and reactive rather than proactive.
 
-**ServiceNow ITOM changes that**. Designed to centralize, automate, and optimize how organizations monitor or [manage IT services](/en/expertise/managed-it-services/), the platform transforms how teams handle outages, application performance issues, and cloud governance.
+**ServiceNow ITOM changes that**. Designed to centralize, automate, and optimize how organizations monitor or [manage IT services](/en/services/managed-it-services/), the platform transforms how teams handle outages, application performance issues, and cloud governance.
 
 For CIOs and IT leaders, it’s no longer just about keeping the lights on — it gives them the visibility and control they need to **detect service issues early, automate response, reduce costs and accelerate time to resolution**.
 
-This article explores**the full value of ServiceNow ITOM**, the various modules included, and [how Victrix helps organizations implement it successfully](/en/expertise/productivity-consulting/servicenow/) across enterprise and public-sector environments.
+This article explores**the full value of ServiceNow ITOM**, the various modules included, and [how Victrix helps organizations implement it successfully](/en/services/productivity-consulting/servicenow/) across enterprise and public-sector environments.
 
 ### Ready to simplify your infrastructure and cut response time?
 
@@ -28,7 +28,7 @@ With **ServiceNow IT Operations Management (ITOM)**, you gain **real-time visibi
 
 This system is **built for organizations that need control**. It brings structure to chaos and turns fragmented systems into one intelligent platform.
 
-ServiceNow IT operations management solution is more than a tool suite; **it is a real differentiator in operational intelligence** and [IT service delivery](/en/expertise/managed-it-services/). With it, you can manage infrastructure, automate responses and improve uptime without adding complexity.
+ServiceNow IT operations management solution is more than a tool suite; **it is a real differentiator in operational intelligence** and [IT service delivery](/en/services/managed-it-services/). With it, you can manage infrastructure, automate responses and improve uptime without adding complexity.
 
 ### Improve ITOM Visibility
 
@@ -116,7 +116,7 @@ Our team helped organizations like yours get the most out of **ServiceNow Discov
  
  [Get expert guidance](/en/contact/)
 
-[ServiceNow IT Service Management (ITSM)](/en/servicenow-itsm/) and ITOM serve different purposes, but together, they transform how organizations manage operations.
+[ServiceNow IT Service Management (ITSM)](/en/ressources/servicenow-itsm/) and ITOM serve different purposes, but together, they transform how organizations manage operations.
 
 ### Role of ITSM: Service Delivery
 

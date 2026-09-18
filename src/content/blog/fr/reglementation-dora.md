@@ -13,9 +13,9 @@ wpUrl: "/reglementation-dora/"
 
 La réglementation DORA (Digital Operational Resilience Act) est une préoccupation majeure pour le secteur financier. Ce règlement qui concerne l’Union européenne vise à **renforcer la capacité des établissements financiers à résister aux cyberattaques**, tout en assurant la continuité des opérations.
 
-Dans cet article, nos [experts en cybersécurité](/expertise/cybersecurite/) pour les entités financières reviennent sur les exigences de cette norme et vous guident pour **élever votre résilience opérationnelle et assurer votre mise en conformité DORA**.
+Dans cet article, nos [experts en cybersécurité](/fr/services/cybersecurite/) pour les entités financières reviennent sur les exigences de cette norme et vous guident pour **élever votre résilience opérationnelle et assurer votre mise en conformité DORA**.
 
-<a class="article-cta" href="/contact/">Soyez accompagné pour votre mise en conformité</a>
+<a class="article-cta" href="/fr/contact/">Soyez accompagné pour votre mise en conformité</a>
 
 Le règlement européen DORA implique aux sociétés financières de:
 
@@ -36,7 +36,7 @@ En cas de non-conformité les sociétés s’exposent à des sanctions de l’UE
  **Perte d’autorité**: des blâmes publics peuvent être infligés, et peuvent entacher l’image de la société 
  **Retrait de l’agrément:** En cas de violations répétées, les sociétés peuvent perdre leur licence d’exploitation 
  
- [Assurez votre conformité Dora avec Victrix](/contact/)
+ [Assurez votre conformité Dora avec Victrix](/fr/contact/)
 
 Victrix accompagne les banques, institutions financières et établissements de crédit dans leur mise en conformité avec **une approche rigoureuse et adaptée à leurs besoins spécifiques**, en intégrant les meilleurs standards et réglementations. Nos consultants GRC sont certifiés. 
  Découvrez toutes les étapes de notre accompagnement personnalisé pour assurer votre conformité à la réglementation DORA.
@@ -59,4 +59,4 @@ Nos experts DORA et cybersécurité aident à la mise en place de pratiques conf
 
 Victrix propose des solutions technologiques adaptées à vos besoins, assurant que la sécurité et la conformité s’intègrent de manière durable dans vos systèmes. 
  Avec l’expertise de nos consultants GRC, vous bénéficiez d’un accompagnement personnalisé, que ce soit pour répondre aux standards internationaux ou pour vous aligner aux exigences légales et réglementaires de la loi DORA. 
- [Démarrez votre projet avec Victrix](/contact/)
+ [Démarrez votre projet avec Victrix](/fr/contact/)

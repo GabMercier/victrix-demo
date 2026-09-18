@@ -7,7 +7,7 @@ topics: ["Cybersecurity", "Strategic consulting"]
 slug: "law-25-personal-data-guide"
 coverImage: "/wp-content/uploads/2024/09/law25.jpg"
 seoTitle: "Law 25 Personal Data | Law and Requirements Guide"
-wpUrl: "/en/law-25-personal-data-guide/"
+wpUrl: "/en/ressources/law-25-personal-data-guide/"
 ---
 ![Law 25 Personal Data Protection represented by a digital scale.](/wp-content/uploads/2024/09/image-1-v2-1.jpg)
 
@@ -35,7 +35,7 @@ The [Commission d’Accès à l’Information](https://www.cai.gouv.qc.ca/protec
 - Fraudulent use or unauthorized disclosure of personal data
 - Loss or impairment of information protection
 
-These incidents occur when an **organization is the victim of a cyber attack** (phishing, [ransomware](/en/ransomware-protection-tips/), etc.), or when a member of staff fails to comply with the security policy in place. For example, by consulting or communicating personal information without authorization or to the wrong person.
+These incidents occur when an **organization is the victim of a cyber attack** (phishing, [ransomware](/en/ressources/ransomware-protection-tips/), etc.), or when a member of staff fails to comply with the security policy in place. For example, by consulting or communicating personal information without authorization or to the wrong person.
 
 ### Financial Sanctions
 
@@ -63,7 +63,7 @@ Individuals whose personal information has been disclosed are entitled to sue yo
 
 <a class="article-cta" href="/en/contact/">Talk to a law 25 and cybersecurity expert</a>
 
-Victrix offers a personalized compliance service to help your organization meet the requirements of Law 25 and avoid financial penalties. Our [public and private sector cybersecurity](/en/expertise/cybersecurity/) experts are with you every step of the way, from identifying compliance risks to implementing corrective measures.
+Victrix offers a personalized compliance service to help your organization meet the requirements of Law 25 and avoid financial penalties. Our [public and private sector cybersecurity](/en/services/cybersecurity/) experts are with you every step of the way, from identifying compliance risks to implementing corrective measures.
 
 ### Tailored law 25 Support from Victrix
 

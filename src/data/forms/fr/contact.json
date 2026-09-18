@@ -2,7 +2,7 @@
   "_schema": "default",
   "name": "Contact (FR)",
   "toEmail": "",
-  "inboxKey": "dev-marketing-contact",
+  "inboxKey": "",
   "subject": "Message du site — formulaire de contact",
   "submitLabel": "Envoyer le message",
   "consentText": "",
@@ -62,6 +62,7 @@
       "width": "demi",
       "options": [
         "Un projet",
+        "Une solution du catalogue",
         "Une expertise",
         "Une carrière",
         "Autre"

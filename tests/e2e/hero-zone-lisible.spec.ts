@@ -45,3 +45,29 @@ test('héros /fr/expertises/ à 390px : voile quasi uniforme, texte pleine large
   expect(background).not.toContain('rgba(255, 255, 255, 0)');
   expect(background).toContain('0.88');
 });
+
+// Héros de l'ACCUEIL (home-hero, 2026-09-18) : même défaut, même règle — le
+// dégradé blanc s'estompe vers la droite, la colonne de texte ne sort jamais de
+// la zone voilée (62 % entre md et lg, 55 % à partir de lg, plafond 672 px).
+for (const { width, maxShare } of TIERS) {
+  test(`héros de l'accueil à ${width}px : le texte reste dans la zone voilée`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/fr/');
+    const hero = page.locator('main section').first();
+    const column = hero.locator('.container-site > div').first();
+    const columnBox = await column.boundingBox();
+    expect(columnBox).not.toBeNull();
+    const rightShare = (columnBox!.x + columnBox!.width) / width;
+    expect(rightShare).toBeLessThanOrEqual(maxShare + 0.005);
+  });
+}
+
+test("héros de l'accueil à 390px : voile quasi uniforme", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/fr/');
+  const veil = page.locator('main section').first().locator('div[aria-hidden="true"] > div').first();
+  const background = await veil.evaluate((el) => getComputedStyle(el).backgroundImage);
+  expect(background).toContain('linear-gradient');
+  expect(background).not.toContain('rgba(255, 255, 255, 0)');
+  expect(background).toContain('0.88');
+});

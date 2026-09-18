@@ -33,7 +33,7 @@ Today, thanks to Auger Groupe Conseil, many sectors are benefiting from immersiv
  • **Transportation**internal education on road safety and operational regulations, virtual reality for road simulation, simulations of difficult situations, decision-making exercises. 
  [Discover AGC](https://augergroupe.com/en/home/)
 
-By combining AGC's pioneer engineering and technological creativity with Victrix's expertise in integration, [security](/en/expertise/cybersecurity/), and [strategic customer support](/en/expertise/strategic-advice/), this partnership paves the way for immersive projects of exceptional quality.
+By combining AGC's pioneer engineering and technological creativity with Victrix's expertise in integration, [security](/en/services/cybersecurity/), and [strategic customer support](/en/services/strategic-advice/), this partnership paves the way for immersive projects of exceptional quality.
 
 AGC continues to focus **on researching and developing innovative XR solutions**, while Victrix enhances the offering by **ensuring their deployment**,**secure integration**, and **optimal adoption** within companies.
 

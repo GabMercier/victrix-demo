@@ -11,9 +11,9 @@ wpUrl: "/directive-nis2/"
 ---
 La directive NIS2 **impose de nouvelles exigences de sécurité** aux organisations opérant dans l’Union européenne. Pour les entreprises, il est donc essentiel de savoir si vous y êtes assujettis, et si tel est le cas, les méthodes à votre disposition pour vous y conformer.
 
-Nos [experts en cybersécurité](/expertise/cybersecurite/) vous expliquent tout ce que vous devez savoir sur cette directive ainsi que vos options pour vous préparer à la mise en conformité.
+Nos [experts en cybersécurité](/fr/services/cybersecurite/) vous expliquent tout ce que vous devez savoir sur cette directive ainsi que vos options pour vous préparer à la mise en conformité.
 
-<a class="article-cta" href="/contact/">Soyez accompagné pour votre mise en conformité</a>
+<a class="article-cta" href="/fr/contact/">Soyez accompagné pour votre mise en conformité</a>
 
 <table style="border-collapse: collapse; width: 74.4159%; height: 347px;" border="1">
 <tbody>
@@ -72,8 +72,8 @@ Nos [experts en cybersécurité](/expertise/cybersecurite/) vous expliquent tout
 </tbody>
 </table>
 
-Grâce à notre Centre Opérationnel de Sécurité Évolutif (SEvOC), nous aidons les organisations à respecter les normes les plus élevées en matière de cybersécurité (RGPD, [DORA](/reglementation-dora/), NIS2, [ISO 27001:2022](/certification-iso-27001-iso-9001/)
-[Découvrez SEvOC](/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/)
+Grâce à notre Centre Opérationnel de Sécurité Évolutif (SEvOC), nous aidons les organisations à respecter les normes les plus élevées en matière de cybersécurité (RGPD, [DORA](/fr/ressources/reglementation-dora/), NIS2, [ISO 27001:2022](/fr/ressources/certification-iso-27001-iso-9001/)
+[Découvrez SEvOC](/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/)
 
 - Jusqu’à 2% du chiffre d’affaires mondial en amende
 - Mise en place de mesures correctives par les autorités compétentes
@@ -85,7 +85,7 @@ Grâce à notre Centre Opérationnel de Sécurité Évolutif (SEvOC), nous aidon
 **10 Millions d’euros.** C’est l'amende maximale à laquelle vous vous exposez en cas de non-conformité à NIS2.
 
 Faites évaluer votre conformité par des experts en cybersécurité, gestion du risque et conformité.
-[Consultez un expert](/contact/)
+[Consultez un expert](/fr/contact/)
 
 Victrix accompagne et soutient les entités essentielles et importantes dans leur mise en conformité NIS2. Notre **approche rigoureuse et nos consultants GRC certifiés** garantissent une mise en conformité personnalisée et adaptée à votre réalité d’affaires.
 
@@ -95,7 +95,7 @@ Nous identifions vos lacunes par rapport aux exigences de NIS2 et proposons des 
 
 ### Élaboration d’un plan d’action
 
-À la suite de l’[audit de conformité](/audit-cybersecurite/), nous collaborons avec vos équipes pour définir les étapes nécessaires et accélérer le processus de mise en conformité.
+À la suite de l’[audit de conformité](/fr/ressources/audit-cybersecurite/), nous collaborons avec vos équipes pour définir les étapes nécessaires et accélérer le processus de mise en conformité.
 
 ### Mise en conformité
 
@@ -107,7 +107,7 @@ Nous identifions vos lacunes par rapport aux exigences de NIS2 et proposons des 
 ### Suivi et amélioration continue
 
 Mettre en place des processus de surveillance et d’évaluation régulière.
-[Démarrez votre projet avec Victrix](/contact/)
+[Démarrez votre projet avec Victrix](/fr/contact/)
 
 ### 5 Objectifs principaux de la directive NIS2
 

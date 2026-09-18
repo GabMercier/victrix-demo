@@ -10,7 +10,7 @@ wpUrl: "/realite-etendue-xr-partenariat-agc/"
 **MONTRÉAL, LE 5 AOÛT 2025** — Victrix a l’immense honneur d’annoncer son partenariat exclusif avec [Auger Groupe Conseil](https://augergroupe.com/),**experts canadiens en réalité étendue (XR)**. Ce partenariat réaffirme notre engagement envers l’innovation et l’excellence, nous permettant ainsi d’offrir à nos clients du matériel et des solutions à la fine pointe de la technologie pour transformer leurs opérations et propulser leurs affaires.
 
 Victrix maintient sa position de chef de file en innovation en offrant des **technologies d’assistance à distance** qui améliorent l’apprentissage, la communication, la sécurité, la culture et la performance des organisations.
- [Contactez nos experts](/contact/)
+ [Contactez nos experts](/fr/contact/)
 
 Fondée en 1985, AGC s’est rapidement démarquée comme **expert en ingénierie industrielle**, une position qui s’est renforcée à travers les décennies. En 2016, l’entreprise trifluvienne se lance dans les projets de développement des compétences utilisant la réalité mixte (RM) et, à la suite d’un succès retentissant, devient partenaire avec des fournisseurs comme Microsoft, Digilens et Meta.
 
@@ -32,7 +32,7 @@ Aujourd’hui, grâce à Auger Groupe Conseil, de nombreux secteurs tirent profi
  • **Transport** : éducation interne sur les règlements de sécurité routière et opérationnelle, réalité virtuelle pour simulation routière, simulations de situations difficiles, exercices de prise de décision. 
  [Découvrez AGC](https://augergroupe.com/)
 
-En associant l’ingénierie de pointe et la créativité technologique d’AGC à la maîtrise en intégration, en [sécurité](/expertise/cybersecurite/) et en [accompagnement stratégique](/expertise/conseil-strategique/) de Victrix, ce partenariat ouvre la voie à des projets immersifs d’une qualité exceptionnelle.
+En associant l’ingénierie de pointe et la créativité technologique d’AGC à la maîtrise en intégration, en [sécurité](/fr/services/cybersecurite/) et en [accompagnement stratégique](/fr/services/conseil-strategique/) de Victrix, ce partenariat ouvre la voie à des projets immersifs d’une qualité exceptionnelle.
 
 AGC continue de **se concentrer sur la recherche et le développement de solutions XR** innovantes, tandis que Victrix vient bonifier l’offre en **assurant leur déploiement**,**leur intégration sécurisée** et **leur adoption optimale** en entreprise.
 
@@ -59,4 +59,4 @@ Marcel Lafontaine
 Président, AGC
 
 Vous souhaitez découvrir comment les technologies immersives**améliorent la culture**, **les conditions**, **la communication**, **la qualité**, **la sécurité** et **la performance** au travail? N’hésitez pas à contacter Victrix, vos experts en technologies de l’information et innovation.
- [Parlez à nos experts](/contact/)
+ [Parlez à nos experts](/fr/contact/)

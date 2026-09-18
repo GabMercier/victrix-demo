@@ -38,6 +38,11 @@ describe('préremplissage contact — clés → libellés', () => {
       sujet: 'A career',
       service: 'Cloud',
     });
+    // Catalogue de solutions (2026-09-18) : sujet dédié + service de la fiche.
+    expect(resolveContactPreset('fr', { sujet: 'solution', service: 'services-applicatifs' }, options.fr)).toEqual({
+      sujet: 'Une solution du catalogue',
+      service: 'Services applicatifs',
+    });
   });
 
   it("clé vide ou absente → '' ; option renommée au CMS → '' (tolérant, jamais d'erreur)", () => {

@@ -18,7 +18,8 @@ import JsonLd from '../../components/JsonLd.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
 import { useTranslations } from '../../i18n/ui';
-import { CONTACT_SUJET_LABELS } from '../../lib/contact/presets';
+import { resolveContactPreset } from '../../lib/contact/presets';
+import { getLocaleData } from '../../i18n/locale-data';
 
 /**
  * Pages génériques (collection `pages`, 2026-08-11) — une route statique par
@@ -115,10 +116,14 @@ export async function getStaticPaths() {
     // convertie en section de page générale. Les fiches viennent de la
     // collection `solutions` (tri `order`, vedette = première `featured`),
     // liens localisés ; un lien /contact transporte `?sujet=` (libellé de la
-    // langue de la clé « projet », src/lib/contact/presets.ts — la page
-    // contact ignore un sujet inconnu, tolérant) et `?produit=` (nom de la
-    // solution). Une seule section par page (enrich indexé par type) ; le
-    // renderer partagé casse le build si la section est posée ailleurs.
+    // langue de la clé « solution », src/lib/contact/presets.ts — la page
+    // contact ignore un sujet inconnu, tolérant), `?expertise=` (2026-09-18 :
+    // le champ OBLIGATOIRE « Service » restait vide — clé `contactService` de
+    // la FICHE, repli sur celle de la PAGE du catalogue) et `?produit=` (nom
+    // de la solution). Les libellés passent par resolveContactPreset : une
+    // option renommée au CMS → paramètre omis, jamais de build rouge. Une
+    // seule section par page (enrich indexé par type) ; le renderer partagé
+    // casse le build si la section est posée ailleurs.
     const catalogueSections = page.data.sections.filter((s) => s.type === 'solutions-catalogue');
     if (catalogueSections.length > 1) {
       throw new Error(
@@ -126,12 +131,24 @@ export async function getStaticPaths() {
       );
     }
     if (catalogueSections.length === 1) {
-      const subjectProject = CONTACT_SUJET_LABELS[lang].projet;
-      const contactHref = (href: string, productTitle: string): string => {
+      const contactOptions = await getLocaleData('contact', lang);
+      const contactHref = (
+        href: string,
+        productTitle: string,
+        serviceKey: (typeof page.data)['contactService'],
+      ): string => {
         if (!href) return '';
         const base = localizePath(href, lang);
         if (!/^\/contact\/?$/.test(href)) return base;
-        const params = new URLSearchParams({ sujet: subjectProject, produit: productTitle });
+        const preset = resolveContactPreset(
+          lang,
+          { sujet: 'solution', service: serviceKey || page.data.contactService },
+          contactOptions,
+        );
+        const params = new URLSearchParams();
+        if (preset.sujet) params.set('sujet', preset.sujet);
+        if (preset.service) params.set('expertise', preset.service);
+        params.set('produit', productTitle);
         return `${base}?${params.toString()}`;
       };
       const solutionEntries = (await getCollection('solutions'))
@@ -143,7 +160,7 @@ export async function getStaticPaths() {
         image: entry.data.image,
         sector: entry.data.sector,
         solutionType: entry.data.solutionType,
-        href: contactHref(entry.data.href, entry.data.title),
+        href: contactHref(entry.data.href, entry.data.title, entry.data.contactService),
         docHref: entry.data.docHref ? localizePath(entry.data.docHref, lang) : '',
       });
       const featuredEntry = solutionEntries.find((entry) => entry.data.featured);

@@ -7,11 +7,11 @@ topics: ["Cybersecurity"]
 slug: "nis2-directive"
 coverImage: "/wp-content/uploads/2024/11/design-sans-titre.jpg"
 seoTitle: "NIS2 Directive: Ensure your Compliance"
-wpUrl: "/en/nis2-directive/"
+wpUrl: "/en/ressources/nis2-directive/"
 ---
 The NIS2 directive **introduces new security requirements** for organizations operating within the European Union. For businesses, it is therefore essential to determine whether you are affected and, if so, how you can comply effectively.
 
-Our [cybersecurity experts](/en/expertise/cybersecurity/) explain everything you need to know about this directive and how to prepare for compliance.
+Our [cybersecurity experts](/en/services/cybersecurity/) explain everything you need to know about this directive and how to prepare for compliance.
 
 <a class="article-cta" href="/en/contact/">Get support for your compliance</a>
 
@@ -72,9 +72,9 @@ Our [cybersecurity experts](/en/expertise/cybersecurity/) explain everything you
 </tbody>
 </table>
 
-With our Scalable Security Operations Center we help organizations meet the highest cybersecurity standards (GDPR, [DORA](/en/dora-regulation/), NIS2, [ISO 27001:2022](/en/iso-27001-iso-9001-certifications/))
+With our Scalable Security Operations Center we help organizations meet the highest cybersecurity standards (GDPR, [DORA](/en/ressources/dora-regulation/), NIS2, [ISO 27001:2022](/en/ressources/iso-27001-iso-9001-certifications/))
 
-<a class="article-cta" href="/en/expertise/cybersecurity/scalable-security-operations-center/">Discover SEvOC</a>
+<a class="article-cta" href="/en/services/cybersecurity/scalable-security-operations-center/">Discover SEvOC</a>
 
 - Fines up to 2% of global annual turnover
 - Implementation of mandatory corrective measures enforced by authorities
@@ -95,7 +95,7 @@ We identify your gaps concerning NIS2 requirements and propose customized recomm
 
 ### Action Plan Development
 
-Following the [compliance audit](/en/cybersecurity-risk-audit/), we work with your teams to define the necessary steps and accelerate the compliance process.
+Following the [compliance audit](/en/ressources/cybersecurity-risk-audit/), we work with your teams to define the necessary steps and accelerate the compliance process.
 
 ### Implementation of Compliance Measures
 

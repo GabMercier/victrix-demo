@@ -17,7 +17,7 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  *    transparent) au lieu du voile Bleu nuit uniforme, hauteur 640 ;
  *  - `overlay: "blanc"` (AJOUTÉ 2026-08-17, expertisesparent.css §HeroSection
  *    — retour user « le héros doit être clair ») : héros CLAIR — double
- *    dégradé verbatim maquette (blanc 90° + beige #F1E8DF≈token beige 105°)
+ *    dégradé verbatim maquette (blanc 90° + beige 105° — teinte = token beige, #F6F3EF depuis la palette raffinée du 2026-09-18 ; la maquette posait #F1E8DF)
  *    sur la photo, titre neutral-900, accent titleHighlight en BLEU-500
  *    (primary — pas le bleu pâle des héros sombres), lead neutral-600,
  *    bouton 2 « Button-M-transparent » (blanc 50 %, bordure neutral-300,
@@ -103,9 +103,9 @@ const blanc = overlay === 'blanc';
 // Paliers disjoints (max-md / md:max-lg / lg) : aucune classe à neutraliser.
 const veilClass = blanc
   ? [
-      'max-md:bg-[linear-gradient(90deg,rgba(250,247,244,0.97)_0%,rgba(250,247,244,0.88)_100%)]',
-      'md:max-lg:bg-[linear-gradient(90deg,rgba(250,247,244,0.97)_0%,rgba(250,247,244,0.92)_60%,rgba(250,247,244,0.15)_100%)]',
-      'lg:bg-[linear-gradient(105deg,#F1E8DF_15.7%,rgba(241,232,223,0.6)_29.37%,rgba(241,232,223,0.1)_67.12%),linear-gradient(90deg,#FFFFFF_0%,rgba(255,255,255,0.8)_50%,rgba(255,255,255,0)_100%)]',
+      'max-md:bg-[linear-gradient(90deg,rgba(252,249,245,0.97)_0%,rgba(252,249,245,0.88)_100%)]',
+      'md:max-lg:bg-[linear-gradient(90deg,rgba(252,249,245,0.97)_0%,rgba(252,249,245,0.92)_60%,rgba(252,249,245,0.15)_100%)]',
+      'lg:bg-[linear-gradient(105deg,#F6F3EF_15.7%,rgba(246,243,239,0.6)_29.37%,rgba(246,243,239,0.1)_67.12%),linear-gradient(90deg,#FFFFFF_0%,rgba(255,255,255,0.8)_50%,rgba(255,255,255,0)_100%)]',
     ]
   : gradient
     ? [
@@ -171,7 +171,7 @@ const titleParts =
   }
   {/* Voile « blanc » : DEUX dégradés superposés, valeurs verbatim maquette
       (expertisesparent.css §HeroSection Overlay ×2) — lavis beige chaud par
-      dessus le fondu blanc gauche→droite. #F1E8DF = token beige. Appliqués à
+      dessus le fondu blanc gauche→droite. #F6F3EF = token beige (palette raffinée 2026-09-18). Appliqués à
       partir de `lg` ; en dessous, voir « ZONE LISIBLE DU VOILE » (entête). */}
   <div class:list={['absolute inset-0 -z-10', ...veilClass]} aria-hidden="true"></div>
   <div class="container-site py-24 w-full">

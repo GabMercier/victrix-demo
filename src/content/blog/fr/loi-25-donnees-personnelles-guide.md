@@ -11,7 +11,7 @@ wpUrl: "/loi-25-donnees-personnelles-guide/"
 ---
 ![Loi 25 sur la protection des données personnelles représentée par une balance digitale.](/wp-content/uploads/2024/09/image-1-v2-1.jpg)
 
-Les organisations conjuguent une multitude d'exigences et d'obligations légales, dont la notoire [loi 25 sur la protection des données personnelles](/expertise/conseil-strategique/conformite-loi-25/). Il est donc essentiel d’en connaître toutes les subtilités pour assurer votre conformité à ces nouvelles dispositions législatives.
+Les organisations conjuguent une multitude d'exigences et d'obligations légales, dont la notoire [loi 25 sur la protection des données personnelles](/fr/services/conseil-strategique/conformite-loi-25/). Il est donc essentiel d’en connaître toutes les subtilités pour assurer votre conformité à ces nouvelles dispositions législatives.
 
 Parcourez notre **guide Loi 25 données personnelles**pour comprendre l’impact sur votre organisation, vos risques et comment vous y conformer.
 
@@ -28,7 +28,7 @@ Parcourez notre **guide Loi 25 données personnelles**pour comprendre l’impact
 - Demander un [consentement clair et informé](https://www.quebec.ca/gouvernement/travailler-gouvernement/travailler-fonction-publique/services-employes-etat/conformite/protection-des-renseignements-personnels/consentement/consentement-pour-lutilisation-ou-la-communication-de-renseignements-personnels) avant la collecte ou l’utilisation de données sensibles
 
 Nous mettons également à votre disposition**un questionnaire en 7 points** pour évaluer votre niveau de conformité. 
- [Remplir le questionnaire](/expertise/conseil-strategique/conformite-loi-25/)
+ [Remplir le questionnaire](/fr/services/conseil-strategique/conformite-loi-25/)
 
 ### Quelques exemples d’incidents de confidentialité
 
@@ -38,7 +38,7 @@ La [Commission d’Accès à l’Information](https://www.cai.gouv.qc.ca/protect
 - Une utilisation frauduleuse ou la communication non autorisée de données personnelles
 - La perte ou l’atteinte à la protection du renseignement
 
-Ces incidents surviennent lorsqu’une **organisation est victime d’une cyberattaque** (phishing, [rançongiciel](/ransomware-rancongiciels/), etc.) ou qu’un membre du personnel ne respecte pas la politique de sécurité en vigueur. Par exemple, en consultant ou communiquant des renseignements personnels sans autorisation ou à la mauvaise personne.
+Ces incidents surviennent lorsqu’une **organisation est victime d’une cyberattaque** (phishing, [rançongiciel](/fr/ressources/ransomware-rancongiciels/), etc.) ou qu’un membre du personnel ne respecte pas la politique de sécurité en vigueur. Par exemple, en consultant ou communiquant des renseignements personnels sans autorisation ou à la mauvaise personne.
 
 ### Sanctions financières
 
@@ -64,11 +64,11 @@ Les violations de la vie privée peuvent entraîner une perte de confiance de la
 
 Les personnes dont les renseignements personnels ont été divulgués sont en droit de vous poursuivre pour dommages et intérêts, ce qui entraîne des coûts supplémentaires.
 
-<a class="article-cta" href="/contact/">Parlez à un expert Loi 25 et cybersécurité</a>
+<a class="article-cta" href="/fr/contact/">Parlez à un expert Loi 25 et cybersécurité</a>
 
-Victrix vous offre un service de mise en conformité sur mesure pour aider votre organisation à respecter les exigences de la Loi 25 et éviter les sanctions financières. Nos experts en [cybersécurité pour le secteur public et privé](/expertise/cybersecurite/) vous accompagnent à chaque étape, de l’identification des risques de non-conformité à la mise en place de mesures correctives.
+Victrix vous offre un service de mise en conformité sur mesure pour aider votre organisation à respecter les exigences de la Loi 25 et éviter les sanctions financières. Nos experts en [cybersécurité pour le secteur public et privé](/fr/services/cybersecurite/) vous accompagnent à chaque étape, de l’identification des risques de non-conformité à la mise en place de mesures correctives.
 
 ### Accompagnement Loi 25 personnalisé par Victrix
 
 Besoin d’un soutien professionnel pour votre mise en conformité sur la Loi 25? 
- [Démarrez votre projet avec Victrix](/contact/)
+ [Démarrez votre projet avec Victrix](/fr/contact/)

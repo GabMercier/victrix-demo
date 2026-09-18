@@ -145,6 +145,15 @@ Deux options légères à la place :
 | 5 | Option (b) sujet « Une solution du catalogue » | 1 h |
 | — | Traduction EN des 16 fiches | contenu (Victrix) |
 
+> **DÉCISIONS PRISES le 2026-09-18 (Gabriel) — toutes les recommandations :**
+> (1) fiches PAR SECTIONS ; (2) formulaire `o-studio` SUR la fiche ; (3) sujet
+> « Une solution du catalogue » : **OUI — livré le jour même** (clé `solution`
+> de `src/lib/contact/presets.ts`, options Contact FR/EN, plus le champ
+> `contactService` par fiche qui préremplit « Service », jusque-là vide et
+> obligatoire) ; (4) prix publiés, fiches en `noindex` jusqu'à #1634 ; (5) FR
+> d'abord, EN = traduction de contenu ensuite ; (6) story ADO à créer. Les lots
+> 1 à 4 (≈ 2,5 j) sont débloqués ; le lot 5 est fait.
+
 Décisions : (1) fiches par sections (recommandé) ou gabarit fixe ; (2)
 formulaire `o-studio` sur la fiche (recommandé) ou simple bouton vers Contact ;
 (3) option (b) oui/non ; (4) prix publics — attendre #1634 ou publier en

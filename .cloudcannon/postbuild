@@ -8,3 +8,8 @@ set -e
 # generated values merge with the hand-written keys there (generate hard-sets
 # id_key: _bookshop_name and appends values, preserving style/remove_extra_inputs).
 npx @bookshop/generate
+
+# Liens internes (2026-09-18) — AVERTISSEMENT dans le journal de build, jamais
+# bloquant : une sauvegarde de contenu ne doit pas faire échouer l'hébergeur
+# pour un lien. Le blocage se fait en CI (npm run check:links -- --strict).
+node scripts/check-internal-links.mjs || true

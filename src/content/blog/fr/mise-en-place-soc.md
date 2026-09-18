@@ -9,19 +9,19 @@ coverImage: "/wp-content/uploads/2022/02/solution-sevoc-pourquoi.jpg"
 seoTitle: "Mise en place d'un SOC adapté à vos opérations TI"
 wpUrl: "/mise-en-place-soc/"
 ---
-Avant d’entrer dans le vif du sujet de la mise en place d’un [SOC (Centre opérationnel de sécurité)](/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/), abordons d'abord un sujet tabou : **ce ne sont pas toutes les compagnies qui ont les moyens et les ressources pour bâtir un SOC interne**.
+Avant d’entrer dans le vif du sujet de la mise en place d’un [SOC (Centre opérationnel de sécurité)](/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/), abordons d'abord un sujet tabou : **ce ne sont pas toutes les compagnies qui ont les moyens et les ressources pour bâtir un SOC interne**.
 
-La réalité, c'est qu’à moins que vous ne soyez responsable des TI d’une organisation large et complexe, il est beaucoup plus avantageux de faire appel à un [fournisseur de services de sécurité gérés (MSSP)](/expertise/services-ti-geres/). La construction d’un SOC à partir de zéro nécessite des investissements importants et de nombreuses ressources.
+La réalité, c'est qu’à moins que vous ne soyez responsable des TI d’une organisation large et complexe, il est beaucoup plus avantageux de faire appel à un [fournisseur de services de sécurité gérés (MSSP)](/fr/services/services-ti-geres/). La construction d’un SOC à partir de zéro nécessite des investissements importants et de nombreuses ressources.
 
 Bien entendu, la mise en place d’un SOC n’est pas impossible, à condition de **connaitre ce que vous avez** et de **bien mesurer l’investissement en temps, argent et ressources** que cela implique.
 
-Notre guide complet vous aidera à comprendre les bases d’un SOC efficace, de la **définition d’objectifs réalistes** à la **structure d’une équipe SOC**, sans négliger les **politiques et technologies**. Après votre lecture, vous serez en mesure de déterminer s’il est dans l'intérêt de votre organisation d’[externaliser le SOC](/externalisation-soc-avantages-inconvenients/) ou d’en créer un en interne.
+Notre guide complet vous aidera à comprendre les bases d’un SOC efficace, de la **définition d’objectifs réalistes** à la **structure d’une équipe SOC**, sans négliger les **politiques et technologies**. Après votre lecture, vous serez en mesure de déterminer s’il est dans l'intérêt de votre organisation d’[externaliser le SOC](/fr/ressources/externalisation-soc-avantages-inconvenients/) ou d’en créer un en interne.
 
 ### Prêt à accélérer la détection et réponse et favoriser l’amélioration continue de votre posture de sécurité?
 
 Réservez une consultation et posez toutes vos questions sur notre SOC évolutif (SEvOC).
 
-<a class="article-cta" href="/contact/">Parlez à un expert</a>
+<a class="article-cta" href="/fr/contact/">Parlez à un expert</a>
 
 Un SOC moderne est un atout stratégique pour toute organisation qui cherche à renforcer sa posture de sécurité. Le SOC centralise des opérations clés comme :
 
@@ -35,7 +35,7 @@ Pour les responsables TI, le SOC offre un cadre de sécurité qui permet de **su
  
 L’offre SEvOC de Victrix se distingue en offrant **un cadre évolutif qui va au-delà des capacités d’un SOC standard**. Notre offre inclus des fonctions comme la gestion des vulnérabilités, la veille des menaces (*threat intelligence*), l’automatisation et l’orchestration (SOAR), des rapports et indicateurs de performance sur mesure, ainsi que l’amélioration continue et la gouvernance.
 
-<a class="article-cta" href="/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez notre SOC évolutif</a>
+<a class="article-cta" href="/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez notre SOC évolutif</a>
 
 Avant de lancer votre projet de mise en place d’un SOC, il est important de **connaitre ce dont vous disposez**. C’est votre premier obstacle à la mise en place de contrôles de sécurité efficaces et adaptés à vos besoins. Commencez par vous demander ce qui est vraiment important pour votre entreprise.
 
@@ -50,7 +50,7 @@ C’est seulement après avoir répondu à ces questions que vous serez en mesur
 
 Plusieurs années peuvent être nécessaires pour **obtenir le budget nécessaire, lancer les projets, recruter les ressources, convaincre la direction et commencer à mesurer le retour sur investissement**. Vous devez vous préparer à cette éventualité et adapter vos attentes en conséquence.
 
-<a class="article-cta" href="/contact/">Obtenez nos conseils d'experts</a>
+<a class="article-cta" href="/fr/contact/">Obtenez nos conseils d'experts</a>
 
 ### Déterminer des objectifs réalistes
 
@@ -257,4 +257,4 @@ L'évolution peut entrainer des coûts supplémentaires ou des modifications du 
 
 SEvOC est synonyme de détection plus efficace, de réponses plus intelligentes et d’opérations évolutives. Définissons ensemble le modèle SOC adapté à votre organisation.
 
-<a class="article-cta" href="/contact/">Discutez avec un expert SEvOC</a>
+<a class="article-cta" href="/fr/contact/">Discutez avec un expert SEvOC</a>

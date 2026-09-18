@@ -29,7 +29,11 @@ interface Props {
 
 const { lang = defaultLocale } = Astro.props;
 const t = useTranslations(lang);
-const f = (await getSiteText(lang)).footer;
+const siteText = await getSiteText(lang);
+const f = siteText.footer;
+// Lien « Gérer mes témoins » (2026-09-18, Loi 25) : rouvre le bandeau de
+// consentement (écouteur dans ConsentBanner.astro) ; '' = masqué.
+const manageLabel = siteText.consent.manage;
 // Année du © calculée au build (elle était figée à 2026 en dur).
 const year = new Date().getFullYear();
 
@@ -141,6 +145,19 @@ const smallMutedClass = 'text-sm font-semibold text-neutral-700';
                 </a>
               </li>
             ))
+          }
+          {
+            manageLabel && (
+              <li>
+                <button
+                  type="button"
+                  data-consent-manage
+                  class:list={['bg-transparent border-0 p-0 cursor-pointer hover:text-primary', smallMutedClass]}
+                >
+                  {manageLabel}
+                </button>
+              </li>
+            )
           }
         </ul>
       </nav>

@@ -7,9 +7,9 @@ topics: ["Cybersecurity", "Managed services"]
 slug: "soc-outsourcing-pros-cons"
 coverImage: "/wp-content/uploads/2023/10/istock-1310129244-1.jpg"
 seoTitle: "SOC Outsourcing Services for SMBs: Pros & Cons"
-wpUrl: "/en/soc-outsourcing-pros-cons/"
+wpUrl: "/en/ressources/soc-outsourcing-pros-cons/"
 ---
-SOC outsourcing is a hot topic when it comes to cybersecurity for modern businesses. Many SMB managers and owners wonder whether it’s better to opt for an in-house SOC team or [external IT security services](/en/expertise/cybersecurity/).
+SOC outsourcing is a hot topic when it comes to cybersecurity for modern businesses. Many SMB managers and owners wonder whether it’s better to opt for an in-house SOC team or [external IT security services](/en/services/cybersecurity/).
 
 The answer isn’t as simple as the question. Choosing the best SOC for your company depends on many factors. To determine **which internal or external SOC solution is ideal for your organization**, we invite you to take a look at our guide.
 
@@ -51,7 +51,7 @@ In the digital age, having a security operations center isn’t an option—it�
 
 ![The many advantages of outsourcing your SOC.](/wp-content/uploads/2023/10/istock-1325680818.jpg)
 
-The main advantage of an external SOC is continuous monitoring of your information system. A good [managed service provider](/en/expertise/managed-it-services/) offers **24/7 monitoring, detection and response to security incidents and events**.
+The main advantage of an external SOC is continuous monitoring of your information system. A good [managed service provider](/en/services/managed-it-services/) offers **24/7 monitoring, detection and response to security incidents and events**.
 
 Victrix provides an external SOC management service with exclusive offers, such as access to a comprehensive security audit based on reliable real-time data. We can also offer an optional service to help you **perform vulnerability assessments**, enabling you to take targeted action to reduce your risk.
 
@@ -70,7 +70,7 @@ In most cases, **outsourced service offers greater cost effectiveness and expert
 
 Victrix offers **an exclusive managed security service**, based on collaboration and knowledge transfer. We distinguish ourselves by going beyond the traditional IT service provider - **our team becomes a true extension of your internal IT team**.
 
-If you're looking for a reputable external SOC service, our experts are here for you. Learn all about our [Scalable Security Operations Center (SEvOC)](/en/expertise/cybersecurity/scalable-security-operations-center/) and how our experts help you maintain an impeccable security posture.
+If you're looking for a reputable external SOC service, our experts are here for you. Learn all about our [Scalable Security Operations Center (SEvOC)](/en/services/cybersecurity/scalable-security-operations-center/) and how our experts help you maintain an impeccable security posture.
 
 ### A SOC Solution That Grows with Your Business
 

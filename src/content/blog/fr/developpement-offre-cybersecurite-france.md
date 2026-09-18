@@ -23,4 +23,4 @@ Chez Victrix, nous proposons une gamme de services complète, permettant aux ent
 ### **Prêt à relever les défis de la cybersécurité ?**
 
 Vous souhaitez en savoir plus sur nos offres en France ? N'hésitez pas à nous contacter. Nos équipes sont à votre disposition pour répondre à toutes vos questions. 
- [Contactez-nous](/contact/)
+ [Contactez-nous](/fr/contact/)

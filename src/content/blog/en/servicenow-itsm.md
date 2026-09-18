@@ -7,13 +7,13 @@ topics: ["Managed services"]
 slug: "servicenow-itsm"
 coverImage: "/wp-content/uploads/2025/02/victrix.png"
 seoTitle: "ServiceNow ITSM: Business-Led Strategy to Scale IT Operations"
-wpUrl: "/en/servicenow-itsm/"
+wpUrl: "/en/ressources/servicenow-itsm/"
 ---
 **ServiceNow ITSM** is the preferred choice of many organizations, and for good reason. It is the backbone of modern IT operations, helping businesses streamline their processes, enhance service delivery, and align IT with their strategic goals.
 
 ServiceNow stands out as a market leader by offering a **cloud-based AI-powered ITSM platform** that accelerates the digital transformation of IT operations while reducing downtime.
 
-Our [certified ServiceNow consultants](/en/expertise/productivity-consulting/servicenow/) are happy to share their ITSM expertise. Discover our business-driven strategy to **grow your IT operations and maximize your ROI** with ServiceNow ITSM.
+Our [certified ServiceNow consultants](/en/services/productivity-consulting/servicenow/) are happy to share their ITSM expertise. Discover our business-driven strategy to **grow your IT operations and maximize your ROI** with ServiceNow ITSM.
 [Let's Discuss Your ITSM Needs](/en/contact/)
 
 ### The Key Differences Between Traditional IT Support and ITSM
@@ -34,7 +34,7 @@ By implementing a structured ITSM framework, **businesses standardize their proc
 
 #### AI and Automation in IT Management
 
-ServiceNow integrates automation technologies powered by [artificial intelligence](/en/expertise/artificial-intelligence/) to optimize IT operations, including:
+ServiceNow integrates automation technologies powered by [artificial intelligence](/en/services/intelligence-artificielle/) to optimize IT operations, including:
 
 - **Virtual Agents:** AI-powered chatbots handle common IT requests, reducing human intervention.
 - **Predictive Intelligence:** Machine learning analyzes historical data to suggest proactive solutions.
@@ -105,7 +105,7 @@ Before proceeding with implementation, it is essential to conduct an ITSM maturi
 
 The **lack of clearly defined goals** is a primary cause of failure, as it can lead to misalignment with business strategies. **Inadequate training** often results in low adoption rates, leading to poor efficiency gains. Finally, **neglecting change management** creates resistance among employees, making ITSM integration more challenging.
 
-For these reasons, we always recommend working with a [certified ServiceNow partner](/en/expertise/productivity-consulting/servicenow/). With Victrix’s expertise, you will be able to define your objectives and **secure a clear, detailed roadmap** for your ServiceNow ITSM implementation.
+For these reasons, we always recommend working with a [certified ServiceNow partner](/en/services/productivity-consulting/servicenow/). With Victrix’s expertise, you will be able to define your objectives and **secure a clear, detailed roadmap** for your ServiceNow ITSM implementation.
 
 A partnership with experts ensures a **smooth and successful deployment,** perfectly tailored to your company's needs and objectives. With Victrix's expertise, you will be able to:
 

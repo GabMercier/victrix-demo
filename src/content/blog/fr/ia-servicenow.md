@@ -9,16 +9,16 @@ coverImage: "/wp-content/uploads/2025/03/design-sans-titre-2.png"
 seoTitle: "IA et ServiceNow: performance, conformité et gouvernance"
 wpUrl: "/ia-servicenow/"
 ---
-**L’[intelligence artificielle](/expertise/intelligence-artificielle/) n'est plus un pari, mais un véritable levier de performance.**
+**L’[intelligence artificielle](/fr/services/intelligence-artificielle/) n'est plus un pari, mais un véritable levier de performance.**
 
-En intégrant l’IA à même sa plateforme de services, [ServiceNow](/expertise/productivite/servicenow/) permet aux organisations privées et publiques d’**automatiser**, d’**analyser** et de **gouverner leurs opérations** avec fiabilité.
+En intégrant l’IA à même sa plateforme de services, [ServiceNow](/fr/services/productivite/servicenow/) permet aux organisations privées et publiques d’**automatiser**, d’**analyser** et de **gouverner leurs opérations** avec fiabilité.
 
 Pourtant, pour tenir ses promesses, l’IA doit être encadrée et maîtrisée.
 
 En tant que **partenaire certifié ServiceNow**, Victrix aide les directions TI à tirer parti de ses capacités pour accélérer la prestation de services, réduire les coûts et renforcer la conformité.
 
 Découvrez **comment l’IA et ServiceNow optimise vos flux de travail**, **convertit la productivité en valeur mesurable** et **sécurise votre transformation numérique**.
- [Consultez un expert IA et ServiceNow](/contact/)
+ [Consultez un expert IA et ServiceNow](/fr/contact/)
 
 ### Les ambitions
 
@@ -39,13 +39,13 @@ C'est là que l'accompagnement d'un partenaire certifié comme Victrix fait tout
 - [Amy Lokey
 Vice-présidente exécutive et chef de l'expérience, ServiceNow](https://www.servicenow.com/blogs/2024/agentic-ai-evolution-great-experiences)
 
-Qu’il s’agisse de **réduire les tâches manuelles et répétitives**, d’**anticiper les incidents** ou d’**analyser les tendances** pour optimiser vos flux de travail, nous [trouverons des cas d’usage](/expertise/intelligence-artificielle/analyse-opportunites-ia/) en lien avec votre réalité et vos objectifs d’affaires.
+Qu’il s’agisse de **réduire les tâches manuelles et répétitives**, d’**anticiper les incidents** ou d’**analyser les tendances** pour optimiser vos flux de travail, nous [trouverons des cas d’usage](/fr/services/intelligence-artificielle/analyse-opportunites-ia/) en lien avec votre réalité et vos objectifs d’affaires.
 
 ## Victrix, partenaire certifié ServiceNow
 
 Nous pouvons vous aider à déterminer où l'IA et ServiceNow auront l'impact le plus significatif sur vos opérations.
  
-[Explorez vos opportunités IA et ServiceNow](/contact/)
+[Explorez vos opportunités IA et ServiceNow](/fr/contact/)
 
 ServiceNow **intègre désormais l’IA dans chaque couche de la plateforme**: analyse, service, sécurité et expérience utilisateur. 
  Voici les **quatre capacités clés** qui transforment la productivité en avantage concurrentiel.
@@ -128,7 +128,7 @@ Les **agents IA de ServiceNow** sont des systèmes autonomes, intégrés au cœu
 
 Ces capacités accélèrent vos processus et sont de véritables leviers de valeur ; encore faut-il les encadrer avec rigueur. C’est là où l’intervention d’un expert en gouvernance IA comme Victrix prend tout son sens. 
  
-[Évaluez votre gouvernance IA](/contact/)
+[Évaluez votre gouvernance IA](/fr/contact/)
 
 Les capacités de l’IA ServiceNow peuvent vous procurer de la valeur durable, à condition d’être gouvernées rigoureusement. Avec la **tour de contrôle IA** (*AI Control Tower*), ServiceNow offre une **vue centralisée sur tous vos modèles**, **ensembles de données** et **flux de travail IA**.
 
@@ -140,7 +140,7 @@ Les capacités de l’IA ServiceNow peuvent vous procurer de la valeur durable, 
 
 ## Victrix aide les organisations à déployer la tour de contrôle IA pour concilier innovation et conformité.
 
-<a class="article-cta" href="/contact/">Consultez nos experts IA et ServiceNow</a>
+<a class="article-cta" href="/fr/contact/">Consultez nos experts IA et ServiceNow</a>
 
 L’**IA de ServiceNow** améliore la performance, la conformité et la visibilité tout en éliminant la complexité des intégrations tierces. 
  **Victrix vous aide à la gouverner et à l’adapter à votre réalité organisationnelle.** 
@@ -153,4 +153,4 @@ L’**IA de ServiceNow** améliore la performance, la conformité et la visibili
 
 ### Pour tirer le maximum de valeur de vos projets IA et ServiceNow, nos experts vous accompagnent de la stratégie à l’adoption.
 
-<a class="article-cta" href="/contact/">Planifiez vore projet IA et ServiceNow</a>
+<a class="article-cta" href="/fr/contact/">Planifiez vore projet IA et ServiceNow</a>

@@ -107,6 +107,15 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
    la numérotation »** (coché par défaut) permet de le retirer : à décocher
    quand la grille est un inventaire — la page Secteurs, par exemple — et non
    une démarche ordonnée.
+   **Catalogue de solutions → Contact (18 sept. 2026).** Quand le lien d'une
+   fiche mène à Contact, le bouton « Découvrir » préremplit trois champs : le
+   sujet « Une solution du catalogue », la précision (nom de la solution) et
+   **« Service »** — champ obligatoire qui restait vide auparavant. Le service
+   vient du champ **« Contact — service présélectionné »** de la fiche ; vide,
+   c'est celui réglé sur la page du catalogue (« Services applicatifs »).
+   **Témoins (Loi 25).** Les pieds de page portent un lien **« Gérer mes
+   témoins »** qui rouvre le bandeau de consentement pour changer d'avis ; son
+   libellé s'édite dans « Textes du site » → Consentement (vide = lien masqué).
 6. Par défaut la page est **non indexée** (invisible des moteurs de recherche —
    voulu pour les campagnes). L'interrupteur « noindex » est là si une page
    doit un jour être indexée.

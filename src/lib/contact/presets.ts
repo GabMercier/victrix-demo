@@ -22,7 +22,11 @@
  */
 import type { Locale } from '../../i18n/config';
 
-export const CONTACT_SUJET_KEYS = ['projet', 'expertise', 'carriere', 'autre'] as const;
+// « solution » AJOUTÉE 2026-09-18 (décision catalogue Ø Studio, option b) : UN
+// sujet « Une solution du catalogue » plutôt que les 16 solutions dans la
+// liste — le nom de la solution voyage dans ?produit= (« Précisez votre
+// demande »), le sujet dit seulement d'où vient la demande.
+export const CONTACT_SUJET_KEYS = ['projet', 'solution', 'expertise', 'carriere', 'autre'] as const;
 export type ContactSujetKey = (typeof CONTACT_SUJET_KEYS)[number];
 
 export const CONTACT_SERVICE_KEYS = [
@@ -37,8 +41,20 @@ export type ContactServiceKey = (typeof CONTACT_SERVICE_KEYS)[number];
 
 /** Clé → libellé attendu dans « De quoi souhaitez-vous parler ? » (par langue). */
 export const CONTACT_SUJET_LABELS: Record<Locale, Record<ContactSujetKey, string>> = {
-  fr: { projet: 'Un projet', expertise: 'Une expertise', carriere: 'Une carrière', autre: 'Autre' },
-  en: { projet: 'A project', expertise: 'An area of expertise', carriere: 'A career', autre: 'Other' },
+  fr: {
+    projet: 'Un projet',
+    solution: 'Une solution du catalogue',
+    expertise: 'Une expertise',
+    carriere: 'Une carrière',
+    autre: 'Autre',
+  },
+  en: {
+    projet: 'A project',
+    solution: 'A catalogue solution',
+    expertise: 'An area of expertise',
+    carriere: 'A career',
+    autre: 'Other',
+  },
 };
 
 /** Clé → libellé attendu dans « Service » (par langue). */

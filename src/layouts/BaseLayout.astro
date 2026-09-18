@@ -95,7 +95,9 @@ const activeAnnounceId = await getActiveAnnounceId();
 
 const SITE_NAME = t.siteName;
 const fullTitle = title ? `${title} — ${SITE_NAME}` : SITE_NAME;
-const metaDescription = description ?? t.defaultDescription;
+// `||` et non `??` : une description VIDÉE au CMS ('' — incident du 2026-09-18)
+// retombe elle aussi sur la description par défaut, jamais de balise vide.
+const metaDescription = description || t.defaultDescription;
 
 // Canonical + per-locale alternates for hreflang and the language switch.
 const altPath = altLocalePath ?? swapLocale(Astro.url.pathname, other);

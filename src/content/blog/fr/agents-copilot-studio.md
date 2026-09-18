@@ -21,13 +21,13 @@ Déployer un agent intelligent sur mesure, c’est offrir à vos employés un ou
 - Anticipe vos besoins et s’adapte facilement à de nouvelles tâches
 - Répond rapidement à vos requêtes, peu importe le jour où l’heure à laquelle vous le contactez
 
-Les fonctions d'IA générative offertes par les modèles de langage (LLM) comme ChatGPT et [Microsoft 365 Copilot](/expertise/productivite/copilot-microsoft-365/) ne sont qu’**une infime partie de ce que l’[intelligence artificielle](/expertise/intelligence-artificielle/) peut faire pour améliorer la productivité de votre organisation** tout en rehaussant l’expérience de vos employés et clients.
+Les fonctions d'IA générative offertes par les modèles de langage (LLM) comme ChatGPT et [Microsoft 365 Copilot](/fr/services/productivite/copilot-microsoft-365/) ne sont qu’**une infime partie de ce que l’[intelligence artificielle](/fr/services/intelligence-artificielle/) peut faire pour améliorer la productivité de votre organisation** tout en rehaussant l’expérience de vos employés et clients.
 
-Dans cet article, vous découvrirez comment faire passer votre entreprise au niveau supérieur en [déployant un agent IA intelligent](/expertise/productivite/copilot-studio/), **entraîné sur vos bases de connaissances et développé spécifiquement pour votre contexte organisationnel.**
+Dans cet article, vous découvrirez comment faire passer votre entreprise au niveau supérieur en [déployant un agent IA intelligent](/fr/services/productivite/copilot-studio/), **entraîné sur vos bases de connaissances et développé spécifiquement pour votre contexte organisationnel.**
 
 ### Nous vous aidons à bâtir votre premier agent intelligent sur mesure rapidement.
 
-<a class="article-cta" href="/contact/">Consultez un expert Copilot Studio et Azure AI</a>
+<a class="article-cta" href="/fr/contact/">Consultez un expert Copilot Studio et Azure AI</a>
 
 ### Gagner du temps
 
@@ -54,7 +54,7 @@ Ce ne sont que quelques exemples parmi tant d’autres, où un **agent IA intell
 ### Optimisez la façon dont vos employés ont accès à l'information et interagissent avec vos processus
 
 Offrez-leur un agent intelligent sur mesure, un véritable *copilote* capable de stimuler leur productivité. 
-[Créez votre agent intelligent avec Victrix](/contact/)
+[Créez votre agent intelligent avec Victrix](/fr/contact/)
 
 Avec une expertise Copilot Studio et Azure OpenAI, Victrix vous accompagne pour la conception et la **mise en œuvre d’agents intelligents Copilot sur mesure**. 
  Commencez à créer des agents intelligents capables **d’interagir, de répondre** et surtout **d’agir**, tout en s’intégrant à vos processus d’entreprise et vos données métiers. 
@@ -81,14 +81,14 @@ Chez Victrix, nous accompagnons des organisations dans la **création d’agents
 
 ### Ces cas vous inspirent, mais vous aimeriez découvrir comment ces agents vous aident à atteindre vos objectifs?
 
-<a class="article-cta" href="/contact/">Demandez une démo</a>
+<a class="article-cta" href="/fr/contact/">Demandez une démo</a>
 
 ## Donnez les outils à vos équipes pour performer. Créez votre agent Copilot intelligent.
 
 Chez Victrix, nous vous accompagnons à chaque étape. De l’identification des cas d’usage à la mise en production, en passant par la gouvernance TI. Parlez à un expert Copilot chez Victrix et **commencez à créer vos propres agents sur mesure** dès maintenant.  
  
- [Planifier une consultation](/contact/)
+ [Planifier une consultation](/fr/contact/)
 
 ### Consultez nos experts pour découvrir toutes les intégrations possibles d'un agent intelligent sur mesure avec vos systèmes actuels
 
-<a class="article-cta" href="/contact/">Discutez avec un expert Copilot et Azure AI</a>
+<a class="article-cta" href="/fr/contact/">Discutez avec un expert Copilot et Azure AI</a>

@@ -1365,6 +1365,23 @@ collections_config:
         comment: >-
           Panneau vedette seulement. Sans préfixe de langue, comme le lien de
           la carte.
+      contactService:
+        # 2026-09-18 — le bouton « Découvrir » arrivait sur un formulaire de
+        # contact dont le champ OBLIGATOIRE « Service » restait vide.
+        type: select
+        label: Contact — service présélectionné
+        comment: >-
+          Quand le lien de la carte mène à Contact : choix prérempli dans la
+          liste « Service ». Vide = le service réglé sur la page du catalogue
+          (« Services applicatifs »).
+        options:
+          empty_type: string
+          allow_empty: true
+          values: _select_data.contact_services
+          value_key: cle
+          preview:
+            text:
+              - key: libelle
 
   # Textes du site (2026-08-11) — chaînes d'interface éditables (un JSON par
   # langue dans src/data/site, patron de la collection navigation). Premier
@@ -1495,6 +1512,15 @@ collections_config:
         options:
           empty_type: string
         label: Bouton « Refuser »
+      manage:
+        type: text
+        options:
+          empty_type: string
+        label: Lien « Gérer mes témoins » (pied de page)
+        comment: >-
+          Lien des pieds de page qui rouvre ce bandeau pour changer d'avis
+          (Loi 25 : retirer son consentement doit être aussi simple que le
+          donner). Vide = lien masqué.
       # --- Page « introuvable » (erreur 404) --------------------------------
       notFound:
         type: object
@@ -2567,6 +2593,8 @@ _select_data:
   contact_sujets:
     - cle: projet
       libelle: Un projet / A project
+    - cle: solution
+      libelle: Une solution du catalogue / A catalogue solution
     - cle: expertise
       libelle: Une expertise / An area of expertise
     - cle: carriere

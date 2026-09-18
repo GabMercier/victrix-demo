@@ -7,11 +7,11 @@ topics: ["Cybersecurity"]
 slug: "dora-regulation"
 coverImage: "/wp-content/uploads/2024/10/business-corporate-protection-safety-security-concept-1-scaled.jpg"
 seoTitle: "DORA regulation | Compliance and resilience"
-wpUrl: "/en/dora-regulation/"
+wpUrl: "/en/ressources/dora-regulation/"
 ---
 ![Public presentation on Dora regulation](/wp-content/uploads/2024/10/business-corporate-protection-safety-security-concept-1.jpg) 
  The Digital Operational Resilience Act (DORA) regulation is a major concern for the financial sector. This European Union-wide regulation aims to **strengthen the ability of financial institutions to withstand cyberattacks**, while ensuring business continuity. 
- In this article, our financial [cybersecurity experts](/en/expertise/cybersecurity/) review the requirements of this standard and guide you on how to **increase your operational resilience and ensure your DORA compliance**. 
+ In this article, our financial [cybersecurity experts](/en/services/cybersecurity/) review the requirements of this standard and guide you on how to **increase your operational resilience and ensure your DORA compliance**. 
  [Get support for your compliance](/en/contact/)
 
 The European DORA regulation requires financial firms to:

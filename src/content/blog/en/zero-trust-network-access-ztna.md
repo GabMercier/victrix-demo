@@ -7,14 +7,14 @@ topics: ["Cybersecurity"]
 slug: "zero-trust-network-access-ztna"
 coverImage: "/wp-content/uploads/2023/10/ztna-victrix-1-scaled.jpg"
 seoTitle: "Zero Trust Network Access (ZTNA) | Cybersecurity"
-wpUrl: "/en/zero-trust-network-access-ztna/"
+wpUrl: "/en/ressources/zero-trust-network-access-ztna/"
 ---
 ![A computer keyboard key decorated with a digital padlock to illustrate the Zero Trust Network Access (ZTNA) model](/wp-content/uploads/2023/10/ztna-victrix-1.jpg) 
  Improve the security posture of your company's IT networks with Zero Trust Network Access (ZTNA).  
- In a mixed context where remote working and cybersecurity go hand in hand, large, small and medium-sized businesses face a growing number of challenges. These include the **security of networks, information systems, and personal data**. The [implementation of an optimal security infrastructure](/en/expertise/cybersecurity/) is, therefore, at the forefront of corporate concerns.     
+ In a mixed context where remote working and cybersecurity go hand in hand, large, small and medium-sized businesses face a growing number of challenges. These include the **security of networks, information systems, and personal data**. The [implementation of an optimal security infrastructure](/en/services/cybersecurity/) is, therefore, at the forefront of corporate concerns.     
  We invite you to explore this guide to Zero Trust security. Learn all about this **invaluable cybersecurity model** and how Victrix can help you.
 
-By definition, Zero Trust Network Access (or simply Zero Trust) is a “Never Trust, Always Verify” [cybersecurity model](/en/expertise/cybersecurity/). This model is consistent with the logic of **limiting access to information resources based on identity and context** around an application or set of applications.   
+By definition, Zero Trust Network Access (or simply Zero Trust) is a “Never Trust, Always Verify” [cybersecurity model](/en/services/cybersecurity/). This model is consistent with the logic of **limiting access to information resources based on identity and context** around an application or set of applications.   
  The ZTNA is a corporate network security framework that grants access to applications, systems, and workloads only when explicitly required and according to strict access controls.
 
 ### How Does the ZTNA Approach Work?
@@ -35,7 +35,7 @@ The main difference is that **VPN security relies on location inside or outside 
  Thanks to multiple access and trust controls, ZTNA users **have secure remote access** to resources.
 
 The main reason why this model is increasingly in demand is the changing context of the workplace.  
- An increasing number of companies opt for a hybrid work environment, where employees can choose between working in the office and remote working. Let's not forget the organizational transformations involving remote offices and [cloud computing](/en/expertise/cloud-services-provider/), which are becoming more widespread.  
+ An increasing number of companies opt for a hybrid work environment, where employees can choose between working in the office and remote working. Let's not forget the organizational transformations involving remote offices and [cloud computing](/en/services/cloud-services-provider/), which are becoming more widespread.  
  With the Zero Trust initiative, companies can ensure optimum, continuous protection of their networks, systems, and sensitive data. All this while freeing up access to resources at any time, from any authorized device, **always with cybersecurity as the priority**.
 
 At Victrix, we consider the Zero Trust model to be **one of the most efficient frameworks for cybersecurity**. It's the ideal solution for protecting critical systems and sensitive information.
@@ -68,5 +68,5 @@ Opting for a [systematically audited IT network security](https://www.cyber.gc.c
 
 The ZTNA model also facilitates consistency with current security standards and obligations under Law 25 and the Act respecting the protection of personal information in the private sector.
 
-If you have any questions about protecting your networks, your [cloud cybersecurity](/en/expertise/cloud-services-provider/) or Zero Trust architecture, please contact us. Our cybersecurity experts will work with you to implement the best solutions and ensure your company's resilience.
+If you have any questions about protecting your networks, your [cloud cybersecurity](/en/services/cloud-services-provider/) or Zero Trust architecture, please contact us. Our cybersecurity experts will work with you to implement the best solutions and ensure your company's resilience.
  [Talk to a cybersecurity expert at Victrix](/en/contact/)

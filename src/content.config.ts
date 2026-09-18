@@ -1188,6 +1188,11 @@ const solutions = defineCollection({
     order: z.preprocess((v) => (v === '' ? undefined : v), z.number().default(999)),
     href: z.string().default(''),
     docHref: z.string().default(''),
+    // Service présélectionné sur Contact quand `href` y mène (2026-09-18 : le
+    // champ OBLIGATOIRE « Service » restait vide en arrivant du catalogue).
+    // Clé neutre (src/lib/contact/presets.ts) ; '' = repli sur le
+    // `contactService` de la page qui porte le catalogue.
+    contactService: z.enum(['', ...CONTACT_SERVICE_KEYS]).default(''),
   }),
 });
 
@@ -1541,6 +1546,10 @@ const site = defineCollection({
       policyHref: navHref,
       accept: z.string().min(1),
       refuse: z.string().min(1),
+      // Lien « Gérer mes témoins » des pieds de page (2026-09-18, Loi 25 :
+      // retirer son consentement doit être aussi simple que le donner).
+      // '' = lien masqué (tolérant : jamais de build rouge sur un champ vidé).
+      manage: z.string().default(''),
     }),
     notFound: z.object({
       metaTitle: z.string().min(1),
@@ -1690,7 +1699,8 @@ const pagesSysteme = defineCollection({
     }),
     recherche: z.object({
       metaTitle: z.string().min(1),
-      metaDescription: z.string().min(1),
+      // TOLÉRANT (2026-09-18) : voir `merci.metaDescription` ci-dessous.
+      metaDescription: z.string().default(''),
       eyebrow: z.string().min(1),
       title: z.string().min(1),
       intro: z.string().min(1),
@@ -1698,7 +1708,12 @@ const pagesSysteme = defineCollection({
     }),
     merci: z.object({
       metaTitle: z.string().min(1),
-      metaDescription: z.string().min(1),
+      // TOLÉRANT (2026-09-18, incident) : ce champ vidé dans l'éditeur a mis
+      // le build de `staging` au rouge pendant 20 sauvegardes d'affilée — plus
+      // rien de ce que l'éditrice enregistrait n'était publié. Une méta
+      // description n'est jamais structurellement requise (pages en noindex) :
+      // vide = repli sur la description par défaut du site (BaseLayout).
+      metaDescription: z.string().default(''),
       title: z.string().min(1),
       text: z.string().min(1),
       // Mêmes règles que la 404 : liens internes SANS préfixe de langue.

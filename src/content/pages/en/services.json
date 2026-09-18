@@ -21,7 +21,7 @@
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "See our expertise",
-      "cta2Href": "/en/expertise",
+      "cta2Href": "/en/expertises/",
       "overlay": "voile",
       "image": "",
       "imageAlt": ""
@@ -48,7 +48,7 @@
           "title": "AI and Automation",
           "text": "Put AI to work in your business processes with clear governance in place: opportunity assessment, custom agents, Copilot for Microsoft 365.",
           "ctaLabel": "Explore our AI services",
-          "ctaHref": "/en/services/artificial-intelligence"
+          "ctaHref": "/en/services/intelligence-artificielle/"
         },
         {
           "number": "03",
@@ -62,14 +62,14 @@
           "title": "Application Services",
           "text": "Build, modernize and maintain your business applications: Ø Studio (Power Platform and Dynamics 365 development), Microsoft 365, ServiceNow.",
           "ctaLabel": "Explore our application services",
-          "ctaHref": "/en/services/application-services"
+          "ctaHref": "/en/services/services-applicatifs/"
         },
         {
           "number": "05",
           "title": "Managed Services",
           "text": "Simplify day-to-day IT management: IT governance, outsourcing, technical support, infrastructure, network and systems management.",
           "ctaLabel": "Explore our managed services",
-          "ctaHref": "/en/services/managed services"
+          "ctaHref": "/en/services/managed-it-services/"
         }
       ]
     },

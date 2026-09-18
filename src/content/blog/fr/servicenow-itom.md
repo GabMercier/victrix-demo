@@ -10,20 +10,20 @@ seoTitle: "ServiceNow ITOM: Améliorez votre visibilité, rapidité et ROI"
 wpUrl: "/servicenow-itom/"
 ---
 Le département des opérations TI est sous pression. Les équipes informatiques jonglent avec **la complexité croissante des infrastructures**, **l’expansion des ressources cloud**, **des risques de sécurité grandissants** et le fardeau de**la réduction des temps d’arrêt**. Mais les outils existants ne peuvent plus suivre — ils sont lents, fragmentés et réactifs plutôt que proactifs. 
- **ServiceNow ITOM change la donne**. Conçue pour centraliser, automatiser et optimiser la surveillance et la [gestion des services informatiques](/expertise/services-ti-geres/), cette plateforme transforme la manière dont les organisations gèrent les pannes, les problèmes de performance des applications et la gouvernance du cloud. 
+ **ServiceNow ITOM change la donne**. Conçue pour centraliser, automatiser et optimiser la surveillance et la [gestion des services informatiques](/fr/services/services-ti-geres/), cette plateforme transforme la manière dont les organisations gèrent les pannes, les problèmes de performance des applications et la gouvernance du cloud. 
  Pour les DSI et responsables TI, l’enjeu dépasse la simple continuité des services — il leur donne la visibilité et le contrôle dont ils ont besoin pour**détecter les problèmes de service à un stade précoce, automatiser la réponse, réduire les coûts et accélérer le temps de résolution**. 
- Cet article explore**la valeur réelle d’ITOM de ServiceNow**, ses différents modules et [comment Victrix accompagne son implémentation avec succès](/expertise/productivite/servicenow/) dans les environnements d’entreprise et le secteur public.
+ Cet article explore**la valeur réelle d’ITOM de ServiceNow**, ses différents modules et [comment Victrix accompagne son implémentation avec succès](/fr/services/productivite/servicenow/) dans les environnements d’entreprise et le secteur public.
 
 ### Prêt à simplifier votre infrastructure et réduire vos délais d’intervention?
 
 Choisissez votre créneau et choisissez 15 min pour poser vos questions! 
- [Parlez à un expert](/contact/)
+ [Parlez à un expert](/fr/contact/)
 
 **ITOM signifie gestion des opérations informatiques.** Dans ServiceNow, cette solution va au-delà de la simple surveillance des systèmes. Elle connecte votre infrastructure, automatise les tâches clés et maintient les services en bonne santé—sans le bruit. 
  Avec **ServiceNow IT Operations Management (ITOM)**, vous obtenez une **visibilité en temps réel sur l’ensemble de votre environnement hybride**. Serveurs, applications, ressources infonuagiques; tout est cartographié et surveillé. Et quand un problème survient, vous êtes immédiatement prêt à réagir. Vous n’avez plus à attendre que les utilisateurs se plaignent; vous identifiez les incidents avant qu’ils ne se propagent. 
  Ce système est **conçu pour les organisations qui ont besoin de contrôle**. Il apporte une structure au chaos et transforme les systèmes fragmentés en une plateforme intelligente et unifiée.
 
-La solution de gestion des opérations IT de ServiceNow ne se limite pas à une simple suite d’outils; **c’est un véritable facteur de différenciation en matière d’intelligence opérationnelle** et de [prestation de services TI](/expertise/services-ti-geres/). 
+La solution de gestion des opérations IT de ServiceNow ne se limite pas à une simple suite d’outils; **c’est un véritable facteur de différenciation en matière d’intelligence opérationnelle** et de [prestation de services TI](/fr/services/services-ti-geres/). 
  Avec elle, vous êtes en mesure de gérer votre infrastructure, d’automatiser les interventions et d’améliorer la performance et la disponibilité de vos services sans ajouter de complexité.
 
 ### Améliorez votre visibilité ITOM
@@ -104,9 +104,9 @@ Ces modules ne fonctionnent pas en silo. Par exemple, le module **Discovery** al
 Notre équipe accompagne des organisations comme la vôtre pour tirer le meilleur de 
  **ServiceNow Discovery, Service Mapping, Event Management, CMDB**, et plus encore.
  
- [Soyez accompagnés par nos experts](/contact/)
+ [Soyez accompagnés par nos experts](/fr/contact/)
 
-[ServiceNow IT Service Management (ITSM)](/servicenow-itsm/) et ITOM ont des rôles et objectifs distincts, mais ensemble, ils transforment la gestion des services informatiques et opérations TI au sein des organisations.
+[ServiceNow IT Service Management (ITSM)](/fr/ressources/servicenow-itsm/) et ITOM ont des rôles et objectifs distincts, mais ensemble, ils transforment la gestion des services informatiques et opérations TI au sein des organisations.
 
 ### Rôle de l'ITSM: la prestation de services
 
@@ -148,7 +148,7 @@ Une stratégie ITOM bien mise en œuvre n'est pas un coût, c'est un investissem
 Victrix vous aide à maximiser votre retour sur investissement dès la première année en
  **alignant ServiceNow ITOM sur vos objectifs d’affaires**.
  
- [Planifiez votre implémentation](/contact/)
+ [Planifiez votre implémentation](/fr/contact/)
 
 Le **coût de ServiceNow ITOM** repose généralement sur trois facteurs principaux:
 
@@ -178,4 +178,4 @@ Nous ne nous contentons pas de lancer la plateforme en suivant les meilleures pr
 ### Construisons ensemble des opérations TI plus intelligentes
 
 Le succès dépend du bon partenaire. Victrix vous accompagne avec précision dans l’implémentation d’ITOM afin que **vous obteniez des résultats, pas seulement un logiciel.**
- [Planifier une consultation](/contact/)
+ [Planifier une consultation](/fr/contact/)

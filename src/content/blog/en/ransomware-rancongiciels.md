@@ -7,7 +7,7 @@ topics: ["Cybersecurity"]
 slug: "ransomware-protection-tips"
 coverImage: "/wp-content/uploads/2023/11/ransomware-e1701148187185-1024x741-1.png"
 seoTitle: "8 Ransomware Protection Tips for Organizations"
-wpUrl: "/en/ransomware-protection-tips/"
+wpUrl: "/en/ressources/ransomware-protection-tips/"
 ---
  Ransomware attacks are **one of the main cybercrimes facing organizations.** This is even more true since the pandemic, as this global event has transformed the working environment, making it more vulnerable to certain computer attacks. 
  So, **how can you protect yourself from ransomware** effectively to avoid the worst? Find out all about the different types of ransomware, the importance of building a robust information security and cybersecurity plan, and ways to protect your business from cyberattacks.
@@ -60,7 +60,7 @@ Paying the ransom does not mean you’ll get your data back. What’s more, you�
 
 Here are our recommendations if your organization falls victim to a ransomware incident: 
  • Isolate the device from the network and cloud and disconnect it from the Internet connection 
- • If you have an [IT managed service provider](/en/expertise/managed-it-services/), contact them immediately so that they can intervene as quickly as possible. 
+ • If you have an [IT managed service provider](/en/services/managed-it-services/), contact them immediately so that they can intervene as quickly as possible. 
  • Do not pay the ransom 
  • Keep proof of your attack (phishing emails, firewall event logs, encrypted files, physical copy of server(s) or, alternatively, hard disks). 
  • [Report the incident to the law enforcement agency in charge of cybersecurity](https://www.cyber.gc.ca/en/incident-management)
@@ -89,7 +89,7 @@ When it comes to authentication, the best ransomware prevention methods are as f
 
 Regarding IT security best practices, there are several anti-ransomware solutions. These include **using reliable, multilayered security software**, real-time protection and detection tools, and elaborating a contingency plan in the event of an attack.
 
-Using VPN services on public Wi-Fi networks is another option if your organization doesn’t have a reliable [SASE solution](/en/sase-cloud/). A SASE service includes all the elements you need to maintain an exemplary security posture:
+Using VPN services on public Wi-Fi networks is another option if your organization doesn’t have a reliable [SASE solution](/en/ressources/sase-cloud/). A SASE service includes all the elements you need to maintain an exemplary security posture:
 
 1. Secure Service Edge (SSE)
 2. Software-Defined Wide Area Network (SD-WAN)
@@ -98,7 +98,7 @@ Using VPN services on public Wi-Fi networks is another option if your organizati
 5. Firewall as a Service (FWaaS)
 6. The principle of least privilege (Zero Trust Network Access)
 
-If you haven’t already done so, consider migrating your data and systems to [cloud technologies and services](/en/expertise/cloud-services-provider/). One of the main advantages of cloud vs. local systems is that architecture vulnerabilities are much harder to exploit.
+If you haven’t already done so, consider migrating your data and systems to [cloud technologies and services](/en/services/cloud-services-provider/). One of the main advantages of cloud vs. local systems is that architecture vulnerabilities are much harder to exploit.
 
 For instance, cloud hosting solutions allow you to restore older versions of your files through automatic backups. This means that if a cybercriminal encrypts your files, you might be able to **retrieve your unencrypted data from your cloud storage**.
 
@@ -106,7 +106,7 @@ For instance, cloud hosting solutions allow you to restore older versions of you
 
 Identify a person responsible for the cybersecurity department within your company. This person will be responsible for ensuring that security tools are updated on a regular basis, will be in charge of awareness campaigns among the various teams, and will become your cybersecurity expert.
 
-Another option is to use a [managed security service](/en/expertise/cybersecurity/scalable-security-operations-center/) to provide **continuous monitoring of your information systems and detect and respond** to intrusions more quickly.
+Another option is to use a [managed security service](/en/services/cybersecurity/scalable-security-operations-center/) to provide **continuous monitoring of your information systems and detect and respond** to intrusions more quickly.
 
 #### 4. Apply Patches and Updates
 
@@ -141,7 +141,7 @@ Trust our team to implement the most robust security system for your organizatio
 
 We also offer an **exclusive managed security service** based on cooperation and knowledge sharing. More than just a managed service, we’re an extension of your IT team.
 
-Benefit from a powerful [outsourced SOC service](/en/soc-outsourcing-pros-cons/) to ensure superior IT security for your organization. Discover SEvOC, Victrix’s scalable Security Operations Center.
+Benefit from a powerful [outsourced SOC service](/en/ressources/soc-outsourcing-pros-cons/) to ensure superior IT security for your organization. Discover SEvOC, Victrix’s scalable Security Operations Center.
 
 ### SEvOC: a Comprehensive Solution to Fight Off Cybersecurity Threats
 
