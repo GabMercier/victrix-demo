@@ -1,22 +1,26 @@
 {
+  "_schema": "default",
   "title": "Migration vers Microsoft Azure",
-  "description": "Améliorez votre posture de sécurité, votre productivité et vos performances avec la migration vers Microsoft Azure, une expertise infonuagique de Victrix.",
+  "description": "Améliorez votre posture de sécurité, votre productivité et vos performances avec la migration vers Microsoft Azure.",
+  "noindex": false,
+  "slug": "",
+  "seoTitle": "Migration Microsoft Azure | Services | Victrix",
   "sections": [
     {
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Migration infonuagique",
       "titleAccent": "",
-      "title": "Migration vers Microsoft Azure",
+      "title": "Accélérez votre migration vers Microsoft Azure",
       "titleHighlight": "Microsoft Azure",
       "lead": "Accélérez votre passage vers la plateforme Azure avec le soutien de nos experts en solutions infonuagiques : agilité et accessibilité accrues, posture de sécurité rehaussée. Nos experts certifiés Microsoft Solutions Partner vous assurent un processus de migration sécuritaire, avec une stratégie sur mesure.",
-      "ctaLabel": "Parlons de vos projets",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2023/08/azure_infonuagique.jpg",
       "imageAlt": ""
     },
     {
       "type": "bento-metrics",
-      "title": "Pourquoi choisir la migration vers Azure pour son organisation ?",
+      "title": "Pourquoi choisir la migration vers Azure pour son organisation?",
       "intro": "Microsoft Azure est une plateforme infonuagique proposant de nombreux services pour déployer, gérer et optimiser vos applications et ressources technologiques : infrastructure, sécurité infonuagique, analyse et sauvegarde de données, développement d'applications sur mesure, et bien plus encore.",
       "fond": "blanc",
       "featured": {
@@ -28,8 +32,8 @@
       "aside": {
         "icon": "insigne",
         "title": "Spécialisations reconnues par Microsoft",
-        "text": "Victrix répond aux normes les plus strictes de Microsoft en matière de sécurité infonuagique et de protection contre les menaces : Partenaire de solutions Microsoft pour Espace de travail moderne et pour Sécurité.",
-        "linkLabel": "Rencontrez un expert Microsoft Azure",
+        "text": "Victrix répond aux normes les plus strictes de Microsoft en matière de sécurité infonuagique et de protection contre les menaces : Partenaire Solutions pour Espace de travail moderne et Partenaire Solutions pour Sécurité.",
+        "linkLabel": "Planifiez une consultation",
         "linkHref": "/fr/contact"
       }
     },
@@ -44,8 +48,14 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Agilité", "label": "Accessibilité accrue et évolutivité sans égal" },
-        { "value": "Sécurité", "label": "Posture rehaussée, conformité préservée" }
+        {
+          "value": "Agilité",
+          "label": "Accessibilité accrue et évolutivité sans égal"
+        },
+        {
+          "value": "Sécurité",
+          "label": "Posture rehaussée, conformité préservée"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -171,12 +181,11 @@
       "type": "cta",
       "title": "Victrix, votre partenaire stratégique pour une migration vers Azure réussie",
       "body": "Pour une migration rapide, efficace et sécuritaire vers Microsoft Azure, faites appel aux services personnalisés de Victrix.",
-      "ctaLabel": "Contactez-nous pour en discuter",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit"
     }
-  ],
-  "seoTitle": "Migration Microsoft Azure | Services aux entreprises"
+  ]
 }
