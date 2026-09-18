@@ -1,15 +1,19 @@
 {
+  "_schema": "default",
   "title": "Services infonuagiques",
   "description": "Migrez vers une solution infonuagique adaptée à votre réalité d'affaires. Victrix accélère et simplifie votre transition avec des services infonuagiques sur mesure.",
+  "noindex": false,
+  "slug": "",
+  "seoTitle": "Services infonuagiques adaptés à vos enjeux | Services",
   "sections": [
     {
       "type": "service-hero",
-      "eyebrow": "",
-      "titleAccent": "",
-      "title": "Services infonuagiques",
+      "eyebrow": "Services infonuagiques",
+      "titleAccent": null,
+      "title": "Services infonuagiques adaptés à vos enjeux d'affaires",
       "titleHighlight": "infonuagiques",
       "lead": "Pour améliorer la réactivité de vos équipes, la flexibilité de votre infrastructure et la rentabilité de vos technologies, l'infonuagique est la solution à privilégier. Modernisez votre informatique avec une approche sur mesure, basée sur l'accélération, du démarrage du projet à sa réalisation.",
-      "ctaLabel": "Parlons de vos projets",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2022/02/services-infonuagiques-pour-entreprise.jpg",
       "imageAlt": ""
@@ -17,11 +21,11 @@
     {
       "type": "bento-metrics",
       "title": "Solutions et services infonuagiques",
-      "intro": "Nos services infonuagiques sont conçus pour répondre aux défis uniques de votre organisation — de la sélection de votre solution infonuagique à la migration des charges et l'optimisation continue de votre environnement.",
+      "intro": "Nos services infonuagiques sont conçus pour répondre aux défis uniques de votre organisation. De la sélection de votre solution infonuagique à la migration des charges et l'optimisation continue de votre environnement, Victrix est là pour vous.",
       "fond": "blanc",
       "featured": {
         "title": "Une stratégie de migration planifiée",
-        "text": "Une stratégie de migration planifiée garantit une transition sans heurt, avec un impact minimal sur vos environnements. Notre mission : <strong>garantir votre excellence opérationnelle</strong> en appliquant les meilleures pratiques de conformité, de sécurité des données et de performance — les modèles <strong>Well Architected Framework (WAF)</strong> et <strong>Cloud Adoption Framework (CAF)</strong> encadrent tous vos projets de migration infonuagique.",
+        "text": "Une stratégie de migration planifiée garantit une transition sans heurt, avec un impact minimal sur vos environnements. Notre mission : <strong>garantir votre excellence opérationnelle</strong> en appliquant les meilleures pratiques de conformité, de sécurité des données et de performance. Les modèles <strong>Well Architected Framework (WAF)</strong> et <strong>Cloud Adoption Framework (CAF)</strong> encadrent tous vos projets de migration infonuagique.",
         "watermark": "graphique",
         "stats": []
       },
@@ -29,8 +33,8 @@
         "icon": "etoile",
         "title": "Conseil stratégique",
         "text": "Bénéficiez de notre expertise en conseil stratégique pour assurer le succès de tous vos projets de transformation numérique.",
-        "linkLabel": "Découvrir le conseil stratégique",
-        "linkHref": "/fr/services/conseil-strategique"
+        "linkLabel": "Planifiez une consultation",
+        "linkHref": "/contact/"
       }
     },
     {
@@ -44,8 +48,14 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Azure", "label": "Migration accélérée avec le Cloud Adoption Framework" },
-        { "value": "AWS", "label": "Expertise EC2, Elastic Beanstalk et solutions SaaS" }
+        {
+          "value": "Azure",
+          "label": "Migration accélérée avec le Cloud Adoption Framework"
+        },
+        {
+          "value": "AWS",
+          "label": "Expertise EC2, Elastic Beanstalk et solutions SaaS"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -178,13 +188,12 @@
     {
       "type": "cta",
       "title": "Victrix, votre partenaire stratégique en solutions et services infonuagiques",
-      "body": "Faites appel à notre expertise pour vos projets de migration vers AWS ou Azure et bénéficiez d'un stockage infonuagique sécurisé, flexible et accessible, grâce à notre pratique multi-cloud.",
-      "ctaLabel": "Rencontrez nos experts",
+      "body": "Faites appel à notre expertise pour vos projets de migration vers AWS ou Azure et bénéficiez d'un stockage infonuagique sécurisé, flexible et accessible. Nous accélérons la dématérialisation des centres de données en offrant des services agiles de qualité, grâce à notre pratique multi-cloud.",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit"
     }
-  ],
-  "seoTitle": "Services infonuagiques adaptés à vos enjeux | Expertise"
+  ]
 }
