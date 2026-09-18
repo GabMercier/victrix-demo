@@ -1,6 +1,7 @@
 ---
 import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
+import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
  * Section « Bento métriques » — composant Bookshop, NOUVEAU 2026-08-24.
  * FIDÉLITÉ MAQUETTE (docs/produits.css §Section - Value Proposition & Metrics
@@ -22,10 +23,9 @@ import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
  * Props : { type: "bento-metrics", title, intro?, fond?,
  *           featured: { title, text?, watermark?, stats: [{value,label}] },
  *           aside?: { icon?, title, text?, linkLabel?, linkHref? } }
- * - `watermark` (carte sombre) en clé fermée « eclair » | « engrenage » |
- *   « graphique » | "" (vide = pas de filigrane) ;
- * - `icon` (carte claire) en clé fermée « insigne » | « bouclier » |
- *   « etoile » | "" — clés DISTINCTES à dessein : un même nom de champ
+ * - `watermark` (carte sombre) et `icon` (carte claire) : clé de la BANQUE de pictogrammes (shared/icons.ts — toute la banque est offerte dans l'éditeur depuis le 2026-09-18) ;
+ *   "" = rien. Maquette : éclair / engrenage / graphique en filigrane, coche /
+ *   bouclier / étoile en tuile. Noms de champ DISTINCTS à dessein : un même nom
  *   partagerait sa config _inputs CloudCannon (chemins imbriqués non
  *   supportés, gotcha consigné 2026-07-20) ;
  * - `stats` : mêmes {value,label} que strategic-value (_structures.stat_tiles).
@@ -51,11 +51,11 @@ interface Props {
   featured?: {
     title: string;
     text?: string;
-    watermark?: 'eclair' | 'engrenage' | 'graphique' | '';
+    watermark?: IconKey | '';
     stats?: Stat[];
   };
   aside?: {
-    icon?: 'insigne' | 'bouclier' | 'etoile' | '';
+    icon?: IconKey | '';
     title: string;
     text?: string;
     linkLabel?: string;
@@ -70,26 +70,8 @@ const FONDS: Record<string, string> = FOND_CLASSES;
 
 const stats = featured?.stats ?? [];
 
-// Pictogrammes trait (viewBox 24) par clé fermée — filigrane de la carte
-// sombre (rendu en grand, trait fin 1.2).
-const WATERMARKS: Record<string, string[]> = {
-  eclair: ['M13 2 4.5 13.5h6L11 22l8.5-11.5h-6L13 2Z'],
-  engrenage: [
-    'M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z',
-    'M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.1-1.51 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.51-1.1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34h.09a1.7 1.7 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.51 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87v.09a1.7 1.7 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z',
-  ],
-  graphique: ['M4 20h16', 'M7 20v-6', 'M12 20V8', 'M17 20V9'],
-};
-
-// Pictogrammes trait (stroke 1.8, viewBox 24) — tuile de la carte claire.
-const ICONS: Record<string, string[]> = {
-  insigne: ['M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Z', 'm8.5 12 2.4 2.4 4.6-4.8'],
-  bouclier: ['M12 3 5 5.5v5c0 4.4 3 8.1 7 9.5 4-1.4 7-5.1 7-9.5v-5L12 3Z', 'm9.5 11.8 1.9 1.9 3.4-3.6'],
-  etoile: ['m12 3.5 2.5 5.2 5.7.7-4.2 4 1.1 5.6-5.1-2.8-5.1 2.8 1.1-5.6-4.2-4 5.7-.7L12 3.5Z'],
-};
-
-const watermark = featured?.watermark ? WATERMARKS[featured.watermark] : undefined;
-const asideIcon = aside?.icon ? ICONS[aside.icon] : undefined;
+const watermark = iconFor(featured?.watermark);
+const asideIcon = iconFor(aside?.icon);
 ---
 
 <section class:list={['py-20 lg:py-24', FONDS[fond] ?? FONDS.blanc]}>
@@ -109,16 +91,11 @@ const asideIcon = aside?.icon ? ICONS[aside.icon] : undefined;
                 class="absolute -right-8 -bottom-10 text-white opacity-10 -z-10"
                 width="190"
                 height="190"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                {...iconSvgAttrs(watermark, 1.2)}
                 aria-hidden="true"
                 focusable="false"
               >
-                {watermark.map((d) => (
+                {watermark.paths.map((d) => (
                   <path d={d} />
                 ))}
               </svg>
@@ -149,16 +126,11 @@ const asideIcon = aside?.icon ? ICONS[aside.icon] : undefined;
                   class="text-primary"
                   width="22"
                   height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  {...iconSvgAttrs(asideIcon, 1.8)}
                   aria-hidden="true"
                   focusable="false"
                 >
-                  {asideIcon.map((d) => (
+                  {asideIcon.paths.map((d) => (
                     <path d={d} />
                   ))}
                 </svg>

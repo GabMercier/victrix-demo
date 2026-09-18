@@ -1,5 +1,6 @@
 ---
 import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
  * Section « Tuiles de valeurs » — composant Bookshop (2026-09-17, conversion
  * de la page Carrières en page « sections »).
@@ -11,12 +12,9 @@ import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
  * impaire s'étale sur les 2 colonnes mobiles (5 valeurs = 2+2+1 centrée).
  *
  * Props : { type: "value-tiles", eyebrow?, title, fond?, items: [{ icon, label }] }
- * - `icon` : clé FERMÉE (étoile, groupe, ampoule, poignée, insigne) — tracés
- *   ci-dessous (carte ICONS, trait 1.8, viewBox 24). Vide/inconnue = tuile
- *   sans pictogramme. Ajouter une icône = la dessiner ICI + zod
- *   (src/content.config.ts) + `_select_data.icones_carrieres_valeurs`
- *   (cloudcannon.config.yml) + `npm run cms:previews` (vignettes du
- *   sélecteur, groupe « carrieres-valeurs »).
+ * - `icon` : clé de la BANQUE de pictogrammes (shared/icons.ts — toute la banque est offerte dans l'éditeur depuis le 2026-09-18) —
+ *   trait 1,8 px (maquette : étoile, groupe, ampoule, poignée, coche).
+ *   Vide/inconnue = tuile sans pictogramme (le <svg> vide garde l'alignement).
  * - `fond` : palette partagée ; défaut « blanc » (rendu historique).
  *
  * Contraintes / pièges :
@@ -26,7 +24,7 @@ import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 interface ValueTile {
-  icon?: 'etoile' | 'groupe' | 'ampoule' | 'poignee' | 'insigne' | '';
+  icon?: IconKey | '';
   label: string;
 }
 
@@ -42,28 +40,6 @@ const { eyebrow = '', title, fond = 'blanc', items = [] } = Astro.props;
 // « Fond de section » : clé fermée → utilitaire de la palette officielle.
 const FONDS: Record<string, string> = FOND_CLASSES;
 
-// Pictogrammes trait (stroke 1.8, viewBox 24) par clé fermée — ex-VALUE_ICONS.
-const ICONS: Record<string, string[]> = {
-  etoile: ['m12 3.5 2.5 5.2 5.7.7-4.2 4 1.1 5.6-5.1-2.8-5.1 2.8 1.1-5.6-4.2-4 5.7-.7L12 3.5Z'],
-  groupe: [
-    'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
-    'M3.5 19c.6-2.7 2.7-4.5 5.5-4.5s4.9 1.8 5.5 4.5',
-    'M15.5 5.6a3 3 0 0 1 0 4.8M17.5 14.9c1.6.6 2.7 1.9 3 4.1',
-  ],
-  ampoule: [
-    'M12 3a6 6 0 0 0-3.4 10.9c.8.6 1.4 1.6 1.4 2.6h4c0-1 .6-2 1.4-2.6A6 6 0 0 0 12 3Z',
-    'M9.5 19.5h5',
-    'M10.5 22h3',
-  ],
-  poignee: [
-    'm11 17 2 2a1 1 0 1 0 3-3',
-    'm14 14 2.5 2.5a1 1 0 1 0 3-3l-3.9-3.9a3 3 0 0 0-4.2 0l-.9.9a1 1 0 1 1-3-3l2.8-2.8a5.8 5.8 0 0 1 7.1-.9l.5.3a2 2 0 0 0 1.4.2L21 4',
-    'm21 3 1 11h-2',
-    'M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3',
-    'M3 4h8',
-  ],
-  insigne: ['M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Z', 'm8.5 12 2.4 2.4 4.6-4.8'],
-};
 ---
 
 <section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
@@ -87,16 +63,11 @@ const ICONS: Record<string, string[]> = {
               class="text-primary"
               width="30"
               height="30"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              {...iconSvgAttrs(iconFor(item.icon) ?? { paths: [] }, 1.8)}
               aria-hidden="true"
               focusable="false"
             >
-              {(ICONS[item.icon ?? ''] ?? []).map((d) => (
+              {(iconFor(item.icon)?.paths ?? []).map((d) => (
                 <path d={d} />
               ))}
             </svg>

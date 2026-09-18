@@ -1,6 +1,7 @@
 ---
 import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { hasRichText, inlineHtml } from '../../shared/rich';
+import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
  * Section « Photo + atouts » — composant Bookshop (2026-09-17, conversion de
  * la page Carrières en page « sections »).
@@ -16,11 +17,10 @@ import { hasRichText, inlineHtml } from '../../shared/rich';
  * - `image` = chemin PUBLIC servi tel quel (uploads public/images/carrieres) ;
  *   vide = cadre gris (la carte flottante reste lisible).
  * - Carte flottante rendue seulement si `cardTitle` est rempli.
- * - `icon` : clé FERMÉE (croissance, progression, cœur, formation) — tracés
- *   ci-dessous (carte ICONS, fill, viewBox 24). Vide/inconnue = puce sans
- *   pictogramme. Ajouter une icône = la dessiner ICI + zod + `_select_data.
- *   icones_carrieres_atouts` + `npm run cms:previews` (groupe
- *   « carrieres-atouts »).
+ * - `icon` : clé de la BANQUE de pictogrammes (shared/icons.ts — toute la banque est offerte dans l'éditeur depuis le 2026-09-18).
+ *   Maquette : glyphes PLEINS (croissance-pleine, progression, cœur,
+ *   formation) ; un pictogramme au trait choisi ici est rendu au trait 2 px.
+ *   Vide/inconnue = puce sans pictogramme (le <svg> vide garde l'alignement).
  * - `lead`, `cardText`, `text` : textes enrichis INLINE.
  * - `fond` : palette partagée ; défaut « blanc » (rendu historique).
  *
@@ -31,7 +31,7 @@ import { hasRichText, inlineHtml } from '../../shared/rich';
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 interface FeatureItem {
-  icon?: 'croissance' | 'progression' | 'coeur' | 'formation' | '';
+  icon?: IconKey | '';
   title: string;
   text?: string;
 }
@@ -61,15 +61,6 @@ const {
 // « Fond de section » : clé fermée → utilitaire de la palette officielle.
 const FONDS: Record<string, string> = FOND_CLASSES;
 
-// Pictogrammes pleins (fill, viewBox 24) par clé fermée — ex-JOIN_ICONS.
-const ICONS: Record<string, string[]> = {
-  croissance: ['M16 6h5v5l-1.87-1.87L14 14.3l-4-4-5.6 5.6L3 14.5l7-7 4 4 4.13-4.13L16 6Z'],
-  progression: ['M12 4a8 8 0 1 0 8 8h-2a6 6 0 1 1-1.76-4.24L14 10h6V4l-2.35 2.35A8 8 0 0 0 12 4Z'],
-  coeur: [
-    'M12 20.7C7.3 17.6 3 14.2 3 9.9 3 7.2 5.1 5 7.8 5c1.6 0 3.2.8 4.2 2.1C13 5.8 14.6 5 16.2 5 18.9 5 21 7.2 21 9.9c0 4.3-4.3 7.7-9 10.8Z',
-  ],
-  formation: ['m12 3 10 4.6-10 4.6L2 7.6 12 3Z', 'M5 12v4.3c0 1.5 3.1 2.7 7 2.7s7-1.2 7-2.7V12l-7 3.2L5 12Z'],
-};
 ---
 
 <section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
@@ -104,12 +95,11 @@ const ICONS: Record<string, string[]> = {
                 class="shrink-0 mt-1 text-primary"
                 width="22"
                 height="22"
-                viewBox="0 0 24 24"
-                fill="currentColor"
+                {...iconSvgAttrs(iconFor(feature.icon) ?? { paths: [], plein: true }, 2)}
                 aria-hidden="true"
                 focusable="false"
               >
-                {(ICONS[feature.icon ?? ''] ?? []).map((d) => (
+                {(iconFor(feature.icon)?.paths ?? []).map((d) => (
                   <path d={d} />
                 ))}
               </svg>

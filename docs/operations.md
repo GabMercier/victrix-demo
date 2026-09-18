@@ -73,10 +73,17 @@ push.
 `cms:previews:check` (2026-09-17) vérifie que les pastilles de la palette
 « Fond de section » et les vignettes d'icônes de l'éditeur
 (`public/images/cms/`) sont à jour et que les listes `_select_data` de
-`cloudcannon.config.yml` correspondent EXACTEMENT aux clés dessinées dans les
-composants (et à `component-library/src/shared/fonds.ts`). Après avoir ajouté
-une teinte ou une icône : `npm run cms:previews` régénère les fichiers, puis
-committer `public/images/cms/`.
+`cloudcannon.config.yml` correspondent EXACTEMENT — mêmes clés, même ordre —
+aux deux sources partagées : `component-library/src/shared/fonds.ts` (fonds)
+et, depuis le 2026-09-18, `component-library/src/shared/icons.ts` (**banque
+de pictogrammes unique** : une seule liste `_select_data.icones`, offerte par
+tous les sélecteurs d'icône). Ajouter un pictogramme = une entrée dans
+`icons.ts` + une entrée dans `_select_data.icones`, puis `npm run
+cms:previews` (génère `public/images/cms/icones/<cle>.svg`) et committer
+`public/images/cms/` ; le zod importe `ICON_KEYS`, rien à y toucher. Une
+ancienne clé réapparue après une sauvegarde CloudCannon antérieure à la
+bascule se corrige avec `node scripts/migrate-icons-bank.mjs` (rejouable ;
+`--check` pour lister sans écrire).
 
 | Commande | Attendu | Constaté au 14 juillet 2026 |
 |---|---|---|

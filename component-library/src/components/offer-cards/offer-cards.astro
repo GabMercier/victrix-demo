@@ -1,6 +1,7 @@
 ---
 import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText } from '../../shared/rich';
+import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
  * Section « Offres numérotées » — composant Bookshop, NOUVEAU 2026-08-05.
  * FIDÉLITÉ MAQUETTE (docs/design/produit-enfant.css §Section - Nos Offres
@@ -13,8 +14,8 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  *
  * Props : { type: "offer-cards", title, intro?, ctaLabel?, ctaHref?,
  *           items: [{ number, title, bullets: [{ icon?, text }] }] }
- * - `icon` en clé fermée « coche » | « document » | « cible » | « carte »
- *   (défaut « coche » — le motif dominant de la maquette) ;
+ * - `icon` : clé de la BANQUE de pictogrammes (shared/icons.ts — toute la banque est offerte dans l'éditeur depuis le 2026-09-18) ;
+ *   défaut « coche » — le motif dominant de la maquette ;
  * - ctaLabel/ctaHref : bouton de section (rendu si libellé ET lien).
  *
  * Contraintes / pièges :
@@ -27,7 +28,7 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  */
 interface OfferBullet {
   text: string;
-  icon?: 'coche' | 'document' | 'cible' | 'carte' | '';
+  icon?: IconKey | '';
 }
 
 interface OfferItem {
@@ -52,17 +53,6 @@ const { title, intro, fond = 'givre', ctaLabel, ctaHref, items = [] } = Astro.pr
 // rendu historique (givre #f9fafb, ex-bg-surface-container-low).
 const FONDS: Record<string, string> = FOND_CLASSES;
 
-// Pictogrammes (stroke 24px) par clé fermée du contrat.
-const ICONS: Record<string, string[]> = {
-  coche: ['M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z', 'm8.5 12.5 2.5 2.5 4.5-5.5'],
-  document: ['M6 3h8l4 4v14H6V3Z', 'M14 3v4h4', 'M9 12h6M9 16h6'],
-  cible: [
-    'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z',
-    'M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z',
-    'M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z',
-  ],
-  carte: ['m9 4-6 2v14l6-2 6 2 6-2V4l-6 2-6-2Z', 'M9 4v14', 'M15 6v14'],
-};
 ---
 
 <section class:list={['py-20', FONDS[fond] ?? FONDS.givre]}>
@@ -87,7 +77,7 @@ const ICONS: Record<string, string[]> = {
               <h3 class="text-2xl leading-8 font-bold text-on-surface m-0">{item.title}</h3>
               <ul role="list" class="flex flex-col gap-3 m-0 p-0 list-none">
                 {(item.bullets ?? []).map((bullet) => {
-                  const icon = ICONS[bullet.icon || 'coche'];
+                  const icon = iconFor(bullet.icon || 'coche');
                   return (
                     <li class="m-0 flex items-start gap-3 text-base leading-6 text-on-surface-variant">
                       {icon && (
@@ -95,16 +85,11 @@ const ICONS: Record<string, string[]> = {
                           class="shrink-0 text-primary mt-[3.5px]"
                           width="17"
                           height="17"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          {...iconSvgAttrs(icon, 2)}
                           aria-hidden="true"
                           focusable="false"
                         >
-                          {icon.map((d) => (
+                          {icon.paths.map((d) => (
                             <path d={d} />
                           ))}
                         </svg>

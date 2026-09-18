@@ -1,5 +1,6 @@
 ---
 import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
+import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
  * Section « Solutions exclusives » — composant Bookshop, NOUVEAU 2026-08-05.
  * FIDÉLITÉ MAQUETTE (docs/design/expertise-mere.css §Outils Exclusifs
@@ -13,8 +14,8 @@ import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
  *
  * Props : { type: "exclusive-tools", title, intro?, featured?, items: [...] }
  * - featured { badge?, title, text?, ctaLabel?, href?, image? } — optionnel ;
- * - items [{ title, text?, ctaLabel?, href?, icon? }] avec icônes en clé
- *   fermée « calendrier » | « etoile » | "" ;
+ * - items [{ title, text?, ctaLabel?, href?, icon? }] ; `icon` = clé de la BANQUE de pictogrammes (shared/icons.ts — toute la banque est offerte dans l'éditeur depuis le 2026-09-18),
+ *   "" = aucune (maquette : calendrier, étincelle) ;
  * - images = chemins PUBLICS servis tels quels (browser-safe CloudCannon).
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
@@ -32,7 +33,7 @@ interface ToolItem {
   text?: string;
   ctaLabel?: string;
   href?: string;
-  icon?: 'calendrier' | 'etoile' | '';
+  icon?: IconKey | '';
 }
 
 interface Props {
@@ -43,12 +44,6 @@ interface Props {
 }
 
 const { title, intro, featured, items = [] } = Astro.props;
-
-// Pictogrammes (stroke 24px) par clé fermée du contrat.
-const ICONS: Record<string, string[]> = {
-  calendrier: ['M4 6h16v15H4V6Z', 'M4 10h16M8 3v5M16 3v5'],
-  etoile: ['M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9'],
-};
 
 const linkClass =
   'inline-flex items-center gap-2 text-base font-bold text-primary no-underline hover:text-primary-container';
@@ -103,7 +98,7 @@ const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
       items.length > 0 && (
         <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-12 m-0 p-0 list-none">
           {items.map((item) => {
-            const iconSvg = item.icon && ICONS[item.icon];
+            const iconSvg = iconFor(item.icon);
             return (
               <li class="m-0 bg-white border border-solid border-[#C3C6D7] rounded-lg p-10 flex flex-col items-start gap-4">
                 {iconSvg && (
@@ -111,16 +106,11 @@ const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
                     <svg
                       width="20"
                       height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      {...iconSvgAttrs(iconSvg, 2)}
                       aria-hidden="true"
                       focusable="false"
                     >
-                      {iconSvg.map((d) => (
+                      {iconSvg.paths.map((d) => (
                         <path d={d} />
                       ))}
                     </svg>

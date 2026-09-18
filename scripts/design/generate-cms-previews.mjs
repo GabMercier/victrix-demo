@@ -7,63 +7,52 @@
  *   node scripts/design/generate-cms-previews.mjs --check  # vérifie seulement
  *
  * Sorties (versionnées, servies telles quelles par Astro) :
- *   public/images/cms/fonds/<cle>.svg          ← FOND_SWATCHES (shared/fonds.ts)
- *   public/images/cms/icones/<groupe>/<cle>.svg ← cartes ICONS des composants
+ *   public/images/cms/fonds/<cle>.svg   ← FOND_SWATCHES (shared/fonds.ts)
+ *   public/images/cms/icones/<cle>.svg  ← BANQUE de pictogrammes (shared/icons.ts)
  *
- * Les tracés SVG vivent DANS les composants (source unique du rendu) : ce
- * script les extrait par expression régulière (bloc `const NOM: Record<…> = {
- * … };`) et les évalue — les objets sont des littéraux, sans code. Ajouter une
- * icône = la dessiner dans le composant + l'ajouter au zod + à
- * `_select_data.icones_<groupe>` (cloudcannon.config.yml), puis relancer ce
- * script : il régénère la vignette ET échoue si les trois listes divergent.
+ * BANQUE UNIQUE (2026-09-18) : les tracés vivent dans
+ * component-library/src/shared/icons.ts (`export const ICONS = { … }`), plus
+ * dans chaque composant. Ce script extrait le littéral par expression
+ * régulière et l'évalue (objets littéraux, sans code — le fichier est du
+ * TypeScript, Node ne peut pas l'importer tel quel). Ajouter un pictogramme =
+ * une entrée dans icons.ts + une entrée dans `_select_data.icones`
+ * (cloudcannon.config.yml), puis relancer ce script : il génère la vignette ET
+ * échoue si la liste de l'éditeur et la banque divergent. Le zod
+ * (content.config.ts) importe ICON_KEYS : rien à y toucher.
  *
- * Garde-fou : `_select_data.fonds` et chaque `_select_data.icones_<groupe>`
- * de cloudcannon.config.yml doivent lister EXACTEMENT les clés dessinées ;
- * chaque entrée `apercu` doit pointer un fichier généré ici.
+ * Garde-fou : `_select_data.fonds` et `_select_data.icones` doivent lister
+ * EXACTEMENT les clés dessinées, dans le MÊME ordre ; chaque entrée `apercu`
+ * doit pointer un fichier généré ici ; aucune ancienne liste
+ * `_select_data.icones_<groupe>` ne doit subsister.
  */
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, rmSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const CHECK_ONLY = process.argv.includes('--check');
-const COMP = 'component-library/src/components';
 
-/** Groupes d'icônes : fichier source, nom de la carte, mode de tracé. */
-const GROUPS = [
-  { groupe: 'cartes', file: `${COMP}/benefits/benefits.astro`, map: 'ICONS', stroke: 2 },
-  { groupe: 'cartes', file: `${COMP}/benefits/benefits.astro`, map: 'FILL_ICONS', fill: true },
-  { groupe: 'bento', file: `${COMP}/bento-metrics/bento-metrics.astro`, map: 'ICONS', stroke: 1.8 },
-  { groupe: 'outils', file: `${COMP}/exclusive-tools/exclusive-tools.astro`, map: 'ICONS', stroke: 2 },
-  { groupe: 'expertises', file: `${COMP}/expertise-bento/expertise-bento.astro`, map: 'ICONS', stroke: 1.8 },
-  { groupe: 'solutions', file: `${COMP}/home-solutions/home-solutions.astro`, map: 'ICONS', stroke: 2 },
-  { groupe: 'puces', file: `${COMP}/offer-cards/offer-cards.astro`, map: 'ICONS', stroke: 2 },
-  { groupe: 'realisations', file: `${COMP}/realisations/realisations.astro`, map: 'ICONS', stroke: 1.8 },
-  { groupe: 'chiffres', file: `${COMP}/stats/stats.astro`, map: 'ICONS', stroke: 1.5 },
-  // Ex-page Carrières (route fixe) convertie en sections le 2026-09-17 : les
-  // groupes gardent leur nom historique (listes _select_data inchangées), seule
-  // la source des tracés a changé de fichier.
-  { groupe: 'carrieres-valeurs', file: `${COMP}/value-tiles/value-tiles.astro`, map: 'ICONS', stroke: 1.8 },
-  { groupe: 'carrieres-atouts', file: `${COMP}/photo-features/photo-features.astro`, map: 'ICONS', fill: true },
-];
+const ICONS_FILE = 'component-library/src/shared/icons.ts';
 
 const BLEU = '#1a5bff';
 const SIZE = 48;
 
 const read = (rel) => readFileSync(resolve(ROOT, rel), 'utf8');
 
-/** Extrait et évalue `const <name>: Record<…> = { … };` (littéral sans code). */
-function extractMap(source, name, file) {
-  const re = new RegExp(`const ${name}: Record<[^=]+> = (\\{[\\s\\S]*?\\n\\});`);
-  const m = source.match(re);
-  if (!m) throw new Error(`[cms-previews] carte ${name} introuvable dans ${file}`);
+/** Extrait et évalue le littéral `export const ICONS = { … } satisfies …;` de la banque. */
+function extractBank(source) {
+  const m = source.match(/export const ICONS = (\{[\s\S]*?\n\}) satisfies /);
+  if (!m) throw new Error(`[cms-previews] banque ICONS introuvable dans ${ICONS_FILE}`);
   return new Function(`return (${m[1]});`)();
 }
 
-function iconSvg(entry, { stroke, fill }) {
-  const paths = Array.isArray(entry) ? entry : [entry.d];
-  const viewBox = Array.isArray(entry) ? '0 0 24 24' : entry.viewBox;
+/** Vignette d'un pictogramme de la banque : trait 2 ou plein, selon l'entrée. */
+function iconSvg(entry) {
+  const paths = entry.paths;
+  const viewBox = entry.viewBox ?? '0 0 24 24';
+  const fill = entry.plein === true;
+  const stroke = 2;
   const [, , vw, vh] = viewBox.split(' ').map(Number);
   // Icône centrée dans un carré blanc, marge ~15 %.
   const inner = SIZE * 0.7;
@@ -109,16 +98,19 @@ for (const m of fondsSrc.matchAll(swatchRe)) swatches.set(m[1], m[2]);
 if (swatches.size === 0) throw new Error('[cms-previews] FOND_SWATCHES introuvable dans fonds.ts');
 for (const [cle, hex] of swatches) emit(`public/images/cms/fonds/${cle}.svg`, swatchSvg(hex));
 
-// ---- Vignettes d'icônes ----------------------------------------------------
-const drawn = new Map(); // groupe → Set(cle)
-for (const g of GROUPS) {
-  const map = extractMap(read(g.file), g.map, g.file);
-  const set = drawn.get(g.groupe) ?? new Set();
-  for (const [cle, entry] of Object.entries(map)) {
-    emit(`public/images/cms/icones/${g.groupe}/${cle}.svg`, iconSvg(entry, g));
-    set.add(cle);
+// ---- Vignettes de la banque de pictogrammes ----------------------------------
+const bank = extractBank(read(ICONS_FILE));
+const bankKeys = Object.keys(bank);
+for (const cle of bankKeys) emit(`public/images/cms/icones/${cle}.svg`, iconSvg(bank[cle]));
+// Ménage : anciennes vignettes par groupe (sous-dossiers) et fichiers orphelins.
+const ICON_DIR = resolve(ROOT, 'public/images/cms/icones');
+if (existsSync(ICON_DIR)) {
+  for (const e of readdirSync(ICON_DIR, { withFileTypes: true })) {
+    const keep = e.isFile() && bankKeys.includes(e.name.replace(/\.svg$/, ''));
+    if (keep) continue;
+    if (CHECK_ONLY) throw new Error(`[cms-previews] public/images/cms/icones/${e.name} est orphelin — relancer sans --check`);
+    rmSync(resolve(ICON_DIR, e.name), { recursive: true, force: true });
   }
-  drawn.set(g.groupe, set);
 }
 
 // ---- Garde-fou : _select_data ↔ dessins ------------------------------------
@@ -137,29 +129,21 @@ for (const v of selectData.fonds ?? []) {
   if (v.couleur !== swatches.get(v.cle)) errors.push(`fonds.${v.cle}: couleur ${v.couleur} ≠ fonds.ts ${swatches.get(v.cle)}`);
 }
 
-for (const [groupe, set] of drawn) {
-  const name = `icones_${groupe.replace(/-/g, '_')}`;
-  const keys = listed(name);
-  const missing = [...set].filter((k) => !keys.includes(k));
-  const extra = keys.filter((k) => !set.has(k));
-  if (missing.length || extra.length) {
-    errors.push(`_select_data.${name}: manquantes [${missing}] · sans dessin [${extra}]`);
-  }
-  for (const v of selectData[name] ?? []) {
-    if (v.apercu !== `/images/cms/icones/${groupe}/${v.cle}.svg`) {
-      errors.push(`${name}.${v.cle}: apercu attendu /images/cms/icones/${groupe}/${v.cle}.svg`);
-    }
-  }
+const iconsListed = listed('icones');
+if (iconsListed.join() !== bankKeys.join()) {
+  const missing = bankKeys.filter((k) => !iconsListed.includes(k));
+  const extra = iconsListed.filter((k) => !bankKeys.includes(k));
+  errors.push(`_select_data.icones ≠ banque icons.ts (même ordre attendu) — manquantes [${missing}] · sans dessin [${extra}]`);
+}
+for (const v of selectData.icones ?? []) {
+  if (v.apercu !== `/images/cms/icones/${v.cle}.svg`) errors.push(`icones.${v.cle}: apercu attendu /images/cms/icones/${v.cle}.svg`);
 }
 for (const name of Object.keys(selectData)) {
-  if (name.startsWith('icones_') && !drawn.has(name.slice(7).replace(/_/g, '-'))) {
-    errors.push(`_select_data.${name}: aucun groupe de dessins correspondant`);
-  }
+  if (name.startsWith('icones_')) errors.push(`_select_data.${name}: ancienne liste par section — la banque unique est _select_data.icones`);
 }
 
 if (errors.length) {
   console.error('[cms-previews] désalignement :\n - ' + errors.join('\n - '));
   process.exit(1);
 }
-const nIcons = [...drawn.values()].reduce((n, s) => n + s.size, 0);
-console.log(`[cms-previews] ${swatches.size} pastilles, ${nIcons} icônes dans ${drawn.size} groupes — alignés avec _select_data.`);
+console.log(`[cms-previews] ${swatches.size} pastilles, ${bankKeys.length} pictogrammes (banque unique) — alignés avec _select_data.`);

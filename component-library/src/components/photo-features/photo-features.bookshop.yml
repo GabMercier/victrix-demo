@@ -3,7 +3,7 @@
 # conversion de la page Carrières en page « sections »).
 # Voir hero.bookshop.yml pour les conventions communes. Les atouts vivent dans
 # la structure `_structures.photo_feature_items` (cloudcannon.config.yml) —
-# icône à liste fermée avec vignette (`_select_data.icones_carrieres_atouts`).
+# icône choisie dans la banque unique (`_select_data.icones`, vignettes).
 # =============================================================================
 spec:
   structures:
@@ -31,7 +31,7 @@ blueprint:
   imageAlt: ""
   fond: blanc
   items:
-    - icon: croissance
+    - icon: croissance-pleine
       title: "Développement personnel"
       text: "Accompagnement continu dans vos aspirations professionnelles."
     - icon: progression

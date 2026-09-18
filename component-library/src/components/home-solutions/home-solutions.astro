@@ -1,5 +1,6 @@
 ---
 import { inlineHtml } from '../../shared/rich';
+import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
  * Section « Solutions phares » — composant Bookshop (accueil composable),
  * NOUVEAU 2026-08-04, RE-ANCRÉ 2026-08-14 sur export2
@@ -12,8 +13,8 @@ import { inlineHtml } from '../../shared/rich';
  *
  * Props : { type: "home-solutions", title, ctaLabel?, ctaHref?,
  *           items: [{ title, text, image, href, ctaLabel?, icon? }] }
- * - icon : clé fermée « ecran » | « bouclier » | « nuage » | "" (aucune) —
- *   icônes inline (aucune police d'icônes) ;
+ * - icon : clé de la BANQUE de pictogrammes (shared/icons.ts — toute la banque est offerte dans l'éditeur depuis le 2026-09-18), "" = aucune
+ *   (maquette : écran, bouclier, nuage) — SVG inline, aucune police d'icônes ;
  * - images = chemins PUBLICS servis tels quels (browser-safe, éditeur visuel
  *   CloudCannon — aucun astro:assets).
  *
@@ -25,7 +26,7 @@ interface SolutionItem {
   image?: string;
   href: string;
   ctaLabel?: string;
-  icon?: 'ecran' | 'bouclier' | 'nuage' | '';
+  icon?: IconKey | '';
 }
 
 interface Props {
@@ -37,15 +38,6 @@ interface Props {
 
 const { title, ctaLabel, ctaHref, items = [] } = Astro.props;
 
-// Tracés d'icônes (stroke 2, 24px) par clé fermée du contrat.
-const ICONS: Record<string, string[]> = {
-  ecran: [
-    'M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z',
-    'M9 21h6M12 17v4',
-  ],
-  bouclier: ['M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3Z', 'M9 12l2 2 4-4'],
-  nuage: ['M7 18a4.5 4.5 0 1 1 .7-8.95A6 6 0 0 1 19 10.5 3.75 3.75 0 0 1 18.25 18H7Z'],
-};
 ---
 
 <section class="py-24 bg-white">
@@ -70,7 +62,9 @@ const ICONS: Record<string, string[]> = {
     </div>
     <ul role="list" class="grid grid-cols-1 md:grid-cols-3 gap-8 m-0 p-0 list-none">
       {
-        items.map((item) => (
+        items.map((item) => {
+          const icon = iconFor(item.icon);
+          return (
           <li class="m-0">
             <article class="group relative h-[500px] rounded overflow-hidden flex flex-col justify-end p-6 sm:p-10 bg-on-primary-fixed isolate">
               {item.image && (
@@ -89,21 +83,16 @@ const ICONS: Record<string, string[]> = {
               <div class="flex flex-col gap-4">
                 <div class="flex flex-col gap-2">
                   <p class="flex items-center gap-3 m-0 max-w-none">
-                    {item.icon && ICONS[item.icon] && (
+                    {icon && (
                       <svg
                         width="32"
                         height="32"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        {...iconSvgAttrs(icon, 2)}
                         class="text-white shrink-0"
                         aria-hidden="true"
                         focusable="false"
                       >
-                        {ICONS[item.icon].map((d) => (
+                        {icon.paths.map((d) => (
                           <path d={d} />
                         ))}
                       </svg>
@@ -124,7 +113,8 @@ const ICONS: Record<string, string[]> = {
               </div>
             </article>
           </li>
-        ))
+          );
+        })
       }
     </ul>
   </div>

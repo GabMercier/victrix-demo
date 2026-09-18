@@ -114,11 +114,14 @@ _inputs:
     label: "Pictogramme filigrane"
     options:
       allow_empty: true
-      values:
-        - eclair
-        - engrenage
-        - graphique
-    comment: "Grand pictogramme décoratif en bas à droite de la carte sombre. Vide = aucun."
+      values: _select_data.icones
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+    comment: "Grand pictogramme décoratif en bas à droite de la carte sombre — toute la banque de pictogrammes du site (éclair, engrenage et graphique sont les choix de la maquette). Vide = aucun."
   stats:
     # `type: array` explicite — voir benefits.bookshop.yml (sans lui, generate
     # fabriquerait une structure inline concurrente de _structures.stat_tiles).
@@ -132,7 +135,7 @@ _inputs:
     label: "Icône de la carte claire"
     options:
       allow_empty: true
-      values: _select_data.icones_bento
+      values: _select_data.icones
       value_key: cle
       preview:
         text:

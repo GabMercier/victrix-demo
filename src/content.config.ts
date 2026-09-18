@@ -2,6 +2,7 @@ import { defineCollection as astroDefineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { sanitizeRichHtml } from '../component-library/src/shared/rich';
 import { FOND_KEYS } from '../component-library/src/shared/fonds';
+import { ICON_KEYS, LEGACY_ICON_KEYS } from '../component-library/src/shared/icons';
 import { CONTACT_SERVICE_KEYS, CONTACT_SUJET_KEYS } from './lib/contact/presets';
 
 /**
@@ -275,6 +276,13 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
   const fondClair = z.enum(FOND_KEYS);
   // Variante « '' = défaut historique du bloc » (form, faq) — même liste.
   const fondClairOuVide = z.enum(['', ...FOND_KEYS]);
+  // Pictogramme de la BANQUE partagée (2026-09-18) — source unique
+  // component-library/src/shared/icons.ts : toutes les sections à icône
+  // acceptent toutes les clés ('' = aucune). Les anciennes listes fermées
+  // par section ont été fusionnées (scripts/migrate-icons-bank.mjs).
+  // LEGACY_ICON_KEYS : anciennes clés tolérées (sauvegarde CloudCannon d'une
+  // branche pas encore migrée) — résolues au rendu par iconFor.
+  const pictogramme = z.enum(['', ...ICON_KEYS, ...LEGACY_ICON_KEYS]);
   return z.discriminatedUnion('type', [
     // ---- Campaign landing sections (frozen contract) ----
     z.object({
@@ -313,20 +321,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           // ampoule/croissance/losange AJOUTÉES 2026-08-05 (landing-page.css) ;
           // organisation/porteur/destinataire AJOUTÉES 2026-08-17 (page
           // Expertises — SVG pleins fournis, docs/design/export2/Images).
-          icon: z
-            .enum([
-              'dossier',
-              'personne',
-              'groupe',
-              'ampoule',
-              'croissance',
-              'losange',
-              'organisation',
-              'porteur',
-              'destinataire',
-              '',
-            ])
-            .default(''),
+          icon: pictogramme.default(''),
         }),
       ),
     }),
@@ -416,7 +411,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
         z.object({
           number: z.string(),
           label: z.string(),
-          icon: z.enum(['groupe', 'engrenages', 'bouclier', 'croissance', '']).default(''),
+          icon: pictogramme.default(''),
         }),
       ),
     }),
@@ -524,7 +519,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           // Libellé du lien de la carte (ex. « Découvrir Ø Studio »).
           ctaLabel: z.string().default(''),
           // Icône décorative de la carte (clé fermée ; vide = aucune).
-          icon: z.enum(['ecran', 'bouclier', 'nuage', '']).default(''),
+          icon: pictogramme.default(''),
         }),
       ),
     }),
@@ -635,13 +630,13 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       featured: z.object({
         title: z.string(),
         text: z.string().default(''),
-        watermark: z.enum(['eclair', 'engrenage', 'graphique', '']).default(''),
+        watermark: pictogramme.default(''),
         // Mêmes tuiles {value,label} que strategic-value (_structures.stat_tiles).
         stats: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
       }),
       aside: z
         .object({
-          icon: z.enum(['insigne', 'bouclier', 'etoile', '']).default(''),
+          icon: pictogramme.default(''),
           title: z.string(),
           text: z.string().default(''),
           linkLabel: z.string().default(''),
@@ -666,9 +661,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           text: z.string().default(''),
           peau: z.enum(['blanche', 'bleue', 'ardoise']).default('blanche'),
           taille: z.enum(['grande', 'haute', 'large', 'petite']).default('petite'),
-          icon: z
-            .enum(['fenetre', 'graphique', 'personnes', 'engrenage', 'document', 'code', ''])
-            .default(''),
+          icon: pictogramme.default(''),
           image: z.string().default(''),
           href: z.string().default(''),
         }),
@@ -703,7 +696,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           text: z.string().default(''),
           ctaLabel: z.string().default(''),
           href: z.string().default(''),
-          icon: z.enum(['calendrier', 'etoile', '']).default(''),
+          icon: pictogramme.default(''),
         }),
       ),
     }),
@@ -752,7 +745,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           bullets: z.array(
             z.object({
               text: z.string(),
-              icon: z.enum(['coche', 'document', 'cible', 'carte', '']).default('coche'),
+              icon: pictogramme.default('coche'),
             }),
           ),
         }),
@@ -771,7 +764,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
         z.object({
           title: z.string(),
           text: z.string().default(''),
-          icon: z.enum(['trousse', 'casque', 'groupe', 'marteau', '']).default(''),
+          icon: pictogramme.default(''),
         }),
       ),
     }),
@@ -882,7 +875,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       items: z
         .array(
           z.object({
-            icon: z.enum(['etoile', 'groupe', 'ampoule', 'poignee', 'insigne', '']).default(''),
+            icon: pictogramme.default(''),
             label: z.string().default(''),
           }),
         )
@@ -900,7 +893,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       items: z
         .array(
           z.object({
-            icon: z.enum(['croissance', 'progression', 'coeur', 'formation', '']).default(''),
+            icon: pictogramme.default(''),
             title: z.string().default(''),
             text: z.string().default(''),
           }),

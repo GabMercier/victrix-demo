@@ -159,7 +159,7 @@
           "text": "",
           "peau": "blanche",
           "taille": "haute",
-          "icon": "personnes",
+          "icon": "groupe",
           "image": "",
           "href": ""
         },
@@ -232,7 +232,7 @@
           "text": "Description du second outil.",
           "ctaLabel": "En savoir plus",
           "href": "/fr/contact",
-          "icon": "etoile"
+          "icon": "etincelle"
         }
       ]
     },
@@ -351,7 +351,7 @@
           "label": "Engagement"
         },
         {
-          "icon": "insigne",
+          "icon": "coche",
           "label": "Intégrité"
         }
       ]
@@ -368,7 +368,7 @@
       "fond": "blanc",
       "items": [
         {
-          "icon": "croissance",
+          "icon": "croissance-pleine",
           "title": "Croissance",
           "text": "Atout à icône croissance."
         },

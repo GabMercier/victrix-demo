@@ -138,7 +138,7 @@
           "label": "Commitment"
         },
         {
-          "icon": "insigne",
+          "icon": "coche",
           "label": "Integrity"
         }
       ]
@@ -155,7 +155,7 @@
       "fond": "blanc",
       "items": [
         {
-          "icon": "croissance",
+          "icon": "croissance-pleine",
           "title": "Growth",
           "text": "Feature with the growth icon."
         },

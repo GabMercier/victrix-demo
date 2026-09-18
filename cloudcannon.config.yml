@@ -2586,158 +2586,117 @@ _select_data:
       libelle: Services gérés / Managed services
     - cle: autre
       libelle: Autre / Other
-  # Cartes à icône (section « Cartes »)
-  icones_cartes:
-    - cle: dossier
-      libelle: Dossier
-      apercu: /images/cms/icones/cartes/dossier.svg
+  # BANQUE DE PICTOGRAMMES — liste UNIQUE de tous les sélecteurs d'icône
+  # (2026-09-18). Source des tracés : component-library/src/shared/icons.ts ;
+  # MÊMES clés, MÊME ordre (garde-fou : npm run cms:previews:check). Ajouter un
+  # pictogramme = une entrée dans icons.ts + une entrée ici + `npm run
+  # cms:previews` (génère la vignette) : il devient disponible dans TOUTES les
+  # sections. Remplace les dix listes par section (icones_cartes, _bento,
+  # _outils, _expertises, _solutions, _puces, _realisations, _chiffres,
+  # _carrieres_valeurs, _carrieres_atouts).
+  icones:
     - cle: personne
       libelle: Personne
-      apercu: /images/cms/icones/cartes/personne.svg
+      apercu: /images/cms/icones/personne.svg
     - cle: groupe
-      libelle: Groupe
-      apercu: /images/cms/icones/cartes/groupe.svg
-    - cle: ampoule
-      libelle: Ampoule (idée)
-      apercu: /images/cms/icones/cartes/ampoule.svg
-    - cle: croissance
-      libelle: Croissance (courbe)
-      apercu: /images/cms/icones/cartes/croissance.svg
-    - cle: losange
-      libelle: Losange
-      apercu: /images/cms/icones/cartes/losange.svg
-    - cle: organisation
-      libelle: Organisation (bâtiments)
-      apercu: /images/cms/icones/cartes/organisation.svg
+      libelle: Groupe (personnes)
+      apercu: /images/cms/icones/groupe.svg
+    - cle: groupe-mains
+      libelle: Groupe porté par des mains
+      apercu: /images/cms/icones/groupe-mains.svg
     - cle: porteur
       libelle: Porteur (personne et équipe)
-      apercu: /images/cms/icones/cartes/porteur.svg
+      apercu: /images/cms/icones/porteur.svg
     - cle: destinataire
       libelle: Destinataires (trois personnes)
-      apercu: /images/cms/icones/cartes/destinataire.svg
-  # Carte claire de la section « Bento métriques »
-  icones_bento:
-    - cle: insigne
-      libelle: Insigne (coche cerclée)
-      apercu: /images/cms/icones/bento/insigne.svg
-    - cle: bouclier
-      libelle: Bouclier
-      apercu: /images/cms/icones/bento/bouclier.svg
-    - cle: etoile
-      libelle: Étoile
-      apercu: /images/cms/icones/bento/etoile.svg
-  # Outils exclusifs
-  icones_outils:
-    - cle: calendrier
-      libelle: Calendrier
-      apercu: /images/cms/icones/outils/calendrier.svg
-    - cle: etoile
-      libelle: Étincelle
-      apercu: /images/cms/icones/outils/etoile.svg
-  # Tuiles de la section « Expertises (bento) »
-  icones_expertises:
-    - cle: fenetre
-      libelle: Fenêtre
-      apercu: /images/cms/icones/expertises/fenetre.svg
-    - cle: graphique
-      libelle: Graphique
-      apercu: /images/cms/icones/expertises/graphique.svg
-    - cle: personnes
-      libelle: Personnes
-      apercu: /images/cms/icones/expertises/personnes.svg
-    - cle: engrenage
-      libelle: Engrenage
-      apercu: /images/cms/icones/expertises/engrenage.svg
-    - cle: document
-      libelle: Document
-      apercu: /images/cms/icones/expertises/document.svg
-    - cle: code
-      libelle: Code
-      apercu: /images/cms/icones/expertises/code.svg
-  # Solutions (accueil)
-  icones_solutions:
-    - cle: ecran
-      libelle: Écran
-      apercu: /images/cms/icones/solutions/ecran.svg
-    - cle: bouclier
-      libelle: Bouclier
-      apercu: /images/cms/icones/solutions/bouclier.svg
-    - cle: nuage
-      libelle: Nuage
-      apercu: /images/cms/icones/solutions/nuage.svg
-  # Puces des offres numérotées
-  icones_puces:
-    - cle: coche
-      libelle: Coche cerclée
-      apercu: /images/cms/icones/puces/coche.svg
-    - cle: document
-      libelle: Document
-      apercu: /images/cms/icones/puces/document.svg
-    - cle: cible
-      libelle: Cible
-      apercu: /images/cms/icones/puces/cible.svg
-    - cle: carte
-      libelle: Carte (feuille de route)
-      apercu: /images/cms/icones/puces/carte.svg
-  # Réalisations
-  icones_realisations:
-    - cle: trousse
-      libelle: Trousse (santé)
-      apercu: /images/cms/icones/realisations/trousse.svg
-    - cle: casque
-      libelle: Casque (services)
-      apercu: /images/cms/icones/realisations/casque.svg
-    - cle: groupe
-      libelle: Groupe (RH)
-      apercu: /images/cms/icones/realisations/groupe.svg
-    - cle: marteau
-      libelle: Marteau (juridique)
-      apercu: /images/cms/icones/realisations/marteau.svg
-  # Victrix en chiffres (style carte)
-  icones_chiffres:
-    - cle: groupe
-      libelle: Groupe (mains)
-      apercu: /images/cms/icones/chiffres/groupe.svg
-    - cle: engrenages
-      libelle: Engrenage et horloge
-      apercu: /images/cms/icones/chiffres/engrenages.svg
-    - cle: bouclier
-      libelle: Bouclier coché
-      apercu: /images/cms/icones/chiffres/bouclier.svg
-    - cle: croissance
-      libelle: Croissance
-      apercu: /images/cms/icones/chiffres/croissance.svg
-  # Tuiles de valeurs (value-tiles, ex-page Carrières) — nom de liste historique
-  icones_carrieres_valeurs:
-    - cle: etoile
-      libelle: Étoile
-      apercu: /images/cms/icones/carrieres-valeurs/etoile.svg
-    - cle: groupe
-      libelle: Groupe
-      apercu: /images/cms/icones/carrieres-valeurs/groupe.svg
-    - cle: ampoule
-      libelle: Ampoule
-      apercu: /images/cms/icones/carrieres-valeurs/ampoule.svg
+      apercu: /images/cms/icones/destinataire.svg
     - cle: poignee
       libelle: Poignée de main
-      apercu: /images/cms/icones/carrieres-valeurs/poignee.svg
-    - cle: insigne
-      libelle: Insigne
-      apercu: /images/cms/icones/carrieres-valeurs/insigne.svg
-  # Photo + atouts (photo-features, ex-page Carrières) — nom de liste historique
-  icones_carrieres_atouts:
-    - cle: croissance
-      libelle: Croissance
-      apercu: /images/cms/icones/carrieres-atouts/croissance.svg
-    - cle: progression
-      libelle: Progression
-      apercu: /images/cms/icones/carrieres-atouts/progression.svg
+      apercu: /images/cms/icones/poignee.svg
     - cle: coeur
       libelle: Cœur
-      apercu: /images/cms/icones/carrieres-atouts/coeur.svg
+      apercu: /images/cms/icones/coeur.svg
+    - cle: dossier
+      libelle: Dossier
+      apercu: /images/cms/icones/dossier.svg
+    - cle: document
+      libelle: Document
+      apercu: /images/cms/icones/document.svg
+    - cle: organisation
+      libelle: Organisation (bâtiments)
+      apercu: /images/cms/icones/organisation.svg
+    - cle: croissance
+      libelle: Croissance (courbe)
+      apercu: /images/cms/icones/croissance.svg
+    - cle: croissance-pleine
+      libelle: Croissance (flèche pleine)
+      apercu: /images/cms/icones/croissance-pleine.svg
+    - cle: progression
+      libelle: Progression (cycle)
+      apercu: /images/cms/icones/progression.svg
+    - cle: graphique
+      libelle: Graphique (barres)
+      apercu: /images/cms/icones/graphique.svg
+    - cle: cible
+      libelle: Cible
+      apercu: /images/cms/icones/cible.svg
+    - cle: carte
+      libelle: Carte (feuille de route)
+      apercu: /images/cms/icones/carte.svg
+    - cle: calendrier
+      libelle: Calendrier
+      apercu: /images/cms/icones/calendrier.svg
+    - cle: ampoule
+      libelle: Ampoule (idée)
+      apercu: /images/cms/icones/ampoule.svg
+    - cle: etoile
+      libelle: Étoile
+      apercu: /images/cms/icones/etoile.svg
+    - cle: etincelle
+      libelle: Étincelle
+      apercu: /images/cms/icones/etincelle.svg
+    - cle: eclair
+      libelle: Éclair
+      apercu: /images/cms/icones/eclair.svg
+    - cle: coche
+      libelle: Coche cerclée
+      apercu: /images/cms/icones/coche.svg
+    - cle: losange
+      libelle: Losange
+      apercu: /images/cms/icones/losange.svg
     - cle: formation
       libelle: Formation (toque)
-      apercu: /images/cms/icones/carrieres-atouts/formation.svg
+      apercu: /images/cms/icones/formation.svg
+    - cle: bouclier
+      libelle: Bouclier coché
+      apercu: /images/cms/icones/bouclier.svg
+    - cle: engrenage
+      libelle: Engrenage
+      apercu: /images/cms/icones/engrenage.svg
+    - cle: engrenage-horloge
+      libelle: Engrenage et horloge
+      apercu: /images/cms/icones/engrenage-horloge.svg
+    - cle: ecran
+      libelle: Écran
+      apercu: /images/cms/icones/ecran.svg
+    - cle: fenetre
+      libelle: Fenêtre
+      apercu: /images/cms/icones/fenetre.svg
+    - cle: code
+      libelle: Code
+      apercu: /images/cms/icones/code.svg
+    - cle: nuage
+      libelle: Nuage
+      apercu: /images/cms/icones/nuage.svg
+    - cle: trousse
+      libelle: Trousse (santé)
+      apercu: /images/cms/icones/trousse.svg
+    - cle: casque
+      libelle: Casque (service à la clientèle)
+      apercu: /images/cms/icones/casque.svg
+    - cle: marteau
+      libelle: Marteau (juridique)
+      apercu: /images/cms/icones/marteau.svg
 
 _structures:
   # Section palette for the landing `sections` array. The VALUES are NOT
@@ -2787,7 +2746,7 @@ _structures:
             options:
               empty_type: string
               allow_empty: true
-              values: _select_data.icones_cartes
+              values: _select_data.icones
               value_key: cle
               preview:
                 text:
@@ -2795,9 +2754,8 @@ _structures:
                 image:
                   - key: apercu
             comment: >-
-              Tuile pictogramme au-dessus du titre. Vide = aucune.
-              organisation/porteur/destinataire = icônes pleines de la page
-              Expertises (approche en 3 angles).
+              Tuile pictogramme au-dessus du titre. Vide = aucune. Toute la
+              banque de pictogrammes du site est offerte.
 
   # Cartes du bento d'expertises (section « Service — Bento d'expertises »,
   # fidélité maquette expertise-mere.css 2026-08-05).
@@ -2872,7 +2830,7 @@ _structures:
             options:
               empty_type: string
               allow_empty: true
-              values: _select_data.icones_expertises
+              values: _select_data.icones
               value_key: cle
               preview:
                 text:
@@ -2943,7 +2901,7 @@ _structures:
             options:
               empty_type: string
               allow_empty: true
-              values: _select_data.icones_outils
+              values: _select_data.icones
               value_key: cle
               preview:
                 text:
@@ -3036,14 +2994,14 @@ _structures:
             options:
               empty_type: string
               allow_empty: false
-              values: _select_data.icones_puces
+              values: _select_data.icones
               value_key: cle
               preview:
                 text:
                   - key: libelle
                 image:
                   - key: apercu
-            comment: "coche = crochet cerclé ; document ; cible ; carte = feuille de route."
+            comment: "Puce en tête de ligne — toute la banque de pictogrammes du site ; « coche » par défaut."
 
   # Cartes de réalisation (section « Produit — Réalisations »).
   realisation_items:
@@ -3089,14 +3047,14 @@ _structures:
             options:
               empty_type: string
               allow_empty: true
-              values: _select_data.icones_realisations
+              values: _select_data.icones
               value_key: cle
               preview:
                 text:
                   - key: libelle
                 image:
                   - key: apercu
-            comment: "trousse = santé ; casque = services ; groupe = RH ; marteau = juridique. Vide = aucune."
+            comment: "Toute la banque de pictogrammes du site (ex. trousse = santé ; casque = services ; groupe = RH ; marteau = juridique). Vide = aucune."
 
   # Cartes d'expertise ({number,title,accent,description,href}) pour la section
   # « Accueil — Expertises ». Même logique que benefit_items : une structure à
@@ -3234,7 +3192,7 @@ _structures:
             options:
               empty_type: string
               allow_empty: true
-              values: _select_data.icones_solutions
+              values: _select_data.icones
               value_key: cle
               preview:
                 text:
@@ -3453,7 +3411,7 @@ _structures:
             options:
               empty_type: string
               allow_empty: true
-              values: _select_data.icones_chiffres
+              values: _select_data.icones
               value_key: cle
               preview:
                 text:
@@ -3462,8 +3420,7 @@ _structures:
                   - key: apercu
             comment: >-
               Affiché au-dessus du chiffre quand la section est en style
-              « carte » : groupe (personnes), engrenages (service/horloge),
-              bouclier (sécurité), croissance. Vide = aucun.
+              « carte ». Toute la banque de pictogrammes du site. Vide = aucun.
 
   # Navigation (collection « navigation ») : formes des tableaux du menu.
   # Même logique que benefit_items — une structure à valeur unique donne au
@@ -3833,7 +3790,7 @@ _structures:
   # (value-tiles — ex-page Carrières convertie en sections le 2026-09-17).
   # Icônes en CLÉS FERMÉES dessinées en SVG par le composant (carte ICONS de
   # value-tiles.astro) — en ajouter une = la dessiner là d'abord ; la liste
-  # _select_data.icones_carrieres_valeurs garde son nom historique.
+  # Sélecteur d'icône = banque unique _select_data.icones (2026-09-18).
   # Re-pointée par value-tiles.bookshop.yml.
   value_tile_items:
     values:
@@ -3851,11 +3808,11 @@ _structures:
           icon:
             type: select
             label: Icône
-            comment: Liste fermée — les pictogrammes sont dessinés par le site.
+            comment: Toute la banque de pictogrammes du site (les tracés sont dessinés par le site).
             options:
               empty_type: string
               allow_empty: false
-              values: _select_data.icones_carrieres_valeurs
+              values: _select_data.icones
               value_key: cle
               preview:
                 text:
@@ -3870,7 +3827,7 @@ _structures:
 
   # Atout {icon, title, text} de la section « Photo + atouts » (photo-features).
   # Mêmes règles de clés fermées (carte ICONS de photo-features.astro ; liste
-  # _select_data.icones_carrieres_atouts, nom historique conservé).
+  # banque unique _select_data.icones depuis le 2026-09-18).
   # Re-pointée par photo-features.bookshop.yml.
   photo_feature_items:
     values:
@@ -3889,11 +3846,11 @@ _structures:
           icon:
             type: select
             label: Icône
-            comment: Liste fermée — les pictogrammes sont dessinés par le site.
+            comment: Toute la banque de pictogrammes du site (les tracés sont dessinés par le site).
             options:
               empty_type: string
               allow_empty: false
-              values: _select_data.icones_carrieres_atouts
+              values: _select_data.icones
               value_key: cle
               preview:
                 text:

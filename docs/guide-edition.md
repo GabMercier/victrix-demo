@@ -88,11 +88,15 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
    la charte). Depuis le 17 sept. 2026, « sable » est un grège plus neutre
    (l'ancienne teinte tirait vers l'orange) : les pages qui l'utilisaient
    ont changé de teinte d'elles-mêmes, rien à refaire.
-5. **Icônes** : les champs « Icône » (cartes à icônes, tuiles bento,
-   réalisations, chiffres en style carte, puces d'offre…) sont des listes
-   déroulantes qui montrent la **vignette de chaque pictogramme** à côté de
-   son nom. La bibliothèque est dessinée pour le site ; demander une icône
-   manquante à l'équipe technique (elle est ajoutée au dessin ET à la liste).
+5. **Icônes** : tous les champs « Icône » (cartes à icônes, tuiles bento et
+   leur filigrane, réalisations, chiffres en style carte, puces d'offre, tuiles
+   de valeurs, atouts…) ouvrent **la même liste déroulante** : la **banque de
+   pictogrammes du site** au complet (34 au 2026-09-18), avec la **vignette**
+   de chacun à côté de son nom, rangée par thème (personnes, affaires, idées,
+   technologie, secteurs). N'importe quel pictogramme peut donc servir dans
+   n'importe quelle section ; chaque section le dessine à sa taille et à son
+   épaisseur de trait. Il manque un pictogramme ? Le demander à l'équipe
+   technique : ajouté une fois à la banque, il apparaît dans toutes les listes.
 6. Par défaut la page est **non indexée** (invisible des moteurs de recherche —
    voulu pour les campagnes). L'interrupteur « noindex » est là si une page
    doit un jour être indexée.
@@ -639,7 +643,7 @@ champ libre). Ce n'est pas une limitation gratuite : chaque liste garantit la
 | Champ | Pourquoi une liste fermée |
 |---|---|
 | Peau de carte (« claire / image / bleue / nuit ») | seules ces variantes existent dans le design |
-| Icônes (cartes à icônes, réalisations…) | l'icône vient d'une bibliothèque dessinée pour le site — la liste montre la vignette de chacune |
+| Icônes (toutes les sections à icône) | UNE banque de pictogrammes dessinée pour le site, la même liste partout — la liste montre la vignette de chacun |
 | Fond de section | dix fonds clairs de la charte, pastille de couleur dans la liste |
 | Contact — sujet / service présélectionné | les valeurs doivent exister dans les listes de la page Contact (fr et en) |
 | Type de champ de formulaire | chaque type a son comportement serveur (validation, courriel) |

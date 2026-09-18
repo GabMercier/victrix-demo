@@ -65,6 +65,23 @@ est inutile. Si seuls les parents marchent, appliquer le correctif.
 
 ## 2. Banque d'icônes unique — état et plan
 
+> **LIVRÉ le 2026-09-18 (pictogrammes)** : `component-library/src/shared/icons.ts`
+> = 34 pictogrammes (les 47 entrées des dix composants étaient 40 dessins, dont
+> six redites quasi identiques fusionnées : insigne → coche, les trois
+> boucliers, engrenage, graphique, document) ; les dix composants, le zod, UNE
+> liste `_select_data.icones` pour les 11 sélecteurs (filigrane du bento
+> compris), vignettes à plat, migration de 30 valeurs dans 22 fichiers
+> (`scripts/migrate-icons-bank.mjs`), garde-fous (`cms:previews:check`,
+> `src/lib/icons.test.ts`). Preuve : build avant/après comparé sur 173 pages —
+> 142 identiques à l'octet, 6 différences de balisage sans effet, 25 pages où
+> seul un des six dessins fusionnés change (tailles, traits et classes
+> inchangés). **Reste : la famille « logos »** (voir plus bas, point 4) — le
+> site actuel publie déjà les logos Microsoft, Cisco, Check Point, CrowdStrike,
+> Palo Alto, Aruba, Imprivata, AlgoSec, Zscaler (SVG), ServiceNow, AWS, OVH,
+> Juniper, Proofpoint et « Happy At Work » (PNG) dans sa médiathèque
+> (`docs/migration/urls-medias.csv`) ; à décider : où les afficher et dans
+> quelles versions (plusieurs badges partenaires datent de 2022-2023).
+
 **État.** 11 sections ont une icône, chacune avec SA liste fermée
 (`_select_data.icones_cartes`, `_bento`, `_outils`, `_expertises`,
 `_solutions`, `_puces`, `_realisations`, `_chiffres`, `_carrieres_valeurs`,
