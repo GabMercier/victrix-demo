@@ -87,6 +87,40 @@ const {
 // Toute valeur inattendue (édition en cours au CMS) retombe sur le défaut.
 const gradient = overlay === 'degrade';
 const blanc = overlay === 'blanc';
+
+// ZONE LISIBLE DU VOILE (2026-09-18, retour user sur /expertises en mobile).
+// Les voiles « blanc » et « degrade » s'estompent vers la droite en % de la
+// LARGEUR DU HÉROS, alors que la colonne de texte faisait 688 px quoi qu'il
+// arrive : sous ~1100 px le chapeau passait sur la photo nue (illisible).
+// Règle : le texte ne sort JAMAIS de la zone où le voile couvre assez la
+// photo — le voile et la colonne de texte changent donc ENSEMBLE, par palier :
+//  - < md  : le texte a besoin de toute la largeur → voile quasi uniforme
+//            (la photo reste une texture légère) ;
+//  - md–lg : voile plein jusqu'à 60 % puis fondu ; texte borné à 62 % ;
+//  - ≥ lg  : dégradés de la MAQUETTE, verbatim ; texte borné à 55 % de la
+//            largeur (couverture ≥ ~80 %), plafond 688 px inchangé.
+// Le voile uniforme (« voile », défaut) n'est pas concerné : il couvre tout.
+// Paliers disjoints (max-md / md:max-lg / lg) : aucune classe à neutraliser.
+const veilClass = blanc
+  ? [
+      'max-md:bg-[linear-gradient(90deg,rgba(250,247,244,0.97)_0%,rgba(250,247,244,0.88)_100%)]',
+      'md:max-lg:bg-[linear-gradient(90deg,rgba(250,247,244,0.97)_0%,rgba(250,247,244,0.92)_60%,rgba(250,247,244,0.15)_100%)]',
+      'lg:bg-[linear-gradient(105deg,#F1E8DF_15.7%,rgba(241,232,223,0.6)_29.37%,rgba(241,232,223,0.1)_67.12%),linear-gradient(90deg,#FFFFFF_0%,rgba(255,255,255,0.8)_50%,rgba(255,255,255,0)_100%)]',
+    ]
+  : gradient
+    ? [
+        'max-md:bg-on-surface/70',
+        'md:max-lg:bg-[linear-gradient(90deg,rgba(33,36,42,0.8)_0%,rgba(33,36,42,0.72)_60%,rgba(33,36,42,0)_100%)]',
+        'lg:bg-gradient-to-r lg:from-on-surface/80 lg:to-transparent',
+      ]
+    : ['bg-on-primary-fixed/40'];
+// Largeur = part de fenêtre visée MOINS la gouttière réelle de container-site
+// (clamp(2rem, 3.75vw, 96px) à partir de md — theme.css) : le bord DROIT du
+// texte tombe donc exactement à 62 % puis 55 % de la largeur.
+const textZoneClass =
+  blanc || gradient
+    ? 'md:max-lg:max-w-[calc(62vw_-_clamp(2rem,3.75vw,96px))] lg:max-w-[min(688px,calc(55vw_-_clamp(2rem,3.75vw,96px)))]'
+    : '';
 const badge = eyebrowStyle === 'badge';
 
 // Point focal du recadrage : classes LITTÉRALES (voir l'en-tête — JIT).
@@ -137,21 +171,11 @@ const titleParts =
   }
   {/* Voile « blanc » : DEUX dégradés superposés, valeurs verbatim maquette
       (expertisesparent.css §HeroSection Overlay ×2) — lavis beige chaud par
-      dessus le fondu blanc gauche→droite. #F1E8DF = token beige. */}
-  <div
-    class:list={[
-      'absolute inset-0 -z-10',
-      blanc
-        ? 'bg-[linear-gradient(105deg,#F1E8DF_15.7%,rgba(241,232,223,0.6)_29.37%,rgba(241,232,223,0.1)_67.12%),linear-gradient(90deg,#FFFFFF_0%,rgba(255,255,255,0.8)_50%,rgba(255,255,255,0)_100%)]'
-        : gradient
-          ? 'bg-gradient-to-r from-on-surface/80 to-transparent'
-          : 'bg-on-primary-fixed/40',
-    ]}
-    aria-hidden="true"
-  >
-  </div>
+      dessus le fondu blanc gauche→droite. #F1E8DF = token beige. Appliqués à
+      partir de `lg` ; en dessous, voir « ZONE LISIBLE DU VOILE » (entête). */}
+  <div class:list={['absolute inset-0 -z-10', ...veilClass]} aria-hidden="true"></div>
   <div class="container-site py-24 w-full">
-    <div class="max-w-[688px] flex flex-col items-start gap-4">
+    <div class:list={['max-w-[688px] flex flex-col items-start gap-4', textZoneClass]}>
       {
         eyebrow &&
           (badge ? (
