@@ -1,6 +1,6 @@
 {
   "title": "Productivity Consulting",
-  "description": "Looking to improve your company’s efficiency? Victrix offers customized productivity consulting and innovative productivity tools. Discover our solutions!",
+  "description": "Looking to improve your company’s efficiency? Victrix offers customized productivity consulting and innovative solutions. ",
   "slug": "productivity-consulting",
   "seoH1": "",
   "contactSujet": "",
@@ -71,22 +71,22 @@
         "badge": "Victrix exclusive",
         "title": "Ø Studio",
         "text": "Move to the Power Platform with support tailored to your needs. Ø Studio gives you development speed and delivery capacity to migrate your applications or automate your processes.",
-        "ctaLabel": "Raise your productivity with Ø Studio",
-        "href": "/en/services/productivity-consulting/office-booking",
+        "ctaLabel": "Discover Ø Studio",
+        "href": "/en/services/productivity-consulting/o-studio/",
         "image": "/images/sections/expertises-ostudio.png"
       },
       "items": [
         {
           "title": "O bureau",
           "text": "Simplify bookings, improve management and automate usage reports for your offices with our easy-to-implement booking management application.",
-          "ctaLabel": "Manage bookings efficiently",
+          "ctaLabel": "Discover O bureau",
           "href": "/en/services/productivity-consulting/office-booking",
           "icon": ""
         },
         {
           "title": "Employee platform",
           "text": "Give your staff the best in intranet experiences. Boost productivity at work by centralizing tools and knowledge.",
-          "ctaLabel": "Deploy a modern intranet",
+          "ctaLabel": "Discover the employee platform",
           "href": "/en/services/productivity-consulting/employee-platform-intranet",
           "icon": ""
         }
@@ -160,7 +160,7 @@
       "type": "cta",
       "title": "Ready to move your organization forward?",
       "body": "Let's discuss your challenges and see how Victrix can help you go further in your digital transformation and performance improvement.",
-      "ctaLabel": "Book a slot with an expert",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "variant": "dark"
     },
@@ -175,5 +175,7 @@
       "ctaHref": "/en/ressources"
     }
   ],
-  "seoTitle": "Productivity Consulting Firm in Montreal | Expertise"
+  "seoTitle": "Productivity Consulting Firm in Montreal | Expertise Victrix",
+  "_schema": "default",
+  "noindex": false
 }

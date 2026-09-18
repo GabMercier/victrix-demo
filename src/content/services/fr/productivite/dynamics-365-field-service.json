@@ -12,7 +12,7 @@
       "title": "Implémentation Dynamics 365 Field Service",
       "titleHighlight": "Dynamics 365 Field Service",
       "lead": "Structurez et optimisez la gestion de vos opérations terrain : coordonnez vos interventions, vos techniciens et vos ressources dans un seul système. Victrix implémente Dynamics 365 Field Service pour vous donner une visibilité en temps réel sur le terrain, accélérer la résolution des demandes et rehausser l’expérience de vos clients comme de vos employés.",
-      "ctaLabel": "Demandez une consultation",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
@@ -24,7 +24,7 @@
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Les enjeux de gestion des opérations terrain",
-      "subtitle": "Papier, feuilles de calcul ou appels de coordination : vos équipes terrain doivent-elles composer avec des outils manuels et déconnectés ? À mesure que le volume de demandes augmente, les limites deviennent critiques pour les organisations québécoises à fortes opérations terrain — secteur manufacturier avancé, énergie, services publics, télécommunications, secteur public et municipalités, santé.",
+      "subtitle": "Papier, feuilles de calcul ou appels de coordination : vos équipes terrain doivent-elles composer avec des outils manuels et déconnectés? À mesure que le volume de demandes augmente, les limites deviennent critiques pour les organisations québécoises à fortes opérations terrain comme le secteur manufacturier avancé, l'énergie, les services publics, les télécommunications, la santé, le secteur public et les municipalités.",
       "fond": "blanc",
       "boxes": [
         "Planification lourde et rigide qui se désynchronise au moindre imprévu",
@@ -48,23 +48,56 @@
           "number": "01",
           "title": "Ce que la solution prend en charge",
           "bullets": [
-            { "text": "Ordres de travail : création, assignation et suivi de bout en bout", "icon": "coche" },
-            { "text": "Planification et répartition des ressources : la bonne équipe dans le bon véhicule, selon les compétences, permis, certifications et équipements requis", "icon": "coche" },
-            { "text": "Optimisation des horaires et des déplacements : ajustement des imprévus, comme les intempéries, et trajets efficaces", "icon": "coche" },
-            { "text": "Visibilité en temps réel : géolocalisation des équipes et suivi des techniciens sur la route", "icon": "coche" },
-            { "text": "Inspection et validation des travaux sur place, au moyen de l’application mobile", "icon": "coche" },
-            { "text": "Gestion des actifs clients, avec l’historique de service accessible", "icon": "coche" },
-            { "text": "Assistance intégrée par l’IA : un assistant de planification intelligent soutient vos répartiteurs", "icon": "coche" }
+            {
+              "text": "Ordres de travail : création, assignation et suivi de bout en bout",
+              "icon": "coche"
+            },
+            {
+              "text": "Planification et répartition des ressources : la bonne équipe dans le bon véhicule, selon les compétences, permis, certifications et équipements requis",
+              "icon": "coche"
+            },
+            {
+              "text": "Optimisation des horaires et des déplacements : ajustement des imprévus, comme les intempéries, et trajets efficaces",
+              "icon": "coche"
+            },
+            {
+              "text": "Visibilité en temps réel : géolocalisation des équipes et suivi des techniciens sur la route",
+              "icon": "coche"
+            },
+            {
+              "text": "Inspection et validation des travaux sur place, au moyen de l’application mobile",
+              "icon": "coche"
+            },
+            {
+              "text": "Gestion des actifs clients, avec l’historique de service accessible",
+              "icon": "coche"
+            },
+            {
+              "text": "Assistance intégrée par l’IA : un assistant de planification intelligent soutient vos répartiteurs",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Une expérience terrain rehaussée pour vos techniciens",
           "bullets": [
-            { "text": "Les bons outils et les bonnes données, au bon moment, pour livrer un service de qualité à chaque intervention", "icon": "cible" },
-            { "text": "Augmentez le taux de résolution au premier appel en envoyant le technicien le plus compétent pour résoudre le problème", "icon": "coche" },
-            { "text": "Assurez le suivi en temps réel des techniciens et informez vos clients de l’heure d’arrivée estimée", "icon": "coche" },
-            { "text": "Déclenchez des flux de travail et des ordres de travail automatisés en fonction des actions des clients et des données analysées", "icon": "coche" }
+            {
+              "text": "Les bons outils et les bonnes données, au bon moment, pour livrer un service de qualité à chaque intervention",
+              "icon": "cible"
+            },
+            {
+              "text": "Augmentez le taux de résolution au premier appel en envoyant le technicien le plus compétent pour résoudre le problème",
+              "icon": "coche"
+            },
+            {
+              "text": "Assurez le suivi en temps réel des techniciens et informez vos clients de l’heure d’arrivée estimée",
+              "icon": "coche"
+            },
+            {
+              "text": "Déclenchez des flux de travail et des ordres de travail automatisés en fonction des actions des clients et des données analysées",
+              "icon": "coche"
+            }
           ]
         }
       ]
@@ -80,10 +113,22 @@
         "text": "Selon l’étude Forrester commandée par Microsoft, les organisations qui adoptent Dynamics 365 Field Service obtiennent :",
         "watermark": "graphique",
         "stats": [
-          { "value": "6 mois", "label": "Rentabilisation de la solution" },
-          { "value": "+14 %", "label": "De productivité des techniciens" },
-          { "value": "+100 h", "label": "Économisées grâce à une gestion efficace" },
-          { "value": "346 %", "label": "De rendement sur trois ans" }
+          {
+            "value": "6 mois",
+            "label": "Rentabilisation de la solution"
+          },
+          {
+            "value": "+14 %",
+            "label": "De productivité des techniciens"
+          },
+          {
+            "value": "+100 h",
+            "label": "Économisées grâce à une gestion efficace"
+          },
+          {
+            "value": "346 %",
+            "label": "De rendement sur trois ans"
+          }
         ]
       },
       "aside": {
@@ -106,9 +151,18 @@
       "image": "/wp-content/uploads/2026/06/site-manager-walk-down-with-engineer-to-check-prec-2026-03-09-23-57-29-utc-1-scaled.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "Bilingue", "label": "Livraison en français ou bilingue, par une équipe d’ici" },
-        { "value": "Sur mesure", "label": "Composants taillés pour votre réalité, expertise Power Pages reconnue" },
-        { "value": "Éprouvé", "label": "Un modèle transparent : on bâtit avec vous" }
+        {
+          "value": "Bilingue",
+          "label": "Livraison en français ou bilingue, par une équipe d’ici"
+        },
+        {
+          "value": "Sur mesure",
+          "label": "Composants taillés pour votre réalité, expertise Power Pages reconnue"
+        },
+        {
+          "value": "Éprouvé",
+          "label": "Un modèle transparent : on bâtit avec vous"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -153,7 +207,7 @@
       "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Ce qui est inclus dans notre offre d’implémentation",
-      "intro": "Échéancier à titre indicatif : environ 18 semaines*, confirmé après l’analyse. L’offre pose une base solide que vous faites évoluer au rythme de vos besoins — selon vos priorités, nous pouvons analyser et chiffrer séparément les éléments du second volet. * Certaines limites et précisions s’appliquent aux éléments marqués d’un astérisque ; elles seront confirmées lors de l’analyse.",
+      "intro": "Échéancier à titre indicatif : environ 18 semaines*, confirmé après l’analyse. L’offre pose une base solide que vous faites évoluer au rythme de vos besoins; selon vos priorités, nous pouvons analyser et chiffrer séparément les éléments du second volet. * Certaines limites et précisions s’appliquent aux éléments marqués d’un astérisque ; elles seront confirmées lors de l’analyse.",
       "fond": "givre",
       "ctaLabel": "Obtenez une proposition à votre mesure",
       "ctaHref": "/fr/contact",
@@ -162,27 +216,72 @@
           "number": "01",
           "title": "Activités et livrables inclus",
           "bullets": [
-            { "text": "Échéancier détaillé et plan de projet", "icon": "coche" },
-            { "text": "Rapports de suivi aux deux semaines", "icon": "coche" },
-            { "text": "Rapport d’observations et recommandations sur vos processus actuels", "icon": "coche" },
-            { "text": "Cahier des charges", "icon": "coche" },
-            { "text": "Schéma d’architecture cible", "icon": "coche" },
-            { "text": "Modèle de données relationnelles", "icon": "coche" },
-            { "text": "Implémentation de la solution Dynamics 365 Field Service (un seul flux de travail)*", "icon": "coche" },
-            { "text": "Intégrations* et migrations*", "icon": "coche" },
-            { "text": "Formation*", "icon": "coche" },
-            { "text": "Go-live et support post-déploiement*", "icon": "coche" }
+            {
+              "text": "Échéancier détaillé et plan de projet",
+              "icon": "coche"
+            },
+            {
+              "text": "Rapports de suivi aux deux semaines",
+              "icon": "coche"
+            },
+            {
+              "text": "Rapport d’observations et recommandations sur vos processus actuels",
+              "icon": "coche"
+            },
+            {
+              "text": "Cahier des charges",
+              "icon": "coche"
+            },
+            {
+              "text": "Schéma d’architecture cible",
+              "icon": "coche"
+            },
+            {
+              "text": "Modèle de données relationnelles",
+              "icon": "coche"
+            },
+            {
+              "text": "Implémentation de la solution Dynamics 365 Field Service (un seul flux de travail)*",
+              "icon": "coche"
+            },
+            {
+              "text": "Intégrations* et migrations*",
+              "icon": "coche"
+            },
+            {
+              "text": "Formation*",
+              "icon": "coche"
+            },
+            {
+              "text": "Go-live et support post-déploiement*",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Une base évolutive pour vos prochaines phases",
           "bullets": [
-            { "text": "L’optimisation du planificateur par l’IA (analysée et évaluée à part)", "icon": "carte" },
-            { "text": "Un portail client, grâce à notre expertise des portails Power Pages", "icon": "carte" },
-            { "text": "La gestion du service client", "icon": "carte" },
-            { "text": "La gestion des inventaires", "icon": "carte" },
-            { "text": "Des automatisations sur mesure", "icon": "carte" }
+            {
+              "text": "L’optimisation du planificateur par l’IA (analysée et évaluée à part)",
+              "icon": "carte"
+            },
+            {
+              "text": "Un portail client, grâce à notre expertise des portails Power Pages",
+              "icon": "carte"
+            },
+            {
+              "text": "La gestion du service client",
+              "icon": "carte"
+            },
+            {
+              "text": "La gestion des inventaires",
+              "icon": "carte"
+            },
+            {
+              "text": "Des automatisations sur mesure",
+              "icon": "carte"
+            }
           ]
         }
       ]
@@ -194,27 +293,27 @@
       "fond": "blanc",
       "items": [
         {
-          "question": "Qu’est-ce que Dynamics 365 Field Service ?",
+          "question": "Qu’est-ce que Dynamics 365 Field Service?",
           "answer": "Dynamics 365 Field Service est une solution Microsoft qui aide les organisations à optimiser la gestion de leurs opérations terrain : ordres de travail, planification, répartition des ressources et suivi des techniciens, dans un seul système connecté."
         },
         {
-          "question": "Combien de temps prend une implémentation ?",
+          "question": "Combien de temps prend une implémentation?",
           "answer": "L’échéancier indicatif est d’environ 18 semaines. Il est confirmé après l’analyse, car il varie selon la portée, vos processus et vos besoins."
         },
         {
-          "question": "Les licences Microsoft Dynamics 365 Field Service sont-elles comprises dans l’offre ?",
+          "question": "Les licences Microsoft Dynamics 365 Field Service sont-elles comprises dans l’offre?",
           "answer": "Non. L’offre couvre les services d’implémentation. Les licences Dynamics 365 relèvent d’un abonnement Microsoft distinct. Victrix peut vous aider à les acquérir en fonction de vos besoins."
         },
         {
-          "question": "Peut-on déployer uniquement les fonctionnalités dont nous avons besoin ?",
+          "question": "Peut-on déployer uniquement les fonctionnalités dont nous avons besoin?",
           "answer": "Oui. Nous déployons d’abord ce dont vous avez besoin, puis la plateforme évolue avec vous, sans besoin d’une nouvelle implémentation."
         },
         {
-          "question": "Comment gérez-vous la conduite du changement et l’adoption ?",
+          "question": "Comment gérez-vous la conduite du changement et l’adoption?",
           "answer": "Nous offrons un accompagnement personnalisé qui comprend la formation par rôle, la documentation et un support bilingue après le go-live. L’application mobile de Dynamics 365 Field Service, simple à prendre en main, facilite aussi l’adoption sur le terrain."
         },
         {
-          "question": "Quel est l’investissement requis ?",
+          "question": "Quel est l’investissement requis?",
           "answer": "L’offre débute à 85 000 $. Le budget et l’échéancier sont confirmés après l’analyse, car ils varient selon votre contexte et vos besoins."
         }
       ]
@@ -222,7 +321,7 @@
     {
       "_bookshop_name": "cta",
       "type": "cta",
-      "title": "Prêts à structurer et optimiser vos opérations terrain ?",
+      "title": "Prêts à structurer et optimiser vos opérations terrain?",
       "body": "Discutons de vos opérations terrain et de la façon dont Dynamics 365 Field Service peut les transformer.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
@@ -231,5 +330,8 @@
       "variant": "nuit"
     }
   ],
-  "seoTitle": "Implémentation Dynamics 365 Field Service | Services"
+  "seoTitle": "Implémentation Dynamics 365 Field Service | Services | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

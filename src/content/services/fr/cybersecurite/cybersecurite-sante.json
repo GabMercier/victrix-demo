@@ -8,12 +8,12 @@
     {
       "_bookshop_name": "service-hero",
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Services de cybersécurité",
       "titleAccent": "",
-      "title": "Cybersécurité dans le secteur de la santé",
+      "title": "Un service adapté au secteur de la santé",
       "titleHighlight": "santé",
       "lead": "Victrix offre un service de cybersécurité sur mesure pour le secteur de la santé. Protégez les données des patients, vos appareils médicaux connectés et vos systèmes d’information contre toutes les menaces informatiques.",
-      "ctaLabel": "Élevez votre cybersécurité",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
       "imageAlt": ""
@@ -41,7 +41,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
-      "sectionTitle": "Les priorités de cybersécurité des établissements de santé",
+      "sectionTitle": "Les enjeux de cybersécurité des établissements de santé",
       "headingStyle": "plain",
       "tone": "default",
       "columns": "2",
@@ -83,8 +83,14 @@
       "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "Zero Trust", "label": "Sécurité périmétrique renforcée" },
-        { "value": "24/7", "label": "Audits et services gérés" }
+        {
+          "value": "Zero Trust",
+          "label": "Sécurité périmétrique renforcée"
+        },
+        {
+          "value": "24/7/365",
+          "label": "Audits et services gérés"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -92,6 +98,18 @@
       "cardTitle": "",
       "cardText": "",
       "fond": ""
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Assurez une cybersécurité et confidentialité de premier ordre pour votre établissement de santé",
+      "body": "Victrix est un expert du domaine de la santé. Nous comprenons les exigences auxquelles font face les prestataires de soin de santé au quotidien. Nous usons des meilleures pratiques et offrons un accompagnement professionnel sur mesure.",
+      "ctaLabel": "Planifiez une consultation",
+      "ctaHref": "/fr/contact/",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit",
+      "fond": "blanc"
     },
     {
       "_bookshop_name": "tech-columns",
@@ -144,13 +162,16 @@
       "_bookshop_name": "cta",
       "type": "cta",
       "title": "Élevez la cybersécurité de vos informations médicales",
-      "body": "Contactez notre équipe d’experts et nous répondrons à toutes vos questions avec grand plaisir.",
-      "ctaLabel": "Contactez nos experts",
+      "body": "Contactez notre équipe d’experts et nous vous expliquerons comment notre service de cybersécurité en santé répond à vos exigences.",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit"
     }
   ],
-  "seoTitle": "Cybersécurité | Secteur de la santé"
+  "seoTitle": "Cybersécurité : secteur de la santé | Services | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

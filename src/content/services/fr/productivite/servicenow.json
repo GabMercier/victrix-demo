@@ -9,10 +9,10 @@
       "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Plateforme ServiceNow",
-      "title": "Maximisez ServiceNow : votre plateforme enrichie par l’expertise de Victrix",
+      "title": "Maximisez ServiceNow : votre plateforme enrichie par l’expertise de Victrix",
       "titleHighlight": "ServiceNow",
       "lead": "Victrix, votre partenaire certifié ServiceNow, vous accompagne depuis l’acquisition de la plateforme jusqu’à ses services d’évolution. Bénéficiez de notre approche de déploiement accéléré et de notre expertise pour tirer parti de toute la puissance de votre plateforme de services.",
-      "ctaLabel": "Demandez une consultation",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
@@ -36,7 +36,7 @@
         "icon": "coche",
         "title": "Accompagnement de bout en bout",
         "text": "Licences, déploiement, soutien et services d’évolution : un développement accéléré à valeur ajoutée et un service bilingue, en français et en anglais.",
-        "linkLabel": "Consultez un expert ServiceNow",
+        "linkLabel": "Planifiez une consultation",
         "linkHref": "/fr/contact"
       }
     },
@@ -85,19 +85,40 @@
           "number": "01",
           "title": "Conseil ServiceNow",
           "bullets": [
-            { "text": "Étude et analyse de vos besoins pour vous recommander les modules ServiceNow essentiels et leur séquence de déploiement", "icon": "document" },
-            { "text": "Pour les clients existants, l’état des lieux de l’utilisation des solutions, le bilan et le redressement pour maximiser l’utilisation de la plateforme", "icon": "cible" }
+            {
+              "text": "Étude et analyse de vos besoins pour vous recommander les modules ServiceNow essentiels et leur séquence de déploiement",
+              "icon": "document"
+            },
+            {
+              "text": "Pour les clients existants, l’état des lieux de l’utilisation des solutions, le bilan et le redressement pour maximiser l’utilisation de la plateforme",
+              "icon": "cible"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Développement et mise en œuvre de votre solution",
           "bullets": [
-            { "text": "Accompagnement stratégique en déploiement et gestion de projets", "icon": "coche" },
-            { "text": "Mise en place de la fondation ITSM et ITOM", "icon": "coche" },
-            { "text": "Expertise dans les modules d’affaires : sécurité (SecOps), technologie opérationnelle (TO), ressources humaines (RH), gestion de portfolio (SPM), gestion des actifs informatiques (ITAM), gestion du risque et de la continuité des affaires (IRM/BCM), développement sur AppEngine", "icon": "coche" },
-            { "text": "Proposition de trajectoires accélérées et codéveloppement avec vos équipes TI", "icon": "coche" },
-            { "text": "Soutien, exploration et services d’évolution ServiceNow", "icon": "coche" }
+            {
+              "text": "Accompagnement stratégique en déploiement et gestion de projets",
+              "icon": "coche"
+            },
+            {
+              "text": "Mise en place de la fondation ITSM et ITOM",
+              "icon": "coche"
+            },
+            {
+              "text": "Expertise dans les modules d’affaires : sécurité (SecOps), technologie opérationnelle (TO), ressources humaines (RH), gestion de portfolio (SPM), gestion des actifs informatiques (ITAM), gestion du risque et de la continuité des affaires (IRM/BCM), développement sur AppEngine",
+              "icon": "coche"
+            },
+            {
+              "text": "Proposition de trajectoires accélérées et codéveloppement avec vos équipes TI",
+              "icon": "coche"
+            },
+            {
+              "text": "Soutien, exploration et services d’évolution ServiceNow",
+              "icon": "coche"
+            }
           ]
         }
       ]
@@ -113,10 +134,22 @@
       "image": "/wp-content/uploads/2024/11/servicenow-banniere-.png",
       "imageAlt": "",
       "stats": [
-        { "value": "Centralisation", "label": "Modèles, jeux de données et cas d’usage de l’IA" },
-        { "value": "Performance", "label": "Suivi de la valeur générée par l’IA" },
-        { "value": "Conformité", "label": "Gestion automatisée des risques" },
-        { "value": "Intégration", "label": "Directe à vos flux de travail ServiceNow" }
+        {
+          "value": "Centralisation",
+          "label": "Modèles, jeux de données et cas d’usage de l’IA"
+        },
+        {
+          "value": "Performance",
+          "label": "Suivi de la valeur générée par l’IA"
+        },
+        {
+          "value": "Conformité",
+          "label": "Gestion automatisée des risques"
+        },
+        {
+          "value": "Intégration",
+          "label": "Directe à vos flux de travail ServiceNow"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -137,7 +170,7 @@
         "Intégration du catalogue d’offres infonuagiques pour les services professionnels",
         "Victrix est qualifiée auprès du ministère de la Cybersécurité et du Numérique (MCN)",
         "Partenariats solides pour compléter notre expertise",
-        "Expertises transverses : cybersécurité, infonuagique, intelligence artificielle et développement applicatif"
+        "Expertises transverses : cybersécurité, infonuagique, intelligence artificielle, services gérés et développement applicatif"
       ]
     },
     {
@@ -145,12 +178,15 @@
       "type": "cta",
       "title": "Assurez le succès de votre solution ServiceNow avec Victrix",
       "body": "Rentabilisez au maximum votre investissement et prenez de vitesse vos concurrents grâce à une transformation numérique simple, accélérée et abordable avec Victrix.",
-      "ctaLabel": "Consultez un expert ServiceNow",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit"
     }
   ],
-  "seoTitle": "Partenaire ServiceNow | Consultant & Services"
+  "seoTitle": "Partenaire ServiceNow | Consultant et Services | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }
