@@ -69,9 +69,9 @@ les routes : sans GET, un endpoint POST-seulement n'émettrait aucun fichier.
 
 | Variable | Côté | Effet si définie | Effet si absente |
 | --- | --- | --- | --- |
-| `PUBLIC_FORMS_ENABLED` | build (client) | `"1"` → les sections « form » deviennent de vrais formulaires POST `/api/forms` ; `"inbox"` (2026-09-16) → vrais formulaires POST vers la page Merci de la langue, captés par les **boîtes de réception CloudCannon** (Inbox) du site — aucun récepteur à déployer, ni Turnstile ni SMTP2GO | maquette actuelle : bouton désactivé, zéro changement visuel |
+| `PUBLIC_FORMS_ENABLED` | build (client) | `"1"` → les sections « form » deviennent de vrais formulaires POST `/api/forms` ; `"inbox"` (2026-09-16) → vrais formulaires POST vers la page Merci de la langue, captés par les **boîtes de réception CloudCannon** (Inbox) du site — aucun récepteur à déployer, pas de SMTP2GO ; Turnstile optionnel, vérifié par la boîte (§7, mode inbox) | maquette actuelle : bouton désactivé, zéro changement visuel |
 | `PUBLIC_FORMS_INBOX_KEY` | build (client) | mode `inbox` seulement : clé de la boîte par défaut du site, émise dans le champ caché `inbox_key` (une par environnement, ex. `dev-marketing-contact`) ; une définition de formulaire la surcharge par son champ « Boîte de réception CloudCannon » (`inboxKey`) | pas de champ caché : boîte par défaut du site |
-| `PUBLIC_TURNSTILE_SITE_KEY` | build (client) | avec formulaires actifs : le widget Turnstile s'affiche (script `challenges.cloudflare.com/turnstile/v0/api.js`) | pas de widget |
+| `PUBLIC_TURNSTILE_SITE_KEY` | build (client) | avec formulaires actifs (`"1"` **ou** `"inbox"`, 2026-09-18) : le widget Turnstile s'affiche (script `challenges.cloudflare.com/turnstile/v0/api.js`) ; en inbox, le jeton est vérifié par la boîte CloudCannon (§7) | pas de widget |
 | `TURNSTILE_SECRET_KEY` | exécution (Function) | `/api/forms` vérifie le jeton via `siteverify` | vérification sautée (pot de miel seul) |
 | `SMTP2GO_API_KEY` | exécution (Function) | envoi réel (avec les deux suivantes) | **mode démo** (voir §6) |
 | `FORMS_TO_EMAIL` | exécution (Function) | destinataire de la notification | mode démo |
@@ -218,6 +218,30 @@ aucun compte externe.
 4. Un jeton ne se vérifie qu'**une seule fois** (rejeu → `timeout-or-duplicate`).
    Échec réseau vers `siteverify` = refus (« fail closed ») : un robot ne doit
    pas passer parce que Cloudflare tousse.
+
+### Mode « inbox » (CloudCannon) — mise en service (2026-09-18)
+
+Le même widget est rendu par les trois gabarits en mode inbox ; le jeton
+`cf-turnstile-response` voyage avec le POST et c'est la **boîte CloudCannon**
+qui le vérifie (aucun secret dans le dépôt ni dans les variables de build).
+Ordre à respecter — le code (`resolveTurnstileSiteKey`, `src/lib/forms/mode.ts`)
+est livré ; tout le reste est du réglage :
+
+1. Cloudflare (compte Victrix) → **Turnstile** → *Add widget* « Managed »,
+   hostnames : `vocal-wren.cloudvent.net` (dev), `lawful-hare.cloudvent.net`
+   (staging), `overt-pineapple.cloudvent.net` (prod), `victrix.ca`.
+2. CloudCannon → Org Settings → Hosting → **Forms** → boîte → *Manage* →
+   fournisseur **Turnstile**, clé de site + clé secrète.
+3. Site (dev d'abord) → Site Settings → Builds → variable
+   `PUBLIC_TURNSTILE_SITE_KEY=<clé de site>` → build → widget visible sous les
+   formulaires (Contact, infolettre, sections « Formulaire »).
+4. **Seulement ensuite** : Site Settings → Hosting → Forms → lien site ↔ boîte
+   → cocher **Require CAPTCHA**. Coché avant l'étape 3, toute soumission
+   reçoit la page 401 de CloudCannon.
+5. Test : soumission normale → `/fr/merci/` ; POST sans jeton (curl) → page
+   401 CloudCannon (pas notre bannière `?erreur=1` : acceptable, cas robots ;
+   le widget « Managed » n'interpelle que les visiteurs suspects).
+6. Répéter 3-4 sur staging puis prod (même widget Cloudflare, mêmes clés).
 
 ### CSP — modification APPLIQUÉE (2026-08-17)
 

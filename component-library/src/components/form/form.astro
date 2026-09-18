@@ -79,8 +79,11 @@ import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
  *   la boîte : clé de la définition du formulaire (champ « Boîte de
  *   réception CloudCannon »), sinon PUBLIC_FORMS_INBOX_KEY (clé par défaut
  *   du site, une par environnement), sinon rien = boîte par défaut du site.
- *   Ni Turnstile ni listes _requis/_courriels/_cases ni _formId (propres au
- *   worker). Champs spéciaux CloudCannon (2026-09-17, docs/formulaires.md
+ *   Ni listes _requis/_courriels/_cases ni _formId (propres au worker). Le
+ *   widget Turnstile s'affiche AUSSI en inbox si PUBLIC_TURNSTILE_SITE_KEY
+ *   est posée (2026-09-18) : le jeton est vérifié par la boîte CloudCannon
+ *   (fournisseur Turnstile sur la boîte + « Require CAPTCHA » — formulaires.md
+ *   §7). Champs spéciaux CloudCannon (2026-09-17, docs/formulaires.md
  *   §4.2) : `_subject` = objet du courriel, statique au build (« [clé]
  *   objet de la définition ») puis recomposé À LA SOUMISSION par le module
  *   inbox-client.ts (« [campagne-evaluation] Prénom Nom ») d'après les
@@ -117,7 +120,7 @@ import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
  */
 import { fieldName } from '../../../../src/lib/forms/field-name';
 import { resolveHiddenValue } from '../../../../src/lib/forms/hidden-tokens';
-import { formAction, formsBackend, resolveInboxKey } from '../../../../src/lib/forms/mode';
+import { formAction, formsBackend, resolveInboxKey, resolveTurnstileSiteKey } from '../../../../src/lib/forms/mode';
 import { inboxFormKey, inboxSubjectStatic } from '../../../../src/lib/forms/inbox';
 
 interface FormField {
@@ -217,8 +220,9 @@ const env = (import.meta.env ?? {}) as unknown as Record<string, string | undefi
 const backend = formsBackend(env);
 const formsEnabled = backend !== 'none';
 const inboxMode = backend === 'inbox';
-// Turnstile n'a de vérificateur que côté worker (/api/forms) — jamais en inbox.
-const turnstileSiteKey = backend === 'worker' ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+// Widget Turnstile dès qu'un vrai formulaire existe — worker (jeton vérifié
+// par /api/forms) OU inbox (vérifié par la boîte CloudCannon) ; voir mode.ts.
+const turnstileSiteKey = resolveTurnstileSiteKey(backend, env);
 
 // Contexte de page pour les champs cachés `lang` / `source`.
 const pagePath = Astro.url?.pathname ?? '';

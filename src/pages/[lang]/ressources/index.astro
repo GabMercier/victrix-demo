@@ -78,7 +78,7 @@ const pageTitle = [r.title, r.titleAccent].filter(Boolean).join(' ');
 // un désalignement page↔définition casse le build, jamais les soumissions.
 import { getEntry } from 'astro:content';
 import { fieldName } from '../../../lib/forms/field-name';
-import { formAction, formsBackend, resolveInboxKey } from '../../../lib/forms/mode';
+import { formAction, formsBackend, resolveInboxKey, resolveTurnstileSiteKey } from '../../../lib/forms/mode';
 import { inboxSubjectStatic } from '../../../lib/forms/inbox';
 import { inlineHtml } from '../../../../component-library/src/shared/rich';
 
@@ -104,7 +104,8 @@ const env = import.meta.env ?? {};
 // 'none' = maquette, 'worker' = /api/forms, 'inbox' = boîte CloudCannon (src/lib/forms/mode.ts).
 const backend = formsBackend(env);
 const formsEnabled = backend !== 'none';
-const turnstileSiteKey = backend === 'worker' ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+// Widget Turnstile en worker ET en inbox (jeton vérifié par la boîte CloudCannon) — mode.ts.
+const turnstileSiteKey = resolveTurnstileSiteKey(backend, env);
 const inboxKey = backend === 'inbox' ? resolveInboxKey(newsletterDefEntry.data.inboxKey, env) : '';
 const pagePath = Astro.url?.pathname ?? '';
 const inboxMode = backend === 'inbox';

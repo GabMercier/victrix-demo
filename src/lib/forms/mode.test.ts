@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formAction, formsBackend, resolveInboxKey } from './mode';
+import { formAction, formsBackend, resolveInboxKey, resolveTurnstileSiteKey } from './mode';
 
 describe('mode des formulaires (PUBLIC_FORMS_ENABLED)', () => {
   it("absente ou inconnue = maquette ('none')", () => {
@@ -26,5 +26,13 @@ describe('mode des formulaires (PUBLIC_FORMS_ENABLED)', () => {
     expect(resolveInboxKey('rh-carrieres', { PUBLIC_FORMS_INBOX_KEY: 'dev-marketing-contact' })).toBe('rh-carrieres');
     expect(resolveInboxKey('  ', { PUBLIC_FORMS_INBOX_KEY: 'dev-marketing-contact' })).toBe('dev-marketing-contact');
     expect(resolveInboxKey(undefined, {})).toBe('');
+  });
+
+  it('clé Turnstile : worker ET inbox rendent le widget, jamais la maquette', () => {
+    const env = { PUBLIC_TURNSTILE_SITE_KEY: ' 1x00000000000000000000AA ' };
+    expect(resolveTurnstileSiteKey('worker', env)).toBe('1x00000000000000000000AA');
+    expect(resolveTurnstileSiteKey('inbox', env)).toBe('1x00000000000000000000AA');
+    expect(resolveTurnstileSiteKey('none', env)).toBe('');
+    expect(resolveTurnstileSiteKey('inbox', {})).toBe('');
   });
 });

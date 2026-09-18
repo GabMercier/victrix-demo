@@ -57,3 +57,18 @@ export function resolveInboxKey(definitionKey: string | undefined, env: FormsEnv
   if (own !== '') return own;
   return (env.PUBLIC_FORMS_INBOX_KEY ?? '').trim();
 }
+
+/**
+ * Clé de site Cloudflare Turnstile à rendre (widget) : PUBLIC_TURNSTILE_SITE_KEY
+ * dès qu'un VRAI formulaire existe (worker OU inbox, 2026-09-18), jamais en
+ * maquette. Qui vérifie le jeton : côté worker, /api/forms (TURNSTILE_SECRET_KEY) ;
+ * côté inbox, la boîte CloudCannon elle-même (fournisseur Turnstile + clé
+ * secrète réglés sur la boîte, « Require CAPTCHA » coché sur le lien site ↔
+ * boîte — docs/formulaires.md §7). Ordre obligatoire : widget rendu (clé de
+ * site posée + build) AVANT de cocher « Require CAPTCHA », sinon toute
+ * soumission reçoit la page 401 CloudCannon.
+ */
+export function resolveTurnstileSiteKey(backend: FormsBackend, env: FormsEnv): string {
+  if (backend === 'none') return '';
+  return (env.PUBLIC_TURNSTILE_SITE_KEY ?? '').trim();
+}

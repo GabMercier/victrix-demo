@@ -17,6 +17,9 @@ test.describe('formulaires (mode maquette) + recherche + fil d’Ariane', () => 
     // du dev), aucun envoi possible.
     const form = page.locator('form[data-contact-form]');
     await expect(form).toHaveCount(1);
+    // Invariant : aucun widget Turnstile en maquette (clé absente) — le widget
+    // n'existe qu'avec un vrai formulaire (worker ou inbox) ET la clé de site.
+    await expect(page.locator('.cf-turnstile')).toHaveCount(0);
     // Le bouton est ciblé par son rôle, PAS par son libellé : « Envoyer le
     // message » / « Soumettre » est un texte éditable au CMS (page Contact) —
     // Julie l'a changé le 16 sept. 2026 et le test a cassé le CI.

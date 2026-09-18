@@ -17,9 +17,9 @@
 
 ## Lot 0 — Déployer l'existant (0 code)
 
-- [ ] Commiter/pousser le préremplissage des listes (BaseLayout, presets.ts, routes services et pages, content.config, cloudcannon.config, schémas).
+- [x] Commiter/pousser le préremplissage des listes (BaseLayout, presets.ts, routes services et pages, content.config, cloudcannon.config, schémas). — `70beb7c` + `cb04f6d`, 2026-09-17.
 - [ ] CloudCannon → Formulaires → Contact (FR) → vider « Boîte de réception CloudCannon (clé) » (`dev-marketing-contact` y est codé en dur : staging/prod viseraient la boîte dev). La variable `PUBLIC_FORMS_INBOX_KEY` de chaque site prend le relais.
-- [ ] Vérifier sur le site dev : un bouton d'une page de service → Contact arrive avec « Un projet » + le service de la famille ; une page générale ne préremplit que si `contactSujet`/`contactService` sont réglés dans le CMS (onglet de la page).
+- [x] Vérifier sur le site dev : un bouton d'une page de service → Contact arrive avec « Un projet » + le service de la famille ; une page générale ne préremplit que si `contactSujet`/`contactService` sont réglés dans le CMS (onglet de la page). — Vérifié 2026-09-18 sur vocal-wren (`<body data-contact-sujet="Un projet" data-contact-service="Intelligence artificielle">` sur une page de service ; `_subject`, `_gotcha`, `inbox_key` présents sur Contact et Ressources).
 
 Contrôle :
 ```powershell
@@ -51,9 +51,9 @@ Options (à décider) :
 Recommandation : **Turnstile** (code déjà en place, pas de script Google avant consentement, Loi 25). reCAPTCHA v3 exigerait un script d'interception supplémentaire.
 
 Code (avant tout réglage CloudCannon, sinon 401 sur toutes les soumissions) :
-- [ ] Rendre le widget en mode inbox aussi (aujourd'hui `backend === 'worker'` dans les 3 gabarits) — `PUBLIC_TURNSTILE_SITE_KEY` posée ET backend ≠ none.
-- [ ] `mode.ts` : fonction `turnstileSiteKey(backend, env)` partagée + tests ; commentaires d'entête mis à jour ; `docs/formulaires.md` §3/§7.
-- [ ] E2E : le widget est absent en maquette (invariant existant), présent avec les deux variables.
+- [x] Rendre le widget en mode inbox aussi (aujourd'hui `backend === 'worker'` dans les 3 gabarits) — `PUBLIC_TURNSTILE_SITE_KEY` posée ET backend ≠ none. — 2026-09-18.
+- [x] `mode.ts` : fonction `resolveTurnstileSiteKey(backend, env)` partagée + tests ; commentaires d'entête mis à jour ; `docs/formulaires.md` §3/§7. — 2026-09-18.
+- [x] E2E : le widget est absent en maquette (assertion ajoutée au test Contact), présent avec les deux variables (vérifié sur le build statique inbox + clé de test Cloudflare, gate du 2026-09-18 — pas d'e2e possible : le serveur e2e est `astro dev` sans clés).
 
 CloudCannon / Cloudflare :
 1. Cloudflare (compte Victrix) → Turnstile → Add widget « Managed », hostnames : `vocal-wren.cloudvent.net`, `lawful-hare.cloudvent.net`, `overt-pineapple.cloudvent.net`, `victrix.ca`.
