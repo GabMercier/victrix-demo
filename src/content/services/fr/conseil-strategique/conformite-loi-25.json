@@ -1,18 +1,19 @@
 {
   "_schema": "default",
-  "title": "Loi 25: Êtes-vous en conformité?",
+  "title": "Loi 25: votre organisation est-elle conforme?",
   "description": "Victrix aide les grandes organisations à assurer leur conformité à la loi 25 sur la protection des renseignements personnels. Êtes-vous conforme?",
   "noindex": false,
-  "seoTitle": "Loi 25: votre entreprise est-elle conforme?",
+  "slug": "",
+  "seoTitle": "Loi 25: votre organisation est-elle conforme? | Services | Victrix",
   "sections": [
     {
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Conformité réglementaire",
       "titleAccent": "",
-      "title": "Loi 25 : Êtes-vous en conformité?",
-      "titleHighlight": "conformité",
-      "lead": "Avec l’entrée en vigueur des nouvelles dispositions de la Loi 25, la mise en conformité n’est pas seulement obligatoire : c’est une question de crédibilité et de sécurité pour votre entreprise.",
-      "ctaLabel": "Assurez votre conformité",
+      "title": "Loi 25 : votre organisation est-elle conforme?",
+      "titleHighlight": "conforme",
+      "lead": "Avec l’entrée en vigueur des nouvelles dispositions de la Loi 25, la mise en conformité n’est pas seulement obligatoire : c’est une question de crédibilité et de sécurité pour votre entreprise.",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2023/05/andras-vas-bd7gnnwjbku-unsplash-scaled.jpg",
       "imageAlt": ""
@@ -49,7 +50,7 @@
     },
     {
       "type": "cta",
-      "title": "Votre entreprise est-elle conforme?",
+      "title": "Obtenez une évaluation personnalisée",
       "body": "Notre expertise vous permettra de transformer les défis réglementaires en avantages compétitifs.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
