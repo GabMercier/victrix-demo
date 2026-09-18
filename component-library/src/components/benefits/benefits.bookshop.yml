@@ -37,6 +37,7 @@ blueprint:
   intro: ""
   fond: blanc
   headingStyle: titre
+  numerotation: true
   items:
     - title: "Première carte"
       description: "Décrivez le point clé de cette carte."
@@ -105,6 +106,10 @@ _inputs:
         - titre
         - compact
     comment: "« titre » = grand titre 40 px ; « compact » = tête réduite + liseré bleu et cartes compactes (patron landing)."
+  numerotation:
+    type: switch
+    label: "Afficher la numérotation"
+    comment: "Compteur 01, 02, 03… en haut à droite de chaque carte (maquette Approche). À décocher quand la grille est un inventaire et non une démarche ordonnée. Sans effet sur le style de tête « compact »."
   items:
     # `type: array` explicite : sans lui, `npx @bookshop/generate` fabriquerait
     # une structure inline générique à partir du blueprint (et viderait la

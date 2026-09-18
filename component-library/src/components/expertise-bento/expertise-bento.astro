@@ -13,7 +13,7 @@ import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
  *  - large   : 2 colonnes × 1 rangée (texte à gauche, icône à droite) ;
  *  - petite  : 1 colonne × 1 rangée (titre + icône).
  * Bleus/ardoise = tokens (#1E47F4→primary, #515D82→secondary) ; bordure
- * froide #C3C6D7 verbatim (précédent méga). Fond de section ivoire (surface).
+ * froide jeton `contour` (uniformisation 2026-09-18). Fond de section ivoire (surface).
  *
  * Props : { type: "expertise-bento", eyebrow?, title, intro?,
  *           items: [{ title, text?, peau?, taille?, icon?, image?, href? }] }
@@ -42,7 +42,7 @@ const { eyebrow, title, intro, items = [] } = Astro.props;
 
 const skins = {
   blanche: {
-    card: 'bg-white border border-solid border-[#C3C6D7]',
+    card: 'bg-white border border-solid border-contour',
     title: 'text-on-surface',
     text: 'text-on-surface-variant',
     icon: 'text-primary',
@@ -91,7 +91,7 @@ const sizes = {
             <li class:list={['m-0 min-h-[96px]', size]}>
               <Tag
                 class:list={[
-                  'h-full rounded-sm p-6 no-underline flex',
+                  'h-full rounded-lg p-6 no-underline flex',
                   skin.card,
                   isLarge
                     ? 'flex-row items-center justify-between gap-6'

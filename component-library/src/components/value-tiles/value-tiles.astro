@@ -6,7 +6,7 @@ import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
  * de la page Carrières en page « sections »).
  * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/carriere.css §Valeurs, ex-bloc de
  * src/pages/[lang]/carrieres.astro repris VERBATIM) : surtitre 12/700
- * majuscules bleu, titre 40/700 centré, rangée de tuiles bordées (#C4C5D9)
+ * majuscules bleu, titre 40/700 centré, rangée de tuiles bordées (jeton `contour`, rayon 8)
  * — pictogramme TRAIT bleu 30 px + libellé 12/700 majuscules ls 1.2 —,
  * survol bordure bleue. 2 colonnes mobile / 5 desktop ; une DERNIÈRE tuile
  * impaire s'étale sur les 2 colonnes mobiles (5 valeurs = 2+2+1 centrée).
@@ -55,7 +55,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
         items.map((item, i) => (
           <li
             class:list={[
-              'm-0 flex flex-col items-center text-center gap-2 p-4 border border-solid border-[#C4C5D9] hover:border-primary transition-colors',
+              'm-0 flex flex-col items-center text-center gap-2 p-4 rounded-lg border border-solid border-contour hover:border-primary transition-colors',
               i === items.length - 1 && items.length % 2 === 1 && 'col-span-2 md:col-span-1',
             ]}
           >

@@ -10,7 +10,7 @@ import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
  * 16/700 bleu + flèche ; image pleine hauteur à droite), puis grille de
  * cartes outils (tuile icône 48 bleu pâle / pictogramme ardoise, titre
  * 24/700, texte 16/24, lien). Bleus/ardoise = tokens ; bordure froide
- * #C3C6D7 verbatim (précédent méga).
+ * jeton `contour` (uniformisation 2026-09-18).
  *
  * Props : { type: "exclusive-tools", title, intro?, featured?, items: [...] }
  * - featured { badge?, title, text?, ctaLabel?, href?, image? } — optionnel ;
@@ -61,7 +61,7 @@ const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
 
     {
       featured && (
-        <div class="bg-white border border-solid border-[#C3C6D7] rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2">
+        <div class="bg-white border border-solid border-contour rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2">
           <div class="p-8 lg:p-12 flex flex-col items-start gap-4">
             {featured.badge && (
               <span class="inline-flex items-center px-3 py-1 rounded-sm bg-primary-fixed text-primary text-xs font-bold uppercase tracking-[1.2px]">
@@ -100,7 +100,7 @@ const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
           {items.map((item) => {
             const iconSvg = iconFor(item.icon);
             return (
-              <li class="m-0 bg-white border border-solid border-[#C3C6D7] rounded-lg p-10 flex flex-col items-start gap-4">
+              <li class="m-0 bg-white border border-solid border-contour rounded-lg p-10 flex flex-col items-start gap-4">
                 {iconSvg && (
                   <span class="size-12 rounded-sm bg-primary-fixed text-secondary flex items-center justify-center mb-2">
                     <svg

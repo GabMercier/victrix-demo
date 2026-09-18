@@ -312,12 +312,16 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // « compact » AJOUTÉ 2026-08-05 (landing-page.css §Guide Benefits) :
       // tête réduite 16/24 + liseré bleu, cartes compactes.
       headingStyle: z.enum(['titre', 'compact']).default('titre'),
+      // Compteur « 01 / 02 / 03 » de la maquette Approche (refonte 2026-09-18)
+      // — vrai par défaut, décoché sur les grilles d'inventaire (Secteurs).
+      numerotation: z.boolean().default(true),
       items: z.array(
         z.object({
           title: z.string(),
           description: z.string(),
-          // Fidélité maquette expertise-mere.css (2026-08-05) : icône de la
-          // tuile pâle au-dessus du titre (clé fermée ; vide = pas de tuile).
+          // Pictogramme au-dessus du titre (clé fermée ; vide = aucun). Depuis
+          // la refonte du 2026-09-18 il est posé NU, en bleu, à sa taille
+          // propre — la tuile bleu pâle ne subsiste que sur le style compact.
           // ampoule/croissance/losange AJOUTÉES 2026-08-05 (landing-page.css) ;
           // organisation/porteur/destinataire AJOUTÉES 2026-08-17 (page
           // Expertises — SVG pleins fournis, docs/design/export2/Images).

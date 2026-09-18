@@ -4,13 +4,19 @@ import { blockHtml, hasRichText } from '../../shared/rich';
 import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
  * Section « Offres numérotées » — composant Bookshop, NOUVEAU 2026-08-05.
+ *
+ * UNIFORMISATION 2026-09-18 (nouvelle direction design) : la TUILE NUMÉRO
+ * 64 px bleu plein cède la place au langage de la section Approche
+ * (benefits) — COMPTEUR discret « 01 » en haut à droite (12/700, ls 1.2,
+ * neutral-500) puis LISERÉ bleu 32×4 au-dessus du titre ; la carte passe en
+ * colonne simple et prend le jeton `contour` (était #E0E0E0/50 verbatim).
+ *
  * FIDÉLITÉ MAQUETTE (docs/design/produit-enfant.css §Section - Nos Offres
  * (Numbered Grid), « Page Produit - Enfant ») : fond beige clair
  * (surface-container-low) py-80, tête CENTRÉE (titre 40/700 ls -0.4 + intro
- * 16/26 max 672), grille de 2 cartes « verre » (blanc 80 % bordé gris froid
- * 50 %, backdrop-blur 6, rayon 8, p-32) — tuile NUMÉRO 64 px bleu plein
- * (24/700 blanc, rayon 4) + titre 24/700 + LISTE à puces icônes bleues
- * (16/24) — puis bouton primaire centré sous la grille.
+ * 16/26 max 672), grille de 2 cartes « verre » (blanc 80 %, backdrop-blur 6,
+ * rayon 8, p-32) — titre 24/700 + LISTE à puces icônes bleues (16/24) —
+ * puis bouton primaire centré sous la grille.
  *
  * Props : { type: "offer-cards", title, intro?, ctaLabel?, ctaHref?,
  *           items: [{ number, title, bullets: [{ icon?, text }] }] }
@@ -21,8 +27,8 @@ import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
  * Contraintes / pièges :
  * - <h2> de section, <h3> par carte : le <h1> unique appartient au héros.
  * - `items = []` / `bullets = []` en secours (édition en direct CloudCannon).
- * - Bordure froide #E0E0E0/50 verbatim (précédent méga : les gris froids des
- *   exports restent tels quels) ; bleus/neutres chauds = tokens.
+ * - Bordure = jeton `contour` depuis l'uniformisation 2026-09-18 (était
+ *   #E0E0E0/50 verbatim) ; bleus/neutres chauds = tokens.
  * - Browser-safe : aucun import, aucun script.
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
@@ -48,6 +54,11 @@ interface Props {
 
 const { title, intro, fond = 'givre', ctaLabel, ctaHref, items = [] } = Astro.props;
 
+// Compteur « 01 » — langage visuel COMMUN avec la section Approche
+// (benefits, refonte 2026-09-18) : le numéro saisi est complété à deux
+// chiffres quand c'en est un, et laissé tel quel sinon.
+const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2, '0') : n);
+
 // « Fond de section » ÉTENDU 2026-08-17 (produit-child.css §Nos Offres,
 // lavis chauds) : clé fermée → utilitaire de la palette officielle. Défaut =
 // rendu historique (givre #f9fafb, ex-bg-surface-container-low).
@@ -66,14 +77,17 @@ const FONDS: Record<string, string> = FOND_CLASSES;
     <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-6 m-0 p-0 list-none">
       {
         items.map((item) => (
-          <li class="m-0 bg-white/80 border border-solid border-[#E0E0E0]/50 backdrop-blur-[6px] rounded-lg p-8 flex flex-col sm:flex-row items-start gap-6">
-            <span
-              class="size-16 shrink-0 rounded bg-primary text-white text-2xl leading-8 font-bold flex items-center justify-center"
-              aria-hidden="true"
-            >
-              {item.number}
-            </span>
-            <div class="flex flex-col gap-4">
+          <li class="m-0 bg-white/80 border border-solid border-contour backdrop-blur-[6px] rounded-lg p-8 flex flex-col gap-3">
+            <div class="flex w-full justify-end pb-5">
+              <span
+                class="text-xs leading-[14px] font-bold tracking-[1.2px] text-neutral-500"
+                aria-hidden="true"
+              >
+                {rang(item.number)}
+              </span>
+            </div>
+            <span class="w-8 h-1 rounded-xl bg-primary" aria-hidden="true" />
+            <div class="flex flex-col gap-4 pt-1">
               <h3 class="text-2xl leading-8 font-bold text-on-surface m-0">{item.title}</h3>
               <ul role="list" class="flex flex-col gap-3 m-0 p-0 list-none">
                 {(item.bullets ?? []).map((bullet) => {

@@ -5,7 +5,7 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  * Section « Boîtes de domaines » — composant Bookshop (P-07).
  * RE-SKIN DESIGN SYSTEM 2026-08-05 : tête centrée (H2 40/700 ls -0.4 +
  * liseré bleu 64×4 — patron des têtes landing), grille de tuiles bordées
- * #C4C5D9 (verbatim, précédent méga) à libellé 16/600, survol bordure bleue
+ * `contour` (jeton, rayon 8) à libellé 16/600, survol bordure bleue
  * (patron des tuiles valeurs de la page Carrières). L'ancien thème
  * navy/liseré vert disparaît.
  *
@@ -44,7 +44,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
     <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-0 p-0 list-none">
       {
         boxes.map((box) => (
-          <li class="m-0 min-h-24 flex items-center justify-center text-center p-6 bg-white border border-solid border-[#C4C5D9] rounded-xs text-base font-semibold text-on-surface hover:border-primary transition-colors">
+          <li class="m-0 min-h-24 flex items-center justify-center text-center p-6 bg-white border border-solid border-contour rounded-lg text-base font-semibold text-on-surface hover:border-primary transition-colors">
             {box}
           </li>
         ))

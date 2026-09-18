@@ -6,7 +6,7 @@ import { hasRichText, inlineHtml } from '../../shared/rich';
  * de la page Carrières en page « sections »).
  * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/carriere.css §Témoignages, ex-
  * bloc de src/pages/[lang]/carrieres.astro repris VERBATIM) : titre 40/700
- * centré sur bande grise, grille de cartes blanches bordées (#C4C5D9,
+ * centré sur bande grise, grille de cartes blanches bordées (jeton `contour`, rayon 8,
  * rayon 2) centrées — guillemets décoratifs en filigrane bleu 20 % en haut à
  * gauche, portrait 96 px rayon 12 bordé primary/10, citation 18/29 italique,
  * prénom 24/700, rôle 12/700 bleu majuscules.
@@ -67,7 +67,7 @@ const QUOTE_PATHS = [
     <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-6 m-0 p-0 list-none">
       {
         items.map((card) => (
-          <li class="m-0 relative bg-surface rounded-sm p-8 lg:p-12 flex flex-col items-center text-center border border-solid border-[#C4C5D9]">
+          <li class="m-0 relative bg-surface rounded-lg p-8 lg:p-12 flex flex-col items-center text-center border border-solid border-contour">
             <svg
               class="absolute top-8 left-8 text-primary/20 opacity-50"
               width="42"

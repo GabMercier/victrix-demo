@@ -9,7 +9,7 @@ import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
  * py-80, tête en DEUX blocs alignés au bas — à gauche titre 40/700 ls -0.4 +
  * texte 16/26 (max 576) ; à droite LIEN souligné d'un liseré bleu 2 px
  * (14/600 ls 0.28 bleu + flèche) — puis grille de 4 cartes blanches bordées
- * (gris froid #C4C5D9, p-32) : icône 32 px bleue, titre 24/700, texte 16/26.
+ * (jeton `contour`, rayon 8, p-32) : icône 32 px bleue, titre 24/700, texte 16/26.
  *
  * Props : { type: "realisations", title, intro?, linkLabel?, linkHref?,
  *           items: [{ icon?, title, text? }] }
@@ -23,7 +23,7 @@ import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
  * - `items = []` en secours (édition en direct CloudCannon).
  * - Liseré du lien : `border-0 border-b-2 border-solid` OBLIGATOIRE (piège
  *   border-solid/UA-medium sans preflight, consigné au lot chrome).
- * - Bordure froide #C4C5D9 verbatim (précédent méga) ; le reste = tokens.
+ * - Bordure = jeton `contour` depuis l'uniformisation 2026-09-18 ; le reste = tokens.
  * - Browser-safe : aucun import, aucun script.
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
@@ -90,7 +90,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
         items.map((item) => {
           const icon = iconFor(item.icon);
           return (
-            <li class="m-0 bg-white border border-solid border-[#C4C5D9] p-8 flex flex-col items-start gap-2">
+            <li class="m-0 bg-white border border-solid border-contour rounded-lg p-8 flex flex-col items-start gap-2">
               {icon && (
                 <svg
                   class="text-primary"

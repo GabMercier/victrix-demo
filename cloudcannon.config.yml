@@ -2546,12 +2546,12 @@ _select_data:
       couleur: '#dfe7fb'
       apercu: /images/cms/fonds/bleu-clair.svg
     - cle: ivoire
-      libelle: Ivoire
-      couleur: '#faf7f4'
+      libelle: Ivoire (chaud)
+      couleur: '#fcf9f5'
       apercu: /images/cms/fonds/ivoire.svg
     - cle: beige
-      libelle: Beige
-      couleur: '#f1e8df'
+      libelle: Beige (gris chaud)
+      couleur: '#f6f3ef'
       apercu: /images/cms/fonds/beige.svg
     - cle: sable
       libelle: Sable (grège)

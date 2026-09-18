@@ -23,7 +23,11 @@
  * bleus de bleu-50/100, les chauds des secondaires Figma (ivoire, beige) —
  * « sable » a été RÉ-ACCORDÉ le 2026-09-17 (demande user : trop orangé ; le
  * jeton Figma #ebe0d5 devient #e9e2d9, un grège plus neutre) et « pierre »
- * (#dcd5cc) ajouté comme grège plus soutenu. Ce fichier est browser-safe
+ * (#dcd5cc) ajouté comme grège plus soutenu. PALETTE RAFFINÉE le 2026-09-18
+ * (demande user) : les DEUX fonds chauds du nouveau système sont « ivoire »
+ * #fcf9f5 (le chaud) et « beige » #f6f3ef (le gris chaud) — mêmes clés, donc
+ * les sections déjà posées suivent ; sable/pierre restent des accents plus
+ * soutenus. Ce fichier est browser-safe
  * (aucune dépendance) : il est aussi compilé dans le bundle d'édition live.
  */
 
@@ -69,8 +73,8 @@ export const FOND_SWATCHES: Record<FondKey, { libelle: string; couleur: string }
   brume: { libelle: 'Brume (gris clair)', couleur: '#e5e7eb' },
   'bleu-pale': { libelle: 'Bleu pâle', couleur: '#f2f5fd' },
   'bleu-clair': { libelle: 'Bleu clair', couleur: '#dfe7fb' },
-  ivoire: { libelle: 'Ivoire', couleur: '#faf7f4' },
-  beige: { libelle: 'Beige', couleur: '#f1e8df' },
+  ivoire: { libelle: 'Ivoire (chaud)', couleur: '#fcf9f5' },
+  beige: { libelle: 'Beige (gris chaud)', couleur: '#f6f3ef' },
   sable: { libelle: 'Sable (grège)', couleur: '#e9e2d9' },
   pierre: { libelle: 'Pierre (grège soutenu)', couleur: '#dcd5cc' },
 };

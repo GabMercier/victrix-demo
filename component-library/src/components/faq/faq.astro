@@ -4,7 +4,7 @@ import { blockHtml } from '../../shared/rich';
 /**
  * Section « FAQ » — composant Bookshop (contrat landing GELÉ).
  * RE-SKIN DESIGN SYSTEM 2026-08-05 : fond ivoire (surface), titre centré
- * 40/700 ls -0.4, accordéon en colonne étroite — items blancs bordés #C4C5D9
+ * 40/700 ls -0.4, accordéon en colonne étroite — items blancs bordés `contour` (rayon 8)
  * rayon 4, question 16/700, chevron bleu (primary), réponse 16/26.
  *
  * Props : { type: "faq", title, items: [{ question, answer }] }
@@ -84,7 +84,7 @@ const faqSchema = {
     <div class="flex flex-col gap-3 max-w-[760px] mx-auto mt-12">
       {
         items.map((item) => (
-          <details class="group bg-white border border-solid border-[#C4C5D9] rounded-sm">
+          <details class="group bg-white border border-solid border-contour rounded-lg">
             <summary class="flex items-center justify-between gap-4 px-6 py-4 text-base font-bold text-on-surface cursor-pointer list-none [&::-webkit-details-marker]:hidden rounded-sm focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">
               {item.question}
               <svg

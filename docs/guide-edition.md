@@ -82,12 +82,16 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
    sélecteur « Fond de section » **borné à la palette officielle** — dix
    fonds clairs, chacun avec sa **pastille de couleur** dans la liste :
    blanc · givre (gris très pâle) · perle (gris pâle) · brume (gris clair) ·
-   bleu pâle · bleu clair · ivoire · beige · sable (grège) · pierre (grège
-   soutenu). Laisser la valeur par défaut = le rendu historique de la
-   section ; aucune couleur libre n'est possible (c'est voulu — cohérence de
-   la charte). Depuis le 17 sept. 2026, « sable » est un grège plus neutre
-   (l'ancienne teinte tirait vers l'orange) : les pages qui l'utilisaient
-   ont changé de teinte d'elles-mêmes, rien à refaire.
+   bleu pâle · bleu clair · ivoire (chaud) · beige (gris chaud) · sable
+   (grège) · pierre (grège soutenu). Laisser la valeur par défaut = le rendu
+   historique de la section ; aucune couleur libre n'est possible (c'est
+   voulu — cohérence de la charte). Depuis le 17 sept. 2026, « sable » est un
+   grège plus neutre (l'ancienne teinte tirait vers l'orange) : les pages qui
+   l'utilisaient ont changé de teinte d'elles-mêmes, rien à refaire. **Le
+   18 sept. 2026, la palette a été raffinée** : « ivoire » et « beige » sont
+   désormais LES deux fonds chauds de la charte — un chaud très clair et un
+   gris chaud. Là encore, les pages qui les utilisaient ont suivi toutes
+   seules ; rien à refaire dans l'éditeur.
 5. **Icônes** : tous les champs « Icône » (cartes à icônes, tuiles bento et
    leur filigrane, réalisations, chiffres en style carte, puces d'offre, tuiles
    de valeurs, atouts…) ouvrent **la même liste déroulante** : la **banque de
@@ -97,6 +101,12 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
    n'importe quelle section ; chaque section le dessine à sa taille et à son
    épaisseur de trait. Il manque un pictogramme ? Le demander à l'équipe
    technique : ajouté une fois à la banque, il apparaît dans toutes les listes.
+   Depuis le 18 sept. 2026, la section « Cartes à icônes » pose le pictogramme
+   **nu, en bleu** (la tuile bleu pâle a disparu) et ajoute un **compteur
+   01 · 02 · 03** en haut à droite de chaque carte. L'interrupteur **« Afficher
+   la numérotation »** (coché par défaut) permet de le retirer : à décocher
+   quand la grille est un inventaire — la page Secteurs, par exemple — et non
+   une démarche ordonnée.
 6. Par défaut la page est **non indexée** (invisible des moteurs de recherche —
    voulu pour les campagnes). L'interrupteur « noindex » est là si une page
    doit un jour être indexée.

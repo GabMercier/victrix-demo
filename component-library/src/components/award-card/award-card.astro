@@ -6,7 +6,7 @@ import { hasRichText, inlineHtml } from '../../shared/rich';
  * de la page Carrières en page « sections »).
  * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/carriere.css §Happy At Work, ex-
  * bloc de src/pages/[lang]/carrieres.astro repris VERBATIM) : carte blanche
- * bordée (#C4C5D9, rayon 2) sur bande grise, tuile insigne 192 px
+ * bordée (jeton `contour`, rayon 8) sur bande grise, tuile insigne 192 px
  * bg-primary/5 bordée primary/20 rayon 12 à gauche, titre 40/700, chapeau
  * 16/26 gris, citation italique à LISERÉ GAUCHE bleu 4 px.
  *
@@ -42,7 +42,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
 <section class:list={['py-20', FONDS[fond] ?? FONDS.perle]}>
   <div class="container-site">
     <div
-      class="bg-white rounded-sm p-8 md:p-12 flex flex-col md:flex-row items-center gap-6 md:gap-10 border border-solid border-[#C4C5D9]"
+      class="bg-white rounded-lg p-8 md:p-12 flex flex-col md:flex-row items-center gap-6 md:gap-10 border border-solid border-contour"
     >
       <div
         class="shrink-0 size-32 md:size-48 rounded-xl bg-primary/5 border-4 border-solid border-primary/20 flex items-center justify-center"

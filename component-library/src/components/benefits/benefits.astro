@@ -6,26 +6,50 @@ import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
  * Section « Cartes à icônes » (clé technique `benefits` — renommage
  * d'affichage 2026-08-17, le bloc sert au-delà des bénéfices : approche,
  * valeurs…) — composant Bookshop (contrat landing GELÉ, enrichi).
- * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/expertise-mere.css §Approche
- * Section, « Notre approche humaine ») : fond blanc py-80, tête CENTRÉE
- * (H2 40/700 ls -0.4 + intro 18/29), grille de cartes bordées #C3C6D7 rayon 2
- * p-32 — tuile icône 48 px bleu pâle (primary-fixed) avec pictogramme bleu,
- * titre 24/700, texte 16/24. Bleus/navy/textes = tokens (export Hanken/chaud) ;
- * bordure froide #C3C6D7 verbatim (précédent méga).
  *
- * Props : { type: "benefits", title, intro?, headingStyle?, items: [{ title,
- *           description, icon? }] }
- * - `icon` : clé de la BANQUE de pictogrammes (shared/icons.ts — toute la banque est offerte dans l'éditeur depuis le 2026-09-18) ; "" = pas de
- *   tuile. Trait 2 px ; les glyphes PLEINS fournis par le client pour la page
- *   Expertises (organisation/porteur/destinataire, docs/design/export2/Images)
- *   gardent leur taille native (`w`/`h` de la banque).
+ * REFONTE 2026-09-18 — nouvelle maquette « Approche Section » (export Figma
+ * fourni par le designer ; remplace docs/design/expertise-mere.css §Approche
+ * sur laquelle la v1 était calée). Ce qui change sur le style « titre » :
+ *  - la TUILE 48 px bleu pâle disparaît : le pictogramme est posé NU, en bleu,
+ *    à sa taille propre (40×36, 32×32, 48×24 pour les glyphes pleins du
+ *    client ; 32 px par défaut pour les tracés au trait de la banque) ;
+ *  - un COMPTEUR « 01 / 02 / 03 » (12/700, ls 1.2, gris #747688 → neutral-500)
+ *    s'aligne à droite du pictogramme — commutable par `numerotation` ;
+ *  - un LISERÉ bleu 32×4 (rayon 12) ouvre le bloc de texte ;
+ *  - le titre passe en MAJUSCULES (24/31, ls 0.6), le texte en 16/26 ;
+ *  - la carte prend le rayon 8 et la bordure `contour` (#C4C5D9) du système —
+ *    la v1 portait rayon 2 et #C3C6D7 en verbatim.
+ * Tête inchangée : H2 40/48 700 ls -0.4 centré + intro 18/29 (largeur portée à
+ * 768 px, valeur de la nouvelle maquette). Couleurs = jetons (#002FC7 →
+ * primary, #1C1C1A → on-surface, #444656 → on-surface-variant, décision du
+ * 2026-08-18) ; Hanken Grotesk → Inter (décision v3).
+ *
+ * DÉVIATION ASSUMÉE : la maquette pose `justify-content: space-between` sur la
+ * carte, ce qui tient avec trois cartes de contenu quasi égal mais décale les
+ * titres dès que les textes diffèrent (la page Secteurs en compte 12). Ici le
+ * bandeau pictogramme/compteur a une hauteur FIXE de 36 px et le texte suit
+ * dans le flux : titres alignés d'une carte à l'autre, quelle que soit la
+ * longueur des descriptions.
+ *
+ * Props : { type: "benefits", title, intro?, headingStyle?, fond?,
+ *           numerotation?, items: [{ title, description, icon? }] }
+ * - `icon` : clé de la BANQUE de pictogrammes (shared/icons.ts — toute la
+ *   banque est offerte dans l'éditeur depuis le 2026-09-18) ; "" = aucun.
+ * - `numerotation` AJOUTÉ 2026-09-18 : compteur 01, 02, 03… sur les cartes
+ *   (vrai par défaut). À décocher quand la grille est un inventaire et non une
+ *   démarche ordonnée — c'est le cas des 12 cartes de la page Secteurs.
  * - `headingStyle` AJOUTÉ 2026-08-05 (landing-page.css §Guide Benefits) :
- *   « titre » (défaut, H2 40/700 centré) | « compact » (tête réduite 16/24
- *   centrée + liseré bleu 64×4 dessous — patron des têtes de la landing).
+ *   « titre » (défaut, H2 40/700 centré + cartes Approche) | « compact » (tête
+ *   réduite 16/24 centrée + liseré bleu 64×4 dessous, cartes compactes à tuile
+ *   — patron GELÉ des têtes de la landing, hors refonte ; seul le rayon de la
+ *   carte suit la passe d'uniformité).
  *
  * Contraintes / pièges :
  * - <h2> de section et <h3> par carte : le <h1> unique appartient au héros.
  * - `items = []` en secours (édition en direct CloudCannon).
+ * - Le bandeau haut porte `pb-8 box-content` : la hauteur fixe 36 px vaut pour
+ *   le CONTENU, la marge de 32 px s'ajoute (sans preflight, `box-sizing` n'est
+ *   pas normalisé — ne pas retirer `box-content`).
  * - Browser-safe : aucun import, aucun script.
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
@@ -40,10 +64,18 @@ interface Props {
   intro?: string;
   headingStyle?: 'titre' | 'compact';
   fond?: FondKey;
+  numerotation?: boolean;
   items: BenefitItem[];
 }
 
-const { title, intro, headingStyle = 'titre', fond = 'blanc', items = [] } = Astro.props;
+const {
+  title,
+  intro,
+  headingStyle = 'titre',
+  fond = 'blanc',
+  numerotation = true,
+  items = [],
+} = Astro.props;
 const compact = headingStyle === 'compact';
 
 // « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
@@ -51,6 +83,17 @@ const compact = headingStyle === 'compact';
 // CLAIRS seulement ; défaut = rendu historique du bloc (blanc).
 const FONDS: Record<string, string> = FOND_CLASSES;
 
+// Compteur « 01 » — deux chiffres jusqu'à 99, puis le rang brut.
+const rang = (i: number) => String(i + 1).padStart(2, '0');
+
+// Taille du pictogramme NU de la nouvelle carte. Les glyphes PLEINS du client
+// sont stockés dans la banque à la taille de l'ANCIENNE tuile 48 px
+// (organisation 20×18, porteur 16×16, destinataire 24×12) ; la maquette
+// Approche les veut exactement au DOUBLE (40×36, 32×32, 48×24) — d'où le ×2,
+// qui laisse la banque intacte pour les autres sections. Les tracés au trait
+// (viewBox 24, sans taille propre) sortent à 32 px, le calibre médian de la
+// maquette.
+const tailleIcone = (v: number | undefined) => (v ? v * 2 : 32);
 ---
 
 <section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
@@ -63,7 +106,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
           {hasRichText(intro) && <div class="rich text-base leading-6 text-on-surface-variant max-w-[672px]" set:html={blockHtml(intro)} />}
         </div>
       ) : (
-        <div class="max-w-[672px] mx-auto text-center flex flex-col gap-4 mb-16">
+        <div class="max-w-[768px] mx-auto text-center flex flex-col gap-4 mb-16">
           <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
             {title}
           </h2>
@@ -73,40 +116,81 @@ const FONDS: Record<string, string> = FOND_CLASSES;
     }
     <ul role="list" class:list={['grid grid-cols-1 md:grid-cols-3 m-0 p-0 list-none', compact ? 'gap-6' : 'gap-8']}>
       {
-        items.map((item) => {
+        items.map((item, i) => {
           const icon = iconFor(item.icon);
           return (
-          <li
-            class:list={[
-              'm-0 bg-white border border-solid rounded-sm p-8 flex flex-col gap-4',
-              compact ? 'pb-14 border-[#E5E2DE] shadow-[0_1px_2px_rgba(0,0,0,0.05)] rounded-xs' : 'border-[#C3C6D7]',
-            ]}
-          >
-            {icon && (
-              <span
-                class:list={[
-                  'size-12 text-primary flex items-center justify-center',
-                  compact ? 'rounded-xs bg-primary/10' : 'rounded-sm bg-primary-fixed',
-                ]}
-              >
-                <svg
-                  width={icon.w ?? 18}
-                  height={icon.h ?? 18}
-                  {...iconSvgAttrs(icon, 2)}
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  {icon.paths.map((d) => (
-                    <path d={d} />
-                  ))}
-                </svg>
-              </span>
-            )}
-            <h3 class:list={['text-on-surface m-0 pt-2', compact ? 'text-base leading-6 font-normal' : 'text-2xl leading-8 font-bold']}>
-              {item.title}
-            </h3>
-            <p class="text-base leading-6 text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(item.description)} />
-          </li>
+            <li
+              class:list={[
+                'm-0 bg-white border border-solid rounded-lg p-8 flex flex-col',
+                compact
+                  ? 'gap-4 pb-14 border-[#E5E2DE] shadow-[0_1px_2px_rgba(0,0,0,0.05)]'
+                  : 'border-contour',
+              ]}
+            >
+              {compact ? (
+                <Fragment>
+                  {icon && (
+                    <span class="size-12 text-primary flex items-center justify-center rounded-xs bg-primary/10">
+                      <svg
+                        width={icon.w ?? 18}
+                        height={icon.h ?? 18}
+                        {...iconSvgAttrs(icon, 2)}
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        {icon.paths.map((d) => (
+                          <path d={d} />
+                        ))}
+                      </svg>
+                    </span>
+                  )}
+                  <h3 class="text-on-surface m-0 pt-2 text-base leading-6 font-normal">{item.title}</h3>
+                  <p class="text-base leading-6 text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(item.description)} />
+                </Fragment>
+              ) : (
+                <Fragment>
+                  {(icon || numerotation) && (
+                    <div
+                      class:list={[
+                        'flex items-center h-9 pb-8 box-content',
+                        icon ? 'justify-between gap-4' : 'justify-end',
+                      ]}
+                    >
+                      {icon && (
+                        <span class="text-primary flex items-center shrink-0">
+                          <svg
+                            width={tailleIcone(icon.w)}
+                            height={tailleIcone(icon.h)}
+                            {...iconSvgAttrs(icon, 2)}
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            {icon.paths.map((d) => (
+                              <path d={d} />
+                            ))}
+                          </svg>
+                        </span>
+                      )}
+                      {numerotation && (
+                        <span
+                          class="text-xs leading-[14px] font-bold tracking-[1.2px] text-neutral-500"
+                          aria-hidden="true"
+                        >
+                          {rang(i)}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                  <div class="flex flex-col gap-3">
+                    <span class="w-8 h-1 rounded-xl bg-primary" aria-hidden="true" />
+                    <h3 class="text-2xl leading-[31px] font-bold tracking-[0.6px] uppercase text-on-surface m-0 pt-1">
+                      {item.title}
+                    </h3>
+                    <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(item.description)} />
+                  </div>
+                </Fragment>
+              )}
+            </li>
           );
         })
       }

@@ -10,7 +10,7 @@ import { inlineHtml } from '../../shared/rich';
  * titre 40/700 ls -0.4 + LISERÉ bleu 64×4, paragraphes 16/26, puis rangée de
  * tuiles statistiques (fond beige clair, liseré GAUCHE bleu 4 px, valeur
  * 24/700 bleue, étiquette 12/700 majuscules ls 1.2). Bleus/neutres chauds =
- * tokens (export Hanken/chaud) ; bordure froide #C4C5D9 verbatim (précédent
+ * tokens (export Hanken/chaud) ; bordure = jeton `contour` (uniformisation 2026-09-18 ; précédent
  * méga/benefits).
  *
  * VARIANTE « vitrine » AJOUTÉE 2026-08-05 (docs/design/landing-page.css
@@ -99,7 +99,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
           <img
             src={image}
             alt={imageAlt ?? ''}
-            class="w-full h-auto border border-solid border-[#C4C5D9] rounded-sm shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
+            class="w-full h-auto border border-solid border-contour rounded-lg shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
             loading="lazy"
             decoding="async"
           />
