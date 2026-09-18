@@ -53,7 +53,8 @@ collection_groups:
     collections:
       - home
       - pages
-      - services
+      - services_fr
+      - services_en
       - solutions
       - blog
       - contact
@@ -882,31 +883,43 @@ collections_config:
   # sections viennent des specs .bookshop.yml (générés dans _structures.sections,
   # qui priment sur les _inputs de collection) — d'où des _inputs de collection
   # volontairement minimaux (page + sections).
-  services:
-    path: src/content/services
-    name: Services
+  # Services — DEUX collections, une par langue (2026-09-18), pour que
+  # l'URL d'aperçu CloudCannon soit exacte aussi pour les services IMBRIQUÉS
+  # (fr/productivite/x.json → /fr/services/productivite/x/). Avec une seule
+  # collection sur src/content/services, [relative_base_path] valait
+  # « fr/productivite » et le gabarit /[relative_base_path]/services/[slug]/
+  # donnait /fr/productivite/services/x/ → 404 → « No preview available »
+  # et pas d'éditeur visuel sur les 36 services enfants (revue de Clément,
+  # 2026-09-18). Désormais :
+  #  - FR : l'URL suit le chemin du fichier ([full_slug] = sous-dossier/nom
+  #    sans extension), exactement comme la route
+  #    src/pages/[lang]/services/[...slug].astro sans champ `slug` ;
+  #  - EN : l'URL suit le champ `slug` de la page ({slug} = donnée), que la
+  #    route applique aussi — chaque fichier EN DOIT porter son slug (les six
+  #    qui n'en avaient pas l'ont reçu le 2026-09-18, égal à leur nom).
+  # Le même nom de fichier dans fr/ et en/ relie toujours une traduction à
+  # l'autre. Les entrées (_inputs) sont écrites UNE fois (ancre YAML
+  # &services_inputs) et reprises par la collection EN (*services_inputs).
+  # À VÉRIFIER après le premier build CloudCannon : que les « / » du slug EN
+  # ne sont pas encodés dans l'URL d'aperçu (sinon : champ `permalink` +
+  # script, plan docs/plan-icones-cta-apercus.md §1).
+  services_fr:
+    path: src/content/services/fr
+    name: Services (FR)
     singular_name: Service
     description: >-
-      Pages de services, bâties par sections (comme les campagnes) mais
-      PUBLIQUES et indexables. Les dossiers fr/ et en/ contiennent les deux
-      langues ; le même nom de fichier relie une traduction à l'autre.
+      Pages de services en français, bâties par sections (comme les
+      campagnes) mais PUBLIQUES et indexables. Un sous-dossier = les services
+      enfants d'un service (ex. productivite/o-bureau). Le même nom de
+      fichier dans « Services (EN) » relie la traduction.
     icon: rocket_launch
     # Éditeur visuel par défaut (première valeur — voir le commentaire de la
-    # collection blog) : les services sont bâtis par sections, comme les
-    # campagnes ; Data en second pour les éditions de front matter / SEO. Pas de
+    # collection blog) ; Data en second pour le front matter / SEO. Pas de
     # corps markdown (fichiers JSON) → pas de `content`.
     _enabled_editors:
       - visual
       - data
-    # fr/<slug>.json → /fr/services/<slug>/ ; le segment de langue devient le
-    # préfixe d'URL (même astuce [relative_base_path] que blog/landing).
-    # ⚠️ LIMITE CONNUE (branchement 2026-07-29) : pour les services IMBRIQUÉS
-    # (fr/cybersecurite/zero-trust.json) et les fichiers EN à slug anglais
-    # surchargé, ce gabarit donne un lien d'aperçu inexact ([relative_base_path]
-    # inclut le sous-dossier et [slug] ignore le champ `slug`). L'URL réelle est
-    # /<langue>/services/<slug ou chemin>/ — suivi : gabarit d'URL par données
-    # quand CloudCannon le permettra.
-    url: /[relative_base_path]/services/[slug]/
+    url: /fr/services/[full_slug]/
     preview:
       icon: rocket_launch
       text:
@@ -914,9 +927,9 @@ collections_config:
         - text: Service sans titre
       subtext:
         - key: description
-    # « + Ajouter » : un gabarit par langue pour que le fichier atterrisse dans
-    # fr/ ou en/ avec un JSON valide (patron de la collection forms). Flux de
-    # traduction : créer (ou Dupliquer) le même nom de fichier dans l'autre dossier.
+    # « + Ajouter » : gabarit de la langue (patron de la collection forms).
+    # Flux de traduction : créer (ou Dupliquer) le même nom de fichier dans
+    # l'autre collection Services.
     schemas:
       default:
         name: Service (FR)
@@ -924,15 +937,8 @@ collections_config:
         path: schemas/service-fr.json
         remove_extra_inputs: false
         create:
-          path: 'fr/{title|slugify}.json'
-      en:
-        name: Service (EN)
-        icon: rocket_launch
-        path: schemas/service-en.json
-        remove_extra_inputs: false
-        create:
-          path: 'en/{title|slugify}.json'
-    _inputs:
+          path: '{title|slugify}.json'
+    _inputs: &services_inputs
       title:
         type: text
         options:
@@ -947,11 +953,13 @@ collections_config:
           empty_type: string
         label: Adresse de la page (segments d'URL)
         comment: >-
-          Segment(s) après /<langue>/services/ — surtout pour la version EN
-          (ex. cybersecurity/zero-trust). Peut contenir des « / » pour un
-          service imbriqué. Vide = le nom du fichier (cas normal en FR). Le
-          NOM DE FICHIER reste ce qui apparie FR et EN — changer l'adresse ne
-          rompt pas la traduction ; changer une adresse déjà publiée exige une
+          Segment(s) après /<langue>/services/ (ex. cybersecurity/zero-trust ;
+          les « / » font un service imbriqué). FR : vide = le chemin du
+          fichier (cas normal). EN : À RENSEIGNER sur chaque page — l'aperçu
+          CloudCannon et l'éditeur visuel suivent ce champ (vide = aperçu
+          cassé, l'adresse retombe sur le chemin du fichier). Le NOM DE
+          FICHIER reste ce qui apparie FR et EN — changer l'adresse ne rompt
+          pas la traduction ; changer une adresse déjà publiée exige une
           redirection (collection Redirections).
       description:
         type: textarea
@@ -1030,6 +1038,44 @@ collections_config:
       # `type` = discriminant de section (défini par la palette) — jamais édité.
       type:
         hidden: true
+
+  services_en:
+    path: src/content/services/en
+    name: Services (EN)
+    singular_name: Service
+    description: >-
+      English service pages, built from sections (like campaigns) but
+      PUBLIC and indexable. Sub-folders hold a service's child pages
+      (e.g. productivite/o-bureau). The URL follows the « Adresse de la
+      page » field (slug) — required on every EN page. The same file name
+      in « Services (FR) » links the translation.
+    icon: rocket_launch
+    # Éditeur visuel par défaut (première valeur — voir le commentaire de la
+    # collection blog) ; Data en second pour le front matter / SEO. Pas de
+    # corps markdown (fichiers JSON) → pas de `content`.
+    _enabled_editors:
+      - visual
+      - data
+    url: /en/services/{slug}/
+    preview:
+      icon: rocket_launch
+      text:
+        - key: title
+        - text: Service sans titre
+      subtext:
+        - key: description
+    # « + Ajouter » : gabarit de la langue (patron de la collection forms).
+    # Flux de traduction : créer (ou Dupliquer) le même nom de fichier dans
+    # l'autre collection Services.
+    schemas:
+      default:
+        name: Service (EN)
+        icon: rocket_launch
+        path: schemas/service-en.json
+        remove_extra_inputs: false
+        create:
+          path: '{title|slugify}.json'
+    _inputs: *services_inputs
 
   # Pages génériques (2026-08-11) — pages composables de PREMIER NIVEAU d'URL
   # (/decouvrir, /expertises, /produits, /secteurs, /tarification,

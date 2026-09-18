@@ -217,6 +217,14 @@ des bannières de campagne par-dessus — tout revient à la permanente à la fi
 
 ## Créer une page Services (avec gabarit)
 
+> **Depuis le 2026-09-18, deux collections** dans la barre latérale : « Services (FR) »
+> et « Services (EN) », une par langue (dossiers `fr/` et `en/`). Rien ne change
+> pour la traduction : le même nom de fichier dans les deux collections relie
+> les versions. Cette scission rend l'aperçu et l'éditeur visuel exacts pour
+> les services enfants (sous-dossiers, ex. `productivite/o-bureau`). **En EN,
+> le champ « Adresse de la page » est obligatoire** : c'est lui qui donne
+> l'adresse à CloudCannon (vide = aperçu cassé sur cette page seulement).
+
 **Services** dans la barre latérale → **+ Ajouter** → choisir **Service (FR)**
 ou **Service (EN)** : la page est créée dans la bonne langue avec un gabarit
 valide (héros + sections d'exemple), impossible de produire un fichier cassé.

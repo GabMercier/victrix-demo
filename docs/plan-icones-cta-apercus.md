@@ -30,7 +30,19 @@ depuis juillet 2025 (`[full_slug|unless=permalink]`) ; une collection peut
 porter un `glob` (déjà utilisé pour `redirects`). Aucun filtre ne sait
 extraire le « premier segment » d'un chemin.
 
-**Correctif recommandé (~2-3 h, déterministe).**
+**Correctif APPLIQUÉ le 2026-09-18 (config seule, à confirmer au premier
+build CloudCannon).** La collection `services` est scindée en deux, une par
+langue, chacune sur son dossier : `services_fr` (`src/content/services/fr`,
+`url: /fr/services/[full_slug]/` — le chemin du fichier, sous-dossier compris)
+et `services_en` (`src/content/services/en`, `url: /en/services/{slug}/` — le
+champ « Adresse de la page », désormais obligatoire en EN ; les 6 pages EN
+qui n'en avaient pas ont reçu leur nom de fichier, URL inchangée). Entrées
+CMS écrites une fois (ancre YAML `&services_inputs`). Point à vérifier sur
+le site dev : les « / » d'un slug EN imbriqué ne doivent pas ressortir
+encodés (`%2F`) dans l'URL d'aperçu ; si c'est le cas, appliquer le plan de
+repli ci-dessous.
+
+**Plan de repli (~2-3 h, déterministe) — si le correctif ci-dessus échoue.**
 1. Scinder par `glob`, même dossier : `services` garde `*/*.json` (gabarit
    inchangé) ; nouvelle collection `services_enfants` = `*/*/*.json`, nom
    « Services enfants », mêmes `_inputs`/schémas (bloc partagé par ancre
@@ -45,7 +57,7 @@ extraire le « premier segment » d'un chemin.
 4. Grouper « Services » et « Services enfants » dans la barre latérale
    (`collection_groups`).
 
-**À essayer d'abord (10 min, site dev)** : retirer `url:` de la collection
+**Essai « sans `url` » — abandonné** (il aurait fallu tester à l'aveugle sur le site dev) ; pour mémoire : retirer `url:` de la collection
 `services` et laisser CloudCannon apparier la sortie du build (la doc dit
 qu'il « détermine l'URL de sortie probable après chaque build »). Si les
 36 enfants ET les 12 parents obtiennent un aperçu, le correctif ci-dessus
@@ -118,8 +130,9 @@ automatique pour tout lien vers Contact. Zod : chaînes optionnelles null → ""
 
 ## 4. Décisions
 
-1. Aperçus : essai « sans `url` » d'abord, puis correctif `glob` +
-   `permalink` ? (recommandé : oui, dans cet ordre.)
+1. Aperçus : correctif appliqué (collections par langue) — à CONFIRMER
+   au premier build dev, y compris un service enfant EN (slug avec « / »).
+   Repli `permalink` seulement si l'aperçu EN reste cassé.
 2. Banque d'icônes : clés qualifiées pour les 7 doublons (migration) ou
    garder un seul dessin par clé (perte de 10 dessins) ? (recommandé :
    qualifier.)
