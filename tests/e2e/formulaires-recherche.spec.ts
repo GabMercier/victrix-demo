@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { test, expect } from '@playwright/test';
 
 // Semaine 2026-08-17 — e2e formulaires + recherche + fil d'Ariane (story ADO
@@ -73,8 +74,13 @@ test.describe('formulaires (mode maquette) + recherche + fil d’Ariane', () => 
   });
 
   test('merci : textes CMS + boutons localisés', async ({ page }) => {
+    // Titre et libellé du bouton = textes éditables au CMS (Pages système →
+    // Merci) : lus dans le fichier, PAS codés en dur — Julie les a reformulés le
+    // 18 sept. 2026 (« Merci ! » → « Merci! », « Retour » → « Retournez ») et le
+    // test a cassé le CI.
+    const { merci } = JSON.parse(readFileSync('src/data/pages-systeme/fr.json', 'utf8'));
     await page.goto('/fr/merci/');
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Merci !');
-    await expect(page.getByRole('link', { name: 'Retour à l’accueil' })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(merci.title);
+    await expect(page.getByRole('link', { name: merci.links[0].label })).toBeVisible();
   });
 });
