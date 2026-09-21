@@ -50,10 +50,15 @@ const nav = navEntry.data;
 // la source de vérité des URLs. Tant qu'aucun lien ne porte de `service` (cas
 // actuel), le rendu du header est identique à l'octet.
 const serviceEntries = await getCollection('services');
-const serviceSlugs = new Set(
+// Map identifiant de fichier → slug d’URL (le champ `slug` de la page quand il
+// est rempli — pages EN aux slugs traduits —, sinon l’identifiant lui-même).
+const serviceSlugs = new Map(
   serviceEntries
     .filter((entry) => entry.id.startsWith(`${lang}/`))
-    .map((entry) => entry.id.slice(lang.length + 1)),
+    .map((entry) => {
+      const id = entry.id.slice(lang.length + 1);
+      return [id, (entry.data.slug ?? '').trim() || id] as const;
+    }),
 );
 
 // L'entrée qui PORTE le méga-menu est celle dont l'URL RÉSOLUE égale le

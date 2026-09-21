@@ -117,6 +117,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Notre démarche : de la vision aux initiatives appliquées",
       "headingStyle": "plain",
       "intro": "Un parcours simple pour vous accompagner de la réflexion au déploiement : chaque étape rapproche votre organisation d’une adoption de l’IA maîtrisée et créatrice de valeur, en gardant l’humain au cœur de vos décisions. La collaboration s’étend généralement sur environ 12 mois et s’ajuste à votre contexte; le budget et l’échéancier sont confirmés après analyse.",
@@ -329,6 +330,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Intelligence artificielle"

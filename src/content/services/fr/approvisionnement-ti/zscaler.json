@@ -1,0 +1,182 @@
+{
+  "_schema": "default",
+  "title": "Zscaler : la plateforme infonuagique qui redéfinit la confiance en sécurité",
+  "description": "Renforcez vos contrôles d’accès et la résilience de vos opérations. Adoptez les solutions Zscaler, distribuées par Victrix. Évaluation sur demande.",
+  "noindex": false,
+  "slug": "",
+  "seoTitle": "Zscaler | sécurité zéro confiance renforcée par l’IA | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
+  "sections": [
+    {
+      "_bookshop_name": "service-hero",
+      "type": "service-hero",
+      "eyebrow": "Approvisionnement TI",
+      "titleAccent": "",
+      "title": "Zscaler : la plateforme infonuagique qui redéfinit la confiance en sécurité",
+      "titleHighlight": "",
+      "lead": "Les solutions Zscaler appliquent le modèle de sécurité zéro confiance pour protéger l’accès à vos applications, peu importe l’emplacement de vos équipes ou de vos charges de travail. Elles éliminent la confiance implicite, réduisent la surface d’attaque et renforcent votre posture de cybersécurité.",
+      "ctaLabel": "Demandez une démo",
+      "ctaHref": "/fr/contact",
+      "image": "/wp-content/uploads/2022/05/futuristic-technology-concept.jpg",
+      "imageAlt": "Un expert en cybersécurité qui utilise les solutions Zscaler"
+    },
+    {
+      "_bookshop_name": "stats",
+      "type": "stats",
+      "title": "Zscaler, la référence mondiale de la sécurité zéro confiance appuyée par l’IA",
+      "style": "carte",
+      "fond": "beige",
+      "items": [
+        {
+          "number": "40 %",
+          "label": "des Global 2000 protègent leurs opérations avec Zscaler",
+          "icon": ""
+        },
+        {
+          "number": "+ 7 700",
+          "label": "organisations clientes à l’échelle mondiale",
+          "icon": ""
+        },
+        {
+          "number": "+ 500",
+          "label": "milliards de transactions sécurisées chaque jour",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "",
+      "fond": "ivoire",
+      "paragraphs": [
+        "Victrix distribue et accélère l’adoption des solutions Zscaler pour offrir une <strong>protection cohérente</strong>, un<strong> accès optimisé</strong> et une <strong>visibilité centralisée</strong>.",
+        "<strong>Contrôlez chaque connexion avec une approche qui élimine la confiance implicite. </strong>",
+        "Les <a href=\"/fr/ressources/zero-trust-network-access-ztna/\">solutions de sécurité zéro confiance</a> de Zscaler adoptent une architecture infonuagique qui remplace les méthodes de sécurité traditionnelles centrées sur le réseau. Aucune connexion n’est considérée fiable par défaut. Zscaler<strong> inspecte, contrôle et optimise chaque accès</strong> pour réduire les risques d’intrusion.",
+        "Grâce à l’intégration de<strong> l’</strong><a href=\"/fr/services/intelligence-artificielle/\"><strong>intelligence artificielle</strong></a>et à <strong>l’analyse approfondie du trafic</strong>, Zscaler offre une visibilité étendue, détecte les comportements suspects plus tôt et soutient une sécurité opérationnelle plus proactive."
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "fond": "ivoire",
+      "title": "Renforcez votre posture de sécurité avec une approche qui contrôle chaque accès",
+      "body": "<p>Optez pour une architecture de sécurité plus stricte pour améliorer la visibilité, réduire les risques et renforcer la résilience.</p>",
+      "ctaLabel": "Demandez une estimation",
+      "ctaHref": "/fr/contact",
+      "layout": "box"
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "fond": "beige",
+      "sectionTitle": "Transformez votre environnement avec les solutions de sécurité Zscaler",
+      "headingStyle": "plain",
+      "intro": "Les <strong>solutions Zscaler</strong> combinent la <strong>sécurité infonuagique</strong>, le <strong>principe de zéro confiance</strong> et l’<strong>intelligence artificielle</strong> pour réduire la surface d’attaque et simplifier l’exploitation TI. Chaque module contribue à une protection uniforme, où que se trouvent vos utilisateurs ou vos applications.",
+      "tone": "tint",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Zscaler Internet Access (ZIA)",
+          "text": "<strong>Offrez un accès Internet plus sûr et plus performant à l’ensemble de vos équipes.</strong><br><br><strong>Zscaler Internet Access (ZIA) </strong>assure un accès sécurisé à Internet et aux applications SaaS, avec analyse du trafic, prévention des menaces, filtrage, protection contre la perte de données (DLP) et courtier en sécurité d’accès au nuage (CASB).<br><br><strong>Résultat : </strong>un accès Internet sécurisé, une réduction tangible des risques et une détection accélérée.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "02",
+          "title": "Zscaler Private Access (ZPA)",
+          "text": "<strong>Sécurisez l’accès aux applications privées sans les contraintes d’un réseau privé virtuel (VPN).</strong><br><br><strong>Zscaler Private Access (ZPA) </strong>connecte les utilisateurs à vos applications internes sans exposer le réseau. L’accès s’effectue application par application, selon des principes de confiance stricts, plutôt que par segment réseau.<br><br><strong>Résultat :</strong> un accès contrôlé aux applications privées, une exposition aux menaces réduite et une expérience utilisateur améliorée.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "03",
+          "title": "Zscaler Client Connector",
+          "text": "<strong>Appliquez automatiquement vos politiques de sécurité sur chaque appareil.</strong><br><br><strong>Zscaler Client Connector</strong> est un agent léger installé sur les appareils pour assurer une connectivité sécurisée vers la plateforme Zscaler. Il unifie la protection de tous vos appareils (ordinateurs, mobiles, etc.) en activant les services ZIA et ZPA.<br><br><strong>Résultat :</strong> un contrôle accru des accès et une réduction des risques liés aux appareils non gérés.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "04",
+          "title": "Zscaler Digital Experience (ZDX)",
+          "text": "<strong>Accélérez le diagnostic des problèmes grâce à une analyse détaillée du parcours utilisateur.</strong><br><br><strong>Zscaler Digital Experience (ZDX) </strong>surveille en continu la performance des applications, la connectivité et la qualité du réseau. Il fournit des outils de diagnostic pour identifier rapidement les problèmes et accélérer leur résolution.<br><br><strong>Résultat : </strong>une performance applicative stable, un temps de résolution réduit et une meilleure expérience pour tous vos utilisateurs.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "05",
+          "title": "Sécurité des données",
+          "text": "<strong>Assurez la protection de vos données sur l’ensemble de vos canaux.</strong><br><br><strong>Les solutions de sécurité des données de Zscaler </strong>protègent les données en transit ou au repos dans les environnements infonuagiques et privés. Elles renforcent la conformité réglementaire et améliorent le contrôle de l’usage des applications infonuagiques (sanctionnées ou non).<br><br><strong>Résultat :</strong> une gouvernance rigoureuse et une posture de conformité plus solide.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "06",
+          "title": "Protection contre les cybermenaces",
+          "text": "<strong>Neutralisez les attaques avant qu’elles ne compromettent vos opérations.</strong><br><br><strong>Les solutions de protection contre les cybermenaces de Zscaler</strong>, soutenues par l’IA,analysent le trafic en continu et identifient plus rapidement les comportements suspects. Elles protègent contre l’hameçonnage, les logiciels malveillants, les réseaux de machines compromises (botnets), les attaques de type zéro jour et les rançongiciels.<br><br><strong>Résultat :</strong> une exposition réduite aux menaces et une détection proactive des comportements suspects.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "07",
+          "title": "Opérations de sécurité et gestion du risque",
+          "text": "<strong>Renforcez vos opérations de sécurité grâce à une visibilité complète sur les risques et les menaces.</strong><br><br><strong>La plateforme d’opérations de sécurité de Zscaler </strong>regroupe des outils de gestion des risques, d’analyse de l’exposition aux menaces, de contrôle de la surface d’attaque et de détection précoce. Elle centralise les données et corrèle les évènements pour accélérer l’enquête et améliorer la réponse.<br><br><strong>Résultat :</strong> une meilleure compréhension des risques, moins de bruit opérationnel et une capacité de détection et réponse plus efficace.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "testimonial-cards",
+      "type": "testimonial-cards",
+      "title": "L’impact des solutions zéro confiance de Zscaler selon leurs utilisateurs",
+      "fond": "ivoire",
+      "items": [
+        {
+          "image": "",
+          "quote": "Une plateforme de sécurité en nuage performante qui offre une excellente protection et un accès à distance fluide une fois déployée. Une solution à zéro confiance solide avec de très bons résultats en sécurité. La configuration et les coûts peuvent être exigeants, mais la visibilité et la réduction du risque en valent la peine pour les grandes entreprises.",
+          "name": "Gartner Peer Insights",
+          "role": "Associé sécurité des réseaux TI"
+        },
+        {
+          "image": "",
+          "quote": "Zscaler Internet Access est une solution en nuage qui fournit une protection fiable contre les menaces et un filtrage web efficace. Elle protège contre les logiciels malveillants, l’hameçonnage et la perte de données. L’intégration au système d’accès sécurisé améliore la performance, la stabilité et la sécurité.",
+          "name": "Gartner Peer Insights",
+          "role": "Directeur de produit"
+        },
+        {
+          "image": "",
+          "quote": "Notre expérience avec Zscaler Internet Access est très positive. Nous utilisons Zscaler comme proxy, et l’ajout de ZIA pour centraliser la gestion des politiques et suivre les activités web et pare-feu simplifie grandement le travail quotidien. Tout se gère en un seul endroit.",
+          "name": "Gartner Peer Insights",
+          "role": "Directeur TI"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Victrix : votre partenaire stratégique pour l’acquisition des solutions zéro confiance de Zscaler",
+      "fond": "beige",
+      "paragraphs": [
+        "Victrix <a href=\"/fr/services/approvisionnement-ti/\">simplifie l’acquisition</a> et accélère l’adoption des <strong>solutions Zscaler</strong> afin de <strong>renforcer les contrôles d’accès</strong>, d'<strong>améliorer la visibilité</strong> et de <strong>soutenir une gouvernance de sécurité plus rigoureuse</strong>. Nous vous aidons à déployer les modules alignés sur vos priorités et votre architecture existante.",
+        "Notre approche assure une activation rapide, une configuration adaptée et une protection uniforme pour l’ensemble de vos utilisateurs, appareils et applications."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Adoptez les solutions zéro confiance de Zscaler pour évoluer vers une sécurité plus stricte",
+      "body": "Mettez en place une protection plus uniforme pour sécuriser vos accès et améliorer la résilience de vos opérations.",
+      "ctaLabel": "Demandez une démo",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit",
+      "fond": "ivoire"
+    }
+  ]
+}

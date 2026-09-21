@@ -18,7 +18,7 @@ wpUrl: "/en/dominic-lajoie-appointed/"
 ## **Strategic Expertise for the Next Phase of Growth**
 
 **Stéphan Gariépy**: You have already led companies through phases of accelerated growth. What specific strengths do you think you can bring to our team for this new stage of development? 
- **Dominic Lajoie**: Indeed, my career has allowed me to manage rapid growth and structure organizations to make them more agile and efficient. At Victrix, I believe my role will be to consolidate processes while maintaining the flexibility to respond quickly to new opportunities. As COO and CIO, I will focus on operational excellence, talent development, and expanding our expertise, particularly in [Artificial Intelligence](/en/services/intelligence-artificielle/), [ServiceNow](/en/services/productivity-consulting/servicenow/), and [cybersecurity](/en/services/cybersecurity/).
+ **Dominic Lajoie**: Indeed, my career has allowed me to manage rapid growth and structure organizations to make them more agile and efficient. At Victrix, I believe my role will be to consolidate processes while maintaining the flexibility to respond quickly to new opportunities. As COO and CIO, I will focus on operational excellence, talent development, and expanding our expertise, particularly in [Artificial Intelligence](/en/services/artificial-intelligence/), [ServiceNow](/en/services/productivity-consulting/servicenow/), and [cybersecurity](/en/services/cybersecurity/).
 
 ## **The Importance of AI, ServiceNow, and Cybersecurity**
 

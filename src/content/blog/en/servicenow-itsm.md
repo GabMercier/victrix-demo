@@ -34,7 +34,7 @@ By implementing a structured ITSM framework, **businesses standardize their proc
 
 #### AI and Automation in IT Management
 
-ServiceNow integrates automation technologies powered by [artificial intelligence](/en/services/intelligence-artificielle/) to optimize IT operations, including:
+ServiceNow integrates automation technologies powered by [artificial intelligence](/en/services/artificial-intelligence/) to optimize IT operations, including:
 
 - **Virtual Agents:** AI-powered chatbots handle common IT requests, reducing human intervention.
 - **Predictive Intelligence:** Machine learning analyzes historical data to suggest proactive solutions.

@@ -83,14 +83,13 @@ const QUOTE_PATHS = [
             </svg>
             {/* Pas de fond de secours DERRIÈRE une image : les portraits PNG peuvent
                 être transparents (fond blanc de la carte visible, comme avant). */}
-            <span
-              class:list={[
-                'block size-24 rounded-xl overflow-hidden border-4 border-solid border-primary/10 mb-6',
-                !card.image && 'bg-surface-container-high',
-              ]}
-            >
-              {card.image && <img class="w-full h-full object-cover border-0" src={card.image} alt="" loading="lazy" decoding="async" />}
-            </span>
+            {/* Sans portrait (avis d'utilisateurs anonymes des pages fournisseurs,
+                2026-09-21) : pas de cadre vide — la citation remonte. */}
+            {card.image && (
+              <span class="block size-24 rounded-xl overflow-hidden border-4 border-solid border-primary/10 mb-6">
+                <img class="w-full h-full object-cover border-0" src={card.image} alt="" loading="lazy" decoding="async" />
+              </span>
+            )}
             <blockquote class="m-0 mb-8 relative z-10">
               {hasRichText(card.quote) && (
                 <p class="text-lg leading-[29px] italic text-on-surface m-0 max-w-none" set:html={inlineHtml(card.quote)} />

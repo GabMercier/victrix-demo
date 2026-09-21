@@ -138,6 +138,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Notre méthodologie",
       "headingStyle": "underline",
       "intro": "Notre méthodologie implique notre équipe de direction en cours de projet et un challenge des pairs afin de vous présenter l’approche la mieux adaptée à vos besoins.",
@@ -209,6 +210,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Conseil stratégique"

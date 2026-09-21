@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 /**
  * Section « Partenaires » — composant Bookshop (accueil composable).
  *
@@ -12,14 +13,16 @@
  * (était 48px), conteneur container-site.
  */
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   title: string;
   names: string[];
 }
 
-const { title, names = [] } = Astro.props;
+const { title, names = [], fond = 'ivoire' } = Astro.props;
 ---
 
-<section class="py-section-gap bg-surface" aria-label={title}>
+<section class:list={['py-section-gap', FOND_CLASSES[fond as FondKey] ?? 'bg-surface']} aria-label={title}>
   <div class="container-site">
     <h2 class="text-center font-label-caps text-label-caps uppercase text-on-surface-variant m-0 mb-8">
       {title}

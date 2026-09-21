@@ -1,6 +1,6 @@
 {
   "title": "Application services",
-  "slug": "services-applicatifs",
+  "slug": "application-services",
   "description": "Design, modernize and maintain your business applications.",
   "noindex": true,
   "seoH1": "",
@@ -83,6 +83,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our approach",
       "headingStyle": "underline",
       "intro": "",

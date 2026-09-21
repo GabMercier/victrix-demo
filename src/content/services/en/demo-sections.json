@@ -22,6 +22,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our three-step approach",
       "headingStyle": "underline",
       "intro": "",
@@ -49,6 +50,7 @@
     {
       "_bookshop_name": "timeline",
       "type": "timeline",
+      "fond": "",
       "title": "Timeline (demo)",
       "intro": "Serpentine chronology: key milestones stand out.",
       "tone": "tint",
@@ -94,6 +96,7 @@
     {
       "_bookshop_name": "callout",
       "type": "callout",
+      "fond": "ivoire",
       "title": "Ready to move forward?",
       "body": "Let's talk about your challenges and the best way to address them.",
       "ctaLabel": "Book a call",
@@ -116,10 +119,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Technologies we master",
       "groups": [
         {
           "title": "Cloud",
+          "href": "",
           "items": [
             "Microsoft Azure",
             "Microsoft 365",
@@ -128,6 +133,7 @@
         },
         {
           "title": "Data and AI",
+          "href": "",
           "items": [
             "Power BI",
             "Copilot Studio"
@@ -155,6 +161,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Our articles"

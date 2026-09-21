@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
 /**
  * Section « Ligne du temps » — composant Bookshop (demande user 2026-09-10 :
@@ -41,6 +42,8 @@ interface TimelineItem {
   accent?: boolean;
 }
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts) ; vide = suit `tone`. */
+  fond?: FondKey | '';
   title: string;
   intro?: string;
   tone?: 'default' | 'tint';
@@ -61,7 +64,7 @@ interface MobileCell {
   vLineClass: string;
 }
 
-const { title, intro, tone = 'default', items = [] } = Astro.props;
+const { title, intro, tone = 'default', items = [], fond = '' } = Astro.props;
 
 // Serpentin : 4 colonnes ; rangées paires G→D, impaires D→G (colonne visuelle
 // inversée). Classes littérales uniquement — d'où le plafond de 6 rangées.
@@ -115,7 +118,7 @@ const mobile: MobileCell[] = capped.map((item: TimelineItem, i: number) => ({
 }));
 ---
 
-<section class:list={['py-20', tone === 'tint' ? 'bg-surface-container-low' : 'bg-surface']}>
+<section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? (tone === 'tint' ? 'bg-surface-container-low' : 'bg-surface')]}>
   <div class="container-site">
     <div class="mx-auto text-center flex flex-col items-center gap-4">
       <h2

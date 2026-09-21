@@ -69,6 +69,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our Acceleration Strategy: IaaS — SaaS — PaaS Services",
       "headingStyle": "plain",
       "intro": "Continuous integration and delivery: identification of opportunities (planning, vision, costing), proof of concept (experimentation and validation), then acceleration of the migration to the cloud.",
@@ -111,10 +112,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Our Cloud Services and Expertise",
       "groups": [
         {
           "title": "Analysis",
+          "href": "",
           "items": [
             "Opportunity and feasibility",
             "Outsourcing services",
@@ -124,6 +127,7 @@
         },
         {
           "title": "Workload Migration",
+          "href": "",
           "items": [
             "Commitment to the 6 Rs of successful migration",
             "PaaS, SaaS, IaaS",
@@ -134,6 +138,7 @@
         },
         {
           "title": "Multicloud",
+          "href": "",
           "items": [
             "Hybrid infrastructure",
             "Monitoring and evolution",
@@ -143,6 +148,7 @@
         },
         {
           "title": "AWS/Microsoft Azure Security",
+          "href": "",
           "items": [
             "Identity security and management",
             "Compliance management",
@@ -153,6 +159,7 @@
         },
         {
           "title": "Digital Transformation",
+          "href": "",
           "items": [
             "Modern desktop VDI/AVD/W365",
             "Migration and automation"
@@ -183,6 +190,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Cloud computing"

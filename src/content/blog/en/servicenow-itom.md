@@ -7,7 +7,7 @@ topics: ["Managed services", "Cloud computing"]
 slug: "servicenow-itom"
 coverImage: "/wp-content/uploads/2024/11/servicenow-victrix.png"
 seoTitle: "ServiceNow ITOM: Improve Visibility, Speed & ROI"
-wpUrl: "/en/servicenow-itom/"
+wpUrl: "/en/ressources/servicenow-itom/"
 ---
 IT operations are under pressure. ITOM teams must juggle the complexities of a **growing infrastructure**, **sprawling cloud resources**, **increasing security risks** and the burden of **reducing downtime**. But legacy tools can’t keep up—they're slow, fragmented, and reactive rather than proactive.
 

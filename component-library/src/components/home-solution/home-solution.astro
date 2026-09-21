@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml } from '../../shared/rich';
 /**
  * Section « Solution / efficacité opérationnelle » — composant Bookshop.
@@ -41,6 +42,8 @@ interface Feature {
 }
 
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   eyebrow: string;
   title: string;
   body: string;
@@ -65,13 +68,14 @@ const {
   statText,
   features = [],
   resolvedImage,
+  fond = 'beige',
 } = Astro.props;
 const hasStat = Boolean(statValue);
 ---
 
 {/* Fond BEIGE #F1E8DF (export2 homepage.css §OperationalEfficiency,
     « Secondaire/Beige », 2026-08-17) — remplace le gris froid provisoire. */}
-<section class="py-24 bg-beige overflow-hidden">
+<section class:list={['py-24 overflow-hidden', FOND_CLASSES[fond as FondKey] ?? 'bg-beige']}>
   <div class="container-site">
     <div class="flex flex-col lg:flex-row items-center gap-16">
       <div class:list={['w-full lg:w-1/2 relative', hasStat && 'mb-16 lg:mb-0']}>

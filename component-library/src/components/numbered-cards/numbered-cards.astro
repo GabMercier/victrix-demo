@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
 /**
  * Section « Cartes numérotées » — composant Bookshop (P-07).
@@ -40,6 +41,8 @@ interface CardItem {
   ctaHref?: string;
 }
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts) ; vide = suit `tone`. */
+  fond?: FondKey | '';
   sectionTitle: string;
   headingStyle?: 'plain' | 'underline';
   intro?: string;
@@ -59,6 +62,7 @@ const {
   columns = '3',
   cardStyle = 'default',
   items = [],
+  fond = '',
 } = Astro.props;
 
 const centered = cardStyle === 'center';
@@ -69,7 +73,7 @@ const centered = cardStyle === 'center';
 const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2, '0') : n);
 ---
 
-<section class:list={['py-20', tone === 'tint' ? 'bg-surface-container-low' : 'bg-surface']}>
+<section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? (tone === 'tint' ? 'bg-surface-container-low' : 'bg-surface')]}>
   <div class="container-site">
     <div class="mx-auto text-center flex flex-col items-center gap-4">
       <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">

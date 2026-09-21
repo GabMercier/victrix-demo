@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
 /**
  * Section « Expertises » (bento « Nos services ») — composant Bookshop.
@@ -49,6 +50,8 @@ interface ExpertiseItem {
 }
 
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   sectionTitle: string;
   intro?: string;
   learnMore: string;
@@ -57,7 +60,7 @@ interface Props {
   items: ExpertiseItem[];
 }
 
-const { sectionTitle, intro, learnMore, ctaLabel, ctaHref, items = [] } = Astro.props;
+const { sectionTitle, intro, learnMore, ctaLabel, ctaHref, items = [], fond = 'ivoire' } = Astro.props;
 
 // Recettes par peau — la carte entière est cliquable via le lien étiré du CTA.
 // Rayon 4px + lien 14/600 sentence-case avec flèche qui glisse (export2).
@@ -72,7 +75,7 @@ const watermarkBase =
   'absolute -right-12 -bottom-20 text-[340px] leading-none font-black select-none -z-10';
 ---
 
-<section class="py-24 bg-white">
+<section class:list={['py-24', FOND_CLASSES[fond as FondKey] ?? 'bg-ivoire']}>
   <div class="container-site">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
       <div class="max-w-xl flex flex-col gap-6">

@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { inlineHtml } from '../../shared/rich';
 /**
  * Section « Bandeau logos partenaires » — composant Bookshop (palette
@@ -28,15 +29,17 @@ interface LogoItem {
 }
 
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   title?: string;
   badge?: string;
   items: LogoItem[];
 }
 
-const { title = '', badge = '', items = [] } = Astro.props;
+const { title = '', badge = '', items = [], fond = 'ivoire' } = Astro.props;
 ---
 
-<section class="py-20 bg-surface">
+<section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? 'bg-surface']}>
   <div class="container-site text-center">
     {title !== '' && <h2 class="text-2xl leading-8 font-bold text-on-surface m-0">{title}</h2>}
     {

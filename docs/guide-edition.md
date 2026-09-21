@@ -100,7 +100,20 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
    le fond proposé, ou alterner ivoire / beige avec la section voisine. Les dix
    teintes restent offertes, mais « blanc » et les gris froids (givre, perle,
    brume) tranchent maintenant sur le reste de la page : à réserver aux cas
-   voulus.
+   voulus. **Depuis le 21 sept. 2026, le sélecteur « Fond de section » existe
+   sur TOUTES les sections à bande**, y compris celles de la page d’accueil
+   (Nos services, Solution, Solutions phares, Ressources, Partenaires, Experts,
+   bandeau ISO) et les cartes numérotées, colonnes de technologies, ligne du
+   temps, encadré, outils exclusifs, grille d’expertise, ressources liées,
+   bandeau de logos, vidéo et témoignage. Sur « cartes numérotées » et « ligne
+   du temps », le fond peut rester vide : il suit alors le champ « Ton ».
+   Seuls les héros (photo plein cadre), le bandeau défilant (sombre) et le
+   catalogue de solutions n’en ont pas.
+   **Colonnes de technologies — lien du titre (facultatif)** : chaque colonne a
+   un champ « Lien du titre ». Rempli (adresse complète, ex.
+   `/fr/services/approvisionnement-ti/cisco/`), le titre devient un lien avec
+   une flèche ; vide, rien ne change. C’est ce qui relie la page
+   « Approvisionnement TI » à ses neuf pages fournisseurs.
 5. **Icônes** : tous les champs « Icône » (cartes à icônes, tuiles bento et
    leur filigrane, réalisations, chiffres en style carte, puces d'offre, tuiles
    de valeurs, atouts…) ouvrent **la même liste déroulante** : la **banque de

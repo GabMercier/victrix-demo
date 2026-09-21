@@ -13,7 +13,7 @@ To maximize the use of Microsoft’s generative AI in your business, it's essent
 
 This is particularly true for businesses aiming for digital transformation to **enhance productivity, foster creativity, strengthen cybersecurity, and automate time-consuming processes.**
 
-Victrix is the **strategic partner for public and private sector organizations** in [adopting artificial intelligence](/en/services/intelligence-artificielle/) and leveraging the [Microsoft 365 environment](/en/services/managed-it-services/maximize-the-use-of-your-m365-ecosystem/). Learn all about Copilot’s extensive features and how to use Copilot to maximize your M365 return on investment.
+Victrix is the **strategic partner for public and private sector organizations** in [adopting artificial intelligence](/en/services/artificial-intelligence/) and leveraging the [Microsoft 365 environment](/en/services/managed-it-services/maximize-the-use-of-your-m365-ecosystem/). Learn all about Copilot’s extensive features and how to use Copilot to maximize your M365 return on investment.
 
 Copilot is Microsoft’s latest innovation in generative artificial intelligence (AI), seamlessly integrated into its suite of [productivity tools](/en/services/productivity-consulting/). Built into Microsoft 365 and its many applications, Copilot leverages large language models (LLMs) to**understand context, accelerate content creation, provide insights, automate tasks, and much more.** 
  While **a free version is available for everyone**, whether individuals or businesses, it comes with limitations. Organizations looking to fully harness the power of Microsoft Copilot features must subscribe to the business premium to benefit from its extensive integrations and capabilities.

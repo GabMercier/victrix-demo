@@ -69,6 +69,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Notre méthodologie Cloud Adoption Framework",
       "headingStyle": "plain",
       "intro": "Victrix se spécialise dans les <strong>services gérés</strong> et les <strong>solutions infonuagiques</strong> : excellence opérationnelle, posture de sécurité robuste, conformité et performance de votre infrastructure. Faites confiance à nos experts pour <strong>bâtir une plateforme de productivité évolutive</strong> qui facilite la gestion de vos charges de travail, renforce la sécurité de vos données et propulse vos affaires.",
@@ -106,10 +107,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Nos services de migration et de gestion Azure",
       "groups": [
         {
           "title": "Analyse et optimisation",
+          "href": "",
           "items": [
             "Analyse avancée de l'architecture",
             "Estimation du coût total de possession (TCO)",
@@ -121,6 +124,7 @@
         },
         {
           "title": "Analyse de migration",
+          "href": "",
           "items": [
             "Analyse de faisabilité",
             "Évaluation des défis de migration",
@@ -131,6 +135,7 @@
         },
         {
           "title": "Stratégie de migration",
+          "href": "",
           "items": [
             "Application des 6 R de migration appropriés",
             "Migration IaaS (VM Azure), PaaS (App Service) et SaaS",
@@ -142,6 +147,7 @@
         },
         {
           "title": "Multicloud",
+          "href": "",
           "items": [
             "Respect des principes des modèles CAF (Cloud Adoption Framework) et WAF (Well-Architected Framework)",
             "Accélération, simplification, automatisation et optimisation de vos déploiements multicloud",
@@ -154,6 +160,7 @@
         },
         {
           "title": "Sécurité infonuagique",
+          "href": "",
           "items": [
             "Modèle d'accès distant sécurisé, centralisé et complètement géré",
             "Consolidation d'identité infonuagique et modèle d'authentification sécurisé et centralisé (gestion des accès)",
@@ -164,6 +171,7 @@
         },
         {
           "title": "Transformation organisationnelle",
+          "href": "",
           "items": [
             "Modernisation d'environnement avec Azure Virtual Desktop : poste de travail DaaS basé sur Azure",
             "Adoption de Windows 365 pour un accès à distance sécurisé au réseau de l'organisation, à ses données et applications"
@@ -174,6 +182,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Infonuagique"

@@ -1,0 +1,175 @@
+{
+  "_schema": "default",
+  "title": "CrowdStrike Falcon: Stop Attacks Before Impact",
+  "description": "Strengthen endpoints, identities, and cloud protection with CrowdStrike Falcon solutions distributed by Victrix. Personalized assessment on request.",
+  "noindex": false,
+  "slug": "it-procurement/crowdstrike-falcon",
+  "seoTitle": "CrowdStrike Falcon | Block Attacks Before Impact | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
+  "sections": [
+    {
+      "_bookshop_name": "service-hero",
+      "type": "service-hero",
+      "eyebrow": "IT Procurement",
+      "titleAccent": "",
+      "title": "CrowdStrike Falcon: Stop Attacks Before Impact",
+      "titleHighlight": "",
+      "lead": "CrowdStrike Falcon solutions combine prevention, detection and response (EDR/XDR), identity protection, and cloud security. The platform relies on real-time threat analysis to block the most sophisticated attacks before they disrupt your operations.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2022/05/envato-labs-image-edit-3.webp",
+      "imageAlt": "analystes en cybersécurité au travail"
+    },
+    {
+      "_bookshop_name": "stats",
+      "type": "stats",
+      "title": "CrowdStrike, Leader in Identity Protection and Incident Prevention",
+      "style": "carte",
+      "fond": "beige",
+      "items": [
+        {
+          "number": "5 X",
+          "label": "faster recovery time",
+          "icon": ""
+        },
+        {
+          "number": "10 X",
+          "label": "lower recovery costs",
+          "icon": ""
+        },
+        {
+          "number": "+ 10 000",
+          "label": "hours invested per year in countering state-sponsored adversaries",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "",
+      "fond": "ivoire",
+      "paragraphs": [
+        "Victrix<strong> distributes and accelerates the integration of CrowdStrike modules</strong> for faster, more effective, and more profitable defense.",
+        "<strong>Protect identities, devices, and cloud environments. Significantly reduce the impact of security incidents with CrowdStrike Falcon solutions..</strong>",
+        "CrowdStrike has proven its leadership in <a href=\"/en/services/cybersecurity/\">cybersecurity for large private organizations</a> and public-sector agencies. Falcon solutions block advanced threats, reduce response costs, and strengthen operational continuity.",
+        "With its <a href=\"/en/services/cloud-services-provider/\">cloud-native architecture</a>, <a href=\"/en/services/artificial-intelligence/\">artificial intelligence</a> capabilities, and world-class threat intelligence, CrowdStrike delivers complete visibility across your digital environment. Your organization becomes more resilient against sophisticated adversaries."
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "fond": "ivoire",
+      "title": "Move to a Faster, Stronger, and More Resilient Protection",
+      "body": "<p>Accelerate the integration of CrowdStrike Falcon solutions with Victrix. From acquisition to deployment, we help you reduce risk faster and deliver immediate improvements to your security posture.</p>",
+      "ctaLabel": "Request a quote",
+      "ctaHref": "/en/contact",
+      "layout": "box"
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "fond": "beige",
+      "sectionTitle": "Strengthen Your Security with CrowdStrike Falcon Solutions",
+      "headingStyle": "plain",
+      "intro": "Adopt <strong>CrowdStrike Falcon solutions distributed by Victrix</strong>. CrowdStrikes provides cloud-native protection that secures your entire attack surface: <strong>endpoints, identities, cloud workloads, observability, and security operations.</strong>",
+      "tone": "tint",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Endpoint Protection (EDR/XDR)",
+          "text": "<strong>Strengthen endpoint security with real-time threat detection.</strong><br><br><strong>CrowdStrike Falcon Prevent </strong>and <strong>Falcon Insights XDR </strong>unify prevention, EDR and XDR, in a cloud-native architecture that monitors, analyzes, and blocks advanced attacks.<br><br><strong>Result: </strong> faster detection and response, and attacks stopped before impact.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "02",
+          "title": "Threat Intelligence",
+          "text": "<strong>Stay ahead of attackers with continuous visibility and proactive threat hunting.</strong><br><br><strong>CrowdStrike Falcon Adversary OverWatch </strong>brings together threat intelligence, behavioural analytics, and human-led threat hunting to identify malicious activity before it unfolds.<br><br><strong>Result: </strong> greater visibility into adversaries and more targeted prevention of advanced intrusions.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "03",
+          "title": "Cloud Security Posture",
+          "text": "<strong>Protect your cloud environments with unified 24/7 security.</strong><br><br><strong>CrowdStrike Falcon Cloud Security </strong>safeguards cloud workloads, assesses the posture of public cloud environments, and prevents risky configuration across <a href=\"/en/services/cloud-services-provider/aws-services/\">AWS</a>, <a href=\"/en/services/cloud-services-provider/azure-migration/\">Azure</a>, and Google Cloud.<br><br><strong>Result: </strong> consistent cloud protection and a measurable reduction of your attack surface.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "04",
+          "title": "Identity Security (IAM)",
+          "text": "<strong>Stop identity-based attacks before exploitation.</strong><br><br><strong>CrowdStrike Falcon Next-Gen Identity Security</strong> detects credential abuse, monitors access, and blocks lateral movements based on identity compromise.<br><br><strong>Result: </strong> fewer account takeovers and stronger protection against targeted attacks.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "05",
+          "title": "Observability (SIEM)",
+          "text": "<strong>Gain full visibility by unifying logs and alerts.</strong><br><br><strong>CrowdStrike Falcon Next-Gen SIEM</strong> centralizes data, correlates events, and provides real-time analytics to accelerate investigations.<br><br><strong>Result: </strong> faster investigations, less operational noise, and better decision-making.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "06",
+          "title": "Managed Services (MDR)",
+          "text": "<strong>Accelerate defence with 24/7 monitoring and guided response.</strong><br><br><strong>CrowdStrike Falcon Complete Next-Gen MDR</strong> combines MDR expertise, threat hunting, and active remediation to neutralize attacks without relying on internal resources.<br><br><strong>Result: </strong> continuous operational security, reduced team pressure, and a more reslient posture.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "testimonial-cards",
+      "type": "testimonial-cards",
+      "title": "They Trust CrowdStrike Falcon Solutions",
+      "fond": "ivoire",
+      "items": [
+        {
+          "image": "",
+          "quote": "My experience with CrowdStrike Falcon Cloud Security has been very positive. The platform is intuitive, provides strong threat detection capabilities and integrates well with our existing cloud infrastructure. This has significantly improved our visibility and response times.",
+          "name": "Gartner Peer Insights",
+          "role": "Manager, IT Security and Risk Management"
+        },
+        {
+          "image": "",
+          "quote": "We are more satisfied on Endpoint detection and NG SIEM and had a good experience by using the product to get the logs, Discover to find the managed assets and unmanaged assets.",
+          "name": "Gartner Peer Insights",
+          "role": "Sales Manager"
+        },
+        {
+          "image": "",
+          "quote": "Really good experience using CrowdStrike. Very good product. The product capabilities regarding Monitoring and Response are some of the best at this moment. I think that the product is Top 3 in the market.",
+          "name": "Gartner Peer Insights",
+          "role": "IT Security and Risk Management Associates"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Victrix: Your Strategic Partner for Acquiring and Deploying CrowdStrike Falcon",
+      "fond": "beige",
+      "paragraphs": [
+        "Victrix <a href=\"/en/services/it-procurement/\">facilitates the procurement</a> and rapid deployment of Falcon modules tailored to your security needs. We provide seamless integration to<strong> strengthen your controls, visibility, and incident-response capacity</strong>.",
+        "Our expertise helps unify protection across all your security layers to support predictable operations and the continuous improvement of your posture."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Elevate Your Security Posture with the Power of CrowdStrike Falcon",
+      "body": "Deploy the right protections for your environment and strengthen your resilience against the most sophisticated adversaries.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit",
+      "fond": "ivoire"
+    }
+  ]
+}

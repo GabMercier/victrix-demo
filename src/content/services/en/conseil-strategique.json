@@ -138,6 +138,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our Methodology",
       "headingStyle": "underline",
       "intro": "Our methodology involves our executive team throughout the project and peer review to present you with the approach best suited to your needs.",
@@ -209,6 +210,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Strategic consulting"

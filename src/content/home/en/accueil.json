@@ -17,6 +17,7 @@
     {
       "_bookshop_name": "home-expertises",
       "type": "home-expertises",
+      "fond": "ivoire",
       "sectionTitle": "Our Services",
       "intro": "Complementary IT services that work together or stand alone, covering all of your technology needs.",
       "learnMore": "Discover",
@@ -39,7 +40,7 @@
           "title": "AI and Automation",
           "accent": "#1a5bff",
           "description": "Put AI to work in your business processes, within a clear governance framework.",
-          "href": "/en/services/intelligence-artificielle",
+          "href": "/en/services/artificial-intelligence",
           "image": "",
           "variant": "bleue",
           "linkLabel": "Discover",
@@ -61,7 +62,7 @@
           "title": "Application Services",
           "accent": "#1a5bff",
           "description": "Build, modernize and maintain the applications that run your operations.",
-          "href": "/en/services/services-applicatifs",
+          "href": "/en/services/application-services",
           "image": "",
           "variant": "claire",
           "linkLabel": "",
@@ -83,6 +84,7 @@
     {
       "_bookshop_name": "home-solution",
       "type": "home-solution",
+      "fond": "beige",
       "eyebrow": "",
       "title": "Free Your Team from Day-to-Day Operations",
       "body": "Your team focus on what moves the business forward. Our experts handle performance and uptime.",
@@ -106,6 +108,7 @@
     {
       "_bookshop_name": "home-solutions",
       "type": "home-solutions",
+      "fond": "ivoire",
       "title": "Our Signature Solutions",
       "ctaLabel": "",
       "ctaHref": "",
@@ -139,6 +142,7 @@
     {
       "_bookshop_name": "home-latest",
       "type": "home-latest",
+      "fond": "ivoire",
       "title": "Resources and News",
       "subtitle": "Keep up with our experts: articles, webinars, white papers and Victrix news.",
       "readMoreLabel": "View",
@@ -148,6 +152,7 @@
     {
       "_bookshop_name": "home-experts",
       "type": "home-experts",
+      "fond": "sable",
       "title": "Ready to Take the Next Step?",
       "subtitle": "Let's talk about your challenges and how Victrix can advance your digital transformation.",
       "ctaLabel": "Schedule a consultation",

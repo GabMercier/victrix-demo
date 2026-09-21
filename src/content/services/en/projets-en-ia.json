@@ -1,6 +1,6 @@
 {
   "title": "AI projects",
-  "slug": "projets-en-ia",
+  "slug": "ai-projects",
   "description": "From ideation to deployment: artificial intelligence projects that deliver value.",
   "noindex": true,
   "seoH1": "",
@@ -19,7 +19,7 @@
       "ctaLabel": "Let’s talk about your use cases",
       "ctaHref": "/en/contact",
       "cta2Label": "See the AI expertise",
-      "cta2Href": "/en/services/intelligence-artificielle",
+      "cta2Href": "/en/services/artificial-intelligence",
       "overlay": "voile",
       "image": "",
       "imageAlt": ""
@@ -83,6 +83,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Artificial intelligence"

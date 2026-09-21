@@ -17,6 +17,7 @@
     {
       "_bookshop_name": "home-expertises",
       "type": "home-expertises",
+      "fond": "ivoire",
       "sectionTitle": "Nos services",
       "intro": "Des services TI complémentaires, déployés ensemble ou séparément, pour couvrir tous vos besoins technologiques.",
       "learnMore": "Découvrez le service",
@@ -83,6 +84,7 @@
     {
       "_bookshop_name": "home-solution",
       "type": "home-solution",
+      "fond": "beige",
       "eyebrow": "",
       "title": "Libérez votre équipe des contraintes opérationnelles",
       "body": "Vos équipes se concentrent sur vos projets stratégiques pendant que nos experts assurent la performance et la disponibilité de vos systèmes.",
@@ -106,6 +108,7 @@
     {
       "_bookshop_name": "home-solutions",
       "type": "home-solutions",
+      "fond": "ivoire",
       "title": "Nos solutions phares",
       "ctaLabel": "",
       "ctaHref": "",
@@ -139,6 +142,7 @@
     {
       "_bookshop_name": "home-latest",
       "type": "home-latest",
+      "fond": "ivoire",
       "title": "Ressources et actualités",
       "subtitle": "Suivez les publications de nos experts : articles, webinaires, livres blancs et nouvelles de Victrix.",
       "readMoreLabel": "Consultez",
@@ -148,6 +152,7 @@
     {
       "_bookshop_name": "home-experts",
       "type": "home-experts",
+      "fond": "sable",
       "title": "Prêt à faire évoluer votre organisation?",
       "subtitle": "Discutons de vos enjeux et découvrons comment Victrix peut vous aider à aller plus loin dans votre transformation numérique.",
       "ctaLabel": "Planifiez une consultation",

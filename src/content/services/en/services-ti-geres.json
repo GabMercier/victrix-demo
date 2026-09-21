@@ -65,6 +65,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Outsourcing is your strategic advantage to remain competitive against today's challenges",
       "headingStyle": "plain",
       "tone": "default",
@@ -245,6 +246,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Managed services"

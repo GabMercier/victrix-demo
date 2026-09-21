@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 /**
  * Section « Colonnes de technologies » — composant Bookshop (P-07).
  * RE-SKIN DESIGN SYSTEM 2026-08-05 : tête centrée 40/700 + liseré bleu 64×4
@@ -17,18 +18,22 @@
  */
 interface Group {
   title: string;
+  /** URL finale optionnelle : le titre de la colonne devient un lien. */
+  href?: string;
   items: string[];
   subgroup?: { label: string; items: string[] };
 }
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   sectionTitle: string;
   groups: Group[];
 }
 
-const { sectionTitle, groups = [] } = Astro.props;
+const { sectionTitle, groups = [], fond = 'ivoire' } = Astro.props;
 ---
 
-<section class="py-20 bg-surface">
+<section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? 'bg-surface']}>
   <div class="container-site">
     <div class="mx-auto text-center flex flex-col items-center gap-4">
       <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
@@ -40,7 +45,16 @@ const { sectionTitle, groups = [] } = Astro.props;
       {
         groups.map((group) => (
           <div class="bg-white border border-solid border-contour rounded-lg p-8">
-            <h3 class="text-2xl leading-8 font-bold text-on-surface m-0 mb-4 text-center">{group.title}</h3>
+            <h3 class="text-2xl leading-8 font-bold text-on-surface m-0 mb-4 text-center">
+              {group.href ? (
+                <a class="text-on-surface no-underline hover:text-primary hover:underline underline-offset-4" href={group.href}>
+                  {group.title}
+                  <span class="text-primary" aria-hidden="true"> →</span>
+                </a>
+              ) : (
+                group.title
+              )}
+            </h3>
             <ul role="list" class="list-disc pl-6 m-0 flex flex-col gap-2 text-base leading-[26px] text-on-surface-variant [&_li]:m-0 [&_li::marker]:text-primary">
               {(group.items ?? []).map((it) => (
                 <li>{it}</li>

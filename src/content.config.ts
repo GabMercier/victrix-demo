@@ -386,6 +386,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     // browser-safe (no astro:assets), and "" means "no image" everywhere. ----
     z.object({
       type: z.literal('testimonial'),
+      fond: fondClair.default('beige'),
       quote: z.string(),
       name: z.string(),
       role: z.string().optional(),
@@ -394,6 +395,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('logo-banner'),
+      fond: fondClair.default('ivoire'),
       title: z.string().optional(),
       badge: z.string().optional(),
       items: z.array(
@@ -421,6 +423,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('video'),
+      fond: fondClair.default('ivoire'),
       title: z.string(),
       intro: z.string().optional(),
       // "" until the editor pastes the URL — the facade renders disabled.
@@ -447,6 +450,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('home-iso'),
+      fond: fondClair.default('blanc'),
       title: z.string(),
       subtitle: z.string(),
       // Re-skin 2026-08-04 — barre de confiance (patron Trust Bar) : items
@@ -455,6 +459,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('home-expertises'),
+      fond: fondClair.default('ivoire'),
       sectionTitle: z.string(),
       // Re-skin 2026-08-04 — paragraphe d'appui (maquette bento : SOUS le titre).
       intro: z.string().default(''),
@@ -489,6 +494,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('home-solution'),
+      fond: fondClair.default('beige'),
       eyebrow: z.string(),
       title: z.string(),
       body: z.string(),
@@ -510,6 +516,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     // chemins PUBLICS servis tels quels (browser-safe, règle des sections).
     z.object({
       type: z.literal('home-solutions'),
+      fond: fondClair.default('ivoire'),
       title: z.string(),
       // Lien en haut à droite (« Voir toutes nos solutions → ») ; vides = absent.
       ctaLabel: z.string().default(''),
@@ -529,11 +536,13 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('home-partners'),
+      fond: fondClair.default('ivoire'),
       title: z.string(),
       names: z.array(z.string()),
     }),
     z.object({
       type: z.literal('home-experts'),
+      fond: fondClair.default('sable'),
       title: z.string(),
       subtitle: z.string(),
       ctaLabel: z.string(),
@@ -541,6 +550,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('home-latest'),
+      fond: fondClair.default('ivoire'),
       title: z.string(),
       // Fidélité maquette accueil.css — sous-titre sous le titre de section.
       subtitle: z.string().default(''),
@@ -656,6 +666,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     // large 2×1, petite 1×1).
     z.object({
       type: z.literal('expertise-bento'),
+      fond: fondClair.default('ivoire'),
       eyebrow: z.string().default(''),
       title: z.string(),
       intro: z.string().default(''),
@@ -682,6 +693,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     // + cartes outils (tuile icône, titre, texte, lien).
     z.object({
       type: z.literal('exclusive-tools'),
+      fond: fondClair.default('beige'),
       title: z.string(),
       intro: z.string().default(''),
       featured: z
@@ -774,6 +786,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('numbered-cards'),
+      fond: fondClairOuVide.default(''),
       sectionTitle: z.string(),
       // 'plain' = titre centré simple ; 'underline' = titre + liseré vert.
       headingStyle: z.enum(['plain', 'underline']).default('plain'),
@@ -805,12 +818,16 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('tech-columns'),
+      fond: fondClair.default('ivoire'),
       sectionTitle: z.string(),
       // Chaque groupe = une colonne (titre + liste), avec un sous-groupe
       // étiqueté optionnel (ex. « Sources ouvertes et locales : » + sa liste).
       groups: z.array(
         z.object({
           title: z.string(),
+          // Lien optionnel du titre de colonne (2026-09-21) : pages fournisseurs
+          // d'Approvisionnement TI. URL FINALE (/fr/…) ; vide = titre sans lien.
+          href: z.string().default(''),
           items: z.array(z.string()),
           subgroup: z.object({ label: z.string(), items: z.array(z.string()) }).optional(),
         }),
@@ -818,6 +835,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('callout'),
+      fond: fondClair.default('ivoire'),
       title: z.string(),
       body: z.string().optional(),
       ctaLabel: z.string().optional(),
@@ -835,6 +853,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('related-posts'),
+      fond: fondClair.default('beige'),
       title: z.string(),
       ctaLabel: z.string().optional(),
       ctaHref: z.string().optional(),
@@ -935,6 +954,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('timeline'),
+      fond: fondClairOuVide.default(''),
       title: z.string(),
       intro: z.string().optional(),
       tone: z.enum(['default', 'tint']).default('default'),

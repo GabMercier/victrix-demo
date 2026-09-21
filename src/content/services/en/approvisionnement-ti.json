@@ -119,10 +119,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Cybersecurity and Identity Protection",
       "groups": [
         {
           "title": "Check Point",
+          "href": "/en/services/it-procurement/check-point/",
           "items": [
             "AI Security: generative AI, AI apps, autonomous agents, and data leak prevention via prompts and models",
             "Unified control and centralized policies",
@@ -136,6 +138,7 @@
         },
         {
           "title": "CrowdStrike",
+          "href": "/en/services/it-procurement/crowdstrike-falcon/",
           "items": [
             "Endpoint protection",
             "Threat intelligence",
@@ -147,6 +150,7 @@
         },
         {
           "title": "Palo Alto Networks",
+          "href": "/en/services/it-procurement/palo-alto-networks/",
           "items": [
             "Network security",
             "Secure access",
@@ -158,6 +162,7 @@
         },
         {
           "title": "Zscaler",
+          "href": "/en/services/it-procurement/zscaler/",
           "items": [
             "Cloud security",
             "Zero Trust architecture",
@@ -169,6 +174,7 @@
         },
         {
           "title": "Microsoft",
+          "href": "/en/services/it-procurement/microsoft-solutions/",
           "items": [
             "Microsoft 365 E5 Security",
             "Microsoft Defender",
@@ -182,10 +188,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Network and Connectivity",
       "groups": [
         {
           "title": "Cisco",
+          "href": "/en/services/it-procurement/cisco/",
           "items": [
             "Network infrastructure and connectivity",
             "Network security",
@@ -196,6 +204,7 @@
         },
         {
           "title": "HPE Networking",
+          "href": "/en/services/it-procurement/hpe-networking/",
           "items": [
             "Routers and switches",
             "Operating systems",
@@ -211,10 +220,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Cloud Computing, Automation, and Virtualization",
       "groups": [
         {
           "title": "Microsoft",
+          "href": "/en/services/it-procurement/microsoft-solutions/",
           "items": [
             "Microsoft 365: Teams, Outlook, SharePoint, OneDrive",
             "Dynamics 365: Sales, Customer Service, Customer Insights, Field Service, and Contact Center",
@@ -227,6 +238,7 @@
         },
         {
           "title": "ServiceNow",
+          "href": "/en/services/it-procurement/servicenow/",
           "items": [
             "IT service, operations, and asset management (ITSM/ITOM/ITAM)",
             "Portfolio management (SPM/APM)",
@@ -240,6 +252,7 @@
         },
         {
           "title": "Dell Technologies",
+          "href": "/en/services/it-procurement/dell-technologies/",
           "items": [
             "Servers and infrastructure",
             "Endpoint protection",

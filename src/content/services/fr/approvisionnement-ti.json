@@ -119,10 +119,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Cybersécurité et protection des identités",
       "groups": [
         {
           "title": "Check Point",
+          "href": "/fr/services/approvisionnement-ti/check-point/",
           "items": [
             "Sécurité IA : IA générative, applications IA, agents autonomes et prévention des fuites de données via les prompts et modèles",
             "Contrôle unifié et politiques centralisées",
@@ -136,6 +138,7 @@
         },
         {
           "title": "CrowdStrike",
+          "href": "/fr/services/approvisionnement-ti/crowdstrike-falcon/",
           "items": [
             "Protection des terminaux",
             "Intelligence des menaces",
@@ -147,6 +150,7 @@
         },
         {
           "title": "Palo Alto Networks",
+          "href": "/fr/services/approvisionnement-ti/palo-alto-networks/",
           "items": [
             "Sécurité réseau",
             "Accès sécurisé",
@@ -158,6 +162,7 @@
         },
         {
           "title": "Zscaler",
+          "href": "/fr/services/approvisionnement-ti/zscaler/",
           "items": [
             "Sécurité infonuagique",
             "Architecture zéro confiance (Zero Trust)",
@@ -169,6 +174,7 @@
         },
         {
           "title": "Microsoft",
+          "href": "/fr/services/approvisionnement-ti/solutions-microsoft/",
           "items": [
             "Microsoft 365 E5 Security",
             "Microsoft Defender",
@@ -182,10 +188,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Réseau et connectivité",
       "groups": [
         {
           "title": "Cisco",
+          "href": "/fr/services/approvisionnement-ti/cisco/",
           "items": [
             "Infrastructure réseau et connectivité",
             "Sécurité réseau",
@@ -196,6 +204,7 @@
         },
         {
           "title": "HPE Networking",
+          "href": "/fr/services/approvisionnement-ti/hpe-networking/",
           "items": [
             "Routeurs et commutateurs",
             "Systèmes d’exploitation",
@@ -211,10 +220,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Infonuagique, automatisation et virtualisation",
       "groups": [
         {
           "title": "Microsoft",
+          "href": "/fr/services/approvisionnement-ti/solutions-microsoft/",
           "items": [
             "Microsoft 365 : Teams, Outlook, SharePoint, OneDrive",
             "Dynamics 365 : Sales, Customer Service, Customer Insights, Field Service et Contact Center",
@@ -227,6 +238,7 @@
         },
         {
           "title": "ServiceNow",
+          "href": "/fr/services/approvisionnement-ti/servicenow/",
           "items": [
             "Gestion des services, opérations et ressources informatiques (ITSM/ITOM/ITAM)",
             "Gestion des portefeuilles (SPM/APM)",
@@ -240,6 +252,7 @@
         },
         {
           "title": "Dell Technologies",
+          "href": "/fr/services/approvisionnement-ti/dell-technologies/",
           "items": [
             "Serveurs et infrastructures",
             "Protection des terminaux",

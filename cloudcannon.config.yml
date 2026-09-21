@@ -3746,6 +3746,7 @@ _structures:
             - text: Colonne
         value:
           title: ''
+          href: ''
           items: []
           subgroup:
             label: ''
@@ -3756,6 +3757,12 @@ _structures:
             options:
               empty_type: string
             label: Titre de la colonne
+          href:
+            type: text
+            options:
+              empty_type: string
+            label: Lien du titre (facultatif)
+            comment: "Adresse complète de la page, ex. /fr/services/approvisionnement-ti/cisco/ — vide = titre sans lien."
           items:
             type: array
             label: Éléments

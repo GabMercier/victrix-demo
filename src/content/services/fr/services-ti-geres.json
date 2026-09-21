@@ -65,6 +65,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "L'externalisation, votre avantage stratégique pour rester compétitifs face aux défis actuels",
       "headingStyle": "plain",
       "tone": "default",
@@ -245,6 +246,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Services gérés"

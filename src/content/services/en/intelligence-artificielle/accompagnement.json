@@ -118,6 +118,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our AI Consulting Process: from Vision to Applied Initiatives",
       "headingStyle": "plain",
       "intro": "One clear path takes you from first ideas to live initiatives: every step moves you toward governed, value-creating AI, with people firmly in the loop. Engagements typically run about 12 months and flex to your context, with budget and timeline confirmed after the analysis. ",
@@ -330,6 +331,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Artificial intelligence"

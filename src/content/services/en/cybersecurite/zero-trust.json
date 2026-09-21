@@ -46,6 +46,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Benefits of the Zero Trust Model for Your Organization",
       "headingStyle": "plain",
       "tone": "default",
@@ -108,6 +109,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Cybersecurity"

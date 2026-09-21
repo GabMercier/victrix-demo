@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { inlineHtml } from '../../shared/rich';
 /**
  * Section « Témoignage » — composant Bookshop (palette partagée).
@@ -26,6 +27,8 @@ import { inlineHtml } from '../../shared/rich';
  */
 
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   quote: string;
   name: string;
   role?: string;
@@ -33,7 +36,7 @@ interface Props {
   photo?: string;
 }
 
-const { quote, name, role = '', organization = '', photo = '' } = Astro.props;
+const { quote, name, role = '', organization = '', photo = '', fond = 'beige' } = Astro.props;
 
 // Pastille de secours : initiales dérivées du nom (« Jeanne Tremblay » → JT).
 const initials = (name ?? '')
@@ -46,7 +49,7 @@ const initials = (name ?? '')
 const attribution = [role, organization].filter((v) => v !== '').join(', ');
 ---
 
-<section class="lp-testimonial bg-beige py-16 font-grotesk md:py-24">
+<section class:list={['lp-testimonial py-16 font-grotesk md:py-24', FOND_CLASSES[fond as FondKey] ?? 'bg-beige']}>
   <div class="mx-auto w-full max-w-[1200px] px-6">
     <figure
       class="mx-auto my-0 max-w-[760px] rounded-carte border border-solid border-bordure bg-white p-8 text-center shadow-ambiante md:p-12"

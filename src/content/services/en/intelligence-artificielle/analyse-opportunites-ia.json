@@ -59,6 +59,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "The Key Steps in Our Approach",
       "headingStyle": "plain",
       "intro": "Our AI opportunity analysis process consists of four clear steps.",
@@ -126,6 +127,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Artificial intelligence"

@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Encadré d'appel à l'action » — composant Bookshop (P-07).
@@ -22,6 +23,8 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   title: string;
   body?: string;
   ctaLabel?: string;
@@ -29,7 +32,7 @@ interface Props {
   layout?: 'box' | 'banner-green';
 }
 
-const { title, body, ctaLabel, ctaHref, layout = 'box' } = Astro.props;
+const { title, body, ctaLabel, ctaHref, layout = 'box', fond = 'ivoire' } = Astro.props;
 const isBanner = layout === 'banner-green';
 const hasCta = Boolean(ctaLabel && ctaHref);
 ---
@@ -53,7 +56,7 @@ const hasCta = Boolean(ctaLabel && ctaHref);
       </div>
     </section>
   ) : (
-    <section class="py-20 bg-surface">
+    <section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? 'bg-surface']}>
       <div class="container-site">
         <div class="max-w-[860px] mx-auto bg-surface-container rounded-lg p-8 lg:p-12 text-center flex flex-col items-center gap-4">
           <h2 class="text-[28px] leading-[1.2] lg:text-[32px] lg:leading-10 font-bold tracking-[-0.4px] text-on-surface m-0">

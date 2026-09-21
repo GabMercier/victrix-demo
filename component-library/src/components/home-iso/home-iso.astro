@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml } from '../../shared/rich';
 /**
  * Section « Barre de confiance » (ex-bandeau ISO) — composant Bookshop.
@@ -22,15 +23,17 @@ interface Item {
 }
 
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   title: string;
   subtitle: string;
   items?: Item[];
 }
 
-const { title, subtitle, items = [] } = Astro.props;
+const { title, subtitle, items = [], fond = 'blanc' } = Astro.props;
 ---
 
-<section class="w-full bg-surface-container-lowest border-0 border-y border-solid border-outline-variant py-8">
+<section class:list={['w-full border-0 border-y border-solid border-outline-variant py-8', FOND_CLASSES[fond as FondKey] ?? 'bg-surface-container-lowest']}>
   <div class="container-site">
     {
       items.length > 0 ? (

@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
 import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
@@ -37,20 +38,22 @@ interface ToolItem {
 }
 
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   title: string;
   intro?: string;
   featured?: FeaturedTool;
   items: ToolItem[];
 }
 
-const { title, intro, featured, items = [] } = Astro.props;
+const { title, intro, featured, items = [], fond = 'beige' } = Astro.props;
 
 const linkClass =
   'inline-flex items-center gap-2 text-base font-bold text-primary no-underline hover:text-primary-container';
 const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
 ---
 
-<section class="py-20 bg-surface-container-low">
+<section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? 'bg-surface-container-low']}>
   <div class="container-site flex flex-col gap-16">
     <div class="max-w-[672px] flex flex-col gap-4">
       <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">

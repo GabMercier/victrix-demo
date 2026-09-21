@@ -68,6 +68,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our Proven Methodology",
       "headingStyle": "plain",
       "intro": "Discover our proven methodology for ensuring the success of your digital transformation project with the <strong>AWS cloud platform</strong>.",
@@ -95,10 +96,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Our AWS Services",
       "groups": [
         {
           "title": "Analysis and Optimization",
+          "href": "",
           "items": [
             "OLA: license optimization and compliance assessment",
             "Cost analysis and optimization",
@@ -110,6 +113,7 @@
         },
         {
           "title": "Migration Analysis",
+          "href": "",
           "items": [
             "Assessment and feasibility analysis",
             "Analysis of database migration challenges",
@@ -120,6 +124,7 @@
         },
         {
           "title": "Migration Strategy",
+          "href": "",
           "items": [
             "Compliance with the 6 Rs of migration",
             "IaaS, PaaS and SaaS migration",
@@ -130,6 +135,7 @@
         },
         {
           "title": "Multicloud",
+          "href": "",
           "items": [
             "Strategy tailored to specific needs and objectives",
             "Robust security controls designed for multi-cloud environments",
@@ -139,6 +145,7 @@
         },
         {
           "title": "Cloud Security",
+          "href": "",
           "items": [
             "Personalized security strategy",
             "Protection against identity threats",
@@ -152,6 +159,7 @@
         },
         {
           "title": "Organizational Transformation",
+          "href": "",
           "items": [
             "Modernization of environment with virtual desktops (AWS WorkSpaces)",
             "Centralized application management from any device",

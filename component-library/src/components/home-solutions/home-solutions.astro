@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { inlineHtml } from '../../shared/rich';
 import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
@@ -30,17 +31,19 @@ interface SolutionItem {
 }
 
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   title: string;
   ctaLabel?: string;
   ctaHref?: string;
   items: SolutionItem[];
 }
 
-const { title, ctaLabel, ctaHref, items = [] } = Astro.props;
+const { title, ctaLabel, ctaHref, items = [], fond = 'ivoire' } = Astro.props;
 
 ---
 
-<section class="py-24 bg-white">
+<section class:list={['py-24', FOND_CLASSES[fond as FondKey] ?? 'bg-ivoire']}>
   <div class="container-site">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
       <h2 class="text-[48px] leading-none font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0">

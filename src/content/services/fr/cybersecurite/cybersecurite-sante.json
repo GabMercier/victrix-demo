@@ -41,6 +41,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Les enjeux de cybersécurité des établissements de santé",
       "headingStyle": "plain",
       "tone": "default",
@@ -114,10 +115,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "L’écosystème de la santé",
       "groups": [
         {
           "title": "Agences",
+          "href": "",
           "items": [
             "Agence du numérique en santé (ANS – France)",
             "Dossier de santé numérique (Québec)",
@@ -126,6 +129,7 @@
         },
         {
           "title": "Ministères",
+          "href": "",
           "items": [
             "Ministère de la Santé et des Services sociaux du Québec",
             "CISSS (centres intégrés de santé et de services sociaux) et déclinaisons régionales"
@@ -133,6 +137,7 @@
         },
         {
           "title": "Centres et établissements",
+          "href": "",
           "items": [
             "Centres intégrés universitaires",
             "Établissements privés"

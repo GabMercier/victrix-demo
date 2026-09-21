@@ -21,6 +21,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Mettez l’IA au service des entreprises et des organisations publiques",
       "headingStyle": "plain",
       "leadCard": {
@@ -51,6 +52,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Comment Victrix travaille avec vos équipes pour une adoption fluide et sécuritaire de l’IA",
       "headingStyle": "underline",
       "intro": "Que vous ayez un projet ciblé ou une initiative d’envergure, nous collaborons avec vos équipes pour <strong>évaluer les besoins</strong>, <strong>définir les objectifs</strong> et <strong>respecter vos échéances</strong>. Notre approche collaborative assure une adoption fluide et sécuritaire de l’IA, tout en maximisant la valeur pour votre organisation.",
@@ -77,6 +79,7 @@
     {
       "_bookshop_name": "callout",
       "type": "callout",
+      "fond": "ivoire",
       "title": "Des questions sur un projet en intelligence artificielle ?",
       "body": "Nos experts vous accompagnent à chaque étape pour assurer le succès de tous vos projets d’IA.",
       "ctaLabel": "Consulter un spécialiste",
@@ -100,10 +103,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Expertise multitechnologique",
       "groups": [
         {
           "title": "Grands modèles de langage (LLM)",
+          "href": "",
           "items": [
             "OpenAI",
             "Llama",
@@ -113,6 +118,7 @@
         },
         {
           "title": "Agents intégrés",
+          "href": "",
           "items": [
             "Copilot 365",
             "Copilot (Dynamics 365)",
@@ -122,6 +128,7 @@
         },
         {
           "title": "Technologies et environnements de développement",
+          "href": "",
           "items": [
             "Copilot Studio",
             "Azure AI Foundry",
@@ -142,6 +149,7 @@
     {
       "_bookshop_name": "callout",
       "type": "callout",
+      "fond": "ivoire",
       "title": "Prêt à démarrer votre projet d’intelligence artificielle ?",
       "body": "",
       "ctaLabel": "Consulter nos experts",
@@ -151,6 +159,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Interventions structurées et ciblées, soutenues par un bassin diversifié d’experts en IA",
       "headingStyle": "underline",
       "tone": "tint",
@@ -192,6 +201,7 @@
     {
       "_bookshop_name": "callout",
       "type": "callout",
+      "fond": "ivoire",
       "title": "Rencontrez nos conseillers en IA",
       "body": "Profitez de l’expertise de nos spécialistes en intelligence artificielle pour ajouter une réelle valeur à vos processus et accélérer l’atteinte de vos objectifs.",
       "ctaLabel": "Adoptez l’IA avec Victrix",
@@ -201,6 +211,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Intelligence artificielle"

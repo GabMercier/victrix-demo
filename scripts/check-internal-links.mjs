@@ -58,6 +58,9 @@ const ALLOW = new Set([
   '/document/licences-microsoft-power-platform/',
   '/document/webinaire-copilot-buzz-impact/',
   '/document/pourquoi-gerez-vous-encore-vos-ti/',
+  // 4e page « document » (livre blanc SEvOC), citée par l'article « Une journée
+  // dans la vie d'un analyste SecOps » branché le 2026-09-21 — même lot (L12).
+  '/document/cybersecurite/',
 ]);
 
 if (!existsSync(DIST)) {

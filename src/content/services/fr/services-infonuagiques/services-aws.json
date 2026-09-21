@@ -68,6 +68,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Notre méthodologie éprouvée",
       "headingStyle": "plain",
       "intro": "Découvrez notre méthodologie éprouvée pour assurer le succès de votre projet de transformation numérique avec la <strong>plateforme infonuagique AWS</strong>.",
@@ -95,10 +96,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Nos services AWS",
       "groups": [
         {
           "title": "Analyse et optimisation",
+          "href": "",
           "items": [
             "OLA : optimisation et évaluation de la conformité des licences",
             "Analyse et optimisation des coûts",
@@ -110,6 +113,7 @@
         },
         {
           "title": "Analyse de migration",
+          "href": "",
           "items": [
             "Évaluation et analyse de faisabilité",
             "Analyse des défis de migration de bases de données",
@@ -120,6 +124,7 @@
         },
         {
           "title": "Stratégie de migration",
+          "href": "",
           "items": [
             "Respect des 6 R de la migration",
             "Migration IaaS, PaaS et SaaS",
@@ -130,6 +135,7 @@
         },
         {
           "title": "Multicloud",
+          "href": "",
           "items": [
             "Stratégie personnalisée en fonction des besoins et objectifs spécifiques",
             "Contrôles de sécurité robustes conçus pour les environnements multi-cloud",
@@ -139,6 +145,7 @@
         },
         {
           "title": "Sécurité infonuagique",
+          "href": "",
           "items": [
             "Stratégie de sécurité sur mesure",
             "Protection contre les menaces sur les identités",
@@ -152,6 +159,7 @@
         },
         {
           "title": "Transformation organisationnelle",
+          "href": "",
           "items": [
             "Modernisation d'environnement avec postes de travail virtuels (AWS WorkSpaces)",
             "Gestion centralisée des applications depuis n'importe quel appareil",

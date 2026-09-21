@@ -9,7 +9,7 @@ coverImage: "/wp-content/uploads/2025/03/design-sans-titre-2.png"
 seoTitle: "ServiceNow AI: Transforming Performance and AI Governance"
 wpUrl: "/en/servicenow-ai/"
 ---
-**[Artificial intelligence](/en/services/intelligence-artificielle/) has moved beyond experimentation to become a true driver of organizational performance.**
+**[Artificial intelligence](/en/services/artificial-intelligence/) has moved beyond experimentation to become a true driver of organizational performance.**
 
 By integrating AI into its service platform, [ServiceNow](/en/services/productivity-consulting/servicenow/) enables private and public organizations to **reliably automate**, **analyze**, and **govern their operations**.
 

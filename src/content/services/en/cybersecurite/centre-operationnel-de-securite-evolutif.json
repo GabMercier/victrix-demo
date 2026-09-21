@@ -176,6 +176,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Concrete Benefits of SEvOC",
       "headingStyle": "plain",
       "tone": "default",
@@ -217,6 +218,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Cybersecurity",

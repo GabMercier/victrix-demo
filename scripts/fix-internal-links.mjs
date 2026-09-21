@@ -176,14 +176,19 @@ for (const file of files) {
 /** @type {{scope: RegExp, from: string, to: string, bare?: boolean}[]} */
 const MANUAL = [
   { scope: /pages\/en\/services\.json$/, from: '/en/expertise', to: '/en/expertises/' },
-  { scope: /pages\/en\/services\.json$/, from: '/en/services/artificial-intelligence', to: '/en/services/intelligence-artificielle/' },
-  { scope: /pages\/en\/services\.json$/, from: '/en/services/application-services', to: '/en/services/services-applicatifs/' },
+  // 2026-09-21 (D1) : les pages mères EN ont des slugs TRADUITS — un lien écrit
+  // avec l'ancien slug français est ramené vers le slug anglais.
+  { scope: /\/en\/|\/en\.json$/, from: '/en/services/intelligence-artificielle', to: '/en/services/artificial-intelligence/' },
+  { scope: /\/en\/|\/en\.json$/, from: '/en/services/services-applicatifs', to: '/en/services/application-services/' },
+  { scope: /\/en\/|\/en\.json$/, from: '/en/services/projets-en-ia', to: '/en/services/ai-projects/' },
+  { scope: /\/fr\//, from: '/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal', to: '/fr/ressources/zero-trust-network-access-ztna/' },
+  { scope: /\/en\//, from: '/en/zero-trust-network-access-ztna-ultimate-cybersecurity-model', to: '/en/ressources/zero-trust-network-access-ztna/' },
   { scope: /pages\/en\/services\.json$/, from: '/en/services/managed services', to: '/en/services/managed-it-services/' },
   { scope: /pages\/fr\/services\.json$/, from: '/fr/services/services-geres', to: '/fr/services/services-ti-geres/' },
   { scope: /pages\/en\/conditions-utilisation\.json$/, from: '/en/privacy-policy', to: '/en/politique-confidentialite/' },
   { scope: /\/en\//, from: '/en/expertise/artificial-intelligence/ai-opportunity-analysis', to: '/en/services/artificial-intelligence/ai-opportunity-analysis/' },
   { scope: /\/en\//, from: '/en/expertise/ai-opportunity-analysis', to: '/en/services/artificial-intelligence/ai-opportunity-analysis/' },
-  { scope: /\/en\//, from: '/en/expertise/artificial-intelligence', to: '/en/services/intelligence-artificielle/' },
+  { scope: /\/en\//, from: '/en/expertise/artificial-intelligence', to: '/en/services/artificial-intelligence/' },
   { scope: /blog\/fr\//, from: '/decouvrir-victrix', to: '/fr/decouvrir/' },
   { scope: /blog\/en\//, from: '/en/discover-victrix', to: '/en/decouvrir/' },
   { scope: /content\/(services|pages)\/fr\//, from: '/expertise/cybersecurite', to: '/fr/services/cybersecurite/' },

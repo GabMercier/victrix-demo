@@ -1,0 +1,174 @@
+{
+  "_schema": "default",
+  "title": "Protect Your Business with Check Point Cybersecurity Solutions",
+  "description": "Protect your digital workspace (network, exposure and AI security) with Check Point cybersecurity solutions distributed by Victrix. Request an assessment.",
+  "noindex": false,
+  "slug": "it-procurement/check-point",
+  "seoTitle": "Check Point | Unified Cybersecurity Solutions | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
+  "sections": [
+    {
+      "_bookshop_name": "service-hero",
+      "type": "service-hero",
+      "eyebrow": "IT Procurement",
+      "titleAccent": "",
+      "title": "Protect Your Business with Check Point Cybersecurity Solutions",
+      "titleHighlight": "",
+      "lead": "Check Point solutions, distributed by Victrix, enable organizations to counter the most sophisticated cyber threats with a unified approach that protects the:",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2022/02/securite-mode-realisation.jpg",
+      "imageAlt": "experts en cybersécurité chez victrix"
+    },
+    {
+      "_bookshop_name": "stats",
+      "type": "stats",
+      "title": "Check Point, a Global Leader in Cybersecurity",
+      "style": "carte",
+      "fond": "beige",
+      "items": [
+        {
+          "number": "+ 30",
+          "label": "years of continuous innovation",
+          "icon": ""
+        },
+        {
+          "number": "+ 100,000",
+          "label": "customers",
+          "icon": ""
+        },
+        {
+          "number": "+ 60",
+          "label": "industries",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "",
+      "fond": "ivoire",
+      "paragraphs": [
+        "Contact Victrix to learn <strong>how to strengthen security</strong> at every layer of your infrastructure.",
+        "By combining <a href=\"/en/services/artificial-intelligence/\"><strong>artificial intelligence</strong></a>, <strong>automation</strong>, and <strong>behavioral analysis</strong>, Check Point anticipates and blocks cyberattacks before they compromise critical systems. Its modular architecture ensures seamless integration, even in the most complex IT environments.",
+        "As an authorized distributor, Victrix streamlines the acquisition of Check Point technologies for enterprises and public organizations looking for proven <strong>cybersecurity solutions</strong> backed by a network of trusted partners. Victrix helps you identify and deploy the products best suited to your environments and security requirements."
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "fond": "ivoire",
+      "title": "Is Your Cybersecurity Ready to Face Tomorrow's Threats?",
+      "body": "<p>Assess your needs with Victrix and find out which Check Point products align best with your technology priorities.</p>",
+      "ctaLabel": "Request a quote",
+      "ctaHref": "/en/contact",
+      "layout": "box"
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "fond": "beige",
+      "sectionTitle": "Protect Your Entire Digital Workspace, Network, Exposure, and Use of AI with a Unified Cybersecurity Architecture",
+      "headingStyle": "plain",
+      "intro": "Secure the full spectrum of cybersecurity with <strong>Check Point technologies</strong> distributed by Victrix. Each solution <strong>integrates easily with your IT environment </strong>and<strong> strengthens your organization’s security posture</strong>.",
+      "tone": "tint",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Hybrid Mesh",
+          "text": "<strong>Protect your infrastructure and ensure compliance across your data centres, cloud environments, and interconnections. </strong><br><br>Formerly known as Network Security, Quantum Security, and Cloud Guard, <strong>Hybrid Mesh</strong> is a unique architecture that combines unified control, centralized policies, and distributed deployment from data centres to the cloud, branches, and remote users.<br><br><strong>Result:</strong> consistent data protection, enhanced regulatory compliance, and simplified network perimeter management.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "02",
+          "title": "Workspace Security Platform",
+          "text": "<strong>Protect your employees, their devices, their tools, and their communications. </strong><br><br><strong>Workspace Security Platform </strong>is an alliance of Harmony solutions (Endpoint, Email and collaboration, etc.) designed to protect users, endpoints, browsers, collaborative tools and employees' use of AI.<br><br><strong>Result:</strong> a secure experience across the entire digital workspace for your teams, without compromising productivity.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "03",
+          "title": "Exposure Management",
+          "text": "<strong>Protect your attack surface, limit your exposure, and automate remediation.</strong><br><br>Check Point <strong>Exposure Management</strong> combines Cyberint, Infinity ERM, Threat Intelligence Services, and more to deliver external and internal exposure management, threat intelligence, dark web monitoring, risk prioritization, and automated remediation via Veriti.<br><br><strong>Result:</strong> controlled and effective exposure management that reduces your attack surface and limits your vulnerabilities.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "04",
+          "title": "AI Security",
+          "text": "<strong>Ensure the secure use of artificial intelligence within your organization.</strong><br><br><strong>AI Security</strong> is the merger of Check Point's ThreadCloud AI and Infinity AI solutions. It is a central component of your company's cybersecurity. It secures employees' use of generative AI tools, protects AI applications, enhances the security of autonomous AI agents, and prevents data leaks via prompts and models.<br><br><strong>Result :</strong> enhanced protection for the use of artificial intelligence, from generative AI to AI apps and autonomous agents.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "05",
+          "title": "Access and Identity",
+          "text": "<strong>Apply </strong><a href=\"/en/services/cybersecurity/zero-trust/\"><strong>Zero Trust</strong></a><strong> principles across your entire organization. </strong><br><br><strong>CheckPoint SASE </strong>(<a href=\"/en/ressources/sase-cloud/\">Secure Access solutions</a>)control every connection and enforce least privilege based on risk level.<br><br><strong>Result:</strong> controlled access to critical data and applications wherever your users are located.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "06",
+          "title": "Monitoring and Operations",
+          "text": "<strong>Centralize threat detection, analysis and response. </strong><br><br><strong>Horizon</strong> provides full visibility into your environments and automates incident response.<br><br><strong>Result:</strong> Faster, more coordinated, and effective security operations.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "testimonial-cards",
+      "type": "testimonial-cards",
+      "title": "Trusted by 100,000+ organizations across more than 60 industries",
+      "fond": "ivoire",
+      "items": [
+        {
+          "image": "",
+          "quote": "Our overall experience with Check Point Hybrid Mesh (Quantum) has been highly reliable. It provided robust perimeter defense and deep packet inspection for our enterprise network.",
+          "name": "Gartner Peer Insights",
+          "role": "IT Security & Risk Management Associate"
+        },
+        {
+          "image": "",
+          "quote": "It is my overall experience with Check Point Hybrid Mesh (CP cloudGuard, Network Security) has been positive, especially in environments requiring strong, scalable, cloud-native protection.",
+          "name": "Gartner Peer Insights",
+          "role": "IT Security & Risk Management Associate"
+        },
+        {
+          "image": "",
+          "quote": "Our experience with Check Point Workspace Security Platform (Harmony Endpoint) has been consistently strong. It provides a high level of security without being overly intrusive to end-users.",
+          "name": "Gartner Peer Insights",
+          "role": "System Engineer—IT Incharge"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Victrix: Your Strategic Partner for the Acquisition and Deployment of Check Point Cybersecurity Solutions",
+      "fond": "beige",
+      "paragraphs": [
+        "Victrix supports you with <strong>an approach that prioritizes security</strong>, <strong>governance</strong>, and <strong>performance</strong>.",
+        "Beyond facilitating the <a href=\"/en/services/it-procurement/\">acquisition of licenses</a>, <strong>Victrix manages deployment</strong>,<strong> integration with existing tools</strong>, and <strong>operational support</strong> to help you evolve your security posture."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Need Tailored Support to Select Check Point Products and Secure Your Environment?",
+      "body": "Victrix helps you choose and, as needed, implement the Check Point solutions best suited to your security and compliance goals.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit",
+      "fond": "ivoire"
+    }
+  ]
+}

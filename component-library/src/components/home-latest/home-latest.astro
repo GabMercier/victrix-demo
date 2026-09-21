@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Derniers articles » — composant Bookshop (accueil composable).
@@ -51,6 +52,8 @@ interface Card {
   img: CardImage;
 }
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   title: string;
   subtitle?: string;
   /** Libellé « Lire la suite » des cartes — champ de contenu (browser-safe). */
@@ -60,7 +63,7 @@ interface Props {
   cards?: Card[];
 }
 
-const { title, subtitle, readMoreLabel, ctaLabel, ctaHref, cards } = Astro.props;
+const { title, subtitle, readMoreLabel, ctaLabel, ctaHref, cards, fond = 'ivoire' } = Astro.props;
 
 // Repli éditeur : 3 cartes factices quand aucune donnée n'est injectée (rendu
 // dans le navigateur par l'éditeur visuel). Jamais utilisées au build.
@@ -80,7 +83,7 @@ const readMoreClass =
 
 {/* Fond IVOIRE #FAF7F4 (export2 homepage.css §ResourcesSection,
     « Secondaire/Ivoire », 2026-08-17) — remplace le gris froid provisoire. */}
-<section class="py-24 bg-ivoire">
+<section class:list={['py-24', FOND_CLASSES[fond as FondKey] ?? 'bg-ivoire']}>
   <div class="container-site">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
       <div class="max-w-2xl flex flex-col gap-4">

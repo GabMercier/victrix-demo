@@ -1,0 +1,159 @@
+{
+  "_schema": "default",
+  "title": "Consolidez votre cybersécurité avec les solutions Palo Alto Networks",
+  "description": "Victrix facilite l'acquisition des solutions Palo Alto Networks pour consolider votre cybersécurité. Évaluation personnalisée sur demande.",
+  "noindex": false,
+  "slug": "",
+  "seoTitle": "Palo Alto Networks | Moins d’outils. Plus de contrôle. | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
+  "sections": [
+    {
+      "_bookshop_name": "service-hero",
+      "type": "service-hero",
+      "eyebrow": "Approvisionnement TI",
+      "titleAccent": "",
+      "title": "Consolidez votre cybersécurité avec les solutions Palo Alto Networks",
+      "titleHighlight": "",
+      "lead": "Prenez le contrôle de votre cybersécurité et simplifiez la gestion de vos environnements TI complexes.",
+      "ctaLabel": "Demandez une démo",
+      "ctaHref": "/fr/contact",
+      "image": "/wp-content/uploads/2022/05/envato-labs-image-edit-1.png",
+      "imageAlt": "IT specialists using Palo Alto Networks solutions."
+    },
+    {
+      "_bookshop_name": "stats",
+      "type": "stats",
+      "title": "Palo Alto Networks, un leader mondial qui simplifie la cybersécurité à grande échelle",
+      "style": "carte",
+      "fond": "beige",
+      "items": [
+        {
+          "number": "+ 90 %",
+          "label": "de réduction du temps de résolution",
+          "icon": ""
+        },
+        {
+          "number": "+ 11 G",
+          "label": "d’attaques bloquées en ligne chaque jour",
+          "icon": ""
+        },
+        {
+          "number": "+ 163 %",
+          "label": "de ROI avec les pare-feux logiciels Palo Alto Networks",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "",
+      "fond": "ivoire",
+      "paragraphs": [
+        "La plateforme Palo Alto Networks unifie la <a href=\"/fr/services/cybersecurite/\">protection du réseau</a>, de l’<a href=\"/fr/services/services-infonuagiques/\">infonuagique</a> et des <a href=\"/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/\">opérations de sécurité</a>. Cette approche réduit les risques et soutient des opérations plus efficaces à grande échelle, sans multiplier les outils.",
+        "Source: <a href=\"https://www.paloaltonetworks.ca/#why\">Palo Alto Networks – Global Cybersecurity Leader</a>",
+        "<strong>Une plateforme conçue pour réduire la complexité opérationnelle et renforcer la posture de sécurité</strong><strong>.</strong>",
+        "Palo Alto Networks est un chef de file mondial en cybersécurité. Leurs solutions aident les organisations à <strong>sécuriser l’ensemble de leur environnement</strong>, du réseau à l’infonuagique, en passant par les accès et les opérations de sécurité.",
+        "Sa plateforme repose sur une approche consolidée, soutenue par l’automatisation et l’<a href=\"/fr/services/intelligence-artificielle/\">intelligence artificielle</a>. Elle offre une visibilité cohérente, une protection avancée et une réponse plus rapide aux incidents."
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "fond": "ivoire",
+      "title": "Réduisez la complexité de votre sécurité",
+      "body": "<p>Centralisez vos protections et gagnez en efficacité opérationnelle avec la plateforme Palo Alto Networks.</p>",
+      "ctaLabel": "Demandez une estimation",
+      "ctaHref": "/fr/contact",
+      "layout": "box"
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "fond": "beige",
+      "sectionTitle": "Une plateforme complète pour sécuriser l’ensemble de votre organisation",
+      "headingStyle": "plain",
+      "intro": "Les <strong>solutions Palo Alto Networks</strong> couvrent le réseau, les accès, les environnements infonuagiques et les opérations de sécurité (SecOps). Chaque famille de produits s’intègre dans une architecture cohérente, conçue pour évoluer avec vos besoins.",
+      "tone": "tint",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Infonuagique et accès sécurisé",
+          "text": "<strong>Sécurisez vos accès et vos environnements infonuagiques sans compromis sur la performance.</strong><br><br><strong>Prisma</strong> protège les environnements infonuagiques et les accès des utilisateurs où qu’ils se trouvent. La solution centralise les politiques de sécurité, de conformité et de connectivité.<br><br><strong>Résultat : </strong>une visibilité centralisée et une sécurité cohérente, sans complexifier la gestion.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "02",
+          "title": "Sécurité réseau",
+          "text": "<strong>Protégez votre réseau avec une sécurité «zéro confiance» de nouvelle génération.</strong><br><br><strong>Strata </strong>sécurise le trafic réseau grâce à une analyse approfondie des applications, des utilisateurs et du contenu. La solution permet un contrôle précis des flux et des politiques de sécurité.<br><br><strong>Résultat :</strong> un contrôle granulaire du réseau et une réduction significative de la surface d’attaque de votre organisation.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "03",
+          "title": "Opérations de sécurité, détection et réponse",
+          "text": "<strong>Détectez, analysez et répondez plus rapidement aux incidents.</strong><br><br><strong>Cortex</strong> centralise la détection, l’analyse et la réponse aux menaces. L'automatisation améliore la corrélation des événements, accélère les opérations de sécurité et facilite la prise de décision.<br><br><strong>Résultat :</strong> un temps de réponse réduit et des opérations de sécurité plus efficaces.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "04",
+          "title": "Intelligence des menaces et services",
+          "text": "<strong>Accédez à une expertise avancée en cybersécurité.</strong><br><br><strong>Unit 42 </strong>regroupe les experts de Palo Alto Networks dédiés à l’analyse des menaces et à la gestion des incidents majeurs.<br><br><strong>Résultat : </strong>une meilleure compréhension des risques et une posture de sécurité renforcée.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "05",
+          "title": "Série PA: Pare-feux nouvelle génération et matériel réseau spécialisé",
+          "text": "<strong>Assurez une protection réseau performante et résiliente dans les environnements plus exigeants.</strong><br><br><strong>Les pare-feux et le matériel réseau spécialisé de la série PA </strong>assurent la protection du réseau dans les environnements à fort débit et les centres de données complexes.<br><br><strong>Résultat :</strong> des performances élevées et une sécurité avancée, sans compromis.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "testimonial-cards",
+      "type": "testimonial-cards",
+      "title": "Une reconnaissance confirmée par les utilisateurs",
+      "fond": "ivoire",
+      "items": [
+        {
+          "image": "",
+          "quote": "Globalement, Palo Alto est un fournisseur essentiel pour notre organisation. Les pare-feux Palo Alto constituent l’épine dorsale de notre environnement, et la gestion centralisée avec Panorama simplifie grandement les opérations et le dépannage.",
+          "name": "Gartner Peer Insights",
+          "role": "Responsable TI"
+        },
+        {
+          "image": "",
+          "quote": "La solution Prisma s’est révélé très fiable et a amélioré la performance des connexions à l’échelle mondiale. La gestion centralisée des politiques et l’intégration avec les pare-feux sur site ont été des atouts majeurs.",
+          "name": "Gartner Peer Insights",
+          "role": "Gestionnaire TI"
+        },
+        {
+          "image": "",
+          "quote": "Le déploiement des pare-feux Palo Alto série 5200 nous a permis d’atteindre un haut niveau de performance et de renforcer significativement notre posture de sécurité grâce à des politiques applicatives et un contrôle granulaire des utilisateurs.",
+          "name": "Gartner Peer Insights",
+          "role": "Gestionnaire adjoint"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Victrix : votre partenaire stratégique pour l’acquisition des solutions Palo Alto Networks",
+      "body": "Victrix agit comme distributeur et partenaire stratégique pour l’acquisition des solutions Palo Alto Networks. Nous simplifions l’accès aux produits et veillons à leur intégration cohérente dans vos environnements existants, selon vos besoins. Notre rôle: accélérer le déploiement, faciliter l’adoption et assurer l’alignement entre vos choix technologiques et vos priorités organisationnelles, sans complexifier vos opérations.",
+      "ctaLabel": "Demandez une démo",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit",
+      "fond": "ivoire"
+    }
+  ]
+}

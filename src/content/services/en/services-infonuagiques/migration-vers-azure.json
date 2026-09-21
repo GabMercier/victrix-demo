@@ -43,7 +43,7 @@
       "type": "strategic-value",
       "title": "Benefits of the Azure Cloud Environment",
       "paragraphs": [
-        "With Microsoft Azure, create custom business applications, manage complex workloads, secure your data centers and benefit from the latest <a href=\"/en/services/intelligence-artificielle/\">artificial intelligence (AI)</a> and <a href=\"/en/services/cybersecurity/internet-of-things-iot/\">IoT</a> applications.",
+        "With Microsoft Azure, create custom business applications, manage complex workloads, secure your data centers and benefit from the latest <a href=\"/en/services/artificial-intelligence/\">artificial intelligence (AI)</a> and <a href=\"/en/services/cybersecurity/internet-of-things-iot/\">IoT</a> applications.",
         "With unrivalled flexibility and scalability, Azure enables organizations to evolve while staying ahead of change, without ever sacrificing <a href=\"/en/services/cybersecurity/\">security and compliance</a>.",
         "If you’re looking to <strong>migrate your Windows server to Microsoft Azure</strong>, our team offers <strong>personalized support</strong> with a roadmap and total transparency on the migration process."
       ],
@@ -69,6 +69,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our Cloud Adoption Framework Methodology",
       "headingStyle": "plain",
       "intro": "Victrix specializes in <strong>managed services</strong> and <strong>cloud solutions</strong>: operational excellence, a robust security posture, compliance, and performance for your cloud infrastructure. Trust our Microsoft Azure migration experts to help you <strong>build a scalable productivity platform</strong> that makes it easier to manage your workloads, strengthens your data security, and drives your business forward.",
@@ -106,10 +107,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Our Azure Migration and Managed Services",
       "groups": [
         {
           "title": "Analysis and Optimization",
+          "href": "",
           "items": [
             "Advanced architecture analysis",
             "Total cost of ownership (TCO) estimation",
@@ -120,6 +123,7 @@
         },
         {
           "title": "Migration Analysis",
+          "href": "",
           "items": [
             "Feasibility analysis of migration",
             "Assessment of migration challenges",
@@ -130,6 +134,7 @@
         },
         {
           "title": "Migration Strategy",
+          "href": "",
           "items": [
             "Application of the 6 Rs of successful migration",
             "IaaS (Azure VM), PaaS (App Service), and SaaS migration",
@@ -141,6 +146,7 @@
         },
         {
           "title": "Multicloud",
+          "href": "",
           "items": [
             "Compliance with CAF (Cloud Adoption Framework) and WAF (Well-Architected Framework) principles",
             "Acceleration, simplification, automation, and optimization of your multicloud deployments",
@@ -153,6 +159,7 @@
         },
         {
           "title": "Cloud Security",
+          "href": "",
           "items": [
             "Secure, centralized, and fully managed remote access model",
             "Cloud identity consolidation and secure, centralized authentication model (access management)",
@@ -163,6 +170,7 @@
         },
         {
           "title": "Organizational Transformation",
+          "href": "",
           "items": [
             "Modernization of environment with Azure Virtual Desktop: Azure-based DaaS workstation",
             "Adoption of Windows 365 for secure remote access to the organization's network, data, and applications"
@@ -173,6 +181,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Cloud computing"

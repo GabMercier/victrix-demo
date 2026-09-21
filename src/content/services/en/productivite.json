@@ -66,6 +66,7 @@
     {
       "_bookshop_name": "exclusive-tools",
       "type": "exclusive-tools",
+      "fond": "beige",
       "title": "Our exclusive productivity solutions",
       "intro": "Victrix develops its own applications to meet the specific challenges of modern work.",
       "featured": {
@@ -96,6 +97,7 @@
     {
       "_bookshop_name": "expertise-bento",
       "type": "expertise-bento",
+      "fond": "ivoire",
       "eyebrow": "Areas of expertise",
       "title": "A 360° view of your digital productivity",
       "intro": "Ideal solutions to simplify daily tasks and deliver immediate time savings.",
@@ -169,6 +171,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Productivity"

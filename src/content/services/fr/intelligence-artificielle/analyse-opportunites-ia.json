@@ -59,6 +59,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Les étapes clés de notre démarche",
       "headingStyle": "plain",
       "intro": "Notre intervention d’analyse des opportunités en IA se déroule en quatre étapes claires.",
@@ -126,6 +127,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Intelligence artificielle"

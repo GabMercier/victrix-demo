@@ -40,6 +40,18 @@ describe('resolveNavHref (méga-menu dynamique, P-07)', () => {
     expect(resolveNavHref({ href: '/contact', service: '   ' }, 'fr', slugs)).toBe('/fr/contact');
   });
 
+  it('slug d’URL traduit (2026-09-21) : l’identifiant reste le fichier, l’URL suit le slug de la page', () => {
+    const bySlug = new Map([
+      ['intelligence-artificielle', 'artificial-intelligence'],
+      ['cybersecurite', 'cybersecurite'],
+    ]);
+    expect(resolveNavHref({ service: 'intelligence-artificielle' }, 'en', bySlug)).toBe(
+      '/en/services/artificial-intelligence',
+    );
+    expect(resolveNavHref({ service: 'cybersecurite' }, 'en', bySlug)).toBe('/en/services/cybersecurite');
+    expect(() => resolveNavHref({ service: 'absent' }, 'en', bySlug)).toThrow(/introuvable/);
+  });
+
   it('GARDE-FOU (test négatif) : un service introuvable fait ÉCHOUER le build', () => {
     expect(() => resolveNavHref({ service: 'service-inexistant' }, 'fr', slugs)).toThrow(
       /service « service-inexistant » introuvable/,

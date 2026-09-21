@@ -29,6 +29,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "What We Cover",
       "headingStyle": "underline",
       "intro": "Complementary services, deployed together or on their own, around what your teams already cover.",
@@ -48,7 +49,7 @@
           "title": "AI and Automation",
           "text": "Put AI to work in your business processes with clear governance in place: opportunity assessment, custom agents, Copilot for Microsoft 365.",
           "ctaLabel": "Explore our AI services",
-          "ctaHref": "/en/services/intelligence-artificielle/"
+          "ctaHref": "/en/services/artificial-intelligence/"
         },
         {
           "number": "03",
@@ -62,7 +63,7 @@
           "title": "Application Services",
           "text": "Build, modernize and maintain your business applications: Ø Studio (Power Platform and Dynamics 365 development), Microsoft 365, ServiceNow.",
           "ctaLabel": "Explore our application services",
-          "ctaHref": "/en/services/services-applicatifs/"
+          "ctaHref": "/en/services/application-services/"
         },
         {
           "number": "05",

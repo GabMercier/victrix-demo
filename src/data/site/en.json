@@ -5,7 +5,7 @@
         "title": "Expertise",
         "links": [
           { "label": "Strategic consulting", "href": "/services/strategic-advice" },
-          { "label": "Artificial intelligence", "href": "/services/intelligence-artificielle" },
+          { "label": "Artificial intelligence", "href": "/services/artificial-intelligence" },
           { "label": "Infrastructure", "href": "/services/infrastructure" },
           { "label": "Sectors", "href": "/secteurs" }
         ]
@@ -13,10 +13,10 @@
       {
         "title": "Services",
         "links": [
-          { "label": "Application services", "href": "/services/services-applicatifs" },
+          { "label": "Application services", "href": "/services/application-services" },
           { "label": "Cloud computing", "href": "/services/cloud-services-provider" },
           { "label": "Cybersecurity", "href": "/services/cybersecurity" },
-          { "label": "AI projects", "href": "/services/projets-en-ia" },
+          { "label": "AI projects", "href": "/services/ai-projects" },
           { "label": "Managed services", "href": "/services/managed-it-services" }
         ]
       },

@@ -39,7 +39,7 @@ Multi cloud emerges as the solution of choice to ensure optimal flexibility and 
 
 ### 6. Generative AI
 
-This emerging technology continues to transform how businesses operate. [Artificial intelligence](/en/services/intelligence-artificielle/) tools such as [Microsoft Copilot](/en/services/productivity-consulting/copilot-for-microsoft-365/), ChatGPT, and soon Azure AI Foundry and Amazon Nova (AWS) enhance automation and decision-making. GenAI, in particular, revolutionizes workstations by enabling more natural and effective interactions.
+This emerging technology continues to transform how businesses operate. [Artificial intelligence](/en/services/artificial-intelligence/) tools such as [Microsoft Copilot](/en/services/productivity-consulting/copilot-for-microsoft-365/), ChatGPT, and soon Azure AI Foundry and Amazon Nova (AWS) enhance automation and decision-making. GenAI, in particular, revolutionizes workstations by enabling more natural and effective interactions.
 
 ### 7. Productivity Tools
 

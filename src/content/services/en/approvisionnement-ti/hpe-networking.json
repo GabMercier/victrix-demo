@@ -1,0 +1,205 @@
+{
+  "_schema": "default",
+  "title": "Automate, Secure, and Govern Your Networks with HPE Networking",
+  "description": "Secure and standardize your network with HPE Aruba and HPE Juniper. Victrix streamlines the acquisition and integration of HPE Networking solutions at scale.",
+  "noindex": false,
+  "slug": "it-procurement/hpe-networking",
+  "seoTitle": "HPE Networking | Govern and Secure Your Networks | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
+  "sections": [
+    {
+      "_bookshop_name": "service-hero",
+      "type": "service-hero",
+      "eyebrow": "IT Procurement",
+      "titleAccent": "",
+      "title": "Automate, Secure, and Govern Your Networks with HPE Networking",
+      "titleHighlight": "",
+      "lead": "Standardize connectivity, strengthen protection, and simplify operations.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2022/05/male-informatic-engineer-working-inside-server-roo-2026-01-06-09-06-08-utc.jpg",
+      "imageAlt": "A male engineer working inside server room database with HPE Networking solutions."
+    },
+    {
+      "_bookshop_name": "stats",
+      "type": "stats",
+      "title": "HPE Networking: A Proven Network Portfolio for Controlled Operations",
+      "style": "carte",
+      "fond": "beige",
+      "items": [
+        {
+          "number": "90%",
+          "label": "of Fortune 500 companies trust HPE",
+          "icon": ""
+        },
+        {
+          "number": "+ 17,000",
+          "label": "experts collaborate daily with customers and partners",
+          "icon": ""
+        },
+        {
+          "number": "+ 55,000",
+          "label": "organizations worldwide work with HPE",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "",
+      "fond": "ivoire",
+      "paragraphs": [
+        "HPE Networking solutions cover connectivity (wired, wireless, and WAN), along with switching and routing. You benefit from centralized management, advanced observability capabilities (AIOps), and consistent access policies.",
+        "Protect what matters, enhance the user experience, and maintain control at scale.",
+        "Source: <a href=\"https://www.hpe.com/ca/en/about.html\">HPE Canada</a>",
+        "<strong>Network solutions recognized for their reliability in critical and distributed environments.</strong>",
+        "HPE Networking, which brings together HPE Aruba and HPE Juniper solutions, covers connectivity, switching, routing, and observability within a cohesive portfolio.",
+        "This approach strengthens security, simplifies governance, and structures the evolution of network environments at scale."
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "fond": "ivoire",
+      "title": "Modernize Your Network with a Structured Approach",
+      "body": "<p>Build a cohesive, secure architecture aligned with your IT roadmap.</p>",
+      "ctaLabel": "Request a quote",
+      "ctaHref": "/en/contact",
+      "layout": "box"
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "fond": "beige",
+      "sectionTitle": "Standardize Your Network Architecture and Simplify Operations with HPE Networking",
+      "headingStyle": "plain",
+      "intro": "<strong>HPE Networking solutions</strong> combine <strong>HPE Aruba</strong> and <strong>HPE Juniper</strong> to address connectivity, security, and governance requirements. Benefit from a cohesive network portfolio designed to scale with your organization.",
+      "tone": "tint",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Data Center Interconnection",
+          "text": "<strong>Optimize the performance and resilience of your data centers.</strong><br><br><strong>Juniper PTX, MX and QFX series </strong>solutions deliver interconnection, routing, and switching for high-density environments. They are designed to handle traffic growth and increasing workloads while supporting expansion without major architectural redesign.<br><br><strong>Result: </strong>a stable, scalable data center infrastructure suited for critical environments.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "02",
+          "title": "Network Experience and Operations",
+          "text": "<strong>Réduce resolution times and improve visibility with operational intelligence (AIOps).</strong><br><br><strong>Mist AI</strong> and the <strong>Marvis </strong><a href=\"/en/services/artificial-intelligence/\"><strong>artificial intelligence</strong></a><strong> virtual assistant </strong>continuously analyze network performance, detect anomalies, and recommend corrective actions. They help anticipate issues and streamline daily management.<br><br><strong>Result: </strong>more efficient operations and an improved experience for IT teams and users.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "03",
+          "title": "Firewalls",
+          "text": "<strong>Protect your environments from the edge to the data center.</strong><br><br><strong>Juniper SRX firewalls </strong><a href=\"/en/services/cybersecurity/\">enhance security</a> across data centers, remote sites, and strategic access points. They provide traffic control, segmentation, and consistent enforcement of security policies.<br><br><strong>Result: </strong>security integrated into your network architecture without adding operational complexity.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "04",
+          "title": "Wireless Access",
+          "text": "<strong>Deploy reliable and secure Wi-Fi connectivity across all your sites. </strong><br><br><strong>Juniper wireless access solutions</strong> provide stable coverage and centralized management, with continuous visibility into performance and user experience. They integrate with existing security policies.<br><br><strong>Result: </strong>a consistent and secure user experience from campus to branch locations.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "05",
+          "title": "Switches and Wired Access",
+          "text": "<strong>Standardize LAN connectivity across your sites.</strong><br><br><strong>Juniper EX series </strong>switches provide access and aggregation for campus and branch environments. They enable consistent management and segmentation aligned with security requirements.<br><br><strong>Result: </strong>a stable, secure, and easy-to-use wired architecture.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "06",
+          "title": "Switches",
+          "text": "<strong>Modernize and simplify the management of your LAN infrastructure.</strong><br><br><strong>Aruba CX switches </strong>provide access, aggregation, and core networking capabilities with built-in automation and segmentation. They enable secure, consistent management and improved traffic visibility.<br><br><strong>Result: </strong>a high-performing, stable wired infrastructure that is easier to manage.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "07",
+          "title": "Wireless Access",
+          "text": "<strong>Deliver reliable and secure Wi-Fi connectivity across all your locations.</strong><br><br><strong>Aruba access points</strong> provide high-performance coverage in indoor and outdoor environments. They integrate with centralized management and consistent security policies.<br><br><strong>Result: </strong>a stable and consistent user experience across primary and remote sites.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "08",
+          "title": "Management and Observability",
+          "text": "<strong>Centralize administration and gain full visibility across your network.</strong><br><br><strong>HPE Aruba Networking Central</strong> enables management of switches, Wi-Fi, and WAN through a unified interface. The platform provides observability and automation capabilities to quickly detect anomalies and optimize performance.<br><br><strong>Result:</strong> simplified governance and comprehensive visibility across your network environments.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "09",
+          "title": "WAN and Remote Sites",
+          "text": "<strong>Optimize connectivity between your locations and cloud environments.</strong><br><br><strong>EdgeConnect </strong>orchestrates traffic, prioritizes critical applications, and secures communications between headquarters, branches, and the cloud. The solution ensuares efficient and secure connectivity across sites and <a href=\"/en/services/cloud-services-provider/\">cloud environments</a>.<br><br><strong>Result:</strong> an agile, high-performing, and secure WAN adapted to multi-site realities.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "10",
+          "title": "Secure Access",
+          "text": "<strong>Control and secure every network connection.</strong><br><br><strong>ClearPass Policy Manager </strong>enforces access policies based on user identity, device type, and risk level. <a href=\"/en/ressources/sase-cloud/\">SASE</a> and <a href=\"/en/services/cybersecurity/zero-trust/\">Zero Trust</a> capabilities extend protection to remote access and cloud applications.<br><br><strong>Result:</strong> consistent access control and a strengthened security posture across the entire network.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "testimonial-cards",
+      "type": "testimonial-cards",
+      "title": "Performance Validated by Users",
+      "fond": "ivoire",
+      "items": [
+        {
+          "image": "",
+          "quote": "Aruba wireless access points have been reliable for my customers, with easy setup and stable performance. Aruba Central keeps management simple and organized. Most of my customers appreciate how stable the network stays when everyone is live.",
+          "name": "Gartner Peer Insights",
+          "role": "Channel Development Manager"
+        },
+        {
+          "image": "",
+          "quote": "Our experience with this vendor has been positive. Juniper EX Series are stable, perform well in enterprise environments and are straightforward to deploy and integrate. Management and visibility are strong, making day-to-day operations efficient. While support and some advanced features could improve the overall value and reliability meet our expectations.",
+          "name": "Gartner Peer Insights",
+          "role": "Engineering Manager"
+        },
+        {
+          "image": "",
+          "quote": "Overall, Aruba Central has significantly simplified our network management. Having a single pane of glass to monitor switches, APs and gateways from the cloud is a game changer. The interface is intuitive, and the ability to monitor network health from anywhere has made our operations much more efficient.",
+          "name": "Gartner Peer Insights",
+          "role": "IT Manager"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Victrix: Your Strategic Partner for Acquiring HPE Networking Solutions",
+      "fond": "beige",
+      "paragraphs": [
+        "Victrix supports organizations in acquiring <strong>HPE Aruba </strong>and <strong>HPE Juniper solutions</strong>. We streamline the <a href=\"/en/services/it-procurement/\">IT procurement</a> process, and when required, ensure coherent integration within your IT environments.",
+        "Our objective is to structure your network decisions according to your operational priorities, maturity level, and security requirements. Our approach aligns switching, wireless access, WAN, security, and observability components within your architecture that is simple to operate and designed to support your growth."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Structure the Evolution of Your Network Today",
+      "body": "Get an estimate aligned with your architecture, priorities and security requirements.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit",
+      "fond": "ivoire"
+    }
+  ]
+}

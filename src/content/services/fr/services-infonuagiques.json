@@ -69,6 +69,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Notre stratégie d'accélération : services IaaS — SaaS — PaaS",
       "headingStyle": "plain",
       "intro": "Intégration et livraison en mode continu : identification des opportunités (planification, vision, calcul des coûts), preuve de concept (expérimentation et validation), puis accélération de la migration vers l'infonuagique.",
@@ -111,10 +112,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Nos expertises et services infonuagiques",
       "groups": [
         {
           "title": "Analyse",
+          "href": "",
           "items": [
             "Analyse d'opportunité et de faisabilité",
             "Externalisation des services",
@@ -124,6 +127,7 @@
         },
         {
           "title": "Migration des charges",
+          "href": "",
           "items": [
             "Engagement sur le respect des 6 R de migration appropriés",
             "PaaS, SaaS, IaaS",
@@ -134,6 +138,7 @@
         },
         {
           "title": "Multicloud",
+          "href": "",
           "items": [
             "Infrastructure hybride",
             "Vigie et évolution",
@@ -143,6 +148,7 @@
         },
         {
           "title": "Sécurité Azure/AWS Enterprise",
+          "href": "",
           "items": [
             "Gestion et sécurité de l'identité",
             "Gestion de la conformité",
@@ -153,6 +159,7 @@
         },
         {
           "title": "Transformation numérique",
+          "href": "",
           "items": [
             "Bureau moderne VDI/AVD/W365",
             "Migration et automatisation"
@@ -183,6 +190,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Infonuagique"

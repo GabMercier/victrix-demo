@@ -558,10 +558,13 @@ foreach ($s in $stories) {
 | --- | --- | --- | --- | --- | --- |
 | H1–H5 | Actions humaines | — | — | | H2 fait le 21/09 (PR #1 fusionnée, `staging` = `64e58e4`) |
 | L-fonds | Fonds chauds : canevas ivoire, bandes ivoire/beige, blanc réservé aux cartes (maquette « page produit - enfant ») | 0,5 j | — | | 2026-09-21 |
+| L-fond2 | « Fond de section » sur les 17 sections qui ne l’avaient pas (accueil comprise) + 138 clés rétro-remplies | 2 h | — | | 2026-09-21 |
+| L-pages | Pages de l’ancien site jamais reprises : 18 pages fournisseurs (Approvisionnement TI, FR+EN), campagne « Accompagnement en IA » (FR+EN), campagne « Démo O bureau » (FR+EN), 2 articles FR sans traduction ; lien du titre sur `tech-columns` | 1 j | — | **R3 élargie** | 2026-09-21 |
+| L-prix | **À FAIRE** — Liste de prix Check Point (`/liste-prix-check-point/`, `/en/check-point-price-list/`) : c’est un OUTIL (tableaux de prix + « ajouter à ma commande » + formulaire), pas une page de contenu → décision : le reprendre, le remplacer par un PDF + formulaire, ou le retirer | ? | décision marketing | | |
 | L00 | Réponses #1762 + PR | 0,5 h | H2 | | |
 | L01 | Tolérance aux champs vidés | 1,5 h | — | | |
 | L02 | Rétro-remplissage générique des clés | 2 h | — | | |
-| L03 | Slugs EN | 2 h | D1 | | |
+| L03 | Slugs EN — FAIT le 21/09 (D1 : `artificial-intelligence`, `application-services`, `ai-projects` ; `infrastructure` inchangé ; le méga-menu suit le champ `slug` de la page) | 2 h | D1 | | 2026-09-21 |
 | L04 | H1 | 1 h | D2 | | |
 | L05 | `noindex` | 1 h | D3 | | |
 | L06 | CTA, cartes cliquables, boutons | 1,5 j | — | **R1** | |
@@ -570,7 +573,7 @@ foreach ($s in $stories) {
 | L09 | Consentement Loi 25 — FAIT AUTREMENT : bandeau maison fini, sans bibliothèque (D6 tranchée : mesure d'audience seule, 182 jours, rechargement au retrait, sans registre serveur). Reste : texte de la politique (Julie + juridique), `PUBLIC_GA4_ID` | 2 h | — | R2 facultative | 2026-09-21 |
 | L10 | Catalogue A — export, galerie | 1 j | — | | |
 | L11 | Catalogue B — fiches, route | 1,5 j | L10 | **R3** | |
-| L12 | Livres blancs | 1 j | D7, #1633 | | |
+| L12 | Livres blancs — **4 pages** `/document/*` (pas 3 : + `/document/cybersecurite/`, livre blanc SEvOC) ; `licences-microsoft-power-platform` existe déjà en campagne | 1 j | D7, #1633 | | |
 | L13 | Prix + Espace client | 1 h | D8 | | |
 | L14 | Inventaire des pages | 2 h | — | | |
 | L15 | `routing.json` | 1 j | — | | |

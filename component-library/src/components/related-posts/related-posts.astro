@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 /**
  * Section « Ressources liées » — composant Bookshop (P-07).
  * RE-SKIN DESIGN SYSTEM 2026-08-05 : bande gris clair froid #F9FAFB (verbatim
@@ -46,13 +47,15 @@ interface Card {
   img: CardImage;
 }
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   title: string;
   ctaLabel?: string;
   ctaHref?: string;
   cards?: Card[];
 }
 
-const { title, ctaLabel, ctaHref, cards } = Astro.props;
+const { title, ctaLabel, ctaHref, cards, fond = 'beige' } = Astro.props;
 
 // Repli éditeur : 3 cartes factices quand aucune donnée n'est injectée (rendu
 // dans le navigateur par l'éditeur visuel). Jamais utilisées au build.
@@ -79,7 +82,7 @@ const excerptClass = 'm-0 text-sm leading-5 text-[#6B7280] max-w-none';
     des articles liés (bruit inter-contenus dans la recherche interne P-06).
     Attribut inerte partout ailleurs (browser-safe). */}
 {isEmptyResolved ? null : (
-<section class="py-20 bg-[#F9FAFB]" data-pagefind-ignore>
+<section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? 'bg-beige']} data-pagefind-ignore>
   <div class="container-site">
     <div class="flex flex-wrap items-center justify-between gap-3 mb-8">
       <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">

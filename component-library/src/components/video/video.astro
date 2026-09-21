@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Vidéo » — composant Bookshop (palette partagée) en FAÇADE.
@@ -26,6 +27,8 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  */
 
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   title: string;
   intro?: string;
   videoUrl: string;
@@ -34,11 +37,11 @@ interface Props {
   ctaLabel?: string;
 }
 
-const { title, intro = '', videoUrl = '', posterImage = '', ctaLabel = '' } = Astro.props;
+const { title, intro = '', videoUrl = '', posterImage = '', ctaLabel = '', fond = 'ivoire' } = Astro.props;
 const facadeLabel = ctaLabel !== '' ? ctaLabel : 'Visionner la vidéo';
 ---
 
-<section class="py-20 bg-surface">
+<section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? 'bg-surface']}>
   <div class="container-site text-center">
     <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-balance">
       {title}

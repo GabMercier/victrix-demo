@@ -21,6 +21,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Notre démarche en trois étapes",
       "headingStyle": "underline",
       "intro": "",
@@ -48,6 +49,7 @@
     {
       "_bookshop_name": "timeline",
       "type": "timeline",
+      "fond": "",
       "title": "Ligne du temps (démo)",
       "intro": "Chronologie en serpentin : les jalons marquants sont mis en évidence.",
       "tone": "tint",
@@ -93,6 +95,7 @@
     {
       "_bookshop_name": "callout",
       "type": "callout",
+      "fond": "ivoire",
       "title": "Prêt à passer à l'action ?",
       "body": "Discutons de vos enjeux et de la meilleure façon d'y répondre.",
       "ctaLabel": "Planifier un appel",
@@ -115,10 +118,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Technologies maîtrisées",
       "groups": [
         {
           "title": "Infonuagique",
+          "href": "",
           "items": [
             "Microsoft Azure",
             "Microsoft 365",
@@ -127,6 +132,7 @@
         },
         {
           "title": "Données et IA",
+          "href": "",
           "items": [
             "Power BI",
             "Copilot Studio"
@@ -154,6 +160,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Nos articles"
@@ -164,6 +171,7 @@
     {
       "_bookshop_name": "expertise-bento",
       "type": "expertise-bento",
+      "fond": "ivoire",
       "eyebrow": "Démonstration",
       "title": "Bento des domaines d'expertise",
       "intro": "Cartes à peau et taille variées, placées dans une grille de quatre colonnes.",
@@ -241,6 +249,7 @@
     {
       "_bookshop_name": "exclusive-tools",
       "type": "exclusive-tools",
+      "fond": "beige",
       "title": "Solutions exclusives",
       "intro": "Carte vedette et grille de cartes outils.",
       "featured": {
