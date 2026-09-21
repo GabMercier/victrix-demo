@@ -69,10 +69,18 @@ const pageTitle = [r.title, r.titleAccent].filter(Boolean).join(' ');
 //    avec `_formId: infolettre` : le serveur dérive requis/courriels depuis
 //    src/data/forms/<langue>/infolettre.json, pot de miel `website`, widget
 //    Turnstile si la clé est posée, 303 vers /merci, ?erreur=1 au retour.
+//  - PUBLIC_FORMS_ENABLED="inbox" → POST vers /<lang>/merci/ capté par la boîte
+//    CloudCannon : pas de `_formId`, pot de miel `_gotcha`, champs cachés après
+//    le courriel, `_subject` = « [infolettre] <courriel> » recomposé à la
+//    soumission + `_replyto` (src/lib/forms/inbox.ts, inbox-client.ts,
+//    docs/formulaires.md §4.2).
 // Le nom du champ courriel est DÉRIVÉ de la définition (fieldName partagé) —
 // un désalignement page↔définition casse le build, jamais les soumissions.
 import { getEntry } from 'astro:content';
 import { fieldName } from '../../../lib/forms/field-name';
+import { formAction, formsBackend, resolveInboxKey, resolveTurnstileSiteKey } from '../../../lib/forms/mode';
+import { inboxSubjectStatic } from '../../../lib/forms/inbox';
+import { inlineHtml } from '../../../../component-library/src/shared/rich';
 
 const newsletterDefEntry = await getEntry('forms', `${lang}/infolettre`);
 if (!newsletterDefEntry) {
@@ -93,9 +101,26 @@ const newsletterEmailName = fieldName(
 
 // Mode fonctionnel (mêmes drapeaux que contact.astro — parité stricte).
 const env = import.meta.env ?? {};
-const formsEnabled = env.PUBLIC_FORMS_ENABLED === '1';
-const turnstileSiteKey = formsEnabled ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+// 'none' = maquette, 'worker' = /api/forms, 'inbox' = boîte CloudCannon (src/lib/forms/mode.ts).
+const backend = formsBackend(env);
+const formsEnabled = backend !== 'none';
+// Widget Turnstile en worker ET en inbox (jeton vérifié par la boîte CloudCannon) — mode.ts.
+const turnstileSiteKey = resolveTurnstileSiteKey(backend, env);
+const inboxKey = backend === 'inbox' ? resolveInboxKey(newsletterDefEntry.data.inboxKey, env) : '';
 const pagePath = Astro.url?.pathname ?? '';
+const inboxMode = backend === 'inbox';
+// Objet du courriel (mode inbox) : « [infolettre] <courriel> » à la soumission.
+const inboxSubject = inboxMode
+  ? inboxSubjectStatic('infolettre', newsletterDefEntry.data.subject)
+  : '';
+const inboxAttrs = inboxMode
+  ? {
+      'data-inbox-form': '',
+      'data-inbox-prefix': 'infolettre',
+      'data-inbox-fallback': newsletterEmailName,
+      'data-inbox-replyto': newsletterEmailName,
+    }
+  : {};
 // Pot de miel : idiome « visuellement masqué » EN LIGNE (patron form.astro).
 const honeypotStyle =
   'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;';
@@ -113,7 +138,7 @@ const pillBase =
   'inline-flex items-center justify-center px-6 py-2 rounded-full text-sm leading-5 font-bold cursor-pointer border-0 transition-colors';
 ---
 
-<BaseLayout lang={lang} title={pageTitle} description={r.intro} contentType="Page">
+<BaseLayout lang={lang} title={pageTitle} description={r.intro.replace(/<[^>]+>/g, '')} contentType="Page">
   <Breadcrumbs
     lang={lang}
     items={[
@@ -133,7 +158,7 @@ const pillBase =
           {r.title}
           {r.titleAccent && <span class="block text-primary">{r.titleAccent}</span>}
         </h1>
-        <p class="m-0 text-lg leading-[28px] text-on-surface-variant max-w-[576px]">{r.intro}</p>
+        <p class="m-0 text-lg leading-[28px] text-on-surface-variant max-w-[576px]" set:html={inlineHtml(r.intro)} />
         <a
           class="mt-2 inline-flex items-center gap-3 bg-nuit text-white px-8 py-4 rounded-lg text-sm leading-5 font-bold uppercase tracking-[0.5px] no-underline shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] hover:bg-primary transition-colors"
           href="#infolettre"
@@ -329,14 +354,15 @@ const pillBase =
                     <path d="M19 14l.9 2.6L22.5 17l-2.6.9L19 20.5l-.9-2.6-2.6-.9 2.6-.9L19 14Z" />
                   </svg>
                   <h2 class="m-0 text-base leading-6 font-normal text-white">{r.newsletter.title}</h2>
-                  <p class="m-0 max-w-none text-base leading-6 text-neutral-200">{r.newsletter.text}</p>
+                  <p class="m-0 max-w-none text-base leading-6 text-neutral-200" set:html={inlineHtml(r.newsletter.text)} />
                   <form
                     class="flex flex-col gap-4"
                     data-newsletter-form={formsEnabled ? undefined : ''}
                     novalidate={formsEnabled ? undefined : true}
                     method={formsEnabled ? 'POST' : undefined}
-                    action={formsEnabled ? '/api/forms' : undefined}
+                    action={formAction(backend, lang)}
                     data-astro-reload={formsEnabled ? '' : undefined}
+                    {...inboxAttrs}
                   >
                     {
                       formsEnabled && (
@@ -357,20 +383,8 @@ const pillBase =
                               if (b && /[?&]erreur=/.test(location.search)) b.removeAttribute('hidden');
                             }
                           </script>
-                          <input type="hidden" name="lang" value={lang} />
-                          <input type="hidden" name="source" value={pagePath} />
-                          <input type="hidden" name="_formId" value="infolettre" />
-                          {/* Pot de miel `website` — voir honeypotStyle. */}
-                          <div aria-hidden="true" style={honeypotStyle}>
-                            <label for="infolettre-website">Site Web</label>
-                            <input
-                              id="infolettre-website"
-                              type="text"
-                              name="website"
-                              tabindex="-1"
-                              autocomplete="off"
-                            />
-                          </div>
+                          {/* Champs cachés et pot de miel : APRÈS le courriel
+                              (fragment plus bas) — ordre du courriel CloudCannon. */}
                         </>
                       )
                     }
@@ -385,6 +399,32 @@ const pillBase =
                         required
                       />
                     </label>
+                    {
+                      formsEnabled && (
+                        <>
+                          {/* Champs cachés + pot de miel après le courriel (ordre du
+                              courriel CloudCannon). `_formId` = worker seulement ;
+                              `_subject` (recomposé à la soumission) et `inbox_key` = boîte. */}
+                          <input type="hidden" name="lang" value={lang} />
+                          <input type="hidden" name="source" value={pagePath} />
+                          {!inboxMode && <input type="hidden" name="_formId" value="infolettre" />}
+                          {inboxKey && <input type="hidden" name="inbox_key" value={inboxKey} />}
+                          {inboxMode && <input type="hidden" name="_subject" value={inboxSubject} />}
+                          {/* Pot de miel — `_gotcha` en inbox (seul nom filtré par
+                              CloudCannon), `website` côté worker ; voir honeypotStyle. */}
+                          <div aria-hidden="true" style={honeypotStyle}>
+                            <label for="infolettre-website">Site Web</label>
+                            <input
+                              id="infolettre-website"
+                              type="text"
+                              name={inboxMode ? '_gotcha' : 'website'}
+                              tabindex="-1"
+                              autocomplete="off"
+                            />
+                          </div>
+                        </>
+                      )
+                    }
                     {
                       turnstileSiteKey && (
                         <>
@@ -405,7 +445,7 @@ const pillBase =
                         vide = pas de ligne. */}
                     {newsletterDefEntry.data.consentText && (
                       <p class="m-0 max-w-none text-xs leading-4 text-neutral-300">
-                        {newsletterDefEntry.data.consentText}
+                        <Fragment set:html={inlineHtml(newsletterDefEntry.data.consentText)} />
                       </p>
                     )}
                     <p
@@ -434,7 +474,7 @@ const pillBase =
       <div class="relative overflow-hidden bg-neutral-100 border border-solid border-bordure rounded-2xl p-8 lg:p-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
         <div class="relative max-w-[672px] flex flex-col gap-4">
           <h2 class="m-0 text-base leading-6 font-normal text-nuit">{r.cta.title}</h2>
-          <p class="m-0 max-w-none text-lg leading-[28px] text-on-surface-variant">{r.cta.text}</p>
+          <p class="m-0 max-w-none text-lg leading-[28px] text-on-surface-variant" set:html={inlineHtml(r.cta.text)} />
         </div>
         <div class="relative flex flex-wrap items-center gap-6 shrink-0">
           <a
@@ -532,6 +572,14 @@ const pillBase =
       });
     }
   });
+</script>
+
+<script>
+  // Mode inbox : objet « [infolettre] <courriel> » + Reply-To composés à la
+  // soumission (src/lib/forms/inbox-client.ts — logique PARTAGÉE avec
+  // form.astro et contact.astro) ; inerte sans [data-inbox-form].
+  import { bindInboxForms } from '../../../lib/forms/inbox-client';
+  document.addEventListener('astro:page-load', () => bindInboxForms(document));
 </script>
 
 <style>

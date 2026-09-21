@@ -1,8 +1,12 @@
 {
   "title": "Ø Studio",
   "description": "Deploy business applications at lightning speed with Ø Studio, your consulting and application development studio for Microsoft Power Platform and Dynamics 365.",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Microsoft 365 ecosystem",
       "title": "Power Platform and Dynamics 365 creation studio",
@@ -17,6 +21,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Deploy business applications at lightning speed",
       "intro": "Say goodbye to repetitive tasks with process automation and unlock your teams' potential.",
@@ -26,12 +31,18 @@
         "text": "From operations management to the support of your administrative services, the Ø Studio offering meets the requirements of the different branches of your business — with development speed and increased delivery capacity to match.",
         "watermark": "eclair",
         "stats": [
-          { "value": "4.5×", "label": "Acceleration" },
-          { "value": "-40%", "label": "Cost reduction" }
+          {
+            "value": "4.5×",
+            "label": "Acceleration"
+          },
+          {
+            "value": "-40%",
+            "label": "Cost reduction"
+          }
         ]
       },
       "aside": {
-        "icon": "insigne",
+        "icon": "coche",
         "title": "Microsoft certified",
         "text": "Our Microsoft certified consultants and developers free up your IT teams and maximize the use of the Microsoft 365 tools already included in your licences.",
         "linkLabel": "See the Productivity expertise",
@@ -39,6 +50,7 @@
       }
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Consulting, integration and development",
       "intro": "With Ø Studio by your side, Power Apps development, process automation, and tool governance are all easily achievable goals.",
@@ -50,24 +62,46 @@
           "number": "01",
           "title": "Consulting and platform integration",
           "bullets": [
-            { "text": "Identify and quantify needs and objectives", "icon": "coche" },
-            { "text": "Analyze the use of key features and user behaviors", "icon": "coche" },
-            { "text": "Define functional specifications: good practices, roles and responsibilities", "icon": "coche" },
-            { "text": "Identify processes to automate and necessary integrations", "icon": "coche" }
+            {
+              "text": "Identify and quantify needs and objectives",
+              "icon": "coche"
+            },
+            {
+              "text": "Analyze the use of key features and user behaviors",
+              "icon": "coche"
+            },
+            {
+              "text": "Define functional specifications: good practices, roles and responsibilities",
+              "icon": "coche"
+            },
+            {
+              "text": "Identify processes to automate and necessary integrations",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Application development",
           "bullets": [
-            { "text": "Create scalable apps to support your employees", "icon": "coche" },
-            { "text": "Implement tailored or bespoke business solutions", "icon": "coche" },
-            { "text": "Modernize your solutions and develop the governance of your tools", "icon": "coche" }
+            {
+              "text": "Create scalable apps to support your employees",
+              "icon": "coche"
+            },
+            {
+              "text": "Implement tailored or bespoke business solutions",
+              "icon": "coche"
+            },
+            {
+              "text": "Modernize your solutions and develop the governance of your tools",
+              "icon": "coche"
+            }
           ]
         }
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Microsoft Power Platform and Dynamics 365 governance",
       "paragraphs": [
@@ -77,10 +111,22 @@
       "image": "/images/solutions/gestion-idees.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "Security", "label": "Complete visibility and continuous monitoring" },
-        { "value": "Savings", "label": "Optimal licence management" },
-        { "value": "Innovation", "label": "Automation of repetitive tasks" },
-        { "value": "Experience", "label": "User-friendly dashboards and reports" }
+        {
+          "value": "Security",
+          "label": "Complete visibility and continuous monitoring"
+        },
+        {
+          "value": "Savings",
+          "label": "Optimal licence management"
+        },
+        {
+          "value": "Innovation",
+          "label": "Automation of repetitive tasks"
+        },
+        {
+          "value": "Experience",
+          "label": "User-friendly dashboards and reports"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -90,6 +136,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "realisations",
       "type": "realisations",
       "title": "Our portfolio of achievements",
       "intro": "More than a simple consulting and application development service, the Ø Studio team excels with Power Platform tools: Power Apps, Power Automate, Power BI and Power Pages — delivering solutions tailored to your organization.",
@@ -120,6 +167,7 @@
       "fond": "blanc"
     },
     {
+      "_bookshop_name": "faq",
       "type": "faq",
       "title": "FAQ — Dynamics 365 & Microsoft Power Platform development",
       "fond": "givre",
@@ -139,13 +187,17 @@
       ]
     },
     {
+      "_bookshop_name": "related-posts",
       "type": "related-posts",
       "title": "Related resources",
-      "tags": ["Productivity"],
+      "tags": [
+        "Productivity"
+      ],
       "ctaLabel": "See all resources",
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "form",
       "type": "form",
       "title": "Request a consultation",
       "intro": "Tell us about your Power Platform or Dynamics 365 project — a member of the Ø Studio team will get back to you quickly.",
@@ -153,9 +205,11 @@
       "consentText": "",
       "variant": "carte",
       "formId": "o-studio",
+      "fond": "",
       "fields": []
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Got a project?",
       "body": "Let Ø Studio propel you towards Microsoft Power Platform and maximize your Microsoft 365 investment.",
@@ -163,7 +217,8 @@
       "ctaHref": "#formulaire",
       "cta2Label": "Contact us",
       "cta2Href": "/en/contact",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "productivity-consulting/o-studio",

@@ -1,12 +1,12 @@
 {
-  "_schema": "default",
   "title": "Cybersécurité dans le secteur de la santé",
   "description": "Découvrez notre offre de cybersécurité sur mesure pour le secteur de la santé. Protégez les données des patients et systèmes d’information contre toute attaque.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Cybersécurité : secteur de la santé | Services | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Services de cybersécurité",
       "titleAccent": "",
@@ -19,6 +19,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Une cybersécurité et une confidentialité de premier ordre pour les organismes de santé",
       "intro": "",
@@ -30,7 +31,7 @@
         "stats": []
       },
       "aside": {
-        "icon": "insigne",
+        "icon": "coche",
         "title": "Un accompagnement personnalisé",
         "text": "Pour garantir un niveau de sécurité optimal à votre organisme de soins de santé, il est essentiel d’atteindre et de maintenir les normes les plus élevées — c’est là où l’accompagnement professionnel devient indispensable.",
         "linkLabel": "Parlez à nos experts",
@@ -38,6 +39,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Les enjeux de cybersécurité des établissements de santé",
       "headingStyle": "plain",
@@ -68,6 +70,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Un accompagnement de la stratégie à la cyber-résilience",
       "paragraphs": [
@@ -109,6 +112,7 @@
       "fond": "blanc"
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "L’écosystème de la santé",
       "groups": [
@@ -137,6 +141,7 @@
       ]
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Nos technologies",
       "fond": "givre",
@@ -154,6 +159,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Élevez la cybersécurité de vos informations médicales",
       "body": "Contactez notre équipe d’experts et nous vous expliquerons comment notre service de cybersécurité en santé répond à vos exigences.",
@@ -161,7 +167,12 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
-  ]
+  ],
+  "seoTitle": "Cybersécurité : secteur de la santé | Services | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

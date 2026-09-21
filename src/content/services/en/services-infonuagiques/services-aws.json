@@ -1,8 +1,12 @@
 {
   "title": "AWS Services by Cloud Experts",
   "description": "Victrix provides a full range of AWS services to improve organizations' architecture, productivity and operational performance. Contact us now!",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +19,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Why Choose the AWS Cloud Solution for Your Organization?",
       "intro": "Amazon Web Services (AWS) is a popular cloud computing platform for organizations of all sizes: cloud infrastructure, cloud security, data analysis and backup, custom application development, and much more.",
@@ -26,7 +31,7 @@
         "stats": []
       },
       "aside": {
-        "icon": "insigne",
+        "icon": "coche",
         "title": "AWS Partnership",
         "text": "Trust our team to ensure smooth, efficient migration of your applications to AWS.",
         "linkLabel": "Meet with an AWS expert",
@@ -34,17 +39,24 @@
       }
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Ensure Smooth, Secure and Efficient Migration",
       "paragraphs": [
         "<strong>Comprehensive Analysis — Recommendations based on our AWS Expertise — Personalized Support</strong>",
-        "Victrix goes far beyond the traditional <a href=\"/en/expertise/managed-it-services/\">managed services offering</a> with its <strong>specialized AWS services</strong>. We offer organizations the opportunity to develop a scalable productivity platform that simplifies workload management, secures data and improves overall operational performance."
+        "Victrix goes far beyond the traditional <a href=\"/en/services/managed-it-services/\">managed services offering</a> with its <strong>specialized AWS services</strong>. We offer organizations the opportunity to develop a scalable productivity platform that simplifies workload management, secures data and improves overall operational performance."
       ],
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Scalability", "label": "A service model that promotes scalability" },
-        { "value": "Simplicity", "label": "Simplified workload management" }
+        {
+          "value": "Scalability",
+          "label": "A service model that promotes scalability"
+        },
+        {
+          "value": "Simplicity",
+          "label": "Simplified workload management"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -54,6 +66,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Our Proven Methodology",
       "headingStyle": "plain",
@@ -80,6 +93,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Our AWS Services",
       "groups": [
@@ -150,6 +164,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Victrix, Your Trusted AWS Service Provider",
       "body": "Start your AWS migration project and ensure its success with Victrix's expertise.",
@@ -157,7 +172,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "cloud-services-provider/aws-services",

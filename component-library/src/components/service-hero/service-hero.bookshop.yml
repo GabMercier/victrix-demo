@@ -13,7 +13,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/service-hero/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/service-hero/service-hero.preview.png"
     text: "Service — Héros"
     subtext: Photo voilée Bleu nuit, titre blanc, deux boutons (h1 de la page)
   preview:
@@ -65,9 +65,30 @@ _inputs:
     label: "Mots du titre en bleu clair (optionnel)"
     comment: "Sous-chaîne EXACTE du titre, rendue en bleu clair (ex. « Automatisez »). Vide = titre uniforme."
   lead:
-    type: textarea
+    type: html
     label: "Paragraphe d'introduction (optionnel)"
     comment: "Peut contenir des <strong> (rendu HTML tel quel)."
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   ctaLabel:
     label: "Libellé du bouton (optionnel)"
   ctaHref:
@@ -115,3 +136,4 @@ _inputs:
         - centre
         - haut
         - bas
+

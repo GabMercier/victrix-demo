@@ -16,7 +16,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/home-hero/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/home-hero/home-hero.preview.png"
     text: "Accueil — Bannière"
     subtext: Titre principal, sous-titre et bouton — toujours en premier
   preview:
@@ -52,7 +52,29 @@ _inputs:
     label: "Mot accentué du titre"
     comment: "Sous-chaîne du titre affichée en bleu (ex. « vraiment »). Vide = titre uniforme."
   subtitle:
+    type: html
     label: "Sous-titre"
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   ctaLabel:
     label: "Libellé du bouton"
   ctaHref:
@@ -67,3 +89,4 @@ _inputs:
   cta2Href:
     label: "Lien du second bouton"
     comment: "URL finale, préfixe de langue inclus."
+

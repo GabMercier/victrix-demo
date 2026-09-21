@@ -1,8 +1,12 @@
 {
   "title": "Acceleration of Your Azure Migration",
   "description": "Strengthen your security posture, improve productivity, and boost performance by migrating to Microsoft Azure, supported by Victrix’s cloud expertise.",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +19,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Why Choose Azure Migration for Your Organization?",
       "intro": "Microsoft Azure is a cloud computing platform offering comprehensive services for deploying, managing, and optimizing your enterprise applications and IT resources: infrastructure, security, data analysis and backup, custom application development, and much more.",
@@ -26,7 +31,7 @@
         "stats": []
       },
       "aside": {
-        "icon": "insigne",
+        "icon": "coche",
         "title": "Microsoft-Recognized Specializations",
         "text": "Victrix meets Microsoft's highest standards for cloud security and threat protection: Microsoft Solution Partner for Modern Workplace and for Security.",
         "linkLabel": "Meet with a Microsoft Azure expert",
@@ -34,18 +39,25 @@
       }
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Benefits of the Azure Cloud Environment",
       "paragraphs": [
-        "With Microsoft Azure, create custom business applications, manage complex workloads, secure your data centers and benefit from the latest <a href=\"/en/expertise/artificial-intelligence/\">artificial intelligence (AI)</a> and <a href=\"/en/expertise/cybersecurity/internet-of-things-iot/\">IoT</a> applications.",
-        "With unrivalled flexibility and scalability, Azure enables organizations to evolve while staying ahead of change, without ever sacrificing <a href=\"/en/expertise/cybersecurity/\">security and compliance</a>.",
+        "With Microsoft Azure, create custom business applications, manage complex workloads, secure your data centers and benefit from the latest <a href=\"/en/services/intelligence-artificielle/\">artificial intelligence (AI)</a> and <a href=\"/en/services/cybersecurity/internet-of-things-iot/\">IoT</a> applications.",
+        "With unrivalled flexibility and scalability, Azure enables organizations to evolve while staying ahead of change, without ever sacrificing <a href=\"/en/services/cybersecurity/\">security and compliance</a>.",
         "If you’re looking to <strong>migrate your Windows server to Microsoft Azure</strong>, our team offers <strong>personalized support</strong> with a roadmap and total transparency on the migration process."
       ],
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Agility", "label": "Increased accessibility and unrivalled scalability" },
-        { "value": "Security", "label": "Enhanced posture, preserved compliance" }
+        {
+          "value": "Agility",
+          "label": "Increased accessibility and unrivalled scalability"
+        },
+        {
+          "value": "Security",
+          "label": "Enhanced posture, preserved compliance"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -55,6 +67,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Our Cloud Adoption Framework Methodology",
       "headingStyle": "plain",
@@ -91,6 +104,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Our Azure Migration and Managed Services",
       "groups": [
@@ -167,6 +181,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Victrix, Your Strategic Partner for a Successful Migration to Azure",
       "body": "For a fast, efficient, and secure migration to Microsoft Azure, take advantage of Victrix's customized services.",
@@ -174,7 +189,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "cloud-services-provider/azure-migration",

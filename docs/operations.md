@@ -50,15 +50,40 @@ Voir §3.1 pour vérifier sans arrêter le serveur de dev.
 
 ## 3. Portail qualité avant de pousser
 
-Cinq commandes, dans cet ordre — toutes doivent sortir propres :
+Sept commandes, dans cet ordre — toutes doivent sortir propres :
 
 ```
 npm run lint
 npm test
+npm run cms:previews:check
+npm run check:bookshop
 npm run type-check
 npm run build
 STATIC_ONLY=1 npm run build
 ```
+
+`check:bookshop` (2026-09-17, `scripts/check-bookshop-strip.mjs`) rejoue sur
+chaque composant de `component-library/` l'étape que SEUL le build
+CloudCannon exécute (`postbuild` → `@bookshop/generate` → moteur Astro de
+Bookshop : retrait des scripts par regex, compilation Astro, esbuild). Un
+composant qui passe `npm run build` mais casse le build CloudCannon (§8 :
+balise script ouvrante écrite dans un commentaire) est attrapé ici, avant le
+push.
+
+`cms:previews:check` (2026-09-17) vérifie que les pastilles de la palette
+« Fond de section » et les vignettes d'icônes de l'éditeur
+(`public/images/cms/`) sont à jour et que les listes `_select_data` de
+`cloudcannon.config.yml` correspondent EXACTEMENT — mêmes clés, même ordre —
+aux deux sources partagées : `component-library/src/shared/fonds.ts` (fonds)
+et, depuis le 2026-09-18, `component-library/src/shared/icons.ts` (**banque
+de pictogrammes unique** : une seule liste `_select_data.icones`, offerte par
+tous les sélecteurs d'icône). Ajouter un pictogramme = une entrée dans
+`icons.ts` + une entrée dans `_select_data.icones`, puis `npm run
+cms:previews` (génère `public/images/cms/icones/<cle>.svg`) et committer
+`public/images/cms/` ; le zod importe `ICON_KEYS`, rien à y toucher. Une
+ancienne clé réapparue après une sauvegarde CloudCannon antérieure à la
+bascule se corrige avec `node scripts/migrate-icons-bank.mjs` (rejouable ;
+`--check` pour lister sans écrire).
 
 | Commande | Attendu | Constaté au 14 juillet 2026 |
 |---|---|---|
@@ -67,6 +92,19 @@ STATIC_ONLY=1 npm run build
 | `npm run type-check` | 0 erreur | 0 erreur, 3 indices (`hints`) sans gravité |
 | `npm run build` | build Cloudflare complet (`dist/_worker.js` + `_redirects` + `_routes.json`) | OK — `_worker.js` présent, 1 redirection CMS écrite et exclue du worker |
 | `STATIC_ONLY=1 npm run build` | build 100 % statique (aucun `_worker.js`), 23 pages | OK — 23 page(s) built, aucun `_worker.js` dans `dist/` |
+| `npm run check:links` (après le build ; `-- --strict` en CI) | 0 lien interne cassé dans `dist/` | 18 sept. 2026 : 75 cibles fautives à l'introduction (liens d'origine WordPress dans les articles), 0 après `npm run fix:links` |
+
+**Liens internes (2026-09-18).** `scripts/check-internal-links.mjs` relève chaque
+`<a href>` interne du site CONSTRUIT et vérifie que la cible existe dans
+`dist/` : CASSÉ (erreur en mode strict — CI) ou REDIRIGÉ (rattrapé par
+`_redirects`, que l'hébergement CloudCannon ignore — avertissement). Pour chaque
+cible il nomme les fichiers de contenu à corriger. Sur CloudCannon il tourne dans
+`.cloudcannon/postbuild` en simple avertissement (journal de build). Réparation
+mécanique et rejouable : `npm run fix:links` (`-- --check` pour lister sans
+écrire) — ne retient une destination que si elle existe dans `dist/`, et ne
+touche jamais aux liens stockés SANS préfixe de langue dans un champ JSON
+(navigation, fiches de solutions). Exceptions documentées : constante `ALLOW` du
+garde-fou (aujourd'hui les trois pages « document » de WordPress non migrées).
 
 ### 3.1 — Si `npm run dev` tourne déjà (le cas courant)
 
@@ -316,15 +354,18 @@ Pages Function Cloudflare) n'y tourne pas. Répartition :
   Turnstile créés** (voir « Où créer les comptes/clés » ci-dessous). En
   attendant, la vérification de bout en bout reste possible sur la
   préversion Cloudflare `victrix-demo.pages.dev` (poser les clés dans
-  Pages → redéployer). **Ne poser `PUBLIC_FORMS_ENABLED` sur AUCUN build
-  CloudCannon** — hébergement statique, les sections « form »
-  deviendraient de vrais POST sans récepteur.
+  Pages → redéployer). **Sur un build CloudCannon, ne jamais poser `PUBLIC_FORMS_ENABLED=1`**
+  (hébergement statique, aucun `/api/forms`) — poser
+  `PUBLIC_FORMS_ENABLED=inbox` + `PUBLIC_FORMS_INBOX_KEY=<clé>` une fois une
+  boîte de réception (Inbox) attachée au site (spike démarré le 2026-09-16 sur
+  le site dev, boîte `dev-marketing-contact`).
 
 Référence des variables (inchangée) :
 
 | Variable | Valeur | Effet |
 |---|---|---|
-| `PUBLIC_FORMS_ENABLED` | `1` | Les sections « form » deviennent de vrais formulaires POST |
+| `PUBLIC_FORMS_ENABLED` | `1` ou `inbox` | `1` : vrais formulaires POST vers `/api/forms` (worker) ; `inbox` : vrais formulaires POST captés par les boîtes de réception CloudCannon du site (action = page Merci) — **c'est la valeur pour les sites CloudCannon** |
+| `PUBLIC_FORMS_INBOX_KEY` | clé de la boîte (ex. `dev-marketing-contact`) | Mode `inbox` : boîte par défaut du site ; un formulaire peut la surcharger (champ « Boîte de réception CloudCannon ») |
 | `PUBLIC_TURNSTILE_SITE_KEY` | clé de site Turnstile | Widget anti-pourriel affiché |
 | `TURNSTILE_SECRET_KEY` | clé secrète Turnstile | Vérification serveur du jeton |
 | `SMTP2GO_API_KEY` | clé API SMTP2GO | Envoi réel des courriels |
@@ -352,6 +393,7 @@ les événements.
 | `EPERM … rename '.astro\content-assets.mjs.tmp'` | Build/`astro check` lancé pendant que `npm run dev` tourne (même cache `.astro/`) | Arrêter `npm run dev`, ou vérifier dans une copie isolée (§3.1) |
 | `astro check`/`build` échoue avec `ERR_MODULE_NOT_FOUND` dans une copie isolée, `node_modules/astro/dist/` manquant | `/XD "dist"` (sans chemin complet) exclut tous les `dist/` du sous-arbre, y compris ceux de `node_modules` ; `/MT` peut aussi perdre des répertoires en silence | Voir §3.1 — chemins `/XD` complets, pas de `/MT` sur `node_modules`, vérifier `node_modules\astro\dist\cli\index.js` après coup |
 | `npx @bookshop/generate` local dit « Could not find any output sites » | Normal hors de CloudCannon — cherche `_cloudcannon/info.json`, généré seulement par leur environnement de build | Rien à corriger ; se fier au journal de build CloudCannon (§7) pour cette vérification précise |
+| Build CloudCannon rouge à l'étape `postbuild` (Bookshop) : `Expected "*/" to terminate multi-line comment` sur un composant `.astro`, alors que `npm run build` est vert | Une balise script **ouvrante** écrite en toutes lettres (chevron + `script`) dans un commentaire du composant : `@bookshop/astro-engine` retire les scripts par regex (`<script…>…</script>`, `builder.js`) AVANT de compiler, et la correspondance part de ce faux départ jusqu'au premier vrai `</script>` du fichier — la fermeture `*/` du commentaire disparaît avec (2026-09-17, `solutions-catalogue.astro`) | Écrire « balise script » en toutes lettres dans les commentaires des composants Bookshop (`component-library/`) ; une paire ouvrante + fermante sur la même ligne est tolérée mais fragile. `npm run check:bookshop` (§3, CI) rejoue l'étape localement et nomme le composant fautif |
 | Content Editor de CloudCannon affiche une page blanche | Normal pour les landings (frontmatter seul, pas de corps markdown) | Basculer sur l'éditeur **Visuel** via les icônes en haut à droite |
 | Palette de sections avec des doublons | `_structures.sections` écrit à la main en double avec les entrées générées par `@bookshop/generate` | Ne jamais lister les sections vous-même dans `cloudcannon.config.yml` — seules les clés `style`/`remove_extra_inputs` sont à nous, voir le commentaire au-dessus de `_structures.sections` |
 | Redirection CMS servie en `200` au lieu de `301` | `_routes.json` (adaptateur Cloudflare) n'exclut pas la source — le worker (`include: "/*"`) intercepte avant `_redirects` | Déjà corrigé dans `astro.config.mjs` (intégration `victrix:redirects`, exclusion automatique) — si ça revient, vérifier que le build de prod (pas `STATIC_ONLY`) a bien tourné après l'ajout d'une redirection |

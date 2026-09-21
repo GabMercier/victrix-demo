@@ -9,9 +9,9 @@ coverImage: "/wp-content/uploads/2025/03/design-sans-titre-2.png"
 seoTitle: "ServiceNow AI: Transforming Performance and AI Governance"
 wpUrl: "/en/servicenow-ai/"
 ---
-**[Artificial intelligence](/en/expertise/artificial-intelligence/) has moved beyond experimentation to become a true driver of organizational performance.**
+**[Artificial intelligence](/en/services/intelligence-artificielle/) has moved beyond experimentation to become a true driver of organizational performance.**
 
-By integrating AI into its service platform, [ServiceNow](/en/expertise/productivity-consulting/servicenow/) enables private and public organizations to **reliably automate**, **analyze**, and **govern their operations**.
+By integrating AI into its service platform, [ServiceNow](/en/services/productivity-consulting/servicenow/) enables private and public organizations to **reliably automate**, **analyze**, and **govern their operations**.
 
 However, to deliver on its promises, AI must be supervised and controlled.
 
@@ -38,7 +38,7 @@ This is where the support of a certified partner like Victrix makes all the diff
  - [Amy Lokey
 EVP & Chief Experience Officer, ServiceNow](https://www.servicenow.com/blogs/2024/agentic-ai-evolution-great-experiences)
 
-Whether it’s **reducing manual and repetitive tasks**, **anticipating incidents**, or **analyzing trends**to optimize your workflows, we’ll [find use cases](/en/expertise/artificial-intelligence/ai-opportunity-analysis/) that align with your reality and business goals.
+Whether it’s **reducing manual and repetitive tasks**, **anticipating incidents**, or **analyzing trends**to optimize your workflows, we’ll [find use cases](/en/services/artificial-intelligence/ai-opportunity-analysis/) that align with your reality and business goals.
 
 ## Victrix, a Certified ServiceNow Partner
 
@@ -157,4 +157,4 @@ Our approach, focused on**security**, **cost-effectiveness**, and **alignment wi
 
 ### To get the most value out of your AI and ServiceNow projects, our experts support you from strategy to adoption.
 
-<a class="article-cta" href="/contact/">Plan your ServiceNow AI project</a>
+<a class="article-cta" href="/en/contact/">Plan your ServiceNow AI project</a>

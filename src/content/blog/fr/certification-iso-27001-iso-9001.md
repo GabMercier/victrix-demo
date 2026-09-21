@@ -9,7 +9,7 @@ coverImage: "/wp-content/uploads/2025/07/cover-article_certification-iso_fr-1.pn
 seoTitle: "ISO 27001 et ISO 9001 : Victrix renouvelle ses certifications"
 wpUrl: "/certification-iso-27001-iso-9001/"
 ---
-**MONTRÉAL, LE 23 JUILLET 2025** — Victrix a le plaisir d’annoncer le renouvellement de ses certifications ISO 27001 et ISO 9001, réaffirmant ainsi son engagement indéfectible à la [sécurité de l’information](/expertise/cybersecurite/) et à l’excellence de la gestion de la qualité.
+**MONTRÉAL, LE 23 JUILLET 2025** — Victrix a le plaisir d’annoncer le renouvellement de ses certifications ISO 27001 et ISO 9001, réaffirmant ainsi son engagement indéfectible à la [sécurité de l’information](/fr/services/cybersecurite/) et à l’excellence de la gestion de la qualité.
 
 Cette double reconnaissance internationale consolide la position de Victrix comme chef de file québécois dans le domaine des technologies de l’information.
 
@@ -30,4 +30,4 @@ Dominic Lajoie
  Chef de la direction, Les Solutions Victrix
 
 Pour découvrir l’ensemble de nos expertises et en savoir plus sur notre engagement envers la qualité et la sécurité, visitez notre site web :
- [Découvrir Victrix](/decouvrir-victrix/)
+ [Découvrir Victrix](/fr/decouvrir/)

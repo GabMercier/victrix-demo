@@ -24,6 +24,7 @@ import Page from '../../../../component-library/src/shared/astro/page.astro';
 // DOSSIER de cette route porte aussi le mot — le changer exige de renommer le
 // dossier ET de prévoir une redirection.
 import { SERVICE_URL_PREFIX } from '../../../lib/navigation/service-links';
+import { serviceFamilyPreset } from '../../../lib/contact/presets';
 import JsonLd from '../../../components/JsonLd.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { breadcrumbSchema } from '../../../lib/seo/breadcrumb';
@@ -180,15 +181,23 @@ export async function getStaticPaths() {
     // page.data.sections directement compile en params() VIDE (aperçu blanc,
     // constaté le 15/07). Ne pas renommer ni inliner. Voir
     // src/pages/[lang]/campagnes/[slug].astro:43-50.
+    // Préremplissage Contact (2026-09-17) : sujet « Un projet » par défaut,
+    // service hérité de la FAMILLE (1er segment du chemin de fichier) — les
+    // champs de page contactSujet/contactService surchargent l'un et l'autre.
+    const contactPreset = {
+      sujet: page.data.contactSujet || 'projet',
+      service: page.data.contactService || serviceFamilyPreset(filePath),
+    };
+
     paths.push({
       params: { lang, slug },
-      props: { page, lang, altLocalePath, frontmatter: page.data, enrich, crumbs },
+      props: { page, lang, altLocalePath, frontmatter: page.data, enrich, crumbs, contactPreset },
     });
   }
   return paths;
 }
 
-const { page, lang, altLocalePath, frontmatter, enrich, crumbs } = Astro.props;
+const { page, lang, altLocalePath, frontmatter, enrich, crumbs, contactPreset } = Astro.props;
 
 // BreadcrumbList JSON-LD (P-12) + fil VISIBLE (2026-08-17) — le MÊME tableau
 // `crumbs` (construit dans getStaticPaths, parent inclus) alimente les deux.
@@ -217,6 +226,7 @@ const serviceSchema = page.data.noindex
   noindex={page.data.noindex}
   altLocalePath={altLocalePath}
   contentType="Service"
+  contactPreset={contactPreset}
 >
   {
     /* Un seul périmètre `bookshop:live` autour de la boucle de sections — c'est
@@ -228,5 +238,5 @@ const serviceSchema = page.data.noindex
   <JsonLd slot="head" schema={crumbsSchema} />
   {serviceSchema && <JsonLd slot="head" schema={serviceSchema} />}
   <Breadcrumbs lang={lang} items={crumbs} />
-  <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} />
+  <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} seoH1={frontmatter.seoH1} />
 </BaseLayout>

@@ -72,8 +72,10 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
   first, dedicated Cloudflare Worker as fallback (`operations.md` §7ter);
   the keys land wherever the spike concludes. Until then they may be set on
   the legacy Cloudflare Pages project for end-to-end verification. **Never
-  set `PUBLIC_FORMS_ENABLED` on any CloudCannon build** — the POST would
-  have no receiver.
+  set `PUBLIC_FORMS_ENABLED=1` on any CloudCannon build** — the POST would
+  have no receiver. Set `PUBLIC_FORMS_ENABLED=inbox` (+ `PUBLIC_FORMS_INBOX_KEY`)
+  instead once a CloudCannon Inbox is attached to the site (spike started
+  2026-09-16 on the dev site).
 - Portal variables — none are read today (mock removed 2026-08-18); they
   arrive with the real portal work (`docs/portail-auth.md` §7).
 

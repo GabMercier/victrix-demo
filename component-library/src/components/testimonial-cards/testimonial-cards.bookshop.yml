@@ -1,0 +1,67 @@
+# =============================================================================
+# Spec Bookshop — section « Cartes témoignages » (palette partagée, 2026-09-17
+# — conversion de la page Carrières en page « sections »).
+# Voir hero.bookshop.yml pour les conventions communes. Les cartes vivent dans
+# la structure `_structures.testimonial_card_items` (cloudcannon.config.yml).
+# Distinct de « Témoignage » (une seule citation client).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Cartes témoignages"
+  description: "Titre centré et grille de cartes témoignages (portrait, citation en italique, prénom, rôle) sur bande grise — deux cartes par rangée."
+  icon: format_quote
+  picker_preview:
+    image: "/_cloudcannon/bookshop_thumbs/testimonial-cards/testimonial-cards.preview.png"
+    text: Cartes témoignages
+    subtext: Grille de cartes portrait + citation + prénom + rôle
+  preview:
+    icon: format_quote
+    text:
+      - key: title
+      - text: Cartes témoignages
+
+blueprint:
+  type: testimonial-cards
+  title: "Ce que nos experts disent"
+  fond: brume
+  items:
+    - image: ""
+      quote: "« Une citation courte et percutante d'un membre de l'équipe. »"
+      name: "Prénom"
+      role: "Rôle / poste"
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre (optionnel)"
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      # Palette partagée : liste d'objets {cle, libelle, couleur, apercu}
+      # définie UNE fois dans cloudcannon.config.yml (_select_data.fonds).
+      values: _select_data.fonds
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+        icon: square
+        icon_color:
+          - key: couleur
+    comment: "Couleur de fond de la section, bornée à la palette officielle (pastilles dans la liste). Défaut « brume » = rendu historique de la page Carrières."
+  items:
+    # `type: array` explicite + structure déclarée à la main dans
+    # cloudcannon.config.yml (_structures.testimonial_card_items).
+    type: array
+    label: "Témoignages"
+    comment: "Une carte par témoignage : portrait, citation, prénom, rôle."
+    options:
+      structures: _structures.testimonial_card_items

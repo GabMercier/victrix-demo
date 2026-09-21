@@ -1,12 +1,12 @@
 {
-  "_schema": "default",
   "title": "Service IoT et OT — Internet des objets",
   "description": "Renforcez la sécurité des objets connectés de votre organisation avec le service IoT et OT conçu par les experts en cybersécurité chez Victrix.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Service IoT & OT — Internet des Objets | Cybersécurité | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Service IoT et OT",
       "titleAccent": "",
@@ -19,6 +19,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Pourquoi assurer la sécurité des objets connectés de votre organisation?",
       "intro": "",
@@ -47,10 +48,11 @@
         "title": "Un service de sécurité de pointe",
         "text": "Élevez le niveau de sécurité des appareils connectés et réduisez le risque de violations de données grâce au soutien de nos experts en cybersécurité.",
         "linkLabel": "Découvrez notre expertise cybersécurité",
-        "linkHref": "/fr/nos-expertises/cybersecurite"
+        "linkHref": "/fr/services/cybersecurite/"
       }
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Notre approche",
       "subtitle": "Victrix réalise une analyse complète de votre infrastructure pour identifier les vulnérabilités de votre système et améliorer la sécurité de vos environnements IoT.",
@@ -64,6 +66,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Victrix assure la sécurité de vos systèmes IoT et OT",
       "intro": "Un accompagnement complet, de l’évaluation de vos réseaux IoT à l’adoption des nouvelles technologies par vos équipes.",
@@ -114,6 +117,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Expertise sectorielle en cybersécurité IoT/OT ",
       "paragraphs": [
@@ -150,6 +154,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Renforcez votre posture à l’ère de l’IoT",
       "body": "Protégez vos données, vos actifs et vos objets connectés grâce à nos experts en cybersécurité.",
@@ -157,7 +162,12 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
-  ]
+  ],
+  "seoTitle": "Service IoT & OT — Internet des Objets | Cybersécurité | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

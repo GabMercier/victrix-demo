@@ -1,4 +1,5 @@
 ---
+import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Vidéo » — composant Bookshop (palette partagée) en FAÇADE.
  * RE-SKIN DESIGN SYSTEM 2026-08-05 : fond ivoire (surface), titre 40/700
@@ -42,7 +43,7 @@ const facadeLabel = ctaLabel !== '' ? ctaLabel : 'Visionner la vidéo';
     <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-balance">
       {title}
     </h2>
-    {intro !== '' && <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-[640px] mx-auto mt-4">{intro}</p>}
+    {hasRichText(intro) && <div class="rich text-base leading-[26px] text-on-surface-variant max-w-[640px] mx-auto mt-4" set:html={blockHtml(intro)} />}
     <a
       class:list={[
         'relative flex flex-col items-center justify-center gap-4 aspect-video max-w-[760px] mx-auto mt-12 rounded-lg overflow-hidden no-underline bg-linear-135 from-on-primary-fixed to-primary focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2',

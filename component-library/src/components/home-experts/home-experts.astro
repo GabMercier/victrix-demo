@@ -1,4 +1,5 @@
 ---
+import { blockHtml } from '../../shared/rich';
 /**
  * Section « Bandeau CTA final » — composant Bookshop (accueil composable).
  * FIDÉLITÉ MAQUETTE 2026-08-04 (docs/design/accueil.css §Section - FinalCTA,
@@ -31,7 +32,7 @@ const { title, subtitle, ctaLabel, ctaHref } = Astro.props;
         <h2 class="text-[36px] leading-none lg:text-[48px] lg:leading-[48px] font-black tracking-[-0.96px] text-on-primary-fixed m-0 text-balance">
           {title}
         </h2>
-        <p class="text-lg leading-7 text-[#545F71] m-0 max-w-none">{subtitle}</p>
+        <div class="rich text-lg leading-7 text-[#545F71] max-w-none" set:html={blockHtml(subtitle)} />
       </div>
       <a
         class="no-underline bg-primary text-on-primary px-10 py-5 rounded text-sm font-black uppercase tracking-[1.4px] leading-5 hover:bg-primary-container transition-colors shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] whitespace-nowrap shrink-0"

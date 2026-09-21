@@ -7,15 +7,15 @@ topics: ["Cybersecurity"]
 slug: "cybersecurity-risk-audit"
 coverImage: "/wp-content/uploads/2024/10/computationally-intensive-tasks-servers-1-scaled.jpg"
 seoTitle: "Cybersecurity Risk Assessment Audit | Risk & Compliance"
-wpUrl: "/en/cybersecurity-risk-audit/"
+wpUrl: "/en/ressources/cybersecurity-risk-audit/"
 ---
 ![A Victrix cybersecurity consultant carrying out a cybersecurity risk assessment audit.](/wp-content/uploads/2024/10/computationally-intensive-tasks-servers-1.jpg)Performing a cybersecurity risk assessment audit is the first step to efficient risk and compliance management. Non-compliance with cybersecurity regulations**increases your risk of data breaches, severe penalties, legal actions, and reputational damage**, amongst other issues.
 
 The [increase in cyberattacks on government agencies](https://www.cyber.gc.ca/en/guidance/national-cyber-threat-assessment-2023-2024) and larger organizations makes it clear. It is imperative to**take the necessary cybersecurity measures to protect your organization** and to adhere to industry standards and laws.
- [Discover our cybersecurity services](/en/expertise/cybersecurity/)
+ [Discover our cybersecurity services](/en/services/cybersecurity/)
 
 Compliance isn’t just a legal requirement but also **a strategic lever for any large organization**. By ensuring compliance, you protect your enterprise against any security breach and safeguard your clients’ sensitive information from being stolen, leaked, or worse. 
- Adhering to regulatory compliance standards reinforces your security posture, builds trust with stakeholders and clients, and helps [mitigate risks associated with cyberattacks](/en/ransomware-protection-tips/).
+ Adhering to regulatory compliance standards reinforces your security posture, builds trust with stakeholders and clients, and helps [mitigate risks associated with cyberattacks](/en/ressources/ransomware-protection-tips/).
 
 The larger the organization, the greater the attack surface. You may be facing several challenges when trying to maintain cybersecurity compliance, such as:
 
@@ -56,8 +56,8 @@ The audit can also help your organization better understand your security postur
 
 Victrix understands the needs of government bodies and large organizations. We offer a comprehensive cybersecurity risk assessment audit that supports your organization’s efforts to comply with and maintain compliance with various regulatory standards. Here’s our **cybersecurity audit checklist**:
 
-- Support for compliance with regulatory standards such as [Law 25](/en/law-25-personal-data-guide/), GDPR, and NIST
-- Use of NIST CSF, CIS CSC, and [ISO 27001](/en/iso-27001-iso-9001-certifications/) frameworks to assess security processes
+- Support for compliance with regulatory standards such as [Law 25](/en/ressources/law-25-personal-data-guide/), GDPR, and NIST
+- Use of NIST CSF, CIS CSC, and [ISO 27001](/en/ressources/iso-27001-iso-9001-certifications/) frameworks to assess security processes
 - Help in achieving compliance with PCI for secure financial transactions
 - Customized solutions tailored to meet the legal requirements for data protection
 - Ongoing support to maintain compliance as regulatory requirements evolve

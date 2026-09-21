@@ -1,7 +1,11 @@
 {
   "title": "Service sections demo",
+  "slug": "demo-sections",
   "description": "Demo page for the service palette sections: service hero, numbered cards, callout, feature boxes, tech columns, rich text and related resources.",
   "noindex": true,
+  "seoH1": "Services sections demo",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
       "_bookshop_name": "service-hero",
@@ -25,9 +29,21 @@
       "columns": "3",
       "cardStyle": "default",
       "items": [
-        { "number": "01", "title": "Assess", "text": "A clear picture of the current state and the gaps to close." },
-        { "number": "02", "title": "Plan", "text": "A prioritized roadmap aligned with your business goals." },
-        { "number": "03", "title": "Deploy", "text": "A progressive, measured and supported rollout." }
+        {
+          "number": "01",
+          "title": "Assess",
+          "text": "A clear picture of the current state and the gaps to close."
+        },
+        {
+          "number": "02",
+          "title": "Plan",
+          "text": "A prioritized roadmap aligned with your business goals."
+        },
+        {
+          "number": "03",
+          "title": "Deploy",
+          "text": "A progressive, measured and supported rollout."
+        }
       ]
     },
     {
@@ -37,12 +53,42 @@
       "intro": "Serpentine chronology: key milestones stand out.",
       "tone": "tint",
       "items": [
-        { "year": "2003", "title": "Company founded", "text": "", "accent": true },
-        { "year": "2008", "title": "First acquisition", "text": "An optional detail sentence.", "accent": false },
-        { "year": "2012", "title": "Team growth", "text": "", "accent": false },
-        { "year": "2016", "title": "New office", "text": "", "accent": false },
-        { "year": "2019", "title": "International expansion", "text": "", "accent": true },
-        { "year": "2023", "title": "New offering", "text": "", "accent": true }
+        {
+          "year": "2003",
+          "title": "Company founded",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2008",
+          "title": "First acquisition",
+          "text": "An optional detail sentence.",
+          "accent": false
+        },
+        {
+          "year": "2012",
+          "title": "Team growth",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2016",
+          "title": "New office",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2019",
+          "title": "International expansion",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2023",
+          "title": "New offering",
+          "text": "",
+          "accent": true
+        }
       ]
     },
     {
@@ -59,18 +105,40 @@
       "type": "feature-boxes",
       "sectionTitle": "What the engagement covers",
       "subtitle": "A clear scope, adapted to your organization.",
-      "boxes": ["Strategy and governance", "Architecture and integration", "Security and compliance", "Training and adoption"]
+      "fond": "givre",
+      "boxes": [
+        "Strategy and governance",
+        "Architecture and integration",
+        "Security and compliance",
+        "Training and adoption"
+      ]
     },
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Technologies we master",
       "groups": [
-        { "title": "Cloud", "items": ["Microsoft Azure", "Microsoft 365", "AWS"] },
+        {
+          "title": "Cloud",
+          "items": [
+            "Microsoft Azure",
+            "Microsoft 365",
+            "AWS"
+          ]
+        },
         {
           "title": "Data and AI",
-          "items": ["Power BI", "Copilot Studio"],
-          "subgroup": { "label": "Open source:", "items": ["Python", "PostgreSQL"] }
+          "items": [
+            "Power BI",
+            "Copilot Studio"
+          ],
+          "subgroup": {
+            "label": "Open source:",
+            "items": [
+              "Python",
+              "PostgreSQL"
+            ]
+          }
         }
       ]
     },
@@ -78,6 +146,7 @@
       "_bookshop_name": "rich-text",
       "type": "rich-text",
       "title": "A proven approach",
+      "fond": "blanc",
       "paragraphs": [
         "For more than 25 years, our teams have supported Quebec organizations through their most <strong>transformative</strong> technology projects.",
         "Every engagement starts with listening: understanding your business challenges before talking solutions."
@@ -87,9 +156,127 @@
       "_bookshop_name": "related-posts",
       "type": "related-posts",
       "title": "Related resources",
-      "tags": ["Our articles"],
+      "tags": [
+        "Our articles"
+      ],
       "ctaLabel": "See all resources",
       "ctaHref": "/en/ressources"
+    },
+    {
+      "_bookshop_name": "photo-hero",
+      "type": "photo-hero",
+      "title": "Photo hero",
+      "sub": "Full-width photo with a charcoal overlay, white title and uppercase button.",
+      "ctaLabel": "Apply",
+      "ctaHref": "/en/contact",
+      "image": "/images/carrieres/hero-vie-chez-victrix.jpg",
+      "imageAlt": "",
+      "imagePosition": "haut"
+    },
+    {
+      "_bookshop_name": "award-card",
+      "type": "award-card",
+      "title": "Award card",
+      "lead": "Bordered white card on a grey band: blue badge, title, lead.",
+      "quote": "Italic quote with a blue left border.",
+      "fond": "perle"
+    },
+    {
+      "_bookshop_name": "value-tiles",
+      "type": "value-tiles",
+      "eyebrow": "Eyebrow",
+      "title": "Value tiles",
+      "fond": "blanc",
+      "items": [
+        {
+          "icon": "etoile",
+          "label": "Excellence"
+        },
+        {
+          "icon": "groupe",
+          "label": "Collaboration"
+        },
+        {
+          "icon": "ampoule",
+          "label": "Innovation"
+        },
+        {
+          "icon": "poignee",
+          "label": "Commitment"
+        },
+        {
+          "icon": "coche",
+          "label": "Integrity"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "photo-features",
+      "type": "photo-features",
+      "title": "Photo + features",
+      "lead": "Photo with a floating blue card on the left; title, lead and a 2×2 grid of features on the right.",
+      "cardTitle": "Floating card",
+      "cardText": "Title and text laid over the photo.",
+      "image": "/images/carrieres/equipe-environnement.jpg",
+      "imageAlt": "",
+      "fond": "blanc",
+      "items": [
+        {
+          "icon": "croissance-pleine",
+          "title": "Growth",
+          "text": "Feature with the growth icon."
+        },
+        {
+          "icon": "progression",
+          "title": "Progression",
+          "text": "Feature with the progression icon."
+        },
+        {
+          "icon": "coeur",
+          "title": "Heart",
+          "text": "Feature with the heart icon."
+        },
+        {
+          "icon": "formation",
+          "title": "Training",
+          "text": "Feature with the graduation icon."
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "testimonial-cards",
+      "type": "testimonial-cards",
+      "title": "Testimonial cards",
+      "fond": "brume",
+      "items": [
+        {
+          "image": "/images/carrieres/temoignage-daniel.png",
+          "quote": "“First italic quote, portrait above, first name and role below.”",
+          "name": "First name",
+          "role": "Role / position"
+        },
+        {
+          "image": "/images/carrieres/temoignage-mikael.png",
+          "quote": "“Second quote — two cards per row on a grey band.”",
+          "name": "First name",
+          "role": "Role / position"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "text-photo",
+      "type": "text-photo",
+      "title": "Text + photo",
+      "lead": "Title, lead, commitment line and partner chips on the left; photo on the right.",
+      "engagementTitle": "Commitment line (icon + title)",
+      "engagementText": "Commitment text under the line.",
+      "partners": [
+        "Partner 1",
+        "Partner 2"
+      ],
+      "image": "/images/carrieres/responsabilite-sociale.jpg",
+      "imageAlt": "",
+      "fond": "blanc"
     }
   ]
 }

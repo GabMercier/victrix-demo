@@ -1,4 +1,5 @@
 ---
+import { inlineHtml } from '../../shared/rich';
 /**
  * Section « Bandeau logos partenaires » — composant Bookshop (palette
  * partagée). VERSION RICHE, distincte de la section d'accueil `home-partners`
@@ -57,7 +58,7 @@ const { title = '', badge = '', items = [] } = Astro.props;
               </span>
             )}
             {item.description && (
-              <p class="text-sm leading-5 text-on-surface-variant m-0 max-w-none">{item.description}</p>
+              <p class="text-sm leading-5 text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(item.description)} />
             )}
           </li>
         ))

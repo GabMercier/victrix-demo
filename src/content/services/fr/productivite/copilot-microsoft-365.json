@@ -1,8 +1,12 @@
 {
   "title": "Copilot pour Microsoft 365",
   "description": "Bénéficiez d'un accompagnement personnalisé et sécurisé pour accélérer la mise en œuvre et l’adoption de Copilot pour Microsoft 365 dans votre entreprise.",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Écosystème Microsoft 365",
       "title": "Déploiement et adoption de Copilot pour Microsoft 365",
@@ -17,6 +21,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Un accompagnement personnalisé, sécurisé et structuré",
       "intro": "Choisissez les licences Copilot pour Microsoft 365 adaptées à votre organisation avec l’accompagnement de Victrix.",
@@ -36,6 +41,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Notre stratégie d’adoption structurée",
       "headingStyle": "underline",
@@ -67,6 +73,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Anticiper la gouvernance de Copilot",
       "paragraphs": [
@@ -76,9 +83,18 @@
       "image": "/wp-content/uploads/2024/10/m365copilot_herobanner_apps_blog-feature-1.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "Gouvernance", "label": "Une stratégie structurée pour l’adoption" },
-        { "value": "Sécurité", "label": "Protection de vos informations confidentielles" },
-        { "value": "Performance", "label": "Copilot comme levier de performance" }
+        {
+          "value": "Gouvernance",
+          "label": "Une stratégie structurée pour l’adoption"
+        },
+        {
+          "value": "Sécurité",
+          "label": "Protection de vos informations confidentielles"
+        },
+        {
+          "value": "Performance",
+          "label": "Copilot comme levier de performance"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -88,6 +104,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Accélérez l’adoption de Copilot pour Microsoft 365",
       "body": "Avec Victrix comme partenaire, bénéficiez d’un accompagnement structurant pour tirer le meilleur de Copilot pour Microsoft 365. Contactez-nous pour une prise en charge rapide et pour assurer le succès de votre déploiement et de l’adoption de cette solution technologique innovante.",
@@ -95,7 +112,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": "Déploiement et adoption de Copilot pour Microsoft 365"

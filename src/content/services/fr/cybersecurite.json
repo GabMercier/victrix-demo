@@ -1,12 +1,12 @@
 {
-  "_schema": "default",
   "title": "Cybersécurité",
   "description": "Services de cybersécurité adaptés à votre réalité opérationnelle et réglementaire. Gestion du risque, protection des données et conformité avec Victrix.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "La cybersécurité au service de vos affaires | Services | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Services",
       "titleAccent": "",
@@ -19,6 +19,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "La cybersécurité, un atout stratégique intégré à tous nos projets",
       "intro": "",
@@ -51,6 +52,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Notre service de cybersécurité : la réponse à tous vos enjeux",
       "headingStyle": "plain",
@@ -86,10 +88,14 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Un service de cybersécurité de bout-en-bout",
       "paragraphs": [
-        "<li><a href=\"/expertise/conseil-strategique/\">Services-conseils</a> en sécurité adaptés à vos besoins et votre croissance.</li><li>Accompagnement pour la mise en conformité aux normes ISO/IEC 27001/2, <a href=\"/directive-nis2/\">NIS2</a>, SOC2, <a href=\"/expertise/conseil-strategique/conformite-loi-25/\">Loi 25</a>, RGPD, PCI, <a href=\"/reglementation-dora/\">DORA</a> et plus encore. </li><li><a href=\"/expertise/services-infonuagiques/\">Services infonuagiques</a> avec un niveau de protection renforcé.</li><li>Évolution de votre posture de sécurité et mise en œuvre d’un plan de reprise et continuité (PCA/PRA) pour une réponse aux incidents rapide et efficace.</li>"
+        "<a href=\"/fr/services/services-infonuagiques/\">Services infonuagiques</a> avec un niveau de protection renforcé.",
+        "Accompagnement pour la mise en conformité aux normes ISO 27001/2, <a href=\"/fr/ressources/directive-nis2/\">NIS2</a>, SOC2, <a href=\"/fr/services/conseil-strategique/conformite-loi-25/\">Loi 25</a>, RGPD, PCI, <a href=\"/fr/ressources/reglementation-dora/\">DORA</a> et plus encore.",
+        "<a href=\"/fr/services/conseil-strategique/\">Services-conseils</a> en sécurité adaptés à vos besoins et votre croissance.",
+        "<li><a href=\"/fr/services/conseil-strategique/\">Services-conseils</a> en sécurité adaptés à vos besoins et votre croissance.</li><li>Accompagnement pour la mise en conformité aux normes ISO/IEC 27001/2, <a href=\"/fr/ressources/directive-nis2/\">NIS2</a>, SOC2, <a href=\"/fr/services/conseil-strategique/conformite-loi-25/\">Loi 25</a>, RGPD, PCI, <a href=\"/fr/ressources/reglementation-dora/\">DORA</a> et plus encore. </li><li><a href=\"/fr/services/services-infonuagiques/\">Services infonuagiques</a> avec un niveau de protection renforcé.</li><li>Évolution de votre posture de sécurité et mise en œuvre d’un plan de reprise et continuité (PCA/PRA) pour une réponse aux incidents rapide et efficace.</li>"
       ],
       "image": "/wp-content/uploads/2024/12/modern-urban-architecture-2024-09-18-06-16-04-utc-2-scaled.jpg",
       "imageAlt": "",
@@ -119,6 +125,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Nos partenaires et technologies",
       "fond": "givre",
@@ -137,6 +144,7 @@
       ]
     },
     {
+      "_bookshop_name": "realisations",
       "type": "realisations",
       "title": "Une expertise sectorielle pour vos services de cybersécurité",
       "intro": "Nous aidons les organisations du secteur privé et public à atteindre leurs objectifs de sécurité de l’information.",
@@ -179,6 +187,7 @@
       "fond": "blanc"
     },
     {
+      "_bookshop_name": "faq",
       "type": "faq",
       "title": "En savoir plus sur nos services de cybersécurité",
       "fond": "givre",
@@ -208,6 +217,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "form",
       "type": "form",
       "title": "Évaluation posture sécurité",
       "intro": "Obtenez un portrait clair de votre posture de sécurité — un de nos experts vous recontacte rapidement.",
@@ -215,9 +225,11 @@
       "consentText": "",
       "variant": "carte",
       "formId": "campagne-evaluation",
+      "fond": "",
       "fields": []
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Faites face à la croissance des cyberrisques en toute confiance",
       "body": "Nous aidons les organisations à rentabiliser leurs investissements en matière de sécurité, avec une stratégie adaptée à votre réalité organisationnelle.",
@@ -225,7 +237,12 @@
       "ctaHref": "#formulaire",
       "cta2Label": "Planifiez une consultation",
       "cta2Href": "/fr/contact",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
-  ]
+  ],
+  "seoTitle": "La cybersécurité au service de vos affaires | Services | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

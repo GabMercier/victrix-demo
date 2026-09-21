@@ -4,8 +4,12 @@
   "description": "Victrix helps large organizations ensure their compliance with Law 25 on personal information protection. Are you compliant?",
   "noindex": false,
   "slug": "strategic-advice/law-25-compliance",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -18,6 +22,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Why Choose Victrix?",
       "intro": "Victrix is your trusted IT consulting firm. Our expertise in cybersecurity and our in-depth knowledge of your industry’s requirements enable us to provide you with end-to-end support for your compliance with Law 25.",
@@ -48,6 +53,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Is your organization compliant?",
       "body": "Our expertise will enable you to turn regulatory challenges into competitive advantages.",
@@ -55,7 +61,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ]
 }

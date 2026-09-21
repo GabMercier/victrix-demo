@@ -1,8 +1,12 @@
 {
   "title": "Maximize the use of your M365 ecosystem",
   "description": "Get the most out of M365 with our Microsoft 365 managed services. Victrix takes care of management and security operations to ensure your compliance.",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +19,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "How Microsoft 365 Managed Services Help Your Business",
       "intro": "",
@@ -34,6 +39,7 @@
       }
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Approach",
       "fond": "givre",
@@ -46,6 +52,7 @@
       ]
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Benefits of Victrix's M365 Managed Services",
       "headingStyle": "plain",
@@ -71,6 +78,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Our Methodology",
       "intro": "",
@@ -82,29 +90,48 @@
           "number": "01",
           "title": "Technical Compliance",
           "bullets": [
-            { "text": "Validation of the compliance of the M365 environment", "icon": "coche" },
-            { "text": "Security, identity and backup elements", "icon": "coche" }
+            {
+              "text": "Validation of the compliance of the M365 environment",
+              "icon": "coche"
+            },
+            {
+              "text": "Security, identity and backup elements",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Service Integration",
           "bullets": [
-            { "text": "Technical documentation", "icon": "document" },
-            { "text": "Linkage with your team", "icon": "coche" },
-            { "text": "Definition of KPIs, procedures and processes", "icon": "cible" }
+            {
+              "text": "Technical documentation",
+              "icon": "document"
+            },
+            {
+              "text": "Linkage with your team",
+              "icon": "coche"
+            },
+            {
+              "text": "Definition of KPIs, procedures and processes",
+              "icon": "cible"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Service Launch",
           "bullets": [
-            { "text": "Response and escalation of incidents, problems and changes", "icon": "coche" }
+            {
+              "text": "Response and escalation of incidents, problems and changes",
+              "icon": "coche"
+            }
           ]
         }
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Any questions?",
       "body": "Contact us to discuss your projects.",
@@ -112,7 +139,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "managed-it-services/maximize-the-use-of-your-m365-ecosystem",

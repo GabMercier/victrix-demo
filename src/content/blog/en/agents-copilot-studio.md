@@ -21,9 +21,9 @@ Deploying a tailored intelligent agent means providing your employees with a too
 - Anticipates your needs and easily adapts to new tasks
 - Responds quickly to your requests, regardless of the date or time you contact it
 
-The generative AI functions offered by Large Language Models (LLMs) such as ChatGPT and [Copilot for Microsoft 365](/en/expertise/productivity-consulting/copilot-for-microsoft-365/) are just a **small part of what [artificial intelligence](/en/expertise/artificial-intelligence/) can do to improve your organization's productivity** while enhancing the experience of your employees and customers.
+The generative AI functions offered by Large Language Models (LLMs) such as ChatGPT and [Copilot for Microsoft 365](/en/services/productivity-consulting/copilot-for-microsoft-365/) are just a **small part of what [artificial intelligence](/en/services/intelligence-artificielle/) can do to improve your organization's productivity** while enhancing the experience of your employees and customers.
 
-In this article, you will discover how to take your business to the next level by [deploying an intelligent AI agent](/en/expertise/productivity-consulting/copilot-studio/), **trained on your knowledge bases and developed specifically for your organizational context.**
+In this article, you will discover how to take your business to the next level by [deploying an intelligent AI agent](/en/services/productivity-consulting/copilot-studio/), **trained on your knowledge bases and developed specifically for your organizational context.**
 
 ### We help you rapidly develop your first tailored intelligent agent.
 

@@ -4,8 +4,13 @@
   "description": "Cybersécurité, IA, services applicatifs, infonuagique et services gérés. Nos équipes prennent en charge vos environnements TI du diagnostic à l'exploitation.",
   "noindex": true,
   "seoTitle": "",
+  "seoH1": "",
+  "slug": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Services-conseils TI",
       "eyebrowStyle": "texte",
@@ -22,6 +27,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Ce que nous prenons en charge",
       "headingStyle": "underline",
@@ -63,7 +69,7 @@
           "title": "Services gérés",
           "text": "Simplifiez la gestion de vos TI au quotidien : gouvernance TI, impartition, soutien technique, gestion des infrastructures, du réseau et des systèmes.",
           "ctaLabel": "Découvrez nos services gérés",
-          "ctaHref": "/fr/services/services-geres"
+          "ctaHref": "/fr/services/services-ti-geres/"
         }
       ]
     },
@@ -78,6 +84,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Parlons de vos besoins",
       "body": "Décrivez-nous ce que vous avez déjà en place. Nous bâtirons la prise en charge qui vous convient.",
@@ -85,7 +92,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": null,
       "cta2Href": null,
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ]
 }

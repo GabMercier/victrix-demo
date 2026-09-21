@@ -4,6 +4,10 @@
   "description": "Certifications reconnues, partenariats technologiques et équipes spécialisées. Notre expertise se vérifie plutôt qu'elle ne se proclame.",
   "noindex": true,
   "seoTitle": "",
+  "seoH1": "",
+  "slug": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
       "_bookshop_name": "service-hero",
@@ -34,7 +38,7 @@
         {
           "title": "Cybersécurité",
           "description": "Certification ISO/IEC 27001:2022, partenariats CrowdStrike et Microsoft Sentinel, analystes attitrés.",
-          "icon": "dossier"
+          "icon": "organisation"
         },
         {
           "title": "Intelligence artificielle",

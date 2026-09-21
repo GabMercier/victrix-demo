@@ -9,13 +9,13 @@ coverImage: "/wp-content/uploads/2022/02/solution-sevoc-pourquoi.jpg"
 seoTitle: ""
 wpUrl: "/en/setting-up-a-soc/"
 ---
-Before diving into the details of setting up a [SOC (Security Operations Center)](/en/expertise/cybersecurity/scalable-security-operations-center/), let's first address a taboo subject: **not all companies have the means and resources to build an internal SOC**.
+Before diving into the details of setting up a [SOC (Security Operations Center)](/en/services/cybersecurity/scalable-security-operations-center/), let's first address a taboo subject: **not all companies have the means and resources to build an internal SOC**.
 
-The reality is that unless you are the IT manager of a large, complex organization, it is much more advantageous to partner with a [managed security service provider (MSSP)](/en/expertise/managed-it-services/). Building a SOC from scratch requires significant investment and considerable resources.
+The reality is that unless you are the IT manager of a large, complex organization, it is much more advantageous to partner with a [managed security service provider (MSSP)](/en/services/managed-it-services/). Building a SOC from scratch requires significant investment and considerable resources.
 
 Of course, setting up a SOC is not impossible, provided you **know what you have** and **carefully assess the investment in time, money, and resources** that it entails.
 
-Our comprehensive guide will help you understand the basics of an effective SOC, from **setting realistic goals** to **structuring a SOC team**, without neglecting **policies and technologies**. After reading this, you will be able to determine whether it is in your organization's best interest to [outsource the SOC](/en/soc-outsourcing-pros-cons/) or build one internally.
+Our comprehensive guide will help you understand the basics of an effective SOC, from **setting realistic goals** to **structuring a SOC team**, without neglecting **policies and technologies**. After reading this, you will be able to determine whether it is in your organization's best interest to [outsource the SOC](/en/ressources/soc-outsourcing-pros-cons/) or build one internally.
 
 ### Ready to Accelerate Detection and Response and Promote Continuous Improvement of Your Security Posture?
 
@@ -37,7 +37,7 @@ For IT managers, the SOC provides a security framework that allows them to **mon
 
 Victrix's SEvOC offering stands out by providing a **scalable framework that goes beyond the capabilities of a standard SOC**. Our offering includes features such as vulnerability management, threat intelligence, automation and orchestration (SOAR), tailored reporting and performance indicators, as well as continuous improvement and governance.
 
-<a class="article-cta" href="/en/expertise/cybersecurity/scalable-security-operations-center/">Discover our scalable SOC</a>
+<a class="article-cta" href="/en/services/cybersecurity/scalable-security-operations-center/">Discover our scalable SOC</a>
 
 Before starting your SOC setup project, it is important to **know what you have at your disposal**. This is your first hurdle to implementing effective security controls tailored to your needs. Start by asking yourself what is really important to your business.
 

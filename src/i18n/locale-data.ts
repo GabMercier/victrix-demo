@@ -1,6 +1,7 @@
 /**
  * Accès générique aux collections « un JSON par langue » (src/data/<collection>/
- * {fr,en}.json) : `contact`, `carrieres`, `pagesSysteme`… Même garde-fou que
+ * {fr,en}.json) : `contact`, `pagesSysteme`… (Carrières a rejoint les « Pages
+ * générales » composées de sections le 2026-09-17.) Même garde-fou que
  * getSiteText (./site.ts, resté dédié à la collection `site` et à sa règle de
  * périmètre) : un fichier de langue manquant échoue le build avec un message
  * nommé — une erreur d'édition ne peut pas atteindre la production.

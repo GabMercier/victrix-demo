@@ -1,8 +1,12 @@
 {
   "title": "Internet of Things — OT & IoT Security Services",
   "description": "Strengthen the security of your organization's connected objects with the IoT security service designed by Victrix's cybersecurity experts.",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +19,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Why Secure Your Organization's Connected Objects?",
       "intro": "",
@@ -24,9 +29,18 @@
         "text": "<strong>IoT cybersecurity</strong> is a major issue for organizations. The growing number of devices and objects connected to the network expands your attack surface and increases your vulnerability.",
         "watermark": "eclair",
         "stats": [
-          { "value": "+12", "label": "strategic and specialized partners" },
-          { "value": "360°", "label": "of IT expertise" },
-          { "value": "+7,500", "label": "private and public sector projects" }
+          {
+            "value": "+12",
+            "label": "strategic and specialized partners"
+          },
+          {
+            "value": "360°",
+            "label": "of IT expertise"
+          },
+          {
+            "value": "+7,500",
+            "label": "private and public sector projects"
+          }
         ]
       },
       "aside": {
@@ -38,6 +52,7 @@
       }
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Approach",
       "subtitle": "Victrix performs a comprehensive analysis of your infrastructure to identify security risks and improve the resilience of IoT environments.",
@@ -51,6 +66,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Victrix Ensures the Security of IoT and OT Systems",
       "intro": "Complete support, from the assessment of your IoT networks to the adoption of new technologies by your teams.",
@@ -62,24 +78,46 @@
           "number": "01",
           "title": "Assessment, design, and implementation",
           "bullets": [
-            { "text": "In-depth assessment of your specific needs and the current state of your IoT network security", "icon": "coche" },
-            { "text": "Inventory of connected objects and identification of the associated vulnerabilities", "icon": "coche" },
-            { "text": "Definition of a secure IoT architecture tailored to your needs, taking scalability and performance into account", "icon": "coche" }
+            {
+              "text": "In-depth assessment of your specific needs and the current state of your IoT network security",
+              "icon": "coche"
+            },
+            {
+              "text": "Inventory of connected objects and identification of the associated vulnerabilities",
+              "icon": "coche"
+            },
+            {
+              "text": "Definition of a secure IoT architecture tailored to your needs, taking scalability and performance into account",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Management, monitoring, and support",
           "bullets": [
-            { "text": "Rapid intervention procedures to respond to any unauthorized access or failure", "icon": "coche" },
-            { "text": "Comprehensive technical support, including proactive maintenance plans and regular security software updates", "icon": "coche" },
-            { "text": "Training sessions to familiarize your teams with IoT best practices", "icon": "coche" },
-            { "text": "Personalized support to ensure successful adoption of new technologies", "icon": "coche" }
+            {
+              "text": "Rapid intervention procedures to respond to any unauthorized access or failure",
+              "icon": "coche"
+            },
+            {
+              "text": "Comprehensive technical support, including proactive maintenance plans and regular security software updates",
+              "icon": "coche"
+            },
+            {
+              "text": "Training sessions to familiarize your teams with IoT best practices",
+              "icon": "coche"
+            },
+            {
+              "text": "Personalized support to ensure successful adoption of new technologies",
+              "icon": "coche"
+            }
           ]
         }
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Sector-Specific Expertise in OT/IoT and Cybersecurity",
       "paragraphs": [
@@ -89,8 +127,14 @@
       "image": "/wp-content/uploads/2024/07/istock-1165052026-1.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "Tailored", "label": "A service adapted to your industry" },
-        { "value": "Continuity", "label": "Your operations and IoT environments protected" }
+        {
+          "value": "Tailored",
+          "label": "A service adapted to your industry"
+        },
+        {
+          "value": "Continuity",
+          "label": "Your operations and IoT environments protected"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -110,6 +154,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Strengthen your security posture in the age of the IoT",
       "body": "Protect your data, assets, and connected objects with our cybersecurity experts.",
@@ -117,7 +162,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "cybersecurity/internet-of-things-iot",

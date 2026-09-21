@@ -1,8 +1,12 @@
 {
   "title": "Services Gérés",
   "description": "Sécurisez, optimisez et gouvernez vos TI avec nos services gérés adaptés. Surveillance, support et automatisation, pour une performance sans compromis.",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,15 +19,31 @@
       "imageAlt": ""
     },
     {
-      "type": "rich-text",
-      "fond": "givre",
-      "paragraphs": [
-        "<strong>+225 000</strong> points de terminaison gérés à travers le Canada",
-        "<strong>99,9 %</strong> de respect des accords de services (SLA)",
-        "<strong>ZÉRO</strong> attaque réussie"
+      "_bookshop_name": "stats",
+      "type": "stats",
+      "title": "",
+      "style": "carte",
+      "fond": "blanc",
+      "items": [
+        {
+          "number": "+225 000",
+          "label": "points de terminaison gérés à travers le Canada",
+          "icon": "groupe-mains"
+        },
+        {
+          "number": "99,9 %",
+          "label": "de respect des accords de services (SLA)",
+          "icon": "engrenage-horloge"
+        },
+        {
+          "number": "ZÉRO",
+          "label": "attaque réussie",
+          "icon": "bouclier"
+        }
       ]
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Pourquoi choisir Victrix pour vos services gérés",
       "intro": "",
@@ -43,6 +63,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "L'externalisation, votre avantage stratégique pour rester compétitifs face aux défis actuels",
       "headingStyle": "plain",
@@ -78,6 +99,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Une couverture de services gérés axée sur la sécurité et l'amélioration continue",
       "intro": "Assurez la continuité, la sécurité et l'optimisation de votre environnement TI et allégez la charge de vos équipes internes. En tant que fournisseur de services gérés, Victrix prend en charge l'administration, la surveillance et l'évolution de vos infrastructures.",
@@ -89,38 +111,84 @@
           "number": "01",
           "title": "Services de soutien et gestion",
           "bullets": [
-            { "text": "Soutien technique et assistance selon un niveau de service personnalisé", "icon": "coche" },
-            { "text": "Gestion des incidents et problèmes", "icon": "coche" },
-            { "text": "Suivi des actifs, configurations et mises à jour", "icon": "coche" },
-            { "text": "Sélection et acquisition d'outils et de solutions TI adaptés", "icon": "coche" },
-            { "text": "Déploiement, adoption et formation des équipes", "icon": "coche" },
-            { "text": "Gestion des licences", "icon": "coche" }
+            {
+              "text": "Soutien technique et assistance selon un niveau de service personnalisé",
+              "icon": "coche"
+            },
+            {
+              "text": "Gestion des incidents et problèmes",
+              "icon": "coche"
+            },
+            {
+              "text": "Suivi des actifs, configurations et mises à jour",
+              "icon": "coche"
+            },
+            {
+              "text": "Sélection et acquisition d'outils et de solutions TI adaptés",
+              "icon": "coche"
+            },
+            {
+              "text": "Déploiement, adoption et formation des équipes",
+              "icon": "coche"
+            },
+            {
+              "text": "Gestion des licences",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Services de sécurité gérés",
           "bullets": [
-            { "text": "Protection des infrastructures, systèmes informatiques, réseaux et données en temps réel", "icon": "coche" },
-            { "text": "Surveillance, détection et réponse aux incidents", "icon": "coche" },
-            { "text": "Gestion des vulnérabilités, des menaces, du risque et de la conformité (GRC)", "icon": "coche" }
+            {
+              "text": "Protection des infrastructures, systèmes informatiques, réseaux et données en temps réel",
+              "icon": "coche"
+            },
+            {
+              "text": "Surveillance, détection et réponse aux incidents",
+              "icon": "coche"
+            },
+            {
+              "text": "Gestion des vulnérabilités, des menaces, du risque et de la conformité (GRC)",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Services pour l'optimisation et la performance",
           "bullets": [
-            { "text": "Gestion et maintenance des infrastructures", "icon": "coche" },
-            { "text": "Développement d'applications sur mesure et maintenance", "icon": "coche" },
-            { "text": "Automatisation de processus et intégration de systèmes", "icon": "coche" },
-            { "text": "Surveillance de la disponibilité, des performances et de la capacité des serveurs", "icon": "coche" },
-            { "text": "Amélioration continue des infrastructures et services infonuagiques", "icon": "coche" },
-            { "text": "Suivi des performances et optimisation", "icon": "coche" }
+            {
+              "text": "Gestion et maintenance des infrastructures",
+              "icon": "coche"
+            },
+            {
+              "text": "Développement d'applications sur mesure et maintenance",
+              "icon": "coche"
+            },
+            {
+              "text": "Automatisation de processus et intégration de systèmes",
+              "icon": "coche"
+            },
+            {
+              "text": "Surveillance de la disponibilité, des performances et de la capacité des serveurs",
+              "icon": "coche"
+            },
+            {
+              "text": "Amélioration continue des infrastructures et services infonuagiques",
+              "icon": "coche"
+            },
+            {
+              "text": "Suivi des performances et optimisation",
+              "icon": "coche"
+            }
           ]
         }
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Victrix : une prise en charge qui résout vos défis de gestion TI",
       "paragraphs": [
@@ -130,10 +198,22 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "24/7", "label": "Surveillance en continu" },
-        { "value": "< 24 h", "label": "Accès à des experts qualifiés" },
-        { "value": "Coût", "label": "Prévisible et optimisé" },
-        { "value": "Évolutivité", "label": "Ajustable selon vos besoins" }
+        {
+          "value": "24/7",
+          "label": "Surveillance en continu"
+        },
+        {
+          "value": "< 24 h",
+          "label": "Accès à des experts qualifiés"
+        },
+        {
+          "value": "Coût",
+          "label": "Prévisible et optimisé"
+        },
+        {
+          "value": "Évolutivité",
+          "label": "Ajustable selon vos besoins"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -143,6 +223,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "faq",
       "type": "faq",
       "title": "En savoir plus sur nos services gérés TI",
       "fond": "givre",
@@ -172,6 +253,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Victrix, votre partenaire stratégique pour des services gérés adaptés à votre organisation",
       "body": "Intéressés ? Des questions ? Contactez-nous dès aujourd'hui pour parler de vos projets.",
@@ -179,7 +261,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": "Services gérés TI | Gestion, Sécurité et Performance"

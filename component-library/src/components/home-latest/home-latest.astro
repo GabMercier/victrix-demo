@@ -1,4 +1,5 @@
 ---
+import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Derniers articles » — composant Bookshop (accueil composable).
  *
@@ -86,7 +87,7 @@ const readMoreClass =
         <h2 class="text-[48px] leading-none font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0">
           {title}
         </h2>
-        {subtitle && <p class="text-base leading-6 text-[#545F71] m-0 max-w-none">{subtitle}</p>}
+        {hasRichText(subtitle) && <div class="rich text-base leading-6 text-[#545F71] max-w-none" set:html={blockHtml(subtitle)} />}
       </div>
       <a
         class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"

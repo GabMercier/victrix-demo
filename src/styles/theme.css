@@ -87,10 +87,20 @@
   --color-neutral-900: #21242a;
   --color-neutral-950: #16181b;
 
-  /* Secondaires chauds (accents) — color.secondaire.* + noir anthracite */
-  --color-ivoire: #faf7f4;
-  --color-beige: #f1e8df;
-  --color-sable: #ebe0d5;
+  /* Secondaires chauds (accents) — color.secondaire.* + noir anthracite.
+     RÉ-ACCORDÉS le 2026-09-18 (palette raffinée, demande user) : les DEUX
+     fonds chauds du nouveau système sont « ivoire » #fcf9f5 (le chaud, beige
+     sable léger) et « beige » #f6f3ef (le gris chaud, gris beige). Les clés
+     ne changent pas — les 9 sections déjà en ivoire/beige suivent sans
+     retouche de contenu. Anciennes valeurs : ivoire #faf7f4, beige #f1e8df. */
+  --color-ivoire: #fcf9f5;
+  --color-beige: #f6f3ef;
+  /* « sable » RÉ-ACCORDÉ le 2026-09-17 (demande user : le jeton Figma #ebe0d5
+     tirait trop vers l'orange) → grège plus neutre. « pierre » = grège plus
+     soutenu, ajouté le même jour pour la palette « Fond de section »
+     (component-library/src/shared/fonds.ts = liste des clés + pastilles). */
+  --color-sable: #e9e2d9;
+  --color-pierre: #dcd5cc;
   --color-anthracite: #1a2029;
 
   /* ---- Alias français du pilote — ré-ancrés export2. Utilisés par les
@@ -103,6 +113,13 @@
   --color-bordure: #e5e7eb; /* neutral-200 — bordure des cartes */
   --color-encre: #21242a; /* neutral-900 — texte courant */
   --color-encre-douce: #545f71; /* neutral-600 — texte secondaire */
+  /* Contour de carte — JETON UNIQUE (2026-09-18, passe d'uniformité). Les
+     exports Figma posaient ce gris froid en verbatim, sous DEUX orthographes
+     (#C4C5D9 et #C3C6D7) réparties au hasard des composants ; la maquette
+     Approche du 18/09 tranche sur #C4C5D9. Toute carte bordée passe
+     désormais par `border-contour` — plus aucun hex de bordure dans le
+     markup. */
+  --color-contour: #c4c5d9;
 
   /* ---- Rôles Material des exports v2, ré-ancrés sur l'échelle export2
      (les NOMS restent — tout le markup re-skinné les consomme). ----------- */

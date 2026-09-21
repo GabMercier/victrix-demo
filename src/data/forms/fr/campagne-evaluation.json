@@ -2,6 +2,7 @@
   "_schema": "default",
   "name": "Campagne évaluation de sécurité (FR)",
   "toEmail": "",
+  "inboxKey": "",
   "subject": "Demande d'évaluation de posture de sécurité",
   "submitLabel": "Envoyer ma demande",
   "consentText": "Les renseignements fournis sont recueillis et utilisés uniquement pour traiter votre demande, conformément à la Loi 25 sur la protection des renseignements personnels dans le secteur privé.",

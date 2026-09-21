@@ -1,8 +1,12 @@
 {
   "title": "O bureau",
   "description": "Gérez vos espaces de travail facilement avec O bureau, l'application de réservation de bureau la plus simple à piloter.",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Écosystème Microsoft 365",
       "title": "O bureau, notre application de réservation de bureau",
@@ -17,6 +21,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Les bénéfices",
       "subtitle": "",
@@ -29,6 +34,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Une application simple et ergonomique pour gérer vos espaces de travail",
       "intro": "",
@@ -40,28 +46,62 @@
           "number": "01",
           "title": "Pour les employés",
           "bullets": [
-            { "text": "Réserver un bureau en fonction de vos besoins", "icon": "coche" },
-            { "text": "Modifier, annuler ou confirmer votre réservation", "icon": "coche" },
-            { "text": "Créer une réservation récurrente", "icon": "coche" },
-            { "text": "Connecter la réservation à votre agenda Outlook", "icon": "coche" },
-            { "text": "Confirmer votre présence avec le code unique du bureau", "icon": "coche" },
-            { "text": "Consulter les réservations de vos collègues et choisir un bureau près d’eux", "icon": "coche" },
-            { "text": "Désigner un collègue comme délégué pour les réservations", "icon": "coche" }
+            {
+              "text": "Réserver un bureau en fonction de vos besoins",
+              "icon": "coche"
+            },
+            {
+              "text": "Modifier, annuler ou confirmer votre réservation",
+              "icon": "coche"
+            },
+            {
+              "text": "Créer une réservation récurrente",
+              "icon": "coche"
+            },
+            {
+              "text": "Connecter la réservation à votre agenda Outlook",
+              "icon": "coche"
+            },
+            {
+              "text": "Confirmer votre présence avec le code unique du bureau",
+              "icon": "coche"
+            },
+            {
+              "text": "Consulter les réservations de vos collègues et choisir un bureau près d’eux",
+              "icon": "coche"
+            },
+            {
+              "text": "Désigner un collègue comme délégué pour les réservations",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Pour les gestionnaires de bureaux",
           "bullets": [
-            { "text": "Créer et gérer les bureaux, zones, étages et immeubles", "icon": "coche" },
-            { "text": "Gérer les spécificités et équipements disponibles pour un bureau", "icon": "coche" },
-            { "text": "Gérer la disponibilité des bureaux et zones", "icon": "coche" },
-            { "text": "Consulter des rapports sur les taux d’occupation des espaces, les périodes achalandées et le taux de présence de chaque employé", "icon": "coche" }
+            {
+              "text": "Créer et gérer les bureaux, zones, étages et immeubles",
+              "icon": "coche"
+            },
+            {
+              "text": "Gérer les spécificités et équipements disponibles pour un bureau",
+              "icon": "coche"
+            },
+            {
+              "text": "Gérer la disponibilité des bureaux et zones",
+              "icon": "coche"
+            },
+            {
+              "text": "Consulter des rapports sur les taux d’occupation des espaces, les périodes achalandées et le taux de présence de chaque employé",
+              "icon": "coche"
+            }
           ]
         }
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Une technologie Microsoft",
       "paragraphs": [
@@ -71,10 +111,22 @@
       "image": "/wp-content/uploads/2023/08/obureau-mobile.png",
       "imageAlt": "",
       "stats": [
-        { "value": "Déploiement", "label": "Rapide, avec un frais unique d’installation" },
-        { "value": "Teams", "label": "Intégration native à Microsoft Teams" },
-        { "value": "Autonomie", "label": "Pilotage et évolution de la solution" },
-        { "value": "Bilingue", "label": "Application français / anglais" }
+        {
+          "value": "Déploiement",
+          "label": "Rapide, avec un frais unique d’installation"
+        },
+        {
+          "value": "Teams",
+          "label": "Intégration native à Microsoft Teams"
+        },
+        {
+          "value": "Autonomie",
+          "label": "Pilotage et évolution de la solution"
+        },
+        {
+          "value": "Bilingue",
+          "label": "Application français / anglais"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -84,6 +136,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Adoptez O bureau",
       "body": "Victrix vous offre une application clé en main pour répondre à vos besoins de gestion des espaces de travail.",
@@ -91,7 +144,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": "Application de réservation de bureau | O bureau"

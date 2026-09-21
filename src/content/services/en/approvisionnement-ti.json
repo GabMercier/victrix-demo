@@ -5,8 +5,12 @@
   "noindex": false,
   "slug": "it-procurement",
   "seoTitle": "IT Procurement | Licenses and Hardware Purchase and Management | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "IT Procurement Services",
       "eyebrowStyle": "badge",
@@ -20,6 +24,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Strategic, Secure, and Managed IT Procurement",
       "intro": "From cybersecurity to cloud computing, automation, network, and connectivity, Victrix helps you build a high-performance, consistent, and secure infrastructure.",
@@ -39,6 +44,7 @@
       }
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "IT Procurement, Management, and Renewal",
       "intro": "Benefit from tailored support for the purchase, management, and renewal of your software licenses and hardware assets.",
@@ -111,6 +117,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Cybersecurity and Identity Protection",
       "groups": [
@@ -173,6 +180,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Network and Connectivity",
       "groups": [
@@ -201,6 +209,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Cloud Computing, Automation, and Virtualization",
       "groups": [
@@ -243,6 +252,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Victrix: Your Trusted Partner",
       "paragraphs": [
@@ -277,6 +287,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Ready to Purchase IT Hardware and Licenses Tailored to Your Organization’s Needs?",
       "body": "Assess your requirements, modernize your infrastructure, and simplify IT asset purchasing and management with a certified partner that places security and performance at the core of every project.",
@@ -284,7 +295,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ]
 }

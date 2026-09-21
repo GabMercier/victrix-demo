@@ -5,20 +5,30 @@
   "noindex": false,
   "slug": "",
   "seoTitle": "Microsoft 365 | Services | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Maximisez l’utilisation de votre écosystème M365",
       "titleHighlight": "écosystème M365",
       "lead": "Notre solution de gestion Microsoft 365 prend en charge les opérations de gestion et de sécurité afin d'assurer la conformité de votre environnement.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2023/08/istock-508289586.jpg",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Comment la gestion Microsoft 365 peut vous aider",
       "intro": "",
@@ -38,9 +48,11 @@
       }
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Notre approche",
-      "fond": "givre",
+      "subtitle": "",
+      "fond": "ivoire",
       "boxes": [
         "Support technique et conseil",
         "Gestion opérationnelle",
@@ -50,9 +62,15 @@
       ]
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Les avantages du service de gestion M365 de Victrix",
       "headingStyle": "plain",
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -60,21 +78,28 @@
         {
           "number": "01",
           "title": "Proactivité",
-          "text": "Permettre à votre équipe de se concentrer sur ce qui fait avancer votre organisation."
+          "text": "Permettre à votre équipe de se concentrer sur ce qui fait avancer votre organisation.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
           "title": "Sécurité",
-          "text": "Tirer profit de nos systèmes NOC et SOC pour vous protéger contre les cybermenaces."
+          "text": "Tirer profit de nos systèmes NOC et SOC pour vous protéger contre les cybermenaces.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
           "title": "Vigie et évolution",
-          "text": "Garantir un service rapide et efficace, une vigie constante et une évolution de votre environnement."
+          "text": "Garantir un service rapide et efficace, une vigie constante et une évolution de votre environnement.",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Notre méthodologie",
       "intro": "",
@@ -127,6 +152,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Vous avez des doutes?",
       "body": "Contactez-nous pour parler de vos projets.",
@@ -134,7 +160,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ]
 }

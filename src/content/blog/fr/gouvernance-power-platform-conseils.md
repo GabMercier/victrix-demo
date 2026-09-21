@@ -11,9 +11,9 @@ wpUrl: "/gouvernance-power-platform-conseils/"
 ---
  Pourquoi consulter un expert en gouvernance Power Platform? Les grandes organisations gagnent à **développer des solutions innovantes pour simplifier leurs processus d’affaires, améliorer la productivité et rester compétitives**. 
  Microsoft Power Platform est une solution Microsoft conçue pour répondre à ces enjeux. Elle permet aux grandes entreprises de développer des applications métier rapidement, et ce même sans expertise approfondie en développement. 
- Toutefois, son utilisation et la gouvernance de l’outil Microsoft Power Platform peuvent devenir un défi pour les organisations. Nous vous invitons donc à parcourir cet article rédigé par un [consultant Power Platform](/expertise/productivite/o-studio/) pour découvrir comment exploiter le potentiel de cet outil innovant.
+ Toutefois, son utilisation et la gouvernance de l’outil Microsoft Power Platform peuvent devenir un défi pour les organisations. Nous vous invitons donc à parcourir cet article rédigé par un [consultant Power Platform](/fr/services/productivite/o-studio/) pour découvrir comment exploiter le potentiel de cet outil innovant.
 
-Microsoft Power Platform est une solution intégrée dans la [suite Microsoft 365](/expertise/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/).  Cet outil performant suit la tendance des plateformes de développement low-code et no-code.  C'est la solution idéale pour simplifier la création et le développement d'applications sur mesure, avec ou sans expertise de programmation approfondie.
+Microsoft Power Platform est une solution intégrée dans la [suite Microsoft 365](/fr/services/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/).  Cet outil performant suit la tendance des plateformes de développement low-code et no-code.  C'est la solution idéale pour simplifier la création et le développement d'applications sur mesure, avec ou sans expertise de programmation approfondie.
 
 La Power Platform **favorise la collaboration entre les utilisateurs et développeurs.** Lorsque déployée en interne, elle permet d'automatiser certains processus d'entreprise complexes et lourds.
 
@@ -56,7 +56,7 @@ Power Automate facilite l'automatisation des processus longs et répétitifs, r�
 
 À cela, si vous ajoutez une Power App avec une interface simplifiée, vos équipes gagneront en productivité. Au-delà de l’aspect business, vous contribuez également à une meilleure satisfaction au travail.
 
-<a class="article-cta" href="/contact/">Contactez nos experts Power Platform</a>
+<a class="article-cta" href="/fr/contact/">Contactez nos experts Power Platform</a>
 
 ### 2. Intégration et extension de Microsoft 365
 
@@ -112,7 +112,7 @@ Les administrateurs et les membres de l'équipe de gouvernance doivent être for
 Finalement, il est essentiel d'intégrer l'utilisation du COE Toolkit dans les routines de gouvernance de l'organisation. En utilisant les données fournies par le toolkit, vous prendrez des décisions plus éclairées sur l'utilisation de la Power Platform au sein de votre organisation. 
  ![Exemple de configuration du centre d'excellence des outils Microsoft Power Platform.](/wp-content/uploads/2024/05/toolkit-powerplatform.png)
 
-Ø Studio est un [studio de créations technologiques](/expertise/productivite/o-studio/) au sein de Victrix. Nos consultants Microsoft Power Platform vous accompagnent dans l’exploitation du logiciel et le développement d’applications métiers pour augmenter la productivité de vos équipes. 
+Ø Studio est un [studio de créations technologiques](/fr/services/productivite/o-studio/) au sein de Victrix. Nos consultants Microsoft Power Platform vous accompagnent dans l’exploitation du logiciel et le développement d’applications métiers pour augmenter la productivité de vos équipes. 
  Faites confiance à notre équipe pour **vous accompagner dans la mise en place d’une gouvernance Power Platform** au sein de votre organisation. [Prenez rendez-vous pour discuter de votre projet](https://outlook.office365.com/owa/calendar/SiteWebSolutionsVictrix@victrix365.onmicrosoft.com/bookings/) 
  Vous avez un doute sur les cas d’usage pouvant être traité avec Microsoft Power Platform? 
  [Découvrez nos créations Ø Studio](https://o-studio-catalogue.victrix.ca/#catalogue)

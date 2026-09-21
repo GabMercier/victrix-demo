@@ -21,7 +21,7 @@ wpUrl: "/nomination-dominic-lajoie/"
 
 **Stéphan Gariépy** : Vous avez déjà mené des entreprises à travers des phases de croissance accélérée. Quels atouts spécifiques pensez-vous pouvoir apporter à notre équipe pour cette nouvelle étape de développement ?
 
-**Dominic Lajoie** : Mon parcours m’a permis de gérer la croissance rapide et de structurer des organisations pour les rendre plus agiles et efficaces. Chez Victrix, mon rôle sera de consolider les processus tout en maintenant une flexibilité qui nous permet de répondre rapidement aux nouvelles opportunités. Je me concentrerai sur l'efficacité opérationnelle, le développement des talents et l’expansion de nos capacités technologiques, notamment en [intelligence artificielle (IA)](/expertise/intelligence-artificielle/), [ServiceNow](/expertise/productivite/servicenow/) et [cybersécurité](/expertise/cybersecurite/).
+**Dominic Lajoie** : Mon parcours m’a permis de gérer la croissance rapide et de structurer des organisations pour les rendre plus agiles et efficaces. Chez Victrix, mon rôle sera de consolider les processus tout en maintenant une flexibilité qui nous permet de répondre rapidement aux nouvelles opportunités. Je me concentrerai sur l'efficacité opérationnelle, le développement des talents et l’expansion de nos capacités technologiques, notamment en [intelligence artificielle (IA)](/fr/services/intelligence-artificielle/), [ServiceNow](/fr/services/productivite/servicenow/) et [cybersécurité](/fr/services/cybersecurite/).
 
 ## **Pourquoi l’IA, ServiceNow et la cybersécurité sont au cœur de la stratégie de Victrix**
 
@@ -50,4 +50,4 @@ wpUrl: "/nomination-dominic-lajoie/"
 ### Découvrez notre vision stratégique et nos expertises
 
 IA, cybersécurité, ServiceNow et bien plus.
- [En savoir plus](/)
+ [En savoir plus](/fr/)

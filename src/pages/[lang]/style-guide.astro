@@ -136,11 +136,12 @@ const shadows = ['--shadow-1', '--shadow-2', '--shadow-3'];
             ['--color-nuit', 'Bleu nuit — profondeur, surfaces sombres'],
             ['--color-on-surface', 'neutral-900 — texte'],
             ['--color-on-surface-variant', 'neutral-600 — texte secondaire'],
-            ['--color-outline-variant', 'neutral-200 — bordures de cartes'],
+            ['--color-contour', 'Contour — bordure 1 px des cartes (rayon 8)'],
+            ['--color-outline-variant', 'neutral-200 — séparateurs fins'],
             ['--color-surface-container-low', 'neutral-50 — bandes claires, pied de page'],
-            ['--color-ivoire', 'Ivoire — accent chaud (secondaire)'],
-            ['--color-beige', 'Beige — accent chaud (secondaire)'],
-            ['--color-sable', 'Sable — accent chaud (secondaire)'],
+            ['--color-ivoire', 'Ivoire — LE fond chaud des sections (palette raffinée 2026-09-18)'],
+            ['--color-beige', 'Beige — LE fond gris chaud des sections (idem)'],
+            ['--color-sable', 'Sable — accent chaud plus soutenu'],
           ].map(([token, label]) => (
             <li class="sg__swatch">
               <span class="sg__chip" style={`background-color: var(${token})`} />

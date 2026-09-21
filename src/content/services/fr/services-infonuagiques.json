@@ -1,12 +1,12 @@
 {
-  "_schema": "default",
   "title": "Services infonuagiques",
   "description": "Migrez vers une solution infonuagique adaptée à votre réalité d'affaires. Victrix accélère et simplifie votre transition avec des services infonuagiques sur mesure.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Services infonuagiques adaptés à vos enjeux | Services",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Services infonuagiques",
       "titleAccent": null,
@@ -19,6 +19,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Solutions et services infonuagiques",
       "intro": "Nos services infonuagiques sont conçus pour répondre aux défis uniques de votre organisation. De la sélection de votre solution infonuagique à la migration des charges et l'optimisation continue de votre environnement, Victrix est là pour vous.",
@@ -34,16 +35,17 @@
         "title": "Conseil stratégique",
         "text": "Bénéficiez de notre expertise en conseil stratégique pour assurer le succès de tous vos projets de transformation numérique.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/contact/"
+        "linkHref": "/fr/contact/"
       }
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Nos solutions infonuagiques",
       "paragraphs": [
         "De l'<strong>hébergement de fichiers et de données sensibles</strong> au <strong>déploiement d'un serveur infonuagique</strong> pour entreprise sur mesure, Victrix est là pour répondre à vos besoins. Nos experts en infonuagique vous proposent des solutions de confiance pour moderniser et propulser votre entreprise.",
-        "<strong>Victrix accélère votre migration Microsoft Azure.</strong> Notre méthodologie basée sur le <strong>Cloud Adoption Framework de Microsoft</strong> vous permet de faire vos premiers pas dans la migration de vos applications et serveurs, avec un stockage Azure sécurisé et toutes les fonctions innovantes de Microsoft. <a href=\"/expertise/services-infonuagiques/migration-vers-azure/\">Découvrez la migration vers Microsoft Azure</a>",
-        "<strong>Tirez parti de la plateforme AWS Enterprise grâce à Victrix.</strong> Notre expertise avec Amazon EC2 (IaaS), AWS Elastic Beanstalk (PaaS) et les solutions SaaS AWS nous permet d'assurer <strong>un déplacement efficace des applications</strong> vers un modèle de service qui favorise l'évolution et simplifie la gestion. <a href=\"/expertise/services-infonuagiques/services-aws/\">Découvrez la migration vers AWS</a>"
+        "<strong>Victrix accélère votre migration Microsoft Azure.</strong> Notre méthodologie basée sur le <strong>Cloud Adoption Framework de Microsoft</strong> vous permet de faire vos premiers pas dans la migration de vos applications et serveurs, avec un stockage Azure sécurisé et toutes les fonctions innovantes de Microsoft. <a href=\"/fr/services/services-infonuagiques/migration-vers-azure/\">Découvrez la migration vers Microsoft Azure</a>",
+        "<strong>Tirez parti de la plateforme AWS Enterprise grâce à Victrix.</strong> Notre expertise avec Amazon EC2 (IaaS), AWS Elastic Beanstalk (PaaS) et les solutions SaaS AWS nous permet d'assurer <strong>un déplacement efficace des applications</strong> vers un modèle de service qui favorise l'évolution et simplifie la gestion. <a href=\"/fr/services/services-infonuagiques/services-aws/\">Découvrez la migration vers AWS</a>"
       ],
       "image": "",
       "imageAlt": "",
@@ -65,6 +67,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Notre stratégie d'accélération : services IaaS — SaaS — PaaS",
       "headingStyle": "plain",
@@ -106,6 +109,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Nos expertises et services infonuagiques",
       "groups": [
@@ -157,6 +161,7 @@
       ]
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Nos partenaires",
       "fond": "givre",
@@ -186,6 +191,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Victrix, votre partenaire stratégique en solutions et services infonuagiques",
       "body": "Faites appel à notre expertise pour vos projets de migration vers AWS ou Azure et bénéficiez d'un stockage infonuagique sécurisé, flexible et accessible. Nous accélérons la dématérialisation des centres de données en offrant des services agiles de qualité, grâce à notre pratique multi-cloud.",
@@ -193,7 +199,12 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
-  ]
+  ],
+  "seoTitle": "Services infonuagiques adaptés à vos enjeux | Services",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

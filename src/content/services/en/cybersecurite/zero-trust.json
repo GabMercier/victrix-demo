@@ -1,8 +1,12 @@
 {
   "title": "Move to the Zero Trust Cybersecurity Model",
   "description": "Adopt the Zero Trust cybersecurity model with Victrix. Reduce the risk of attack and simplify identity management for your organization.",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +19,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Why Adopt the Zero Trust Model?",
       "intro": "",
@@ -24,7 +29,10 @@
         "text": "At Victrix, we consider the Zero Trust model to be <strong>one of the most popular cybersecurity frameworks</strong> for protecting critical systems and data.",
         "watermark": "graphique",
         "stats": [
-          { "value": "60%", "label": "of enterprises will use Zero Trust solutions instead of VPNs by 2025 (Gartner)" }
+          {
+            "value": "60%",
+            "label": "of enterprises will use Zero Trust solutions instead of VPNs by 2025 (Gartner)"
+          }
         ]
       },
       "aside": {
@@ -36,6 +44,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Benefits of the Zero Trust Model for Your Organization",
       "headingStyle": "plain",
@@ -43,16 +52,45 @@
       "columns": "3",
       "cardStyle": "default",
       "items": [
-        { "number": "01", "title": "Seamless user experience", "text": "" },
-        { "number": "02", "title": "Continuous auditing", "text": "" },
-        { "number": "03", "title": "Least privilege principle", "text": "" },
-        { "number": "04", "title": "Micro-segmentation", "text": "" },
-        { "number": "05", "title": "Monitoring and analysis", "text": "" },
-        { "number": "06", "title": "Granular security policies", "text": "" },
-        { "number": "07", "title": "Dynamic trust", "text": "" }
+        {
+          "number": "01",
+          "title": "Seamless user experience",
+          "text": ""
+        },
+        {
+          "number": "02",
+          "title": "Continuous auditing",
+          "text": ""
+        },
+        {
+          "number": "03",
+          "title": "Least privilege principle",
+          "text": ""
+        },
+        {
+          "number": "04",
+          "title": "Micro-segmentation",
+          "text": ""
+        },
+        {
+          "number": "05",
+          "title": "Monitoring and analysis",
+          "text": ""
+        },
+        {
+          "number": "06",
+          "title": "Granular security policies",
+          "text": ""
+        },
+        {
+          "number": "07",
+          "title": "Dynamic trust",
+          "text": ""
+        }
       ]
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Victrix: Secure Your Data with the Zero Trust Model",
       "fond": "givre",
@@ -78,6 +116,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Continuously Improve Your Security Posture",
       "body": "If you have questions about protecting your cybersecurity or Zero Trust architecture, please contact us: our cybersecurity experts will work with you to implement the best solutions to keep your organization safe.",
@@ -85,7 +124,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "cybersecurity/zero-trust",

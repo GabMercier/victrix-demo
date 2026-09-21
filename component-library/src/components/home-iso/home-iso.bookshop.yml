@@ -14,7 +14,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/home-iso/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/home-iso/home-iso.preview.png"
     text: "Accueil — Barre de confiance"
     subtext: Chiffres clés et certifications en bande claire
   preview:
@@ -40,7 +40,29 @@ _inputs:
   title:
     label: "Titre (masqué quand des éléments existent)"
   subtitle:
+    type: html
     label: "Sous-titre (rendu seulement sans éléments)"
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   items:
     label: "Éléments de confiance"
     comment: "Chiffre ou mention (valeur) + libellé court. Tableau vide = ancien bandeau."

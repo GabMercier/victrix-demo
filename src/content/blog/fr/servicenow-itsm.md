@@ -13,8 +13,8 @@ ServiceNow ITSM est le choix de prédilection de nombreuses organisations, et po
 
 ServiceNow se distingue en tant que leader du marché en proposant une plateforme ITSM infonuagique et alimentée par l'IA qui accélère la transformation numérique des opérations TI tout en réduisant les pannes.
 
-Nos [consultants certifiés ServiceNow](/expertise/productivite/servicenow/) sont heureux de partager leur expertise ITSM. Découvrez notre stratégie orientée affaires pour faire croître vos opérations TI et maximiser votre ROI avec ServiceNow ITSM.
- [Discutons de vos besoins ITSM](/contact/)
+Nos [consultants certifiés ServiceNow](/fr/services/productivite/servicenow/) sont heureux de partager leur expertise ITSM. Découvrez notre stratégie orientée affaires pour faire croître vos opérations TI et maximiser votre ROI avec ServiceNow ITSM.
+ [Discutons de vos besoins ITSM](/fr/contact/)
 
 ### Les différences majeures entre le support TI traditionnel et ITSM
 
@@ -36,13 +36,13 @@ En mettant en place un cadre ITSM structuré, **les entreprises standardisent le
 
 #### L’IA et l’automatisation au service de la gestion TI
 
-ServiceNow intègre des technologies d’automatisation alimentées par l’[intelligence artificielle](/expertise/intelligence-artificielle/) pour optimiser les opérations TI, notamment:
+ServiceNow intègre des technologies d’automatisation alimentées par l’[intelligence artificielle](/fr/services/intelligence-artificielle/) pour optimiser les opérations TI, notamment:
 
 - Des agents virtuels: Des chatbots alimentés par l’IA gèrent les demandes TI courantes, réduisant ainsi l’intervention humaine.
 - L’intelligence prédictive: L’apprentissage automatique analyse les données historiques pour suggérer des solutions proactives.
 - Billetterie automatisée: Les billets TI se résolvent automatiquement, réduisant les interruptions de service et améliorant les temps de réponse.
 
-<a class="article-cta" href="/contact/">Contactez-nous</a>
+<a class="article-cta" href="/fr/contact/">Contactez-nous</a>
 
 #### ITSM infonuagique pour les entreprises modernes
 
@@ -104,7 +104,7 @@ Avant de procéder à la mise en œuvre, il est nécessaire d'effectuer une éva
 
 L'**absence de définition d'objectifs clairs** est la principale cause d'échec, car elle peut conduire à un désalignement avec les stratégies de l'entreprise. Une **formation inadéquate** entraîne souvent un faible taux d'adoption, ce qui se traduit par des gains d'efficacité médiocres. Enfin, le fait de **négliger la gestion du changement** crée une résistance parmi les employés, ce qui rend difficile l'intégration réussie des pratiques ITSM.
 
-Pour ces raisons, nous recommandons toujours de travailler avec un [partenaire ServiceNow certifié](/expertise/productivite/servicenow/). Avec l'aide de Victrix, vous serez en mesure de définir vos objectifs et **d'obtenir une feuille de route claire et détaillée** pour l'implantation de ServiceNow ITSM.
+Pour ces raisons, nous recommandons toujours de travailler avec un [partenaire ServiceNow certifié](/fr/services/productivite/servicenow/). Avec l'aide de Victrix, vous serez en mesure de définir vos objectifs et **d'obtenir une feuille de route claire et détaillée** pour l'implantation de ServiceNow ITSM.
 
 Un partenariat avec des experts assure un **déploiement harmonieux et réussi,**parfaitement adapté aux besoins et objectifs de votre entreprise. Avec l’expertise de Victrix, vous serez en mesure de:
 
@@ -113,4 +113,4 @@ Un partenariat avec des experts assure un **déploiement harmonieux et réussi,*
 - Obtenir un soutien 24/7 pour résoudre tout défi ITSM
 - Bénéficier d'une optimisation et de mises à jour continues pour soutenir la croissance et les besoins de votre entreprise.
 
-<a class="article-cta" href="/contact/">Parlons de votre implémentation ITSM</a>
+<a class="article-cta" href="/fr/contact/">Parlons de votre implémentation ITSM</a>

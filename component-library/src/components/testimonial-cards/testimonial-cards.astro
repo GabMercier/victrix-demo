@@ -1,0 +1,108 @@
+---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { hasRichText, inlineHtml } from '../../shared/rich';
+/**
+ * Section « Cartes témoignages » — composant Bookshop (2026-09-17, conversion
+ * de la page Carrières en page « sections »).
+ * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/carriere.css §Témoignages, ex-
+ * bloc de src/pages/[lang]/carrieres.astro repris VERBATIM) : titre 40/700
+ * centré sur bande grise, grille de cartes blanches bordées (jeton `contour`, rayon 8,
+ * rayon 2) centrées — guillemets décoratifs en filigrane bleu 20 % en haut à
+ * gauche, portrait 96 px rayon 12 bordé primary/10, citation 18/29 italique,
+ * prénom 24/700, rôle 12/700 bleu majuscules.
+ *
+ * DISTINCT de `testimonial` (UNE citation d'un client, mise en page
+ * éditoriale) : ici PLUSIEURS cartes en grille (2 par rangée).
+ *
+ * Props : { type: "testimonial-cards", title?, fond?,
+ *           items: [{ image, quote, name, role }] }
+ * - `image` = chemin PUBLIC du portrait (uploads public/images/carrieres) ;
+ *   vide = pastille grise (la carte garde sa forme).
+ * - `quote` : texte enrichi INLINE — les guillemets typographiques restent
+ *   dans le contenu (« … » / “ … ”), comme sur la page d'origine.
+ * - `fond` : palette partagée ; DÉFAUT « brume » (#e5e7eb = l'ancien
+ *   bg-surface-container-high de la page — rendu identique).
+ *
+ * Contraintes / pièges :
+ * - <h2> optionnel ; noms des cartes = <h3>, rôle = <p>.
+ * - `items = []` en secours (édition en direct CloudCannon).
+ * - Browser-safe : aucun astro:assets, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface TestimonialCard {
+  image?: string;
+  quote: string;
+  name: string;
+  role?: string;
+}
+
+interface Props {
+  title?: string;
+  fond?: FondKey;
+  items?: TestimonialCard[];
+}
+
+const { title = '', fond = 'brume', items = [] } = Astro.props;
+
+// « Fond de section » : clé fermée → utilitaire de la palette officielle ;
+// défaut = rendu historique de la page Carrières (bande surface-container-high).
+const FONDS: Record<string, string> = FOND_CLASSES;
+
+// Guillemets décoratifs des cartes (fill).
+const QUOTE_PATHS = [
+  'M10.7 7v4.6c0 3.7-2 6.2-5.6 7.4l-1-1.9c2.1-.8 3.3-2.1 3.6-3.9H4V7h6.7Z',
+  'M21 7v4.6c0 3.7-2 6.2-5.6 7.4l-1-1.9c2.1-.8 3.3-2.1 3.6-3.9h-3.7V7H21Z',
+];
+---
+
+<section class:list={['py-20 overflow-hidden', FONDS[fond] ?? FONDS.brume]}>
+  <div class="container-site flex flex-col gap-12 lg:gap-20">
+    {
+      title !== '' && (
+        <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
+          {title}
+        </h2>
+      )
+    }
+    <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-6 m-0 p-0 list-none">
+      {
+        items.map((card) => (
+          <li class="m-0 relative bg-surface rounded-lg p-8 lg:p-12 flex flex-col items-center text-center border border-solid border-contour">
+            <svg
+              class="absolute top-8 left-8 text-primary/20 opacity-50"
+              width="42"
+              height="42"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+              focusable="false"
+            >
+              {QUOTE_PATHS.map((d) => (
+                <path d={d} />
+              ))}
+            </svg>
+            {/* Pas de fond de secours DERRIÈRE une image : les portraits PNG peuvent
+                être transparents (fond blanc de la carte visible, comme avant). */}
+            <span
+              class:list={[
+                'block size-24 rounded-xl overflow-hidden border-4 border-solid border-primary/10 mb-6',
+                !card.image && 'bg-surface-container-high',
+              ]}
+            >
+              {card.image && <img class="w-full h-full object-cover border-0" src={card.image} alt="" loading="lazy" decoding="async" />}
+            </span>
+            <blockquote class="m-0 mb-8 relative z-10">
+              {hasRichText(card.quote) && (
+                <p class="text-lg leading-[29px] italic text-on-surface m-0 max-w-none" set:html={inlineHtml(card.quote)} />
+              )}
+            </blockquote>
+            <div class="mt-auto">
+              <h3 class="text-2xl leading-8 font-bold text-on-surface m-0">{card.name}</h3>
+              {card.role && <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary m-0 mt-1 max-w-none">{card.role}</p>}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

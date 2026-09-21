@@ -28,7 +28,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/form/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/form/form.preview.png"
     text: Formulaire
     subtext: Maquette par défaut — fonctionnel si PUBLIC_FORMS_ENABLED=1
   preview:
@@ -87,8 +87,30 @@ _inputs:
   title:
     label: "Titre"
   intro:
+    type: html
     label: "Introduction"
     comment: "Paragraphe optionnel sous le titre."
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   formId:
     label: "Formulaire lié (identifiant)"
     comment: >-
@@ -123,12 +145,19 @@ _inputs:
     label: "Fond de section"
     options:
       allow_empty: true
-      values:
-        - blanc
-        - givre
-        - ivoire
-        - beige
-        - sable
+      # Palette partagée (2026-09-17) : liste d'objets {cle, libelle, couleur, apercu}
+      # définie UNE fois dans cloudcannon.config.yml (_select_data.fonds) — la valeur
+      # enregistrée reste la clé texte ; l'éditeur affiche libellé + pastille.
+      values: _select_data.fonds
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+        icon: square
+        icon_color:
+          - key: couleur
     comment: "Couleur de fond de la bande derrière le formulaire. Vide = défaut du bloc (gris très pâle en carte, blanc en panneau)."
   fields:
     # `type: array` explicite — voir le GOTCHA d'entête (bail-out de generate +

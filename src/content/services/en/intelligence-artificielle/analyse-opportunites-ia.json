@@ -5,8 +5,12 @@
   "noindex": false,
   "slug": "artificial-intelligence/ai-opportunity-analysis",
   "seoTitle": "Artificial Intelligence Opportunity Analysis and Exploration",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -19,6 +23,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Why Explore Your AI Opportunities?",
       "intro": "",
@@ -38,6 +43,7 @@
       }
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "What Our AI Opportunity Analysis Can Do",
       "subtitle": "At Victrix, our experts offer personalized AI support that gives you the precision you need to build a solid AI adoption strategy.",
@@ -51,6 +57,7 @@
       ]
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "The Key Steps in Our Approach",
       "headingStyle": "plain",
@@ -82,6 +89,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Concrete Benefits for Your Organization",
       "paragraphs": [
@@ -126,6 +134,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Take Action with Victrix",
       "body": "Contact us to start your AI exploration and build a clear roadmap for your projects.",
@@ -133,7 +142,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ]
 }

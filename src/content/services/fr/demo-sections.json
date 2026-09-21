@@ -2,6 +2,9 @@
   "title": "Démonstration sections services",
   "description": "Page de démonstration des sections de la palette services : en-tête de service, cartes numérotées, encadré, boîtes, colonnes techno, texte enrichi et ressources liées.",
   "noindex": true,
+  "seoH1": "Démonstration sections services",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
       "_bookshop_name": "service-hero",
@@ -49,12 +52,42 @@
       "intro": "Chronologie en serpentin : les jalons marquants sont mis en évidence.",
       "tone": "tint",
       "items": [
-        { "year": "2003", "title": "Création de l'entreprise", "text": "", "accent": true },
-        { "year": "2008", "title": "Première acquisition", "text": "Une phrase de détail optionnelle.", "accent": false },
-        { "year": "2012", "title": "Croissance des équipes", "text": "", "accent": false },
-        { "year": "2016", "title": "Nouveau bureau", "text": "", "accent": false },
-        { "year": "2019", "title": "Expansion internationale", "text": "", "accent": true },
-        { "year": "2023", "title": "Nouvelle offre", "text": "", "accent": true }
+        {
+          "year": "2003",
+          "title": "Création de l'entreprise",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2008",
+          "title": "Première acquisition",
+          "text": "Une phrase de détail optionnelle.",
+          "accent": false
+        },
+        {
+          "year": "2012",
+          "title": "Croissance des équipes",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2016",
+          "title": "Nouveau bureau",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2019",
+          "title": "Expansion internationale",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2023",
+          "title": "Nouvelle offre",
+          "text": "",
+          "accent": true
+        }
       ]
     },
     {
@@ -71,6 +104,7 @@
       "type": "feature-boxes",
       "sectionTitle": "Ce que couvre l'accompagnement",
       "subtitle": "Un périmètre clair, adapté à votre organisation.",
+      "fond": "givre",
       "boxes": [
         "Stratégie et gouvernance",
         "Architecture et intégration",
@@ -111,6 +145,7 @@
       "_bookshop_name": "rich-text",
       "type": "rich-text",
       "title": "Une approche éprouvée",
+      "fond": "blanc",
       "paragraphs": [
         "Depuis plus de 25 ans, nos équipes accompagnent les organisations québécoises dans leurs projets technologiques les plus <strong>structurants</strong>.",
         "Chaque mandat commence par l'écoute : comprendre vos enjeux d'affaires avant de parler de solutions."
@@ -156,7 +191,7 @@
           "text": "",
           "peau": "blanche",
           "taille": "haute",
-          "icon": "personnes",
+          "icon": "groupe",
           "image": "",
           "href": ""
         },
@@ -229,7 +264,7 @@
           "text": "Description du second outil.",
           "ctaLabel": "En savoir plus",
           "href": "/fr/contact",
-          "icon": "etoile"
+          "icon": "etincelle"
         }
       ]
     },
@@ -237,6 +272,7 @@
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Valeur stratégique",
+      "fond": "",
       "paragraphs": [
         "Premier paragraphe de démonstration, avec un mot <strong>important</strong> mis en évidence.",
         "Second paragraphe : la section rend chaque entrée du tableau comme un paragraphe distinct."
@@ -244,15 +280,22 @@
       "image": "/images/services/valeur-copilot-studio.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "ROI", "label": "Optimisation rapide" },
-        { "value": "100 %", "label": "Intégration M365" }
+        {
+          "value": "ROI",
+          "label": "Optimisation rapide"
+        },
+        {
+          "value": "100 %",
+          "label": "Intégration M365"
+        }
       ]
     },
     {
       "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Offres numérotées",
-      "intro": "Cartes « verre » à tuile numéro bleue et liste à puces, bouton primaire centré.",
+      "intro": "Cartes « verre » à compteur et liseré bleu, liste à puces, bouton primaire centré.",
+      "fond": "givre",
       "ctaLabel": "Prendre rendez-vous",
       "ctaHref": "/fr/contact",
       "items": [
@@ -260,17 +303,32 @@
           "number": "1",
           "title": "Première offre",
           "bullets": [
-            { "text": "Point à crochet cerclé", "icon": "coche" },
-            { "text": "Second point de la liste", "icon": "coche" }
+            {
+              "text": "Point à crochet cerclé",
+              "icon": "coche"
+            },
+            {
+              "text": "Second point de la liste",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "2",
           "title": "Seconde offre",
           "bullets": [
-            { "text": "Point à icône document", "icon": "document" },
-            { "text": "Point à icône cible", "icon": "cible" },
-            { "text": "Point à icône feuille de route", "icon": "carte" }
+            {
+              "text": "Point à icône document",
+              "icon": "document"
+            },
+            {
+              "text": "Point à icône cible",
+              "icon": "cible"
+            },
+            {
+              "text": "Point à icône feuille de route",
+              "icon": "carte"
+            }
           ]
         }
       ]
@@ -280,6 +338,7 @@
       "type": "realisations",
       "title": "Réalisations",
       "intro": "Tête à gauche, lien souligné à droite, grille de quatre cartes.",
+      "fond": "blanc",
       "linkLabel": "Demandez une démo",
       "linkHref": "/fr/contact",
       "items": [
@@ -304,6 +363,122 @@
           "icon": "marteau"
         }
       ]
+    },
+    {
+      "_bookshop_name": "photo-hero",
+      "type": "photo-hero",
+      "title": "Héros photo",
+      "sub": "Photo pleine largeur voilée d’anthracite, titre blanc et bouton en majuscules.",
+      "ctaLabel": "Postulez",
+      "ctaHref": "/fr/contact",
+      "image": "/images/carrieres/hero-vie-chez-victrix.jpg",
+      "imageAlt": "",
+      "imagePosition": "haut"
+    },
+    {
+      "_bookshop_name": "award-card",
+      "type": "award-card",
+      "title": "Carte distinction",
+      "lead": "Carte blanche bordée sur bande grise : insigne bleu, titre, chapeau.",
+      "quote": "Citation en italique avec un liseré bleu à gauche.",
+      "fond": "perle"
+    },
+    {
+      "_bookshop_name": "value-tiles",
+      "type": "value-tiles",
+      "eyebrow": "Surtitre",
+      "title": "Tuiles de valeurs",
+      "fond": "blanc",
+      "items": [
+        {
+          "icon": "etoile",
+          "label": "Excellence"
+        },
+        {
+          "icon": "groupe",
+          "label": "Collaboration"
+        },
+        {
+          "icon": "ampoule",
+          "label": "Innovation"
+        },
+        {
+          "icon": "poignee",
+          "label": "Engagement"
+        },
+        {
+          "icon": "coche",
+          "label": "Intégrité"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "photo-features",
+      "type": "photo-features",
+      "title": "Photo + atouts",
+      "lead": "Photo avec carte flottante bleue à gauche, titre, chapeau et grille 2×2 d’atouts à droite.",
+      "cardTitle": "Carte flottante",
+      "cardText": "Titre et texte posés sur la photo.",
+      "image": "/images/carrieres/equipe-environnement.jpg",
+      "imageAlt": "",
+      "fond": "blanc",
+      "items": [
+        {
+          "icon": "croissance-pleine",
+          "title": "Croissance",
+          "text": "Atout à icône croissance."
+        },
+        {
+          "icon": "progression",
+          "title": "Progression",
+          "text": "Atout à icône progression."
+        },
+        {
+          "icon": "coeur",
+          "title": "Cœur",
+          "text": "Atout à icône cœur."
+        },
+        {
+          "icon": "formation",
+          "title": "Formation",
+          "text": "Atout à icône toque."
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "testimonial-cards",
+      "type": "testimonial-cards",
+      "title": "Cartes témoignages",
+      "fond": "brume",
+      "items": [
+        {
+          "image": "/images/carrieres/temoignage-daniel.png",
+          "quote": "« Première citation en italique, portrait au-dessus, prénom et rôle en dessous. »",
+          "name": "Prénom",
+          "role": "Rôle / poste"
+        },
+        {
+          "image": "/images/carrieres/temoignage-mikael.png",
+          "quote": "« Seconde citation — deux cartes par rangée sur bande grise. »",
+          "name": "Prénom",
+          "role": "Rôle / poste"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "text-photo",
+      "type": "text-photo",
+      "title": "Texte + photo",
+      "lead": "Titre, chapeau, ligne d’engagement et pastilles partenaires à gauche ; photo à droite.",
+      "engagementTitle": "Ligne d’engagement (pictogramme + titre)",
+      "engagementText": "Texte d’engagement sous la ligne.",
+      "partners": [
+        "Partner 1",
+        "Partner 2"
+      ],
+      "image": "/images/carrieres/responsabilite-sociale.jpg",
+      "imageAlt": "",
+      "fond": "blanc"
     }
   ]
 }

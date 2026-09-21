@@ -16,7 +16,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/home-expertises/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/home-expertises/home-expertises.preview.png"
     text: "Accueil — Expertises"
     subtext: Tuiles image + voile navy, titre et lien
   preview:
@@ -54,8 +54,30 @@ _inputs:
   sectionTitle:
     label: "Titre de section"
   intro:
+    type: html
     label: "Paragraphe d'appui"
     comment: "Affiché sous le titre (optionnel)."
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   learnMore:
     label: "Libellé du lien des tuiles"
     comment: "Ex. « En savoir plus » — commun à toutes les tuiles (une carte peut le surcharger)."
@@ -71,3 +93,28 @@ _inputs:
     comment: "Cartes affichées en grille."
     options:
       structures: _structures.expertise_items
+
+  description:
+    type: html
+    label: "Description"
+    comment: "Texte enrichi EN LIGNE (gras, italique, lien) — rendu dans un paragraphe existant."
+    options:
+      format: p
+      bulletedlist: false
+      numberedlist: false
+      blockquote: false
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string

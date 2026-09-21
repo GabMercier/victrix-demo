@@ -5,8 +5,12 @@
   "noindex": false,
   "slug": "",
   "seoTitle": "Approvisionnement TI | Achat et gestion de licences et matériels | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Services d’approvisionnement en TI",
       "eyebrowStyle": "badge",
@@ -20,6 +24,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Un approvisionnement TI stratégique, sécurisé et géré",
       "intro": "De la cybersécurité à l’infonuagique, en passant par l’automatisation, le réseau et la connectivité, Victrix vous aide à bâtir une infrastructure performante, cohérente et sécurisée.",
@@ -39,6 +44,7 @@
       }
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Approvisionnement TI, gestion et renouvellement",
       "intro": "Profitez d’un accompagnement sur mesure pour l’achat, la gestion et le renouvellement de vos licences et matériels.",
@@ -111,6 +117,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Cybersécurité et protection des identités",
       "groups": [
@@ -173,6 +180,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Réseau et connectivité",
       "groups": [
@@ -201,6 +209,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Infonuagique, automatisation et virtualisation",
       "groups": [
@@ -243,6 +252,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Victrix : votre partenaire de confiance ",
       "paragraphs": [
@@ -277,6 +287,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Prêts à acheter le matériel et les licences TI adaptés à vos besoins?",
       "body": "Évaluez vos besoins, modernisez votre infrastructure et simplifiez la gestion de vos licences et matériels avec un partenaire certifié qui place la sécurité et la performance au cœur de chaque projet.",
@@ -284,7 +295,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ]
 }

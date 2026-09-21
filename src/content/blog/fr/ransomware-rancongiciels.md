@@ -13,12 +13,12 @@ wpUrl: "/ransomware-rancongiciels/"
 
 **l’un des principaux cybercrimes auxquels font face les organisations**. C’est encore plus vrai depuis la pandémie, car cet évènement global a transformé l’environnement de travail, le rendant plus vulnérable à certains types d’attaques informatiques.
 
-Alors, **comment se protéger des ransomware efficacement** pour éviter le pire? Découvrez tout au sujet des différents types de rançongiciels, l’importance de développer un plan de [sécurité informatique et cybersécurité](/expertise/cybersecurite/) robuste et les façons de protéger votre entreprise contre les cyberattaques.
+Alors, **comment se protéger des ransomware efficacement** pour éviter le pire? Découvrez tout au sujet des différents types de rançongiciels, l’importance de développer un plan de [sécurité informatique et cybersécurité](/fr/services/cybersecurite/) robuste et les façons de protéger votre entreprise contre les cyberattaques.
 
 ## Cybersécurité 101: un ransomware ou rançongiciel, c’est quoi au juste ?
 
 Un rançongiciel est un logiciel malveillant distribué, de façon ciblée ou opportuniste, par un pirate informatique. Selon le Centre Canadien pour la cybersécurité, il existe plusieurs types d’attaques de cybersécurité, mais les [demandes de rançons causées par ces logiciels malveillants](https://www.cyber.gc.ca/fr/orientation/evaluation-des-cybermenaces-nationales-2023-2024) sont en tête de liste.
- [Découvrez la solution SEvOC](/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/)
+ [Découvrez la solution SEvOC](/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/)
 
 ### Quel est l’objectif principal d’un rançongiciel ?
 
@@ -69,16 +69,16 @@ Chaque année, ce sont des millions de dollars qui sont extorqués aux entrepris
 - Perte de données
 - Dommages à la réputation
 - Congédiement de responsables de la sécurité (RSSI) et d’employés pour réduire les pertes financières et coûts opérationnels
-- Impact quant à la conformité aux [réglementations sur la protection des données](/expertise/conseil-strategique/conformite-loi-25/) telles que la loi 25
+- Impact quant à la conformité aux [réglementations sur la protection des données](/fr/services/conseil-strategique/conformite-loi-25/) telles que la loi 25
 
-<a class="article-cta" href="/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez la solution SEvOC</a>
+<a class="article-cta" href="/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez la solution SEvOC</a>
 
 ### Que faire en cas d’attaque de ransomware?
 
 **Voici nos recommandations si votre organisation est victime d’un incident lié à un rançongiciel:**
 
 - Isolez l’appareil du réseau et du nuage et déconnectez-le de la connexion internet
-- Si vous avez un [fournisseur de services gérés TI](/expertise/services-ti-geres/), contactez-le immédiatement pour que celui-ci intervienne le plus rapidement possible
+- Si vous avez un [fournisseur de services gérés TI](/fr/services/services-ti-geres/), contactez-le immédiatement pour que celui-ci intervienne le plus rapidement possible
 - Ne payez pas la rançon
 - Conservez les preuves de votre attaque (phishing email, journal d’évènements du pare-feu, fichiers encryptés, copie physique du ou des serveurs ou à défaut, les disques durs.)
 - [Reportez l’incident aux autorités en cybersécurité](https://www.cyber.gc.ca/fr/cyberincidents)
@@ -106,7 +106,7 @@ Pour assurer la sécurité de vos mots de passe, nous recommandons d’utiliser 
 
 En matière de **bonnes pratiques de sécurité informatique**, il existe plusieurs solutions anti-ransomware. Par exemple, l’utilisation d’un logiciel de sécurité fiable et multicouche, d’outils de protection et de détection en temps réel et l’élaboration d’un plan de réponse en cas d’attaque.
 
-L’utilisation des services VPN sur les réseaux Wi-Fi publics est une autre option si votre organisation ne dispose pas d’une [solution SASE](/sase-cloud/) fiable. Un service SASE comprend tous vos services nécessaires pour maintenir une posture de sécurité exemplaire:
+L’utilisation des services VPN sur les réseaux Wi-Fi publics est une autre option si votre organisation ne dispose pas d’une [solution SASE](/fr/ressources/sase-cloud/) fiable. Un service SASE comprend tous vos services nécessaires pour maintenir une posture de sécurité exemplaire:
 
 1. Secure Service Edge (SSE)
 2. Réseau étendu et défini par logiciel (SD-WAN)
@@ -115,14 +115,14 @@ L’utilisation des services VPN sur les réseaux Wi-Fi publics est une autre op
 5. Pare-feu en tant que service (FWaaS)
 6. Principe du moindre privilège (Zero Trust Network Access)
 
-Si ce n’est pas encore fait, **considérez la migration de vos données et systèmes** vers les [technologies et services infonuagiques](/expertise/services-infonuagiques/). L’un des principaux avantages du système cloud vs local est que les vulnérabilités de l’architecture sont plus difficilement exploitables.
+Si ce n’est pas encore fait, **considérez la migration de vos données et systèmes** vers les [technologies et services infonuagiques](/fr/services/services-infonuagiques/). L’un des principaux avantages du système cloud vs local est que les vulnérabilités de l’architecture sont plus difficilement exploitables.
 
 Par exemple, les solutions d’hébergement infonuagique permettent la restauration d’anciennes versions de vos fichiers grâce à des **sauvegardes automatiques.** Cela signifie donc que si vos fichiers se font crypter par un cybercriminel, il vous sera possible de retrouver vos données non chiffrées dans le stockage du nuage.
 
 #### 2. Identifier un responsable de la sécurité des systèmes d'information (RSSI)
 
 **Identifier une personne responsable du pôle cybersécurité** au sein de votre entreprise. Cette personne aura pour responsabilité de s’assurer que les outils de sécurité sont mis à jour régulièrement, prendra en charge les campagnes de sensibilisation auprès des différentes équipes et deviendra votre expert en cybersécurité. 
- Une autre option est de faire appel à un [service de sécurité gérée](/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/) pour assurer **une surveillance en continu de vos systèmes d’information** et détecter plus rapidement les intrusions.
+ Une autre option est de faire appel à un [service de sécurité gérée](/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/) pour assurer **une surveillance en continu de vos systèmes d’information** et détecter plus rapidement les intrusions.
 
 #### 4. Appliquer les correctifs et mises à jour
 
@@ -152,12 +152,12 @@ En matière de courriel de phishing, nous recommandons de **modifier le paramèt
 ## Comment Victrix aide les organisations à se protéger des ransomwares
 
 Vous souhaitez améliorer votre posture de sécurité et éviter les embûches causées par les ransomwares? **Victrix est un véritable expert en transformation digitale et cybersécurité.** 
- Faites confiance à notre équipe pour mettre en place un système de sécurité des plus robustes pour votre organisation. Nos [conseillers en stratégie de sécurité informatique](/expertise/cybersecurite/) sont en mesure de vous guider pour trouver **les solutions de sécurité les plus adaptées**. 
+ Faites confiance à notre équipe pour mettre en place un système de sécurité des plus robustes pour votre organisation. Nos [conseillers en stratégie de sécurité informatique](/fr/services/cybersecurite/) sont en mesure de vous guider pour trouver **les solutions de sécurité les plus adaptées**. 
  Nous offrons aussi un service exclusif de sécurité géré, basé dans la coopération et le partage des connaissances. Plus qu’un simple service géré, nous sommes une extension de votre équipe TI. 
- Bénéficiez d’un [service SOC externalisé](/externalisation-soc-avantages-inconvenients/) puissant pour assurer une sécurité informatique de haut niveau à votre organisation. 
+ Bénéficiez d’un [service SOC externalisé](/fr/ressources/externalisation-soc-avantages-inconvenients/) puissant pour assurer une sécurité informatique de haut niveau à votre organisation. 
  **Découvrez SEvOC, le Centre Opérationnel de Sécurité Évolutif de Victrix.**
 
-<a class="article-cta" href="/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez la solution SEvOC</a>
+<a class="article-cta" href="/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez la solution SEvOC</a>
 
 ### SEvOC: une solution sur mesure pour contrer les menaces informatiques
 
@@ -176,4 +176,4 @@ Vous souhaitez améliorer votre posture de sécurité et éviter les embûches c
 
 **Pour réduire vos vulnérabilités aux rançongiciels ou améliorer votre posture de sécurité, faites confiance à nos experts.** Prenez rendez-vous dès aujourd’hui avec l’un de nos consultants en cybersécurité pour trouver une solution de sécurité parfaitement adaptée à vos besoins et votre situation technologique.   
  Si vous **considérez l’externalisation du SOC dans votre entreprise**, n’hésitez pas à contacter nos experts. Nous prendrons le temps de discuter avec vos équipes afin de définir la solution modulaire la mieux adaptée à vos besoins. 
- [Contactez-nous](/contact/)
+ [Contactez-nous](/fr/contact/)

@@ -2,8 +2,12 @@
   "title": "Démonstration page produit",
   "description": "Recette « page produit » du catalogue (maquette Studio de création) : héros catalogue, bento métriques, offres, valeur stratégique, réalisations et appel à l'action.",
   "noindex": true,
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Écosystème Microsoft 365",
       "title": "Studio de création Power Platform et Dynamics 365",
@@ -18,6 +22,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Déployez des applications à la vitesse grand V",
       "intro": "Dites adieu aux tâches répétitives grâce à l'automatisation des processus et libérez le potentiel de vos équipes.",
@@ -27,12 +32,18 @@
         "text": "De la gestion de vos opérations au soutien à vos services administratifs, l'offre Ø Studio répond aux exigences de tous vos secteurs d'activités.",
         "watermark": "eclair",
         "stats": [
-          { "value": "4,5×", "label": "Accélération" },
-          { "value": "-40 %", "label": "Réduction des coûts" }
+          {
+            "value": "4,5×",
+            "label": "Accélération"
+          },
+          {
+            "value": "-40 %",
+            "label": "Réduction des coûts"
+          }
         ]
       },
       "aside": {
-        "icon": "insigne",
+        "icon": "coche",
         "title": "Certifiés Microsoft",
         "text": "Nos conseillers certifiés maximisent vos outils M365 intégrés pour un retour sur investissement immédiat.",
         "linkLabel": "Voir l'expertise",
@@ -40,6 +51,7 @@
       }
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Deux volets, une même équipe",
       "intro": "Du cadrage des besoins à la livraison d'applications, Ø Studio couvre le cycle complet.",
@@ -51,23 +63,42 @@
           "number": "01",
           "title": "Conseil et intégration",
           "bullets": [
-            { "text": "Identifier et quantifier les besoins d'affaires", "icon": "coche" },
-            { "text": "Analyser l'utilisation et les comportements", "icon": "coche" },
-            { "text": "Définir les spécifications et les bonnes pratiques", "icon": "coche" }
+            {
+              "text": "Identifier et quantifier les besoins d'affaires",
+              "icon": "coche"
+            },
+            {
+              "text": "Analyser l'utilisation et les comportements",
+              "icon": "coche"
+            },
+            {
+              "text": "Définir les spécifications et les bonnes pratiques",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Développement d'applications",
           "bullets": [
-            { "text": "Créer des applications évolutives pour vos employés", "icon": "coche" },
-            { "text": "Mettre en œuvre des solutions clés en main", "icon": "coche" },
-            { "text": "Développer des applications mobiles et web", "icon": "coche" }
+            {
+              "text": "Créer des applications évolutives pour vos employés",
+              "icon": "coche"
+            },
+            {
+              "text": "Mettre en œuvre des solutions clés en main",
+              "icon": "coche"
+            },
+            {
+              "text": "Développer des applications mobiles et web",
+              "icon": "coche"
+            }
           ]
         }
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Gouvernance Microsoft Power Platform",
       "paragraphs": [
@@ -76,10 +107,22 @@
       "image": "/images/solutions/gestion-idees.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "Sécurité", "label": "Conformité et visibilité complète" },
-        { "value": "Économies", "label": "Gestion optimale des licences" },
-        { "value": "Innovation", "label": "Automatisation et adoption accélérée" },
-        { "value": "Expérience", "label": "Rapports conviviaux pour tous" }
+        {
+          "value": "Sécurité",
+          "label": "Conformité et visibilité complète"
+        },
+        {
+          "value": "Économies",
+          "label": "Gestion optimale des licences"
+        },
+        {
+          "value": "Innovation",
+          "label": "Automatisation et adoption accélérée"
+        },
+        {
+          "value": "Expérience",
+          "label": "Rapports conviviaux pour tous"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -89,6 +132,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "realisations",
       "type": "realisations",
       "title": "Notre book de réalisations",
       "intro": "Nos spécialistes maîtrisent Power Apps, Power Automate, Power BI et Power Pages pour livrer des solutions adaptées à chaque secteur.",
@@ -119,6 +163,7 @@
       "fond": "blanc"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Vous avez un projet ?",
       "body": "Laissez Ø Studio vous propulser vers Microsoft Power Platform et rentabiliser votre investissement Microsoft 365.",
@@ -126,7 +171,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": "Démonstration — recette page produit"

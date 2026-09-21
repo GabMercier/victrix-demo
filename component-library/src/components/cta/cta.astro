@@ -1,4 +1,6 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Appel à l'action » — composant Bookshop (contrat landing GELÉ,
  * enrichi ADDITIVEMENT).
@@ -14,6 +16,11 @@
  *  - variant "nuit"  : NOUVEAU (produit-enfant.css §CTA Section, 2026-08-05) —
  *    aplat anthracite (on-surface), contenu CENTRÉ (max 768), sans décor,
  *    bouton primaire + second bouton CONTOUR blanc.
+ *  - variant "primaire" : AJOUTÉ 2026-09-17 (carriere.css §CTA final, ex-page
+ *    Carrières convertie en sections) — SECTION PLEINE LARGEUR Bleu Victrix
+ *    (pas de panneau arrondi, `fond` ignoré), contenu centré max 768, titre
+ *    40/700 blanc, texte 18/29 blanc 90 %, bouton BLANC texte bleu en
+ *    MAJUSCULES 14/700 ls 1.4, second bouton contour blanc. Sans décor.
  * Bleus/navy/anthracite = tokens (export Hanken/chaud, #002FC8→primary,
  * #1C1C1A→on-surface).
  *
@@ -35,8 +42,8 @@ interface Props {
   ctaHref: string;
   cta2Label?: string;
   cta2Href?: string;
-  variant?: 'light' | 'dark' | 'nuit';
-  fond?: 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  variant?: 'light' | 'dark' | 'nuit' | 'primaire';
+  fond?: FondKey;
 }
 
 const {
@@ -51,19 +58,47 @@ const {
 } = Astro.props;
 const dark = variant === 'dark';
 const nuit = variant === 'nuit';
+// « primaire » (2026-09-17) : section pleine largeur Bleu Victrix, rendue par
+// une branche dédiée ci-dessous (pas de panneau, `fond` sans effet).
+const primaire = variant === 'primaire';
 
 // « Fond de section » (2026-08-17, pilote 6 blocs) : lavis DERRIÈRE le
 // panneau (le panneau garde sa `variant`). Clé fermée → utilitaire de la
 // palette officielle ; défaut = rendu historique (blanc, ex-bg-surface).
-const FONDS: Record<string, string> = {
-  blanc: 'bg-white',
-  givre: 'bg-givre',
-  ivoire: 'bg-ivoire',
-  beige: 'bg-beige',
-  sable: 'bg-sable',
-};
+const FONDS: Record<string, string> = FOND_CLASSES;
 ---
 
+{
+  primaire ? (
+    <section class="bg-primary py-20">
+      <div class="container-site">
+        <div class="max-w-[768px] mx-auto flex flex-col items-center text-center gap-4">
+          <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-primary m-0">
+            {title}
+          </h2>
+          {hasRichText(body) && (
+            <div class="rich text-lg leading-[29px] text-on-primary/90 max-w-none" set:html={blockHtml(body)} />
+          )}
+          <div class="flex flex-wrap items-center justify-center gap-4 mt-4">
+            <a
+              class="inline-flex items-center bg-white text-primary px-10 py-4 rounded-sm text-sm leading-none font-bold tracking-[1.4px] uppercase no-underline hover:bg-primary-fixed transition-colors"
+              href={ctaHref}
+            >
+              {ctaLabel}
+            </a>
+            {cta2Label && cta2Href && (
+              <a
+                class="inline-flex items-center border border-solid border-white text-white px-10 py-[15px] rounded-sm text-sm leading-none font-bold tracking-[1.4px] uppercase no-underline hover:bg-white/10 transition-colors"
+                href={cta2Href}
+              >
+                {cta2Label}
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  ) : (
 <section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
   <div class="container-site">
     <div
@@ -107,15 +142,14 @@ const FONDS: Record<string, string> = {
           {title}
         </h2>
         {
-          body && (
-            <p
+          hasRichText(body) && (
+            <div
               class:list={[
-                'text-lg leading-[29px] m-0 max-w-none',
+                'rich text-lg leading-[29px] max-w-none',
                 dark || nuit ? 'text-white/80' : 'text-on-surface-variant',
               ]}
-            >
-              {body}
-            </p>
+              set:html={blockHtml(body)}
+            />
           )
         }
         <div class:list={['flex flex-wrap items-center gap-4 mt-2', nuit && 'justify-center']}>
@@ -148,3 +182,5 @@ const FONDS: Record<string, string> = {
     </div>
   </div>
 </section>
+  )
+}

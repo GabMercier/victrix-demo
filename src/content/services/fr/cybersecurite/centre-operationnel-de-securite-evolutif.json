@@ -1,12 +1,12 @@
 {
-  "_schema": "default",
   "title": "Centre opérationnel de sécurité (SOC) évolutif",
   "description": "Détection, réponse et amélioration continue de votre posture de sécurité avec SEvOC, notre centre opérationnel de sécurité (SOC) évolutif.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Centre opérationnel de sécurité : SOC évolutif | Services | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "SEvOC",
       "titleAccent": "",
@@ -19,6 +19,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Ce que vous offre le SEvOC de Victrix",
       "intro": "Un service SOC disponible en tout temps, bilingue, avec des experts attitrés à votre environnement.",
@@ -47,10 +48,11 @@
         "title": "Les avantages de notre service SOC",
         "text": "Faites face à l’accroissement des menaces avancées, complétez votre équipe de sécurité interne avec nos experts et simplifiez l’intégration de nouvelles entités dans un contexte de croissance ou de fusion.",
         "linkLabel": "Découvrez notre expertise cybersécurité",
-        "linkHref": "/expertise/cybersecurite"
+        "linkHref": "/fr/services/cybersecurite/"
       }
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Ce que le SEvOC fait pour votre organisation",
       "intro": "Prise en charge, opérations et évolution : une offre modulaire qui couvre l’ensemble du cycle.",
@@ -135,13 +137,14 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Des services qui se distinguent de la sécurité gérée traditionnelle",
       "paragraphs": [
-        "Victrix n’est pas qu’un <a href=\"/expertise/services-ti-geres/\">fournisseur de services gérés</a>, et le SEvOC n’est pas un SOC comme les autres. Voici ce qui fait la force de notre équipe.",
-        "<strong>Expertise technologique</strong> — partenariat Microsoft Sentinel, partenariat CrowdStrike ELP (seul MSSP francophone autorisé), <a href=\"/certification-iso-27001-iso-9001/\">certification ISO/IEC 27001</a> et gestion d’environnements hybrides ou complexes.",
+        "Victrix n’est pas qu’un <a href=\"/fr/services/services-ti-geres/\">fournisseur de services gérés</a>, et le SEvOC n’est pas un SOC comme les autres. Voici ce qui fait la force de notre équipe.",
+        "<strong>Expertise technologique</strong> — partenariat Microsoft Sentinel, partenariat CrowdStrike ELP (seul MSSP francophone autorisé), <a href=\"/fr/ressources/certification-iso-27001-iso-9001/\">certification ISO/IEC 27001</a> et gestion d’environnements hybrides ou complexes.",
         "<strong>Service humain, local et enraciné</strong> — surveillance opérée 100 % localement, sans externalisation, avec interaction directe entre vos équipes internes et nos analystes attitrés ; rapports personnalisés, comités de suivi et conseils basés sur la configuration de votre environnement. ",
-        "<strong>Approche flexible, collaborative et évolutive</strong> — évolution continue de la posture de sécurité (lignes directrices, revue de configurations, accompagnement dans la maturité) et accès à toute la profondeur de Victrix : appui direct de nos équipes spécialisées en infrastructure, <a href=\"/expertise/services-infonuagiques/\">infonuagique</a>, gouvernance et réseau, sans sous-traitance externe."
+        "<strong>Approche flexible, collaborative et évolutive</strong> — évolution continue de la posture de sécurité (lignes directrices, revue de configurations, accompagnement dans la maturité) et accès à toute la profondeur de Victrix : appui direct de nos équipes spécialisées en infrastructure, <a href=\"/fr/services/services-infonuagiques/\">infonuagique</a>, gouvernance et réseau, sans sous-traitance externe."
       ],
       "image": "/wp-content/uploads/2022/02/solution-sevoc-intro.jpg",
       "imageAlt": "",
@@ -171,6 +174,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Vos bénéfices concrets avec SEvOC",
       "headingStyle": "plain",
@@ -222,6 +226,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Bénéficiez de notre SOC évolutif dédié",
       "body": "Découvrez comment l’approche axée client du SEvOC peut vous faire gagner en efficacité et sérénité — nous modulons notre offre en fonction des besoins uniques de votre organisation.",
@@ -229,7 +234,12 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
-  ]
+  ],
+  "seoTitle": "Centre opérationnel de sécurité : SOC évolutif | Services | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

@@ -2,6 +2,7 @@
 import { promises as fs } from 'node:fs';
 import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { auditPages } from './scripts/lib/h1-guard.mjs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
@@ -472,6 +473,48 @@ function collectNoindexComposablePaths() {
 const noindexComposablePaths = collectNoindexComposablePaths();
 
 // https://astro.build/config
+/**
+ * Garde-fou H1 (Phase 2, 2026-09-16 — recette éditeur 09/09 pt 6, Lot 3).
+ * Chaque page publique porte EXACTEMENT un <h1> (le héros, titre ou surtitre
+ * selon `h1Element`). Après le build : ≥ 2 H1 sur une page → le build ÉCHOUE
+ * (deux héros empilés par un éditeur — le site en ligne reste intact) ; 0 H1
+ * → avertissement dans le journal. Logique pure et testée :
+ * scripts/lib/h1-guard.mjs (stubs de redirection, 404, recherche, portail et
+ * style-guide sont hors périmètre).
+ */
+function h1Guard() {
+  return {
+    name: 'victrix:h1-guard',
+    hooks: {
+      /** @param {{ dir: URL, logger: import('astro').AstroIntegrationLogger }} options */
+      'astro:build:done': async ({ dir, logger }) => {
+        const root = fileURLToPath(dir);
+        /** @type {{ path: string, html: string }[]} */
+        const pages = [];
+        /** @param {string} d */
+        const walk = (d) => {
+          for (const entry of readdirSync(d, { withFileTypes: true })) {
+            const full = `${d}/${entry.name}`;
+            if (entry.isDirectory()) walk(full);
+            else if (entry.name.endsWith('.html')) {
+              pages.push({ path: full.slice(root.length).replace(/\\/g, '/').replace(/^\//, ''), html: readFileSync(full, 'utf8') });
+            }
+          }
+        };
+        walk(root.replace(/[\\/]$/, ''));
+        const r = auditPages(pages);
+        for (const p of r.warnings) logger.warn(`aucun <h1> sur ${p} — la page n'a pas de héros ?`);
+        if (r.errors.length) {
+          throw new Error(
+            `[victrix:h1-guard] ${r.errors.length} page(s) avec PLUSIEURS <h1> (deux héros sur la même page ?) : ${r.errors.join(', ')}`,
+          );
+        }
+        logger.info(`${r.ok} page(s) avec un seul <h1>, ${r.warnings.length} sans, ${r.skipped} hors périmètre`);
+      },
+    },
+  };
+}
+
 export default defineConfig({
   // Served at the root on Cloudflare Pages — no `base` subpath.
   // IMPORTANT: set this to the real deployment URL after the first deploy —
@@ -534,6 +577,8 @@ export default defineConfig({
   },
 
   integrations: [
+    // Garde-fou H1 (Phase 2) : 2 H1 = build rouge, 0 H1 = avertissement.
+    h1Guard(),
     // CloudCannon editing build only — see the STATIC_ONLY block above.
     ...(staticOnly ? [staticOnlyMode()] : []),
     // Bookshop component library — STATIC_ONLY (CloudCannon) builds only, and

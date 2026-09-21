@@ -1,0 +1,78 @@
+---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { hasRichText, inlineHtml } from '../../shared/rich';
+/**
+ * Section « Carte distinction » — composant Bookshop (2026-09-17, conversion
+ * de la page Carrières en page « sections »).
+ * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/carriere.css §Happy At Work, ex-
+ * bloc de src/pages/[lang]/carrieres.astro repris VERBATIM) : carte blanche
+ * bordée (jeton `contour`, rayon 8) sur bande grise, tuile insigne 192 px
+ * bg-primary/5 bordée primary/20 rayon 12 à gauche, titre 40/700, chapeau
+ * 16/26 gris, citation italique à LISERÉ GAUCHE bleu 4 px.
+ *
+ * Props : { type: "award-card", title, lead?, quote?, fond? }
+ * - `lead` / `quote` : textes enrichis INLINE (gras/italique/lien), rendus
+ *   dans leur <p> ; vides = absents.
+ * - `fond` : palette partagée ; DÉFAUT « perle » (#f3f4f7 = l'ancien
+ *   bg-surface-container de la page — rendu identique).
+ * - L'insigne (étoile lauréate) est un tracé fixe du composant : la carte
+ *   sert à UNE distinction mise en avant (Happy At Work) — pas de sélecteur.
+ *
+ * Contraintes / pièges :
+ * - <h2> : le <h1> unique appartient au héros.
+ * - Liseré : `border-0 border-l-4 border-solid` OBLIGATOIRE (UA-medium sans
+ *   preflight).
+ * - Browser-safe : aucun astro:assets, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Props {
+  title: string;
+  lead?: string;
+  quote?: string;
+  fond?: FondKey;
+}
+
+const { title, lead = '', quote = '', fond = 'perle' } = Astro.props;
+
+// « Fond de section » : clé fermée → utilitaire de la palette officielle ;
+// défaut = rendu historique de la page Carrières (bande surface-container).
+const FONDS: Record<string, string> = FOND_CLASSES;
+---
+
+<section class:list={['py-20', FONDS[fond] ?? FONDS.perle]}>
+  <div class="container-site">
+    <div
+      class="bg-white rounded-lg p-8 md:p-12 flex flex-col md:flex-row items-center gap-6 md:gap-10 border border-solid border-contour"
+    >
+      <div
+        class="shrink-0 size-32 md:size-48 rounded-xl bg-primary/5 border-4 border-solid border-primary/20 flex items-center justify-center"
+      >
+        <svg class="text-primary size-14 md:size-16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+          <path
+            fill-rule="evenodd"
+            d="M12 2.5a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm0 3.1 1.1 2.3 2.5.4-1.8 1.8.4 2.5L12 11.4l-2.2 1.2.4-2.5-1.8-1.8 2.5-.4L12 5.6Z"
+          />
+          <path d="m7.7 15.2-1.8 6.3 6.1-2.7 6.1 2.7-1.8-6.3a8.2 8.2 0 0 1-8.6 0Z" />
+        </svg>
+      </div>
+      <div class="text-center md:text-left">
+        <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 mb-2">
+          {title}
+        </h2>
+        {
+          hasRichText(lead) && (
+            <p class="text-base leading-[26px] text-on-surface-variant m-0 mb-4 max-w-none" set:html={inlineHtml(lead)} />
+          )
+        }
+        {
+          hasRichText(quote) && (
+            <p
+              class="text-base leading-[26px] text-on-surface-variant italic m-0 max-w-none border-0 border-l-4 border-solid border-primary pl-4 text-left"
+              set:html={inlineHtml(quote)}
+            />
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,8 +1,12 @@
 {
   "title": "Cybersecurity in the Healthcare Sector",
   "description": "Discover our customized cybersecurity offering for the healthcare sector. Protect patient data and information systems against any attack.",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +19,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "First-Class Cybersecurity and Confidentiality for Healthcare Organizations",
       "intro": "",
@@ -26,7 +31,7 @@
         "stats": []
       },
       "aside": {
-        "icon": "insigne",
+        "icon": "coche",
         "title": "Personalized support",
         "text": "To ensure optimal security for your healthcare organization, it is essential to achieve and maintain the highest standards — this is where professional support becomes indispensable.",
         "linkLabel": "Talk to our experts",
@@ -34,6 +39,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Cybersecurity Priorities for Healthcare Institutions",
       "headingStyle": "plain",
@@ -64,6 +70,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "From Strategy to Cyber Resilience",
       "paragraphs": [
@@ -76,8 +83,14 @@
       "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "Zero Trust", "label": "Enhanced perimeter security" },
-        { "value": "24/7", "label": "Audits and managed services" }
+        {
+          "value": "Zero Trust",
+          "label": "Enhanced perimeter security"
+        },
+        {
+          "value": "24/7",
+          "label": "Audits and managed services"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -87,6 +100,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "The Healthcare Ecosystem",
       "groups": [
@@ -115,6 +129,7 @@
       ]
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Technologies",
       "fond": "givre",
@@ -132,6 +147,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Enhance the cybersecurity of your medical information",
       "body": "Contact our team of experts and we will be happy to answer all your questions.",
@@ -139,7 +155,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "cybersecurity/cybersecurity-healthcare",

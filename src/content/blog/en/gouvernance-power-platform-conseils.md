@@ -12,9 +12,9 @@ wpUrl: "/en/power-platform-governance-advice/"
 ![Governance of the Microsoft Power Platform suite](/wp-content/uploads/2024/05/power_platform_image-article.png) 
  Why hire a Power Platform governance expert? Large organizations benefit from **developing innovative solutions to simplify their business processes, improve productivity, and stay competitive.** 
  Microsoft Power Platform is a Microsoft solution designed to meet these challenges. It enables large organizations to rapidly develop business applications without deep development expertise. 
- However, deploying and managing the Microsoft Power Platform tool can be challenging for organizations. We invite you to read this article, written by a [Power Platform consultant](/en/expertise/productivity-consulting/o-studio/), to learn how you can harness the potential of this innovative tool.
+ However, deploying and managing the Microsoft Power Platform tool can be challenging for organizations. We invite you to read this article, written by a [Power Platform consultant](/en/services/productivity-consulting/o-studio/), to learn how you can harness the potential of this innovative tool.
 
-Microsoft Power Platform is an integrated solution in the [Microsoft 365 suite](/en/expertise/managed-it-services/maximize-the-use-of-your-m365-ecosystem/). This powerful tool follows the trend of low-code and no-code development platforms. It's the ideal solution for simplifying the creation and development of custom applications, with or without deep programming expertise.
+Microsoft Power Platform is an integrated solution in the [Microsoft 365 suite](/en/services/managed-it-services/maximize-the-use-of-your-m365-ecosystem/). This powerful tool follows the trend of low-code and no-code development platforms. It's the ideal solution for simplifying the creation and development of custom applications, with or without deep programming expertise.
 
 The Power Platform **fosters collaboration between users and developers**. When used internally, it can automate complex, time-consuming business processes.
 
@@ -106,7 +106,7 @@ Administrators and governance team members must be trained in the use of COE Too
 Finally, incorporating the use of the COE Toolkit into the organization's governance routines is crucial. By using the data provided by the toolkit, you'll be able to make more informed decisions about the use of the Power Platform within your organization. 
  ![Example of configuration of the Microsoft Power Platform Center of Excellence toolkit.](/wp-content/uploads/2024/05/toolkit-powerplatform.png)
 
-Ø Studio is a [technology development studio](/en/expertise/productivity-consulting/o-studio/) within Victrix. Our Microsoft Power Platform consultants can help you use the software and develop business applications to increase your teams' productivity. 
+Ø Studio is a [technology development studio](/en/services/productivity-consulting/o-studio/) within Victrix. Our Microsoft Power Platform consultants can help you use the software and develop business applications to increase your teams' productivity. 
  Trust our team to help you implement Power Platform governance in your organization. [Schedule a meeting to discuss your project](/en/contact/) 
  Not sure what use cases can be addressed with Microsoft Power Platform? 
  [Discover Ø Studio creations](https://o-studio-catalogue.victrix.ca/#catalogue)

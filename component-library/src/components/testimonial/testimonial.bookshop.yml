@@ -14,7 +14,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/testimonial/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/testimonial/testimonial.preview.png"
     text: Témoignage
     subtext: Citation avec attribution (photo optionnelle)
   preview:
@@ -38,9 +38,29 @@ _inputs:
     hidden: true
     comment: "Discriminant technique du contrat de sections — ne pas modifier."
   quote:
-    type: textarea
+    type: html
     label: "Citation"
     comment: "Texte brut, sans guillemets — ils sont ajoutés par le gabarit."
+    options:
+      format: p
+      bulletedlist: false
+      numberedlist: false
+      blockquote: false
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   name:
     label: "Nom"
   role:

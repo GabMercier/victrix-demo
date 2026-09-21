@@ -11,7 +11,7 @@ wpUrl: "/securite-iot-defis/"
 ---
 Avec [57% des appareils IoT d'entreprise vulnérables aux attaques](https://www.statista.com/statistics/1377569/worldwide-annual-internet-of-things-attacks/)*, la sécurité des dispositifs connectés est devenue un enjeu crucial pour les organisations.
 
-À mesure que l'Internet des objets (IoT) se déploie dans les entreprises, les cybermenaces se multiplient, exposant les systèmes à des risques importants. Il est essentiel pour les organisations de comprendre les enjeux et de mettre en place une [stratégie de sécurité IoT](/expertise/cybersecurite/internet-des-objets-service-iot/).
+À mesure que l'Internet des objets (IoT) se déploie dans les entreprises, les cybermenaces se multiplient, exposant les systèmes à des risques importants. Il est essentiel pour les organisations de comprendre les enjeux et de mettre en place une [stratégie de sécurité IoT](/fr/services/cybersecurite/internet-des-objets-service-iot/).
 
 Les problèmes de sécurité liés à l’IoT sont nombreux et déprendront du nombre d’objets connectés au sein d’une organisation.
 
@@ -20,8 +20,8 @@ Les 5 principaux défis concerneront:
  • Limitation de ressources des appareils 
  • Gestion des mises à jour 
  • La complexité de connecter à internet et de sécuriser de nouveaux objets dans les infrastructures existantes 
- •Respect des normes de sécurité et de [protection de la vie privée](/loi-25-donnees-personnelles-guide/) 
-[Prêt à évaluer votre sécurité IoT ?](/expertise/cybersecurite/internet-des-objets-service-iot/)
+ •Respect des normes de sécurité et de [protection de la vie privée](/fr/ressources/loi-25-donnees-personnelles-guide/) 
+[Prêt à évaluer votre sécurité IoT ?](/fr/services/cybersecurite/internet-des-objets-service-iot/)
 
 ### 1. Évaluation et Inventaire IoT
 
@@ -43,11 +43,11 @@ Enfin, la dernière étape est de revoir et améliorer en continu le dispositif.
 
 Vos employés doivent se familiariser aux meilleures pratiques pour réduire le risque et assurer le succès d’adoption de sécurité des nouvelles technologies.
 
-<a class="article-cta" href="/expertise/cybersecurite/internet-des-objets-service-iot/">Parlez à un expert sécurité IoT</a>
+<a class="article-cta" href="/fr/services/cybersecurite/internet-des-objets-service-iot/">Parlez à un expert sécurité IoT</a>
 
 Victrix se positionne comme un partenaire clé pour accompagner les entreprises dans la **sécurisation de leurs réseaux IoT**.
 
 Notre approche s’adapte à l’état actuel de vos dispositifs de sécurité, nous offrons un accompagnement piloté par des experts en sécurité IoT.
 
 Que vous soyez au niveau de sensibilisation ou d’inventaire ou que vous cherchiez à renforcer vos défenses existantes, Victrix vous accompagne dans votre transformation.
- [Démarrez votre projet avec Victrix](/contact/)
+ [Démarrez votre projet avec Victrix](/fr/contact/)

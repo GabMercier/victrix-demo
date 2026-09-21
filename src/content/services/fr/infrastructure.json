@@ -2,8 +2,12 @@
   "title": "Infrastructure",
   "description": "Des fondations technologiques fiables, performantes et sécuritaires.",
   "noindex": true,
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Services",
       "eyebrowStyle": "texte",
@@ -20,6 +24,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Ce que nous prenons en charge",
       "intro": "Un aperçu de nos interventions types — le détail de l’offre sera publié prochainement.",
@@ -31,39 +36,61 @@
           "number": "01",
           "title": "Environnements infonuagiques",
           "bullets": [
-            { "text": "Architecture et migration" },
-            { "text": "Optimisation des coûts" },
-            { "text": "Sécurité intégrée dès la conception" }
+            {
+              "text": "Architecture et migration"
+            },
+            {
+              "text": "Optimisation des coûts"
+            },
+            {
+              "text": "Sécurité intégrée dès la conception"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Réseaux et centres de données",
           "bullets": [
-            { "text": "Conception et évolution des réseaux" },
-            { "text": "Virtualisation et stockage" },
-            { "text": "Performance et disponibilité" }
+            {
+              "text": "Conception et évolution des réseaux"
+            },
+            {
+              "text": "Virtualisation et stockage"
+            },
+            {
+              "text": "Performance et disponibilité"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Continuité et résilience",
           "bullets": [
-            { "text": "Sauvegarde et relève" },
-            { "text": "Plans de continuité" },
-            { "text": "Surveillance proactive" }
+            {
+              "text": "Sauvegarde et relève"
+            },
+            {
+              "text": "Plans de continuité"
+            },
+            {
+              "text": "Surveillance proactive"
+            }
           ]
         }
       ]
     },
     {
+      "_bookshop_name": "related-posts",
       "type": "related-posts",
       "title": "Ressources liées",
-      "tags": ["Infonuagique"],
+      "tags": [
+        "Infonuagique"
+      ],
       "ctaLabel": "Voir toutes les ressources",
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Parlons de votre infrastructure",
       "body": "Évaluons ensemble vos besoins et les meilleures options.",
@@ -71,7 +98,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "Services TI gérés",
       "cta2Href": "/fr/services/services-ti-geres",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": ""

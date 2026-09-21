@@ -5,8 +5,12 @@
   "noindex": false,
   "slug": "strategic-advice",
   "seoTitle": "Strategic Consulting | Multidisciplinary Expertise | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -19,6 +23,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "What Sets Us Apart",
       "intro": "We offer a strategic and innovative approach.",
@@ -38,6 +43,7 @@
       }
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Our Strategic Consulting Expertise",
       "intro": "",
@@ -130,6 +136,7 @@
       ]
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Our Methodology",
       "headingStyle": "underline",
@@ -166,6 +173,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "The Benefits of Our Strategic Consulting",
       "paragraphs": [
@@ -209,6 +217,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Secure the success of your strategic projects with Victrix.",
       "body": null,
@@ -216,7 +225,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ]
 }

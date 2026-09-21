@@ -40,8 +40,34 @@ jobs:
       - name: Unit tests
         run: npm run test
 
+      # Pastilles/vignettes de l'éditeur (public/images/cms) à jour et listes
+      # _select_data alignées sur les dessins des composants (2026-09-17).
+      - name: CMS previews (fonds + icônes)
+        run: npm run cms:previews:check
+
+      # Rejoue l'étape Bookshop du build CloudCannon (retrait des scripts par
+      # regex + compilation) sur chaque composant — seule étape que le build
+      # Astro local ne couvre pas (incident du 2026-09-17, operations.md §8).
+      - name: Bookshop (moteur de l'éditeur visuel)
+        run: npm run check:bookshop
+
+      # Éditeur CloudCannon (2026-09-18) : un champ n'apparaît que si sa CLÉ existe
+      # dans le fichier — 86 sections sans `fond` = 86 listes déroulantes
+      # invisibles ; et les vignettes du sélecteur doivent s'appeler
+      # <composant>.preview.png. Réparation : npm run fix:sections.
+      - name: Sections (clés attendues par l'éditeur + vignettes)
+        run: npm run check:sections
+
       - name: Build
         run: npm run build
+
+      # Liens internes (2026-09-18) : tout <a href> interne du site construit
+      # doit mener à une page de dist/ — deux incidents de liens cassés saisis
+      # dans l'éditeur en trois jours (anciennes URL WordPress, préfixe de
+      # langue oublié). Bloquant ici ; simple avertissement sur CloudCannon
+      # (.cloudcannon/postbuild). Réparation mécanique : npm run fix:links.
+      - name: Liens internes
+        run: npm run check:links -- --strict
 
       # Non-blocking for now: the current highs are transitive via wrangler
       # (build-time tooling), and the fix requires the @astrojs/cloudflare v14 /

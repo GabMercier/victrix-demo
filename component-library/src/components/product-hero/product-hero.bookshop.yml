@@ -16,7 +16,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/product-hero/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/product-hero/product-hero.preview.png"
     text: "Produit — Héros catalogue"
     subtext: Badge, grand titre accentué, boutons pilules, photo inclinée
   preview:
@@ -55,8 +55,30 @@ _inputs:
     label: "Portion du titre en bleu"
     comment: "Sous-chaîne du titre rendue en bleu (première occurrence, ex. « Power Platform »). Vide = titre uniforme."
   lead:
+    type: html
     label: "Texte d'introduction"
     comment: "Sous le titre. Peut contenir des <strong> (rendu HTML tel quel)."
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   ctaLabel:
     label: "Bouton principal — libellé"
     comment: "Bouton pilule bleu. Vide = absent."
@@ -88,10 +110,18 @@ _inputs:
     label: "Fond de section"
     options:
       allow_empty: false
-      values:
-        - blanc
-        - givre
-        - ivoire
-        - beige
-        - sable
+      # Palette partagée (2026-09-17) : liste d'objets {cle, libelle, couleur, apercu}
+      # définie UNE fois dans cloudcannon.config.yml (_select_data.fonds) — la valeur
+      # enregistrée reste la clé texte ; l'éditeur affiche libellé + pastille.
+      values: _select_data.fonds
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+        icon: square
+        icon_color:
+          - key: couleur
     comment: "Couleur de fond, bornée à la palette officielle. « givre » = rendu maquette."
+

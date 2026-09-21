@@ -9,8 +9,9 @@ the planned long-term refinements.
   `/` 301-redirects to `/fr`; old pre-i18n top-level URLs redirect to their `/fr/…`
   equivalents (see `astro.config.mjs` `redirects`).
 - **One template per page** under `src/pages/[lang]/…`; copy comes from the UI
-  dictionary (`src/i18n/ui.ts`), per-page modules (`src/i18n/content/*`), and the
-  content collections.
+  dictionary (`src/i18n/ui.ts`) and the content collections (the former
+  per-page modules `src/i18n/content/*` were all migrated to CMS-editable
+  collections — the last one, the solutions catalogue, on 2026-09-17).
 - **Blog** is locale-split: `src/content/blog/<locale>/<slug>.md`. FR and EN versions
   are **paired by identical filename** — that pairing is what makes Sveltia's
   `multiple_folders` i18n show both languages **side-by-side** in one editor, and

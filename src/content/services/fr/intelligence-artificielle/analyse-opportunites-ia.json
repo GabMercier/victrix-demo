@@ -5,8 +5,12 @@
   "noindex": false,
   "slug": "",
   "seoTitle": "Exploration et analyse des opportunités en IA",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -19,6 +23,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Pourquoi explorer vos opportunités en IA?",
       "intro": "",
@@ -38,6 +43,7 @@
       }
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Ce que notre analyse des opportunités permet",
       "subtitle": "Chez Victrix, nos experts vous offrent un accompagnement IA en entreprise qui vous apporte la précision nécessaire pour bâtir une stratégie d’adoption IA solide.",
@@ -51,6 +57,7 @@
       ]
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Les étapes clés de notre démarche",
       "headingStyle": "plain",
@@ -82,6 +89,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Les avantages concrets pour votre organisation",
       "paragraphs": [
@@ -126,6 +134,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Passez à l’action avec Victrix",
       "body": "Contactez-nous pour démarrer votre exploration IA et bâtir une feuille de route claire pour vos projets.",
@@ -133,7 +142,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ]
 }

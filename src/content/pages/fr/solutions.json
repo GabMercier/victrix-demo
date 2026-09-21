@@ -1,0 +1,35 @@
+{
+  "_schema": "default",
+  "title": "Catalogue de solutions",
+  "description": "Parcourez le catalogue de solutions Ø Studio : applications Power Platform et Dynamics 365 prêtes à déployer, par secteur d’activité et type de solution.",
+  "noindex": false,
+  "seoTitle": "",
+  "seoH1": "",
+  "slug": "",
+  "contactSujet": "projet",
+  "contactService": "services-applicatifs",
+  "sections": [
+    {
+      "_bookshop_name": "solutions-catalogue",
+      "type": "solutions-catalogue",
+      "title": "Catalogue de solutions",
+      "searchPlaceholder": "Rechercher une application...",
+      "searchAria": "Rechercher une application dans le catalogue",
+      "featuredBadge": "Application vedette",
+      "featuredCta": "Découvrir l’application",
+      "featuredDoc": "Voir la documentation",
+      "sectorLabel": "Secteurs d’activité",
+      "sectorAll": "Tous les secteurs",
+      "typeLabel": "Types de solution",
+      "typeAll": "Toutes les solutions",
+      "discover": "Découvrir",
+      "emptyMessage": "Aucune solution ne correspond à vos filtres.",
+      "ctaTitle": "Vous ne trouvez pas la solution parfaite ?",
+      "ctaText": "Nos experts ont déjà développé plus de 100 solutions personnalisées pour répondre aux défis uniques de nos clients. Ensemble, créons celle qu’il vous faut !",
+      "ctaPhone": "+1 418-780-8181",
+      "ctaPhoneHref": "tel:+14187808181",
+      "ctaButton": "Contacter un expert",
+      "ctaButtonHref": "/fr/contact"
+    }
+  ]
+}

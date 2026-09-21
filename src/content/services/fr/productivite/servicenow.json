@@ -1,12 +1,12 @@
 {
-  "_schema": "default",
   "title": "ServiceNow",
   "description": "Choisissez Victrix, partenaire ServiceNow, pour être accompagné de l’achat aux services gérés. La plateforme de services la plus puissante renforcée par l’expertise.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Partenaire ServiceNow | Consultant et Services | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Plateforme ServiceNow",
       "title": "Maximisez ServiceNow : votre plateforme enrichie par l’expertise de Victrix",
@@ -21,6 +21,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Notre expertise ServiceNow",
       "intro": "",
@@ -32,7 +33,7 @@
         "stats": []
       },
       "aside": {
-        "icon": "insigne",
+        "icon": "coche",
         "title": "Accompagnement de bout en bout",
         "text": "Licences, déploiement, soutien et services d’évolution : un développement accéléré à valeur ajoutée et un service bilingue, en français et en anglais.",
         "linkLabel": "Planifiez une consultation",
@@ -40,6 +41,7 @@
       }
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Déploiement accéléré de votre plateforme ServiceNow",
       "headingStyle": "underline",
@@ -71,6 +73,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Services de bout en bout, de l’acquisition au déploiement",
       "intro": "Laissez nos experts ServiceNow vous accompagner à toutes les étapes de votre projet de transformation numérique. Nos spécialistes simplifient votre parcours ServiceNow à travers la mise en œuvre des meilleures pratiques de cette plateforme de services et d’automatisation reconnue comme une référence du marché.",
@@ -121,6 +124,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Supervision et gouvernance de l’IA",
       "paragraphs": [
@@ -155,6 +159,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Un partenariat de valeur",
       "subtitle": "ServiceNow se concentre entièrement sur le développement de son produit et fait appel à son réseau de partenaires fiables pour toutes ses implantations. Passer par un partenaire comme Victrix s’avère donc crucial pour la mise en place de votre plateforme de services afin de profiter de tous ses avantages. Victrix est partenaire certifié ServiceNow :",
@@ -169,6 +174,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Assurez le succès de votre solution ServiceNow avec Victrix",
       "body": "Rentabilisez au maximum votre investissement et prenez de vitesse vos concurrents grâce à une transformation numérique simple, accélérée et abordable avec Victrix.",
@@ -176,7 +182,12 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
-  ]
+  ],
+  "seoTitle": "Partenaire ServiceNow | Consultant et Services | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

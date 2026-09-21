@@ -1,12 +1,12 @@
 {
-  "_schema": "default",
   "title": "Ø Studio",
   "description": "Optimisez votre infrastructure TI avec nos experts en développement applicatif Power Platform. Ø Studio, solution innovante exclusive à Victrix.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Développement applicatif Power Platform | Ø Studio",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Développement applicatif",
       "title": "Studio de création Power Platform et Dynamics 365",
@@ -21,6 +21,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Déployez des applications à la vitesse grand V",
       "intro": "Dites adieu aux tâches répétitives grâce à l'automatisation des processus et libérez le potentiel de vos équipes.",
@@ -41,7 +42,7 @@
         ]
       },
       "aside": {
-        "icon": "insigne",
+        "icon": "coche",
         "title": "Certifiés Microsoft",
         "text": "Nos conseillers et développeurs certifiés Microsoft libèrent vos équipes TI et maximisent l'utilisation des outils Microsoft 365 intégrés à vos licences.",
         "linkLabel": "Voir l'expertise Productivité",
@@ -49,6 +50,7 @@
       }
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Conseil, intégration et développement",
       "intro": "Avec le Ø Studio à vos côtés, le développement Power Apps, l'automatisation de processus et la gouvernance de vos outils sont des objectifs facilement réalisables.",
@@ -99,6 +101,7 @@
       ]
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Gouvernance Microsoft Power Platform et Dynamics 365",
       "paragraphs": [
@@ -133,6 +136,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "realisations",
       "type": "realisations",
       "title": "Notre book de réalisations",
       "intro": "Plus qu'une simple offre de conseil et de développement d'applications, l'équipe Ø Studio maîtrise parfaitement Power Apps, Power Automate, Power BI et Power Pages — pour des solutions adaptées aux besoins de votre organisation.",
@@ -163,6 +167,7 @@
       "fond": "blanc"
     },
     {
+      "_bookshop_name": "faq",
       "type": "faq",
       "title": "FAQ — Développement d'applications Power Platform et Dynamics 365",
       "fond": "givre",
@@ -182,6 +187,7 @@
       ]
     },
     {
+      "_bookshop_name": "related-posts",
       "type": "related-posts",
       "title": "Ressources liées",
       "tags": [
@@ -191,6 +197,7 @@
       "ctaHref": "/fr/ressources"
     },
     {
+      "_bookshop_name": "form",
       "type": "form",
       "title": "Demandez une consultation",
       "intro": "Parlez-nous de votre projet Power Platform ou Dynamics 365 — un membre de l'équipe Ø Studio vous recontacte rapidement.",
@@ -198,9 +205,11 @@
       "consentText": "",
       "variant": "carte",
       "formId": "o-studio",
+      "fond": "",
       "fields": []
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Vous avez un projet ?",
       "body": "Laissez Ø Studio vous propulser vers Microsoft Power Platform et rentabiliser votre investissement Microsoft 365.",
@@ -208,7 +217,12 @@
       "ctaHref": "#formulaire",
       "cta2Label": "Nous joindre",
       "cta2Href": "/fr/contact",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
-  ]
+  ],
+  "seoTitle": "Développement applicatif Power Platform | Ø Studio",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

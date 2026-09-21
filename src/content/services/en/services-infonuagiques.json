@@ -1,8 +1,12 @@
 {
   "title": "Cloud Services for Businesses",
   "description": "Migrate to a cloud solution tailored to your business reality. Victrix accelerates and simplifies your transition with customized cloud services.",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
       "titleAccent": "",
@@ -15,6 +19,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Cloud Solutions and Services",
       "intro": "Our cloud services are designed to meet the unique challenges of your organization — from selecting your cloud solution to migrating workloads and continuously optimizing your cloud environment.",
@@ -34,18 +39,25 @@
       }
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Our Cloud Solutions",
       "paragraphs": [
         "From <strong>hosting sensitive files and data</strong> to <strong>deploying a customized enterprise cloud server</strong>, Victrix is here for you. Our cloud computing experts offer <strong>trusted cloud solutions</strong> to modernize and grow your business.",
-        "<strong>Victrix accelerates your migration to Azure.</strong> Our methodology, based on the <strong>Microsoft Cloud Adoption Framework</strong>, enables your organization to take the first steps in migrating your applications and servers — with <strong>secure data storage in Azure and all of Microsoft's innovative features</strong> to optimize your productivity and workspace. <a href=\"/en/expertise/cloud-services-provider/azure-migration/\">Learn about migrating to Azure</a>",
-        "<strong>Leverage the AWS Enterprise platform with Victrix.</strong> Drawing on our expertise in Amazon EC2 (IaaS), AWS Elastic Beanstalk (PaaS), and AWS services (SaaS), we can ensure <strong>efficient migration of applications</strong> to a service model that promotes scalability and simplifies management. <a href=\"/en/expertise/cloud-services-provider/aws-services/\">Learn about migrating to AWS</a>"
+        "<strong>Victrix accelerates your migration to Azure.</strong> Our methodology, based on the <strong>Microsoft Cloud Adoption Framework</strong>, enables your organization to take the first steps in migrating your applications and servers — with <strong>secure data storage in Azure and all of Microsoft's innovative features</strong> to optimize your productivity and workspace. <a href=\"/en/services/cloud-services-provider/azure-migration/\">Learn about migrating to Azure</a>",
+        "<strong>Leverage the AWS Enterprise platform with Victrix.</strong> Drawing on our expertise in Amazon EC2 (IaaS), AWS Elastic Beanstalk (PaaS), and AWS services (SaaS), we can ensure <strong>efficient migration of applications</strong> to a service model that promotes scalability and simplifies management. <a href=\"/en/services/cloud-services-provider/aws-services/\">Learn about migrating to AWS</a>"
       ],
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Azure", "label": "Accelerated migration with the Cloud Adoption Framework" },
-        { "value": "AWS", "label": "EC2, Elastic Beanstalk and SaaS expertise" }
+        {
+          "value": "Azure",
+          "label": "Accelerated migration with the Cloud Adoption Framework"
+        },
+        {
+          "value": "AWS",
+          "label": "EC2, Elastic Beanstalk and SaaS expertise"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -55,6 +67,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Our Acceleration Strategy: IaaS — SaaS — PaaS Services",
       "headingStyle": "plain",
@@ -96,6 +109,7 @@
       ]
     },
     {
+      "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Our Cloud Services and Expertise",
       "groups": [
@@ -147,6 +161,7 @@
       ]
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Partners",
       "fond": "givre",
@@ -176,6 +191,7 @@
       "ctaHref": "/en/ressources"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Victrix, Your Strategic Partner for Cloud Services and Solutions",
       "body": "Leverage our expertise for your AWS or Azure migration projects to benefit from secure, flexible, and accessible cloud storage through our multi-cloud practice.",
@@ -183,7 +199,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "cloud-services-provider",

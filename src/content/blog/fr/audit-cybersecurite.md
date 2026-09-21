@@ -12,7 +12,7 @@ wpUrl: "/audit-cybersecurite/"
 ![Un consultant en cybersécurité de Victrix effectuant un audit d'évaluation des risques de cybersécurité.](/wp-content/uploads/2024/10/computationally-intensive-tasks-servers.jpg) Réaliser un audit de cybersécurité est la première étape vers une gestion des risques et de la conformité efficace. Le non-respect des réglementations et des bonnes pratiques en matière de cybersécurité **augmente le risque de violation de données, de sanctions sévères, d'actions en justice et d'atteinte à la réputation**, entre autres.
 
 L'[augmentation des cyberattaques contre les agences gouvernementales](https://www.cyber.gc.ca/fr/orientation/evaluation-des-cybermenaces-nationales-2023-2024) et les grandes organisations le démontre clairement. Il est impératif de **mettre en place les contrôles de sécurité informatique nécessaires pour protéger votre organisation** et respecter les exigences légales et réglementaires propres à votre secteur.
- [Découvrir nos services de cybersécurité](/expertise/cybersecurite/)
+ [Découvrir nos services de cybersécurité](/fr/services/cybersecurite/)
 
 La conformité n'est pas seulement une obligation légale, c'est aussi **un levier stratégique pour toute grande organisation**. En assurant la conformité, vous réduisez les risques de violation de sécurité et vous améliorez la protection des informations sensibles de vos clients contre le vol, la fuite ou pire encore. 
  Le respect des exigences de conformité et des bonnes pratiques en matière de cybersécurité renforce votre posture de sécurité, augmente la confiance des actionnaires et des clients et contribue à atténuer les risques liés aux cyberattaques.
@@ -37,7 +37,7 @@ La mauvaise gestion de vos systèmes ou de l’information par un fournisseur ou
 
 Malgré ces contraintes, la mise en conformité n'est pas une tâche insurmontable. Avec le bon fournisseur de services de cybersécurité, toute grande organisation peut mettre en œuvre des mesures de sécurité adaptées ou établir un plan d’action pour se conformer à ses exigences. 
  La première étape après avoir trouvé votre partenaire? Demandez-lui de**réaliser un audit de cybersécurité** afin d'identifier les lacunes et les vulnérabilités. 
- [Associez-vous à Victrix](/contact/)
+ [Associez-vous à Victrix](/fr/contact/)
 
 ### Rôle et bénéfices d’un audit de cybersécurité pour votre organisation
 
@@ -56,7 +56,7 @@ L'audit permet également à votre organisation de mieux comprendre sa posture e
 Victrix comprend les besoins des organismes gouvernementaux et des grandes organisations. Nous proposons une offre complète en matière d’audit de cybersécurité qui soutient les efforts de votre organisation pour se conformer et maintenir la conformité à diverses normes réglementaires. Voici notre **liste de contrôle d'audit de cybersécurité**:
 
 - Accompagnement de la mise en œuvre de la conformité avec les lois et réglementations telles que la Loi 25 et RGPD
-- Utilisation des cadres NIST CSF, CIS CSC et [ISO 27001:2022 et ISO 9001:2015](/certification-iso-27001-iso-9001/) pour évaluer les processus de sécurité
+- Utilisation des cadres NIST CSF, CIS CSC et [ISO 27001:2022 et ISO 9001:2015](/fr/ressources/certification-iso-27001-iso-9001/) pour évaluer les processus de sécurité
 - Aide à la mise en conformité avec la norme PCI DSS pour assurer la sécurité des transactions financières
 - Solutions personnalisées pour répondre aux exigences légales en matière de protection des données
 - Soutien continu pour maintenir la conformité au fur et à mesure que les exigences réglementaires évoluent
@@ -75,4 +75,4 @@ Ces certifications sont la preuve irréfutable de votre engagement à maintenir 
 Nos experts certifiés vous aident avec la mise en place des meilleures pratiques de cybersécurité dans vos activités quotidiennes. Nous fournissons des **services d'audit de cybersécurité complets**et des **plans d'audit de cybersécurité personnalisés**qui s'alignent sur vos objectifs afin que vous soyez confiant dans le respect de vos obligations et la protection de vos données sensibles.
 
 Confiez votre audit de cybersécurité à Victrix et laissez-nous vous aider à maintenir la conformité réglementaire et à protéger votre organisation contre les menaces potentielles.
- [Auditer votre organisation avec Victrix](/contact/)
+ [Auditer votre organisation avec Victrix](/fr/contact/)

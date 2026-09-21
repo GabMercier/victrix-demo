@@ -13,7 +13,7 @@ wpUrl: "/zero-trust-network-access-ztna/"
 
 Améliorez la posture de sécurité des réseaux informatiques de votre entreprise grâce au modèle Zero Trust Network Access (ZTNA).
 
-Dans un contexte mixte ou télétravail et cybersécurité vont de pair, grandes, petites et moyennes entreprises ont plusieurs défis à relever. Parmi ces défis, on retrouve **la sécurité du réseau, des systèmes d’information et des données personnelles**. La [mise en place d’une infrastructure de sécurité](/expertise/cybersecurite/) optimale est donc au premier plan des préoccupations en entreprise.
+Dans un contexte mixte ou télétravail et cybersécurité vont de pair, grandes, petites et moyennes entreprises ont plusieurs défis à relever. Parmi ces défis, on retrouve **la sécurité du réseau, des systèmes d’information et des données personnelles**. La [mise en place d’une infrastructure de sécurité](/fr/services/cybersecurite/) optimale est donc au premier plan des préoccupations en entreprise.
 
 Nous vous invitons ainsi à parcourir ce guide sur le concept Zero Trust en cybersécurité. Apprenez tout au sujet de ce **modèle incontournable de cybersécurité** à appliquer et comment Victrix peut vous aider.
 
@@ -42,7 +42,7 @@ Les utilisateurs d’un ZTNA ont ainsi **un accès sécurisé aux ressources** d
 
 La raison principale pour laquelle ce modèle est de plus en plus recherché est le changement du contexte du milieu de travail.
 
-De plus en plus d’entreprises optent pour un mode travail hybride, où les employés ont le choix entre le travail au bureau et le télétravail. N’oublions pas les [transformations organisationnelles](/expertise/conseil-strategique/) impliquant les bureaux distants et l’infonuagique qui prennent de plus en plus de place.
+De plus en plus d’entreprises optent pour un mode travail hybride, où les employés ont le choix entre le travail au bureau et le télétravail. N’oublions pas les [transformations organisationnelles](/fr/services/conseil-strategique/) impliquant les bureaux distants et l’infonuagique qui prennent de plus en plus de place.
 
 Avec l’initiative Zero Trust, les entreprises sont en mesure d’assurer une protection optimale et en continu de leurs réseaux, systèmes et données. Tout cela en libérant l’accès aux ressources en tout temps, depuis tout appareil autorisé,**toujours dans une optique où la cybersécurité est la priorité**.
 
@@ -76,7 +76,7 @@ Il existe un grand nombre d’avantages à opter pour un [cadre de sécurité à
 - Meilleure visibilité sur votre réseau et les systèmes qui s’y raccordent
 - Application de normes de sécurité accrues pour le télétravail et le mode BYOD (Bring Your Own Device)
 
-Le modèle ZTNA facilite aussi la cohérence avec les normes de sécurité en vigueur et [les obligations liées à la Loi 25](/expertise/conseil-strategique/conformite-loi-25/) et la Loi sur la protection des renseignements personnels dans le secteur privé (LPRPSP).
+Le modèle ZTNA facilite aussi la cohérence avec les normes de sécurité en vigueur et [les obligations liées à la Loi 25](/fr/services/conseil-strategique/conformite-loi-25/) et la Loi sur la protection des renseignements personnels dans le secteur privé (LPRPSP).
 
-Pour toutes questions concernant la protection de vos réseaux informatiques, votre [cybersécurité infonuagique](/expertise/services-infonuagiques/) ou l’architecture Zero Trust, contactez-nous. Nos experts en cybersécurité vous accompagneront pour mettre en place les meilleures solutions et assurer la sécurité de votre entreprise.
- [Parlez à un expert en cybersécurité chez Victrix](/contact/)
+Pour toutes questions concernant la protection de vos réseaux informatiques, votre [cybersécurité infonuagique](/fr/services/services-infonuagiques/) ou l’architecture Zero Trust, contactez-nous. Nos experts en cybersécurité vous accompagneront pour mettre en place les meilleures solutions et assurer la sécurité de votre entreprise.
+ [Parlez à un expert en cybersécurité chez Victrix](/fr/contact/)

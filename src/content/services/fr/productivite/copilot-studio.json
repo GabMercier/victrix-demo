@@ -1,8 +1,12 @@
 {
   "title": "Copilot Studio",
   "description": "Bénéficiez d'un accompagnement personnalisé pour l'intégration de Microsoft Copilot Studio. Accélérez l'adoption grâce à Victrix.",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Intelligence artificielle",
       "eyebrowStyle": "badge",
@@ -19,6 +23,7 @@
       "imageAlt": ""
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Valeur stratégique",
       "paragraphs": [
@@ -40,6 +45,7 @@
       "fond": "ivoire"
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Nos offres Copilot Studio",
       "intro": "Une approche structurée pour garantir une adoption réussie et un impact immédiat sur vos opérations.",
@@ -86,6 +92,7 @@
       "fond": "beige"
     },
     {
+      "_bookshop_name": "realisations",
       "type": "realisations",
       "title": "Les réalisations Copilot Studio",
       "intro": "Découvrez comment Victrix applique concrètement l'IA générative dans différents secteurs d'activité.",
@@ -116,6 +123,7 @@
       "fond": "ivoire"
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Prêt à transformer votre organisation ?",
       "body": "Déployez Copilot Studio par étapes avec Victrix. Nous vous offrons un accompagnement stratégique adapté à vos priorités réelles.",
@@ -123,7 +131,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "Déployez avec Victrix",
       "cta2Href": "/fr/services/productivite",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": "Intégration de Microsoft Copilot Studio"

@@ -17,7 +17,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/home-latest/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/home-latest/home-latest.preview.png"
     text: "Accueil — Derniers articles"
     subtext: Titre + lien + 3 articles récents (automatique)
   preview:
@@ -43,8 +43,30 @@ _inputs:
   title:
     label: "Titre"
   subtitle:
+    type: html
     label: "Sous-titre"
     comment: "Paragraphe d'appui sous le titre (optionnel)."
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   readMoreLabel:
     label: "Libellé « Lire la suite »"
     comment: "Lien affiché au bas de chaque carte. Vide = absent."

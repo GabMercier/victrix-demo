@@ -5,6 +5,7 @@ title: Démonstration nouvelles sections
 description: >-
   Page de démonstration des sections Témoignage, Logos partenaires, Chiffres et
   Vidéo.
+seoH1: ""
 noindex: true
 sections:
   - _bookshop_name: hero

@@ -1,4 +1,6 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
 /**
  * Section « Formulaire » — composant Bookshop (contrat landing).
  *
@@ -69,6 +71,26 @@
  *   public/_headers est GELÉ — activer Turnstile en production exige d'y
  *   ajouter `script-src` + `frame-src https://challenges.cloudflare.com`
  *   (documenté docs/formulaires.md §7, PAS appliqué).
+ * - PUBLIC_FORMS_ENABLED="inbox" (2026-09-16) : vrai <form method="POST"> dont
+ *   l'action est la page Merci de la langue (/fr/merci/ ou /en/merci/) :
+ *   l'hébergement CloudCannon capte le POST, l'enregistre dans la boîte de
+ *   réception (Inbox) liée au site, le transmet aux destinataires configurés
+ *   là-bas, puis redirige vers l'action. Le champ caché `inbox_key` choisit
+ *   la boîte : clé de la définition du formulaire (champ « Boîte de
+ *   réception CloudCannon »), sinon PUBLIC_FORMS_INBOX_KEY (clé par défaut
+ *   du site, une par environnement), sinon rien = boîte par défaut du site.
+ *   Ni listes _requis/_courriels/_cases ni _formId (propres au worker). Le
+ *   widget Turnstile s'affiche AUSSI en inbox si PUBLIC_TURNSTILE_SITE_KEY
+ *   est posée (2026-09-18) : le jeton est vérifié par la boîte CloudCannon
+ *   (fournisseur Turnstile sur la boîte + « Require CAPTCHA » — formulaires.md
+ *   §7). Champs spéciaux CloudCannon (2026-09-17, docs/formulaires.md
+ *   §4.2) : `_subject` = objet du courriel, statique au build (« [clé]
+ *   objet de la définition ») puis recomposé À LA SOUMISSION par le module
+ *   inbox-client.ts (« [campagne-evaluation] Prénom Nom ») d'après les
+ *   attributs data-inbox-* du <form> ; `_replyto` = courriel du visiteur ;
+ *   pot de miel renommé `_gotcha` (le seul nom que CloudCannon filtre).
+ *   Champs cachés placés APRÈS les champs visibles (ordre du courriel).
+ *   Voir src/lib/forms/mode.ts, inbox.ts et docs/formulaires.md §3.
  * - NE PAS définir PUBLIC_FORMS_ENABLED dans l'environnement de build
  *   CloudCannon (STATIC_ONLY) : /api/forms y est force-prérendu.
  *
@@ -84,10 +106,13 @@
  * - ÉDITEUR VISUEL CLOUDCANNON : son bundle ne remplace que les expressions
  *   EXACTES `import.meta.env.PUBLIC_X` — d'où `import.meta.env ?? {}` et
  *   `Astro.url?.pathname` ci-dessous.
- * - GOTCHA Bookshop : le moteur retire les <script>…</script> PAR REGEX avant
- *   de compiler — un script unique enfant d'une expression {cond && (…)}
- *   laisserait un « ( ) » orphelin qui casse le build CloudCannon. Les
- *   mini-scripts restent DANS le fragment formsEnabled, jamais seuls.
+ * - GOTCHA Bookshop : le moteur retire les balises script (ouvrante à
+ *   fermante) PAR REGEX avant de compiler — un script unique enfant d'une
+ *   expression {cond && (…)} laisserait un « ( ) » orphelin qui casse le
+ *   build CloudCannon. Les mini-scripts restent DANS le fragment
+ *   formsEnabled, jamais seuls. Et ne JAMAIS écrire une balise script
+ *   ouvrante littérale dans un commentaire (piège solutions-catalogue.astro,
+ *   2026-09-17 : la regex avale tout jusqu'au premier vrai script fermant).
  * - `fields = []` en secours pour ne pas planter l'éditeur pendant la saisie.
  * - Pot de miel / bannière d'erreur : styles EN LIGNE fonctionnels (masquage
  *   robuste aux robots ; paire rouge littérale, pas de rôle « erreur » au
@@ -95,6 +120,8 @@
  */
 import { fieldName } from '../../../../src/lib/forms/field-name';
 import { resolveHiddenValue } from '../../../../src/lib/forms/hidden-tokens';
+import { formAction, formsBackend, resolveInboxKey, resolveTurnstileSiteKey } from '../../../../src/lib/forms/mode';
+import { inboxFormKey, inboxSubjectStatic } from '../../../../src/lib/forms/inbox';
 
 interface FormField {
   label: string;
@@ -121,7 +148,7 @@ interface Props {
    * « Fond de section » (2026-08-18, landing-pagefinal.txt : bande SABLE).
    * '' = défaut historique du bloc (givre en carte, blanc en panneau).
    */
-  fond?: '' | 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  fond?: '' | FondKey;
   fields: FormField[];
   /**
    * FORMS V2 — référence un formulaire de src/data/forms/<lang>/<formId>.json.
@@ -137,7 +164,14 @@ interface Props {
    */
   resolvedForms?: Record<
     string,
-    { submitLabel: string; consentText: string; fields: FormField[] }
+    {
+      submitLabel: string;
+      consentText: string;
+      fields: FormField[];
+      inboxKey?: string;
+      /** « Objet du courriel » de la définition — objet statique en mode inbox. */
+      subject?: string;
+    }
   >;
   /**
    * Injecté PAR LA ROUTE via `enrich` (build seulement) : contexte de la page
@@ -181,16 +215,47 @@ const idBase =
 
 // --- Mode fonctionnel (drapeaux d'environnement — voir l'entête) ------------
 const env = (import.meta.env ?? {}) as unknown as Record<string, string | undefined>;
-const formsEnabled = env.PUBLIC_FORMS_ENABLED === '1';
-// Le widget n'a de sens que si le formulaire soumet réellement quelque part.
-const turnstileSiteKey = formsEnabled ? env.PUBLIC_TURNSTILE_SITE_KEY || '' : '';
+// Mode (voir src/lib/forms/mode.ts) : 'none' = maquette, 'worker' = /api/forms,
+// 'inbox' = boîte de réception CloudCannon (action = page Merci de la langue).
+const backend = formsBackend(env);
+const formsEnabled = backend !== 'none';
+const inboxMode = backend === 'inbox';
+// Widget Turnstile dès qu'un vrai formulaire existe — worker (jeton vérifié
+// par /api/forms) OU inbox (vérifié par la boîte CloudCannon) ; voir mode.ts.
+const turnstileSiteKey = resolveTurnstileSiteKey(backend, env);
 
 // Contexte de page pour les champs cachés `lang` / `source`.
 const pagePath = Astro.url?.pathname ?? '';
 const formLang = pagePath.split('/')[1] === 'en' ? 'en' : 'fr';
+const inboxKey = inboxMode ? resolveInboxKey(formDef?.inboxKey, env) : '';
 
 // `name` stable dérivé du libellé — logique PARTAGÉE avec le serveur.
 const fieldNames = effFields.map((field, i) => fieldName(field.label, i));
+
+// Mode inbox — objet du courriel et attributs de composition (voir l'entête ;
+// format dans src/lib/forms/inbox.ts, lu à la soumission par inbox-client.ts).
+const inboxPrefix = inboxMode ? inboxFormKey(formId, title) : '';
+const inboxSubject = inboxMode
+  ? inboxSubjectStatic(inboxPrefix, (formDef && formDef.subject) || title)
+  : '';
+const namesOfType = (type: FormField['type'], max: number) =>
+  effFields
+    .map((field, i) => (field.type === type ? fieldNames[i] : null))
+    .filter((name): name is string => name !== null)
+    .slice(0, max)
+    .join(',');
+// Détails = listes déroulantes (3 au plus), nom = deux premiers champs texte,
+// repli et Reply-To = premier champ courriel.
+const inboxAttrs = inboxMode
+  ? {
+      'data-inbox-form': '',
+      'data-inbox-prefix': inboxPrefix,
+      'data-inbox-details': namesOfType('select', 3) || undefined,
+      'data-inbox-name': namesOfType('text', 2) || undefined,
+      'data-inbox-fallback': namesOfType('email', 1) || undefined,
+      'data-inbox-replyto': namesOfType('email', 1) || undefined,
+    }
+  : {};
 
 // Condition d'affichage ACTIVE (field non vide — la « forme vide » que pose
 // l'éditeur CloudCannon, {field:'', equals:''}, signifie « pas de condition »).
@@ -271,13 +336,7 @@ const submitClass = isCard
 
 // « Fond de section » : clé fermée → utilitaire de la palette officielle ;
 // '' = rendu historique de la variante (carte = givre, panneau = blanc).
-const FONDS: Record<string, string> = {
-  blanc: 'bg-white',
-  givre: 'bg-givre',
-  ivoire: 'bg-ivoire',
-  beige: 'bg-beige',
-  sable: 'bg-sable',
-};
+const FONDS: Record<string, string> = FOND_CLASSES;
 const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surface');
 ---
 
@@ -305,10 +364,8 @@ const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surf
         >
           {title}
         </h2>
-        {intro && (
-          <p class="text-body-md text-center text-on-surface-variant m-0 max-w-none mx-auto">
-            {intro}
-          </p>
+        {hasRichText(intro) && (
+          <div class="rich text-body-md text-center text-on-surface-variant max-w-none mx-auto" set:html={blockHtml(intro)} />
         )}
       </div>
 
@@ -317,8 +374,9 @@ const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surf
       <form
         class:list={['grid grid-cols-1 sm:grid-cols-2', isCard ? 'gap-x-3 gap-y-6' : 'gap-4']}
         method={formsEnabled ? 'POST' : undefined}
-        action={formsEnabled ? '/api/forms' : undefined}
+        action={formAction(backend, formLang)}
         data-astro-reload={formsEnabled ? '' : undefined}
+        {...inboxAttrs}
       >
         {
           formsEnabled && (
@@ -346,24 +404,10 @@ const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surf
                   if (b && /[?&]erreur=/.test(location.search)) b.removeAttribute('hidden');
                 }
               </script>
-              <input type="hidden" name="lang" value={formLang} />
-              <input type="hidden" name="source" value={pagePath} />
-              {formDef && <input type="hidden" name="_formId" value={formId} />}
-              {requiredNames && <input type="hidden" name="_requis" value={requiredNames} />}
-              {emailNames && <input type="hidden" name="_courriels" value={emailNames} />}
-              {caseNames && <input type="hidden" name="_cases" value={caseNames} />}
-              {/* Pot de miel `website` — voir honeypotStyle dans l'entête. */}
-              <div aria-hidden="true" style={honeypotStyle}>
-                <label for={`${idBase}-website`}>Site Web</label>
-                <input
-                  id={`${idBase}-website`}
-                  type="text"
-                  name="website"
-                  tabindex="-1"
-                  autocomplete="off"
-                />
-              </div>
-              {/* Les deux mini-scripts P-05 vivent DANS ce fragment et SANS
+              {/* Les champs cachés et le pot de miel sont émis APRÈS les champs
+                  visibles (fragment plus bas) : le courriel de notification
+                  CloudCannon suit l'ordre du formulaire. Les deux mini-scripts
+                  P-05 vivent DANS ce fragment (avec la bannière) et SANS
                   enveloppe conditionnelle propre — gotcha Bookshop de
                   l'entête (retrait des scripts par regex). Inertes quand le
                   formulaire n'a ni champ conditionnel ni jeton url. */}
@@ -558,9 +602,39 @@ const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surf
                 'sm:col-span-2 m-0 max-w-none text-on-surface-variant',
                 isCard ? 'text-sm leading-5' : 'text-body-md leading-relaxed',
               ]}
-            >
-              {effConsentText}
-            </p>
+              set:html={inlineHtml(effConsentText)}
+            />
+          )
+        }
+
+        {
+          formsEnabled && (
+            <>
+              {/* Champs cachés + pot de miel, APRÈS les champs visibles (ordre du
+                  courriel CloudCannon). `_formId` et les listes de contrôle sont
+                  propres au worker /api/forms ; `_subject` (objet, recomposé à la
+                  soumission par inbox-client.ts) et `inbox_key` propres à la boîte. */}
+              <input type="hidden" name="lang" value={formLang} />
+              <input type="hidden" name="source" value={pagePath} />
+              {formDef && !inboxMode && <input type="hidden" name="_formId" value={formId} />}
+              {inboxKey && <input type="hidden" name="inbox_key" value={inboxKey} />}
+              {inboxMode && <input type="hidden" name="_subject" value={inboxSubject} />}
+              {!inboxMode && requiredNames && <input type="hidden" name="_requis" value={requiredNames} />}
+              {!inboxMode && emailNames && <input type="hidden" name="_courriels" value={emailNames} />}
+              {!inboxMode && caseNames && <input type="hidden" name="_cases" value={caseNames} />}
+              {/* Pot de miel — `_gotcha` en inbox (seul nom filtré par CloudCannon),
+                  `website` côté worker ; voir honeypotStyle dans l'entête. */}
+              <div aria-hidden="true" style={honeypotStyle}>
+                <label for={`${idBase}-website`}>Site Web</label>
+                <input
+                  id={`${idBase}-website`}
+                  type="text"
+                  name={inboxMode ? '_gotcha' : 'website'}
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
+            </>
           )
         }
 
@@ -614,3 +688,14 @@ const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surf
     </div>
   </div>
 </section>
+
+<script>
+  // Mode inbox : objet du courriel (`_subject`) + Reply-To (`_replyto`) composés
+  // à la soumission d'après les attributs data-inbox-* du <form>
+  // (src/lib/forms/inbox-client.ts — logique PARTAGÉE avec contact.astro et la
+  // carte infolettre). Module hissé par Astro, lié sur astro:page-load ; inerte
+  // sans [data-inbox-form] (maquette, worker). Retiré par la regex du moteur
+  // Bookshop avant compilation → jamais dans le bundle de l'éditeur visuel.
+  import { bindInboxForms } from '../../../../src/lib/forms/inbox-client';
+  document.addEventListener('astro:page-load', () => bindInboxForms(document));
+</script>

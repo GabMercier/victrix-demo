@@ -7,9 +7,9 @@ topics: ["Cybersecurity", "Strategic consulting"]
 slug: "iso-27001-iso-9001-certifications"
 coverImage: "/wp-content/uploads/2025/07/cover-article_certification-iso_en-1.png"
 seoTitle: "ISO 27001 and ISO 9001: Victrix Renews Its Certifications"
-wpUrl: "/en/iso-27001-iso-9001-certifications/"
+wpUrl: "/en/ressources/iso-27001-iso-9001-certifications/"
 ---
-**MONTREAL, JULY. 23, 2025** — Victrix is pleased to announce the renewal of its ISO 27001 and ISO 9001 certifications, reaffirming its unwavering commitment to [information security](/en/expertise/cybersecurity/) and excellence in quality management.
+**MONTREAL, JULY. 23, 2025** — Victrix is pleased to announce the renewal of its ISO 27001 and ISO 9001 certifications, reaffirming its unwavering commitment to [information security](/en/services/cybersecurity/) and excellence in quality management.
 
 This dual international recognition consolidates Victrix’s position as a Quebec leader in the field of information technology.
 
@@ -31,4 +31,4 @@ Dominic Lajoie
 CEO, Victrix
 
 To discover all of our areas of expertise and learn more about our commitment to quality and security, visit our website:
- [Discover Victrix](/en/discover-victrix/)
+ [Discover Victrix](/en/decouvrir/)

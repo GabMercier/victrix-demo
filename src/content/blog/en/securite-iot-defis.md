@@ -10,7 +10,7 @@ seoTitle: "Understanding IoT Security Challenges"
 wpUrl: "/en/iot-security-challenges/"
 ---
  With [57% of enterprise IoT devices vulnerable to attack](https://www.statista.com/statistics/1377569/worldwide-annual-internet-of-things-attacks/)*, the security of connected devices has become a critical issue for organizations. 
- As the**Internet of Things (IoT)** expands across the enterprise, cyber threats are multiplying, exposing systems to significant risk. It's critical for organizations to understand the issues and implement an[IoT security strategy](/en/expertise/cybersecurity/internet-of-things-iot/). 
+ As the**Internet of Things (IoT)** expands across the enterprise, cyber threats are multiplying, exposing systems to significant risk. It's critical for organizations to understand the issues and implement an[IoT security strategy](/en/services/cybersecurity/internet-of-things-iot/). 
  *according to Statista
 
 **IoT-related security issues** are numerous and depend on the number of connected objects within an organization.
@@ -23,7 +23,7 @@ The top 5 challenges are:
 - The complexity of connecting new objects to the Internet and securing them within existing infrastructures
 - Adherence to security and privacy standards
 
-<a class="article-cta" href="/en/expertise/cybersecurity/internet-of-things-iot/">Ready to assess your IoT security?</a>
+<a class="article-cta" href="/en/services/cybersecurity/internet-of-things-iot/">Ready to assess your IoT security?</a>
 
 ### 1. IoT Assessment and Inventory
 
@@ -45,7 +45,7 @@ Finally, the final step is to continually audit and improve the system. Regular 
 
 Your employees need to be familiar with best practices to reduce risk and ensure successful security adoption of new technologies.
 
-<a class="article-cta" href="/en/expertise/cybersecurity/internet-of-things-iot/">Talk to an IoT security expert</a>
+<a class="article-cta" href="/en/services/cybersecurity/internet-of-things-iot/">Talk to an IoT security expert</a>
 
 Victrix has positioned itself as a key partner to help organizations **secure their IoT networks**.
 

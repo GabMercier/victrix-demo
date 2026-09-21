@@ -1,4 +1,5 @@
 ---
+import { blockHtml } from '../../shared/rich';
 /**
  * Section « Bannière d'accueil » — composant Bookshop (accueil composable).
  * FIDÉLITÉ MAQUETTE 2026-08-04 (docs/design/accueil.css §HeroSection, capture
@@ -15,11 +16,26 @@
  * absent (convention du dépôt) ; l'ancien contenu reste valide. `image` est un
  * chemin PUBLIC servi tel quel (browser-safe pour l'éditeur CloudCannon).
  *
+ * ZONE LISIBLE DU VOILE (2026-09-18 — même défaut, même règle que
+ * service-hero). Le dégradé blanc s'estompe vers la droite en % de la LARGEUR
+ * DU HÉROS alors que la colonne de texte faisait 672 px quoi qu'il arrive : à
+ * 390 et 820 px le sous-titre passait sur la photo nue. Le voile et la colonne
+ * changent donc ENSEMBLE, par paliers disjoints (aucune classe à neutraliser) :
+ *  - < md  : le texte a besoin de toute la largeur → voile quasi uniforme ;
+ *  - md–lg : voile plein jusqu'à 60 % puis fondu ; texte borné à 62 % ;
+ *  - ≥ lg  : dégradé de la MAQUETTE, verbatim ; texte borné à 55 % de la
+ *            fenêtre, plafond 672 px inchangé (rien ne change ≥ ~1320 px).
+ * La borne retranche la gouttière réelle de container-site
+ * (clamp(2rem, 3.75vw, 96px), theme.css) : le bord DROIT du texte tombe
+ * exactement à 62 % puis 55 %. Test : tests/e2e/hero-zone-lisible.spec.ts.
+ *
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  * Rend le SEUL <h1> de la page : à garder en première position.
  */
 interface Props {
   eyebrow?: string;
+  /** Vrai quand la page porte déjà son <h1> (champ « H1 SEO » de la page) : le grand titre passe en <h2>, styles inchangés. */
+  h1Taken?: boolean;
   title: string;
   titleAccent?: string;
   subtitle: string;
@@ -30,7 +46,7 @@ interface Props {
   cta2Href?: string;
 }
 
-const { eyebrow, title, titleAccent, subtitle, ctaLabel, ctaHref, image, cta2Label, cta2Href } =
+const { eyebrow, h1Taken = false, title, titleAccent, subtitle, ctaLabel, ctaHref, image, cta2Label, cta2Href } =
   Astro.props;
 
 // Le mot accentué est rendu en bleu là où il apparaît dans le titre (première
@@ -44,6 +60,12 @@ const titleParts =
         after: title.slice(accentIndex + titleAccent.length),
       }
     : null;
+// H1 de la page (2026-09-16) : le grand titre est le <h1>, sauf si la page
+// porte déjà un « H1 SEO » (prop h1Taken, posée par shared/astro/page.astro
+// qui rend alors le <h1> masqué) — il passe en <h2>, styles inchangés.
+// Jamais de page sans H1.
+const TitleTag = h1Taken ? 'h2' : 'h1';
+
 ---
 
 <section class="relative min-h-[600px] lg:min-h-[750px] flex items-center overflow-hidden bg-white">
@@ -51,18 +73,25 @@ const titleParts =
     image && (
       <div class="absolute inset-0" aria-hidden="true">
         <img src={image} alt="" class="w-full h-full object-cover" loading="eager" decoding="async" fetchpriority="high" />
-        <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
+        <div
+          class:list={[
+            'absolute inset-0',
+            'max-md:bg-[linear-gradient(90deg,rgba(255,255,255,0.97)_0%,rgba(255,255,255,0.88)_100%)]',
+            'md:max-lg:bg-[linear-gradient(90deg,rgba(255,255,255,0.97)_0%,rgba(255,255,255,0.92)_60%,rgba(255,255,255,0.15)_100%)]',
+            'lg:bg-gradient-to-r lg:from-white lg:via-white/80 lg:to-transparent',
+          ]}
+        />
       </div>
     )
   }
   <div class="relative z-10 container-site py-24 lg:py-32">
-    <div class="max-w-2xl flex flex-col items-start gap-6">
+    <div class="max-w-2xl md:max-lg:max-w-[calc(62vw_-_clamp(2rem,3.75vw,96px))] lg:max-w-[min(672px,calc(55vw_-_clamp(2rem,3.75vw,96px)))] flex flex-col items-start gap-6">
       {
         eyebrow && (
           <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary m-0 max-w-none">{eyebrow}</p>
         )
       }
-      <h1 class="text-[40px] leading-[1.05] lg:text-[60px] lg:leading-[60px] font-extrabold tracking-[-1.2px] text-on-primary-fixed m-0 text-balance">
+      <TitleTag class="text-[40px] leading-[1.05] lg:text-[60px] lg:leading-[60px] font-extrabold tracking-[-1.2px] text-on-primary-fixed m-0 text-balance">
         {
           titleParts ? (
             <>
@@ -74,8 +103,8 @@ const titleParts =
             title
           )
         }
-      </h1>
-      <p class="text-lg leading-7 text-[#545F71] m-0 max-w-xl pt-2">{subtitle}</p>
+      </TitleTag>
+      <div class="rich text-lg leading-7 text-[#545F71] max-w-xl pt-2" set:html={blockHtml(subtitle)} />
       <div class="flex flex-wrap items-start gap-4 pt-4">
         <a
           class="no-underline bg-primary text-on-primary px-8 py-[17px] rounded font-semibold text-base leading-6 inline-flex items-center gap-2 hover:bg-primary-container transition-colors"

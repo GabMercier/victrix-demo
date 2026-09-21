@@ -1,12 +1,12 @@
 {
-  "_schema": "default",
   "title": "Dynamics 365 Field Service",
   "description": "Implémentation Dynamics 365 Field Service. Optimisez vos opérations terrain: planification, résolution au premier appel et ROI prouvé. Planifiez une consultation.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Implémentation Dynamics 365 Field Service | Services | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Écosystème Microsoft 365",
       "title": "Implémentation Dynamics 365 Field Service",
@@ -21,6 +21,7 @@
       "fond": "givre"
     },
     {
+      "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Les enjeux de gestion des opérations terrain",
       "subtitle": "Papier, feuilles de calcul ou appels de coordination : vos équipes terrain doivent-elles composer avec des outils manuels et déconnectés? À mesure que le volume de demandes augmente, les limites deviennent critiques pour les organisations québécoises à fortes opérations terrain comme le secteur manufacturier avancé, l'énergie, les services publics, les télécommunications, la santé, le secteur public et les municipalités.",
@@ -35,6 +36,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Encadrer, structurer et optimiser vos interventions terrain",
       "intro": "D365 Field Service vous aide à mieux planifier, mieux coordonner et mieux suivre vos interventions, de la création d’une demande jusqu’à sa complétion. La solution centralise vos données opérationnelles et automatise la planification pour gagner en efficacité, réduire les efforts manuels et améliorer l’expérience client.",
@@ -101,6 +103,7 @@
       ]
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Des résultats qui parlent d’eux-mêmes",
       "intro": "",
@@ -137,12 +140,13 @@
       }
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Pourquoi choisir Victrix",
       "paragraphs": [
         "On ne se contente pas d’activer des fonctionnalités : <strong>on bâtit votre solution avec vous</strong>. Notre accompagnement personnalisé vous suit du début jusqu’à la livraison, pour que la solution reflète votre réalité et que vos équipes s’y retrouvent.",
-        "Notre <strong>équipe multidisciplinaire</strong> (gouvernance, <a href=\"/expertise/cybersecurite/\">cybersécurité</a>, <a href=\"/expertise/services-infonuagiques/\">infonuagique</a>, <a href=\"/expertise/services-ti-geres/\">services TI gérés</a> et Power Platform) travaille ensemble sur votre projet. Le budget et l’échéancier seront confirmés avec notre équipe, car ils varient selon votre contexte et vos besoins.",
-        "Victrix détient les <a href=\"/certification-iso-27001-iso-9001/\">certifications ISO/IEC 27001:2022 (sécurité de l’information) et ISO 9001:2015</a> (gestion de la qualité)."
+        "Notre <strong>équipe multidisciplinaire</strong> (gouvernance, <a href=\"/fr/services/cybersecurite/\">cybersécurité</a>, <a href=\"/fr/services/services-infonuagiques/\">infonuagique</a>, <a href=\"/fr/services/services-ti-geres/\">services TI gérés</a> et Power Platform) travaille ensemble sur votre projet. Le budget et l’échéancier seront confirmés avec notre équipe, car ils varient selon votre contexte et vos besoins.",
+        "Victrix détient les <a href=\"/fr/ressources/certification-iso-27001-iso-9001/\">certifications ISO/IEC 27001:2022 (sécurité de l’information) et ISO 9001:2015</a> (gestion de la qualité)."
       ],
       "image": "/wp-content/uploads/2026/06/site-manager-walk-down-with-engineer-to-check-prec-2026-03-09-23-57-29-utc-1-scaled.jpg",
       "imageAlt": "",
@@ -168,6 +172,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Notre démarche d’implémentation Dynamics 365 Field Service",
       "headingStyle": "underline",
@@ -199,6 +204,7 @@
       ]
     },
     {
+      "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Ce qui est inclus dans notre offre d’implémentation",
       "intro": "Échéancier à titre indicatif : environ 18 semaines*, confirmé après l’analyse. L’offre pose une base solide que vous faites évoluer au rythme de vos besoins; selon vos priorités, nous pouvons analyser et chiffrer séparément les éléments du second volet. * Certaines limites et précisions s’appliquent aux éléments marqués d’un astérisque ; elles seront confirmées lors de l’analyse.",
@@ -281,6 +287,7 @@
       ]
     },
     {
+      "_bookshop_name": "faq",
       "type": "faq",
       "title": "Questions fréquentes sur Dynamics 365 Field Service",
       "fond": "blanc",
@@ -312,6 +319,7 @@
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Prêts à structurer et optimiser vos opérations terrain?",
       "body": "Discutons de vos opérations terrain et de la façon dont Dynamics 365 Field Service peut les transformer.",
@@ -319,7 +327,12 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
-  ]
+  ],
+  "seoTitle": "Implémentation Dynamics 365 Field Service | Services | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

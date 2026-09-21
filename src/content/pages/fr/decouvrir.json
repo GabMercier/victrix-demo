@@ -4,8 +4,13 @@
   "description": "Victrix est le partenaire TI stratégique des grandes entreprises du Québec, spécialisé en cybersécurité, services gérés, IA, infonuagique et services applicatifs.",
   "noindex": true,
   "seoTitle": "",
+  "seoH1": "",
+  "slug": "",
+  "contactSujet": "",
+  "contactService": "",
   "sections": [
     {
+      "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Depuis 2003",
       "eyebrowStyle": "badge",
@@ -23,6 +28,7 @@
       "imagePosition": "haut"
     },
     {
+      "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Notre culture",
       "paragraphs": [
@@ -39,6 +45,7 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Victrix en un coup d'œil",
       "intro": "Nous nous engageons à être le cabinet-conseil TI le plus réputé au Canada, en façonnant une culture d’entreprise où nos employés, partenaires et clients peuvent aller au bout de leurs ambitions.",
@@ -63,7 +70,7 @@
         ]
       },
       "aside": {
-        "icon": "insigne",
+        "icon": "coche",
         "title": "Happy At Work",
         "text": "Victrix est certifiée HappyIndex® AtWork des entreprises « où l'on est heureux de travailler ».",
         "linkLabel": "La vie chez Victrix",
@@ -71,9 +78,11 @@
       }
     },
     {
+      "_bookshop_name": "benefits",
       "type": "benefits",
       "title": "Nos valeurs",
       "intro": "",
+      "fond": "blanc",
       "items": [
         {
           "title": "Excellence",
@@ -103,28 +112,100 @@
       ]
     },
     {
+      "_bookshop_name": "timeline",
       "type": "timeline",
       "title": "Notre histoire",
       "intro": "Plus de vingt ans de croissance, d'acquisitions et d'expansion internationale.",
       "tone": "default",
       "items": [
-        { "year": "2003", "title": "Création de Victrix", "text": "", "accent": true },
-        { "year": "2004", "title": "Acquisition d'ELFIQ Networks et de la division de services-conseils TI du groupe 3-Soft", "text": "", "accent": false },
-        { "year": "2007", "title": "Acquisition de Cogeti Informatique, d'Informatique Stratégique et de Noxent", "text": "", "accent": true },
-        { "year": "2008", "title": "Acquisition de Compu-Sys", "text": "", "accent": false },
-        { "year": "2009", "title": "Acquisition d'IPtel", "text": "", "accent": false },
-        { "year": "2010", "title": "Acquisition d'Expra Solutions", "text": "", "accent": false },
-        { "year": "2011", "title": "Acquisition de Progilan", "text": "", "accent": false },
-        { "year": "2012", "title": "Acquisition de Teltech", "text": "", "accent": false },
-        { "year": "2015", "title": "Acquisition d'AGRM", "text": "", "accent": false },
-        { "year": "2016", "title": "Acquisition de Noverka Conseil", "text": "", "accent": true },
-        { "year": "2017", "title": "Acquisition de VisionTI", "text": "", "accent": false },
-        { "year": "2019", "title": "Victrix rejoint l'écosystème international Alan Allman Associates", "text": "15 cabinets-conseils · Plus de 3 300 experts", "accent": true },
-        { "year": "2023", "title": "La Société Conseil Lambda rejoint Victrix", "text": "", "accent": true },
-        { "year": "2024", "title": "En se rapprochant de COMITEM, Victrix étend son offre en France", "text": "", "accent": false }
+        {
+          "year": "2003",
+          "title": "Création de Victrix",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2004",
+          "title": "Acquisition d'ELFIQ Networks et de la division de services-conseils TI du groupe 3-Soft",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2007",
+          "title": "Acquisition de Cogeti Informatique, d'Informatique Stratégique et de Noxent",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2008",
+          "title": "Acquisition de Compu-Sys",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2009",
+          "title": "Acquisition d'IPtel",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2010",
+          "title": "Acquisition d'Expra Solutions",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2011",
+          "title": "Acquisition de Progilan",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2012",
+          "title": "Acquisition de Teltech",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2015",
+          "title": "Acquisition d'AGRM",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2016",
+          "title": "Acquisition de Noverka Conseil",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2017",
+          "title": "Acquisition de VisionTI",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2019",
+          "title": "Victrix rejoint l'écosystème international Alan Allman Associates",
+          "text": "15 cabinets-conseils · Plus de 3 300 experts",
+          "accent": true
+        },
+        {
+          "year": "2023",
+          "title": "La Société Conseil Lambda rejoint Victrix",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2024",
+          "title": "En se rapprochant de COMITEM, Victrix étend son offre en France",
+          "text": "",
+          "accent": false
+        }
       ]
     },
     {
+      "_bookshop_name": "cta",
       "type": "cta",
       "title": "Nous recrutons les experts de demain!",
       "body": "Intéressés? N'hésitez pas à nous contacter.",
@@ -132,7 +213,8 @@
       "ctaHref": "/fr/carrieres",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ]
 }

@@ -1,4 +1,6 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { inlineHtml } from '../../shared/rich';
 /**
  * Section « Valeur stratégique » — composant Bookshop, NOUVEAU 2026-08-05.
  * FIDÉLITÉ MAQUETTE (docs/design/produit-enfant.css §Section - Strategic
@@ -8,7 +10,7 @@
  * titre 40/700 ls -0.4 + LISERÉ bleu 64×4, paragraphes 16/26, puis rangée de
  * tuiles statistiques (fond beige clair, liseré GAUCHE bleu 4 px, valeur
  * 24/700 bleue, étiquette 12/700 majuscules ls 1.2). Bleus/neutres chauds =
- * tokens (export Hanken/chaud) ; bordure froide #C4C5D9 verbatim (précédent
+ * tokens (export Hanken/chaud) ; bordure = jeton `contour` (uniformisation 2026-09-18 ; précédent
  * méga/benefits).
  *
  * VARIANTE « vitrine » AJOUTÉE 2026-08-05 (docs/design/landing-page.css
@@ -55,7 +57,7 @@ interface Props {
   bullets?: string[];
   cardTitle?: string;
   cardText?: string;
-  fond?: '' | 'blanc' | 'givre' | 'ivoire' | 'beige' | 'sable';
+  fond?: '' | FondKey;
 }
 
 const {
@@ -78,13 +80,7 @@ const hasCard = Boolean(cardTitle && image);
 // « Fond de section » ÉTENDU 2026-08-17 (produit-child.css §Strategic Value,
 // lavis chauds) : clé fermée → utilitaire de la palette officielle. '' =
 // défaut historique — il dépend de la `variant`, d'où la clé vide.
-const FONDS: Record<string, string> = {
-  blanc: 'bg-white',
-  givre: 'bg-givre',
-  ivoire: 'bg-ivoire',
-  beige: 'bg-beige',
-  sable: 'bg-sable',
-};
+const FONDS: Record<string, string> = FOND_CLASSES;
 ---
 
 <section
@@ -103,7 +99,7 @@ const FONDS: Record<string, string> = {
           <img
             src={image}
             alt={imageAlt ?? ''}
-            class="w-full h-auto border border-solid border-[#C4C5D9] rounded-sm shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
+            class="w-full h-auto border border-solid border-contour rounded-lg shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
             loading="lazy"
             decoding="async"
           />
@@ -132,7 +128,7 @@ const FONDS: Record<string, string> = {
       }
       {
         paragraphs.map((paragraph) => (
-          <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none pt-2" set:html={paragraph} />
+          <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none pt-2" set:html={inlineHtml(paragraph)} />
         ))
       }
       {
@@ -224,7 +220,7 @@ const FONDS: Record<string, string> = {
                 </svg>
                 <span class="text-base leading-6 font-bold text-on-surface">{cardTitle}</span>
               </p>
-              {cardText && <p class="text-sm leading-5 text-on-surface-variant m-0 max-w-none">{cardText}</p>}
+              {cardText && <p class="text-sm leading-5 text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(cardText)} />}
             </div>
           )}
         </div>

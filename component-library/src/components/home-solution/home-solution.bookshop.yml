@@ -16,7 +16,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/home-solution/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/home-solution/home-solution.preview.png"
     text: "Accueil — Solution phare"
     subtext: Image à gauche, texte et bouton à droite
   preview:
@@ -49,7 +49,29 @@ _inputs:
   title:
     label: "Titre"
   body:
+    type: html
     label: "Texte"
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
   ctaLabel:
     label: "Libellé du bouton"
   ctaHref:

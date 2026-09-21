@@ -36,6 +36,11 @@
 # one. This only catches uploads that would otherwise have no configured home.
 paths:
   uploads: src/assets/uploads
+  # Racine des fichiers servis tels quels (2026-09-17) : résout les aperçus
+  # littéraux des listes _select_data (pastilles /images/cms/fonds/*.svg,
+  # vignettes /images/cms/icones/**.svg). Les inputs image gardent leurs
+  # propres `paths` (uploads par surface).
+  static: public
 
 # Barre latérale organisée pour l'équipe marketing (demande utilisateur
 # 2026-07-30) : le CONTENU du site d'abord, les outils marketing ensuite, la
@@ -48,11 +53,11 @@ collection_groups:
     collections:
       - home
       - pages
-      - services
+      - services_fr
+      - services_en
       - solutions
       - blog
       - contact
-      - carrieres
       - navigation
       - site
       - pagesSysteme
@@ -291,6 +296,17 @@ collections_config:
     # spec, which @bookshop/generate copies onto the palette entries (that
     # "containing structure" level outranks these collection-level fallbacks).
     _inputs:
+      seoH1:
+        type: text
+        options:
+          empty_type: string
+        label: H1 SEO (optionnel)
+        comment: >-
+          Le titre H1 lu par les moteurs de recherche. Vide = le grand titre du
+          héros est le H1 (défaut). Renseigné = ce texte devient le H1 de la
+          page (invisible à l'écran, lu par Google et les lecteurs d'écran) et
+          le grand titre passe en H2 : rien ne change visuellement. Un seul H1
+          par page.
       sections:
         type: array
         label: Sections
@@ -308,8 +324,27 @@ collections_config:
           empty_type: string
         label: Titre
       subtitle:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Sous-titre
       eyebrow:
@@ -344,8 +379,27 @@ collections_config:
           Sous-chaîne du titre affichée en bleu (ex. « vraiment »). Vide =
           titre uniforme.
       intro:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Paragraphe d'appui
       learnMore:
@@ -360,8 +414,27 @@ collections_config:
         label: Libellé « Lire la suite »
         comment: Lien au bas de chaque carte d'article. Vide = absent.
       body:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Texte
       # Cartes d'expertise (tableau `items` de la section « Expertises »).
@@ -527,6 +600,17 @@ collections_config:
           Activé par défaut : les pages de campagne (trafic payant) restent
           hors des résultats de recherche. Désactiver seulement si la page
           doit être indexée.
+      seoH1:
+        type: text
+        options:
+          empty_type: string
+        label: H1 SEO (optionnel)
+        comment: >-
+          Le titre H1 lu par les moteurs de recherche. Vide = le grand titre du
+          héros est le H1 (défaut). Renseigné = ce texte devient le H1 de la
+          page (invisible à l'écran, lu par Google et les lecteurs d'écran) et
+          le grand titre passe en H2 : rien ne change visuellement. Un seul H1
+          par page.
       # ---- P-04 : en-tête / pied de page de campagne. Le bloc `header` est
       # optionnel — sans lui (ou en mode « complet »), la page garde l'en-tête
       # normal du site. Le CTA du bloc réutilise les noms ctaLabel/ctaHref des
@@ -608,19 +692,76 @@ collections_config:
         label: Surtitre
         comment: Petit libellé affiché au-dessus du titre du héros (optionnel).
       subtitle:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Sous-titre
       intro:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Introduction
         comment: Court paragraphe sous le titre de la section (optionnel).
       body:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Texte
       ctaLabel:
@@ -666,8 +807,27 @@ collections_config:
           empty_type: string
         label: Libellé du bouton d'envoi
       consentText:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Texte de consentement
         comment: >-
@@ -688,8 +848,27 @@ collections_config:
           empty_type: string
         label: Question
       answer:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Réponse
         comment: >-
@@ -704,31 +883,43 @@ collections_config:
   # sections viennent des specs .bookshop.yml (générés dans _structures.sections,
   # qui priment sur les _inputs de collection) — d'où des _inputs de collection
   # volontairement minimaux (page + sections).
-  services:
-    path: src/content/services
-    name: Services
+  # Services — DEUX collections, une par langue (2026-09-18), pour que
+  # l'URL d'aperçu CloudCannon soit exacte aussi pour les services IMBRIQUÉS
+  # (fr/productivite/x.json → /fr/services/productivite/x/). Avec une seule
+  # collection sur src/content/services, [relative_base_path] valait
+  # « fr/productivite » et le gabarit /[relative_base_path]/services/[slug]/
+  # donnait /fr/productivite/services/x/ → 404 → « No preview available »
+  # et pas d'éditeur visuel sur les 36 services enfants (revue de Clément,
+  # 2026-09-18). Désormais :
+  #  - FR : l'URL suit le chemin du fichier ([full_slug] = sous-dossier/nom
+  #    sans extension), exactement comme la route
+  #    src/pages/[lang]/services/[...slug].astro sans champ `slug` ;
+  #  - EN : l'URL suit le champ `slug` de la page ({slug} = donnée), que la
+  #    route applique aussi — chaque fichier EN DOIT porter son slug (les six
+  #    qui n'en avaient pas l'ont reçu le 2026-09-18, égal à leur nom).
+  # Le même nom de fichier dans fr/ et en/ relie toujours une traduction à
+  # l'autre. Les entrées (_inputs) sont écrites UNE fois (ancre YAML
+  # &services_inputs) et reprises par la collection EN (*services_inputs).
+  # À VÉRIFIER après le premier build CloudCannon : que les « / » du slug EN
+  # ne sont pas encodés dans l'URL d'aperçu (sinon : champ `permalink` +
+  # script, plan docs/plan-icones-cta-apercus.md §1).
+  services_fr:
+    path: src/content/services/fr
+    name: Services (FR)
     singular_name: Service
     description: >-
-      Pages de services, bâties par sections (comme les campagnes) mais
-      PUBLIQUES et indexables. Les dossiers fr/ et en/ contiennent les deux
-      langues ; le même nom de fichier relie une traduction à l'autre.
+      Pages de services en français, bâties par sections (comme les
+      campagnes) mais PUBLIQUES et indexables. Un sous-dossier = les services
+      enfants d'un service (ex. productivite/o-bureau). Le même nom de
+      fichier dans « Services (EN) » relie la traduction.
     icon: rocket_launch
     # Éditeur visuel par défaut (première valeur — voir le commentaire de la
-    # collection blog) : les services sont bâtis par sections, comme les
-    # campagnes ; Data en second pour les éditions de front matter / SEO. Pas de
+    # collection blog) ; Data en second pour le front matter / SEO. Pas de
     # corps markdown (fichiers JSON) → pas de `content`.
     _enabled_editors:
       - visual
       - data
-    # fr/<slug>.json → /fr/services/<slug>/ ; le segment de langue devient le
-    # préfixe d'URL (même astuce [relative_base_path] que blog/landing).
-    # ⚠️ LIMITE CONNUE (branchement 2026-07-29) : pour les services IMBRIQUÉS
-    # (fr/cybersecurite/zero-trust.json) et les fichiers EN à slug anglais
-    # surchargé, ce gabarit donne un lien d'aperçu inexact ([relative_base_path]
-    # inclut le sous-dossier et [slug] ignore le champ `slug`). L'URL réelle est
-    # /<langue>/services/<slug ou chemin>/ — suivi : gabarit d'URL par données
-    # quand CloudCannon le permettra.
-    url: /[relative_base_path]/services/[slug]/
+    url: /fr/services/[full_slug]/
     preview:
       icon: rocket_launch
       text:
@@ -736,9 +927,9 @@ collections_config:
         - text: Service sans titre
       subtext:
         - key: description
-    # « + Ajouter » : un gabarit par langue pour que le fichier atterrisse dans
-    # fr/ ou en/ avec un JSON valide (patron de la collection forms). Flux de
-    # traduction : créer (ou Dupliquer) le même nom de fichier dans l'autre dossier.
+    # « + Ajouter » : gabarit de la langue (patron de la collection forms).
+    # Flux de traduction : créer (ou Dupliquer) le même nom de fichier dans
+    # l'autre collection Services.
     schemas:
       default:
         name: Service (FR)
@@ -746,15 +937,8 @@ collections_config:
         path: schemas/service-fr.json
         remove_extra_inputs: false
         create:
-          path: 'fr/{title|slugify}.json'
-      en:
-        name: Service (EN)
-        icon: rocket_launch
-        path: schemas/service-en.json
-        remove_extra_inputs: false
-        create:
-          path: 'en/{title|slugify}.json'
-    _inputs:
+          path: '{title|slugify}.json'
+    _inputs: &services_inputs
       title:
         type: text
         options:
@@ -769,11 +953,13 @@ collections_config:
           empty_type: string
         label: Adresse de la page (segments d'URL)
         comment: >-
-          Segment(s) après /<langue>/services/ — surtout pour la version EN
-          (ex. cybersecurity/zero-trust). Peut contenir des « / » pour un
-          service imbriqué. Vide = le nom du fichier (cas normal en FR). Le
-          NOM DE FICHIER reste ce qui apparie FR et EN — changer l'adresse ne
-          rompt pas la traduction ; changer une adresse déjà publiée exige une
+          Segment(s) après /<langue>/services/ (ex. cybersecurity/zero-trust ;
+          les « / » font un service imbriqué). FR : vide = le chemin du
+          fichier (cas normal). EN : À RENSEIGNER sur chaque page — l'aperçu
+          CloudCannon et l'éditeur visuel suivent ce champ (vide = aperçu
+          cassé, l'adresse retombe sur le chemin du fichier). Le NOM DE
+          FICHIER reste ce qui apparie FR et EN — changer l'adresse ne rompt
+          pas la traduction ; changer une adresse déjà publiée exige une
           redirection (collection Redirections).
       description:
         type: textarea
@@ -797,6 +983,50 @@ collections_config:
         comment: >-
           Remplace le titre dans l'onglet du navigateur et les résultats
           Google. Vide = le titre de la page.
+      seoH1:
+        type: text
+        options:
+          empty_type: string
+        label: H1 SEO (optionnel)
+        comment: >-
+          Le titre H1 lu par les moteurs de recherche. Vide = le grand titre du
+          héros est le H1 (défaut). Renseigné = ce texte devient le H1 de la
+          page (invisible à l'écran, lu par Google et les lecteurs d'écran) et
+          le grand titre passe en H2 : rien ne change visuellement. Un seul H1
+          par page.
+      # Préremplissage du formulaire Contact (2026-09-17) : tout bouton de
+      # la page qui mène à Contact arrive sur un formulaire où ces deux listes
+      # sont déjà choisies (plus le libellé du bouton et la page d'origine dans
+      # « Précisez votre demande »). Les liens du menu et du pied de page ne
+      # sont pas concernés.
+      contactSujet:
+        type: select
+        label: Contact — sujet présélectionné
+        comment: >-
+          Choix prérempli dans « De quoi souhaitez-vous parler ? » quand un
+          visiteur clique un bouton de cette page vers Contact. Vide = « Un projet ».
+        options:
+          empty_type: string
+          allow_empty: true
+          values: _select_data.contact_sujets
+          value_key: cle
+          preview:
+            text:
+              - key: libelle
+      contactService:
+        type: select
+        label: Contact — service présélectionné
+        comment: >-
+          Choix prérempli dans « Service » (même mécanique). Vide =
+          la famille du service (Cybersécurité, IA, Infonuagique, Services applicatifs, Services gérés).
+        options:
+          empty_type: string
+          allow_empty: true
+          values: _select_data.contact_services
+          value_key: cle
+          preview:
+            text:
+              - key: libelle
       sections:
         type: array
         label: Sections
@@ -808,6 +1038,44 @@ collections_config:
       # `type` = discriminant de section (défini par la palette) — jamais édité.
       type:
         hidden: true
+
+  services_en:
+    path: src/content/services/en
+    name: Services (EN)
+    singular_name: Service
+    description: >-
+      English service pages, built from sections (like campaigns) but
+      PUBLIC and indexable. Sub-folders hold a service's child pages
+      (e.g. productivite/o-bureau). The URL follows the « Adresse de la
+      page » field (slug) — required on every EN page. The same file name
+      in « Services (FR) » links the translation.
+    icon: rocket_launch
+    # Éditeur visuel par défaut (première valeur — voir le commentaire de la
+    # collection blog) ; Data en second pour le front matter / SEO. Pas de
+    # corps markdown (fichiers JSON) → pas de `content`.
+    _enabled_editors:
+      - visual
+      - data
+    url: /en/services/{slug}/
+    preview:
+      icon: rocket_launch
+      text:
+        - key: title
+        - text: Service sans titre
+      subtext:
+        - key: description
+    # « + Ajouter » : gabarit de la langue (patron de la collection forms).
+    # Flux de traduction : créer (ou Dupliquer) le même nom de fichier dans
+    # l'autre collection Services.
+    schemas:
+      default:
+        name: Service (EN)
+        icon: rocket_launch
+        path: schemas/service-en.json
+        remove_extra_inputs: false
+        create:
+          path: '{title|slugify}.json'
+    _inputs: *services_inputs
 
   # Pages génériques (2026-08-11) — pages composables de PREMIER NIVEAU d'URL
   # (/decouvrir, /expertises, /produits, /secteurs, /tarification,
@@ -867,6 +1135,17 @@ collections_config:
         comment: >-
           Titre de la page (onglet + SEO). Selon le contexte, sert aussi de
           libellé à certaines sections.
+      slug:
+        type: text
+        options:
+          empty_type: string
+        label: Adresse de la page (segment d'URL)
+        comment: >-
+          Segment après /<langue>/ — surtout pour la version EN (ex.
+          discover). Vide = le nom du fichier (cas normal en FR). Le NOM DE
+          FICHIER reste ce qui apparie FR et EN — changer l'adresse ne rompt
+          pas la traduction ; changer une adresse déjà publiée exige une
+          redirection (collection Redirections).
       description:
         type: textarea
         options:
@@ -889,6 +1168,50 @@ collections_config:
         comment: >-
           Remplace le titre dans l'onglet du navigateur et les résultats
           Google. Vide = le titre de la page.
+      seoH1:
+        type: text
+        options:
+          empty_type: string
+        label: H1 SEO (optionnel)
+        comment: >-
+          Le titre H1 lu par les moteurs de recherche. Vide = le grand titre du
+          héros est le H1 (défaut). Renseigné = ce texte devient le H1 de la
+          page (invisible à l'écran, lu par Google et les lecteurs d'écran) et
+          le grand titre passe en H2 : rien ne change visuellement. Un seul H1
+          par page.
+      # Préremplissage du formulaire Contact (2026-09-17) : tout bouton de
+      # la page qui mène à Contact arrive sur un formulaire où ces deux listes
+      # sont déjà choisies (plus le libellé du bouton et la page d'origine dans
+      # « Précisez votre demande »). Les liens du menu et du pied de page ne
+      # sont pas concernés.
+      contactSujet:
+        type: select
+        label: Contact — sujet présélectionné
+        comment: >-
+          Choix prérempli dans « De quoi souhaitez-vous parler ? » quand un
+          visiteur clique un bouton de cette page vers Contact. Vide = aucun choix prérempli.
+        options:
+          empty_type: string
+          allow_empty: true
+          values: _select_data.contact_sujets
+          value_key: cle
+          preview:
+            text:
+              - key: libelle
+      contactService:
+        type: select
+        label: Contact — service présélectionné
+        comment: >-
+          Choix prérempli dans « Service » (même mécanique). Vide =
+          aucun choix prérempli.
+        options:
+          empty_type: string
+          allow_empty: true
+          values: _select_data.contact_services
+          value_key: cle
+          preview:
+            text:
+              - key: libelle
       sections:
         type: array
         label: Sections
@@ -905,6 +1228,11 @@ collections_config:
   # docs/design/solutions-catalogue-plan.md §3). Éditeur de données : la fiche
   # n'a PAS de page propre (le catalogue est une page unique avec filtres) —
   # les pages de détail /solutions/<slug> restent une suite planifiée.
+  # Depuis le 2026-09-17, la PAGE catalogue est une page générale
+  # (src/content/pages/{fr,en}/solutions.json, section « Catalogue de
+  # solutions ») : son chrome (titre, recherche, filtres, vedette, message
+  # vide, appel à l'action) s'édite dans « Pages générales » ; seules les
+  # FICHES vivent ici.
   solutions:
     path: src/content/solutions
     name: Solutions
@@ -918,9 +1246,16 @@ collections_config:
     # (2026-08-17, demande user : préversion partout) : la carte éditée s'y
     # trouve. [relative_base_path] = fr|en (sous-dossier).
     url: /[relative_base_path]/solutions/
-    # Aperçu visuel du catalogue + éditeur de données (JSON structuré).
+    # ÉDITEUR DE DONNÉES SEULEMENT (2026-09-18, retour user : « seulement l'en-tête
+    # et le pied de page dans l'édition en direct »). Depuis que le catalogue est
+    # une SECTION Bookshop (17/09), l'éditeur visuel re-rend la page à partir du
+    # fichier OUVERT : une fiche de solution n'a pas de `sections`, donc le
+    # contenu de la page disparaissait — l'aperçu ne pouvait qu'être vide. Le
+    # formulaire de données édite la fiche ; le rendu se vérifie sur la page
+    # « Solutions » (collection Pages). L'édition visuelle reviendra, par fiche,
+    # quand chaque solution aura sa propre page (docs/plan-livraison-finale.md,
+    # lots L10–L11).
     _enabled_editors:
-      - visual
       - data
     preview:
       icon: apps
@@ -955,8 +1290,27 @@ collections_config:
           empty_type: string
         label: Titre
       description:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Description
         comment: Texte affiché sur la carte du catalogue.
@@ -1018,6 +1372,23 @@ collections_config:
         comment: >-
           Panneau vedette seulement. Sans préfixe de langue, comme le lien de
           la carte.
+      contactService:
+        # 2026-09-18 — le bouton « Découvrir » arrivait sur un formulaire de
+        # contact dont le champ OBLIGATOIRE « Service » restait vide.
+        type: select
+        label: Contact — service présélectionné
+        comment: >-
+          Quand le lien de la carte mène à Contact : choix prérempli dans la
+          liste « Service ». Vide = le service réglé sur la page du catalogue
+          (« Services applicatifs »).
+        options:
+          empty_type: string
+          allow_empty: true
+          values: _select_data.contact_services
+          value_key: cle
+          preview:
+            text:
+              - key: libelle
 
   # Textes du site (2026-08-11) — chaînes d'interface éditables (un JSON par
   # langue dans src/data/site, patron de la collection navigation). Premier
@@ -1148,6 +1519,15 @@ collections_config:
         options:
           empty_type: string
         label: Bouton « Refuser »
+      manage:
+        type: text
+        options:
+          empty_type: string
+        label: Lien « Gérer mes témoins » (pied de page)
+        comment: >-
+          Lien des pieds de page qui rouvre ce bandeau pour changer d'avis
+          (Loi 25 : retirer son consentement doit être aussi simple que le
+          donner). Vide = lien masqué.
       # --- Page « introuvable » (erreur 404) --------------------------------
       notFound:
         type: object
@@ -1244,8 +1624,27 @@ collections_config:
           empty_type: string
         label: Titre principal (H1)
       heroSub:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Sous-titre du héros
       infoTitle:
@@ -1283,8 +1682,27 @@ collections_config:
           empty_type: string
         label: Titre de la section formulaire
       formIntro:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Texte d'appui du formulaire
       formBullets:
@@ -1375,8 +1793,27 @@ collections_config:
           empty_type: string
         label: Choix
       consentText:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Texte de consentement (Loi 25)
         comment: >-
@@ -1394,166 +1831,6 @@ collections_config:
           empty_type: string
         label: Message de confirmation (démo)
         comment: Affiché sous le formulaire après l'envoi (mode démonstration).
-
-  # Page Carrières (2026-08-12) — contenu de /carrieres migré de
-  # src/i18n/content/carrieres.ts vers src/data/carrieres/{fr,en}.json. Les
-  # icônes sont des CLÉS FERMÉES dessinées en SVG par le gabarit (les listes
-  # des deux sélecteurs vivent dans les structures carriere_value_items /
-  # carriere_feature_items). Les photos de section (héros, équipe, RSE)
-  # restent dans le gabarit en attendant les visuels authentiques.
-  carrieres:
-    path: src/data/carrieres
-    name: Page Carrières
-    singular_name: Page Carrières
-    description: >-
-      Textes de la page Carrières : héros, Happy At Work, valeurs, atouts,
-      témoignages, responsabilité sociale et appel à l'action. Un fichier par
-      langue (fr.json / en.json).
-    icon: work
-    disable_add: true
-    disable_add_folder: true
-    disable_file_actions: true
-    # Aperçu : la page Carrières de la langue (2026-08-17, demande user :
-    # préversion partout). [slug] = fr|en (nom du fichier).
-    url: /[slug]/carrieres/
-    _enabled_editors:
-      - visual
-      - data
-    # ⚠️ Carte PLATE par nom de champ (voir « Textes du site ») : les clés
-    # génériques (title, lead, text, label…) sont partagées par plusieurs
-    # blocs — libellés volontairement génériques. Les libellés fins des
-    # éléments de tableau vivent dans leurs structures.
-    _inputs:
-      metaTitle:
-        type: text
-        options:
-          empty_type: string
-        label: Titre d'onglet
-      metaDescription:
-        type: textarea
-        options:
-          empty_type: string
-        label: Description (moteurs de recherche)
-      hero:
-        type: object
-        label: Héros
-        comment: La photo de fond est gérée par l'équipe technique.
-      sub:
-        type: textarea
-        options:
-          empty_type: string
-        label: Sous-titre
-      ctaLabel:
-        type: text
-        options:
-          empty_type: string
-        label: Libellé du bouton
-        comment: Les boutons de la page mènent à la page Contact.
-      happy:
-        type: object
-        label: Carte « Happy At Work »
-      lead:
-        type: textarea
-        options:
-          empty_type: string
-        label: Texte d'appui
-      quote:
-        type: textarea
-        options:
-          empty_type: string
-        label: Citation
-      values:
-        type: object
-        label: Nos valeurs
-      eyebrow:
-        type: text
-        options:
-          empty_type: string
-        label: Surtitre
-      items:
-        type: array
-        label: Tuiles de valeurs
-        options:
-          structures: _structures.carriere_value_items
-      join:
-        type: object
-        label: Pourquoi rejoindre notre équipe
-        comment: La photo de la section est gérée par l'équipe technique.
-      cardTitle:
-        type: text
-        options:
-          empty_type: string
-        label: Titre de la carte flottante
-      cardText:
-        type: textarea
-        options:
-          empty_type: string
-        label: Texte de la carte flottante
-      features:
-        type: array
-        label: Atouts (grille 2×2)
-        options:
-          structures: _structures.carriere_feature_items
-      testimonials:
-        type: object
-        label: Témoignages
-      cards:
-        type: array
-        label: Cartes de témoignage
-        options:
-          structures: _structures.carriere_testimonial_items
-      social:
-        type: object
-        label: Responsabilité sociale
-        comment: La photo de la section est gérée par l'équipe technique.
-      engagementTitle:
-        type: text
-        options:
-          empty_type: string
-        label: Titre de l'engagement
-      engagementText:
-        type: textarea
-        options:
-          empty_type: string
-        label: Texte de l'engagement
-      partners:
-        type: array
-        label: Partenaires (pastilles texte)
-        comment: >-
-          Pastilles de remplacement en attendant les logos réels des
-          partenaires académiques.
-      partners[*]:
-        type: text
-        options:
-          empty_type: string
-        label: Nom du partenaire
-      cta:
-        type: object
-        label: Appel à l'action final
-      text:
-        type: textarea
-        options:
-          empty_type: string
-        label: Texte
-      label:
-        type: text
-        options:
-          empty_type: string
-        label: Libellé
-      title:
-        type: text
-        options:
-          empty_type: string
-        label: Titre
-      image:
-        type: image
-        label: Photo
-        comment: Partagée entre les deux langues — téléverser une seule fois.
-        options:
-          empty_type: string
-          paths:
-            static: public
-            uploads: public/images/carrieres
 
   # Pages système (2026-08-12) — textes des trois pages « outils » sans
   # collection de contenu : index du blogue (/ressources), recherche
@@ -1697,8 +1974,27 @@ collections_config:
           empty_type: string
         label: Titre
       intro:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Texte d'introduction
       filterAll:
@@ -1713,8 +2009,27 @@ collections_config:
         label: Message sans JavaScript
         comment: Affiché seulement si le navigateur bloque JavaScript.
       text:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Texte
       links:
@@ -1869,20 +2184,58 @@ collections_config:
           de CE formulaire — une faute de frappe détourne les messages des
           visiteurs. Vérifier deux fois avant de publier. Vide = le
           destinataire global du site (variable FORMS_TO_EMAIL).
+      inboxKey:
+        type: text
+        options:
+          empty_type: string
+        label: Boîte de réception CloudCannon (clé)
+        comment: >-
+          Réglage technique (mode « inbox » de l'hébergement CloudCannon) : clé
+          de la boîte de réception (Inbox) qui reçoit les envois de CE formulaire
+          — les destinataires courriel se règlent dans cette boîte, côté
+          CloudCannon. Vide = la boîte par défaut du site (recommandé, sauf si
+          un formulaire doit aller ailleurs, ex. les candidatures aux RH).
+
       subject:
         type: text
         options:
           empty_type: string
         label: Objet du courriel
-        comment: Vide = objet générique.
+        comment: >-
+          Vide = objet générique. Mode boîte CloudCannon : objet de REPLI —
+          chaque notification reçoit automatiquement un objet unique préfixé
+          d'une clé entre crochets pour le classement dans la boîte courriel
+          (ex. « [contact/carriere] Une carrière · Services applicatifs —
+          Prénom Nom », « [infolettre] courriel ») ; ce texte n'apparaît que
+          si le visiteur n'a rien saisi ou sans JavaScript, sous la forme
+          « [identifiant du formulaire] Objet ».
       submitLabel:
         type: text
         options:
           empty_type: string
         label: Libellé du bouton d'envoi
       consentText:
-        type: textarea
+        # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
+        type: html
         options:
+          format: p
+          bulletedlist: false
+          numberedlist: false
+          blockquote: false
+          bold: true
+          italic: true
+          link: true
+          undo: true
+          redo: true
+          underline: false
+          strike: false
+          image: false
+          table: false
+          code: false
+          embed: false
+          horizontalrule: false
+          snippet: false
+          remove_custom_markup: true
           empty_type: string
         label: Texte de consentement
         comment: Mention Loi 25 affichée au-dessus du bouton (optionnelle).
@@ -2190,6 +2543,196 @@ collections_config:
           et VÉRIFIE que le service existe : un identifiant inconnu — ou les deux
           champs remplis — bloque la publication avec un message clair.
 
+# Listes de valeurs PARTAGÉES (2026-09-17) — référencées par les selects via
+# `values: _select_data.<nom>` + `value_key: cle` (specs *.bookshop.yml et
+# structures ci-dessous). La valeur enregistrée reste la clé texte ; le
+# libellé et l'aperçu (pastille de couleur, vignette d'icône) ne servent qu'à
+# l'éditeur. Sources de vérité : component-library/src/shared/fonds.ts
+# (palette) et les cartes ICONS des composants (tracés) ; les fichiers
+# d'aperçu sont générés par scripts/design/generate-cms-previews.mjs, qui
+# ÉCHOUE si une liste ici diverge des clés dessinées (lancé dans le gate).
+_select_data:
+  # Palette « Fond de section » — même ordre que FOND_KEYS.
+  fonds:
+    - cle: blanc
+      libelle: Blanc
+      couleur: '#ffffff'
+      apercu: /images/cms/fonds/blanc.svg
+    - cle: givre
+      libelle: Givre (gris très pâle)
+      couleur: '#f9fafb'
+      apercu: /images/cms/fonds/givre.svg
+    - cle: perle
+      libelle: Perle (gris pâle)
+      couleur: '#f3f4f7'
+      apercu: /images/cms/fonds/perle.svg
+    - cle: brume
+      libelle: Brume (gris clair)
+      couleur: '#e5e7eb'
+      apercu: /images/cms/fonds/brume.svg
+    - cle: bleu-pale
+      libelle: Bleu pâle
+      couleur: '#f2f5fd'
+      apercu: /images/cms/fonds/bleu-pale.svg
+    - cle: bleu-clair
+      libelle: Bleu clair
+      couleur: '#dfe7fb'
+      apercu: /images/cms/fonds/bleu-clair.svg
+    - cle: ivoire
+      libelle: Ivoire (chaud)
+      couleur: '#fcf9f5'
+      apercu: /images/cms/fonds/ivoire.svg
+    - cle: beige
+      libelle: Beige (gris chaud)
+      couleur: '#f6f3ef'
+      apercu: /images/cms/fonds/beige.svg
+    - cle: sable
+      libelle: Sable (grège)
+      couleur: '#e9e2d9'
+      apercu: /images/cms/fonds/sable.svg
+    - cle: pierre
+      libelle: Pierre (grège soutenu)
+      couleur: '#dcd5cc'
+      apercu: /images/cms/fonds/pierre.svg
+  # Préremplissage du formulaire Contact (2026-09-17) — clés neutres, libellés
+  # résolus par langue dans src/lib/contact/presets.ts (test : chaque clé
+  # existe dans les options réelles de la page Contact fr/en).
+  contact_sujets:
+    - cle: projet
+      libelle: Un projet / A project
+    - cle: solution
+      libelle: Une solution du catalogue / A catalogue solution
+    - cle: expertise
+      libelle: Une expertise / An area of expertise
+    - cle: carriere
+      libelle: Une carrière / A career
+    - cle: autre
+      libelle: Autre / Other
+  contact_services:
+    - cle: cybersecurite
+      libelle: Cybersécurité / Cybersecurity
+    - cle: intelligence-artificielle
+      libelle: Intelligence artificielle / Artificial intelligence
+    - cle: infonuagique
+      libelle: Infonuagique / Cloud
+    - cle: services-applicatifs
+      libelle: Services applicatifs / Application services
+    - cle: services-geres
+      libelle: Services gérés / Managed services
+    - cle: autre
+      libelle: Autre / Other
+  # BANQUE DE PICTOGRAMMES — liste UNIQUE de tous les sélecteurs d'icône
+  # (2026-09-18). Source des tracés : component-library/src/shared/icons.ts ;
+  # MÊMES clés, MÊME ordre (garde-fou : npm run cms:previews:check). Ajouter un
+  # pictogramme = une entrée dans icons.ts + une entrée ici + `npm run
+  # cms:previews` (génère la vignette) : il devient disponible dans TOUTES les
+  # sections. Remplace les dix listes par section (icones_cartes, _bento,
+  # _outils, _expertises, _solutions, _puces, _realisations, _chiffres,
+  # _carrieres_valeurs, _carrieres_atouts).
+  icones:
+    - cle: personne
+      libelle: Personne
+      apercu: /images/cms/icones/personne.svg
+    - cle: groupe
+      libelle: Groupe (personnes)
+      apercu: /images/cms/icones/groupe.svg
+    - cle: groupe-mains
+      libelle: Groupe porté par des mains
+      apercu: /images/cms/icones/groupe-mains.svg
+    - cle: porteur
+      libelle: Porteur (personne et équipe)
+      apercu: /images/cms/icones/porteur.svg
+    - cle: destinataire
+      libelle: Destinataires (trois personnes)
+      apercu: /images/cms/icones/destinataire.svg
+    - cle: poignee
+      libelle: Poignée de main
+      apercu: /images/cms/icones/poignee.svg
+    - cle: coeur
+      libelle: Cœur
+      apercu: /images/cms/icones/coeur.svg
+    - cle: dossier
+      libelle: Dossier
+      apercu: /images/cms/icones/dossier.svg
+    - cle: document
+      libelle: Document
+      apercu: /images/cms/icones/document.svg
+    - cle: organisation
+      libelle: Organisation (bâtiments)
+      apercu: /images/cms/icones/organisation.svg
+    - cle: croissance
+      libelle: Croissance (courbe)
+      apercu: /images/cms/icones/croissance.svg
+    - cle: croissance-pleine
+      libelle: Croissance (flèche pleine)
+      apercu: /images/cms/icones/croissance-pleine.svg
+    - cle: progression
+      libelle: Progression (cycle)
+      apercu: /images/cms/icones/progression.svg
+    - cle: graphique
+      libelle: Graphique (barres)
+      apercu: /images/cms/icones/graphique.svg
+    - cle: cible
+      libelle: Cible
+      apercu: /images/cms/icones/cible.svg
+    - cle: carte
+      libelle: Carte (feuille de route)
+      apercu: /images/cms/icones/carte.svg
+    - cle: calendrier
+      libelle: Calendrier
+      apercu: /images/cms/icones/calendrier.svg
+    - cle: ampoule
+      libelle: Ampoule (idée)
+      apercu: /images/cms/icones/ampoule.svg
+    - cle: etoile
+      libelle: Étoile
+      apercu: /images/cms/icones/etoile.svg
+    - cle: etincelle
+      libelle: Étincelle
+      apercu: /images/cms/icones/etincelle.svg
+    - cle: eclair
+      libelle: Éclair
+      apercu: /images/cms/icones/eclair.svg
+    - cle: coche
+      libelle: Coche cerclée
+      apercu: /images/cms/icones/coche.svg
+    - cle: losange
+      libelle: Losange
+      apercu: /images/cms/icones/losange.svg
+    - cle: formation
+      libelle: Formation (toque)
+      apercu: /images/cms/icones/formation.svg
+    - cle: bouclier
+      libelle: Bouclier coché
+      apercu: /images/cms/icones/bouclier.svg
+    - cle: engrenage
+      libelle: Engrenage
+      apercu: /images/cms/icones/engrenage.svg
+    - cle: engrenage-horloge
+      libelle: Engrenage et horloge
+      apercu: /images/cms/icones/engrenage-horloge.svg
+    - cle: ecran
+      libelle: Écran
+      apercu: /images/cms/icones/ecran.svg
+    - cle: fenetre
+      libelle: Fenêtre
+      apercu: /images/cms/icones/fenetre.svg
+    - cle: code
+      libelle: Code
+      apercu: /images/cms/icones/code.svg
+    - cle: nuage
+      libelle: Nuage
+      apercu: /images/cms/icones/nuage.svg
+    - cle: trousse
+      libelle: Trousse (santé)
+      apercu: /images/cms/icones/trousse.svg
+    - cle: casque
+      libelle: Casque (service à la clientèle)
+      apercu: /images/cms/icones/casque.svg
+    - cle: marteau
+      libelle: Marteau (juridique)
+      apercu: /images/cms/icones/marteau.svg
+
 _structures:
   # Section palette for the landing `sections` array. The VALUES are NOT
   # written here: the CloudCannon postbuild `npx @bookshop/generate` appends
@@ -2238,20 +2781,16 @@ _structures:
             options:
               empty_type: string
               allow_empty: true
-              values:
-                - dossier
-                - personne
-                - groupe
-                - ampoule
-                - croissance
-                - losange
-                - organisation
-                - porteur
-                - destinataire
+              values: _select_data.icones
+              value_key: cle
+              preview:
+                text:
+                  - key: libelle
+                image:
+                  - key: apercu
             comment: >-
-              Tuile pictogramme au-dessus du titre. Vide = aucune.
-              organisation/porteur/destinataire = icônes pleines de la page
-              Expertises (approche en 3 angles).
+              Tuile pictogramme au-dessus du titre. Vide = aucune. Toute la
+              banque de pictogrammes du site est offerte.
 
   # Cartes du bento d'expertises (section « Service — Bento d'expertises »,
   # fidélité maquette expertise-mere.css 2026-08-05).
@@ -2274,8 +2813,26 @@ _structures:
           href: ''
         _inputs:
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Texte
           peau:
@@ -2308,13 +2865,13 @@ _structures:
             options:
               empty_type: string
               allow_empty: true
-              values:
-                - fenetre
-                - graphique
-                - personnes
-                - engrenage
-                - document
-                - code
+              values: _select_data.icones
+              value_key: cle
+              preview:
+                text:
+                  - key: libelle
+                image:
+                  - key: apercu
           image:
             type: text
             options:
@@ -2346,8 +2903,26 @@ _structures:
           icon: ''
         _inputs:
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Texte
           ctaLabel:
@@ -2361,9 +2936,13 @@ _structures:
             options:
               empty_type: string
               allow_empty: true
-              values:
-                - calendrier
-                - etoile
+              values: _select_data.icones
+              value_key: cle
+              preview:
+                text:
+                  - key: libelle
+                image:
+                  - key: apercu
 
   # Tuiles statistiques (section « Produit — Valeur stratégique », fidélité
   # maquette produit-enfant.css 2026-08-05). Clé DISTINCTE de stat_items
@@ -2450,12 +3029,14 @@ _structures:
             options:
               empty_type: string
               allow_empty: false
-              values:
-                - coche
-                - document
-                - cible
-                - carte
-            comment: "coche = crochet cerclé ; document ; cible ; carte = feuille de route."
+              values: _select_data.icones
+              value_key: cle
+              preview:
+                text:
+                  - key: libelle
+                image:
+                  - key: apercu
+            comment: "Puce en tête de ligne — toute la banque de pictogrammes du site ; « coche » par défaut."
 
   # Cartes de réalisation (section « Produit — Réalisations »).
   realisation_items:
@@ -2473,8 +3054,26 @@ _structures:
           icon: ''
         _inputs:
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Texte
           icon:
@@ -2483,12 +3082,14 @@ _structures:
             options:
               empty_type: string
               allow_empty: true
-              values:
-                - trousse
-                - casque
-                - groupe
-                - marteau
-            comment: "trousse = santé ; casque = services ; groupe = RH ; marteau = juridique. Vide = aucune."
+              values: _select_data.icones
+              value_key: cle
+              preview:
+                text:
+                  - key: libelle
+                image:
+                  - key: apercu
+            comment: "Toute la banque de pictogrammes du site (ex. trousse = santé ; casque = services ; groupe = RH ; marteau = juridique). Vide = aucune."
 
   # Cartes d'expertise ({number,title,accent,description,href}) pour la section
   # « Accueil — Expertises ». Même logique que benefit_items : une structure à
@@ -2587,8 +3188,26 @@ _structures:
           icon: ''
         _inputs:
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Texte
           image:
@@ -2608,10 +3227,13 @@ _structures:
             options:
               empty_type: string
               allow_empty: true
-              values:
-                - ecran
-                - bouclier
-                - nuage
+              values: _select_data.icones
+              value_key: cle
+              preview:
+                text:
+                  - key: libelle
+                image:
+                  - key: apercu
             comment: Icône décorative à gauche du titre (vide = aucune).
 
   # Tuiles de caractéristiques de la section « Solution » (home-solution).
@@ -2634,8 +3256,26 @@ _structures:
               empty_type: string
             label: Libellé (majuscules)
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Texte d'appui
 
@@ -2798,6 +3438,24 @@ _structures:
         value:
           number: ''
           label: ''
+          icon: ''
+        _inputs:
+          icon:
+            type: select
+            label: Pictogramme (style « carte » seulement)
+            options:
+              empty_type: string
+              allow_empty: true
+              values: _select_data.icones
+              value_key: cle
+              preview:
+                text:
+                  - key: libelle
+                image:
+                  - key: apercu
+            comment: >-
+              Affiché au-dessus du chiffre quand la section est en style
+              « carte ». Toute la banque de pictogrammes du site. Vide = aucun.
 
   # Navigation (collection « navigation ») : formes des tableaux du menu.
   # Même logique que benefit_items — une structure à valeur unique donne au
@@ -2981,8 +3639,26 @@ _structures:
               empty_type: string
             label: Titre de la carte
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Texte de la carte
           ctaLabel:
@@ -3028,8 +3704,26 @@ _structures:
               empty_type: string
             label: Titre du jalon
           text:
-            type: textarea
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Détail (optionnel)
           accent:
@@ -3127,10 +3821,13 @@ _structures:
                 static: public
                 uploads: public/images/contact
 
-  # Tuile de valeur de la page Carrières {icon, label}. Icônes en CLÉS FERMÉES
-  # dessinées en SVG par le gabarit (VALUE_ICONS, carrieres.astro) — en ajouter
-  # une = la dessiner là d'abord.
-  carriere_value_items:
+  # Tuile de valeur {icon, label} de la section « Tuiles de valeurs »
+  # (value-tiles — ex-page Carrières convertie en sections le 2026-09-17).
+  # Icônes en CLÉS FERMÉES dessinées en SVG par le composant (carte ICONS de
+  # value-tiles.astro) — en ajouter une = la dessiner là d'abord ; la liste
+  # Sélecteur d'icône = banque unique _select_data.icones (2026-09-18).
+  # Re-pointée par value-tiles.bookshop.yml.
+  value_tile_items:
     values:
       - label: Valeur
         icon: stars
@@ -3146,24 +3843,28 @@ _structures:
           icon:
             type: select
             label: Icône
-            comment: Liste fermée — les pictogrammes sont dessinés par le site.
+            comment: Toute la banque de pictogrammes du site (les tracés sont dessinés par le site).
             options:
               empty_type: string
-              values:
-                - etoile
-                - groupe
-                - ampoule
-                - poignee
-                - insigne
+              allow_empty: false
+              values: _select_data.icones
+              value_key: cle
+              preview:
+                text:
+                  - key: libelle
+                image:
+                  - key: apercu
           label:
             type: text
             options:
               empty_type: string
             label: Libellé de la valeur
 
-  # Atout « Pourquoi rejoindre » {icon, title, text}. Mêmes règles de clés
-  # fermées (JOIN_ICONS, carrieres.astro).
-  carriere_feature_items:
+  # Atout {icon, title, text} de la section « Photo + atouts » (photo-features).
+  # Mêmes règles de clés fermées (carte ICONS de photo-features.astro ; liste
+  # banque unique _select_data.icones depuis le 2026-09-18).
+  # Re-pointée par photo-features.bookshop.yml.
+  photo_feature_items:
     values:
       - label: Atout
         icon: task_alt
@@ -3180,27 +3881,51 @@ _structures:
           icon:
             type: select
             label: Icône
-            comment: Liste fermée — les pictogrammes sont dessinés par le site.
+            comment: Toute la banque de pictogrammes du site (les tracés sont dessinés par le site).
             options:
               empty_type: string
-              values:
-                - croissance
-                - progression
-                - coeur
-                - formation
+              allow_empty: false
+              values: _select_data.icones
+              value_key: cle
+              preview:
+                text:
+                  - key: libelle
+                image:
+                  - key: apercu
           title:
             type: text
             options:
               empty_type: string
             label: Titre de l'atout
           text:
-            type: textarea
+            # Texte enrichi : gras · italique · lien, un paragraphe.
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Texte de l'atout
 
-  # Carte témoignage {image, quote, name, role} de la page Carrières.
-  carriere_testimonial_items:
+  # Carte témoignage {image, quote, name, role} de la section « Cartes
+  # témoignages » (testimonial-cards). Re-pointée par
+  # testimonial-cards.bookshop.yml.
+  testimonial_card_items:
     values:
       - label: Témoignage
         icon: format_quote
@@ -3209,6 +3934,8 @@ _structures:
           text:
             - key: name
             - text: Témoignage
+          subtext:
+            - key: role
         value:
           image: ''
           quote: ''
@@ -3225,8 +3952,28 @@ _structures:
                 static: public
                 uploads: public/images/carrieres
           quote:
-            type: textarea
+            # Texte enrichi : gras · italique · lien, un paragraphe. Garder les
+            # guillemets dans le texte (« … »).
+            type: html
             options:
+              format: p
+              bulletedlist: false
+              numberedlist: false
+              blockquote: false
+              bold: true
+              italic: true
+              link: true
+              undo: true
+              redo: true
+              underline: false
+              strike: false
+              image: false
+              table: false
+              code: false
+              embed: false
+              horizontalrule: false
+              snippet: false
+              remove_custom_markup: true
               empty_type: string
             label: Citation
           name:

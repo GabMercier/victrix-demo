@@ -12,6 +12,7 @@ slug: licences-power-platform
 # exacte de la maquette n'est pas dans les assets export.
 title: "Licences Microsoft Power Platform : comment s'y retrouver ?"
 description: "Guide complet pour choisir les bonnes licences Microsoft Power Platform : types de licences, paliers de service et alignement sur vos besoins d'affaires."
+seoH1: ""
 noindex: true
 # Chrome COMPLET : blocs header/footerMode ABSENTS (défaut de la route) — la
 # maquette finale montre la navigation et le pied de page du site entiers.

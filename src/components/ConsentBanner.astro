@@ -25,6 +25,12 @@ import { getSiteText } from '../i18n/site';
  *    compris au retour sur le site et après chaque navigation ClientRouter.
  *    Aucun script analytique ne se charge sans consentement.
  *
+ * RETRAIT DU CONSENTEMENT (2026-09-18) : tout élément `[data-consent-manage]`
+ * (lien « Gérer mes témoins » des pieds de page) ROUVRE le bandeau, même
+ * après un choix. Passer d'« accepté » à « refusé » RECHARGE la page : un
+ * script analytique déjà exécuté ne se décharge pas — seul un rechargement,
+ * où il reste inerte, retire réellement la mesure.
+ *
  * A11y : region nommée, boutons natifs (focus clavier), texte lisible ; le
  * bandeau n'est PAS un modal — il ne piège pas le focus et ne bloque pas la
  * navigation (exigence minimale Loi 25 : choix libre, refus aussi simple que
@@ -106,6 +112,27 @@ const policyHref = localizePath(c.policyHref, lang);
     const banner = document.querySelector<HTMLElement>('[data-consent-banner]');
     if (!banner) return;
 
+    // Boutons liés à CHAQUE chargement (le DOM est neuf après un swap) et sans
+    // `once` : le bandeau peut être rouvert par « Gérer mes témoins ».
+    const accept = banner.querySelector<HTMLButtonElement>('[data-consent-accept]');
+    accept?.addEventListener('click', () => {
+      banner.hidden = true;
+      applyChoice(true, true);
+    });
+    banner.querySelector<HTMLButtonElement>('[data-consent-refuse]')?.addEventListener('click', () => {
+      const wasAccepted = stored() === 'accepted';
+      banner.hidden = true;
+      applyChoice(false, true);
+      // Retrait : les scripts déjà exécutés ne se déchargent pas — recharger.
+      if (wasAccepted) location.reload();
+    });
+    document.querySelectorAll<HTMLElement>('[data-consent-manage]').forEach((opener) => {
+      opener.addEventListener('click', () => {
+        banner.hidden = false;
+        accept?.focus();
+      });
+    });
+
     const choice = stored();
     if (choice === 'accepted') {
       // Choix déjà mémorisé : réappliquer (classe + activation des scripts de
@@ -117,22 +144,6 @@ const policyHref = localizePath(c.policyHref, lang);
     if (choice === 'refused') return;
 
     banner.hidden = false;
-    banner.querySelector<HTMLButtonElement>('[data-consent-accept]')?.addEventListener(
-      'click',
-      () => {
-        banner.hidden = true;
-        applyChoice(true, true);
-      },
-      { once: true },
-    );
-    banner.querySelector<HTMLButtonElement>('[data-consent-refuse]')?.addEventListener(
-      'click',
-      () => {
-        banner.hidden = true;
-        applyChoice(false, true);
-      },
-      { once: true },
-    );
   });
 </script>
 
