@@ -29,9 +29,18 @@
         "text": "Trust Victrix to <strong>protect your sensitive data</strong>, <strong>ensure the security of your systems</strong>, and <strong>handle the deployment of technology solutions</strong> that will protect your business from cyber threats.",
         "watermark": "eclair",
         "stats": [
-          { "value": "21+", "label": "years of experience" },
-          { "value": "+300", "label": "experts" },
-          { "value": "+7500", "label": "projects" }
+          {
+            "value": "21+",
+            "label": "years of experience"
+          },
+          {
+            "value": "+300",
+            "label": "experts"
+          },
+          {
+            "value": "+7500",
+            "label": "projects"
+          }
         ]
       },
       "aside": {
@@ -91,10 +100,22 @@
       "image": "/wp-content/uploads/2024/12/modern-urban-architecture-2024-09-18-06-16-04-utc-2-scaled.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "Security", "label": "Protection of your assets" },
-        { "value": "Risk", "label": "Risk and compliance management" },
-        { "value": "Compliance", "label": "ISO, NIS2, Law 25, GDPR, DORA" },
-        { "value": "Resilience", "label": "Disaster recovery and business continuity (DR/BCP)" }
+        {
+          "value": "Security",
+          "label": "Protection of your assets"
+        },
+        {
+          "value": "Risk",
+          "label": "Risk and compliance management"
+        },
+        {
+          "value": "Compliance",
+          "label": "ISO, NIS2, Law 25, GDPR, DORA"
+        },
+        {
+          "value": "Resilience",
+          "label": "Disaster recovery and business continuity (DR/BCP)"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -192,6 +213,7 @@
       "consentText": "",
       "variant": "carte",
       "formId": "campagne-evaluation",
+      "fond": "",
       "fields": []
     },
     {
@@ -203,7 +225,8 @@
       "ctaHref": "#formulaire",
       "cta2Label": "Contact us",
       "cta2Href": "/en/contact",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "cybersecurity",

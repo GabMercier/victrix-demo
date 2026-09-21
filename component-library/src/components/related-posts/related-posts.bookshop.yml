@@ -18,7 +18,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/related-posts/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/related-posts/related-posts.preview.png"
     text: "Ressources liées"
     subtext: Articles du blogue par étiquette (automatique)
   preview:

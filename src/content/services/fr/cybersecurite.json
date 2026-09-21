@@ -225,6 +225,7 @@
       "consentText": "",
       "variant": "carte",
       "formId": "campagne-evaluation",
+      "fond": "",
       "fields": []
     },
     {
@@ -236,7 +237,8 @@
       "ctaHref": "#formulaire",
       "cta2Label": "Planifiez une consultation",
       "cta2Href": "/fr/contact",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": "La cybersécurité au service de vos affaires | Services | Victrix",

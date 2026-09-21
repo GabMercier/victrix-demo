@@ -49,8 +49,14 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Scalability", "label": "A service model that promotes scalability" },
-        { "value": "Simplicity", "label": "Simplified workload management" }
+        {
+          "value": "Scalability",
+          "label": "A service model that promotes scalability"
+        },
+        {
+          "value": "Simplicity",
+          "label": "Simplified workload management"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -166,7 +172,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "cloud-services-provider/aws-services",

@@ -7,13 +7,23 @@
  * générateur Bookshop globbe les fichiers `@(preview|icon).*` posés À CÔTÉ de
  * chaque `*.bookshop.yml`, pose `preview_image` sur la structure générée et
  * reloge l'image dans la sortie du build CloudCannon
- * (`/_cloudcannon/bookshop_thumbs/<composant>/preview.<ext>`). Il suffit donc
- * de COMMETTRE un `preview.png` par dossier de composant — aucune modification
+ * (`/_cloudcannon/bookshop_thumbs/<composant>/<composant>.preview.<ext>`).
+ *
+ * NOM DU FICHIER — CORRIGÉ le 2026-09-18 : le glob du générateur est
+ * `componentFile.replace(/bookshop\.\w+$/, "@(preview|icon).*")`, donc pour
+ * `benefits/benefits.bookshop.yml` il cherche `benefits.preview.*` — PAS
+ * `preview.*`. Les 40 `preview.png` d'origine n'ont JAMAIS été relogés
+ * (« Connected 0 component thumbnail(s) ») : aucune vignette dans le sélecteur
+ * de sections. Se rejoue hors CloudCannon : `npx @cloudcannon/reader --output
+ * _ccout` puis `npx @bookshop/generate` → doit annoncer 40 vignettes.
+ *
+ * Il suffit donc de COMMETTRE un `<composant>.preview.png` par dossier de
+ * composant (et `picker_preview.image` de la spec pointe la même URL) — aucune modification
  * des specs ni de cloudcannon.config.yml.
  *
  * REJOUABLE après le redesign (« re-peau ») : dev server lancé, puis
  *   npm run design:previews  [-- --base http://localhost:4321]
- * et commettre les preview.png régénérés.
+ * et commettre les *.preview.png régénérés.
  *
  * Sources d'aperçu (premier rendu FR trouvé, dans l'ordre ci-dessous) : les
  * sections sont des ENFANTS DIRECTS de <main id="main-content"> (renderer
@@ -158,7 +168,7 @@ for (const [url, entries] of byUrl) {
   for (const entry of entries) {
     const element = rendered.nth(entry.index);
     const png = await element.screenshot({ animations: 'disabled' });
-    const out = join(COMPONENTS_DIR, entry.type, 'preview.png');
+    const out = join(COMPONENTS_DIR, entry.type, `${entry.type}.preview.png`);
     // ~800 px de large : lisible dans la modale, léger dans le repo.
     await sharp(png).resize({ width: 800 }).png({ compressionLevel: 9 }).toFile(out);
     captured++;
@@ -167,5 +177,5 @@ for (const [url, entries] of byUrl) {
 }
 
 await browser.close();
-console.log(`\n${captured}/${allTypes.length} aperçus écrits dans component-library/src/components/*/preview.png`);
-console.log('Prochaine étape : commettre les preview.png (le build CloudCannon les reloge).');
+console.log(`\n${captured}/${allTypes.length} aperçus écrits dans component-library/src/components/<c>/<c>.preview.png`);
+console.log('Prochaine étape : commettre les *.preview.png (le build CloudCannon les reloge).');

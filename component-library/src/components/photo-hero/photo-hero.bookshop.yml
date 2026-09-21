@@ -13,7 +13,7 @@ spec:
   picker_preview:
     # Vignette du sélecteur « Add Section » : URL déterministe où
     # @bookshop/generate reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/photo-hero/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/photo-hero/photo-hero.preview.png"
     text: Héros photo
     subtext: Photo voilée d'anthracite, titre blanc, bouton en majuscules (h1 de la page)
   preview:

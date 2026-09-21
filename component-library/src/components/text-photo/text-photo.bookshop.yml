@@ -12,7 +12,7 @@ spec:
   description: "Titre, chapeau, ligne d'engagement (pictogramme + titre + texte) et pastilles partenaires à gauche ; photo à droite — responsabilité sociale."
   icon: volunteer_activism
   picker_preview:
-    image: "/_cloudcannon/bookshop_thumbs/text-photo/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/text-photo/text-photo.preview.png"
     text: Texte + photo
     subtext: Titre, chapeau, engagement, pastilles partenaires ; photo à droite
   preview:

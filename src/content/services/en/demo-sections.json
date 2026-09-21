@@ -29,9 +29,21 @@
       "columns": "3",
       "cardStyle": "default",
       "items": [
-        { "number": "01", "title": "Assess", "text": "A clear picture of the current state and the gaps to close." },
-        { "number": "02", "title": "Plan", "text": "A prioritized roadmap aligned with your business goals." },
-        { "number": "03", "title": "Deploy", "text": "A progressive, measured and supported rollout." }
+        {
+          "number": "01",
+          "title": "Assess",
+          "text": "A clear picture of the current state and the gaps to close."
+        },
+        {
+          "number": "02",
+          "title": "Plan",
+          "text": "A prioritized roadmap aligned with your business goals."
+        },
+        {
+          "number": "03",
+          "title": "Deploy",
+          "text": "A progressive, measured and supported rollout."
+        }
       ]
     },
     {
@@ -41,12 +53,42 @@
       "intro": "Serpentine chronology: key milestones stand out.",
       "tone": "tint",
       "items": [
-        { "year": "2003", "title": "Company founded", "text": "", "accent": true },
-        { "year": "2008", "title": "First acquisition", "text": "An optional detail sentence.", "accent": false },
-        { "year": "2012", "title": "Team growth", "text": "", "accent": false },
-        { "year": "2016", "title": "New office", "text": "", "accent": false },
-        { "year": "2019", "title": "International expansion", "text": "", "accent": true },
-        { "year": "2023", "title": "New offering", "text": "", "accent": true }
+        {
+          "year": "2003",
+          "title": "Company founded",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2008",
+          "title": "First acquisition",
+          "text": "An optional detail sentence.",
+          "accent": false
+        },
+        {
+          "year": "2012",
+          "title": "Team growth",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2016",
+          "title": "New office",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2019",
+          "title": "International expansion",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2023",
+          "title": "New offering",
+          "text": "",
+          "accent": true
+        }
       ]
     },
     {
@@ -63,18 +105,40 @@
       "type": "feature-boxes",
       "sectionTitle": "What the engagement covers",
       "subtitle": "A clear scope, adapted to your organization.",
-      "boxes": ["Strategy and governance", "Architecture and integration", "Security and compliance", "Training and adoption"]
+      "fond": "givre",
+      "boxes": [
+        "Strategy and governance",
+        "Architecture and integration",
+        "Security and compliance",
+        "Training and adoption"
+      ]
     },
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
       "sectionTitle": "Technologies we master",
       "groups": [
-        { "title": "Cloud", "items": ["Microsoft Azure", "Microsoft 365", "AWS"] },
+        {
+          "title": "Cloud",
+          "items": [
+            "Microsoft Azure",
+            "Microsoft 365",
+            "AWS"
+          ]
+        },
         {
           "title": "Data and AI",
-          "items": ["Power BI", "Copilot Studio"],
-          "subgroup": { "label": "Open source:", "items": ["Python", "PostgreSQL"] }
+          "items": [
+            "Power BI",
+            "Copilot Studio"
+          ],
+          "subgroup": {
+            "label": "Open source:",
+            "items": [
+              "Python",
+              "PostgreSQL"
+            ]
+          }
         }
       ]
     },
@@ -82,6 +146,7 @@
       "_bookshop_name": "rich-text",
       "type": "rich-text",
       "title": "A proven approach",
+      "fond": "blanc",
       "paragraphs": [
         "For more than 25 years, our teams have supported Quebec organizations through their most <strong>transformative</strong> technology projects.",
         "Every engagement starts with listening: understanding your business challenges before talking solutions."
@@ -91,7 +156,9 @@
       "_bookshop_name": "related-posts",
       "type": "related-posts",
       "title": "Related resources",
-      "tags": ["Our articles"],
+      "tags": [
+        "Our articles"
+      ],
       "ctaLabel": "See all resources",
       "ctaHref": "/en/ressources"
     },

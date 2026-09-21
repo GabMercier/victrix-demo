@@ -111,33 +111,78 @@
           "number": "01",
           "title": "IT Management and Support Services",
           "bullets": [
-            { "text": "Technical support and assistance", "icon": "coche" },
-            { "text": "Incident management", "icon": "coche" },
-            { "text": "Asset tracking, configuration management, and updates", "icon": "coche" },
-            { "text": "Selection and acquisition of tailored IT tools and solutions", "icon": "coche" },
-            { "text": "Deployment, adoption, and staff training", "icon": "coche" },
-            { "text": "License management", "icon": "coche" }
+            {
+              "text": "Technical support and assistance",
+              "icon": "coche"
+            },
+            {
+              "text": "Incident management",
+              "icon": "coche"
+            },
+            {
+              "text": "Asset tracking, configuration management, and updates",
+              "icon": "coche"
+            },
+            {
+              "text": "Selection and acquisition of tailored IT tools and solutions",
+              "icon": "coche"
+            },
+            {
+              "text": "Deployment, adoption, and staff training",
+              "icon": "coche"
+            },
+            {
+              "text": "License management",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Managed Security Services",
           "bullets": [
-            { "text": "Real-time protection of infrastructure, IT systems, network, and data", "icon": "coche" },
-            { "text": "Monitoring, detection, and incident response", "icon": "coche" },
-            { "text": "Vulnerability, threat, risk and compliance management", "icon": "coche" }
+            {
+              "text": "Real-time protection of infrastructure, IT systems, network, and data",
+              "icon": "coche"
+            },
+            {
+              "text": "Monitoring, detection, and incident response",
+              "icon": "coche"
+            },
+            {
+              "text": "Vulnerability, threat, risk and compliance management",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Performance and Optimization Services",
           "bullets": [
-            { "text": "Infrastructure management and maintenance", "icon": "coche" },
-            { "text": "Custom application development and maintenance", "icon": "coche" },
-            { "text": "Process automation and systems integration", "icon": "coche" },
-            { "text": "Monitoring of server availability, performance and capacity", "icon": "coche" },
-            { "text": "Continuous improvement of cloud services and infrastructure", "icon": "coche" },
-            { "text": "Performance monitoring and optimization", "icon": "coche" }
+            {
+              "text": "Infrastructure management and maintenance",
+              "icon": "coche"
+            },
+            {
+              "text": "Custom application development and maintenance",
+              "icon": "coche"
+            },
+            {
+              "text": "Process automation and systems integration",
+              "icon": "coche"
+            },
+            {
+              "text": "Monitoring of server availability, performance and capacity",
+              "icon": "coche"
+            },
+            {
+              "text": "Continuous improvement of cloud services and infrastructure",
+              "icon": "coche"
+            },
+            {
+              "text": "Performance monitoring and optimization",
+              "icon": "coche"
+            }
           ]
         }
       ]
@@ -153,10 +198,22 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "24/7", "label": "Continuous monitoring" },
-        { "value": "Experts", "label": "Access to qualified specialists" },
-        { "value": "Cost", "label": "Predictable and optimized" },
-        { "value": "Scalability", "label": "Adjustable to your needs" }
+        {
+          "value": "24/7",
+          "label": "Continuous monitoring"
+        },
+        {
+          "value": "Experts",
+          "label": "Access to qualified specialists"
+        },
+        {
+          "value": "Cost",
+          "label": "Predictable and optimized"
+        },
+        {
+          "value": "Scalability",
+          "label": "Adjustable to your needs"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -204,7 +261,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "managed-it-services",

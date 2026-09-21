@@ -90,24 +90,42 @@
           "number": "01",
           "title": "Technical Compliance",
           "bullets": [
-            { "text": "Validation of the compliance of the M365 environment", "icon": "coche" },
-            { "text": "Security, identity and backup elements", "icon": "coche" }
+            {
+              "text": "Validation of the compliance of the M365 environment",
+              "icon": "coche"
+            },
+            {
+              "text": "Security, identity and backup elements",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Service Integration",
           "bullets": [
-            { "text": "Technical documentation", "icon": "document" },
-            { "text": "Linkage with your team", "icon": "coche" },
-            { "text": "Definition of KPIs, procedures and processes", "icon": "cible" }
+            {
+              "text": "Technical documentation",
+              "icon": "document"
+            },
+            {
+              "text": "Linkage with your team",
+              "icon": "coche"
+            },
+            {
+              "text": "Definition of KPIs, procedures and processes",
+              "icon": "cible"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Service Launch",
           "bullets": [
-            { "text": "Response and escalation of incidents, problems and changes", "icon": "coche" }
+            {
+              "text": "Response and escalation of incidents, problems and changes",
+              "icon": "coche"
+            }
           ]
         }
       ]
@@ -121,7 +139,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "managed-it-services/maximize-the-use-of-your-m365-ecosystem",

@@ -33,8 +33,14 @@
         "text": "From operations management to administrative support, the Ø Studio offering meets the requirements of every line of business.",
         "watermark": "eclair",
         "stats": [
-          { "value": "4.5×", "label": "Acceleration" },
-          { "value": "-40%", "label": "Cost reduction" }
+          {
+            "value": "4.5×",
+            "label": "Acceleration"
+          },
+          {
+            "value": "-40%",
+            "label": "Cost reduction"
+          }
         ]
       },
       "aside": {
@@ -58,18 +64,36 @@
           "number": "01",
           "title": "Consulting and integration",
           "bullets": [
-            { "text": "Identify and quantify business needs", "icon": "coche" },
-            { "text": "Analyze usage and behaviours", "icon": "coche" },
-            { "text": "Define specifications and best practices", "icon": "coche" }
+            {
+              "text": "Identify and quantify business needs",
+              "icon": "coche"
+            },
+            {
+              "text": "Analyze usage and behaviours",
+              "icon": "coche"
+            },
+            {
+              "text": "Define specifications and best practices",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Application development",
           "bullets": [
-            { "text": "Build scalable applications for your employees", "icon": "coche" },
-            { "text": "Deliver turnkey solutions", "icon": "coche" },
-            { "text": "Develop mobile and web applications", "icon": "coche" }
+            {
+              "text": "Build scalable applications for your employees",
+              "icon": "coche"
+            },
+            {
+              "text": "Deliver turnkey solutions",
+              "icon": "coche"
+            },
+            {
+              "text": "Develop mobile and web applications",
+              "icon": "coche"
+            }
           ]
         }
       ]
@@ -84,10 +108,22 @@
       "image": "/images/solutions/gestion-idees.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "Security", "label": "Compliance and full visibility" },
-        { "value": "Savings", "label": "Optimal licence management" },
-        { "value": "Innovation", "label": "Automation and faster adoption" },
-        { "value": "Experience", "label": "Friendly reports for everyone" }
+        {
+          "value": "Security",
+          "label": "Compliance and full visibility"
+        },
+        {
+          "value": "Savings",
+          "label": "Optimal licence management"
+        },
+        {
+          "value": "Innovation",
+          "label": "Automation and faster adoption"
+        },
+        {
+          "value": "Experience",
+          "label": "Friendly reports for everyone"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -136,7 +172,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": "Demo — product page recipe"

@@ -31,7 +31,10 @@
         "text": "Une communication interne inefficace entraîne un faible taux d’adoption des outils et un manque d’engagement des équipes. Les employés jonglent entre plusieurs plateformes, rendant l’accès aux ressources plus complexe — et sans un accès rapide aux bonnes informations, ils se retrouvent bloqués.",
         "watermark": "engrenage",
         "stats": [
-          { "value": "30 %", "label": "Du temps passé à chercher des informations" }
+          {
+            "value": "30 %",
+            "label": "Du temps passé à chercher des informations"
+          }
         ]
       },
       "aside": {
@@ -80,10 +83,22 @@
       "image": "/wp-content/uploads/2023/08/vackground-com-aguc-v_d1ii-unsplash-3-scaled.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "M365 + Viva", "label": "Expertise reconnue : Teams, SharePoint, Copilot" },
-        { "value": "Agent IA", "label": "Intégré pour répondre aux questions courantes des employés" },
-        { "value": "UX / UI", "label": "Équipe permanente experte en design et communication" },
-        { "value": "Expérience", "label": "Environnements complexes, privés ou publics" }
+        {
+          "value": "M365 + Viva",
+          "label": "Expertise reconnue : Teams, SharePoint, Copilot"
+        },
+        {
+          "value": "Agent IA",
+          "label": "Intégré pour répondre aux questions courantes des employés"
+        },
+        {
+          "value": "UX / UI",
+          "label": "Équipe permanente experte en design et communication"
+        },
+        {
+          "value": "Expérience",
+          "label": "Environnements complexes, privés ou publics"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -101,7 +116,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": "L’IA au service de l’expérience employé et de l'intranet"

@@ -37,27 +37,45 @@
           "number": "01",
           "title": "Design and development",
           "bullets": [
-            { "text": "Custom business applications" },
-            { "text": "Integration with your existing systems" },
-            { "text": "Carefully crafted user experience" }
+            {
+              "text": "Custom business applications"
+            },
+            {
+              "text": "Integration with your existing systems"
+            },
+            {
+              "text": "Carefully crafted user experience"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Application modernization",
           "bullets": [
-            { "text": "Application portfolio assessment" },
-            { "text": "Migration to the cloud" },
-            { "text": "Progressive overhaul, without disruption" }
+            {
+              "text": "Application portfolio assessment"
+            },
+            {
+              "text": "Migration to the cloud"
+            },
+            {
+              "text": "Progressive overhaul, without disruption"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Maintenance and evolution",
           "bullets": [
-            { "text": "Full life-cycle ownership" },
-            { "text": "Continuous fixes and improvements" },
-            { "text": "Monitoring and governance" }
+            {
+              "text": "Full life-cycle ownership"
+            },
+            {
+              "text": "Continuous fixes and improvements"
+            },
+            {
+              "text": "Monitoring and governance"
+            }
           ]
         }
       ]
@@ -72,9 +90,21 @@
       "columns": "3",
       "cardStyle": "default",
       "items": [
-        { "number": "01", "title": "Understand", "text": "Your processes, your systems and your business priorities come first." },
-        { "number": "02", "title": "Deliver", "text": "Short milestones, concrete and measurable deliverables." },
-        { "number": "03", "title": "Evolve", "text": "Support that lasts well beyond go-live." }
+        {
+          "number": "01",
+          "title": "Understand",
+          "text": "Your processes, your systems and your business priorities come first."
+        },
+        {
+          "number": "02",
+          "title": "Deliver",
+          "text": "Short milestones, concrete and measurable deliverables."
+        },
+        {
+          "number": "03",
+          "title": "Evolve",
+          "text": "Support that lasts well beyond go-live."
+        }
       ]
     },
     {
@@ -86,7 +116,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "Discover Victrix",
       "cta2Href": "/en/decouvrir",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": ""

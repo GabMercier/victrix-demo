@@ -49,8 +49,14 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Évolutivité", "label": "Un modèle de service qui favorise l'évolution" },
-        { "value": "Simplicité", "label": "Une gestion des charges de travail simplifiée" }
+        {
+          "value": "Évolutivité",
+          "label": "Un modèle de service qui favorise l'évolution"
+        },
+        {
+          "value": "Simplicité",
+          "label": "Une gestion des charges de travail simplifiée"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -166,7 +172,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": "Expertise AWS | Services aux entreprises"

@@ -83,8 +83,14 @@
       "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "Zero Trust", "label": "Enhanced perimeter security" },
-        { "value": "24/7", "label": "Audits and managed services" }
+        {
+          "value": "Zero Trust",
+          "label": "Enhanced perimeter security"
+        },
+        {
+          "value": "24/7",
+          "label": "Audits and managed services"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -149,7 +155,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "cybersecurity/cybersecurity-healthcare",

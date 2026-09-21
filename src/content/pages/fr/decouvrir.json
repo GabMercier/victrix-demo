@@ -82,6 +82,7 @@
       "type": "benefits",
       "title": "Nos valeurs",
       "intro": "",
+      "fond": "blanc",
       "items": [
         {
           "title": "Excellence",
@@ -117,20 +118,90 @@
       "intro": "Plus de vingt ans de croissance, d'acquisitions et d'expansion internationale.",
       "tone": "default",
       "items": [
-        { "year": "2003", "title": "Création de Victrix", "text": "", "accent": true },
-        { "year": "2004", "title": "Acquisition d'ELFIQ Networks et de la division de services-conseils TI du groupe 3-Soft", "text": "", "accent": false },
-        { "year": "2007", "title": "Acquisition de Cogeti Informatique, d'Informatique Stratégique et de Noxent", "text": "", "accent": true },
-        { "year": "2008", "title": "Acquisition de Compu-Sys", "text": "", "accent": false },
-        { "year": "2009", "title": "Acquisition d'IPtel", "text": "", "accent": false },
-        { "year": "2010", "title": "Acquisition d'Expra Solutions", "text": "", "accent": false },
-        { "year": "2011", "title": "Acquisition de Progilan", "text": "", "accent": false },
-        { "year": "2012", "title": "Acquisition de Teltech", "text": "", "accent": false },
-        { "year": "2015", "title": "Acquisition d'AGRM", "text": "", "accent": false },
-        { "year": "2016", "title": "Acquisition de Noverka Conseil", "text": "", "accent": true },
-        { "year": "2017", "title": "Acquisition de VisionTI", "text": "", "accent": false },
-        { "year": "2019", "title": "Victrix rejoint l'écosystème international Alan Allman Associates", "text": "15 cabinets-conseils · Plus de 3 300 experts", "accent": true },
-        { "year": "2023", "title": "La Société Conseil Lambda rejoint Victrix", "text": "", "accent": true },
-        { "year": "2024", "title": "En se rapprochant de COMITEM, Victrix étend son offre en France", "text": "", "accent": false }
+        {
+          "year": "2003",
+          "title": "Création de Victrix",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2004",
+          "title": "Acquisition d'ELFIQ Networks et de la division de services-conseils TI du groupe 3-Soft",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2007",
+          "title": "Acquisition de Cogeti Informatique, d'Informatique Stratégique et de Noxent",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2008",
+          "title": "Acquisition de Compu-Sys",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2009",
+          "title": "Acquisition d'IPtel",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2010",
+          "title": "Acquisition d'Expra Solutions",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2011",
+          "title": "Acquisition de Progilan",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2012",
+          "title": "Acquisition de Teltech",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2015",
+          "title": "Acquisition d'AGRM",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2016",
+          "title": "Acquisition de Noverka Conseil",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2017",
+          "title": "Acquisition de VisionTI",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2019",
+          "title": "Victrix rejoint l'écosystème international Alan Allman Associates",
+          "text": "15 cabinets-conseils · Plus de 3 300 experts",
+          "accent": true
+        },
+        {
+          "year": "2023",
+          "title": "La Société Conseil Lambda rejoint Victrix",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2024",
+          "title": "En se rapprochant de COMITEM, Victrix étend son offre en France",
+          "text": "",
+          "accent": false
+        }
       ]
     },
     {
@@ -142,7 +213,8 @@
       "ctaHref": "/fr/carrieres",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ]
 }

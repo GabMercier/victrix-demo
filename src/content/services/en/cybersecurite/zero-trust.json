@@ -29,7 +29,10 @@
         "text": "At Victrix, we consider the Zero Trust model to be <strong>one of the most popular cybersecurity frameworks</strong> for protecting critical systems and data.",
         "watermark": "graphique",
         "stats": [
-          { "value": "60%", "label": "of enterprises will use Zero Trust solutions instead of VPNs by 2025 (Gartner)" }
+          {
+            "value": "60%",
+            "label": "of enterprises will use Zero Trust solutions instead of VPNs by 2025 (Gartner)"
+          }
         ]
       },
       "aside": {
@@ -49,13 +52,41 @@
       "columns": "3",
       "cardStyle": "default",
       "items": [
-        { "number": "01", "title": "Seamless user experience", "text": "" },
-        { "number": "02", "title": "Continuous auditing", "text": "" },
-        { "number": "03", "title": "Least privilege principle", "text": "" },
-        { "number": "04", "title": "Micro-segmentation", "text": "" },
-        { "number": "05", "title": "Monitoring and analysis", "text": "" },
-        { "number": "06", "title": "Granular security policies", "text": "" },
-        { "number": "07", "title": "Dynamic trust", "text": "" }
+        {
+          "number": "01",
+          "title": "Seamless user experience",
+          "text": ""
+        },
+        {
+          "number": "02",
+          "title": "Continuous auditing",
+          "text": ""
+        },
+        {
+          "number": "03",
+          "title": "Least privilege principle",
+          "text": ""
+        },
+        {
+          "number": "04",
+          "title": "Micro-segmentation",
+          "text": ""
+        },
+        {
+          "number": "05",
+          "title": "Monitoring and analysis",
+          "text": ""
+        },
+        {
+          "number": "06",
+          "title": "Granular security policies",
+          "text": ""
+        },
+        {
+          "number": "07",
+          "title": "Dynamic trust",
+          "text": ""
+        }
       ]
     },
     {
@@ -93,7 +124,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "cybersecurity/zero-trust",

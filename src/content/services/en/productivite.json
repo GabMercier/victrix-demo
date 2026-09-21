@@ -27,6 +27,7 @@
       "type": "benefits",
       "title": "Our human approach",
       "intro": "Our specialists use a proactive approach to help you get the most out of every working hour by reconciling the realities of the three main stakeholders.",
+      "fond": "blanc",
       "items": [
         {
           "title": "THE ORGANIZATION",
@@ -162,7 +163,8 @@
       "body": "Let's discuss your challenges and see how Victrix can help you go further in your digital transformation and performance improvement.",
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
-      "variant": "dark"
+      "variant": "dark",
+      "fond": "blanc"
     },
     {
       "_bookshop_name": "related-posts",

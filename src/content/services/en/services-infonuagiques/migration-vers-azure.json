@@ -50,8 +50,14 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Agility", "label": "Increased accessibility and unrivalled scalability" },
-        { "value": "Security", "label": "Enhanced posture, preserved compliance" }
+        {
+          "value": "Agility",
+          "label": "Increased accessibility and unrivalled scalability"
+        },
+        {
+          "value": "Security",
+          "label": "Enhanced posture, preserved compliance"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -183,7 +189,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "cloud-services-provider/azure-migration",

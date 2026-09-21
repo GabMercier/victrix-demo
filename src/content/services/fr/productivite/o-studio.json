@@ -205,6 +205,7 @@
       "consentText": "",
       "variant": "carte",
       "formId": "o-studio",
+      "fond": "",
       "fields": []
     },
     {
@@ -216,7 +217,8 @@
       "ctaHref": "#formulaire",
       "cta2Label": "Nous joindre",
       "cta2Href": "/fr/contact",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": "Développement applicatif Power Platform | Ø Studio",

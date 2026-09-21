@@ -50,8 +50,14 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "Azure", "label": "Accelerated migration with the Cloud Adoption Framework" },
-        { "value": "AWS", "label": "EC2, Elastic Beanstalk and SaaS expertise" }
+        {
+          "value": "Azure",
+          "label": "Accelerated migration with the Cloud Adoption Framework"
+        },
+        {
+          "value": "AWS",
+          "label": "EC2, Elastic Beanstalk and SaaS expertise"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -193,7 +199,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "cloud-services-provider",

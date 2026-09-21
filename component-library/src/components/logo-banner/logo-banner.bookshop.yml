@@ -15,7 +15,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/logo-banner/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/logo-banner/logo-banner.preview.png"
     text: Bandeau logos partenaires
     subtext: Logos + descriptifs + badge (ex. certification)
   preview:

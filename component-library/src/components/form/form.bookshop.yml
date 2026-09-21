@@ -28,7 +28,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/form/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/form/form.preview.png"
     text: Formulaire
     subtext: Maquette par défaut — fonctionnel si PUBLIC_FORMS_ENABLED=1
   preview:

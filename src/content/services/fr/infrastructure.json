@@ -36,27 +36,45 @@
           "number": "01",
           "title": "Environnements infonuagiques",
           "bullets": [
-            { "text": "Architecture et migration" },
-            { "text": "Optimisation des coûts" },
-            { "text": "Sécurité intégrée dès la conception" }
+            {
+              "text": "Architecture et migration"
+            },
+            {
+              "text": "Optimisation des coûts"
+            },
+            {
+              "text": "Sécurité intégrée dès la conception"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Réseaux et centres de données",
           "bullets": [
-            { "text": "Conception et évolution des réseaux" },
-            { "text": "Virtualisation et stockage" },
-            { "text": "Performance et disponibilité" }
+            {
+              "text": "Conception et évolution des réseaux"
+            },
+            {
+              "text": "Virtualisation et stockage"
+            },
+            {
+              "text": "Performance et disponibilité"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Continuité et résilience",
           "bullets": [
-            { "text": "Sauvegarde et relève" },
-            { "text": "Plans de continuité" },
-            { "text": "Surveillance proactive" }
+            {
+              "text": "Sauvegarde et relève"
+            },
+            {
+              "text": "Plans de continuité"
+            },
+            {
+              "text": "Surveillance proactive"
+            }
           ]
         }
       ]
@@ -65,7 +83,9 @@
       "_bookshop_name": "related-posts",
       "type": "related-posts",
       "title": "Ressources liées",
-      "tags": ["Infonuagique"],
+      "tags": [
+        "Infonuagique"
+      ],
       "ctaLabel": "Voir toutes les ressources",
       "ctaHref": "/fr/ressources"
     },
@@ -78,7 +98,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "Services TI gérés",
       "cta2Href": "/fr/services/services-ti-geres",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": ""

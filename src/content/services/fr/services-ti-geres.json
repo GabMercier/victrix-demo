@@ -111,33 +111,78 @@
           "number": "01",
           "title": "Services de soutien et gestion",
           "bullets": [
-            { "text": "Soutien technique et assistance selon un niveau de service personnalisé", "icon": "coche" },
-            { "text": "Gestion des incidents et problèmes", "icon": "coche" },
-            { "text": "Suivi des actifs, configurations et mises à jour", "icon": "coche" },
-            { "text": "Sélection et acquisition d'outils et de solutions TI adaptés", "icon": "coche" },
-            { "text": "Déploiement, adoption et formation des équipes", "icon": "coche" },
-            { "text": "Gestion des licences", "icon": "coche" }
+            {
+              "text": "Soutien technique et assistance selon un niveau de service personnalisé",
+              "icon": "coche"
+            },
+            {
+              "text": "Gestion des incidents et problèmes",
+              "icon": "coche"
+            },
+            {
+              "text": "Suivi des actifs, configurations et mises à jour",
+              "icon": "coche"
+            },
+            {
+              "text": "Sélection et acquisition d'outils et de solutions TI adaptés",
+              "icon": "coche"
+            },
+            {
+              "text": "Déploiement, adoption et formation des équipes",
+              "icon": "coche"
+            },
+            {
+              "text": "Gestion des licences",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Services de sécurité gérés",
           "bullets": [
-            { "text": "Protection des infrastructures, systèmes informatiques, réseaux et données en temps réel", "icon": "coche" },
-            { "text": "Surveillance, détection et réponse aux incidents", "icon": "coche" },
-            { "text": "Gestion des vulnérabilités, des menaces, du risque et de la conformité (GRC)", "icon": "coche" }
+            {
+              "text": "Protection des infrastructures, systèmes informatiques, réseaux et données en temps réel",
+              "icon": "coche"
+            },
+            {
+              "text": "Surveillance, détection et réponse aux incidents",
+              "icon": "coche"
+            },
+            {
+              "text": "Gestion des vulnérabilités, des menaces, du risque et de la conformité (GRC)",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Services pour l'optimisation et la performance",
           "bullets": [
-            { "text": "Gestion et maintenance des infrastructures", "icon": "coche" },
-            { "text": "Développement d'applications sur mesure et maintenance", "icon": "coche" },
-            { "text": "Automatisation de processus et intégration de systèmes", "icon": "coche" },
-            { "text": "Surveillance de la disponibilité, des performances et de la capacité des serveurs", "icon": "coche" },
-            { "text": "Amélioration continue des infrastructures et services infonuagiques", "icon": "coche" },
-            { "text": "Suivi des performances et optimisation", "icon": "coche" }
+            {
+              "text": "Gestion et maintenance des infrastructures",
+              "icon": "coche"
+            },
+            {
+              "text": "Développement d'applications sur mesure et maintenance",
+              "icon": "coche"
+            },
+            {
+              "text": "Automatisation de processus et intégration de systèmes",
+              "icon": "coche"
+            },
+            {
+              "text": "Surveillance de la disponibilité, des performances et de la capacité des serveurs",
+              "icon": "coche"
+            },
+            {
+              "text": "Amélioration continue des infrastructures et services infonuagiques",
+              "icon": "coche"
+            },
+            {
+              "text": "Suivi des performances et optimisation",
+              "icon": "coche"
+            }
           ]
         }
       ]
@@ -153,10 +198,22 @@
       "image": "",
       "imageAlt": "",
       "stats": [
-        { "value": "24/7", "label": "Surveillance en continu" },
-        { "value": "< 24 h", "label": "Accès à des experts qualifiés" },
-        { "value": "Coût", "label": "Prévisible et optimisé" },
-        { "value": "Évolutivité", "label": "Ajustable selon vos besoins" }
+        {
+          "value": "24/7",
+          "label": "Surveillance en continu"
+        },
+        {
+          "value": "< 24 h",
+          "label": "Accès à des experts qualifiés"
+        },
+        {
+          "value": "Coût",
+          "label": "Prévisible et optimisé"
+        },
+        {
+          "value": "Évolutivité",
+          "label": "Ajustable selon vos besoins"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -204,7 +261,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": "Services gérés TI | Gestion, Sécurité et Performance"

@@ -1246,9 +1246,16 @@ collections_config:
     # (2026-08-17, demande user : préversion partout) : la carte éditée s'y
     # trouve. [relative_base_path] = fr|en (sous-dossier).
     url: /[relative_base_path]/solutions/
-    # Aperçu visuel du catalogue + éditeur de données (JSON structuré).
+    # ÉDITEUR DE DONNÉES SEULEMENT (2026-09-18, retour user : « seulement l'en-tête
+    # et le pied de page dans l'édition en direct »). Depuis que le catalogue est
+    # une SECTION Bookshop (17/09), l'éditeur visuel re-rend la page à partir du
+    # fichier OUVERT : une fiche de solution n'a pas de `sections`, donc le
+    # contenu de la page disparaissait — l'aperçu ne pouvait qu'être vide. Le
+    # formulaire de données édite la fiche ; le rendu se vérifie sur la page
+    # « Solutions » (collection Pages). L'édition visuelle reviendra, par fiche,
+    # quand chaque solution aura sa propre page (docs/plan-livraison-finale.md,
+    # lots L10–L11).
     _enabled_editors:
-      - visual
       - data
     preview:
       icon: apps

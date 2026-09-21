@@ -46,23 +46,56 @@
           "number": "01",
           "title": "For employees",
           "bullets": [
-            { "text": "Reserve an office according to your needs", "icon": "coche" },
-            { "text": "Change, cancel or confirm your reservation", "icon": "coche" },
-            { "text": "Create a recurring reservation", "icon": "coche" },
-            { "text": "Link the reservation to your Outlook calendar", "icon": "coche" },
-            { "text": "Confirm your presence with a unique office code", "icon": "coche" },
-            { "text": "View your colleagues' reservations and select an office near them", "icon": "coche" },
-            { "text": "Designate a colleague to delegate reservations", "icon": "coche" }
+            {
+              "text": "Reserve an office according to your needs",
+              "icon": "coche"
+            },
+            {
+              "text": "Change, cancel or confirm your reservation",
+              "icon": "coche"
+            },
+            {
+              "text": "Create a recurring reservation",
+              "icon": "coche"
+            },
+            {
+              "text": "Link the reservation to your Outlook calendar",
+              "icon": "coche"
+            },
+            {
+              "text": "Confirm your presence with a unique office code",
+              "icon": "coche"
+            },
+            {
+              "text": "View your colleagues' reservations and select an office near them",
+              "icon": "coche"
+            },
+            {
+              "text": "Designate a colleague to delegate reservations",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "For office managers",
           "bullets": [
-            { "text": "Create and manage offices, zones, floors, and buildings", "icon": "coche" },
-            { "text": "Manage specific features and equipment available for an office", "icon": "coche" },
-            { "text": "Manage office and zone availability", "icon": "coche" },
-            { "text": "View reports on space utilization, busy periods, and employee attendance", "icon": "coche" }
+            {
+              "text": "Create and manage offices, zones, floors, and buildings",
+              "icon": "coche"
+            },
+            {
+              "text": "Manage specific features and equipment available for an office",
+              "icon": "coche"
+            },
+            {
+              "text": "Manage office and zone availability",
+              "icon": "coche"
+            },
+            {
+              "text": "View reports on space utilization, busy periods, and employee attendance",
+              "icon": "coche"
+            }
           ]
         }
       ]
@@ -78,10 +111,22 @@
       "image": "/wp-content/uploads/2023/08/obureau-mobile-1.png",
       "imageAlt": "",
       "stats": [
-        { "value": "Deployment", "label": "Rapid, with a one-time setup cost" },
-        { "value": "Teams", "label": "Native integration with Microsoft Teams" },
-        { "value": "Autonomy", "label": "Manage and evolve the solution yourself" },
-        { "value": "Bilingual", "label": "French / English application" }
+        {
+          "value": "Deployment",
+          "label": "Rapid, with a one-time setup cost"
+        },
+        {
+          "value": "Teams",
+          "label": "Native integration with Microsoft Teams"
+        },
+        {
+          "value": "Autonomy",
+          "label": "Manage and evolve the solution yourself"
+        },
+        {
+          "value": "Bilingual",
+          "label": "French / English application"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -99,7 +144,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "productivity-consulting/office-booking",

@@ -18,7 +18,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/strategic-value/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/strategic-value/strategic-value.preview.png"
     text: "Produit — Valeur stratégique"
     subtext: Image + halo, paragraphes et tuiles statistiques
   preview:

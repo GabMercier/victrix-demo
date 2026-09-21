@@ -51,6 +51,13 @@ jobs:
       - name: Bookshop (moteur de l'éditeur visuel)
         run: npm run check:bookshop
 
+      # Éditeur CloudCannon (2026-09-18) : un champ n'apparaît que si sa CLÉ existe
+      # dans le fichier — 86 sections sans `fond` = 86 listes déroulantes
+      # invisibles ; et les vignettes du sélecteur doivent s'appeler
+      # <composant>.preview.png. Réparation : npm run fix:sections.
+      - name: Sections (clés attendues par l'éditeur + vignettes)
+        run: npm run check:sections
+
       - name: Build
         run: npm run build
 

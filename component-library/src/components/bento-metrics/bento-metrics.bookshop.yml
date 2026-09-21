@@ -18,7 +18,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/bento-metrics/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/bento-metrics/bento-metrics.preview.png"
     text: "Produit — Bento métriques"
     subtext: Carte Bleu nuit à métriques + carte claire à lien
   preview:

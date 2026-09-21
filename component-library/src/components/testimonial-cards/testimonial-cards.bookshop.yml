@@ -12,7 +12,7 @@ spec:
   description: "Titre centré et grille de cartes témoignages (portrait, citation en italique, prénom, rôle) sur bande grise — deux cartes par rangée."
   icon: format_quote
   picker_preview:
-    image: "/_cloudcannon/bookshop_thumbs/testimonial-cards/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/testimonial-cards/testimonial-cards.preview.png"
     text: Cartes témoignages
     subtext: Grille de cartes portrait + citation + prénom + rôle
   preview:

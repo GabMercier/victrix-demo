@@ -32,8 +32,14 @@
         "text": "De la gestion de vos opérations au soutien à vos services administratifs, l'offre Ø Studio répond aux exigences de tous vos secteurs d'activités.",
         "watermark": "eclair",
         "stats": [
-          { "value": "4,5×", "label": "Accélération" },
-          { "value": "-40 %", "label": "Réduction des coûts" }
+          {
+            "value": "4,5×",
+            "label": "Accélération"
+          },
+          {
+            "value": "-40 %",
+            "label": "Réduction des coûts"
+          }
         ]
       },
       "aside": {
@@ -57,18 +63,36 @@
           "number": "01",
           "title": "Conseil et intégration",
           "bullets": [
-            { "text": "Identifier et quantifier les besoins d'affaires", "icon": "coche" },
-            { "text": "Analyser l'utilisation et les comportements", "icon": "coche" },
-            { "text": "Définir les spécifications et les bonnes pratiques", "icon": "coche" }
+            {
+              "text": "Identifier et quantifier les besoins d'affaires",
+              "icon": "coche"
+            },
+            {
+              "text": "Analyser l'utilisation et les comportements",
+              "icon": "coche"
+            },
+            {
+              "text": "Définir les spécifications et les bonnes pratiques",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Développement d'applications",
           "bullets": [
-            { "text": "Créer des applications évolutives pour vos employés", "icon": "coche" },
-            { "text": "Mettre en œuvre des solutions clés en main", "icon": "coche" },
-            { "text": "Développer des applications mobiles et web", "icon": "coche" }
+            {
+              "text": "Créer des applications évolutives pour vos employés",
+              "icon": "coche"
+            },
+            {
+              "text": "Mettre en œuvre des solutions clés en main",
+              "icon": "coche"
+            },
+            {
+              "text": "Développer des applications mobiles et web",
+              "icon": "coche"
+            }
           ]
         }
       ]
@@ -83,10 +107,22 @@
       "image": "/images/solutions/gestion-idees.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "Sécurité", "label": "Conformité et visibilité complète" },
-        { "value": "Économies", "label": "Gestion optimale des licences" },
-        { "value": "Innovation", "label": "Automatisation et adoption accélérée" },
-        { "value": "Expérience", "label": "Rapports conviviaux pour tous" }
+        {
+          "value": "Sécurité",
+          "label": "Conformité et visibilité complète"
+        },
+        {
+          "value": "Économies",
+          "label": "Gestion optimale des licences"
+        },
+        {
+          "value": "Innovation",
+          "label": "Automatisation et adoption accélérée"
+        },
+        {
+          "value": "Expérience",
+          "label": "Rapports conviviaux pour tous"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -135,7 +171,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": "Démonstration — recette page produit"

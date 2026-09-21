@@ -12,7 +12,7 @@ spec:
   description: "Surtitre, titre centré et rangée de tuiles bordées (pictogramme bleu + libellé en majuscules) — nos valeurs, notre culture."
   icon: stars
   picker_preview:
-    image: "/_cloudcannon/bookshop_thumbs/value-tiles/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/value-tiles/value-tiles.preview.png"
     text: Tuiles de valeurs
     subtext: Rangée de tuiles icône + libellé (jusqu'à 5 par rangée)
   preview:

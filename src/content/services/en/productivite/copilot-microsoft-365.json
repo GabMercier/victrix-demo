@@ -83,9 +83,18 @@
       "image": "/wp-content/uploads/2024/10/m365copilot_herobanner_apps_blog-feature-1.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "Governance", "label": "A structured strategy to drive adoption" },
-        { "value": "Security", "label": "Protection of your confidential information" },
-        { "value": "Performance", "label": "Copilot as a performance driver" }
+        {
+          "value": "Governance",
+          "label": "A structured strategy to drive adoption"
+        },
+        {
+          "value": "Security",
+          "label": "Protection of your confidential information"
+        },
+        {
+          "value": "Performance",
+          "label": "Copilot as a performance driver"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -103,7 +112,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "productivity-consulting/copilot-for-microsoft-365"

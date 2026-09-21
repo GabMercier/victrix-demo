@@ -37,27 +37,45 @@
           "number": "01",
           "title": "Scoping and use cases",
           "bullets": [
-            { "text": "Identification of high-impact opportunities" },
-            { "text": "Value and risk assessment" },
-            { "text": "A realistic roadmap" }
+            {
+              "text": "Identification of high-impact opportunities"
+            },
+            {
+              "text": "Value and risk assessment"
+            },
+            {
+              "text": "A realistic roadmap"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Implementation",
           "bullets": [
-            { "text": "Prototypes and proofs of concept" },
-            { "text": "Integration with your data and systems" },
-            { "text": "Controlled scale-up" }
+            {
+              "text": "Prototypes and proofs of concept"
+            },
+            {
+              "text": "Integration with your data and systems"
+            },
+            {
+              "text": "Controlled scale-up"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Adoption and governance",
           "bullets": [
-            { "text": "Team training" },
-            { "text": "Responsible AI practices" },
-            { "text": "Measured outcomes" }
+            {
+              "text": "Team training"
+            },
+            {
+              "text": "Responsible AI practices"
+            },
+            {
+              "text": "Measured outcomes"
+            }
           ]
         }
       ]
@@ -66,7 +84,9 @@
       "_bookshop_name": "related-posts",
       "type": "related-posts",
       "title": "Related resources",
-      "tags": ["Artificial intelligence"],
+      "tags": [
+        "Artificial intelligence"
+      ],
       "ctaLabel": "See all resources",
       "ctaHref": "/en/ressources"
     },
@@ -79,7 +99,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "Discover Victrix",
       "cta2Href": "/en/decouvrir",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": ""

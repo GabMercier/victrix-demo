@@ -26,6 +26,7 @@
       "type": "benefits",
       "title": "Notre approche humaine",
       "intro": "Nos spécialistes utilisent une approche proactive pour vous aider à tirer le maximum des heures travaillées en conciliant les réalités des trois grands acteurs.",
+      "fond": "blanc",
       "items": [
         {
           "title": "L'ORGANISATION",
@@ -161,7 +162,8 @@
       "body": "Discutons de vos enjeux et découvrons comment Victrix peut vous aider à aller plus loin dans votre transformation numérique et l'amélioration de vos performances.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
-      "variant": "dark"
+      "variant": "dark",
+      "fond": "blanc"
     },
     {
       "_bookshop_name": "related-posts",

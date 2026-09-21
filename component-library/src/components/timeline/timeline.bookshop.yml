@@ -19,7 +19,7 @@ spec:
     # Vignette du sélecteur « Add Section » — clé image pointée EXPLICITEMENT
     # sur l'URL déterministe où @bookshop/generate reloge preview.png au
     # postbuild (même patron que numbered-cards, 2026-08-17).
-    image: "/_cloudcannon/bookshop_thumbs/timeline/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/timeline/timeline.preview.png"
     text: "Ligne du temps"
     subtext: Chronologie serpentin, une case par année
   preview:

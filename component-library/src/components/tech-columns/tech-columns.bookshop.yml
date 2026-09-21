@@ -17,7 +17,7 @@ spec:
     # lit plus le preview_image légal posé par @bookshop/generate — on
     # pointe EXPLICITEMENT la clé image sur l'URL déterministe où generate
     # reloge le preview.png du composant au postbuild.
-    image: "/_cloudcannon/bookshop_thumbs/tech-columns/preview.png"
+    image: "/_cloudcannon/bookshop_thumbs/tech-columns/tech-columns.preview.png"
     text: "Colonnes de technologies"
     subtext: Colonnes de listes à puces (ex. technologies)
   preview:

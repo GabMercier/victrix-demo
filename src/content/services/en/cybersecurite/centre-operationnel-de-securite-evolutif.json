@@ -29,9 +29,18 @@
         "text": "Accelerate your cybersecurity and optimize all your security tools. Unlike a traditional SOC, <strong>our scalable, modular offering</strong> keeps you at the forefront of security technologies.",
         "watermark": "eclair",
         "stats": [
-          { "value": "+ 300,000", "label": "endpoints protected" },
-          { "value": "+ 100", "label": "customers actively served" },
-          { "value": "24/7/365", "label": "continuous human monitoring" }
+          {
+            "value": "+ 300,000",
+            "label": "endpoints protected"
+          },
+          {
+            "value": "+ 100",
+            "label": "customers actively served"
+          },
+          {
+            "value": "24/7/365",
+            "label": "continuous human monitoring"
+          }
         ]
       },
       "aside": {
@@ -55,32 +64,74 @@
           "number": "01",
           "title": "Support",
           "bullets": [
-            { "text": "Seamless integration into your existing tools", "icon": "coche" },
-            { "text": "Management of your security equipment", "icon": "coche" },
-            { "text": "Guidance in crisis management and remediation", "icon": "coche" },
-            { "text": "Governance and production of strategic operational indicators", "icon": "coche" },
-            { "text": "Evolution roadmap", "icon": "coche" }
+            {
+              "text": "Seamless integration into your existing tools",
+              "icon": "coche"
+            },
+            {
+              "text": "Management of your security equipment",
+              "icon": "coche"
+            },
+            {
+              "text": "Guidance in crisis management and remediation",
+              "icon": "coche"
+            },
+            {
+              "text": "Governance and production of strategic operational indicators",
+              "icon": "coche"
+            },
+            {
+              "text": "Evolution roadmap",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Operations",
           "bullets": [
-            { "text": "24/7/365 monitoring of security alerts, operated exclusively by bilingual security analysts", "icon": "coche" },
-            { "text": "Implementation of a Zero Trust approach: systematic control of identity, behavior, and access", "icon": "coche" },
-            { "text": "Vulnerability management", "icon": "coche" },
-            { "text": "Configuration, maintenance, intelligent automation, and orchestration, with human supervision at every stage", "icon": "coche" },
-            { "text": "Monitoring the threat landscape targeting your organization (threat intelligence)", "icon": "coche" },
-            { "text": "Analysis, triage, and response to security incidents", "icon": "coche" }
+            {
+              "text": "24/7/365 monitoring of security alerts, operated exclusively by bilingual security analysts",
+              "icon": "coche"
+            },
+            {
+              "text": "Implementation of a Zero Trust approach: systematic control of identity, behavior, and access",
+              "icon": "coche"
+            },
+            {
+              "text": "Vulnerability management",
+              "icon": "coche"
+            },
+            {
+              "text": "Configuration, maintenance, intelligent automation, and orchestration, with human supervision at every stage",
+              "icon": "coche"
+            },
+            {
+              "text": "Monitoring the threat landscape targeting your organization (threat intelligence)",
+              "icon": "coche"
+            },
+            {
+              "text": "Analysis, triage, and response to security incidents",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Evolution",
           "bullets": [
-            { "text": "Updates, enhancements, and consolidation", "icon": "coche" },
-            { "text": "Distinctive approach to mergers and acquisitions (M&A): accelerated securing of acquired environments", "icon": "coche" },
-            { "text": "Creation of child tenants under the control of the parent SOC", "icon": "coche" }
+            {
+              "text": "Updates, enhancements, and consolidation",
+              "icon": "coche"
+            },
+            {
+              "text": "Distinctive approach to mergers and acquisitions (M&A): accelerated securing of acquired environments",
+              "icon": "coche"
+            },
+            {
+              "text": "Creation of child tenants under the control of the parent SOC",
+              "icon": "coche"
+            }
           ]
         }
       ]
@@ -98,10 +149,22 @@
       "image": "/wp-content/uploads/2022/02/solution-sevoc-intro.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "+30", "label": "active Microsoft Sentinel customers" },
-        { "value": "+20,000", "label": "managed CrowdStrike endpoints" },
-        { "value": "90%", "label": "of customers adapt their configuration based on our recommendations" },
-        { "value": "100%", "label": "locally operated monitoring" }
+        {
+          "value": "+30",
+          "label": "active Microsoft Sentinel customers"
+        },
+        {
+          "value": "+20,000",
+          "label": "managed CrowdStrike endpoints"
+        },
+        {
+          "value": "90%",
+          "label": "of customers adapt their configuration based on our recommendations"
+        },
+        {
+          "value": "100%",
+          "label": "locally operated monitoring"
+        }
       ],
       "variant": "produit",
       "badge": "",
@@ -171,7 +234,8 @@
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "slug": "cybersecurity/scalable-security-operations-center",

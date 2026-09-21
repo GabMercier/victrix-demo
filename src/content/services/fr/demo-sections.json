@@ -52,12 +52,42 @@
       "intro": "Chronologie en serpentin : les jalons marquants sont mis en évidence.",
       "tone": "tint",
       "items": [
-        { "year": "2003", "title": "Création de l'entreprise", "text": "", "accent": true },
-        { "year": "2008", "title": "Première acquisition", "text": "Une phrase de détail optionnelle.", "accent": false },
-        { "year": "2012", "title": "Croissance des équipes", "text": "", "accent": false },
-        { "year": "2016", "title": "Nouveau bureau", "text": "", "accent": false },
-        { "year": "2019", "title": "Expansion internationale", "text": "", "accent": true },
-        { "year": "2023", "title": "Nouvelle offre", "text": "", "accent": true }
+        {
+          "year": "2003",
+          "title": "Création de l'entreprise",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2008",
+          "title": "Première acquisition",
+          "text": "Une phrase de détail optionnelle.",
+          "accent": false
+        },
+        {
+          "year": "2012",
+          "title": "Croissance des équipes",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2016",
+          "title": "Nouveau bureau",
+          "text": "",
+          "accent": false
+        },
+        {
+          "year": "2019",
+          "title": "Expansion internationale",
+          "text": "",
+          "accent": true
+        },
+        {
+          "year": "2023",
+          "title": "Nouvelle offre",
+          "text": "",
+          "accent": true
+        }
       ]
     },
     {
@@ -74,6 +104,7 @@
       "type": "feature-boxes",
       "sectionTitle": "Ce que couvre l'accompagnement",
       "subtitle": "Un périmètre clair, adapté à votre organisation.",
+      "fond": "givre",
       "boxes": [
         "Stratégie et gouvernance",
         "Architecture et intégration",
@@ -114,6 +145,7 @@
       "_bookshop_name": "rich-text",
       "type": "rich-text",
       "title": "Une approche éprouvée",
+      "fond": "blanc",
       "paragraphs": [
         "Depuis plus de 25 ans, nos équipes accompagnent les organisations québécoises dans leurs projets technologiques les plus <strong>structurants</strong>.",
         "Chaque mandat commence par l'écoute : comprendre vos enjeux d'affaires avant de parler de solutions."
@@ -240,6 +272,7 @@
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Valeur stratégique",
+      "fond": "",
       "paragraphs": [
         "Premier paragraphe de démonstration, avec un mot <strong>important</strong> mis en évidence.",
         "Second paragraphe : la section rend chaque entrée du tableau comme un paragraphe distinct."
@@ -247,8 +280,14 @@
       "image": "/images/services/valeur-copilot-studio.jpg",
       "imageAlt": "",
       "stats": [
-        { "value": "ROI", "label": "Optimisation rapide" },
-        { "value": "100 %", "label": "Intégration M365" }
+        {
+          "value": "ROI",
+          "label": "Optimisation rapide"
+        },
+        {
+          "value": "100 %",
+          "label": "Intégration M365"
+        }
       ]
     },
     {
@@ -256,6 +295,7 @@
       "type": "offer-cards",
       "title": "Offres numérotées",
       "intro": "Cartes « verre » à compteur et liseré bleu, liste à puces, bouton primaire centré.",
+      "fond": "givre",
       "ctaLabel": "Prendre rendez-vous",
       "ctaHref": "/fr/contact",
       "items": [
@@ -263,17 +303,32 @@
           "number": "1",
           "title": "Première offre",
           "bullets": [
-            { "text": "Point à crochet cerclé", "icon": "coche" },
-            { "text": "Second point de la liste", "icon": "coche" }
+            {
+              "text": "Point à crochet cerclé",
+              "icon": "coche"
+            },
+            {
+              "text": "Second point de la liste",
+              "icon": "coche"
+            }
           ]
         },
         {
           "number": "2",
           "title": "Seconde offre",
           "bullets": [
-            { "text": "Point à icône document", "icon": "document" },
-            { "text": "Point à icône cible", "icon": "cible" },
-            { "text": "Point à icône feuille de route", "icon": "carte" }
+            {
+              "text": "Point à icône document",
+              "icon": "document"
+            },
+            {
+              "text": "Point à icône cible",
+              "icon": "cible"
+            },
+            {
+              "text": "Point à icône feuille de route",
+              "icon": "carte"
+            }
           ]
         }
       ]
@@ -283,6 +338,7 @@
       "type": "realisations",
       "title": "Réalisations",
       "intro": "Tête à gauche, lien souligné à droite, grille de quatre cartes.",
+      "fond": "blanc",
       "linkLabel": "Demandez une démo",
       "linkHref": "/fr/contact",
       "items": [

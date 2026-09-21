@@ -36,27 +36,45 @@
           "number": "01",
           "title": "Cadrage et cas d’usage",
           "bullets": [
-            { "text": "Identification des occasions à fort impact" },
-            { "text": "Évaluation de la valeur et des risques" },
-            { "text": "Feuille de route réaliste" }
+            {
+              "text": "Identification des occasions à fort impact"
+            },
+            {
+              "text": "Évaluation de la valeur et des risques"
+            },
+            {
+              "text": "Feuille de route réaliste"
+            }
           ]
         },
         {
           "number": "02",
           "title": "Mise en œuvre",
           "bullets": [
-            { "text": "Prototypes et preuves de concept" },
-            { "text": "Intégration à vos données et systèmes" },
-            { "text": "Passage à l’échelle encadré" }
+            {
+              "text": "Prototypes et preuves de concept"
+            },
+            {
+              "text": "Intégration à vos données et systèmes"
+            },
+            {
+              "text": "Passage à l’échelle encadré"
+            }
           ]
         },
         {
           "number": "03",
           "title": "Adoption et gouvernance",
           "bullets": [
-            { "text": "Formation des équipes" },
-            { "text": "Encadrement responsable de l’IA" },
-            { "text": "Mesure des retombées" }
+            {
+              "text": "Formation des équipes"
+            },
+            {
+              "text": "Encadrement responsable de l’IA"
+            },
+            {
+              "text": "Mesure des retombées"
+            }
           ]
         }
       ]
@@ -65,7 +83,9 @@
       "_bookshop_name": "related-posts",
       "type": "related-posts",
       "title": "Ressources liées",
-      "tags": ["Intelligence artificielle"],
+      "tags": [
+        "Intelligence artificielle"
+      ],
       "ctaLabel": "Voir toutes les ressources",
       "ctaHref": "/fr/ressources"
     },
@@ -78,7 +98,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "Découvrir Victrix",
       "cta2Href": "/fr/decouvrir",
-      "variant": "nuit"
+      "variant": "nuit",
+      "fond": "blanc"
     }
   ],
   "seoTitle": ""
