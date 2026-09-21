@@ -110,6 +110,24 @@ const assertSameOptions = (label: string, options: string[]): void => {
 };
 assertSameOptions(c.labels.subject, c.subjectOptions);
 assertSameOptions(c.labels.expertise, c.expertiseOptions);
+/**
+ * « Taille de l'entreprise » (2026-09-21) — qualification reprise du
+ * formulaire d'évaluation de sécurité, qui disparaît de la page Cybersécurité
+ * au profit d'un renvoi vers CE formulaire (?expertise=…&taille=…). Le champ
+ * n'est demandé que quand « Service » vaut Cybersécurité : c'est la condition
+ * `showIf` de la définition, rejouée ici à l'écran et revalidée par le serveur
+ * (src/lib/forms/registry.ts). Libellé vidé ou liste vide au CMS = champ
+ * retiré, jamais un build rouge.
+ */
+const companySizeLabel = (c.labels.companySize ?? '').trim();
+const companySizeOptions = c.companySizeOptions ?? [];
+const showCompanySize = companySizeLabel !== '' && companySizeOptions.length > 0;
+if (showCompanySize) assertSameOptions(companySizeLabel, [...companySizeOptions]);
+// Libellé du service qui déclenche l'affichage — lu dans la DÉFINITION (une
+// option renommée au CMS y est réalignée par assertSameOptions ci-dessus).
+const companySizeShowIf = showCompanySize
+  ? (formDef.fields.find((f) => f.label === companySizeLabel)?.showIf?.equals ?? '')
+  : '';
 // La case de consentement est identifiée par TYPE (son libellé de définition
 // est interne — la page affiche son propre texte riche avec le lien).
 const consentDefField = formDef.fields.find((f) => f.type === 'checkbox');
@@ -380,6 +398,39 @@ const phoneIcon =
                 </svg>
               </span>
             </div>
+            {showCompanySize && (
+              /* Masqué au rendu ET désactivé : un champ caché mais soumis
+                 enverrait une tranche que le visiteur n'a jamais vue. Le
+                 script plus bas inverse les deux au changement de service. */
+              <div
+                class="flex flex-col gap-2"
+                id="company-size-row"
+                data-showif-equals={companySizeShowIf}
+                hidden
+                style="display: none"
+              >
+                {/* FACULTATIF (2026-09-21) : la tranche qualifie la demande,
+                    elle ne doit pas retenir quelqu'un qui pose une simple
+                    question sur la cybersécurité. Pas d'astérisque, donc. */}
+                <label class={labelClass} for="company-size">{companySizeLabel}</label>
+                <span class="relative block">
+                  <select
+                    class:list={[inputClass, 'appearance-none pr-10']}
+                    id="company-size"
+                    name={formsEnabled ? nameFor(companySizeLabel) : 'taille'}
+                    disabled
+                  >
+                    <option value="">{c.labels.companySizePlaceholder}</option>
+                    {companySizeOptions.map((opt) => (
+                      <option value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                  <svg class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </span>
+              </div>
+            )}
           </div>
 
           <div class="flex flex-col gap-2">
@@ -513,6 +564,26 @@ const phoneIcon =
       };
       const subjectSet = setSelect('subject', params.get('sujet'));
       const expertiseSet = setSelect('expertise', params.get('expertise'));
+      // « Taille de l'entreprise » (2026-09-21) : rangée liée au service
+      // choisi (condition `showIf` de la définition) et préremplie par
+      // ?taille=, que pose le renvoi de la page Cybersécurité. Masquée =
+      // désactivée, donc jamais soumise ; requise seulement quand visible.
+      const sizeRow = document.getElementById('company-size-row') as HTMLElement | null;
+      const sizeSelect = document.getElementById('company-size') as HTMLSelectElement | null;
+      const expertise = document.getElementById('expertise') as HTMLSelectElement | null;
+      if (sizeRow && sizeSelect && expertise) {
+        const applySize = () => {
+          const on = expertise.value.trim() === (sizeRow.dataset.showifEquals ?? '').trim();
+          sizeRow.hidden = !on;
+          // `hidden` seul ne suffit pas : la classe d'auteur pose display:flex.
+          sizeRow.style.display = on ? '' : 'none';
+          sizeSelect.disabled = !on;
+          if (!on) sizeSelect.value = '';
+        };
+        expertise.addEventListener('change', applySize);
+        applySize();
+        setSelect('company-size', params.get('taille'));
+      }
       const produit = params.get('produit');
       const request = document.getElementById('request') as HTMLInputElement | null;
       let produitSet = false;

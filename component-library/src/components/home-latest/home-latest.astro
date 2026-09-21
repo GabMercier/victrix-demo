@@ -28,7 +28,9 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  * « Ressources et perspectives ») : fond #F9FAFB, rangée de tête (titre 48/800
  * + `subtitle` NOUVEAU optionnel, lien 12/700 majuscules bleu à droite),
  * cartes blanches rayon 12 ombre 1px — image 16/10, catégorie 10/900 ls 1px
- * #9CA3AF (première étiquette, texte nu — plus de pastilles), titre 20/700
+ * on-surface-variant (première étiquette, texte nu — plus de pastilles ;
+ * la maquette posait #9CA3AF, 2,53:1 sur blanc — contraste AA insuffisant,
+ * corrigé le 2026-09-21), titre 20/700
  * ls -0.4 navy, extrait 14/20 #6B7280, « LIRE LA SUITE » 12/700 majuscules
  * bleu + flèche ↗. La date n'est plus rendue (conservée aux données).
  * Neutres froids maquette tels quels ; bleus/navy = tokens (décision méga).
@@ -72,7 +74,7 @@ const isLive = !Array.isArray(cards);
 
 const cardClass =
   'group relative flex flex-col h-full bg-white rounded-xl overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-[box-shadow,transform] duration-150 hover:shadow-survol hover:-translate-y-0.5 motion-reduce:transition-none';
-const chipClass = 'text-[10px] leading-[15px] font-black uppercase tracking-[1px] text-[#9CA3AF] m-0 max-w-none';
+const chipClass = 'text-[10px] leading-[15px] font-black uppercase tracking-[1px] text-on-surface-variant m-0 max-w-none';
 const titleClass = 'text-xl leading-7 font-bold tracking-[-0.4px] m-0';
 const titleLinkClass =
   "text-on-primary-fixed no-underline group-hover:text-primary after:content-[''] after:absolute after:inset-0";

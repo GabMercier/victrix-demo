@@ -40,7 +40,10 @@ puis **`docs/plan-livraison-finale.md`** (lots restants, un prompt par lot).
    leurs textes : rich-text, callout, stats, logo-banner, faq).
 6. **Composants Bookshop** : 100 % utilitaires Tailwind, zéro CSS scopé, aucun
    `<script>` ni import non « browser-safe » ; couleurs = jetons de
-   `src/styles/theme.css` (bordure de carte = `border-contour`, rayon 8) ;
+   `src/styles/theme.css` (bordure de carte = `border-contour`, rayon 8) —
+   tout texte doit tenir le contraste AA 4,5:1 (3:1 en ≥ 24px ou ≥ 18,66px
+   gras), y compris sous une opacité de conteneur : `tests/e2e/accessibilite.spec.ts`
+   (axe-core, 9 gabarits) le vérifie et c'est ce que Lighthouse note ;
    pas de preflight → toujours `border-solid` et `m-0` explicites. Un champ
    ajouté = composant + `*.bookshop.yml` + zod (`src/content.config.ts`) **+
    rétro-remplissage** : CloudCannon n'affiche un champ que si sa CLÉ existe

@@ -15,7 +15,10 @@ import { hasRichText, inlineHtml } from '../../shared/rich';
  *           engagementText?, partners?: string[], image?, imageAlt?, fond? }
  * - `partners` : tableau de CHAÎNES (« Partner 1 »…) rendues en pastilles
  *   grises — placeholders assumés en attendant les logos réels des
- *   partenaires académiques ; vide = rangée absente.
+ *   partenaires académiques ; vide = rangée absente. Estompage `opacity-60`
+ *   → `opacity-80` le 2026-09-21 : sur du TEXTE, 60 % donnait 3,35:1 (seuil
+ *   AA 4,5). À revoir quand de vraies IMAGES de logos les remplaceront —
+ *   aucune règle de contraste ne s'applique alors.
  * - Ligne engagement rendue seulement si `engagementTitle` est rempli ; le
  *   pictogramme « jeunes talents » est un tracé fixe du composant.
  * - `image` = chemin PUBLIC servi tel quel (uploads public/images/carrieres) ;
@@ -93,9 +96,9 @@ const DIVERSITY_PATHS = [
       }
       {
         partners.length > 0 && (
-          <div class="flex flex-wrap gap-6 mt-8 opacity-60">
+          <div class="flex flex-wrap gap-6 mt-8 opacity-80">
             {partners.map((partner) => (
-              <div class="h-12 w-32 bg-surface-container-highest rounded-xs flex items-center justify-center text-base font-bold text-outline">
+              <div class="h-12 w-32 bg-surface-container-highest rounded-xs flex items-center justify-center text-base font-bold text-on-surface">
                 {partner}
               </div>
             ))}

@@ -59,6 +59,8 @@
     "subjectPlaceholder": "Select a subject",
     "expertise": "Service",
     "expertisePlaceholder": "Select a service",
+    "companySize": "Company size",
+    "companySizePlaceholder": "Select a size",
     "request": "Tell us more about your request",
     "message": "Message"
   },
@@ -75,7 +77,14 @@
     "Cloud",
     "Application services",
     "Managed services",
+    "Human resources",
     "Other"
+  ],
+  "companySizeOptions": [
+    "Fewer than 50 employees",
+    "50 to 249 employees",
+    "250 to 999 employees",
+    "1,000 employees or more"
   ],
   "consentText": "By submitting this form, you consent to receiving communications from Victrix and accept its <a href=\"{privacy}\">privacy policy</a>.",
   "submit": "Submit",

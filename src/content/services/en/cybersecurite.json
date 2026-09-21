@@ -207,16 +207,14 @@
       "ctaHref": "/en/ressources"
     },
     {
-      "_bookshop_name": "form",
-      "type": "form",
-      "title": "Security posture assessment",
-      "intro": "Get a clear picture of your security posture — one of our experts will get back to you shortly.",
-      "submitLabel": "Send my request",
-      "consentText": "",
-      "variant": "carte",
-      "formId": "campagne-evaluation",
-      "fond": "",
-      "fields": []
+      "_bookshop_name": "contact-qualifier",
+      "type": "contact-qualifier",
+      "title": "Assess your security posture",
+      "intro": "<p>Get a clear picture of your security posture — one of our experts will get back to you shortly.</p>",
+      "question": "How large is your organization?",
+      "contactHref": "/en/contact",
+      "note": "",
+      "fond": "beige"
     },
     {
       "_bookshop_name": "cta",

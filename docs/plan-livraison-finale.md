@@ -561,6 +561,8 @@ foreach ($s in $stories) {
 | L-fond2 | « Fond de section » sur les 17 sections qui ne l’avaient pas (accueil comprise) + 138 clés rétro-remplies | 2 h | — | | 2026-09-21 |
 | L-pages | Pages de l’ancien site jamais reprises : 18 pages fournisseurs (Approvisionnement TI, FR+EN), campagne « Accompagnement en IA » (FR+EN), campagne « Démo O bureau » (FR+EN), 2 articles FR sans traduction ; lien du titre sur `tech-columns` | 1 j | — | **R3 élargie** | 2026-09-21 |
 | L-bleu | Fond « bleu électrique » (5 sections qui inversent leurs textes), en-tête du centre de ressources retiré + palette chaude sur la page, CTA visible sur les tuiles « image » de « Nos services » | 0,5 j | — | | 2026-09-21 |
+| L-contact | UN SEUL formulaire de demande : le formulaire « évaluation de sécurité » de la page Cybersécurité devient une section de qualification (tranche d'effectif) qui renvoie vers le Contact prérempli ; option de service « Ressources humaines » + repli « Autre » (« Service », obligatoire, n'arrive plus vide) ; champ « Taille de l'entreprise » conditionnel dans le Contact | 0,5 j | — | | 2026-09-21 |
+| L-a11y | Accessibilité mesurée : `@axe-core/playwright` sur 9 gabarits dans le gate (WCAG 2.0/2.1 AA) + 4 familles de contrastes corrigées (pastilles 10px, compteurs 01–05, blanc 80 % sur l'aplat bleu, pastilles partenaires). **Avance L19** ; reste hors lot : conversion de l'échelle typographique en `rem`, ordre de tabulation, QA responsive | 0,5 j | — | | 2026-09-21 |
 | L-prix | **À FAIRE** — Liste de prix Check Point (`/liste-prix-check-point/`, `/en/check-point-price-list/`) : c’est un OUTIL (tableaux de prix + « ajouter à ma commande » + formulaire), pas une page de contenu → décision : le reprendre, le remplacer par un PDF + formulaire, ou le retirer | ? | décision marketing | | |
 | L00 | Réponses #1762 + PR | 0,5 h | H2 | | |
 | L01 | Tolérance aux champs vidés | 1,5 h | — | | |
@@ -581,7 +583,7 @@ foreach ($s in $stories) {
 | L16 | Statique vs aperçu | 0,5 j | — | **R4** | |
 | L17 | Formulaires + GA4 | 0,5 j | comptes | | |
 | L18 | QA responsive | 1 j | L06–L11 | | |
-| L19 | Accessibilité | 1 j | L06–L11 | | |
+| L19 | Accessibilité — **entamé le 21/09 (L-a11y)** : axe-core dans le gate, 0 violation sur 9 gabarits, contrastes corrigés. Reste : échelle typographique en `rem` (le réglage « grande police » du navigateur n'agit pas — le zoom, si), ordre de tabulation, textes de remplacement, QA lecteur d'écran | 0,5 j restant | L06–L11 | | partiel 2026-09-21 |
 | L20 | Performance | 1 j | — | | |
 | L21 | Zéro 404 | 0,5 j | L03, L15 | | |
 | L22 | Doc + formation | 0,5 j | tout | | |

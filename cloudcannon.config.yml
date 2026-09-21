@@ -1792,6 +1792,28 @@ collections_config:
         options:
           empty_type: string
         label: Choix
+      # Qualification « Taille de l'entreprise » (2026-09-21) — visible dans le
+      # formulaire seulement quand « Service » vaut Cybersécurité. Vider le
+      # libellé RETIRE le champ du formulaire (aucun build cassé).
+      companySize:
+        type: text
+        options:
+          empty_type: string
+        label: Libellé « Taille de l'entreprise »
+        comment: Vide = le champ disparaît du formulaire.
+      companySizePlaceholder:
+        type: text
+        options:
+          empty_type: string
+        label: Texte d'invite de la liste « Taille de l'entreprise »
+      companySizeOptions:
+        # NON ÉDITABLE : ces libellés voyagent dans l'adresse (?taille=) entre la
+        # section « Renvoi vers le contact » et ce formulaire. Les reformuler ici
+        # seulement couperait le préremplissage en silence. Source unique :
+        # component-library/src/shared/tailles-entreprise.ts (garde-fou :
+        # src/lib/contact/tailles-entreprise.test.ts).
+        hidden: true
+        label: Tranches d'effectif (gérées dans le code)
       consentText:
         # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
         type: html
@@ -2657,6 +2679,11 @@ _select_data:
       libelle: Services applicatifs / Application services
     - cle: services-geres
       libelle: Services gérés / Managed services
+    # 2026-09-21 : les CTA de carrière (« Postuler ») arrivaient sur un
+    # « Service » vide — le champ est obligatoire. Le sujet « Une carrière »
+    # choisit cette valeur tout seul (SUJET_SERVICE_FALLBACK, presets.ts).
+    - cle: ressources-humaines
+      libelle: Ressources humaines / Human resources
     - cle: autre
       libelle: Autre / Other
   # BANQUE DE PICTOGRAMMES — liste UNIQUE de tous les sélecteurs d'icône

@@ -39,16 +39,21 @@ test.describe('formulaires (mode maquette) + recherche + fil d’Ariane', () => 
     await expect(page.locator('[data-form-status]')).toBeVisible();
   });
 
-  test('cybersécurité : le formulaire lié rend les champs de sa définition', async ({ page }) => {
-    await page.goto('/fr/services/cybersecurite/');
+  // 2026-09-21 : ce test visait la page Cybersécurité, qui hébergeait le
+  // formulaire « campagne-evaluation ». Ce second formulaire a été retiré au
+  // profit d'un renvoi vers le Contact unique (voir contact-unique.spec.ts) ;
+  // la preuve que `formId` fonctionne sur une page de SERVICE se fait
+  // désormais sur O Studio, l'autre service qui lie un formulaire.
+  test('o-studio : le formulaire lié rend les champs de sa définition', async ({ page }) => {
+    await page.goto('/fr/services/productivite/o-studio/');
     const form = page.locator('#formulaire form');
     await expect(form).toBeVisible();
-    // Champs de la définition campagne-evaluation (résolue AU BUILD par la
-    // route — seam enrich) : preuve que formId fonctionne sur un SERVICE.
+    // Champs de la définition o-studio (résolue AU BUILD par la route — seam
+    // enrich) : preuve que formId fonctionne sur un SERVICE.
     await expect(form.getByLabel(/Nom complet/)).toBeVisible();
     await expect(form.getByLabel(/Courriel professionnel/)).toBeVisible();
     // Maquette : bouton désactivé tant que les clés ne sont pas posées.
-    await expect(form.getByRole('button', { name: /Envoyer ma demande/ })).toBeDisabled();
+    await expect(form.getByRole('button', { name: /Demander une consultation/ })).toBeDisabled();
   });
 
   test('fil d’Ariane : service enfant → Accueil + parent cliquables', async ({ page }) => {

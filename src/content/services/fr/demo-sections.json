@@ -489,6 +489,16 @@
       "image": "/images/carrieres/responsabilite-sociale.jpg",
       "imageAlt": "",
       "fond": "ivoire"
+    },
+    {
+      "_bookshop_name": "contact-qualifier",
+      "type": "contact-qualifier",
+      "title": "Obtenez un portrait clair de votre posture de sécurité",
+      "intro": "<p>Une question de qualification, puis le formulaire de contact arrive déjà rempli.</p>",
+      "question": "Quelle est la taille de votre entreprise ?",
+      "contactHref": "/fr/contact",
+      "note": "",
+      "fond": "beige"
     }
   ]
 }

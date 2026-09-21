@@ -1,0 +1,94 @@
+---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { blockHtml, hasRichText } from '../../shared/rich';
+import { taillesPourHref } from '../../shared/tailles-entreprise';
+/**
+ * Section « Renvoi vers le contact (qualification) » — composant Bookshop
+ * AJOUTÉ le 2026-09-21 (décision Gabriel : UN SEUL formulaire de demande sur
+ * le site).
+ *
+ * Remplace le formulaire « évaluation de posture de sécurité » qui vivait
+ * dans la page Cybersécurité : une deuxième collecte, une deuxième boîte, un
+ * deuxième consentement pour la même demande. Ici, une seule question de
+ * qualification — la taille de l'entreprise — puis le visiteur arrive sur le
+ * formulaire Contact DÉJÀ rempli.
+ *
+ * Un lien par tranche, AUCUN JavaScript : `?taille=` est écrit dans le href,
+ * et le script « provenance des CTA » de BaseLayout y ajoute au clic
+ * `?sujet=` / `?expertise=` (libellés posés par la route sur <body
+ * data-contact-…>). Sans JavaScript le lien reste un lien vers Contact, avec
+ * la tranche. Des liens plutôt qu'une liste déroulante + bouton : navigables
+ * au clavier, annoncés un par un, et rien à soumettre.
+ *
+ * Les tranches viennent de shared/tailles-entreprise.ts (source unique, langue
+ * déduite de l'URL de contact) — le CONTENU n'en stocke aucune : leurs
+ * libellés doivent rester identiques à ceux du formulaire Contact, qui les
+ * reçoit dans l'adresse.
+ *
+ * Props : { type: "contact-qualifier", title, intro?, question, contactHref,
+ *           note?, fond? }
+ *
+ * Contraintes / pièges :
+ * - <h2> : le <h1> unique appartient au héros.
+ * - Pas de preflight → `border-solid` et `m-0` explicites ; carte = rayon 8
+ *   et `border-contour`.
+ * - `contactHref` = URL FINALE, préfixe de langue inclus (règle des liens de
+ *   section) : c'est elle qui fixe la langue des tranches.
+ * - Browser-safe : imports partagés seulement, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface Props {
+  title: string;
+  intro?: string;
+  question: string;
+  contactHref: string;
+  note?: string;
+  fond?: FondKey | '';
+}
+
+const { title, intro, question, contactHref, note, fond = 'beige' } = Astro.props;
+
+const tranches = taillesPourHref(contactHref);
+// Le libellé du CTA part avec la demande (« Précisez votre demande ») — posé
+// ICI pour que le script de BaseLayout n'y mette pas le texte du lien, qui
+// serait la seule tranche d'effectif.
+const lien = (tranche: string): string => {
+  const sep = contactHref.includes('?') ? '&' : '?';
+  return `${contactHref}${sep}taille=${encodeURIComponent(tranche)}&cta=${encodeURIComponent(title)}`;
+};
+---
+
+<section class:list={['py-24', FOND_CLASSES[fond as FondKey] ?? 'bg-beige']}>
+  <div class="container-site">
+    <div class="max-w-[768px] mx-auto flex flex-col items-center text-center gap-4">
+      <h2 class="m-0 text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface text-balance">
+        {title}
+      </h2>
+      {
+        hasRichText(intro) && (
+          <div
+            class="rich m-0 max-w-none text-lg leading-[29px] text-on-surface-variant"
+            set:html={blockHtml(intro)}
+          />
+        )
+      }
+      <p class="m-0 mt-4 text-base font-bold text-on-surface">{question}</p>
+      {/* Liste de liens : une tranche par entrée, annoncée comme telle. */}
+      <ul class="m-0 p-0 list-none flex flex-wrap items-stretch justify-center gap-3" role="list">
+        {
+          tranches.map((tranche) => (
+            <li class="m-0">
+              <a
+                class="inline-flex h-full items-center rounded-lg border border-solid border-contour bg-white px-6 py-4 text-base font-semibold text-on-surface no-underline transition-colors hover:border-primary hover:text-primary focus-visible:border-primary"
+                href={lien(tranche)}
+              >
+                {tranche}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      {note && <p class="m-0 mt-2 text-base text-on-surface-variant">{note}</p>}
+    </div>
+  </div>
+</section>

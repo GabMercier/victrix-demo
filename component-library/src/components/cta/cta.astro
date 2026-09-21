@@ -7,7 +7,8 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/expertise-mere.css §CTA Section) :
  * PANNEAU arrondi 8 dans le conteneur —
  *  - variant "dark"  : aplat Bleu Victrix, titre 40/700 blanc, corps 18/29
- *    blanc 80 %, bouton BLANC texte bleu rayon 2, décor cercles (plein +
+ *    blanc 90 % (la maquette disait 80 % : 3,92:1 sur l'aplat bleu, sous le
+ *    seuil AA — relevé 2026-09-21), bouton BLANC texte bleu rayon 2, décor cercles (plein +
  *    tireté) en filigrane à droite ;
  *  - variant "light" : panneau beige (surface-container), titre navy, bouton
  *    primaire — même géométrie ;
@@ -146,7 +147,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
             <div
               class:list={[
                 'rich text-lg leading-[29px] max-w-none',
-                dark || nuit ? 'text-white/80' : 'text-on-surface-variant',
+                dark || nuit ? 'text-white/90' : 'text-on-surface-variant',
               ]}
               set:html={blockHtml(body)}
             />

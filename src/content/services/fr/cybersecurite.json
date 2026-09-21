@@ -219,16 +219,14 @@
       "ctaHref": "/fr/ressources"
     },
     {
-      "_bookshop_name": "form",
-      "type": "form",
-      "title": "Évaluation posture sécurité",
-      "intro": "Obtenez un portrait clair de votre posture de sécurité — un de nos experts vous recontacte rapidement.",
-      "submitLabel": "Envoyer ma demande",
-      "consentText": "",
-      "variant": "carte",
-      "formId": "campagne-evaluation",
-      "fond": "",
-      "fields": []
+      "_bookshop_name": "contact-qualifier",
+      "type": "contact-qualifier",
+      "title": "Évaluation de votre posture de sécurité",
+      "intro": "<p>Obtenez un portrait clair de votre posture de sécurité — un de nos experts vous recontacte rapidement.</p>",
+      "question": "Quelle est la taille de votre entreprise ?",
+      "contactHref": "/fr/contact",
+      "note": "",
+      "fond": "beige"
     },
     {
       "_bookshop_name": "cta",

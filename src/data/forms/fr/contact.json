@@ -84,12 +84,30 @@
         "Infonuagique",
         "Services applicatifs",
         "Services gérés",
+        "Ressources humaines",
         "Autre"
       ],
       "value": "",
       "showIf": {
         "field": "",
         "equals": ""
+      }
+    },
+    {
+      "label": "Taille de l'entreprise",
+      "type": "select",
+      "required": false,
+      "width": "demi",
+      "options": [
+        "Moins de 50 employés",
+        "50 à 249 employés",
+        "250 à 999 employés",
+        "1 000 employés et plus"
+      ],
+      "value": "",
+      "showIf": {
+        "field": "Service",
+        "equals": "Cybersécurité"
       }
     },
     {

@@ -5,7 +5,9 @@ import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
  * RE-SKIN DESIGN SYSTEM 2026-08-05 : bande gris clair froid #F9FAFB (verbatim
  * maquette accueil — même bande que home-latest), tête gauche + lien fléché
  * bleu, cartes au PATRON home-latest re-skinné : blanches rayon 12, chip
- * catégorie 10/900 #9CA3AF, titre 20/700 navy → bleu au survol, extrait 14/20
+ * catégorie 10/900 on-surface-variant (maquette #9CA3AF : 2,53:1 sur blanc,
+ * sous le seuil AA — relevé le 2026-09-21, même correction sur la date),
+ * titre 20/700 navy → bleu au survol, extrait 14/20
  * #6B7280, date 14 discrète, survol ombre + translation.
  *
  * Props : { type: "related-posts", title, tags: string[], ctaLabel?, ctaHref?,
@@ -70,7 +72,7 @@ const hasCta = Boolean(ctaLabel && ctaHref);
 // Recettes partagées des cartes (patron home-latest re-skinné).
 const cardClass =
   'group relative flex flex-col h-full bg-white rounded-xl overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-[box-shadow,transform] duration-150 hover:shadow-survol hover:-translate-y-0.5 motion-reduce:transition-none';
-const chipClass = 'text-[10px] leading-[15px] font-black uppercase tracking-[1px] text-[#9CA3AF] m-0 max-w-none';
+const chipClass = 'text-[10px] leading-[15px] font-black uppercase tracking-[1px] text-on-surface-variant m-0 max-w-none';
 const titleClass = 'text-xl leading-7 font-bold tracking-[-0.4px] m-0';
 const titleLinkClass =
   "text-on-primary-fixed no-underline group-hover:text-primary after:content-[''] after:absolute after:inset-0";
@@ -114,7 +116,7 @@ const excerptClass = 'm-0 text-sm leading-5 text-[#6B7280] max-w-none';
                         Titre de l'article
                       </a>
                     </h3>
-                    <p class="m-0 max-w-none text-sm text-[#9CA3AF]">Date</p>
+                    <p class="m-0 max-w-none text-sm text-on-surface-variant">Date</p>
                     <p class={excerptClass}>
                       Les ressources liées (articles partageant une étiquette) s'affichent ici au
                       build.
@@ -149,7 +151,7 @@ const excerptClass = 'm-0 text-sm leading-5 text-[#6B7280] max-w-none';
                         {card.title}
                       </a>
                     </h3>
-                    <p class="m-0 max-w-none text-sm text-[#9CA3AF]">
+                    <p class="m-0 max-w-none text-sm text-on-surface-variant">
                       <time datetime={card.dateISO}>{card.dateLabel}</time>
                     </p>
                     <p class={excerptClass}>{card.excerpt}</p>

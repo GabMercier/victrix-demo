@@ -355,6 +355,22 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // Fond de la SECTION derrière le panneau (le panneau garde sa `variant`).
       fond: fondClair.default('ivoire'),
     }),
+    // « Renvoi vers le contact (qualification) » — 2026-09-21. Un SEUL
+    // formulaire de demande sur le site : cette section pose la question de
+    // qualification (tranche d'effectif) et renvoie vers /contact déjà
+    // rempli. Les tranches ne sont PAS dans le contenu — elles voyagent dans
+    // l'URL et viennent de shared/tailles-entreprise.ts.
+    z.object({
+      type: z.literal('contact-qualifier'),
+      title: z.string(),
+      intro: z.string().default(''),
+      question: z.string(),
+      // URL FINALE, préfixe de langue inclus : elle fixe aussi la langue des
+      // tranches affichées.
+      contactHref: z.string(),
+      note: z.string().default(''),
+      fond: fondClair.default('beige'),
+    }),
     z.object({
       type: z.literal('form'),
       title: z.string(),
@@ -1652,6 +1668,12 @@ const contact = defineCollection({
       subjectPlaceholder: z.string().min(1),
       expertise: z.string().min(1),
       expertisePlaceholder: z.string().min(1),
+      // Qualification « Taille de l'entreprise » (2026-09-21) — champ
+      // FACULTATIF du contrat : vidé au CMS, il disparaît du formulaire au
+      // lieu de casser le build (règle « le contenu est édité par des
+      // non-développeurs »). Idem companySizeOptions plus bas.
+      companySize: z.string().default(''),
+      companySizePlaceholder: z.string().default(''),
       request: z.string().min(1),
       message: z.string().min(1),
     }),
@@ -1668,6 +1690,10 @@ const contact = defineCollection({
     }),
     subjectOptions: z.array(z.string().min(1)).min(1),
     expertiseOptions: z.array(z.string().min(1)).min(1),
+    // Tranches d'effectif — liste vide = champ retiré du formulaire (voir
+    // labels.companySize). Doit rester IDENTIQUE à celle de la définition
+    // src/data/forms/<lang>/contact.json : contact.astro les compare au build.
+    companySizeOptions: z.array(z.string().min(1)).default([]),
     // HTML restreint ({privacy} = lien vers la politique, localisé au rendu) —
     // même politique que le consentText des formulaires (contenu de dépôt).
     consentText: z.string().min(1),

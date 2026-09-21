@@ -115,6 +115,41 @@ touche jamais aux liens stockés SANS préfixe de langue dans un champ JSON
 (navigation, fiches de solutions). Exceptions documentées : constante `ALLOW` du
 garde-fou (aujourd'hui les trois pages « document » de WordPress non migrées).
 
+**Accessibilité (2026-09-21).** `tests/e2e/accessibilite.spec.ts` passe
+**axe-core** sur neuf pages, une par gabarit (accueil, liste de services,
+service, formulaire de contact, catalogue, centre de ressources, carrières,
+expertises, accueil anglais), avec les règles `wcag2a`, `wcag2aa`, `wcag21a`
+et `wcag21aa`. C'est le moteur qui alimente l'onglet Accessibilité de
+Lighthouse : **ce que ce test laisse passer, Lighthouse le note 100**.
+L'inverse n'est pas vrai — Lighthouse n'exécute qu'un sous-ensemble des
+règles — donc le garde-fou est volontairement plus strict que le score visé.
+Il tourne avec les autres e2e (`npm run test:e2e`). Un échec nomme la règle,
+son impact et le premier élément fautif.
+
+Trois limites à connaître, qu'aucun outil ne mesure :
+
+1. **La taille de police par défaut du navigateur n'agit pas sur le site.**
+   L'échelle typographique de `src/styles/theme.css` est en PIXELS (56, 40,
+   24, 20, 16, 14) et une centaine de tailles arbitraires `text-[Npx]`
+   vivent dans les composants. Le **zoom** du navigateur (Ctrl +) fonctionne,
+   donc WCAG 1.4.4 est satisfait et Lighthouse ne pénalise rien ; mais régler
+   Chrome sur « Grande police » ne change rien à l'écran. Seuls les composants
+   qui passent encore par `src/styles/tokens.css` (`--fs-*`, en `rem`)
+   suivraient — le site grossirait donc de façon INCOHÉRENTE si on ne
+   convertissait qu'une moitié. Une conversion complète en `rem` est un lot à
+   elle seule (theme.css + ~90 tailles arbitraires + relecture visuelle).
+2. **Lighthouse Performance et SEO ne veulent rien dire sur le serveur de
+   dev** (bundles non minifiés, HMR) : les mesurer sur un build de production
+   ou sur le site déployé (vocal-wren), jamais sur `localhost:4321`.
+3. axe ne juge ni l'ordre de tabulation réel, ni la pertinence des textes de
+   remplacement.
+
+Rejouer seulement l'accessibilité :
+
+```
+npx playwright test tests/e2e/accessibilite.spec.ts
+```
+
 ### 3.1 — Si `npm run dev` tourne déjà (le cas courant)
 
 Les trois dernières commandes du tableau ci-dessus touchent `.astro/` ou

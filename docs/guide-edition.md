@@ -605,6 +605,42 @@ barre latérale — recommandé) : un fichier = un formulaire, avec son
 destinataire et son objet de courriel; les pages y font référence par le champ
 « Formulaire lié » de la section.
 
+### Un seul formulaire de demande (2026-09-21)
+
+Toutes les demandes passent désormais par **la page Contact**. La page
+Cybersécurité hébergeait un second formulaire (« évaluation de posture de
+sécurité ») : deux collectes séparées, deux consentements, et des
+renseignements qu'on ne retrouvait nulle part ailleurs. Il a été remplacé par
+la section **« Renvoi vers le contact (qualification) »**.
+
+Cette section pose UNE question — la taille de l'entreprise — sous forme de
+boutons. Le visiteur en choisit un et arrive sur le formulaire Contact **déjà
+rempli** : le sujet, le service, sa tranche d'effectif et l'objet de sa
+demande. Vous y réglez le titre, le texte, la question, le fond et le lien
+vers la page Contact. **Les tranches d'effectif, elles, ne sont pas
+modifiables** : leurs libellés voyagent dans l'adresse et doivent rester
+identiques à ceux du formulaire — les reformuler d'un seul côté couperait le
+préremplissage sans que rien ne le signale. Pour les faire changer, passez
+par l'équipe technique.
+
+Vous pouvez poser cette section sur n'importe quelle page. Pensez à mettre le
+**lien du formulaire Contact** dans la bonne langue (`/fr/contact` ou
+`/en/contact`) : c'est lui qui décide de la langue des tranches affichées.
+
+**« Taille de l'entreprise » dans le formulaire Contact** : ce champ
+n'apparaît que lorsque le visiteur choisit le service **Cybersécurité** — le
+formulaire reste court pour tout le monde. Il est **facultatif** : il qualifie
+la demande sans retenir quelqu'un qui pose une simple question. Vider son
+libellé (Textes du site → Contact) le retire complètement du formulaire.
+
+**« Service » n'arrive plus jamais vide.** C'est un champ obligatoire, et
+certains boutons y menaient sans rien présélectionner — « Postuler », depuis
+la page Carrières, en particulier. Désormais : le sujet « Une carrière »
+choisit tout seul le service **Ressources humaines** (option ajoutée le même
+jour), et toute page sans correspondance arrive sur **Autre**. Vous n'avez
+rien à faire ; si une page mérite un service précis, fixez-le dans son champ
+« Service (préremplissage du Contact) ».
+
 **Objet des notifications (mode boîte CloudCannon)** : chaque message reçoit
 un objet **unique**, préfixé d'une clé entre crochets, par exemple
 `[contact/carriere] Une carrière · Services applicatifs — Prénom Nom`,
