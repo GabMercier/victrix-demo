@@ -887,6 +887,9 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       title: z.string(),
       lead: z.string().default(''),
       quote: z.string().default(''),
+      // Insigne officiel de la distinction (2026-09-21) — chemin PUBLIC servi
+      // tel quel ; vide = tracé « étoile lauréate » du composant.
+      image: z.string().default(''),
       // Défaut « perle » (#f3f4f7) = l'ancien bg-surface-container de la page.
       fond: fondClair.default('perle'),
     }),

@@ -393,7 +393,10 @@ puce plus bas).
   (`fr/carrieres`, `en/carrieres`) composée de sept sections, éditables dans
   l'éditeur visuel comme les autres pages : **héros photo** (photo, titre,
   sous-titre, bouton « Postulez »), **carte distinction** (Happy At Work :
-  insigne, titre, chapeau, citation à liseré), **tuiles de valeurs** (surtitre,
+  insigne, titre, chapeau, citation à liseré ; depuis le 21 sept. 2026 le
+  champ **« Insigne de la distinction »** accepte le VRAI logo de la
+  certification — téléversé dans `images/carrieres`. Laissé vide, la carte
+  retombe sur le pictogramme « étoile » dessiné par le gabarit), **tuiles de valeurs** (surtitre,
   titre, tuiles icône à liste fermée + libellé), **photo + atouts** (photo,
   carte flottante bleue, titre, chapeau, grille 2×2 d'atouts icône + titre +
   texte), **cartes témoignages** (portrait, citation, prénom, rôle), **texte +
@@ -408,6 +411,14 @@ puce plus bas).
   la page Contact avec ce sujet déjà choisi (le changer ou le vider ici
   suffit). Les fonds gris des sections (carte distinction, témoignages) sont
   des « Fond de section » de la palette — modifiables, comme partout.
+
+**Bannière de l'accueil — « Photo de fond » (corrigé le 21 sept. 2026).**
+Jusqu'à cette date, une photo téléversée sur la bannière de l'accueil (ou sur
+la section « Accueil — Solution ») était rangée à un endroit que le site ne
+sert pas : l'éditeur affichait bien la nouvelle image, mais la page publiée
+gardait l'ancienne, même après reconstruction. Les téléversements atterrissent
+désormais dans `images/home`, comme pour les autres sections. Une photo
+téléversée AVANT le correctif est à re-téléverser une fois.
 
 Comme partout : liens internes **sans préfixe de langue**, et une valeur
 invalide (ex. une icône hors liste) **bloque la publication** avec un message

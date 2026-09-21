@@ -19,7 +19,8 @@
  * — celui que le build appliquait déjà en silence. Un composant dont le
  * défaut n'est pas lisible est ignoré et signalé, jamais deviné.
  *
- * Portée : la liste `KEYS` ci-dessous (aujourd'hui `fond`). Y ajouter une clé
+ * Portée : la liste `KEYS` ci-dessous (`fond`, et `image` depuis le
+ * 2026-09-21 — insigne de la carte distinction). Y ajouter une clé
  * quand un champ à défaut LITTÉRAL est ajouté à des sections existantes — le
  * lot « CTA de section » devra y passer. La clé est insérée à la place que lui
  * donne le `blueprint` du composant (l'éditeur affiche les champs dans l'ordre
@@ -32,7 +33,7 @@ import yaml from 'js-yaml';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const CHECK_ONLY = process.argv.includes('--check');
-const KEYS = ['fond'];
+const KEYS = ['fond', 'image'];
 
 function walk(dir, out = []) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
