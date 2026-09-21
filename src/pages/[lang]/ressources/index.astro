@@ -134,7 +134,7 @@ const newsletterError =
 
 // Recettes partagées de la page (répétées si besoin ailleurs — pas d'abstraction).
 const categoryClass =
-  'm-0 max-w-none text-xs leading-4 font-semibold uppercase tracking-[1.2px] text-primary';
+  'm-0 max-w-none text-sm leading-4 font-semibold uppercase tracking-[1.2px] text-primary';
 const cardClass =
   'relative h-full bg-white border border-solid border-contour rounded-lg overflow-hidden flex flex-col shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)]';
 const pillBase =
@@ -161,7 +161,7 @@ const pillBase =
         {r.title}
         {r.titleAccent && <span class="text-primary">{r.titleAccent}</span>}
       </h1>
-      <p class="m-0 text-lg leading-[28px] text-on-surface-variant max-w-[720px]" set:html={inlineHtml(r.intro)} />
+      <p class="m-0 text-lg leading-[1.75rem] text-on-surface-variant max-w-[720px]" set:html={inlineHtml(r.intro)} />
     </div>
   </section>
 
@@ -252,16 +252,16 @@ const pillBase =
               />
               <div class="relative h-full flex flex-col justify-end items-start gap-4 p-6 lg:p-8">
                 {featured.data.tags.length > 0 && (
-                  <p class="m-0 max-w-none bg-primary text-white rounded-lg px-3 py-1 text-xs leading-4 font-medium uppercase tracking-[0.5px]">
+                  <p class="m-0 max-w-none bg-primary text-white rounded-lg px-3 py-1 text-sm leading-4 font-medium uppercase tracking-[0.5px]">
                     {featured.data.tags[0]}
                   </p>
                 )}
-                <h2 class="m-0 text-2xl lg:text-[32px] lg:leading-10 font-bold text-white max-w-[744px]">
+                <h2 class="m-0 text-2xl lg:text-[2rem] lg:leading-10 font-bold text-white max-w-[744px]">
                   <a class="text-white no-underline after:content-[''] after:absolute after:inset-0" href={postHref(featured)}>
                     {featured.data.title}
                   </a>
                 </h2>
-                <p class="m-0 max-w-none flex flex-wrap items-center gap-4 text-xs leading-4 font-medium uppercase tracking-[0.5px] text-white/80">
+                <p class="m-0 max-w-none flex flex-wrap items-center gap-4 text-sm leading-4 font-medium uppercase tracking-[0.5px] text-white/80">
                   {r.byline && <span class="text-white">{r.byline}</span>}
                   {r.byline && <span aria-hidden="true">·</span>}
                   <time datetime={featured.data.date.toISOString()}>
@@ -296,7 +296,7 @@ const pillBase =
                 </div>
                 <div class="p-6 lg:p-8 grow flex flex-col items-start gap-2">
                   {post.data.tags.length > 0 && <p class={categoryClass}>{post.data.tags[0]}</p>}
-                  <h2 class="m-0 text-xl leading-[30px] font-normal text-nuit">
+                  <h2 class="m-0 text-xl leading-[1.875rem] font-normal text-nuit">
                     <a
                       class="text-nuit no-underline hover:text-primary after:content-[''] after:absolute after:inset-0"
                       href={postHref(post)}
@@ -304,7 +304,7 @@ const pillBase =
                       {post.data.title}
                     </a>
                   </h2>
-                  <p class="m-0 max-w-none text-xs leading-4 text-on-surface-variant">
+                  <p class="m-0 max-w-none text-sm leading-4 text-on-surface-variant">
                     <time datetime={post.data.date.toISOString()}>{dateFmt.format(post.data.date)}</time>
                   </p>
                   <p class="m-0 max-w-none text-base leading-6 text-on-surface-variant line-clamp-3">
@@ -420,7 +420,7 @@ const pillBase =
                         (Formulaires → Infolettre → Texte de consentement) ;
                         vide = pas de ligne. */}
                     {newsletterDefEntry.data.consentText && (
-                      <p class="m-0 max-w-none text-xs leading-4 text-neutral-300">
+                      <p class="m-0 max-w-none text-sm leading-4 text-neutral-300">
                         <Fragment set:html={inlineHtml(newsletterDefEntry.data.consentText)} />
                       </p>
                     )}
@@ -434,7 +434,7 @@ const pillBase =
                     >
                     </p>
                   </form>
-                  <span class="absolute -right-4 -bottom-14 text-[200px] leading-none font-black text-primary/5 select-none pointer-events-none" aria-hidden="true">V</span>
+                  <span class="absolute -right-4 -bottom-14 text-[12.5rem] leading-none font-black text-primary/5 select-none pointer-events-none" aria-hidden="true">V</span>
                 </div>
               </li>
             )}
@@ -450,7 +450,7 @@ const pillBase =
       <div class="relative overflow-hidden bg-beige border border-solid border-contour rounded-lg p-8 lg:p-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
         <div class="relative max-w-[672px] flex flex-col gap-4">
           <h2 class="m-0 text-base leading-6 font-normal text-nuit">{r.cta.title}</h2>
-          <p class="m-0 max-w-none text-lg leading-[28px] text-on-surface-variant" set:html={inlineHtml(r.cta.text)} />
+          <p class="m-0 max-w-none text-lg leading-[1.75rem] text-on-surface-variant" set:html={inlineHtml(r.cta.text)} />
         </div>
         <div class="relative flex flex-wrap items-center gap-6 shrink-0">
           <a
@@ -474,7 +474,7 @@ const pillBase =
             </svg>
           </a>
         </div>
-        <span class="absolute -right-8 -bottom-24 text-[300px] leading-none font-black text-primary/5 select-none pointer-events-none" aria-hidden="true">V</span>
+        <span class="absolute -right-8 -bottom-24 text-[18.75rem] leading-none font-black text-primary/5 select-none pointer-events-none" aria-hidden="true">V</span>
       </div>
     </div>
   </section>

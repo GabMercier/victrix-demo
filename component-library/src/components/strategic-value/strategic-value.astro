@@ -109,7 +109,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
     <div class="flex flex-col items-start gap-4">
       {
         badge && (
-          <p class="m-0 max-w-none bg-primary text-on-primary text-[10px] leading-[15px] font-bold uppercase tracking-[1px] px-3 py-1 rounded-xs">
+          <p class="m-0 max-w-none bg-primary text-on-primary text-[0.875rem] leading-[0.9375rem] font-bold uppercase tracking-[1px] px-3 py-1 rounded-xs">
             {badge}
           </p>
         )
@@ -119,7 +119,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
           <h2 class="text-lg leading-7 font-bold text-on-surface m-0">{title}</h2>
         ) : (
           <>
-            <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
+            <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0">
               {title}
             </h2>
             <span class="w-16 h-1 bg-primary" aria-hidden="true" />
@@ -128,7 +128,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
       }
       {
         paragraphs.map((paragraph) => (
-          <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none pt-2" set:html={inlineHtml(paragraph)} />
+          <p class="text-base leading-[1.625rem] text-on-surface-variant m-0 max-w-none pt-2" set:html={inlineHtml(paragraph)} />
         ))
       }
       {
@@ -149,7 +149,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
                     'm-0 max-w-none',
                     vitrine
                       ? 'text-base leading-6 text-on-surface-variant'
-                      : 'text-xs font-bold uppercase tracking-[1.2px] text-on-surface-variant',
+                      : 'text-sm font-bold uppercase tracking-[1.2px] text-on-surface-variant',
                   ]}
                 >
                   {stat.label}

@@ -126,23 +126,45 @@ règles — donc le garde-fou est volontairement plus strict que le score visé.
 Il tourne avec les autres e2e (`npm run test:e2e`). Un échec nomme la règle,
 son impact et le premier élément fautif.
 
-Trois limites à connaître, qu'aucun outil ne mesure :
+Deux limites à connaître, qu'aucun outil ne mesure :
 
-1. **La taille de police par défaut du navigateur n'agit pas sur le site.**
-   L'échelle typographique de `src/styles/theme.css` est en PIXELS (56, 40,
-   24, 20, 16, 14) et une centaine de tailles arbitraires `text-[Npx]`
-   vivent dans les composants. Le **zoom** du navigateur (Ctrl +) fonctionne,
-   donc WCAG 1.4.4 est satisfait et Lighthouse ne pénalise rien ; mais régler
-   Chrome sur « Grande police » ne change rien à l'écran. Seuls les composants
-   qui passent encore par `src/styles/tokens.css` (`--fs-*`, en `rem`)
-   suivraient — le site grossirait donc de façon INCOHÉRENTE si on ne
-   convertissait qu'une moitié. Une conversion complète en `rem` est un lot à
-   elle seule (theme.css + ~90 tailles arbitraires + relecture visuelle).
-2. **Lighthouse Performance et SEO ne veulent rien dire sur le serveur de
+1. **Lighthouse Performance et SEO ne veulent rien dire sur le serveur de
    dev** (bundles non minifiés, HMR) : les mesurer sur un build de production
    ou sur le site déployé (vocal-wren), jamais sur `localhost:4321`.
-3. axe ne juge ni l'ordre de tabulation réel, ni la pertinence des textes de
+2. axe ne juge ni l'ordre de tabulation réel, ni la pertinence des textes de
    remplacement.
+
+**Typographie — plancher et unités (2026-09-21).** Deux règles, tenues par
+`tests/e2e/typographie.spec.ts` (dans `npm run test:e2e`) :
+
+1. **Aucun texte sous 14px.** Le site descendait à 10px (étiquettes de
+   catégorie) et 12px (compteurs, surtitres). Écart assumé avec les maquettes
+   du designer, qui descendent à 10px — arbitrage Gabriel.
+2. **Tailles ET interlignes en `rem`**, jamais l'un sans l'autre : un texte
+   qui grossit dans un `leading-[14px]` figé se chevauche. C'est ce qui rend
+   enfin effectif le réglage « taille de police » du navigateur — le zoom
+   (Ctrl +) marchait déjà, donc WCAG 1.4.4 passait et Lighthouse ne signalait
+   rien : ce test couvre ce qu'aucun des deux ne mesure.
+
+Les utilitaires Tailwind de base (`text-sm`, `text-base`…) étaient déjà en
+`rem` ; c'étaient les jetons de `theme.css` (`--text-display` et compagnie) et
+les valeurs arbitraires `text-[Npx]` / `leading-[Npx]` qui étaient en pixels.
+
+Conversion mécanique et rejouable — à relancer après une fusion
+`staging` → `dev`, une reprise de maquette ou un nouveau composant :
+
+```
+node scripts/migrate-typo-rem.mjs            # convertit
+node scripts/migrate-typo-rem.mjs --check    # liste sans écrire (sortie 1 s'il reste du px)
+```
+
+Il ne touche PAS aux dimensions de boîte (`h-[]`, `w-[]`) : ce sont des choix
+de mise en page. Point de vigilance qui reste manuel — un conteneur de texte à
+hauteur FIXE déborde quand la police grossit ; les champs de saisie ont été
+repris en `min-h-[…rem]`, à refaire pour tout nouveau gabarit.
+
+**Banc d'essai police/bleu (temporaire) :** `?police=` et `?bleu=` rejouent
+n'importe quelle page dans une autre variante — voir `docs/design/banc-essai.md`.
 
 Rejouer seulement l'accessibilité :
 

@@ -43,10 +43,10 @@ const facadeLabel = ctaLabel !== '' ? ctaLabel : 'Visionner la vidéo';
 
 <section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? 'bg-surface']}>
   <div class="container-site text-center">
-    <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-balance">
+    <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 text-balance">
       {title}
     </h2>
-    {hasRichText(intro) && <div class="rich text-base leading-[26px] text-on-surface-variant max-w-[640px] mx-auto mt-4" set:html={blockHtml(intro)} />}
+    {hasRichText(intro) && <div class="rich text-base leading-[1.625rem] text-on-surface-variant max-w-[640px] mx-auto mt-4" set:html={blockHtml(intro)} />}
     <a
       class:list={[
         'relative flex flex-col items-center justify-center gap-4 aspect-video max-w-[760px] mx-auto mt-12 rounded-lg overflow-hidden no-underline bg-linear-135 from-on-primary-fixed to-primary focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2',

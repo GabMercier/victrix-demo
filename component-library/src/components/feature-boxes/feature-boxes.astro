@@ -35,11 +35,11 @@ const FONDS: Record<string, string> = FOND_CLASSES;
 <section class:list={['py-20', FONDS[fond] ?? FONDS.givre]}>
   <div class="container-site">
     <div class="mx-auto text-center flex flex-col items-center gap-4 mb-12">
-      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
+      <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
         {sectionTitle}
       </h2>
       <span class="w-16 h-1 bg-primary" aria-hidden="true"></span>
-      {hasRichText(subtitle) && <div class="rich text-base leading-[26px] text-on-surface-variant max-w-[672px]" set:html={blockHtml(subtitle)} />}
+      {hasRichText(subtitle) && <div class="rich text-base leading-[1.625rem] text-on-surface-variant max-w-[672px]" set:html={blockHtml(subtitle)} />}
     </div>
     <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-0 p-0 list-none">
       {

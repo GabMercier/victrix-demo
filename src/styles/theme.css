@@ -187,34 +187,34 @@
   /* ---- Échelle typographique sémantique — tailles/graisses du tokens.json
      export2 (font.display / heading / body / label). Alias --font-* car le
      markup pose `font-<style> text-<style>`. */
-  --text-display: 56px; /* display.regular.xl : 56/62/800/-0.672px */
+  --text-display: 3.5rem; /* display.regular.xl : 56/62/800/-0.672px */
   --text-display--line-height: 1.107;
   --text-display--font-weight: 800;
   --text-display--letter-spacing: -0.012em;
-  --text-headline-lg: 40px; /* heading.h1 : 40/48/700 */
+  --text-headline-lg: 2.5rem; /* heading.h1 : 40/48/700 */
   --text-headline-lg--line-height: 1.2;
   --text-headline-lg--font-weight: 700;
   --text-headline-lg--letter-spacing: 0;
-  --text-headline-lg-mobile: 32px; /* heading.h2 */
+  --text-headline-lg-mobile: 2rem; /* heading.h2 */
   --text-headline-lg-mobile--line-height: 1.2;
   --text-headline-lg-mobile--font-weight: 700;
-  --text-headline-md: 24px; /* heading.h3 : 24/28.8/700 */
+  --text-headline-md: 1.5rem; /* heading.h3 : 24/28.8/700 */
   --text-headline-md--line-height: 1.2;
   --text-headline-md--font-weight: 700;
-  --text-headline-sm: 20px; /* heading.h4 : 20/24/700 — titres de cartes */
+  --text-headline-sm: 1.25rem; /* heading.h4 : 20/24/700 — titres de cartes */
   --text-headline-sm--line-height: 1.2;
   --text-headline-sm--font-weight: 700;
-  --text-body-lg: 20px; /* body.regular.l : 20/28/400 */
+  --text-body-lg: 1.25rem; /* body.regular.l : 20/28/400 */
   --text-body-lg--line-height: 1.4;
   --text-body-lg--font-weight: 400;
-  --text-body-md: 16px; /* body.regular.m : 16/24/400 */
+  --text-body-md: 1rem; /* body.regular.m : 16/24/400 */
   --text-body-md--line-height: 1.5;
   --text-body-md--font-weight: 400;
-  --text-label-caps: 14px; /* label.overline.s : 14/20/600/1.4px uppercase */
+  --text-label-caps: 0.875rem; /* label.overline.s : 14/20/600/1.4px uppercase */
   --text-label-caps--line-height: 1.43;
   --text-label-caps--font-weight: 600;
   --text-label-caps--letter-spacing: 0.1em;
-  --text-button: 14px; /* exports : boutons 14/600 */
+  --text-button: 0.875rem; /* exports : boutons 14/600 */
   --text-button--line-height: 1;
   --text-button--font-weight: 600;
   --text-button--letter-spacing: 0;

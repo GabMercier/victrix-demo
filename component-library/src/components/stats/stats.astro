@@ -86,7 +86,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
                   ))}
                 </svg>
               )}
-              <p class="text-[28px] leading-8 font-bold text-primary m-0">{item.number}</p>
+              <p class="text-[1.75rem] leading-8 font-bold text-primary m-0">{item.number}</p>
               <p class="text-lg leading-7 text-on-surface-variant m-0 max-w-[280px]">{item.label}</p>
             </li>
             );
@@ -95,7 +95,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
         {title !== '' && (
           <h2
             class:list={[
-              'text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] m-0 text-center',
+              'text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] m-0 text-center',
               sombre ? 'text-white' : 'text-on-surface',
             ]}
           >
@@ -110,7 +110,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
         {title !== '' && (
           <h2
             class:list={[
-              'text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] m-0 text-center',
+              'text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] m-0 text-center',
               sombre ? 'text-white' : 'text-on-surface',
             ]}
           >
@@ -120,8 +120,8 @@ const FONDS: Record<string, string> = FOND_CLASSES;
         <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 m-0 p-0 list-none">
           {items.map((item) => (
             <li class="m-0 bg-white border-0 border-l-4 border-solid border-primary p-6 flex flex-col gap-3 shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
-              <p class="text-[40px] leading-[48px] font-bold text-primary m-0">{item.number}</p>
-              <p class="text-xs font-bold uppercase tracking-[1.2px] text-on-surface-variant m-0 max-w-none">{item.label}</p>
+              <p class="text-[2.5rem] leading-[3rem] font-bold text-primary m-0">{item.number}</p>
+              <p class="text-sm font-bold uppercase tracking-[1.2px] text-on-surface-variant m-0 max-w-none">{item.label}</p>
             </li>
           ))}
         </ul>

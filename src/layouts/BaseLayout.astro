@@ -5,6 +5,10 @@ import '../styles/global.css';
 // l'entête de theme.css). Importé après global.css; les tokens portent des
 // noms distincts des legacy, aucune interférence.
 import '../styles/theme.css';
+// BANC D'ESSAI (2026-09-21, TEMPORAIRE) — police et bleu commutables par
+// ?police= / ?bleu=, pour trancher deux écarts maquettes/site avec le designer.
+// Sans paramètre, cette feuille ne s'applique à rien. Voir docs/design/banc-essai.md.
+import '../styles/banc-essai.css';
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -156,6 +160,92 @@ const ga4Bootstrap = GA4_ID
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL} />
+
+    {/* BANC D'ESSAI (2026-09-21, TEMPORAIRE — docs/design/banc-essai.md).
+        `?police=montserrat|nunito|hanken|inter` et `?bleu=figma|export2`
+        reposent le site dans la variante demandée, sur N'IMPORTE QUELLE page ;
+        `?banc=off` remet tout à zéro. Le choix est mémorisé, donc la
+        navigation interne le garde sans traîner de paramètre.
+
+        PLACÉ TOUT EN HAUT DU HEAD, volontairement : il pose les attributs
+        AVANT le premier rendu, sinon la page clignote dans l'ancienne variante.
+        Sans choix mémorisé ni paramètre, il ne fait RIEN — aucun attribut,
+        aucune requête vers Google Fonts, aucun octet pour un visiteur normal.
+
+        À RETIRER avec banc-essai.css quand les deux arbitrages seront tranchés. */}
+    <script is:inline>
+      {
+        const CLE = 'victrix-banc-essai';
+        const POLICES = {
+          montserrat: 'Montserrat:wght@400;500;600;700;800',
+          nunito: 'Nunito+Sans:wght@400;500;600;700;800',
+          hanken: 'Hanken+Grotesk:wght@400;500;600;700;800',
+          inter: '',
+        };
+        const BLEUS = { figma: 1, export2: 1 };
+        const params = new URLSearchParams(location.search);
+        let etat = {};
+        try {
+          etat = JSON.parse(localStorage.getItem(CLE) || '{}') || {};
+        } catch {
+          etat = {};
+        }
+        if (params.get('banc') === 'off') {
+          etat = {};
+        }
+        const police = (params.get('police') || '').toLowerCase();
+        const bleu = (params.get('bleu') || '').toLowerCase();
+        if (police in POLICES) etat.police = police;
+        if (bleu in BLEUS) etat.bleu = bleu;
+        try {
+          if (etat.police || etat.bleu) localStorage.setItem(CLE, JSON.stringify(etat));
+          else localStorage.removeItem(CLE);
+        } catch {
+          /* navigation privée : le banc vaut alors pour cette page seulement */
+        }
+
+        const html = document.documentElement;
+        // « inter » et « export2 » sont les valeurs du site : on RETIRE
+        // l'attribut plutôt que de le poser, pour revenir au rendu normal.
+        if (etat.police && etat.police !== 'inter') html.setAttribute('data-police', etat.police);
+        else html.removeAttribute('data-police');
+        if (etat.bleu === 'figma') html.setAttribute('data-bleu', 'figma');
+        else html.removeAttribute('data-bleu');
+
+        const famille = POLICES[etat.police];
+        if (famille && !document.getElementById('banc-essai-police')) {
+          const lien = document.createElement('link');
+          lien.id = 'banc-essai-police';
+          lien.rel = 'stylesheet';
+          lien.href = 'https://fonts.googleapis.com/css2?family=' + famille + '&display=swap';
+          document.head.appendChild(lien);
+        }
+
+        // Étiquette : savoir CE QU'ON REGARDE avant de montrer une capture.
+        const etiqueter = () => {
+          const ancienne = document.querySelector('.banc-essai-etiquette');
+          if (ancienne) ancienne.remove();
+          if (!etat.police && !etat.bleu) return;
+          const p = document.createElement('p');
+          p.className = 'banc-essai-etiquette';
+          p.textContent =
+            'banc d’essai · ' + (etat.police || 'inter') + ' · ' + (etat.bleu || 'export2') + ' · ';
+          const a = document.createElement('a');
+          a.href = '?banc=off';
+          a.textContent = 'quitter';
+          p.appendChild(a);
+          document.body.appendChild(p);
+        };
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', etiqueter);
+        } else {
+          etiqueter();
+        }
+        // Le ClientRouter remplace <body> : l'attribut de <html> survit, pas
+        // l'étiquette — on la repose à chaque navigation.
+        document.addEventListener('astro:page-load', etiqueter);
+      }
+    </script>
 
     {/* Language alternates */}
     <link rel="alternate" hreflang="fr-CA" href={frURL} />

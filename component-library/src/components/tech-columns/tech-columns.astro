@@ -36,7 +36,7 @@ const { sectionTitle, groups = [], fond = 'ivoire' } = Astro.props;
 <section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? 'bg-surface']}>
   <div class="container-site">
     <div class="mx-auto text-center flex flex-col items-center gap-4">
-      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
+      <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
         {sectionTitle}
       </h2>
       <span class="w-16 h-1 bg-primary" aria-hidden="true"></span>
@@ -55,7 +55,7 @@ const { sectionTitle, groups = [], fond = 'ivoire' } = Astro.props;
                 group.title
               )}
             </h3>
-            <ul role="list" class="list-disc pl-6 m-0 flex flex-col gap-2 text-base leading-[26px] text-on-surface-variant [&_li]:m-0 [&_li::marker]:text-primary">
+            <ul role="list" class="list-disc pl-6 m-0 flex flex-col gap-2 text-base leading-[1.625rem] text-on-surface-variant [&_li]:m-0 [&_li::marker]:text-primary">
               {(group.items ?? []).map((it) => (
                 <li>{it}</li>
               ))}

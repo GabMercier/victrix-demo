@@ -122,14 +122,14 @@ const mobile: MobileCell[] = capped.map((item: TimelineItem, i: number) => ({
   <div class="container-site">
     <div class="mx-auto text-center flex flex-col items-center gap-4">
       <h2
-        class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance"
+        class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance"
       >
         {title}
       </h2>
       {
         hasRichText(intro) && (
           <div
-            class="rich text-lg leading-[29px] text-on-surface-variant max-w-[80ch] [&_strong]:text-on-surface"
+            class="rich text-lg leading-[1.8125rem] text-on-surface-variant max-w-[80ch] [&_strong]:text-on-surface"
             set:html={blockHtml(intro)}
           />
         )
@@ -175,7 +175,7 @@ const mobile: MobileCell[] = capped.map((item: TimelineItem, i: number) => ({
                 <span
                   class:list={[
                     'block font-extrabold tracking-[-0.4px]',
-                    cell.item.accent ? 'text-[26px] leading-8 text-white' : 'text-xl leading-7 text-primary',
+                    cell.item.accent ? 'text-[1.625rem] leading-8 text-white' : 'text-xl leading-7 text-primary',
                   ]}
                 >
                   {cell.item.year}
@@ -194,7 +194,7 @@ const mobile: MobileCell[] = capped.map((item: TimelineItem, i: number) => ({
               {cell.item.text && (
                 <p
                   class:list={[
-                    'm-0 max-w-none text-[13px] leading-[19px]',
+                    'm-0 max-w-none text-[0.875rem] leading-[1.1875rem]',
                     cell.item.accent ? 'text-white/70' : 'text-on-surface-variant',
                   ]}
                   set:html={inlineHtml(cell.item.text)}
@@ -252,7 +252,7 @@ const mobile: MobileCell[] = capped.map((item: TimelineItem, i: number) => ({
               {m.item.text && (
                 <p
                   class:list={[
-                    'm-0 max-w-none text-[13px] leading-[19px]',
+                    'm-0 max-w-none text-[0.875rem] leading-[1.1875rem]',
                     m.item.accent ? 'text-white/70' : 'text-on-surface-variant',
                   ]}
                   set:html={inlineHtml(m.item.text)}

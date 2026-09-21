@@ -94,7 +94,7 @@ const hasStat = Boolean(statValue);
                 class="w-full h-[320px] object-cover"
               />
             ) : (
-              <div class="w-full h-[320px] flex items-center justify-center text-xs font-bold uppercase tracking-[1.2px] text-[#6B7280]" aria-hidden="true">
+              <div class="w-full h-[320px] flex items-center justify-center text-sm font-bold uppercase tracking-[1.2px] text-[#6B7280]" aria-hidden="true">
                 Image
               </div>
             )
@@ -103,13 +103,13 @@ const hasStat = Boolean(statValue);
         {
           hasStat && (
             <div class="absolute -bottom-10 right-4 lg:right-10 bg-white border-0 border-l-4 border-solid border-primary rounded-lg shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] px-7 py-6 max-w-[320px]">
-              <p class="text-primary text-[30px] leading-9 font-bold m-0 max-w-none">{statValue}</p>
+              <p class="text-primary text-[1.875rem] leading-9 font-bold m-0 max-w-none">{statValue}</p>
               {statLabel && (
-                <p class="text-on-primary-fixed text-xs font-bold uppercase tracking-[1.2px] m-0 mt-1 max-w-none">
+                <p class="text-on-primary-fixed text-sm font-bold uppercase tracking-[1.2px] m-0 mt-1 max-w-none">
                   {statLabel}
                 </p>
               )}
-              {statText && <p class="text-xs leading-4 text-[#6B7280] m-0 mt-1.5 max-w-none">{statText}</p>}
+              {statText && <p class="text-sm leading-4 text-[#6B7280] m-0 mt-1.5 max-w-none">{statText}</p>}
             </div>
           )
         }
@@ -117,22 +117,22 @@ const hasStat = Boolean(statValue);
       <div class="w-full lg:w-1/2 flex flex-col items-start gap-8">
         {
           eyebrow && (
-            <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary m-0 max-w-none">{eyebrow}</p>
+            <p class="text-sm font-bold uppercase tracking-[1.2px] text-primary m-0 max-w-none">{eyebrow}</p>
           )
         }
-        <h2 class="text-[36px] leading-none lg:text-[48px] lg:leading-[48px] font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0 text-balance">
+        <h2 class="text-[2.25rem] leading-none lg:text-[3rem] lg:leading-[3rem] font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0 text-balance">
           {title}
         </h2>
-        <div class="rich text-base leading-[26px] text-[#545F71] max-w-none" set:html={blockHtml(body)} />
+        <div class="rich text-base leading-[1.625rem] text-[#545F71] max-w-none" set:html={blockHtml(body)} />
         {
           features.length > 0 && (
             <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full m-0 p-0 pt-2 list-none">
               {features.map((f) => (
                 <li class="m-0 bg-white border border-solid border-[#F3F4F6] rounded-lg p-6 flex flex-col gap-2">
-                  <p class="text-xs font-black uppercase tracking-[-0.6px] text-on-primary-fixed m-0 max-w-none">
+                  <p class="text-sm font-black uppercase tracking-[-0.6px] text-on-primary-fixed m-0 max-w-none">
                     {f.label}
                   </p>
-                  <p class="text-xs leading-4 text-[#6B7280] m-0 max-w-none">{f.text}</p>
+                  <p class="text-sm leading-4 text-[#6B7280] m-0 max-w-none">{f.text}</p>
                 </li>
               ))}
             </ul>

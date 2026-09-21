@@ -74,13 +74,13 @@ const isLive = !Array.isArray(cards);
 
 const cardClass =
   'group relative flex flex-col h-full bg-white rounded-xl overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-[box-shadow,transform] duration-150 hover:shadow-survol hover:-translate-y-0.5 motion-reduce:transition-none';
-const chipClass = 'text-[10px] leading-[15px] font-black uppercase tracking-[1px] text-on-surface-variant m-0 max-w-none';
+const chipClass = 'text-[0.875rem] leading-[0.9375rem] font-black uppercase tracking-[1px] text-on-surface-variant m-0 max-w-none';
 const titleClass = 'text-xl leading-7 font-bold tracking-[-0.4px] m-0';
 const titleLinkClass =
   "text-on-primary-fixed no-underline group-hover:text-primary after:content-[''] after:absolute after:inset-0";
 const excerptClass = 'm-0 text-sm leading-5 text-[#6B7280] max-w-none';
 const readMoreClass =
-  'inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline mt-auto pt-4';
+  'inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[1.2px] text-primary no-underline mt-auto pt-4';
 ---
 
 {/* Fond IVOIRE #FAF7F4 (export2 homepage.css §ResourcesSection,
@@ -89,13 +89,13 @@ const readMoreClass =
   <div class="container-site">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
       <div class="max-w-2xl flex flex-col gap-4">
-        <h2 class="text-[48px] leading-none font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0">
+        <h2 class="text-[3rem] leading-none font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0">
           {title}
         </h2>
         {hasRichText(subtitle) && <div class="rich text-base leading-6 text-[#545F71] max-w-none" set:html={blockHtml(subtitle)} />}
       </div>
       <a
-        class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
+        class="inline-flex items-center gap-1 text-sm font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
         href={ctaHref}
       >
         {ctaLabel}

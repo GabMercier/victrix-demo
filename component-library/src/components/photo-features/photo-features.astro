@@ -70,21 +70,21 @@ const FONDS: Record<string, string> = FOND_CLASSES;
       {
         cardTitle && (
           <div class="absolute bottom-0 left-0 max-w-[80%] bg-primary text-on-primary p-8">
-            <h3 class="text-2xl leading-[31px] font-bold m-0 mb-2">{cardTitle}</h3>
+            <h3 class="text-2xl leading-[1.9375rem] font-bold m-0 mb-2">{cardTitle}</h3>
             {hasRichText(cardText) && (
-              <p class="text-base leading-[26px] opacity-90 m-0 max-w-none" set:html={inlineHtml(cardText)} />
+              <p class="text-base leading-[1.625rem] opacity-90 m-0 max-w-none" set:html={inlineHtml(cardText)} />
             )}
           </div>
         )
       }
     </div>
     <div>
-      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 mb-4">
+      <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 mb-4">
         {title}
       </h2>
       {
         hasRichText(lead) && (
-          <p class="text-lg leading-[29px] text-on-surface-variant m-0 mb-8 max-w-none" set:html={inlineHtml(lead)} />
+          <p class="text-lg leading-[1.8125rem] text-on-surface-variant m-0 mb-8 max-w-none" set:html={inlineHtml(lead)} />
         )
       }
       <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-8 m-0 p-0 list-none">
@@ -104,9 +104,9 @@ const FONDS: Record<string, string> = FOND_CLASSES;
                 ))}
               </svg>
               <div>
-                <h3 class="text-2xl leading-[31px] font-bold text-on-surface m-0 mb-1">{feature.title}</h3>
+                <h3 class="text-2xl leading-[1.9375rem] font-bold text-on-surface m-0 mb-1">{feature.title}</h3>
                 {hasRichText(feature.text) && (
-                  <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(feature.text)} />
+                  <p class="text-base leading-[1.625rem] text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(feature.text)} />
                 )}
               </div>
             </li>

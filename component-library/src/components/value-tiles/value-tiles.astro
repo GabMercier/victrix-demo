@@ -45,8 +45,8 @@ const FONDS: Record<string, string> = FOND_CLASSES;
 <section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
   <div class="container-site flex flex-col gap-8">
     <div class="text-center">
-      {eyebrow && <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary m-0 mb-2 max-w-none">{eyebrow}</p>}
-      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
+      {eyebrow && <p class="text-sm font-bold uppercase tracking-[1.2px] text-primary m-0 mb-2 max-w-none">{eyebrow}</p>}
+      <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
         {title}
       </h2>
     </div>
@@ -71,7 +71,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
                 <path d={d} />
               ))}
             </svg>
-            <span class="text-xs font-bold uppercase tracking-[1.2px] text-on-surface">{item.label}</span>
+            <span class="text-sm font-bold uppercase tracking-[1.2px] text-on-surface">{item.label}</span>
           </li>
         ))
       }

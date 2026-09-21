@@ -76,14 +76,14 @@ const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2
 <section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? (tone === 'tint' ? 'bg-surface-container-low' : 'bg-surface')]}>
   <div class="container-site">
     <div class="mx-auto text-center flex flex-col items-center gap-4">
-      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
+      <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
         {sectionTitle}
       </h2>
       {headingStyle === 'underline' && <span class="w-16 h-1 bg-primary" aria-hidden="true"></span>}
       {
         hasRichText(intro) && (
           <div
-            class="rich text-lg leading-[29px] text-on-surface-variant max-w-[80ch] [&_strong]:text-on-surface"
+            class="rich text-lg leading-[1.8125rem] text-on-surface-variant max-w-[80ch] [&_strong]:text-on-surface"
             set:html={blockHtml(intro)}
           />
         )
@@ -94,7 +94,7 @@ const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2
         <div class="max-w-[760px] mx-auto mt-8 mb-4 p-8 text-center bg-white border-solid border-t-4 border-x border-b border-contour border-t-primary rounded-lg shadow-[0_1px_2px_rgba(0,0,0,0.05)] flex flex-col gap-3">
           {leadCard.title && <h3 class="text-2xl leading-8 font-bold text-on-surface m-0">{leadCard.title}</h3>}
           {leadCard.text && (
-            <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-[65ch] mx-auto">{leadCard.text}</p>
+            <p class="text-base leading-[1.625rem] text-on-surface-variant m-0 max-w-[65ch] mx-auto">{leadCard.text}</p>
           )}
         </div>
       )
@@ -116,7 +116,7 @@ const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2
           >
             <div class:list={['flex w-full pb-5', centered ? 'justify-center' : 'justify-end']}>
               <span
-                class="text-xs leading-[14px] font-bold tracking-[1.2px] text-on-surface-variant"
+                class="text-sm leading-[0.875rem] font-bold tracking-[1.2px] text-on-surface-variant"
                 aria-hidden="true"
               >
                 {rang(item.number)}
@@ -124,7 +124,7 @@ const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2
             </div>
             <span class="w-8 h-1 rounded-xl bg-primary" aria-hidden="true" />
             <h3 class="text-2xl leading-8 font-bold text-on-surface m-0 pt-1">{item.title}</h3>
-            <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none grow" set:html={inlineHtml(item.text)} />
+            <p class="text-base leading-[1.625rem] text-on-surface-variant m-0 max-w-none grow" set:html={inlineHtml(item.text)} />
             {item.ctaLabel && item.ctaHref && (
               <a
                 class:list={[

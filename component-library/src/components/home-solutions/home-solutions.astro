@@ -46,13 +46,13 @@ const { title, ctaLabel, ctaHref, items = [], fond = 'ivoire' } = Astro.props;
 <section class:list={['py-24', FOND_CLASSES[fond as FondKey] ?? 'bg-ivoire']}>
   <div class="container-site">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-      <h2 class="text-[48px] leading-none font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0">
+      <h2 class="text-[3rem] leading-none font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0">
         {title}
       </h2>
       {
         ctaLabel && ctaHref && (
           <a
-            class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
+            class="inline-flex items-center gap-1 text-sm font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
             href={ctaHref}
           >
             {ctaLabel}

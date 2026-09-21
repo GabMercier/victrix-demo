@@ -69,12 +69,12 @@ const DIVERSITY_PATHS = [
 <section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
   <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
     <div>
-      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 mb-4">
+      <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 mb-4">
         {title}
       </h2>
       {
         hasRichText(lead) && (
-          <p class="text-lg leading-[29px] text-on-surface-variant m-0 mb-4 max-w-none" set:html={inlineHtml(lead)} />
+          <p class="text-lg leading-[1.8125rem] text-on-surface-variant m-0 mb-4 max-w-none" set:html={inlineHtml(lead)} />
         )
       }
       {
@@ -85,13 +85,13 @@ const DIVERSITY_PATHS = [
                 <path d={d} />
               ))}
             </svg>
-            <span class="text-base leading-[26px] font-bold text-on-surface">{engagementTitle}</span>
+            <span class="text-base leading-[1.625rem] font-bold text-on-surface">{engagementTitle}</span>
           </p>
         )
       }
       {
         hasRichText(engagementText) && (
-          <p class="text-base leading-[26px] text-on-surface-variant m-0 mt-4 max-w-none" set:html={inlineHtml(engagementText)} />
+          <p class="text-base leading-[1.625rem] text-on-surface-variant m-0 mt-4 max-w-none" set:html={inlineHtml(engagementText)} />
         )
       }
       {

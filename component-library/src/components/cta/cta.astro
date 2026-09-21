@@ -74,11 +74,11 @@ const FONDS: Record<string, string> = FOND_CLASSES;
     <section class="bg-primary py-20">
       <div class="container-site">
         <div class="max-w-[768px] mx-auto flex flex-col items-center text-center gap-4">
-          <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-primary m-0">
+          <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-primary m-0">
             {title}
           </h2>
           {hasRichText(body) && (
-            <div class="rich text-lg leading-[29px] text-on-primary/90 max-w-none" set:html={blockHtml(body)} />
+            <div class="rich text-lg leading-[1.8125rem] text-on-primary/90 max-w-none" set:html={blockHtml(body)} />
           )}
           <div class="flex flex-wrap items-center justify-center gap-4 mt-4">
             <a
@@ -136,7 +136,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
       >
         <h2
           class:list={[
-            'text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] m-0 text-balance',
+            'text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] m-0 text-balance',
             dark || nuit ? 'text-white' : 'text-on-surface',
           ]}
         >
@@ -146,7 +146,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
           hasRichText(body) && (
             <div
               class:list={[
-                'rich text-lg leading-[29px] max-w-none',
+                'rich text-lg leading-[1.8125rem] max-w-none',
                 dark || nuit ? 'text-white/90' : 'text-on-surface-variant',
               ]}
               set:html={blockHtml(body)}

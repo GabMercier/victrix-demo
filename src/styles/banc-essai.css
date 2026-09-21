@@ -1,0 +1,117 @@
+/* =============================================================================
+   BANC D'ESSAI — police et bleu commutables (2026-09-21, demande Gabriel)
+   =============================================================================
+   TEMPORAIRE, à retirer une fois les deux arbitrages tranchés avec le designer
+   et le client (voir docs/design/banc-essai.md).
+
+   POURQUOI. Deux écarts non résolus entre les maquettes et le site :
+   - le BLEU : le Design System Figma et TOUTES les maquettes reçues (y compris
+     « landing page maquette.css » et « page produit - enfant.css » du
+     2026-09-21) portent #002fc7 ; le site porte #1a5bff depuis la bascule
+     export2 du 2026-08-14, qui a lu #002FC7 comme « calque hérité de l'ancienne
+     planche » et l'a remappé — avec la mention « à confirmer avec le
+     designer », jamais levée (docs/design/reception-export2.md §Mappings).
+     L'hypothèse est démentie par les maquettes du jour, toujours en #002fc7.
+   - la POLICE : les maquettes sont en Hanken Grotesk, le site est passé à
+     Inter (export2) ; Montserrat était la police du site ACTUEL victrix.ca,
+     retirée le 2026-08-04.
+
+   COMMENT. Le script de BaseLayout pose `data-police` / `data-bleu` sur <html>
+   d'après `?police=` / `?bleu=`, et mémorise le choix. Rien n'est posé par
+   défaut : SANS paramètre, ce fichier ne change RIEN (aucun sélecteur ne
+   s'applique, aucune police n'est téléchargée). Un visiteur ordinaire ne voit
+   donc jamais le banc d'essai, et aucune requête ne part vers Google Fonts.
+
+   PRIORITÉ. Ces `:root[...]` ne sont PAS dans une couche `@layer` : ils
+   battent donc les jetons de theme.css (déclarés dans `@theme`), exactement
+   comme le fait déjà le `:root` de tokens.css. Ne pas les y mettre.
+   ========================================================================== */
+
+/* -----------------------------------------------------------------------------
+   BLEU — famille complète du Design System Figma
+   (docs/design/Design system/VictrixModernWeb-DesignSystenm.md).
+   On redéfinit les RÔLES, jamais les primitives `--color-bleu-*` : tout ce qui
+   consomme `bg-primary` / `text-primary` / `border-primary` suit d'un coup.
+-------------------------------------------------------------------------- */
+:root[data-bleu='figma'] {
+  --color-primary: #002fc7;
+  --color-primary-container: #1d46f3;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #d0d5ff;
+  --color-primary-fixed: #dee0ff;
+  --color-primary-fixed-dim: #bac3ff;
+  --color-on-primary-fixed: #00105b;
+  --color-on-primary-fixed-variant: #002fc8;
+  /* Couche héritée (tokens.css) — les composants pas encore re-peaufinés. */
+  --color-accent-blue: #002fc7;
+  --color-accent-blue-600: #1d46f3;
+  --color-accent: #002fc7;
+  --color-link: #002fc7;
+  --color-link-hover: #1d46f3;
+  --color-focus: #002fc7;
+  /* Le fond de section « bleu électrique » n'a pas de jeton propre : il rend
+     `bg-primary` (shared/fonds.ts), donc il suit tout seul. Seule sa PASTILLE
+     d'aperçu CloudCannon garde #1a5bff en dur — à mettre à jour uniquement si
+     la bascule est adoptée pour de bon. */
+}
+
+/* -----------------------------------------------------------------------------
+   POLICES — la pile complète est redéfinie, replis système inclus.
+   Les fichiers viennent de Google Fonts, injectés par le script UNIQUEMENT
+   quand la police est demandée (voir ci-dessus : zéro requête par défaut).
+-------------------------------------------------------------------------- */
+:root[data-police='montserrat'] {
+  --font-sans: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root[data-police='nunito'] {
+  --font-sans: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root[data-police='hanken'] {
+  --font-sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* `--font-sans` est le jeton de tokens.css, que `body` applique. Les
+   utilitaires Tailwind `font-sans` passent, eux, par `--font-sans` de @theme :
+   on couvre les deux pour que titres et corps basculent ensemble. */
+:root[data-police='montserrat'] body,
+:root[data-police='nunito'] body,
+:root[data-police='hanken'] body {
+  font-family: var(--font-sans);
+}
+
+/* -----------------------------------------------------------------------------
+   ÉTIQUETTE D'ÉTAT — pour ne jamais montrer une capture en se trompant de
+   variante. Posée par le script seulement quand le banc est actif.
+-------------------------------------------------------------------------- */
+.banc-essai-etiquette {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #21242a;
+  color: #ffffff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  box-shadow: 0 4px 16px rgba(11, 19, 52, 0.25);
+  opacity: 0.92;
+}
+
+.banc-essai-etiquette a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+@media print {
+  .banc-essai-etiquette {
+    display: none;
+  }
+}

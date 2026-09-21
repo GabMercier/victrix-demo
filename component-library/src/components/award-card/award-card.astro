@@ -71,18 +71,18 @@ const FONDS: Record<string, string> = FOND_CLASSES;
         }
       </div>
       <div class="text-center md:text-left">
-        <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 mb-2">
+        <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 mb-2">
           {title}
         </h2>
         {
           hasRichText(lead) && (
-            <p class="text-base leading-[26px] text-on-surface-variant m-0 mb-4 max-w-none" set:html={inlineHtml(lead)} />
+            <p class="text-base leading-[1.625rem] text-on-surface-variant m-0 mb-4 max-w-none" set:html={inlineHtml(lead)} />
           )
         }
         {
           hasRichText(quote) && (
             <p
-              class="text-base leading-[26px] text-on-surface-variant italic m-0 max-w-none border-0 border-l-4 border-solid border-primary pl-4 text-left"
+              class="text-base leading-[1.625rem] text-on-surface-variant italic m-0 max-w-none border-0 border-l-4 border-solid border-primary pl-4 text-left"
               set:html={inlineHtml(quote)}
             />
           )

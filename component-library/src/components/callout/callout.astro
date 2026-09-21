@@ -63,10 +63,10 @@ const hasCta = Boolean(ctaLabel && ctaHref);
     <section class:list={['py-20', FOND_CLASSES[fond as FondEtenduKey] ?? 'bg-surface']}>
       <div class="container-site">
         <div class="max-w-[860px] mx-auto bg-surface-container rounded-lg p-8 lg:p-12 text-center flex flex-col items-center gap-4">
-          <h2 class="text-[28px] leading-[1.2] lg:text-[32px] lg:leading-10 font-bold tracking-[-0.4px] text-on-surface m-0">
+          <h2 class="text-[1.75rem] leading-[1.2] lg:text-[2rem] lg:leading-10 font-bold tracking-[-0.4px] text-on-surface m-0">
             {title}
           </h2>
-          {hasRichText(body) && <div class="rich text-base leading-[26px] text-on-surface-variant max-w-[60ch]" set:html={blockHtml(body)} />}
+          {hasRichText(body) && <div class="rich text-base leading-[1.625rem] text-on-surface-variant max-w-[60ch]" set:html={blockHtml(body)} />}
           {hasCta && (
             <a
               class="mt-2 inline-flex items-center justify-center bg-primary text-on-primary px-8 py-4 rounded-xs text-base leading-6 no-underline hover:bg-primary-container transition-colors"

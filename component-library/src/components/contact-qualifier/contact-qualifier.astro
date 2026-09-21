@@ -61,13 +61,13 @@ const lien = (tranche: string): string => {
 <section class:list={['py-24', FOND_CLASSES[fond as FondKey] ?? 'bg-beige']}>
   <div class="container-site">
     <div class="max-w-[768px] mx-auto flex flex-col items-center text-center gap-4">
-      <h2 class="m-0 text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface text-balance">
+      <h2 class="m-0 text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface text-balance">
         {title}
       </h2>
       {
         hasRichText(intro) && (
           <div
-            class="rich m-0 max-w-none text-lg leading-[29px] text-on-surface-variant"
+            class="rich m-0 max-w-none text-lg leading-[1.8125rem] text-on-surface-variant"
             set:html={blockHtml(intro)}
           />
         )

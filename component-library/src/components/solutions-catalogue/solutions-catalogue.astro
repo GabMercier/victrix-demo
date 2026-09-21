@@ -252,14 +252,14 @@ const selectClass =
           )}
           <div class:list={['relative grid grid-cols-1 gap-8 items-center', shownFeatured.image && 'lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]']}>
             <div class="flex flex-col items-start gap-6">
-              <p class="m-0 max-w-none inline-flex items-center gap-2 bg-primary text-on-primary text-xs leading-4 font-bold uppercase tracking-[0.6px] px-3 py-1 rounded-full">
+              <p class="m-0 max-w-none inline-flex items-center gap-2 bg-primary text-on-primary text-sm leading-4 font-bold uppercase tracking-[0.6px] px-3 py-1 rounded-full">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
                   <path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9 2.9-6Z" />
                 </svg>
                 {featuredBadge}
               </p>
               <h2 class="text-4xl lg:text-5xl leading-none font-extrabold text-white m-0">{shownFeatured.title}</h2>
-              <p class="text-lg leading-[29px] text-primary-fixed m-0 max-w-[576px]" set:html={inlineHtml(shownFeatured.description)} />
+              <p class="text-lg leading-[1.8125rem] text-primary-fixed m-0 max-w-[576px]" set:html={inlineHtml(shownFeatured.description)} />
               <div class="flex flex-wrap gap-4 pt-2">
                 {shownFeatured.href && (
                   <a
@@ -374,15 +374,15 @@ const selectClass =
                   aria-hidden="true"
                 />
 
-                <p class="absolute top-3 left-3 m-0 max-w-none bg-white/90 shadow-[0_1px_2px_rgba(0,0,0,0.05)] rounded-full px-3 py-1 text-[10px] leading-4 font-bold uppercase tracking-[0.5px] text-[#00020A]">
+                <p class="absolute top-3 left-3 m-0 max-w-none bg-white/90 shadow-[0_1px_2px_rgba(0,0,0,0.05)] rounded-full px-3 py-1 text-[0.875rem] leading-4 font-bold uppercase tracking-[0.5px] text-[#00020A]">
                   {card.sector}
                 </p>
               </div>
               <div class="p-6 grow flex flex-col">
-                <h3 class="text-lg leading-[22px] font-bold text-[#00020A] m-0 mb-3">{card.title}</h3>
+                <h3 class="text-lg leading-[1.375rem] font-bold text-[#00020A] m-0 mb-3">{card.title}</h3>
                 <p class="text-sm leading-5 text-[#44474F] m-0 max-w-none mb-6" set:html={inlineHtml(card.description)} />
                 <div class="mt-auto pt-4 border-0 border-t border-solid border-[#C5C6D0] flex items-center justify-between gap-2">
-                  <p class="m-0 max-w-none bg-[#EAEAFF]/60 rounded px-2 py-1 text-xs leading-4 font-semibold text-primary">
+                  <p class="m-0 max-w-none bg-[#EAEAFF]/60 rounded px-2 py-1 text-sm leading-4 font-semibold text-primary">
                     {card.solutionType}
                   </p>
                   {card.href && (
@@ -420,7 +420,7 @@ const selectClass =
 
     <!-- CTA bas -->
     <section class="bg-[#EDEEEF] rounded-2xl p-10 flex flex-col items-center text-center gap-4">
-      <h2 class="text-[26px] leading-9 lg:text-[30px] font-bold text-[#00020A] m-0">{ctaTitle}</h2>
+      <h2 class="text-[1.625rem] leading-9 lg:text-[1.875rem] font-bold text-[#00020A] m-0">{ctaTitle}</h2>
       <p class="text-sm leading-5 text-[#44474F] m-0 max-w-[576px]" set:html={inlineHtml(ctaText)} />
       <div class="flex flex-wrap justify-center gap-4 pt-2">
         {
