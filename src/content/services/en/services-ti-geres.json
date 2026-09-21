@@ -23,7 +23,7 @@
       "type": "stats",
       "title": "",
       "style": "carte",
-      "fond": "blanc",
+      "fond": "ivoire",
       "items": [
         {
           "number": "+225 000",
@@ -47,7 +47,7 @@
       "type": "bento-metrics",
       "title": "Why Choose Victrix for Your Managed IT Services",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Uncompromising IT management",
         "text": "<strong>Lower your operational costs, enhance security, accelerate digital transformation, and boost your internal IT team's productivity.</strong> Our managed IT services empower your teams to focus on core business functions, boosting overall efficiency.",
@@ -103,7 +103,7 @@
       "type": "offer-cards",
       "title": "Comprehensive Managed Services Focused on Security and Continuous Improvement",
       "intro": "Ensure continuity, security, and optimization of your IT environment while reducing the burden on your internal teams. As your managed service provider, Victrix handles administration, monitoring, and the ongoing evolution of your infrastructure.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Request an IT needs assessment",
       "ctaHref": "/en/contact",
       "items": [
@@ -226,7 +226,7 @@
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "Learn More About Our Managed IT Services",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "What are the main benefits of outsourcing your managed IT services to Victrix?",
@@ -262,7 +262,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "slug": "managed-it-services",

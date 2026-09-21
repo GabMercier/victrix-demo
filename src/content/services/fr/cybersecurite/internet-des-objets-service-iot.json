@@ -23,7 +23,7 @@
       "type": "bento-metrics",
       "title": "Pourquoi assurer la sécurité des objets connectés de votre organisation?",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Réduisez votre surface d’attaque",
         "text": "La <strong>cybersécurité IoT et OT</strong> est un enjeu majeur pour les sociétés canadiennes. Le nombre grandissant d’objets et d’appareils connectés au réseau élargit votre surface d’attaque et augmente votre vulnérabilité.",
@@ -56,7 +56,7 @@
       "type": "feature-boxes",
       "sectionTitle": "Notre approche",
       "subtitle": "Victrix réalise une analyse complète de votre infrastructure pour identifier les vulnérabilités de votre système et améliorer la sécurité de vos environnements IoT.",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
         "Évaluation des besoins et de la stratégie",
         "Inventaire et évaluation des risques",
@@ -70,7 +70,7 @@
       "type": "offer-cards",
       "title": "Victrix assure la sécurité de vos systèmes IoT et OT",
       "intro": "Un accompagnement complet, de l’évaluation de vos réseaux IoT à l’adoption des nouvelles technologies par vos équipes.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "items": [
@@ -163,7 +163,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": "Service IoT & OT — Internet des Objets | Cybersécurité | Victrix",

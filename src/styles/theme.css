@@ -124,12 +124,16 @@
   /* ---- Rôles Material des exports v2, ré-ancrés sur l'échelle export2
      (les NOMS restent — tout le markup re-skinné les consomme). ----------- */
   /* Neutres */
-  --color-surface: #ffffff; /* canvas : blanc (les bandes claires = 050/100) */
-  --color-background: #ffffff;
+  /* FONDS CHAUDS (2026-09-21, maquette « page produit - enfant ») : plus de
+     bande blanche — canevas et bandes = ivoire, bandes alternées et panneaux =
+     beige ; le BLANC est réservé aux surfaces posées (cartes, tuiles d'icône :
+     `bg-white` / `surface-container-lowest`). */
+  --color-surface: #fcf9f5; /* canevas + bande de section : ivoire */
+  --color-background: #fcf9f5;
   --color-surface-bright: #ffffff;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f9fafb; /* neutral-050 — pied de page, panneaux */
-  --color-surface-container: #f3f4f7; /* neutral-100 — bandeaux (stripe méga) */
+  --color-surface-container-lowest: #ffffff; /* cartes */
+  --color-surface-container-low: #f6f3ef; /* beige — bande alternée, pied de page, panneaux */
+  --color-surface-container: #f6f3ef; /* beige — panneaux (callout, cta clair, stripe méga) */
   --color-surface-container-high: #e5e7eb; /* neutral-200 */
   --color-surface-container-highest: #cdd2da; /* neutral-300 */
   --color-surface-variant: #f3f4f7;

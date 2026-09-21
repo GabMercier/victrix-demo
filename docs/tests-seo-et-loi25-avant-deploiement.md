@@ -211,10 +211,11 @@ d'écran, bandeau non bloquant.
 | # | Scénario | Attendu |
 |---|---|---|
 | 1 | Première visite, aucun choix | bandeau visible ; onglet Réseau : **aucune** requête `googletagmanager.com` ni `google-analytics.com` |
-| 2 | Clic « Accepter » | bandeau disparaît ; requêtes `gtag/js` puis `collect` ; `localStorage.victrix-consent = accepted` |
+| 2 | Clic « Accepter » | bandeau disparaît ; requêtes `gtag/js` puis `collect` ; `localStorage.victrix-consent` = `{"choice":"accepted","date":…,"revision":1}` |
 | 3 | Rechargement puis navigation interne | bandeau absent ; `collect` à chaque page (suivi SPA) |
 | 4 | Clic « Refuser » (autre navigateur/privé) | bandeau disparaît ; **aucune** requête analytique, même après navigation |
-| 5 | « Gérer mes témoins » (après le lot 1 ci-dessus) | bandeau revient ; refus → plus de `collect` après rechargement |
+| 5 | « Gérer mes témoins » | bandeau revient ; refus → page rechargée, plus de `collect`, témoins `_ga*` EFFACÉS (Application → Cookies) |
+| 5 bis | Choix vieux de plus de 182 jours (modifier `date` dans le stockage local) | bandeau redemandé, aucune requête analytique avant un nouveau choix |
 | 6 | JavaScript désactivé | rien ne se charge ; le site reste lisible |
 | 7 | Clavier + lecteur d'écran | région annoncée, deux boutons atteignables, pas de piège de focus |
 | 8 | Page Merci après un envoi de formulaire (accepté) | événement `generate_lead` dans GA4 DebugView ; rien si refusé |

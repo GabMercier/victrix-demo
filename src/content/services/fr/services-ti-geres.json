@@ -23,7 +23,7 @@
       "type": "stats",
       "title": "",
       "style": "carte",
-      "fond": "blanc",
+      "fond": "ivoire",
       "items": [
         {
           "number": "+225 000",
@@ -47,7 +47,7 @@
       "type": "bento-metrics",
       "title": "Pourquoi choisir Victrix pour vos services gérés",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Une gestion TI sans compromis",
         "text": "<strong>Réduisez vos coûts d'exploitation, renforcez votre sécurité, accélérez votre transformation numérique et augmentez la productivité de votre équipe TI interne.</strong> Notre offre de services gérés TI permet à vos équipes de se concentrer sur les fonctions essentielles et d'accroître votre efficacité globale.",
@@ -103,7 +103,7 @@
       "type": "offer-cards",
       "title": "Une couverture de services gérés axée sur la sécurité et l'amélioration continue",
       "intro": "Assurez la continuité, la sécurité et l'optimisation de votre environnement TI et allégez la charge de vos équipes internes. En tant que fournisseur de services gérés, Victrix prend en charge l'administration, la surveillance et l'évolution de vos infrastructures.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Demandez une évaluation de vos besoins TI",
       "ctaHref": "/fr/contact",
       "items": [
@@ -226,7 +226,7 @@
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "En savoir plus sur nos services gérés TI",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "Quels sont les principaux avantages de l'externalisation des services TI gérés avec Victrix ?",
@@ -262,7 +262,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": "Services gérés TI | Gestion, Sécurité et Performance"

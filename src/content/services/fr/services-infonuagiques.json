@@ -23,7 +23,7 @@
       "type": "bento-metrics",
       "title": "Solutions et services infonuagiques",
       "intro": "Nos services infonuagiques sont conçus pour répondre aux défis uniques de votre organisation. De la sélection de votre solution infonuagique à la migration des charges et l'optimisation continue de votre environnement, Victrix est là pour vous.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Une stratégie de migration planifiée",
         "text": "Une stratégie de migration planifiée garantit une transition sans heurt, avec un impact minimal sur vos environnements. Notre mission : <strong>garantir votre excellence opérationnelle</strong> en appliquant les meilleures pratiques de conformité, de sécurité des données et de performance. Les modèles <strong>Well Architected Framework (WAF)</strong> et <strong>Cloud Adoption Framework (CAF)</strong> encadrent tous vos projets de migration infonuagique.",
@@ -64,7 +64,7 @@
       "bullets": [],
       "cardTitle": "",
       "cardText": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "numbered-cards",
@@ -164,7 +164,7 @@
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Nos partenaires",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
         "Palo Alto",
         "Checkpoint",
@@ -200,7 +200,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": "Services infonuagiques adaptés à vos enjeux | Services",

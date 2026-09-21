@@ -23,7 +23,7 @@
       "type": "bento-metrics",
       "title": "Ce que vous offre le SEvOC de Victrix",
       "intro": "Un service SOC disponible en tout temps, bilingue, avec des experts attitrés à votre environnement.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Surveillance continue, réponse accélérée",
         "text": "Accélérez votre cybersécurité et optimisez l’ensemble de vos outils de sécurité. À la différence d’un SOC classique, notre <strong>offre évolutive et modulaire</strong> vous permet de rester à la fine pointe des technologies de sécurité.",
@@ -56,7 +56,7 @@
       "type": "offer-cards",
       "title": "Ce que le SEvOC fait pour votre organisation",
       "intro": "Prise en charge, opérations et évolution : une offre modulaire qui couvre l’ensemble du cycle.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Parlez à un expert du SEvOC",
       "ctaHref": "/fr/contact",
       "items": [
@@ -235,7 +235,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": "Centre opérationnel de sécurité : SOC évolutif | Services | Victrix",

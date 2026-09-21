@@ -302,13 +302,13 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       ctaIcon: z.enum(['telechargement', '']).default(''),
       // « Fond de section » ÉTENDU 2026-08-18 (landing-pagefinal.txt : héros
       // IVOIRE) ; défaut « givre » = rendu historique (surface-container-low).
-      fond: fondClair.default('givre'),
+      fond: fondClair.default('beige'),
     }),
     z.object({
       type: z.literal('benefits'),
       title: z.string(),
       intro: z.string().optional(),
-      fond: fondClair.default('blanc'),
+      fond: fondClair.default('ivoire'),
       // « compact » AJOUTÉ 2026-08-05 (landing-page.css §Guide Benefits) :
       // tête réduite 16/24 + liseré bleu, cartes compactes.
       headingStyle: z.enum(['titre', 'compact']).default('titre'),
@@ -346,7 +346,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // majuscules — `fond` sans effet dans cette variante.
       variant: z.enum(['light', 'dark', 'nuit', 'primaire']).default('light'),
       // Fond de la SECTION derrière le panneau (le panneau garde sa `variant`).
-      fond: fondClair.default('blanc'),
+      fond: fondClair.default('ivoire'),
     }),
     z.object({
       type: z.literal('form'),
@@ -377,7 +377,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('faq'),
       title: z.string(),
-      fond: fondClair.default('blanc'),
+      fond: fondClair.default('ivoire'),
       items: z.array(z.object({ question: z.string(), answer: z.string() })),
     }),
     // ---- Palette additions (17 juil., P-02) — shared like everything else.
@@ -410,7 +410,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // « carte » (2026-09-16) : carte centrée qui chevauche le héros, 3 chiffres
       // avec pictogramme (parité WordPress, page Services gérés). Défaut = bande.
       style: z.enum(['bande', 'carte']).default('bande'),
-      fond: fondClair.default('givre'),
+      fond: fondClair.default('beige'),
       items: z.array(
         z.object({
           number: z.string(),
@@ -619,7 +619,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       cta2Href: z.string().default(''),
       image: z.string().default(''),
       imageAlt: z.string().default(''),
-      fond: fondClair.default('givre'),
+      fond: fondClair.default('beige'),
     }),
     // Bento métriques : tête centrée + carte Bleu nuit (titre, texte,
     // puces-métriques « verre », pictogramme filigrane) + carte claire (tuile
@@ -630,7 +630,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('bento-metrics'),
       title: z.string(),
       intro: z.string().default(''),
-      fond: fondClair.default('blanc'),
+      fond: fondClair.default('ivoire'),
       featured: z.object({
         title: z.string(),
         text: z.string().default(''),
@@ -739,7 +739,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('offer-cards'),
       title: z.string(),
       intro: z.string().default(''),
-      fond: fondClair.default('givre'),
+      fond: fondClair.default('beige'),
       ctaLabel: z.string().default(''),
       ctaHref: z.string().default(''),
       items: z.array(
@@ -761,7 +761,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('realisations'),
       title: z.string(),
       intro: z.string().default(''),
-      fond: fondClair.default('blanc'),
+      fond: fondClair.default('ivoire'),
       linkLabel: z.string().default(''),
       linkHref: z.string().default(''),
       items: z.array(
@@ -799,7 +799,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('feature-boxes'),
       sectionTitle: z.string(),
       subtitle: z.string().optional(),
-      fond: fondClair.default('givre'),
+      fond: fondClair.default('beige'),
       // Liste de libellés simples (boîtes bordées) — tableau de chaînes.
       boxes: z.array(z.string()),
     }),
@@ -829,7 +829,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('rich-text'),
       title: z.string().optional(),
-      fond: fondClair.default('blanc'),
+      fond: fondClair.default('ivoire'),
       // Chaque paragraphe rendu en <p set:html> (peut contenir des <strong>).
       paragraphs: z.array(z.string()),
     }),
@@ -875,7 +875,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('value-tiles'),
       eyebrow: z.string().default(''),
       title: z.string(),
-      fond: fondClair.default('blanc'),
+      fond: fondClair.default('ivoire'),
       items: z
         .array(
           z.object({
@@ -893,7 +893,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       cardText: z.string().default(''),
       image: z.string().default(''),
       imageAlt: z.string().default(''),
-      fond: fondClair.default('blanc'),
+      fond: fondClair.default('ivoire'),
       items: z
         .array(
           z.object({
@@ -931,7 +931,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       partners: z.array(z.string()).default([]),
       image: z.string().default(''),
       imageAlt: z.string().default(''),
-      fond: fondClair.default('blanc'),
+      fond: fondClair.default('ivoire'),
     }),
     z.object({
       type: z.literal('timeline'),

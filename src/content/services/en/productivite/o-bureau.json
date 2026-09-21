@@ -18,14 +18,14 @@
       "cta2Href": "",
       "image": "/wp-content/uploads/2023/08/obureau-mobile-1.png",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Benefits",
       "subtitle": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "boxes": [
         "Simplify reservations",
         "Improve office management",
@@ -38,7 +38,7 @@
       "type": "offer-cards",
       "title": "A simple, ergonomic application to manage your workspaces",
       "intro": "",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "",
       "ctaHref": "",
       "items": [
@@ -145,7 +145,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "slug": "productivity-consulting/office-booking",

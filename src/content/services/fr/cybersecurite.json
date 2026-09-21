@@ -23,7 +23,7 @@
       "type": "bento-metrics",
       "title": "La cybersécurité, un atout stratégique intégré à tous nos projets",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Victrix, votre fournisseur de services de cybersécurité",
         "text": "Faites confiance à Victrix pour <strong>protéger vos données sensibles</strong>, <strong>assurer la sécurité de vos systèmes</strong> et <strong>prendre en charge le déploiement de solutions technologiques</strong> qui protégeront votre entreprise contre les cybermenaces.",
@@ -128,7 +128,7 @@
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Nos partenaires et technologies",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
         "Palo Alto",
         "Checkpoint",
@@ -148,7 +148,7 @@
       "type": "realisations",
       "title": "Une expertise sectorielle pour vos services de cybersécurité",
       "intro": "Nous aidons les organisations du secteur privé et public à atteindre leurs objectifs de sécurité de l’information.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "linkLabel": null,
       "linkHref": null,
       "items": [
@@ -184,13 +184,13 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "light",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "En savoir plus sur nos services de cybersécurité",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "Quelles sont les offres de cybersécurité de Victrix?",
@@ -238,7 +238,7 @@
       "cta2Label": "Planifiez une consultation",
       "cta2Href": "/fr/contact",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": "La cybersécurité au service de vos affaires | Services | Victrix",

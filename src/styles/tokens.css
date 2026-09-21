@@ -41,7 +41,7 @@
   --color-ink: #21242a; /* neutral-900 — was #1a1f28 anthracite */
 
   /* Semantic aliases — prefer these in components */
-  --color-bg: #ffffff; /* page canvas = blanc (export2) — was ivoire #faf7f3 */
+  --color-bg: #ffffff; /* fond des CARTES (blanc) — le canevas de page est ivoire, voir global.css body */
   --color-band: var(--color-grey-50); /* light section band (ex --color-surface) */
   --color-text: var(--color-ink);
   --color-text-muted: var(--color-grey-700);

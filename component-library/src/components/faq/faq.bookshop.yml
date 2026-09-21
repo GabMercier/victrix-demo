@@ -31,7 +31,7 @@ spec:
 blueprint:
   type: faq
   title: "Foire aux questions"
-  fond: blanc
+  fond: ivoire
   items:
     - question: "Quelle est votre question la plus fréquente ?"
       answer: "Rédigez ici une réponse claire et concise, en une ou deux phrases."

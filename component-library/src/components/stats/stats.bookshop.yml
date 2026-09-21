@@ -27,7 +27,7 @@ blueprint:
   type: stats
   title: "Victrix en chiffres"
   style: bande
-  fond: givre
+  fond: beige
   items:
     - number: "25+"
       label: "années d'expérience"

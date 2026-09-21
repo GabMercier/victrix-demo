@@ -89,6 +89,8 @@ réels ; si une étape n'a pas pu tourner, le dire.
 (clés de section manquantes pour l'éditeur) ·
 `node scripts/merge-content-json.mjs` (conflits JSON d'une fusion
 `staging`↔`dev`) · `node scripts/migrate-icons-bank.mjs [--check]` ·
+`node scripts/migrate-fonds-chauds.mjs [--check]` (blanc → ivoire, givre →
+beige ; à rejouer après une fusion `staging` → `dev`) ·
 `npm run cms:previews` (pastilles + vignettes d'icônes) ·
 `npm run design:previews` (vignettes des sections, serveur de dev requis).
 

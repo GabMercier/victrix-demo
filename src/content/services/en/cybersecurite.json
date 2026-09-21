@@ -23,7 +23,7 @@
       "type": "bento-metrics",
       "title": "Cybersecurity, a strategic capability embedded in every project",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Victrix, your cybersecurity service provider",
         "text": "Trust Victrix to <strong>protect your sensitive data</strong>, <strong>ensure the security of your systems</strong>, and <strong>handle the deployment of technology solutions</strong> that will protect your business from cyber threats.",
@@ -128,7 +128,7 @@
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Technology Partners",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
         "Palo Alto",
         "Checkpoint",
@@ -148,7 +148,7 @@
       "type": "realisations",
       "title": "Expertise Serving the Public and Private Sectors",
       "intro": "We help private and public sector organizations achieve their information security objectives.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "linkLabel": "Cybersecurity for the healthcare sector",
       "linkHref": "/en/services/cybersecurity/cybersecurity-healthcare",
       "items": [
@@ -178,7 +178,7 @@
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "Learn More About Our Cybersecurity Services",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "What are Victrix's cybersecurity offerings?",
@@ -226,7 +226,7 @@
       "cta2Label": "Contact us",
       "cta2Href": "/en/contact",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "slug": "cybersecurity",

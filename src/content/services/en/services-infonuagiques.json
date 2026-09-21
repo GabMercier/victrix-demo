@@ -23,7 +23,7 @@
       "type": "bento-metrics",
       "title": "Cloud Solutions and Services",
       "intro": "Our cloud services are designed to meet the unique challenges of your organization — from selecting your cloud solution to migrating workloads and continuously optimizing your cloud environment.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "A planned migration strategy",
         "text": "A planned migration strategy ensures a smooth transition with minimal impact on your environment. Our mission: <strong>guarantee your operational excellence</strong> using best practices for compliance, data security, and performance — the <strong>Well Architected Framework (WAF)</strong> and <strong>Cloud Adoption Framework (CAF)</strong> guide all your cloud migration projects.",
@@ -64,7 +64,7 @@
       "bullets": [],
       "cardTitle": "",
       "cardText": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "numbered-cards",
@@ -164,7 +164,7 @@
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Partners",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
         "Palo Alto",
         "Checkpoint",
@@ -200,7 +200,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "slug": "cloud-services-provider",

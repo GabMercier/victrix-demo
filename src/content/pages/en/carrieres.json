@@ -33,7 +33,7 @@
       "type": "value-tiles",
       "eyebrow": "Culture",
       "title": "Our Values",
-      "fond": "blanc",
+      "fond": "ivoire",
       "items": [
         {
           "icon": "etoile",
@@ -66,7 +66,7 @@
       "cardText": "Contribute to our success and thrive within a passionate team.",
       "image": "/images/carrieres/equipe-environnement.jpg",
       "imageAlt": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "items": [
         {
           "icon": "croissance-pleine",
@@ -123,7 +123,7 @@
       ],
       "image": "/images/carrieres/responsabilite-sociale.jpg",
       "imageAlt": "",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "cta",
@@ -135,7 +135,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "primaire",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

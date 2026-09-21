@@ -38,6 +38,7 @@ n'a pas** (serveur de dev arrêté) :
 ```powershell
 git fetch origin; git merge --no-commit --no-ff origin/staging
 node scripts/merge-content-json.mjs      # « VRAIS CONFLITS » listés = à relire
+node scripts/migrate-fonds-chauds.mjs    # depuis le 21/09 : blanc → ivoire, givre → beige revenus de staging
 npm run build; npm run fix:links; npm run build; npm run check:links -- --strict
 git add -A; git commit -m "merge: staging -> dev"; git push origin dev
 ```
@@ -241,6 +242,11 @@ Rituel. Pas de story : répondre dans #1762.
 ### Phase 3 — Conformité et contenu (≈ 5 j)
 
 #### L09 — Consentement Loi 25, remplacement d'Axeptio (1 j) · D6 → revue R2
+
+> **NE PAS LANCER CE PROMPT — fait autrement le 2026-09-21** : bandeau maison
+> fini sans bibliothèque (`src/lib/consent/record.ts`, décision en tête de
+> `docs/plan-consentement-loi25.md`). Le prompt ci-dessous ne redevient utile
+> que si un deuxième traceur revient (ZoomInfo, Clarity).
 
 ```text
 Lot L09 de docs/plan-livraison-finale.md. Lis EN ENTIER
@@ -550,7 +556,8 @@ foreach ($s in $stories) {
 
 | Lot | Titre | Estimé | Dépend de | Revue | Fait le |
 | --- | --- | --- | --- | --- | --- |
-| H1–H5 | Actions humaines | — | — | | |
+| H1–H5 | Actions humaines | — | — | | H2 fait le 21/09 (PR #1 fusionnée, `staging` = `64e58e4`) |
+| L-fonds | Fonds chauds : canevas ivoire, bandes ivoire/beige, blanc réservé aux cartes (maquette « page produit - enfant ») | 0,5 j | — | | 2026-09-21 |
 | L00 | Réponses #1762 + PR | 0,5 h | H2 | | |
 | L01 | Tolérance aux champs vidés | 1,5 h | — | | |
 | L02 | Rétro-remplissage générique des clés | 2 h | — | | |
@@ -560,7 +567,7 @@ foreach ($s in $stories) {
 | L06 | CTA, cartes cliquables, boutons | 1,5 j | — | **R1** | |
 | L07 | Lucide, logos, bandeau | 1 j | D4 | | |
 | L08 | Petits retours de Julie | 0,5 j | D5 | | |
-| L09 | Consentement Loi 25 | 1 j | D6 | **R2** | |
+| L09 | Consentement Loi 25 — FAIT AUTREMENT : bandeau maison fini, sans bibliothèque (D6 tranchée : mesure d'audience seule, 182 jours, rechargement au retrait, sans registre serveur). Reste : texte de la politique (Julie + juridique), `PUBLIC_GA4_ID` | 2 h | — | R2 facultative | 2026-09-21 |
 | L10 | Catalogue A — export, galerie | 1 j | — | | |
 | L11 | Catalogue B — fiches, route | 1,5 j | L10 | **R3** | |
 | L12 | Livres blancs | 1 j | D7, #1633 | | |

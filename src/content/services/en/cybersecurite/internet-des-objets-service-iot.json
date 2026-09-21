@@ -23,7 +23,7 @@
       "type": "bento-metrics",
       "title": "Why Secure Your Organization's Connected Objects?",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Reduce your attack surface",
         "text": "<strong>IoT cybersecurity</strong> is a major issue for organizations. The growing number of devices and objects connected to the network expands your attack surface and increases your vulnerability.",
@@ -56,7 +56,7 @@
       "type": "feature-boxes",
       "sectionTitle": "Our Approach",
       "subtitle": "Victrix performs a comprehensive analysis of your infrastructure to identify security risks and improve the resilience of IoT environments.",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
         "Needs and strategy assessment",
         "Inventory and risk analysis",
@@ -70,7 +70,7 @@
       "type": "offer-cards",
       "title": "Victrix Ensures the Security of IoT and OT Systems",
       "intro": "Complete support, from the assessment of your IoT networks to the adoption of new technologies by your teams.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "ctaLabel": "Talk to an IoT expert",
       "ctaHref": "/en/contact",
       "items": [
@@ -163,7 +163,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "slug": "cybersecurity/internet-of-things-iot",

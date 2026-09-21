@@ -104,7 +104,7 @@
       "type": "feature-boxes",
       "sectionTitle": "Ce que couvre l'accompagnement",
       "subtitle": "Un périmètre clair, adapté à votre organisation.",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
         "Stratégie et gouvernance",
         "Architecture et intégration",
@@ -145,7 +145,7 @@
       "_bookshop_name": "rich-text",
       "type": "rich-text",
       "title": "Une approche éprouvée",
-      "fond": "blanc",
+      "fond": "ivoire",
       "paragraphs": [
         "Depuis plus de 25 ans, nos équipes accompagnent les organisations québécoises dans leurs projets technologiques les plus <strong>structurants</strong>.",
         "Chaque mandat commence par l'écoute : comprendre vos enjeux d'affaires avant de parler de solutions."
@@ -295,7 +295,7 @@
       "type": "offer-cards",
       "title": "Offres numérotées",
       "intro": "Cartes « verre » à compteur et liseré bleu, liste à puces, bouton primaire centré.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Prendre rendez-vous",
       "ctaHref": "/fr/contact",
       "items": [
@@ -338,7 +338,7 @@
       "type": "realisations",
       "title": "Réalisations",
       "intro": "Tête à gauche, lien souligné à droite, grille de quatre cartes.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "linkLabel": "Demandez une démo",
       "linkHref": "/fr/contact",
       "items": [
@@ -388,7 +388,7 @@
       "type": "value-tiles",
       "eyebrow": "Surtitre",
       "title": "Tuiles de valeurs",
-      "fond": "blanc",
+      "fond": "ivoire",
       "items": [
         {
           "icon": "etoile",
@@ -421,7 +421,7 @@
       "cardText": "Titre et texte posés sur la photo.",
       "image": "/images/carrieres/equipe-environnement.jpg",
       "imageAlt": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "items": [
         {
           "icon": "croissance-pleine",
@@ -478,7 +478,7 @@
       ],
       "image": "/images/carrieres/responsabilite-sociale.jpg",
       "imageAlt": "",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

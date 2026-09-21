@@ -6,6 +6,19 @@
 > nouveau site a déjà un bandeau maison (`ConsentBanner.astro`, P-10) qui
 > couvre l'essentiel mais pas le retrait du consentement. Rien n'est commencé.
 
+> **DÉCISION DU 2026-09-21 (Gabriel) : on FINIT le bandeau maison, sans
+> bibliothèque.** GA4 est le seul traceur prévu : une fenêtre de préférences par
+> catégorie n'aurait rien à montrer, et la bibliothèque coûtait +15 Ko et ≈ 15
+> chaînes CMS. Livré le 21/09 : choix DATÉ (`src/lib/consent/record.ts`) qui
+> périme après 182 jours et se redemande, `revision` à incrémenter si la portée
+> change, témoins `_ga*` effacés au refus (hôte + domaines parents), deux
+> boutons de même poids visuel, peau sombre chaude, 8 tests unitaires + 6
+> scénarios e2e (`tests/e2e/catalogue-temoins.spec.ts`). **Le reste de ce plan
+> (Vanilla CookieConsent) ne s'applique que si un deuxième traceur revient**
+> (ZoomInfo, Clarity — §5-R2). Restent hors code : R1 (pas de registre serveur,
+> à écrire dans la politique), R7 (la politique nomme encore Axeptio), GA4
+> branché (`PUBLIC_GA4_ID`), validation juridique.
+
 ## 1. Ce qui existe déjà
 
 `src/components/ConsentBanner.astro` : bandeau non bloquant, Accepter/Refuser

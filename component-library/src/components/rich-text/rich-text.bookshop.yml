@@ -28,7 +28,7 @@ spec:
 blueprint:
   type: rich-text
   title: "Titre du bloc"
-  fond: blanc
+  fond: ivoire
   paragraphs:
     - "Premier paragraphe. Peut contenir des <strong> pour la mise en gras."
 

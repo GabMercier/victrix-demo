@@ -15,7 +15,8 @@ import { getSiteText } from '../i18n/site';
  * reste dans ui.ts.
  *
  * Contrat de consentement (consommé par P-11 — pose des scripts analytiques) :
- *  - localStorage `victrix-consent` = « accepted » | « refused » ;
+ *  - localStorage `victrix-consent` = {"choice","date","revision"} — format,
+ *    péremption (≈ 6 mois → redemandé) et révision : `src/lib/consent/record.ts` ;
  *  - classe `consent-analytics` sur <html> quand accepté ;
  *  - évènement `victrix:consent` (CustomEvent, detail.analytics: boolean) émis
  *    à chaque choix ;
@@ -30,6 +31,11 @@ import { getSiteText } from '../i18n/site';
  * après un choix. Passer d'« accepté » à « refusé » RECHARGE la page : un
  * script analytique déjà exécuté ne se décharge pas — seul un rechargement,
  * où il reste inerte, retire réellement la mesure.
+ *
+ * FINI LE 2026-09-21 (remplace Axeptio, sans bibliothèque — GA4 est le seul
+ * traceur) : choix DATÉ qui périme, témoins `_ga*` EFFACÉS au refus, deux
+ * boutons de MÊME poids visuel (refuser aussi simple qu'accepter), peau sombre
+ * chaude de la charte (celle du CTA « nuit »).
  *
  * A11y : region nommée, boutons natifs (focus clavier), texte lisible ; le
  * bandeau n'est PAS un modal — il ne piège pas le focus et ne bloque pas la
@@ -54,10 +60,10 @@ const policyHref = localizePath(c.policyHref, lang);
       <a class="consent__policy" href={policyHref}>{c.policyLabel}</a>
     </p>
     <div class="consent__actions">
-      <button type="button" class="btn btn--primary consent__btn" data-consent-accept>
+      <button type="button" class="consent__btn" data-consent-accept>
         {c.accept}
       </button>
-      <button type="button" class="consent__btn consent__btn--ghost" data-consent-refuse>
+      <button type="button" class="consent__btn" data-consent-refuse>
         {c.refuse}
       </button>
     </div>
@@ -68,13 +74,34 @@ const policyHref = localizePath(c.policyHref, lang);
   // Comme Header.astro : avec <ClientRouter />, ce module s'exécute UNE fois
   // par session pendant que le DOM est remplacé à chaque navigation — les
   // liaisons d'éléments vivent donc dans astro:page-load.
-  const KEY = 'victrix-consent';
+  import {
+    CONSENT_KEY,
+    cookieDomains,
+    isAnalyticsCookie,
+    readConsent,
+    serializeConsent,
+    type ConsentChoice,
+  } from '../lib/consent/record';
 
-  const stored = (): string | null => {
+  /** Choix valide mémorisé — `null` = à (re)demander (absent, périmé, ancien format). */
+  const stored = (): ConsentChoice | null => {
     try {
-      return localStorage.getItem(KEY);
+      return readConsent(localStorage.getItem(CONSENT_KEY))?.choice ?? null;
     } catch {
       return null;
+    }
+  };
+
+  /** Refus : efface les témoins de mesure déjà posés (hôte + domaines parents). */
+  const clearAnalyticsCookies = () => {
+    const names = document.cookie
+      .split(';')
+      .map((pair) => pair.split('=')[0].trim())
+      .filter(isAnalyticsCookie);
+    for (const name of names) {
+      for (const domain of cookieDomains(location.hostname)) {
+        document.cookie = `${name}=; Max-Age=0; path=/${domain ? `; domain=${domain}` : ''}`;
+      }
     }
   };
 
@@ -98,13 +125,14 @@ const policyHref = localizePath(c.policyHref, lang);
   const applyChoice = (accepted: boolean, persist: boolean) => {
     if (persist) {
       try {
-        localStorage.setItem(KEY, accepted ? 'accepted' : 'refused');
+        localStorage.setItem(CONSENT_KEY, serializeConsent(accepted ? 'accepted' : 'refused'));
       } catch {
         /* localStorage indisponible — le choix vaut pour la page courante */
       }
     }
     document.documentElement.classList.toggle('consent-analytics', accepted);
     if (accepted) activateGatedScripts();
+    else clearAnalyticsCookies();
     document.dispatchEvent(new CustomEvent('victrix:consent', { detail: { analytics: accepted } }));
   };
 
@@ -148,13 +176,13 @@ const policyHref = localizePath(c.policyHref, lang);
 </script>
 
 <style>
-  /* Design minimal assumé — tokens seulement (re-peau au redesign). */
+  /* Peau sombre chaude de la charte (2026-09-21) — tokens seulement. */
   .consent {
     position: fixed;
     inset-inline: 0;
     bottom: 0;
     z-index: 60; /* au-dessus du header sticky (50) */
-    background-color: var(--color-grey-dark);
+    background-color: var(--color-on-surface);
     color: var(--color-white);
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 -12px 32px -16px rgb(8 57 87 / 0.4);
@@ -184,19 +212,26 @@ const policyHref = localizePath(c.policyHref, lang);
     align-items: center;
     gap: var(--space-3);
   }
+  /* UN seul style pour les deux boutons : même poids visuel, refuser est
+     aussi simple qu'accepter (Loi 25). */
   .consent__btn {
     cursor: pointer;
-  }
-  .consent__btn--ghost {
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: var(--radius-pill);
     color: var(--color-white);
+    font-family: inherit;
     font-size: var(--fs-200);
     font-weight: var(--fw-semibold);
-    padding: var(--space-2) var(--space-4);
+    padding: var(--space-2) var(--space-5);
   }
-  .consent__btn--ghost:hover {
+  .consent__btn:hover {
+    background: var(--color-white);
     border-color: var(--color-white);
+    color: var(--color-on-surface);
+  }
+  .consent__btn:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 2px;
   }
 </style>

@@ -29,7 +29,7 @@ blueprint:
   type: feature-boxes
   sectionTitle: "Titre de la section"
   subtitle: ""
-  fond: givre
+  fond: beige
   boxes:
     - "Premier domaine"
 

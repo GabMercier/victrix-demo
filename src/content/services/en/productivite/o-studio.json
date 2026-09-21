@@ -18,14 +18,14 @@
       "cta2Href": "/en/solutions",
       "image": "/wp-content/uploads/2023/09/bg-o-studio-1-scaled.jpg",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Deploy business applications at lightning speed",
       "intro": "Say goodbye to repetitive tasks with process automation and unlock your teams' potential.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Operational optimization",
         "text": "From operations management to the support of your administrative services, the Ø Studio offering meets the requirements of the different branches of your business — with development speed and increased delivery capacity to match.",
@@ -54,7 +54,7 @@
       "type": "offer-cards",
       "title": "Consulting, integration and development",
       "intro": "With Ø Studio by your side, Power Apps development, process automation, and tool governance are all easily achievable goals.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Discover your options",
       "ctaHref": "#formulaire",
       "items": [
@@ -164,13 +164,13 @@
           "icon": "trousse"
         }
       ],
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "FAQ — Dynamics 365 & Microsoft Power Platform development",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "Does Ø Studio offer mobile application development?",
@@ -218,7 +218,7 @@
       "cta2Label": "Contact us",
       "cta2Href": "/en/contact",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "slug": "productivity-consulting/o-studio",

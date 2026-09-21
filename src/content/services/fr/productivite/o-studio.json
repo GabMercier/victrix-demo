@@ -18,14 +18,14 @@
       "cta2Href": "/fr/solutions",
       "image": "/wp-content/uploads/2023/09/bg-o-studio-1-scaled.jpg",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Déployez des applications à la vitesse grand V",
       "intro": "Dites adieu aux tâches répétitives grâce à l'automatisation des processus et libérez le potentiel de vos équipes.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Optimisation opérationnelle",
         "text": "De la gestion de vos opérations au soutien à vos services administratifs, l'offre Ø Studio répond aux exigences de vos différents secteurs d'activités — rapidité de développement et gain en capacité de livraison à la clé.",
@@ -54,7 +54,7 @@
       "type": "offer-cards",
       "title": "Conseil, intégration et développement",
       "intro": "Avec le Ø Studio à vos côtés, le développement Power Apps, l'automatisation de processus et la gouvernance de vos outils sont des objectifs facilement réalisables.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Découvrez vos options",
       "ctaHref": "#formulaire",
       "items": [
@@ -164,13 +164,13 @@
           "icon": "trousse"
         }
       ],
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "FAQ — Développement d'applications Power Platform et Dynamics 365",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "Est-ce qu'Ø Studio offre le développement d'applications mobiles ?",
@@ -218,7 +218,7 @@
       "cta2Label": "Nous joindre",
       "cta2Href": "/fr/contact",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": "Développement applicatif Power Platform | Ø Studio",

@@ -26,7 +26,7 @@
       "type": "bento-metrics",
       "title": "Les enjeux de l’IA pour les organisations québécoises",
       "intro": "L’intelligence artificielle progresse rapidement au sein de votre organisation, souvent plus vite que le cadre censé l’encadrer. En lançant cette réflexion, vous vous distinguez déjà de la concurrence.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Des angles morts qui deviennent coûteux",
         "text": "L’adoption de l’IA se fait rarement de manière coordonnée — les outils se multiplient, les usages se dispersent et les décisions manquent de direction. À mesure que les demandes augmentent, les angles morts s’accumulent : initiatives dispersées difficiles à prioriser, manque de visibilité sur ce que vos équipes font déjà, demandes croissantes d’outils et de licences sans démarche d’approbation, préoccupations réelles de confidentialité, de fiabilité et d’imputabilité, attentes qui confondent gains rapides et transformation durable, et gouvernance à définir avant d’investir davantage.",
@@ -112,7 +112,7 @@
           "icon": ""
         }
       ],
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "numbered-cards",
@@ -161,7 +161,7 @@
       "type": "feature-boxes",
       "sectionTitle": "Ce qui est inclus dans notre accompagnement",
       "subtitle": "Que vous soyez à l’évaluation des outils d’IA, ayez un cas d’usage précis ou souhaitiez un plan complet — feuille de route, gouvernance et initiatives concrètes —, Victrix est votre partenaire pour un accompagnement stratégique en IA.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "boxes": [
         "Des ateliers thématiques pour clarifier votre ambition et votre maturité IA",
         "La documentation de votre vision à court et moyen terme",
@@ -258,13 +258,13 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "light",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "rich-text",
       "type": "rich-text",
       "title": "L’opportunité de l’IA pour les organisations canadiennes",
-      "fond": "blanc",
+      "fond": "ivoire",
       "paragraphs": [
         "L’écart entre expérimenter avec l’IA, <a href=\"/fr/services/intelligence-artificielle/analyse-opportunites-ia/\">explorer et analyser les opportunités</a> et la déployer avec méthode reste important. C’est précisément là où se joue la valeur, et là que notre accompagnement devient un facteur décisif de succès.",
         "<strong>78 % des entreprises qui n’ont pas adopté l’IA ne perçoivent pas encore en quoi elle améliorerait leurs produits ou services.</strong> <em>Source : <a href=\"https://ised-isde.canada.ca/site/isde/fr/strategie-nationale-matiere-dintelligence-artificielle-canada-lia-pour-tous\">Stratégie nationale d’intelligence artificielle du Canada</a></em>",
@@ -284,13 +284,13 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "light",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "Questions fréquentes sur l’accompagnement en intelligence artificielle",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "Qu’est-ce qu’un accompagnement stratégique en IA?",
@@ -346,7 +346,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

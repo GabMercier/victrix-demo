@@ -91,7 +91,16 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
    18 sept. 2026, la palette a été raffinée** : « ivoire » et « beige » sont
    désormais LES deux fonds chauds de la charte — un chaud très clair et un
    gris chaud. Là encore, les pages qui les utilisaient ont suivi toutes
-   seules ; rien à refaire dans l'éditeur.
+   seules ; rien à refaire dans l'éditeur. **Le 21 sept. 2026, le site est
+   passé aux fonds chauds** (maquette du designer) : la page elle-même est
+   ivoire, les sections alternent **ivoire** et **beige**, et le **blanc est
+   réservé aux cartes** posées sur ces fonds. Toutes les sections qui étaient
+   « blanc » sont devenues « ivoire », toutes les « givre » sont devenues
+   « beige » — rien à refaire. Règle simple pour une nouvelle section : laisser
+   le fond proposé, ou alterner ivoire / beige avec la section voisine. Les dix
+   teintes restent offertes, mais « blanc » et les gris froids (givre, perle,
+   brume) tranchent maintenant sur le reste de la page : à réserver aux cas
+   voulus.
 5. **Icônes** : tous les champs « Icône » (cartes à icônes, tuiles bento et
    leur filigrane, réalisations, chiffres en style carte, puces d'offre, tuiles
    de valeurs, atouts…) ouvrent **la même liste déroulante** : la **banque de
