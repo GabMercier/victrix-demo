@@ -560,6 +560,7 @@ foreach ($s in $stories) {
 | L-fonds | Fonds chauds : canevas ivoire, bandes ivoire/beige, blanc réservé aux cartes (maquette « page produit - enfant ») | 0,5 j | — | | 2026-09-21 |
 | L-fond2 | « Fond de section » sur les 17 sections qui ne l’avaient pas (accueil comprise) + 138 clés rétro-remplies | 2 h | — | | 2026-09-21 |
 | L-pages | Pages de l’ancien site jamais reprises : 18 pages fournisseurs (Approvisionnement TI, FR+EN), campagne « Accompagnement en IA » (FR+EN), campagne « Démo O bureau » (FR+EN), 2 articles FR sans traduction ; lien du titre sur `tech-columns` | 1 j | — | **R3 élargie** | 2026-09-21 |
+| L-bleu | Fond « bleu électrique » (5 sections qui inversent leurs textes), en-tête du centre de ressources retiré + palette chaude sur la page, CTA visible sur les tuiles « image » de « Nos services » | 0,5 j | — | | 2026-09-21 |
 | L-prix | **À FAIRE** — Liste de prix Check Point (`/liste-prix-check-point/`, `/en/check-point-price-list/`) : c’est un OUTIL (tableaux de prix + « ajouter à ma commande » + formulaire), pas une page de contenu → décision : le reprendre, le remplacer par un PDF + formulaire, ou le retirer | ? | décision marketing | | |
 | L00 | Réponses #1762 + PR | 0,5 h | H2 | | |
 | L01 | Tolérance aux champs vidés | 1,5 h | — | | |

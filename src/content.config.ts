@@ -1,7 +1,7 @@
 import { defineCollection as astroDefineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { sanitizeRichHtml } from '../component-library/src/shared/rich';
-import { FOND_KEYS } from '../component-library/src/shared/fonds';
+import { FOND_KEYS, FOND_KEYS_ETENDUS } from '../component-library/src/shared/fonds';
 import { ICON_KEYS, LEGACY_ICON_KEYS } from '../component-library/src/shared/icons';
 import { CONTACT_SERVICE_KEYS, CONTACT_SUJET_KEYS } from './lib/contact/presets';
 
@@ -276,6 +276,13 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
   const fondClair = z.enum(FOND_KEYS);
   // Variante « '' = défaut historique du bloc » (form, faq) — même liste.
   const fondClairOuVide = z.enum(['', ...FOND_KEYS]);
+  // Palette ÉTENDUE (2026-09-21, demande Gabriel) : les 10 fonds clairs + les
+  // fonds SOMBRES (« bleu électrique » = l'aplat Bleu Victrix). Réservée aux
+  // sections qui INVERSENT leurs textes sur fond sombre — rich-text, callout,
+  // stats, logo-banner, faq ; les autres gardent `fondClair`, sinon l'éditrice
+  // pourrait produire du texte marine sur aplat bleu. Même liste que
+  // `_select_data.fonds_etendus` (garde-fou : npm run cms:previews:check).
+  const fondEtendu = z.enum(FOND_KEYS_ETENDUS);
   // Pictogramme de la BANQUE partagée (2026-09-18) — source unique
   // component-library/src/shared/icons.ts : toutes les sections à icône
   // acceptent toutes les clés ('' = aucune). Les anciennes listes fermées
@@ -377,7 +384,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('faq'),
       title: z.string(),
-      fond: fondClair.default('ivoire'),
+      fond: fondEtendu.default('ivoire'),
       items: z.array(z.object({ question: z.string(), answer: z.string() })),
     }),
     // ---- Palette additions (17 juil., P-02) — shared like everything else.
@@ -395,7 +402,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('logo-banner'),
-      fond: fondClair.default('ivoire'),
+      fond: fondEtendu.default('ivoire'),
       title: z.string().optional(),
       badge: z.string().optional(),
       items: z.array(
@@ -412,7 +419,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // « carte » (2026-09-16) : carte centrée qui chevauche le héros, 3 chiffres
       // avec pictogramme (parité WordPress, page Services gérés). Défaut = bande.
       style: z.enum(['bande', 'carte']).default('bande'),
-      fond: fondClair.default('beige'),
+      fond: fondEtendu.default('beige'),
       items: z.array(
         z.object({
           number: z.string(),
@@ -835,7 +842,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('callout'),
-      fond: fondClair.default('ivoire'),
+      fond: fondEtendu.default('ivoire'),
       title: z.string(),
       body: z.string().optional(),
       ctaLabel: z.string().optional(),
@@ -847,7 +854,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('rich-text'),
       title: z.string().optional(),
-      fond: fondClair.default('ivoire'),
+      fond: fondEtendu.default('ivoire'),
       // Chaque paragraphe rendu en <p set:html> (peut contenir des <strong>).
       paragraphs: z.array(z.string()),
     }),
@@ -1693,16 +1700,14 @@ const pagesSysteme = defineCollection({
       intro: z.string().min(1),
       filterAll: z.string().min(1),
       // Refonte « Centre de ressources » (maquette export2, 2026-08-18) —
-      // textes du héros, de la barre de recherche, des cartes et du bandeau
-      // d'appel à l'action. Tous éditables au CMS (collection Pages système).
-      subscribeLabel: z.string().min(1),
+      // textes de la barre de recherche, des cartes et du bandeau d'appel à
+      // l'action. Tous éditables au CMS (collection Pages système).
+      // RETIRÉS le 2026-09-21 avec l'ancien héros : `subscribeLabel` (bouton
+      // « S'abonner à l'infolettre ») et `expertCard` (carte vitrée décorative)
+      // — plus rien ne les affichait.
       searchPlaceholder: z.string().min(1),
       readMore: z.string().min(1),
       byline: z.string().default(''),
-      expertCard: z.object({
-        title: z.string().min(1),
-        subtitle: z.string().min(1),
-      }),
       newsletter: z.object({
         title: z.string().min(1),
         text: z.string().min(1),

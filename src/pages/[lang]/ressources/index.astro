@@ -13,17 +13,18 @@ const { lang } = Astro.props as { lang: Locale };
 const t = useTranslations(lang);
 // Textes de la page ÉDITABLES AU CMS (collection `pagesSysteme`, bloc
 // `ressources` — étendu le 2026-08-18 pour la refonte « Centre de
-// ressources » : héros, recherche, carte infolettre, bandeau CTA). Seule
+// ressources » : en-tête, recherche, carte infolettre, bandeau CTA). Seule
 // l'étiquette d'accessibilité du filtre (t.blog.filterAria) reste dans ui.ts.
 const sys = await getLocaleData('pagesSysteme', lang);
 const r = sys.ressources;
 
 /**
- * Page « Centre de ressources » — FIDÉLITÉ MAQUETTE 2026-08-18
- * (docs/design/export2/« ressources parent.txt » + capture fournie) :
- *  - héros clair : chip bleu pâle, H1 48/700 ls -0.96 dont la FIN passe en
- *    bleu, intro 18, bouton marine « S'abonner à l'infolettre » (ancre vers la
- *    carte infolettre) + carte décorative vitrée à droite (≥ lg) ;
+ * Page « Centre de ressources » — maquette 2026-08-18, RÉVISÉE le 2026-09-21
+ * (demande Gabriel : en-tête retiré, nouvelle palette) :
+ *  - en-tête COMPACT : H1 48/700 ls -0.96 dont la fin passe en bleu + chapeau
+ *    18, sur le canevas ivoire. L'ancien héros (chip bleu pâle, bouton marine
+ *    « S'abonner à l'infolettre », carte décorative vitrée) est SUPPRIMÉ —
+ *    avec lui les champs de contenu `subscribeLabel` et `expertCard` ;
  *  - barre collante filtres + recherche : pilules (« Tous » = pilule bleue
  *    pleine), champ « Rechercher une expertise... » à droite ;
  *  - grille bento : article VEDETTE (photo pleine carte, lavis marine,
@@ -31,10 +32,12 @@ const r = sys.ressources;
  *    (catégorie bleue MAJUSCULES, titre, extrait, « Lire l'article → ») +
  *    carte INFOLETTRE marine insérée en 4ᵉ position (toujours visible,
  *    inscription DÉMO sans envoi réel) ;
- *  - bandeau CTA : panneau gris bordé, filigrane « V », deux boutons.
- * Couleurs 100 % tokens : #0055FF→primary, #000D2E→nuit/on-primary-fixed,
- * #F9F9F9→neutral-50, #CCE5FF→bleu-100, #E2E2E2→bordure. RÈGLE no-hybride :
- * utilitaires Tailwind, zéro CSS scopé (l'ancienne feuille est supprimée).
+ *  - bandeau CTA : panneau beige bordé, filigrane « V », deux boutons.
+ * PALETTE (2026-09-21) : bandes = ivoire, panneaux et cadres d'image = beige,
+ * cartes = blanc bordé `contour` au rayon 8 — les gris froids (neutral-50/100)
+ * et l'ancien jeton `bordure` ont disparu de la page. Couleurs 100 % tokens.
+ * RÈGLE no-hybride : utilitaires Tailwind, zéro CSS scopé (sauf l'état runtime
+ * des pilules de filtre).
  *
  * Filtrage CLIENT (page statique), comme avant : catégorie (pilules,
  * `?categorie=` partageable — c'est ce que ciblent les liens du méga-menu
@@ -133,7 +136,7 @@ const newsletterError =
 const categoryClass =
   'm-0 max-w-none text-xs leading-4 font-semibold uppercase tracking-[1.2px] text-primary';
 const cardClass =
-  'relative h-full bg-white border border-solid border-bordure rounded-xl overflow-hidden flex flex-col shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)]';
+  'relative h-full bg-white border border-solid border-contour rounded-lg overflow-hidden flex flex-col shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)]';
 const pillBase =
   'inline-flex items-center justify-center px-6 py-2 rounded-full text-sm leading-5 font-bold cursor-pointer border-0 transition-colors';
 ---
@@ -147,50 +150,23 @@ const pillBase =
     ]}
   />
 
-  <!-- Héros -->
-  <section class="bg-neutral-50">
-    <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-14 lg:py-20">
-      <div class="flex flex-col items-start gap-6">
-        <p class="m-0 max-w-none bg-bleu-100 text-bleu-900 rounded-full px-3 py-1 text-xs leading-4 font-medium uppercase tracking-[0.6px]">
-          {r.eyebrow}
-        </p>
-        <h1 class="m-0 text-4xl lg:text-5xl leading-[1.16] font-bold tracking-[-0.96px] text-nuit">
-          {r.title}
-          {r.titleAccent && <span class="block text-primary">{r.titleAccent}</span>}
-        </h1>
-        <p class="m-0 text-lg leading-[28px] text-on-surface-variant max-w-[576px]" set:html={inlineHtml(r.intro)} />
-        <a
-          class="mt-2 inline-flex items-center gap-3 bg-nuit text-white px-8 py-4 rounded-lg text-sm leading-5 font-bold uppercase tracking-[0.5px] no-underline shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] hover:bg-primary transition-colors"
-          href="#infolettre"
-        >
-          {r.subscribeLabel}
-          <svg class="shrink-0" width="20" height="16" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <rect x="2" y="2" width="20" height="16" rx="2" />
-            <path d="m2 4 10 8L22 4" />
-          </svg>
-        </a>
-      </div>
-
-      {/* Carte décorative vitrée (maquette) — purement visuelle. */}
-      <div class="relative hidden lg:flex items-center justify-center py-10" aria-hidden="true">
-        <span class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/10 to-transparent blur-2xl"></span>
-        <div class="relative w-64 h-64 bg-white/70 border-2 border-solid border-bordure backdrop-blur-md rounded-xl p-8 flex flex-col justify-end overflow-hidden">
-          <svg class="text-primary mb-4" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M3 17l6-6 4 4 8-8" />
-            <path d="M14 7h7v7" />
-          </svg>
-          <p class="m-0 max-w-none text-base leading-6 text-nuit">{r.expertCard.title}</p>
-          <p class="m-0 max-w-none text-xs leading-4 font-medium text-on-surface-variant">
-            {r.expertCard.subtitle}
-          </p>
-          <span class="absolute -right-2 -bottom-10 text-[140px] leading-none font-black text-primary/5 select-none">V</span>
-        </div>
-      </div>
+  <!-- En-tête (COMPACT depuis le 2026-09-21, demande Gabriel : l'ancien héros
+       — pastille bleue, bouton « S'abonner », carte vitrée décorative — est
+       retiré ; il ne reste que le H1 et le chapeau, sur le canevas ivoire du
+       nouveau système. Les champs `subscribeLabel` et `expertCard` ont été
+       retirés du contenu et du schéma : plus rien ne les affichait.) -->
+  <section class="bg-ivoire">
+    <div class="container-site flex flex-col gap-4 py-10 lg:py-14">
+      <h1 class="m-0 text-4xl lg:text-5xl leading-[1.16] font-bold tracking-[-0.96px] text-nuit">
+        {r.title}
+        {r.titleAccent && <span class="text-primary">{r.titleAccent}</span>}
+      </h1>
+      <p class="m-0 text-lg leading-[28px] text-on-surface-variant max-w-[720px]" set:html={inlineHtml(r.intro)} />
     </div>
   </section>
 
   <!-- Barre filtres + recherche (collante sous l'en-tête) -->
-  <div class="sticky top-20 z-30 border-y border-solid border-bordure bg-neutral-50/90 backdrop-blur-sm">
+  <div class="sticky top-20 z-30 border-y border-solid border-contour bg-ivoire/90 backdrop-blur-sm">
     <div class="container-site flex flex-wrap items-center justify-between gap-4 py-4 lg:py-5">
       <div
         class="flex flex-wrap items-center gap-2 overflow-x-auto"
@@ -233,7 +209,7 @@ const pillBase =
           <path d="M15.5 15.5L21 21" />
         </svg>
         <input
-          class="w-full h-[51px] pl-12 pr-4 bg-white border border-solid border-bordure rounded-lg text-base text-on-surface placeholder:text-neutral-500 focus-visible:border-primary focus-visible:outline-none"
+          class="w-full h-[51px] pl-12 pr-4 bg-white border border-solid border-contour rounded-lg text-base text-on-surface placeholder:text-neutral-500 focus-visible:border-primary focus-visible:outline-none"
           type="search"
           placeholder={r.searchPlaceholder}
           autocomplete="off"
@@ -244,7 +220,7 @@ const pillBase =
   </div>
 
   <!-- Grille bento -->
-  <section class="bg-neutral-50 py-10 lg:py-14">
+  <section class="bg-ivoire py-10 lg:py-14">
     <ul role="list" class="container-site grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 m-0 p-0 list-none" data-blog-grid>
       {
         featured && (
@@ -253,7 +229,7 @@ const pillBase =
             data-tags={featured.data.tags.join('|')}
             data-search={searchIndex(featured)}
           >
-            <article class="relative h-full min-h-[320px] lg:min-h-[456px] rounded-xl overflow-hidden border border-solid border-bordure shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+            <article class="relative h-full min-h-[320px] lg:min-h-[456px] rounded-lg overflow-hidden border border-solid border-contour shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
               {featured.data.coverImage && (
                 <img
                   class="absolute inset-0 w-full h-full object-cover border-0"
@@ -303,7 +279,7 @@ const pillBase =
           <>
             <li class="m-0" data-tags={post.data.tags.join('|')} data-search={searchIndex(post)}>
               <article class={cardClass}>
-                <div class="relative aspect-[2/1] bg-neutral-100 overflow-hidden">
+                <div class="relative aspect-[2/1] bg-beige overflow-hidden">
                   {/* Dérivé 800 px + lazy PARTOUT (2026-08-19) : sur mobile ces
                       cartes sont sous le pli — les charger tôt gonflait le
                       graphe pré-LCP de la simulation Lighthouse. Seule la
@@ -348,7 +324,7 @@ const pillBase =
                 data-tags : jamais masquée par le filtre ni la recherche. */}
             {i === 1 && (
               <li class="m-0" id="infolettre">
-                <div class="relative h-full bg-nuit border border-solid border-primary/20 rounded-xl overflow-hidden p-8 flex flex-col justify-center gap-4 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)]">
+                <div class="relative h-full bg-nuit border border-solid border-primary/20 rounded-lg overflow-hidden p-8 flex flex-col justify-center gap-4 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)]">
                   <svg class="text-primary" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
                     <path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2Z" />
                     <path d="M19 14l.9 2.6L22.5 17l-2.6.9L19 20.5l-.9-2.6-2.6-.9 2.6-.9L19 14Z" />
@@ -469,9 +445,9 @@ const pillBase =
   </section>
 
   <!-- Bandeau d'appel à l'action -->
-  <section class="bg-neutral-50 pb-14 lg:pb-20">
+  <section class="bg-ivoire pb-14 lg:pb-20">
     <div class="container-site">
-      <div class="relative overflow-hidden bg-neutral-100 border border-solid border-bordure rounded-2xl p-8 lg:p-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+      <div class="relative overflow-hidden bg-beige border border-solid border-contour rounded-lg p-8 lg:p-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
         <div class="relative max-w-[672px] flex flex-col gap-4">
           <h2 class="m-0 text-base leading-6 font-normal text-nuit">{r.cta.title}</h2>
           <p class="m-0 max-w-none text-lg leading-[28px] text-on-surface-variant" set:html={inlineHtml(r.cta.text)} />

@@ -1867,12 +1867,10 @@ collections_config:
         comment: >-
           Suite du titre affichée en bleu sur la ligne suivante (ex. «
           expertises TI »). Vide = titre d'un seul tenant.
-      subscribeLabel:
-        type: text
-        options:
-          empty_type: string
-        label: Bouton « S'abonner à l'infolettre »
-        comment: Le bouton du héros — il mène à la carte infolettre de la page.
+      # RETIRÉS le 2026-09-21 avec l'ancien héros du centre de ressources :
+      # `subscribeLabel` (bouton « S'abonner à l'infolettre »), `expertCard`
+      # (carte vitrée décorative) et son `subtitle` — le contenu et le schéma
+      # ne les portent plus.
       searchPlaceholder:
         type: text
         options:
@@ -1890,15 +1888,6 @@ collections_config:
           empty_type: string
         label: Signature de l'article vedette
         comment: Ex. « Par Victrix Expertise ». Vide = pas de signature.
-      expertCard:
-        type: object
-        label: Carte décorative du héros
-        comment: La carte vitrée à droite du héros (ex. « 500+ Experts »).
-      subtitle:
-        type: text
-        options:
-          empty_type: string
-        label: Sous-titre
       newsletter:
         type: object
         label: Carte infolettre
@@ -2594,6 +2583,55 @@ _select_data:
       libelle: Pierre (grège soutenu)
       couleur: '#dcd5cc'
       apercu: /images/cms/fonds/pierre.svg
+  # Palette ÉTENDUE (2026-09-21) : les 10 fonds clairs + les fonds SOMBRES.
+  # Réservée aux sections qui inversent leurs textes (texte enrichi, encadré,
+  # chiffres, bandeau de logos, FAQ) — voir FOND_KEYS_SOMBRES dans
+  # component-library/src/shared/fonds.ts. Même ordre que FOND_KEYS_ETENDUS.
+  fonds_etendus:
+    - cle: blanc
+      libelle: Blanc
+      couleur: '#ffffff'
+      apercu: /images/cms/fonds/blanc.svg
+    - cle: givre
+      libelle: Givre (gris très pâle)
+      couleur: '#f9fafb'
+      apercu: /images/cms/fonds/givre.svg
+    - cle: perle
+      libelle: Perle (gris pâle)
+      couleur: '#f3f4f7'
+      apercu: /images/cms/fonds/perle.svg
+    - cle: brume
+      libelle: Brume (gris clair)
+      couleur: '#e5e7eb'
+      apercu: /images/cms/fonds/brume.svg
+    - cle: bleu-pale
+      libelle: Bleu pâle
+      couleur: '#f2f5fd'
+      apercu: /images/cms/fonds/bleu-pale.svg
+    - cle: bleu-clair
+      libelle: Bleu clair
+      couleur: '#dfe7fb'
+      apercu: /images/cms/fonds/bleu-clair.svg
+    - cle: ivoire
+      libelle: Ivoire (chaud)
+      couleur: '#fcf9f5'
+      apercu: /images/cms/fonds/ivoire.svg
+    - cle: beige
+      libelle: Beige (gris chaud)
+      couleur: '#f6f3ef'
+      apercu: /images/cms/fonds/beige.svg
+    - cle: sable
+      libelle: Sable (grège)
+      couleur: '#e9e2d9'
+      apercu: /images/cms/fonds/sable.svg
+    - cle: pierre
+      libelle: Pierre (grège soutenu)
+      couleur: '#dcd5cc'
+      apercu: /images/cms/fonds/pierre.svg
+    - cle: bleu-electrique
+      libelle: Bleu électrique (texte blanc)
+      couleur: '#1a5bff'
+      apercu: /images/cms/fonds/bleu-electrique.svg
   # Préremplissage du formulaire Contact (2026-09-17) — clés neutres, libellés
   # résolus par langue dans src/lib/contact/presets.ts (test : chaque clé
   # existe dans les options réelles de la page Contact fr/en).

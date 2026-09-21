@@ -109,6 +109,14 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
    du temps », le fond peut rester vide : il suit alors le champ « Ton ».
    Seuls les héros (photo plein cadre), le bandeau défilant (sombre) et le
    catalogue de solutions n’en ont pas.
+   **Bleu électrique (21 sept. 2026)** : une onzième pastille, le bleu vif de
+   la marque, s’ajoute — mais **seulement dans cinq sections** : texte enrichi,
+   encadré, chiffres, bandeau de logos et FAQ. C’est un fond SOMBRE : ces cinq
+   sections passent alors leurs titres et leurs textes en blanc toutes seules
+   (les cartes, tuiles et panneaux posés dessus restent clairs). Les autres
+   sections ne l’offrent pas, faute de savoir inverser leurs textes — demander
+   à l’équipe technique pour en ajouter une. À utiliser comme un accent : une
+   section bleue dans une page, pas trois.
    **Colonnes de technologies — lien du titre (facultatif)** : chaque colonne a
    un champ « Lien du titre ». Rempli (adresse complète, ex.
    `/fr/services/approvisionnement-ti/cisco/`), le titre devient un lien avec
@@ -411,6 +419,25 @@ puce plus bas).
   la page Contact avec ce sujet déjà choisi (le changer ou le vider ici
   suffit). Les fonds gris des sections (carte distinction, témoignages) sont
   des « Fond de section » de la palette — modifiables, comme partout.
+
+**Accueil, « Nos services » — un lien visible sur CHAQUE tuile (21 sept.
+2026).** Les tuiles en peau « image » (Cybersécurité, Infonuagique) affichent
+désormais le même lien que les autres (« Découvrez le service → ») : il vient
+du champ **« Libellé du bouton des cartes »** de la section, ou du champ
+**« Libellé du lien (surcharge) »** de la tuile quand il est rempli. Comme
+avant, toute la tuile reste cliquable.
+
+**Centre de ressources — en-tête allégé (21 sept. 2026).** La page
+`/ressources` n'a plus de grande bannière : il reste le titre (dont la fin
+passe en bleu) et le chapeau, sur le fond ivoire, puis les filtres et la
+grille d'articles. Deux champs ont disparu de « Pages système → Centre de
+ressources » parce que plus rien ne les affichait : le bouton **« S'abonner à
+l'infolettre »** (l'inscription se fait dans la carte infolettre de la grille,
+toujours là) et la **carte décorative** (« 500+ Experts »). Le reste — titre,
+fin de titre en bleu, chapeau, recherche, carte infolettre, bandeau d'appel à
+l'action — s'édite comme avant. Les gris froids de la page ont été remplacés
+par les fonds chauds de la charte (ivoire, beige) et les cadres par le
+contour standard.
 
 **Bannière de l'accueil — « Photo de fond » (corrigé le 21 sept. 2026).**
 Jusqu'à cette date, une photo téléversée sur la bannière de l'accueil (ou sur

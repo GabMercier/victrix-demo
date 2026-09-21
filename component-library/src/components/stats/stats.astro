@@ -1,5 +1,5 @@
 ---
-import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { FOND_CLASSES, estFondSombre, type FondEtenduKey } from '../../shared/fonds';
 import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
  * Section « Victrix en chiffres » — composant Bookshop (palette partagée).
@@ -44,12 +44,15 @@ interface StatItem {
 interface Props {
   title?: string;
   style?: 'bande' | 'carte';
-  fond?: FondKey;
+  fond?: FondEtenduKey;
   items: StatItem[];
 }
 
 const { title = '', style = 'bande', fond = 'beige', items = [] } = Astro.props;
 const carte = style === 'carte';
+// Fond SOMBRE (« bleu électrique », 2026-09-21) : seul le titre de section
+// s'inverse — les tuiles et la carte restent blanches sur l'aplat.
+const sombre = estFondSombre(fond);
 
 // « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
 // de la palette officielle (aucune couleur libre — esprit P-16). Défaut =
@@ -90,7 +93,12 @@ const FONDS: Record<string, string> = FOND_CLASSES;
           })}
         </ul>
         {title !== '' && (
-          <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
+          <h2
+            class:list={[
+              'text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] m-0 text-center',
+              sombre ? 'text-white' : 'text-on-surface',
+            ]}
+          >
             {title}
           </h2>
         )}
@@ -100,7 +108,12 @@ const FONDS: Record<string, string> = FOND_CLASSES;
     <section class:list={['py-20', FONDS[fond] ?? FONDS.givre]}>
       <div class="container-site flex flex-col gap-12">
         {title !== '' && (
-          <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
+          <h2
+            class:list={[
+              'text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] m-0 text-center',
+              sombre ? 'text-white' : 'text-on-surface',
+            ]}
+          >
             {title}
           </h2>
         )}

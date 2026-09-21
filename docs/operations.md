@@ -70,6 +70,15 @@ composant qui passe `npm run build` mais casse le build CloudCannon (§8 :
 balise script ouvrante écrite dans un commentaire) est attrapé ici, avant le
 push.
 
+`cms:previews:check` — depuis le 2026-09-21, il compare DEUX listes de fonds :
+`_select_data.fonds` (les 10 fonds clairs, offerts partout) et
+`_select_data.fonds_etendus` (les mêmes + les fonds SOMBRES de
+`FOND_KEYS_SOMBRES`, réservés aux sections qui inversent leurs textes :
+rich-text, callout, stats, logo-banner, faq). Ajouter un fond sombre = une clé
+dans `FOND_KEYS_SOMBRES` + sa classe et sa pastille dans `fonds.ts`, une entrée
+en fin de `fonds_etendus`, `npm run cms:previews`, et l'inversion des textes
+dans les composants qui l'offrent (`estFondSombre`).
+
 `cms:previews:check` (2026-09-17) vérifie que les pastilles de la palette
 « Fond de section » et les vignettes d'icônes de l'éditeur
 (`public/images/cms/`) sont à jour et que les listes `_select_data` de

@@ -35,6 +35,9 @@ puis **`docs/plan-livraison-finale.md`** (lots restants, un prompt par lot).
    fermée (fonds, icônes, sujets de contact) a UNE source dans
    `component-library/src/shared/` ou `src/lib/` + un `_select_data` aligné
    dans `cloudcannon.config.yml`, avec un garde-fou qui compare les deux.
+   Fonds : DEUX listes — `fonds` (10 clairs, toutes les sections) et
+   `fonds_etendus` (+ les sombres, seulement les 5 sections qui inversent
+   leurs textes : rich-text, callout, stats, logo-banner, faq).
 6. **Composants Bookshop** : 100 % utilitaires Tailwind, zéro CSS scopé, aucun
    `<script>` ni import non « browser-safe » ; couleurs = jetons de
    `src/styles/theme.css` (bordure de carte = `border-contour`, rayon 8) ;

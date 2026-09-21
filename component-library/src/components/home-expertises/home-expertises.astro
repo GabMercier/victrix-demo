@@ -8,7 +8,8 @@ import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
  * grille 3 colonnes × N rangées de cartes 300px rayon 4, QUATRE PEAUX par
  * carte (`items[].variant`) —
  *  - image  : photo + fond navy (mix-blend overlay 60 %), titre 30/700 blanc
- *             ancré en bas ;
+ *             ancré en bas + CTA blanc (2026-09-21 : la tuile n'affichait
+ *             aucun libellé, seule la carte était cliquable) ;
  *  - claire : carte services export2 — blanche bordée neutral-200, ombre
  *             ambiante, icône bleue 32, titre 20/700 neutral-900, texte 14
  *             neutral-600, lien « En voir plus » 14/600 bleu + flèche ;
@@ -106,13 +107,18 @@ const watermarkBase =
           return (
             <li class:list={['m-0', item.wide && 'md:col-span-2']}>
               {variant === 'image' ? (
-                <a
+                /* CTA VISIBLE (2026-09-21, demande Gabriel) : la peau « image »
+                   n'affichait aucun libellé — seule la carte entière était
+                   cliquable, donc Cybersécurité et Infonuagique n'avaient pas
+                   de « Découvrez le service » alors que les autres tuiles en
+                   avaient un. La carte reste cliquable en entier (lien étiré
+                   `after:inset-0` du CTA), comme les peaux bleue et nuit. */
+                <div
                   class:list={[
                     cardBase,
-                    'justify-end p-8 no-underline isolate',
+                    'justify-end p-8 isolate',
                     item.image ? 'bg-on-primary-fixed' : 'bg-beige',
                   ]}
-                  href={item.href}
                 >
                   {item.image ? (
                     <img
@@ -144,7 +150,24 @@ const watermarkBase =
                       set:html={inlineHtml(item.description)}
                     />
                   )}
-                </a>
+                  <a
+                    class:list={[linkBase, 'mt-4', item.image ? 'text-white' : 'text-primary']}
+                    href={item.href}
+                  >
+                    {label}
+                    <svg
+                      class="transition-transform duration-200 group-hover:translate-x-0.5"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d={arrow} stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                </div>
               ) : variant === 'bleue' ? (
                 <div class:list={[cardBase, 'justify-between p-10 bg-primary isolate']}>
                   <span class:list={[watermarkBase, 'text-white/10']} aria-hidden="true">

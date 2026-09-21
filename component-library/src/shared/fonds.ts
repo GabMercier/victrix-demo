@@ -29,6 +29,15 @@
  * les sections déjà posées suivent ; sable/pierre restent des accents plus
  * soutenus. Ce fichier est browser-safe
  * (aucune dépendance) : il est aussi compilé dans le bundle d'édition live.
+ *
+ * FONDS SOMBRES (2026-09-21, demande Gabriel) : « bleu électrique » = l'aplat
+ * Bleu Victrix (#1a5bff, le même que la tuile « IA et automatisation » et que
+ * le CTA `variant: primaire`). Un fond sombre EXIGE que le composant inverse
+ * ses textes — il n'est donc offert QUE dans les sections qui savent le faire
+ * (`_select_data.fonds_etendus` : texte enrichi, encadré, chiffres, bandeau
+ * de logos, FAQ). Les autres sections gardent `_select_data.fonds`, la palette
+ * claire. Le garde-fou de scripts/design/generate-cms-previews.mjs compare les
+ * DEUX listes à ce fichier.
  */
 
 /** Clés fermées, dans l'ORDRE d'affichage du sélecteur (blancs/gris, bleus, chauds). */
@@ -47,8 +56,26 @@ export const FOND_KEYS = [
 
 export type FondKey = (typeof FOND_KEYS)[number];
 
+/**
+ * Fonds SOMBRES — texte INVERSÉ par le composant (voir `estFondSombre`).
+ * Réservés aux sections qui gèrent l'inversion ; jamais dans `FOND_KEYS`.
+ */
+export const FOND_KEYS_SOMBRES = ['bleu-electrique'] as const;
+
+export type FondSombreKey = (typeof FOND_KEYS_SOMBRES)[number];
+
+/** Palette claire + fonds sombres — l'ordre du sélecteur « étendu ». */
+export const FOND_KEYS_ETENDUS = [...FOND_KEYS, ...FOND_KEYS_SOMBRES] as const;
+
+export type FondEtenduKey = FondKey | FondSombreKey;
+
+/** Vrai si la clé demande des textes clairs (repli : fond clair). */
+export function estFondSombre(fond?: string | null): boolean {
+  return (FOND_KEYS_SOMBRES as readonly string[]).includes(fond ?? '');
+}
+
 /** Clé → utilitaire Tailwind (classes LITTÉRALES : le JIT ne voit que ce qui est écrit). */
-export const FOND_CLASSES: Record<FondKey, string> = {
+export const FOND_CLASSES: Record<FondEtenduKey, string> = {
   blanc: 'bg-white',
   givre: 'bg-givre',
   perle: 'bg-neutral-100',
@@ -59,6 +86,7 @@ export const FOND_CLASSES: Record<FondKey, string> = {
   beige: 'bg-beige',
   sable: 'bg-sable',
   pierre: 'bg-pierre',
+  'bleu-electrique': 'bg-primary',
 };
 
 /**
@@ -66,7 +94,7 @@ export const FOND_CLASSES: Record<FondKey, string> = {
  * Sert aux pastilles de l'éditeur et à la documentation, PAS au rendu (le
  * rendu passe par les classes ci-dessus, donc par les jetons CSS).
  */
-export const FOND_SWATCHES: Record<FondKey, { libelle: string; couleur: string }> = {
+export const FOND_SWATCHES: Record<FondEtenduKey, { libelle: string; couleur: string }> = {
   blanc: { libelle: 'Blanc', couleur: '#ffffff' },
   givre: { libelle: 'Givre (gris très pâle)', couleur: '#f9fafb' },
   perle: { libelle: 'Perle (gris pâle)', couleur: '#f3f4f7' },
@@ -77,4 +105,5 @@ export const FOND_SWATCHES: Record<FondKey, { libelle: string; couleur: string }
   beige: { libelle: 'Beige (gris chaud)', couleur: '#f6f3ef' },
   sable: { libelle: 'Sable (grège)', couleur: '#e9e2d9' },
   pierre: { libelle: 'Pierre (grège soutenu)', couleur: '#dcd5cc' },
+  'bleu-electrique': { libelle: 'Bleu électrique (texte blanc)', couleur: '#1a5bff' },
 };

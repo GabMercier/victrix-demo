@@ -1,5 +1,5 @@
 ---
-import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { FOND_CLASSES, estFondSombre, type FondEtenduKey } from '../../shared/fonds';
 import { blockHtml } from '../../shared/rich';
 /**
  * Section « Texte enrichi » — composant Bookshop (P-07).
@@ -19,11 +19,16 @@ import { blockHtml } from '../../shared/rich';
  */
 interface Props {
   title?: string;
-  fond?: FondKey;
+  fond?: FondEtenduKey;
   paragraphs: string[];
 }
 
 const { title, fond = 'ivoire', paragraphs = [] } = Astro.props;
+
+// Fond SOMBRE (« bleu électrique », 2026-09-21) : la section inverse ses
+// textes — titre et gras en blanc, corps en blanc 90 %, liens hérités (le
+// `.rich a` global est en `color: inherit`, seul le survol est forcé).
+const sombre = estFondSombre(fond);
 
 // « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
 // de la palette officielle (aucune couleur libre — esprit P-16). Défaut =
@@ -35,7 +40,12 @@ const FONDS: Record<string, string> = FOND_CLASSES;
   <div class="w-full max-w-[820px] mx-auto px-4 md:px-8 flex flex-col gap-4">
     {
       title && (
-        <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-center text-balance">
+        <h2
+          class:list={[
+            'text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] m-0 text-center text-balance',
+            sombre ? 'text-white' : 'text-on-surface',
+          ]}
+        >
           {title}
         </h2>
       )
@@ -43,7 +53,12 @@ const FONDS: Record<string, string> = FOND_CLASSES;
     {
       paragraphs.map((p) => (
         <div
-          class="rich text-lg leading-[29px] text-on-surface-variant max-w-none pt-2 [&_strong]:text-on-surface"
+          class:list={[
+            'rich text-lg leading-[29px] max-w-none pt-2',
+            sombre
+              ? 'text-white/90 [&_strong]:text-white [&_a:hover]:text-white'
+              : 'text-on-surface-variant [&_strong]:text-on-surface',
+          ]}
           set:html={blockHtml(p)}
         />
       ))

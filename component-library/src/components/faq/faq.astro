@@ -1,5 +1,5 @@
 ---
-import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { FOND_CLASSES, estFondSombre, type FondEtenduKey } from '../../shared/fonds';
 import { blockHtml } from '../../shared/rich';
 /**
  * Section « FAQ » — composant Bookshop (contrat landing GELÉ).
@@ -47,11 +47,14 @@ interface FaqItem {
 
 interface Props {
   title: string;
-  fond?: FondKey;
+  fond?: FondEtenduKey;
   items: FaqItem[];
 }
 
 const { title, fond = 'ivoire', items = [] } = Astro.props;
+// Fond SOMBRE (« bleu électrique », 2026-09-21) : seul le titre de section
+// s'inverse — les questions restent des cartes blanches bordées.
+const sombre = estFondSombre(fond);
 
 // « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
 // de la palette officielle (aucune couleur libre — esprit P-16). Défaut =
@@ -78,7 +81,12 @@ const faqSchema = {
 
 <section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
   <div class="container-site">
-    <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
+    <h2
+      class:list={[
+        'text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] m-0 text-center',
+        sombre ? 'text-white' : 'text-on-surface',
+      ]}
+    >
       {title}
     </h2>
     <div class="flex flex-col gap-3 max-w-[760px] mx-auto mt-12">
