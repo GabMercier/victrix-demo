@@ -1,7 +1,10 @@
 {
+  "_schema": "default",
   "title": "Intelligence artificielle",
-  "description": "Services-conseils et d’intégration en intelligence artificielle adaptés à votre organisation : stratégie, agents sur mesure, adoption sécurisée de l’IA générative.",
+  "description": "Nos services en intelligence artificielle soutiennent votre entreprise dans le choix, l’intégration et l’adoption de solutions IA adaptées à vos enjeux d’affaires.",
   "noindex": false,
+  "slug": "",
+  "seoTitle": "Intelligence artificielle | Services | Victrix",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -10,19 +13,26 @@
       "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Intelligence artificielle",
+      "eyebrowStyle": "texte",
       "titleAccent": "Services-conseils et d’intégration en IA",
       "title": "adaptés à votre organisation",
-      "lead": "Adoptez l’intelligence artificielle de façon sécuritaire et responsable, avec une approche qui intègre les personnes, les processus et la gestion du changement à chaque étape. Profitez de l’accompagnement de nos conseillers pour sélectionner et adopter des solutions d’IA qui répondent à vos défis. Grâce à notre expertise multitechnologique, nous assurons une <strong>mise en œuvre et une adoption réussies</strong>, alignées sur vos objectifs d’affaires.",
-      "ctaLabel": "Parler à un expert en IA",
+      "titleHighlight": "",
+      "lead": "Adoptez l’intelligence artificielle de façon sécuritaire et responsable, avec une approche qui intègre l'humain, vos processus et la gestion du changement à chaque étape. Profitez de l’accompagnement par nos consultants en IA pour sélectionner et adopter des solutions d’IA qui répondent à vos défis. Grâce à notre expertise multitechnologique, nous assurons une <strong>mise en œuvre et une adoption réussies</strong>, alignées sur vos objectifs d’affaires.",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/images/sections/intelligence-artificielle-hero.png",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
-      "sectionTitle": "Mettez l’IA au service des entreprises et des organisations publiques",
+      "sectionTitle": "L'intelligence artificielle au service des entreprises et des organisations publiques",
       "headingStyle": "plain",
+      "intro": "",
       "leadCard": {
         "title": "Avec Victrix, passez de la stratégie à l’adoption",
         "text": "Nos conseillers en intelligence artificielle peuvent intervenir à différentes étapes, selon votre niveau de maturité ou d’adoption de l’IA. Voici ce que couvrent nos interventions et services en IA."
@@ -33,18 +43,31 @@
       "items": [
         {
           "number": "01",
-          "title": "Exploration et analyse des opportunités",
-          "text": "Repérez et priorisez les cas d’usage les plus prometteurs, puis élaborez une feuille de route claire pour lancer vos premières initiatives concrètes en IA."
+          "title": "Accompagnement stratégique et appliqué en IA",
+          "text": "<p>Bâtissez des fondations solides pour faire évoluer votre organisation en IA. Nous partons de vos besoins d'affaires réels, priorisons les initiatives à forte valeur et les menons au succès grâce à nos expertises clés.</p>",
+          "ctaLabel": "Découvrez le service",
+          "ctaHref": "/services/intelligence-artificielle/accompagnement/"
         },
         {
           "number": "02",
-          "title": "Développement d’agents et de solutions d’IA sur mesure",
-          "text": "Concevez et déployez des solutions précises pour automatiser ou optimiser vos processus prioritaires, avec un accompagnement complet, du prototype au déploiement."
+          "title": "Exploration et analyse des opportunités",
+          "text": "Repérez et priorisez les cas d’usage les plus prometteurs, puis élaborez une feuille de route claire pour lancer vos premières initiatives concrètes en IA.",
+          "ctaLabel": "Découvrez le service",
+          "ctaHref": "/services/intelligence-artificielle/analyse-opportunites-ia/"
         },
         {
           "number": "03",
+          "title": "Développement d’agents et de solutions d’IA sur mesure",
+          "text": "Concevez et déployez des solutions précises pour automatiser ou optimiser vos processus prioritaires, avec un accompagnement complet, du prototype au déploiement.",
+          "ctaLabel": "",
+          "ctaHref": ""
+        },
+        {
+          "number": "04",
           "title": "Adoption sécurisée de l’IA générative",
-          "text": "Structurez l’adoption de l’IA générative dans votre organisation grâce à un plan solide, du soutien aux utilisateurs et des formations ciblées, en mettant de l’avant les bonnes pratiques."
+          "text": "Structurez l’adoption de l’IA générative dans votre organisation grâce à un plan solide, du soutien aux utilisateurs et des formations ciblées, en mettant de l’avant les meilleures pratiques.",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
       ]
     },
@@ -53,7 +76,11 @@
       "type": "numbered-cards",
       "sectionTitle": "Comment Victrix travaille avec vos équipes pour une adoption fluide et sécuritaire de l’IA",
       "headingStyle": "underline",
-      "intro": "Que vous ayez un projet ciblé ou une initiative d’envergure, nous collaborons avec vos équipes pour <strong>évaluer les besoins</strong>, <strong>définir les objectifs</strong> et <strong>respecter vos échéances</strong>. Notre approche collaborative assure une adoption fluide et sécuritaire de l’IA, tout en maximisant la valeur pour votre organisation.",
+      "intro": "Que vous ayez un projet ciblé ou une initiative d’envergure, nous collaborons avec vos équipes pour <strong>évaluer les besoins</strong>, <strong>définir les objectifs</strong> et <strong>respecter vos échéanciers</strong>. Notre approche collaborative assure une adoption fluide et sécuritaire de l’IA, tout en maximisant la valeur pour votre organisation.",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "tint",
       "columns": "2",
       "cardStyle": "center",
@@ -77,9 +104,9 @@
     {
       "_bookshop_name": "callout",
       "type": "callout",
-      "title": "Des questions sur un projet en intelligence artificielle ?",
+      "title": "Des questions sur un projet en intelligence artificielle?",
       "body": "Nos experts vous accompagnent à chaque étape pour assurer le succès de tous vos projets d’IA.",
-      "ctaLabel": "Consulter un spécialiste",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "layout": "box"
     },
@@ -87,7 +114,7 @@
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Expertise en intelligence artificielle",
-      "subtitle": "Nos domaines d’expertise en IA",
+      "subtitle": "Nos champs d'action en IA",
       "fond": "givre",
       "boxes": [
         "Agents personnalisés et interconnectés pour des processus standardisés",
@@ -109,7 +136,11 @@
             "Llama",
             "Claude",
             "Gemini"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Agents intégrés",
@@ -118,7 +149,11 @@
             "Copilot (Dynamics 365)",
             "ChatGPT",
             "NowAssist (ServiceNow)"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Technologies et environnements de développement",
@@ -142,9 +177,9 @@
     {
       "_bookshop_name": "callout",
       "type": "callout",
-      "title": "Prêt à démarrer votre projet d’intelligence artificielle ?",
+      "title": "Prêts à démarrer votre projet d’intelligence artificielle ?",
       "body": "",
-      "ctaLabel": "Consulter nos experts",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "layout": "box"
     },
@@ -153,6 +188,11 @@
       "type": "numbered-cards",
       "sectionTitle": "Interventions structurées et ciblées, soutenues par un bassin diversifié d’experts en IA",
       "headingStyle": "underline",
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "tint",
       "columns": "2",
       "cardStyle": "center",
@@ -160,22 +200,30 @@
         {
           "number": "01",
           "title": "Consultation stratégique",
-          "text": "Des conseillers d’expérience issus de notre équipe, de notre écosystème mondial et de nos partenaires spécialisés en IA."
+          "text": "Des conseillers d’expérience issus de notre équipe, de notre écosystème mondial et de nos partenaires spécialisés en IA.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
           "title": "Architecture technologique et d’affaires",
-          "text": "Des ingénieurs séniors reconnus comme experts en IA par nos clients."
+          "text": "Des ingénieurs séniors reconnus comme experts en IA par nos clients.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
           "title": "Expertise des solutions",
-          "text": "Des spécialistes capables d’intervenir en cybersécurité, en ERP/CRM, en gestion des données et en moteurs de recherche intelligents."
+          "text": "Des spécialistes capables d’intervenir en cybersécurité, en ERP/CRM, en gestion des données et en moteurs de recherche intelligents.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "04",
           "title": "Analyse, développement et gestion du changement",
-          "text": "Des experts qui vous accompagnent en analyse, en développement et en gestion du changement, forts d’une expérience concrète en projets d’IA et en preuves de concept."
+          "text": "Des experts qui vous accompagnent en analyse, en développement et en gestion du changement, forts d’une expérience concrète en projets d’IA et en preuves de concept.",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
       ]
     },
@@ -185,16 +233,16 @@
       "title": "Victrix accélère l’adoption de l’IA dans votre organisation",
       "fond": "blanc",
       "paragraphs": [
-        "Porté par un <strong>écosystème d’expertise</strong> qui englobe la technologie, la gouvernance des données, la cybersécurité et les services gérés, Victrix est votre partenaire stratégique pour la gestion de vos projets d’IA.",
-        "Notre accompagnement en intelligence artificielle simplifie le déploiement, la stratégie et votre <strong>feuille de route en IA</strong>, peu importe votre niveau de maturité."
+        "Porté par un <strong>écosystème d’expertise</strong> qui englobe la technologie, la gouvernance des données, la <a href=\"/fr/services/cybersecurite/\" target=\"_blank\" rel=\"noopener\">cybersécurité</a> et les <a href=\"/fr/services/services-ti-geres/\" target=\"_blank\" rel=\"noopener\">services gérés</a>, Victrix est votre partenaire stratégique pour la gestion de vos projets d’IA.",
+        "Notre accompagnement en intelligence artificielle simplifie le déploiement, la stratégie et votre <strong>feuille de route en IA</strong>, quel que soit votre niveau de maturité."
       ]
     },
     {
       "_bookshop_name": "callout",
       "type": "callout",
-      "title": "Rencontrez nos conseillers en IA",
-      "body": "Profitez de l’expertise de nos spécialistes en intelligence artificielle pour ajouter une réelle valeur à vos processus et accélérer l’atteinte de vos objectifs.",
-      "ctaLabel": "Adoptez l’IA avec Victrix",
+      "title": "Adoptez l'IA avec Victrix",
+      "body": "<p>Profitez de l’expertise de nos spécialistes en intelligence artificielle pour ajouter une réelle valeur à vos processus et accélérer l’atteinte de vos objectifs.</p>",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "layout": "banner-green"
     },
