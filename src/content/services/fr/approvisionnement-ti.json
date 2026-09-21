@@ -20,8 +20,12 @@
       "lead": "Victrix offre des services d’achat et d’approvisionnement informatique fiables et conformes, en partenariat avec les plus grands éditeurs et fabricants mondiaux. Nos experts vous accompagnent dans la sélection, l’intégration et la gestion continue de vos équipements informatiques, ainsi que le renouvellement de vos licences.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2025/03/linkedin-carre-24.png",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
@@ -39,8 +43,8 @@
         "icon": "bouclier",
         "title": "Un processus simple, sécurisé, adapté a vos besoins TI réels",
         "text": "Nos experts évaluent vos besoins, comparent les offres du marché et recommandent l'acquisition du matériel informatique qui s'aligne parfaitement avec vos priorités de performances et de sécurité.",
-        "linkLabel": null,
-        "linkHref": null
+        "linkLabel": "Planifiez une consultation",
+        "linkHref": "/fr/contact/"
       }
     },
     {
@@ -134,7 +138,11 @@
             "Renseignement sur les menaces (Threat Intelligence)",
             "Surveillance du Dark Web",
             "Priorisation du risque et remédiation automatisée"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "CrowdStrike",
@@ -146,7 +154,11 @@
             "Gestion des identités",
             "Gestion des journaux et observabilité",
             "Surveillance, détection et réponse gérées"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Palo Alto Networks",
@@ -158,7 +170,11 @@
             "Architecture zéro confiance (Zero Trust)",
             "Automatisation de la détection et de la réponse",
             "Renseignement sur les menaces (Threat Intelligence)"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Zscaler",
@@ -170,7 +186,11 @@
             "Protection des données, gestion des risques et conformité",
             "Défense contre les menaces",
             "Surveillance et diagnostic de l’expérience utilisateur"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Microsoft",
@@ -181,7 +201,11 @@
             "Microsoft Sentinel",
             "Microsoft Entra ID",
             "Microsoft Purview"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         }
       ]
     },
@@ -200,7 +224,11 @@
             "Services infonuagiques, centres de données et virtualisation",
             "Communications unifiées",
             "Observabilité"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "HPE Networking",
@@ -213,7 +241,11 @@
             "Sécurité réseau et politiques d’accès",
             "Architecture zéro confiance (Zero Trust)",
             "Opérations, assistance et assurance réseau pilotée par l’IA"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         }
       ]
     },
@@ -234,7 +266,11 @@
             "Copilot pour M365",
             "Copilot Studio",
             "Sécurité : Microsoft 365 E5 Security, Microsoft Defender, Microsoft Sentinel, Microsoft Entra ID et Microsoft Purview"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "ServiceNow",
@@ -248,7 +284,11 @@
             "Gestion des opérations de sécurité (SecOps)",
             "Gouvernance, risques et conformité (GRC)",
             "Gestion des interventions sur le terrain (FSM)"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Dell Technologies",
@@ -260,7 +300,11 @@
             "Hyperconvergence et virtualisation",
             "Postes de travail (ordinateurs portables et de bureau, tablettes, moniteurs professionnels et autres accessoires)",
             "Initiatives liées à l’intelligence artificielle"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         }
       ]
     },
@@ -268,6 +312,7 @@
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Victrix : votre partenaire de confiance ",
+      "fond": "",
       "paragraphs": [
         "Nous nous appuyons sur des partenariats solides avec les principaux éditeurs et fabricants mondiaux. Nos certifications et notre expérience multisectorielle nous permettent de <strong>vous conseiller</strong> et de <strong>garantir la conformité</strong>, la <strong>sécurité</strong> et la <strong>performance</strong> de vos environnements informatiques.",
         "Nous offrons un accompagnement personnalisé de la planification à la production, y compris la gestion et le renouvellement des licences."
@@ -296,8 +341,7 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": "",
-      "fond": ""
+      "cardText": ""
     },
     {
       "_bookshop_name": "cta",

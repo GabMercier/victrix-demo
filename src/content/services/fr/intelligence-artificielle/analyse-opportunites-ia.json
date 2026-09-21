@@ -4,7 +4,7 @@
   "description": "Victrix est votre partenaire stratégique pour l’analyse des opportunités IA, l’identification de cas d’usage à fort impact et une adoption sécuritaire et rentable.",
   "noindex": false,
   "slug": "",
-  "seoTitle": "Exploration et analyse des opportunités en IA",
+  "seoTitle": "Analyse des opportunités en IA | Services | Victrix",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -13,14 +13,19 @@
       "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Analyse des opportunités en intelligence artificielle",
       "titleHighlight": "opportunités",
       "lead": "Exploitez vos données et optimisez vos processus pour une adoption de l’IA sécuritaire, rentable et parfaitement adaptée à vos objectifs d’affaires.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2025/10/freepik__adjust__18305-1.png",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
@@ -38,7 +43,7 @@
         "icon": "etoile",
         "title": "Vous vous demandez comment commencer à utiliser l’IA?",
         "text": "Nos experts vous accompagnent à chaque étape pour assurer le succès de tous vos projets de transformation numérique avec l’IA.",
-        "linkLabel": "Consultez un spécialiste",
+        "linkLabel": "Planifiez une consultation",
         "linkHref": "/fr/contact"
       }
     },
@@ -62,7 +67,11 @@
       "fond": "",
       "sectionTitle": "Les étapes clés de notre démarche",
       "headingStyle": "plain",
-      "intro": "Notre intervention d’analyse des opportunités en IA se déroule en quatre étapes claires.",
+      "intro": "Notre service d’analyse des opportunités en IA se déroule en quatre étapes claires.",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "default",
       "columns": "2",
       "cardStyle": "default",
@@ -70,22 +79,30 @@
         {
           "number": "01",
           "title": "Démarrage",
-          "text": "Définition de la vision et mobilisation des parties prenantes."
+          "text": "Définition de la vision et mobilisation des parties prenantes.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
           "title": "Diagnostic",
-          "text": "Analyse de l’état actuel et exploration des cas d’usage en IA."
+          "text": "Analyse de l’état actuel et exploration des cas d’usage en IA.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
           "title": "Évaluation",
-          "text": "Analyse des opportunités, mesure de la valeur, de la faisabilité et des risques."
+          "text": "Analyse des opportunités, mesure de la valeur, de la faisabilité et des risques.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "04",
           "title": "Feuille de route",
-          "text": "Priorisation des projets et plan d’adoption structuré."
+          "text": "Priorisation des projets et plan d’adoption structuré.",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
       ]
     },
@@ -93,36 +110,36 @@
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Les avantages concrets pour votre organisation",
+      "fond": "",
       "paragraphs": [
         "Avec <strong>Victrix comme partenaire stratégique</strong>, vous alliez expertise technologique et accompagnement sur mesure afin d’optimiser la valeur de l’intelligence artificielle au sein de votre organisation.",
-        "Victrix vous accompagne pour clarifier vos priorités, identifier les cas d’usage IA les plus porteurs et élaborer une feuille de route stratégique pour une adoption de l’intelligence artificielle sécuritaire et rentable."
+        "Nos <a href=\"/fr/services/intelligence-artificielle/\">consultants en intelligence artificielle</a> vous accompagnent pour clarifier vos priorités, identifier les cas d’usage IA les plus porteurs et élaborer une feuille de route stratégique pour une adoption de l’intelligence artificielle sécuritaire et rentable."
       ],
       "image": "",
       "imageAlt": "",
       "stats": [
         {
-          "value": "Impact",
+          "value": "Impact rapide",
           "label": "Retour sur investissement maximisé"
         },
         {
-          "value": "Vision",
+          "value": "Vision claire",
           "label": "Alignement stratégique renforcé"
         },
         {
-          "value": "Risques",
-          "label": "Réduction des risques, adoption facilitée"
+          "value": "Risques réduits",
+          "label": "Adoption facilitée"
         },
         {
-          "value": "Expertise",
-          "label": "Multidisciplinaire, pour guider vos projets"
+          "value": "Expertise multidisciplinaire",
+          "label": "Pour guider vos projets"
         }
       ],
       "variant": "produit",
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": "",
-      "fond": ""
+      "cardText": ""
     },
     {
       "_bookshop_name": "related-posts",
@@ -139,7 +156,7 @@
       "_bookshop_name": "cta",
       "type": "cta",
       "title": "Passez à l’action avec Victrix",
-      "body": "Contactez-nous pour démarrer votre exploration IA et bâtir une feuille de route claire pour vos projets.",
+      "body": "Transformez vos idées en projets concrets et mesurables, portés par une gouvernance solide. Contactez-nous pour démarrer votre exploration IA et bâtir une feuille de route claire pour vos projets.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
