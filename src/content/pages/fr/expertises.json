@@ -34,6 +34,7 @@
       "intro": "Nos expertises s'appuient sur des certifications, des partenariats stratégiques et des équipes qui les portent au quotidien. Les pages détaillées par domaine arrivent bientôt.",
       "fond": "ivoire",
       "headingStyle": "titre",
+      "numerotation": true,
       "items": [
         {
           "title": "Cybersécurité",
@@ -71,17 +72,8 @@
       "ctaHref": "/fr/secteurs",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "light",
+      "variant": "nuit",
       "fond": "ivoire"
-    },
-    {
-      "_bookshop_name": "home-partners",
-      "type": "home-partners",
-      "fond": "ivoire",
-      "title": "Nos partenaires technologiques",
-      "names": [
-        "Partenaire 1"
-      ]
     },
     {
       "_bookshop_name": "tech-marquee",
