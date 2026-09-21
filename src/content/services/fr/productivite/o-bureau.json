@@ -1,6 +1,10 @@
 {
+  "_schema": "default",
   "title": "O bureau",
   "description": "Gérez vos espaces de travail facilement avec O bureau, l'application de réservation de bureau la plus simple à piloter.",
+  "noindex": false,
+  "slug": "",
+  "seoTitle": "Application de réservation de bureau | O bureau",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -8,11 +12,11 @@
     {
       "_bookshop_name": "product-hero",
       "type": "product-hero",
-      "badge": "Écosystème Microsoft 365",
-      "title": "O bureau, notre application de réservation de bureau",
-      "titleHighlight": "O bureau",
-      "lead": "Découvrez notre application de réservation de bureau : simple à piloter et à mettre en place, elle vous aidera à gérer vos bureaux en un instant !",
-      "ctaLabel": "Demandez une consultation",
+      "badge": "O bureau",
+      "title": "Application de réservation de bureau",
+      "titleHighlight": "Application",
+      "lead": "Découvrez notre application de réservation de bureau. Simple à piloter et à mettre en place, elle vous aidera à gérer vos bureaux en un instant!",
+      "ctaLabel": "Demandez une démo",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
@@ -23,7 +27,7 @@
     {
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
-      "sectionTitle": "Les bénéfices",
+      "sectionTitle": "Les avantages O bureau",
       "subtitle": "",
       "fond": "blanc",
       "boxes": [
@@ -104,6 +108,7 @@
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Une technologie Microsoft",
+      "fond": "",
       "paragraphs": [
         "<strong>L’application O bureau est intégrée à votre environnement Microsoft 365 et Power Platform.</strong>",
         "Profitez d’une visibilité complète pour une prise de décision éclairée sur la gestion de votre parc immobilier."
@@ -132,21 +137,19 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": "",
-      "fond": ""
+      "cardText": ""
     },
     {
       "_bookshop_name": "cta",
       "type": "cta",
       "title": "Adoptez O bureau",
       "body": "Victrix vous offre une application clé en main pour répondre à vos besoins de gestion des espaces de travail.",
-      "ctaLabel": "Demandez une démonstration",
+      "ctaLabel": "Demandez une démo",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
       "fond": "blanc"
     }
-  ],
-  "seoTitle": "Application de réservation de bureau | O bureau"
+  ]
 }
