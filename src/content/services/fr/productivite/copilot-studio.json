@@ -1,34 +1,40 @@
 {
+  "_schema": "default",
   "title": "Copilot Studio",
   "description": "Bénéficiez d'un accompagnement personnalisé pour l'intégration de Microsoft Copilot Studio. Accélérez l'adoption grâce à Victrix.",
-  "seoH1": "",
+  "noindex": false,
+  "slug": "",
+  "seoTitle": "Intégration de Microsoft Copilot Studio | Services | Victrix",
+  "seoH1": "Intégration de Microsoft Copilot Studio",
   "contactSujet": "",
   "contactService": "",
   "sections": [
     {
       "_bookshop_name": "service-hero",
       "type": "service-hero",
-      "eyebrow": "Intelligence artificielle",
+      "eyebrow": "Intégration de Copilot Studio",
       "eyebrowStyle": "badge",
       "titleAccent": "",
-      "title": "Copilot Studio : Automatisez vos processus.",
+      "title": "Automatisez vos processus et renforcez la productivité",
       "titleHighlight": "Automatisez",
-      "lead": "Propulsez votre productivité grâce à l'IA conversationnelle de nouvelle génération, intégrée au cœur de votre écosystème Microsoft.",
-      "ctaLabel": "Discutez avec un expert Copilot",
+      "lead": "Propulsez votre productivité grâce à l'IA conversationnelle de nouvelle génération, intégrée au cœur de votre écosystème Microsoft&nbsp;365 et Power Platform.",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
       "overlay": "degrade",
       "image": "/images/sections/produit-enfant-hero.jpg",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Valeur stratégique",
+      "fond": "ivoire",
       "paragraphs": [
-        "Découvrez <strong>Copilot Studio</strong>, une solution innovante reposant sur l'intelligence artificielle de Microsoft Copilot, pour transformer la manière dont les entreprises exploitent leurs données et optimisent leurs processus.",
-        "Intégré à l'écosystème Microsoft 365 et Power Platform, Copilot Studio permet d'automatiser des tâches complexes, d'améliorer la prise de décision, et de renforcer la productivité à travers une analyse intelligente des informations."
+        "<strong>Copilot Studio </strong>est une solution innovante reposant sur l'<a href=\"/fr/services/intelligence-artificielle/\" target=\"_blank\" rel=\"noopener\">intelligence artificielle</a> de <a href=\"/fr/services/productivite/copilot-microsoft-365/\">Microsoft Copilot</a>. Elle transforme la manière dont les entreprises exploitent leurs données et optimisent leurs processus.",
+        "Intégré à l'<a href=\"/fr/services/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/\" target=\"_blank\" rel=\"noopener\">écosystème Microsoft 365</a> et Power Platform, Copilot Studio permet d'automatiser des tâches complexes, d'améliorer la prise de décision, et de renforcer la productivité à travers une analyse intelligente des informations."
       ],
       "image": "/images/services/valeur-copilot-studio.jpg",
       "imageAlt": "",
@@ -42,26 +48,31 @@
           "label": "Intégration M365"
         }
       ],
-      "fond": "ivoire"
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": ""
     },
     {
       "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Nos offres Copilot Studio",
       "intro": "Une approche structurée pour garantir une adoption réussie et un impact immédiat sur vos opérations.",
-      "ctaLabel": "Prendre rendez-vous avec un de nos experts",
+      "fond": "beige",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "items": [
         {
           "number": "1",
-          "title": "Positionnement et adoption",
+          "title": "Positionnement et adoption de Copilot Studio",
           "bullets": [
             {
               "text": "Introduction aux bases de Copilot et de l'IA",
               "icon": "coche"
             },
             {
-              "text": "Apprentissage par l'exemple : identification des cas d'utilisation",
+              "text": "Apprentissage par l'exemple : identification des cas d'utilisation",
               "icon": "coche"
             },
             {
@@ -79,8 +90,16 @@
               "icon": "document"
             },
             {
+              "text": "Identification des cas d'usage",
+              "icon": "coche"
+            },
+            {
               "text": "Définition des priorités et des objectifs",
               "icon": "cible"
+            },
+            {
+              "text": "Recommandations personnalisées",
+              "icon": "coche"
             },
             {
               "text": "Feuille de route d'implémentation personnalisée",
@@ -88,14 +107,14 @@
             }
           ]
         }
-      ],
-      "fond": "beige"
+      ]
     },
     {
       "_bookshop_name": "realisations",
       "type": "realisations",
-      "title": "Les réalisations Copilot Studio",
+      "title": "Nos réalisations avec Copilot Studio",
       "intro": "Découvrez comment Victrix applique concrètement l'IA générative dans différents secteurs d'activité.",
+      "fond": "ivoire",
       "linkLabel": "Demandez une démo",
       "linkHref": "/fr/contact",
       "items": [
@@ -110,30 +129,28 @@
           "icon": "casque"
         },
         {
-          "title": "RH",
-          "text": "Agent conversationnel pour l'onboarding et les questions employé.",
+          "title": "Ressources humaines",
+          "text": "Agent conversationnel pour l'accueil et intégration des nouveaux employés et les questions employé.",
           "icon": "groupe"
         },
         {
           "title": "Juridique",
-          "text": "Automatisation intelligente de la gestion et analyse documentaire.",
+          "text": "Automatisation intelligente de la gestion et de l'analyse documentaire.",
           "icon": "marteau"
         }
-      ],
-      "fond": "ivoire"
+      ]
     },
     {
       "_bookshop_name": "cta",
       "type": "cta",
-      "title": "Prêt à transformer votre organisation ?",
+      "title": "Prêt à transformer votre organisation?",
       "body": "Déployez Copilot Studio par étapes avec Victrix. Nous vous offrons un accompagnement stratégique adapté à vos priorités réelles.",
-      "ctaLabel": "Contactez un expert",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
-      "cta2Label": "Déployez avec Victrix",
-      "cta2Href": "/fr/services/productivite",
+      "cta2Label": null,
+      "cta2Href": null,
       "variant": "nuit",
       "fond": "blanc"
     }
-  ],
-  "seoTitle": "Intégration de Microsoft Copilot Studio"
+  ]
 }
