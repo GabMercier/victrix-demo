@@ -39,9 +39,13 @@
  *    Sa clé n'a pas bougé : les sections déjà posées gardent leur couleur.
  * Un fond sombre EXIGE que le composant inverse
  * ses textes — il n'est donc offert QUE dans les sections qui savent le faire
- * (`_select_data.fonds_etendus` : texte enrichi, encadré, chiffres, bandeau
- * de logos, FAQ). Les autres sections gardent `_select_data.fonds`, la palette
- * claire. Le garde-fou de scripts/design/generate-cms-previews.mjs compare les
+ * (`_select_data.fonds_etendus`). Elles sont DIX depuis le 2026-09-21 :
+ * rich-text, callout, stats, logo-banner, faq (première vague) puis
+ * home-experts, benefits, value-tiles, feature-boxes, text-photo (sections
+ * d'accroche, demande Gabriel). Les autres gardent `_select_data.fonds`, la
+ * palette claire. Sur fond sombre, tout passe au BLANC : les accents clairs du
+ * Design System (`primary-fixed-dim`) ne donnent que 3,1:1 sur le bleu
+ * électrique, sous le seuil AA. Le garde-fou de scripts/design/generate-cms-previews.mjs compare les
  * DEUX listes à ce fichier.
  */
 

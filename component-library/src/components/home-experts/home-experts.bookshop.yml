@@ -43,7 +43,7 @@ _inputs:
     label: "Fond de section"
     options:
       allow_empty: false
-      values: _select_data.fonds
+      values: _select_data.fonds_etendus
       value_key: cle
       preview:
         text:

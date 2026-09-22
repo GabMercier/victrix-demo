@@ -1,5 +1,5 @@
 ---
-import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { FOND_CLASSES, estFondSombre, type FondEtenduKey } from '../../shared/fonds';
 import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Boîtes de domaines » — composant Bookshop (P-07).
@@ -20,11 +20,15 @@ import { blockHtml, hasRichText } from '../../shared/rich';
 interface Props {
   sectionTitle: string;
   subtitle?: string;
-  fond?: FondKey;
+  fond?: FondEtenduKey;
   boxes: string[];
 }
 
 const { sectionTitle, subtitle, fond = 'beige', boxes = [] } = Astro.props;
+// Fonds SOMBRES ouverts le 2026-09-21 : seuls le titre, le liseré et le
+// chapeau sont posés sur le fond de section — les boîtes, elles, sont
+// blanches et gardent leur contraste quoi qu'il arrive.
+const sombre = estFondSombre(fond);
 
 // « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
 // de la palette officielle (aucune couleur libre — esprit P-16). Défaut =
@@ -35,11 +39,24 @@ const FONDS: Record<string, string> = FOND_CLASSES;
 <section class:list={['py-20', FONDS[fond] ?? FONDS.givre]}>
   <div class="container-site">
     <div class="mx-auto text-center flex flex-col items-center gap-4 mb-12">
-      <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
+      <h2
+        class:list={[
+          'text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] m-0 max-w-[24ch] text-balance',
+          sombre ? 'text-white' : 'text-on-surface',
+        ]}
+      >
         {sectionTitle}
       </h2>
-      <span class="w-16 h-1 bg-primary" aria-hidden="true"></span>
-      {hasRichText(subtitle) && <div class="rich text-base leading-[1.625rem] text-on-surface-variant max-w-[672px]" set:html={blockHtml(subtitle)} />}
+      <span class:list={['w-16 h-1', sombre ? 'bg-white' : 'bg-primary']} aria-hidden="true"></span>
+      {hasRichText(subtitle) && (
+        <div
+          class:list={[
+            'rich text-base leading-[1.625rem] max-w-[672px]',
+            sombre ? 'text-white/90' : 'text-on-surface-variant',
+          ]}
+          set:html={blockHtml(subtitle)}
+        />
+      )}
     </div>
     <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-0 p-0 list-none">
       {

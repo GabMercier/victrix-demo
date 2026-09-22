@@ -86,7 +86,7 @@ _inputs:
       # Palette partagée (2026-09-17) : liste d'objets {cle, libelle, couleur, apercu}
       # définie UNE fois dans cloudcannon.config.yml (_select_data.fonds) — la valeur
       # enregistrée reste la clé texte ; l'éditeur affiche libellé + pastille.
-      values: _select_data.fonds
+      values: _select_data.fonds_etendus
       value_key: cle
       preview:
         text:

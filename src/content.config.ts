@@ -315,7 +315,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('benefits'),
       title: z.string(),
       intro: z.string().optional(),
-      fond: fondClair.default('ivoire'),
+      fond: fondEtendu.default('ivoire'),
       // « compact » AJOUTÉ 2026-08-05 (landing-page.css §Guide Benefits) :
       // tête réduite 16/24 + liseré bleu, cartes compactes.
       headingStyle: z.enum(['titre', 'compact']).default('titre'),
@@ -565,7 +565,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('home-experts'),
-      fond: fondClair.default('sable'),
+      fond: fondEtendu.default('sable'),
       title: z.string(),
       subtitle: z.string(),
       ctaLabel: z.string(),
@@ -835,7 +835,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('feature-boxes'),
       sectionTitle: z.string(),
       subtitle: z.string().optional(),
-      fond: fondClair.default('beige'),
+      fond: fondEtendu.default('beige'),
       // Liste de libellés simples (boîtes bordées) — tableau de chaînes.
       boxes: z.array(z.string()),
     }),
@@ -920,7 +920,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('value-tiles'),
       eyebrow: z.string().default(''),
       title: z.string(),
-      fond: fondClair.default('ivoire'),
+      fond: fondEtendu.default('ivoire'),
       items: z
         .array(
           z.object({
@@ -976,7 +976,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       partners: z.array(z.string()).default([]),
       image: z.string().default(''),
       imageAlt: z.string().default(''),
-      fond: fondClair.default('ivoire'),
+      fond: fondEtendu.default('ivoire'),
     }),
     z.object({
       type: z.literal('timeline'),

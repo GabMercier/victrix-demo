@@ -21,8 +21,8 @@
 | Le site actuel en ligne, pour recouper | ✅ `https://www.victrix.ca/` répond **200** (vérifié aujourd'hui) |
 | Catalogue Ø Studio | ✅ API WordPress ouverte, **200** vérifié aujourd'hui (`/wp-json/wp/v2/pages`), 16 fiches + 75 images ; plan et décisions déjà écrits |
 | Médias de l'ancien site | ✅ 943 fichiers inventoriés (`docs/migration/urls-medias.csv`), `fetch-media.mjs` rapatrie à la demande |
-| **① Carte ancienne URL → nouvelle URL** | ❌ **n'existe pas**. `docs/migration/redirections.csv` = les 98 redirections **internes au WordPress** (ancienne → ancienne), pas notre cible. C'est le trou central : sans cette carte, « ne rien perdre » n'est pas mesurable |
-| **② Liste des campagnes ACTIVES** | ❌ à demander à Julie/Clément : les pages de campagne sont `noindex` et hors plan de site, on ne les trouve qu'en suivant un lien (c'est comme ça que celle d'IA a été trouvée) |
+| **① Carte ancienne URL → nouvelle URL** | 🟡 **amorcée le 21/09** : `scripts/migration/check-parite-live.py` compare le site EN LIGNE au dépôt et écrit `docs/migration/parite-live.md` — 150 URL examinées, 127 retrouvées, **20 renommages à rediriger**, **3 sans équivalent**. À finir en lot P1 (le rapport ne couvre pas encore les pages `noindex`, absentes du plan de site). `docs/migration/redirections.csv` ne sert PAS de carte : ce sont les 98 redirections **internes au WordPress** (ancienne → ancienne) |
+| **② Liste des campagnes ACTIVES** | ✅ **faite le 21/09 sans attendre Julie** → `docs/inventaire-campagnes.md` : 14 pages `noindex` recensées par trois sources croisées (export, API REST du site, balayage de 203 URL), 4 déjà reprises, 4 à décider. Reste une seule question de contrôle, bornée (§ 5 de l'inventaire) |
 | **③ Textes `alt`, prix validés, logos de marque** | ❌ humains : `alt` des 75 images Ø Studio (Julie), prix publics (#1634, Marjorie), fichiers de logos à jour (D4) |
 
 ## 2. Ce que j'ai constaté dans le dépôt aujourd'hui
@@ -80,7 +80,7 @@ Recensé dans l'ancien site, non repris à ce jour :
 | Page de l'ancien site | Statut WP | Proposition |
 | --- | --- | --- |
 | Liste de prix Check Point FR + EN (Brizy) | publié | **décision marketing** : c'est un outil de commande, pas une page vitrine |
-| Vœux des fêtes FR + EN (Brizy) | publié | abandonner (saisonnier 2022) |
+| Vœux des fêtes FR + EN (Brizy) | publié | **à reprendre** — vérifié le 21/09 : la page est à jour pour 2025 (17 images déposées en novembre 2025), c'est une campagne saisonnière vivante, pas un vestige |
 | « Êtes-vous en sécurité ? » | brouillon | abandonner ou refaire en campagne |
 | Dîner Victrix × Palo Alto | brouillon | abandonner (événement passé) |
 | Événement Victrix × Cask × ServiceNow (20 mai 2025) | brouillon | abandonner (événement passé) |
@@ -89,8 +89,10 @@ Recensé dans l'ancien site, non repris à ce jour :
 | Landing Démo O bureau FR + EN | publié | ✅ déjà repris (21/09) |
 | Landing AI Consulting / Accompagnement IA FR + EN | publié, caché | ✅ déjà repris (21/09) |
 
-➜ **Le vrai risque, ce sont les campagnes qu'on ne voit pas** : d'où le § 3,
-lot P1 (filet automatique) et la question ② à Julie.
+➜ Recensement complet, méthode et décisions : **`docs/inventaire-campagnes.md`**
+(21/09). Conclusion : aucune campagne inconnue dans l'export **ni** en ligne ;
+en revanche 9 articles ont changé de slug depuis l'export et 10 anciennes URL
+de services répondent encore 200 → 19 redirections à écrire.
 
 ### Catalogue Ø Studio
 
@@ -108,11 +110,20 @@ Chacun est une session neuve (CLAUDE.md chargé). Estimés en jours assistés.
 Le plus important : il rend les trois lots suivants vérifiables. C'est le L14
 du plan de livraison, mais outillé plutôt que rédigé à la main.
 
+**Déjà en place** (21/09) : `scripts/migration/check-parite-live.py` compare le
+site EN LIGNE au dépôt (`docs/migration/parite-live.md`, cache
+`docs/migration/urls-live.csv`) et `scripts/migration/extract-source-page.py`
+extrait le contenu d'une page source. Ce qui reste à faire en P1 : couvrir
+l'export WXR (donc les pages `noindex` et les brouillons), compter les mots, et
+brancher le tout sur le gate.
+
 ```text
 Lot P1 de docs/plan-parite-et-raffinage.md.
 But : un rapport qui prouve, ligne par ligne, que rien de l'ancien site n'est
-perdu — et qui se rejoue.
-1. scripts/migration/check-parite.mjs : lit l'export WXR
+perdu — et qui se rejoue. Pars de scripts/migration/check-parite-live.py
+(déjà écrit : plan de site en ligne → dépôt, table ALIAS des renommages, table
+ROUTES des pages sans fichier de contenu) et de docs/inventaire-campagnes.md.
+1. Étends-le pour lire aussi l'export WXR
    (C:\Repo\Victrix\siteWP\export\*.xml, 174 contenus : pages, expertises,
    articles, dlm_download, brouillons ET pages cachées comprises) et le
    contenu du dépôt ; sort docs/inventaire-pages.md = une ligne par URL de
@@ -173,19 +184,24 @@ Rituel.
 
 ### P4 — Campagnes : recenser, décider, importer (0,5–1 j)
 
+**L'étape 1 est faite** (21/09) : `docs/inventaire-campagnes.md` recense les
+14 pages `noindex`, dont 4 déjà reprises, et le contenu des candidates est
+extrait dans `docs/migration/campagnes/`. Reste la décision, puis l'import.
+
 ```text
-Lot P4 de docs/plan-parite-et-raffinage.md § 2 « Campagnes ».
-1. À partir de l'export WXR, liste TOUTES les pages de l'ancien site qui sont
-   des campagnes ou des pages cachées : moteur Brizy, `noindex`, absentes du
-   plan de site, ou orphelines du menu. Sors le tableau dans
-   docs/inventaire-campagnes.md avec, pour chacune : URL, langue, statut,
-   nombre de mots, formulaire utilisé, et ma recommandation (reprendre /
-   abandonner / décision marketing).
-2. ATTENDS mon accord sur la liste avant d'importer quoi que ce soit.
-3. Importe les retenues dans la collection `landing` (route /campagnes/),
-   sur le modèle de scripts/migration/import-landing-accompagnement-ia.py :
-   sections existantes, noindex, chrome de campagne, formulaire remplacé par
-   le nôtre. Un script rejouable par page, jamais de copier-coller à la main.
+Lot P4 de docs/plan-parite-et-raffinage.md.
+Lis docs/inventaire-campagnes.md (recensement fait) et les extractions de
+docs/migration/campagnes/.
+1. Rappelle-moi les 4 décisions du § 2 de l'inventaire et ATTENDS ma réponse.
+2. Importe les pages retenues dans la collection `landing` (route
+   /campagnes/), sur le modèle de
+   scripts/migration/import-landing-accompagnement-ia.py : sections
+   existantes, noindex: true, `slug` renseigné pour garder l'ancienne URL,
+   images rapatriées via extract-source-page.py --images. Un script rejouable
+   par page, jamais de copier-coller à la main.
+3. Les vœux des fêtes sont une page SAISONNIÈRE remise à jour chaque année :
+   vérifie qu'elle est éditable au CMS sans développeur (12 idées = 12 blocs
+   de même forme, chacune signée par un employé avec un lien).
 Rituel.
 ```
 

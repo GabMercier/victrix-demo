@@ -609,10 +609,20 @@ destinataire et son objet de courriel; les pages y font référence par le champ
 
 Le bleu de la marque est passé au bleu du Design System (**Bleu Victrix**,
 plus profond). L'ancien **Bleu électrique** n'a pas disparu : les deux vivent
-côte à côte dans la liste « Fond de section » des cinq sections qui acceptent
-un fond sombre (texte enrichi, encadré, chiffres, bandeau de logos, FAQ).
-**Aucune section déjà posée n'a changé de couleur** — « Bleu électrique »
-désigne toujours la même teinte.
+côte à côte dans la liste « Fond de section ». **Aucune section déjà posée n'a
+changé de couleur** — « Bleu électrique » désigne toujours la même teinte.
+
+**Pourquoi les bleus n'apparaissent pas dans toutes les listes ?** Parce qu'un
+fond sombre oblige la section à écrire ses textes en blanc, et toutes ne
+savent pas le faire. Dix sections l'acceptent aujourd'hui :
+
+| Depuis le 21/09 matin | Ajoutées le 21/09 soir |
+|---|---|
+| Texte enrichi · Encadré · Chiffres · Bandeau de logos · FAQ | Nos experts · Atouts · Tuiles de valeurs · Encadrés à puces · Texte & photo |
+
+Les autres n'offrent que les dix teintes claires. Si vous en voulez une de
+plus en bleu, demandez-le : c'est une petite intervention par section, jamais
+un réglage à faire vous-même.
 
 Les boutons, les liens et les icônes de tout le site suivent le nouveau bleu
 automatiquement : vous n'avez rien à faire.

@@ -1,5 +1,5 @@
 ---
-import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { FOND_CLASSES, type FondEtenduKey } from '../../shared/fonds';
 import { blockHtml } from '../../shared/rich';
 /**
  * Section « Bandeau CTA final » — composant Bookshop (accueil composable).
@@ -15,8 +15,13 @@ import { blockHtml } from '../../shared/rich';
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 interface Props {
-  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
-  fond?: FondKey | '';
+  /**
+   * « Fond de section » — clé fermée de la palette (shared/fonds.ts), fonds
+   * SOMBRES compris : tout le texte de cette section vit dans le panneau gris
+   * ci-dessous, donc un aplat bleu ne se pose QUE derrière lui et n'a aucun
+   * texte à inverser (même cas que `callout`).
+   */
+  fond?: FondEtenduKey | '';
   title: string;
   subtitle: string;
   ctaLabel: string;
@@ -28,7 +33,7 @@ const { title, subtitle, ctaLabel, ctaHref, fond = 'sable' } = Astro.props;
 
 {/* Bande SABLE #EBE0D5 (export2 homepage.css §ResourcesSection order 6,
     « Secondaire/Sable », 2026-08-17) — remplace le blanc provisoire. */}
-<section class:list={['py-24', FOND_CLASSES[fond as FondKey] ?? 'bg-sable']}>
+<section class:list={['py-24', FOND_CLASSES[fond as FondEtenduKey] ?? 'bg-sable']}>
   <div class="container-site">
     <div class="bg-[#F3F4F6] rounded-2xl p-10 lg:p-20 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12">
       <div class="max-w-xl flex flex-col gap-8">

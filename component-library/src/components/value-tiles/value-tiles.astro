@@ -1,5 +1,5 @@
 ---
-import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { FOND_CLASSES, estFondSombre, type FondEtenduKey } from '../../shared/fonds';
 import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
  * Section « Tuiles de valeurs » — composant Bookshop (2026-09-17, conversion
@@ -31,11 +31,15 @@ interface ValueTile {
 interface Props {
   eyebrow?: string;
   title: string;
-  fond?: FondKey;
+  fond?: FondEtenduKey;
   items?: ValueTile[];
 }
 
 const { eyebrow = '', title, fond = 'ivoire', items = [] } = Astro.props;
+// Fonds SOMBRES ouverts le 2026-09-21. Ici TOUT est posé sur le fond : les
+// tuiles n'ont pas de fond propre, seulement une bordure — qui doit elle
+// aussi s'éclaircir, sinon elle disparaît sur l'aplat bleu.
+const sombre = estFondSombre(fond);
 
 // « Fond de section » : clé fermée → utilitaire de la palette officielle.
 const FONDS: Record<string, string> = FOND_CLASSES;
@@ -45,8 +49,22 @@ const FONDS: Record<string, string> = FOND_CLASSES;
 <section class:list={['py-20', FONDS[fond] ?? FONDS.blanc]}>
   <div class="container-site flex flex-col gap-8">
     <div class="text-center">
-      {eyebrow && <p class="text-sm font-bold uppercase tracking-[1.2px] text-primary m-0 mb-2 max-w-none">{eyebrow}</p>}
-      <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
+      {eyebrow && (
+        <p
+          class:list={[
+            'text-sm font-bold uppercase tracking-[1.2px] m-0 mb-2 max-w-none',
+            sombre ? 'text-white' : 'text-primary',
+          ]}
+        >
+          {eyebrow}
+        </p>
+      )}
+      <h2
+        class:list={[
+          'text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] m-0 text-center',
+          sombre ? 'text-white' : 'text-on-surface',
+        ]}
+      >
         {title}
       </h2>
     </div>
@@ -55,12 +73,13 @@ const FONDS: Record<string, string> = FOND_CLASSES;
         items.map((item, i) => (
           <li
             class:list={[
-              'm-0 flex flex-col items-center text-center gap-2 p-4 rounded-lg border border-solid border-contour hover:border-primary transition-colors',
+              'm-0 flex flex-col items-center text-center gap-2 p-4 rounded-lg border border-solid transition-colors',
+              sombre ? 'border-white/40 hover:border-white' : 'border-contour hover:border-primary',
               i === items.length - 1 && items.length % 2 === 1 && 'col-span-2 md:col-span-1',
             ]}
           >
             <svg
-              class="text-primary"
+              class:list={[sombre ? 'text-white' : 'text-primary']}
               width="30"
               height="30"
               {...iconSvgAttrs(iconFor(item.icon) ?? { paths: [] }, 1.8)}
@@ -71,7 +90,14 @@ const FONDS: Record<string, string> = FOND_CLASSES;
                 <path d={d} />
               ))}
             </svg>
-            <span class="text-sm font-bold uppercase tracking-[1.2px] text-on-surface">{item.label}</span>
+            <span
+              class:list={[
+                'text-sm font-bold uppercase tracking-[1.2px]',
+                sombre ? 'text-white' : 'text-on-surface',
+              ]}
+            >
+              {item.label}
+            </span>
           </li>
         ))
       }
