@@ -4,6 +4,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { auditPages } from './scripts/lib/h1-guard.mjs';
 import { entreAuSitemap } from './scripts/lib/sitemap-filter.mjs';
+import { lesDeuxFormes, versMotifCloudCannon } from './scripts/lib/routing-formes.mjs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
@@ -121,18 +122,13 @@ if (staticOnly) {
  */
 const STATUTS_ROUTING = new Set([200, 301, 302, 303, 307, 308, 404, 410]);
 
-/**
- * `/expertise/*` + `/fr/services/:splat` → `/expertise/(.*)` + `/fr/services/$1`.
- * @param {string} de
- * @param {string} vers
+/*
+ * `versMotifCloudCannon` (syntaxe des jokers) et `lesDeuxFormes` (barre oblique
+ * finale) vivent dans scripts/lib/routing-formes.mjs depuis le 2026-09-22 :
+ * logique pure, donc testée (src/lib/routing-formes.test.ts). Le module porte
+ * la mesure qui a motivé le dédoublement — 105 des 184 anciennes URL rendaient
+ * un 404 parce que les `from` partaient sans barre finale.
  */
-function versMotifCloudCannon(de, vers) {
-  if (!de.includes('*')) return { from: de, to: vers };
-  return {
-    from: de.replace(/\*/g, '(.*)'),
-    to: vers.replace(/:splat/g, '$1'),
-  };
-}
 
 /**
  * En-têtes que l'hébergement CloudCannon accepte dans `routing.json`
@@ -466,14 +462,23 @@ function redirectsFile() {
           // Astro écrit une page de rafraîchissement méta à ces chemins.
           forced: true,
         }));
-        const routesCloudCannon = [...routesAstro, ...routesExactes, ...routesJoker].filter((r, i, tout) => {
-          // « Duplicate rules are ignored » côté CloudCannon ; on les retire
-          // ici pour que le fichier dise la vérité.
-          if (!STATUTS_ROUTING.has(r.status)) {
-            fail(`statut ${r.status} refusé par CloudCannon. Entrée fautive : ${JSON.stringify(r)}`);
-          }
-          return tout.findIndex((autre) => autre.from === r.from) === i;
-        });
+        // BARRE OBLIQUE FINALE (2026-09-22) — chaque règle exacte est émise
+        // sous ses DEUX formes, `/x` et `/x/`. Sans ce dédoublement, 105 des
+        // 184 anciennes URL rendaient un 404 sur le site déployé : l'hôte
+        // compare le chemin exact, barre comprise, et 100 % des URL indexées en
+        // portent une. Le « pourquoi » complet est dans
+        // scripts/lib/routing-formes.mjs ; les jokers sont laissés intacts
+        // (leur capture avale déjà la barre).
+        const routesCloudCannon = [...routesAstro, ...routesExactes, ...routesJoker]
+          .flatMap(lesDeuxFormes)
+          .filter((r, i, tout) => {
+            // « Duplicate rules are ignored » côté CloudCannon ; on les retire
+            // ici pour que le fichier dise la vérité.
+            if (!STATUTS_ROUTING.has(r.status)) {
+              fail(`statut ${r.status} refusé par CloudCannon. Entrée fautive : ${JSON.stringify(r)}`);
+            }
+            return tout.findIndex((autre) => autre.from === r.from) === i;
+          });
 
         /** @type {{ match: string, headers: { name: string, value: string }[] }[]} */
         let entetes = [];
@@ -496,8 +501,12 @@ function redirectsFile() {
           `${JSON.stringify({ routes: routesCloudCannon, headers: entetes }, null, 2)}\n`,
           'utf-8'
         );
+        const nbJokers = routesCloudCannon.filter((r) => r.from.includes('(.*)')).length;
+        const nbAvecBarre = routesCloudCannon.filter((r) => r.from !== '/' && r.from.endsWith('/')).length;
         logger.info(
-          `_cloudcannon/routing.json écrit — ${routesCloudCannon.length} route(s) et ${entetes.length} règle(s) d’en-têtes (hébergement CloudCannon ; _redirects/_headers y sont ignorés)`
+          `_cloudcannon/routing.json écrit — ${routesCloudCannon.length} route(s) et ${entetes.length} règle(s) d’en-têtes ` +
+            `(${routesCloudCannon.length - nbJokers - nbAvecBarre} sans barre finale + ${nbAvecBarre} avec + ${nbJokers} joker(s) ; ` +
+            `hébergement CloudCannon — _redirects/_headers y sont ignorés)`
         );
 
         // _routes.json exclusion pass (normal Cloudflare build only — the file

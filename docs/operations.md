@@ -196,11 +196,31 @@ en écrit un à chaque fois — `dist/_cloudcannon/routing.json`, la forme
 documentée par CloudCannon pour un fichier généré, prioritaire sur
 `.cloudcannon/routing.json`. Rien à committer, rien à tenir en double :
 
-- **189 routes** = les 13 d'`astro.config.mjs` (en `forced: true`, parce
-  qu'Astro écrit à ces chemins une page de rafraîchissement méta et qu'une
-  règle non forcée ne se déclencherait pas) + les 3 de l'éditrice + les 175 de
-  la matrice. Les jokers sont traduits : `/expertise/*` → `/expertise/(.*)`
-  et `:splat` → `$1`, la forme de l'exemple officiel de CloudCannon.
+- **375 routes** = 189 règles, dont **187 exactes émises sous leurs DEUX formes
+  de barre oblique finale** (`/x` et `/x/`), plus 2 jokers. Les 189 : les 11
+  d'`astro.config.mjs` (en `forced: true`, parce qu'Astro écrit à ces chemins
+  une page de rafraîchissement méta et qu'une règle non forcée ne se
+  déclencherait pas) + les 3 de l'éditrice + les 175 de la matrice. Le compte
+  tombe à 375 et non 376 parce que la racine `/` n'a pas de variante.
+
+  > **Pourquoi les deux formes (2026-09-22).** Sondage au `curl` du site dev :
+  > **105 des 184 anciennes URL rendaient un 404.** Les règles existaient et
+  > leurs cibles existaient — elles ne se déclenchaient jamais, parce que les
+  > `from` partaient sans barre finale alors que l'hôte compare le chemin
+  > EXACT et canonise VERS la barre (`/Decouvrir-Victrix` → 307
+  > `/Decouvrir-Victrix/`). L'ancien site canonisait aussi vers la barre :
+  > 100 % des URL indexées en portent une. Le « pourquoi » complet et la
+  > logique testée sont dans `scripts/lib/routing-formes.mjs` ; après
+  > correctif, 182 des 184 résolvent en un saut (les 2 restantes, `/cache/` et
+  > `/xmlrpc.php/`, sont dans la liste `ignorer` assumée).
+
+- **2 jokers**, traduits en `/expertise/(.*)` et `/en/expertise/(.*)`, et
+  placés en DERNIER (positions 373-374) pour ne jamais masquer une règle
+  exacte. Depuis le 2026-09-22 ils pointent vers le **hub** (`/fr/services`,
+  `/en/services`) et non plus vers `:splat` : translittérer un chemin inconnu
+  fabriquait des 301 vers des 404 — mesuré sur 17 anciennes URL du plugin
+  WordPress, dont `/en/expertise/managed-security-service-provider/` et ses
+  1 462 clics. Un filet doit mener à une page qui existe.
 - **5 règles d'en-têtes** dérivées de `public/_headers`, qui reste la source
   unique. Elles sont **sans recouvrement** : le bloc `/*` est recopié dans
   chaque règle précise (`/fr/*`, `/en/*`, `/_astro/*`, `/fonts/*`, `/404.html`)

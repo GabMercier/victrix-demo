@@ -308,7 +308,20 @@ Conséquences pour la suite :
 
 Rien de ce qui suit n'est engagé : c'est la proposition.
 
-### Étape 1 — corriger la barre finale (le correctif qui rend 105 adresses)
+### Étape 1 — corriger la barre finale ✅ FAIT le 2026-09-22
+
+> **Livré et prouvé.** `scripts/lib/routing-formes.mjs` (logique pure, 11 tests
+> dans `src/lib/routing-formes.test.ts`) émet les deux formes de chaque règle
+> exacte ; `routing.json` passe de **189 à 375 routes** (187 exactes × 2, moins
+> la racine qui n'a pas de variante, + 2 jokers). Les jokers pointent désormais
+> vers le hub. **Résultat mesuré contre le build : 182 des 184 anciennes URL
+> résolvent en UN saut, 0 chaîne, 0 redirection vers une page absente** (contre
+> 105 mortes et 10 « 301 vers 404 » avant). Les 2 restantes sont `/cache/` et
+> `/xmlrpc.php/`, dans la liste `ignorer` assumée.
+>
+> Reste à confirmer de l'extérieur après déploiement, avec les commandes
+> `curl` de `docs/operations.md` § Redirections — et à vérifier que
+> l'hébergement accepte 375 routes (le plafond n'est pas documenté).
 
 Émettre **les deux formes** de chaque `from` dans `routing.json` : sans barre et
 avec. 187 règles exactes → 374 routes. Une dizaine de lignes dans

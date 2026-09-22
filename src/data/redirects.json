@@ -6,12 +6,12 @@
   },
   {
     "de": "/expertise/*",
-    "vers": "/fr/services/:splat",
+    "vers": "/fr/services",
     "code": "301"
   },
   {
     "de": "/en/expertise/*",
-    "vers": "/en/services/:splat",
+    "vers": "/en/services",
     "code": "301"
   }
 ]
