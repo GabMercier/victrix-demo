@@ -195,8 +195,10 @@ const ga4Bootstrap = GA4_ID
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    {/* = --color-nuit (un <meta> ne peut pas consommer var()) — audit P-16. */}
-    <meta name="theme-color" content="#0d1430" />
+    {/* = --color-navy (un <meta> ne peut pas consommer var()) — audit P-16.
+        Réaligné le 22/09 sur le BLEU NUIT officiel ; il traînait à #0d1430,
+        une TROISIÈME valeur que plus rien ne portait. */}
+    <meta name="theme-color" content="#000d2e" />
 
     {/* Preload the primary font to cut layout shift on first paint —
         Hanken Grotesk variable couvre 100-900 en un seul fichier. */}

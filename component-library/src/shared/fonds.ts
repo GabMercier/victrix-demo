@@ -30,13 +30,14 @@
  * soutenus. Ce fichier est browser-safe
  * (aucune dépendance) : il est aussi compilé dans le bundle d'édition live.
  *
- * FONDS SOMBRES (2026-09-21, demande Gabriel) : DEUX aplats bleus depuis que
- * la marque est passée au bleu du Design System Figma —
- *  - « Bleu Victrix » #002fc7 (clé `bleu-profond`) = `bg-primary`, le bleu de
- *    marque, celui des boutons et des liens ;
- *  - « Bleu électrique » #1a5bff (clé `bleu-electrique`) = `bg-bleu-500`,
- *    l'ancien bleu de marque, CONSERVÉ comme choix à la demande de Gabriel.
- *    Sa clé n'a pas bougé : les sections déjà posées gardent leur couleur.
+ * FONDS SOMBRES : UN SEUL aplat bleu depuis le 2026-09-22 — « Bleu électrique »
+ * #1D46F3 (clé `bleu-electrique`) = `bg-primary`. Les codes officiels de la
+ * marque (BLEU NUIT #000D2E, BLEU ÉLECTRIQUE #1D46F3) ont montré que la
+ * maquette du 21/09 était fautive : les deux aplats qu'elle avait fait naître,
+ * « Bleu Victrix » #002fc7 et « Bleu électrique » #1a5bff, portaient deux
+ * valeurs erronées du MÊME bleu. Ils fusionnent donc, et la clé `bleu-profond`
+ * est SUPPRIMÉE — sans risque : aucune section du contenu ne portait l'un ou
+ * l'autre (0 occurrence mesurée avant le retrait).
  * Un fond sombre EXIGE que le composant inverse
  * ses textes — il n'est donc offert QUE dans les sections qui savent le faire
  * (`_select_data.fonds_etendus`). Elles sont DIX depuis le 2026-09-21 :
@@ -45,7 +46,8 @@
  * d'accroche, demande Gabriel). Les autres gardent `_select_data.fonds`, la
  * palette claire. Sur fond sombre, tout passe au BLANC : les accents clairs du
  * Design System (`primary-fixed-dim`) ne donnent que 3,1:1 sur le bleu
- * électrique, sous le seuil AA. Le garde-fou de scripts/design/generate-cms-previews.mjs compare les
+ * électrique, sous le seuil AA. Le BLEU NUIT est proscrit comme texte sur le
+ * bleu électrique et réciproquement : 2,94:1, mesuré le 22/09. Le garde-fou de scripts/design/generate-cms-previews.mjs compare les
  * DEUX listes à ce fichier.
  */
 
@@ -69,7 +71,7 @@ export type FondKey = (typeof FOND_KEYS)[number];
  * Fonds SOMBRES — texte INVERSÉ par le composant (voir `estFondSombre`).
  * Réservés aux sections qui gèrent l'inversion ; jamais dans `FOND_KEYS`.
  */
-export const FOND_KEYS_SOMBRES = ['bleu-profond', 'bleu-electrique'] as const;
+export const FOND_KEYS_SOMBRES = ['bleu-electrique'] as const;
 
 export type FondSombreKey = (typeof FOND_KEYS_SOMBRES)[number];
 
@@ -95,12 +97,8 @@ export const FOND_CLASSES: Record<FondEtenduKey, string> = {
   beige: 'bg-beige',
   sable: 'bg-sable',
   pierre: 'bg-pierre',
-  // 2026-09-21 : le bleu de marque est passé au #002fc7 du Design System
-  // Figma. L'ANCIEN bleu (#1a5bff) n'est pas supprimé — il garde sa clé, donc
-  // aucune section déjà posée ne change de couleur, et il reste offert dans la
-  // palette. Il pointe désormais la primitive `bleu-500` plutôt que `primary`.
-  'bleu-profond': 'bg-primary',
-  'bleu-electrique': 'bg-bleu-500',
+  // 2026-09-22 : un seul aplat bleu, sur le jeton de marque `primary`.
+  'bleu-electrique': 'bg-primary',
 };
 
 /**
@@ -119,6 +117,5 @@ export const FOND_SWATCHES: Record<FondEtenduKey, { libelle: string; couleur: st
   beige: { libelle: 'Beige (gris chaud)', couleur: '#f6f3ef' },
   sable: { libelle: 'Sable (grège)', couleur: '#e9e2d9' },
   pierre: { libelle: 'Pierre (grège soutenu)', couleur: '#dcd5cc' },
-  'bleu-profond': { libelle: 'Bleu Victrix (texte blanc)', couleur: '#002fc7' },
-  'bleu-electrique': { libelle: 'Bleu électrique (texte blanc)', couleur: '#1a5bff' },
+  'bleu-electrique': { libelle: 'Bleu électrique (texte blanc)', couleur: '#1d46f3' },
 };

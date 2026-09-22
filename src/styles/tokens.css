@@ -17,21 +17,21 @@
 :root {
   /* ---------------------------------------------------------------------------
      Brand palette — export2 anchors (2026-08-14, remplace les ancres planche)
-     - nuit:    #0b1334  semantic.background.bleu — headings, dark UI
-     - victrix: #1a5bff  bleu-500 — actions, links, brand accents
+     - nuit:    #000d2e  BLEU NUIT officiel — titres, surfaces sombres
+     - victrix: #1d46f3  BLEU ÉLECTRIQUE officiel — actions, liens, accents
   --------------------------------------------------------------------------- */
-  --color-navy: #0b1334; /* Bleu nuit (export2 semantic.background) — was #0d1430 */
-  --color-navy-700: #142052; /* hover tint (dérivé) — was #16244d */
-  --color-navy-900: #070c22; /* deeper (dérivé) — was #080d1f */
+  --color-navy: #000d2e; /* BLEU NUIT officiel (22/09) — was #0b1334 */
+  --color-navy-700: #001855; /* survol (dérivé : même écart de luminosité qu'avant) — was #142052 */
+  --color-navy-900: #000718; /* plus profond (dérivé) — was #070c22 */
   /* Ré-ancrés sur le Design System Figma le 2026-09-21, en même temps que
      --color-primary de theme.css : la couche héritée doit porter le MÊME bleu
      que les composants re-peaufinés, sinon deux bleus cohabitent à l'écran.
      L'ancien #1a5bff survit comme --color-bleu-500 (theme.css) et reste
      offert à l'éditrice sous « Bleu électrique ». */
-  --color-accent-blue: #002fc7; /* Bleu Victrix (Figma) — was #1a5bff */
-  --color-accent-blue-600: #1d46f3; /* hover (Figma) — was #0043eb */
-  --color-accent-green: #1a5bff; /* green retired → Bleu Victrix — was #24fb8e */
-  --color-grey-dark: #0b1334; /* dark band background → Bleu nuit */
+  --color-accent-blue: #1d46f3; /* BLEU ÉLECTRIQUE officiel (22/09) — was #002fc7 */
+  --color-accent-blue-600: #1738c2; /* survol — was #1d46f3, devenu la couleur de BASE */
+  --color-accent-green: #1d46f3; /* vert retiré → Bleu électrique — was #1a5bff */
+  --color-grey-dark: #000d2e; /* bande sombre → Bleu nuit officiel — was #0b1334 */
 
   /* Neutrals — COOL scale (export2 color.neutral.* ; l'échelle chaude v2 est
      retirée — ivoire/beige/sable survivent comme accents dans theme.css) */

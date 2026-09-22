@@ -67,7 +67,7 @@
   --color-bleu-200: #b8cbf9;
   --color-bleu-300: #81a3f8;
   --color-bleu-400: #497bf8;
-  --color-bleu-500: #1a5bff; /* Bleu Victrix — actions, liens, marque */
+  --color-bleu-500: #1d46f3; /* BLEU ÉLECTRIQUE (officiel 22/09) — was #1a5bff */
   --color-bleu-600: #0043eb; /* hover/états d'action */
   --color-bleu-700: #0337ba;
   --color-bleu-800: #072c88;
@@ -105,8 +105,8 @@
 
   /* ---- Alias français du pilote — ré-ancrés export2. Utilisés par les
      composants déjà re-skinnés (testimonial). */
-  --color-nuit: #0b1334; /* semantic.background.bleu — surfaces sombres */
-  --color-royal: #1a5bff; /* bleu-500 — action, accents */
+  --color-nuit: #000d2e; /* BLEU NUIT officiel (22/09) — was #0b1334 */
+  --color-royal: #1d46f3; /* bleu-500 — action, accents — was #1a5bff */
   --color-royal-profond: #0043eb; /* bleu-600 — états/hover d'action */
   --color-celeste: #81a3f8; /* bleu-300 — accents doux, chips */
   --color-givre: #f9fafb; /* neutral-050 — surfaces structurantes claires */
@@ -145,24 +145,29 @@
   --color-outline-variant: #e5e7eb; /* neutral-200 — bordures 1px de cartes */
   --color-inverse-surface: #30353f;
   --color-inverse-on-surface: #f3f4f7;
-  --color-surface-tint: #1e47f4; /* Figma (2026-09-21) — suit --color-primary */
+  --color-surface-tint: #1d46f3; /* suit --color-primary — was #1e47f4 */
 
-  /* Bleus de marque — ANCRÉS SUR LE DESIGN SYSTEM FIGMA le 2026-09-21
-     (décision Gabriel, après comparaison au banc d'essai).
-     Le remappage #002FC7 → #1a5bff de la bascule export2 (2026-08-14) partait
-     de l'hypothèse « calque hérité de l'ancienne planche », marquée « à
-     confirmer avec le designer » et jamais levée : les maquettes reçues le
-     2026-09-21 sont toujours en #002fc7, l'hypothèse est donc démentie.
-     Valeurs = docs/design/Design system/VictrixModernWeb-DesignSystenm.md.
-     L'ancien bleu N'EST PAS supprimé : il reste `--color-bleu-500` et garde sa
-     place dans la palette de l'éditrice sous « Bleu électrique »
-     (component-library/src/shared/fonds.ts).
-     Contraste : 9,41:1 sur blanc contre 5,27:1 auparavant. REVERS à connaître —
-     en TEXTE sur un fond sombre il tombe à 1,9:1 (l'ancien était déjà à 3,4) :
-     sur bleu nuit ou anthracite, utiliser `primary-fixed-dim` ou du blanc. */
-  --color-primary: #002fc7; /* Bleu Victrix (Figma) — actions, liens, marque */
+  /* Bleus de marque — CODES OFFICIELS, 2026-09-22 (Gabriel : « il y avait une
+     erreur dans la maquette »). La marque n'a que DEUX bleus :
+       BLEU NUIT       #000D2E  → --color-navy (tokens.css)
+       BLEU ÉLECTRIQUE #1D46F3  → --color-primary, ci-dessous
+     Cela clôt une valse de trois valeurs. #1a5bff (bascule export2 d'août) et
+     #002fc7 (lu sur les maquettes le 21/09) étaient tous deux faux : le premier
+     était un calque hérité, le second une maquette erronée. #1D46F3 existait
+     déjà dans le dépôt, mais comme couleur de SURVOL — c'était la base.
+     Les deux fonds bleus de l'éditrice fusionnent donc en un seul, « Bleu
+     électrique » ; aucune section posée n'en portait (0 occurrence mesurée).
+
+     CONTRASTES (mesurés) : 6,52:1 sur blanc, et 6,52:1 pour du blanc dessus —
+     donc AA partout, et MIEUX que les 5,27:1 de l'ancien fond #1a5bff. On perd
+     en revanche face aux 9,41:1 de #002fc7.
+     INTERDIT : bleu électrique EN TEXTE sur bleu nuit = 2,94:1, sous le seuil
+     de 4,5. Sur un fond sombre, utiliser `primary-fixed-dim` ou du blanc. */
+  --color-primary: #1d46f3; /* BLEU ÉLECTRIQUE — actions, liens, marque */
   --color-on-primary: #ffffff;
-  --color-primary-container: #1d46f3; /* hover/états accentués (Figma) */
+  --color-primary-container: #1738c2; /* survol — assombrissement 0,8 du bleu
+     électrique, 8,82:1 sur blanc. Ne PAS reprendre #002fc7 ici : c'était une
+     valeur fautive, la garder ferait croire qu'elle a encore cours. */
   --color-on-primary-container: #d0d5ff; /* Figma */
   --color-inverse-primary: #bac3ff; /* Figma */
   --color-primary-fixed: #dee0ff; /* Figma — fonds de pastilles (chip portail) */
@@ -170,14 +175,11 @@
   --color-on-primary-fixed: #00105b; /* Figma — texte fort, overlays, bandes */
   --color-on-primary-fixed-variant: #002fc8; /* Figma */
 
-  /* Bleu nuit DE MARQUE — 2026-09-22, kit officiel « Logo Victrix_Bleu nuit ».
-     Jeton DÉDIÉ au logo, volontairement distinct de `--color-navy` (#0b1334,
-     tokens.css) : aligner le jeton du site sur la charte repeindrait toutes
-     les surfaces sombres et imposerait une repasse axe. Les deux valeurs
-     cohabitent donc sciemment — celle-ci ne sert qu'au mot-symbole.
-     (Le kit livre aussi un « Bleu pacifique » #083957, sans usage web à ce
-     jour : pas de jeton tant qu'aucune surface ne le demande.) */
-  --color-logo-nuit: #000d2e;
+  /* `--color-logo-nuit` A ÉTÉ RETIRÉ le 2026-09-22. Il n'avait de raison
+     d'être que tant que le bleu nuit du site (#0b1334) divergeait de celui du
+     kit : les codes officiels ayant tranché, `--color-navy` PORTE désormais
+     #000D2E (tokens.css) et le logo le consomme comme tout le reste.
+     Un seul bleu nuit, une seule source. */
 
   /* Ardoise (secondary) — re-teintée sur les neutres froids */
   --color-secondary: #545f71; /* neutral-600 */

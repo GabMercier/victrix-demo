@@ -327,13 +327,13 @@ a.btn-outline {
   font-weight: 600;
   line-height: 1.2;
   text-decoration: none;
-  border: 2px solid var(--color-primary, #1a5bff);
-  background: var(--color-primary, #1a5bff);
+  border: 2px solid var(--color-primary, #1d46f3);
+  background: var(--color-primary, #1d46f3);
   color: #fff;
 }
 a.btn-outline {
   background: transparent;
-  color: var(--color-primary, #1a5bff);
+  color: var(--color-primary, #1d46f3);
 }
 a.btn:hover,
 a.btn-outline:hover {

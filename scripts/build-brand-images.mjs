@@ -28,9 +28,9 @@ const CHECK = process.argv.includes('--check');
 
 // --- Couleurs de marque (doivent suivre src/styles/theme.css) ---------------
 
-const NUIT = '#000d2e'; //  --color-logo-nuit — bleu nuit du kit
+const NUIT = '#000d2e'; //  --color-navy (BLEU NUIT officiel)
 const PACIFIQUE = '#083957'; //  bleu pacifique du kit = fond de l'image de partage
-const BLEU_VICTRIX = '#002fc7'; //  --color-primary — aplat du favicon
+const BLEU_ELECTRIQUE = '#1d46f3'; //  --color-primary — aplat du favicon
 const BLANC = '#ffffff';
 
 // --- 1. Le jeu d'icônes -----------------------------------------------------
@@ -60,7 +60,7 @@ function pastilleSvg({ marge = 0.16, rayon = 0.2 } = {}) {
   const dy = y - pad - (cote - h) / 2 + total * NUDGE_OPTIQUE;
   return (
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${arrondi(dx)} ${arrondi(dy)} ${arrondi(total)} ${arrondi(total)}">` +
-    `<rect x="${arrondi(dx)}" y="${arrondi(dy)}" width="${arrondi(total)}" height="${arrondi(total)}" rx="${arrondi(rayon * total)}" fill="${BLEU_VICTRIX}"/>` +
+    `<rect x="${arrondi(dx)}" y="${arrondi(dy)}" width="${arrondi(total)}" height="${arrondi(total)}" rx="${arrondi(rayon * total)}" fill="${BLEU_ELECTRIQUE}"/>` +
     `<path d="${V}" fill="${BLANC}"/></svg>`
   );
 }

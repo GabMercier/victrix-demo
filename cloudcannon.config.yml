@@ -2656,17 +2656,16 @@ _select_data:
       libelle: Pierre (grège soutenu)
       couleur: '#dcd5cc'
       apercu: /images/cms/fonds/pierre.svg
-    # Deux aplats bleus depuis le 2026-09-21 : le bleu de marque est passé au
-    # #002fc7 du Design System Figma, et l'ANCIEN bleu reste offert (décision
-    # Gabriel) — sa clé n'a pas changé, les sections déjà posées gardent donc
-    # leur couleur.
-    - cle: bleu-profond
-      libelle: Bleu Victrix (texte blanc)
-      couleur: '#002fc7'
-      apercu: /images/cms/fonds/bleu-profond.svg
+    # UN SEUL aplat bleu depuis le 2026-09-22 : les codes officiels de la marque
+    # (BLEU NUIT #000D2E, BLEU ÉLECTRIQUE #1D46F3) ont montré que la maquette du
+    # 21/09 était fautive. « Bleu Victrix » #002fc7 et « Bleu électrique »
+    # #1a5bff portaient deux valeurs erronées du MÊME bleu : ils fusionnent, et
+    # la clé `bleu-profond` disparaît (aucune section ne la portait).
+    # Miroir de component-library/src/shared/fonds.ts — garde-fou :
+    # npm run cms:previews:check.
     - cle: bleu-electrique
       libelle: Bleu électrique (texte blanc)
-      couleur: '#1a5bff'
+      couleur: '#1d46f3'
       apercu: /images/cms/fonds/bleu-electrique.svg
   # Préremplissage du formulaire Contact (2026-09-17) — clés neutres, libellés
   # résolus par langue dans src/lib/contact/presets.ts (test : chaque clé

@@ -109,7 +109,8 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
    du temps », le fond peut rester vide : il suit alors le champ « Ton ».
    Seuls les héros (photo plein cadre), le bandeau défilant (sombre) et le
    catalogue de solutions n’en ont pas.
-   **Bleu électrique (21 sept. 2026)** : une onzième pastille, le bleu vif de
+   **Bleu électrique (mis à jour le 22 sept. 2026 — `#1D46F3`, le code
+   officiel de la marque)** : une onzième pastille, le bleu vif de
    la marque, s’ajoute — mais **seulement dans cinq sections** : texte enrichi,
    encadré, chiffres, bandeau de logos et FAQ. C’est un fond SOMBRE : ces cinq
    sections passent alors leurs titres et leurs textes en blanc toutes seules
@@ -626,12 +627,19 @@ barre latérale — recommandé) : un fichier = un formulaire, avec son
 destinataire et son objet de courriel; les pages y font référence par le champ
 « Formulaire lié » de la section.
 
-### Deux bleus dans la palette (2026-09-21)
+### Un seul bleu dans la palette (2026-09-22)
 
-Le bleu de la marque est passé au bleu du Design System (**Bleu Victrix**,
-plus profond). L'ancien **Bleu électrique** n'a pas disparu : les deux vivent
-côte à côte dans la liste « Fond de section ». **Aucune section déjà posée n'a
-changé de couleur** — « Bleu électrique » désigne toujours la même teinte.
+Les codes officiels de la marque sont arrivés : **bleu nuit `#000D2E`** et
+**bleu électrique `#1D46F3`**. Ils ont montré que la maquette de la veille
+était fautive — les deux aplats bleus qu'elle avait fait apparaître dans votre
+liste, « Bleu Victrix » et « Bleu électrique », étaient deux versions
+**erronées du même bleu**.
+
+Il n'en reste donc qu'un : **Bleu électrique**. « Bleu Victrix » a disparu de
+la liste « Fond de section ». **Aucune de vos pages n'est touchée** : aucune
+section n'utilisait l'un ou l'autre. Le bleu vif du site — boutons, liens,
+pictogrammes — a légèrement changé de teinte au passage ; c'est normal, c'est
+la bonne couleur de marque.
 
 **Pourquoi les bleus n'apparaissent pas dans toutes les listes ?** Parce qu'un
 fond sombre oblige la section à écrire ses textes en blanc, et toutes ne
