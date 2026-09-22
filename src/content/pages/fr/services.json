@@ -24,7 +24,8 @@
       "cta2Href": "/fr/expertises",
       "overlay": "voile",
       "image": "",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "numbered-cards",
@@ -32,6 +33,10 @@
       "sectionTitle": "Ce que nous prenons en charge",
       "headingStyle": "underline",
       "intro": "Nos services se déploient ensemble ou séparément, selon ce que vos équipes couvrent déjà.",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -80,7 +85,7 @@
       "fond": "blanc",
       "paragraphs": [
         "Nos services s'appuient sur des certifications reconnues, des partenariats technologiques de premier plan et des équipes qui connaissent les contraintes de votre industrie. Tout est documenté.",
-        "Nos expertises | Nos secteurs d'activité"
+        "<a class=\"btn\" href=\"/fr/expertises/\" target=\"_blank\" rel=\"noopener\">Découvrez nos expertises</a>  <a class=\"btn\" href=\"/fr/secteurs/\" target=\"_blank\" rel=\"noopener\">Découvrez nos secteurs d'activité</a>"
       ]
     },
     {
