@@ -1618,6 +1618,12 @@ collections_config:
         options:
           empty_type: string
         label: Description (moteurs de recherche)
+      heroEyebrow:
+        type: text
+        options:
+          empty_type: string
+        label: Surtitre (au-dessus du titre)
+        comment: Petite ligne bleue en majuscules. Vide = absente.
       heroTitle:
         type: text
         options:
@@ -2650,6 +2656,14 @@ _select_data:
       libelle: Pierre (grège soutenu)
       couleur: '#dcd5cc'
       apercu: /images/cms/fonds/pierre.svg
+    # Deux aplats bleus depuis le 2026-09-21 : le bleu de marque est passé au
+    # #002fc7 du Design System Figma, et l'ANCIEN bleu reste offert (décision
+    # Gabriel) — sa clé n'a pas changé, les sections déjà posées gardent donc
+    # leur couleur.
+    - cle: bleu-profond
+      libelle: Bleu Victrix (texte blanc)
+      couleur: '#002fc7'
+      apercu: /images/cms/fonds/bleu-profond.svg
     - cle: bleu-electrique
       libelle: Bleu électrique (texte blanc)
       couleur: '#1a5bff'

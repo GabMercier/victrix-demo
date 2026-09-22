@@ -23,8 +23,13 @@
   --color-navy: #0b1334; /* Bleu nuit (export2 semantic.background) — was #0d1430 */
   --color-navy-700: #142052; /* hover tint (dérivé) — was #16244d */
   --color-navy-900: #070c22; /* deeper (dérivé) — was #080d1f */
-  --color-accent-blue: #1a5bff; /* Bleu Victrix (bleu-500) — unchanged */
-  --color-accent-blue-600: #0043eb; /* hover (bleu-600 export2) — was #1348d6 */
+  /* Ré-ancrés sur le Design System Figma le 2026-09-21, en même temps que
+     --color-primary de theme.css : la couche héritée doit porter le MÊME bleu
+     que les composants re-peaufinés, sinon deux bleus cohabitent à l'écran.
+     L'ancien #1a5bff survit comme --color-bleu-500 (theme.css) et reste
+     offert à l'éditrice sous « Bleu électrique ». */
+  --color-accent-blue: #002fc7; /* Bleu Victrix (Figma) — was #1a5bff */
+  --color-accent-blue-600: #1d46f3; /* hover (Figma) — was #0043eb */
   --color-accent-green: #1a5bff; /* green retired → Bleu Victrix — was #24fb8e */
   --color-grey-dark: #0b1334; /* dark band background → Bleu nuit */
 

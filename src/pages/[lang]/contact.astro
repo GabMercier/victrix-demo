@@ -16,25 +16,32 @@ const t = useTranslations(lang);
 const c = await getLocaleData('contact', lang);
 
 /**
- * Page Contact — FIDÉLITÉ MAQUETTE FINALE 2026-08-18
- * (docs/design/export2/contactfinal.css + capture fournie par le user) :
- *  - héros centré IVOIRE (py 120) : H1 56/800 ls -1.12 navy + sous-titre
- *    18/29 centré — l'eyebrow de l'ancienne maquette est SUPPRIMÉ ;
- *  - bande BLANCHE : 4 colonnes ÉGALES gap 16 — carte Coordonnées blanche
- *    (titre bleu, 2 rangées tél/courriel SEULEMENT — la mini-grille des
- *    villes de l'ancienne maquette est supprimée) + 3 cartes bureaux BEIGE
- *    (photo ~2:1 rayon 2, ville 24/700 + adresse flush, tél bleu en pied) ;
- *    cartes : rayon 8, ombre 0 1px 2px 25 %, SANS bordure ;
- *  - section formulaire IVOIRE (py 60) 2 colonnes ≈1:2 gap 16 : titre
- *    40/700 + intro + puces cochées bleues à gauche ; panneau BEIGE rayon 2
- *    sans bordure à droite (champs 50px blancs rayon 2 bordure neutral-400,
- *    selects à chevron custom neutral-600, consentement 14px, bouton primaire
- *    PLEINE LARGEUR h 56 rayon 4 + flèche).
- * Couleurs : 100 % tokens — #002FC7→primary (décision user 2026-08-18 :
- * teinte proche = token en place), #00105B→on-primary-fixed,
- * #1C1C1A→on-surface, #444656→on-surface-variant, #FAF7F4→ivoire,
- * #F1E8DF→beige, #AAB2C0→neutral-400, #545F71→on-surface-variant.
- * Les verbatims de l'ancienne maquette (#C4C5D9, #F0EDEA) sont PURGÉS.
+ * Page Contact — FIDÉLITÉ MAQUETTE « contact redesign » 2026-09-21
+ * (C:\Repo\Victrix\contact maquette redesign.txt + capture fournie par
+ * Gabriel). Elle REMET trois choses que la maquette d'août avait retirées —
+ * surtitre, numéros par bureau, cartes blanches — et inverse les fonds :
+ *  - héros centré IVOIRE : SURTITRE bleu 12/700 ls 1.2 en majuscules (champ
+ *    CMS `heroEyebrow`, vide = absent), H1 56/800 ls -1.12 #00105B
+ *    (= `on-primary-fixed` depuis que la famille bleue suit le Design System
+ *    Figma), sous-titre 18/29 centré ;
+ *  - bande BEIGE (elle était blanche) : 4 colonnes ÉGALES gap 16 — carte
+ *    Coordonnées BLANCHE (titre bleu, rangées tél/courriel, puis un filet et
+ *    la GRILLE des numéros par bureau, 2 colonnes) + 3 cartes bureaux
+ *    BLANCHES (elles étaient beiges) : photo ~2:1 rayon 2, ville 24/700 +
+ *    adresse flush, tél bleu en pied ; cartes rayon 8, ombre, sans bordure ;
+ *  - section formulaire IVOIRE 2 colonnes ≈1:2 gap 16 : titre 40/700 + intro
+ *    + puces cochées bleues à gauche ; panneau BEIGE rayon 2 sans bordure à
+ *    droite (champs 50px blancs rayon 4 bordure `contour`, selects à chevron
+ *    custom, consentement 14px, bouton primaire LARGEUR AUTO h 56 rayon 2,
+ *    graisse normale, SANS pictogramme — il était pleine largeur avec avion).
+ * Couleurs : 100 % tokens — #002FC7→primary (la marque suit le Design System
+ * Figma depuis le 2026-09-21), #00105B→on-primary-fixed, #1C1C1A→on-surface,
+ * #444656→on-surface-variant, #FCF9F5→ivoire, #F6F3EF→beige,
+ * #C4C5D9→contour. Le #F0EDEA du panneau (écart de ~2 % avec `beige`) suit la
+ * règle « teinte proche = jeton en place, jamais de nouveau hex ».
+ * TAILLES : la maquette descend à 12px ; le site applique son plancher de
+ * 14px (arbitrage Gabriel du 2026-09-21) — surtitre et noms de villes sont
+ * donc rendus à 14px. Écart assumé, verrouillé par tests/e2e/typographie.spec.ts.
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé (l'ancienne
  * feuille de la page est supprimée).
  *
@@ -180,7 +187,10 @@ const errorMessage =
 const cardShadow = 'shadow-[0_1px_2px_rgba(0,0,0,0.25)]';
 const labelClass = 'block text-base font-bold text-on-surface';
 const inputClass =
-  'w-full min-h-[3.125rem] py-3 px-3 bg-white border border-solid border-neutral-400 rounded-sm text-base text-on-surface-variant placeholder:text-on-surface-variant focus-visible:border-primary focus-visible:outline-none';
+  // Maquette « contact redesign » (2026-09-21) : champ blanc 50 px, bordure
+  // 1px #C4C5D9 (= le jeton `contour`, qui remplace neutral-400) et rayon 4.
+  // `min-h` plutôt que `h` : la hauteur doit suivre si la police grossit.
+  'w-full min-h-[3.125rem] py-3 px-3 bg-white border border-solid border-contour rounded text-base text-on-surface-variant placeholder:text-on-surface-variant focus-visible:border-primary focus-visible:outline-none';
 const phoneIcon =
   'M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z';
 ---
@@ -221,9 +231,18 @@ const phoneIcon =
   <!-- Hero -->
   <section class="bg-ivoire py-20 lg:py-30">
     <div class="container-site flex flex-col items-center text-center gap-4">
-      {/* H1 #00105B maquette → bleu-800 #072c88 (le token BLEU le plus proche —
-          on-primary-fixed #0b1334 rendait presque noir, écart signalé user). */}
-      <h1 class="text-[2.5rem] leading-[1.1] lg:text-[3.5rem] lg:leading-[3.875rem] font-extrabold tracking-[-1.12px] text-bleu-800 m-0">
+      {/* Surtitre RÉTABLI par la maquette « contact redesign » (2026-09-21) —
+          il avait été retiré en août. Maquette : 12/700 ls 1.2 #002FC7 ; rendu
+          à 14px, plancher de lisibilité du site (écart assumé, arbitrage
+          Gabriel du même jour). */}
+      {c.heroEyebrow && (
+        <p class="m-0 text-sm font-bold uppercase tracking-[1.2px] text-primary">{c.heroEyebrow}</p>
+      )}
+      {/* H1 #00105B de la maquette — c'est EXACTEMENT `on-primary-fixed` depuis
+          que la famille bleue est ancrée sur le Design System Figma
+          (2026-09-21). Le repli sur bleu-800 #072c88, posé en août parce que
+          le jeton valait alors #0b1334 (presque noir), n'a plus lieu d'être. */}
+      <h1 class="text-[2.5rem] leading-[1.1] lg:text-[3.5rem] lg:leading-[3.875rem] font-extrabold tracking-[-1.12px] text-on-primary-fixed m-0">
         {c.heroTitle}
       </h1>
       <p class="text-lg leading-[1.8125rem] text-on-surface-variant max-w-[672px] m-0" set:html={inlineHtml(c.heroSub)} />
@@ -231,7 +250,10 @@ const phoneIcon =
   </section>
 
   <!-- Coordonnées + bureaux -->
-  <section class="bg-white py-20">
+  {/* Bande BEIGE et cartes BLANCHES (maquette « contact redesign »
+      2026-09-21) — l'inverse de la version d'août, où la bande était blanche
+      et les cartes beiges : les cartes se détachent mieux ainsi. */}
+  <section class="bg-beige py-20">
     <div class="container-site grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
       <!-- Carte coordonnées -->
       <div class:list={['bg-white rounded-lg p-6 flex flex-col gap-8', cardShadow]}>
@@ -257,12 +279,32 @@ const phoneIcon =
             </p>
           </div>
         </div>
+        {/* Numéros par bureau — RÉTABLIS par la maquette « contact redesign »
+            (2026-09-21) après avoir été retirés en août. L'ordre et les villes
+            suivent `offices` (le CMS), jamais une liste en dur ; les numéros
+            viennent du même tableau que les cartes ci-contre, donc les deux ne
+            peuvent pas diverger. Maquette : ville 12/700 ls 1.2 #444656 (rendue
+            à 14px, plancher du site), numéro 16/400 #1C1C1A. */}
+        <div class="mt-auto pt-6 border-t border-solid border-contour border-x-0 border-b-0 grid grid-cols-2 gap-x-4 gap-y-5">
+          {c.offices.map((office, i) =>
+            officePhones[i] ? (
+              <p class="m-0 max-w-none">
+                <span class="block text-sm font-bold uppercase tracking-[1.2px] text-on-surface-variant">
+                  {office.city}
+                </span>
+                <a class="text-base text-on-surface no-underline hover:text-primary" href={`tel:${officePhones[i].tel}`}>
+                  {officePhones[i].phone}
+                </a>
+              </p>
+            ) : null,
+          )}
+        </div>
       </div>
 
       <!-- Cartes bureaux -->
       {
         c.offices.map((office, i) => (
-          <article class:list={['bg-beige rounded-lg p-4 flex flex-col gap-4', cardShadow]}>
+          <article class:list={['bg-white rounded-lg p-4 flex flex-col gap-4', cardShadow]}>
             <img
               class="w-full aspect-[252/128] object-cover rounded-sm border-0"
               src={office.image}
@@ -441,7 +483,7 @@ const phoneIcon =
           <div class="flex flex-col gap-2">
             <label class={labelClass} for="message">{c.labels.message}<span aria-hidden="true">*</span></label>
             <textarea
-              class="w-full min-h-[7.5rem] p-3 bg-white border border-solid border-neutral-400 rounded-sm text-base text-on-surface-variant placeholder:text-on-surface-variant resize-y focus-visible:border-primary focus-visible:outline-none"
+              class="w-full min-h-[7.5rem] p-3 bg-white border border-solid border-contour rounded text-base text-on-surface-variant placeholder:text-on-surface-variant resize-y focus-visible:border-primary focus-visible:outline-none"
               id="message"
               name={formsEnabled ? nameFor(c.labels.message) : 'message'}
               placeholder={c.placeholders.message}
@@ -498,16 +540,17 @@ const phoneIcon =
             )
           }
 
+          {/* Maquette « contact redesign » (2026-09-21) : bouton en LARGEUR
+              AUTO aligné à gauche (il était pleine largeur), padding 16/40,
+              rayon 2, texte 16/24 en graisse normale, et SANS pictogramme.
+              Écart assumé avec le bouton de la section « form » (form.astro),
+              qui garde son avion en papier — à réaligner si le designer
+              tranche pour l'un des deux. */}
           <button
             type="submit"
-            class="w-full inline-flex items-center justify-center gap-2.5 bg-primary text-on-primary px-8 py-4 rounded text-base leading-6 font-semibold border-0 cursor-pointer shadow-controle hover:bg-primary-container transition-colors"
+            class="self-start inline-flex items-center justify-center bg-primary text-on-primary px-10 py-4 rounded-sm text-base leading-6 border-0 cursor-pointer shadow-controle hover:bg-primary-container transition-colors"
           >
             {c.submit}
-            {/* Avion en papier (même pictogramme que le bouton form.astro). */}
-            <svg class="shrink-0" width="15" height="12" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <path d="M2 10L22 2l-6.5 16-4-7L2 10z" />
-              <path d="M11.5 11L22 2" />
-            </svg>
           </button>
 
           <p

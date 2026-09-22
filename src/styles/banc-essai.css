@@ -28,31 +28,33 @@
    ========================================================================== */
 
 /* -----------------------------------------------------------------------------
-   BLEU — famille complète du Design System Figma
-   (docs/design/Design system/VictrixModernWeb-DesignSystenm.md).
-   On redéfinit les RÔLES, jamais les primitives `--color-bleu-*` : tout ce qui
-   consomme `bg-primary` / `text-primary` / `border-primary` suit d'un coup.
+   BLEU — SENS INVERSÉ LE 2026-09-21 : Gabriel a tranché au banc d'essai en
+   faveur du bleu du Design System Figma, qui est devenu le bleu du site
+   (theme.css + tokens.css). Ce qui reste commutable, c'est donc l'ANCIEN bleu
+   export2 (#1a5bff) — utile pour montrer l'avant/après au client ou au
+   designer. `?bleu=figma` ne fait plus rien : c'est le rendu normal.
+
+   À ne pas confondre avec le fond de section « Bleu électrique », qui offre
+   lui aussi #1a5bff mais de façon PERMANENTE et section par section
+   (shared/fonds.ts) : ici on rebascule TOUT le site d'un coup.
 -------------------------------------------------------------------------- */
-:root[data-bleu='figma'] {
-  --color-primary: #002fc7;
-  --color-primary-container: #1d46f3;
+:root[data-bleu='export2'] {
+  --color-primary: #1a5bff;
+  --color-primary-container: #0043eb;
   --color-on-primary: #ffffff;
-  --color-on-primary-container: #d0d5ff;
-  --color-primary-fixed: #dee0ff;
-  --color-primary-fixed-dim: #bac3ff;
-  --color-on-primary-fixed: #00105b;
-  --color-on-primary-fixed-variant: #002fc8;
+  --color-on-primary-container: #dfe7fb;
+  --color-primary-fixed: #b8cbf9;
+  --color-primary-fixed-dim: #81a3f8;
+  --color-on-primary-fixed: #0b1334;
+  --color-on-primary-fixed-variant: #0337ba;
+  --color-surface-tint: #1a5bff;
   /* Couche héritée (tokens.css) — les composants pas encore re-peaufinés. */
-  --color-accent-blue: #002fc7;
-  --color-accent-blue-600: #1d46f3;
-  --color-accent: #002fc7;
-  --color-link: #002fc7;
-  --color-link-hover: #1d46f3;
-  --color-focus: #002fc7;
-  /* Le fond de section « bleu électrique » n'a pas de jeton propre : il rend
-     `bg-primary` (shared/fonds.ts), donc il suit tout seul. Seule sa PASTILLE
-     d'aperçu CloudCannon garde #1a5bff en dur — à mettre à jour uniquement si
-     la bascule est adoptée pour de bon. */
+  --color-accent-blue: #1a5bff;
+  --color-accent-blue-600: #0043eb;
+  --color-accent: #1a5bff;
+  --color-link: #1a5bff;
+  --color-link-hover: #0043eb;
+  --color-focus: #1a5bff;
 }
 
 /* -----------------------------------------------------------------------------

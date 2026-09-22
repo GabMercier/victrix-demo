@@ -605,6 +605,32 @@ barre latérale — recommandé) : un fichier = un formulaire, avec son
 destinataire et son objet de courriel; les pages y font référence par le champ
 « Formulaire lié » de la section.
 
+### Deux bleus dans la palette (2026-09-21)
+
+Le bleu de la marque est passé au bleu du Design System (**Bleu Victrix**,
+plus profond). L'ancien **Bleu électrique** n'a pas disparu : les deux vivent
+côte à côte dans la liste « Fond de section » des cinq sections qui acceptent
+un fond sombre (texte enrichi, encadré, chiffres, bandeau de logos, FAQ).
+**Aucune section déjà posée n'a changé de couleur** — « Bleu électrique »
+désigne toujours la même teinte.
+
+Les boutons, les liens et les icônes de tout le site suivent le nouveau bleu
+automatiquement : vous n'avez rien à faire.
+
+### La page Contact a été redessinée (2026-09-21)
+
+D'après la maquette du designer. Trois choses y reviennent :
+
+- un **surtitre** au-dessus du titre (« Nous joindre ») — nouveau champ dans
+  Textes du site → Contact, vide = pas de surtitre ;
+- les **numéros de chaque bureau** sous les coordonnées générales ; ils sont
+  repris automatiquement des fiches de bureaux, rien à saisir ;
+- les cartes sont **blanches sur une bande beige** (c'était l'inverse).
+
+Le bouton du formulaire affiche maintenant « Envoyer le message » partout : il
+disait « Soumettre » sur la page alors que le formulaire lui-même annonçait
+« Envoyer le message ».
+
 ### Un seul formulaire de demande (2026-09-21)
 
 Toutes les demandes passent désormais par **la page Contact**. La page

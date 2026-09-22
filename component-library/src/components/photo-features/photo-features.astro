@@ -70,7 +70,12 @@ const FONDS: Record<string, string> = FOND_CLASSES;
       {
         cardTitle && (
           <div class="absolute bottom-0 left-0 max-w-[80%] bg-primary text-on-primary p-8">
-            <h3 class="text-2xl leading-[1.9375rem] font-bold m-0 mb-2">{cardTitle}</h3>
+            {/* `text-on-primary` posé SUR le titre, pas seulement sur la carte :
+                global.css impose `color: var(--color-navy)` à tous les h1-h4
+                (règle de base non couchée), qui bat la couleur héritée du
+                parent. Sans cette classe, le titre reste bleu nuit sur l'aplat
+                bleu — 1,9:1, relevé par axe le 2026-09-21. */}
+            <h3 class="text-2xl leading-[1.9375rem] font-bold m-0 mb-2 text-on-primary">{cardTitle}</h3>
             {hasRichText(cardText) && (
               <p class="text-base leading-[1.625rem] opacity-90 m-0 max-w-none" set:html={inlineHtml(cardText)} />
             )}

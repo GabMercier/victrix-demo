@@ -30,9 +30,14 @@
  * soutenus. Ce fichier est browser-safe
  * (aucune dépendance) : il est aussi compilé dans le bundle d'édition live.
  *
- * FONDS SOMBRES (2026-09-21, demande Gabriel) : « bleu électrique » = l'aplat
- * Bleu Victrix (#1a5bff, le même que la tuile « IA et automatisation » et que
- * le CTA `variant: primaire`). Un fond sombre EXIGE que le composant inverse
+ * FONDS SOMBRES (2026-09-21, demande Gabriel) : DEUX aplats bleus depuis que
+ * la marque est passée au bleu du Design System Figma —
+ *  - « Bleu Victrix » #002fc7 (clé `bleu-profond`) = `bg-primary`, le bleu de
+ *    marque, celui des boutons et des liens ;
+ *  - « Bleu électrique » #1a5bff (clé `bleu-electrique`) = `bg-bleu-500`,
+ *    l'ancien bleu de marque, CONSERVÉ comme choix à la demande de Gabriel.
+ *    Sa clé n'a pas bougé : les sections déjà posées gardent leur couleur.
+ * Un fond sombre EXIGE que le composant inverse
  * ses textes — il n'est donc offert QUE dans les sections qui savent le faire
  * (`_select_data.fonds_etendus` : texte enrichi, encadré, chiffres, bandeau
  * de logos, FAQ). Les autres sections gardent `_select_data.fonds`, la palette
@@ -60,7 +65,7 @@ export type FondKey = (typeof FOND_KEYS)[number];
  * Fonds SOMBRES — texte INVERSÉ par le composant (voir `estFondSombre`).
  * Réservés aux sections qui gèrent l'inversion ; jamais dans `FOND_KEYS`.
  */
-export const FOND_KEYS_SOMBRES = ['bleu-electrique'] as const;
+export const FOND_KEYS_SOMBRES = ['bleu-profond', 'bleu-electrique'] as const;
 
 export type FondSombreKey = (typeof FOND_KEYS_SOMBRES)[number];
 
@@ -86,7 +91,12 @@ export const FOND_CLASSES: Record<FondEtenduKey, string> = {
   beige: 'bg-beige',
   sable: 'bg-sable',
   pierre: 'bg-pierre',
-  'bleu-electrique': 'bg-primary',
+  // 2026-09-21 : le bleu de marque est passé au #002fc7 du Design System
+  // Figma. L'ANCIEN bleu (#1a5bff) n'est pas supprimé — il garde sa clé, donc
+  // aucune section déjà posée ne change de couleur, et il reste offert dans la
+  // palette. Il pointe désormais la primitive `bleu-500` plutôt que `primary`.
+  'bleu-profond': 'bg-primary',
+  'bleu-electrique': 'bg-bleu-500',
 };
 
 /**
@@ -105,5 +115,6 @@ export const FOND_SWATCHES: Record<FondEtenduKey, { libelle: string; couleur: st
   beige: { libelle: 'Beige (gris chaud)', couleur: '#f6f3ef' },
   sable: { libelle: 'Sable (grège)', couleur: '#e9e2d9' },
   pierre: { libelle: 'Pierre (grège soutenu)', couleur: '#dcd5cc' },
+  'bleu-profond': { libelle: 'Bleu Victrix (texte blanc)', couleur: '#002fc7' },
   'bleu-electrique': { libelle: 'Bleu électrique (texte blanc)', couleur: '#1a5bff' },
 };

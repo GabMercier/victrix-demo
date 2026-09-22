@@ -209,7 +209,9 @@ const ga4Bootstrap = GA4_ID
         // l'attribut plutôt que de le poser, pour revenir au rendu normal.
         if (etat.police && etat.police !== 'inter') html.setAttribute('data-police', etat.police);
         else html.removeAttribute('data-police');
-        if (etat.bleu === 'figma') html.setAttribute('data-bleu', 'figma');
+        // Sens INVERSÉ le 2026-09-21 : le bleu Figma est devenu celui du site,
+        // c'est donc l'ancien (« export2 ») qui se pose en surcouche.
+        if (etat.bleu === 'export2') html.setAttribute('data-bleu', 'export2');
         else html.removeAttribute('data-bleu');
 
         const famille = POLICES[etat.police];

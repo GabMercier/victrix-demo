@@ -16,14 +16,20 @@ Ajouter les paramètres à **n'importe quelle** page :
 | Paramètre | Valeurs | Défaut |
 |---|---|---|
 | `?police=` | `inter` · `montserrat` · `nunito` · `hanken` | `inter` (le site) |
-| `?bleu=` | `export2` · `figma` | `export2` (le site) |
+| `?bleu=` | `figma` · `export2` | **`figma` (le site, depuis le 2026-09-21)** |
 | `?banc=off` | — | remet tout à zéro |
+
+**Le bleu a été TRANCHÉ le 2026-09-21** : Gabriel a retenu celui du Design
+System Figma, qui est devenu le bleu du site (`theme.css`, `tokens.css`).
+`?bleu=figma` ne fait donc plus rien — c'est le rendu normal ; ce qui reste
+commutable, c'est l'ANCIEN bleu, avec `?bleu=export2`, utile pour montrer
+l'avant/après. **Le choix de la police, lui, reste ouvert.**
 
 Exemples :
 
 ```
-/fr/?bleu=figma
-/fr/campagnes/licences-power-platform/?police=montserrat&bleu=figma
+/fr/?bleu=export2
+/fr/campagnes/licences-power-platform/?police=montserrat
 /fr/services/cybersecurite?police=hanken
 /fr/?banc=off
 ```
@@ -38,7 +44,26 @@ visiteur. C'est ce qui permet de le laisser en place, y compris sur le site
 dev, pendant toute la durée de l'arbitrage. Le premier test de
 `tests/e2e/banc-essai.spec.ts` verrouille cette propriété.
 
-## Arbitrage 1 — le bleu
+## Arbitrage 1 — le bleu · **TRANCHÉ le 2026-09-21 : c'est le bleu Figma**
+
+`--color-primary` vaut désormais `#002fc7`, avec toute la famille de rôles du
+Design System (`primary-container` `#1d46f3`, `on-primary-fixed` `#00105b`…),
+dans `theme.css` ET dans la couche héritée `tokens.css`. **L'ancien bleu n'est
+pas supprimé** : il reste `--color-bleu-500` et garde sa place dans la palette
+de l'éditrice sous « Bleu électrique » (`bleu-electrique` → `bg-bleu-500`), à
+côté du nouveau « Bleu Victrix » (`bleu-profond` → `bg-primary`). Les sections
+déjà posées n'ont donc pas changé de couleur.
+
+Effet de bord utile : le H1 de la page Contact peut enfin porter le `#00105B`
+exact de sa maquette, au lieu du repli `bleu-800` posé en août.
+
+Ce que la bascule a révélé, corrigé le même jour : `global.css` impose
+`color: var(--color-navy)` à tous les `h1`-`h4`, ce qui **bat la couleur
+héritée d'un parent**. Un titre sur aplat bleu doit donc porter lui-même sa
+classe (`text-on-primary`), sinon il reste bleu nuit sur bleu — 1,9:1.
+Vérifié par `tests/e2e/accessibilite.spec.ts`.
+
+### Historique de l'écart
 
 | Source | Bleu |
 |---|---|

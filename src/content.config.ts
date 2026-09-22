@@ -1633,6 +1633,10 @@ const contact = defineCollection({
   schema: z.object({
     metaTitle: z.string().min(1),
     metaDescription: z.string().min(1),
+    // Surtitre du héros — rétabli par la maquette « contact redesign »
+    // (2026-09-21) après avoir été retiré en août. FACULTATIF : vidé au CMS,
+    // il disparaît simplement du rendu.
+    heroEyebrow: z.string().default(''),
     heroTitle: z.string().min(1),
     heroSub: z.string().min(1),
     infoTitle: z.string().min(1),
