@@ -85,6 +85,26 @@ export const CONTACT_SERVICE_LABELS: Record<Locale, Record<ContactServiceKey, st
 };
 
 /**
+ * Sujet posé quand RIEN ne l'indique (2026-09-22, lot L-prefill).
+ *
+ * Pourquoi une constante et pas un littéral recopié : « De quoi souhaitez-vous
+ * parler ? » et « Service » sont tous deux OBLIGATOIRES, et le repli n'existait
+ * que dans la route des services (`|| 'projet'`). La route des pages générales
+ * posait `page.data.contactSujet` nu : les 9 pages sur 11 qui n'ont pas rempli
+ * ce champ au CMS ne posaient aucun `data-contact-*` sur <body>, donc leurs
+ * 18 liens vers /contact arrivaient sur DEUX listes obligatoires vides
+ * (constaté par Gabriel le 21/09 sur la page Secteurs). Même trou sur
+ * l'accueil, les campagnes, les articles et le centre de ressources, qui ne
+ * passent aucun préremplissage du tout — d'où le repli général de BaseLayout.
+ *
+ * « projet » plutôt qu'autre chose : c'est le sujet le plus large de la liste,
+ * déjà le repli choisi pour les services en septembre, et il entraîne le
+ * service « Autre » par SUJET_SERVICE_FALLBACK ci-dessous — jamais une famille
+ * de services devinée à la place de l'éditrice.
+ */
+export const CONTACT_SUJET_DEFAULT: ContactSujetKey = 'projet';
+
+/**
  * Sujet → service DÉDUIT quand la page n'en fixe aucun (2026-09-21) : une
  * candidature ne relève d'aucune famille de services, mais « Service » est
  * obligatoire. Tout sujet absent de cette table retombe sur « autre » (voir

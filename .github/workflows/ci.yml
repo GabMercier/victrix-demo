@@ -82,6 +82,14 @@ jobs:
       - name: Liens internes
         run: npm run check:links -- --strict
 
+      # Préremplissage des CTA (2026-09-22, lot L-prefill) : les deux listes du
+      # formulaire Contact sont OBLIGATOIRES. Un CTA qui y arrive sans les
+      # remplir redemande au visiteur ce que la page savait déjà — c'était le
+      # cas de 171 liens de contenu avant ce lot. Se joue sur dist/, comme les
+      # liens internes : seul le HTML final dit ce que le visiteur reçoit.
+      - name: Préremplissage des CTA vers le Contact
+        run: npm run check:prefill
+
       # Non-blocking for now: the current highs are transitive via wrangler
       # (build-time tooling), and the fix requires the @astrojs/cloudflare v14 /
       # Astro 7 jump. Tracked in the roadmap. Keep visible without failing CI.

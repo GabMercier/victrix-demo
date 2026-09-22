@@ -18,7 +18,7 @@ import JsonLd from '../../components/JsonLd.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
 import { useTranslations } from '../../i18n/ui';
-import { resolveContactPreset } from '../../lib/contact/presets';
+import { CONTACT_SUJET_DEFAULT, resolveContactPreset } from '../../lib/contact/presets';
 import { getLocaleData } from '../../i18n/locale-data';
 
 /**
@@ -200,6 +200,19 @@ const crumbs = [
   { name: page.data.title },
 ];
 const crumbsSchema = breadcrumbSchema(crumbs, Astro.site!);
+
+// Préremplissage Contact — le repli `|| CONTACT_SUJET_DEFAULT` est ALIGNÉ sur
+// la route des services (2026-09-22, lot L-prefill) : il manquait ici, et les
+// 9 pages générales sur 11 qui n'ont pas de `contactSujet` au CMS envoyaient
+// leurs 18 CTA sur deux listes obligatoires VIDES (constaté sur Secteurs).
+// Pas de repli de SERVICE côté route : une page générale n'a pas de famille de
+// services à hériter (celles des services la tirent de leur chemin de fichier)
+// — resolveContactPreset retombe sur « Autre », et sur « Ressources humaines »
+// quand le sujet est « carrière » (SUJET_SERVICE_FALLBACK).
+const contactPreset = {
+  sujet: page.data.contactSujet || CONTACT_SUJET_DEFAULT,
+  service: page.data.contactService,
+};
 ---
 
 <BaseLayout
@@ -209,7 +222,7 @@ const crumbsSchema = breadcrumbSchema(crumbs, Astro.site!);
   noindex={page.data.noindex}
   altLocalePath={altLocalePath}
   contentType="Page"
-  contactPreset={{ sujet: page.data.contactSujet, service: page.data.contactService }}
+  contactPreset={contactPreset}
 >
   <JsonLd slot="head" schema={crumbsSchema} />
   <Breadcrumbs lang={lang} items={crumbs} />

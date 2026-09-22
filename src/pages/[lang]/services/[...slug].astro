@@ -24,7 +24,7 @@ import Page from '../../../../component-library/src/shared/astro/page.astro';
 // DOSSIER de cette route porte aussi le mot — le changer exige de renommer le
 // dossier ET de prévoir une redirection.
 import { SERVICE_URL_PREFIX } from '../../../lib/navigation/service-links';
-import { serviceFamilyPreset } from '../../../lib/contact/presets';
+import { CONTACT_SUJET_DEFAULT, serviceFamilyPreset } from '../../../lib/contact/presets';
 import JsonLd from '../../../components/JsonLd.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { breadcrumbSchema } from '../../../lib/seo/breadcrumb';
@@ -185,7 +185,7 @@ export async function getStaticPaths() {
     // service hérité de la FAMILLE (1er segment du chemin de fichier) — les
     // champs de page contactSujet/contactService surchargent l'un et l'autre.
     const contactPreset = {
-      sujet: page.data.contactSujet || 'projet',
+      sujet: page.data.contactSujet || CONTACT_SUJET_DEFAULT,
       service: page.data.contactService || serviceFamilyPreset(filePath),
     };
 

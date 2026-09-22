@@ -185,6 +185,34 @@ const errorMessage =
 
 // Recettes partagées de la page (répétées si besoin ailleurs — pas d'abstraction).
 const cardShadow = 'shadow-[0_1px_2px_rgba(0,0,0,0.25)]';
+/**
+ * SURLIGNAGE DES CHAMPS OBLIGATOIRES ENCORE VIDES (2026-09-22, lot L-prefill).
+ *
+ * Pourquoi : maintenant que tout CTA arrive prérempli, l'arrivant voit un
+ * formulaire déjà entamé — il faut lui montrer ce qui LUI reste à faire.
+ * Quatre champs quand il vient d'un bouton de contenu (prénom, nom, courriel,
+ * message, les deux listes étant remplies), les six quand il arrive par le
+ * menu, le pied de page ou une URL tapée (le script de provenance ignore
+ * VOLONTAIREMENT les liens de chrome). Le script plus bas ne suppose RIEN du
+ * chemin d'arrivée : il regarde la valeur de chaque champ.
+ *
+ * Choix du repère : un halo de 2 px au bleu de marque à 60 % — un « reste à
+ * remplir » calme, PAS une erreur (ni rouge, ni `:invalid`, qui marquerait
+ * fautif un champ jamais touché). `ring-*` plutôt qu'un fond ou une bordure :
+ * aucune classe de `inputClass` n'est en conflit (donc aucune dépendance à
+ * l'ordre des utilitaires dans la feuille générée), aucun décalage de mise en
+ * page, et le contraste du texte de substitution reste celui que
+ * tests/e2e/accessibilite.spec.ts mesure. Le halo se distingue du FOCUS, qui
+ * change la couleur de la BORDURE.
+ * Pas de signalement par la couleur seule au sens de WCAG 1.4.1 : l'astérisque
+ * du libellé, l'attribut `required` et #req-note portent déjà l'information —
+ * le halo ne fait que la rappeler.
+ * Les classes vivent ICI (source scannée par Tailwind) et voyagent par
+ * `data-empty-mark` : écrites dans le script, elles pourraient ne pas être
+ * générées. La case de consentement en est exclue : c'est un geste à poser, pas
+ * un champ à remplir (et un halo sur une case de 16 px ne dit rien).
+ */
+const emptyMarkClass = 'ring-2 ring-primary/60';
 const labelClass = 'block text-base font-bold text-on-surface';
 const inputClass =
   // Maquette « contact redesign » (2026-09-21) : champ blanc 50 px, bordure
@@ -257,14 +285,16 @@ const phoneIcon =
     <div class="container-site grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
       <!-- Carte coordonnées -->
       <div class:list={['bg-white rounded-lg p-6 flex flex-col gap-8', cardShadow]}>
-        <h2 class="text-2xl font-bold text-primary m-0">{c.infoTitle}</h2>
+        {c.infoTitle && <h2 class="text-2xl font-bold text-primary m-0">{c.infoTitle}</h2>}
         <div class="flex flex-col gap-4">
           <div class="flex items-start gap-4">
             <svg class="shrink-0 mt-1 text-primary" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
               <path d={phoneIcon} />
             </svg>
             <p class="m-0 max-w-none">
-              <span class="block text-base font-bold text-on-surface">{c.infoLabels.tollFree}</span>
+              {c.infoLabels.tollFree && (
+                <span class="block text-base font-bold text-on-surface">{c.infoLabels.tollFree}</span>
+              )}
               <a class="text-base text-on-surface-variant no-underline hover:text-primary" href="tel:+18886808181">1-888-680-8181</a>
             </p>
           </div>
@@ -274,7 +304,9 @@ const phoneIcon =
               <path d="m2 4 10 8L22 4" />
             </svg>
             <p class="m-0 max-w-none">
-              <span class="block text-base font-bold text-on-surface">{c.infoLabels.email}</span>
+              {c.infoLabels.email && (
+                <span class="block text-base font-bold text-on-surface">{c.infoLabels.email}</span>
+              )}
               <a class="text-base text-on-surface-variant no-underline hover:text-primary" href="mailto:contact@victrix.ca">contact@victrix.ca</a>
             </p>
           </div>
@@ -289,9 +321,11 @@ const phoneIcon =
           {c.offices.map((office, i) =>
             officePhones[i] ? (
               <p class="m-0 max-w-none">
-                <span class="block text-sm font-bold uppercase tracking-[1.2px] text-on-surface-variant">
-                  {office.city}
-                </span>
+                {office.city && (
+                  <span class="block text-sm font-bold uppercase tracking-[1.2px] text-on-surface-variant">
+                    {office.city}
+                  </span>
+                )}
                 <a class="text-base text-on-surface no-underline hover:text-primary" href={`tel:${officePhones[i].tel}`}>
                   {officePhones[i].phone}
                 </a>
@@ -313,9 +347,9 @@ const phoneIcon =
               decoding="async"
             />
             <div>
-              <h3 class="text-2xl font-bold text-on-surface m-0">{office.city}</h3>
+              {office.city && <h3 class="text-2xl font-bold text-on-surface m-0">{office.city}</h3>}
               <address class="not-italic text-base leading-[1.625rem] text-on-surface-variant m-0">
-                {office.lines.map((line) => (
+                {office.lines.filter(Boolean).map((line) => (
                   <span class="block">{line}</span>
                 ))}
               </address>
@@ -341,13 +375,15 @@ const phoneIcon =
   <section class="bg-ivoire py-15">
     <div class="container-site grid grid-cols-1 lg:grid-cols-[minmax(0,376fr)_minmax(0,792fr)] gap-10 lg:gap-4 items-start">
       <div class="flex flex-col gap-4">
-        <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 text-balance">
-          {c.formTitle}
-        </h2>
+        {c.formTitle && (
+          <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 text-balance">
+            {c.formTitle}
+          </h2>
+        )}
         <p class="text-lg leading-[1.8125rem] text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(c.formIntro)} />
         <ul role="list" class="flex flex-col gap-4 m-0 p-0 pt-4 list-none">
           {
-            c.formBullets.map((bullet) => (
+            c.formBullets.filter(Boolean).map((bullet) => (
               <li class="m-0 flex items-center gap-2">
                 <svg class="shrink-0 text-primary" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <circle cx="12" cy="12" r="9" />
@@ -366,6 +402,7 @@ const phoneIcon =
           class="flex flex-col gap-6"
           aria-describedby="req-note"
           data-contact-form={formsEnabled ? undefined : ''}
+          data-empty-mark={emptyMarkClass}
           method={formsEnabled ? 'POST' : undefined}
           action={formAction(backend, lang)}
           data-astro-reload={formsEnabled ? '' : undefined}
@@ -649,6 +686,39 @@ const phoneIcon =
       }
       if (subjectSet || expertiseSet || produitSet || ctaSet) {
         document.querySelector('form[aria-describedby="req-note"]')?.scrollIntoView({ block: 'start' });
+      }
+    }
+
+    // Surlignage des champs obligatoires encore VIDES (2026-09-22, lot
+    // L-prefill — le repère et le pourquoi sont documentés en tête de fichier,
+    // près de `emptyMarkClass`). APRÈS le préremplissage ci-dessus : les deux
+    // listes viennent peut-être d'être remplies. Rien n'est supposé du chemin
+    // d'arrivée — seule la valeur du champ compte, relue à chaque frappe.
+    {
+      const form = document.querySelector<HTMLFormElement>('form[aria-describedby="req-note"]');
+      const marque = (form?.dataset.emptyMark ?? '').split(/\s+/).filter(Boolean);
+      if (form && marque.length > 0) {
+        type Champ = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+        // Case de consentement exclue (voir l'entête) ; « Taille de
+        // l'entreprise » n'est pas obligatoire et sort donc d'elle-même.
+        const champs = Array.from(
+          form.querySelectorAll<Champ>(
+            'input[required]:not([type="checkbox"]), select[required], textarea[required]',
+          ),
+        );
+        const relire = (champ: Champ) => {
+          // `disabled` : un champ hors du formulaire n'a rien à réclamer.
+          const aRemplir = !champ.disabled && champ.value.trim() === '';
+          champ.classList[aRemplir ? 'add' : 'remove'](...marque);
+        };
+        const relireTout = () => champs.forEach(relire);
+        relireTout();
+        // Délégation : un seul écouteur, et les champs que le préremplissage
+        // touche par programme (sans événement) sont relus au premier geste.
+        form.addEventListener('input', relireTout);
+        form.addEventListener('change', relireTout);
+        // Mode maquette : le formulaire est vidé après l'envoi simulé.
+        form.addEventListener('reset', () => setTimeout(relireTout, 0));
       }
     }
 
