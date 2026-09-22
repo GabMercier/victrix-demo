@@ -13,14 +13,19 @@
       "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Approvisionnement TI",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Structurez vos environnements TI avec Dell Technologies",
       "titleHighlight": "",
       "lead": "Alignez vos choix technologiques sur vos priorités opérationnelles et soutenez une trajectoire TI durable et maîtrisée.",
       "ctaLabel": "Demandez une démo",
       "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2022/05/industrial-plant-researchers-use-notebook-for-rese-2026-01-11-10-56-06-utc.jpg",
-      "imageAlt": "Une équipe TI qui travaille sur des portables Dell."
+      "imageAlt": "Une équipe TI qui travaille sur des portables Dell.",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "stats",
@@ -62,7 +67,7 @@
     {
       "_bookshop_name": "callout",
       "type": "callout",
-      "fond": "ivoire",
+      "fond": "bleu-profond",
       "title": "Optez pour des environnements TI cohérents et évolutifs",
       "body": "<p>Déployez un environnement durable, capable d'évoluer sans complexifier vos opérations.</p>",
       "ctaLabel": "Demandez une estimation",
@@ -76,6 +81,10 @@
       "sectionTitle": "Un portefeuille de solutions Dell Technologies conçu pour structurer vos environnements TI",
       "headingStyle": "plain",
       "intro": "Vos environnements IT doivent concilier la diversité des infrastructures, les exigences de disponibilités, la maîtrise des coûts et les besoins croissants en matière de gestion et d'exploitation des données. Dans ce contexte, <strong>vos décisions technologiques doivent ainsi rester cohérentes dans le temps</strong>. Dell Technologies simplifie ces choix en proposant un portefeuille intégré, capable de s'adapter à des environnements TI diversifiés, sans compromettre la stabilité ni la performance.",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "tint",
       "columns": "3",
       "cardStyle": "default",
