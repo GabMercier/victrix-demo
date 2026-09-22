@@ -314,9 +314,10 @@ exactement comme les pages Services.
   version EN d'avoir son propre segment d'URL (ex. `discover`) sans rompre
   l'appariement.
 - Mêmes réglages de page que les Services (Titre SEO, H1 SEO, **Contact —
-  sujet / service présélectionné**) ; sur une page générale, les deux champs
-  Contact sont vides par défaut = aucun choix prérempli dans les listes (le
-  libellé du bouton et la page d'origine, eux, sont toujours transmis).
+  sujet / service présélectionné**) ; laissés vides, ils donnent depuis le
+  22 sept. 2026 le repli « Un projet » + « Autre » — et non plus deux listes
+  vides, alors qu'elles sont obligatoires (le libellé du bouton et la page
+  d'origine, eux, ont toujours été transmis).
 
 ## Modifier les textes du site (pied de page, bandeau de consentement)
 
@@ -392,11 +393,18 @@ puce plus bas).
   de solutions « Un projet » + le nom de la solution. Deux champs de page,
   **« Contact — sujet présélectionné »** et **« Contact — service
   présélectionné »** (réglages de la page, à côté du H1 SEO — pages Services
-  et Pages générales), permettent de forcer un autre choix ; vides = les
-  défauts ci-dessus (aucun choix sur une page générale). Si une option des
+  et Pages générales), permettent de forcer un autre choix. Si une option des
   listes est renommée sur la page Contact, le préremplissage correspondant
   cesse silencieusement (jamais d'erreur) — prévenir l'équipe technique pour
   réaligner.
+  **Les deux listes n'arrivent plus jamais vides** (depuis le 22 sept. 2026) :
+  laisser ces deux champs vides ne donne plus un formulaire à moitié rempli,
+  mais le repli « Un projet » + « Autre » — c'est vrai partout, y compris sur
+  l'accueil, une campagne, un article et le centre de ressources, qui n'ont pas
+  ces champs. Vous n'avez donc rien à faire pour qu'un bouton fonctionne ; les
+  remplir sert à faire MIEUX que le repli, pas à le réparer. Un contrôle
+  automatique (`npm run check:prefill`, à chaque build) refuse désormais tout
+  bouton du site qui arriverait sur une liste obligatoire vide.
 - **Carrières** — depuis le 17 sept. 2026, une page de **Pages générales**
   (`fr/carrieres`, `en/carrieres`) composée de sept sections, éditables dans
   l'éditeur visuel comme les autres pages : **héros photo** (photo, titre,
@@ -690,6 +698,16 @@ jour), et toute page sans correspondance arrive sur **Autre**. Vous n'avez
 rien à faire ; si une page mérite un service précis, fixez-le dans son champ
 « Service (préremplissage du Contact) ».
 
+**Le formulaire montre ce qui reste à remplir** (depuis le 22 sept. 2026).
+À l'arrivée, les champs **obligatoires encore vides** portent un halo bleu
+discret, qui s'éteint dès que le champ est rempli. Ce n'est pas un message
+d'erreur : rien n'est signalé comme fautif, on indique simplement le chemin.
+Concrètement, un visiteur venu d'un bouton du site voit **quatre** champs
+surlignés (prénom, nom, courriel, message — les deux listes étant déjà
+choisies) et un visiteur arrivé par le menu ou le pied de page en voit
+**six**. Rien à régler au CMS : le halo suit la valeur des champs, pas le
+chemin d'arrivée.
+
 **Objet des notifications (mode boîte CloudCannon)** : chaque message reçoit
 un objet **unique**, préfixé d'une clé entre crochets, par exemple
 `[contact/carriere] Une carrière · Services applicatifs — Prénom Nom`,
@@ -772,6 +790,54 @@ visiteurs). Rien ne part en production tout seul.
   (adresse de test non indexée) et montre lui aussi, temporairement, les
   brouillons et les contenus à date future — l'équipe technique corrigera ce
   comportement avant la vraie mise en ligne.
+
+## Un champ vidé ne casse plus le site
+
+Depuis le **22 sept. 2026**, effacer le contenu d'un champ ne fait plus échouer
+la publication : le texte disparaît simplement du site, et la page se
+réorganise autour de lui — un titre de bloc vidé retire le titre, pas
+l'espace ; une méta description vidée retombe sur celle du site ; une puce ou
+une ligne d'adresse vidée n'apparaît plus dans sa liste. Vous pouvez donc vider
+un champ pour voir, et revenir en arrière.
+
+**Pourquoi c'est écrit ici.** Le 18 sept., une méta description effacée sur la
+page de confirmation a bloqué la publication pendant **20 sauvegardes
+d'affilée** : plus rien de ce que vous enregistriez n'arrivait sur le site, et
+le message d'erreur ne disait pas quel champ était en cause. Un test
+automatique vide maintenant, à chaque intégration, **chaque champ de chaque
+fichier** et refuse tout champ qui ne supporterait pas le vide.
+
+**Les champs qui refusent encore le vide** — et c'est voulu, parce que sans eux
+l'élément n'existe plus vraiment :
+
+| Ce que vous videz | Ce qui se passe |
+|---|---|
+| L'**adresse** d'un lien (menu, pied de page, bouton) | Refusé : un lien sans destination ne mène nulle part. |
+| Le **texte** d'un lien ou d'un bouton | Refusé : le bouton deviendrait invisible pour un lecteur d'écran. Y compris le numéro de téléphone du pied de page, qui EST le texte de son lien. |
+| Le **titre de la page** ou son **titre d'onglet** | Refusé : c'est ce que voient Google et les onglets du navigateur. |
+| Les **intitulés du formulaire Contact** et les **options de ses listes** | Refusé : ils forment le contrat avec le serveur qui reçoit les messages. |
+| Le **nom d'une barre d'annonce** | Refusé : c'est ce qui vous permet de la retrouver dans la liste. |
+
+Dans tous ces cas, CloudCannon vous le dit **à la sauvegarde**, en nommant le
+champ — et rien n'est publié à moitié.
+
+**Et les menus déroulants ?** (22 sept. 2026) Même tranquillité. Effacer un
+choix dans une liste — « Fond de section », « Variante », « Ton », « Nombre de
+colonnes », « Style de titre », le type d'un champ de formulaire — **remet la
+section à son réglage d'origine**, celui qu'elle avait avant que quelqu'un y
+touche. Rien ne casse, rien n'est publié de travers : la section revient
+simplement à son apparence par défaut, et vous pouvez rechoisir ensuite.
+
+Deux exceptions à connaître :
+
+- **Le pictogramme et le fond « au choix du bloc »** ne changent pas de
+  comportement : chez eux, « vide » est un vrai choix (« aucune icône »,
+  « le fond habituel de ce bloc »), et il est respecté tel quel.
+- **Le type d'un champ de formulaire qui en commande un autre** (par exemple
+  « Votre besoin », dont dépend l'affichage de « Précisez votre besoin ») ne
+  peut pas être vidé : un champ qui en commande un autre doit rester une liste
+  déroulante ou une case à cocher. CloudCannon vous le dira en nommant le champ
+  et la condition à réajuster.
 
 ## Les pièges connus (et pourquoi ce n'est pas grave)
 

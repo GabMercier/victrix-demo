@@ -102,6 +102,7 @@ bascule se corrige avec `node scripts/migrate-icons-bank.mjs` (rejouable ;
 | `npm run build` | build Cloudflare complet (`dist/_worker.js` + `_redirects` + `_routes.json`) | OK — `_worker.js` présent, 1 redirection CMS écrite et exclue du worker |
 | `STATIC_ONLY=1 npm run build` | build 100 % statique (aucun `_worker.js`), 23 pages | OK — 23 page(s) built, aucun `_worker.js` dans `dist/` |
 | `npm run check:links` (après le build ; `-- --strict` en CI) | 0 lien interne cassé dans `dist/` | 18 sept. 2026 : 75 cibles fautives à l'introduction (liens d'origine WordPress dans les articles), 0 après `npm run fix:links` |
+| `npm run check:prefill` (après le build) | 0 CTA de contenu qui arrive sur une liste obligatoire vide | 22 sept. 2026 : 171 liens fautifs à l'introduction, 0 après le lot L-prefill — 822 liens vers le Contact, dont 449 de contenu et 373 de chrome (ignorés) |
 
 **Liens internes (2026-09-18).** `scripts/check-internal-links.mjs` relève chaque
 `<a href>` interne du site CONSTRUIT et vérifie que la cible existe dans
@@ -114,6 +115,33 @@ mécanique et rejouable : `npm run fix:links` (`-- --check` pour lister sans
 touche jamais aux liens stockés SANS préfixe de langue dans un champ JSON
 (navigation, fiches de solutions). Exceptions documentées : constante `ALLOW` du
 garde-fou (aujourd'hui les trois pages « document » de WordPress non migrées).
+
+**Préremplissage des CTA vers le Contact (2026-09-22).**
+`scripts/check-contact-prefill.mjs` répond à une question que ni zod ni
+`check:links` ne posent : le lien existe, mais **arrive-t-il sur un formulaire
+utilisable ?** « De quoi souhaitez-vous parler ? » et « Service » sont tous deux
+OBLIGATOIRES ; un CTA qui les laisse vides redemande au visiteur ce que la page
+savait déjà. Le script rejoue sur `dist/` la mécanique d'exécution du site
+(`src/layouts/BaseLayout.astro`, script « provenance des CTA ») :
+
+```text
+sujet final   = ?sujet=     du lien   OU  <body data-contact-sujet>
+service final = ?expertise= du lien   OU  <body data-contact-service>
+```
+
+Les deux doivent être non vides, sinon il nomme la page et le lien et sort en
+erreur (CI, après le build). **Exceptions assumées, dans la constante
+`CHROME_TAGS` :** les liens de `<header>`, `<nav>` et `<footer>` — le site les
+ignore VOLONTAIREMENT (leur libellé « Contact » n'apporte aucun contexte), et le
+formulaire surligne alors ses six champs obligatoires vides. Toute autre
+exception s'ajoute là, avec sa raison.
+
+**Piège payé en l'écrivant :** chercher la première occurrence de `<body` dans
+le HTML tombe sur un **commentaire de script en ligne** du `<head>` (« *le
+ClientRouter remplace `<body>`* ») — le script lisait une balise sans attribut et
+déclarait 449 CTA fautifs sur 449. Il repart donc de `</head>` et ne relève que
+le CORPS du document. Même risque pour `<header>`/`<nav>`/`<footer>` et pour un
+`<a href>` cité dans une chaîne de script : la découpe les règle tous.
 
 > **Piège CloudCannon — les en-têtes de `routing.json` (2026-09-22).** Sa
 > validation **fait ÉCHOUER le build**, pas un avertissement : « `'headers[2]
@@ -241,8 +269,11 @@ de mise en page. Point de vigilance qui reste manuel — un conteneur de texte �
 hauteur FIXE déborde quand la police grossit ; les champs de saisie ont été
 repris en `min-h-[…rem]`, à refaire pour tout nouveau gabarit.
 
-**Banc d'essai police/bleu (temporaire) :** `?police=` et `?bleu=` rejouent
-n'importe quelle page dans une autre variante — voir `docs/design/banc-essai.md`.
+**Changer la police du site :** le banc d'essai `?police=` / `?bleu=` a été
+RETIRÉ le 2026-09-22 (lot L-polices) — le bleu est tranché, et la méthode pour
+appliquer une police en une fois vit dans `docs/design/polices-et-bleu.md`
+(piles `--font-sans` prêtes à coller, rapatriement local obligatoire pour la
+Loi 25, et les deux specs à rejouer ensuite).
 
 Rejouer seulement l'accessibilité :
 
