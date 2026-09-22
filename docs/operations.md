@@ -115,6 +115,19 @@ touche jamais aux liens stockés SANS préfixe de langue dans un champ JSON
 (navigation, fiches de solutions). Exceptions documentées : constante `ALLOW` du
 garde-fou (aujourd'hui les trois pages « document » de WordPress non migrées).
 
+> **Piège CloudCannon — les en-têtes de `routing.json` (2026-09-22).** Sa
+> validation **fait ÉCHOUER le build**, pas un avertissement : « `'headers[2]
+> .headers[5].name' Cache-Control is not a supported header name` ». Elle
+> n'accepte qu'une liste restreinte d'en-têtes de sécurité. `public/_headers`
+> garde ses blocs de cache `/_astro/*` et `/fonts/*` pour Cloudflare, mais
+> `astro.config.mjs` les écarte de `routing.json` via la liste blanche
+> `ENTETES_CLOUDCANNON` — jamais en silence, le build affiche la liste des
+> en-têtes non repris. Les chemins concernés reçoivent quand même le socle de
+> sécurité (CloudCannon applique la PREMIÈRE règle qui correspond, sans
+> fusionner : sans cette recopie, `/_astro/*` n'aurait aucun en-tête).
+> Ajouter un en-tête = l'ajouter à cette liste **après** l'avoir vérifié dans
+> la documentation CloudCannon.
+
 **Redirections de la migration (2026-09-22).** Deux listes alimentent
 `_redirects` (et, au lot L15, `.cloudcannon/routing.json`) :
 

@@ -51,6 +51,65 @@ Les quatre qui bloquent un prompt ci-dessous : **D9** (police → L-polices),
 
 ---
 
+## 2bis. Enchaîner plusieurs lots en une session de nuit
+
+Oui, c'est possible, et c'est ce qu'il faut faire quand personne ne surveille :
+une seule session qui traite les lots **en série**, jamais en parallèle (deux
+lots peuvent toucher le même fichier). Coller l'**en-tête de nuit** ci-dessous,
+puis les prompts des lots retenus, à la suite.
+
+Deux garde-fous en découlent :
+
+- **Aucune commande git qui écrit.** La règle 1 du `CLAUDE.md` l'interdit déjà
+  pour `commit`/`push`/`merge` ; la nuit, on y ajoute `stash`, `checkout --`,
+  `restore`, `clean` et `reset` — le `git stash` a déjà périmé le cache de
+  contenu et fait tomber le serveur de dev le 21/09. `git status`, `git diff`
+  et `git log` restent permis : ils ne modifient rien.
+- **Un journal, écrit au fur et à mesure.** C'est la balise : au réveil, on
+  sait où l'agent s'est arrêté et pourquoi, sans relire une transcription.
+
+### En-tête de nuit — à coller AVANT les prompts de lots
+
+```text
+SESSION DE NUIT — personne ne surveille, Gabriel lira au réveil.
+
+INTERDICTIONS ABSOLUES, avant tout le reste :
+- AUCUNE commande git qui écrit : pas de commit, push, merge, rebase, stash,
+  checkout --, restore, clean, reset, tag. Laisser l'arbre sale, c'est voulu.
+  `git status`, `git diff` et `git log` sont permis (ils ne modifient rien).
+- Ne pas toucher à Azure DevOps.
+- Ne pas modifier un fichier hors du périmètre du lot en cours. Un défaut vu
+  ailleurs se NOTE dans le journal, il ne se corrige pas au passage.
+
+JOURNAL DE BORD — obligatoire, c'est la balise d'arrêt.
+Créer docs/journal-nuit-2026-09-22.md dès le début, et y écrire APRÈS CHAQUE
+LOT (jamais à la fin seulement — si la session est coupée, ce qui est écrit
+doit rester exploitable) :
+  ## <lot> — TERMINÉ | PARTIEL | ÉCHEC | NON COMMENCÉ
+  - ce qui a été fait, en deux ou trois phrases
+  - fichiers touchés (liste)
+  - gate : les chiffres RÉELS de chaque commande, ou « pas pu tourner » + la raison
+  - ce qui reste / ce qui bloque
+  - décision à prendre par Gabriel, s'il y en a une
+
+ENCHAÎNEMENT : traiter les lots DANS L'ORDRE donné, un à la fois, en série.
+Si un lot échoue ou demande un arbitrage humain : l'écrire dans le journal,
+NE PAS insister, passer au suivant. Un lot bloqué ne doit pas emporter la nuit.
+
+GATE : le gate complet du CLAUDE.md après CHAQUE lot, pas seulement à la fin —
+un lot qui casse le gate doit être vu tout de suite, pas trois lots plus tard.
+Si le port 4321 écoute, build/type-check/check:links dans une copie isolée
+(docs/operations.md § 3.1) ou tuer le serveur par le port.
+
+RÉPONSE FINALE : le récapitulatif des lots avec leur état, puis UN SEUL bloc
+de commandes git prêtes à coller pour l'ensemble — Gabriel décidera s'il
+committe en une ou plusieurs fois.
+
+Les lots à traiter, dans cet ordre :
+```
+
+---
+
 ## 3. Les prompts
 
 ### L-prefill — Chaque CTA arrive sur un formulaire prérempli · **à faire en premier**

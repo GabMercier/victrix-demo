@@ -135,6 +135,33 @@ function versMotifCloudCannon(de, vers) {
 }
 
 /**
+ * En-têtes que l'hébergement CloudCannon accepte dans `routing.json`
+ * (2026-09-22). Sa validation REFUSE le build — pas un avertissement, un échec
+ * net : « 'headers[2].headers[5].name' Cache-Control is not a supported header
+ * name ». Les blocs `/_astro/*` et `/fonts/*` de `public/_headers` ne portent
+ * que du cache, destiné à Cloudflare : ils gardent leur place dans ce fichier,
+ * mais leur `Cache-Control` est écarté de routing.json (CloudCannon gère lui
+ * -même le cache des fichiers à empreinte).
+ *
+ * Liste BLANCHE volontairement : un en-tête inconnu est écarté plutôt que
+ * d'être envoyé à l'aveugle — mais jamais en silence, `reglesEntetes` le
+ * signale au build (voir l'avertissement plus bas). Ajouter un en-tête de
+ * sécurité ici après l'avoir vérifié dans la documentation CloudCannon.
+ */
+const ENTETES_CLOUDCANNON = new Set([
+  'content-security-policy',
+  'content-security-policy-report-only',
+  'strict-transport-security',
+  'x-content-type-options',
+  'x-frame-options',
+  'referrer-policy',
+  'permissions-policy',
+  'cross-origin-opener-policy',
+  'cross-origin-embedder-policy',
+  'cross-origin-resource-policy',
+]);
+
+/**
  * Lit `public/_headers` (format Cloudflare) et rend des règles CloudCannon
  * sans recouvrement. Voir le commentaire ci-dessus pour le pourquoi.
  * @param {string} texte contenu de public/_headers
@@ -162,6 +189,23 @@ function reglesEntetes(texte, cheminsDuSocle) {
       });
     }
   }
+  // Filtrage CloudCannon — voir ENTETES_CLOUDCANNON. On le fait AVANT de
+  // composer les règles, pour qu'un en-tête écarté ne se retrouve ni dans le
+  // socle recopié ni dans un bloc précis.
+  const ecartes = new Set();
+  for (const bloc of blocs) {
+    bloc.headers = bloc.headers.filter((h) => {
+      if (ENTETES_CLOUDCANNON.has(h.name.toLowerCase())) return true;
+      ecartes.add(h.name);
+      return false;
+    });
+  }
+  if (ecartes.size > 0) {
+    console.log(
+      `[victrix:redirects] en-tête(s) non repris dans routing.json (non supportés par CloudCannon) : ${[...ecartes].join(', ')} — ils restent dans public/_headers pour Cloudflare.`,
+    );
+  }
+
   const socle = blocs.find((b) => b.match === '/*');
   const precis = blocs.filter((b) => b.match !== '/*');
   const base = socle ? socle.headers : [];
@@ -175,7 +219,13 @@ function reglesEntetes(texte, cheminsDuSocle) {
   for (const chemin of cheminsDuSocle) {
     if (base.length > 0) regles.push({ match: chemin, headers: base });
   }
-  return regles;
+  // Une règle SANS en-tête n'a pas de sens et serait refusée par la validation
+  // CloudCannon : elle peut apparaître si un bloc de `public/_headers` ne
+  // portait que des en-têtes écartés ci-dessus et que le socle est vide.
+  // Les chemins concernés gardent quand même le socle quand il existe, ce qui
+  // est l'essentiel : CloudCannon applique la PREMIÈRE règle qui correspond,
+  // sans fusionner — sans cette recopie, /_astro/* perdrait toute la sécurité.
+  return regles.filter((r) => r.headers.length > 0);
 }
 
 /**
@@ -818,7 +868,10 @@ export default defineConfig({
     // (pré-i18n ET localisées) redirigent vers le service composable équivalent.
     '/expertises/intelligence-artificielle': '/fr/services/intelligence-artificielle',
     '/fr/expertises/intelligence-artificielle': '/fr/services/intelligence-artificielle',
-    '/en/expertises/intelligence-artificielle': '/en/services/intelligence-artificielle',
+    // 2026-09-22 : la cible EN suit le slug TRADUIT depuis le lot L03
+    // (`artificial-intelligence`) — cette redirection pointait encore vers
+    // l'ancien slug français et menait à un 404, relevé par check:links.
+    '/en/expertises/intelligence-artificielle': '/en/services/artificial-intelligence',
     // Les trois articles DÉMO du prototype ont été retirés au branchement du
     // vrai blogue (2026-07-29) — leurs URLs pré-i18n pointent maintenant vers
     // l'index Ressources (supprimer la règle ferait un 404 sur les vieux liens).
