@@ -4,6 +4,13 @@
 > Ce document dit ce qu'on va faire et pourquoi ; la mise en œuvre est la passe
 > suivante. Le registre des adresses, lui, est déjà produit :
 > [`docs/inventaire-pages.md`](../inventaire-pages.md).
+>
+> **Suite du 2026-09-22 (après-midi)** : le classeur d'URL de Julie propose une
+> RÉORGANISATION de l'arborescence qui change 39 des 175 cibles de la matrice.
+> Lire [`revue-classeur-julie.md`](revue-classeur-julie.md) **avant** d'engager
+> l'étape 1 — elle confirme que le correctif de la barre finale est réutilisable
+> tel quel (il agit sur le champ `de`, des chemins WordPress gelés), corrige le
+> § 9 ci-dessous, et ajoute une décision à l'étape 1 (le sort du joker).
 
 ## 1. Ce que la passe a trouvé, en une phrase
 
@@ -315,6 +322,14 @@ sont bêtes et sûres.
 Point à vérifier avant : **le plafond de routes** de `routing.json` n'est pas
 documenté. Un essai à 374 routes sur le site dev tranche en un déploiement.
 
+**Ajout du 2026-09-22 : trancher le sort du joker dans la même passe.** Le joker
+`/expertise/(.*)` est aujourd'hui ce qui fait fonctionner 71 adresses **et** ce
+qui fabrique les 10 « 301 vers un 404 » — une fois les deux formes émises, les
+82 règles précises reprennent la main et il n'a plus d'utilité. Sous
+l'architecture proposée par Julie il devient franchement nuisible (sa
+transformation ne donne la cible voulue que 2 fois sur 37). Deux options : le
+**supprimer**, ou le **re-pointer vers le hub `/services/`** comme filet neutre.
+
 ### Étape 2 — corriger les rapprochements par dernier segment
 
 Chemin complet d'abord, dernier segment en repli, et **refus** quand le segment
@@ -364,12 +379,18 @@ est simple : **0 adresse morte parmi les adresses inventoriées.**
 
 Hors périmètre des redirections, mais du même lot de vérification :
 
-- **7 pages liées depuis le pied de page de tout le site portent
-  `noindex: true`**, hérité de leur état de gabarit alors qu'elles ont
-  maintenant du vrai contenu : politique de confidentialité (16 sections),
-  conditions d'utilisation, centre de confiance, tarification, et les services
-  `infrastructure`, `projets-en-ia`, `services-applicatifs`. Elles sont donc
-  absentes du plan de site (150 entrées pour 185 pages).
+- ~~**7 pages liées depuis le pied de page de tout le site portent
+  `noindex: true`** à tort~~ — **CORRIGÉ le 2026-09-22 après réception du
+  classeur d'URL de Julie : ce constat était FAUX.** Aucune des 7 n'est en
+  `noindex` à tort : elle veut la politique de confidentialité et les conditions
+  d'utilisation **non indexables**, et ne veut la tarification et le centre de
+  confiance **pas en ligne du tout**. Le mécanisme est sain (les 35 pages
+  `noindex` sont exactement les 35 absentes du plan de site, symétrie FR/EN
+  parfaite, 3 désaccords seulement sur 53 lignes comparables). **Le vrai défaut
+  est l'inverse** : le pied de page de toutes les pages pointe vers 5 pages
+  qu'elle ne veut pas en ligne — correctif dans `src/data/site/{fr,en}.json`,
+  pas dans `noindex`. Détail et tableau :
+  [`revue-classeur-julie.md`](revue-classeur-julie.md) § 12.
 - **122 des 150 adresses ne portent aucun `hreflang`** : `@astrojs/sitemap`
   n'apparie que les chemins identiques, et nos slugs sont traduits. C'est du
   ressort de L21, mais le constat est ici.
