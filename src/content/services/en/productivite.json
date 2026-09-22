@@ -1,7 +1,10 @@
 {
+  "_schema": "default",
   "title": "Productivity Consulting",
-  "description": "Looking to improve your company’s efficiency? Victrix offers customized productivity consulting and innovative solutions. ",
+  "description": "Looking to improve your company’s efficiency? Victrix offers customized productivity consulting and innovative business solutions. ",
+  "noindex": false,
   "slug": "productivity-consulting",
+  "seoTitle": "Productivity Consulting Firm in Montreal | Expertise | Victrix",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -10,17 +13,19 @@
       "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Improve business productivity",
+      "titleHighlight": "business productivity",
       "lead": "Looking for ideas to improve your company's productivity? With years of experience, Victrix offers a human, customer-oriented approach that considers your business needs and focuses on your users.",
-      "ctaLabel": "Let's meet",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "Discover our solutions",
       "cta2Href": "/en/produits",
+      "overlay": "blanc",
       "image": "/images/sections/expertises-hero.jpg",
       "imageAlt": "",
-      "titleHighlight": "business productivity",
-      "overlay": "blanc"
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "benefits",
@@ -28,6 +33,8 @@
       "title": "Our human approach",
       "intro": "Our specialists use a proactive approach to help you get the most out of every working hour by reconciling the realities of the three main stakeholders.",
       "fond": "blanc",
+      "headingStyle": "titre",
+      "numerotation": true,
       "items": [
         {
           "title": "THE ORGANIZATION",
@@ -163,6 +170,8 @@
       "body": "Let's discuss your challenges and see how Victrix can help you go further in your digital transformation and performance improvement.",
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
       "variant": "dark",
       "fond": "blanc"
     },
@@ -176,8 +185,5 @@
       "ctaLabel": "See all resources",
       "ctaHref": "/en/ressources"
     }
-  ],
-  "seoTitle": "Productivity Consulting Firm in Montreal | Expertise Victrix",
-  "_schema": "default",
-  "noindex": false
+  ]
 }
