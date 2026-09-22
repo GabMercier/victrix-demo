@@ -336,16 +336,56 @@ Lot L13 de docs/plan-livraison-finale.md. Aucun développement sans mon accord.
 Livrable : docs/cloture-1690-1691.md + commandes az prêtes. Rituel allégé.
 ```
 
-#### L14 — Inventaire des pages et contenus (1–2 h) · #1765
+#### L14 — Parité avec le site actuel : registre + garde-fou (0,5 j) · #1765 · #1503
+
+> **ÉLARGI le 2026-09-22, à la demande de Gabriel, et REMONTÉ avant L06.** La
+> version d'origine ne produisait qu'un document. Elle absorbe désormais la
+> moitié MACHINE de L21 (`check-old-urls.mjs`), parce que c'est la même
+> question posée deux fois : « chaque page de l'ancien site a-t-elle un
+> remplaçant, et son URL y mène-t-elle ? ». Le document seul vieillit dès la
+> semaine suivante ; le script, lui, se rejoue. Le reste de L21 (hreflang,
+> plan de site, balayage du jour J) RESTE en phase 4.
+>
+> **Ce qui est déjà prouvé** (ne pas le refaire) : aucune des 175 redirections
+> ne mène à un 404 (`npm run check:redirects -- --dist`, en CI) et 0 lien
+> interne cassé sur 15 431 (`check:links --strict`). **Ce qui ne l'est pas** :
+> le SENS INVERSE — qu'une URL de l'ancien site soit couverte par une page ou
+> une règle — les chaînes 301 → 301, et le sort des 20 slugs dérivés / 3 URL
+> orphelines du rapport de parité (dernière passe le 21/09, avant L05 et L15).
 
 ```text
-Lot L14 de docs/plan-livraison-finale.md.
-Génère docs/inventaire-pages.md à partir de dist/ (après un build) et de
-docs/content-inventory.md + docs/migration/ : une ligne par URL de l'ancien
-site → nouvelle URL (ou redirection, ou « abandonnée »), état FR/EN, texte
-provisoire ou validé si détectable. Signale : pages de l'ancien site sans
-destination, pages EN manquantes, pages démo à retirer avant le lancement.
-C'est le support de validation de Julie pour #1765. Aucun changement de code.
+Lot L14 de docs/plan-livraison-finale.md. PÉRIMÈTRE tranché par Gabriel le
+22/09 : l'UNION des 150 URL du plan de site en ligne (docs/migration/
+urls-live.csv) et des 174 contenus de l'export WordPress (urls-contenus.csv)
+— les deux jeux existent déjà, et l'union attrape les pages non indexées
+encore en circulation (les 2 `/document/*` orphelins en sont). Les 943
+médias sont HORS périmètre de cette passe.
+
+Lis d'abord : docs/migration/parite-live.md, docs/migration/
+correspondance-urls.json (les décisions déjà prises : manuel, abandonnees,
+temporaires, ignorer, deja_dans_astro_config), docs/content-inventory.md et
+scripts/build-redirects.mjs. Ne redécouvre pas ce qui y est écrit.
+
+1. scripts/check-old-urls.mjs — garde-fou REJOUABLE. Pour chaque URL du
+   périmètre, contre `dist/` et la matrice de redirections : elle finit sur
+   une page qui EXISTE, en UNE SEULE redirection (signaler les chaînes
+   301 → 301). Sortie : docs/migration/validation-301.md.
+   PREMIÈRE PASSE = RAPPORT SEUL, code de sortie 0 même s'il reste des cas :
+   Gabriel tranche d'abord les douteux, la liste d'exceptions assumées
+   s'écrit ensuite, et le script passe bloquant au gate + CI dans un second
+   temps (même marche que check:prefill).
+2. docs/inventaire-pages.md — le REGISTRE, support de validation de Julie
+   (#1765) : une ligne par URL ancienne → nouvelle URL, ou redirection, ou
+   « abandonnée » AVEC SA RAISON. Colonnes : URL en ligne, destination,
+   mécanisme (page / 301 / abandon), FR, EN, source du contenu. Trié pour
+   qu'une éditrice s'y retrouve, pas pour qu'un script le relise.
+   Signale à part : pages sans destination, pages EN manquantes, pages de
+   DÉMO à retirer avant le lancement.
+3. Rejoue `python scripts/migration/check-parite-live.py` (le rapport date du
+   21/09, donc d'avant L05 et L15) et dis ce qui a bougé.
+
+Aucun changement de contenu ni de rendu. Si le registre révèle des pages à
+produire, tu les LISTES — tu ne les écris pas dans ce lot.
 ```
 
 ### Phase 4 — Mise en ligne (≈ 5–6 j)
@@ -595,14 +635,14 @@ foreach ($s in $stories) {
 | L11 | Catalogue B — fiches, route | 1,5 j | L10 | **R3** | |
 | L12 | Livres blancs — **4 pages** `/document/*` (pas 3 : + `/document/cybersecurite/`, livre blanc SEvOC) ; `licences-microsoft-power-platform` existe déjà en campagne | 1 j | D7, #1633 | | |
 | L13 | Prix + Espace client | 1 h | D8 | | |
-| L14 | Inventaire des pages | 2 h | — | | |
+| L14 | **PRIORITAIRE (remonté avant L06 le 22/09)** — Parité avec le site actuel : `scripts/check-old-urls.mjs` (chaque URL de l'ancien site finit sur une page qui existe, en une seule redirection) + `docs/inventaire-pages.md`, le registre de validation de Julie. Périmètre tranché : union du plan de site en ligne (150 URL) et de l'export WordPress (174 contenus) ; médias exclus. Première passe en RAPPORT SEUL, bloquant dans un second temps. Absorbe la moitié machine de L21 | 0,5 j | — | | |
 | L15 | `routing.json` — **redirections et en-têtes FAITS le 22/09** : l'intégration `victrix:redirects` écrit `dist/_cloudcannon/routing.json` (schéma officiel `routes`/`headers`, forme documentée par CloudCannon pour un fichier généré au build, prioritaire sur le fichier source). 191 routes (13 d'`astro.config` en `forced`, 3 de l'éditrice, 175 de la matrice de migration ; jokers traduits `*`→`(.*)`, `:splat`→`$1`) et 5 règles d'en-têtes dérivées de `public/_headers` SANS RECOUVREMENT (le bloc `/*` est recopié dans chaque règle précise — sinon /fr/ perdrait HSTS ou recevrait `nosniff, nosniff`). **Reste de L15** : vérifier les en-têtes de l'extérieur après le premier déploiement (`curl -I`), et trancher la règle 404 attrape-tout | 1 j | — | | redirections + en-têtes 2026-09-22 |
 | L16 | Statique vs aperçu | 0,5 j | — | **R4** | |
 | L17 | Formulaires + GA4 | 0,5 j | comptes | | |
 | L18 | QA responsive | 1 j | L06–L11 | | |
 | L19 | Accessibilité — **entamé le 21/09 (L-a11y)** : axe-core dans le gate, 0 violation sur 9 gabarits, contrastes corrigés. Reste : échelle typographique en `rem` (le réglage « grande police » du navigateur n'agit pas — le zoom, si), ordre de tabulation, textes de remplacement, QA lecteur d'écran | 0,5 j restant | L06–L11 | | partiel 2026-09-21 |
 | L20 | Performance | 1 j | — | | |
-| L21 | Zéro 404 — **l'essentiel est fait le 22/09** (matrice de 175 redirections, cibles vérifiées dans `dist/` en CI, 9 slugs d'articles alignés sur le site en ligne, 10 anciennes URL de services qui répondaient encore 200). Reste : `hreflang`, plan de site après la levée des `noindex`, et le balayage final du jour J | 0,5 j → 2 h | L03, L15 | | partiel 2026-09-22 |
+| L21 | Zéro 404 — **l'essentiel est fait le 22/09** (matrice de 175 redirections, cibles vérifiées dans `dist/` en CI, 9 slugs d'articles alignés sur le site en ligne, 10 anciennes URL de services qui répondaient encore 200). `check-old-urls.mjs` est **passé à L14** le 22/09 (même question, et le registre de Julie en dépend). Reste ici : `hreflang`, plan de site après la levée des `noindex`, et le balayage final du jour J | 0,5 j → 2 h | L03, L15, L14 | | partiel 2026-09-22 |
 | L22 | Doc + formation | 0,5 j | tout | | |
 | L23 | Jour J | — | tout | | |
 | L24–L26 | Options | 1 j + | — | | |
@@ -610,3 +650,9 @@ foreach ($s in $stories) {
 **Total Opus ≈ 14–15 jours assistés · Fable : 4 revues + réserve d'urgence.**
 Ordre conseillé si le temps manque : L01 → L06 → L09 → L15 → L16 → L10 → L11,
 puis la phase 4 ; L03/L04/L05/L08 se glissent entre deux gros lots.
+
+**Mise à jour du 2026-09-22** — L01, L09 et le gros de L15 sont faits. L'ordre
+qui reste est donc **L14 → L06 → L16 → L10 → L11**, puis la phase 4. L14 passe
+devant parce qu'il est court (0,5 j), qu'il dé-risque la mise en ligne, et que
+son registre peut révéler des pages à produire — mieux vaut le savoir AVANT
+d'ouvrir L06 (1,5 j) que pendant.
