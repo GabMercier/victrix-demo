@@ -24,7 +24,8 @@
       "cta2Href": "/en/expertises/",
       "overlay": "voile",
       "image": "",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "numbered-cards",
@@ -32,6 +33,10 @@
       "sectionTitle": "What We Cover",
       "headingStyle": "underline",
       "intro": "Complementary services, deployed together or on their own, around what your teams already cover.",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -80,7 +85,7 @@
       "fond": "blanc",
       "paragraphs": [
         "Our services are backed by recognized certifications, top-tier technology partnerships and teams who know what your industry demands. All of it is documented.",
-        "Our expertise | Our industries"
+        "<a class=\"btn\" href=\"/en/expertises/\" target=\"_blank\" rel=\"noopener\">View our expertise</a> <a class=\"btn\" href=\"/en/secteurs/\" target=\"_blank\" rel=\"noopener\">View our industries</a><p></p><p></p>"
       ]
     },
     {
