@@ -301,6 +301,38 @@ Rejouer seulement l'accessibilité :
 npx playwright test tests/e2e/accessibilite.spec.ts
 ```
 
+**Refabriquer les images de marque (favicon, logo du JSON-LD, image de partage) :**
+
+```
+npm run build:brand            # écrit les 7 fichiers dans public/
+npm run build:brand -- --check # n'écrit rien, sort 1 si un fichier a dérivé
+```
+
+Tout dérive des DEUX SVG de `src/assets/victrix-logo-{fr,en}.svg`, eux-mêmes
+normalisés depuis le kit officiel `02_Logos` (l'en-tête de chaque SVG liste
+les trois seules modifications ; aucun tracé n'a été touché) :
+
+| Fichier | Fabriqué à partir de |
+| --- | --- |
+| `favicon.svg` · `favicon.ico` (16/32/48) · `favicon-16x16.png` · `-32x32.png` | le « V » seul, blanc sur aplat Bleu Victrix `#002fc7` |
+| `apple-touch-icon.png` (180) | idem, mais **plein bord** — iOS pose son propre masque arrondi |
+| `images/logo-victrix.png` (1200×422) | logo FR complet, bleu nuit `#000d2e` sur blanc — c'est le `logo` du JSON-LD |
+| `og-image.png` | la composition existante, dont SEUL le verrouillage du logo est remplacé |
+
+**Ne pas retoucher ces fichiers à la main** : la commande les réécrirait.
+
+Deux points à connaître. Le logo est **différent par langue** — la signature
+est traduite (« Une marque » en FR, « Powered by » en EN) : `Logo.astro` prend
+une prop `lang`, tout nouvel appel doit la passer. Et les hauteurs
+`[--logo-height:…]` des en-têtes ont été relevées de 4 px au passage au kit
+officiel : son verrouillage réserve plus de place à la signature, donc à
+hauteur de boîte égale le mot-symbole rendait 20 px au lieu de 22. La hauteur
+de l'en-tête, elle, n'a pas bougé (72 px — le plus haut élément de la barre
+fait 44 px, pas le logo).
+
+Ces commandes ne touchent ni `.astro/` ni `dist/` : elles se lancent sans
+problème pendant qu'un `npm run dev` tourne.
+
 ### 3.1 — Si `npm run dev` tourne déjà (le cas courant)
 
 Les trois dernières commandes du tableau ci-dessus touchent `.astro/` ou

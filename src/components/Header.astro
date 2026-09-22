@@ -265,11 +265,11 @@ const langLinkClass = 'no-underline p-1 text-sm';
 <header class="site-header sticky top-0 z-50 bg-white shadow-controle">
   <div class="container-site flex items-center justify-between gap-6 min-h-[72px]">
     <a
-      class="site-header__brand inline-flex items-center shrink-0 [--logo-height:40px]"
+      class="site-header__brand inline-flex items-center shrink-0 [--logo-height:44px]"
       href={localizePath('/', lang)}
       aria-label={t.nav.brandAria}
     >
-      <Logo variant="dark" />
+      <Logo variant="dark" lang={lang} />
     </a>
 
     <nav class="primary-nav hidden lg:block" aria-label="Navigation">
@@ -591,13 +591,13 @@ const langLinkClass = 'no-underline p-1 text-sm';
     class="absolute inset-y-0 right-0 h-full w-[min(86vw,360px)] overflow-y-auto bg-surface-container-lowest shadow-surelevee p-6 flex flex-col gap-6"
     aria-label="Navigation"
   >
-    <div class="flex items-center justify-between [--logo-height:34px]">
+    <div class="flex items-center justify-between [--logo-height:38px]">
       <a
         class="site-header__brand inline-flex items-center"
         href={localizePath('/', lang)}
         aria-label={t.nav.brandAria}
       >
-        <Logo variant="dark" />
+        <Logo variant="dark" lang={lang} />
       </a>
       <button
         type="button"

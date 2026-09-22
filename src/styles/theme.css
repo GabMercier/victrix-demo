@@ -170,6 +170,15 @@
   --color-on-primary-fixed: #00105b; /* Figma — texte fort, overlays, bandes */
   --color-on-primary-fixed-variant: #002fc8; /* Figma */
 
+  /* Bleu nuit DE MARQUE — 2026-09-22, kit officiel « Logo Victrix_Bleu nuit ».
+     Jeton DÉDIÉ au logo, volontairement distinct de `--color-navy` (#0b1334,
+     tokens.css) : aligner le jeton du site sur la charte repeindrait toutes
+     les surfaces sombres et imposerait une repasse axe. Les deux valeurs
+     cohabitent donc sciemment — celle-ci ne sert qu'au mot-symbole.
+     (Le kit livre aussi un « Bleu pacifique » #083957, sans usage web à ce
+     jour : pas de jeton tant qu'aucune surface ne le demande.) */
+  --color-logo-nuit: #000d2e;
+
   /* Ardoise (secondary) — re-teintée sur les neutres froids */
   --color-secondary: #545f71; /* neutral-600 */
   --color-on-secondary: #ffffff;

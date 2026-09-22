@@ -128,11 +128,12 @@ const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
 // Organization JSON-LD — the ONE sitewide structured-data block, emitted on
 // every page (frozen contract). Absolute URLs are required by schema.org
 // consumers, hence `new URL(..., Astro.site)` like the canonical/OG URLs above.
-// `logo` = public/images/logo-victrix.png (1200×379, fond blanc), rendu du
-// SVG de marque src/assets/victrix-logo.svg avec les fills de la charte
-// (.lv-mark #0b1334 / .lv-tag #7b889d — le SVG source n'a pas de couleurs,
-// elles sont injectées par Logo.astro à l'affichage). Régénérer via sharp si
-// le logo change.
+// `logo` = public/images/logo-victrix.png (1200×422, fond blanc), rendu du
+// logo de marque FR (src/assets/victrix-logo-fr.svg) en bleu nuit de charte
+// #000d2e. Le SVG source n'a pas de couleur : elle est injectée par Logo.astro
+// à l'affichage, et par le script pour ce rendu. NE PAS retoucher le PNG à la
+// main — `npm run build:brand` le réécrit (avec le favicon et l'image de
+// partage), et `npm run check:brand` refuse une dérive.
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -185,7 +186,12 @@ const ga4Bootstrap = GA4_ID
       href={new URL(`/${lang}/rss.xml`, Astro.site)}
     />
 
-    {/* Icons + theme — official Victrix favicon */}
+    {/* Icônes — symbole « V » du logo de marque officiel, sur aplat Bleu
+        Victrix. Tout le jeu est FABRIQUÉ par `npm run build:favicons` depuis
+        un seul tracé : ne pas retoucher les fichiers de public/ à la main.
+        Le SVG passe en premier : les navigateurs qui le comprennent le
+        préfèrent (net à toute taille), les autres tombent sur les PNG. */}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

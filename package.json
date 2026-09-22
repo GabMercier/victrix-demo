@@ -25,7 +25,9 @@
     "fix:sections": "node scripts/backfill-section-keys.mjs",
     "fix:links": "node scripts/fix-internal-links.mjs",
     "build:redirects": "node scripts/build-redirects.mjs",
-    "check:redirects": "node scripts/build-redirects.mjs --check"
+    "check:redirects": "node scripts/build-redirects.mjs --check",
+    "build:brand": "node scripts/build-brand-images.mjs",
+    "check:brand": "node scripts/build-brand-images.mjs --check"
   },
   "engines": {
     "node": ">=20.3.0"
