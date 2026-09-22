@@ -1,18 +1,22 @@
 {
+  "_schema": "default",
   "title": "ServiceNow",
   "description": "Victrix is your ServiceNow partner from purchasing to managed services. Get tailored professional services and maximize the value of your service platform.",
-  "seoH1": "",
+  "noindex": false,
+  "slug": "productivity-consulting/servicenow",
+  "seoTitle": "ServiceNow Partner | Consulting & Services",
+  "seoH1": "ServiceNow Partner",
   "contactSujet": "",
   "contactService": "",
   "sections": [
     {
       "_bookshop_name": "product-hero",
       "type": "product-hero",
-      "badge": "ServiceNow platform",
-      "title": "Get the most out of ServiceNow: your platform amplified by Victrix’s expertise",
+      "badge": "ServiceNow Partner",
+      "title": "Get the Most Out of ServiceNow: Your Platform Amplified by Victrix’s Expertise",
       "titleHighlight": "ServiceNow",
       "lead": "Victrix, your certified ServiceNow partner, supports you from platform acquisition to upgrade services. Take advantage of our accelerated deployment approach and expertise to gain maximum value from your service platform.",
-      "ctaLabel": "Request a consultation",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
@@ -23,7 +27,7 @@
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
-      "title": "Our ServiceNow expertise",
+      "title": "Our ServiceNow Expertise",
       "intro": "",
       "fond": "blanc",
       "featured": {
@@ -36,16 +40,20 @@
         "icon": "coche",
         "title": "End-to-end support",
         "text": "Licensing, deployment, support, and evolution services: accelerated development with added value and bilingual service, in French and English.",
-        "linkLabel": "Talk to a ServiceNow expert",
+        "linkLabel": "Schedule a consultation",
         "linkHref": "/en/contact"
       }
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
-      "sectionTitle": "Accelerated deployment of your ServiceNow platform",
+      "sectionTitle": "Accelerated Deployment of Your ServiceNow Platform",
       "headingStyle": "underline",
       "intro": "Our ServiceNow experts focus on the elements that bring the most value to your service platform implementation. As a result, we propose an <strong>efficient deployment formula</strong> tailored to your organization’s specific needs.",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "default",
       "columns": "2",
       "cardStyle": "default",
@@ -53,32 +61,40 @@
         {
           "number": "01",
           "title": "Identification of your organization’s key business processes",
-          "text": ""
+          "text": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
           "title": "Faster project planning",
-          "text": ""
+          "text": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
           "title": "Implementation, co-development, and quality assurance",
-          "text": ""
+          "text": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "04",
           "title": "Operation and adoption",
-          "text": ""
+          "text": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
       ]
     },
     {
       "_bookshop_name": "offer-cards",
       "type": "offer-cards",
-      "title": "End-to-end services, from acquisition to deployment",
+      "title": "End-to-End Services, from Acquisition to Deployment",
       "intro": "Let our ServiceNow experts guide you through every stage of your digital transformation project. Our specialists simplify your ServiceNow journey by implementing best practices for this automation and services platform, recognized as a market leader.",
       "fond": "givre",
-      "ctaLabel": "Accelerate your ServiceNow deployment",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "items": [
         {
@@ -97,7 +113,7 @@
         },
         {
           "number": "02",
-          "title": "Expert services for the development and deployment of your solution",
+          "title": "Development and deployment of your solution",
           "bullets": [
             {
               "text": "Strategic deployment and project management support",
@@ -126,7 +142,8 @@
     {
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
-      "title": "AI governance and oversight",
+      "title": "AI Governance and Oversight",
+      "fond": "",
       "paragraphs": [
         "With ServiceNow’s AI Control Tower, Victrix helps your organization oversee and govern AI across the enterprise.",
         "Gain <strong>complete visibility into your models</strong>, <strong>data</strong>, and <strong>processes</strong> to ensure every AI initiative stays aligned with your business goals — scalable governance to support your innovation ambitions."
@@ -148,20 +165,19 @@
         },
         {
           "value": "Integration",
-          "label": "Direct with your ServiceNow workflows"
+          "label": "Direct with your ServiceNow modules and workflows"
         }
       ],
       "variant": "produit",
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": "",
-      "fond": ""
+      "cardText": ""
     },
     {
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
-      "sectionTitle": "A partnership that delivers value",
+      "sectionTitle": "A Partnership that Delivers Value",
       "subtitle": "ServiceNow focuses entirely on developing its product, and relies on its network of trusted partners for all its implementations. Working with a partner like Victrix is therefore crucial for implementing your service platform, so that you can reap all its benefits. Victrix is a certified ServiceNow Partner:",
       "fond": "blanc",
       "boxes": [
@@ -176,16 +192,14 @@
     {
       "_bookshop_name": "cta",
       "type": "cta",
-      "title": "Ensure the success of your ServiceNow solution with Victrix",
+      "title": "Ensure the Success of Your ServiceNow Solution with Victrix",
       "body": "Get the most of your investment and outpace your competitors with a simple, accelerated, and affordable digital transformation with Victrix.",
-      "ctaLabel": "Talk to a ServiceNow expert",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
       "fond": "blanc"
     }
-  ],
-  "slug": "productivity-consulting/servicenow",
-  "seoTitle": "ServiceNow Partner | Consulting & Services"
+  ]
 }
