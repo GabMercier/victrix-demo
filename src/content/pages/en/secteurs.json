@@ -38,62 +38,86 @@
         {
           "icon": "organisation",
           "title": "Public Sector",
-          "description": "Public tenders, data sovereignty and uninterrupted service to citizens."
+          "description": "Public tenders, data sovereignty and uninterrupted service to citizens.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "organisation",
           "title": "Healthcare",
-          "description": "Protected clinical data, interoperable systems and availability that never pauses."
+          "description": "Protected clinical data, interoperable systems and availability that never pauses.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "croissance",
           "title": "Financial Services",
-          "description": "Regulatory oversight, fraud prevention and transaction availability."
+          "description": "Regulatory oversight, fraud prevention and transaction availability.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "losange",
           "title": "Defence",
-          "description": "Security clearances, controlled goods and segmented environments on sovereign ground."
+          "description": "Security clearances, controlled goods and segmented environments on sovereign ground.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "losange",
           "title": "Energy",
-          "description": "Operational technology, critical infrastructure and operations that never stop."
+          "description": "Operational technology, critical infrastructure and operations that never stop.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "losange",
           "title": "Telecommunications",
-          "description": "Large-scale networks, carrier-grade availability and rising traffic volumes."
+          "description": "Large-scale networks, carrier-grade availability and rising traffic volumes.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "organisation",
           "title": "Industry and Manufacturing",
-          "description": "Connected equipment, continuous production lines and industrial environments to secure."
+          "description": "Connected equipment, continuous production lines and industrial environments to secure.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "losange",
           "title": "Food and Beverage",
-          "description": "Lot traceability, food safety and cold chain, where any stoppage is costly."
+          "description": "Lot traceability, food safety and cold chain, where any stoppage is costly.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "losange",
           "title": "Transportation and Logistics",
-          "description": "Fleets, warehouses and real-time tracking across the supply chain."
+          "description": "Fleets, warehouses and real-time tracking across the supply chain.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "organisation",
           "title": "Retail",
-          "description": "Point of sale, e-commerce, seasonal peaks and payment security."
+          "description": "Point of sale, e-commerce, seasonal peaks and payment security.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "losange",
           "title": "Engineering and Construction",
-          "description": "Connected job sites, a mobile workforce and heavy design files to share."
+          "description": "Connected job sites, a mobile workforce and heavy design files to share.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "organisation",
           "title": "Professional Services",
-          "description": "Client confidentiality, secure collaboration and teams on the move."
+          "description": "Client confidentiality, secure collaboration and teams on the move.",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

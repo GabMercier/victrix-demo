@@ -39,7 +39,9 @@
         "title": "Équipe pluridisciplinaire ",
         "text": "Nos conseillers chevronnés en stratégie et technologie vous aideront à atteindre vos objectifs. ",
         "linkLabel": null,
-        "linkHref": null
+        "linkHref": null,
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -149,27 +151,42 @@
         {
           "number": "01",
           "title": "Comprendre",
-          "text": "Ateliers d’évaluation et de découverte, questionnaires, besoins d’affaires, TI et utilisateurs, systèmes utilisés, contrats, expertise, contraintes, initiatives, problèmes et principes directeurs."
+          "text": "Ateliers d’évaluation et de découverte, questionnaires, besoins d’affaires, TI et utilisateurs, systèmes utilisés, contrats, expertise, contraintes, initiatives, problèmes et principes directeurs.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Prioriser",
-          "text": "Révision de l’étendue, ateliers d’orientation et de stratégie, tendances, comparables, meilleures pratiques et présentation à la direction."
+          "text": "Révision de l’étendue, ateliers d’orientation et de stratégie, tendances, comparables, meilleures pratiques et présentation à la direction.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Planifier",
-          "text": "Calendrier de réalisation, priorités, disponibilités, ressources internes et externes."
+          "text": "Calendrier de réalisation, priorités, disponibilités, ressources internes et externes.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Budgéter",
-          "text": "Séquence, efforts, échéancier et coûts, choix technologiques."
+          "text": "Séquence, efforts, échéancier et coûts, choix technologiques.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Activer",
-          "text": "Affectation des ressources, lancement des projets, gestion du changement, communication et rétroaction en continu."
+          "text": "Affectation des ressources, lancement des projets, gestion du changement, communication et rétroaction en continu.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

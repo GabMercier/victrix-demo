@@ -48,7 +48,9 @@
         "title": "Un service de sécurité de pointe",
         "text": "Élevez le niveau de sécurité des appareils connectés et réduisez le risque de violations de données grâce au soutien de nos experts en cybersécurité.",
         "linkLabel": "Découvrez notre expertise cybersécurité",
-        "linkHref": "/fr/services/cybersecurite/"
+        "linkHref": "/fr/services/cybersecurite/",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -58,11 +60,36 @@
       "subtitle": "Victrix réalise une analyse complète de votre infrastructure pour identifier les vulnérabilités de votre système et améliorer la sécurité de vos environnements IoT.",
       "fond": "beige",
       "boxes": [
-        "Évaluation des besoins et de la stratégie",
-        "Inventaire et évaluation des risques",
-        "Mise en œuvre de la sécurité",
-        "Surveillance et réponse aux incidents",
-        "Revue et amélioration continue"
+        {
+          "label": "Évaluation des besoins et de la stratégie",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Inventaire et évaluation des risques",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Mise en œuvre de la sécurité",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Surveillance et réponse aux incidents",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Revue et amélioration continue",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {

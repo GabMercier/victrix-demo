@@ -84,49 +84,70 @@
           "title": "Zscaler Internet Access (ZIA)",
           "text": "<strong>Provide safer, higher-performing Internet access for all your teams.</strong><br><br><strong>Zscaler Internet Access (ZIA) </strong>delivers secure access to the Internet and SaaS applications with traffic analysis, threat prevention, filtering, data loss prevention (DLP), and Cloud Access Security Broker (CASB) capabilities.<br><br><strong>Result: </strong>secure Internet access, tangible risk reduction, and faster threat detection.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Zscaler Private Access (ZPA)",
           "text": "<strong>Secure access to private applications without the constraints of a virtual private network (VPN).</strong><br><br><strong>Zscaler Private Access (ZPA) </strong>connects users to your internal applications without exposing the network. Access is granted on an application-by-application basis, following strict Zero Trust principles instead of network segmentation.<br><br><strong>Result:</strong> controlled access to private applications, reduced exposure to threats, and improved user experience.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Zscaler Client Connector",
           "text": "<strong>Enforce your security policies automatically on every device.</strong><br><br><strong>Zscaler Client Connector</strong> is a lightweight agent installed on devices to provide secure connectivity to the Zscaler platform. It unifies protection across all your devices—computers, mobile devices, and more—by activating ZIA and ZPA services.<br><br><strong>Result:</strong> increased access control and reduced risks from unmanaged devices.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Zscaler Digital Experience (ZDX)",
           "text": "<strong>Accelerate problem diagnosis with detailed end-to-end user experience insights.</strong><br><br><strong>Zscaler Digital Experience (ZDX) </strong>continuously monitors application performance, connectivity, and network quality. It offers diagnostic tools to quickly identify issues and accelerate resolution.<br><br><strong>Result: </strong>stable application performance, reduced resolution time, and a better experience for all users.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Data Security",
           "text": "<strong>Protect your data across all channels. </strong><br><br><strong>Zscaler’s data security solutions </strong>protect information in transit or at rest across cloud and private environments. They strengthen regulatory compliance and improve the control of cloud application use—whether sanctioned or unsanctioned.<br><br><strong>Result:</strong> stronger data governance and a more robust compliance posture.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Cyberthreat Protection",
           "text": "<strong>Stop attacks before they disrupt your operations.</strong><br><br><strong>Zscaler’s AI-enhanced cyberthreat protection solutions</strong> continuously analyze traffic and detect suspicious behaviour sooner. They defend against phishing, malware, botnets, zero-day attacks, and ransomware.<br><br><strong>Result:</strong> reduced exposure to threats and proactive detection of suspicious activity.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "07",
           "title": "Security Operations (SecOps) and Risk Management",
           "text": "<strong>Strengthen your security operations with complete visibility over risks and threats.</strong><br><br><strong>The Zscaler security operations platform </strong>brings together tools for risk management, threat exposure analysis, attack surface control, and early detection. It centralizes data and correlates events to accelerate investigation and improve response.<br><br><strong>Result:</strong> deeper risk understanding, less operational noise, and more effective detection and response capabilities.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

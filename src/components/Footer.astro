@@ -2,6 +2,7 @@
 import { type Locale, defaultLocale, localizePath } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 import { getSiteText } from '../i18n/site';
+import Logo from './Logo.astro';
 
 /**
  * Global site footer: link columns, contact block (chip CTA, email/phone,
@@ -130,11 +131,17 @@ const smallMutedClass = 'text-sm font-semibold text-neutral-700';
     <div
       class="border-0 border-t border-solid border-outline mt-10 pt-6 flex flex-wrap items-center justify-between gap-4"
     >
+      {/* Le pied de page rendait le MOT « Victrix » en gras, pas le logo —
+          survivance d'avant l'arrivée du kit officiel (22/09). Il porte
+          désormais le vrai logo, dans la langue de la page. Fond beige
+          (`bg-surface-container-low`) = fond CLAIR, donc variante sombre. */}
       <a
-        class="text-headline-md font-bold text-on-surface no-underline"
+        class="inline-flex items-center no-underline [--logo-height:40px]"
         href={localizePath('/', lang)}
         aria-label={t.nav.brandAria}
-      >Victrix</a>
+      >
+        <Logo variant="dark" lang={lang} />
+      </a>
       <nav aria-label={f.contactTitle}>
         <ul role="list" class="flex flex-wrap items-center gap-6">
           {

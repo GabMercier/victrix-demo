@@ -2852,7 +2852,29 @@ _structures:
           title: ''
           description: ''
           icon: ''
+          image: ''
+          imageAlt: ''
         _inputs:
+          image:
+            type: image
+            label: Logo (optionnel)
+            options:
+              empty_type: string
+              paths:
+                static: public
+                uploads: public/images/logos
+            comment: >-
+              Pour un logo de marque que la banque de pictogrammes ne peut pas
+              rendre (Microsoft, AWS, ServiceNow…). Remplace l'icône. Les logos
+              déjà rapatriés de l'ancien site sont dans /images/logos/.
+          imageAlt:
+            type: text
+            label: Texte de remplacement du logo
+            options:
+              empty_type: string
+            comment: >-
+              Décrit le logo pour les lecteurs d'écran. Laisser VIDE si le nom
+              de la marque est déjà écrit à côté — sinon il est lu deux fois.
           icon:
             type: select
             label: Icône (optionnelle)
@@ -3704,7 +3726,46 @@ _structures:
           text: ''
           ctaLabel: ''
           ctaHref: ''
+          icon: ''
+          image: ''
+          imageAlt: ''
         _inputs:
+          icon:
+            type: select
+            label: Icône (optionnelle)
+            options:
+              empty_type: string
+              allow_empty: true
+              values: _select_data.icones
+              value_key: cle
+              preview:
+                text:
+                  - key: libelle
+                image:
+                  - key: apercu
+            comment: >-
+              Pictogramme en haut de la carte. Vide = aucun. Toute la banque du
+              site est offerte. Un LOGO posé ci-dessous prend le dessus.
+          image:
+            type: image
+            label: Logo (optionnel)
+            options:
+              empty_type: string
+              paths:
+                static: public
+                uploads: public/images/logos
+            comment: >-
+              Pour un logo de marque que la banque de pictogrammes ne peut pas
+              rendre (Microsoft, AWS, ServiceNow…). Remplace l'icône. Les logos
+              déjà rapatriés de l'ancien site sont dans /images/logos/.
+          imageAlt:
+            type: text
+            label: Texte de remplacement du logo
+            options:
+              empty_type: string
+            comment: >-
+              Décrit le logo pour les lecteurs d'écran. Laisser VIDE si le nom
+              de la marque est déjà écrit à côté — sinon il est lu deux fois.
           number:
             type: text
             options:

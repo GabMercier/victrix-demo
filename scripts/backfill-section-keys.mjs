@@ -35,6 +35,36 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const CHECK_ONLY = process.argv.includes('--check');
 const KEYS = ['fond', 'image'];
 
+/**
+ * Clés IMBRIQUÉES (2026-09-22) — le script ne descendait QUE d'un niveau, sur
+ * la section elle-même. Or CloudCannon n'affiche un champ que si sa clé
+ * existe : un champ ajouté à un ITEM de tableau ou à un sous-objet restait
+ * donc invisible dans toutes les sections déjà posées, quoi qu'on écrive dans
+ * le blueprint. C'est ce qui s'est passé avec l'icône des cartes numérotées et
+ * le logo de la carte « Happy At Work » de Découvrir.
+ *
+ * `chemin` = clé du tableau OU du sous-objet à l'intérieur de la section.
+ * Défaut toujours '' : ces champs sont des chaînes optionnelles.
+ */
+const KEYS_IMBRIQUEES = [
+  { type: 'numbered-cards', chemin: 'items', cles: ['icon', 'image', 'imageAlt'] },
+  { type: 'benefits', chemin: 'items', cles: ['image', 'imageAlt'] },
+  { type: 'feature-boxes', chemin: 'boxes', cles: ['icon', 'image', 'imageAlt'] },
+  { type: 'bento-metrics', chemin: 'aside', cles: ['image', 'imageAlt'] },
+];
+
+/** Ajoute les clés manquantes dans un objet ; renvoie le nombre d'ajouts. */
+function completer(cible, cles) {
+  if (!cible || typeof cible !== 'object' || Array.isArray(cible)) return 0;
+  let n = 0;
+  for (const cle of cles) {
+    if (cle in cible) continue;
+    cible[cle] = '';
+    n += 1;
+  }
+  return n;
+}
+
 function walk(dir, out = []) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     const abs = join(dir, entry.name);
@@ -125,6 +155,20 @@ for (const file of files) {
       added += 1;
       changed = true;
     }
+
+    // Deuxième passe : les clés imbriquées (items de tableau, sous-objets).
+    for (const regle of KEYS_IMBRIQUEES) {
+      if ((next.type ?? name) !== regle.type) continue;
+      const cible = next[regle.chemin];
+      const ajouts = Array.isArray(cible)
+        ? cible.reduce((somme, entree) => somme + completer(entree, regle.cles), 0)
+        : completer(cible, regle.cles);
+      if (ajouts > 0) {
+        added += ajouts;
+        changed = true;
+      }
+    }
+
     return next;
   });
   if (!changed) continue;
@@ -134,7 +178,7 @@ for (const file of files) {
 }
 
 console.log(
-  `[backfill] ${added} clé(s) ${CHECK_ONLY ? 'manquante(s)' : 'ajoutée(s)'} dans ${touched} fichier(s) — clés suivies : ${KEYS.join(', ')}.`,
+  `[backfill] ${added} clé(s) ${CHECK_ONLY ? 'manquante(s)' : 'ajoutée(s)'} dans ${touched} fichier(s) — clés suivies : ${KEYS.join(', ')} ; imbriquées : ${KEYS_IMBRIQUEES.map((r) => `${r.type}.${r.chemin}[${r.cles.join('/')}]`).join(', ')}.`,
 );
 for (const [what, n] of skipped) console.log(`  ⚠ ${what} : défaut du schéma illisible — ${n} section(s) laissée(s) telles quelles.`);
 if (thumbErrors.length) {

@@ -64,7 +64,9 @@
         "title": "Un accompagnement personnalisé",
         "text": "Avec notre accompagnement personnalisé, maximisez votre retour sur investissement et faites évoluer votre environnement technologique en toute confiance.",
         "linkLabel": "Obtenez un accord de service sur mesure",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -82,35 +84,50 @@
           "title": "La pénurie de main-d'œuvre qualifiée en TI",
           "text": "Répondez rapidement à vos besoins ponctuels ou évolutifs en TI sans avoir à recruter. Nos experts prennent le relais, vous assurant la flexibilité dont vous avez besoin pour votre bonne continuité opérationnelle.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "L'optimisation des coûts et le contrôle du budget TI",
           "text": "Bénéficiez d'une tarification prévisible grâce à nos banques de temps définies à l'avance. Pas de surprise&nbsp;: vous savez exactement combien coûtent vos services TI. Nous éliminons les imprévus et vous réalisez des économies sans sacrifier la qualité.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "La prise en charge et l'accélération des projets technologiques",
           "text": "Confiez-nous la gestion ou la réalisation de vos initiatives numériques critiques. Victrix agit comme catalyseur pour concrétiser vos projets dans les délais, sans alourdir vos équipes internes.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Performances, évolutivité et excellence des services",
           "text": "Appuyez-vous sur une équipe d'experts polyvalents pour faire évoluer vos environnements TI&nbsp;: <a href=\"/fr/services/services-infonuagiques/\" target=\"_blank\" rel=\"noopener\">solutions infonuagiques</a>, <a href=\"/fr/services/cybersecurite/\" target=\"_blank\" rel=\"noopener\">cybersécurité</a>, réseau, communication, gestion d'équipements. Résultat? Un temps de réponse optimisé, des projets accélérés et une résilience assurée.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "La cybersécurité avancée",
           "text": "Renforcez votre posture de sécurité avec un accompagnement proactif couvrant la surveillance, la réponse aux incidents, la gestion des données et la conformité aux normes et réglementations comme la <a href=\"/fr/services/conseil-strategique/conformite-loi-25/\" target=\"_blank\" rel=\"noopener\">Loi 25</a>, <a href=\"/fr/ressources/reglementation-dora/\" target=\"_blank\" rel=\"noopener\">DORA</a>, <a href=\"/fr/ressources/directive-nis2/\" target=\"_blank\" rel=\"noopener\">NIS2</a> et autres exigences sectorielles.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ],
       "intro": "",

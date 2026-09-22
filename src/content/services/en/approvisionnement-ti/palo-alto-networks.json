@@ -85,35 +85,50 @@
           "title": "Cloud and Secure Access",
           "text": "<strong>Secure your access and cloud environments without compromising performance.</strong><br><br><strong>Prisma </strong>protects cloud environments and user access wherever they are located. The solution centralizes security, compliance and connectivity policies.<br><br><strong>Result: </strong>centralized visibility and consistent security, without adding management complexity.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Network Security",
           "text": "<strong>Protect your network with next-generation zero trust security.</strong><br><br><strong>Strata </strong>secures network traffic through in-depth analysis of applicaitons, users, and content. The solution enables precise control of traffic flows and security policies.<br><br><strong>Result: </strong>granular network control and a significant reduction in your organization's attack surface.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Security Operations, Detection and Response",
           "text": "<strong>Detect, analyze, and respond to incidents faster.</strong><br><br><strong>Cortex </strong>centralizes threat detection, analysis, and response. Automation improves event correlation, accelerates security operations, and supports faster decision-making.<br><br><strong>Result: </strong>reduced response times and more efficient security operations.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Threat Intelligence and Services",
           "text": "<strong>Access advanced cybersecurity expertise.</strong><br><br><strong>Unit 42 </strong>brings together Palo Alto Networks experts dedicated to threat analysis and major incident response.<br><br><strong>Result: </strong>better risk understanding and a stronger security posture.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "PA-Series: Next-Gen Firewalls and Specialized Network Hardware",
           "text": "<strong>Ensure high-performance, resilient network protection in the most demanding environments. </strong><br><br><strong>PA-Series firewalls and specialized network hardware </strong>protect networks operating at high throughput and in complex data center environments.<br><br><strong>Result:</strong> high performance and advanced security, without compromise.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

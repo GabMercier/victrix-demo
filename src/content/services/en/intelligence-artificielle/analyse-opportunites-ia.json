@@ -39,7 +39,9 @@
         "title": "Not sure how to start with AI?",
         "text": "Our experts support you every step of the way to ensure the success of all your digital transformation projects with AI.",
         "linkLabel": "Consult a specialist",
-        "linkHref": "/en/contact"
+        "linkHref": "/en/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -49,11 +51,36 @@
       "subtitle": "At Victrix, our experts offer personalized AI support that gives you the precision you need to build a solid AI adoption strategy.",
       "fond": "beige",
       "boxes": [
-        "Prioritize promising and measurable artificial intelligence projects",
-        "Exclude initiatives that are risky or misaligned with your objectives",
-        "Identify uses for AI in your business to accelerate your processes and make more informed decisions",
-        "Integrate AI securely and in compliance with governance and compliance requirements",
-        "Establish a realistic AI roadmap (costs, benefits, risks, timeline) to maximize ROI"
+        {
+          "label": "Prioritize promising and measurable artificial intelligence projects",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Exclude initiatives that are risky or misaligned with your objectives",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Identify uses for AI in your business to accelerate your processes and make more informed decisions",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Integrate AI securely and in compliance with governance and compliance requirements",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Establish a realistic AI roadmap (costs, benefits, risks, timeline) to maximize ROI",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {
@@ -70,22 +97,34 @@
         {
           "number": "01",
           "title": "Start",
-          "text": "Defining the vision and mobilizing stakeholders."
+          "text": "Defining the vision and mobilizing stakeholders.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Diagnosis",
-          "text": "Analysis of the current state and exploration of AI use cases."
+          "text": "Analysis of the current state and exploration of AI use cases.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Evaluation",
-          "text": "Analysis of opportunities, measuring value, feasibility, and risks."
+          "text": "Analysis of opportunities, measuring value, feasibility, and risks.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Roadmap",
-          "text": "Prioritization of projects and structured adoption plan."
+          "text": "Prioritization of projects and structured adoption plan.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

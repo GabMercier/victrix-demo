@@ -35,7 +35,9 @@
         "title": "Partenariat AWS",
         "text": "Faites confiance à notre équipe pour assurer une migration efficace de vos applications vers AWS.",
         "linkLabel": "Rencontrez un expert AWS",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -79,17 +81,26 @@
         {
           "number": "01",
           "title": "Analyse et évaluation de la situation technologique",
-          "text": "Évaluation de la faisabilité, analyse et optimisation des coûts, fiabilisation des charges de travail et des applications."
+          "text": "Évaluation de la faisabilité, analyse et optimisation des coûts, fiabilisation des charges de travail et des applications.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Préparation de la stratégie et recommandations",
-          "text": "Planification pour une migration fluide (gestion des risques), objectifs d'excellence opérationnelle, de sécurité optimale, de conformité et de performance, respect des 6 R de migration et adaptation aux enjeux selon le contexte de l'organisation."
+          "text": "Planification pour une migration fluide (gestion des risques), objectifs d'excellence opérationnelle, de sécurité optimale, de conformité et de performance, respect des 6 R de migration et adaptation aux enjeux selon le contexte de l'organisation.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Accompagnement personnalisé",
-          "text": "Application de correctifs à l'architecture en place, migration et déploiement du premier service identifié, suivi sur le déroulement de la migration et vue globale sur son état."
+          "text": "Application de correctifs à l'architecture en place, migration et déploiement du premier service identifié, suivi sur le déroulement de la migration et vue globale sur son état.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

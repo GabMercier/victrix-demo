@@ -627,6 +627,37 @@ barre latérale — recommandé) : un fichier = un formulaire, avec son
 destinataire et son objet de courriel; les pages y font référence par le champ
 « Formulaire lié » de la section.
 
+### Icône ou logo sur les cartes (2026-09-22)
+
+Quatre sections acceptent désormais un **visuel** par carte. Deux voies, au
+même endroit, et **le logo l'emporte quand les deux sont remplis** :
+
+- **Pictogramme** — une liste fermée, toute la banque du site.
+- **Logo** — un fichier, pour une marque que la banque ne peut pas dessiner.
+
+| Section | Ce qui a changé |
+| --- | --- |
+| **Cartes numérotées** | N'avait **aucun** visuel — elle en accepte un. C'est la section la plus posée du site (76 sections, 357 cartes). |
+| **Boîtes de domaines** | Chaque boîte avait un simple libellé ; elle devient un vrai bloc avec libellé + pictogramme + logo. |
+| **Cartes à icônes** | Le pictogramme y était déjà ; le logo s'ajoute. |
+| **Bento (chiffres clés)** | Sa carte de droite accepte un logo — c'est ce qui manquait à l'insigne HappyIndex® AtWork de la page Découvrir. |
+
+**Les logos de nos partenaires sont déjà là.** 19 fichiers ont été rapatriés de
+l'ancien site dans `/images/logos/` : Microsoft, AWS, Azure, Amazon, Cisco,
+Check Point, CrowdStrike, Palo Alto, Red Hat, OpenShift, Aruba, Imprivata,
+Pulse Secure, ServiceNow, Ø Studio, et les insignes de partenariat Microsoft
+Dynamics, Microsoft FastTrack et AWS. Ils apparaissent dans le sélecteur
+d'image, vous n'avez rien à téléverser. **Manquent encore** : AlgoSec,
+Proofpoint, ZScaler, Juniper, OVH Cloud — ils n'étaient pas dans la
+médiathèque de l'ancien site, il faut les demander au marketing.
+
+**Le libellé reste toujours affiché**, même avec un logo. C'est voulu : c'est
+le seul texte qu'un lecteur d'écran peut lire, et plusieurs logos ne portent
+pas le nom de la marque en toutes lettres.
+
+**Texte de remplacement** : laissez-le **vide** quand le libellé dit déjà le
+nom de la marque, sinon il est annoncé deux fois.
+
 ### Un seul bleu dans la palette (2026-09-22)
 
 Les codes officiels de la marque sont arrivés : **bleu nuit `#000D2E`** et

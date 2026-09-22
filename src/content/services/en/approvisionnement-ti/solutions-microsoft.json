@@ -84,49 +84,70 @@
           "title": "Microsoft 365",
           "text": "<strong>Unify collaboration, messaging, and document management in a secure, compliant, and consistent environment. </strong><br><br><a href=\"/fr/services/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/\"><strong>Microsoft 365</strong></a> standardizes workspaces and structures access and sharing.<br><br><strong>Result: </strong>smoother collaboration, clear traceability, and simplified management.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Dynamics 365",
           "text": "<strong>Align sales, customer service, </strong><a href=\"/en/services/productivity-consulting/dynamics-365-field-service/\"><strong>field service management</strong></a><strong>, and operations on a single platform.</strong><br><br><strong>Dynamics 365</strong> automates processes and centralizes data for complete, actionable customer visibility.<br><br><strong>Result:</strong> increased productivity, predictable operations, and enhanced service quality.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Power Platform",
           "text": "<strong>Accelerate the </strong><a href=\"/en/services/productivity-consulting/o-studio/\"><strong>creation of business applications</strong></a><strong>, secure web portals, automation, and analytics. </strong><br><br><strong>Power Platform</strong> enables low-code app development, workflow orchestration, and dashboard publishing with full traceability and access control.<br><br><strong>Result:</strong>shorter delivery times, standardized processes, and reliable indicators.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Microsoft Azure",
           "text": "<strong>Build secure, flexible, and interoperable cloud foundations.</strong><br><br><a href=\"/en/services/cloud-services-provider/azure-migration/\"><strong>Azure</strong></a>unifies the management of identities, networks, virtual desktops, and AI and data services, even in hybrid and multi-cloud environments.<br><br><strong>Result: </strong>reliable and secure deployments, simplified operations, and enhanced scalability.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Copilot for Microsoft 365",
           "text": "<strong>Boost daily productivity with an AI assistant integrated into your Microsoft 365 applications. </strong><br><br><a href=\"/en/services/productivity-consulting/copilot-for-microsoft-365/\"><strong>Copilot</strong></a> accelerates writing, summarization, and meeting preparation while complying with M365 access rights and policies.<br><br><strong>Result:</strong> time saved on repetitive tasks and greater focus on high-value activities.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Copilot Studio",
           "text": "<strong>Create copilots aligned with your processes and business goals.</strong><br><br><a href=\"/en/services/productivity-consulting/copilot-studio/\"><strong>Copilot Studio</strong></a> connects your systems and data to design, orchestrate and publish customized AI agents, with integrated controls and governance policies.<br><br><strong>Result:</strong> targeted, measurable use cases and controlled deployments.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "07",
           "title": "Security",
           "text": "<strong>Unify detection, access, and compliance on a single platform. </strong><br><br><strong>Microsoft's security suite </strong>combines XDR and SIEM capabilities (Defender, Sentinel), identity and access management (Entra ID), and data governance (Purview) with protection against phishing and malware and continuous application monitoring.<br><br><strong>Result:</strong> measurable risk reduction, faster response time, and clear proof of compliance.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

@@ -35,7 +35,9 @@
         "title": "A scalable complement",
         "text": "Our offer is a scalable solution that enables you to stay at the cutting edge of technology with our Vigilance and Evolution component.",
         "linkLabel": "",
-        "linkHref": ""
+        "linkHref": "",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -44,11 +46,36 @@
       "sectionTitle": "Our Approach",
       "fond": "beige",
       "boxes": [
-        "Technical Support and Advice",
-        "Operational Management",
-        "Cost Optimization",
-        "Vigilance and Evolution",
-        "Security and Compliance"
+        {
+          "label": "Technical Support and Advice",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Operational Management",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Cost Optimization",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Vigilance and Evolution",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Security and Compliance",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {
@@ -64,17 +91,26 @@
         {
           "number": "01",
           "title": "Proactivity",
-          "text": "Allow your team to focus on the core business of your organization."
+          "text": "Allow your team to focus on the core business of your organization.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Security",
-          "text": "Take advantage of our NOC and SOC systems to protect yourself against cyber threats."
+          "text": "Take advantage of our NOC and SOC systems to protect yourself against cyber threats.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Vigilance and Evolution",
-          "text": "Ensure a fast and efficient service, constant monitoring and the evolution of your environment."
+          "text": "Ensure a fast and efficient service, constant monitoring and the evolution of your environment.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

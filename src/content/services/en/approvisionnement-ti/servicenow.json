@@ -84,77 +84,110 @@
           "title": "IT Service Management (ITSM)",
           "text": "<strong>Standardize the intake and resolution of requests, incidents, and changes.</strong><br><br><a href=\"/en/ressources/servicenow-itsm/\"><strong>ServiceNow ITSM</strong></a>centralizes support channels, automates workflows, and keeps the knowledge base continuously up to date.<br><br><strong>Result:</strong> shorter resolution times and predictable service quality.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "IT Operations Management (ITOM)",
           "text": "<strong>Monitor infrastructure, detect anomalies, and track the performance of your IT operations.</strong><br><br><a href=\"/en/ressources/servicenow-itom/\"><strong>ServiceNow ITOM</strong></a>discovers dependencies, correlates events, and orchestrates remediation.<br><br><strong>Result: </strong>fewer interruptions and more reliable operations.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "IT Asset Management (ITAM)",
           "text": "<strong>Control the lifecycle of your software and hardware assets.</strong><br><br><strong>ServiceNow ITAM </strong>maintains accurate and up-to-date inventories, optimizes license management, and automates compliance.<br><br><strong>Result: </strong>managed costs and reduced audit risk.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Strategic Portfolio Management (SPM)",
           "text": "<strong>Align investment, projects, and resources with your business objectives.</strong><br><br><strong>ServiceNow SPM</strong>provides visibility into project portfolios, enables prioritization and scenario simulation, and measures delivered value with shared KPIs.<br><br><strong>Result: </strong>impact-driven investments and faster trade-offs.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Application Portfolio Management (APM)",
           "text": "<strong>Map, analyze, rationalize, and modernize your application portfolio.</strong><br><br><strong>ServiceNow APM</strong> measures business value, identifies redundancies and related risks, then recommends roadmaps (retain, modernize, retire).<br><br><strong>Result:</strong> lower complexity and better-allocated budget.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Customer Service Management (CSM)",
           "text": "<strong>Unify the customer experience, from the self-service portal to multiple support channels.</strong><br><br><strong>ServiceNow CSM</strong> orchestrates cases, automates handling, and connects service, operations, and field teams<br><br><strong>Result :</strong> more efficient agents, higher satisfaction, and a better first-contact resolution rate.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "07",
           "title": "HR Service Delivery (HRSD)",
           "text": "<strong>Automate HR services and improve the employee experience. </strong><br><br><strong>ServiceNow HRSD </strong>provides an employee portal, streamlines HR case management (records, onboarding and offboarding), and orchestrates journeys.<br><br><strong>Result:</strong> an employee experience that supports retention and reduced administrative workload.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "08",
           "title": "Automation Engine",
           "text": "<strong>Automate at scale to cut manual effort and improve efficiency. </strong><br><br><strong>ServiceNow Automation Engine </strong>brings together <a href=\"/en/services/artificial-intelligence/\">artificial intelligence</a>, RPA, integrations, and operational policies to replace manual processes with automated flows.<br><br><strong>Result:</strong> measurable productivity gains and fewer human errors.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "09",
           "title": "Security Operations (SecOps)",
           "text": "<strong>Accelerate detection and response. </strong><br><br><strong>ServiceNow SecOps </strong>unifies vulnerability management, threat detection, and response orchestration (SOAR) with impact-based prioritization.<br><br><strong>Result:</strong> shorter response times and controlled operational risks.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "10",
           "title": "Governance, Risk, and Compliance (GRC)",
           "text": "<strong>Govern through controls, not spreadsheets. </strong><br><br><strong>ServiceNow GRC </strong>automates assessments, centralizes evidence, and tracks obligations through risk-control-requirements mapping.<br><br><strong>Result:</strong> clear adherence to regulations and simplified audits.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "11",
           "title": "Field Service Management (FSM)",
           "text": "<strong>Optimize planning, assignment, and tracking of field work.</strong><br><br><strong>ServiceNow FSM </strong>plans, assigns, and tracks work with integrated parts management, SLAs, and mobility.<br><br><strong>Result:</strong> controlled response times and lower operating costs.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

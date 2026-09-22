@@ -27,12 +27,42 @@
       "subtitle": "Paper, spreadsheets or coordination calls: are your field teams still working with manual, disconnected tools? As request volumes grow, the limitations become critical for Canadian organizations with heavy field operations — advanced manufacturing, energy, utilities, telecommunications, the public sector and municipalities, and healthcare.",
       "fond": "ivoire",
       "boxes": [
-        "Heavy, rigid scheduling that falls out of sync at the slightest disruption",
-        "Limited real-time visibility into technicians and the status of jobs",
-        "Slowed communication between the office, the field and the customer",
-        "Difficult accountability over who is doing what, and where",
-        "A coordination burden that weighs on your teams",
-        "A weakened customer experience, with little transparency or request tracking"
+        {
+          "label": "Heavy, rigid scheduling that falls out of sync at the slightest disruption",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Limited real-time visibility into technicians and the status of jobs",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Slowed communication between the office, the field and the customer",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Difficult accountability over who is doing what, and where",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "A coordination burden that weighs on your teams",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "A weakened customer experience, with little transparency or request tracking",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {
@@ -136,7 +166,9 @@
         "title": "See the impact on your own field operations",
         "text": "Tell us about your field challenges and we’ll show you how Dynamics 365 Field Service applies to your context.",
         "linkLabel": "Schedule a consultation",
-        "linkHref": "/en/contact"
+        "linkHref": "/en/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -185,22 +217,34 @@
         {
           "number": "01",
           "title": "Diagnosis and kickoff",
-          "text": "We analyze your current field processes, validate your needs and define the objectives and project plan."
+          "text": "We analyze your current field processes, validate your needs and define the objectives and project plan.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Iterative execution",
-          "text": "We configure the solution in short cycles, with regular check-ins to keep the project aligned with your priorities."
+          "text": "We configure the solution in short cycles, with regular check-ins to keep the project aligned with your priorities.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Deployment",
-          "text": "We move the solution into production and prepare your teams to use it."
+          "text": "We move the solution into production and prepare your teams to use it.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Stabilization",
-          "text": "We make sure everything runs smoothly, make adjustments as needed and support adoption after go-live."
+          "text": "We make sure everything runs smoothly, make adjustments as needed and support adoption after go-live.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

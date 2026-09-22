@@ -37,7 +37,9 @@
         "title": "Des Copilots personnalisés",
         "text": "Victrix conçoit des assistants intelligents spécialisés sur mesure pour répondre aux besoins spécifiques de votre organisation. Transformez vos idées et vos impératifs en véritables leviers de valeur avec l’<a href=\"/fr/services/intelligence-artificielle/\" target=\"_blank\" rel=\"noopener\">intelligence artificielle</a>.",
         "linkLabel": "Découvrez notre offre Copilot Studio",
-        "linkHref": "/fr/services/productivite/copilot-studio"
+        "linkHref": "/fr/services/productivite/copilot-studio",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -56,28 +58,40 @@
           "title": "Sécuriser et gouverner",
           "text": "Audit de l’environnement, validations techniques et paramétrisation, gouvernance et recommandations personnalisées.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Définir les scénarios et déployer",
           "text": "Scénarios gagnants et utilisateurs ciblés, critères de succès, formation.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Suivre et mesurer",
           "text": "Mise à l’épreuve des scénarios, supervision continue, analyse et évaluation de l’expérimentation.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Amplifier et adapter",
           "text": "Plan de continuité et opportunités de personnalisation.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ],
       "leadCard": {

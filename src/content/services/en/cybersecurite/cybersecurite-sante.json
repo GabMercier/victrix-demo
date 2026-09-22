@@ -35,7 +35,9 @@
         "title": "Personalized support",
         "text": "To ensure optimal security for your healthcare organization, it is essential to achieve and maintain the highest standards — this is where professional support becomes indispensable.",
         "linkLabel": "Talk to our experts",
-        "linkHref": "/en/contact"
+        "linkHref": "/en/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -51,22 +53,34 @@
         {
           "number": "01",
           "title": "Governance and Resilience",
-          "text": "Prepare healthcare facilities to deal with cyber threats and be able to conduct a cyber risk self-assessment."
+          "text": "Prepare healthcare facilities to deal with cyber threats and be able to conduct a cyber risk self-assessment.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Resources and Sharing",
-          "text": "Identify and increase the number of professionals, ensure sufficient budget to strengthen cybersecurity and digital technology, and find a cybersecurity service tailored to specific and priority needs."
+          "text": "Identify and increase the number of professionals, ensure sufficient budget to strengthen cybersecurity and digital technology, and find a cybersecurity service tailored to specific and priority needs.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Raising Awareness of Cybersecurity in Healthcare",
-          "text": "Raise awareness among senior management, raise awareness and train all employees, and implement cybersecurity crisis drills in case of phishing attacks or other threats."
+          "text": "Raise awareness among senior management, raise awareness and train all employees, and implement cybersecurity crisis drills in case of phishing attacks or other threats.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Operational Security",
-          "text": "Secure facility directories (AD) and medical equipment (IoT), manage exposure risks and access, and develop a business continuity and disaster recovery plan."
+          "text": "Secure facility directories (AD) and medical equipment (IoT), manage exposure risks and access, and develop a business continuity and disaster recovery plan.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -139,16 +153,66 @@
       "sectionTitle": "Our Technologies",
       "fond": "beige",
       "boxes": [
-        "Palo Alto",
-        "Checkpoint",
-        "Pulse Secure",
-        "CrowdStrike",
-        "Microsoft 365",
-        "Cisco",
-        "AlgoSec",
-        "AWS",
-        "ServiceNow",
-        "Proofpoint"
+        {
+          "label": "Palo Alto",
+          "icon": "",
+          "image": "/images/logos/paloalto.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Checkpoint",
+          "icon": "",
+          "image": "/images/logos/checkpoint.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Pulse Secure",
+          "icon": "",
+          "image": "/images/logos/pulse-secure.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "CrowdStrike",
+          "icon": "",
+          "image": "/images/logos/crowdstrike.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Microsoft 365",
+          "icon": "",
+          "image": "/images/logos/microsoft.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Cisco",
+          "icon": "",
+          "image": "/images/logos/cisco.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AlgoSec",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "AWS",
+          "icon": "",
+          "image": "/images/logos/aws.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "ServiceNow",
+          "icon": "",
+          "image": "/images/logos/servicenow-partner.png",
+          "imageAlt": ""
+        },
+        {
+          "label": "Proofpoint",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {

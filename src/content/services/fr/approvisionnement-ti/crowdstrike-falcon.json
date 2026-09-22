@@ -84,42 +84,60 @@
           "title": "Protection des terminaux (EDR/XDR)",
           "text": "<strong>Renforcez la sécurité des postes grâce à la détection des menaces en temps réel.</strong><br><br><strong>CrowdStrike Falcon Prevent </strong>et <strong>Falcon Insights XDR </strong>unissent la prévention, EDR et XDR, dans une architecture infonuagique qui surveille, analyse et bloque les attaques avancées.<br><br><strong>Résultat : </strong> une détection et réponse accélérée et des attaques stoppées avant impact.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Intelligence des menaces",
           "text": "<strong>Anticipez les attaques grâce à une veille continue et une chasse aux menaces proactive.</strong><br><br><strong>CrowdStrike Falcon Adversary OverWatch </strong>réunit l'intelligence des menaces, l'analyse comportementale et la chasse aux menaces pour identifier les opérations malveillantes avant qu'elles ne s'exécutent.<br><br><strong>Résultat : </strong> une visibilité accrue sur les adversaires et une prévention ciblée contre les intrusions avancées.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Posture de sécurité infonuagique",
           "text": "<strong>Protégez vos environnements infonuagiques avec une sécurité 24/7 unifiée.</strong><br><br><strong>CrowdStrike Falcon Cloud Security </strong>sécurise les charges de travail, évalue la posture de vos environnements publics et prévient les configurations à risque sur <a href=\"/fr/services/services-infonuagiques/services-aws/\">AWS</a>, <a href=\"/fr/services/services-infonuagiques/migration-vers-azure/\">Azure</a> et Google Cloud.<br><br><strong>Résultat : </strong> une protection homogène de votre environnement infonuagique et une réduction mesurable de votre surface d'attaque.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Sécurité des identités (IAM)",
           "text": "<strong>Stoppez les attaques identitaires avant l'exploitation.</strong><br><br><strong>CrowdStrike Falcon Next-Gen Identity Security</strong> détecte les abus d'identifiants, surveille les accès et bloque les mouvements latéraux basés sur l'identité.<br><br><strong>Résultat : </strong> une réduction drastique des compromissions de comptes et une protection renforcée contre les attaques ciblées.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Observabilité (SIEM)",
           "text": "<strong>Obtenez une visibilité complète sur votre environnement en unifiant les journaux et les alertes.</strong><br><br><strong>CrowdStrike Falcon Next-Gen SIEM</strong> centralise les données, corrèle les évènements et fournit une analyse en temps réel pour accélérer les enquêtes.<br><br><strong>Résultat : </strong> des enquêtes plus rapides, moins de bruit opérationnel et une prise de décision mieux informée.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Services gérés (MDR)",
           "text": "<strong>Accélérez votre défense avec une surveillance continue et une réponse gérée.</strong><br><br><strong>CrowdStrike Falcon Complete Next-Gen MDR</strong> allie l'expertise MDR, la chasse aux menaces et la remédiation active pour neutraliser les attaques sans mobilisation de vos ressources internes.<br><br><strong>Résultat : </strong> une sécurité opérationnelle continue, moins de pression sur vos équipes et une posture plus résiliente.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

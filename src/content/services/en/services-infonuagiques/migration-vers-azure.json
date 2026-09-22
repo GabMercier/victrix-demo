@@ -35,7 +35,9 @@
         "title": "Microsoft-Recognized Specializations",
         "text": "Victrix meets Microsoft's highest standards for cloud security and threat protection: Microsoft Solution Partner for Modern Workplace and for Security.",
         "linkLabel": "Meet with a Microsoft Azure expert",
-        "linkHref": "/en/contact"
+        "linkHref": "/en/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -80,27 +82,42 @@
         {
           "number": "01",
           "title": "Strategy",
-          "text": "Accelerating the cloud platform adoption strategy: organizational motivation, expected results, financial and technical considerations."
+          "text": "Accelerating the cloud platform adoption strategy: organizational motivation, expected results, financial and technical considerations.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Planning",
-          "text": "Introducing the concepts, estimating costs per workload, designing the cloud foundation, prioritizing workloads to migrate, aligning with business priorities, and planning for the new roles required."
+          "text": "Introducing the concepts, estimating costs per workload, designing the cloud foundation, prioritizing workloads to migrate, aligning with business priorities, and planning for the new roles required.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Deployment",
-          "text": "Accelerating the migration of workloads to Azure, implementing minimal governance, and scaling the proof of concept into production."
+          "text": "Accelerating the migration of workloads to Azure, implementing minimal governance, and scaling the proof of concept into production.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Governance",
-          "text": "Governance tools, strengthening best practices through iterations, cost management, basic security, and resource consistency."
+          "text": "Governance tools, strengthening best practices through iterations, cost management, basic security, and resource consistency.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Security",
-          "text": "Continuous improvement of security in Microsoft Azure: mapping of roles and responsibilities, security strategy, information management, risk management, and compliance."
+          "text": "Continuous improvement of security in Microsoft Azure: mapping of roles and responsibilities, security strategy, information management, risk management, and compliance.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

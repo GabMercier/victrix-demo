@@ -48,7 +48,9 @@
         "title": "Les avantages de notre service SOC",
         "text": "Faites face à l’accroissement des menaces avancées, complétez votre équipe de sécurité interne avec nos experts et simplifiez l’intégration de nouvelles entités dans un contexte de croissance ou de fusion.",
         "linkLabel": "Découvrez notre expertise cybersécurité",
-        "linkHref": "/fr/services/cybersecurite/"
+        "linkHref": "/fr/services/cybersecurite/",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -186,32 +188,50 @@
         {
           "number": "01",
           "title": "Visualisation",
-          "text": "Complète des activités suspectes et diminution des faux positifs."
+          "text": "Complète des activités suspectes et diminution des faux positifs.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Réduction",
-          "text": "Du temps de détection des menaces et de remédiation."
+          "text": "Du temps de détection des menaces et de remédiation.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Accélération",
-          "text": "De l’intégration des nouvelles technologies."
+          "text": "De l’intégration des nouvelles technologies.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Diminution",
-          "text": "Des risques opérationnels et des efforts de gestion de cybersécurité."
+          "text": "Des risques opérationnels et des efforts de gestion de cybersécurité.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Libération",
-          "text": "Des tâches routinières pour votre personnel."
+          "text": "Des tâches routinières pour votre personnel.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Amélioration",
-          "text": "Continue de votre posture de cybersécurité."
+          "text": "Continue de votre posture de cybersécurité.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

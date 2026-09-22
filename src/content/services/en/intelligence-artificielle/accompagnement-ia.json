@@ -60,21 +60,30 @@
           "title": "You're Already Testing AI",
           "ctaLabel": "",
           "ctaHref": "",
-          "text": "<strong>The responsible explorer</strong><br><br>You own or are evaluating AI tools. You want to structure individual productivity, train your teams, and secure adoption."
+          "text": "<strong>The responsible explorer</strong><br><br>You own or are evaluating AI tools. You want to structure individual productivity, train your teams, and secure adoption.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "You Have a Specific Use Case",
           "ctaLabel": "",
           "ctaHref": "",
-          "text": "<strong>The focused pragmatist</strong><br><br>You want to scope your project, validate it, and reduce your risks before moving to execution."
+          "text": "<strong>The focused pragmatist</strong><br><br>You want to scope your project, validate it, and reduce your risks before moving to execution.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "You're Ready to Move",
           "ctaLabel": "",
           "ctaHref": "",
-          "text": "<strong>The determined innovator</strong><br><br>You want a concrete roadmap, clear governance, measurable initiatives, and a trusted partner.<br><br>You're willing to question your assumptions and commit to a structured, step-by-step approach."
+          "text": "<strong>The determined innovator</strong><br><br>You want a concrete roadmap, clear governance, measurable initiatives, and a trusted partner.<br><br>You're willing to question your assumptions and commit to a structured, step-by-step approach.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -94,28 +103,40 @@
           "title": "Business Needs Before Technology",
           "text": "Our approach is vendor-independent. We recommend the technologies that fit your needs and support your transformation over the long term.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "From Strategy to Execution",
           "text": "We don't stop at designing a roadmap. We drive the selected initiatives to success with our multidisciplinary team: AI practice lead, senior strategic advisor, AI architect, solution experts, business analyst, change management, developer, and project manager.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "A Cybersecurity and Infrastructure DNA",
           "text": "A key advantage for governing usage, protecting your data, and ensuring clear AI governance.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Hands-On and Pragmatic",
           "text": "Consulting that stays close to your teams, with none of the overhead, and adapts to your context.<br><br><strong>Our role isn't to decide for you, but to structure the approach with you to achieve measurable gains.</strong>",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

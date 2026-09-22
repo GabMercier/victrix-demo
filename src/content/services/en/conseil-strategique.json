@@ -39,7 +39,9 @@
         "title": "Multidisciplinary Team",
         "text": "Our seasoned strategy and technology consultants will help you achieve your goals. ",
         "linkLabel": null,
-        "linkHref": null
+        "linkHref": null,
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -149,27 +151,42 @@
         {
           "number": "01",
           "title": "Understand",
-          "text": "Assessment and discovery workshops, questionnaires: business, IT and users' needs, systems used, contracts, expertise, constraints, initiatives, issues, and guiding principles."
+          "text": "Assessment and discovery workshops, questionnaires: business, IT and users' needs, systems used, contracts, expertise, constraints, initiatives, issues, and guiding principles.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Prioritize",
-          "text": "Scope review, policy and strategy workshops: trends, comparables, best practices, and presentation to management."
+          "text": "Scope review, policy and strategy workshops: trends, comparables, best practices, and presentation to management.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Plan",
-          "text": "Timeframe for implementation, priorities, availability, internal and external resources."
+          "text": "Timeframe for implementation, priorities, availability, internal and external resources.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Budget",
-          "text": "Sequence, efforts, timeline and costs, technology choices."
+          "text": "Sequence, efforts, timeline and costs, technology choices.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Activate",
-          "text": "Resource allocation, project launch, change management, communication, and continuous feedback."
+          "text": "Resource allocation, project launch, change management, communication, and continuous feedback.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

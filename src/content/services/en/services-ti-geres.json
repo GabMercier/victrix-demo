@@ -59,7 +59,9 @@
         "title": "Personalized support",
         "text": "With our personalized support, maximize your return on investment and confidently advance your technological environment.",
         "linkLabel": "Get your personalized SLA",
-        "linkHref": "/en/contact"
+        "linkHref": "/en/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -75,27 +77,42 @@
         {
           "number": "01",
           "title": "IT Talent Shortage",
-          "text": "Quickly address immediate or evolving IT requirements without recruitment. Our experts step in seamlessly, giving you the flexibility to maintain smooth operational continuity."
+          "text": "Quickly address immediate or evolving IT requirements without recruitment. Our experts step in seamlessly, giving you the flexibility to maintain smooth operational continuity.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Cost Optimization and IT Budget Control",
-          "text": "Benefit from predictable pricing through our predefined time banks. No surprises: you know exactly how much your IT services cost. Eliminate unexpected expenses and achieve savings without sacrificing quality."
+          "text": "Benefit from predictable pricing through our predefined time banks. No surprises: you know exactly how much your IT services cost. Eliminate unexpected expenses and achieve savings without sacrificing quality.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Support and Acceleration of Technology Projects",
-          "text": "Entrust us with the management or implementation of your critical digital initiatives. Victrix acts as a catalyst to realize your projects on schedule, without burdening your internal teams."
+          "text": "Entrust us with the management or implementation of your critical digital initiatives. Victrix acts as a catalyst to realize your projects on schedule, without burdening your internal teams.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Performance, Scalability and Service Excellence",
-          "text": "Rely on a team of versatile experts to advance your IT environments: cloud solutions, cybersecurity, networking, communications, equipment management. Results? Optimized response times, accelerated projects, and assured resilience."
+          "text": "Rely on a team of versatile experts to advance your IT environments: cloud solutions, cybersecurity, networking, communications, equipment management. Results? Optimized response times, accelerated projects, and assured resilience.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Advanced Cybersecurity",
-          "text": "Strengthen your security posture with proactive support, including monitoring, incident response, data management, and compliance with standards and regulations such as Law 25, DORA, NIS2, as well as other sector-specific requirements."
+          "text": "Strengthen your security posture with proactive support, including monitoring, incident response, data management, and compliance with standards and regulations such as Law 25, DORA, NIS2, as well as other sector-specific requirements.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

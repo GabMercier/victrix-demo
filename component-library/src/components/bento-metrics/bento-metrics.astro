@@ -56,6 +56,14 @@ interface Props {
   };
   aside?: {
     icon?: IconKey | '';
+    /**
+     * LOGO de la carte latérale (2026-09-22). Le champ n'existait pas : sur
+     * Découvrir, l'insigne HappyIndex® AtWork retombait sur un pictogramme
+     * « coche » générique alors que le fichier était déjà dans le dépôt.
+     * Posé, il REMPLACE l'icône.
+     */
+    image?: string;
+    imageAlt?: string;
     title: string;
     text?: string;
     linkLabel?: string;
@@ -120,7 +128,16 @@ const asideIcon = iconFor(aside?.icon);
       {
         aside && (
           <div class="bg-surface-container border border-solid border-[#C5C6D0]/30 rounded-3xl p-8 lg:p-10 flex flex-col items-start">
-            {asideIcon && (
+            {aside.image ? (
+              <img
+                src={aside.image}
+                alt={aside.imageAlt ?? ''}
+                class="h-12 w-auto max-w-[200px] object-contain m-0 mb-6"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : null}
+            {!aside.image && asideIcon && (
               <span class="size-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                 <svg
                   class="text-primary"

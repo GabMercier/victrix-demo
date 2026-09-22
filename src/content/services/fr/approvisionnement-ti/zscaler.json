@@ -84,49 +84,70 @@
           "title": "Zscaler Internet Access (ZIA)",
           "text": "<strong>Offrez un accès Internet plus sûr et plus performant à l’ensemble de vos équipes.</strong><br><br><strong>Zscaler Internet Access (ZIA) </strong>assure un accès sécurisé à Internet et aux applications SaaS, avec analyse du trafic, prévention des menaces, filtrage, protection contre la perte de données (DLP) et courtier en sécurité d’accès au nuage (CASB).<br><br><strong>Résultat : </strong>un accès Internet sécurisé, une réduction tangible des risques et une détection accélérée.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Zscaler Private Access (ZPA)",
           "text": "<strong>Sécurisez l’accès aux applications privées sans les contraintes d’un réseau privé virtuel (VPN).</strong><br><br><strong>Zscaler Private Access (ZPA) </strong>connecte les utilisateurs à vos applications internes sans exposer le réseau. L’accès s’effectue application par application, selon des principes de confiance stricts, plutôt que par segment réseau.<br><br><strong>Résultat :</strong> un accès contrôlé aux applications privées, une exposition aux menaces réduite et une expérience utilisateur améliorée.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Zscaler Client Connector",
           "text": "<strong>Appliquez automatiquement vos politiques de sécurité sur chaque appareil.</strong><br><br><strong>Zscaler Client Connector</strong> est un agent léger installé sur les appareils pour assurer une connectivité sécurisée vers la plateforme Zscaler. Il unifie la protection de tous vos appareils (ordinateurs, mobiles, etc.) en activant les services ZIA et ZPA.<br><br><strong>Résultat :</strong> un contrôle accru des accès et une réduction des risques liés aux appareils non gérés.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Zscaler Digital Experience (ZDX)",
           "text": "<strong>Accélérez le diagnostic des problèmes grâce à une analyse détaillée du parcours utilisateur.</strong><br><br><strong>Zscaler Digital Experience (ZDX) </strong>surveille en continu la performance des applications, la connectivité et la qualité du réseau. Il fournit des outils de diagnostic pour identifier rapidement les problèmes et accélérer leur résolution.<br><br><strong>Résultat : </strong>une performance applicative stable, un temps de résolution réduit et une meilleure expérience pour tous vos utilisateurs.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Sécurité des données",
           "text": "<strong>Assurez la protection de vos données sur l’ensemble de vos canaux.</strong><br><br><strong>Les solutions de sécurité des données de Zscaler </strong>protègent les données en transit ou au repos dans les environnements infonuagiques et privés. Elles renforcent la conformité réglementaire et améliorent le contrôle de l’usage des applications infonuagiques (sanctionnées ou non).<br><br><strong>Résultat :</strong> une gouvernance rigoureuse et une posture de conformité plus solide.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Protection contre les cybermenaces",
           "text": "<strong>Neutralisez les attaques avant qu’elles ne compromettent vos opérations.</strong><br><br><strong>Les solutions de protection contre les cybermenaces de Zscaler</strong>, soutenues par l’IA,analysent le trafic en continu et identifient plus rapidement les comportements suspects. Elles protègent contre l’hameçonnage, les logiciels malveillants, les réseaux de machines compromises (botnets), les attaques de type zéro jour et les rançongiciels.<br><br><strong>Résultat :</strong> une exposition réduite aux menaces et une détection proactive des comportements suspects.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "07",
           "title": "Opérations de sécurité et gestion du risque",
           "text": "<strong>Renforcez vos opérations de sécurité grâce à une visibilité complète sur les risques et les menaces.</strong><br><br><strong>La plateforme d’opérations de sécurité de Zscaler </strong>regroupe des outils de gestion des risques, d’analyse de l’exposition aux menaces, de contrôle de la surface d’attaque et de détection précoce. Elle centralise les données et corrèle les évènements pour accélérer l’enquête et améliorer la réponse.<br><br><strong>Résultat :</strong> une meilleure compréhension des risques, moins de bruit opérationnel et une capacité de détection et réponse plus efficace.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

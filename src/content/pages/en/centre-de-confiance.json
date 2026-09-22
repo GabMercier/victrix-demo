@@ -37,17 +37,23 @@
         {
           "icon": "losange",
           "title": "Information security",
-          "description": "Practices governed by our ISO/IEC 27001:2022 certification and applied across all our operations."
+          "description": "Practices governed by our ISO/IEC 27001:2022 certification and applied across all our operations.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "personne",
           "title": "Protection of personal information",
-          "description": "Practices aligned with Québec’s Law 25: consent, transparency and data minimization."
+          "description": "Practices aligned with Québec’s Law 25: consent, transparency and data minimization.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "dossier",
           "title": "Transparency",
-          "description": "Our policies are public and kept up to date — and our team answers your questions."
+          "description": "Our policies are public and kept up to date — and our team answers your questions.",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -67,14 +73,20 @@
           "title": "Privacy policy",
           "text": "What we collect, why, and your rights.",
           "ctaLabel": "Read the policy",
-          "ctaHref": "/en/politique-confidentialite"
+          "ctaHref": "/en/politique-confidentialite",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Terms of use",
           "text": "The framework governing the use of the site and our services.",
           "ctaLabel": "Read the terms",
-          "ctaHref": "/en/conditions-utilisation"
+          "ctaHref": "/en/conditions-utilisation",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

@@ -42,6 +42,8 @@ blueprint:
     - title: "Première carte"
       description: "Décrivez le point clé de cette carte."
       icon: ""
+      image: ""
+      imageAlt: ""
 
 preview:
 

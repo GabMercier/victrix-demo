@@ -75,6 +75,36 @@ export const FOND_KEYS_SOMBRES = ['bleu-electrique'] as const;
 
 export type FondSombreKey = (typeof FOND_KEYS_SOMBRES)[number];
 
+/**
+ * Clés RETIRÉES de la palette, tolérées à la lecture (2026-09-22).
+ *
+ * POURQUOI. Retirer une valeur d'une liste fermée n'a AUCUN filet : le build
+ * casse dès qu'un contenu la porte encore. C'est arrivé le jour même — la
+ * fusion « Bleu Victrix » + « Bleu électrique » a été poussée à 15 h 07, et à
+ * 19 h 36 une sauvegarde CloudCannon a écrit `bleu-profond` : l'éditeur avait
+ * encore l'option en session. Vérifier « 0 occurrence » AVANT le retrait ne
+ * protège de rien, puisque l'éditrice écrit en continu.
+ *
+ * Même mécanisme que `LEGACY_ICON_ALIASES` (shared/icons.ts) : la clé reste
+ * ACCEPTÉE par le schéma et se résout vers sa remplaçante au rendu. Elle n'est
+ * PAS réofferte dans le sélecteur. `scripts/migrate-fonds-bleus.mjs` nettoie
+ * le contenu — à rejouer après chaque fusion `staging` → `dev`.
+ */
+export const FOND_ALIAS: Record<string, FondSombreKey | FondKey> = {
+  // « Bleu Victrix » #002fc7 — valeur fautive de la maquette du 21/09, fondue
+  // dans « Bleu électrique » #1D46F3 quand les codes officiels sont arrivés.
+  'bleu-profond': 'bleu-electrique',
+};
+
+/** Clés retirées, pour les enums de schéma (elles doivent rester valides). */
+export const FOND_KEYS_LEGACY = Object.keys(FOND_ALIAS) as [string, ...string[]];
+
+/** Résout une clé de contenu vers la clé EN VIGUEUR (alias compris). */
+export function fondCanonique(fond?: string | null): string {
+  const cle = fond ?? '';
+  return FOND_ALIAS[cle] ?? cle;
+}
+
 /** Palette claire + fonds sombres — l'ordre du sélecteur « étendu ». */
 export const FOND_KEYS_ETENDUS = [...FOND_KEYS, ...FOND_KEYS_SOMBRES] as const;
 
@@ -82,11 +112,11 @@ export type FondEtenduKey = FondKey | FondSombreKey;
 
 /** Vrai si la clé demande des textes clairs (repli : fond clair). */
 export function estFondSombre(fond?: string | null): boolean {
-  return (FOND_KEYS_SOMBRES as readonly string[]).includes(fond ?? '');
+  return (FOND_KEYS_SOMBRES as readonly string[]).includes(fondCanonique(fond));
 }
 
 /** Clé → utilitaire Tailwind (classes LITTÉRALES : le JIT ne voit que ce qui est écrit). */
-export const FOND_CLASSES: Record<FondEtenduKey, string> = {
+const FOND_CLASSES_BASE: Record<FondEtenduKey, string> = {
   blanc: 'bg-white',
   givre: 'bg-givre',
   perle: 'bg-neutral-100',
@@ -99,6 +129,22 @@ export const FOND_CLASSES: Record<FondEtenduKey, string> = {
   pierre: 'bg-pierre',
   // 2026-09-22 : un seul aplat bleu, sur le jeton de marque `primary`.
   'bleu-electrique': 'bg-primary',
+};
+
+/**
+ * Table de rendu, alias COMPRIS. Les 36 composants lisent `FOND_CLASSES[fond]`
+ * en direct : faire résoudre l'alias ICI évite de les toucher un par un, et
+ * surtout évite qu'un composant oublié rende un fond blanc par défaut là où
+ * l'éditrice avait posé un aplat bleu.
+ */
+export const FOND_CLASSES: Record<string, string> = {
+  ...FOND_CLASSES_BASE,
+  ...Object.fromEntries(
+    Object.entries(FOND_ALIAS).map(([perimee, vigueur]) => [
+      perimee,
+      FOND_CLASSES_BASE[vigueur as FondEtenduKey],
+    ]),
+  ),
 };
 
 /**

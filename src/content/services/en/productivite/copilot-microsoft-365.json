@@ -37,7 +37,9 @@
         "title": "Tailored Copilots",
         "text": "Victrix designs customized intelligent AI companions tailored to your organization’s specific needs — transform your ideas and requirements into real value drivers with artificial intelligence.",
         "linkLabel": "Discover our Copilot Studio offer",
-        "linkHref": "/en/services/productivity-consulting/copilot-studio"
+        "linkHref": "/en/services/productivity-consulting/copilot-studio",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -54,22 +56,34 @@
         {
           "number": "01",
           "title": "Secure and govern",
-          "text": "Environment audit, technical validation and parameterization, governance and personalized recommendations."
+          "text": "Environment audit, technical validation and parameterization, governance and personalized recommendations.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Define scenarios and deploy",
-          "text": "Winning scenarios and target users, success criteria, training."
+          "text": "Winning scenarios and target users, success criteria, training.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Monitor and measure",
-          "text": "Testing of scenarios, continuous supervision, analysis and evaluation of experiments."
+          "text": "Testing of scenarios, continuous supervision, analysis and evaluation of experiments.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Amplify and adapt",
-          "text": "Continuity plan and customization opportunities."
+          "text": "Continuity plan and customization opportunities.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

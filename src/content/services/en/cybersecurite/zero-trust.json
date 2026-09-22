@@ -40,7 +40,9 @@
         "title": "Harmony Connect, Check Point's SASE solution",
         "text": "Harmony SASE combines workplace security and network optimization in a single cloud-based platform designed for the modern enterprise.",
         "linkLabel": "Contact us about Harmony Connect",
-        "linkHref": "/en/contact"
+        "linkHref": "/en/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -56,37 +58,58 @@
         {
           "number": "01",
           "title": "Seamless user experience",
-          "text": ""
+          "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Continuous auditing",
-          "text": ""
+          "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Least privilege principle",
-          "text": ""
+          "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Micro-segmentation",
-          "text": ""
+          "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Monitoring and analysis",
-          "text": ""
+          "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Granular security policies",
-          "text": ""
+          "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "07",
           "title": "Dynamic trust",
-          "text": ""
+          "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -96,14 +119,54 @@
       "sectionTitle": "Victrix: Secure Your Data with the Zero Trust Model",
       "fond": "beige",
       "boxes": [
-        "Sensitive data identification",
-        "ZTNA solutions selection",
-        "Segmentation and isolation of the network, restriction of access",
-        "Least privilege data access",
-        "Continuous verification of confidence level",
-        "In-session traffic control",
-        "Data and application protection",
-        "Threat detection"
+        {
+          "label": "Sensitive data identification",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "ZTNA solutions selection",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Segmentation and isolation of the network, restriction of access",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Least privilege data access",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Continuous verification of confidence level",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "In-session traffic control",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Data and application protection",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Threat detection",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {

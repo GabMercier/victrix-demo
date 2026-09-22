@@ -31,10 +31,30 @@
       "subtitle": "",
       "fond": "ivoire",
       "boxes": [
-        "Simplifier les réservations",
-        "Améliorer la gestion des bureaux",
-        "Accéder à des rapports pertinents",
-        "Suivre la présence au bureau"
+        {
+          "label": "Simplifier les réservations",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Améliorer la gestion des bureaux",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Accéder à des rapports pertinents",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Suivre la présence au bureau",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {

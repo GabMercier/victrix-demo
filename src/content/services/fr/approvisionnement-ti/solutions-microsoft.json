@@ -84,49 +84,70 @@
           "title": "Microsoft 365",
           "text": "<strong>Unifiez la collaboration, la messagerie et la gestion documentaire dans un environnement cohérent, sécurisé et conforme. </strong><br><br><a href=\"/en/services/managed-it-services/maximize-the-use-of-your-m365-ecosystem/\"><strong>Microsoft 365</strong></a> standardise les espaces de travail et structure les accès et les partages.<br><br><strong>Résultat :</strong> une collaboration fluide, traçable et facile à gérer.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Dynamics 365",
           "text": "<strong>Alignez les ventes, le service client, la </strong><a href=\"/fr/services/productivite/dynamics-365-field-service/\"><strong>gestion des opérations terrain</strong></a><strong>et plus encore sur une plateforme unifiée.</strong><br><br><strong>Dynamics 365</strong> automatise les processus et centralise les données pour une visibilité client complète et exploitable.<br><br><strong>Résultat :</strong> une productivité accrue, la prévisibilité des opérations et une qualité de service renforcée.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Power Platform",
           "text": "<strong>Accélérez la </strong><a href=\"/fr/services/productivite/o-studio/\"><strong>création d'applications d'affaires</strong></a><strong>, de portails web sécurisés, des automatisations et de l'analytique. </strong><br><br><strong>Power Platform</strong> permet de concevoir des applications low-code, d'orchestrer les flux et de publier des tableaux de bord avec une traçabilité et un contrôle d'accès.<br><br><strong>Résultat :</strong> des délais de livraison raccourcis, des processus standardisés et des indicateurs fiables.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Microsoft Azure",
           "text": "<strong>Bâtissez des fondations infonuagiques sécurisées, flexibles et interopérables. </strong><br><br><a href=\"/fr/services/services-infonuagiques/migration-vers-azure/\"><strong>Azure</strong></a>unifie la gestion des identités, des réseaux, des postes virtualisés et des services d'IA et de données, même dans des environnements hybrides et multinuages.<br><br><strong>Résultat :</strong> des déploiements fiables et sécurisés, une exploitation simplifiée et une capacité d'évolution renforcée.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Copilot pour Microsoft 365",
           "text": "<strong>Augmentez la productivité au quotidien avec un assistant IA intégré à vos applications Microsoft 365.</strong><br><br><a href=\"/fr/services/productivite/copilot-microsoft-365/\"><strong>Copilot</strong></a> accélère la rédaction, la syntèse et la préparation de réunions, tout en respectant les droits d'accès et les politiques M365.<br><br><strong>Résultat : </strong>du temps gagné sur les tâches répétitives et une concentration accrue sur les activités à forte valeur ajoutée.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Copilot Studio",
           "text": "<strong>Créez des copilotes alignés sur vos processus et vos objectifs d'affaires.</strong><br><br><a href=\"/en/services/productivity-consulting/copilot-studio/\"><strong>Copilot Studio</strong></a> connecte vos systèmes et vos données pour concevoir, orchestrer et publier des agents IA personnalisés, avec contrôles et politiques de gouvernance intégrés.<br><br><strong>Résultat :</strong> des cas d'usage ciblés, mesurables et des déploiements contrôlés.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "07",
           "title": "Sécurité",
           "text": "<strong>Unifiez la détection, l'accès et la conformité sur une même plateforme.</strong><br><br><strong>L'offre de sécurité Microsoft</strong> combine des fonctionnalités XDR et SIEM (Defender, Sentinel), la gestion des identités et accès (Entra ID) et la gouvernance des données (Purview) avec la protection contre l'hameçonnage et les logiciels malveillants et une surveillance continue des applications.<br><br><strong>Résultat : </strong>une réduction mesurable des risques, un temps de réponse amélioré et des preuves de conformité disponibles.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

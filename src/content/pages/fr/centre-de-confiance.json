@@ -37,17 +37,23 @@
         {
           "icon": "losange",
           "title": "Sécurité de l’information",
-          "description": "Des pratiques encadrées par notre certification ISO/IEC 27001:2022 et appliquées à l’ensemble de nos opérations."
+          "description": "Des pratiques encadrées par notre certification ISO/IEC 27001:2022 et appliquées à l’ensemble de nos opérations.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "personne",
           "title": "Protection des renseignements personnels",
-          "description": "Des pratiques alignées sur la Loi 25 : consentement, transparence et minimisation des données."
+          "description": "Des pratiques alignées sur la Loi 25 : consentement, transparence et minimisation des données.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "dossier",
           "title": "Transparence",
-          "description": "Nos politiques sont publiques et tenues à jour — et notre équipe répond à vos questions."
+          "description": "Nos politiques sont publiques et tenues à jour — et notre équipe répond à vos questions.",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -67,14 +73,20 @@
           "title": "Politique de confidentialité",
           "text": "Ce que nous recueillons, pourquoi et vos droits.",
           "ctaLabel": "Lire la politique",
-          "ctaHref": "/fr/politique-confidentialite"
+          "ctaHref": "/fr/politique-confidentialite",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Conditions d’utilisation",
           "text": "Le cadre d’utilisation du site et de nos services.",
           "ctaLabel": "Lire les conditions",
-          "ctaHref": "/fr/conditions-utilisation"
+          "ctaHref": "/fr/conditions-utilisation",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

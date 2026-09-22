@@ -35,7 +35,9 @@
         "title": "Un accompagnement personnalisé",
         "text": "Pour garantir un niveau de sécurité optimal à votre organisme de soins de santé, il est essentiel d’atteindre et de maintenir les normes les plus élevées — c’est là où l’accompagnement professionnel devient indispensable.",
         "linkLabel": "Parlez à nos experts",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -51,22 +53,34 @@
         {
           "number": "01",
           "title": "Gouvernance et résilience",
-          "text": "Préparer l’établissement de santé à faire face aux cybermenaces et être en mesure de réaliser une auto-évaluation des cyberrisques."
+          "text": "Préparer l’établissement de santé à faire face aux cybermenaces et être en mesure de réaliser une auto-évaluation des cyberrisques.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Ressources et mutualisation",
-          "text": "Identifier et augmenter le nombre de professionnels, assurer un budget suffisant pour renforcer la cybersécurité et le numérique, et trouver un service de cybersécurité adapté aux besoins spécifiques et prioritaires."
+          "text": "Identifier et augmenter le nombre de professionnels, assurer un budget suffisant pour renforcer la cybersécurité et le numérique, et trouver un service de cybersécurité adapté aux besoins spécifiques et prioritaires.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Sensibilisation à la cybersécurité en santé",
-          "text": "Sensibiliser les hauts dirigeants, sensibiliser et former l’ensemble des employés, et mettre en place des exercices de crise en cas d’attaque par hameçonnage ou autres menaces."
+          "text": "Sensibiliser les hauts dirigeants, sensibiliser et former l’ensemble des employés, et mettre en place des exercices de crise en cas d’attaque par hameçonnage ou autres menaces.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Sécurité opérationnelle",
-          "text": "Sécuriser les annuaires d’établissements (AD) et les équipements médicaux (IoT), gérer les risques d’exposition et les accès, et développer un plan de reprise des activités et relève."
+          "text": "Sécuriser les annuaires d’établissements (AD) et les équipements médicaux (IoT), gérer les risques d’exposition et les accès, et développer un plan de reprise des activités et relève.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -151,16 +165,66 @@
       "sectionTitle": "Nos technologies",
       "fond": "beige",
       "boxes": [
-        "Palo Alto",
-        "Checkpoint",
-        "Pulse Secure",
-        "CrowdStrike",
-        "Microsoft 365",
-        "Cisco",
-        "AlgoSec",
-        "AWS",
-        "ServiceNow",
-        "Proofpoint"
+        {
+          "label": "Palo Alto",
+          "icon": "",
+          "image": "/images/logos/paloalto.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Checkpoint",
+          "icon": "",
+          "image": "/images/logos/checkpoint.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Pulse Secure",
+          "icon": "",
+          "image": "/images/logos/pulse-secure.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "CrowdStrike",
+          "icon": "",
+          "image": "/images/logos/crowdstrike.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Microsoft 365",
+          "icon": "",
+          "image": "/images/logos/microsoft.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Cisco",
+          "icon": "",
+          "image": "/images/logos/cisco.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AlgoSec",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "AWS",
+          "icon": "",
+          "image": "/images/logos/aws.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "ServiceNow",
+          "icon": "",
+          "image": "/images/logos/servicenow-partner.png",
+          "imageAlt": ""
+        },
+        {
+          "label": "Proofpoint",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {

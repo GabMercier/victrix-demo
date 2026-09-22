@@ -40,28 +40,40 @@
           "title": "O bureau",
           "text": "La réservation de bureaux et d’espaces pensée pour le travail hybride.",
           "ctaLabel": "Découvrez O bureau",
-          "ctaHref": "/fr/services/productivite/o-bureau"
+          "ctaHref": "/fr/services/productivite/o-bureau",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Plateforme employé Intranet",
           "text": "Un intranet moderne qui centralise l’information et rapproche vos équipes.",
           "ctaLabel": "Découvrez la plateforme",
-          "ctaHref": "/fr/services/productivite/plateforme-employe-intranet"
+          "ctaHref": "/fr/services/productivite/plateforme-employe-intranet",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "01",
           "title": "Approvisionnement TI",
           "text": "Acquisition et gestion de licences et d’équipements informatiques, en partenariat avec les plus grands éditeurs et fabricants mondiaux.",
           "ctaLabel": "Découvrez les produits",
-          "ctaHref": "/fr/services/approvisionnement-ti"
+          "ctaHref": "/fr/services/approvisionnement-ti",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "",
           "title": "Catalogue de solutions",
           "text": "Solutions personnalisées développées par nos experts pour répondre aux défis uniques de nos clients.",
           "ctaLabel": "Découvrez nos solutions",
-          "ctaHref": "/fr/solutions/"
+          "ctaHref": "/fr/solutions/",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

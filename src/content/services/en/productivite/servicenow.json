@@ -37,7 +37,9 @@
         "title": "End-to-end support",
         "text": "Licensing, deployment, support, and evolution services: accelerated development with added value and bilingual service, in French and English.",
         "linkLabel": "Talk to a ServiceNow expert",
-        "linkHref": "/en/contact"
+        "linkHref": "/en/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -54,22 +56,34 @@
         {
           "number": "01",
           "title": "Identification of your organization’s key business processes",
-          "text": ""
+          "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Faster project planning",
-          "text": ""
+          "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Implementation, co-development, and quality assurance",
-          "text": ""
+          "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Operation and adoption",
-          "text": ""
+          "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -166,12 +180,42 @@
       "subtitle": "ServiceNow focuses entirely on developing its product, and relies on its network of trusted partners for all its implementations. Working with a partner like Victrix is therefore crucial for implementing your service platform, so that you can reap all its benefits. Victrix is a certified ServiceNow Partner:",
       "fond": "ivoire",
       "boxes": [
-        "Purchase, integration, and customization of your ServiceNow solution",
-        "Diverse team working on the platform’s modules for extensive deployment expertise",
-        "Integration of the cloud offering catalog for professional services",
-        "Victrix is qualified by the ministère de la Cybersécurité et du Numérique (MCN)",
-        "Strong partnerships to complement our expertise",
-        "Cross-functional expertise: cybersecurity, cloud solutions, artificial intelligence, and application deployment"
+        {
+          "label": "Purchase, integration, and customization of your ServiceNow solution",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Diverse team working on the platform’s modules for extensive deployment expertise",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Integration of the cloud offering catalog for professional services",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Victrix is qualified by the ministère de la Cybersécurité et du Numérique (MCN)",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Strong partnerships to complement our expertise",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Cross-functional expertise: cybersecurity, cloud solutions, artificial intelligence, and application deployment",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {

@@ -39,27 +39,37 @@
         {
           "title": "Cybersécurité",
           "description": "Certification ISO/IEC 27001:2022, partenariats CrowdStrike et Microsoft Sentinel, analystes attitrés.",
-          "icon": "organisation"
+          "icon": "organisation",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Intelligence artificielle",
           "description": "Adoption encadrée, protection des données et supervision humaine à chaque étape.",
-          "icon": "ampoule"
+          "icon": "ampoule",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Infrastructure et infonuagique",
           "description": "Cadre d'adoption Microsoft, partenariats réseau et sécurité, environnements hybrides complexes.",
-          "icon": "dossier"
+          "icon": "dossier",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Solutions d'affaires et productivité",
           "description": "Conseillers et développeurs certifiés Microsoft, Power Platform, Dynamics 365 et Microsoft 365.",
-          "icon": "croissance"
+          "icon": "croissance",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Conseil et gouvernance TI",
           "description": "Cadres de gouvernances, feuilles de route et optimisation des coûts, depuis 2003.",
-          "icon": "organisation"
+          "icon": "organisation",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

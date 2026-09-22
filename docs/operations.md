@@ -301,6 +301,25 @@ Rejouer seulement l'accessibilité :
 npx playwright test tests/e2e/accessibilite.spec.ts
 ```
 
+**Nettoyer une clé de fond RETIRÉE de la palette :**
+
+```
+node scripts/migrate-fonds-bleus.mjs            # réécrit le contenu
+node scripts/migrate-fonds-bleus.mjs --check    # liste sans écrire (sortie 1)
+```
+
+**À rejouer après chaque fusion `staging` → `dev`**, comme
+`migrate-fonds-chauds.mjs` et pour la même raison : l'éditrice écrit en
+continu, et une session CloudCannon peut encore offrir une valeur qu'on vient
+de retirer. C'est exactement ce qui a cassé le build de production le
+2026-09-22 — `bleu-profond` retiré à 15 h 07, réécrit par une sauvegarde à
+19 h 36. Le schéma TOLÈRE désormais les clés retirées (`FOND_ALIAS` dans
+`component-library/src/shared/fonds.ts`, même mécanisme que
+`LEGACY_ICON_ALIASES`) : le build ne casse plus, ce script ne fait que
+nettoyer. **Retirer une valeur d'une liste fermée sans passer par `FOND_ALIAS`
+est un changement cassant** — « zéro occurrence » au moment du retrait ne
+prouve rien.
+
 **Refabriquer les images de marque (favicon, logo du JSON-LD, image de partage) :**
 
 ```

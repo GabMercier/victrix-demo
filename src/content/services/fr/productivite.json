@@ -31,17 +31,23 @@
         {
           "title": "L'ORGANISATION",
           "description": "Votre vision, votre image, votre message. Nous alignons les outils technologiques sur vos objectifs stratégiques globaux.",
-          "icon": "organisation"
+          "icon": "organisation",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "LE PORTEUR",
           "description": "Ses responsabilités, ses capacités, son initiative. Nous valorisons l'humain qui déploie et maintient vos solutions.",
-          "icon": "porteur"
+          "icon": "porteur",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "LE DESTINATAIRE",
           "description": "Ses outils, son appartenance, ses intérêts. Nous optimisons l'expérience utilisateur finale pour maximiser l'adoption.",
-          "icon": "destinataire"
+          "icon": "destinataire",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

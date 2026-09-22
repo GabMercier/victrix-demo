@@ -74,7 +74,9 @@
         "title": "Happy At Work",
         "text": "Victrix est certifiée HappyIndex® AtWork des entreprises « où l'on est heureux de travailler ».",
         "linkLabel": "La vie chez Victrix",
-        "linkHref": "/fr/carrieres"
+        "linkHref": "/fr/carrieres",
+        "image": "/images/carrieres/happy-at-work.png",
+        "imageAlt": ""
       }
     },
     {
@@ -87,27 +89,37 @@
         {
           "title": "Excellence",
           "description": "",
-          "icon": "losange"
+          "icon": "losange",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Collaboration",
           "description": "",
-          "icon": "groupe"
+          "icon": "groupe",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Innovation",
           "description": "",
-          "icon": "ampoule"
+          "icon": "ampoule",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Engagement",
           "description": "",
-          "icon": "porteur"
+          "icon": "porteur",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Intégrité",
           "description": "",
-          "icon": "dossier"
+          "icon": "dossier",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

@@ -35,7 +35,9 @@
         "title": "AWS Partnership",
         "text": "Trust our team to ensure smooth, efficient migration of your applications to AWS.",
         "linkLabel": "Meet with an AWS expert",
-        "linkHref": "/en/contact"
+        "linkHref": "/en/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -79,17 +81,26 @@
         {
           "number": "01",
           "title": "Analysis and Assessment of the Technological Situation",
-          "text": "Feasibility assessment, cost analysis and optimization, and ensuring the reliability of workloads and applications."
+          "text": "Feasibility assessment, cost analysis and optimization, and ensuring the reliability of workloads and applications.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Strategy Planning and Recommendations",
-          "text": "Planning for a smooth migration (risk management), objectives of operational excellence, optimal security, compliance, and performance, compliance with the 6 Rs of migration, and adaptation to migration challenges according to the organization's context."
+          "text": "Planning for a smooth migration (risk management), objectives of operational excellence, optimal security, compliance, and performance, compliance with the 6 Rs of migration, and adaptation to migration challenges according to the organization's context.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Personalized Support",
-          "text": "Applying fixes to the existing architecture, migrating and deploying the first identified service, monitoring the migration process, and providing an overview of the migration status."
+          "text": "Applying fixes to the existing architecture, migrating and deploying the first identified service, monitoring the migration process, and providing an overview of the migration status.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

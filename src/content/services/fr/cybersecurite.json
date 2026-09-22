@@ -48,7 +48,9 @@
         "title": "Certification ISO/IEC 27001:2022",
         "text": "Nous détenons la certification ISO/IEC 27001:2022, attestant que nos pratiques respectent les plus hauts standards internationaux en gestion de la sécurité de l’information.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -64,27 +66,42 @@
         {
           "number": "01",
           "title": "L’évolution des menaces informatiques",
-          "text": "Des cyberattaques de plus en plus sophistiquées et ciblées."
+          "text": "Des cyberattaques de plus en plus sophistiquées et ciblées.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Manque de ressources spécialisées",
-          "text": "Équipes internes débordées et pénurie d’expertises."
+          "text": "Équipes internes débordées et pénurie d’expertises.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Complexité croissante des TI",
-          "text": "Environnements hybrides difficiles à sécuriser efficacement."
+          "text": "Environnements hybrides difficiles à sécuriser efficacement.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Pression réglementaire",
-          "text": "Complexité de la mise en conformité et sanctions coûteuses infligées en cas de non-respect."
+          "text": "Complexité de la mise en conformité et sanctions coûteuses infligées en cas de non-respect.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Impacts des incidents de cybersécurité",
-          "text": "Interruptions des opérations, pertes financières et dommages à la réputation."
+          "text": "Interruptions des opérations, pertes financières et dommages à la réputation.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -131,17 +148,72 @@
       "sectionTitle": "Nos partenaires et technologies",
       "fond": "beige",
       "boxes": [
-        "Palo Alto",
-        "Checkpoint",
-        "CrowdStrike",
-        "Microsoft 365",
-        "Cisco",
-        "AlgoSec",
-        "AWS",
-        "ServiceNow",
-        "Proofpoint",
-        "ZScaler",
-        "Juniper"
+        {
+          "label": "Palo Alto",
+          "icon": "",
+          "image": "/images/logos/paloalto.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Checkpoint",
+          "icon": "",
+          "image": "/images/logos/checkpoint.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "CrowdStrike",
+          "icon": "",
+          "image": "/images/logos/crowdstrike.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Microsoft 365",
+          "icon": "",
+          "image": "/images/logos/microsoft.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Cisco",
+          "icon": "",
+          "image": "/images/logos/cisco.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AlgoSec",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "AWS",
+          "icon": "",
+          "image": "/images/logos/aws.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "ServiceNow",
+          "icon": "",
+          "image": "/images/logos/servicenow-partner.png",
+          "imageAlt": ""
+        },
+        {
+          "label": "Proofpoint",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "ZScaler",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Juniper",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {

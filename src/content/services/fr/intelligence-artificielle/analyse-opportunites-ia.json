@@ -44,7 +44,9 @@
         "title": "Vous vous demandez comment commencer à utiliser l’IA?",
         "text": "Nos experts vous accompagnent à chaque étape pour assurer le succès de tous vos projets de transformation numérique avec l’IA.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -54,11 +56,36 @@
       "subtitle": "Chez Victrix, nos experts vous offrent un accompagnement IA en entreprise qui vous apporte la précision nécessaire pour bâtir une stratégie d’adoption IA solide.",
       "fond": "beige",
       "boxes": [
-        "Prioriser les projets d’intelligence artificielle prometteurs et mesurables",
-        "Exclure les initiatives risquées ou mal alignées sur vos objectifs",
-        "Identifier les utilisations de l’IA en entreprise pour accélérer vos processus et prendre des décisions plus éclairées",
-        "Intégrer l’IA de manière sécuritaire et conforme aux exigences de gouvernance et de conformité",
-        "Établir une feuille de route IA réaliste (coûts, avantages, risques, échéanciers) pour maximiser le ROI"
+        {
+          "label": "Prioriser les projets d’intelligence artificielle prometteurs et mesurables",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Exclure les initiatives risquées ou mal alignées sur vos objectifs",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Identifier les utilisations de l’IA en entreprise pour accélérer vos processus et prendre des décisions plus éclairées",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Intégrer l’IA de manière sécuritaire et conforme aux exigences de gouvernance et de conformité",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Établir une feuille de route IA réaliste (coûts, avantages, risques, échéanciers) pour maximiser le ROI",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {
@@ -81,28 +108,40 @@
           "title": "Démarrage",
           "text": "Définition de la vision et mobilisation des parties prenantes.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Diagnostic",
           "text": "Analyse de l’état actuel et exploration des cas d’usage en IA.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Évaluation",
           "text": "Analyse des opportunités, mesure de la valeur, de la faisabilité et des risques.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Feuille de route",
           "text": "Priorisation des projets et plan d’adoption structuré.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

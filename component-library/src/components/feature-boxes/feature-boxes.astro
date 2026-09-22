@@ -1,5 +1,6 @@
 ---
 import { FOND_CLASSES, estFondSombre, type FondEtenduKey } from '../../shared/fonds';
+import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Boîtes de domaines » — composant Bookshop (P-07).
@@ -17,14 +18,39 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  * - Browser-safe : aucun import, aucun script.
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
+/**
+ * Une boîte (2026-09-22). Elle n'était qu'une CHAÎNE : impossible d'y mettre
+ * quoi que ce soit d'autre qu'un libellé, et CloudCannon ne sait pas offrir
+ * de sous-champ sur un tableau de chaînes — d'où l'absence totale de contrôle
+ * signalée sur la section « Nos partenaires et technologies ».
+ *
+ * La forme CHAÎNE reste acceptée : les sections non encore migrées continuent
+ * de se rendre, et une saisie en cours au CMS ne casse pas l'aperçu.
+ */
+type Box =
+  | string
+  | {
+      label: string;
+      /** Clé de la banque de pictogrammes partagée (shared/icons.ts). */
+      icon?: IconKey | '';
+      /** Fichier — pour un LOGO de marque que la banque n'a pas. */
+      image?: string;
+      imageAlt?: string;
+    };
+
 interface Props {
   sectionTitle: string;
   subtitle?: string;
   fond?: FondEtenduKey;
-  boxes: string[];
+  boxes: Box[];
 }
 
 const { sectionTitle, subtitle, fond = 'beige', boxes = [] } = Astro.props;
+
+/** Normalise les deux formes en une seule, pour ne traiter qu'un cas au rendu. */
+const boitesNormalisees = (boxes ?? []).map((b) =>
+  typeof b === 'string' ? { label: b, icon: '' as const, image: '', imageAlt: '' } : b,
+);
 // Fonds SOMBRES ouverts le 2026-09-21 : seuls le titre, le liseré et le
 // chapeau sont posés sur le fond de section — les boîtes, elles, sont
 // blanches et gardent leur contraste quoi qu'il arrive.
@@ -60,11 +86,40 @@ const FONDS: Record<string, string> = FOND_CLASSES;
     </div>
     <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-0 p-0 list-none">
       {
-        boxes.map((box) => (
-          <li class="m-0 min-h-24 flex items-center justify-center text-center p-6 bg-white border border-solid border-contour rounded-lg text-base font-semibold text-on-surface hover:border-primary transition-colors">
-            {box}
-          </li>
-        ))
+        boitesNormalisees.map((box) => {
+          const icon = iconFor(box.icon);
+          return (
+            <li class="m-0 min-h-24 flex flex-col items-center justify-center text-center gap-3 p-6 bg-white border border-solid border-contour rounded-lg text-base font-semibold text-on-surface hover:border-primary transition-colors">
+              {box.image ? (
+                <img
+                  src={box.image}
+                  alt={box.imageAlt ?? ''}
+                  class="h-8 w-auto max-w-[140px] object-contain m-0"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : icon ? (
+                <span class="text-primary flex items-center">
+                  <svg
+                    width={icon.w ?? 24}
+                    height={icon.h ?? 24}
+                    {...iconSvgAttrs(icon, 2)}
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    {icon.paths.map((d) => (
+                      <path d={d} />
+                    ))}
+                  </svg>
+                </span>
+              ) : null}
+              {/* Le libellé RESTE même quand un logo est posé : c'est le seul
+                  texte lisible par un lecteur d'écran, et plusieurs logos de
+                  marque ne portent pas leur nom en toutes lettres. */}
+              <span>{box.label}</span>
+            </li>
+          );
+        })
       }
     </ul>
   </div>

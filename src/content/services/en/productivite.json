@@ -32,17 +32,23 @@
         {
           "title": "THE ORGANIZATION",
           "description": "Your vision, your image, your message. We align technology tools with your overall strategic objectives.",
-          "icon": "organisation"
+          "icon": "organisation",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "THE HOLDER",
           "description": "Their responsibilities, their abilities, their initiative. We value the people who deploy and maintain your solutions.",
-          "icon": "porteur"
+          "icon": "porteur",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "THE RECEIVER",
           "description": "Their tools, their sense of belonging, their interests. We optimize the end-user experience to maximize adoption.",
-          "icon": "destinataire"
+          "icon": "destinataire",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

@@ -38,27 +38,37 @@
         {
           "title": "Cybersecurity",
           "description": "ISO/IEC 27001:2022, CrowdStrike and Microsoft Sentinel partnerships, dedicated analysts.",
-          "icon": "dossier"
+          "icon": "dossier",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Artificial Intelligence",
           "description": "Governed adoption, data protection and human oversight at every step.",
-          "icon": "ampoule"
+          "icon": "ampoule",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Infrastructure and Cloud",
           "description": "Microsoft's adoption framework, network and security partnerships, complex hybrid environments.",
-          "icon": "dossier"
+          "icon": "dossier",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Business Solutions and Productivity",
           "description": "Microsoft-certified consultants and developers, Power Platform, Dynamics 365 and Microsoft 365.",
-          "icon": "croissance"
+          "icon": "croissance",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "IT Consulting and Governance",
           "description": "Governance frameworks, roadmaps and IT cost optimization, since 2003.",
-          "icon": "organisation"
+          "icon": "organisation",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

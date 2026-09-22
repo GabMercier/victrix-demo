@@ -1,7 +1,7 @@
 import { defineCollection as astroDefineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { sanitizeRichHtml } from '../component-library/src/shared/rich';
-import { FOND_KEYS, FOND_KEYS_ETENDUS } from '../component-library/src/shared/fonds';
+import { FOND_KEYS, FOND_KEYS_ETENDUS, FOND_KEYS_LEGACY } from '../component-library/src/shared/fonds';
 import { ICON_KEYS, LEGACY_ICON_KEYS } from '../component-library/src/shared/icons';
 import { CONTACT_SERVICE_KEYS, CONTACT_SUJET_KEYS } from './lib/contact/presets';
 
@@ -442,16 +442,20 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
   // churn visuel sur l'existant. Palette ÉTENDUE à 10 fonds le 2026-09-17 —
   // source unique component-library/src/shared/fonds.ts (clés, classes,
   // pastilles) ; « sable » ré-accordé, gris/bleus/« pierre » ajoutés.
-  const fondClair = z.enum(FOND_KEYS);
+  // FOND_KEYS_LEGACY : clés RETIRÉES de la palette mais encore acceptées —
+  // une sauvegarde CloudCannon peut porter l'ancienne valeur (c'est arrivé
+  // le 2026-09-22, 4 h après la fusion des deux bleus). Elles ne sont plus
+  // offertes au sélecteur ; `fondCanonique` les résout au rendu.
+  const fondClair = z.enum([...FOND_KEYS, ...FOND_KEYS_LEGACY]);
   // Variante « '' = défaut historique du bloc » (form, faq) — même liste.
-  const fondClairOuVide = z.enum(['', ...FOND_KEYS]);
+  const fondClairOuVide = z.enum(['', ...FOND_KEYS, ...FOND_KEYS_LEGACY]);
   // Palette ÉTENDUE (2026-09-21, demande Gabriel) : les 10 fonds clairs + les
   // fonds SOMBRES (« bleu électrique » = l'aplat Bleu Victrix). Réservée aux
   // sections qui INVERSENT leurs textes sur fond sombre — rich-text, callout,
   // stats, logo-banner, faq ; les autres gardent `fondClair`, sinon l'éditrice
   // pourrait produire du texte marine sur aplat bleu. Même liste que
   // `_select_data.fonds_etendus` (garde-fou : npm run cms:previews:check).
-  const fondEtendu = z.enum(FOND_KEYS_ETENDUS);
+  const fondEtendu = z.enum([...FOND_KEYS_ETENDUS, ...FOND_KEYS_LEGACY]);
   // Pictogramme de la BANQUE partagée (2026-09-18) — source unique
   // component-library/src/shared/icons.ts : toutes les sections à icône
   // acceptent toutes les clés ('' = aucune). Les anciennes listes fermées
@@ -502,6 +506,10 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           // organisation/porteur/destinataire AJOUTÉES 2026-08-17 (page
           // Expertises — SVG pleins fournis, docs/design/export2/Images).
           icon: pictogramme.default(''),
+          // LOGO de marque (2026-09-22) — pour ce que la banque de
+          // pictogrammes ne peut pas dire. Gagne sur `icon`.
+          image: z.string().default(''),
+          imageAlt: z.string().default(''),
         }),
       ),
     }),
@@ -843,6 +851,11 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       aside: z
         .object({
           icon: pictogramme.default(''),
+          // LOGO de la carte latérale (2026-09-22) — cas d'usage d'origine :
+          // l'insigne HappyIndex® AtWork sur Découvrir, qui ne pouvait pas
+          // s'afficher faute de champ et retombait sur une coche générique.
+          image: z.string().default(''),
+          imageAlt: z.string().default(''),
           title: z.string(),
           text: z.string().default(''),
           linkLabel: z.string().default(''),
@@ -997,6 +1010,13 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           // CTA par carte (optionnel — rendu seulement si libellé ET lien).
           ctaLabel: z.string().optional(),
           ctaHref: z.string().optional(),
+          // VISUEL de la carte (2026-09-22) — `icon` puise dans la banque
+          // partagée, `image` accepte un LOGO de marque que la banque n'a pas
+          // (Microsoft, AWS, ServiceNow…). `image` gagne quand les deux sont
+          // remplis. Les deux vides = comportement d'avant.
+          icon: pictogramme.default(''),
+          image: z.string().default(''),
+          imageAlt: z.string().default(''),
         }),
       ),
     }),
@@ -1005,8 +1025,21 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       sectionTitle: z.string(),
       subtitle: z.string().optional(),
       fond: fondEtendu.default('beige'),
-      // Liste de libellés simples (boîtes bordées) — tableau de chaînes.
-      boxes: z.array(z.string()),
+      // Boîtes bordées. DEUX formes acceptées depuis le 2026-09-22 : la
+      // CHAÎNE historique (aucune section migrée ne casse) et l'OBJET, qui
+      // seul permet à CloudCannon d'offrir une icône et un logo — un tableau
+      // de chaînes n'a pas de sous-champ affichable.
+      boxes: z.array(
+        z.union([
+          z.string(),
+          z.object({
+            label: z.string(),
+            icon: pictogramme.default(''),
+            image: z.string().default(''),
+            imageAlt: z.string().default(''),
+          }),
+        ]),
+      ),
     }),
     z.object({
       type: z.literal('tech-columns'),

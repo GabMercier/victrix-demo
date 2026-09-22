@@ -41,6 +41,8 @@ blueprint:
         label: "Accélération"
   aside:
     icon: ""
+    image: ""
+    imageAlt: ""
     title: "Carte secondaire"
     text: ""
     linkLabel: ""
@@ -85,6 +87,22 @@ _inputs:
   aside:
     label: "Carte claire (secondaire)"
     comment: "Carte grise à icône et lien, 1 colonne sur 3. Laisser les champs vides pour une carte minimale."
+  image:
+    type: image
+    label: "Logo (optionnel)"
+    options:
+      empty_type: string
+      paths:
+        static: public
+        uploads: public/images/logos
+    comment: >-
+      Logo ou insigne affiché à la place du pictogramme — par exemple une
+      certification (HappyIndex® AtWork). Remplace l'icône quand il est posé.
+  imageAlt:
+    type: text
+    options:
+      empty_type: string
+    label: "Texte de remplacement du logo"
   text:
     type: html
     label: "Texte"

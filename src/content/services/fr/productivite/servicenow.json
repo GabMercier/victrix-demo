@@ -37,7 +37,9 @@
         "title": "Accompagnement de bout en bout",
         "text": "Licences, déploiement, soutien et services d’évolution : un développement accéléré à valeur ajoutée et un service bilingue, en français et en anglais.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -56,28 +58,40 @@
           "title": "Identification des processus d’affaires clés de votre organisation",
           "text": "",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Planification rapide du projet",
           "text": "",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Réalisation, codéveloppement et assurance qualité",
           "text": "",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Exploitation et adoption",
           "text": "",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ],
       "leadCard": {
@@ -178,12 +192,42 @@
       "subtitle": "ServiceNow se concentre entièrement sur le développement de son produit et fait appel à son réseau de partenaires fiables pour toutes ses implantations. Passer par un partenaire ServiceNow certifié comme Victrix s’avère donc crucial pour la mise en place de votre plateforme de services afin de profiter de tous ses avantages. ",
       "fond": "ivoire",
       "boxes": [
-        "Achat, intégration et personnalisation de votre solution ServiceNow",
-        "Équipe diversifiée sur les modules de la plateforme pour une expertise de déploiement étendue",
-        "Intégration du catalogue d’offres infonuagiques pour les services professionnels",
-        "Victrix est qualifiée auprès du ministère de la Cybersécurité et du Numérique (MCN)",
-        "Partenariats solides pour compléter notre expertise",
-        "Expertises transverses : cybersécurité, infonuagique, intelligence artificielle, services gérés et développement applicatif"
+        {
+          "label": "Achat, intégration et personnalisation de votre solution ServiceNow",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Équipe diversifiée sur les modules de la plateforme pour une expertise de déploiement étendue",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Intégration du catalogue d’offres infonuagiques pour les services professionnels",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Victrix est qualifiée auprès du ministère de la Cybersécurité et du Numérique (MCN)",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Partenariats solides pour compléter notre expertise",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Expertises transverses : cybersécurité, infonuagique, intelligence artificielle, services gérés et développement applicatif",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {

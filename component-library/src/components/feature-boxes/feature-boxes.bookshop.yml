@@ -31,7 +31,10 @@ blueprint:
   subtitle: ""
   fond: beige
   boxes:
-    - "Premier domaine"
+    - label: "Premier domaine"
+      icon: ""
+      image: ""
+      imageAlt: ""
 
 preview:
 
@@ -89,7 +92,50 @@ _inputs:
   boxes:
     type: array
     label: "Boîtes"
-    comment: "Un libellé court par boîte."
+    comment: >-
+      Une boîte par technologie ou partenaire. Chacune accepte un libellé, et
+      au choix un pictogramme de la banque OU un logo de marque.
   boxes[*]:
+    type: object
+    label: "Boîte"
+  label:
     type: text
+    options:
+      empty_type: string
     label: "Libellé"
+    comment: >-
+      Reste affiché même avec un logo : c'est le seul texte lisible par un
+      lecteur d'écran, et tous les logos ne portent pas leur nom.
+  icon:
+    type: select
+    label: "Pictogramme (optionnel)"
+    options:
+      empty_type: string
+      allow_empty: true
+      values: _select_data.icones
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+    comment: "Vide = aucun. Un logo posé ci-dessous prend le dessus."
+  image:
+    type: image
+    label: "Logo (optionnel)"
+    options:
+      empty_type: string
+      paths:
+        static: public
+        uploads: public/images/logos
+    comment: >-
+      Logo de la marque. Les logos de l'ancien site sont déjà rapatriés dans
+      /images/logos/ (Microsoft, AWS, Cisco, Check Point, CrowdStrike…).
+  imageAlt:
+    type: text
+    options:
+      empty_type: string
+    label: "Texte de remplacement du logo"
+    comment: >-
+      Laisser VIDE quand le libellé dit déjà le nom de la marque — sinon il est
+      annoncé deux fois.

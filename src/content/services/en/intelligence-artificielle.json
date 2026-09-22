@@ -36,17 +36,26 @@
         {
           "number": "01",
           "title": "Exploring and analyzing opportunities",
-          "text": "Identify and prioritize the most promising use cases, then build a clear roadmap to launch your first concrete AI initiatives."
+          "text": "Identify and prioritize the most promising use cases, then build a clear roadmap to launch your first concrete AI initiatives.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Developing custom AI agents and solutions",
-          "text": "Design and deploy precise solutions to automate or optimize your priority processes, with end-to-end guidance from prototype to deployment."
+          "text": "Design and deploy precise solutions to automate or optimize your priority processes, with end-to-end guidance from prototype to deployment.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Secure adoption of generative AI",
-          "text": "Structure the adoption of generative AI across your organization through a solid plan, user support, and targeted training, putting best practices front and centre."
+          "text": "Structure the adoption of generative AI across your organization through a solid plan, user support, and targeted training, putting best practices front and centre.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -66,14 +75,20 @@
           "title": "Ongoing expertise",
           "text": "We provide you with AI experts for long-term consulting and development. You benefit from continuous guidance to ensure the follow-up, evolution, and improvement of your projects.",
           "ctaLabel": "I want ongoing support",
-          "ctaHref": "/en/contact"
+          "ctaHref": "/en/contact",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Tailored expertise",
           "text": "We mobilize our experts for your specific projects, adjusting our support according to your priorities and deadlines to deliver targeted assistance that ensures results that meet your expectations.",
           "ctaLabel": "I have a specific project",
-          "ctaHref": "/en/contact"
+          "ctaHref": "/en/contact",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -94,11 +109,36 @@
       "subtitle": "Our areas of AI expertise",
       "fond": "beige",
       "boxes": [
-        "Custom, interconnected agents for standardized processes",
-        "Customization of large language models (LLMs) to your domains or your data",
-        "Strategic consulting, governance, and roadmap",
-        "Change management and AI adoption",
-        "Data security and compliance"
+        {
+          "label": "Custom, interconnected agents for standardized processes",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Customization of large language models (LLMs) to your domains or your data",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Strategic consulting, governance, and roadmap",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Change management and AI adoption",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Data security and compliance",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {
@@ -170,22 +210,34 @@
         {
           "number": "01",
           "title": "Strategic consulting",
-          "text": "Experienced advisors from our team, our global ecosystem, and our specialized AI partners."
+          "text": "Experienced advisors from our team, our global ecosystem, and our specialized AI partners.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Technology and business architecture",
-          "text": "Senior engineers recognized as AI experts by our clients."
+          "text": "Senior engineers recognized as AI experts by our clients.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Solution expertise",
-          "text": "Specialists who can step in on cybersecurity, ERP/CRM, data management, and intelligent search engines."
+          "text": "Specialists who can step in on cybersecurity, ERP/CRM, data management, and intelligent search engines.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Analysis, development, and change management",
-          "text": "Experts who support you in analysis, development, and change management, drawing on hands-on experience in AI projects and proofs of concept."
+          "text": "Experts who support you in analysis, development, and change management, drawing on hands-on experience in AI projects and proofs of concept.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

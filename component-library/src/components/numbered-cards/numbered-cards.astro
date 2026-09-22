@@ -1,6 +1,7 @@
 ---
 import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
+import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
  * Section « Cartes numérotées » — composant Bookshop (P-07).
  *
@@ -39,6 +40,20 @@ interface CardItem {
   text: string;
   ctaLabel?: string;
   ctaHref?: string;
+  /**
+   * VISUEL de la carte (2026-09-22) — la section n'en avait AUCUN alors
+   * qu'elle est la plus posée du site (76 sections, 357 cartes). Deux voies,
+   * même emplacement, à gauche du numéro :
+   *  - `icon`  : clé de la banque partagée (shared/icons.ts) ;
+   *  - `image` : un fichier, pour un LOGO de marque que la banque n'a pas
+   *              (Microsoft, AWS, ServiceNow…).
+   * `image` GAGNE sur `icon` quand les deux sont remplis : elle est le choix
+   * le plus spécifique. Aucun des deux = la carte garde son numéro seul,
+   * comportement d'avant.
+   */
+  icon?: IconKey | '';
+  image?: string;
+  imageAlt?: string;
 }
 interface Props {
   /** « Fond de section » — clé fermée de la palette (shared/fonds.ts) ; vide = suit `tone`. */
@@ -71,6 +86,11 @@ const centered = cardStyle === 'center';
 // (benefits, refonte 2026-09-18) : le numéro saisi est complété à deux
 // chiffres quand c'en est un, et laissé tel quel sinon (« I », « A »…).
 const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2, '0') : n);
+
+// Taille du pictogramme — même calibre que `benefits` (refonte du 18/09) :
+// les icônes de la banque sortent au DOUBLE de leur taille propre, et celles
+// qui n'en déclarent pas (viewBox 24) sortent à 32 px, le calibre médian.
+const tailleIcone = (v: number | undefined) => (v ? v * 2 : 32);
 ---
 
 <section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? (tone === 'tint' ? 'bg-surface-container-low' : 'bg-surface')]}>
@@ -107,14 +127,45 @@ const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2
       ]}
     >
       {
-        items.map((item) => (
+        items.map((item) => {
+          const icon = iconFor(item.icon);
+          const visuel = Boolean(item.image) || Boolean(icon);
+          return (
           <li
             class:list={[
               'm-0 bg-white border border-solid border-contour rounded-lg p-8 flex flex-col gap-3',
               centered && 'text-center items-center',
             ]}
           >
-            <div class:list={['flex w-full pb-5', centered ? 'justify-center' : 'justify-end']}>
+            <div
+              class:list={[
+                'flex w-full pb-5 items-center',
+                visuel ? 'justify-between gap-4' : centered ? 'justify-center' : 'justify-end',
+              ]}
+            >
+              {item.image ? (
+                <img
+                  src={item.image}
+                  alt={item.imageAlt ?? ''}
+                  class="h-9 w-auto max-w-[160px] object-contain shrink-0 m-0"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : icon ? (
+                <span class="text-primary flex items-center shrink-0">
+                  <svg
+                    width={tailleIcone(icon.w)}
+                    height={tailleIcone(icon.h)}
+                    {...iconSvgAttrs(icon, 2)}
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    {icon.paths.map((d) => (
+                      <path d={d} />
+                    ))}
+                  </svg>
+                </span>
+              ) : null}
               <span
                 class="text-sm leading-[0.875rem] font-bold tracking-[1.2px] text-on-surface-variant"
                 aria-hidden="true"
@@ -137,7 +188,8 @@ const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2
               </a>
             )}
           </li>
-        ))
+          );
+        })
       }
     </ul>
   </div>

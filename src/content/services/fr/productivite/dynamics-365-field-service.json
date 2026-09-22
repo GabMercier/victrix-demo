@@ -27,12 +27,42 @@
       "subtitle": "Papier, feuilles de calcul ou appels de coordination : vos équipes terrain doivent-elles composer avec des outils manuels et déconnectés? À mesure que le volume de demandes augmente, les limites deviennent critiques pour les organisations québécoises à fortes opérations terrain comme le secteur manufacturier avancé, l'énergie, les services publics, les télécommunications, la santé, le secteur public et les municipalités.",
       "fond": "ivoire",
       "boxes": [
-        "Planification lourde et rigide qui se désynchronise au moindre imprévu",
-        "Visibilité limitée en temps réel sur les techniciens et l’état des interventions",
-        "Communication ralentie entre le bureau, le terrain et le client",
-        "Imputabilité difficile sur qui fait quoi, et où",
-        "Charge de coordination qui pèse sur vos équipes",
-        "Expérience client affaiblie, faute de transparence et de suivi des demandes"
+        {
+          "label": "Planification lourde et rigide qui se désynchronise au moindre imprévu",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Visibilité limitée en temps réel sur les techniciens et l’état des interventions",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Communication ralentie entre le bureau, le terrain et le client",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Imputabilité difficile sur qui fait quoi, et où",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Charge de coordination qui pèse sur vos équipes",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Expérience client affaiblie, faute de transparence et de suivi des demandes",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {
@@ -136,7 +166,9 @@
         "title": "Découvrez l’impact sur vos propres opérations terrain",
         "text": "Présentez-nous vos enjeux terrain et nous vous montrerons comment Dynamics 365 Field Service s’applique à votre contexte.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -185,22 +217,34 @@
         {
           "number": "01",
           "title": "Diagnostic et démarrage",
-          "text": "Nous analysons vos processus terrain actuels, validons vos besoins et établissons les objectifs et le plan de projet."
+          "text": "Nous analysons vos processus terrain actuels, validons vos besoins et établissons les objectifs et le plan de projet.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Exécution itérative",
-          "text": "Nous configurons la solution par cycles courts, avec des points de suivi réguliers pour garder le projet aligné sur vos priorités."
+          "text": "Nous configurons la solution par cycles courts, avec des points de suivi réguliers pour garder le projet aligné sur vos priorités.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Déploiement",
-          "text": "Nous mettons la solution en production et préparons vos équipes à l’utiliser."
+          "text": "Nous mettons la solution en production et préparons vos équipes à l’utiliser.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Stabilisation",
-          "text": "Nous assurons le bon fonctionnement, ajustons au besoin et soutenons l’adoption après le go-live."
+          "text": "Nous assurons le bon fonctionnement, ajustons au besoin et soutenons l’adoption après le go-live.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

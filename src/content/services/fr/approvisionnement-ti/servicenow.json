@@ -84,77 +84,110 @@
           "title": "Gestion des services informatiques (ITSM)",
           "text": "<strong>Standardisez la prise en charge des demandes, des incidents et des changements.</strong><br><br><a href=\"/fr/ressources/servicenow-itsm/\"><strong>ServiceNow ITSM</strong></a> centralise les canaux de soutien, automatise les flux de travail et maintient une base de connaissances enrichie en continu.<br><br><strong>Résultat :</strong> des délais de résolution réduits et une qualité de service prévisible..",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Gestion des opérations informatiques (ITOM)",
           "text": "<strong>Supervisez l'infrastructure, détectez les anomalies et suivez la performance de vos opérations TI. </strong><br><br><a href=\"/fr/ressources/servicenow-itom/\"><strong>ServiceNow ITOM</strong></a> découvre les dépendances, corrèle les évènements et orchestre la remédiation.<br><br><strong>Résultat :</strong> moins d'interruptions et une exploitation plus fiable.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Gestion des actifs TI (ITAM)",
           "text": "<strong>Maîtrisez le cycle de vie de vos actifs logiciels et matériels. </strong><br><br><strong>ServiceNow ITAM</strong> fiabilise les inventaires, optimise la gestion des licences et automatise la conformité.<br><br><strong>Résultat :</strong> des coûts contrôlés et des risques d'audits réduits.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Gestion de portefeuille stratégique (SPM)",
           "text": "<strong>Alignez vos investissements, vos projets et vos ressources avec vos objectifs d'affaires. </strong><br><br><strong>ServiceNow SPM</strong> apporte une visibilité sur les portefeuilles de projets, permet de prioriser, de simuler des scénarios et de mesurer la valeur livrée avec des indicateurs partagés.<br><br><strong>Résultat :</strong> des investissements axés sur l'impact et des arbitrages plus rapides.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Gestion du portefeuille d'applications (APM)",
           "text": "<strong>Cartographiez, analysez, rationalisez et modernisez votre portefeuille d'applications.</strong><br><br><strong>ServiceNow APM</strong> mesure la valeur, identifie les redondances et évalue les risques liés et recommande des trajectoires (conserver, moderniser, retirer).<br><br><strong>Résultat : </strong>une complexité réduite et un budget mieux alloué.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Gestion du service à la clientèle (CSM)",
           "text": "<strong>Unifiez l'expérience client, du portail libre-service aux canaux de support multiples.</strong><br><br><strong>ServiceNow CSM</strong> orchestre les cas, automatise le traitement et connecte le service, les opérations et le terrain.<br><br><strong>Résultat :</strong> des agents plus efficaces, une satisfaction accrue et un meilleur taux de résolution au premier contact.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "07",
           "title": "Prestation de services RH (HRSD)",
           "text": "<strong>Automatisez les services RH et améliorez l'expérience employé.</strong><br><br><strong>ServiceNow HRSD </strong>offre un portail employé, simplifie la gestion des cas RH (gestion des dossiers, soutien aux intégrations et départs) et orchestre les parcours.<br><br><strong>Résultat :</strong> une expérience employé qui favorise la rétention du personnel et une charge administrative réduite.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "08",
           "title": "Moteur d'automatisation (Automation Engine)",
           "text": "<strong>Automatisez à grande échelle pour minimiser les efforts manuels et améliorer l'efficacité.</strong><br><br><strong>ServiceNow Automation Engine</strong> combine l'<a href=\"/fr/services/intelligence-artificielle/\">intelligence artificielle</a>, l'automatisation robotisée des processus, les intégrations et les politiques opérationnelles pour remplacer les processus manuels par des flux automatisés.<br><br><strong>Résultat :</strong> des gains de productivité mesurables et une réduction des erreurs humaines.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "09",
           "title": "Opérations de sécurité (SecOps)",
           "text": "<strong>Accélérez la détection et la réponse.</strong><br><br><strong>ServiceNow SecOps</strong> unifie la gestion des vulnérabilités, la détection des menaces et l'orchestration de réponse (SOAR) avec une priorisation basée sur l'impact.<br><br><strong>Résultat :</strong> un délai de réponse raccourci et des risques opérationnels maîtrisés.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "10",
           "title": "Gouvernance, risque et conformité (GRC)",
           "text": "<strong>Gouvernez par les contrôles, pas les tableurs.</strong><br><br><strong>ServiceNow GRC</strong> automatise les évaluations, centralise les preuves et suit les obligations grâce à une cartographie risques-contrôles-exigences.<br><br><strong>Résultat :</strong> une conformité démontrable et des audits simplifiées.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "11",
           "title": "Gestion des services sur le terrain (FSM)",
           "text": "<strong>Optimisez la planification, l'assignation et le suivi des interventions sur le terrain.</strong><br><br><strong>ServiceNow FSM</strong> planifie, assigne et suit les travaux avec gestion des pièces, SLA et mobilité intégrés.<br><br><strong>Résultat :</strong> des délais d'intervention maîtrisés et des coûts opérationnels optimisés..",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

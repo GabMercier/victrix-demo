@@ -43,7 +43,9 @@
         "title": "Vos équipes ont déjà commencé",
         "text": "Plusieurs de vos employés sont familiers avec l’intelligence artificielle. Ils ont déjà testé divers outils et intégré l’IA générative à leurs processus. Il ne s’agit pas tant de surmonter la résistance au changement que de convertir ce potentiel en réalisations tangibles et de structurer l'approche autour de la génération de valeur.",
         "linkLabel": null,
-        "linkHref": null
+        "linkHref": null,
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -135,42 +137,60 @@
           "title": "Vision",
           "text": "Clarifier votre ambition IA et votre maturité actuelle.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Gouvernance",
           "text": "Encadrer les décisions, les responsabilités et les usages, en gardant l’humain au cœur des décisions.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Analyse des processus",
           "text": "Identifier où se trouve la valeur dans vos opérations.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Priorisation",
           "text": "Bâtir une feuille de route claire et réaliste.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Démonstration rapide de la valeur",
           "text": "Démontrer la valeur par de premières initiatives concrètes (<em>quick wins</em>).",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Déploiement et évolution",
           "text": "Déployer les initiatives et faire évoluer la démarche.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ],
       "leadCard": {
@@ -185,12 +205,42 @@
       "subtitle": "Que vous soyez à l’évaluation des outils d’IA, ayez un cas d’usage précis ou souhaitiez un plan complet avec une feuille de route, une gouvernance et des initiatives concrètes, Victrix est votre partenaire pour un accompagnement stratégique en IA.",
       "fond": "ivoire",
       "boxes": [
-        "Des ateliers thématiques pour clarifier votre ambition et votre maturité IA",
-        "La documentation de votre vision à court et moyen terme",
-        "Une liste d’initiatives documentées, évaluées et priorisées en fonction de vos besoins réels",
-        "Un accompagnement pour concrétiser les initiatives sélectionnées",
-        "Des ressources expertes mobilisées selon vos besoins",
-        "Un cadre de gouvernance pour encadrer les décisions et les usages"
+        {
+          "label": "Des ateliers thématiques pour clarifier votre ambition et votre maturité IA",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "La documentation de votre vision à court et moyen terme",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Une liste d’initiatives documentées, évaluées et priorisées en fonction de vos besoins réels",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Un accompagnement pour concrétiser les initiatives sélectionnées",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Des ressources expertes mobilisées selon vos besoins",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Un cadre de gouvernance pour encadrer les décisions et les usages",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {

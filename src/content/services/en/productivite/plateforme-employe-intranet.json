@@ -42,7 +42,9 @@
         "title": "HR conversational agent with AI",
         "text": "Saves time for HR teams by automating responses and reducing human error.",
         "linkLabel": "",
-        "linkHref": ""
+        "linkHref": "",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -59,17 +61,26 @@
         {
           "number": "01",
           "title": "Comprehensive and accessible digital environment",
-          "text": "Designing navigation and architecture that takes into account the employee's entire digital workspace."
+          "text": "Designing navigation and architecture that takes into account the employee's entire digital workspace.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Simplified information retrieval and knowledge sharing",
-          "text": "Bridging the gap between the user and the information they are seeking."
+          "text": "Bridging the gap between the user and the information they are seeking.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Personalized experience",
-          "text": "Journeys and content tailored to different user segments."
+          "text": "Journeys and content tailored to different user segments.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

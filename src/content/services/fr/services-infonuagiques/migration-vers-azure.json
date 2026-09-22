@@ -35,7 +35,9 @@
         "title": "Spécialisations reconnues par Microsoft",
         "text": "Victrix répond aux normes les plus strictes de Microsoft en matière de sécurité infonuagique et de protection contre les menaces : Partenaire Solutions pour Espace de travail moderne et Partenaire Solutions pour Sécurité.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -80,27 +82,42 @@
         {
           "number": "01",
           "title": "Stratégie",
-          "text": "Accélération de la stratégie d'adoption de la plateforme infonuagique : motivation organisationnelle, résultats attendus, considérations financières et techniques."
+          "text": "Accélération de la stratégie d'adoption de la plateforme infonuagique : motivation organisationnelle, résultats attendus, considérations financières et techniques.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Planification",
-          "text": "Présentation des concepts, estimation des coûts projetés par charge, design de la fondation infonuagique, priorisation des charges de travail à migrer, alignement avec les priorités d'affaires et planification des nouveaux rôles requis."
+          "text": "Présentation des concepts, estimation des coûts projetés par charge, design de la fondation infonuagique, priorisation des charges de travail à migrer, alignement avec les priorités d'affaires et planification des nouveaux rôles requis.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Déploiement",
-          "text": "Accélération de la migration des charges de travail vers Azure, mise en place d'une gouvernance minimale et gradation de la preuve de concept en production."
+          "text": "Accélération de la migration des charges de travail vers Azure, mise en place d'une gouvernance minimale et gradation de la preuve de concept en production.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Gouvernance",
-          "text": "Outils de gouvernance, renforcement des meilleures pratiques par itérations, gestion des coûts, sécurité de base et cohérence des ressources."
+          "text": "Outils de gouvernance, renforcement des meilleures pratiques par itérations, gestion des coûts, sécurité de base et cohérence des ressources.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Sécurité",
-          "text": "Amélioration continue de la sécurité dans Microsoft Azure : cartographie des rôles et responsabilités, stratégie de sécurité, gestion de l'information, gestion des risques et conformité."
+          "text": "Amélioration continue de la sécurité dans Microsoft Azure : cartographie des rôles et responsabilités, stratégie de sécurité, gestion de l'information, gestion des risques et conformité.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

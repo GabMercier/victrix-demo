@@ -83,42 +83,60 @@
           "title": "Hybrid Mesh",
           "text": "<strong>Protégez vos infrastructures et garantissez la conformité de vos centres de données, de vos environnements infonuagiques et de vos interconnexions. </strong><br><br>Anciennement connu sous les noms Network Security, Quantum Security et Cloud Guard, <strong>Hybrid Mesh</strong> est une architecture unique qui allie contrôle unifié, politiques centralisées et déploiement distribué des centres de données au nuage, aux filiales et aux utilisateurs distants.<br><br><strong>Résultat :</strong> une protection uniforme de vos données, une conformité règlementaire renforcée et une gestion simplifiée du périmètre réseau.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Workspace Security Platform",
           "text": "<strong>Protégez vos employés, leurs appareils, leurs outils et leurs communications. </strong><br><br><strong>Worspace Security Platform </strong>est le résultat de l'alliance des solutions Harmony (Endpoint, Email and Collabobration, etc.) qui servent à protéger les utilisateurs, les terminaux, les navigateurs, les outils collaboratifs et l'usage de l'IA par les employés.<br><br><strong>Résultat :</strong> une expérience sécurisée dans l'ensemble de l'espace de travail numérique pour vos équipes, sans compromettre la productivité.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Exposure Management",
           "text": "<strong>Protégez votre surface d'attaque, limitez votre exposition et automatisez la remédiation.</strong><br><br>Check Point <strong>Exposure Management</strong> fusionne les solutions Cyberint, Infinity ERM, Threat Intelligence Services et plus encore pour assurer une gestion de l'exposition externe et interne, le renseignement sur les menaces (<em>Threat intelligence</em>), la surveillance du dark web, la priorisation du risque et la remédiation automatisée via Veriti.<br><br><strong>Résultat :</strong> une gestion de l'exposition maitrisée et efficace, qui réduit votre surface d'attaque et limite vos vulnérabilités.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "AI Security",
           "text": "<strong>Garantissez une utilisation sécuritaire de l'intelligence artificielle au sein de votre organisation.</strong><br><br><strong>AI Security</strong> est la fusion des solutions ThreadCloud AI et Infinity AI de Check Point. C'est un élément central de la cybersécurité de votre entreprise. Il sécurise l'utilisation des outils d'IA générative par les employés, protège les applications d'IA, renforce la sécurité des agents IA autonomes et prévient les fuites de données via les prompts et modèles.<br><br><strong>Résultat :</strong> une protection accrue des usages de l'intelligence artificielle, de l'IA générative aux applications IA et agents autonomes.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Accès et identité",
           "text": "<strong>Appliquez les principes du « </strong><a href=\"/fr/services/cybersecurite/zero-trust/\"><strong>Zero Trust</strong></a><strong>» à l'ensemble de votre organisation. </strong><br><br>Les <a href=\"/fr/ressources/sase-cloud/\">solutions d'accès sécurisé</a> <strong>Check Point SASE </strong>contrôlent et applique le principe du moindre privilège en fonction du niveau de risque.<br><br><strong>Résultat :</strong> un accès contrôlé aux données et applications critiques, où que se trouvent vos utilisateurs.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Surveillance et opérations",
           "text": "<strong>Centralisez la détection, l’analyse et la réponse aux menaces. </strong><br><br><strong>Horizon</strong> offre une visibilité complète sur vos environnements et automatise les réponses aux incidents.<br><br><strong>Résultat :</strong> des opérations de sécurité plus rapides, coordonnées et efficaces.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

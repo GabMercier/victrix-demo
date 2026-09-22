@@ -35,7 +35,9 @@
         "title": "Conseil stratégique",
         "text": "Bénéficiez de notre expertise en conseil stratégique pour assurer le succès de tous vos projets de transformation numérique.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact/"
+        "linkHref": "/fr/contact/",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -80,32 +82,50 @@
         {
           "number": "01",
           "title": "Démarrage",
-          "text": "Rencontre de démarrage : compréhension du projet, calendrier de réalisation et participation des parties prenantes, prérequis techniques, rôles requis par atelier et par comité."
+          "text": "Rencontre de démarrage : compréhension du projet, calendrier de réalisation et participation des parties prenantes, prérequis techniques, rôles requis par atelier et par comité.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Définition",
-          "text": "Identification, définition et priorisation des opportunités de migration ; analyse de l'infrastructure."
+          "text": "Identification, définition et priorisation des opportunités de migration ; analyse de l'infrastructure.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Faisabilité",
-          "text": "Préparation de l'analyse d'opportunité et de faisabilité : contexte organisationnel, compréhension des enjeux technologiques et d'affaires, inventaire des actifs TI, cartographie des interdépendances et analyse des licences."
+          "text": "Préparation de l'analyse d'opportunité et de faisabilité : contexte organisationnel, compréhension des enjeux technologiques et d'affaires, inventaire des actifs TI, cartographie des interdépendances et analyse des licences.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Concept",
-          "text": "Preuve de concept : architecture et stratégie de déploiement, mise en place, réalisation et documentation."
+          "text": "Preuve de concept : architecture et stratégie de déploiement, mise en place, réalisation et documentation.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Gradation",
-          "text": "Analyse et proposition des options de gradation à privilégier, puis gradation des systèmes."
+          "text": "Analyse et proposition des options de gradation à privilégier, puis gradation des systèmes.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Itérations",
-          "text": "Accélération en mode itératif : analyse des besoins, des opportunités et de la cartographie ; mise en place (déploiement, sécurisation et gouvernance) ; migration (cartographie, classification, migration et test) ; optimisation et gouvernance."
+          "text": "Accélération en mode itératif : analyse des besoins, des opportunités et de la cartographie ; mise en place (déploiement, sécurisation et gouvernance) ; migration (cartographie, classification, migration et test) ; optimisation et gouvernance.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -173,18 +193,78 @@
       "sectionTitle": "Nos partenaires",
       "fond": "beige",
       "boxes": [
-        "Palo Alto",
-        "Checkpoint",
-        "Pulse Secure",
-        "CrowdStrike",
-        "Microsoft 365",
-        "Cisco",
-        "Aruba",
-        "Imprivata",
-        "AlgoSec",
-        "AWS",
-        "OVH Cloud",
-        "ServiceNow"
+        {
+          "label": "Palo Alto",
+          "icon": "",
+          "image": "/images/logos/paloalto.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Checkpoint",
+          "icon": "",
+          "image": "/images/logos/checkpoint.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Pulse Secure",
+          "icon": "",
+          "image": "/images/logos/pulse-secure.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "CrowdStrike",
+          "icon": "",
+          "image": "/images/logos/crowdstrike.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Microsoft 365",
+          "icon": "",
+          "image": "/images/logos/microsoft.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Cisco",
+          "icon": "",
+          "image": "/images/logos/cisco.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Aruba",
+          "icon": "",
+          "image": "/images/logos/aruba.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Imprivata",
+          "icon": "",
+          "image": "/images/logos/imprivata.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AlgoSec",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "AWS",
+          "icon": "",
+          "image": "/images/logos/aws.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "OVH Cloud",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "ServiceNow",
+          "icon": "",
+          "image": "/images/logos/servicenow-partner.png",
+          "imageAlt": ""
+        }
       ]
     },
     {

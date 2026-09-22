@@ -27,10 +27,30 @@
       "subtitle": "",
       "fond": "ivoire",
       "boxes": [
-        "Simplify reservations",
-        "Improve office management",
-        "Access relevant reports",
-        "Track office attendance"
+        {
+          "label": "Simplify reservations",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Improve office management",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Access relevant reports",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Track office attendance",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {

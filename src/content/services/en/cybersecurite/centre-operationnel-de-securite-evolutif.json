@@ -48,7 +48,9 @@
         "title": "Benefits of Our SOC Service",
         "text": "Deal with the increase in advanced cyber threats, supplement your in-house security team with our experts, and simplify the integration of new entities in a context of growth or merger.",
         "linkLabel": "Discover our cybersecurity expertise",
-        "linkHref": "/en/services/cybersecurity"
+        "linkHref": "/en/services/cybersecurity",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -186,32 +188,50 @@
         {
           "number": "01",
           "title": "Visualization",
-          "text": "Of suspicious activity, with fewer false positives."
+          "text": "Of suspicious activity, with fewer false positives.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Reduction",
-          "text": "In threat detection and remediation time."
+          "text": "In threat detection and remediation time.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Acceleration",
-          "text": "Of new technology integration."
+          "text": "Of new technology integration.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Minimization",
-          "text": "Of operational risks and the burden of cybersecurity management."
+          "text": "Of operational risks and the burden of cybersecurity management.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Elimination",
-          "text": "Of repetitive tasks for your staff."
+          "text": "Of repetitive tasks for your staff.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Consolidation",
-          "text": "And continuous strengthening of your security posture."
+          "text": "And continuous strengthening of your security posture.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },

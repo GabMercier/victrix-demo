@@ -33,17 +33,26 @@
         {
           "number": "01",
           "title": "Assess",
-          "text": "A clear picture of the current state and the gaps to close."
+          "text": "A clear picture of the current state and the gaps to close.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Plan",
-          "text": "A prioritized roadmap aligned with your business goals."
+          "text": "A prioritized roadmap aligned with your business goals.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Deploy",
-          "text": "A progressive, measured and supported rollout."
+          "text": "A progressive, measured and supported rollout.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -110,10 +119,30 @@
       "subtitle": "A clear scope, adapted to your organization.",
       "fond": "beige",
       "boxes": [
-        "Strategy and governance",
-        "Architecture and integration",
-        "Security and compliance",
-        "Training and adoption"
+        {
+          "label": "Strategy and governance",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Architecture and integration",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Security and compliance",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Training and adoption",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {

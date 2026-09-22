@@ -44,6 +44,9 @@ blueprint:
       text: "Description de la carte, en une ou deux phrases."
       ctaLabel: ""
       ctaHref: ""
+      icon: ""
+      image: ""
+      imageAlt: ""
 
 preview:
 

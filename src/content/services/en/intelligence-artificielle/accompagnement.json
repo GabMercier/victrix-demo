@@ -39,7 +39,9 @@
         "title": "Your people already know AI",
         "text": "They have tried the tools and folded generative AI into their day-to-day. The real work isn’t overcoming resistance but turning that momentum into tangible results and building your approach around the value it creates.",
         "linkLabel": null,
-        "linkHref": null
+        "linkHref": null,
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -129,32 +131,50 @@
         {
           "number": "01",
           "title": "Vision",
-          "text": "Pin down your AI ambition and where you stand today."
+          "text": "Pin down your AI ambition and where you stand today.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Governance",
-          "text": "Set the rules for decisions, ownership, and use, with people in the loop."
+          "text": "Set the rules for decisions, ownership, and use, with people in the loop.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Process analysis",
-          "text": "Find where the real value sits in your operations."
+          "text": "Find where the real value sits in your operations.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Prioritization",
-          "text": "Build a clear, realistic roadmap."
+          "text": "Build a clear, realistic roadmap.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Proof of value",
-          "text": "Prove it fast with the first concrete initiatives (quick wins)."
+          "text": "Prove it fast with the first concrete initiatives (quick wins).",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Deployment and evolution",
-          "text": "Roll out initiatives and grow from there."
+          "text": "Roll out initiatives and grow from there.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -165,12 +185,42 @@
       "subtitle": "Whether you’re sizing up AI tools, working from a specific use case, or want the full picture — roadmap, governance, and concrete initiatives — Victrix is your partner for strategic AI consulting.",
       "fond": "ivoire",
       "boxes": [
-        "Focused workshops to sharpen your AI ambition and maturity",
-        "A written short- and medium-term vision",
-        "A documented, assessed, and prioritized list of initiatives built around your real needs",
-        "Hands-on support to bring the chosen initiatives to life",
-        "Expert resources on tap as you need them",
-        "A governance framework for decisions and day-to-day use"
+        {
+          "label": "Focused workshops to sharpen your AI ambition and maturity",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "A written short- and medium-term vision",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "A documented, assessed, and prioritized list of initiatives built around your real needs",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Hands-on support to bring the chosen initiatives to life",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Expert resources on tap as you need them",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "A governance framework for decisions and day-to-day use",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {

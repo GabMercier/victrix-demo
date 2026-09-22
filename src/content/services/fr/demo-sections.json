@@ -32,17 +32,26 @@
         {
           "number": "01",
           "title": "Évaluer",
-          "text": "Un portrait clair de la situation actuelle et des écarts à combler."
+          "text": "Un portrait clair de la situation actuelle et des écarts à combler.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Planifier",
-          "text": "Une feuille de route priorisée, alignée sur vos objectifs d'affaires."
+          "text": "Une feuille de route priorisée, alignée sur vos objectifs d'affaires.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Déployer",
-          "text": "Une mise en œuvre progressive, mesurée et accompagnée."
+          "text": "Une mise en œuvre progressive, mesurée et accompagnée.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -109,10 +118,30 @@
       "subtitle": "Un périmètre clair, adapté à votre organisation.",
       "fond": "beige",
       "boxes": [
-        "Stratégie et gouvernance",
-        "Architecture et intégration",
-        "Sécurité et conformité",
-        "Formation et adoption"
+        {
+          "label": "Stratégie et gouvernance",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Architecture et intégration",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Sécurité et conformité",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Formation et adoption",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {

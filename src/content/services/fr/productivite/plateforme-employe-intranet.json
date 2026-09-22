@@ -42,7 +42,9 @@
         "title": "Agent conversationnel pour les ressources humaines",
         "text": "Faites gagner du temps à vos équipes RH grâce à l’automatisation des réponses et une réduction des erreurs humaines. Contactez-nous pour découvrir notre Bot RH.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact/"
+        "linkHref": "/fr/contact/",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -61,21 +63,30 @@
           "title": "Environnement global accessible et complet",
           "text": "Création d’une navigation et d’une architecture tenant compte de l’ensemble de l’espace de travail numérique de l’employé.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Recherche d’information et partage de connaissances simplifiés",
           "text": "Réduire la distance entre l’utilisateur et l’information recherchée.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Expérience personnalisée",
           "text": "Parcours et contenus adaptés aux différents segments d’utilisateurs.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ],
       "leadCard": {

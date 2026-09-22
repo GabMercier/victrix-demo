@@ -93,17 +93,26 @@
         {
           "number": "01",
           "title": "Comprendre",
-          "text": "Vos processus, vos systèmes et vos priorités d’affaires d’abord."
+          "text": "Vos processus, vos systèmes et vos priorités d’affaires d’abord.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Livrer",
-          "text": "Des jalons courts, des livrables concrets et mesurables."
+          "text": "Des jalons courts, des livrables concrets et mesurables.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Faire évoluer",
-          "text": "Un accompagnement qui dure au-delà de la mise en service."
+          "text": "Un accompagnement qui dure au-delà de la mise en service.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
