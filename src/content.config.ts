@@ -22,6 +22,53 @@ import { CONTACT_SERVICE_KEYS, CONTACT_SUJET_KEYS } from './lib/contact/presets'
  * propre repli ci-dessous. Ceinture et bretelles côté CMS :
  * `empty_type: string` sur les entrées texte de cloudcannon.config.yml.
  */
+/**
+ * QUAND GARDER `.min(1)` — la règle, tranchée par le lot L01 (2026-09-22).
+ *
+ * `nullsToEmpty` ci-dessus règle le `null` du CMS ; il ne règle PAS le champ
+ * vidé qu'un `.min(1)` refuse ensuite. C'est la récidive du 18 sept. 2026 :
+ * `merci.metaDescription`, vidée dans l'éditeur, a mis `staging` au rouge
+ * pendant 20 sauvegardes d'affilée — plus rien de ce que Julie enregistrait
+ * n'était publié, pour une méta description. Un `.min(1)` sur un champ éditable
+ * est un build rouge en attente ; il ne se justifie que si le vide casse
+ * VRAIMENT la page.
+ *
+ * `.min(1)` GARDÉ seulement quand le champ vide produirait un élément SANS NOM
+ * ACCESSIBLE ou SANS DESTINATION :
+ *  1. les destinations (`href`, `navHref`, `phoneHref`) ;
+ *  2. les intitulés de commandes — liens, boutons, entrées de menu, options de
+ *     liste blanche — y compris ceux qui n'en ont pas l'air : `footer.phone`
+ *     est le TEXTE du lien `tel:`, `ressources.searchPlaceholder` et
+ *     `newsletter.emailPlaceholder` sont rendus en `sr-only` et servent de
+ *     LIBELLÉ à leur champ de saisie, `ressources.eyebrow` est le nom du fil
+ *     d'Ariane des articles, `contact.consentText` est le libellé de la case
+ *     de consentement (obligatoire) ;
+ *  3. les `aria-label` — dont `footer.columns[].title` et `footer.contactTitle`,
+ *     qui nomment chacun un repère `<nav>` en plus d'être un `<h2>` ;
+ *  4. le titre visible de la page (son `<h1>`) et son `<title>` (`metaTitle`) ;
+ *  5. `contact.labels.*` : le `name` HTML du champ en est DÉRIVÉ
+ *     (src/lib/forms/field-name.ts) et deux garde-fous de build comparent la
+ *     page à la définition du formulaire — vidé, le champ casse le build de
+ *     toute façon, mais avec un message qui dit quoi réaligner ;
+ *  6. `annonces.title` : l'identifiant de la bannière dans la LISTE du CMS.
+ *     Vide, l'éditrice ne sait plus laquelle elle modifie.
+ *
+ * Tout le reste — méta descriptions, surtitres, chapeaux, corps de texte,
+ * intitulés de colonne décoratifs, textes de substitution, confirmations —
+ * prend `.default('')`, et le gabarit fait le repli : soit il n'affiche pas
+ * l'élément (`{valeur && …}`, pour un titre ou un bloc décoré, sinon le vide
+ * laisse un trou), soit il rend une chaîne vide, ce qui ne produit rien.
+ *
+ * Les `.min(1)` de TABLEAU (« au moins un élément ») restent : supprimer toutes
+ * les lignes d'une liste est un autre geste que vider un champ, et une liste
+ * entièrement vide est en général une vraie panne (un menu, un pied de page,
+ * les sorties de la 404). Les tableaux de texte LIBRE (`formBullets`,
+ * `offices[].lines`) acceptent en revanche un élément vide : le rendu le filtre.
+ *
+ * Le test `src/content.config.champs-vides.test.ts` vide tour à tour CHAQUE
+ * chaîne de src/data et src/content/pages et échoue en nommant le champ ; la
+ * liste des champs structurels y est explicite, et c'est la même que celle-ci.
+ */
 function nullsToEmpty(value: unknown): unknown {
   if (value === null) return '';
   // Texte enrichi (Phase 1, 2026-09-16) : toute chaîne portant du HTML passe le
@@ -39,14 +86,131 @@ function nullsToEmpty(value: unknown): unknown {
   return value;
 }
 
+/**
+ * LISTES FERMÉES VIDÉES AU CMS (2026-09-22, lot L-selects) — la même panne par
+ * l'autre porte.
+ *
+ * `nullsToEmpty` règle le `null`, la règle « QUAND GARDER `.min(1)` » règle le
+ * texte vidé ; restait la TROISIÈME porte : un `select` effacé dans CloudCannon
+ * écrit `''`, et un `z.enum([...]).default('ivoire')` REFUSE `''` — build rouge
+ * identique à l'incident du 18 sept., pour un menu déroulant remis à blanc.
+ * Huit sélecteurs de section (`callout.layout`, `cta.variant`, `form.variant`,
+ * les quatre de `numbered-cards`, `timeline.tone`) et cinq champs hors sections
+ * étaient atteignables : leur `allow_empty` du CMS vaut `true` (absent = true).
+ * Les 38 autres sont bornés par `allow_empty: false` côté CloudCannon — une
+ * garde d'interface, du même genre que `empty_type: string` qui n'avait pas
+ * suffi le 18/09 : le schéma ne doit pas en dépendre.
+ *
+ * L'ARBITRAGE, tranché par Gabriel : `.catch('<défaut>')` réparerait le vide en
+ * une ligne par champ, mais avalerait AUSSI une clé mal orthographiée
+ * (`fond: "beig"` deviendrait silencieusement le défaut, et personne ne verrait
+ * jamais que la section n'a pas le fond demandé). On ne veut que la moitié du
+ * comportement : VIDE → le défaut ; INCONNU → toujours refusé, bruyamment.
+ *
+ * D'où cette normalisation, guidée par le schéma lui-même et posée EN UN SEUL
+ * ENDROIT comme `nullsToEmpty` : avant validation, on descend le schéma et la
+ * donnée EN PARALLÈLE et on EFFACE la clé dont la valeur est `''` quand son
+ * schéma est une liste fermée qui n'accepte pas `''` et qu'un `.default(…)` (ou
+ * `.optional()`) peut absorber l'absence. Zod applique alors le défaut du champ
+ * — celui qui est écrit à côté, jamais un défaut inventé ici. Deux propriétés
+ * qui en découlent, et que le test `content.config.listes-fermees.test.ts`
+ * vérifie dans les deux sens :
+ *  - aucune liste à déclarer ici : elle est LUE dans le schéma, donc un `z.enum`
+ *    ajouté demain est couvert le jour même, sans rien à penser ;
+ *  - les listes où `''` est une valeur LÉGITIME (`fondClairOuVide` = « défaut
+ *    historique du bloc », `pictogramme` = « aucune icône ») ne sont pas
+ *    touchées : `''` y est dans la liste, donc jamais effacé.
+ */
+type DefZod = {
+  typeName?: string;
+  innerType?: z.ZodTypeAny;
+  schema?: z.ZodTypeAny;
+  type?: z.ZodTypeAny;
+  shape?: () => Record<string, z.ZodTypeAny>;
+  values?: readonly string[];
+  discriminator?: string;
+  optionsMap?: Map<unknown, z.ZodTypeAny>;
+};
+const defDe = (schema: z.ZodTypeAny | undefined): DefZod =>
+  ((schema as unknown as { _def?: DefZod } | undefined)?._def ?? {}) as DefZod;
+
+const estObjetSimple = (valeur: unknown): valeur is Record<string, unknown> =>
+  typeof valeur === 'object' &&
+  valeur !== null &&
+  Object.getPrototypeOf(valeur) === Object.prototype;
+
+/**
+ * `true` si effacer la clé vaut mieux que laisser `''` : liste fermée SANS `''`
+ * parmi ses valeurs, sous une enveloppe (`.default()` / `.optional()`) capable
+ * d'absorber l'absence. Sinon on ne touche à rien — une liste fermée SANS repli
+ * doit continuer à échouer, avec son message d'origine.
+ */
+function videEffacable(schema: z.ZodTypeAny): boolean {
+  let courant: z.ZodTypeAny | undefined = schema;
+  let absorbe = false;
+  for (;;) {
+    const def = defDe(courant);
+    if (def.typeName === 'ZodDefault' || def.typeName === 'ZodOptional') {
+      absorbe = true;
+      courant = def.innerType;
+    } else if (def.typeName === 'ZodNullable') courant = def.innerType;
+    else if (def.typeName === 'ZodEffects') courant = def.schema;
+    else break;
+    if (!courant) return false;
+  }
+  const def = defDe(courant);
+  return absorbe && def.typeName === 'ZodEnum' && !(def.values ?? []).includes('');
+}
+
+/** Descend schéma et donnée en parallèle ; renvoie une COPIE nettoyée. */
+function videsVersDefauts(schema: z.ZodTypeAny | undefined, valeur: unknown): unknown {
+  const def = defDe(schema);
+  switch (def.typeName) {
+    case 'ZodDefault':
+    case 'ZodOptional':
+    case 'ZodNullable':
+      return videsVersDefauts(def.innerType, valeur);
+    case 'ZodEffects':
+      return videsVersDefauts(def.schema, valeur);
+    case 'ZodArray':
+      return Array.isArray(valeur)
+        ? valeur.map((element) => videsVersDefauts(def.type, element))
+        : valeur;
+    case 'ZodDiscriminatedUnion': {
+      if (!estObjetSimple(valeur)) return valeur;
+      // Sections : le discriminant (`type`) désigne le seul membre à descendre.
+      const option = def.optionsMap?.get(valeur[def.discriminator as string]);
+      return option ? videsVersDefauts(option, valeur) : valeur;
+    }
+    case 'ZodObject': {
+      if (!estObjetSimple(valeur)) return valeur;
+      const shape = def.shape?.() ?? {};
+      const sortie: Record<string, unknown> = { ...valeur };
+      for (const [cle, sousSchema] of Object.entries(shape)) {
+        if (!(cle in sortie)) continue;
+        if (sortie[cle] === '' && videEffacable(sousSchema)) delete sortie[cle];
+        else sortie[cle] = videsVersDefauts(sousSchema, sortie[cle]);
+      }
+      return sortie;
+    }
+    default:
+      // Unions non discriminées (`z.union([image(), z.string()])`) : on ne
+      // devine pas quel membre s'applique — la donnée passe telle quelle.
+      return valeur;
+  }
+}
+
 type CollectionConfig = Parameters<typeof astroDefineCollection>[0];
 const defineCollection = ((config: CollectionConfig) => {
   const { schema } = config;
+  /** Les deux tolérances, dans l'ordre : `null` → `''`, puis `''` → le défaut. */
+  const tolerer = (resolu: z.ZodTypeAny) =>
+    z.preprocess((brut) => videsVersDefauts(resolu, nullsToEmpty(brut)), resolu);
   const tolerant =
     typeof schema === 'function'
-      ? (ctx: Parameters<typeof schema>[0]) => z.preprocess(nullsToEmpty, schema(ctx))
+      ? (ctx: Parameters<typeof schema>[0]) => tolerer(schema(ctx))
       : schema
-        ? z.preprocess(nullsToEmpty, schema)
+        ? tolerer(schema)
         : schema;
   return astroDefineCollection({ ...config, schema: tolerant } as CollectionConfig);
 }) as typeof astroDefineCollection;
@@ -149,7 +313,12 @@ const FORM_FIELD_TYPES = [
 
 const formFieldCore = z.object({
   label: z.string(),
-  type: z.enum(FORM_FIELD_TYPES),
+  // Défaut AJOUTÉ 2026-09-22 (L-selects) : ce select est vidable dans CloudCannon
+  // (`allow_empty` absent = true) et, sans repli, un champ remis à blanc
+  // mettait le build au rouge. « text » est le type le plus inoffensif — le
+  // champ reste saisissable, son `name` HTML vient de son LIBELLÉ (inchangé)
+  // et les deux garde-fous de build continuent de comparer page et définition.
+  type: z.enum(FORM_FIELD_TYPES).default('text'),
   required: z.boolean(),
   // PRÉSENTATION seulement (re-skin formulaires 2026-08-04, maquettes Figma
   // form1/form2) : « demi » = le champ occupe une demi-rangée (deux champs
@@ -1366,7 +1535,10 @@ const navigation = defineCollection({
           href: navHref,
           // Hérité : plus rendu depuis le re-skin chrome 2026-08-04 (les têtes
           // de colonne Figma sont textuelles) — champ conservé au contrat.
-          icon: z.enum(['strategy', 'cloud', 'security', 'productivity', 'managed']),
+          // Défaut AJOUTÉ 2026-09-22 (L-selects) : le select reste offert dans
+          // CloudCannon et vidable ; sans repli, effacer un pictogramme qui ne
+          // s'affiche même plus aurait suffi à faire tomber le build.
+          icon: z.enum(['strategy', 'cloud', 'security', 'productivity', 'managed']).default('strategy'),
           links: z.array(navLink),
         }),
       ),
@@ -1376,7 +1548,7 @@ const navigation = defineCollection({
       // (convention navigation, localisés au rendu).
       featured: z
         .object({
-          title: z.string().min(1),
+          title: z.string().default(''),
           body: z.string().default(''),
           ctaLabel: z.string().min(1),
           href: navHref,
@@ -1386,7 +1558,7 @@ const navigation = defineCollection({
         .optional(),
       stripe: z
         .object({
-          text: z.string().min(1),
+          text: z.string().default(''),
           links: z
             .array(z.object({ label: z.string().min(1), href: navHref }))
             .max(2)
@@ -1409,8 +1581,8 @@ const navigation = defineCollection({
         // (le bouton pointe parentHref — le centre de ressources).
         intro: z.string(),
         ctaLabel: z.string().min(1),
-        categoriesTitle: z.string().min(1),
-        latestTitle: z.string().min(1),
+        categoriesTitle: z.string().default(''),
+        latestTitle: z.string().default(''),
       })
       .optional(),
   }),
@@ -1576,7 +1748,7 @@ const site = defineCollection({
       phone: z.string().min(1),
       // Numéro composable (tel:), sans espaces ni ponctuation.
       phoneHref: z.string().min(1),
-      socialLabel: z.string().min(1),
+      socialLabel: z.string().default(''),
       // Puce du pied de page = accès au portail client.
       contactCta: z.object({ label: z.string().min(1), href: navHref }),
       // Liens sociaux TEXTE. '#' hérité tant que les URLs réelles ne sont pas
@@ -1587,7 +1759,7 @@ const site = defineCollection({
     // Bandeau de consentement Loi 25 (P-10) — visible sur toutes les pages via
     // BaseLayout. Formulation à portée légale : éditable sans développeur.
     consent: z.object({
-      text: z.string().min(1),
+      text: z.string().default(''),
       policyLabel: z.string().min(1),
       policyHref: navHref,
       accept: z.string().min(1),
@@ -1599,11 +1771,11 @@ const site = defineCollection({
     }),
     notFound: z.object({
       metaTitle: z.string().min(1),
-      metaDescription: z.string().min(1),
-      eyebrow: z.string().min(1),
+      metaDescription: z.string().default(''),
+      eyebrow: z.string().default(''),
       title: z.string().min(1),
-      text: z.string().min(1),
-      requestedLabel: z.string().min(1),
+      text: z.string().default(''),
+      requestedLabel: z.string().default(''),
       // Mêmes règles que la nav : liens internes SANS préfixe de langue
       // (la page 404 localise via localizePath).
       links: z
@@ -1632,20 +1804,20 @@ const contact = defineCollection({
   loader: glob({ pattern: '*.json', base: './src/data/contact' }),
   schema: z.object({
     metaTitle: z.string().min(1),
-    metaDescription: z.string().min(1),
+    metaDescription: z.string().default(''),
     // Surtitre du héros — rétabli par la maquette « contact redesign »
     // (2026-09-21) après avoir été retiré en août. FACULTATIF : vidé au CMS,
     // il disparaît simplement du rendu.
     heroEyebrow: z.string().default(''),
     heroTitle: z.string().min(1),
-    heroSub: z.string().min(1),
-    infoTitle: z.string().min(1),
+    heroSub: z.string().default(''),
+    infoTitle: z.string().default(''),
     // Libellés de la carte Coordonnées (les numéros vivent dans le gabarit).
     // Maquette finale 2026-08-18 : 2 rangées seulement (sans frais + courriel)
     // — l'eyebrow du héros et la mini-grille des villes sont supprimés.
     infoLabels: z.object({
-      tollFree: z.string().min(1),
-      email: z.string().min(1),
+      tollFree: z.string().default(''),
+      email: z.string().default(''),
     }),
     // Cartes bureaux. Le gabarit apparie les téléphones PAR POSITION (Québec,
     // Montréal, Paris) — conserver cet ordre. Image = chemin PUBLIC servi tel
@@ -1653,25 +1825,25 @@ const contact = defineCollection({
     offices: z
       .array(
         z.object({
-          city: z.string().min(1),
-          lines: z.array(z.string().min(1)).min(1),
+          city: z.string().default(''),
+          lines: z.array(z.string()).min(1),
           image: z.string().default(''),
         }),
       )
       .min(1),
-    formTitle: z.string().min(1),
-    formIntro: z.string().min(1),
-    formBullets: z.array(z.string().min(1)),
-    reqNote: z.string().min(1),
+    formTitle: z.string().default(''),
+    formIntro: z.string().default(''),
+    formBullets: z.array(z.string()),
+    reqNote: z.string().default(''),
     labels: z.object({
       firstName: z.string().min(1),
       lastName: z.string().min(1),
       email: z.string().min(1),
       phone: z.string().min(1),
       subject: z.string().min(1),
-      subjectPlaceholder: z.string().min(1),
+      subjectPlaceholder: z.string().default(''),
       expertise: z.string().min(1),
-      expertisePlaceholder: z.string().min(1),
+      expertisePlaceholder: z.string().default(''),
       // Qualification « Taille de l'entreprise » (2026-09-21) — champ
       // FACULTATIF du contrat : vidé au CMS, il disparaît du formulaire au
       // lieu de casser le build (règle « le contenu est édité par des
@@ -1685,12 +1857,12 @@ const contact = defineCollection({
     // « votre@courriel.com », « Écrire… »…) — les selects gardent leurs
     // placeholders dans `labels` (première option).
     placeholders: z.object({
-      firstName: z.string().min(1),
-      lastName: z.string().min(1),
-      email: z.string().min(1),
-      phone: z.string().min(1),
-      request: z.string().min(1),
-      message: z.string().min(1),
+      firstName: z.string().default(''),
+      lastName: z.string().default(''),
+      email: z.string().default(''),
+      phone: z.string().default(''),
+      request: z.string().default(''),
+      message: z.string().default(''),
     }),
     subjectOptions: z.array(z.string().min(1)).min(1),
     expertiseOptions: z.array(z.string().min(1)).min(1),
@@ -1702,7 +1874,7 @@ const contact = defineCollection({
     // même politique que le consentText des formulaires (contenu de dépôt).
     consentText: z.string().min(1),
     submit: z.string().min(1),
-    statusMessage: z.string().min(1),
+    statusMessage: z.string().default(''),
   }),
 });
 
@@ -1727,7 +1899,7 @@ const pagesSysteme = defineCollection({
       // Fin de titre en bleu (maquette « ressources parent » 2026-08-18 :
       // « Perspectives et **expertises TI** ») — vide = titre d'un seul tenant.
       titleAccent: z.string().default(''),
-      intro: z.string().min(1),
+      intro: z.string().default(''),
       filterAll: z.string().min(1),
       // Refonte « Centre de ressources » (maquette export2, 2026-08-18) —
       // textes de la barre de recherche, des cartes et du bandeau d'appel à
@@ -1739,15 +1911,15 @@ const pagesSysteme = defineCollection({
       readMore: z.string().min(1),
       byline: z.string().default(''),
       newsletter: z.object({
-        title: z.string().min(1),
-        text: z.string().min(1),
+        title: z.string().default(''),
+        text: z.string().default(''),
         emailPlaceholder: z.string().min(1),
         submitLabel: z.string().min(1),
-        confirmation: z.string().min(1),
+        confirmation: z.string().default(''),
       }),
       cta: z.object({
-        title: z.string().min(1),
-        text: z.string().min(1),
+        title: z.string().default(''),
+        text: z.string().default(''),
         primaryLabel: z.string().min(1),
         // Liens internes SANS préfixe de langue (même règle que `merci.links`).
         primaryHref: navHref,
@@ -1759,10 +1931,10 @@ const pagesSysteme = defineCollection({
       metaTitle: z.string().min(1),
       // TOLÉRANT (2026-09-18) : voir `merci.metaDescription` ci-dessous.
       metaDescription: z.string().default(''),
-      eyebrow: z.string().min(1),
+      eyebrow: z.string().default(''),
       title: z.string().min(1),
-      intro: z.string().min(1),
-      noscript: z.string().min(1),
+      intro: z.string().default(''),
+      noscript: z.string().default(''),
     }),
     merci: z.object({
       metaTitle: z.string().min(1),
@@ -1773,7 +1945,7 @@ const pagesSysteme = defineCollection({
       // vide = repli sur la description par défaut du site (BaseLayout).
       metaDescription: z.string().default(''),
       title: z.string().min(1),
-      text: z.string().min(1),
+      text: z.string().default(''),
       // Mêmes règles que la 404 : liens internes SANS préfixe de langue.
       links: z
         .array(

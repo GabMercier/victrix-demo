@@ -46,9 +46,11 @@ const devNote =
 <BaseLayout lang={lang} title={sys.recherche.metaTitle} description={sys.recherche.metaDescription} noindex>
   <section class="search-page">
     <div class="container search-page__inner">
-      <p class="search-page__eyebrow">{sys.recherche.eyebrow}</p>
+      {sys.recherche.eyebrow && <p class="search-page__eyebrow">{sys.recherche.eyebrow}</p>}
       <h1 class="search-page__title">{sys.recherche.title}</h1>
-      <p class="search-page__intro" set:html={inlineHtml(sys.recherche.intro)} />
+      {sys.recherche.intro && (
+        <p class="search-page__intro" set:html={inlineHtml(sys.recherche.intro)} />
+      )}
 
       {/* Feuille de style de l'interface Pagefind — asset local produit par le
           build (un <link rel="stylesheet"> dans le corps est valide HTML et
@@ -56,7 +58,9 @@ const devNote =
       <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
 
       <div id="search" class="search-page__mount"></div>
-      <noscript><p class="search-page__note">{sys.recherche.noscript}</p></noscript>
+      {sys.recherche.noscript && (
+        <noscript><p class="search-page__note">{sys.recherche.noscript}</p></noscript>
+      )}
     </div>
   </section>
 

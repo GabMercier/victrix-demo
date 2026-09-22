@@ -161,7 +161,9 @@ const pillBase =
         {r.title}
         {r.titleAccent && <span class="text-primary">{r.titleAccent}</span>}
       </h1>
-      <p class="m-0 text-lg leading-[1.75rem] text-on-surface-variant max-w-[720px]" set:html={inlineHtml(r.intro)} />
+      {r.intro && (
+        <p class="m-0 text-lg leading-[1.75rem] text-on-surface-variant max-w-[720px]" set:html={inlineHtml(r.intro)} />
+      )}
     </div>
   </section>
 
@@ -329,8 +331,12 @@ const pillBase =
                     <path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2Z" />
                     <path d="M19 14l.9 2.6L22.5 17l-2.6.9L19 20.5l-.9-2.6-2.6-.9 2.6-.9L19 14Z" />
                   </svg>
-                  <h2 class="m-0 text-base leading-6 font-normal text-white">{r.newsletter.title}</h2>
-                  <p class="m-0 max-w-none text-base leading-6 text-neutral-200" set:html={inlineHtml(r.newsletter.text)} />
+                  {r.newsletter.title && (
+                    <h2 class="m-0 text-base leading-6 font-normal text-white">{r.newsletter.title}</h2>
+                  )}
+                  {r.newsletter.text && (
+                    <p class="m-0 max-w-none text-base leading-6 text-neutral-200" set:html={inlineHtml(r.newsletter.text)} />
+                  )}
                   <form
                     class="flex flex-col gap-4"
                     data-newsletter-form={formsEnabled ? undefined : ''}
@@ -449,8 +455,10 @@ const pillBase =
     <div class="container-site">
       <div class="relative overflow-hidden bg-beige border border-solid border-contour rounded-lg p-8 lg:p-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
         <div class="relative max-w-[672px] flex flex-col gap-4">
-          <h2 class="m-0 text-base leading-6 font-normal text-nuit">{r.cta.title}</h2>
-          <p class="m-0 max-w-none text-lg leading-[1.75rem] text-on-surface-variant" set:html={inlineHtml(r.cta.text)} />
+          {r.cta.title && <h2 class="m-0 text-base leading-6 font-normal text-nuit">{r.cta.title}</h2>}
+          {r.cta.text && (
+            <p class="m-0 max-w-none text-lg leading-[1.75rem] text-on-surface-variant" set:html={inlineHtml(r.cta.text)} />
+          )}
         </div>
         <div class="relative flex flex-wrap items-center gap-6 shrink-0">
           <a

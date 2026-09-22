@@ -101,7 +101,10 @@ const smallMutedClass = 'text-sm font-semibold text-neutral-700';
         </ul>
 
         <div class="mt-4">
-          <span class="block mb-1 text-sm font-semibold text-neutral-700">{f.socialLabel}</span>
+          {/* Vidé au CMS = intitulé retiré, pas un vide de 1,25 rem (L01). */}
+          {f.socialLabel && (
+            <span class="block mb-1 text-sm font-semibold text-neutral-700">{f.socialLabel}</span>
+          )}
           <ul role="list" class="flex items-center gap-4">
             {
               f.social.map((s, i) => (
