@@ -1,6 +1,10 @@
 {
+  "_schema": "default",
   "title": "Cybersecurity in the Healthcare Sector",
   "description": "Discover our customized cybersecurity offering for the healthcare sector. Protect patient data and information systems against any attack.",
+  "noindex": false,
+  "slug": "cybersecurity/cybersecurity-healthcare",
+  "seoTitle": "Cybersecurity | Healthcare Sector",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -8,15 +12,20 @@
     {
       "_bookshop_name": "service-hero",
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Cybersecurity Services",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
-      "title": "Cybersecurity in the Healthcare Sector",
+      "title": "Cybersecurity for the Healthcare Sector",
       "titleHighlight": "Healthcare",
       "lead": "Victrix offers a customized cybersecurity service for the healthcare sector. Protect patient data, your connected medical devices, and your information systems against all cyber threats.",
-      "ctaLabel": "Strengthen your cybersecurity",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
@@ -34,7 +43,7 @@
         "icon": "coche",
         "title": "Personalized support",
         "text": "To ensure optimal security for your healthcare organization, it is essential to achieve and maintain the highest standards — this is where professional support becomes indispensable.",
-        "linkLabel": "Talk to our experts",
+        "linkLabel": "Schedule a consultation",
         "linkHref": "/en/contact"
       }
     },
@@ -43,6 +52,11 @@
       "type": "numbered-cards",
       "sectionTitle": "Cybersecurity Priorities for Healthcare Institutions",
       "headingStyle": "plain",
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "default",
       "columns": "2",
       "cardStyle": "default",
@@ -50,22 +64,30 @@
         {
           "number": "01",
           "title": "Governance and Resilience",
-          "text": "Prepare healthcare facilities to deal with cyber threats and be able to conduct a cyber risk self-assessment."
+          "text": "Prepare healthcare facilities to deal with cyber threats and be able to conduct a cyber risk self-assessment.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
           "title": "Resources and Sharing",
-          "text": "Identify and increase the number of professionals, ensure sufficient budget to strengthen cybersecurity and digital technology, and find a cybersecurity service tailored to specific and priority needs."
+          "text": "Identify and increase the number of professionals, ensure sufficient budget to strengthen cybersecurity and digital technology, and find a cybersecurity service tailored to specific and priority needs.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
           "title": "Raising Awareness of Cybersecurity in Healthcare",
-          "text": "Raise awareness among senior management, raise awareness and train all employees, and implement cybersecurity crisis drills in case of phishing attacks or other threats."
+          "text": "Raise awareness among senior management, raise awareness and train all employees, and implement cybersecurity crisis drills in case of phishing attacks or other threats.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "04",
           "title": "Operational Security",
-          "text": "Secure facility directories (AD) and medical equipment (IoT), manage exposure risks and access, and develop a business continuity and disaster recovery plan."
+          "text": "Secure facility directories (AD) and medical equipment (IoT), manage exposure risks and access, and develop a business continuity and disaster recovery plan.",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
       ]
     },
@@ -73,6 +95,7 @@
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "From Strategy to Cyber Resilience",
+      "fond": "",
       "paragraphs": [
         "<strong>Strategy and governance</strong> — protect patient safety and personal data with our strategic approach: we identify your assets, analyze your risk, and ensure compliance to elevate the security of your sensitive medical data.",
         "<strong>IT modernization</strong> — counter cyber threats and stay ahead of technological advances: virtualization, automation, and strategic orchestration, enhanced perimeter security with Zero Trust architecture, tailored hybrid cloud solutions, and highly secure networks.",
@@ -88,7 +111,7 @@
           "label": "Enhanced perimeter security"
         },
         {
-          "value": "24/7",
+          "value": "24/7/365",
           "label": "Audits and managed services"
         }
       ],
@@ -96,8 +119,19 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": "",
-      "fond": ""
+      "cardText": ""
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Ensure the Highest Level of Cybersecurity and Privacy for Your Healthcare Organization",
+      "body": "<p>Victrix is an expert in the healthcare sector. We understand the challenges healthcare providers face on a daily basis. We follow best practices and offer tailored professional support.</p>",
+      "ctaLabel": "Schedule a consultation",
+      "ctaHref": "/en/contact/",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit",
+      "fond": "blanc"
     },
     {
       "_bookshop_name": "tech-columns",
@@ -110,21 +144,33 @@
             "Digital Health Agency (ANS – France)",
             "Digital Health Record (Quebec)",
             "Quebec Health Agency"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Ministries",
           "items": [
             "Quebec Ministry of Health and Social Services",
             "CISSS (integrated health and social services centers) and regional variations"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Centers and Institutions",
           "items": [
             "Integrated university centers",
             "Private establishments"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         }
       ]
     },
@@ -132,6 +178,7 @@
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Technologies",
+      "subtitle": "",
       "fond": "givre",
       "boxes": [
         "Palo Alto",
@@ -151,14 +198,12 @@
       "type": "cta",
       "title": "Enhance the cybersecurity of your medical information",
       "body": "Contact our team of experts and we will be happy to answer all your questions.",
-      "ctaLabel": "Contact our experts",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
       "fond": "blanc"
     }
-  ],
-  "slug": "cybersecurity/cybersecurity-healthcare",
-  "seoTitle": "Cybersecurity | Healthcare Sector"
+  ]
 }
