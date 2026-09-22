@@ -1,22 +1,31 @@
 {
+  "_schema": "default",
   "title": "Managed Services",
   "description": "Secure, optimize, and manage your IT infrastructure with our tailored managed services. Monitoring, support, and automation for uncompromising performance.",
-  "seoH1": "",
+  "noindex": false,
+  "slug": "managed-it-services",
+  "seoTitle": "Managed IT Services | Security & Performance",
+  "seoH1": "Managed IT Services",
   "contactSujet": "",
   "contactService": "",
   "sections": [
     {
       "_bookshop_name": "service-hero",
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Managed IT Services",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
-      "title": "Managed Services",
-      "titleHighlight": "Managed",
+      "title": "IT Services Tailored to the Scale of Your Operations",
+      "titleHighlight": "IT Services",
       "lead": "Our managed services simplify your day-to-day IT management and provide strategic guidance aligned with your objectives. Address business challenges, initiate innovative projects, and maintain your competitive edge by freeing internal resources from operational tasks.",
-      "ctaLabel": "Let's talk",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2022/03/fournisseur-de-services-geres-ti.jpg",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "stats",
@@ -65,8 +74,13 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
-      "sectionTitle": "Outsourcing is your strategic advantage to remain competitive against today's challenges",
+      "sectionTitle": "Outsourcing is Your Strategic Advantage to Remain Competitive Against Today's Challenges",
       "headingStyle": "plain",
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -74,29 +88,51 @@
         {
           "number": "01",
           "title": "IT Talent Shortage",
-          "text": "Quickly address immediate or evolving IT requirements without recruitment. Our experts step in seamlessly, giving you the flexibility to maintain smooth operational continuity."
+          "text": "Quickly address immediate or evolving IT requirements without recruitment. Our experts step in seamlessly, giving you the flexibility to maintain smooth operational continuity.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
           "title": "Cost Optimization and IT Budget Control",
-          "text": "Benefit from predictable pricing through our predefined time banks. No surprises: you know exactly how much your IT services cost. Eliminate unexpected expenses and achieve savings without sacrificing quality."
+          "text": "Benefit from predictable pricing through our predefined time banks. No surprises: you know exactly how much your IT services cost. Eliminate unexpected expenses and achieve savings without sacrificing quality.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
           "title": "Support and Acceleration of Technology Projects",
-          "text": "Entrust us with the management or implementation of your critical digital initiatives. Victrix acts as a catalyst to realize your projects on schedule, without burdening your internal teams."
+          "text": "Entrust us with the management or implementation of your critical digital initiatives. Victrix acts as a catalyst to realize your projects on schedule, without burdening your internal teams.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "04",
           "title": "Performance, Scalability and Service Excellence",
-          "text": "Rely on a team of versatile experts to advance your IT environments: cloud solutions, cybersecurity, networking, communications, equipment management. Results? Optimized response times, accelerated projects, and assured resilience."
+          "text": "Rely on a team of versatile experts to advance your IT environments: cloud solutions, cybersecurity, networking, communications, equipment management. Results? Optimized response times, accelerated projects, and assured resilience.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "05",
           "title": "Advanced Cybersecurity",
-          "text": "Strengthen your security posture with proactive support, including monitoring, incident response, data management, and compliance with standards and regulations such as Law 25, DORA, NIS2, as well as other sector-specific requirements."
+          "text": "Strengthen your security posture with proactive support, including monitoring, incident response, data management, and compliance with standards and regulations such as Law 25, DORA, NIS2, as well as other sector-specific requirements.",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
       ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Ready to Take Action?",
+      "body": "Discover how our managed IT services enable your teams to focus on core functions and boost your overall efficiency.",
+      "ctaLabel": "Schedule a consultation",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "light",
+      "fond": "blanc"
     },
     {
       "_bookshop_name": "offer-cards",
@@ -104,7 +140,7 @@
       "title": "Comprehensive Managed Services Focused on Security and Continuous Improvement",
       "intro": "Ensure continuity, security, and optimization of your IT environment while reducing the burden on your internal teams. As your managed service provider, Victrix handles administration, monitoring, and the ongoing evolution of your infrastructure.",
       "fond": "givre",
-      "ctaLabel": "Request an IT needs assessment",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "items": [
         {
@@ -190,7 +226,8 @@
     {
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
-      "title": "Victrix: Solving Your IT Management Challenges",
+      "title": "IT Management Services That Resolve Your Challenges",
+      "fond": "",
       "paragraphs": [
         "Leveraging proven expertise in managed IT services, our team is committed to providing tailored services that meet your specific needs. We handle the <strong>administration, evolution and continuous improvement of your IT infrastructure and cybersecurity maturity</strong>, while delivering an exceptional client experience and unparalleled service quality.",
         "Where in-house management means high and variable costs, dependence on internal resources, limited hours and increased risk without expertise, our managed services provide predictable and optimized costs, access to qualified experts, 24/7 monitoring, continuous cybersecurity compliance and vigilance, and scalability adjustable to your needs."
@@ -199,11 +236,11 @@
       "imageAlt": "",
       "stats": [
         {
-          "value": "24/7",
+          "value": "24/7/365",
           "label": "Continuous monitoring"
         },
         {
-          "value": "Experts",
+          "value": "< 24h",
           "label": "Access to qualified specialists"
         },
         {
@@ -219,8 +256,7 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": "",
-      "fond": ""
+      "cardText": ""
     },
     {
       "_bookshop_name": "faq",
@@ -255,16 +291,14 @@
     {
       "_bookshop_name": "cta",
       "type": "cta",
-      "title": "Victrix is your strategic partner for managed services tailored to your organization",
+      "title": "Your Strategic Partner for Managed IT Services Tailored to Your Organization",
       "body": "Interested? Have questions? Contact us today to discuss your projects.",
-      "ctaLabel": "Contact us today",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
       "fond": "blanc"
     }
-  ],
-  "slug": "managed-it-services",
-  "seoTitle": "Managed IT Services | Security & Performance"
+  ]
 }
