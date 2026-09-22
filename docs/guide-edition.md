@@ -582,6 +582,19 @@ destination` avec le type (301 permanente / 302 temporaire).
   message clair** — c'est un garde-fou, pas un bogue : le site en ligne reste
   intact tant que l'erreur n'est pas corrigée.
 
+**Les anciennes adresses du site WordPress sont déjà couvertes** (2026-09-22) :
+175 redirections ont été écrites automatiquement, une par ancienne URL —
+articles, pages, expertises, anciennes adresses encore en ligne. Vous n'avez
+rien à saisir pour elles, et elles n'apparaissent pas dans votre liste (elles
+sont maintenues par l'équipe technique). Votre liste reste **prioritaire** : si
+vous saisissez une règle pour une adresse déjà couverte, c'est la vôtre qui
+s'applique.
+
+Neuf articles ont aussi retrouvé l'adresse qu'ils ont **aujourd'hui sur
+victrix.ca** (les « Meilleures pratiques en sécurité opérationnelle », le SOC
+externalisé et le ZTNA) : leur adresse sur le nouveau site est désormais la
+même, et les deux anciennes versions redirigent vers elle.
+
 ## Formulaires
 
 Les sections « Formulaire » des landings sont **en démonstration** tant que les

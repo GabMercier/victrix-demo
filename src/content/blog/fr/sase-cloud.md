@@ -19,7 +19,7 @@ Par définition, SASE est l’acronyme de Secure Access Service Edge. Il s’agi
 ### L’objectif principal de l'architecture SASE en informatique
 
 L’objectif premier du modèle Secure Access Service Edge (SASE) est de **connecter sécuritairement les travailleurs à distance et les succursales** aux centres de données et applications SAAS corporatives. Le SASE est la fusion de la sécurité de l'information et de la connectivité pour les organisations qui suivent le rythme de l’évolution (télétravail, nouvelles succursales, etc.). 
- Ce modèle combine le réseau étendu défini par logiciel (SD-WAN) ou un autre réseau étendu (WAN) avec plusieurs modèles ou fonctions de sécurité natives. On parle ici du [modèle ZTNA (Zero Trust Network Access)](/fr/ressources/zero-trust-network-access-ztna/), SWG, CASB, FWaaS, le tout, piloté par le cloud afin de sécuriser le trafic réseau.
+ Ce modèle combine le réseau étendu défini par logiciel (SD-WAN) ou un autre réseau étendu (WAN) avec plusieurs modèles ou fonctions de sécurité natives. On parle ici du [modèle ZTNA (Zero Trust Network Access)](/fr/ressources/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/), SWG, CASB, FWaaS, le tout, piloté par le cloud afin de sécuriser le trafic réseau.
 
 ### Pourquoi l'adoption du SASE est-elle importante?
 

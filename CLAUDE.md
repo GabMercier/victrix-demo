@@ -58,8 +58,9 @@ puis **`docs/plan-livraison-finale.md`** (lots restants, un prompt par lot).
 
 `npm run lint` · `npm test` · `npm run type-check` · `npm run build` ·
 `npm run check:links -- --strict` · `npm run check:sections` · `npm run test:e2e` ·
-`npm run check:bookshop` · `npm run cms:previews:check`. Rapporter les chiffres
-réels ; si une étape n'a pas pu tourner, le dire.
+`npm run check:bookshop` · `npm run cms:previews:check` ·
+`npm run check:redirects` (+ `node scripts/build-redirects.mjs --dist` après le
+build). Rapporter les chiffres réels ; si une étape n'a pas pu tourner, le dire.
 
 ## Rituel de fin de lot
 
@@ -98,7 +99,16 @@ réels ; si une étape n'a pas pu tourner, le dire.
 `node scripts/migrate-fonds-chauds.mjs [--check]` (blanc → ivoire, givre →
 beige ; à rejouer après une fusion `staging` → `dev`) ·
 `npm run cms:previews` (pastilles + vignettes d'icônes) ·
-`npm run design:previews` (vignettes des sections, serveur de dev requis).
+`npm run design:previews` (vignettes des sections, serveur de dev requis) ·
+`npm run build:redirects` (matrice WordPress → refonte, décisions dans
+`docs/migration/correspondance-urls.json` ; `check:redirects` en CI,
+`--dist` après un build pour refuser une 301 vers un 404) ·
+`python scripts/migration/check-parite-live.py` (compare le site EN LIGNE au
+dépôt → `docs/migration/parite-live.md`) ·
+`python scripts/migration/extract-source-page.py <url>` (contenu d'une page
+source, bloc par bloc, `--images` pour rapatrier) ·
+`python scripts/migration/export-prix-check-point.py` (191 SKU FR/EN →
+`src/data/prix/`).
 
 ## Économie de contexte
 

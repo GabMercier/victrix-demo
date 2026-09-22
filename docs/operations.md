@@ -115,6 +115,71 @@ touche jamais aux liens stockés SANS préfixe de langue dans un champ JSON
 (navigation, fiches de solutions). Exceptions documentées : constante `ALLOW` du
 garde-fou (aujourd'hui les trois pages « document » de WordPress non migrées).
 
+**Redirections de la migration (2026-09-22).** Deux listes alimentent
+`_redirects` (et, au lot L15, `.cloudcannon/routing.json`) :
+
+| Fichier | Qui l'écrit | Portée |
+|---|---|---|
+| `src/data/redirects.json` | l'éditrice, dans la collection « Redirections » | ses règles à la main ; **prioritaire** en cas de source en double |
+| `src/data/redirects-migration.json` | **généré** par `npm run build:redirects` | la matrice WordPress → refonte (175 règles au 22 sept.) |
+
+Les décisions de correspondance vivent dans
+`docs/migration/correspondance-urls.json` (renommages voulus, anciennes URL
+encore servies, pages non reprises, pages à recréer en 302). Tout le reste est
+rapproché automatiquement par le champ `wpUrl` du contenu ou par le dernier
+segment de l'URL, dans la même langue.
+
+```powershell
+npm run build:redirects              # régénère la matrice
+npm run check:redirects              # CI : échoue si la matrice est périmée
+                                     #      ou si une ancienne URL n'a pas de cible
+node scripts/build-redirects.mjs --dist   # après un build : échoue si une
+                                          # redirection pointe vers une page absente
+python scripts/migration/check-parite-live.py   # compare le site EN LIGNE au dépôt
+```
+
+Une **301 vers un 404 est pire qu'un 404** (la page d'origine perd son
+référencement sans rien transmettre) : d'où le mode `--dist`, à jouer après le
+build. Les règles à joker (`/expertise/*`) sont écrites **en dernier** dans
+`_redirects` — la première correspondance gagne, et les règles exactes de la
+migration doivent passer avant (`/expertise/securite-informatique` →
+`/fr/services/cybersecurite`, et non vers un slug qui n'existe pas).
+
+Sur Cloudflare Pages (infra héritée) le plafond de 100 règles de
+`_routes.json` est désormais dépassé : l'intégration avertit et n'exclut du
+worker que les premières sources. Sans effet sur la production CloudCannon.
+
+**Ce qui s'applique VRAIMENT en production (2026-09-22).** L'hébergement
+CloudCannon ignore `_redirects` et `_headers` : il lit `routing.json`. Le build
+en écrit un à chaque fois — `dist/_cloudcannon/routing.json`, la forme
+documentée par CloudCannon pour un fichier généré, prioritaire sur
+`.cloudcannon/routing.json`. Rien à committer, rien à tenir en double :
+
+- **189 routes** = les 13 d'`astro.config.mjs` (en `forced: true`, parce
+  qu'Astro écrit à ces chemins une page de rafraîchissement méta et qu'une
+  règle non forcée ne se déclencherait pas) + les 3 de l'éditrice + les 175 de
+  la matrice. Les jokers sont traduits : `/expertise/*` → `/expertise/(.*)`
+  et `:splat` → `$1`, la forme de l'exemple officiel de CloudCannon.
+- **5 règles d'en-têtes** dérivées de `public/_headers`, qui reste la source
+  unique. Elles sont **sans recouvrement** : le bloc `/*` est recopié dans
+  chaque règle précise (`/fr/*`, `/en/*`, `/_astro/*`, `/fonts/*`, `/404.html`)
+  et n'est jamais émis seul — selon que CloudCannon fusionne les règles ou
+  garde la première, une page de `/fr/` perdrait sinon HSTS ou recevrait
+  `nosniff, nosniff`, que Chrome rejette.
+
+**À vérifier de l'extérieur après le premier déploiement** (la sémantique des
+en-têtes n'est pas documentée chez CloudCannon) — d'abord sur le site dev :
+
+```powershell
+curl.exe -sI https://vocal-wren.cloudvent.net/fr/ | Select-String -Pattern "strict-transport|content-security|x-content-type"
+curl.exe -sI https://vocal-wren.cloudvent.net/decouvrir-victrix/   # doit rendre 301 vers /fr/decouvrir
+curl.exe -sI https://vocal-wren.cloudvent.net/expertise/securite-informatique/   # 301 vers /fr/services/cybersecurite
+```
+
+Si les en-têtes ne répondent pas : essayer `"match": "*"` (la forme de
+l'exemple officiel) au lieu de `"/fr/*"` dans `reglesEntetes`
+(`astro.config.mjs`) — c'est le seul point non tranché par la documentation.
+
 **Accessibilité (2026-09-21).** `tests/e2e/accessibilite.spec.ts` passe
 **axe-core** sur neuf pages, une par gabarit (accueil, liste de services,
 service, formulaire de contact, catalogue, centre de ressources, carrières,

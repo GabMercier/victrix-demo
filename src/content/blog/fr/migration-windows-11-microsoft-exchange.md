@@ -16,7 +16,7 @@ Les organisations modernes se trouvent au carrefour du changement en matière de
 
 Plus qu’une modernisation de l’interface, la mise à jour Windows 11 offre de nombreux avantages. Elle garantit **une meilleure gestion des ressources**, **améliore l’expérience utilisateur**, **favorise la productivité** et permet d’**assurer la sécurité des systèmes**. Voici comment :
 
-• **Sécurité renforcée** : protection avancée et proactive des données sensibles et des identités grâce à TPM 2.0, au chiffrement, à Windows Defender et [Zero Trust Security](/fr/ressources/zero-trust-network-access-ztna/).
+• **Sécurité renforcée** : protection avancée et proactive des données sensibles et des identités grâce à TPM 2.0, au chiffrement, à Windows Defender et [Zero Trust Security](/fr/ressources/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/).
 
 • **Gestion simplifiée** : outils comme Microsoft Intune, Windows Autopilot et Autopatch pour faciliter la gestion et les mises à jour.
 

@@ -1,0 +1,71 @@
+{
+  "_lisez_moi": [
+    "Les DÉCISIONS de correspondance d'URL entre l'ancien site et la refonte.",
+    "Lu par scripts/build-redirects.mjs (qui génère src/data/redirects-migration.json)",
+    "et destiné à l'être aussi par le lot L15 (.cloudcannon/routing.json).",
+    "Tout ce qui n'est pas ici est rapproché AUTOMATIQUEMENT par le champ wpUrl",
+    "ou par le dernier segment de l'URL, dans la même langue.",
+    "manuel = renommage voulu · abandonnees = page non reprise (301 vers le plus proche)",
+    "temporaires = page à recréer (302, pour ne pas figer une mauvaise cible)",
+    "ignorer = URL de l'ancien CMS sans équivalent (flux, archives, rebuts)",
+    "deja_dans_astro_config = règles déjà écrites dans astro.config.mjs",
+    "ignorer contient aussi /en/ et /en/contact/ : ces URL sont DEJA celles du nouveau site (aucune redirection a ecrire)."
+  ],
+  "manuel": {
+    "/decouvrir-victrix/": "/fr/decouvrir/",
+    "/en/discover-victrix/": "/en/decouvrir/",
+    "/carriere/": "/fr/carrieres/",
+    "/en/careers/": "/en/carrieres/",
+    "/en/resources-center/": "/en/ressources/",
+    "/page-de-remerciement/": "/fr/merci/",
+    "/en/thank-you-page/": "/en/merci/",
+    "/no-access/": "/fr/portail/",
+    "/en/no-access/": "/en/portail/",
+    "/politique-de-confidentialite/": "/fr/politique-confidentialite/",
+    "/en/privacy-policy/": "/en/politique-confidentialite/",
+    "/conditions-dutilisation/": "/fr/conditions-utilisation/",
+    "/en/terms-of-use/": "/en/conditions-utilisation/",
+    "/expertise/securite-informatique/": "/fr/services/cybersecurite/",
+    "/expertise/securite-informatique/zero-trust/": "/fr/services/cybersecurite/zero-trust/",
+    "/expertise/securite-informatique/test-intrusion-pentest/": "/fr/services/cybersecurite/test-intrusion-pentest/",
+    "/expertise/securite-informatique/centre-operationnel-de-securite-evolutif/": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/",
+    "/expertise/loi-25-etes-vous-en-conformite/": "/fr/services/conseil-strategique/conformite-loi-25/",
+    "/expertise/fournisseur-services-geres-ti/": "/fr/services/services-ti-geres/",
+    "/expertise/productivite/plateforme-employe-microsoft-viva-365/": "/fr/services/productivite/plateforme-employe-intranet/",
+    "/solution/migration/": "/fr/services/services-infonuagiques/migration-vers-azure/",
+    "/en/expertise/ai-opportunity-analysis/": "/en/services/artificial-intelligence/ai-opportunity-analysis/",
+    "/en/expertise/it-managed-services-provider/": "/en/services/managed-it-services/",
+    "/document/licences-microsoft-power-platform/": "/fr/campagnes/licences-power-platform/"
+  },
+  "abandonnees": {
+    "/voeux-des-fetes/": "/fr/",
+    "/en/holiday-wishes/": "/en/",
+    "/expertise/productivite/o-bureau/documents-o-bureau/": "/fr/services/productivite/o-bureau/"
+  },
+  "temporaires": {
+    "/liste-prix-check-point/": "/fr/services/approvisionnement-ti/check-point/",
+    "/en/check-point-price-list/": "/en/services/it-procurement/check-point/",
+    "/document/cybersecurite/": "/fr/ressources/",
+    "/document/pourquoi-gerez-vous-encore-vos-ti/": "/fr/ressources/",
+    "/document/webinaire-copilot-buzz-impact/": "/fr/ressources/"
+  },
+  "ignorer": [
+    "/cache/",
+    "/xmlrpc.php/",
+    "/en/",
+    "/en/contact/"
+  ],
+  "deja_dans_astro_config": {
+    "/": "/fr",
+    "/contact": "/fr/contact",
+    "/ressources": "/fr/ressources",
+    "/expertises/intelligence-artificielle": "/fr/services/intelligence-artificielle",
+    "/fr/expertises/intelligence-artificielle": "/fr/services/intelligence-artificielle",
+    "/en/expertises/intelligence-artificielle": "/en/services/intelligence-artificielle",
+    "/ressources/ia-au-service-de-la-productivite": "/fr/ressources",
+    "/ressources/cinq-pratiques-cybersecurite-pme": "/fr/ressources",
+    "/ressources/reussir-sa-migration-infonuagique": "/fr/ressources",
+    "/mon-portail": "/fr/portail",
+    "/en/customer-portal": "/en/portail"
+  }
+}

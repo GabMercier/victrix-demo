@@ -184,24 +184,37 @@ Rituel.
 
 ### P4 — Campagnes : recenser, décider, importer (0,5–1 j)
 
-**L'étape 1 est faite** (21/09) : `docs/inventaire-campagnes.md` recense les
-14 pages `noindex`, dont 4 déjà reprises, et le contenu des candidates est
-extrait dans `docs/migration/campagnes/`. Reste la décision, puis l'import.
+**P4 est aux trois quarts fait.** Recensement (21/09) et décisions de Gabriel
+(21/09) dans `docs/inventaire-campagnes.md` § 6 : vœux des fêtes **non
+reprises**, documents O bureau **non repris** (les deux redirigés), listes de
+prix Check Point **reprises tel quel avec notre système de design**, et la
+continuité SEO traitée (matrice de 175 redirections, 9 slugs d'articles
+alignés sur le site en ligne). **Reste uniquement la page de prix Check
+Point** : données déjà extraites (191 SKU FR/EN dans `src/data/prix/`), forme
+proposée au § 7 de l'inventaire, une question ouverte (prix éditables au CMS
+ou figés).
 
 ```text
-Lot P4 de docs/plan-parite-et-raffinage.md.
-Lis docs/inventaire-campagnes.md (recensement fait) et les extractions de
-docs/migration/campagnes/.
-1. Rappelle-moi les 4 décisions du § 2 de l'inventaire et ATTENDS ma réponse.
-2. Importe les pages retenues dans la collection `landing` (route
-   /campagnes/), sur le modèle de
-   scripts/migration/import-landing-accompagnement-ia.py : sections
-   existantes, noindex: true, `slug` renseigné pour garder l'ancienne URL,
-   images rapatriées via extract-source-page.py --images. Un script rejouable
-   par page, jamais de copier-coller à la main.
-3. Les vœux des fêtes sont une page SAISONNIÈRE remise à jour chaque année :
-   vérifie qu'elle est éditable au CMS sans développeur (12 idées = 12 blocs
-   de même forme, chacune signée par un employé avec un lien).
+Lot P4 (reste) de docs/plan-parite-et-raffinage.md : la page de prix Check Point.
+Lis docs/inventaire-campagnes.md § 7 (forme proposée, mécanisme de l'ancienne
+page, question ouverte) et src/data/prix/check-point.fr.json (191 SKU, déjà
+extraits — ne pas re-télécharger : scripts/migration/export-prix-check-point.py
+est rejouable si les prix changent).
+1. Dis-moi d'abord si les prix restent en données éditables (src/data/prix/) ou
+   figés, et ATTENDS ma réponse — ça change le schéma.
+2. Composant Bookshop `price-table` : 100 % utilitaires Tailwind, AUCUN script
+   (règle 6), tableau accessible (<caption>, en-têtes de colonnes, lecture au
+   clavier, défilement horizontal annoncé), colonne Action = lien vers
+   /fr/contact/?sujet=…&produit=<SKU>. Lignes fournies par le seam `enrich` de
+   la route, comme les formulaires. Spec + zod + vignette + backfill.
+3. Pages FR et EN, `noindex: true` tant que le marketing n'a pas fourni la
+   mention de bas de page (validité des prix, PDSF) — l'astérisque du titre
+   n'est expliqué nulle part sur la page source.
+4. Retirer les deux entrées de `temporaires` (302) de
+   docs/migration/correspondance-urls.json au profit d'une 301 vers les
+   nouvelles pages, puis `npm run build:redirects`.
+5. e2e : la page rend les 191 lignes, un clic sur Action arrive sur /contact
+   avec le SKU prérempli.
 Rituel.
 ```
 

@@ -154,7 +154,7 @@ En matière de courriel de phishing, nous recommandons de **modifier le paramèt
 Vous souhaitez améliorer votre posture de sécurité et éviter les embûches causées par les ransomwares? **Victrix est un véritable expert en transformation digitale et cybersécurité.** 
  Faites confiance à notre équipe pour mettre en place un système de sécurité des plus robustes pour votre organisation. Nos [conseillers en stratégie de sécurité informatique](/fr/services/cybersecurite/) sont en mesure de vous guider pour trouver **les solutions de sécurité les plus adaptées**. 
  Nous offrons aussi un service exclusif de sécurité géré, basé dans la coopération et le partage des connaissances. Plus qu’un simple service géré, nous sommes une extension de votre équipe TI. 
- Bénéficiez d’un [service SOC externalisé](/fr/ressources/externalisation-soc-avantages-inconvenients/) puissant pour assurer une sécurité informatique de haut niveau à votre organisation. 
+ Bénéficiez d’un [service SOC externalisé](/fr/ressources/externalisation-du-soc-avantages-inconvenients/) puissant pour assurer une sécurité informatique de haut niveau à votre organisation. 
  **Découvrez SEvOC, le Centre Opérationnel de Sécurité Évolutif de Victrix.**
 
 <a class="article-cta" href="/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez la solution SEvOC</a>

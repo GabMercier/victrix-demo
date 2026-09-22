@@ -26,7 +26,7 @@ Avec la venue de l’IA générative, les pirates informatiques sont en mesure d
 
 ### 2. Optimisation de la gestion des accès aux ressources
 
-En 2025, protéger les accès à vos ressources est impératif. De nombreuses entreprises se tournent donc vers le [modèle Zero Trust](/fr/ressources/zero-trust-network-access-ztna/) pour assurer la protection de leurs données sensibles. Ne restez pas derrière dans la course à la sécurité, car les pirates vous rattraperont.
+En 2025, protéger les accès à vos ressources est impératif. De nombreuses entreprises se tournent donc vers le [modèle Zero Trust](/fr/ressources/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/) pour assurer la protection de leurs données sensibles. Ne restez pas derrière dans la course à la sécurité, car les pirates vous rattraperont.
 
 ### 3. Sécurisation des appareils et infrastructures (OT/IoT)
 

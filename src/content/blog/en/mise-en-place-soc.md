@@ -15,7 +15,7 @@ The reality is that unless you are the IT manager of a large, complex organizati
 
 Of course, setting up a SOC is not impossible, provided you **know what you have** and **carefully assess the investment in time, money, and resources** that it entails.
 
-Our comprehensive guide will help you understand the basics of an effective SOC, from **setting realistic goals** to **structuring a SOC team**, without neglecting **policies and technologies**. After reading this, you will be able to determine whether it is in your organization's best interest to [outsource the SOC](/en/ressources/soc-outsourcing-pros-cons/) or build one internally.
+Our comprehensive guide will help you understand the basics of an effective SOC, from **setting realistic goals** to **structuring a SOC team**, without neglecting **policies and technologies**. After reading this, you will be able to determine whether it is in your organization's best interest to [outsource the SOC](/en/ressources/soc-outsourcing-for-smbs-pros-cons/) or build one internally.
 
 ### Ready to Accelerate Detection and Response and Promote Continuous Improvement of Your Security Posture?
 

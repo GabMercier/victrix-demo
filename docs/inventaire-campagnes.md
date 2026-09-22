@@ -158,15 +158,61 @@ campagnes », seulement sur ce résidu :
 > J'ai déjà retrouvé : accompagnement IA, démo O bureau, les vœux des fêtes et
 > les listes de prix Check Point.
 
-## 6. Suite proposée (lot P4 de `docs/plan-parite-et-raffinage.md`)
+## 6. Décisions de Gabriel (2026-09-21) et état
 
-1. Tu tranches les 4 décisions du § 2 : vœux des fêtes (je recommande de
-   reprendre), listes de prix Check Point, documents O bureau, 3 brouillons
-   d'événements.
-2. Import scripté des pages retenues dans la collection `landing`
-   (route `/campagnes/`), sur le modèle de
-   `scripts/migration/import-landing-accompagnement-ia.py` : sections
-   existantes, `noindex: true`, `slug` conservé pour garder l'ancienne URL.
-3. Les 19 redirections du § 4 entrent dans `src/data/redirects.json` (lot L15)
-   — et le choix « adopter les nouveaux slugs d'articles » est à faire AVANT,
-   parce qu'il change 9 fichiers de contenu.
+| # | Page | Décision | État |
+| --- | --- | --- | --- |
+| 1 | Vœux des fêtes FR + EN | **ne pas reprendre** | ✅ fait — 301 vers l'accueil de chaque langue |
+| 2 | Listes de prix Check Point FR + EN | **reprendre tel quel, avec notre système de design** | 🟡 données extraites (191 SKU, `src/data/prix/`), page à construire — § 7 |
+| 3 | Documents O bureau (protégée) | **ne pas reprendre** | ✅ fait — 301 vers la page de service O bureau |
+| 4 | Slugs et continuité SEO | **« assurer la meilleure méthode »** | ✅ fait — § 4.1/4.2 traités, matrice de 175 redirections |
+| — | 3 brouillons d'événements passés | abandonnés (jamais publiés, invisibles en ligne) | ✅ rien à faire |
+
+**Ce qui a été livré pour la décision 4** (2026-09-22) :
+
+- les 9 articles ont **adopté l'adresse qu'ils ont aujourd'hui sur
+  victrix.ca** (le `slug` du frontmatter ; le nom de fichier, qui apparie FR et
+  EN, n'a pas bougé) et les 12 liens internes qui pointaient vers les anciennes
+  adresses ont été corrigés ;
+- `scripts/build-redirects.mjs` génère `src/data/redirects-migration.json`
+  (**175 règles** : 170 en 301, 5 en 302 pour les pages à recréer) depuis le
+  contenu et `docs/migration/correspondance-urls.json` ;
+- la collection « Redirections » de l'éditrice reste séparée et **prioritaire** ;
+- les règles à joker (`/expertise/*`) passent en dernier, sinon elles
+  masqueraient les 10 anciennes URL du § 4.2 ;
+- contrôle en CI : `npm run check:redirects` (matrice à jour, aucune URL sans
+  cible) et, après le build, `--dist` — **une 301 vers un 404 fait échouer la
+  CI** ; vérifié : 175/175 cibles existent dans `dist/`.
+
+**Réserve SEO à lever (D3/L05)** : plusieurs cibles sont encore `noindex`
+(Découvrir, Expertises, Services, Tarification…). Rediriger une page indexée
+aujourd'hui vers une page `noindex` transfère le visiteur mais **pas** le
+référencement. Lever le `noindex` sur les pages prêtes est donc un préalable au
+go-live, pas un réglage cosmétique.
+
+## 7. Reste à faire : la page de prix Check Point (décision 2)
+
+Analysé le 21/09 sur la page en ligne :
+
+- **2 tableaux, 191 lignes** au total (77 « composantes », 114 « composantes de
+  remplacements »), colonnes `# / SKU / Description / PDSF (CAD) / Action` ;
+  extraits en données par `scripts/migration/export-prix-check-point.py` vers
+  `src/data/prix/check-point.{fr,en}.json` (0 prix illisible).
+- Le bouton « Ajouter à ma commande » **n'est pas un panier** :
+  `vpt-form-bridge.js` écrit le SKU dans un champ texte du formulaire de la
+  page, défile jusqu'à lui et donne le focus au premier champ. Un SKU à la fois.
+- L'astérisque du titre (« licences Check Point* ») **n'est expliqué nulle part**
+  sur la page source → mention de bas de page à faire rédiger (validité des
+  prix, PDSF), sinon le tableau affiche des prix sans date.
+
+Forme proposée, qui respecte les règles du dépôt (aucun `<script>` dans un
+composant Bookshop) : une section `price-table` qui reçoit ses lignes par le
+seam `enrich` de la route (comme les formulaires), et dont la colonne Action est
+un **lien** vers `/fr/contact/?sujet=…&produit=<SKU>` — la page Contact
+préremplit déjà « Précisez votre demande » depuis ces paramètres. Même effet que
+l'ancienne page, zéro JavaScript, et cohérent avec la décision « un seul
+formulaire » du 21/09.
+
+Reste à trancher avant de construire : les 191 lignes sont-elles **éditables au
+CMS** (données dans `src/data/prix/`, remplacées par un export du marketing) ou
+**figées côté code** jusqu'à la prochaine liste de prix ?

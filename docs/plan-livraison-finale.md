@@ -56,6 +56,15 @@ git add -A; git commit -m "merge: staging -> dev"; git push origin dev
 | D7 | 3 pages « document » de WordPress (2 livres blancs, 1 webinaire) citées par 3 articles, non migrées | Les recréer avec le gating de #1465 ; d'ici là, exceptions du garde-fou | L12 |
 | D8 | Espace client (#1691) : page de connexion visuelle livrée ; implémentation réelle (Entra + Dataverse, `docs/portail-auth.md`) | Hors périmètre du lancement → fermer #1691 avec une story de suite | L13 |
 | — | Déjà prises le 18/09 : catalogue Ø Studio (fiches par sections, formulaire `o-studio`, sujet dédié, prix en `noindex` jusqu'à #1634, FR d'abord) | | L10, L11 |
+| D9 | **Police** : Inter (en place) / Montserrat (site actuel) / Nunito / Hanken (maquettes) — banc d'essai `?police=…` sur toutes les pages | Trancher puis RETIRER le banc d'essai (`docs/design/banc-essai.md`). Si une police Google est retenue, la rapatrier en LOCAL avant la prod (Loi 25 — pas d'appel à fonts.google.com) | design, puis retrait du banc |
+| D10 | Libellé du champ : **« Expertise » (maquette) ou « Service » (site, Julie)** | Une seule source : le libellé de la définition de formulaire. Julie tranche | Contact, L06 |
+| D11 | **Formulaires orphelins** : `campagne-evaluation` (plus utilisé depuis le lot « un seul formulaire »), `campagne-guide-licences` (jamais utilisé), et le sort d'`o-studio` (3ᵉ formulaire de demande) | Supprimer les deux orphelins ; garder `o-studio` tant que L10/L11 ne l'ont pas remplacé | L12, L17 |
+| D12 | **Liste de prix Check Point** : les 191 SKU restent-ils **éditables au CMS** (`src/data/prix/`, remplacés par un export du marketing) ou **figés côté code** ? Et la mention de bas de page (validité des prix, PDSF) reste à rédiger — l'astérisque du titre n'est expliqué nulle part sur la page source | Éditables : c'est une donnée qui change sans développeur. Mention obligatoire avant d'indexer la page | L-prix |
+| D13 | **2 articles FR sans traduction EN** (`societe-conseil-lambda-victrix`, `une-journee-dans-la-vie-secops`) — avertissement à chaque build | Assumer (le sélecteur de langue retombe sur l'index EN) ou faire traduire. Décision de contenu | — |
+| D14 | **Pictogramme du bouton** : la page Contact a un bouton sans avion en papier, la section « form » en a un | Uniformiser dans un sens ou l'autre — écart assumé aujourd'hui | L06 |
+| D15 | **Les 4 pages encore `noindex`** après la passe du 22/09 : Centre de confiance (135 mots — contenu trop mince pour être indexé tel quel), Tarification (attend les prix #1634), politique de confidentialité et conditions d'utilisation (`noindex` aussi sur l'ancien site) | Enrichir le Centre de confiance puis l'indexer ; garder Tarification `noindex` jusqu'à #1634 ; les deux pages légales peuvent rester `noindex` (parité) — Julie confirme | L05 (reste) |
+| D16 | **Pages mères de services trop minces pour être indexées** : `infrastructure` (111 mots), `projets-en-ia` (121), `services-applicatifs` (152) sont `noindex` alors que leurs enfants sont indexés — mauvais pour le silo SEO | Les enrichir (200-300 mots) puis lever le `noindex` ; ne PAS indexer en l'état | L05 (reste), contenu |
+| D17 | **Règle 404 attrape-tout dans `routing.json`** : CloudCannon recommande de router tout sous-chemin inconnu vers la page 404 | À tester sur le site dev AVANT la prod : une règle attrape-tout mal comprise détournerait tout le trafic. Non posée pour l'instant | L15 (reste) |
 
 ## 3. Budget des modèles
 
@@ -569,12 +578,13 @@ foreach ($s in $stories) {
 | L-contact2 | **Page Contact redessinée** d'après `contact maquette redesign.txt` : surtitre rétabli (champ CMS `heroEyebrow`), H1 au `#00105B` exact de la maquette, bande beige / cartes blanches (inversé), grille des numéros par bureau rétablie, champs à bordure `contour` rayon 4, bouton en largeur auto sans pictogramme, libellé du bouton réaligné (« Soumettre » → « Envoyer le message », il contredisait la définition) | 3 h | L-bleu2 | | 2026-09-21 |
 | L-fonds3 | Fonds bleus ouverts à 5 sections d'accroche de plus (10 au total) : `home-experts` (rien à inverser, son texte vit dans un panneau), `benefits`, `feature-boxes` (cartes blanches → seuls titre/chapeau), `value-tiles` et `text-photo` (tout sur le fond : titres, icônes, bordures). Inversion vers le BLANC — `primary-fixed-dim` ne donne que 3,1:1 sur le bleu électrique. Vérifié par un essai axe sur les deux aplats, contenu d'essai restauré | 2 h | L-bleu2 | | 2026-09-21 |
 | L-prix | **À FAIRE** — Liste de prix Check Point (`/liste-prix-check-point/`, `/en/check-point-price-list/`) : c’est un OUTIL (tableaux de prix + « ajouter à ma commande » + formulaire), pas une page de contenu → décision : le reprendre, le remplacer par un PDF + formulaire, ou le retirer | ? | décision marketing | | |
+| L-prefill | **Chaque CTA arrive sur un formulaire prérempli.** Bogue confirmé (Gabriel, 21/09, page Secteurs) : la route des pages générales pose `sujet: page.data.contactSujet` SANS repli, contrairement à celle des services (`|| 'projet'`) → 9 pages générales sur 11 n'ont pas de `contactSujet`, soit 18 liens vers /contact qui arrivent vides. (1) repli de sujet dans `src/pages/[lang]/[...slug].astro` ; (2) GARDE-FOU rejouable : parcourir tous les liens `/contact` du site CONSTRUIT et vérifier que chacun porte `sujet=` et `expertise=` (même esprit que `check-internal-links.mjs`), exceptions documentées pour en-tête/nav/pied de page, volontairement exclus ; (3) le formulaire SURLIGNE les champs obligatoires encore VIDES à l'arrivée — 4 quand on vient d'un CTA, les 6 quand on arrive par le menu, le pied de page ou une URL tapée (le script ignore volontairement les liens de chrome, donc les deux listes sont alors vides et le comportement dynamique est le bon) | 0,5 j | — | **R1** | |
 | L00 | Réponses #1762 + PR | 0,5 h | H2 | | |
 | L01 | Tolérance aux champs vidés | 1,5 h | — | | |
 | L02 | Rétro-remplissage générique des clés | 2 h | — | | |
 | L03 | Slugs EN — FAIT le 21/09 (D1 : `artificial-intelligence`, `application-services`, `ai-projects` ; `infrastructure` inchangé ; le méga-menu suit le champ `slug` de la page) | 2 h | D1 | | 2026-09-21 |
 | L04 | H1 | 1 h | D2 | | |
-| L05 | `noindex` | 1 h | D3 | | |
+| L05 | `noindex` — **FAIT le 22/09** : levé sur Découvrir, Expertises, Nos services, Secteurs, Produits (FR+EN, 10 fichiers). **Et un trou majeur trouvé et corrigé** : la page mère `pages/*/services.json` étant `noindex`, son chemin `/fr/services/` était CONTENU dans celui de chacun de ses enfants → le filtre du plan de site (`includes`) retirait les ~100 pages de services, **72 URL annoncées sur 186 pages** ; correspondance devenue exacte + parcours récursif (les campagnes cachées imbriquées ne filent plus au sitemap). Restent `noindex` en attente de Julie : Centre de confiance, Tarification (prix #1634), politique de confidentialité et conditions d'utilisation (parité : `noindex` sur l'ancien site) | 1 h | D3 | | 2026-09-22 |
 | L06 | CTA, cartes cliquables, boutons | 1,5 j | — | **R1** | |
 | L07 | Lucide, logos, bandeau | 1 j | D4 | | |
 | L08 | Petits retours de Julie | 0,5 j | D5 | | |
@@ -584,13 +594,13 @@ foreach ($s in $stories) {
 | L12 | Livres blancs — **4 pages** `/document/*` (pas 3 : + `/document/cybersecurite/`, livre blanc SEvOC) ; `licences-microsoft-power-platform` existe déjà en campagne | 1 j | D7, #1633 | | |
 | L13 | Prix + Espace client | 1 h | D8 | | |
 | L14 | Inventaire des pages | 2 h | — | | |
-| L15 | `routing.json` | 1 j | — | | |
+| L15 | `routing.json` — **redirections et en-têtes FAITS le 22/09** : l'intégration `victrix:redirects` écrit `dist/_cloudcannon/routing.json` (schéma officiel `routes`/`headers`, forme documentée par CloudCannon pour un fichier généré au build, prioritaire sur le fichier source). 191 routes (13 d'`astro.config` en `forced`, 3 de l'éditrice, 175 de la matrice de migration ; jokers traduits `*`→`(.*)`, `:splat`→`$1`) et 5 règles d'en-têtes dérivées de `public/_headers` SANS RECOUVREMENT (le bloc `/*` est recopié dans chaque règle précise — sinon /fr/ perdrait HSTS ou recevrait `nosniff, nosniff`). **Reste de L15** : vérifier les en-têtes de l'extérieur après le premier déploiement (`curl -I`), et trancher la règle 404 attrape-tout | 1 j | — | | redirections + en-têtes 2026-09-22 |
 | L16 | Statique vs aperçu | 0,5 j | — | **R4** | |
 | L17 | Formulaires + GA4 | 0,5 j | comptes | | |
 | L18 | QA responsive | 1 j | L06–L11 | | |
 | L19 | Accessibilité — **entamé le 21/09 (L-a11y)** : axe-core dans le gate, 0 violation sur 9 gabarits, contrastes corrigés. Reste : échelle typographique en `rem` (le réglage « grande police » du navigateur n'agit pas — le zoom, si), ordre de tabulation, textes de remplacement, QA lecteur d'écran | 0,5 j restant | L06–L11 | | partiel 2026-09-21 |
 | L20 | Performance | 1 j | — | | |
-| L21 | Zéro 404 | 0,5 j | L03, L15 | | |
+| L21 | Zéro 404 — **l'essentiel est fait le 22/09** (matrice de 175 redirections, cibles vérifiées dans `dist/` en CI, 9 slugs d'articles alignés sur le site en ligne, 10 anciennes URL de services qui répondaient encore 200). Reste : `hreflang`, plan de site après la levée des `noindex`, et le balayage final du jour J | 0,5 j → 2 h | L03, L15 | | partiel 2026-09-22 |
 | L22 | Doc + formation | 0,5 j | tout | | |
 | L23 | Jour J | — | tout | | |
 | L24–L26 | Options | 1 j + | — | | |

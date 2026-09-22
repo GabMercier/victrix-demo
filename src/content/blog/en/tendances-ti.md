@@ -23,7 +23,7 @@ With the advent of generative AI, **hackers can craft more convincing phishing e
 
 ### 2. Optimizing Resource Access Management
 
-In 2025, protecting access to your resources is imperative. Many companies adopt the [Zero Trust model](/en/ressources/zero-trust-network-access-ztna/) to protect sensitive data. Don’t be left behind in the security race, or the hackers will catch up.
+In 2025, protecting access to your resources is imperative. Many companies adopt the [Zero Trust model](/en/ressources/zero-trust-network-access-ztna-ultimate-cybersecurity-model/) to protect sensitive data. Don’t be left behind in the security race, or the hackers will catch up.
 
 ### 3. Securing Devices and Infrastructures (OT/IoT)
 

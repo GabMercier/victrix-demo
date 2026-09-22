@@ -18,7 +18,7 @@ The technology lifecycle regularly imposes deadlines, such as the end of support
 
 More than a simple interface redesign, the Windows 11 update offers numerous advantages. It guarantees **better resource management**, **improves the user experience**, **promotes productivity**, and **ensures system security**. Here's how:
 
-• **Enhanced security**: advanced, proactive protection for sensitive data and identities with TPM 2.0, encryption, Windows Defender, and [Zero Trust Security](/en/ressources/zero-trust-network-access-ztna/).
+• **Enhanced security**: advanced, proactive protection for sensitive data and identities with TPM 2.0, encryption, Windows Defender, and [Zero Trust Security](/en/ressources/zero-trust-network-access-ztna-ultimate-cybersecurity-model/).
 
 • **Simplified management**: tools such as Microsoft Intune, Windows Autopilot, and Autopatch to facilitate management and updates.
 

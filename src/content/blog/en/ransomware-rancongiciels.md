@@ -141,7 +141,7 @@ Trust our team to implement the most robust security system for your organizatio
 
 We also offer an **exclusive managed security service** based on cooperation and knowledge sharing. More than just a managed service, we’re an extension of your IT team.
 
-Benefit from a powerful [outsourced SOC service](/en/ressources/soc-outsourcing-pros-cons/) to ensure superior IT security for your organization. Discover SEvOC, Victrix’s scalable Security Operations Center.
+Benefit from a powerful [outsourced SOC service](/en/ressources/soc-outsourcing-for-smbs-pros-cons/) to ensure superior IT security for your organization. Discover SEvOC, Victrix’s scalable Security Operations Center.
 
 ### SEvOC: a Comprehensive Solution to Fight Off Cybersecurity Threats
 

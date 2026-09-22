@@ -104,13 +104,26 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
 
 - **CloudCannon hosting ignores `_redirects` and `_headers`** (they are
   Netlify/Cloudflare conventions). CloudCannon reads
-  **`.cloudcannon/routing.json`** (repo root; `headers` + `routes` arrays —
-  see cloudcannon.com/documentation/articles/configure-custom-routing/).
-  Consequence today, on the cloudvent URLs: the CMS-edited redirects
-  (`src/data/redirects.json` → `dist/_redirects`) and the security headers
-  (CSP/HSTS in `public/_headers`) are **not applied**. To close before
-  go-live: emit `routing.json` from those same sources (extend the
-  `victrix:redirects` integration in `astro.config.mjs`).
+  **`.cloudcannon/routing.json`** (`headers` + `routes` arrays — see
+  cloudcannon.com/documentation/developer-articles/configure-custom-routing/
+  and the official schema in CloudCannon/configuration-types `src/routing.ts`).
+  **RÉGLÉ le 2026-09-22** : l'intégration `victrix:redirects`
+  (`astro.config.mjs`) écrit `dist/_cloudcannon/routing.json` à chaque build —
+  la forme que CloudCannon documente pour un fichier GÉNÉRÉ, et qui prime sur
+  le fichier source. Rien à committer. Elle y met les **189 routes** (les 13
+  d'`astro.config` en `forced: true` — Astro écrit à ces chemins une page de
+  rafraîchissement méta, donc un fichier existe ; les 3 de l'éditrice ; les 175
+  de la matrice de migration) et **5 règles d'en-têtes** dérivées de
+  `public/_headers`. Deux traductions faites au passage : les jokers
+  (`/expertise/*` → `/expertise/(.*)`, `:splat` → `$1`) et des règles
+  d'en-têtes **sans recouvrement** (le bloc `/*` est recopié dans chaque règle
+  précise : selon que CloudCannon fusionne les règles ou garde la première,
+  une page de `/fr/` perdrait HSTS ou recevrait `nosniff, nosniff`).
+  **Reste à faire** : vérifier de l'extérieur après le premier déploiement
+  (`docs/operations.md`, § Redirections — commande `curl -I`), la sémantique
+  des en-têtes n'étant pas documentée ; et décider de la règle 404 attrape-tout
+  que CloudCannon recommande (D17 du plan — à tester sur le site dev d'abord,
+  une règle attrape-tout mal comprise détournerait tout le trafic).
 - **`STATIC_ONLY` conflates two roles** — "fully static build" AND
   "editor-preview content policy" (drafts + future-dated posts visible in
   `src/i18n/blog.ts`, announcement-bar date windows ignored in
@@ -129,9 +142,13 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
 - [ ] Split `STATIC_ONLY` from the editor-preview policy (constraint above) and
       set `EDITOR_PREVIEW=1` on the editing site's build only; verify drafts,
       scheduled posts, and announcement-bar windows behave on the production URL.
-- [ ] Generate `.cloudcannon/routing.json` (redirects from
-      `src/data/redirects.json` + headers mirroring `public/_headers`) and
-      verify 301s + CSP/HSTS on the production URL.
+- [x] Generate `.cloudcannon/routing.json` — fait le 2026-09-22 (généré au
+      build dans `dist/_cloudcannon/routing.json` : 189 routes + 5 règles
+      d'en-têtes). **Reste la vérification EXTERNE** : sur le site dev
+      (`vocal-wren.cloudvent.net`) puis en production —
+      `curl -sI <url>/fr/ | grep -i "strict-transport\|content-security\|x-content-type"`
+      et `curl -sI <url>/decouvrir-victrix/` doit rendre un **301** vers
+      `/fr/decouvrir`.
 - [ ] Wire the forms backend — decided 2026-08-25: CloudCannon Forms spike
       first, Cloudflare Worker fallback (`operations.md` §7ter); set the 6
       keys there; only then set `PUBLIC_FORMS_ENABLED` on the production

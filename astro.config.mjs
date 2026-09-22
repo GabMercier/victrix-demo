@@ -3,6 +3,7 @@ import { promises as fs } from 'node:fs';
 import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { auditPages } from './scripts/lib/h1-guard.mjs';
+import { entreAuSitemap } from './scripts/lib/sitemap-filter.mjs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
@@ -74,7 +75,117 @@ if (staticOnly) {
 }
 
 /**
+ * `.cloudcannon/routing.json` — les redirections et les en-têtes TELS QUE
+ * L'HÉBERGEMENT DE PRODUCTION les comprend (2026-09-22, lot L15 / #1503-#1504).
+ *
+ * CloudCannon héberge les deux sites (édition et production) et **ignore
+ * `_redirects` et `_headers`** : ce sont des conventions Netlify/Cloudflare.
+ * Il lit `.cloudcannon/routing.json`. Sa documentation prévoit explicitement
+ * le cas d'un fichier GÉNÉRÉ au build : il doit alors s'écrire dans
+ * `_cloudcannon/routing.json` DANS LA SORTIE du site, et il prime sur le
+ * fichier source. C'est ce que fait cette passe — rien à committer, rien à
+ * maintenir en double.
+ *
+ * Schéma officiel (CloudCannon/configuration-types, src/routing.ts) :
+ *   routes:  [{ from, to, status, forced?, substitutions? }]  — première règle
+ *            qui correspond, comme `_redirects` ; `from` en motif glob, les
+ *            segments capturés sont réinjectés dans `to`.
+ *   headers: [{ match, headers: [{ name, value }] }]
+ *
+ * Deux traductions nécessaires, d'où ce code plutôt qu'une copie :
+ *
+ *  1. SYNTAXE DES JOKERS. La collection « Redirections » stocke la syntaxe
+ *     Cloudflare (`/expertise/*` → `/fr/services/:splat`). CloudCannon attend
+ *     la forme de son exemple officiel : `/expertise/(.*)` → `/fr/services/$1`.
+ *
+ *  2. EN-TÊTES NON RECOUVRANTS. `public/_headers` pose un bloc `/*` (sécurité)
+ *     PUIS des blocs plus précis (`/fr/*` pour la CSP). Cloudflare fusionne
+ *     les blocs qui correspondent ; CloudCannon documente « la première règle
+ *     qui correspond » pour les routes et reste muet pour les en-têtes. Une
+ *     page de /fr/ risquerait donc de perdre HSTS et nosniff (lecture
+ *     « première règle »), ou de recevoir `nosniff, nosniff` (lecture
+ *     « fusion », que Chrome rejette). On génère donc des règles SANS
+ *     RECOUVREMENT : le bloc `/*` sert de SOCLE, recopié dans chaque règle
+ *     précise, et n'est jamais émis seul. `public/_headers` reste la source
+ *     unique — on ne duplique pas la politique, on la transforme.
+ *
+ * Les redirections de `astro.config` (bloc `redirects` ci-dessous) partent
+ * AVEC `forced: true` : en sortie statique Astro écrit à ces chemins une page
+ * HTML de rafraîchissement méta, donc un fichier EXISTE et une règle non
+ * forcée ne se déclencherait pas — le visiteur aurait un 200 puis un saut,
+ * au lieu d'un vrai 301.
+ *
+ * À VÉRIFIER DE L'EXTÉRIEUR après le premier déploiement (la sémantique des
+ * en-têtes n'est pas documentée) — `docs/operations.md` § Redirections donne
+ * la commande `curl -I`.
+ */
+const STATUTS_ROUTING = new Set([200, 301, 302, 303, 307, 308, 404, 410]);
+
+/**
+ * `/expertise/*` + `/fr/services/:splat` → `/expertise/(.*)` + `/fr/services/$1`.
+ * @param {string} de
+ * @param {string} vers
+ */
+function versMotifCloudCannon(de, vers) {
+  if (!de.includes('*')) return { from: de, to: vers };
+  return {
+    from: de.replace(/\*/g, '(.*)'),
+    to: vers.replace(/:splat/g, '$1'),
+  };
+}
+
+/**
+ * Lit `public/_headers` (format Cloudflare) et rend des règles CloudCannon
+ * sans recouvrement. Voir le commentaire ci-dessus pour le pourquoi.
+ * @param {string} texte contenu de public/_headers
+ * @param {string[]} cheminsDuSocle chemins qui ne correspondent à aucun bloc précis
+ */
+function reglesEntetes(texte, cheminsDuSocle) {
+  /** @typedef {{ match: string, headers: { name: string, value: string }[] }} BlocEntetes */
+  /** @type {BlocEntetes[]} */
+  const blocs = [];
+  /** @type {BlocEntetes | null} */
+  let courant = null;
+  for (const ligneBrute of texte.split(/\r?\n/)) {
+    const ligne = ligneBrute.replace(/\s+$/, '');
+    if (ligne.length === 0 || ligne.trimStart().startsWith('#')) continue;
+    if (!/^\s/.test(ligne)) {
+      courant = { match: ligne.trim(), headers: [] };
+      blocs.push(courant);
+      continue;
+    }
+    const sep = ligne.indexOf(':');
+    if (courant && sep > 0) {
+      courant.headers.push({
+        name: ligne.slice(0, sep).trim(),
+        value: ligne.slice(sep + 1).trim(),
+      });
+    }
+  }
+  const socle = blocs.find((b) => b.match === '/*');
+  const precis = blocs.filter((b) => b.match !== '/*');
+  const base = socle ? socle.headers : [];
+  const regles = precis.map((b) => ({
+    match: b.match,
+    // Le socle d'abord, puis les en-têtes propres au bloc (aucun doublon de
+    // nom dans public/_headers aujourd'hui ; si ça changeait, le bloc précis
+    // doit gagner — d'où l'ordre et le filtre).
+    headers: [...base.filter((h) => !b.headers.some((p) => p.name === h.name)), ...b.headers],
+  }));
+  for (const chemin of cheminsDuSocle) {
+    if (base.length > 0) regles.push({ match: chemin, headers: base });
+  }
+  return regles;
+}
+
+/**
  * Editor-managed redirects → Cloudflare Pages `_redirects` file.
+ *
+ * DEUX sources depuis le 2026-09-22 : src/data/redirects.json (saisie de
+ * l'éditrice, prioritaire) et src/data/redirects-migration.json (matrice de la
+ * migration WordPress, générée par `npm run build:redirects` — voir
+ * scripts/build-redirects.mjs et docs/migration/correspondance-urls.json).
+ * Même contrat, même validation ; les règles à joker sont écrites en dernier.
  *
  * src/data/redirects.json is the editable source of truth (CloudCannon exposes
  * it with French labels): an array of { de, vers, code } entries — `de` a path
@@ -116,9 +227,27 @@ if (staticOnly) {
  * keeps the file consistent. External https:// destinations pass through.
  */
 function redirectsFile() {
+  /**
+   * Bloc `redirects` d'astro.config, récupéré au moment où Astro a résolu la
+   * configuration (plus fiable que de relire le fichier).
+   * @type {Record<string, string>}
+   */
+  let redirectionsAstro = {};
   return {
     name: 'victrix:redirects',
     hooks: {
+      /** @param {{ config: import('astro').AstroConfig }} options */
+      'astro:config:done': ({ config }) => {
+        /** @type {Record<string, string>} */
+        const plat = {};
+        for (const [de, vers] of Object.entries(config.redirects ?? {})) {
+          // Astro normalise en { status, destination } ; on ne garde que les
+          // redirections déclarées en chaîne (les nôtres).
+          const cible = typeof vers === 'string' ? vers : vers?.destination;
+          if (typeof cible === 'string') plat[de] = cible;
+        }
+        redirectionsAstro = plat;
+      },
       /** @param {{ dir: URL, logger: import('astro').AstroIntegrationLogger }} options */
       'astro:build:done': async ({ dir, logger }) => {
         // Every validation failure throws — an error in astro:build:done
@@ -131,28 +260,65 @@ function redirectsFile() {
         // Read the JSON FRESH from disk on every build. A JS `import` of the
         // file would go through Node's module cache and could serve stale
         // data if a rebuild ever reuses the process.
-        const source = new URL('./src/data/redirects.json', import.meta.url);
-        let raw;
-        try {
-          raw = await fs.readFile(source, 'utf-8');
-        } catch {
-          fail(
-            'src/data/redirects.json est introuvable ou illisible. Le fichier doit exister (au minimum un tableau vide : []).'
-          );
-        }
-        let entries;
-        try {
-          entries = JSON.parse(raw);
-        } catch {
-          fail('src/data/redirects.json ne contient pas du JSON valide.');
-        }
-        if (!Array.isArray(entries)) {
-          fail('src/data/redirects.json doit contenir un tableau d’entrées { "de", "vers", "code" }.');
-        }
+        /** @param {string} chemin @param {boolean} obligatoire */
+        const lireListe = async (chemin, obligatoire) => {
+          const source = new URL(`./${chemin}`, import.meta.url);
+          let raw;
+          try {
+            raw = await fs.readFile(source, 'utf-8');
+          } catch {
+            if (!obligatoire) return [];
+            fail(
+              `${chemin} est introuvable ou illisible. Le fichier doit exister (au minimum un tableau vide : []).`
+            );
+          }
+          let liste;
+          try {
+            liste = JSON.parse(raw);
+          } catch {
+            fail(`${chemin} ne contient pas du JSON valide.`);
+          }
+          if (!Array.isArray(liste)) {
+            fail(`${chemin} doit contenir un tableau d’entrées { "de", "vers", "code" }.`);
+          }
+          return liste;
+        };
 
+        // DEUX sources, une seule sortie (2026-09-22) :
+        //  - src/data/redirects.json = la collection « Redirections » de
+        //    CloudCannon, saisie À LA MAIN par l'éditrice. Elle GAGNE sur
+        //    l'autre liste (c'est l'humain qui tranche).
+        //  - src/data/redirects-migration.json = la matrice de la migration
+        //    WordPress (#1503), GÉNÉRÉE par `npm run build:redirects` depuis
+        //    docs/migration/correspondance-urls.json et le contenu. Absente =
+        //    pas d'erreur (le dépôt tourne sans).
+        const entriesCms = await lireListe('src/data/redirects.json', true);
+        const entriesMigration = await lireListe('src/data/redirects-migration.json', false);
+        const entries = [...entriesCms, ...entriesMigration];
+
+        /** @type {string[]} */
         const lines = [];
+        /**
+         * Règles à joker (`*`) — écrites APRÈS les règles exactes.
+         * @type {string[]}
+         */
+        const lignesJoker = [];
+        /** @type {{ from: string, to: string, status: number }[]} */
+        const routesExactes = [];
+        /** @type {{ from: string, to: string, status: number }[]} */
+        const routesJoker = [];
         const seen = new Set();
-        for (const entry of entries) {
+        /** Sources déjà servies par l'éditrice : la migration ne les écrase pas. */
+        const sourcesCms = new Set(
+          entriesCms.map((e) => (typeof e?.de === 'string' ? e.de : null)).filter(Boolean)
+        );
+        let ignoreesMigration = 0;
+        for (const [index, entry] of entries.entries()) {
+          const vientDeLaMigration = index >= entriesCms.length;
+          if (vientDeLaMigration && typeof entry?.de === 'string' && sourcesCms.has(entry.de)) {
+            ignoreesMigration += 1;
+            continue;
+          }
           // Every message names the offending entry so an editor can fix it.
           const badEntry = ` Entrée fautive : ${JSON.stringify(entry)}`;
           if (typeof entry !== 'object' || entry === null || Array.isArray(entry)) {
@@ -196,33 +362,93 @@ function redirectsFile() {
             vers.startsWith('/') && vers.length > 1 && vers.endsWith('/')
               ? vers.replace(/\/+$/, '')
               : vers;
-          lines.push(`${de} ${versNormalise} ${codeNumber}`);
+          // ORDRE (2026-09-22) : `_redirects` (comme routing.json) applique la
+          // PREMIÈRE correspondance. Les jokers partent donc à la fin, sinon
+          // `/expertise/*` masquerait les règles exactes de la migration
+          // (/expertise/securite-informatique → /fr/services/cybersecurite, et
+          // non vers /fr/services/securite-informatique qui n'existe pas).
+          (de.includes('*') ? lignesJoker : lines).push(`${de} ${versNormalise} ${codeNumber}`);
+          // Même liste, forme CloudCannon (voir routing.json plus bas).
+          (de.includes('*') ? routesJoker : routesExactes).push({
+            ...versMotifCloudCannon(de, versNormalise),
+            status: codeNumber,
+          });
+        }
+        lines.push(...lignesJoker);
+
+        // Empty list: nothing to append to _redirects — on laisse ce que
+        // l'adaptateur a produit (ou non) intact, mais on écrit quand même
+        // routing.json plus bas (il porte aussi les en-têtes).
+        if (lines.length > 0) {
+          // `dir` is the client output root — dist/ in BOTH modes here: with
+          // the adapter attached, buildOutput is "server" and dir =
+          // build.client, which the Cloudflare adapter points back at outDir
+          // (no `base` subpath); without the adapter (STATIC_ONLY) dir =
+          // outDir directly. That root is exactly where Cloudflare Pages looks
+          // for `_redirects`.
+          const target = new URL('./_redirects', dir);
+          let existing = '';
+          try {
+            existing = await fs.readFile(target, 'utf-8');
+          } catch {
+            // No file yet (STATIC_ONLY build, or nothing appended by the
+            // adapter) — created below.
+          }
+          const block = `${lines.join('\n')}\n`;
+          const content =
+            existing.length === 0
+              ? block
+              : `${existing}${existing.endsWith('\n') ? '' : '\n'}${block}`;
+          await fs.writeFile(target, content, 'utf-8');
+          logger.info(
+            `${lines.length} redirection(s) écrites dans _redirects (${entriesCms.length} de src/data/redirects.json, ${entriesMigration.length - ignoreesMigration} de la matrice de migration` +
+              `${ignoreesMigration > 0 ? `, ${ignoreesMigration} écartée(s) car déjà saisie(s) par l’éditrice` : ''})`
+          );
         }
 
-        // Empty list: nothing to write — leave whatever the adapter produced
-        // (or didn't) untouched.
-        if (lines.length === 0) return;
+        // ---- .cloudcannon/routing.json (hébergement de PRODUCTION) --------
+        // Voir le long commentaire au-dessus de STATUTS_ROUTING. Écrit dans
+        // les DEUX modes de build : c'est le mode STATIC_ONLY qui alimente les
+        // sites CloudCannon.
+        const routesAstro = Object.entries(redirectionsAstro).map(([de, vers]) => ({
+          ...versMotifCloudCannon(de, vers),
+          status: 301,
+          // Astro écrit une page de rafraîchissement méta à ces chemins.
+          forced: true,
+        }));
+        const routesCloudCannon = [...routesAstro, ...routesExactes, ...routesJoker].filter((r, i, tout) => {
+          // « Duplicate rules are ignored » côté CloudCannon ; on les retire
+          // ici pour que le fichier dise la vérité.
+          if (!STATUTS_ROUTING.has(r.status)) {
+            fail(`statut ${r.status} refusé par CloudCannon. Entrée fautive : ${JSON.stringify(r)}`);
+          }
+          return tout.findIndex((autre) => autre.from === r.from) === i;
+        });
 
-        // `dir` is the client output root — dist/ in BOTH modes here: with the
-        // adapter attached, buildOutput is "server" and dir = build.client,
-        // which the Cloudflare adapter points back at outDir (no `base`
-        // subpath); without the adapter (STATIC_ONLY) dir = outDir directly.
-        // That root is exactly where Cloudflare Pages looks for `_redirects`.
-        const target = new URL('./_redirects', dir);
-        let existing = '';
+        /** @type {{ match: string, headers: { name: string, value: string }[] }[]} */
+        let entetes = [];
         try {
-          existing = await fs.readFile(target, 'utf-8');
+          const brut = await fs.readFile(new URL('./public/_headers', import.meta.url), 'utf-8');
+          // Chemins servis qui ne tombent sous aucun bloc précis de
+          // public/_headers : sans eux, la page 404 perdrait les en-têtes de
+          // sécurité (voir « EN-TÊTES NON RECOUVRANTS »).
+          entetes = reglesEntetes(brut, ['/404.html']);
         } catch {
-          // No file yet (STATIC_ONLY build, or nothing appended by the
-          // adapter) — created below.
+          logger.warn(
+            '[victrix:redirects] public/_headers est introuvable — routing.json partira sans en-têtes (CSP/HSTS absents en production).'
+          );
         }
-        const block = `${lines.join('\n')}\n`;
-        const content =
-          existing.length === 0
-            ? block
-            : `${existing}${existing.endsWith('\n') ? '' : '\n'}${block}`;
-        await fs.writeFile(target, content, 'utf-8');
-        logger.info(`${lines.length} redirection(s) de src/data/redirects.json écrites dans _redirects`);
+
+        const routingCible = new URL('./_cloudcannon/routing.json', dir);
+        await fs.mkdir(new URL('./_cloudcannon/', dir), { recursive: true });
+        await fs.writeFile(
+          routingCible,
+          `${JSON.stringify({ routes: routesCloudCannon, headers: entetes }, null, 2)}\n`,
+          'utf-8'
+        );
+        logger.info(
+          `_cloudcannon/routing.json écrit — ${routesCloudCannon.length} route(s) et ${entetes.length} règle(s) d’en-têtes (hébergement CloudCannon ; _redirects/_headers y sont ignorés)`
+        );
 
         // _routes.json exclusion pass (normal Cloudflare build only — the file
         // does not exist in STATIC_ONLY builds). Without it the worker (include
@@ -264,8 +490,15 @@ function redirectsFile() {
         const manquants = [...seen].filter((de) => !exclude.includes(de));
         const ajoutes = manquants.slice(0, Math.max(0, budget));
         if (ajoutes.length < manquants.length) {
+          // Depuis la matrice de migration (2026-09-22) il y a ~175 sources :
+          // le plafond est structurellement dépassé sur Cloudflare Pages, qui
+          // n'est plus que l'INFRA HÉRITÉE (préversions + POST /api/forms).
+          // La PRODUCTION est hébergée chez CloudCannon, qui ignore
+          // `_redirects` et lit `.cloudcannon/routing.json` — sans plafond de
+          // ce genre (lot L15). Avertissement borné pour rester lisible.
+          const restants = manquants.slice(ajoutes.length);
           logger.warn(
-            `[victrix:redirects] limite Cloudflare de 100 règles _routes.json atteinte — ${manquants.length - ajoutes.length} source(s) de redirection non exclue(s) du worker : ${manquants.slice(ajoutes.length).join(', ')}`
+            `[victrix:redirects] limite Cloudflare de 100 règles _routes.json atteinte — ${restants.length} source(s) non exclue(s) du worker (sans effet sur la production CloudCannon, cf. L15/routing.json). Exemples : ${restants.slice(0, 5).join(', ')}${restants.length > 5 ? ` … et ${restants.length - 5} autres` : ''}`
           );
         }
         // Écriture inconditionnelle : la compaction seule doit persister même
@@ -443,29 +676,50 @@ function pagefindIndex() {
  * services → FALSE (pages publiques).
  */
 function collectNoindexComposablePaths() {
+  /** @type {string[]} */
   const paths = [];
   for (const { root, urlPrefix, defaultNoindex } of [
     { root: './src/content/pages', urlPrefix: '', defaultNoindex: true },
     { root: './src/content/services', urlPrefix: 'services/', defaultNoindex: false },
   ]) {
     for (const locale of ['fr', 'en']) {
-      let files = [];
-      try {
-        files = readdirSync(fileURLToPath(new URL(`${root}/${locale}/`, import.meta.url))).filter(
-          (f) => f.endsWith('.json'),
-        );
-      } catch {
-        continue; // dossier absent = rien à exclure
-      }
-      for (const file of files) {
-        const data = JSON.parse(
-          readFileSync(fileURLToPath(new URL(`${root}/${locale}/${file}`, import.meta.url)), 'utf8'),
-        );
-        const noindex = typeof data.noindex === 'boolean' ? data.noindex : defaultNoindex;
-        if (!noindex) continue;
-        const slug = data.slug || file.replace(/\.json$/, '');
-        paths.push(`/${locale}/${urlPrefix}${slug}/`);
-      }
+      /**
+       * Parcours RÉCURSIF (2026-09-22) : les services sont imbriqués sur deux
+       * niveaux (fr/cybersecurite/zero-trust.json) depuis le branchement du
+       * contenu migré. La version à plat ignorait ces fichiers — les pages de
+       * campagne cachées (accompagnement-ia, demo-o-bureau) auraient donc
+       * filé au sitemap malgré leur noindex.
+       * @param {string} sousChemin
+       */
+      const parcours = (sousChemin) => {
+        let entrees = [];
+        try {
+          entrees = readdirSync(
+            fileURLToPath(new URL(`${root}/${locale}/${sousChemin}`, import.meta.url)),
+            { withFileTypes: true },
+          );
+        } catch {
+          return; // dossier absent = rien à exclure
+        }
+        for (const entree of entrees) {
+          if (entree.isDirectory()) {
+            parcours(`${sousChemin}${entree.name}/`);
+            continue;
+          }
+          if (!entree.name.endsWith('.json')) continue;
+          const data = JSON.parse(
+            readFileSync(
+              fileURLToPath(new URL(`${root}/${locale}/${sousChemin}${entree.name}`, import.meta.url)),
+              'utf8',
+            ),
+          );
+          const noindex = typeof data.noindex === 'boolean' ? data.noindex : defaultNoindex;
+          if (!noindex) continue;
+          const slug = data.slug || `${sousChemin}${entree.name.replace(/\.json$/, '')}`;
+          paths.push(`/${locale}/${urlPrefix}${slug}/`);
+        }
+      };
+      parcours('');
     }
   }
   return paths;
@@ -608,17 +862,11 @@ export default defineConfig({
       // est lue des JSON au chargement de la config (build seulement) : passer
       // un placeholder à noindex:false le fait entrer au sitemap tout seul,
       // aucune liste à entretenir ici.
-      filter: (page) =>
-        !page.includes('/campagnes/') &&
-        !page.includes('/merci/') &&
-        !page.includes('/recherche/') &&
-        !page.includes('/style-guide') &&
-        !page.includes('/services/demo-sections') &&
-        // /portail : page de connexion noindex, PRÉRENDUE depuis le retrait
-        // du portail mock (2026-08-18) — sans cette exclusion elle entrerait
-        // au sitemap en contradiction avec son noindex.
-        !page.includes('/portail') &&
-        !noindexComposablePaths.some((path) => page.includes(path)),
+      // Logique PURE et testée : scripts/lib/sitemap-filter.mjs (+
+      // src/lib/sitemap-filter.test.ts). Extraite le 2026-09-22 après le
+      // bogue des 72 URL annoncées pour 186 pages — le détail est dans le
+      // bloc de doc du module. Les préfixes exclus y vivent aussi.
+      filter: (page) => entreAuSitemap(page, noindexComposablePaths),
     }),
     // Editor-managed redirects (src/data/redirects.json) → dist/_redirects.
     // Deliberately UNCONDITIONAL — both the production build and the

@@ -15,7 +15,7 @@ La réalité, c'est qu’à moins que vous ne soyez responsable des TI d’une o
 
 Bien entendu, la mise en place d’un SOC n’est pas impossible, à condition de **connaitre ce que vous avez** et de **bien mesurer l’investissement en temps, argent et ressources** que cela implique.
 
-Notre guide complet vous aidera à comprendre les bases d’un SOC efficace, de la **définition d’objectifs réalistes** à la **structure d’une équipe SOC**, sans négliger les **politiques et technologies**. Après votre lecture, vous serez en mesure de déterminer s’il est dans l'intérêt de votre organisation d’[externaliser le SOC](/fr/ressources/externalisation-soc-avantages-inconvenients/) ou d’en créer un en interne.
+Notre guide complet vous aidera à comprendre les bases d’un SOC efficace, de la **définition d’objectifs réalistes** à la **structure d’une équipe SOC**, sans négliger les **politiques et technologies**. Après votre lecture, vous serez en mesure de déterminer s’il est dans l'intérêt de votre organisation d’[externaliser le SOC](/fr/ressources/externalisation-du-soc-avantages-inconvenients/) ou d’en créer un en interne.
 
 ### Prêt à accélérer la détection et réponse et favoriser l’amélioration continue de votre posture de sécurité?
 

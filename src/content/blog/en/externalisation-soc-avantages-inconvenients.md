@@ -4,10 +4,10 @@ date: 2023-10-04
 excerpt: "Are you considering SOC outsourcing for your company? Find out all about the advantages and disadvantages of an external SOC and Victrix’s exclusive offer."
 tags: ["Our articles"]
 topics: ["Cybersecurity", "Managed services"]
-slug: "soc-outsourcing-pros-cons"
+slug: "soc-outsourcing-for-smbs-pros-cons"
 coverImage: "/wp-content/uploads/2023/10/istock-1310129244-1.jpg"
 seoTitle: "SOC Outsourcing Services for SMBs: Pros & Cons"
-wpUrl: "/en/ressources/soc-outsourcing-pros-cons/"
+wpUrl: "/en/soc-outsourcing-pros-cons/"
 ---
 SOC outsourcing is a hot topic when it comes to cybersecurity for modern businesses. Many SMB managers and owners wonder whether it’s better to opt for an in-house SOC team or [external IT security services](/en/services/cybersecurity/).
 
