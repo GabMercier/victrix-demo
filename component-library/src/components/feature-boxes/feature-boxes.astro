@@ -51,6 +51,21 @@ const { sectionTitle, subtitle, fond = 'beige', boxes = [] } = Astro.props;
 const boitesNormalisees = (boxes ?? []).map((b) =>
   typeof b === 'string' ? { label: b, icon: '' as const, image: '', imageAlt: '' } : b,
 );
+
+/**
+ * Au moins une boîte porte-t-elle un visuel ?
+ *
+ * Si OUI, TOUTES réservent la place du logo — même vide. Sans ça, les boîtes
+ * sans logo remontent leur libellé : mesuré le 2026-09-22 sur « Nos
+ * partenaires et technologies », le texte se posait à TROIS hauteurs
+ * différentes (69, 47 et 36 px), et les rangées faisaient 118 ou 96 px selon
+ * qu'elles contenaient un logo. La grille paraissait cassée.
+ *
+ * Si NON, rien n'est réservé : les sections purement textuelles (126 boîtes
+ * sur le site — « Stratégie et gouvernance », « Architecture et intégration »…)
+ * gardent leur mise en page compacte, sans bandeau vide au-dessus du texte.
+ */
+const reserveVisuel = boitesNormalisees.some((b) => Boolean(b.image) || Boolean(b.icon));
 // Fonds SOMBRES ouverts le 2026-09-21 : seuls le titre, le liseré et le
 // chapeau sont posés sur le fond de section — les boîtes, elles, sont
 // blanches et gardent leur contraste quoi qu'il arrive.
@@ -90,29 +105,44 @@ const FONDS: Record<string, string> = FOND_CLASSES;
           const icon = iconFor(box.icon);
           return (
             <li class="m-0 min-h-24 flex flex-col items-center justify-center text-center gap-3 p-6 bg-white border border-solid border-contour rounded-lg text-base font-semibold text-on-surface hover:border-primary transition-colors">
-              {box.image ? (
-                <img
-                  src={box.image}
-                  alt={box.imageAlt ?? ''}
-                  class="h-8 w-auto max-w-[140px] object-contain m-0"
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : icon ? (
-                <span class="text-primary flex items-center">
-                  <svg
-                    width={icon.w ?? 24}
-                    height={icon.h ?? 24}
-                    {...iconSvgAttrs(icon, 2)}
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    {icon.paths.map((d) => (
-                      <path d={d} />
-                    ))}
-                  </svg>
+              {reserveVisuel && (
+                <span class="h-8 flex items-center justify-center shrink-0">
+                  {/*
+                    `h-8` et NON `max-h-8` : plusieurs logos officiels
+                    (checkpoint, microsoft, aruba…) n'ont QUE `viewBox`, sans
+                    `width`/`height` — ils n'ont donc pas de taille intrinsèque,
+                    seulement un rapport. Sans hauteur DÉFINIE, leur mise en
+                    page s'effondre à 0×0 (mesuré le 2026-09-22). Avec `h-8` +
+                    `object-contain`, la boîte fait 32 px de haut et le tracé
+                    s'y loge sans déformation, quel que soit le fichier.
+                    L'import normalise aussi les fichiers (width/height déduits
+                    du viewBox), mais le gabarit ne doit pas en dépendre :
+                    l'éditrice peut téléverser n'importe quel SVG.
+                  */}
+                  {box.image ? (
+                    <img
+                      src={box.image}
+                      alt={box.imageAlt ?? ''}
+                      class="h-8 w-auto max-w-[140px] object-contain m-0"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : icon ? (
+                    <svg
+                      class="text-primary"
+                      width={icon.w ?? 24}
+                      height={icon.h ?? 24}
+                      {...iconSvgAttrs(icon, 2)}
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      {icon.paths.map((d) => (
+                        <path d={d} />
+                      ))}
+                    </svg>
+                  ) : null}
                 </span>
-              ) : null}
+              )}
               {/* Le libellé RESTE même quand un logo est posé : c'est le seul
                   texte lisible par un lecteur d'écran, et plusieurs logos de
                   marque ne portent pas leur nom en toutes lettres. */}

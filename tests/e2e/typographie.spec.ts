@@ -6,8 +6,12 @@ import { test, expect } from '@playwright/test';
  * Deux garde-fous, nés du même constat de Gabriel : « du 12px sur un grand
  * écran, c'est beaucoup trop petit ».
  *
- * 1. PLANCHER : plus aucun texte visible sous 14px. Le site descendait à 10px
- *    (étiquettes de catégorie) et 12px (compteurs, surtitres).
+ * 1. PLANCHER : plus aucun texte visible sous 16px. Le site descendait à 10px
+ *    (étiquettes de catégorie) et 12px (compteurs, surtitres) ; le plancher a
+ *    d'abord été posé à 14px le 21/09, puis RELEVÉ À 16px le 22/09 (décision
+ *    Gabriel, en même temps que le passage à Hanken Grotesk). C'est `text-sm`
+ *    de Tailwind qui portait l'essentiel du 14px — 109 usages ; il est écrasé
+ *    à 1rem dans `@theme`, donc le plancher est structurel et non déclaratif.
  * 2. FLUIDE : le réglage « taille de police » du navigateur doit agir. Il
  *    n'agissait pas, parce que l'échelle du design system était en PIXELS.
  *    Le zoom (Ctrl +) marchait déjà — c'est pour ça que WCAG 1.4.4 passait et
@@ -39,10 +43,11 @@ const taillesVisibles = (page: import('@playwright/test').Page) =>
   });
 
 for (const url of PAGES) {
-  test(`aucun texte sous 14px — ${url}`, async ({ page }) => {
+  test(`aucun texte sous 16px — ${url}`, async ({ page }) => {
     await page.goto(url);
     await page.waitForLoadState('networkidle');
-    const trop = (await taillesVisibles(page)).filter((t) => t.taille < 13.9);
+    // 15.9 et non 16 : les `rem` arrondis peuvent rendre 15.984px.
+    const trop = (await taillesVisibles(page)).filter((t) => t.taille < 15.9);
     const detail = trop
       .slice(0, 8)
       .map((t) => `  • ${t.taille}px — « ${t.texte} » (${t.classe})`)

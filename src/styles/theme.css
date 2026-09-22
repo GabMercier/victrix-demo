@@ -6,7 +6,8 @@
  * card-solutions}). Cette livraison REMPLACE l'arbitrage v2 du 2026-08-04
  * (planche DesignSystemVictrix.png) : les « neutres froids maquette » jadis
  * consignés comme divergences deviennent l'échelle OFFICIELLE (--color-neutral-*),
- * et la police passe de Hanken Grotesk à INTER (variable, auto-hébergée).
+ * et la police passait de Hanken Grotesk à Inter — ARBITRAGE RENVERSE le
+ * 2026-09-22 : retour a Hanken Grotesk, celle des maquettes finales.
  * Les secondaires chauds (ivoire/beige/sable) survivent comme accents.
  * Page de référence vivante : /fr/style-guide.
  *
@@ -31,21 +32,63 @@
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
-/* Inter — variable (100–900), auto-hébergée (CSP : pas de Google Fonts CDN).
-   Fichier : public/fonts/InterVariable.woff2 (rsms.me/inter, OFL). Remplace
-   Hanken Grotesk (décision v3 — export2 : fontFamily "Inter" sur les 24
-   styles de texte du tokens.json). */
-/* SOUS-ENSEMBLE (2026-08-19, Lighthouse) : InterVariable-subset.woff2 = les
-   caractères réellement utilisés par le site + plages latines complètes,
-   généré par scripts/subset-inter.mjs (345 Ko → 107 Ko, axe de graisse
-   conservé). L'original InterVariable.woff2 reste dans public/fonts comme
-   source pour régénérer. Le preload de BaseLayout pointe le même fichier. */
+/* HANKEN GROTESK — variable (100–900), normale ET italique, AUTO-HÉBERGÉE.
+   Décision Gabriel du 2026-09-22 : c'est la police des maquettes finales, et
+   elle clôt la décision D9 restée ouverte depuis août. Le dépôt y était déjà
+   avant la bascule « export2 » du 2026-08-14, qui l'avait remplacée par Inter
+   sur la foi du tokens.json du designer — l'alias `--font-grotesk` était resté
+   en place tout ce temps, pointant sur Inter.
+
+   AUTO-HÉBERGÉE, jamais via un <link> vers Google : un @font-face servi par
+   fonts.gstatic.com envoie l'adresse IP du visiteur à un tiers AVANT tout
+   bandeau de consentement — la Loi 25 l'interdit, et la CSP de public/_headers
+   n'autorise pas ce domaine. Rapatriement rejouable :
+   `node scripts/fetch-hanken-grotesk.mjs` (+ `--check` pour le gate).
+
+   QUATRE fichiers, 110 Ko au total, servis À LA DEMANDE grâce à
+   `unicode-range` : une page sans caractère étendu ne télécharge que `latin`
+   (35 Ko), et l'italique n'arrive que si la page en contient. Le français et
+   l'anglais tiennent entièrement dans `latin` (é à ç œ compris).
+
+   Inter reste dans public/fonts (InterVariable*.woff2) : aucun @font-face ne
+   la déclare plus, mais le fichier sert de repli si la décision se retourne. */
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Hanken Grotesk';
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/InterVariable-subset.woff2') format('woff2');
+  src: url('/fonts/HankenGrotesk-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/HankenGrotesk-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+    U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/HankenGrotesk-latin-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/HankenGrotesk-latin-ext-italic.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+    U+2C60-2C7F, U+A720-A7FF;
 }
 
 /* Les classes `dark:` des maquettes portées restent INERTES tant qu'aucune
@@ -55,10 +98,25 @@
 
 @theme {
   /* ---- Typo ------------------------------------------------------------- */
-  --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  /* Alias historique conservé (markup re-skinné : `font-grotesk`) — pointe
-     désormais sur Inter pour éviter une passe de renommage du markup. */
-  --font-grotesk: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  /* PLANCHER DE 16 px — `text-xs` et `text-sm` de Tailwind valent 12 et 14 px
+     par defaut. `text-sm` est pose 109 fois dans les composants : c'etait la
+     source PRINCIPALE du texte a 14 px. On ECRASE les deux jetons plutot que
+     de reecrire le markup — le plancher devient alors STRUCTUREL, et une
+     classe `text-sm` ecrite demain ne peut plus repasser sous 16 px.
+     Consequence assumee : l'echelle perd ses deux crans du bas. C'est le sens
+     meme d'un plancher — il n'y a plus de taille sous 16 px.
+     Garde-fou : tests/e2e/typographie.spec.ts. */
+  --text-xs: 1rem;
+  --text-xs--line-height: 1.5;
+  --text-sm: 1rem;
+  --text-sm--line-height: 1.5;
+
+  /* `--font-inter` est un nom HISTORIQUE, conservé pour ne pas rebaptiser tout
+     le markup re-skinné qui écrit `font-inter`. Il sert Hanken Grotesk depuis
+     le 2026-09-22, comme `--font-grotesk` — les deux pointent la même pile, il
+     n'y a qu'UNE police sur le site. */
+  --font-inter: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-grotesk: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
 
   /* ---- Primitives export2 (design-tokens.tokens.json) -------------------- */
   /* Bleu primaire — color.primaire.bleu.* */
@@ -233,28 +291,30 @@
   --text-body-md: 1rem; /* body.regular.m : 16/24/400 */
   --text-body-md--line-height: 1.5;
   --text-body-md--font-weight: 400;
-  --text-label-caps: 0.875rem; /* label.overline.s : 14/20/600/1.4px uppercase */
-  --text-label-caps--line-height: 1.43;
+  /* PLANCHER 16 px (2026-09-22, decision Gabriel) : ce jeton valait 0.875rem
+     (14 px). Le rapport d'interlignage suit, sinon les surtitres se collent. */
+  --text-label-caps: 1rem; /* label.overline.s : etait 14/20, devient 16/23 */
+  --text-label-caps--line-height: 1.4;
   --text-label-caps--font-weight: 600;
   --text-label-caps--letter-spacing: 0.1em;
-  --text-button: 0.875rem; /* exports : boutons 14/600 */
+  --text-button: 1rem; /* plancher 16 px — etait 0.875rem (14 px) */
   --text-button--line-height: 1;
   --text-button--font-weight: 600;
   --text-button--letter-spacing: 0;
 
-  --font-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-headline-lg: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-headline-lg-mobile: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-headline-md: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-headline-sm: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-body-lg: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-body-md: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-label-caps: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-button: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-lg: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-lg-mobile: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-md: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-sm: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body-lg: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body-md: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-label-caps: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-button: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
   /* Alias NUS des configs d'export (sans fontSize appariée). */
-  --font-headline: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-label: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-headline: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-label: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
 
   /* ---- Espacement nommé (inchangé : base 8px, sections 80, conteneur 1280).
      ⚠️ --spacing-container-max fait résoudre `max-w-container-max` (1280px,

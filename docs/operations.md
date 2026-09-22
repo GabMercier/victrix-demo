@@ -301,6 +301,31 @@ Rejouer seulement l'accessibilité :
 npx playwright test tests/e2e/accessibilite.spec.ts
 ```
 
+**Rapatrier la police (Hanken Grotesk) :**
+
+```
+node scripts/fetch-hanken-grotesk.mjs            # telecharge dans public/fonts/
+node scripts/fetch-hanken-grotesk.mjs --check    # verifie la presence (sortie 1)
+```
+
+**Toujours en local, jamais un `<link>` vers Google.** Un `@font-face` servi par
+`fonts.gstatic.com` envoie l'adresse IP du visiteur a un tiers AVANT tout
+bandeau de consentement : la Loi 25 l'interdit, et la CSP de `public/_headers`
+n'autorise pas ce domaine. Le script lit les URL dans la feuille que Google
+genere, donc une nouvelle version se rapatrie sans le modifier ; il refuse tout
+fichier dont la signature n'est pas `wOF2`.
+
+Quatre fichiers (normal + italique x latin + latin-ext), 110 Ko au total, servis
+**a la demande** par `unicode-range`. Seul `latin` est precharge dans
+`BaseLayout` : il couvre la totalite du francais et de l'anglais.
+
+**PLANCHER DE 16 px (2026-09-22).** Plus aucun texte sous 16 px. Le plancher est
+STRUCTUREL, pas declaratif : `--text-xs` et `--text-sm` sont ecrases a `1rem`
+dans le `@theme` de `theme.css`, donc une classe `text-sm` ecrite demain ne peut
+plus repasser sous 16 px. Seule faille possible : une valeur ARBITRAIRE ecrite
+en dur dans le balisage (`text-[0.875rem]`) — il y en avait 6, toutes relevees.
+Garde-fou : `tests/e2e/typographie.spec.ts`.
+
 **Nettoyer une clé de fond RETIRÉE de la palette :**
 
 ```

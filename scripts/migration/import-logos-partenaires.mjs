@@ -72,6 +72,25 @@ function signatureValide(nom, buf) {
   return null;
 }
 
+/**
+ * Un SVG qui n'a QUE `viewBox` n'a pas de taille intrinsèque — seulement un
+ * rapport. Posé dans une boîte sans hauteur définie, il s'effondre à 0x0 : deux
+ * des logos livrés (checkpoint, microsoft) l'ont fait. On leur pose `width` et
+ * `height` déduits du `viewBox`, pour qu'ils se comportent comme les autres
+ * quel que soit le gabarit qui les affiche.
+ */
+function normaliserSvg(nom, buf) {
+  if (!nom.endsWith('.svg')) return buf;
+  const texte = buf.toString('utf8');
+  const balise = texte.match(/<svg\b[^>]*>/);
+  if (!balise || /\swidth\s*=/.test(balise[0])) return buf;
+  const vb = balise[0].match(/viewBox\s*=\s*["']\s*[-\d.]+\s+[-\d.]+\s+([\d.]+)\s+([\d.]+)/);
+  if (!vb) return buf;
+  const remplace = balise[0].replace(/^<svg\b/, `<svg width="${vb[1]}" height="${vb[2]}"`);
+  console.log(`  ${''.padEnd(34)}  ↳ ${nom} : width/height ajoutés (${vb[1]}x${vb[2]})`);
+  return Buffer.from(texte.replace(balise[0], remplace), 'utf8');
+}
+
 mkdirSync(DEST, { recursive: true });
 
 const resultats = { ok: 0, deja: 0, manquants: [], erreurs: [] };
@@ -107,7 +126,7 @@ for (const [nom, chemin] of Object.entries(LOGOS)) {
       resultats.erreurs.push(`${nom} — ${faute} (${buf.length} o) — chemin probablement faux : ${url}`);
       continue;
     }
-    writeFileSync(cible, buf);
+    writeFileSync(cible, normaliserSvg(nom, buf));
     resultats.ok += 1;
     console.log(`  ${nom.padEnd(34)} ${String(buf.length).padStart(7)} o`);
   } catch (e) {

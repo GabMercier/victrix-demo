@@ -202,7 +202,12 @@ const ga4Bootstrap = GA4_ID
 
     {/* Preload the primary font to cut layout shift on first paint —
         Hanken Grotesk variable couvre 100-900 en un seul fichier. */}
-    <link rel="preload" href="/fonts/InterVariable-subset.woff2" as="font" type="font/woff2" crossorigin />
+    {/* Seul le sous-ensemble `latin` est préchargé : il couvre la totalité du
+        français et de l'anglais, donc tout le texte visible au premier rendu.
+        Les trois autres fichiers (latin-ext, italiques) sont chargés à la
+        demande par `unicode-range` — les précharger gaspillerait 75 Ko sur
+        chaque page. */}
+    <link rel="preload" href="/fonts/HankenGrotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <title>{fullTitle}</title>
     <meta name="description" content={metaDescription} />
