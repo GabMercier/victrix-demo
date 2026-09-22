@@ -1,6 +1,10 @@
 {
+  "_schema": "default",
   "title": "Scalable Security Operations Center",
   "description": "Detect, respond, and continuously improve your security posture with SEvOC, our scalable Security Operations Center (SOC).",
+  "noindex": false,
+  "slug": "cybersecurity/scalable-security-operations-center",
+  "seoTitle": "Security Operations Center | Scalable SOC",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -8,15 +12,20 @@
     {
       "_bookshop_name": "service-hero",
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "SEvOC",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Scalable Security Operations Center",
       "titleHighlight": "Scalable",
       "lead": "Protect Today. Evolve Tomorrow. Detect, respond, and continuously improve your security posture with SEvOC, our scalable SOC with a distinctly human approach, built to support the growth and transformation of your organization.",
-      "ctaLabel": "Let's talk about your projects",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2022/02/solution-sevoc-intro.jpg",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
@@ -47,7 +56,7 @@
         "icon": "bouclier",
         "title": "Benefits of Our SOC Service",
         "text": "Deal with the increase in advanced cyber threats, supplement your in-house security team with our experts, and simplify the integration of new entities in a context of growth or merger.",
-        "linkLabel": "Discover our cybersecurity expertise",
+        "linkLabel": "Explore our cybersecurity services",
         "linkHref": "/en/services/cybersecurity"
       }
     },
@@ -57,7 +66,7 @@
       "title": "What SEvOC Brings to Your Organization",
       "intro": "Support, operations, and evolution: a modular offering that covers the full cycle.",
       "fond": "givre",
-      "ctaLabel": "Talk to a SEvOC expert",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "items": [
         {
@@ -140,6 +149,7 @@
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Services Beyond Traditional Managed Security",
+      "fond": "",
       "paragraphs": [
         "Victrix is not just a <a href=\"/en/services/managed-it-services/\">managed services provider</a>, and SEvOC is not just another SOC. Here's what makes our SOC team so strong.",
         "<strong>Technological expertise</strong> — Microsoft Sentinel partnership, CrowdStrike ELP partnership (only authorized French-speaking MSSP), <a href=\"/en/ressources/iso-27001-iso-9001-certifications/\">ISO/IEC 27001:2022 and ISO 9001:2015 certification</a>, and management of hybrid or complex environments.",
@@ -170,14 +180,18 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": "",
-      "fond": ""
+      "cardText": ""
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "sectionTitle": "Concrete Benefits of SEvOC",
       "headingStyle": "plain",
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -185,32 +199,44 @@
         {
           "number": "01",
           "title": "Visualization",
-          "text": "Of suspicious activity, with fewer false positives."
+          "text": "Of suspicious activity, with fewer false positives.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
           "title": "Reduction",
-          "text": "In threat detection and remediation time."
+          "text": "In threat detection and remediation time.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
           "title": "Acceleration",
-          "text": "Of new technology integration."
+          "text": "Of new technology integration.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "04",
           "title": "Minimization",
-          "text": "Of operational risks and the burden of cybersecurity management."
+          "text": "Of operational risks and the burden of cybersecurity management.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "05",
           "title": "Elimination",
-          "text": "Of repetitive tasks for your staff."
+          "text": "Of repetitive tasks for your staff.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "06",
           "title": "Consolidation",
-          "text": "And continuous strengthening of your security posture."
+          "text": "And continuous strengthening of your security posture.",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
       ]
     },
@@ -237,7 +263,5 @@
       "variant": "nuit",
       "fond": "blanc"
     }
-  ],
-  "slug": "cybersecurity/scalable-security-operations-center",
-  "seoTitle": "Security Operations Center | Scalable SOC"
+  ]
 }
