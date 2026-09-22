@@ -1,6 +1,10 @@
 {
+  "_schema": "default",
   "title": "Maximize the use of your M365 ecosystem",
   "description": "Get the most out of M365 with our Microsoft 365 managed services. Victrix takes care of management and security operations to ensure your compliance.",
+  "noindex": false,
+  "slug": "managed-it-services/maximize-the-use-of-your-m365-ecosystem",
+  "seoTitle": "Microsoft 365 | Services | Victrix",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -9,14 +13,19 @@
       "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Maximize the use of your M365 ecosystem",
       "titleHighlight": "M365 ecosystem",
       "lead": "Our Microsoft 365 management solution handles administrative and security tasks to ensure your environment remains compliant.",
-      "ctaLabel": "Let's meet",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2022/05/istock-508289586.jpg",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
@@ -42,6 +51,7 @@
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Approach",
+      "subtitle": "",
       "fond": "givre",
       "boxes": [
         "Technical Support and Advice",
@@ -56,6 +66,11 @@
       "type": "numbered-cards",
       "sectionTitle": "Benefits of Victrix's M365 Managed Services",
       "headingStyle": "plain",
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -63,17 +78,23 @@
         {
           "number": "01",
           "title": "Proactivity",
-          "text": "Allow your team to focus on the core business of your organization."
+          "text": "Allow your team to focus on the core business of your organization.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
           "title": "Security",
-          "text": "Take advantage of our NOC and SOC systems to protect yourself against cyber threats."
+          "text": "Take advantage of our NOC and SOC systems to protect yourself against cyber threats.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
           "title": "Vigilance and Evolution",
-          "text": "Ensure a fast and efficient service, constant monitoring and the evolution of your environment."
+          "text": "Ensure a fast and efficient service, constant monitoring and the evolution of your environment.",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
       ]
     },
@@ -142,7 +163,5 @@
       "variant": "nuit",
       "fond": "blanc"
     }
-  ],
-  "slug": "managed-it-services/maximize-the-use-of-your-m365-ecosystem",
-  "seoTitle": "Microsoft 365 Managed Services | Expertise"
+  ]
 }
