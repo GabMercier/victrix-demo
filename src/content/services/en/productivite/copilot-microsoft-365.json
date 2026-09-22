@@ -1,6 +1,10 @@
 {
+  "_schema": "default",
   "title": "Copilot for Microsoft 365",
   "description": "Get personalized, secure support to accelerate the implementation and adoption of Copilot for Microsoft 365 in your organization.",
+  "noindex": false,
+  "slug": "productivity-consulting/copilot-for-microsoft-365",
+  "seoTitle": "",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -12,7 +16,7 @@
       "title": "Implementation and adoption of Copilot for Microsoft 365",
       "titleHighlight": "Copilot",
       "lead": "Get structured, secure, and personalized support to accelerate the implementation and adoption of Copilot for Microsoft 365. Start benefiting from the power of artificial intelligence in your organization with the support of Victrix.",
-      "ctaLabel": "Request a consultation",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
@@ -23,7 +27,7 @@
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
-      "title": "Structured, secure, and personalized support",
+      "title": "Structured, Secure, and Personalized Support",
       "intro": "Choose the right Copilot for Microsoft 365 licenses for your organization with help from Victrix.",
       "fond": "blanc",
       "featured": {
@@ -43,9 +47,13 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
-      "sectionTitle": "Our structured adoption strategy",
+      "sectionTitle": "Our Structured Adoption Strategy",
       "headingStyle": "underline",
       "intro": "Our 4-step Copilot support framework ensures your success with Copilot for Microsoft 365 and helps you maximize your investment.",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "default",
       "columns": "2",
       "cardStyle": "default",
@@ -53,29 +61,38 @@
         {
           "number": "01",
           "title": "Secure and govern",
-          "text": "Environment audit, technical validation and parameterization, governance and personalized recommendations."
+          "text": "Environment audit, technical validation and parameterization, governance and personalized recommendations.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
           "title": "Define scenarios and deploy",
-          "text": "Winning scenarios and target users, success criteria, training."
+          "text": "Winning scenarios and target users, success criteria, training.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
           "title": "Monitor and measure",
-          "text": "Testing of scenarios, continuous supervision, analysis and evaluation of experiments."
+          "text": "Testing of scenarios, continuous supervision, analysis and evaluation of experiments.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "04",
           "title": "Amplify and adapt",
-          "text": "Continuity plan and customization opportunities."
+          "text": "Continuity plan and customization opportunities.",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
       ]
     },
     {
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
-      "title": "Anticipating Copilot governance",
+      "title": "Anticipating Copilot Governance",
+      "fond": "",
       "paragraphs": [
         "<strong>Develop a structured governance strategy</strong> to drive adoption and transform Microsoft Copilot into a proper performance driver.",
         "Protecting sensitive data: implement optimal security measures to ensure the protection of your confidential information."
@@ -100,21 +117,19 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": "",
-      "fond": ""
+      "cardText": ""
     },
     {
       "_bookshop_name": "cta",
       "type": "cta",
-      "title": "Accelerate the adoption of Copilot for Microsoft 365",
+      "title": "Accelerate the Adoption of Copilot for Microsoft 365",
       "body": "With Victrix as your partner, benefit from structured support to maximize the potential of Copilot for Microsoft 365. Contact us for quick assistance and to ensure the success of your implementation and adoption of this innovative technology solution.",
-      "ctaLabel": "Contact us",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
       "fond": "blanc"
     }
-  ],
-  "slug": "productivity-consulting/copilot-for-microsoft-365"
+  ]
 }
