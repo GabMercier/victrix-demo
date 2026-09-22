@@ -41,14 +41,13 @@ la réversibilité**.
 
 ## 2. Décisions qui n'attendent que Gabriel
 
-Aucun agent ne peut avancer dessus. Chacune débloque un lot.
+**Elles vivent toutes dans `docs/plan-livraison-finale.md` § 2** — D1 à D17,
+avec leur recommandation et le lot qu'elles débloquent. Ce document ne les
+recopie pas : un seul endroit fait foi, et c'est le plan.
 
-| # | Décision | Débloque |
-|---|---|---|
-| **Police** | Comparer avec `?police=montserrat`, `?police=nunito`, `?police=hanken` sur `/fr/` et `/fr/campagnes/licences-power-platform/`, puis trancher. Une police Google retenue = la rapatrier en local avant la prod (Loi 25). | L-polices |
-| **Formulaires orphelins** | `campagne-evaluation` (plus utilisé depuis le 21/09) et `campagne-guide-licences` (jamais utilisé) : supprimer ou garder. Et le sort d'`o-studio`, 3ᵉ formulaire de demande. | — |
-| **Liste de prix Check Point** | Reprendre l'outil, le remplacer par un PDF + formulaire, ou le retirer. | L-prix |
-| **D2 / D3 / D4 / D7** | H1, `noindex` restants, logos de marque, pages `/document/*`. Voir § 2 du plan de livraison. | L04, L05, L07, L12 |
+Les quatre qui bloquent un prompt ci-dessous : **D9** (police → L-polices),
+**D10** (« Expertise » ou « Service » → L-libelle), **D2** (H1 → L04),
+**D12** (prix Check Point → L-prix).
 
 ---
 
@@ -281,7 +280,24 @@ Rituel.
 - **Écart assumé non tranché** : le bouton du Contact n'a pas de pictogramme
   (fidélité maquette), celui de la section « form » garde son avion en papier.
 - **Deux articles FR sans traduction EN** (`societe-conseil-lambda-victrix`,
-  `une-journee-dans-la-vie-secops`) — avertissement à chaque build.
+  `une-journee-dans-la-vie-secops`) — avertissement à chaque build (D13).
+- **Plan de site réparé le 22/09** : il n'annonçait que **72 URL sur 186** — le
+  `noindex` de la page mère `services.json` désindexait ses ~100 enfants, parce
+  que le filtre comparait les chemins avec `includes`. Corrigé (correspondance
+  exacte + parcours récursif), **150 URL**, logique extraite dans
+  `scripts/lib/sitemap-filter.mjs` avec 6 tests. Ne pas refaire ce raccourci.
+- **`routing.json` est GÉNÉRÉ au build** dans `dist/_cloudcannon/routing.json`
+  (189 routes + 5 règles d'en-têtes) et prime sur `.cloudcannon/routing.json` :
+  rien à committer, rien à maintenir en double. Les jokers Cloudflare
+  (`:splat`) y sont traduits en `(.*)` / `$1`, et le bloc `/*` de
+  `public/_headers` est recopié dans chaque règle précise — CloudCannon ne
+  fusionne pas les en-têtes. `public/_headers` reste la source unique.
+- **Test d'accessibilité stabilisé le 22/09** : il avait été vu rouge une fois
+  sur le catalogue. axe lit les couleurs CALCULÉES, donc une transition en
+  cours lui fait mesurer une teinte qui n'existe qu'une fraction de seconde. Le
+  spec coupe désormais les animations (`emulateMedia reducedMotion`) et attend
+  `document.fonts.ready` — 27/27 sur trois répétitions. Reproduire ce réglage
+  dans tout nouveau spec qui mesure des couleurs ou des positions.
 
 ## 5. Pièges d'outillage qui ont coûté du temps le 21/09
 

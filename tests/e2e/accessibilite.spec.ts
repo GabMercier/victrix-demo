@@ -37,11 +37,23 @@ const NORMES = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 
 for (const { url, nom } of PAGES) {
   test(`aucune violation d'accessibilité — ${nom}`, async ({ page }) => {
+    // STABILITÉ (2026-09-22) : le catalogue de solutions a été vu rouge UNE
+    // fois puis vert seul et vert à la reprise. axe lit les couleurs
+    // CALCULÉES à l'instant du scan : surpris pendant une transition (le
+    // bandeau de consentement qui se pose, un `transition-colors` de carte),
+    // il mesure une teinte intermédiaire qui n'existe qu'une fraction de
+    // seconde. On coupe donc les animations à la source, par le média que le
+    // site respecte déjà (global.css § prefers-reduced-motion) plutôt que par
+    // une attente arbitraire.
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(url);
     // Le bandeau de consentement se pose au chargement et couvre la page :
     // il fait partie de ce qu'un visiteur voit en premier, on le scanne donc
     // AVEC le reste, une fois qu'il a fini de s'afficher.
     await page.waitForLoadState('networkidle');
+    // Les polices changent la mise en page, donc les chevauchements et les
+    // cibles tactiles : attendre qu'elles soient posées.
+    await page.evaluate(() => document.fonts.ready);
     const { violations } = await new AxeBuilder({ page }).withTags(NORMES).analyze();
 
     // Message lisible : la règle, son impact et le premier élément fautif —
