@@ -12,15 +12,20 @@
     {
       "_bookshop_name": "service-hero",
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Services",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Artificial Intelligence Opportunity Analysis",
       "titleHighlight": "Opportunity",
       "lead": "Leverage your data and optimize your processes for a secure, cost-effective AI adoption that is perfectly aligned with your business objectives.",
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2025/10/freepik__adjust__18305-1.png",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
@@ -38,7 +43,7 @@
         "icon": "etoile",
         "title": "Not sure how to start with AI?",
         "text": "Our experts support you every step of the way to ensure the success of all your digital transformation projects with AI.",
-        "linkLabel": "Consult a specialist",
+        "linkLabel": "Schedule a consultation",
         "linkHref": "/en/contact"
       }
     },
@@ -62,6 +67,10 @@
       "sectionTitle": "The Key Steps in Our Approach",
       "headingStyle": "plain",
       "intro": "Our AI opportunity analysis process consists of four clear steps.",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "default",
       "columns": "2",
       "cardStyle": "default",
@@ -69,22 +78,30 @@
         {
           "number": "01",
           "title": "Start",
-          "text": "Defining the vision and mobilizing stakeholders."
+          "text": "Defining the vision and mobilizing stakeholders.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
           "title": "Diagnosis",
-          "text": "Analysis of the current state and exploration of AI use cases."
+          "text": "Analysis of the current state and exploration of AI use cases.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
           "title": "Evaluation",
-          "text": "Analysis of opportunities, measuring value, feasibility, and risks."
+          "text": "Analysis of opportunities, measuring value, feasibility, and risks.",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "04",
           "title": "Roadmap",
-          "text": "Prioritization of projects and structured adoption plan."
+          "text": "Prioritization of projects and structured adoption plan.",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
       ]
     },
@@ -92,6 +109,7 @@
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Concrete Benefits for Your Organization",
+      "fond": "",
       "paragraphs": [
         "With <strong>Victrix as your strategic partner</strong>, you combine technological expertise and tailored support to optimize the value of artificial intelligence within your organization.",
         "We help you clarify your priorities, identify the most promising AI use cases, and build a strategic roadmap for a secure and profitable adoption of artificial intelligence."
@@ -120,8 +138,7 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": "",
-      "fond": ""
+      "cardText": ""
     },
     {
       "_bookshop_name": "related-posts",
