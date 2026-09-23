@@ -2468,11 +2468,20 @@ collections_config:
           empty_type: string
         label: Libellé du lien
       linkHref:
+        # Le même champ existe à DEUX niveaux — les `_inputs` sont indexés par
+        # nom de champ et cascadent, donc ce réglage sert aux deux, d'où un
+        # libellé qui vaut dans les deux cas.
         type: text
         options:
           empty_type: string
         label: Lien de l'annonce
-        comment: Sans préfixe de langue (ex. /produits). Commun aux deux langues.
+        comment: >-
+          Sans préfixe de langue (ex. /solutions) — le site ajoute /fr ou /en.
+          Celui du haut vaut pour les DEUX langues ; celui placé sous « Français »
+          ou « English » ne vaut que pour cette langue et l'emporte. À remplir par
+          langue dès que la page visée a une adresse traduite (c'est le cas des
+          pages de service : /services/intelligence-artificielle/… en français,
+          /services/artificial-intelligence/… en anglais).
 
   # Navigation du site (menu principal, méga-menu, bouton
   # portail) — un JSON par langue dans src/data/navigation, consommé par

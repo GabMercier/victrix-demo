@@ -237,7 +237,11 @@ const langLinkClass = 'no-underline p-1 text-sm';
       <div class="container-site flex items-center justify-center gap-4 py-2">
         <p class="m-0 max-w-none text-center">
           {announce.before}<strong class="font-semibold">{announce.strong}</strong>{announce.after}
-          <a class="text-on-primary font-semibold underline whitespace-nowrap" href={announce.href}>
+          {/* `ml-3` et non une espace : entre deux expressions, Astro (comme
+              JSX) n'insère AUCUN blanc — le lien se collait au point final
+              (« …productivité.En savoir plus → »). La marge tient aussi quand
+              le bandeau passe à la ligne, ce qu'une espace ne garantit pas. */}
+          <a class="text-on-primary font-semibold underline whitespace-nowrap ml-3" href={announce.href}>
             {announce.linkLabel}
           </a>
         </p>

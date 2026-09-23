@@ -1741,6 +1741,15 @@ const annonceText = z.object({
   strong: z.string(),
   after: z.string(),
   linkLabel: z.string().min(1),
+  // LIEN PROPRE À LA LANGUE (2026-09-23) — vide = le `linkHref` commun.
+  // Pourquoi : le lien commun suppose que les deux langues partagent l'URL, ce
+  // qui est vrai pour /solutions ou /contact, mais FAUX dès qu'on vise une page
+  // de service — leurs slugs anglais sont traduits. La campagne d'accompagnement
+  // IA vit sous `intelligence-artificielle/accompagnement-ia` en français et
+  // `artificial-intelligence/landing-ai-consulting` en anglais : avec le seul
+  // lien commun, le bandeau anglais tombait sur un 404.
+  // SANS préfixe de langue, comme le lien commun (convention navigation).
+  linkHref: z.union([navHref, z.literal('')]).default(''),
 });
 const annonces = defineCollection({
   loader: glob({ pattern: '*.json', base: './src/data/annonces' }),

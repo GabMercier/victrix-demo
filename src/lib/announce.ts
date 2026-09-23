@@ -45,8 +45,16 @@ export async function getActiveAnnounce(lang: Locale): Promise<ActiveAnnounce | 
     STATIC_ONLY_BUILD,
   );
   if (!active) return null;
-  const text = active[lang];
-  return { id: active.id, ...text, href: localizePath(active.linkHref, lang) };
+  // `linkHref` de la LANGUE d'abord, lien commun en repli (2026-09-23) : les
+  // slugs anglais des pages de service sont traduits, donc une bannière qui
+  // vise une page précise a besoin d'une adresse par langue. Vide = les deux
+  // langues partagent l'URL (/solutions, /contact…), comportement d'avant.
+  const { linkHref: lienDeLaLangue, ...text } = active[lang];
+  return {
+    id: active.id,
+    ...text,
+    href: localizePath(lienDeLaLangue || active.linkHref, lang),
+  };
 }
 
 /**
