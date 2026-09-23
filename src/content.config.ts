@@ -1470,10 +1470,17 @@ const services = defineCollection({
  * complète). Une entrée JSON par solution, ids "<locale>/<fichier>" (même
  * patron que blog/landing/services : le nom de fichier apparie FR/EN).
  *
- * PAS de pages de détail pour l'instant — `href`/`docHref` pointent vers une
- * cible existante (ex. /contact) ou restent vides (lien masqué). Les valeurs
- * de `sector` et `solutionType` sont LIBRES : la page catalogue construit ses
- * filtres à partir des valeurs distinctes rencontrées (ordre d'apparition).
+ * DEPUIS LE LOT L11 (2026-09-23), une fiche peut porter des `sections` : elle a
+ * alors sa PAGE (/<langue>/solutions/<slug>/, route
+ * src/pages/[lang]/solutions/[slug].astro) et « Découvrir » y mène. Sans
+ * `sections`, rien ne change : aucune page n'est générée et la carte garde son
+ * lien `href` — c'est l'état des 9 fiches EN, dont la traduction est un travail
+ * de contenu. `href` reste une SURCHARGE : rempli, il l'emporte sur la fiche
+ * (ex. `o-bureau`, qui a déjà une page de service plus riche).
+ *
+ * Les valeurs de `sector` et `solutionType` sont LIBRES : la page catalogue
+ * construit ses filtres à partir des valeurs distinctes rencontrées (ordre
+ * d'apparition) — d'où la règle éditoriale « reprendre la graphie exacte ».
  */
 const solutions = defineCollection({
   loader: glob({
@@ -1481,30 +1488,52 @@ const solutions = defineCollection({
     base: './src/content/solutions',
     generateId: ({ entry }) => entry.replace(/\\/g, '/').replace(/\.[^/.]+$/, ''),
   }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    // Chemin PUBLIC servi tel quel ("" = vignette de remplacement grise).
-    image: z.string().default(''),
-    // Chip du haut de vignette (filtre « Secteurs d'activité »).
-    sector: z.string(),
-    // Chip du pied de carte (filtre « Types de solution »).
-    solutionType: z.string(),
-    // true → l'entrée alimente le panneau vedette (bleu nuit) en tête de
-    // catalogue (la première trouvée dans l'ordre `order` gagne).
-    featured: z.boolean().default(false),
-    // Ordre d'affichage dans la grille (croissant).
-    // Seul nombre du CMS : un champ vidé arrive en `""` (voir nullsToEmpty) →
-    // retombe sur le défaut plutôt que de casser le build.
-    order: z.preprocess((v) => (v === '' ? undefined : v), z.number().default(999)),
-    href: z.string().default(''),
-    docHref: z.string().default(''),
-    // Service présélectionné sur Contact quand `href` y mène (2026-09-18 : le
-    // champ OBLIGATOIRE « Service » restait vide en arrivant du catalogue).
-    // Clé neutre (src/lib/contact/presets.ts) ; '' = repli sur le
-    // `contactService` de la page qui porte le catalogue.
-    contactService: z.enum(['', ...CONTACT_SERVICE_KEYS]).default(''),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      // Chemin PUBLIC servi tel quel ("" = vignette de remplacement grise).
+      image: z.string().default(''),
+      // Chip du haut de vignette (filtre « Secteurs d'activité »).
+      sector: z.string(),
+      // Chip du pied de carte (filtre « Types de solution »).
+      solutionType: z.string(),
+      // true → l'entrée alimente le panneau vedette (bleu nuit) en tête de
+      // catalogue (la première trouvée dans l'ordre `order` gagne).
+      featured: z.boolean().default(false),
+      // Ordre d'affichage dans la grille (croissant).
+      // Seul nombre du CMS : un champ vidé arrive en `""` (voir nullsToEmpty) →
+      // retombe sur le défaut plutôt que de casser le build.
+      order: z.preprocess((v) => (v === '' ? undefined : v), z.number().default(999)),
+      href: z.string().default(''),
+      docHref: z.string().default(''),
+      // Service présélectionné sur Contact quand `href` y mène (2026-09-18 : le
+      // champ OBLIGATOIRE « Service » restait vide en arrivant du catalogue).
+      // Clé neutre (src/lib/contact/presets.ts) ; '' = repli sur le
+      // `contactService` de la page qui porte le catalogue.
+      contactService: z.enum(['', ...CONTACT_SERVICE_KEYS]).default(''),
+
+      // ---- FICHE DE SOLUTION (2026-09-23, lot L11) ------------------------
+      // Une entrée n'est plus seulement une CARTE du catalogue : dès qu'elle
+      // porte des `sections`, elle a sa propre page /<langue>/solutions/<slug>/
+      // (route src/pages/[lang]/solutions/[slug].astro) et « Découvrir » y mène.
+      // `sections` VIDE = comportement d'avant, à la lettre : aucune page n'est
+      // générée, la carte garde son lien. C'est le cas des 9 fiches EN, dont la
+      // traduction est un travail de contenu — rien ne casse en attendant.
+      sections: z.array(sectionsSchema(image)).default([]),
+      // Surcharge du slug d'URL (patron services) : le nom de FICHIER apparie
+      // FR et EN, ce champ permet à l'anglais de porter son URL à lui.
+      slug: z.string().default(''),
+      // `noindex` : les 16 fiches importées de Ø Studio sont générées à `true`
+      // — elles affichent des fourchettes de prix que Ø Studio doit valider
+      // (ADO #1634). À décocher fiche par fiche au CMS une fois validées.
+      noindex: z.boolean().default(false),
+      seoTitle: z.string().default(''),
+      seoH1: z.string().default(''),
+      // Préremplissage du Contact DEPUIS la fiche (le `contactService`
+      // ci-dessus sert aussi au bouton de la CARTE, dans le catalogue).
+      contactSujet: z.enum(['', ...CONTACT_SUJET_KEYS]).default(''),
+    }),
 });
 
 /**

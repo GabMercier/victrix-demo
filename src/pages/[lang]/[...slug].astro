@@ -154,13 +154,27 @@ export async function getStaticPaths() {
       const solutionEntries = (await getCollection('solutions'))
         .filter((entry) => entry.id.startsWith(`${lang}/`))
         .sort((a, b) => a.data.order - b.data.order);
+      // « Découvrir » mène à la FICHE (lot L11, 2026-09-23) dès que l'entrée
+      // porte des `sections` — c'est ce qui fait d'elle une page. `href` reste
+      // une SURCHARGE : rempli, il l'emporte (ex. `o-bureau`, dont la page de
+      // service est plus riche que sa fiche). Sans fiche ET sans `href`, le
+      // lien reste masqué, comme avant : c'est l'état des 9 cartes EN, dont la
+      // traduction est un travail de contenu — elles gardent leur `/contact`.
+      const ficheHref = (entry: (typeof solutionEntries)[number]) => {
+        const fichier = entry.id.slice(entry.id.indexOf('/') + 1);
+        return localizePath(`/solutions/${entry.data.slug || fichier}/`, lang);
+      };
       const toCard = (entry: (typeof solutionEntries)[number]) => ({
         title: entry.data.title,
         description: entry.data.description,
         image: entry.data.image,
         sector: entry.data.sector,
         solutionType: entry.data.solutionType,
-        href: contactHref(entry.data.href, entry.data.title, entry.data.contactService),
+        href: entry.data.href
+          ? contactHref(entry.data.href, entry.data.title, entry.data.contactService)
+          : entry.data.sections.length > 0
+            ? ficheHref(entry)
+            : '',
         docHref: entry.data.docHref ? localizePath(entry.data.docHref, lang) : '',
       });
       const featuredEntry = solutionEntries.find((entry) => entry.data.featured);

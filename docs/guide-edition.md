@@ -549,8 +549,34 @@ Le catalogue est en deux morceaux :
   la solution — le visiteur arrive sur un formulaire où le sujet (« Un
   projet ») et le champ « Précisez votre demande » sont déjà remplis. Rien à
   configurer : c'est automatique dès que le lien est `/contact`.
-- Une fiche n'a pas (encore) de page propre : « Découvrir » mène au lien de la
-  carte. Les pages de détail sont une suite planifiée.
+
+### Chaque solution a maintenant sa page (2026-09-23)
+
+« Découvrir » ne saute plus au formulaire de contact : il mène à la **page de
+la solution** (`/fr/solutions/<nom-du-fichier>/`), où le visiteur trouve la
+présentation, les informations clés, les captures d'écran et le formulaire.
+
+- **La page se compose comme les autres**, dans **Solutions (FR)** → une fiche
+  → éditeur visuel. Elle est faite de sections : héros produit, « En bref »
+  (client, coût, délai, technologies), galerie d'images, formulaire.
+- **Le champ « Lien de la carte » est maintenant une SURCHARGE.** Laissez-le
+  **vide** : « Découvrir » ira sur la page de la solution. Ne le remplissez que
+  pour envoyer ailleurs — c'est le cas d'**Ø Bureau**, dont la page de service
+  est plus riche que sa fiche.
+- **Une fiche sans section n'a pas de page** : sa carte reste dans le
+  catalogue, et son lien doit alors être rempli (sinon la carte n'a pas de
+  bouton). C'est l'état des **9 fiches anglaises** : elles continuent de mener
+  au formulaire de contact prérempli, en attendant leur traduction.
+- **Les 16 fiches françaises sont masquées des moteurs de recherche**
+  (« Masquer des moteurs de recherche » activé) : elles affichent des
+  fourchettes de prix que Ø Studio doit valider. À décocher fiche par fiche
+  quand le contenu est validé.
+- **Le formulaire de la page dit de quelle solution il s'agit** : son champ
+  caché « Page d'origine » porte le nom de la solution et l'adresse de sa page.
+  Rien à configurer.
+- **Les textes de remplacement des images sont provisoires** (voir « Galerie
+  d'images ») : la liste à réécrire est dans
+  `docs/migration/catalogue-ostudio.md`.
 - Le catalogue est accessible aux visiteurs par **« Catalogue de solutions »**
   dans la colonne Produits du méga-menu et du pied de page.
 

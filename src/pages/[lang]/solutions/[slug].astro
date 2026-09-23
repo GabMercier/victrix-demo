@@ -1,0 +1,178 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import {
+  type Locale,
+  defaultLocale,
+  otherLocale,
+  localizePath,
+  isLocale,
+  htmlLang,
+} from '../../../i18n/config';
+// Le renderer Bookshop partagé mappe chaque section à son composant. Les
+// sections DOIVENT passer par lui — avec la directive `bookshop:live` — pour
+// que l'édition visuelle CloudCannon se branche (voir l'entête du renderer).
+import Page from '../../../../component-library/src/shared/astro/page.astro';
+import JsonLd from '../../../components/JsonLd.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { breadcrumbSchema } from '../../../lib/seo/breadcrumb';
+import { useTranslations } from '../../../i18n/ui';
+
+/**
+ * FICHES DU CATALOGUE Ø STUDIO — une page par solution (lot L11, 2026-09-23).
+ *
+ * Réplique du patron des services (src/pages/[lang]/services/[...slug].astro),
+ * avec tout ce qui y est load-bearing : variable LITTÉRALE `frontmatter`, seam
+ * `enrich` (formulaires liés + jetons {{page.*}}), garde-fou de `formId`,
+ * `altLocalePath` par fichier homonyme. Les différences tiennent en trois
+ * points :
+ *
+ *  1. UNE ENTRÉE N'EST PAS FORCÉMENT UNE PAGE. La collection `solutions` sert
+ *     d'abord de CARTES au catalogue ; seules les entrées qui portent des
+ *     `sections` ont une page. Les 9 fiches EN n'en ont pas (leur traduction
+ *     est un travail de contenu) : aucune page EN n'est générée, et la carte
+ *     EN garde son lien vers le Contact. Rien à désactiver, rien qui casse.
+ *  2. LE FIL D'ARIANE PASSE PAR LE CATALOGUE : Accueil → Catalogue de
+ *     solutions → fiche. Le libellé du niveau intermédiaire est le `title` de
+ *     la page catalogue elle-même (collection `pages`, fichier `solutions`) —
+ *     pas une chaîne écrite ici, sinon les deux divergeraient au premier
+ *     renommage au CMS.
+ *  3. LE PRÉREMPLISSAGE DU CONTACT est celui d'une solution : sujet
+ *     « solution » (clé neutre de src/lib/contact/presets.ts, celle que le
+ *     catalogue pose déjà sur ses cartes) et le `contactService` de la FICHE.
+ *
+ * `noindex` est à `true` sur les 16 fiches importées : elles affichent des
+ * fourchettes de prix que Ø Studio doit valider (ADO #1634). Le JSON-LD
+ * `Product` n'est donc émis pour aucune d'elles aujourd'hui — il apparaîtra
+ * fiche par fiche, quand la case sera décochée au CMS.
+ */
+export async function getStaticPaths() {
+  const entries = await getCollection('solutions');
+  const pages = await getCollection('pages');
+  const formEntries = await getCollection('forms');
+
+  const paths = [];
+  for (const entry of entries) {
+    // Une carte sans sections n'a pas de page (voir l'entête, point 1).
+    if (!entry.data.sections || entry.data.sections.length === 0) continue;
+
+    // ids = "<locale>/<fichier>" — le nom de fichier apparie FR et EN.
+    const seg = entry.id.split('/')[0];
+    const lang: Locale = isLocale(seg) ? seg : defaultLocale;
+    const filePath = entry.id.slice(entry.id.indexOf('/') + 1);
+    const slug = entry.data.slug || filePath;
+    const other = otherLocale[lang];
+
+    // Sélecteur de langue / hreflang : la traduction n'existe que si elle a,
+    // elle aussi, des sections — sinon son URL serait un 404. Repli sur
+    // l'accueil de l'autre langue, comme les services.
+    const counterpart = entries.find(
+      (e) => e.id === `${other}/${filePath}` && e.data.sections && e.data.sections.length > 0,
+    );
+    const altLocalePath = counterpart
+      ? localizePath(`/solutions/${counterpart.data.slug || filePath}/`, other)
+      : localizePath('/', other);
+
+    // Fil d'Ariane : Accueil → Catalogue → fiche. Le libellé du catalogue vient
+    // de la page elle-même (elle est éditable au CMS).
+    const cataloguePage = pages.find((p) => p.id === `${lang}/solutions`);
+    const crumbs: { name: string; path?: string }[] = [
+      { name: useTranslations(lang).article.breadcrumbHome, path: localizePath('/', lang) },
+    ];
+    if (cataloguePage) {
+      crumbs.push({ name: cataloguePage.data.title, path: localizePath('/solutions/', lang) });
+    }
+    crumbs.push({ name: entry.data.title });
+
+    // Carte formId → définition POUR LA LANGUE de la page ; un formId qui ne
+    // résout pas fait ÉCHOUER le build en nommant la fiche et le fichier
+    // attendu (même philosophie que les routes services et campagnes).
+    const resolvedForms = Object.fromEntries(
+      formEntries
+        .filter((f) => f.id.startsWith(`${lang}/`))
+        .map((f) => [f.id.slice(lang.length + 1), f.data]),
+    );
+    for (const section of entry.data.sections) {
+      if (section.type === 'form' && section.formId && !resolvedForms[section.formId]) {
+        throw new Error(
+          `[solutions] ${entry.id} : formId « ${section.formId} » introuvable — attendu src/data/forms/${lang}/${section.formId}.json (collection Formulaires)`,
+        );
+      }
+    }
+
+    // Seam enrich « form » : définitions liées + contexte de page pour les
+    // jetons {{page.*}} des champs cachés (P-05). C'est CE contexte qui met le
+    // nom de la solution dans le champ caché « Page d'origine » du formulaire
+    // `o-studio` — sans rien ajouter au formulaire.
+    const enrich: Record<string, Record<string, unknown>> = {
+      form: {
+        resolvedForms,
+        pageContext: {
+          titre: entry.data.title,
+          chemin: `/${lang}/solutions/${slug}/`,
+          slug,
+          langue: lang,
+        },
+      },
+    };
+
+    // Préremplissage du Contact depuis les boutons de la fiche : sujet
+    // « solution » (la clé que le catalogue pose déjà sur ses cartes), service
+    // de la fiche. Les champs de page surchargent l'un et l'autre.
+    const contactPreset = {
+      sujet: entry.data.contactSujet || 'solution',
+      service: entry.data.contactService,
+    };
+
+    paths.push({
+      params: { lang, slug },
+      // `frontmatter` est LOAD-BEARING pour l'édition live CloudCannon : le
+      // plugin astro-bookshop trace une variable LITTÉRALEMENT nommée
+      // `frontmatter` pour lier bookshop:live → params(contentBlocks:sections).
+      // Ne pas renommer ni inliner.
+      props: { entry, lang, altLocalePath, frontmatter: entry.data, enrich, crumbs, contactPreset },
+    });
+  }
+  return paths;
+}
+
+const { entry, lang, altLocalePath, frontmatter, enrich, crumbs, contactPreset } = Astro.props;
+
+const crumbsSchema = breadcrumbSchema(crumbs, Astro.site!);
+
+// `contentType` (plus bas) est affiché TEL QUEL dans le filtre « Type » de
+// /recherche, à côté de Page, Article et Service : « Solution » se lit dans
+// les deux langues, « Product » non. Sans effet tant que la fiche est
+// `noindex` — BaseLayout ne pose l'attribut que sur les pages indexables.
+
+// Schéma Product — pages INDEXABLES seulement (une fiche en attente de la
+// validation des prix n'a pas à s'annoncer aux moteurs). Sans `offers` à
+// dessein : les fourchettes de la source ne sont pas des prix engageants.
+const productSchema = entry.data.noindex
+  ? null
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: entry.data.title,
+      ...(entry.data.description ? { description: entry.data.description } : {}),
+      ...(entry.data.image ? { image: new URL(entry.data.image, Astro.site).href } : {}),
+      brand: { '@type': 'Organization', name: 'Les Solutions Victrix' },
+      url: new URL(Astro.url.pathname, Astro.site).href,
+      inLanguage: htmlLang[lang],
+    };
+---
+
+<BaseLayout
+  lang={lang}
+  title={entry.data.seoTitle || entry.data.title}
+  description={entry.data.description}
+  noindex={entry.data.noindex}
+  altLocalePath={altLocalePath}
+  contentType="Solution"
+  contactPreset={contactPreset}
+>
+  <JsonLd slot="head" schema={crumbsSchema} />
+  {productSchema && <JsonLd slot="head" schema={productSchema} />}
+  <Breadcrumbs lang={lang} items={crumbs} />
+  <Page bookshop:live contentBlocks={frontmatter.sections} enrich={enrich} seoH1={frontmatter.seoH1} />
+</BaseLayout>

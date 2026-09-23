@@ -211,6 +211,35 @@ Les images sont allégées à l'écriture, avec les réglages de
 `optimize:images` (1 600 px, JPEG q80 mozjpeg, **PNG sans perte**) : 9,8 Mo
 pour 70 fichiers dans `public/images/solutions/<fiche>/`.
 
+**Poser les fiches sur le site (lot L11, 2026-09-23).**
+`scripts/migration/genere-fiches-solutions.mjs` transforme l'export en fiches
+de la collection `solutions` — **sans jamais toucher au réseau** (la source est
+l'export, ce qui reste vrai après le démantèlement du sous-domaine).
+
+```powershell
+node scripts/migration/genere-fiches-solutions.mjs           # écrit les fiches
+node scripts/migration/genere-fiches-solutions.mjs --check    # n'écrit rien, code 1 s'il en manque
+node scripts/migration/genere-fiches-solutions.mjs --force    # RÉÉCRIT les sections existantes
+```
+
+**Il ne réécrit jamais une fiche déjà composée** : dès qu'un fichier porte des
+`sections`, il est sauté et signalé — le contenu appartient alors à l'éditrice.
+`--force` est le seul moyen d'écraser, et il efface les retouches faites au
+CMS. C'est la leçon de `convert-articles.mjs`, appliquée à l'envers : un
+générateur qu'on ne peut relancer sans dégât n'est plus un outil.
+
+Ce qu'il compose (docs/plan-import-catalogue-ostudio.md §4) : `product-hero`
+(titre, introduction, maquette, bouton vers `#formulaire`), `bento-metrics`
+(« En bref » : les 4 faits en pastilles + renvoi vers la page de service
+Ø Studio), `galerie` (les captures restantes — absente quand la source n'a
+qu'une image), `form` (`formId: o-studio`). Les 9 fiches existantes **gardent
+tous leurs champs de carte** (titre, description, vignette, secteur, type,
+ordre, vedette) ; les 7 nouvelles reçoivent un secteur et un type **proposés**,
+à relire (table `PROPOSITIONS` du script — « Santé » est la seule valeur de
+filtre nouvelle). Le champ `href` qui valait `/contact` est vidé : « Découvrir »
+mène alors à la fiche. Un `href` qui pointe ailleurs est une surcharge voulue
+et reste intact (`o-bureau` garde sa page de service).
+
 **Poids des images (2026-09-23).** `npm run optimize:images` réduit et
 réencode SUR PLACE les images de `public/` — même chemin, même nom, même
 format, donc aucune référence à réécrire et aucun risque pour la médiathèque

@@ -1,12 +1,12 @@
 {
   "_schema": "default",
-  "title": "Portail de gestion des requêtes citoyennes",
-  "description": "Optimise le traitement des requêtes, assure un suivi transparent en temps réel et rapproche l'administration des citoyens.",
-  "image": "/images/solutions/requetes-citoyennes.jpg",
-  "sector": "Municipalité",
-  "solutionType": "Dynamics 365",
+  "title": "Registre des applications organisationnelles",
+  "description": "Découvrez notre application de gestion des applications organisationnelles. Centralisée et complète, elle répertorie toutes vos applications, gère les licences, les accès utilisateurs et assure une gestion optimisée des ressources.",
+  "image": "/images/solutions/registre-applications/01.jpg",
+  "sector": "Gouvernance",
+  "solutionType": "Power Platform",
   "featured": false,
-  "order": 10,
+  "order": 140,
   "href": "",
   "docHref": "",
   "contactService": "",
@@ -20,15 +20,15 @@
       "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Solution Ø Studio",
-      "title": "Portail de gestion des requêtes citoyennes",
+      "title": "Registre des applications organisationnelles",
       "titleHighlight": "",
-      "lead": "Explorez notre application de gestion des horaires étudiants. Elle facilite la consultation des emplois du temps, les notifications en cas de changement, tout en offrant aux enseignants une gestion optimisée des cours et des événements académiques.",
+      "lead": "Découvrez notre application de gestion des applications organisationnelles. Centralisée et complète, elle répertorie toutes vos applications, gère les licences, les accès utilisateurs et assure une gestion optimisée des ressources.",
       "ctaLabel": "Parler à un expert",
       "ctaHref": "#formulaire",
       "cta2Label": "Voir le catalogue",
       "cta2Href": "/fr/solutions/",
-      "image": "/images/solutions/portail-requetes-citoyennes/01.jpg",
-      "imageAlt": "Maquette de présentation — Portail de gestion des requêtes citoyennes",
+      "image": "/images/solutions/registre-applications/01.jpg",
+      "imageAlt": "Maquette de présentation — Registre des applications organisationnelles",
       "fond": "beige"
     },
     {
@@ -38,24 +38,24 @@
       "intro": "",
       "fond": "ivoire",
       "featured": {
-        "title": "Portail de gestion des requêtes citoyennes",
+        "title": "Registre des applications organisationnelles",
         "text": "",
         "watermark": "eclair",
         "stats": [
           {
-            "value": "Secteur municipal",
+            "value": "Secteur Industriel",
             "label": "Client"
           },
           {
-            "value": "300.000 $ CAD",
+            "value": "Entre 25.000 et 50.000 $ CAD",
             "label": "Coût"
           },
           {
-            "value": "Entre 3 et 12 mois",
+            "value": "Entre 1 et 3 mois",
             "label": "Délai"
           },
           {
-            "value": "Power Platform, Power Pages, Copilot Studio, SharePoint",
+            "value": "Power Platform, SharePoint",
             "label": "Technologies"
           }
         ]
@@ -79,13 +79,13 @@
       "fond": "blanc",
       "images": [
         {
-          "image": "/images/solutions/portail-requetes-citoyennes/02.png",
-          "alt": "Capture d’écran de l’application — Portail de gestion des requêtes citoyennes",
+          "image": "/images/solutions/registre-applications/02.png",
+          "alt": "Capture d’écran de l’application — Registre des applications organisationnelles",
           "legende": ""
         },
         {
-          "image": "/images/solutions/portail-requetes-citoyennes/03.png",
-          "alt": "Capture d’écran de l’application — Portail de gestion des requêtes citoyennes",
+          "image": "/images/solutions/registre-applications/03.png",
+          "alt": "Capture d’écran de l’application — Registre des applications organisationnelles",
           "legende": ""
         }
       ]

@@ -12,12 +12,38 @@ import { test, expect, type Page } from '@playwright/test';
 // 2. Loi 25 : « Gérer mes témoins » (pied de page) rouvre le bandeau de
 //    consentement après un choix — retirer son consentement doit être aussi
 //    simple que le donner.
+// MISE À JOUR 2026-09-23 (lot L11) : en FRANÇAIS, « Découvrir » ne mène plus
+// au Contact mais à la FICHE de la solution — c'était tout l'objet du lot, et
+// ce parcours-là est verrouillé par `catalogue-fiche.spec.ts`. La règle testée
+// ici reste vraie et reste utile : TOUTE carte qui mène au Contact doit l'y
+// préremplir. C'est encore le cas des 9 cartes ANGLAISES, dont les fiches ne
+// sont pas traduites, et ce sera le cas de toute carte dont l'éditrice
+// remplira le champ « Lien de la carte » avec /contact.
+//
+// Le test ne « saute » donc que lorsqu'AUCUNE carte de la langue ne mène au
+// Contact — et il vérifie alors qu'aucune n'y mène SANS préremplissage, ce qui
+// serait la vraie régression.
 test.describe('catalogue → contact prérempli', () => {
   for (const lang of ['fr', 'en'] as const) {
-    test(`${lang} : « Découvrir » préremplit sujet, SERVICE et précision`, async ({ page }) => {
+    test(`${lang} : une carte qui mène au Contact le préremplit (sujet, SERVICE, précision)`, async ({
+      page,
+    }) => {
       await page.goto(`/${lang}/solutions/`);
-      const discover = page.locator(`a[href^="/${lang}/contact?"][href*="produit="]`).first();
-      const href = await discover.getAttribute('href');
+
+      const preremplis = page.locator(`main a[href^="/${lang}/contact?"][href*="produit="]`);
+      if ((await preremplis.count()) === 0) {
+        // Aucune carte vers le Contact : le catalogue de cette langue mène à
+        // ses fiches. On s'assure qu'il n'y a pas non plus de lien de carte
+        // « nu » vers le Contact — seul le CTA de bas de page en a le droit.
+        const cartes = page.locator(`main ul a[href*="/${lang}/contact"]`);
+        expect(
+          await cartes.count(),
+          `des cartes mènent au Contact sans le préremplir (${lang})`,
+        ).toBe(0);
+        test.skip(true, `${lang} : les cartes mènent à leur fiche (voir catalogue-fiche.spec.ts)`);
+      }
+
+      const href = await preremplis.first().getAttribute('href');
       expect(href).toContain('expertise=');
       expect(href).toContain('sujet=');
       await page.goto(href!);

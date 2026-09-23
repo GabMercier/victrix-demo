@@ -1,12 +1,12 @@
 {
   "_schema": "default",
-  "title": "Portail de gestion des requêtes citoyennes",
-  "description": "Optimise le traitement des requêtes, assure un suivi transparent en temps réel et rapproche l'administration des citoyens.",
-  "image": "/images/solutions/requetes-citoyennes.jpg",
-  "sector": "Municipalité",
-  "solutionType": "Dynamics 365",
+  "title": "Automatisation du processus de traitement des factures",
+  "description": "Découvrez notre solution d’automatisation du traitement des factures. Cette plateforme capture, valide et approuve les factures fournisseurs, tout en offrant un suivi en temps réel, réduisant les erreurs et accélérant les paiements.",
+  "image": "/images/solutions/traitement-factures/01.jpg",
+  "sector": "Finance",
+  "solutionType": "Automatisation",
   "featured": false,
-  "order": 10,
+  "order": 150,
   "href": "",
   "docHref": "",
   "contactService": "",
@@ -20,15 +20,15 @@
       "_bookshop_name": "product-hero",
       "type": "product-hero",
       "badge": "Solution Ø Studio",
-      "title": "Portail de gestion des requêtes citoyennes",
+      "title": "Automatisation du processus de traitement des factures",
       "titleHighlight": "",
-      "lead": "Explorez notre application de gestion des horaires étudiants. Elle facilite la consultation des emplois du temps, les notifications en cas de changement, tout en offrant aux enseignants une gestion optimisée des cours et des événements académiques.",
+      "lead": "Découvrez notre solution d’automatisation du traitement des factures. Cette plateforme capture, valide et approuve les factures fournisseurs, tout en offrant un suivi en temps réel, réduisant les erreurs et accélérant les paiements.",
       "ctaLabel": "Parler à un expert",
       "ctaHref": "#formulaire",
       "cta2Label": "Voir le catalogue",
       "cta2Href": "/fr/solutions/",
-      "image": "/images/solutions/portail-requetes-citoyennes/01.jpg",
-      "imageAlt": "Maquette de présentation — Portail de gestion des requêtes citoyennes",
+      "image": "/images/solutions/traitement-factures/01.jpg",
+      "imageAlt": "Photographie d’illustration — Automatisation du processus de traitement des factures",
       "fond": "beige"
     },
     {
@@ -38,7 +38,7 @@
       "intro": "",
       "fond": "ivoire",
       "featured": {
-        "title": "Portail de gestion des requêtes citoyennes",
+        "title": "Automatisation du processus de traitement des factures",
         "text": "",
         "watermark": "eclair",
         "stats": [
@@ -47,15 +47,15 @@
             "label": "Client"
           },
           {
-            "value": "300.000 $ CAD",
+            "value": "50.000 $CAD",
             "label": "Coût"
           },
           {
-            "value": "Entre 3 et 12 mois",
+            "value": "1 mois",
             "label": "Délai"
           },
           {
-            "value": "Power Platform, Power Pages, Copilot Studio, SharePoint",
+            "value": "Power Platform, SharePoint, Teams, AI Builder",
             "label": "Technologies"
           }
         ]
@@ -69,26 +69,6 @@
         "linkLabel": "Découvrir Ø Studio",
         "linkHref": "/fr/services/productivite/o-studio/"
       }
-    },
-    {
-      "_bookshop_name": "galerie",
-      "type": "galerie",
-      "title": "Aperçu de l’application",
-      "intro": "",
-      "colonnes": "2",
-      "fond": "blanc",
-      "images": [
-        {
-          "image": "/images/solutions/portail-requetes-citoyennes/02.png",
-          "alt": "Capture d’écran de l’application — Portail de gestion des requêtes citoyennes",
-          "legende": ""
-        },
-        {
-          "image": "/images/solutions/portail-requetes-citoyennes/03.png",
-          "alt": "Capture d’écran de l’application — Portail de gestion des requêtes citoyennes",
-          "legende": ""
-        }
-      ]
     },
     {
       "_bookshop_name": "form",

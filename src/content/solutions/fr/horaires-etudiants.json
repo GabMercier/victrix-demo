@@ -1,9 +1,101 @@
 {
+  "_schema": "default",
   "title": "Gestion des horaires étudiants",
   "description": "Facilite la consultation des emplois du temps et offre aux enseignants une vue centralisée des groupes.",
   "image": "/images/solutions/gestion-horaires.jpg",
   "sector": "Éducation",
   "solutionType": "Scolaire",
+  "featured": false,
   "order": 50,
-  "href": "/contact"
+  "href": "",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": [
+    {
+      "_bookshop_name": "product-hero",
+      "type": "product-hero",
+      "badge": "Solution Ø Studio",
+      "title": "Gestion des horaires pour les étudiants",
+      "titleHighlight": "",
+      "lead": "Explorez notre application de gestion des horaires étudiants. Elle facilite la consultation des emplois du temps, les notifications en cas de changement, tout en offrant aux enseignants une gestion optimisée des cours et des événements académiques.",
+      "ctaLabel": "Parler à un expert",
+      "ctaHref": "#formulaire",
+      "cta2Label": "Voir le catalogue",
+      "cta2Href": "/fr/solutions/",
+      "image": "/images/solutions/horaires-etudiants/01.jpg",
+      "imageAlt": "Maquette de présentation — Gestion des horaires pour les étudiants",
+      "fond": "beige"
+    },
+    {
+      "_bookshop_name": "bento-metrics",
+      "type": "bento-metrics",
+      "title": "En bref",
+      "intro": "",
+      "fond": "ivoire",
+      "featured": {
+        "title": "Gestion des horaires pour les étudiants",
+        "text": "",
+        "watermark": "eclair",
+        "stats": [
+          {
+            "value": "Secteur scolaire",
+            "label": "Client"
+          },
+          {
+            "value": "Entre 100 000 et 150 000 $CAD",
+            "label": "Coût"
+          },
+          {
+            "value": "Entre 1 et 3 mois",
+            "label": "Délai"
+          },
+          {
+            "value": "Power Platform, SharePoint, Outlook",
+            "label": "Technologies"
+          }
+        ]
+      },
+      "aside": {
+        "icon": "coche",
+        "image": "",
+        "imageAlt": "",
+        "title": "Conçue par Ø Studio",
+        "text": "Notre studio de création Power Platform et Dynamics 365 personnalise la solution à vos processus.",
+        "linkLabel": "Découvrir Ø Studio",
+        "linkHref": "/fr/services/productivite/o-studio/"
+      }
+    },
+    {
+      "_bookshop_name": "galerie",
+      "type": "galerie",
+      "title": "Aperçu de l’application",
+      "intro": "",
+      "colonnes": "2",
+      "fond": "blanc",
+      "images": [
+        {
+          "image": "/images/solutions/horaires-etudiants/02.png",
+          "alt": "Capture d’écran de l’application — Gestion des horaires pour les étudiants",
+          "legende": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "form",
+      "type": "form",
+      "title": "Parlez-nous de votre projet",
+      "intro": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+      "submitLabel": "Demander une consultation",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "o-studio",
+      "fond": "",
+      "fields": []
+    }
+  ]
 }

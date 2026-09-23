@@ -55,7 +55,8 @@ collection_groups:
       - pages
       - services_fr
       - services_en
-      - solutions
+      - solutions_fr
+      - solutions_en
       - blog
       - contact
       - navigation
@@ -1249,40 +1250,37 @@ collections_config:
       type:
         hidden: true
 
-  # Catalogue de solutions (/fr|en/solutions) — fiches JSON à plat, une carte
-  # du catalogue par fiche (suite n°1 du plan
-  # docs/design/solutions-catalogue-plan.md §3). Éditeur de données : la fiche
-  # n'a PAS de page propre (le catalogue est une page unique avec filtres) —
-  # les pages de détail /solutions/<slug> restent une suite planifiée.
-  # Depuis le 2026-09-17, la PAGE catalogue est une page générale
+  # Catalogue de solutions Ø Studio — SCINDÉ PAR LANGUE le 2026-09-23 (lot
+  # L11), patron exact des collections Services. Jusque-là une seule collection
+  # `solutions` couvrait fr/ et en/ : impossible de donner une URL d'aperçu par
+  # langue, et l'éditeur visuel devait rester fermé (une fiche n'avait pas de
+  # `sections`, donc l'aperçu se vidait — commentaire du 2026-09-18).
+  #
+  # Depuis L11, une fiche FR porte ses sections et a SA page
+  # (/fr/solutions/<slug>/, route src/pages/[lang]/solutions/[slug].astro) :
+  # l'édition visuelle est donc rouverte, par fiche, comme annoncé.
+  #
+  # La PAGE catalogue elle-même (chrome : titre, recherche, filtres, panneau
+  # vedette, message vide, appel à l'action) reste une page générale
   # (src/content/pages/{fr,en}/solutions.json, section « Catalogue de
-  # solutions ») : son chrome (titre, recherche, filtres, vedette, message
-  # vide, appel à l'action) s'édite dans « Pages générales » ; seules les
-  # FICHES vivent ici.
-  solutions:
-    path: src/content/solutions
-    name: Solutions
+  # solutions ») et s'édite dans « Pages générales ».
+  solutions_fr:
+    path: src/content/solutions/fr
+    name: Solutions (FR)
     singular_name: Solution
     description: >-
-      Fiches du catalogue de solutions (page /solutions). Les dossiers fr/ et
-      en/ contiennent les deux langues ; le même nom de fichier relie une
-      traduction à l'autre. Chaque fiche est une carte du catalogue.
+      Fiches du catalogue de solutions Ø Studio, en français. Chaque fiche est
+      à la fois une CARTE du catalogue (/fr/solutions) et, dès qu'elle porte
+      des sections, une PAGE à elle (/fr/solutions/<nom-du-fichier>/) où mène
+      le bouton « Découvrir ». Le même nom de fichier dans « Solutions (EN) »
+      relie la traduction.
     icon: apps
-    # Pas de page par fiche — l'URL d'aperçu pointe le CATALOGUE de la langue
-    # (2026-08-17, demande user : préversion partout) : la carte éditée s'y
-    # trouve. [relative_base_path] = fr|en (sous-dossier).
-    url: /[relative_base_path]/solutions/
-    # ÉDITEUR DE DONNÉES SEULEMENT (2026-09-18, retour user : « seulement l'en-tête
-    # et le pied de page dans l'édition en direct »). Depuis que le catalogue est
-    # une SECTION Bookshop (17/09), l'éditeur visuel re-rend la page à partir du
-    # fichier OUVERT : une fiche de solution n'a pas de `sections`, donc le
-    # contenu de la page disparaissait — l'aperçu ne pouvait qu'être vide. Le
-    # formulaire de données édite la fiche ; le rendu se vérifie sur la page
-    # « Solutions » (collection Pages). L'édition visuelle reviendra, par fiche,
-    # quand chaque solution aura sa propre page (docs/plan-livraison-finale.md,
-    # lots L10–L11).
+    # Éditeur visuel par défaut (première valeur — voir la collection blog) ;
+    # Data en second pour les champs de carte et le SEO.
     _enabled_editors:
+      - visual
       - data
+    url: /fr/solutions/[full_slug]/
     preview:
       icon: apps
       text:
@@ -1290,10 +1288,6 @@ collections_config:
         - text: Solution sans titre
       subtext:
         - key: description
-    # « + Ajouter » : un gabarit par langue pour que le fichier atterrisse dans
-    # fr/ ou en/ avec un JSON valide (même logique que services/forms). Flux de
-    # traduction : créer (ou Dupliquer) le même nom de fichier dans l'autre
-    # dossier.
     schemas:
       default:
         name: Solution (FR)
@@ -1301,15 +1295,8 @@ collections_config:
         path: schemas/solution-fr.json
         remove_extra_inputs: false
         create:
-          path: 'fr/{title|slugify}.json'
-      en:
-        name: Solution (EN)
-        icon: apps
-        path: schemas/solution-en.json
-        remove_extra_inputs: false
-        create:
-          path: 'en/{title|slugify}.json'
-    _inputs:
+          path: '{title|slugify}.json'
+    _inputs: &solutions_inputs
       title:
         type: text
         options:
@@ -1384,12 +1371,14 @@ collections_config:
         type: text
         options:
           empty_type: string
-        label: Lien de la carte
+        label: Lien de la carte (surcharge)
         comment: >-
-          SANS préfixe de langue (ex. /contact ou
-          /services/productivite/o-bureau) — le site ajoute /fr ou /en
-          automatiquement (convention navigation, l'INVERSE des sections de
-          page). Vide = carte sans lien.
+          VIDE = « Découvrir » mène à la fiche de la solution : c'est le cas
+          normal depuis 2026-09-23. Ne remplir que pour envoyer ailleurs (ex.
+          /services/productivite/o-bureau, dont la page de service est plus
+          riche que la fiche). SANS préfixe de langue — le site ajoute /fr ou
+          /en (convention navigation, l'INVERSE des sections de page). Vide et
+          sans fiche = carte sans lien.
       docHref:
         type: text
         options:
@@ -1398,15 +1387,64 @@ collections_config:
         comment: >-
           Panneau vedette seulement. Sans préfixe de langue, comme le lien de
           la carte.
+      noindex:
+        type: switch
+        label: Masquer des moteurs de recherche
+        comment: >-
+          ACTIVÉ sur les 16 fiches importées de Ø Studio : elles affichent des
+          fourchettes de prix que Ø Studio doit encore valider. À désactiver
+          fiche par fiche une fois le contenu validé.
+      slug:
+        type: text
+        options:
+          empty_type: string
+        label: Adresse de la page (slug)
+        comment: >-
+          Dernier segment de l'adresse. Vide = le nom du fichier. Sert surtout
+          à l'anglais, dont le fichier porte le nom français.
+      seoTitle:
+        type: text
+        options:
+          empty_type: string
+        label: Titre SEO (surcharge)
+        comment: >-
+          Remplace le titre dans l'onglet du navigateur et les résultats
+          Google. Vide = le titre de la fiche.
+      seoH1:
+        type: text
+        options:
+          empty_type: string
+        label: H1 SEO (optionnel)
+        comment: >-
+          Le titre H1 lu par les moteurs de recherche. Vide = le grand titre du
+          héros est le H1 (défaut). Renseigné = ce texte devient le H1 de la
+          page (invisible à l'écran, lu par Google et les lecteurs d'écran) et
+          le grand titre passe en H2 : rien ne change visuellement. Un seul H1
+          par page.
+      contactSujet:
+        type: select
+        label: Contact — sujet présélectionné
+        comment: >-
+          Choix prérempli dans « De quoi souhaitez-vous parler ? » quand un
+          visiteur clique un bouton de cette fiche vers Contact. Vide = « Une
+          solution du catalogue ».
+        options:
+          empty_type: string
+          allow_empty: true
+          values: _select_data.contact_sujets
+          value_key: cle
+          preview:
+            text:
+              - key: libelle
       contactService:
         # 2026-09-18 — le bouton « Découvrir » arrivait sur un formulaire de
         # contact dont le champ OBLIGATOIRE « Service » restait vide.
         type: select
         label: Contact — service présélectionné
         comment: >-
-          Quand le lien de la carte mène à Contact : choix prérempli dans la
-          liste « Service ». Vide = le service réglé sur la page du catalogue
-          (« Services applicatifs »).
+          Choix prérempli dans la liste « Service », pour les boutons de la
+          carte ET de la fiche. Vide = le service réglé sur la page du
+          catalogue (« Services applicatifs »).
         options:
           empty_type: string
           allow_empty: true
@@ -1415,6 +1453,54 @@ collections_config:
           preview:
             text:
               - key: libelle
+      sections:
+        type: array
+        label: Sections de la fiche
+        comment: >-
+          La page de la solution est construite uniquement à partir de ces
+          sections. Garder le héros en PREMIÈRE position : il porte le seul
+          <h1> de la page. Aucune section = pas de page ; la carte reste dans
+          le catalogue et son lien doit alors être rempli.
+        options:
+          structures: _structures.sections
+      # `type` = discriminant de section (défini par la palette) — jamais édité.
+      type:
+        hidden: true
+
+  solutions_en:
+    path: src/content/solutions/en
+    name: Solutions (EN)
+    singular_name: Solution
+    description: >-
+      English catalogue cards. They have NO page of their own yet: the 16
+      Ø Studio fiches exist in French only, and translating them is a content
+      task. Until then each card keeps its own link (Contact, prefilled). The
+      same file name in « Solutions (FR) » links the translation.
+    icon: apps
+    # PAS d'éditeur visuel tant qu'une fiche EN n'a pas de `sections` : l'aperçu
+    # re-rend la page à partir du fichier ouvert et resterait vide (c'est la
+    # leçon du 2026-09-18). L'URL pointe donc le CATALOGUE anglais, où la carte
+    # éditée se trouve. Le jour où les fiches EN sont traduites : passer l'URL à
+    # /en/solutions/{slug}/ et remettre `visual` en tête, comme le FR.
+    _enabled_editors:
+      - data
+    url: /en/solutions/
+    preview:
+      icon: apps
+      text:
+        - key: title
+        - text: Solution sans titre
+      subtext:
+        - key: description
+    schemas:
+      default:
+        name: Solution (EN)
+        icon: apps
+        path: schemas/solution-en.json
+        remove_extra_inputs: false
+        create:
+          path: '{title|slugify}.json'
+    _inputs: *solutions_inputs
 
   # Textes du site (2026-08-11) — chaînes d'interface éditables (un JSON par
   # langue dans src/data/site, patron de la collection navigation). Premier

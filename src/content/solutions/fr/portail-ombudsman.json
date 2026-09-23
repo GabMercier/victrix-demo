@@ -1,9 +1,121 @@
 {
+  "_schema": "default",
   "title": "Portail pour l'Ombudsman",
   "description": "Permet aux citoyens de soumettre leurs requêtes, tandis que le personnel en assure le suivi dans un espace sécurisé.",
   "image": "/images/solutions/portail-ombudsman.jpg",
   "sector": "Gouvernance",
   "solutionType": "Power Platform",
+  "featured": false,
   "order": 20,
-  "href": "/contact"
+  "href": "",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": [
+    {
+      "_bookshop_name": "product-hero",
+      "type": "product-hero",
+      "badge": "Solution Ø Studio",
+      "title": "Portail de gestion des requêtes pour l’Ombudsman",
+      "titleHighlight": "",
+      "lead": "Découvrez notre portail de gestion des plaintes et demandes. Développé sur Dynamics 365, il permet aux citoyens de soumettre leurs requêtes, tandis que le personnel de l’Ombudsman gère, suit et produit des rapports d’activité de manière sécurisée et efficace.",
+      "ctaLabel": "Parler à un expert",
+      "ctaHref": "#formulaire",
+      "cta2Label": "Voir le catalogue",
+      "cta2Href": "/fr/solutions/",
+      "image": "/images/solutions/portail-ombudsman/01.png",
+      "imageAlt": "Maquette de présentation — Portail de gestion des requêtes pour l’Ombudsman",
+      "fond": "beige"
+    },
+    {
+      "_bookshop_name": "bento-metrics",
+      "type": "bento-metrics",
+      "title": "En bref",
+      "intro": "",
+      "fond": "ivoire",
+      "featured": {
+        "title": "Portail de gestion des requêtes pour l’Ombudsman",
+        "text": "",
+        "watermark": "eclair",
+        "stats": [
+          {
+            "value": "Secteur de la Santé, Municipal, Public",
+            "label": "Client"
+          },
+          {
+            "value": "Entre 100.000 et 250.000 $CAD",
+            "label": "Coût"
+          },
+          {
+            "value": "Entre 3 et 12 mois",
+            "label": "Délai"
+          },
+          {
+            "value": "Dynamics 365, Power Platform, Power Pages, Copilot Studio, SharePoint",
+            "label": "Technologies"
+          }
+        ]
+      },
+      "aside": {
+        "icon": "coche",
+        "image": "",
+        "imageAlt": "",
+        "title": "Conçue par Ø Studio",
+        "text": "Notre studio de création Power Platform et Dynamics 365 personnalise la solution à vos processus.",
+        "linkLabel": "Découvrir Ø Studio",
+        "linkHref": "/fr/services/productivite/o-studio/"
+      }
+    },
+    {
+      "_bookshop_name": "galerie",
+      "type": "galerie",
+      "title": "Aperçu de l’application",
+      "intro": "",
+      "colonnes": "2",
+      "fond": "blanc",
+      "images": [
+        {
+          "image": "/images/solutions/portail-ombudsman/02.jpg",
+          "alt": "Capture d’écran de l’application — Portail de gestion des requêtes pour l’Ombudsman",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/portail-ombudsman/03.jpg",
+          "alt": "Capture d’écran de l’application — Portail de gestion des requêtes pour l’Ombudsman",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/portail-ombudsman/04.jpg",
+          "alt": "Capture d’écran de l’application — Portail de gestion des requêtes pour l’Ombudsman",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/portail-ombudsman/05.jpg",
+          "alt": "Capture d’écran de l’application — Portail de gestion des requêtes pour l’Ombudsman",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/portail-ombudsman/06.jpg",
+          "alt": "Capture d’écran de l’application — Portail de gestion des requêtes pour l’Ombudsman",
+          "legende": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "form",
+      "type": "form",
+      "title": "Parlez-nous de votre projet",
+      "intro": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+      "submitLabel": "Demander une consultation",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "o-studio",
+      "fond": "",
+      "fields": []
+    }
+  ]
 }

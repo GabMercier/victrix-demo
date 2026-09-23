@@ -740,6 +740,14 @@ function collectNoindexComposablePaths() {
   for (const { root, urlPrefix, defaultNoindex } of [
     { root: './src/content/pages', urlPrefix: '', defaultNoindex: true },
     { root: './src/content/services', urlPrefix: 'services/', defaultNoindex: false },
+    // Fiches du catalogue Ø Studio (2026-09-23, lot L11) : elles ont une page
+    // depuis qu'elles portent des `sections`, et les 16 fiches FR sont
+    // `noindex` en attendant la validation des prix (#1634). Sans cette
+    // entrée, le plan de site les annonçait TOUTES aux moteurs — exactement la
+    // contradiction que le filtre existe pour éviter. Les fichiers EN n'ont
+    // pas de page : les chemins qu'ils produisent ici ne correspondent à
+    // aucune URL du sitemap, donc ils n'y changent rien.
+    { root: './src/content/solutions', urlPrefix: 'solutions/', defaultNoindex: false },
   ]) {
     for (const locale of ['fr', 'en']) {
       /**
