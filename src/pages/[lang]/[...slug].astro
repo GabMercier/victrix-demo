@@ -20,6 +20,7 @@ import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
 import { useTranslations } from '../../i18n/ui';
 import { CONTACT_SUJET_DEFAULT, resolveContactPreset } from '../../lib/contact/presets';
 import { getLocaleData } from '../../i18n/locale-data';
+import { slugDeSolution } from '../../lib/solutions/slug';
 
 /**
  * Pages génériques (collection `pages`, 2026-08-11) — une route statique par
@@ -160,10 +161,10 @@ export async function getStaticPaths() {
       // service est plus riche que sa fiche). Sans fiche ET sans `href`, le
       // lien reste masqué, comme avant : c'est l'état des 9 cartes EN, dont la
       // traduction est un travail de contenu — elles gardent leur `/contact`.
-      const ficheHref = (entry: (typeof solutionEntries)[number]) => {
-        const fichier = entry.id.slice(entry.id.indexOf('/') + 1);
-        return localizePath(`/solutions/${entry.data.slug || fichier}/`, lang);
-      };
+      // Même règle de slug que la route des fiches (src/lib/solutions/slug.ts,
+      // revue R3) : normalisé des deux côtés, le lien et la page coïncident.
+      const ficheHref = (entry: (typeof solutionEntries)[number]) =>
+        localizePath(`/solutions/${slugDeSolution(entry)}/`, lang);
       const toCard = (entry: (typeof solutionEntries)[number]) => ({
         title: entry.data.title,
         description: entry.data.description,

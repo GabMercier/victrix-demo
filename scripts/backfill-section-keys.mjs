@@ -56,6 +56,68 @@ const KEYS_IMBRIQUEES = [
   { type: 'home-iso', chemin: 'items', cles: ['icon'] },
 ];
 
+/**
+ * Clés DE PAGE des fiches du catalogue de solutions (revue R3, constat 2 —
+ * 2026-09-23). Le lot L11 a ajouté `sections`, `slug`, `noindex`, le SEO et
+ * le préremplissage du Contact au schéma `solutions`, et les a écrits dans
+ * les 16 fiches FR — pas dans les 9 fiches EN. Or CloudCannon n'affiche un
+ * champ que si sa clé existe : sans ces clés, l'éditrice ne peut ni poser des
+ * sections sur une fiche EN (donc lui donner une page), ni saisir son
+ * adresse anglaise — le flux de traduction promis était impossible sans un
+ * développeur.
+ *
+ * Valeur = le défaut EXACT du zod (src/content.config.ts, collection
+ * `solutions`), donc aucun changement de rendu ; `_schema` = le gabarit
+ * CloudCannon que portent les fiches FR. Une exception, documentée :
+ * `noindex` reprend la valeur du fichier HOMONYME en FR quand il existe — les
+ * 16 fiches importées sont `noindex: true` tant que Ø Studio n'a pas validé
+ * leurs prix (ADO #1634), et une traduction posée plus tard ne doit pas
+ * s'indexer par défaut là où l'original se cache. Ordre des clés = celui des
+ * fiches FR (l'éditeur affiche les champs dans l'ordre du fichier).
+ */
+const CLES_FICHE_SOLUTION = [
+  ['_schema', 'default'],
+  ['title'],
+  ['description'],
+  ['image', ''],
+  ['sector'],
+  ['solutionType'],
+  ['featured', false],
+  ['order', 999],
+  ['href', ''],
+  ['docHref', ''],
+  ['contactService', ''],
+  ['noindex', false],
+  ['seoTitle', ''],
+  ['seoH1', ''],
+  ['contactSujet', ''],
+  ['slug', ''],
+  ['sections', []],
+];
+
+/**
+ * Complète une fiche de solution ; renvoie (fiche réordonnée, nb d'ajouts).
+ * `jumelle` = la fiche homonyme de l'autre langue, si elle existe.
+ */
+function completerFicheSolution(fiche, jumelle) {
+  let n = 0;
+  const sortie = {};
+  for (const [cle, defaut] of CLES_FICHE_SOLUTION) {
+    if (cle in fiche) {
+      sortie[cle] = fiche[cle];
+      continue;
+    }
+    if (defaut === undefined) continue; // champ obligatoire absent : pas à nous d'inventer
+    sortie[cle] = cle === 'noindex' && jumelle && typeof jumelle.noindex === 'boolean' ? jumelle.noindex : defaut;
+    n += 1;
+  }
+  // Clés que le schéma ne connaît pas : conservées, à la fin, telles quelles.
+  for (const [cle, valeur] of Object.entries(fiche)) {
+    if (!(cle in sortie)) sortie[cle] = valeur;
+  }
+  return [sortie, n];
+}
+
 /** Ajoute les clés manquantes dans un objet ; renvoie le nombre d'ajouts. */
 function completer(cible, cles) {
   if (!cible || typeof cible !== 'object' || Array.isArray(cible)) return 0;
@@ -180,8 +242,44 @@ for (const file of files) {
   if (!CHECK_ONLY) writeFileSync(file, out);
 }
 
+// ---- Troisième passe : les clés de page des fiches de solutions ---------------------------
+const SOLUTIONS = join(ROOT, 'src/content/solutions');
+const fichesSolutions = existsSync(SOLUTIONS) ? walk(SOLUTIONS).filter((f) => f.endsWith('.json')) : [];
+const parChemin = new Map(fichesSolutions.map((f) => [relative(SOLUTIONS, f).replace(/\\/g, '/'), f]));
+let fichesTouchees = 0;
+let clesFiches = 0;
+for (const [rel, file] of parChemin) {
+  let fiche;
+  try {
+    fiche = JSON.parse(readFileSync(file, 'utf8'));
+  } catch {
+    continue;
+  }
+  if (!fiche || typeof fiche !== 'object' || Array.isArray(fiche)) continue;
+  // Homonyme de l'autre langue : fr/x.json ↔ en/x.json.
+  const [langue, ...reste] = rel.split('/');
+  const autre = langue === 'fr' ? 'en' : 'fr';
+  const cheminJumelle = parChemin.get([autre, ...reste].join('/'));
+  let jumelle = null;
+  if (cheminJumelle) {
+    try {
+      jumelle = JSON.parse(readFileSync(cheminJumelle, 'utf8'));
+    } catch {
+      jumelle = null;
+    }
+  }
+  const [sortie, n] = completerFicheSolution(fiche, jumelle);
+  if (n === 0) continue;
+  fichesTouchees += 1;
+  clesFiches += n;
+  if (!CHECK_ONLY) writeFileSync(file, JSON.stringify(sortie, null, 2) + '\n');
+  else console.log(`  fiche ${rel} : ${n} clé(s) de page manquante(s)`);
+}
+added += clesFiches;
+touched += fichesTouchees;
+
 console.log(
-  `[backfill] ${added} clé(s) ${CHECK_ONLY ? 'manquante(s)' : 'ajoutée(s)'} dans ${touched} fichier(s) — clés suivies : ${KEYS.join(', ')} ; imbriquées : ${KEYS_IMBRIQUEES.map((r) => `${r.type}.${r.chemin}[${r.cles.join('/')}]`).join(', ')}.`,
+  `[backfill] ${added} clé(s) ${CHECK_ONLY ? 'manquante(s)' : 'ajoutée(s)'} dans ${touched} fichier(s) — clés suivies : ${KEYS.join(', ')} ; imbriquées : ${KEYS_IMBRIQUEES.map((r) => `${r.type}.${r.chemin}[${r.cles.join('/')}]`).join(', ')} ; fiches de solutions : ${clesFiches} clé(s) de page dans ${fichesTouchees} fiche(s).`,
 );
 for (const [what, n] of skipped) console.log(`  ⚠ ${what} : défaut du schéma illisible — ${n} section(s) laissée(s) telles quelles.`);
 if (thumbErrors.length) {

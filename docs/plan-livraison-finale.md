@@ -657,6 +657,8 @@ foreach ($s in $stories) {
 | L22 | Doc + formation | 0,5 j | tout | | |
 | L23 | Jour J | — | tout | | |
 | L24–L26 | Options | 1 j + | — | | |
+| L-articles-blocs | **Contenu manquant dans les articles, REMIS** (urgence Julie, #1762). Rapport `blocs-manquants-articles.py` corrigé dans les deux sens (page source dans l'autre langue écartée ; titres jugés mot pour mot ; blocs courts « à vérifier ») : 158 blocs / 1 536 mots / 27 articles au lieu de 61 / 853 / 11. Remise OUTILLÉE par `scripts/migration/restaure-blocs-articles.py` (ordre de la source → place dans le Markdown) : **198 blocs dans 26 articles** + 4 retouches à la main ; rapport à 0 après build ; `check:parite-texte --strict` inchangé (3 assumées). À relire par Julie : liens non reconstitués dans les blocs remis, FAQ/questions en gras (forme = sujet B) | 0,5 j | — | | 2026-09-23 |
+| R3-1/R3-2 | **Revue R3, constats 1 et 2** : slug des fiches de solutions normalisé (`src/lib/solutions/slug.ts`, une règle pour la route ET le catalogue) et dédoublonné par langue (build en échec nommant les fichiers ; 6 tests) ; rétro-remplissage des 9 fiches EN (`backfill-section-keys.mjs`, 3e passe « clés de page » — 88 clés, `noindex` repris de la jumelle FR ; `check:sections` le garde). Restent : R3-3 à R3-8 (libellés visionneuse, `role="dialog"`, e2e couplés au contenu, id de galerie, repli langue, `String.fromCharCode`) | 2 h | — | | 2026-09-23 |
 
 **Total Opus ≈ 14–15 jours assistés · Fable : 4 revues + réserve d'urgence.**
 Ordre conseillé si le temps manque : L01 → L06 → L09 → L15 → L16 → L10 → L11,

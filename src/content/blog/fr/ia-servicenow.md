@@ -20,6 +20,8 @@ En tant que **partenaire certifié ServiceNow**, Victrix aide les directions TI 
 Découvrez **comment l’IA et ServiceNow optimise vos flux de travail**, **convertit la productivité en valeur mesurable** et **sécurise votre transformation numérique**.
  [Consultez un expert IA et ServiceNow](/fr/contact/)
 
+## IA et ServiceNow : des résultats concrets, plutôt que des promesses
+
 ### Les ambitions
 
 Selon l’[Enterprise AI Maturity Index 2025 de ServiceNow](https://www.servicenow.com/content/dam/servicenow-assets/public/en-us/doc-type/resource-center/white-paper/wp-enterprise-ai-maturity-index-2025.pdf),**89% des entreprises s’attendent à ce que l’IA transforme radicalement les opérations TI d’ici trois ans**. De plus, les répondants ont indiqué dans quelle mesure les solutions d'IA ont atteint les résultats escomptés :
@@ -132,6 +134,14 @@ Ces capacités accélèrent vos processus et sont de véritables leviers de vale
 
 Les capacités de l’IA ServiceNow peuvent vous procurer de la valeur durable, à condition d’être gouvernées rigoureusement. Avec la **tour de contrôle IA** (*AI Control Tower*), ServiceNow offre une **vue centralisée sur tous vos modèles**, **ensembles de données** et **flux de travail IA**.
 
+**IA générative et Now Assist**
+
+**Automatisation intelligente et IA ITSM**
+
+**Agents IA et recherche intelligente**
+
+## Gouvernance et fiabilité : encadrer l’intelligence artificielle avec la tour de contrôle IA de ServiceNow
+
 - Inventaire et suivi des modèles IA
 - Gestion automatisée des risques et des audits
 - Alignement des projets IA sur vos objectifs d’affaires
@@ -141,6 +151,8 @@ Les capacités de l’IA ServiceNow peuvent vous procurer de la valeur durable, 
 ## Victrix aide les organisations à déployer la tour de contrôle IA pour concilier innovation et conformité.
 
 <a class="article-cta" href="/fr/contact/">Consultez nos experts IA et ServiceNow</a>
+
+## De la performance à la gouvernance : maîtrisez l’IA et ServiceNow avec Victrix
 
 L’**IA de ServiceNow** améliore la performance, la conformité et la visibilité tout en éliminant la complexité des intégrations tierces. 
  **Victrix vous aide à la gouverner et à l’adapter à votre réalité organisationnelle.** 

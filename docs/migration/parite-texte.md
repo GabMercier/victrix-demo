@@ -2,7 +2,7 @@
 
 > Généré par `npm run check:parite-texte` — **ne pas modifier à la main.**
 > Mesuré contre le build `./dist` et les pages EN LIGNE de victrix.ca
-> (cache `docs/migration/cache-source/`, 157 pages, téléchargées le 2026-09-23).
+> (cache `docs/migration/cache-source/`, 166 pages, téléchargées le 2026-09-23).
 
 La question posée, page par page : **le texte de l'ancienne page est-il**
 **arrivé sur la page qui la remplace ?** `check:old-urls` prouve que chaque
@@ -18,7 +18,7 @@ adresse mène quelque part ; ce rapport compare les VOLUMES et les TITRES.
 | dont ≥ 1 bloc perdu (titre H2/H3 ET son texte absents de la cible) | 1 |
 | Adresses anciennes hors comparaison (décisions, sources illisibles, sans page) | 9 |
 
-Et 100 pages où un titre de la source est absent mais son texte retrouvé (≈ titre
+Et 75 pages où un titre de la source est absent mais son texte retrouvé (≈ titre
 reformulé ou raccourci par la refonte) : listées, **non signalées**.
 
 Mots de la source : contenu principal lu par le parseur de `extract-source-page.py`
@@ -48,8 +48,8 @@ est le lot L-restaure.
 
 | | Page cible | Adresse source | Mots source | Mots cible | Ratio | Titres H2/H3 absents de la cible | Fichier du dépôt |
 | --- | --- | --- | ---: | ---: | ---: | --- | --- |
-|  | `/fr/services/services-infonuagiques/` | `/expertise/services-infonuagiques/` | 841 | 667 | 0,79 | ≈ « Amazon Web Services (AWS) » · « Éléments à analyser » · « Gradation de la preuve de concept » (+1) | `src/content/services/fr/services-infonuagiques.json` |
-|  | `/en/services/cloud-services-provider/` | `/en/expertise/cloud-services-provider/` | 732 | 585 | 0,80 | ≈ « Microsoft Azure Cloud Services » · « Amazon Web Services (AWS) » · « Elements to Analyze » (+2) | `src/content/services/en/services-infonuagiques.json` |
+|  | `/fr/services/services-infonuagiques/` | `/expertise/services-infonuagiques/` | 841 | 654 | 0,78 | ≈ « Amazon Web Services (AWS) » · « Éléments à analyser » · « Gradation de la preuve de concept » (+1) | `src/content/services/fr/services-infonuagiques.json` |
+|  | `/en/services/cloud-services-provider/` | `/en/expertise/cloud-services-provider/` | 732 | 571 | 0,78 | ≈ « Microsoft Azure Cloud Services » · « Amazon Web Services (AWS) » · « Elements to Analyze » (+2) | `src/content/services/en/services-infonuagiques.json` |
 |  | `/fr/services/approvisionnement-ti/` | `/expertise/approvisionnement-ti/` | 918 | 781 | 0,85 | ≈ « Un approvisionnement TI stratégique, sécurisé et géré ave… » · « Solutions technologiques et partenariats pour une infrast… » · « Vous avez besoin d'aide pour la sélection et l'achat de v… » (+3) | `src/content/services/fr/approvisionnement-ti.json` |
 |  | `/fr/services/services-infonuagiques/migration-vers-azure/` | `/expertise/services-infonuagiques/migration-vers-azure/` | 973 | 848 | 0,87 | ≈ « En savoir plus sur les services infonuagiques Microsoft A… » · « Nos services Microsoft Azure » · « Partenaire de solutions Microsoft et services Azure gérés » (+1) | `src/content/services/fr/services-infonuagiques/migration-vers-azure.json` |
 |  | `/en/services/it-procurement/` | `/en/expertise/it-procurement/` | 758 | 669 | 0,88 | ≈ « Strategic, Secure, and Managed IT Procurement with Victrix » · « Technology Solutions and Partnerships for a High-Performa… » · « Need Expert Guidance with Your IT Hardware Purchases? » (+3) | `src/content/services/en/approvisionnement-ti.json` |
@@ -108,12 +108,12 @@ est le lot L-restaure.
 |  | `/fr/services/productivite/copilot-microsoft-365/` | `/expertise/productivite/copilot-microsoft-365/` | 341 | 375 | 1,10 | ≈ « Les enjeux à l’adoption de Copilot pour Microsoft 365 » · « Choisissez les licences Copilot pour Microsoft 365 adapté… » · « Notre stratégie d’adoption structurée pour assurer votre … » (+1) | `src/content/services/fr/productivite/copilot-microsoft-365.json` |
 |  | `/en/services/cybersecurity/pentest/` | `/en/expertise/cybersecurity/pentest/` | 264 | 296 | 1,12 | ≈ « Request Your Penetration Testing Services » · « Our Penetration Testing Approaches » | `src/content/services/en/cybersecurite/test-intrusion-pentest.json` |
 |  | `/en/services/strategic-advice/law-25-compliance/` | `/en/expertise/strategic-advice/law-25-compliance/` | 108 | 130 | 1,20 | ≈ « Assess your organization's compliance by answering these … » · « Contact us for a personalized assessment! » | `src/content/services/en/conseil-strategique/conformite-loi-25.json` |
-|  | `/en/services/cybersecurity/` | `/en/expertise/cybersecurity/` | 427 | 549 | 1,29 | ≈ « Sector-Specific Expertise for Your Cybersecurity Services » · « Looking for Cybersecurity Services Tailored to the Health… » · « Our Experts Are Certified » | `src/content/services/en/cybersecurite.json` |
+|  | `/en/services/cybersecurity/` | `/en/expertise/cybersecurity/` | 427 | 540 | 1,26 | ≈ « Sector-Specific Expertise for Your Cybersecurity Services » · « Looking for Cybersecurity Services Tailored to the Health… » · « Our Experts Are Certified » | `src/content/services/en/cybersecurite.json` |
 |  | `/en/services/productivity-consulting/copilot-studio/` | `/en/expertise/productivity-consulting/copilot-studio/` | 166 | 218 | 1,31 |  | `src/content/services/en/productivite/copilot-studio.json` |
 |  | `/fr/services/productivite/copilot-studio/` | `/expertise/productivite/copilot-studio/` | 206 | 273 | 1,33 |  | `src/content/services/fr/productivite/copilot-studio.json` |
-|  | `/fr/services/cybersecurite/` | `/expertise/cybersecurite/` | 484 | 680 | 1,40 | ≈ « Nos professionnels sont certifiés » | `src/content/services/fr/cybersecurite.json` |
-|  | `/en/services/cybersecurity/cybersecurity-healthcare/` | `/en/expertise/cybersecurity/cybersecurity-healthcare/` | 246 | 457 | 1,86 | ≈ « Cybersecurity Challenges in the Healthcare Sector » · « Take Advantage of Personalized Support » · « Victrix Provides First-Class Cybersecurity and Confidenti… » | `src/content/services/en/cybersecurite/cybersecurite-sante.json` |
-|  | `/fr/services/cybersecurite/cybersecurite-sante/` | `/expertise/cybersecurite/cybersecurite-sante/` | 319 | 599 | 1,88 | ≈ « Les enjeux de cybersécurité dans le secteur de la santé » · « Bénéficiez d’un accompagnement personnalisé » · « Victrix assure une cybersécurité et confidentialité de pr… » | `src/content/services/fr/cybersecurite/cybersecurite-sante.json` |
+|  | `/fr/services/cybersecurite/` | `/expertise/cybersecurite/` | 484 | 671 | 1,39 | ≈ « Nos professionnels sont certifiés » | `src/content/services/fr/cybersecurite.json` |
+|  | `/en/services/cybersecurity/cybersecurity-healthcare/` | `/en/expertise/cybersecurity/cybersecurity-healthcare/` | 246 | 446 | 1,81 | ≈ « Cybersecurity Challenges in the Healthcare Sector » · « Take Advantage of Personalized Support » · « Victrix Provides First-Class Cybersecurity and Confidenti… » | `src/content/services/en/cybersecurite/cybersecurite-sante.json` |
+|  | `/fr/services/cybersecurite/cybersecurite-sante/` | `/expertise/cybersecurite/cybersecurite-sante/` | 319 | 588 | 1,84 | ≈ « Les enjeux de cybersécurité dans le secteur de la santé » · « Bénéficiez d’un accompagnement personnalisé » · « Victrix assure une cybersécurité et confidentialité de pr… » | `src/content/services/fr/cybersecurite/cybersecurite-sante.json` |
 
 ## Pages — 18 pages, 2 signalées
 
@@ -133,7 +133,7 @@ est le lot L-restaure.
 |  | `/fr/contact/` | `/contact/` | 73 | 123 | 1,68 | ≈ « Formulaire de contact » | (gabarit de page) |
 |  | `/en/portail/` | `/en/customer-portal/` (+1) | 8 | 19 | 2,38 | ≈ « Log in to your customer area » | (gabarit de page) |
 |  | `/en/` | `/en/` | 190 | 462 | 2,43 | ≈ « Meet our experts » | `src/content/home/en/accueil.json` |
-|  | `/fr/` | `/` | 192 | 531 | 2,77 | ≈ « Rencontrez nos experts » | `src/content/home/fr/accueil.json` |
+|  | `/fr/` | `/` | 192 | 538 | 2,80 | ≈ « Rencontrez nos experts » | `src/content/home/fr/accueil.json` |
 |  | `/fr/portail/` | `/mon-portail/` (+1) | 7 | 20 | 2,86 |  | (gabarit de page) |
 |  | `/fr/ressources/` | `/ressources/` | 135 | 1290 | 9,56 | ≈ « Webinaire Copilot – Du buzz à l’impact réel » | (gabarit de page) |
 |  | `/en/ressources/` | `/en/resources-center/` | 120 | 1205 | 10,04 |  | (gabarit de page) |
@@ -143,58 +143,58 @@ est le lot L-restaure.
 | | Page cible | Adresse source | Mots source | Mots cible | Ratio | Titres H2/H3 absents de la cible | Fichier du dépôt |
 | --- | --- | --- | ---: | ---: | ---: | --- | --- |
 |  | `/en/ressources/servicenow-itsm/` | `/en/servicenow-itsm/` | 1081 | 785 | 0,73 | ≈ « Understanding ITSM: Beyond Simple IT Support » · « Choosing the Right ServiceNow Partner for ITSM Implementa… » · « FAQ — ServiceNow ITSM » | `src/content/blog/en/servicenow-itsm.md` |
-|  | `/fr/ressources/servicenow-itsm/` | `/servicenow-itsm/` | 1376 | 1015 | 0,74 | ≈ « Comprendre ITSM: au-delà du simple support TI » · « Choisir le bon partenaire ServiceNow pour l’implémentatio… » · « FAQ — ServiceNow ITSM » | `src/content/blog/fr/servicenow-itsm.md` |
-|  | `/en/ressources/internet-of-things-security/` | `/en/internet-of-things-security/` | 830 | 613 | 0,74 | ≈ « Internet of Things (IoT): a Catalyst for Transformation, … » · « IoT & OT Services Tailored to Your Industry » · « Biggest Risk in Internet of Things Security » (+3) | `src/content/blog/en/securite-internet-des-objets.md` |
-|  | `/en/ressources/dora-regulation/` | `/en/dora-regulation/` | 518 | 389 | 0,75 | ≈ « Victrix, the GRC Expert, Helps You Achieve Dora Compliance » | `src/content/blog/en/reglementation-dora.md` |
-|  | `/fr/ressources/securite-internet-des-objets/` | `/securite-internet-des-objets/` | 1015 | 768 | 0,76 | ≈ « Internet des Objets (IoT): un catalyseur pour la transfor… » · « Un service IoT & OT adapté à votre secteur » · « Le risque majeur en matière de sécurité Internet des Objets » (+3) | `src/content/blog/fr/securite-internet-des-objets.md` |
-|  | `/fr/ressources/reglementation-dora/` | `/reglementation-dora/` | 611 | 479 | 0,78 | ≈ « Les exigences de la réglementation DORA » · « Victrix, expert GRC, vous accompagne dans votre mise en c… » | `src/content/blog/fr/reglementation-dora.md` |
-|  | `/en/ressources/iso-27001-iso-9001-certifications/` | `/en/iso-27001-iso-9001-certifications/` | 378 | 346 | 0,92 | ≈ « A Renewed Commitment to Quality and Information Security » · « ISO 27001 Certification: Information Security at the Hear… » · « ISO 9001 Certification: Quality Drives Innovation and Trust » (+3) | `src/content/blog/en/certification-iso-27001-iso-9001.md` |
-|  | `/en/ressources/migration-windows-11-microsoft-exchange/` | `/en/migration-windows-11-microsoft-exchange/` | 636 | 583 | 0,92 | ≈ « Prepare For a Secure and Successful Transition to Windows… » · « Summary of the Benefits of Migrating to Windows 11 » · « Why Act Now? » (+4) | `src/content/blog/en/migration-windows-11-microsoft-exchange.md` |
 |  | `/en/ressources/sase-cloud/` | `/en/sase-cloud/` | 1041 | 962 | 0,92 | ≈ « What Is a SASE Solution? » · « SASE Architecture Elements in the Cloud » · « The Main Benefits of the Cloud-Based SASE Model » (+3) | `src/content/blog/en/sase-cloud.md` |
-|  | `/fr/ressources/sase-cloud/` | `/sase-cloud/` | 1203 | 1112 | 0,92 | ≈ « Une solution SASE, c’est quoi? » · « Les éléments de l'architecture SASE dans le cloud » · « Les principaux avantages du modèle SASE basé sur le nuage » (+3) | `src/content/blog/fr/sase-cloud.md` |
 |  | `/en/ressources/best-practices-in-operational-safety-maintenance/` | `/en/best-practices-in-operational-safety-maintenance/` | 18 | 17 | 0,94 |  | `src/content/blog/en/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance.md` |
 |  | `/en/ressources/best-practices-in-operational-security-defense/` | `/en/best-practices-in-operational-security-defense/` (+1) | 18 | 17 | 0,94 |  | `src/content/blog/en/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense.md` |
-|  | `/en/ressources/it-trends/` | `/en/it-trends/` | 771 | 730 | 0,95 | ≈ « 8 New Managed IT Services Trends for 2026 » · « Managed Services Trends: How to Choose the Right Provider… » · « Secure Your Organization’s Future with Tailored Managed I… » | `src/content/blog/en/tendances-ti.md` |
-|  | `/en/ressources/microsoft-viva-apps/` | `/en/microsoft-viva-apps/` | 667 | 634 | 0,95 | ≈ « The Microsoft Viva Suite: What Is It? » · « Bespoke Microsoft Applications to Manage Your Internal Co… » · « The Many Benefits of Microsoft Viva Applications » (+1) | `src/content/blog/en/applications-microsoft-viva-demystifier-viva.md` |
-|  | `/fr/ressources/certification-iso-27001-iso-9001/` | `/certification-iso-27001-iso-9001/` | 425 | 404 | 0,95 | ≈ « Un engagement renouvelé envers la qualité et la sécurité … » · « Certification ISO 27001 : la sécurité de l’information au… » · « Certification ISO 9001 : la qualité, moteur d’innovation … » (+3) | `src/content/blog/fr/certification-iso-27001-iso-9001.md` |
-|  | `/en/ressources/power-platform-governance-advice/` | `/en/power-platform-governance-advice/` | 1146 | 1092 | 0,95 | ≈ « What Is Microsoft Power Platform? » · « List of Microsoft Power Apps » · « Why Use Microsoft Power Platform? » (+3) | `src/content/blog/en/gouvernance-power-platform-conseils.md` |
 |  | `/en/ressources/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` | `/en/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` (+1) | 794 | 757 | 0,95 | ≈ « What Is the Zero Trust Network Access (ZTNA) Model in Cyb… » · « Business Cybersecurity: Why Choose Zero Trust Network Acc… » · « How Victrix Ensures Optimal Network Security with the ZTN… » (+1) | `src/content/blog/en/zero-trust-network-access-ztna.md` |
-|  | `/fr/ressources/migration-windows-11-microsoft-exchange/` | `/migration-windows-11-microsoft-exchange/` | 703 | 671 | 0,95 | ≈ « Préparez-vous à une transition sécurisée et performante v… » · « Résumé des avantages de la migration vers Windows 11 » · « Pourquoi agir dès maintenant ? » (+4) | `src/content/blog/fr/migration-windows-11-microsoft-exchange.md` |
-|  | `/fr/ressources/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` | `/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` (+1) | 923 | 884 | 0,96 | ≈ « Qu’est-ce que le modèle Zero Trust Network Access (ZTNA) … » · « Cybersécurité pour les entreprises: pourquoi opter pour u… » · « Comment Victrix assure une sécurité informatique optimale… » (+1) | `src/content/blog/fr/zero-trust-network-access-ztna.md` |
-|  | `/fr/ressources/applications-microsoft-viva-demystifier-viva/` | `/applications-microsoft-viva-demystifier-viva/` | 741 | 710 | 0,96 | ≈ « Qu’est-ce que la suite Microsoft Viva? » · « Des applications Microsoft sur mesure pour gérer vos comm… » · « Les nombreux avantages des applications Microsoft Viva » (+1) | `src/content/blog/fr/applications-microsoft-viva-demystifier-viva.md` |
-|  | `/en/ressources/cybersecurity-risk-audit/` | `/en/cybersecurity-risk-audit/` | 705 | 677 | 0,96 | ≈ « The Importance of Compliance for Large Organizations » · « The Challenges of Compliance for Larger Organizations » · « Audit and Security Posture » (+2) | `src/content/blog/en/audit-cybersecurite.md` |
-|  | `/fr/ressources/gouvernance-power-platform-conseils/` | `/gouvernance-power-platform-conseils/` | 1346 | 1293 | 0,96 | ≈ « Qu'est-ce que Microsoft Power Platform? » · « Liste des applications Microsoft Power Apps » · « Pourquoi utiliser Microsoft Power Platform? » (+3) | `src/content/blog/fr/gouvernance-power-platform-conseils.md` |
-|  | `/en/ressources/servicenow-ai/` | `/en/servicenow-ai/` | 1001 | 962 | 0,96 | ≈ « ServiceNow AI: Tangible Results, Not Just Promises » · « ServiceNow AI Capabilities » · « Governance and Reliability: Managing AI with ServiceNow’s… » (+1) | `src/content/blog/en/ia-servicenow.md` |
-|  | `/fr/ressources/tendances-ti/` | `/tendances-ti/` | 932 | 901 | 0,97 | ≈ « 8 tendances des services informatiques gérés en 2026 » · « Tendance TI géré: comment choisir le fournisseur qui répo… » · « Sécurisez l’avenir de votre entreprise avec des services … » | `src/content/blog/fr/tendances-ti.md` |
-|  | `/en/ressources/expands-cybersecurity-offering-france/` | `/en/expands-cybersecurity-offering-france/` | 270 | 262 | 0,97 | ≈ « A new step to support your digital transformation » · « An end-to-end cybersecurity offering to meet your needs » | `src/content/blog/en/developpement-offre-cybersecurite-france.md` |
-|  | `/en/ressources/penetration-testing/` | `/en/penetration-testing/` | 1151 | 1123 | 0,98 | ≈ « Becoming Your Own Hacker to Reinforce Your Organization's… » · « Cybersecurity Pentesting: What It Is and How to Do It » · « Ensuring Compliance through Penetration Testing » (+1) | `src/content/blog/en/pentest-cybersecurite.md` |
-|  | `/fr/ressources/ia-servicenow/` | `/ia-servicenow/` | 1199 | 1171 | 0,98 | ≈ « IA et ServiceNow : des résultats concrets, plutôt que des… » · « Gouvernance et fiabilité : encadrer l’intelligence artifi… » · « De la performance à la gouvernance : maîtrisez l’IA et Se… » | `src/content/blog/fr/ia-servicenow.md` |
 |  | `/en/ressources/soc-outsourcing-for-smbs-pros-cons/` | `/en/soc-outsourcing-for-smbs-pros-cons/` (+1) | 866 | 846 | 0,98 | ≈ « What do the acronyms SIEM & SOC stand for? » · « What Is a SOC service? » · « Why Set Up a SOC? » (+1) | `src/content/blog/en/externalisation-soc-avantages-inconvenients.md` |
 |  | `/fr/ressources/externalisation-du-soc-avantages-inconvenients/` | `/externalisation-du-soc-avantages-inconvenients/` (+1) | 971 | 953 | 0,98 | ≈ « Que signifient les acronymes SIEM et SOC? » · « Qu'est-ce qu'un service SOC? » · « Pourquoi opter pour la mise en place d’un SOC dédié? » (+1) | `src/content/blog/fr/externalisation-soc-avantages-inconvenients.md` |
-|  | `/fr/ressources/developpement-offre-cybersecurite-france/` | `/developpement-offre-cybersecurite-france/` | 287 | 286 | 1,00 | ≈ « Une nouvelle étape pour accompagner votre transformation … » · « Une offre en cybersécurité de bout-en-bout pour répondre … » | `src/content/blog/fr/developpement-offre-cybersecurite-france.md` |
+|  | `/en/ressources/it-trends/` | `/en/it-trends/` | 771 | 762 | 0,99 |  | `src/content/blog/en/tendances-ti.md` |
+|  | `/en/ressources/servicenow-ai/` | `/en/servicenow-ai/` | 1001 | 997 | 1,00 |  | `src/content/blog/en/ia-servicenow.md` |
 |  | `/en/ressources/ransomware-protection-tips/` | `/en/ransomware-protection-tips/` | 2173 | 2179 | 1,00 |  | `src/content/blog/en/ransomware-rancongiciels.md` |
+|  | `/fr/ressources/tendances-ti/` | `/tendances-ti/` | 932 | 935 | 1,00 |  | `src/content/blog/fr/tendances-ti.md` |
+|  | `/en/ressources/dora-regulation/` | `/en/dora-regulation/` | 518 | 521 | 1,01 |  | `src/content/blog/en/reglementation-dora.md` |
+|  | `/en/ressources/penetration-testing/` | `/en/penetration-testing/` | 1151 | 1158 | 1,01 |  | `src/content/blog/en/pentest-cybersecurite.md` |
 |  | `/en/ressources/copilot-studio-agents/` | `/en/copilot-studio-agents/` | 1177 | 1185 | 1,01 |  | `src/content/blog/en/agents-copilot-studio.md` |
+|  | `/en/ressources/power-platform-governance-advice/` | `/en/power-platform-governance-advice/` | 1146 | 1154 | 1,01 |  | `src/content/blog/en/gouvernance-power-platform-conseils.md` |
 |  | `/fr/ressources/ransomware-rancongiciels/` | `/ransomware-rancongiciels/` | 2518 | 2537 | 1,01 |  | `src/content/blog/fr/ransomware-rancongiciels.md` |
+|  | `/fr/ressources/sase-cloud/` | `/sase-cloud/` | 1203 | 1213 | 1,01 |  | `src/content/blog/fr/sase-cloud.md` |
+|  | `/en/ressources/internet-of-things-security/` | `/en/internet-of-things-security/` | 830 | 837 | 1,01 |  | `src/content/blog/en/securite-internet-des-objets.md` |
 |  | `/en/ressources/extended-reality-xr-agc-partnership/` | `/en/extended-reality-xr-agc-partnership/` | 972 | 981 | 1,01 |  | `src/content/blog/en/realite-etendue-xr-partenariat-agc.md` |
+|  | `/en/ressources/migration-windows-11-microsoft-exchange/` | `/en/migration-windows-11-microsoft-exchange/` | 636 | 642 | 1,01 | ≈ « Why Act Now? » | `src/content/blog/en/migration-windows-11-microsoft-exchange.md` |
 |  | `/en/ressources/microsoft-copilot-features/` | `/en/microsoft-copilot-features/` | 833 | 842 | 1,01 |  | `src/content/blog/en/fonctionnalites-microsoft-copilot.md` |
+|  | `/en/ressources/cybersecurity-risk-audit/` | `/en/cybersecurity-risk-audit/` | 705 | 713 | 1,01 |  | `src/content/blog/en/audit-cybersecurite.md` |
+|  | `/en/ressources/microsoft-viva-apps/` | `/en/microsoft-viva-apps/` | 667 | 675 | 1,01 |  | `src/content/blog/en/applications-microsoft-viva-demystifier-viva.md` |
 |  | `/en/ressources/law-25-personal-data-guide/` | `/en/law-25-personal-data-guide/` | 662 | 670 | 1,01 |  | `src/content/blog/en/loi-25-donnees-personnelles-guide.md` |
+|  | `/fr/ressources/gouvernance-power-platform-conseils/` | `/gouvernance-power-platform-conseils/` | 1346 | 1363 | 1,01 |  | `src/content/blog/fr/gouvernance-power-platform-conseils.md` |
 |  | `/en/ressources/dominic-lajoie-appointed/` | `/en/dominic-lajoie-appointed/` | 620 | 628 | 1,01 |  | `src/content/blog/en/nomination-dominic-lajoie.md` |
 |  | `/en/ressources/iot-security-challenges/` | `/en/iot-security-challenges/` | 550 | 558 | 1,01 |  | `src/content/blog/en/securite-iot-defis.md` |
 |  | `/en/ressources/appointment-ceo/` | `/en/appointment-ceo/` | 532 | 540 | 1,02 |  | `src/content/blog/en/annonce-nomination-ceo.md` |
+|  | `/fr/ressources/servicenow-itsm/` | `/servicenow-itsm/` | 1376 | 1397 | 1,02 |  | `src/content/blog/fr/servicenow-itsm.md` |
 |  | `/fr/ressources/agents-copilot-studio/` | `/agents-copilot-studio/` | 1311 | 1335 | 1,02 |  | `src/content/blog/fr/agents-copilot-studio.md` |
+|  | `/fr/ressources/ia-servicenow/` | `/ia-servicenow/` | 1199 | 1222 | 1,02 |  | `src/content/blog/fr/ia-servicenow.md` |
+|  | `/en/ressources/iso-27001-iso-9001-certifications/` | `/en/iso-27001-iso-9001-certifications/` | 378 | 386 | 1,02 |  | `src/content/blog/en/certification-iso-27001-iso-9001.md` |
+|  | `/fr/ressources/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` | `/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` (+1) | 923 | 943 | 1,02 |  | `src/content/blog/fr/zero-trust-network-access-ztna.md` |
+|  | `/fr/ressources/securite-internet-des-objets/` | `/securite-internet-des-objets/` | 1015 | 1037 | 1,02 |  | `src/content/blog/fr/securite-internet-des-objets.md` |
 |  | `/fr/ressources/loi-25-donnees-personnelles-guide/` | `/loi-25-donnees-personnelles-guide/` | 824 | 843 | 1,02 |  | `src/content/blog/fr/loi-25-donnees-personnelles-guide.md` |
 |  | `/fr/ressources/realite-etendue-xr-partenariat-agc/` | `/realite-etendue-xr-partenariat-agc/` | 1085 | 1111 | 1,02 |  | `src/content/blog/fr/realite-etendue-xr-partenariat-agc.md` |
+|  | `/fr/ressources/applications-microsoft-viva-demystifier-viva/` | `/applications-microsoft-viva-demystifier-viva/` | 741 | 759 | 1,02 |  | `src/content/blog/fr/applications-microsoft-viva-demystifier-viva.md` |
 |  | `/fr/ressources/nomination-dominic-lajoie/` | `/nomination-dominic-lajoie/` | 631 | 648 | 1,03 |  | `src/content/blog/fr/nomination-dominic-lajoie.md` |
-|  | `/fr/ressources/audit-cybersecurite/` | `/audit-cybersecurite/` | 861 | 885 | 1,03 | ≈ « Importance de la conformité pour les grandes organisations » · « Les enjeux organisationnels de la mise en conformité » · « Audit et posture de sécurité » (+2) | `src/content/blog/fr/audit-cybersecurite.md` |
 |  | `/fr/ressources/fonctionnalites-microsoft-copilot/` | `/fonctionnalites-microsoft-copilot/` | 998 | 1026 | 1,03 |  | `src/content/blog/fr/fonctionnalites-microsoft-copilot.md` |
 |  | `/fr/ressources/securite-iot-defis/` | `/securite-iot-defis/` | 663 | 682 | 1,03 |  | `src/content/blog/fr/securite-iot-defis.md` |
+|  | `/en/ressources/expands-cybersecurity-offering-france/` | `/en/expands-cybersecurity-offering-france/` | 270 | 278 | 1,03 |  | `src/content/blog/en/developpement-offre-cybersecurite-france.md` |
+|  | `/fr/ressources/reglementation-dora/` | `/reglementation-dora/` | 611 | 630 | 1,03 |  | `src/content/blog/fr/reglementation-dora.md` |
 |  | `/fr/ressources/societe-conseil-lambda-victrix/` | `/societe-conseil-lambda-victrix/` | 552 | 572 | 1,04 |  | `src/content/blog/fr/societe-conseil-lambda-victrix.md` |
 |  | `/en/ressources/servicenow-itom/` | `/en/servicenow-itom/` | 1086 | 1127 | 1,04 | ≈ « What Is ITOM in ServiceNow? » · « More Than a Tool Suite: What Can Businesses Do With Servi… » · « ServiceNow ITOM Modules & Features — and What They Do » (+4) | `src/content/blog/en/servicenow-itom.md` |
+|  | `/fr/ressources/migration-windows-11-microsoft-exchange/` | `/migration-windows-11-microsoft-exchange/` | 703 | 732 | 1,04 |  | `src/content/blog/fr/migration-windows-11-microsoft-exchange.md` |
 |  | `/fr/ressources/annonce-nomination-ceo/` | `/annonce-nomination-ceo/` | 540 | 565 | 1,05 |  | `src/content/blog/fr/annonce-nomination-ceo.md` |
-|  | `/fr/ressources/servicenow-itom/` | `/servicenow-itom/` | 1407 | 1484 | 1,05 | ≈ « Qu'est-ce que ITOM dans ServiceNow? » · « Plus qu'une suite d'outils: ce que les entreprises accomp… » · « Les fonctionnalités et modules ITOM de ServiceNow — et ce… » (+4) | `src/content/blog/fr/servicenow-itom.md` |
+|  | `/fr/ressources/developpement-offre-cybersecurite-france/` | `/developpement-offre-cybersecurite-france/` | 287 | 305 | 1,06 |  | `src/content/blog/fr/developpement-offre-cybersecurite-france.md` |
+|  | `/fr/ressources/certification-iso-27001-iso-9001/` | `/certification-iso-27001-iso-9001/` | 425 | 452 | 1,06 |  | `src/content/blog/fr/certification-iso-27001-iso-9001.md` |
 |  | `/en/ressources/nis2-directive/` | `/en/nis2-directive/` | 680 | 729 | 1,07 |  | `src/content/blog/en/directive-nis2.md` |
-|  | `/fr/ressources/pentest-cybersecurite/` | `/pentest-cybersecurite/` | 1157 | 1242 | 1,07 | ≈ « Devenir son propre pirate pour renforcer la sécurité info… » · « Pentest cybersécurité: Qu’est-ce que c’est et comment fon… » · « Assurer sa conformité avec des tests de pénétration » (+1) | `src/content/blog/fr/pentest-cybersecurite.md` |
+|  | `/fr/ressources/audit-cybersecurite/` | `/audit-cybersecurite/` | 861 | 933 | 1,08 |  | `src/content/blog/fr/audit-cybersecurite.md` |
+|  | `/fr/ressources/servicenow-itom/` | `/servicenow-itom/` | 1407 | 1542 | 1,10 |  | `src/content/blog/fr/servicenow-itom.md` |
 |  | `/fr/ressources/directive-nis2/` | `/directive-nis2/` | 827 | 907 | 1,10 |  | `src/content/blog/fr/directive-nis2.md` |
+|  | `/fr/ressources/pentest-cybersecurite/` | `/pentest-cybersecurite/` | 1157 | 1284 | 1,11 |  | `src/content/blog/fr/pentest-cybersecurite.md` |
 |  | `/en/ressources/chatgpt-vs-copilot/` | `/en/chatgpt-vs-copilot/` | 1172 | 1355 | 1,16 |  | `src/content/blog/en/copilot-vs-chatgpt.md` |
 |  | `/fr/ressources/copilot-vs-chatgpt/` | `/copilot-vs-chatgpt/` | 1292 | 1500 | 1,16 |  | `src/content/blog/fr/copilot-vs-chatgpt.md` |
 |  | `/fr/ressources/une-journee-dans-la-vie-secops/` | `/une-journee-dans-la-vie-secops/` | 107 | 129 | 1,21 |  | `src/content/blog/fr/une-journee-dans-la-vie-secops.md` |

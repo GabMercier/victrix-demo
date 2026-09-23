@@ -1,9 +1,19 @@
 {
+  "_schema": "default",
   "title": "Citizen request management portal",
   "description": "Streamlines request processing, provides transparent real-time tracking, and brings the administration closer to citizens.",
   "image": "/images/solutions/requetes-citoyennes.jpg",
   "sector": "Municipal",
   "solutionType": "Dynamics 365",
+  "featured": false,
   "order": 10,
-  "href": "/contact"
+  "href": "/contact",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": []
 }

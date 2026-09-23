@@ -17,6 +17,7 @@ import JsonLd from '../../../components/JsonLd.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { breadcrumbSchema } from '../../../lib/seo/breadcrumb';
 import { useTranslations } from '../../../i18n/ui';
+import { cheminDeFichier, conflitsDeSlug, slugDeSolution } from '../../../lib/solutions/slug';
 
 /**
  * FICHES DU CATALOGUE Ø STUDIO — une page par solution (lot L11, 2026-09-23).
@@ -51,26 +52,39 @@ export async function getStaticPaths() {
   const pages = await getCollection('pages');
   const formEntries = await getCollection('forms');
 
-  const paths = [];
-  for (const entry of entries) {
-    // Une carte sans sections n'a pas de page (voir l'entête, point 1).
-    if (!entry.data.sections || entry.data.sections.length === 0) continue;
+  // Une carte sans sections n'a pas de page (voir l'entête, point 1).
+  const avecPage = entries.filter((entry) => entry.data.sections && entry.data.sections.length > 0);
 
+  // Revue R3, constat 1 : deux fiches d'une même langue au même slug (saisi au
+  // CMS, ou nom de fichier) s'écrasaient l'une l'autre en silence. Le build
+  // échoue en nommant les fichiers — la règle du slug est dans
+  // src/lib/solutions/slug.ts, partagée avec le catalogue.
+  const conflits = conflitsDeSlug(avecPage);
+  if (conflits.length > 0) {
+    throw new Error(
+      '[solutions] adresses en double : ' +
+        conflits
+          .map((c) => `/${c.langue}/solutions/${c.slug}/ ← ${c.fichiers.join(' et ')}`)
+          .join(' ; ') +
+        ' — corriger le champ « Adresse de la page » (slug) de l’une des fiches.',
+    );
+  }
+
+  const paths = [];
+  for (const entry of avecPage) {
     // ids = "<locale>/<fichier>" — le nom de fichier apparie FR et EN.
     const seg = entry.id.split('/')[0];
     const lang: Locale = isLocale(seg) ? seg : defaultLocale;
-    const filePath = entry.id.slice(entry.id.indexOf('/') + 1);
-    const slug = entry.data.slug || filePath;
+    const filePath = cheminDeFichier(entry);
+    const slug = slugDeSolution(entry);
     const other = otherLocale[lang];
 
     // Sélecteur de langue / hreflang : la traduction n'existe que si elle a,
     // elle aussi, des sections — sinon son URL serait un 404. Repli sur
     // l'accueil de l'autre langue, comme les services.
-    const counterpart = entries.find(
-      (e) => e.id === `${other}/${filePath}` && e.data.sections && e.data.sections.length > 0,
-    );
+    const counterpart = avecPage.find((e) => e.id === `${other}/${filePath}`);
     const altLocalePath = counterpart
-      ? localizePath(`/solutions/${counterpart.data.slug || filePath}/`, other)
+      ? localizePath(`/solutions/${slugDeSolution(counterpart)}/`, other)
       : localizePath('/', other);
 
     // Fil d'Ariane : Accueil → Catalogue → fiche. Le libellé du catalogue vient

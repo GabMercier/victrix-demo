@@ -14,6 +14,8 @@ The Internet of Things (IoT) is driving an industrial revolution, particularly a
 Learn more about the **challenges of IoT security** and **the best strategies for your industry**, whether you’re a large private organization or a public sector institution. Explore our solutions for minimizing costs, protecting personal data, and securing your connected systems.
  [Secure your IoT with Victrix](/en/contact/)
 
+## Internet of Things (IoT): a Catalyst for Transformation, but also Risks
+
 With every connected device, an organization’s attack surface expands. As security risks grow, calling on a [professional IoT cybersecurity service](/en/services/cybersecurity/internet-of-things-iot/) becomes crucial to ensuring the protection of your embedded systems and connected objects. 
  The diversity of IoT applications, from smartwatches to connected cars and comprehensive intelligent city infrastructures,**complicates the process of securing IoT**. 
  With over 15 billion devices connected to the Internet in 2023, with [projections exceeding 18.8 billion by the end of 2024](https://iotbusinessnews.com/2024/09/04/26399-state-of-iot-2024-number-of-connected-iot-devices-growing-13-to-18-8-billion-globally/), security is a significant issue for large organizations and the public sector.
@@ -21,6 +23,12 @@ With every connected device, an organization’s attack surface expands. As secu
 #### Did You Know?
 
 Cyberattacks on IoT [increased by 400% between 2023 and 2022](https://iotbusinessnews.com/2024/09/04/26399-state-of-iot-2024-number-of-connected-iot-devices-growing-13-to-18-8-billion-globally/). If this tangent is anything to go by, organizations’ cybersecurity needs will only increase.
+
+### IoT & OT Services Tailored to Your Industry
+
+Take advantage of our IoT service to strengthen your posture with a solution tailored to your organization.
+
+## Biggest Risk in Internet of Things Security
 
 The greatest threat lies in the exploitation of security vulnerabilities in your connected devices. Hackers and cybercriminals target IOT systems **to remotely control critical infrastructure**, such as industrial systems, medical devices and smart city networks.
 
@@ -31,6 +39,8 @@ In 2024, the [average cost of IoT data breaches is over US$4 million](https://ww
 Enjoy Victrix’s comprehensive cybersecurity services designed exclusively for the healthcare sector. Secure your connected objects and IoT systems against hacking with our cybersecurity experts.
  [Cybersecurity for healthcare](/en/services/cybersecurity/cybersecurity-healthcare/)
 
+## Top 3 Internet of Things Security Challenges
+
 **Update Management Gaps:** 
  Too many public and private organizations neglect software updates and patches, leaving devices vulnerable over time.
 
@@ -40,6 +50,8 @@ Enjoy Victrix’s comprehensive cybersecurity services designed exclusively for 
 **Network Security Complexity:** 
  The more connected devices your organization has, the more difficult it is to secure your entire system. Adding new devices to existing infrastructures also complicates the process of connecting and securing these new devices.
 
+## 5 Strategic Solutions to Reduce IoT Risk in the Public and Private Sector
+
 ### 1. Ensuring the Security of Connected Devices
 
 Adopt Internet of Things solutions tailored to your sector’s needs. The Internet of Things in business differs greatly from the IoT in a hospital or smart city.
@@ -47,7 +59,6 @@ Adopt Internet of Things solutions tailored to your sector’s needs. The Intern
 ### 2. Network Segmentation
 
 Implementing segmentation for different device groups helps limit potential impacts of intrusions. 
- .
 
 ### 3. Auditing
 
@@ -60,6 +71,27 @@ An alert team is invaluable to organizations. Promoting awareness of [cybersecur
 ### 4. Adopting the Highest Compliance Frameworks
 
 Victrix can help you comply with security standards such as [DORA regulations](/en/ressources/dora-regulation/) in the European Union and [Law 25 in Quebec](/en/ressources/law-25-personal-data-guide/). We are also [ISO 27001 certified](/en/ressources/iso-27001-iso-9001-certifications/).
+
+**Healthcare Internet of Things**
+
+A cyber attack on the Internet of Medical Things is sometimes a risk of life and death. A cybersecurity firm specializing in healthcare cybersecurity revealed a study that reported that over 53% of connected medical devices in hospitals had critical vulnerabilities. These smart devices vulnerable to cyberattacks include:
+
+- Connected insulin pumps
+- Intracardiac defibrillators
+- Mobile cardiac telemetry
+- Intrathecal pain pumps
+
+Malicious actors can compromise these medical devices to cause them to give inaccurate readings and amounts of data, administer drug overdoses and put patients’ health at risk.
+
+**IoT for Smart Cities**
+
+Cities use IoT to manage energy networks, traffic lights and public transport. A cyberattack on these infrastructures could lead to major paralysis.
+
+**Industrial Internet of Things**
+
+IoT systems embedded in plants guarantee high operational efficiency and make collecting data in real time easier. However, this connectivity exposes production and supply chains to costly interruptions in the event of intrusion.
+
+## Maximize the Potential of IoT While Protecting Your Cybersecurity
 
 Victrix is here to help you reap the benefits of IoT as a driver of innovation without exposing you to the risks it brings. Be ready to take control of your connected objects with an IoT service that meets the needs of your industry.
  [Start your IoT project](/en/contact/)

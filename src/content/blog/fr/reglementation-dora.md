@@ -17,6 +17,20 @@ Dans cet article, nos [experts en cybersécurité](/fr/services/cybersecurite/) 
 
 <a class="article-cta" href="/fr/contact/">Soyez accompagné pour votre mise en conformité</a>
 
+**Qu’est-ce que la réglementation DORA?**
+
+DORA est l’acronyme de Digital Operational Resilience Act. Il s’agit du règlement sur la résilience opérationnelle numérique des services financiers établi par la Commission européenne vis-à-vis des risques croissants de cyberattaques. L’objectif de la norme DORA est d’harmoniser les directives de cybersécurité dans le secteur financier.
+
+**À qui s’applique la réglementation DORA?**
+
+La directive DORA en cybersécurité s’applique au secteur des services financiers de l’Union européenne. Toutes les banques et institutions financières opérant au sein de l’UE sont concernées par ce règlement.
+
+**Quelle est la date d’entrée en vigueur de la réglementation DORA?**
+
+Entré en vigueur le 16 janvier 2023, le règlement sur la résilience opérationnelle numérique (DORA) entrera en application le 17 janvier 2025. Les établissements de services financiers doivent donc se mettre en conformité avant cette date.
+
+## Les exigences de la réglementation DORA
+
 Le règlement européen DORA implique aux sociétés financières de:
 
 - Cartographier et réaliser des tests de résilience opérationnelle des services, processus et systèmes informatiques essentiels
@@ -37,6 +51,8 @@ En cas de non-conformité les sociétés s’exposent à des sanctions de l’UE
  **Retrait de l’agrément:** En cas de violations répétées, les sociétés peuvent perdre leur licence d’exploitation 
  
  [Assurez votre conformité Dora avec Victrix](/fr/contact/)
+
+## Victrix, expert GRC, vous accompagne dans votre mise en conformité Dora
 
 Victrix accompagne les banques, institutions financières et établissements de crédit dans leur mise en conformité avec **une approche rigoureuse et adaptée à leurs besoins spécifiques**, en intégrant les meilleurs standards et réglementations. Nos consultants GRC sont certifiés. 
  Découvrez toutes les étapes de notre accompagnement personnalisé pour assurer votre conformité à la réglementation DORA.

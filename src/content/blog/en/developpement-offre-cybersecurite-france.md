@@ -10,8 +10,12 @@ wpUrl: "/en/expands-cybersecurity-offering-france/"
 ---
  MONTREAL, SEPTEMBER 04, 2024 — Victrix expands its cybersecurity offering in France
 
+## A new step to support your digital transformation
+
 By joining forces with COMITEM, Victrix is expanding its offering in France as part of the strong branding strategy launched by [Alan Allman Associates](https://alan-allman.com/).   
  This new step marks a significant advance in our international growth strategy and demonstrates our commitment to supporting our customers in their digital transformation challenges.
+
+## An end-to-end cybersecurity offering to meet your needs
 
 At Victrix, we offer a comprehensive suite of services to help organizations meet the ever-increasing challenges posed by digital threats. 
  Our offering is organized around three main service lines, each of which plays a key role in protecting, optimizing and evolving our customers' technology environments.

@@ -189,8 +189,36 @@ annonçait 185 blocs perdus (4 641 mots), dont 170 sur quatre articles anglais.
 Aucun n'avait rien perdu : les pages `/en/…` de l'ancien site étaient restées
 EN FRANÇAIS, et nos articles anglais sont traduits — chaque bloc français était
 donc introuvable dans une cible anglaise. Un détecteur de langue par
-mots-outils écarte ces blocs (compteur séparé dans le rapport). Verdict réel :
-**61 blocs, 853 mots, 11 articles**.
+mots-outils écarte ces blocs (compteur séparé dans le rapport). Première
+lecture : 61 blocs, 853 mots, 11 articles.
+
+**Deuxième passe (2026-09-23, soir) — le rapport se trompait dans les deux
+sens.** (1) Le filtre PAR BLOC laissait passer les items de liste et les
+titres courts des mêmes quatre articles anglais (46 faux « perdus » de plus) :
+on tranche maintenant d'abord à la maille de la PAGE SOURCE — si elle est
+entière dans l'autre langue, l'article est écarté et listé à part. (2) Les
+TITRES étaient sous-déclarés : un H2 de quatre mots n'atteignait pas les cinq
+mots significatifs du jugement par sac de mots, et ses mots pris un à un se
+retrouvent toujours ailleurs dans la page. Un titre est désormais « absent »
+dès qu'il n'est pas retrouvé mot pour mot ; un bloc court (question de FAQ,
+intitulé d'encadré) non retrouvé mot pour mot est signalé « à vérifier ».
+**Verdict réel : 158 blocs, 1 536 mots, 27 articles** — presque tous des
+H2 que la conversion WordPress avait laissés tomber, plus les FAQ.
+
+**La remise est OUTILLÉE :** `python scripts/migration/restaure-blocs-articles.py`
+(essai : les diffs, rien d'écrit ; `--apply` écrit `src/content/blog` ;
+`--only <slug>,<slug>`). Il marche les blocs de la page source DANS L'ORDRE,
+repère dans le Markdown la ligne où chaque bloc retrouvé vit, et insère un
+bloc absent juste après la dernière ligne repérée — `## `/`### ` pour un
+titre, `- ` pour un item, gras pour un bloc court. Trois garde-fous appris en
+le faisant : un item de liste ne se cherche que sur une ligne de liste
+(Markdown ou `<li>`), un titre que mot pour mot, et un bloc « présent dans la
+page » qui ne vit dans aucune ligne du fichier est repêché (le rapport juge
+sur le sac de mots de la page entière). Les liens du bloc d'origine ne sont
+pas reconstitués (source lue en texte nu). Rejouable : un bloc remis est
+retrouvé, donc ignoré. Résultat du 23/09 : **198 blocs remis dans 26
+articles**, puis rapport à 2 blocs (remis à la main), et 4 retouches
+manuelles (un titre vide, une ligne « . », un H2 déplacé, 4 étiquettes → liste).
 
 L'outil juge le TEXTE, pas la FORME : un encadré rendu en paragraphe simple,
 une FAQ aplatie en titres ou une bannière devenue un lien nu comptent comme

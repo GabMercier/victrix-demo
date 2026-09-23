@@ -1,7 +1,7 @@
 # Validation des adresses de l'ancien site
 
 > Généré par `npm run check:old-urls` — **ne pas modifier à la main.**
-> Mesuré contre le build `C:\Users\gmercierblouin\vvbuild\dist` et ses 375 routes
+> Mesuré contre le build `.\dist` et ses 375 routes
 > (`dist/_cloudcannon/routing.json`, ce que lira l'hébergement de production).
 
 La question posée, adresse par adresse : **si quelqu'un la tape aujourd'hui,

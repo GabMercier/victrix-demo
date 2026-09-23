@@ -14,6 +14,18 @@ wpUrl: "/en/ressources/dora-regulation/"
  In this article, our financial [cybersecurity experts](/en/services/cybersecurity/) review the requirements of this standard and guide you on how to **increase your operational resilience and ensure your DORA compliance**. 
  [Get support for your compliance](/en/contact/)
 
+**What is the DORA regulation?**
+
+DORA stands for the Digital Operational Resilience Act. It is the European Commission’s regulation on the digital operational resilience of financial services in the face of the growing risk of cyber-attacks. The aim of the DORA standard is to harmonize cybersecurity policies in the financial sector.
+
+**Who is covered by DORA?**
+
+The DORA Cybersecurity Directive applies to the financial services sector in the European Union. All banks and financial institutions operating in the EU are affected by this regulation.
+
+**When will the DORA regulations go into effect?**
+
+The Digital Operational Resilience Regulation (DORA), which comes into force on January 16, 2023, will take effect on January 17, 2025. Financial services institutions must therefore be compliant before that date.
+
 The European DORA regulation requires financial firms to:
 
 - Map and perform operational resilience testing of critical IT services, processes and systems
@@ -33,6 +45,8 @@ Non-compliance exposes companies to EU sanctions:
  **Withdrawal of license**: Repeat offenders may lose their license to operate. 
  
  [Ensure Dora compliance with Victrix](/en/contact/)
+
+## Victrix, the GRC Expert, Helps You Achieve Dora Compliance
 
 Victrix assists banks, financial institutions and credit institutions in their compliance efforts with **a rigorous approach tailored to their specific needs**, integrating the best standards and regulations. Our GRC consultants are certified.
 Discover all the stages of our personalized support to ensure your compliance with DORA regulations.

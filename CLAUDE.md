@@ -110,6 +110,11 @@ beige ; à rejouer après une fusion `staging` → `dev`) ·
 dépôt → `docs/migration/parite-live.md`) ·
 `python scripts/migration/extract-source-page.py <url>` (contenu d'une page
 source, bloc par bloc, `--images` pour rapatrier) ·
+`python scripts/migration/blocs-manquants-articles.py` (après un build : les
+blocs de l'ancien site absents de chaque article →
+`docs/migration/blocs-manquants-articles.md`) ·
+`python scripts/migration/restaure-blocs-articles.py [--apply] [--only a,b]`
+(les remet à leur place dans `src/content/blog` ; sans `--apply` = diffs) ·
 `python scripts/migration/export-prix-check-point.py` (191 SKU FR/EN →
 `src/data/prix/`).
 

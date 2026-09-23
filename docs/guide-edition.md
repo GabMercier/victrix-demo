@@ -576,7 +576,16 @@ présentation, les informations clés, les captures d'écran et le formulaire.
 - **Une fiche sans section n'a pas de page** : sa carte reste dans le
   catalogue, et son lien doit alors être rempli (sinon la carte n'a pas de
   bouton). C'est l'état des **9 fiches anglaises** : elles continuent de mener
-  au formulaire de contact prérempli, en attendant leur traduction.
+  au formulaire de contact prérempli, en attendant leur traduction. Depuis le
+  23 septembre, ces fiches (**Solutions (EN)**) affichent les mêmes champs que
+  les françaises — sections, adresse de la page, SEO, préremplissage du
+  Contact : la traduction se fait donc au CMS, sans développeur, en posant des
+  sections sur la fiche anglaise.
+- **Adresse de la page (slug)** : minuscules, chiffres et traits d'union. Ce
+  que vous tapez est normalisé automatiquement (accents retirés, espaces et
+  majuscules converties) ; vide = le nom du fichier. **Deux fiches d'une même
+  langue ne peuvent pas partager la même adresse** : la publication est
+  bloquée avec un message qui nomme les deux fiches — corriger l'une des deux.
 - **Les 16 fiches françaises sont masquées des moteurs de recherche**
   (« Masquer des moteurs de recherche » activé) : elles affichent des
   fourchettes de prix que Ø Studio doit valider. À décocher fiche par fiche
