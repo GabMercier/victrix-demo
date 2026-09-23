@@ -171,6 +171,31 @@ widgets tiers n'ont jamais, d'où zéro avertissement au rapport de conversion.
 **Ne pas relancer `convert-articles.mjs`** : l'éditrice a modifié des articles
 depuis. On restaure à la main, depuis le cache, bloc par bloc.
 
+**Quels blocs manquent, article par article (2026-09-23, demande de Julie).**
+`python scripts/migration/blocs-manquants-articles.py` (après un `npm run build`)
+écrit `docs/migration/blocs-manquants-articles.md` : pour chacun des 62
+articles, les blocs de la page EN LIGNE qui ne se retrouvent pas dans la page
+construite, **avec leur texte, prêt à coller**. Il n'écrit rien dans
+`src/content` — la remise reste un geste humain.
+
+Pourquoi un outil de plus, alors que `check:parite-texte` existe : ce dernier
+juge à la maille de la PAGE (ratio de mots) et ne compare individuellement que
+les blocs qui SUIVENT un titre H2/H3. Un encadré de 40 mots perdu dans un
+article de 1 200 ne fait pas tomber le ratio, et s'il ne suit pas un titre, il
+n'est comparé nulle part — c'est exactement ce que Julie trouvait à la main.
+
+**Le piège, payé au premier essai : la LANGUE.** Sans filtre, l'outil
+annonçait 185 blocs perdus (4 641 mots), dont 170 sur quatre articles anglais.
+Aucun n'avait rien perdu : les pages `/en/…` de l'ancien site étaient restées
+EN FRANÇAIS, et nos articles anglais sont traduits — chaque bloc français était
+donc introuvable dans une cible anglaise. Un détecteur de langue par
+mots-outils écarte ces blocs (compteur séparé dans le rapport). Verdict réel :
+**61 blocs, 853 mots, 11 articles**.
+
+L'outil juge le TEXTE, pas la FORME : un encadré rendu en paragraphe simple,
+une FAQ aplatie en titres ou une bannière devenue un lien nu comptent comme
+présents. C'est un sujet distinct (composants d'article).
+
 **Import du catalogue Ø Studio (lot L10, 2026-09-23).**
 `scripts/migration/export-catalogue-ostudio.mjs` rapatrie
 `o-studio-catalogue.victrix.ca` (WordPress FR, API REST ouverte) : les textes
@@ -239,6 +264,33 @@ ordre, vedette) ; les 7 nouvelles reçoivent un secteur et un type **proposés**
 filtre nouvelle). Le champ `href` qui valait `/contact` est vidé : « Découvrir »
 mène alors à la fiche. Un `href` qui pointe ailleurs est une surcharge voulue
 et reste intact (`o-bureau` garde sa page de service).
+
+**Typographie française — et le piège de l'éditeur visuel (2026-09-23).**
+Les espaces insécables devant `: ; ! ? »` (et après `«`) sont posées **après le
+build**, sur le HTML : intégration `victrix:typographie` d'`astro.config.mjs`,
+logique pure dans `scripts/lib/typographie-html.mjs` (testée). Elle ne
+transforme que le TEXTE entre `>` et `<`, met `script/style/pre/code` de côté,
+et est idempotente. 202 pages traitées, 70 titres sur 70.
+
+**NE PAS la remettre dans le renderer des sections.** C'est la première
+tentative, et elle a coûté les crayons de l'éditeur visuel CloudCannon sur
+TOUTES les sections : le plugin Bookshop trace le chemin des données
+(`contentBlocks` → `{...block}` → composant) pour savoir quel champ un clic
+doit ouvrir, et interposer une fonction dans
+`component-library/src/shared/astro/page.astro` coupe ce fil.
+
+**Comment le vérifier** — le build normal ne montre rien, Bookshop n'y tourne
+pas. Il faut rejouer le build de CloudCannon :
+
+```powershell
+STATIC_ONLY=1 npm run build
+# puis compter les marqueurs d'édition live sur une page à sections :
+(Select-String -Path distr\services\cybersecurite\index.html -Pattern 'bookshop-live' -AllMatches).Matches.Count
+```
+
+Mesuré : **2 avant, 0 avec la transformation dans le renderer, 2 après le
+correctif**. Tout changement touchant `page.astro` ou la façon dont les blocs
+arrivent aux composants doit passer par ce contrôle.
 
 **Poids des images (2026-09-23).** `npm run optimize:images` réduit et
 réencode SUR PLACE les images de `public/` — même chemin, même nom, même

@@ -1,5 +1,4 @@
 ---
-import { typographieFr } from '../rich';
 /**
  * Shared Bookshop page renderer — the documented CloudCannon pattern for
  * "page building" (see the Bookshop Astro guide: a single component maps an
@@ -62,13 +61,14 @@ const isBuildRender = Boolean((import.meta.env ?? {}).SSR);
 // expressions (`(block: Record<string, unknown>) => …`) are misparsed by the
 // Astro compiler as JSX tags. Keep template expressions annotation-free.
 type Block = Record<string, unknown>;
-// Typographie française posée EN UN SEUL ENDROIT (2026-09-23) : espaces
-// insécables devant `: ; ! ? »` et après `«`, pour qu'un signe double ne se
-// retrouve jamais seul en tête de ligne — le cas visible étant les grands
-// titres. `contentBlocks` n'est PAS modifié (le marqueur `bookshop:live` le
-// trace) : on rend une COPIE transformée, la donnée éditée reste celle du
-// fichier. Sans effet en anglais, qui colle ses deux-points au mot.
-const blocks: Block[] = typographieFr(contentBlocks ?? []);
+// NE RIEN INTERPOSER ICI (leçon du 2026-09-23). Les blocs doivent arriver aux
+// composants TELS QUELS : le plugin Bookshop trace le chemin des données
+// (`contentBlocks` → `{...block}` → composant) pour savoir quel champ un clic
+// doit ouvrir dans l'éditeur visuel. Une passe de typographie posée ici a fait
+// tomber les marqueurs `bookshop-live` de 2 à 0 — plus un seul crayon sur les
+// sections. La typographie française est appliquée APRÈS le build, sur le HTML
+// (`victrix:typographie`, scripts/lib/typographie-html.mjs).
+const blocks: Block[] = contentBlocks ?? [];
 
 // Eagerly import every Bookshop component and index it by its Bookshop name
 // ("hero/hero.astro" → "hero" — the duplicated dir/file name collapses, per

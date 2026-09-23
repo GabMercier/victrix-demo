@@ -1,10 +1,10 @@
 // @ts-check
 import { promises as fs } from 'node:fs';
-import { readdirSync, readFileSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { auditPages } from './scripts/lib/h1-guard.mjs';
 import { entreAuSitemap } from './scripts/lib/sitemap-filter.mjs';
-import rehypeInsecables from './scripts/lib/rehype-insecables.mjs';
+import { typographieHtml } from './scripts/lib/typographie-html.mjs';
 import { lesDeuxFormes, versMotifCloudCannon } from './scripts/lib/routing-formes.mjs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
@@ -804,6 +804,51 @@ const noindexComposablePaths = collectNoindexComposablePaths();
  * scripts/lib/h1-guard.mjs (stubs de redirection, 404, recherche, portail et
  * style-guide sont hors périmètre).
  */
+/**
+ * TYPOGRAPHIE FRANÇAISE du HTML construit (2026-09-23) — espaces insécables
+ * devant `: ; ! ? »` et après `«`, pour qu'un signe double ne se retrouve
+ * jamais seul en tête de ligne (le cas visible : les grands titres).
+ *
+ * POURQUOI APRÈS LE BUILD, et pas dans le renderer des sections : y toucher a
+ * fait perdre à l'éditeur visuel CloudCannon ses crayons sur TOUTES les
+ * sections — le plugin Bookshop trace le chemin des données jusqu'aux
+ * composants, et passer les blocs par une fonction coupe ce fil (mesuré :
+ * 2 marqueurs `bookshop-live` avant, 0 après). Ici, on ne touche qu'au TEXTE
+ * du HTML : les marqueurs, qui vivent dans les attributs, sont intacts.
+ * Logique pure et testée : scripts/lib/typographie-html.mjs.
+ */
+function typographie() {
+  return {
+    name: 'victrix:typographie',
+    hooks: {
+      /** @param {{ dir: URL, logger: import('astro').AstroIntegrationLogger }} options */
+      'astro:build:done': async ({ dir, logger }) => {
+        const root = fileURLToPath(dir).replace(/[\/]$/, '');
+        let touchees = 0;
+        let pages = 0;
+        /** @param {string} d */
+        const walk = (d) => {
+          for (const entry of readdirSync(d, { withFileTypes: true })) {
+            const full = `${d}/${entry.name}`;
+            if (entry.isDirectory()) walk(full);
+            else if (entry.name.endsWith('.html')) {
+              pages += 1;
+              const avant = readFileSync(full, 'utf8');
+              const apres = typographieHtml(avant);
+              if (apres !== avant) {
+                writeFileSync(full, apres, 'utf8');
+                touchees += 1;
+              }
+            }
+          }
+        };
+        walk(root);
+        logger.info(`${touchees} page(s) sur ${pages} ont reçu des espaces insécables (signes doubles)`);
+      },
+    },
+  };
+}
+
 function h1Guard() {
   return {
     name: 'victrix:h1-guard',
@@ -861,17 +906,6 @@ export default defineConfig({
   // Pairs with <ClientRouter /> in BaseLayout for SPA-like page transitions.
   prefetch: true,
 
-  // TYPOGRAPHIE FRANÇAISE du corps des contenus Markdown (2026-09-23) :
-  // espaces insécables devant « : ; ! ? » » et après « « », pour qu'un signe
-  // double ne se retrouve jamais seul en tête de ligne. Les SECTIONS sont
-  // traitées ailleurs (renderer partagé, `typographieFr`) ; ce plugin couvre
-  // les articles du centre de ressources et les campagnes, dont le corps vient
-  // du Markdown. Il ne visite que les nœuds de TEXTE — jamais les attributs,
-  // donc jamais les URL — et saute `<code>`/`<pre>`.
-  markdown: {
-    rehypePlugins: [rehypeInsecables],
-  },
-
   // Bilingual site. FR + EN, both prefixed (/fr/…, /en/…). Pages live under
   // src/pages/[lang]/ and opt every locale in via getStaticPaths.
   i18n: {
@@ -913,6 +947,8 @@ export default defineConfig({
   },
 
   integrations: [
+    // Typographie française du HTML construit (espaces insécables).
+    typographie(),
     // Garde-fou H1 (Phase 2) : 2 H1 = build rouge, 0 H1 = avertissement.
     h1Guard(),
     // CloudCannon editing build only — see the STATIC_ONLY block above.

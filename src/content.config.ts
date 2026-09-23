@@ -1,6 +1,6 @@
 import { defineCollection as astroDefineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
-import { insecables, sanitizeRichHtml } from '../component-library/src/shared/rich';
+import { sanitizeRichHtml } from '../component-library/src/shared/rich';
 import { FOND_KEYS, FOND_KEYS_ETENDUS, FOND_KEYS_LEGACY } from '../component-library/src/shared/fonds';
 import { ICON_KEYS, LEGACY_ICON_KEYS } from '../component-library/src/shared/icons';
 import { CONTACT_SERVICE_KEYS, CONTACT_SUJET_KEYS } from './lib/contact/presets';
@@ -243,16 +243,7 @@ const blog = defineCollection({
   }),
   // Clean, CMS-friendly field names — mirror these in cloudcannon.config.yml.
   schema: z.object({
-    // Typographie française posée À LA LECTURE (2026-09-23) : espace insécable
-    // devant les signes doubles, pour qu'un « : » ne tombe jamais seul en tête
-    // de ligne. Ici plutôt qu'au rendu parce que le titre d'un article
-    // s'affiche à SIX endroits (l'article, sa carte, le centre de ressources,
-    // la bande « Ressources et actualités » de l'accueil, les ressources liées
-    // d'un service, le flux RSS) et que plusieurs y arrivent par le seam
-    // `enrich`, qui ne passe pas par le renderer. Une seule source, donc.
-    // Sans effet en anglais (« Title: subtitle » n'a pas d'espace à remplacer)
-    // ni dans les URL (le slug est un champ distinct).
-    title: z.string().transform(insecables),
+    title: z.string(),
     date: z.coerce.date(),
     excerpt: z.string(),
     // CHEMIN PUBLIC servi tel quel (ex. /wp-content/uploads/2025/07/….jpg) —
