@@ -9,7 +9,8 @@
     "temporaires = page à recréer (302, pour ne pas figer une mauvaise cible)",
     "ignorer = URL de l'ancien CMS sans équivalent (flux, archives, rebuts)",
     "deja_dans_astro_config = règles déjà écrites dans astro.config.mjs",
-    "ignorer contient aussi /en/ et /en/contact/ : ces URL sont DEJA celles du nouveau site (aucune redirection a ecrire)."
+    "ignorer contient aussi /en/ et /en/contact/ : ces URL sont DEJA celles du nouveau site (aucune redirection a ecrire).",
+    "parite_texte_assumee = page CIBLE dont le texte plus court que l'ancien est un choix, pas une perte (lu par scripts/migration/check-parite-texte.py --strict)."
   ],
   "manuel": {
     "/decouvrir-victrix/": "/fr/decouvrir/",
@@ -67,5 +68,10 @@
     "/ressources/reussir-sa-migration-infonuagique": "/fr/ressources",
     "/mon-portail": "/fr/portail",
     "/en/customer-portal": "/en/portail"
+  },
+  "parite_texte_assumee": {
+    "/fr/services/conseil-strategique/": "Abandon VOLONTAIRE (lot L-restaure, 2026-09-23). L'ancienne page finissait par deux blocs que la refonte ne reprend pas : « Vie chez Victrix » (18 mots, teaser vers Carrières — la page Carrières porte maintenant ce contenu) et « Ils nous font confiance » (bandeau de logos sans texte, rattaché à la décision D4 sur les logos). La page EN équivalente n'est pas signalée.",
+    "/fr/merci/": "Page système REDESSINÉE (lot L-restaure, 2026-09-23). L'ancienne page de remerciement servait de plan de site officieux : ≈ 25 liens de services et la promesse d'un rappel « dans les 24 heures ». La nôtre tient en une phrase et deux boutons, la navigation étant assurée par l'en-tête. docs/migration/inventaire-campagnes.md § 2 ne demandait que d'en vérifier les liens.",
+    "/en/merci/": "Page système REDESSINÉE (lot L-restaure, 2026-09-23) — même décision que /fr/merci/."
   }
 }

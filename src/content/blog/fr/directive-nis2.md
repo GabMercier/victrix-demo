@@ -15,6 +15,30 @@ Nos [experts en cybersécurité](/fr/services/cybersecurite/) vous expliquent to
 
 <a class="article-cta" href="/fr/contact/">Soyez accompagné pour votre mise en conformité</a>
 
+## Résumé rapide sur la directive NIS2
+
+### Qu’est-ce que la directive NIS2?
+
+La directive NIS2, adoptée le 27 décembre 2022, est **la succession et la refonte majeure de NIS (2016)** concernant les normes européennes en matière de cybersécurité. Cette nouvelle version élargit le champ d’application de NIS et vise à renforcer la sécurité des réseaux et des systèmes d’information et l’[amélioration de la résilience des entreprises](/fr/ressources/pentest-cybersecurite/) face aux menaces informatiques.
+
+> *« Les exigences prévues par la directive européenne invitent de nombreuses entités à construire une solide feuille de route pour déployer et renforcer leurs moyens de cyberdéfense, avec pour objectifs un fonctionnement structurel plus sûr, davantage de confiance vis-à-vis de leurs parties prenantes et une meilleure compétitivité pour les entreprises. »*
+
+[Vincent Strubel, Directeur Général de l’Agence Nationale de la sécurité des systèmes d’information (ANSSI)](https://monespacenis2.cyber.gouv.fr/directive)
+
+### Êtes-vous concerné par la directive NIS2?
+
+**+1000 nombre d’entités visées**
+
+**+18 secteurs d’activités concernés**
+
+La directive s’adresse principalement à deux catégories d’entités, soit **les entités essentielles (EE) et les entités importantes (EI)**. Les organisations dépassant un seuil critique de chiffre d’affaires (10 millions d’euros), d’effectifs (plus de 50 employés) ou d’impact économique sont les principales cibles de cette norme. Référez-vous au tableau ci-bas pour vérifier si votre organisation doit se conformer à la réglementation NIS2.
+
+### Date d’entrée en vigueur de la directive NIS2
+
+NIS2 est **entrée en vigueur le 16 janvier 2023**. Les États membres devaient transposer ses directions dans leur législation nationale respective **avant le 17 octobre 2024**. L’heure est donc critique pour les organisations, il est temps d’ajuster vos mesures de sécurité pour vous conformer aux nouvelles obligations.
+
+## Mise en conformité obligatoire des EE et EI
+
 <table style="border-collapse: collapse; width: 74.4159%; height: 347px;" border="1">
 <tbody>
 <tr style="height: 27px;">
@@ -72,8 +96,21 @@ Nos [experts en cybersécurité](/fr/services/cybersecurite/) vous expliquent to
 </tbody>
 </table>
 
+### Découvrez notre offre de cybersécurité ciblée pour le secteur de la santé
+
+## Assurez votre conformité aux directives de cybersécurité de l’Union européenne avec Victrix
+
 Grâce à notre Centre Opérationnel de Sécurité Évolutif (SEvOC), nous aidons les organisations à respecter les normes les plus élevées en matière de cybersécurité (RGPD, [DORA](/fr/ressources/reglementation-dora/), NIS2, [ISO 27001:2022](/fr/ressources/certification-iso-27001-iso-9001/)
 [Découvrez SEvOC](/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/)
+
+## Les 4 obligations de NIS2 pour les entités essentielles et importantes
+
+- Gouvernance
+- Gestion des risques cybersécurité
+- Obligation d’informer
+- Sécurité des chaînes d’approvisionnement
+
+## Risques de non-conformité à NIS2
 
 - Jusqu’à 2% du chiffre d’affaires mondial en amende
 - Mise en place de mesures correctives par les autorités compétentes
@@ -84,8 +121,12 @@ Grâce à notre Centre Opérationnel de Sécurité Évolutif (SEvOC), nous aidon
 
 **10 Millions d’euros.** C’est l'amende maximale à laquelle vous vous exposez en cas de non-conformité à NIS2.
 
+## Votre entreprise est-elle conforme à la directive NIS2?
+
 Faites évaluer votre conformité par des experts en cybersécurité, gestion du risque et conformité.
 [Consultez un expert](/fr/contact/)
+
+## SEvOC: votre allié pour la conformité
 
 Victrix accompagne et soutient les entités essentielles et importantes dans leur mise en conformité NIS2. Notre **approche rigoureuse et nos consultants GRC certifiés** garantissent une mise en conformité personnalisée et adaptée à votre réalité d’affaires.
 
@@ -108,6 +149,8 @@ Nous identifions vos lacunes par rapport aux exigences de NIS2 et proposons des 
 
 Mettre en place des processus de surveillance et d’évaluation régulière.
 [Démarrez votre projet avec Victrix](/fr/contact/)
+
+## Informations supplémentaires sur NIS2
 
 ### 5 Objectifs principaux de la directive NIS2
 

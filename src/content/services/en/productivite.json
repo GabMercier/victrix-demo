@@ -53,6 +53,15 @@
       ]
     },
     {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "fond": "beige",
+      "title": "Our Technologies",
+      "paragraphs": [
+        "Need help facilitating file sharing, task management or moving to a new storage space? Our specialists know <strong>how to improve productivity and workflow efficiency</strong> with the right productivity apps. We are also familiar with the following productivity solutions:"
+      ]
+    },
+    {
       "_bookshop_name": "tech-marquee",
       "type": "tech-marquee",
       "ariaLabel": "Technologies we master",
@@ -98,6 +107,19 @@
           "href": "/en/services/productivity-consulting/employee-platform-intranet",
           "icon": ""
         }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "fond": "beige",
+      "title": "Employee Platform & Intranet",
+      "paragraphs": [
+        "There are many strategies to improve productivity in business, and having a user-friendly employee platform is right at the top of the list. Offer your staff <strong>the best employee platform on the market </strong>with Victrix.",
+        "Here’s how our platform helps you achieve better productivity:",
+        "<ul><li>Create a truly unified experience</li><li>Improve integration</li><li>Improve employee engagement and productivity</li><li>Ultimately, help your business reap the benefits of increased productivity</li></ul>",
+        "Take advantage of our 360° support to offer your employees <strong>a platform that goes beyond the simple intranet</strong>.",
+        "<a href=\"/en/services/productivity-consulting/employee-platform-intranet\">Improve team productivity with our employee platform</a>"
       ]
     },
     {
@@ -162,6 +184,26 @@
           "image": "",
           "href": ""
         }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "fond": "beige",
+      "title": "Victrix Helps Companies Improve Employee Productivity",
+      "paragraphs": [
+        "Victrix specializes in <a href=\"/en/services/strategic-advice/\">IT and business strategy</a>. We can offer you the best solutions to <strong>retain engaged employees and increase your productivity</strong> while always prioritizing your needs, objectives and users.",
+        "Our methodology is agile, scalable, and transparent. Everything occurs in collaboration and synergy while respecting your brand image."
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "fond": "ivoire",
+      "title": "Achieve High Productivity With Victrix’s Productivity Consulting and Tools",
+      "paragraphs": [
+        "To ensure your competitiveness, it is critical to <strong>find ways to boost team productivity</strong>, especially now that remote working is a reality for many businesses.",
+        "That is why Victrix has developed its own <strong>productivity apps</strong>. Follow the example of many other businesses and provide your employees with the tools they need, tailored to their requirements and your expectations."
       ]
     },
     {

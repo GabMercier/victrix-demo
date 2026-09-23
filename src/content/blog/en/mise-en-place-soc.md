@@ -13,6 +13,10 @@ Before diving into the details of setting up a [SOC (Security Operations Center)
 
 The reality is that unless you are the IT manager of a large, complex organization, it is much more advantageous to partner with a [managed security service provider (MSSP)](/en/services/managed-it-services/). Building a SOC from scratch requires significant investment and considerable resources.
 
+#### Did You Know?
+
+According to a [study conducted by Gartner](https://www.gartner.com/peer-community/oneminuteinsights/omi-modern-security-operations-center-soc-strategies-jrq), only 34% of companies choose an internal SOC exclusively, while **63% favor a hybrid approach**, combining internal and external resources.
+
 Of course, setting up a SOC is not impossible, provided you **know what you have** and **carefully assess the investment in time, money, and resources** that it entails.
 
 Our comprehensive guide will help you understand the basics of an effective SOC, from **setting realistic goals** to **structuring a SOC team**, without neglecting **policies and technologies**. After reading this, you will be able to determine whether it is in your organization's best interest to [outsource the SOC](/en/ressources/soc-outsourcing-for-smbs-pros-cons/) or build one internally.
@@ -22,6 +26,8 @@ Our comprehensive guide will help you understand the basics of an effective SOC,
 Book a consultation and ask any questions you may have about our scalable SOC (SEvOC).
 
 <a class="article-cta" href="/en/contact/">Talk to an expert</a>
+
+## Why Is a SOC Essential for Strengthening Your IT Security Strategy?
 
 A modern SOC is a strategic asset for any organization seeking to strengthen its security posture. The SOC centralizes key operations such as:
 
@@ -39,6 +45,8 @@ Victrix's SEvOC offering stands out by providing a **scalable framework that goe
 
 <a class="article-cta" href="/en/services/cybersecurity/scalable-security-operations-center/">Discover our scalable SOC</a>
 
+## How to Build a SOC: What Your Organization Must Take into Account
+
 Before starting your SOC setup project, it is important to **know what you have at your disposal**. This is your first hurdle to implementing effective security controls tailored to your needs. Start by asking yourself what is really important to your business.
 
 - What are your critical systems?
@@ -54,9 +62,13 @@ Several years could be needed to **secure the necessary budget, launch projects,
 
 <a class="article-cta" href="/en/contact/">Get our expert advice</a>
 
+## How to Set Up an Effective SOC Tailored to Your Specific Needs
+
 ### Set Realistic Goals
 
 Review your processes (vulnerability management, IT asset management, incident management and response, etc.) and standard operating procedures (SOPs). Ask your key stakeholders **what they value and where it is located**. Set clear goals based on stakeholder expectations and align them with your organization's overall IT security strategy.
+
+### SOC Team Structure: Roles and Responsibilities
 
 If you are looking to build a SOC with limited budget or resources, **outsourcing is most likely the only solution that will meet your constraints.**
 
@@ -64,9 +76,13 @@ Even for SMEs with more modest needs, the idea of **setting up an effective SOC*
 
 A high-performing SOC team typically includes at least one SOC manager and **as many security analysts and SOC engineers as necessary to meet your 24/7/365 monitoring needs**. Malicious actors do not limit themselves to regular work shifts (8 to 5), thus justifying the importance of full-time coverage.
 
+### Security Policies and Frameworks
+
 Setting up a SOC is part of your compliance strategy. Although the SOC is not responsible for compliance with **IT security policies and frameworks** (NIST, ISO 27001, Law 25, GDPR, etc.), these frameworks enable the SOC to perform its essential functions.
 
 The [Canadian Centre for Cyber Security](https://www.cyber.gc.ca/en/guidance/best-practices-setting-security-operations-centre-soc-itsap00500) also recommends **integrating threat-based defense into routine security operations**, such as those derived from reference frameworks, for example [MITRE ATT&CK](https://www.mitre.org/sites/default/files/2022-04/11-strategies-of-a-world-class-cybersecurity-operations-center.pdf) or [OWASP top 10](https://owasp.org/www-project-top-ten/).
+
+### Technologies: Choosing the Best Tools to Ensure System Security
 
 - Security Information and Event Management (SIEM)
 - Endpoint Detection and Response (EDR)
@@ -78,11 +94,15 @@ The [Canadian Centre for Cyber Security](https://www.cyber.gc.ca/en/guidance/bes
 - Sandboxing and malware analysis
 - Reporting tools and dashboards
 
+### Target Operating Model: Set Up an In-house SOC or Adopt a SOC as a Service (SOCaaS)?
+
 Unless your organization has the means and resources to set up a SOC that operates 24/7, you should definitely opt for an MSSP. **Recruiting talent with the right skills, certifications** (Comptia+, CISSP, CEH, CISM, CISA, etc.), and **expérience** in cybersecurity and security incident response is a real challenge, given the labor shortage in the industry.
 
 > According to the [Cybersecurity Workforce Research Report](https://www.sans.org/mlp/2025-attract-hire-retain-cybersecurity-roles/) published by SANS | GIAC in 2025, this marks the first time since discussions about the cybersecurity talent shortage began that organizations have placed more importance on staff with the required skills than on headcount.**52% of IT security leaders identify “lack of qualified personnel”** as their main challenge, compared to 48% who cite “their workforce.”
 
 This is also why, according to a study by Gartner, **the most common SOC operating model is the hybrid approach**, chosen by nearly two-thirds (63%) of companies.
+
+## How Does a Managed SOC Differ from an Internal SOC?
 
 <table style="min-width: 600px; width: 100%; border-collapse: collapse; border: 1px solid #d1d5db; border-radius: 6px; overflow: hidden; font-family: sans-serif; height: 3161px;">
 <thead>
@@ -274,6 +294,24 @@ The change may result in additional costs or modifications to the contract</td>
 </tr>
 </tbody>
 </table>
+
+## How to Choose Your SOC Service Provider?
+
+### Aligning Services with Your Environment and Risks
+
+Ensure that your provider understands your **industry, regulatory environment, and internal processes**. Review the scope of the SLA, including what is monitored, response times, and responsibilities.
+
+### Scalability
+
+Is your SOC provider **able to adapt to your growth**? New sites, hybrid cloud computing, shared environments, without delays or significant costs?
+
+### Technologies and Integrations
+
+Check which **SIEM, SOAR, and detection technologies** are used and how well they integrate with your existing infrastructure.
+
+### Data Storage, Usage Rights, and Retention Policies
+
+Know where your sensitive data is stored, how it can be accessed or shared, and what **compliance guarantees** (ISO, SOC2, GDPR, Law 25) are in place.
 
 ## You do not need to build a SOC. You need a scalable SOC.
 

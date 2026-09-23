@@ -149,6 +149,47 @@ En matière de courriel de phishing, nous recommandons de **modifier le paramèt
 - Ne pas divulguer d’informations personnelles
 - Ne jamais utiliser une clé USB inconnue
 
+## Quelques questions fréquentes sur les attaques par ransomware en entreprise
+
+### Pourquoi le nombre d’attaques informatiques par ransomware a-t-il augmenté?
+
+Les organisations modernes font face à de nombreux défis depuis quelques années, certains renforcés par la pandémie. Avec l’univers du travail qui évolue de plus en plus vers des modèles flexibles (à distance et au bureau) vient également **une surface d’attaque plus étendue**.
+
+Ceci crée des failles dans les cyberdéfenses que les cybercriminels exploitent pour propager les ransomwares.
+
+### Quelles sont les cyberattaques les plus courantes?
+
+**Les cyberattaques les plus courantes sont les attaques de type bloqueur ou chiffreur.** Ces attaques visent soit le blocage de fonctions système importantes ou le chiffrement de dossiers et données. À la suite de quoi, les pirates informatiques demandent une rançon pour débloquer ou obtenir une clé de déchiffrage.
+
+### Comment fonctionne un ransomware?
+
+**1ère étape: infection, distribution et moyens de transmission.** Téléchargement depuis un courriel d’hameçonnage, publicités malveillantes, autopropagation, visite de sites web infectés qui redirigent vers un site contenant une trousse d’exploitation, etc. Une trousse d’exploitation expose les faiblesses de vos appareils, puis le rançongiciel se télécharge furtivement au moyen d’un logiciel malveillant.
+
+**2e étape: chiffrement des données.** Le chiffrement des données est intégré dans le système d’exploitation. Les cybercriminels n’ont donc qu’à accéder aux fichiers pour les crypter. Ils remplacent ensuite les fichiers originaux par des versions chiffrées. Certains groupes de ransomware suppriment aussi les copies de sauvegardes et copies fantômes pour rendre la récupération de données plus difficiles, sans la clé de décryptage.
+
+**3e étape: la demande de rançon.** Une demande de rançon apparaît sur l’écran de l’ordinateur infecté ou lors du téléchargement d’un fichier texte. Cette note peut aussi être attachée à différents fichiers cryptés.
+
+### Comment savoir si on est vulnérable à une attaque par rançongiciel?
+
+**Ce ne sont pas toutes les attaques par ransomware qui sont ciblées.** En effet, une organisation pourrait aussi être victime d’une attaque opportuniste. Ce type d’attaque ne vise pas une personne ou organisation spécifique, mais plutôt un groupe. Plus il y a d’organisations ou d’individus touchés, plus c’est fructueux.
+
+Voici quelques éléments qui augmentent votre vulnérabilité aux attaques opportunistes et ciblées:
+
+- Les ordinateurs utilisent des systèmes et technologies désuètes
+- Des appareils dotés de logiciels obsolètes
+- Les systèmes d’exploitation ou navigateur ne sont plus mis à jour
+- Aucun mécanisme de sauvegarde mis en place dans l’organisation
+- La cybersécurité est trop peu considérée et aucun plan concret n’a été déployé
+
+### Comment se débarrasser d’un ransomware sécuritairement?
+
+- Quarantaine de l’appareil: Limiter la propagation du ransomware en éliminant l’accès à d’autres cibles
+- Si on conseille d’éteindre les machines lorsqu’elles ne sont pas utilisées, ce n’est pas le cas pour les appareils infectés. Laisser les terminaux allumés, car le cryptage de fichier est un risque d’instabilité. La mise hors tension pourrait causer une perte de mémoire volatile. Laissez donc l’appareil allumé pour maximiser vos chances de restauration
+- Faites une sauvegarde de vos données
+- Vérifier si vous pouvez avoir accès à un décrypteur. Il existe certains décrypteurs gratuits — cependant, nous conseillons de laisser une équipe d’experts s’en charger pour éviter de télécharger un logiciel malveillant
+- Si possible, restaurez votre appareil à une date antérieure grâce à une sauvegarde propre ou une installation du système d’exploitation. Cela assurera que les logiciels malveillants ne sont plus sur votre appareil
+- La meilleure solution reste cependant d’aller chercher de l’aide auprès d’experts en cybersécurité
+
 ## Comment Victrix aide les organisations à se protéger des ransomwares
 
 Vous souhaitez améliorer votre posture de sécurité et éviter les embûches causées par les ransomwares? **Victrix est un véritable expert en transformation digitale et cybersécurité.** 

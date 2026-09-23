@@ -15,6 +15,34 @@ Our [cybersecurity experts](/en/services/cybersecurity/) explain everything you 
 
 <a class="article-cta" href="/en/contact/">Get support for your compliance</a>
 
+## Quick Overview of the NIS2 Directive
+
+### What Is the NIS2 Directive?
+
+The NIS2 Directive, adopted on December 27, 2022, is a major overhaul of the 2016 original NIS directive concerning European cybersecurity standards. This updated regulation extends the scope of NIS and aims to strengthen the security of networks and information systems while [improving organizational resilience](/en/ressources/penetration-testing/) against cyber threats.
+
+« The requirements laid down by the European directive encourage many entities to build a solid roadmap for deploying and strengthening their cyber defense resources, with the objectives of safer structural operation, greater confidence vis-à-vis their stakeholders and improved competitiveness for businesses. »
+
+[Vincent Strubel, Director General of the French National Agency for Information Systems Security (ANSSI)](https://monespacenis2.cyber.gouv.fr/directive)
+
+### Does the NIS2 Directive Apply to Your Business?
+
+**+1 000 entities targeted**
+
+**+18 business sectors concerned**
+
+The directive applies to two categories of organizations: **Essential Entities (EE) and Important Entities (EI).**
+
+Businesses exceeding critical thresholds in terms of sales (10 million euros), headcount (more than 50 employees), or significant economic impact are the primary focus.
+
+Refer to the table below to check if your organization needs to comply with NIS2 regulations.
+
+### Effective Date of the NIS2 Directive
+
+NIS2 came into force on January 16, 2023. EU member states had to transpose its directions into their respective national legislation by October 17, 2024. This is therefore a critical time for organizations to align their security measures with the new obligations.
+
+## Mandatory compliance for essential and important entities
+
 <table style="border-collapse: collapse; width: 74.4159%; height: 347px;" border="1">
 <tbody>
 <tr style="height: 27px;">
@@ -72,9 +100,22 @@ Our [cybersecurity experts](/en/services/cybersecurity/) explain everything you 
 </tbody>
 </table>
 
+### Discover Our Dedicated Cybersecurity Offer for the Healthcare Sector
+
+## Ensure Compliance with EU Cybersecurity Directives with Victrix
+
 With our Scalable Security Operations Center we help organizations meet the highest cybersecurity standards (GDPR, [DORA](/en/ressources/dora-regulation/), NIS2, [ISO 27001:2022](/en/ressources/iso-27001-iso-9001-certifications/))
 
 <a class="article-cta" href="/en/services/cybersecurity/scalable-security-operations-center/">Discover SEvOC</a>
+
+## 4 Key Obligations of NIS2 for Essential and Important Entities
+
+- Governance
+- Cybersecurity Risk Management
+- Obligation to Inform
+- Supply Chain Security
+
+## Risks of Non-Compliance with NIS2
 
 - Fines up to 2% of global annual turnover
 - Implementation of mandatory corrective measures enforced by authorities
@@ -85,7 +126,11 @@ With our Scalable Security Operations Center we help organizations meet the high
 
 **10 Million Euros.** This is the maximum fine you can face for non-compliance under NIS2.
 
+## Is Your Business NIS2 Compliant?
+
 <a class="article-cta" href="/en/contact/">Consult an expert</a>
+
+## SEvOC: Your Partner in NIS2 Compliance
 
 Victrix guides and supports essential and important entities in achieving NIS2 compliance. With a rigorous approach and certified GRC consultants, we guarantee customized compliance tailored to your business reality.
 
@@ -108,6 +153,8 @@ Following the [compliance audit](/en/ressources/cybersecurity-risk-audit/), we w
 
 Implement regular monitoring and evaluation processes. 
  [Start  your project with Victrix](/en/contact/)
+
+## Additional Information About NIS2
 
 ### 5 Main Goals of the NIS2 Directive
 

@@ -29,6 +29,8 @@ Dans cet article, vous découvrirez comment faire passer votre entreprise au niv
 
 <a class="article-cta" href="/fr/contact/">Consultez un expert Copilot Studio et Azure AI</a>
 
+## Un agent intelligent qui comprend les gens
+
 ### Gagner du temps
 
 - Facilite la recherche d’information avec vos propres expressions et termes
@@ -56,9 +58,13 @@ Ce ne sont que quelques exemples parmi tant d’autres, où un **agent IA intell
 Offrez-leur un agent intelligent sur mesure, un véritable *copilote* capable de stimuler leur productivité. 
 [Créez votre agent intelligent avec Victrix](/fr/contact/)
 
+## Transformez votre organisation avec les agents Copilot Studio
+
 Avec une expertise Copilot Studio et Azure OpenAI, Victrix vous accompagne pour la conception et la **mise en œuvre d’agents intelligents Copilot sur mesure**. 
  Commencez à créer des agents intelligents capables **d’interagir, de répondre** et surtout **d’agir**, tout en s’intégrant à vos processus d’entreprise et vos données métiers. 
  Qu’il s’agisse de**répondre aux demandes RH, d’automatiser le support TI, ou encore d’accéder à des sources d’information complexes** comme des bases juridiques ou réglementaires, votre agent intelligent sur mesure est votre meilleure partenaire.
+
+### Bénéfices concrets d'un agent intelligent sur mesure
 
 - **Réduction** significative du temps consacré à la recherche d’information
 - **Renforcement** de l’adoption des politiques internes
@@ -69,8 +75,23 @@ Avec une expertise Copilot Studio et Azure OpenAI, Victrix vous accompagne pour 
 - **Stimulation** de l’engagement des collaborateurs grâce aux capacités de déléguer certaines tâches tout en gardant le contrôle
 - **Collaboration** fluide entre l’humain et l’IA, où l’agent intelligent est un partenaire fiable et contextuel, enraciné dans votre environnement organisationnel
 
+#### Le saviez-vous ?
+
+Une [étude de l’Université Cornell](https://arxiv.org/abs/2504.11443), menée sur six mois, démontre des gains de temps significatifs sur un large éventail de tâches courantes, et ce, dans de nombreux secteurs d’activité.
+
+Parmi les travailleurs ayant eu accès à cette technologie, **près de 40 % l’ont utilisée régulièrement dans le cadre de leur emploi**.
+
+Résultats:
+
+- Moins de temps passé à lire les courriels, et une rédaction de documents effectuée **en moyenne 12 % plus rapidement**.
+- L’agent IA conversationnel permet aux agents du service d'assistance par chat de **résoudre 14 % de problèmes en plus par heure.**
+
+## La conception d'un agent intelligent sur mesure chez Victrix
+
 Nous créons des outils modernes, comme des**agents intelligents Copilot sur mesure**, qui simplifient l’accès à l’information dispersée dans vos systèmes et documents. Nos agents IA mettent ainsi fin aux pertes de temps consacrées à la recherche au quotidien. 
  Nous vous accompagnons également en amont pour favoriser l’adoption de l’IA, la montée en compétence de vos équipes et développer leur autonomie.
+
+### Cas d'usage concrets par Victrix
 
 Chez Victrix, nous accompagnons des organisations dans la **création d’agents intelligents Copilot Studio** à forte valeur ajoutée. Voici quelques exemples concrets de ce qu’il est possible de mettre en place.
 
@@ -88,6 +109,24 @@ Chez Victrix, nous accompagnons des organisations dans la **création d’agents
 Chez Victrix, nous vous accompagnons à chaque étape. De l’identification des cas d’usage à la mise en production, en passant par la gouvernance TI. Parlez à un expert Copilot chez Victrix et **commencez à créer vos propres agents sur mesure** dès maintenant.  
  
  [Planifier une consultation](/fr/contact/)
+
+### Qu’est-ce qu’un agent intelligent en intelligence artificielle?
+
+Un agent intelligent en IA est un système conçu sur mesure, basé sur votre environnement et vos données. Ces systèmes sont capables d’interagir, de répondre et d’agir en concevant leurs propres flux de travail et par l’utilisation des outils existants.
+
+### Quelle est la différence entre un agent Copilot et un chatbot classique?
+
+Le chatbot traditionnel **répond à des questions**. L’agent Copilot **agit**.
+
+L’agent Copilot déclenche des flux de travail, interroge les bases de données ou connecte plusieurs systèmes via des connecteurs Microsoft Graph ou Power Platform, et ce, avec peu ou pas d’intervention humaine. Le chatbot classique est limité en termes de connaissances et capacités de raisonnement sans intervention humaine à chaque étape.
+
+L’agent Copilot est ainsi **un véritable assistant intelligent**, capable d’interpréter des intentions, de contextualiser ses réponses et d’apporter une réelle valeur opérationnelle.
+
+### Est-ce compatible avec Dynamics 365 et Microsoft 365 ?
+
+Oui. Les agents Copilot Studio [s’intègrent nativement à Microsoft 365](/fr/ressources/fonctionnalites-microsoft-copilot/), y compris les **applications Microsoft Teams, SharePoint, Outlook, Word et Excel**. Ils sont également en mesure d’interagir avec Microsoft Dynamics 365 grâce aux connecteurs Microsoft Graph ou à Power Automate, en fonction des permissions en place. Un bon exemple: dans [Dynamics 365 Field Service](/fr/services/productivite/dynamics-365-field-service/), l’assistant de planification intelligent soutient vos répartiteurs dans la gestion des interventions terrain.
+
+Mais ce n’est pas que – les agents intelligents sur mesure conçus par Victrix s’intègrent également à vos autres systèmes internes pour rechercher de l’information ou pour compléter des tâches directement dans ceux-ci.
 
 ### Consultez nos experts pour découvrir toutes les intégrations possibles d'un agent intelligent sur mesure avec vos systèmes actuels
 

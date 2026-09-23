@@ -33,6 +33,7 @@ sections:
     type: benefits
     headingStyle: compact
     title: "Pourquoi consulter ce guide ?"
+    intro: "Nos experts Ø Studio ont travaillé sur un guide explicatif pour vous aider à mieux identifier les différences entre les licences Microsoft Power Platform et vous aider à prendre une décision éclairée sur la licence la plus adaptée à vos besoins."
     items:
       - title: "Connaissance approfondie"
         description: "Obtenez rapidement une vision claire des types de licences et des avantages concrets pour la structure de votre organisation."
@@ -51,6 +52,7 @@ sections:
     title: "Ø Studio, une technologie créative à votre service"
     paragraphs:
       - "Notre studio de création technologique multidisciplinaire vous accompagne dans la gestion et le développement de Microsoft Power Platform et Dynamics 365."
+      - "Travailler avec Ø Studio, c’est bénéficier d’:"
     stats:
       - value: "+100"
         label: "Projets réussis"

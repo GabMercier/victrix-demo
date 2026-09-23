@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="alternate" href="https://www.victrix.ca/securite-iot-defis/" hreflang="fr" />
+<link rel="alternate" href="https://www.victrix.ca/en/iot-security-challenges/" hreflang="en" />
+		
+		
+	<!-- This site is optimized with the Yoast SEO plugin v28.2 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<title>Understanding IoT Security Challenges | Victrix</title>
+	<meta name="description" content="Discover the top IoT security challenges. Learn how to protect your connected devices from cybersecurity threats." />
+	<link rel="canonical" href="https://www.victrix.ca/en/iot-security-challenges/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:locale:alternate" content="fr_CA" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Understanding IoT Security Challenges | Victrix" />
+	<meta property="og:description" content="Discover the top IoT security challenges. Learn how to protect your connected devices from cybersecurity threats." />
+	<meta property="og:url" content="https://www.victrix.ca/en/iot-security-challenges/" />
+	<meta property="og:site_name" content="Victrix" />
+	<meta property="article:published_time" content="2024-09-30T21:04:47+00:00" />
+	<meta property="og:image" content="https://www.victrix.ca/wp-content/uploads/2024/09/design-sans-titre-7-1.jpg" />
+	<meta property="og:image:width" content="2048" />
+	<meta property="og:image:height" content="1365" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta name="author" content="admin@victrix" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="admin@victrix" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="3 minutes" />
+	
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//code.jquery.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+
+
+
+<link rel='stylesheet' id='siteorigin-panels-front-css' href='https://www.victrix.ca/wp-content/plugins/siteorigin-panels/css/front-flex.min.css?ver=2.36.0' type='text/css' media='all' />
+<link rel='stylesheet' id='sow-headline-default-84faf65992d3-6545-css' href='https://www.victrix.ca/wp-content/uploads/siteorigin-widgets/sow-headline-default-84faf65992d3-6545.css?ver=6.7' type='text/css' media='all' />
+<link rel='stylesheet' id='styles/pages/app.compiled.css-css' href='https://www.victrix.ca/wp-content/themes/victrix/dist/styles/pages/app.compiled.css?id=af39a238b8bd720c1783' type='text/css' media='all' />
+<link rel='stylesheet' id='styles/pages/single-post.compiled.css-css' href='https://www.victrix.ca/wp-content/themes/victrix/dist/styles/pages/single-post.compiled.css?id=d01e6830e62965c9aa5e' type='text/css' media='all' />
+<link rel='stylesheet' id='axeptio/main-css' href='https://www.victrix.ca/wp-content/plugins/axeptio-sdk-integration/dist/css/frontend/main.css?ver=2.6.5' type='text/css' media='all' />
+<link rel='stylesheet' id='nunito-sans-google-fonts-css' href='https://fonts.googleapis.com/css2?family=Nunito+Sans%3Awght%40400%3B700&#038;ver=6.7' type='text/css' media='all' />
+
+
+<link rel="https://api.w.org/" href="https://www.victrix.ca/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://www.victrix.ca/wp-json/wp/v2/posts/6545" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.victrix.ca/xmlrpc.php?rsd" />
+<link rel='shortlink' href='https://www.victrix.ca/?p=6545' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.victrix.ca/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.victrix.ca%2Fen%2Fiot-security-challenges%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.victrix.ca/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.victrix.ca%2Fen%2Fiot-security-challenges%2F&#038;format=xml" />
+<meta name="cdp-version" content="1.5.5" />      <!-- Google Tag Manager -->
+      
+      <!-- End Google Tag Manager -->
+          
+    
+
+<link rel="icon" href="https://www.victrix.ca/wp-content/uploads/2022/03/cropped-victrix-favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.victrix.ca/wp-content/uploads/2022/03/cropped-victrix-favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.victrix.ca/wp-content/uploads/2022/03/cropped-victrix-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.victrix.ca/wp-content/uploads/2022/03/cropped-victrix-favicon-270x270.png" />
+		
+		</head>
+<body class="app post-template-default single single-post postid-6545 single-format-standard wp-custom-logo siteorigin-panels siteorigin-panels-before-js">
+    
+          <div class="sticky-info">
+  <div class="container">
+
+    <p>Make Your AI Shift a Lasting Success | AI Consulting | Victrix </p>
+    <a href="https://www.victrix.ca/en/expertise/artificial-intelligence/landing-ai-consulting/">
+      Learn more
+      
+    </a>
+
+  </div>
+  <button type="button" class="close-sticky-info">
+</button>
+</div>
+        <header class="site-header">
+  <div class="container">
+
+    <a class="logo" href="https://www.victrix.ca/en/" aria-label="Victrix">
+      
+    </a>
+
+    <button class="hamburger hamburger--slider" type="button" aria-label="Ouvrir le menu">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+
+    <nav class="nav-primary">
+
+              <div class="menu-mainmenu-en-container"><ul id="menu-mainmenu-en" class="nav"><li id='menu-item-3017'  class="menu-item menu-item-type-post_type menu-item-object-page"><a  href="https://www.victrix.ca/en/discover-victrix/">Discover Victrix</a> </li>
+<li id='menu-item-3018'  class="is-rich-expertises menu-item menu-item-type-post_type menu-item-object-expertise menu-item-has-children"><a  href="https://www.victrix.ca/en/expertise/strategic-advice/">
+Expertises</a> 
+<ul class="sub-menu">
+<li id='menu-item-5501'  class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-has-children"><a  href="https://www.victrix.ca/en/expertise/strategic-advice/"><?xml version="1.0" encoding="UTF-8"?>  Strategic Consulting</a> 
+	<ul class="sub-menu">
+<li id='menu-item-7556'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/strategic-advice/law-25-compliance/">Law 25 Compliance</a> </li>
+	</ul>
+</li>
+<li id='menu-item-5502'  class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-has-children"><a  href="https://www.victrix.ca/en/expertise/cloud-services-provider/"><?xml version="1.0" encoding="UTF-8"?>  Cloud</a> 
+	<ul class="sub-menu">
+<li id='menu-item-5503'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/cloud-services-provider/azure-migration/">Microsoft Azure</a> </li>
+<li id='menu-item-5986'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/cloud-services-provider/aws-services/">Amazon Web Services</a> </li>
+	</ul>
+</li>
+<li id='menu-item-5504'  class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-has-children"><a  href="https://www.victrix.ca/en/expertise/cybersecurity/"><?xml version="1.0" encoding="UTF-8"?>  Cybersecurity</a> 
+	<ul class="sub-menu">
+<li id='menu-item-5505'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/cybersecurity/scalable-security-operations-center/">Scalable Security Operations Center</a> </li>
+<li id='menu-item-6417'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/cybersecurity/internet-of-things-iot/">OT and IoT</a> </li>
+<li id='menu-item-6418'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/cybersecurity/pentest/">Pentest</a> </li>
+	</ul>
+</li>
+<li id='menu-item-5506'  class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-has-children"><a  href="https://www.victrix.ca/en/expertise/productivity-consulting/"><?xml version="1.0" encoding="UTF-8"?>  Productivity</a> 
+	<ul class="sub-menu">
+<li id='menu-item-5507'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/productivity-consulting/o-studio/">Ø Studio</a> </li>
+<li id='menu-item-7469'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/artificial-intelligence/">Artificial Intelligence</a> </li>
+<li id='menu-item-5572'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/productivity-consulting/employee-platform-intranet/">Intranet — Employee Experience Platform</a> </li>
+<li id='menu-item-6711'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/productivity-consulting/servicenow/">ServiceNow</a> </li>
+<li id='menu-item-14727'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/productivity-consulting/dynamics-365-field-service/">Dynamics 365 Field Service</a> </li>
+<li id='menu-item-6893'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/productivity-consulting/copilot-for-microsoft-365/">Copilot for Microsoft 365</a> </li>
+<li id='menu-item-6653'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/productivity-consulting/copilot-studio/">Copilot Studio</a> </li>
+<li id='menu-item-5508'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/productivity-consulting/office-booking/">Office booking app</a> </li>
+	</ul>
+</li>
+<li id='menu-item-7117'  class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-has-children"><a  href="https://www.victrix.ca/en/expertise/managed-it-services/"><?xml version="1.0" encoding="UTF-8"?>  Managed Services</a> 
+	<ul class="sub-menu">
+<li id='menu-item-6886'  class="menu-item menu-item-type-custom menu-item-object-custom"><a  href="https://www.victrix.ca/en/expertise/managed-it-services/">Managed IT Services</a> </li>
+<li id='menu-item-5510'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/managed-it-services/maximize-the-use-of-your-m365-ecosystem/">M365 Ecosystem</a> </li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id='menu-item-5511'  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a  href="https://o-studio-catalogue.victrix.ca/">
+Products</a> 
+<ul class="sub-menu">
+<li id='menu-item-7246'  class="menu-item menu-item-type-custom menu-item-object-custom"><a  target="_blank" href="https://o-studio-catalogue.victrix.ca/">Ø Studio App Store</a> </li>
+<li id='menu-item-7820'  class="menu-item menu-item-type-post_type menu-item-object-expertise"><a  href="https://www.victrix.ca/en/expertise/it-procurement/"><?xml version="1.0" encoding="UTF-8"?>  Licenses and Equipments</a> </li>
+</ul>
+</li>
+<li id='menu-item-3019'  class="menu-item menu-item-type-post_type menu-item-object-page"><a  href="https://www.victrix.ca/en/careers/">Careers</a> </li>
+<li id='menu-item-3546'  class="menu-item menu-item-type-post_type menu-item-object-page"><a  href="https://www.victrix.ca/en/contact/">Contact</a> </li>
+<li id='menu-item-3021'  class="is-rich-blog menu-item menu-item-type-post_type menu-item-object-page current_page_parent current-menu-item menu-item-blog"><a  href="https://www.victrix.ca/en/resources-center/">Resources</a>           <div class="sub-menu">
+            <p class="sub-menu-title">Resources</p>
+            <div class="row">
+              <div class="col col-desc">
+                                  <p>Discover our resources: articles, white papers, guides and more.</p>
+                                <a href="https://www.victrix.ca/en/resources-center/" class="button is-primary">Centre de ressources</a>
+              </div>
+
+                              <div class="col col-categories">
+                  <p class="col-title">Catégories</p>
+                  <ul>
+                                          <li><a href="https://www.victrix.ca/en/category/posts/">Our articles</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/case-studies/">Our case studies</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/our-news/">Our news</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/videos/">Our videos</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/white-papers/">Our white papers</a></li>
+                                      </ul>
+                </div>
+              
+                              <div class="col col-last-posts">
+                  <p class="col-title">Derniers articles</p>
+                  <ul>
+                                      <li><a href="https://www.victrix.ca/en/servicenow-ai/">ServiceNow &#038; AI: Transforming Your Organization’s Performance and AI Governance</a></li>
+                                      <li><a href="https://www.victrix.ca/en/extended-reality-xr-agc-partnership/">An Exclusive Partnership with a Canadian Leader in Extended Reality</a></li>
+                                      <li><a href="https://www.victrix.ca/en/migration-windows-11-microsoft-exchange/">Getting Ready For the End of Windows 10 Support: a Strategic Migration For the Future of Your Organization</a></li>
+                                      <li><a href="https://www.victrix.ca/en/iso-27001-iso-9001-certifications/">Victrix Renews Its ISO 27001 and ISO 9001 Certifications: a Double Seal of Excellence and Trust</a></li>
+                                    </ul>
+                </div>
+                          </div>
+          </div>
+          <div class="blurred"></div>
+          </li>
+<li id='menu-item-3022'  class="is-button menu-item menu-item-type-post_type menu-item-object-page"><a  href="https://www.victrix.ca/en/customer-portal/">My Portal</a>           <div class="sub-menu">
+            <p class="sub-menu-title">Resources</p>
+            <div class="row">
+              <div class="col col-desc">
+                                  <p>Discover our resources: articles, white papers, guides and more.</p>
+                                <a href="https://www.victrix.ca/en/resources-center/" class="button is-primary">Centre de ressources</a>
+              </div>
+
+                              <div class="col col-categories">
+                  <p class="col-title">Catégories</p>
+                  <ul>
+                                          <li><a href="https://www.victrix.ca/en/category/posts/">Our articles</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/case-studies/">Our case studies</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/our-news/">Our news</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/videos/">Our videos</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/white-papers/">Our white papers</a></li>
+                                      </ul>
+                </div>
+              
+                              <div class="col col-last-posts">
+                  <p class="col-title">Derniers articles</p>
+                  <ul>
+                                      <li><a href="https://www.victrix.ca/en/servicenow-ai/">ServiceNow &#038; AI: Transforming Your Organization’s Performance and AI Governance</a></li>
+                                      <li><a href="https://www.victrix.ca/en/extended-reality-xr-agc-partnership/">An Exclusive Partnership with a Canadian Leader in Extended Reality</a></li>
+                                      <li><a href="https://www.victrix.ca/en/migration-windows-11-microsoft-exchange/">Getting Ready For the End of Windows 10 Support: a Strategic Migration For the Future of Your Organization</a></li>
+                                      <li><a href="https://www.victrix.ca/en/iso-27001-iso-9001-certifications/">Victrix Renews Its ISO 27001 and ISO 9001 Certifications: a Double Seal of Excellence and Trust</a></li>
+                                    </ul>
+                </div>
+                          </div>
+          </div>
+          <div class="blurred"></div>
+          </li>
+<li id='menu-item-3023-fr'  class="lang-item lang-item-11 lang-item-fr lang-item-first menu-item menu-item-type-custom menu-item-object-custom"><a  href="https://www.victrix.ca/securite-iot-defis/">FR</a>           <div class="sub-menu">
+            <p class="sub-menu-title">Resources</p>
+            <div class="row">
+              <div class="col col-desc">
+                                  <p>Discover our resources: articles, white papers, guides and more.</p>
+                                <a href="https://www.victrix.ca/en/resources-center/" class="button is-primary">Centre de ressources</a>
+              </div>
+
+                              <div class="col col-categories">
+                  <p class="col-title">Catégories</p>
+                  <ul>
+                                          <li><a href="https://www.victrix.ca/en/category/posts/">Our articles</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/case-studies/">Our case studies</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/our-news/">Our news</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/videos/">Our videos</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/white-papers/">Our white papers</a></li>
+                                      </ul>
+                </div>
+              
+                              <div class="col col-last-posts">
+                  <p class="col-title">Derniers articles</p>
+                  <ul>
+                                      <li><a href="https://www.victrix.ca/en/servicenow-ai/">ServiceNow &#038; AI: Transforming Your Organization’s Performance and AI Governance</a></li>
+                                      <li><a href="https://www.victrix.ca/en/extended-reality-xr-agc-partnership/">An Exclusive Partnership with a Canadian Leader in Extended Reality</a></li>
+                                      <li><a href="https://www.victrix.ca/en/migration-windows-11-microsoft-exchange/">Getting Ready For the End of Windows 10 Support: a Strategic Migration For the Future of Your Organization</a></li>
+                                      <li><a href="https://www.victrix.ca/en/iso-27001-iso-9001-certifications/">Victrix Renews Its ISO 27001 and ISO 9001 Certifications: a Double Seal of Excellence and Trust</a></li>
+                                    </ul>
+                </div>
+                          </div>
+          </div>
+          <div class="blurred"></div>
+          </li>
+<li id='menu-item-3023-en'  class="lang-item lang-item-18 lang-item-en current-lang menu-item menu-item-type-custom menu-item-object-custom"><a  href="https://www.victrix.ca/en/iot-security-challenges/">EN</a>           <div class="sub-menu">
+            <p class="sub-menu-title">Resources</p>
+            <div class="row">
+              <div class="col col-desc">
+                                  <p>Discover our resources: articles, white papers, guides and more.</p>
+                                <a href="https://www.victrix.ca/en/resources-center/" class="button is-primary">Centre de ressources</a>
+              </div>
+
+                              <div class="col col-categories">
+                  <p class="col-title">Catégories</p>
+                  <ul>
+                                          <li><a href="https://www.victrix.ca/en/category/posts/">Our articles</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/case-studies/">Our case studies</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/our-news/">Our news</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/videos/">Our videos</a></li>
+                                          <li><a href="https://www.victrix.ca/en/category/white-papers/">Our white papers</a></li>
+                                      </ul>
+                </div>
+              
+                              <div class="col col-last-posts">
+                  <p class="col-title">Derniers articles</p>
+                  <ul>
+                                      <li><a href="https://www.victrix.ca/en/servicenow-ai/">ServiceNow &#038; AI: Transforming Your Organization’s Performance and AI Governance</a></li>
+                                      <li><a href="https://www.victrix.ca/en/extended-reality-xr-agc-partnership/">An Exclusive Partnership with a Canadian Leader in Extended Reality</a></li>
+                                      <li><a href="https://www.victrix.ca/en/migration-windows-11-microsoft-exchange/">Getting Ready For the End of Windows 10 Support: a Strategic Migration For the Future of Your Organization</a></li>
+                                      <li><a href="https://www.victrix.ca/en/iso-27001-iso-9001-certifications/">Victrix Renews Its ISO 27001 and ISO 9001 Certifications: a Double Seal of Excellence and Trust</a></li>
+                                    </ul>
+                </div>
+                          </div>
+          </div>
+          <div class="blurred"></div>
+          </li>
+</ul></div>
+      
+      
+      <ul class="languages-switcher-mobile">
+        	<li class="lang-item lang-item-11 lang-item-fr lang-item-first"><a  lang="fr-CA" hreflang="fr-CA" href="https://www.victrix.ca/securite-iot-defis/">FR</a></li>
+	<li class="lang-item lang-item-18 lang-item-en current-lang"><a  lang="en-CA" hreflang="en-CA" href="https://www.victrix.ca/en/iot-security-challenges/">EN</a></li>
+      </ul>
+
+    </nav>
+
+  </div>
+</header>
+        <div class="wrap container" role="document">
+        <div class="content">
+            <main class="main">
+                
+                     
+          <p class="breadcrumbs"><span><span><a href="https://www.victrix.ca/en/">Home</a></span> » <span><a href="https://www.victrix.ca/en/resources-center/">Resources center</a></span> » <span class="breadcrumb_last" aria-current="page">IoT Security: Understanding the Challenges for Enterprises</span></span></p>    
+    <div class="post-container">
+
+      <aside class="post-summary">
+        <ul></ul>
+      </aside>
+
+      <div class="post-content">
+        <article class="post-6545 post type-post status-publish format-standard has-post-thumbnail hentry category-posts">
+    <header>
+        <h1 class="entry-title">IoT Security: Understanding the Challenges for Enterprises</h1>
+        <div class="post-metas">
+      <div class="authors">
+              <div class="author">
+                    <div>
+            <p class="name">Rémikya Hellal</p>
+                          <p class="expertise">Internet of Things (I0T) Security Solutions Director</p>
+                      </div>
+        </div>
+          </div>
+    <time class="updated" datetime="2024-09-30T21:04:47+00:00"><span class="label">Publié le : </span>September 30, 2024</time>
+</div>
+    </header>
+    <div class="entry-content">
+        <div id="pl-6545"  class="panel-layout" ><div id="pg-6545-0"  class="panel-grid panel-has-style"  mb="none"  mt="none" ><div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-6545-0" data-stretch-type="full" ><div id="pgc-6545-0-0"  class="panel-grid-cell" ><div id="panel-6545-0-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="0" ><div
+			
+			class="so-widget-sow-editor so-widget-sow-editor-base"
+			
+		>
+<div class="siteorigin-widget-tinymce textwidget">
+	<p><img fetchpriority="high" decoding="async" class="alignnone wp-image-6547 size-large" title="Loi 25" src="https://www.victrix.ca/wp-content/uploads/2024/09/design-sans-titre-7-1-1024x683.jpg" alt="IoT security, services offered by Victrix" width="1024" height="683" srcset="https://www.victrix.ca/wp-content/uploads/2024/09/design-sans-titre-7-1-1024x683.jpg 1024w, https://www.victrix.ca/wp-content/uploads/2024/09/design-sans-titre-7-1-300x200.jpg 300w, https://www.victrix.ca/wp-content/uploads/2024/09/design-sans-titre-7-1-768x512.jpg 768w, https://www.victrix.ca/wp-content/uploads/2024/09/design-sans-titre-7-1-1536x1024.jpg 1536w, https://www.victrix.ca/wp-content/uploads/2024/09/design-sans-titre-7-1-272x182.jpg 272w, https://www.victrix.ca/wp-content/uploads/2024/09/design-sans-titre-7-1.jpg 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></p>
+<p>With <a href="https://www.statista.com/statistics/1377569/worldwide-annual-internet-of-things-attacks/">57% of enterprise IoT devices vulnerable to attack</a>*, the security of connected devices has become a critical issue for organizations.</p>
+<p>As the<strong> Internet of Things (IoT)</strong> expands across the enterprise, cyber threats are multiplying, exposing systems to significant risk. It's critical for organizations to understand the issues and implement an<a href="https://www.victrix.ca/en/expertise/cybersecurity/internet-of-things-iot/"> IoT security strategy</a>.</p>
+<p>*according to Statista</p>
+</div>
+</div></div></div></div></div><div id="pg-6545-1"  class="panel-grid panel-has-style"  mb="none"  mt="classic" ><div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-6545-1" data-stretch-type="small" ><div id="pgc-6545-1-0"  class="panel-grid-cell" ><div id="panel-6545-1-0-0" class="so-panel widget widget_mag-accordion-image-widget panel-first-child panel-last-child" data-index="1" ><div
+			
+			class="so-widget-mag-accordion-image-widget so-widget-mag-accordion-image-widget-default-d75171398898-6545"
+			
+		>	<div class="widget widget-accordion-image">
+
+		<div class="accordion-image-wrapper">
+
+			<div class="col-image">
+
+									<div class="title title-3">
+						<span>Frequently</span> Asked Questions About the Internet of Things (IoT)					</div>
+				
+				<div class="images">
+											<figure class="main">
+							<img decoding="async" width="1000" height="1250" src="https://www.victrix.ca/wp-content/uploads/2024/06/umberto-fewhpo4vc9y-unsplash.png" class="attachment-full size-full" alt="Visual representation of the concept of connected objects." srcset="https://www.victrix.ca/wp-content/uploads/2024/06/umberto-fewhpo4vc9y-unsplash.png 1000w, https://www.victrix.ca/wp-content/uploads/2024/06/umberto-fewhpo4vc9y-unsplash-240x300.png 240w, https://www.victrix.ca/wp-content/uploads/2024/06/umberto-fewhpo4vc9y-unsplash-819x1024.png 819w, https://www.victrix.ca/wp-content/uploads/2024/06/umberto-fewhpo4vc9y-unsplash-768x960.png 768w" sizes="(max-width: 1000px) 100vw, 1000px" />						</figure>
+					
+																																																					</div>
+
+			</div>
+
+			<div class="col-accordion">
+
+											<div data-key="0" class="accordion-item is-active">
+							<div class="accordion-header">
+								<p>What Does IoT Mean, and What Is an IoT Security Service?</p>
+							</div>
+							<div class="accordion-body" style="display:block;">
+								<p>IoT is short for <strong>Internet of Things</strong>, and IoT security refers to the protection of devices connected to the network. This <strong>type of cybersecurity</strong> includes various measures such as:</p>
+<ul>
+<li>Data encryption</li>
+<li>Multi-factor authentication (MFA)</li>
+<li>Continuous monitoring</li>
+<li>Access management</li>
+</ul>
+<p>These measures ensure that the data collected by your connected objects is protected against threats and intrusions.</p>
+							</div>
+						</div>
+											<div data-key="1" class="accordion-item ">
+							<div class="accordion-header">
+								<p>Which industries need to secure their IoT systems?</p>
+							</div>
+							<div class="accordion-body" >
+								<p>All organizations today use connected devices and should invest in device security solutions. Of course, certain sectors require more connected technologies: transportation, industry, construction, and healthcare, and therefore have more risk factors.</p>
+							</div>
+						</div>
+											<div data-key="2" class="accordion-item ">
+							<div class="accordion-header">
+								<p>Cybersecurity Threats Connected to the IoT</p>
+							</div>
+							<div class="accordion-body" >
+								<p>The more connected objects you have, the greater your attack surface. Having multiple entry points increases your risk of being targeted by a cyberattack. <strong>The main threats include</strong>:</p>
+<ul>
+<li>Denial-of-service attacks (Dos/DDos)</li>
+<li>Malware and <a href="https://www.victrix.ca/en/ransomware-protection-tips/">ransomware attacks</a></li>
+<li>MITM (man-in-the-middle) attacks</li>
+</ul>
+							</div>
+						</div>
+											<div data-key="3" class="accordion-item ">
+							<div class="accordion-header">
+								<p>How Does an IoT Attack Happen?</p>
+							</div>
+							<div class="accordion-body" >
+								<p>An <strong>IoT attack </strong>takes many forms. Cybercriminals target insecure devices, exploit software vulnerabilities, or use social engineering methods to gain access to your network and data storage.</p>
+							</div>
+						</div>
+					
+			</div>
+		</div>
+
+	</div>
+</div></div></div></div></div><div id="pg-6545-2"  class="panel-grid panel-no-style"  mb="none"  mt="classic" ><div id="pgc-6545-2-0"  class="panel-grid-cell" ><div id="panel-6545-2-0-0" class="so-panel widget widget_sow-headline panel-first-child" data-index="2" ><div
+			
+			class="so-widget-sow-headline so-widget-sow-headline-default-84faf65992d3-6545"
+			
+		><div class="sow-headline-container ">
+							<h2 class="sow-headline">
+						Top 5 Challenges to Securing the Internet of Things in Your Organization						</h2>
+											<div class="decoration">
+						<div class="decoration-inside"></div>
+					</div>
+					</div>
+</div></div><div id="panel-6545-2-0-1" class="so-panel widget widget_sow-editor panel-last-child" data-index="3" ><div
+			
+			class="so-widget-sow-editor so-widget-sow-editor-base"
+			
+		>
+<div class="siteorigin-widget-tinymce textwidget">
+	<p><strong>IoT-related security issues</strong> are numerous and depend on the number of connected objects within an organization.</p>
+<p>The top 5 challenges are:</p>
+<ul>
+<li>Device diversity and lack of standardization</li>
+<li>Device resource limitations</li>
+<li>Update management</li>
+<li>The complexity of connecting new objects to the Internet and securing them within existing infrastructures</li>
+<li>Adherence to security and privacy standards</li>
+</ul>
+<p><span style="color: #ffffff;"><a class="button is-primary" style="color: #ffffff;" href="https://www.victrix.ca/en/expertise/cybersecurity/internet-of-things-iot/" target="_blank" rel="noopener">Ready to assess your IoT security?</a></span></p>
+<p>&nbsp;</p>
+</div>
+</div></div></div></div><div id="pg-6545-3"  class="panel-grid panel-no-style"  mb="none"  mt="classic" ><div id="pgc-6545-3-0"  class="panel-grid-cell" ><div id="panel-6545-3-0-0" class="so-panel widget widget_sow-headline panel-first-child panel-last-child" data-index="4" ><div
+			
+			class="so-widget-sow-headline so-widget-sow-headline-default-84faf65992d3-6545"
+			
+		><div class="sow-headline-container ">
+							<h2 class="sow-headline">
+						How do you secure your IoT systems? 						</h2>
+											<div class="decoration">
+						<div class="decoration-inside"></div>
+					</div>
+					</div>
+</div></div></div></div><div id="pg-6545-4"  class="panel-grid panel-no-style"  mb="none"  mt="none" ><div id="pgc-6545-4-0"  class="panel-grid-cell" ><div id="panel-6545-4-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="5" ><div
+			
+			class="so-widget-sow-editor so-widget-sow-editor-base"
+			
+		>
+<div class="siteorigin-widget-tinymce textwidget">
+	<h3>1. IoT Assessment and Inventory</h3>
+<p>The first step is to analyze specific security needs and create a complete inventory of connected objects and associated risks.</p>
+</div>
+</div></div></div><div id="pgc-6545-4-1"  class="panel-grid-cell" ><div id="panel-6545-4-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="6" ><div
+			
+			class="so-widget-sow-editor so-widget-sow-editor-base"
+			
+		>
+<div class="siteorigin-widget-tinymce textwidget">
+	<h3>2. Designing and Implementing Your Security Architecture</h3>
+<p>The implementation of your architecture will require the use of specific security measures. These include encryption, authentication, identity and access management, zero-trust architecture, and more.</p>
+<p>&nbsp;</p>
+</div>
+</div></div></div></div><div id="pg-6545-5"  class="panel-grid panel-no-style"  mb="none"  mt="none" ><div id="pgc-6545-5-0"  class="panel-grid-cell" ><div id="panel-6545-5-0-0" class="so-panel widget widget_sow-editor panel-first-child" data-index="7" ><div
+			
+			class="so-widget-sow-editor so-widget-sow-editor-base"
+			
+		>
+<div class="siteorigin-widget-tinymce textwidget">
+	<h3>3. Management, Continuous Monitoring, and Proactive Maintenance</h3>
+<p>To quickly detect and prevent threats and strengthen the security of your environment, you need to implement continuous monitoring and incident response procedures.</p>
+<p>&nbsp;</p>
+</div>
+</div></div><div id="panel-6545-5-0-1" class="so-panel widget widget_sow-editor panel-last-child" data-index="8" ><div
+			
+			class="so-widget-sow-editor so-widget-sow-editor-base"
+			
+		>
+<div class="siteorigin-widget-tinymce textwidget">
+	<h3>5. Review and Improvement</h3>
+<p>Finally, the final step is to continually audit and improve the system. Regular audits must be conducted to adjust IoT security measures. Adapting to technological developments and new threats is the key to maximum security.</p>
+<p>&nbsp;</p>
+</div>
+</div></div></div><div id="pgc-6545-5-1"  class="panel-grid-cell" ><div id="panel-6545-5-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="9" ><div
+			
+			class="so-widget-sow-editor so-widget-sow-editor-base"
+			
+		>
+<div class="siteorigin-widget-tinymce textwidget">
+	<h3>4. Training and Support</h3>
+<p>Your employees need to be familiar with best practices to reduce risk and ensure successful security adoption of new technologies.</p>
+<p>&nbsp;</p>
+</div>
+</div></div></div></div><div id="pg-6545-6"  class="panel-grid panel-no-style"  mb="none"  mt="classic" ><div id="pgc-6545-6-0"  class="panel-grid-cell" ><div id="panel-6545-6-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="10" ><div
+			
+			class="so-widget-sow-editor so-widget-sow-editor-base"
+			
+		>
+<div class="siteorigin-widget-tinymce textwidget">
+	<p style="text-align: left;"><a class="button is-primary" href="https://www.victrix.ca/en/expertise/cybersecurity/internet-of-things-iot/"><span style="color: #ffffff;">Talk to an IoT security expert</span></a></p>
+</div>
+</div></div></div></div><div id="pg-6545-7"  class="panel-grid panel-has-style"  mb="none"  mt="classic" ><div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-6545-7" data-stretch-type="small" ><div id="pgc-6545-7-0"  class="panel-grid-cell" ><div id="panel-6545-7-0-0" class="so-panel widget widget_sow-headline panel-first-child" data-index="11" ><div
+			
+			class="so-widget-sow-headline so-widget-sow-headline-default-84faf65992d3-6545"
+			
+		><div class="sow-headline-container ">
+							<h2 class="sow-headline">
+						Victrix, Your IoT Security Consulting Partner						</h2>
+											<div class="decoration">
+						<div class="decoration-inside"></div>
+					</div>
+					</div>
+</div></div><div id="panel-6545-7-0-1" class="so-panel widget widget_sow-editor panel-last-child" data-index="12" ><div
+			
+			class="so-widget-sow-editor so-widget-sow-editor-base"
+			
+		>
+<div class="siteorigin-widget-tinymce textwidget">
+	<p>Victrix has positioned itself as a key partner to help organizations <strong>secure their IoT networks</strong>.</p>
+<p>Our approach adapts to the current state of your security assets, and we provide support driven by IoT security experts.</p>
+<p>Whether you're at the awareness or inventory level, or looking to strengthen your existing defenses, Victrix will help you transform.</p>
+<p style="text-align: left;"><a class="button is-primary" href="https://www.victrix.ca/en/contact/" target="_blank" rel="noopener"><span style="color: #ffffff;">Start your project with Victrix</span></a></p>
+<p>&nbsp;</p>
+</div>
+</div></div></div></div></div></div>
+    </div>
+    <footer>
+        
+    </footer>
+</article>
+      </div>
+
+            <div class="related">
+                     <h2>Our latest articles</h2>
+        
+        <div class="list">
+                       <a class="card post-6582 post type-post status-publish format-standard has-post-thumbnail hentry category-posts" href="https://www.victrix.ca/en/cybersecurity-risk-audit/">
+
+  <div class="card-content">
+
+    <div class="media">
+
+      
+        <figure class="thumb"><img width="1024" height="576" src="https://www.victrix.ca/wp-content/uploads/2024/10/computationally-intensive-tasks-servers-1-1024x576.jpg" class="attachment-large size-large wp-post-image" alt="A Victrix cybersecurity consultant carrying out a cybersecurity risk assessment audit." decoding="async" srcset="https://www.victrix.ca/wp-content/uploads/2024/10/computationally-intensive-tasks-servers-1-1024x576.jpg 1024w, https://www.victrix.ca/wp-content/uploads/2024/10/computationally-intensive-tasks-servers-1-300x169.jpg 300w, https://www.victrix.ca/wp-content/uploads/2024/10/computationally-intensive-tasks-servers-1-768x432.jpg 768w, https://www.victrix.ca/wp-content/uploads/2024/10/computationally-intensive-tasks-servers-1-1536x864.jpg 1536w, https://www.victrix.ca/wp-content/uploads/2024/10/computationally-intensive-tasks-servers-1-scaled.jpg 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+      
+    </div>
+
+    <div class="content">
+
+      <h3 class="entry-title">Cybersecurity Risk Assessment Audit to Manage Risk &#038; Compliance</h3>
+
+      <time class="updated" datetime="2024-10-08T17:40:10+00:00">October 8, 2024</time>
+
+    </div>
+
+  </div>
+
+  <footer class="card-footer">
+
+    <span class="button is-primary-outlined">
+
+       Read article
+    </span>
+
+  </footer>
+
+</a>
+
+                       <a class="card post-6526 post type-post status-publish format-standard has-post-thumbnail hentry category-our-news" href="https://www.victrix.ca/en/expands-cybersecurity-offering-france/">
+
+  <div class="card-content">
+
+    <div class="media">
+
+      
+        <figure class="thumb"><img width="1024" height="538" src="https://www.victrix.ca/wp-content/uploads/2024/09/image-landing-page-victrix-1024x538.jpg" class="attachment-large size-large wp-post-image" alt="Victrix s&#039;étend en France" decoding="async" loading="lazy" srcset="https://www.victrix.ca/wp-content/uploads/2024/09/image-landing-page-victrix-1024x538.jpg 1024w, https://www.victrix.ca/wp-content/uploads/2024/09/image-landing-page-victrix-300x158.jpg 300w, https://www.victrix.ca/wp-content/uploads/2024/09/image-landing-page-victrix-768x403.jpg 768w, https://www.victrix.ca/wp-content/uploads/2024/09/image-landing-page-victrix.jpg 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+
+      
+    </div>
+
+    <div class="content">
+
+      <h3 class="entry-title">Victrix expands its cybersecurity offering in France</h3>
+
+      <time class="updated" datetime="2024-09-16T14:27:12+00:00">September 16, 2024</time>
+
+    </div>
+
+  </div>
+
+  <footer class="card-footer">
+
+    <span class="button is-primary-outlined">
+
+       Read article
+    </span>
+
+  </footer>
+
+</a>
+
+                            </div>
+      </div>
+      
+    </div>
+
+                </main>
+                    </div>
+    </div>
+    
+  <section class="contact-banner">
+    <div class="container">
+      <div class="col">
+                        <p class="title">Meet our experts</p>
+        
+                        <p class="subtitle">Contact us to discuss your projects</p>
+              </div>
+      <div class="col">
+                        <a href="https://www.victrix.ca/en/contact/" class="button is-primary">Contact Us</a>
+              </div>
+    </div>
+  </section>
+
+    
+    <footer class="site-footer">
+  <div class="container">
+
+    <nav class="nav-footer">
+
+      <div class="col col-logo">
+        <a class="brand" href="https://www.victrix.ca/" aria-label="Victrix">
+          
+        </a>
+              </div>
+
+              <div class="menu-footer-container"><ul id="menu-footer-en" class="nav"><li id="menu-item-3003" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3003"><a href="#">Expertises</a>
+<ul class="sub-menu">
+	<li id="menu-item-3007" class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-3007"><a href="https://www.victrix.ca/en/expertise/strategic-advice/">Strategic Consulting</a></li>
+	<li id="menu-item-3004" class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-3004"><a href="https://www.victrix.ca/en/expertise/cloud-services-provider/">Cloud</a></li>
+	<li id="menu-item-3006" class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-3006"><a href="https://www.victrix.ca/en/expertise/cybersecurity/">Cybersecurity</a></li>
+	<li id="menu-item-3005" class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-3005"><a href="https://www.victrix.ca/en/expertise/productivity-consulting/">Productivity</a></li>
+	<li id="menu-item-7464" class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-7464"><a href="https://www.victrix.ca/en/expertise/artificial-intelligence/">Artificial Intelligence</a></li>
+	<li id="menu-item-7116" class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-7116"><a href="https://www.victrix.ca/en/expertise/managed-it-services/">Managed Services</a></li>
+</ul>
+</li>
+<li id="menu-item-5515" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5515"><a href="https://o-studio-catalogue.victrix.ca">Products</a>
+<ul class="sub-menu">
+	<li id="menu-item-7822" class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-7822"><a href="https://www.victrix.ca/en/expertise/it-procurement/">Licenses and Equipments</a></li>
+	<li id="menu-item-5575" class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-5575"><a href="https://www.victrix.ca/en/expertise/productivity-consulting/employee-platform-intranet/">Intranet—Employee Experience Platform</a></li>
+	<li id="menu-item-5516" class="menu-item menu-item-type-post_type menu-item-object-expertise menu-item-5516"><a href="https://www.victrix.ca/en/expertise/productivity-consulting/office-booking/">Office booking app</a></li>
+</ul>
+</li>
+<li id="menu-item-3012" class="is-group menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3012"><a href="#"> </a>
+<ul class="sub-menu">
+	<li id="menu-item-3013" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3013"><a href="https://www.victrix.ca/en/discover-victrix/">About us</a></li>
+	<li id="menu-item-3014" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3014"><a href="https://www.victrix.ca/en/careers/">Careers &#038; Life@Victrix</a></li>
+	<li id="menu-item-3015" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-3015"><a href="https://www.victrix.ca/en/resources-center/">Blog</a></li>
+	<li id="menu-item-13904" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13904"><a href="https://www.victrix.ca/en/check-point-price-list/">Pricing</a></li>
+</ul>
+</li>
+</ul></div>
+      
+      <div class="col col-contact">
+        <div class="contact-contact">
+          <a href="https://www.victrix.ca/en/contact/" class="contact-link">Contact</a>
+                      <div class="contact-email">
+              <a href="mailto:contact@victrix.ca" class="ga-event" data-category="contact" data-label="mail">
+                contact@victrix.ca
+                
+
+              </a>
+            </div>
+          
+                    <div class="contact-phone">
+            <a href="tel:+1 514-879-1919" class="ga-event" data-category="contact" data-label="phone">
+              +1 514-879-1919
+              
+
+            </a>
+          </div>
+                  </div>
+
+        <nav class="nav-social">
+
+        <span class="nav-social-title">Suivez-nous sur :</span>
+
+        <ul class="nav-social-links">
+                      <li>
+              <a href="https://www.facebook.com/Victrix-209643765715015/" aria-label="Suivez-nous sur Facebook" target="_blank" rel="noopener">
+                
+
+              </a>
+            </li>
+                                <li>
+              <a href="https://www.linkedin.com/company/victrix" aria-label="Suivez-nous sur LinkedIn" target="_blank" rel="noopener">
+                
+
+              </a>
+            </li>
+                                                </ul>
+    </nav>
+
+      </div>
+
+    </nav>
+
+    <nav class="nav-legal">
+                  <div class="menu-legal-en-container"><ul id="menu-legal-en" class="nav"><li id="menu-item-3002" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3002"><a href="https://www.victrix.ca/en/terms-of-use/">Terms of use</a></li>
+<li id="menu-item-3001" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-3001"><a rel="privacy-policy" href="https://www.victrix.ca/en/privacy-policy/">Privacy Policy</a></li>
+</ul></div>
+                <p class="copyright">&copy;2026 Victrix</p>
+    </nav>
+
+  </div>
+</footer>
+        
+    
+    <link rel='stylesheet' id='widget-accordion-image-css' href='https://www.victrix.ca/wp-content/themes/victrix/dist/styles/widgets/widget-accordion-image.compiled.css?id=9375373d5d6d96b216ed' type='text/css' media='all' />
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

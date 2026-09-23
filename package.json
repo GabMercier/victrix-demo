@@ -30,7 +30,8 @@
     "check:brand": "node scripts/build-brand-images.mjs --check",
     "optimize:images": "node scripts/optimize-images.mjs",
     "check:images": "node scripts/optimize-images.mjs --check",
-    "check:old-urls": "node scripts/check-old-urls.mjs"
+    "check:old-urls": "node scripts/check-old-urls.mjs",
+    "check:parite-texte": "python scripts/migration/check-parite-texte.py"
   },
   "engines": {
     "node": ">=20.3.0"

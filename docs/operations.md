@@ -110,6 +110,7 @@ bascule se corrige avec `node scripts/migrate-icons-bank.mjs` (rejouable ;
 | `npm run check:prefill` (après le build) | 0 CTA de contenu qui arrive sur une liste obligatoire vide | 22 sept. 2026 : 171 liens fautifs à l'introduction, 0 après le lot L-prefill — 822 liens vers le Contact, dont 449 de contenu et 373 de chrome (ignorés) |
 | `npm run check:old-urls` (après le build) | rapport seul, code 0 — chaque adresse de l'ancien site arrive sur une page | 23 sept. 2026 : 172 des 173 adresses arrivent (2 sans bouger, 170 en un saut) ; reste `/cache/`, un rebut WordPress |
 | `npm run check:images` | rapport seul, code 0 — aucune image référencée n'est allégeable | 23 sept. 2026 : 0 après la passe (34 fichiers allégés, 3,5 Mo) |
+| `npm run check:parite-texte -- --strict` (après le build ; Python) | **BLOQUANT depuis le lot L-restaure** — 0 page signalée hors exceptions assumées | 23 sept. 2026, après L-restaure : 151 pages comparées, **3 signalées, toutes assumées** (les 2 pages « Merci » et Conseil stratégique FR), 100 avec seulement des titres reformulés, code 0. Avant L-restaure : 24 signalées |
 
 **Adresses de l'ancien site (2026-09-23).** `scripts/check-old-urls.mjs` rejoue
 le PARCOURS d'un lien entrant (Google, LinkedIn, courriel, signet) contre les
@@ -123,6 +124,52 @@ colonne « État mesuré » de `docs/inventaire-pages.md`**, le registre de
 validation de Julie. **Rapport seul, code 0** (comme `check:prefill` à ses
 débuts) : `--strict` le rend bloquant, une fois les cas douteux tranchés.
 Serveur de dev actif → `node scripts/check-old-urls.mjs --dist <copie>/dist`.
+
+**Texte de l'ancien site (2026-09-23).** `npm run check:parite-texte`
+(`scripts/migration/check-parite-texte.py`) pose la question que
+`check:old-urls` ne pose pas : l'adresse arrive, mais **le texte est-il arrivé
+entier ?** Une ligne par page CIBLE construite : la source est la page EN
+LIGNE de victrix.ca (téléchargée une fois, cache
+`docs/migration/cache-source/` — 157 pages allégées de leurs scripts et
+styles, 8,6 Mo, à committer : c'est aussi la copie de l'ancien site qui
+survivra à sa mise hors ligne), la cible est `<main>` dans `dist/`. Il compare
+les VOLUMES (ratio cible / source) et les TITRES H2/H3 de la source absents de
+la cible, en distinguant le **bloc perdu** (titre ET texte absents, ✗) du
+**titre reformulé** (texte retrouvé, ≈). Signalé si ratio < 0,7 ou ≥ 1 bloc
+perdu ; une cible plus longue n'est pas un défaut. Rapport :
+`docs/migration/parite-texte.md`, du pire au meilleur, par rubrique.
+`--refresh` re-télécharge les sources ; `--dist <copie>/dist` si le serveur de
+dev tourne. Sous Git Bash, préfixer par `MSYS_NO_PATHCONV=1` quand on passe un
+chemin commençant par `/`.
+
+**`--strict` est BLOQUANT depuis le lot L-restaure (2026-09-23)** : il sort en 1
+dès qu'une page est signalée sans exception assumée. Quand il casse, deux issues,
+jamais une troisième :
+
+1. **le texte manque vraiment** → le restaurer depuis le cache, à sa place. La
+   page source se lit avec le parseur DÉJÀ ÉCRIT, jamais un parseur neuf :
+   `blocs_source()` de `scripts/migration/check-parite-texte.py` rend la liste
+   des blocs (`h2`, `h3`, `p`, `li`, `img`) d'un fichier de
+   `docs/migration/cache-source/` ;
+2. **le raccourcissement est voulu** → écrire la page cible dans
+   `parite_texte_assumee` de `docs/migration/correspondance-urls.json`, avec la
+   RAISON en toutes lettres (elle s'affiche dans le rapport, colonne « ☑ assumée »).
+
+Les 3 exceptions écrites le 2026-09-23 : les deux pages « Merci » (l'ancienne
+servait de plan de site officieux, ≈ 25 liens de services) et Conseil stratégique
+FR (teaser Carrières + bandeau de logos, décision D4).
+
+**Restaurer du contenu perdu (recette du lot L-restaure, 2026-09-23).** La
+migration de juillet a laissé tomber, EN SILENCE, tout ce qui n'était pas un
+widget « éditeur » de l'ancien constructeur de pages : FAQ en accordéon,
+encadrés « Le saviez-vous ? », titres de section et sous-sections entières —
+9 articles × 2 langues, plus la page Productivité et une campagne. La cause est
+dans `extractBlocks` (`scripts/migration/lib-wxr.mjs`), qui ne garde du contenu
+exporté que les blocs `siteorigin-widget-tinymce textwidget` ; l'avertissement
+censé signaler un widget ignoré cherche une classe `so-widget-sow-…` que les
+widgets tiers n'ont jamais, d'où zéro avertissement au rapport de conversion.
+**Ne pas relancer `convert-articles.mjs`** : l'éditrice a modifié des articles
+depuis. On restaure à la main, depuis le cache, bloc par bloc.
 
 **Poids des images (2026-09-23).** `npm run optimize:images` réduit et
 réencode SUR PLACE les images de `public/` — même chemin, même nom, même
@@ -211,6 +258,7 @@ npm run check:redirects              # CI : échoue si la matrice est périmée
 node scripts/build-redirects.mjs --dist   # après un build : échoue si une
                                           # redirection pointe vers une page absente
 python scripts/migration/check-parite-live.py   # compare le site EN LIGNE au dépôt
+npm run check:parite-texte -- --strict          # après le build : le TEXTE de chaque page est-il arrivé ? (BLOQUANT)
 ```
 
 Une **301 vers un 404 est pire qu'un 404** (la page d'origine perd son

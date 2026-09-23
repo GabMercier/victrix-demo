@@ -60,7 +60,10 @@ puis **`docs/plan-livraison-finale.md`** (lots restants, un prompt par lot).
 `npm run check:links -- --strict` · `npm run check:sections` · `npm run test:e2e` ·
 `npm run check:bookshop` · `npm run cms:previews:check` ·
 `npm run check:redirects` (+ `node scripts/build-redirects.mjs --dist` après le
-build). Rapporter les chiffres réels ; si une étape n'a pas pu tourner, le dire.
+build) · `npm run check:parite-texte -- --strict` (après le build ; BLOQUANT
+depuis le lot L-restaure — une page signalée de plus se restaure, ou s'assume
+dans `parite_texte_assumee` de `docs/migration/correspondance-urls.json`).
+Rapporter les chiffres réels ; si une étape n'a pas pu tourner, le dire.
 
 ## Rituel de fin de lot
 
