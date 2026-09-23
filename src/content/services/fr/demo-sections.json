@@ -403,6 +403,31 @@
       ]
     },
     {
+      "_bookshop_name": "galerie",
+      "type": "galerie",
+      "title": "Galerie d’images",
+      "intro": "<p>Grille de visuels agrandissables d’un clic — sans une ligne de script.</p>",
+      "colonnes": "3",
+      "fond": "beige",
+      "images": [
+        {
+          "image": "/images/solutions/gestion-formations/02.png",
+          "alt": "Capture d’écran de l’application — Gestion des formations pour les employés",
+          "legende": "Accueil de l’application"
+        },
+        {
+          "image": "/images/solutions/gestion-formations/03.png",
+          "alt": "Capture d’écran de l’application — Gestion des formations pour les employés",
+          "legende": "Fiche d’un employé et ses sessions"
+        },
+        {
+          "image": "/images/solutions/gestion-formations/04.png",
+          "alt": "Capture d’écran de l’application — Gestion des formations pour les employés",
+          "legende": "Confirmation de présence"
+        }
+      ]
+    },
+    {
       "_bookshop_name": "photo-hero",
       "type": "photo-hero",
       "title": "Héros photo",

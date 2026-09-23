@@ -171,6 +171,46 @@ widgets tiers n'ont jamais, d'où zéro avertissement au rapport de conversion.
 **Ne pas relancer `convert-articles.mjs`** : l'éditrice a modifié des articles
 depuis. On restaure à la main, depuis le cache, bloc par bloc.
 
+**Import du catalogue Ø Studio (lot L10, 2026-09-23).**
+`scripts/migration/export-catalogue-ostudio.mjs` rapatrie
+`o-studio-catalogue.victrix.ca` (WordPress FR, API REST ouverte) : les textes
+des 16 fiches, leurs 70 images, et les deux pages de texte libre (accueil du
+catalogue, « À propos ») en Markdown pour le marketing.
+
+```powershell
+node scripts/migration/export-catalogue-ostudio.mjs                # tout (réseau)
+node scripts/migration/export-catalogue-ostudio.mjs --hors-ligne   # depuis le cache local
+node scripts/migration/export-catalogue-ostudio.mjs --check        # n'écrit rien, code 1 si écart
+node scripts/migration/export-catalogue-ostudio.mjs --sans-images  # textes seuls (rapide)
+node scripts/migration/export-catalogue-ostudio.mjs --force-images # retélécharge les images
+```
+
+Il écrit `docs/migration/catalogue-ostudio/` (un JSON par fiche + le cache brut
+de l'API + les deux Markdown) et le rapport `docs/migration/catalogue-ostudio.md`.
+Quatre choses à savoir :
+
+- **Il n'écrit RIEN dans `src/content/`.** Les fiches du site sont générées par
+  le lot L11 **à partir de cet export**, jamais du réseau : l'import reste
+  rejouable sans écraser ce que l'éditrice aura retouché au CMS. C'est
+  exactement ce que `convert-articles.mjs` ne permet plus.
+- **Le cache EST la copie qui survit** (`_source-api.json`, ~260 Ko) : le
+  sous-domaine est démantelé au go-live. Même raisonnement que
+  `docs/migration/cache-source/`.
+- **Aucun abandon silencieux** (leçon L-restaure) : une structure inattendue —
+  H1 absent, ≠ 4 faits, libellé de fait inconnu, page hors de la table de
+  correspondance — est une **erreur**, le script sort en code 1 en la nommant.
+  Les anomalies de *contenu* (deux fiches qui partagent des images, une
+  introduction copiée-collée, photos de banque, `alt` absents) vont au rapport
+  sans faire échouer l'export. Les pages Markdown ont en plus un garde-fou de
+  déperdition : un écart de plus de 2 % entre les mots de la source et ceux de
+  la sortie est une erreur.
+- **User-Agent de navigateur obligatoire** : le WordPress répond 403 sans lui
+  (y compris pour les fichiers d'images).
+
+Les images sont allégées à l'écriture, avec les réglages de
+`optimize:images` (1 600 px, JPEG q80 mozjpeg, **PNG sans perte**) : 9,8 Mo
+pour 70 fichiers dans `public/images/solutions/<fiche>/`.
+
 **Poids des images (2026-09-23).** `npm run optimize:images` réduit et
 réencode SUR PLACE les images de `public/` — même chemin, même nom, même
 format, donc aucune référence à réécrire et aucun risque pour la médiathèque

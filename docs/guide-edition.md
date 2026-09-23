@@ -554,6 +554,43 @@ Le catalogue est en deux morceaux :
 - Le catalogue est accessible aux visiteurs par **« Catalogue de solutions »**
   dans la colonne Produits du méga-menu et du pied de page.
 
+## Galerie d'images (nouvelle section, 2026-09-23)
+
+**« Galerie d'images »** dans le sélecteur « Ajouter une section » : une grille
+de visuels que le visiteur **agrandit d'un clic**. C'est la seule section qui
+accepte une liste d'images libre — elle est faite pour montrer des captures
+d'écran d'application (les fiches du catalogue Ø Studio), mais elle marche sur
+n'importe quelle page à sections.
+
+Ce que vous remplissez :
+
+- **Titre** et **Introduction** : optionnels. Vides, la grille commence
+  directement.
+- **Colonnes (grand écran)** : 2, 3 ou 4 images par rangée. Sur téléphone, la
+  grille passe toujours à **une seule colonne** — inutile de s'en occuper.
+- **Fond de section** : la palette habituelle.
+- **Images** : autant que vous voulez, dans l'ordre d'affichage. Pour chacune :
+  - **Image** — le visuel. Il est toujours montré **en entier**, jamais rogné :
+    une capture en format portrait passe aussi bien qu'un paysage.
+  - **Texte de remplacement (alt)** — ce que l'image **montre**, en une phrase,
+    pour qui ne la voit pas (lecteur d'écran, image qui ne charge pas). Ne pas
+    répéter le titre de la page. À laisser vide **seulement** si l'image est
+    purement décorative.
+  - **Légende** — optionnelle, affichée sous l'image pour tout le monde.
+
+**Les images importées du catalogue Ø Studio ont un texte de remplacement
+provisoire** (« Capture d'écran de l'application — … ») : la source n'en avait
+aucun. La liste complète à réécrire est dans
+`docs/migration/catalogue-ostudio.md` ; chacune se corrige directement dans la
+section, au CMS.
+
+**L'agrandissement, et ce qu'il ne fait pas.** Un clic sur une vignette ouvre
+l'image en grand par-dessus la page, avec « Image précédente / suivante » et un
+bouton **« Fermer »**. C'est fait sans une ligne de script (le site n'en charge
+aucun pour cela) — en contrepartie : la touche **Échap ne ferme pas**, il faut
+le bouton « Fermer » (qui est le premier élément atteignable au clavier), et la
+page continue de défiler derrière. C'est un choix assumé, pas un oubli.
+
 ## Médias et images
 
 Le sélecteur d'image de CloudCannon téléverse chaque visuel **dans le dossier

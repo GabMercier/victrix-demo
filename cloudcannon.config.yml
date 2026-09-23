@@ -3217,6 +3217,57 @@ _structures:
                   - key: apercu
             comment: "Toute la banque de pictogrammes du site (ex. trousse = santé ; casque = services ; groupe = RH ; marteau = juridique). Vide = aucune."
 
+  # Images de la section « Galerie d'images » ({image, alt, legende}), NOUVELLE
+  # 2026-09-23 (lot L10 — catalogue Ø Studio). Même logique que benefit_items.
+  # Les images importées vivent dans public/images/solutions/<fiche>/ ; le
+  # dossier d'envoi pointe donc là, et l'éditrice peut en déposer d'autres.
+  galerie_items:
+    values:
+      - label: Image
+        icon: image
+        preview:
+          icon: image
+          text:
+            - key: legende
+            - key: alt
+            - text: Image
+          image:
+            - key: image
+        value:
+          image: ''
+          alt: ''
+          legende: ''
+        _inputs:
+          image:
+            type: image
+            label: Image
+            options:
+              empty_type: string
+              paths:
+                static: public
+                uploads: public/images/solutions
+            comment: >-
+              Capture d'écran ou photo. Le visiteur l'agrandit d'un clic.
+              L'image est montrée ENTIÈRE (jamais rognée) : un format portrait
+              passe aussi bien qu'un paysage.
+          alt:
+            type: text
+            label: Texte de remplacement (alt)
+            options:
+              empty_type: string
+            comment: >-
+              Ce que l'image MONTRE, en une phrase, pour qui ne la voit pas
+              (lecteur d'écran, image non chargée) — sans répéter le titre de
+              la page. À laisser VIDE seulement si l'image est purement
+              décorative. Les images du catalogue Ø Studio portent un texte
+              provisoire, à réécrire.
+          legende:
+            type: text
+            label: Légende (optionnelle)
+            options:
+              empty_type: string
+            comment: "Texte affiché SOUS l'image, pour tout le monde. Vide = aucune légende."
+
   # Cartes d'expertise ({number,title,accent,description,href}) pour la section
   # « Accueil — Expertises ». Même logique que benefit_items : une structure à
   # valeur unique donne au bouton « + » la bonne forme, même sur un tableau

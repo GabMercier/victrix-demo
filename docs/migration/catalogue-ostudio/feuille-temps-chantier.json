@@ -1,0 +1,94 @@
+{
+  "_genere_par": "scripts/migration/export-catalogue-ostudio.mjs",
+  "_lire_aussi": "docs/migration/catalogue-ostudio.md (rapport) · docs/plan-import-catalogue-ostudio.md (cible)",
+  "slug": "feuille-temps-chantier",
+  "nouvelle": false,
+  "source": {
+    "slug": "feuille-de-temps-chantier",
+    "id": 221,
+    "url": "https://o-studio-catalogue.victrix.ca/feuille-de-temps-chantier/",
+    "modifiee": "2025-07-11T22:25:42"
+  },
+  "titre": "Feuille de temps chantier",
+  "intro": "Découvrez notre application de suivi des heures de chantier. Elle permet à vos équipes d’enregistrer leur temps de travail en quelques clics et à vos gestionnaires d’optimiser la gestion des ressources et le suivi de la productivité.",
+  "introMarkdown": "**Découvrez notre application de suivi des heures de chantier. Elle permet à vos équipes d’enregistrer leur temps de travail en quelques clics et à vos gestionnaires d’optimiser la gestion des ressources et le suivi de la productivité.**",
+  "faits": [
+    {
+      "cle": "client",
+      "libelle": "Client",
+      "libelleSource": "Client",
+      "valeur": "Secteur construction"
+    },
+    {
+      "cle": "cout",
+      "libelle": "Coût",
+      "libelleSource": "Coût",
+      "valeur": "Entre 50.000 et 100.000 $CAD"
+    },
+    {
+      "cle": "delai",
+      "libelle": "Délai",
+      "libelleSource": "Délais de personnalisation",
+      "valeur": "Entre 1 et 3 mois"
+    },
+    {
+      "cle": "technologies",
+      "libelle": "Technologies",
+      "libelleSource": "Technologies utilisées",
+      "valeur": "Power Platform, SharePoint, Outlook"
+    }
+  ],
+  "invitation": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+  "images": [
+    {
+      "fichier": "/images/solutions/feuille-temps-chantier/01.jpg",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2024/08/o-chrono-e28094-feuille-de-temps-mobile.jpg",
+      "nature": "maquette",
+      "alt": "Maquette de présentation — Feuille de temps chantier",
+      "altSource": "",
+      "largeur": 1600,
+      "hauteur": 1200,
+      "octets": 312446
+    },
+    {
+      "fichier": "/images/solutions/feuille-temps-chantier/02.png",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2025/01/27.10.2021_12.09.50_rec.png",
+      "nature": "capture",
+      "alt": "Capture d’écran de l’application — Feuille de temps chantier",
+      "altSource": "",
+      "largeur": 522,
+      "hauteur": 921,
+      "octets": 39589
+    },
+    {
+      "fichier": "/images/solutions/feuille-temps-chantier/03.png",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2025/01/27.10.2021_12.06.43_rec.png",
+      "nature": "capture",
+      "alt": "Capture d’écran de l’application — Feuille de temps chantier",
+      "altSource": "",
+      "largeur": 518,
+      "hauteur": 920,
+      "octets": 48033
+    },
+    {
+      "fichier": "/images/solutions/feuille-temps-chantier/04.png",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2025/01/27.10.2021_12.05.28_rec.png",
+      "nature": "capture",
+      "alt": "Capture d’écran de l’application — Feuille de temps chantier",
+      "altSource": "",
+      "largeur": 522,
+      "hauteur": 923,
+      "octets": 40528
+    },
+    {
+      "fichier": "/images/solutions/feuille-temps-chantier/05.png",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2025/01/27.10.2021_12.03.35_rec.png",
+      "nature": "capture",
+      "alt": "Capture d’écran de l’application — Feuille de temps chantier",
+      "altSource": "",
+      "largeur": 523,
+      "hauteur": 921,
+      "octets": 33978
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+# =============================================================================
+# Spec Bookshop — section « Galerie d'images », NOUVELLE 2026-09-23 (lot L10,
+# catalogue Ø Studio). Voir hero.bookshop.yml pour les conventions communes.
+# La liste `images` pointe vers _structures.galerie_items (cloudcannon.config.yml).
+#
+# Agrandissement SANS script (ancres `:target`) — les limites assumées sont
+# écrites dans l'entête du composant et dans docs/guide-edition.md.
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Galerie d'images"
+  description: "Grille de visuels (captures d'écran, photos) que le visiteur agrandit d'un clic — jusqu'à 4 colonnes, légende et texte alternatif par image."
+  icon: photo_library
+  picker_preview:
+    # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne lit
+    # plus le preview_image légal posé par @bookshop/generate — on pointe
+    # EXPLICITEMENT la clé image sur l'URL déterministe où generate reloge le
+    # <composant>.preview.png au postbuild.
+    image: "/_cloudcannon/bookshop_thumbs/galerie/galerie.preview.png"
+    text: "Galerie d'images"
+    subtext: Grille de visuels agrandissables, légende par image
+  preview:
+    icon: photo_library
+    text:
+      - key: title
+      - text: Galerie d'images
+
+blueprint:
+  type: galerie
+  title: ""
+  intro: ""
+  colonnes: "3"
+  fond: ivoire
+  images:
+    - image: ""
+      alt: ""
+      legende: ""
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  title:
+    label: "Titre"
+    comment: "Titre de la section (optionnel). Vide = la grille commence directement."
+  intro:
+    type: html
+    label: "Introduction"
+    comment: "Paragraphe optionnel sous le titre de section."
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
+  colonnes:
+    type: select
+    label: "Colonnes (grand écran)"
+    options:
+      allow_empty: false
+      values:
+        - "2"
+        - "3"
+        - "4"
+    comment: "Nombre d'images par rangée sur un écran large. Sur téléphone, la grille passe toujours à une seule colonne."
+  images:
+    # `type: array` explicite — voir benefits.bookshop.yml (sans lui, generate
+    # fabriquerait une structure inline concurrente de _structures.galerie_items).
+    type: array
+    label: "Images"
+    comment: "Chaque image est agrandissable d'un clic. Le texte de remplacement est OBLIGATOIRE pour les images qui portent de l'information."
+    options:
+      structures: _structures.galerie_items
+  # « Fond de section » : choix BORNÉ à la palette officielle (5 fonds clairs,
+  # esprit P-16). Palette partagée (2026-09-17) : liste d'objets
+  # {cle, libelle, couleur, apercu} définie UNE fois dans cloudcannon.config.yml
+  # (_select_data.fonds) — la valeur enregistrée reste la clé texte ; l'éditeur
+  # affiche libellé + pastille.
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      values: _select_data.fonds
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+        icon: square
+        icon_color:
+          - key: couleur
+    comment: "Couleur de fond de la section, bornée à la palette officielle (pastilles dans la liste)."

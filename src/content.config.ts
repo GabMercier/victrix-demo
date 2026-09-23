@@ -1006,6 +1006,34 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
         }),
       ),
     }),
+    // Galerie d'images (2026-09-23, lot L10 — catalogue Ø Studio) : grille de
+    // visuels que le visiteur agrandit d'un clic. Première section à accepter
+    // une LISTE d'images libre ; l'agrandissement se fait par ancres `:target`,
+    // sans script (les composants Bookshop sont browser-safe). Tous les champs
+    // sauf la liste sont optionnels : une galerie fraîchement posée au CMS ne
+    // casse rien, elle ne rend rien.
+    z.object({
+      type: z.literal('galerie'),
+      title: z.string().default(''),
+      intro: z.string().default(''),
+      fond: fondClair.default('ivoire'),
+      // Colonnes sur grand écran ; chaîne, parce que c'est une valeur de
+      // select CloudCannon (comme numbered-cards.columns).
+      colonnes: z.enum(['2', '3', '4']).default('3'),
+      images: z
+        .array(
+          z.object({
+            // Chemin PUBLIC servi tel quel ; vide = vignette non rendue.
+            image: z.string().default(''),
+            // Texte de remplacement — vide = image décorative pour les lecteurs
+            // d'écran. Les 75 images importées de Ø Studio en ont un provisoire,
+            // à réécrire au CMS (docs/migration/catalogue-ostudio.md).
+            alt: z.string().default(''),
+            legende: z.string().default(''),
+          }),
+        )
+        .default([]),
+    }),
     z.object({
       type: z.literal('numbered-cards'),
       fond: fondClairOuVide.default(''),

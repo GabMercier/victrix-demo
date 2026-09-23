@@ -1,0 +1,74 @@
+{
+  "_genere_par": "scripts/migration/export-catalogue-ostudio.mjs",
+  "_lire_aussi": "docs/migration/catalogue-ostudio.md (rapport) · docs/plan-import-catalogue-ostudio.md (cible)",
+  "slug": "registre-applications",
+  "nouvelle": true,
+  "source": {
+    "slug": "registre-des-applications-organisationnelles",
+    "id": 255,
+    "url": "https://o-studio-catalogue.victrix.ca/registre-des-applications-organisationnelles/",
+    "modifiee": "2025-07-11T22:32:48"
+  },
+  "titre": "Registre des applications organisationnelles",
+  "intro": "Découvrez notre application de gestion des applications organisationnelles. Centralisée et complète, elle répertorie toutes vos applications, gère les licences, les accès utilisateurs et assure une gestion optimisée des ressources.",
+  "introMarkdown": "**Découvrez notre application de gestion des applications organisationnelles. Centralisée et complète, elle répertorie toutes vos applications, gère les licences, les accès utilisateurs et assure une gestion optimisée des ressources.**",
+  "faits": [
+    {
+      "cle": "client",
+      "libelle": "Client",
+      "libelleSource": "Client",
+      "valeur": "Secteur Industriel"
+    },
+    {
+      "cle": "cout",
+      "libelle": "Coût",
+      "libelleSource": "Coût",
+      "valeur": "Entre 25.000 et 50.000 $ CAD"
+    },
+    {
+      "cle": "delai",
+      "libelle": "Délai",
+      "libelleSource": "Délais de réalisation",
+      "valeur": "Entre 1 et 3 mois"
+    },
+    {
+      "cle": "technologies",
+      "libelle": "Technologies",
+      "libelleSource": "Technologies utilisées",
+      "valeur": "Power Platform, SharePoint"
+    }
+  ],
+  "invitation": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+  "images": [
+    {
+      "fichier": "/images/solutions/registre-applications/01.jpg",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2024/08/macbook-mockup2-1.jpg",
+      "nature": "maquette",
+      "alt": "Maquette de présentation — Registre des applications organisationnelles",
+      "altSource": "",
+      "largeur": 1600,
+      "hauteur": 1200,
+      "octets": 199472
+    },
+    {
+      "fichier": "/images/solutions/registre-applications/02.png",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2025/01/innergex-2.png",
+      "nature": "capture",
+      "alt": "Capture d’écran de l’application — Registre des applications organisationnelles",
+      "altSource": "",
+      "largeur": 1555,
+      "hauteur": 876,
+      "octets": 149450
+    },
+    {
+      "fichier": "/images/solutions/registre-applications/03.png",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2025/01/innergex-1.png",
+      "nature": "capture",
+      "alt": "Capture d’écran de l’application — Registre des applications organisationnelles",
+      "altSource": "",
+      "largeur": 1558,
+      "hauteur": 877,
+      "octets": 130826
+    }
+  ]
+}

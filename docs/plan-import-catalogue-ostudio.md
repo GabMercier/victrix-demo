@@ -138,12 +138,33 @@ Deux options légères à la place :
 
 | Lot | Contenu | Estimé |
 | --- | --- | --- |
-| 1 | Script d'export + images + rapport + textes pour Julie | 0,5 j |
+| 1 | **FAIT le 2026-09-23 (L10)** — Script d'export + images + rapport + textes pour Julie | 0,5 j |
 | 2 | Schéma `sections`, route des fiches, config CloudCannon, lien « Découvrir », guide | 1 j |
-| 3 | Composant `galerie` (+ spec Bookshop, vignette CMS) | 0,5 j |
+| 3 | **FAIT le 2026-09-23 (L10)** — Composant `galerie` (+ spec Bookshop, vignette CMS) | 0,5 j |
 | 4 | Génération des 16 fiches FR, relecture, gate complet | 0,5 j |
-| 5 | Option (b) sujet « Une solution du catalogue » | 1 h |
+| 5 | **FAIT le 2026-09-18** — Option (b) sujet « Une solution du catalogue » | 1 h |
 | — | Traduction EN des 16 fiches | contenu (Victrix) |
+
+**État au 2026-09-23 — lots 1 et 3 livrés (lot L10).** L'export vit dans
+`docs/migration/catalogue-ostudio/` (16 JSON + le cache brut de l'API + les
+deux Markdown) ; le rapport est `docs/migration/catalogue-ostudio.md` ; les
+70 images sont dans `public/images/solutions/<fiche>/`. Le composant
+`galerie` est dans la palette de sections. **Rien n'est encore écrit dans
+`src/content/solutions/`** : les fiches (sections, route, config CloudCannon,
+« Découvrir » → la fiche) sont le lot **L11**, qui lit l'export et non le
+réseau.
+
+**Slugs des 7 nouvelles fiches**, arrêtés par l'export (forme courte des 9
+existantes, ce sont aussi les URL publiques) : `gouvernance-power-platform`,
+`registre-applications`, `gestion-contractuelle`, `gestion-recrutement`,
+`onboarding-employe`, `comptes-depenses`, `traitement-factures`.
+
+**Une anomalie de plus que celles listées au §1** : `macbook-mockup2-1.jpg`
+sert à la fois à `registre-applications` et à `portail-requetes-citoyennes`
+(même mécanisme que les 3 images partagées par « Gestion des idées » et
+« Legacy vers Power Apps »), et l'introduction de la fiche « requêtes
+citoyennes » est mot pour mot celle des « horaires étudiants ». À confirmer
+avec Ø Studio avant publication.
 
 > **DÉCISIONS PRISES le 2026-09-18 (Gabriel) — toutes les recommandations :**
 > (1) fiches PAR SECTIONS ; (2) formulaire `o-studio` SUR la fiche ; (3) sujet

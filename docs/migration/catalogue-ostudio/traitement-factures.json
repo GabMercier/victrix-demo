@@ -1,0 +1,54 @@
+{
+  "_genere_par": "scripts/migration/export-catalogue-ostudio.mjs",
+  "_lire_aussi": "docs/migration/catalogue-ostudio.md (rapport) · docs/plan-import-catalogue-ostudio.md (cible)",
+  "slug": "traitement-factures",
+  "nouvelle": true,
+  "source": {
+    "slug": "automatisation-du-processus-de-traitement-des-factures",
+    "id": 269,
+    "url": "https://o-studio-catalogue.victrix.ca/automatisation-du-processus-de-traitement-des-factures/",
+    "modifiee": "2025-07-11T22:18:53"
+  },
+  "titre": "Automatisation du processus de traitement des factures",
+  "intro": "Découvrez notre solution d’automatisation du traitement des factures. Cette plateforme capture, valide et approuve les factures fournisseurs, tout en offrant un suivi en temps réel, réduisant les erreurs et accélérant les paiements.",
+  "introMarkdown": "**Découvrez notre solution d’automatisation du traitement des factures. Cette plateforme capture, valide et approuve les factures fournisseurs, tout en offrant un suivi en temps réel, réduisant les erreurs et accélérant les paiements.**",
+  "faits": [
+    {
+      "cle": "client",
+      "libelle": "Client",
+      "libelleSource": "Client",
+      "valeur": "Secteur municipal"
+    },
+    {
+      "cle": "cout",
+      "libelle": "Coût",
+      "libelleSource": "Coût",
+      "valeur": "50.000 $CAD"
+    },
+    {
+      "cle": "delai",
+      "libelle": "Délai",
+      "libelleSource": "Délais de personnalisation",
+      "valeur": "1 mois"
+    },
+    {
+      "cle": "technologies",
+      "libelle": "Technologies",
+      "libelleSource": "Technologies utilisées",
+      "valeur": "Power Platform, SharePoint, Teams, AI Builder"
+    }
+  ],
+  "invitation": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+  "images": [
+    {
+      "fichier": "/images/solutions/traitement-factures/01.jpg",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2025/01/glasses-and-calculator-on-a-folder-with-documents-2023-11-27-05-26-08-utc.jpg",
+      "nature": "banque",
+      "alt": "Photographie d’illustration — Automatisation du processus de traitement des factures",
+      "altSource": "",
+      "largeur": 1600,
+      "hauteur": 1067,
+      "octets": 96436
+    }
+  ]
+}
