@@ -1,4 +1,5 @@
 ---
+import { typographieFr } from '../rich';
 /**
  * Shared Bookshop page renderer — the documented CloudCannon pattern for
  * "page building" (see the Bookshop Astro guide: a single component maps an
@@ -61,7 +62,13 @@ const isBuildRender = Boolean((import.meta.env ?? {}).SSR);
 // expressions (`(block: Record<string, unknown>) => …`) are misparsed by the
 // Astro compiler as JSX tags. Keep template expressions annotation-free.
 type Block = Record<string, unknown>;
-const blocks: Block[] = contentBlocks ?? [];
+// Typographie française posée EN UN SEUL ENDROIT (2026-09-23) : espaces
+// insécables devant `: ; ! ? »` et après `«`, pour qu'un signe double ne se
+// retrouve jamais seul en tête de ligne — le cas visible étant les grands
+// titres. `contentBlocks` n'est PAS modifié (le marqueur `bookshop:live` le
+// trace) : on rend une COPIE transformée, la donnée éditée reste celle du
+// fichier. Sans effet en anglais, qui colle ses deux-points au mot.
+const blocks: Block[] = typographieFr(contentBlocks ?? []);
 
 // Eagerly import every Bookshop component and index it by its Bookshop name
 // ("hero/hero.astro" → "hero" — the duplicated dir/file name collapses, per

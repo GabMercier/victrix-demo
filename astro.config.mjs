@@ -4,6 +4,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { auditPages } from './scripts/lib/h1-guard.mjs';
 import { entreAuSitemap } from './scripts/lib/sitemap-filter.mjs';
+import rehypeInsecables from './scripts/lib/rehype-insecables.mjs';
 import { lesDeuxFormes, versMotifCloudCannon } from './scripts/lib/routing-formes.mjs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
@@ -859,6 +860,17 @@ export default defineConfig({
   // Prefetch links on hover (default strategy) — near-instant navigation.
   // Pairs with <ClientRouter /> in BaseLayout for SPA-like page transitions.
   prefetch: true,
+
+  // TYPOGRAPHIE FRANÇAISE du corps des contenus Markdown (2026-09-23) :
+  // espaces insécables devant « : ; ! ? » » et après « « », pour qu'un signe
+  // double ne se retrouve jamais seul en tête de ligne. Les SECTIONS sont
+  // traitées ailleurs (renderer partagé, `typographieFr`) ; ce plugin couvre
+  // les articles du centre de ressources et les campagnes, dont le corps vient
+  // du Markdown. Il ne visite que les nœuds de TEXTE — jamais les attributs,
+  // donc jamais les URL — et saute `<code>`/`<pre>`.
+  markdown: {
+    rehypePlugins: [rehypeInsecables],
+  },
 
   // Bilingual site. FR + EN, both prefixed (/fr/…, /en/…). Pages live under
   // src/pages/[lang]/ and opt every locale in via getStaticPaths.

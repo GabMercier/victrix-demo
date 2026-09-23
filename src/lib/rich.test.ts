@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { blockHtml, hasRichText, inlineHtml, sanitizeRichHtml } from '../../component-library/src/shared/rich';
+import {
+  blockHtml,
+  hasRichText,
+  inlineHtml,
+  insecables,
+  sanitizeRichHtml,
+  typographieFr,
+} from '../../component-library/src/shared/rich';
 
 describe('sanitizeRichHtml — filet de sécurité au build', () => {
   it('laisse passer le texte nu et les balises autorisées', () => {
@@ -70,5 +77,63 @@ describe('hasRichText', () => {
     expect(hasRichText('<p>&nbsp;</p>')).toBe(false);
     expect(hasRichText('<p>x</p>')).toBe(true);
     expect(hasRichText('')).toBe(false);
+  });
+});
+
+describe('insecables — typographie francaise des signes doubles', () => {
+  const NBSP = ' ';
+
+  it('colle le signe au mot qui le precede', () => {
+    expect(insecables('Notre strategie : IaaS')).toBe(`Notre strategie${NBSP}: IaaS`);
+    expect(insecables('Vraiment ?')).toBe(`Vraiment${NBSP}?`);
+    expect(insecables('Attention !')).toBe(`Attention${NBSP}!`);
+    expect(insecables('a ; b')).toBe(`a${NBSP}; b`);
+  });
+
+  it('traite aussi les guillemets francais, des deux cotes', () => {
+    expect(insecables('« Le saviez-vous ? »')).toBe(`«${NBSP}Le saviez-vous${NBSP}?${NBSP}»`);
+  });
+
+  it("ne touche PAS l'anglais, qui colle deja ses deux-points", () => {
+    const en = 'ServiceNow ITSM: Business-Led Strategy';
+    expect(insecables(en)).toBe(en);
+  });
+
+  it('laisse les URL et les espaces deja insecables intacts', () => {
+    expect(insecables('https://victrix.ca/fr/')).toBe('https://victrix.ca/fr/');
+    expect(insecables('tel:+15148791919')).toBe('tel:+15148791919');
+    expect(insecables(`Deja${NBSP}: pose`)).toBe(`Deja${NBSP}: pose`);
+  });
+
+  it('est idempotent — le rendu peut repasser sans degrader', () => {
+    const une = insecables('Titre : sous-titre');
+    expect(insecables(une)).toBe(une);
+  });
+});
+
+describe("typographieFr — toutes les chaines d'une section", () => {
+  it('descend dans les tableaux et les sous-objets, sans toucher aux autres types', () => {
+    const avant = {
+      type: 'hero',
+      title: 'Notre offre : la suite',
+      fond: 'ivoire',
+      featured: true,
+      order: 3,
+      vide: null,
+      items: [{ label: 'Client :', value: 'Multi-secteur' }],
+    };
+    const apres = typographieFr(avant);
+    expect(apres.title).toBe('Notre offre : la suite');
+    expect(apres.items[0].label).toBe('Client :');
+    expect(apres.featured).toBe(true);
+    expect(apres.order).toBe(3);
+    expect(apres.vide).toBeNull();
+    expect(apres.type).toBe('hero');
+  });
+
+  it("ne modifie pas la valeur d'origine (le contenu edite reste intact)", () => {
+    const avant = { title: 'Titre : x' };
+    typographieFr(avant);
+    expect(avant.title).toBe('Titre : x');
   });
 });

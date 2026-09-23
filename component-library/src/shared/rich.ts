@@ -137,6 +137,49 @@ export function blockHtml(value: string | null | undefined): string {
   return BLOCK_TAG_RE.test(v) ? v : `<p>${v}</p>`;
 }
 
+/**
+ * ESPACES INSÉCABLES devant les signes doubles (2026-09-23, demande Gabriel).
+ *
+ * En typographie française, `: ; ! ? »` sont précédés d'une espace, et `«` en
+ * est suivi. Avec une espace ORDINAIRE, le navigateur a le droit de couper la
+ * ligne juste avant le signe : un « : » se retrouve alors seul en tête de
+ * ligne, ce qui se voit surtout dans les grands titres. L'insécable l'interdit.
+ *
+ * Appliqué AU RENDU (renderer partagé) plutôt qu'au contenu : l'éditrice tape
+ * une espace normale au CMS — comme tout le monde — et le site pose
+ * l'insécable. Corriger les 26 titres d'aujourd'hui n'aurait rien réglé pour
+ * le 27ᵉ.
+ *
+ * SANS EFFET EN ANGLAIS, et c'est ce qui rend la règle sûre à appliquer
+ * partout sans tester la langue : l'anglais colle ses deux-points au mot
+ * (« Title: subtitle »), il n'y a donc aucune espace à remplacer. Mesuré sur
+ * tout le contenu : 26 occurrences en français, 0 en anglais.
+ *
+ * Ne touche ni aux URL (`https://`, `tel:` n'ont pas d'espace devant le
+ * signe), ni aux espaces déjà insécables.
+ */
+export function insecables(value: string): string {
+  return value.replace(/ ([:;!?»])/g, ' $1').replace(/(«) /g, '$1 ');
+}
+
+/**
+ * Applique `insecables` à TOUTES les chaînes d'une valeur de section, aussi
+ * profond qu'elle aille (titres, textes, items, sous-objets). Les autres types
+ * (booléens, nombres, null) sont rendus tels quels.
+ */
+export function typographieFr<T>(valeur: T): T {
+  if (typeof valeur === 'string') return insecables(valeur) as unknown as T;
+  if (Array.isArray(valeur)) return valeur.map((v) => typographieFr(v)) as unknown as T;
+  if (valeur && typeof valeur === 'object') {
+    const out: Record<string, unknown> = {};
+    for (const [cle, val] of Object.entries(valeur as Record<string, unknown>)) {
+      out[cle] = typographieFr(val);
+    }
+    return out as unknown as T;
+  }
+  return valeur;
+}
+
 /** Vrai si la valeur contient au moins un caractère visible (hors balises). */
 export function hasRichText(value: string | null | undefined): boolean {
   return !!value && String(value).replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim().length > 0;

@@ -167,6 +167,16 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
 
 ## Mettre en forme un texte (gras, italique, liens, listes)
 
+**Les espaces insécables, c'est le site qui s'en occupe** (2026-09-23). En
+français, on met une espace avant `: ; ! ?` et autour des guillemets `« »`.
+Avec une espace ordinaire, le navigateur a le droit de couper la ligne juste
+avant le signe — et un « : » se retrouve seul en début de ligne, ce qui se voit
+surtout dans les grands titres. **Tapez normalement, une espace simple** : au
+moment d'afficher la page, le site la remplace par une espace insécable. Ça
+vaut pour les titres et les textes des sections, et pour les articles du centre
+de ressources. Rien à faire de votre côté, et rien à changer dans ce que vous
+avez déjà écrit.
+
 Depuis le 16 septembre 2026, **les textes des sections se mettent en forme
 sans HTML** : chapeau d'un héros, introduction d'une section, texte d'une
 carte, citation, réponse de FAQ, paragraphes d'un bloc « Texte riche »… Le
