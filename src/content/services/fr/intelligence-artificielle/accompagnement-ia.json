@@ -13,14 +13,19 @@
       "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Accompagnement stratégique et appliqué en ia",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Réussissez votre virage IA de manière durable",
       "titleHighlight": "",
       "lead": "Avec Victrix, bâtissez des fondations solides pour faire évoluer votre organisation en IA. Nous partons de vos besoins d'affaires réels, priorisons les initiatives à forte valeur et les menons au succès grâce à nos expertises clés.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2026/07/sea-lighthouse-with-the-moon-2026-03-25-00-59-08-utc-1-scaled.jpg",
-      "imageAlt": "Image d'un phare pour représenter l'accompagnement en intelligence artificielle où Victrix est le guide."
+      "imageAlt": "Image d'un phare pour représenter l'accompagnement en intelligence artificielle où Victrix est le guide.",
+      "imagePosition": "haut"
     },
     {
       "_bookshop_name": "rich-text",
@@ -51,6 +56,10 @@
       "sectionTitle": "De l'explorateur à l'innovant : un accompagnement à votre mesure",
       "headingStyle": "plain",
       "intro": "Nos accompagnements sont sur mesure, pensés en fonction de vos besoins et de votre maturité, sans parti pris technologique. Peu importe votre point de départ, nous avançons avec vous, à votre rythme.",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -58,9 +67,9 @@
         {
           "number": "01",
           "title": "Vous testez déjà l'IA",
+          "text": "<strong>L'explorateur responsable</strong><br><br>Vous possédez ou évaluez des outils d'IA. Vous cherchez à encadrer la productivité individuelle, à former vos équipes et à sécuriser l'adoption.",
           "ctaLabel": "",
           "ctaHref": "",
-          "text": "<strong>L'explorateur responsable</strong><br><br>Vous possédez ou évaluez des outils d'IA. Vous cherchez à encadrer la productivité individuelle, à former vos équipes et à sécuriser l'adoption.",
           "icon": "",
           "image": "",
           "imageAlt": ""
@@ -68,9 +77,9 @@
         {
           "number": "02",
           "title": "Vous avez un cas d'usage précis",
+          "text": "<strong>Le focalisé pragmatique</strong><br><br>Vous voulez encadrer votre projet, le valider et réduire vos risques avant de passer à l'exécution.",
           "ctaLabel": "",
           "ctaHref": "",
-          "text": "<strong>Le focalisé pragmatique</strong><br><br>Vous voulez encadrer votre projet, le valider et réduire vos risques avant de passer à l'exécution.",
           "icon": "",
           "image": "",
           "imageAlt": ""
@@ -78,9 +87,9 @@
         {
           "number": "03",
           "title": "Vous êtes prêt à avancer",
+          "text": "<strong>L'innovant déterminé</strong><br><br>Vous voulez une feuille de route concrète, une gouvernance claire, des initiatives observables et un partenaire de confiance.<br><br>Vous acceptez de vous remettre en question et de vous engager dans une démarche structurée et progressive.",
           "ctaLabel": "",
           "ctaHref": "",
-          "text": "<strong>L'innovant déterminé</strong><br><br>Vous voulez une feuille de route concrète, une gouvernance claire, des initiatives observables et un partenaire de confiance.<br><br>Vous acceptez de vous remettre en question et de vous engager dans une démarche structurée et progressive.",
           "icon": "",
           "image": "",
           "imageAlt": ""
@@ -94,6 +103,10 @@
       "sectionTitle": "Un partenaire stratégique et accessible, engagé de la vision aux résultats",
       "headingStyle": "plain",
       "intro": "Nous relions la stratégie à l'exécution, pour que chaque initiative IA serve un objectif clair et reste sous contrôle.",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "tint",
       "columns": "2",
       "cardStyle": "default",
@@ -250,7 +263,11 @@
             "Détection visuelle",
             "Agents conversationnels pour vos employés ou vos clients",
             "Optimisation de processus"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Formation et gestion du changement",
@@ -258,7 +275,11 @@
           "items": [
             "Parcours de formation et d'accompagnement terrai à l'IA générative",
             "Montée en compétences accélérée, observable et quantifiable"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Gouvernance",
@@ -266,7 +287,11 @@
           "items": [
             "Outils d'IA générative : stimuler et encadrer la productivité individuelle",
             "Agents IA en mode codéveloppement : baliser l'usage des agents sur mesure dans une formule à la fois pédagogique et contextualisée"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Protection et conformité",
@@ -274,7 +299,11 @@
           "items": [
             "Préparation et validation de votre environnement pour l'utilisation de l'IA",
             "Conformité au cadre juridique applicable dont la Loi 25"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Projets d'envergure",
@@ -285,7 +314,11 @@
             "Entrainement de modèles personnalisés",
             "Développement applicatif intégré à vos systèmes",
             "Mise en place de lacs de données"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         }
       ]
     },
