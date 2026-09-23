@@ -51,6 +51,9 @@ const KEYS_IMBRIQUEES = [
   { type: 'benefits', chemin: 'items', cles: ['image', 'imageAlt'] },
   { type: 'feature-boxes', chemin: 'boxes', cles: ['icon', 'image', 'imageAlt'] },
   { type: 'bento-metrics', chemin: 'aside', cles: ['image', 'imageAlt'] },
+  // 2026-09-23 : pictogramme par élément de la barre de confiance (le logo ISO
+  // de l'accueil). Vide = la coche d'origine.
+  { type: 'home-iso', chemin: 'items', cles: ['icon'] },
 ];
 
 /** Ajoute les clés manquantes dans un objet ; renvoie le nombre d'ajouts. */

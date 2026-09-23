@@ -22,7 +22,20 @@
       "fond": "blanc",
       "title": "Certifications",
       "subtitle": "Victrix est certifiée <strong>ISO 27001</strong> et <strong>ISO 9001</strong>.",
-      "items": []
+      "image": "/images/logos/iso.png",
+      "imageAlt": "",
+      "items": [
+        {
+          "value": "ISO 27001",
+          "label": "Sécurité de l’information",
+          "icon": "insigne"
+        },
+        {
+          "value": "ISO 9001",
+          "label": "Management de la qualité",
+          "icon": "insigne"
+        }
+      ]
     },
     {
       "_bookshop_name": "home-expertises",
@@ -124,11 +137,11 @@
       "ctaHref": "",
       "items": [
         {
-          "title": "Ø Studio",
-          "text": "Ø&nbsp;Studio est le studio de développement applicatif de Victrix, spécialisé en Power Platform et Dynamics 365. Son équipe multidisciplinaire automatise vos processus et livre vos applications, clés en main ou sur mesure, à vitesse grand V.",
+          "title": "Studio de création",
+          "text": "Le Studio de création est l’équipe de développement applicatif de Victrix, spécialisé en Power Platform et Dynamics 365. Son équipe multidisciplinaire automatise vos processus et livre vos applications, clés en main ou sur mesure, à vitesse grand V.",
           "image": "/images/home/expertise-productivite.jpg",
           "href": "/fr/services/productivite/o-studio",
-          "ctaLabel": "Découvrez Ø Studio",
+          "ctaLabel": "Découvrez le Studio de création",
           "icon": ""
         },
         {

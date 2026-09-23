@@ -653,9 +653,18 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       fond: fondClair.default('blanc'),
       title: z.string(),
       subtitle: z.string(),
+      // LOGO de la bande (2026-09-23) — chemin public servi tel quel (le logo
+      // ISO). Vide = aucun logo. `imageAlt` vide = décoratif : le bon réglage
+      // quand les items disent déjà « ISO 27001 » / « ISO 9001 ».
+      image: z.string().default(''),
+      imageAlt: z.string().default(''),
       // Re-skin 2026-08-04 — barre de confiance (patron Trust Bar) : items
       // {value,label} ; tableau vide = ancien rendu titre + sous-titre.
-      items: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
+      // `icon` (2026-09-23) : clé de la banque partagée ; vide = la coche
+      // d'origine, donc les bandes déjà posées ne changent pas d'aspect.
+      items: z
+        .array(z.object({ value: z.string(), label: z.string(), icon: pictogramme.default('') }))
+        .default([]),
     }),
     z.object({
       type: z.literal('home-expertises'),
