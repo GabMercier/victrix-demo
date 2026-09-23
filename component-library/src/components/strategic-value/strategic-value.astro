@@ -77,6 +77,30 @@ const {
 const vitrine = variant === 'vitrine';
 const hasCard = Boolean(cardTitle && image);
 
+/**
+ * Grille des cartes de chiffres — CORRIGÉ le 2026-09-23 (signalé par Gabriel,
+ * capture à 1280 px : les cartes passaient SOUS la photo).
+ *
+ * La cause est le piège flexbox classique : les cartes étaient en `flex-1`,
+ * donc `flex: 1 1 0%`, mais `min-width` vaut `auto` par défaut sur un élément
+ * flex — une carte ne peut PAS rétrécir sous la largeur de son mot le plus
+ * long. Avec 4 cartes dans la demi-colonne de texte (≈ 460 px dès `lg`), la
+ * part de chacune tombe à ≈ 100 px alors que « SÉCURISATION » en
+ * `uppercase tracking-[1.2px]` en mesure ≈ 105 : la rangée déborde de sa
+ * colonne et vient se poser sous l'image de droite.
+ *
+ * Ce n'était PAS propre à la page Cybersécurité : 41 sections portent des
+ * cartes, dont 20 avec QUATRE cartes ET une image — le même cas exactement.
+ *
+ * `min-w-0` seul ne suffit pas : la rangée cesserait de déborder, mais le mot
+ * déborderait à l'intérieur de la carte. Il faut vraiment moins de colonnes.
+ * D'où : au plus DEUX colonnes quand une image occupe l'autre moitié, quatre
+ * seulement quand le texte tient toute la largeur. `min-w-0` reste en filet.
+ */
+const colonnesStats = image
+  ? 'grid-cols-1 sm:grid-cols-2'
+  : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4';
+
 // « Fond de section » ÉTENDU 2026-08-17 (produit-child.css §Strategic Value,
 // lavis chauds) : clé fermée → utilitaire de la palette officielle. '' =
 // défaut historique — il dépend de la `variant`, d'où la clé vide.
@@ -133,11 +157,11 @@ const FONDS: Record<string, string> = FOND_CLASSES;
       }
       {
         stats.length > 0 && (
-          <div class="self-stretch flex flex-col sm:flex-row gap-4 pt-4">
+          <div class:list={['self-stretch grid gap-4 pt-4', colonnesStats]}>
             {stats.map((stat) => (
               <div
                 class:list={[
-                  'flex-1 flex flex-col',
+                  'min-w-0 flex flex-col',
                   vitrine
                     ? 'bg-white/60 border border-solid border-white backdrop-blur-sm rounded-xs p-4 gap-0'
                     : 'bg-surface-container-low border-0 border-l-4 border-solid border-primary p-6 gap-3',

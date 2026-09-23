@@ -113,7 +113,7 @@
   --shadow-2: 0 4px 16px rgba(11, 19, 52, 0.1);
   --shadow-3: 0 12px 32px rgba(11, 19, 52, 0.14);
 
-  --container-max: 1920px; /* ÉLARGI 2026-08-17 (remplir le viewport) — suit --spacing-container-max de theme.css (was 1280px) */
+  --container-max: 120rem; /* ÉLARGI 2026-08-17 (remplir le viewport) — suit --spacing-container-max de theme.css (was 1280px, puis 1920px). En `rem` depuis le 2026-09-23 : 120rem = 1920px tant que la racine vaut 16px, et le cadran suit l'agrandissement de la racine au-delà de 1920px de large (voir global.css). */
   --container-pad: 16px; /* gouttière mobile — proportionnelle ≥768px ci-dessous (was 24px fixe) */
 }
 

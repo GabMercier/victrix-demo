@@ -67,3 +67,50 @@ for (const { url, nom } of PAGES) {
     expect(violations.length, `${nom} (${url}) :\n${detail}`).toBe(0);
   });
 }
+
+/**
+ * LE MODE « GRAND ÉCRAN » (2026-09-23) — au-delà de 1920px la racine grandit
+ * jusqu'à 20px et le cadran jusqu'à 2400px (global.css, theme.css).
+ *
+ * Les scans ci-dessus tournent au viewport par défaut de Playwright (1280),
+ * où cette règle est désarmée : le gate serait donc resté vert sans avoir
+ * jamais mesuré le mode que Gabriel a sur son écran. L'arithmétique dit que
+ * le risque de contraste est nul (aucune couleur ne change, aucun texte ne
+ * peut rétrécir, et la règle AA se DÉTEND — plus de texte franchit les seuils
+ * 24px / 18,66px gras). Restent les chevauchements, les cibles tactiles et
+ * les textes rognés, qu'axe voit et que l'arithmétique ne dit pas.
+ *
+ * Trois gabarits suffisent : ce sont ceux qui portent les mises en page à
+ * hauteur contrainte (cartes de l'accueil, colonnes du service, champs du
+ * formulaire).
+ */
+for (const { url, nom } of [
+  { url: '/fr/', nom: 'accueil' },
+  { url: '/fr/services/cybersecurite', nom: 'service (+ renvoi vers le contact)' },
+  { url: '/fr/contact', nom: 'formulaire de contact' },
+]) {
+  test(`aucune violation d'accessibilité à 2560px — ${nom}`, async ({ page }) => {
+    await page.setViewportSize({ width: 2560, height: 1440 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto(url);
+    await page.waitForLoadState('networkidle');
+    await page.evaluate(() => document.fonts.ready);
+
+    // Garde-fou du garde-fou : si la règle « grand écran » cessait de
+    // s'appliquer, ce test scannerait le mode ordinaire en croyant tester
+    // l'autre, et passerait pour de mauvaises raisons.
+    const racine = await page.evaluate(() =>
+      parseFloat(getComputedStyle(document.documentElement).fontSize),
+    );
+    expect(racine, 'la règle « grand écran » doit être active à 2560px').toBeCloseTo(20, 1);
+
+    const { violations } = await new AxeBuilder({ page }).withTags(NORMES).analyze();
+    const detail = violations
+      .map((v) => {
+        const cible = v.nodes[0]?.target?.join(' ') ?? '?';
+        return `  • [${v.impact}] ${v.id} — ${v.help}\n      ${v.nodes.length} élément(s), p. ex. ${cible}`;
+      })
+      .join('\n');
+    expect(violations.length, `${nom} (${url}) à 2560px :\n${detail}`).toBe(0);
+  });
+}

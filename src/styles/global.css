@@ -40,6 +40,45 @@ html {
   scroll-behavior: smooth;
   /* Account for the sticky header (80px) when jumping to #anchors. */
   scroll-padding-top: 96px;
+
+  /* ÉCRANS TRÈS LARGES (2026-09-23) — au-delà de 1920px de large, la racine
+     grandit PROGRESSIVEMENT jusqu'à +25 % à 2560px. Combiné au cadran passé en
+     `rem` (`--spacing-container-max`, theme.css), c'est exactement ce que
+     Gabriel obtenait en zoomant son navigateur à 125 % sur son écran 2560 :
+     bande de 2400px et corps de texte à 20px, au lieu de 1920px et 16px.
+     Relever la SEULE racine n'aurait pas suffi — on aurait eu du texte plus
+     gros dans un cadre inchangé.
+
+     Pourquoi une INTERPOLATION et non une media query à seuil. Un seuil dur
+     est non monotone dès qu'on le combine au zoom du navigateur : sur un
+     2560, zoomer à 125 % donne un viewport de 2048 (au-dessus du seuil, texte
+     agrandi) mais zoomer à 150 % donne 1707 (en dessous — la règle se désarme
+     et le texte RÉTRÉCIT quand on zoome). L'interpolation n'a pas de palier :
+     elle vaut exactement 0 à 1920px et en dessous, donc elle est strictement
+     sans effet sur tout ce qui existait avant.
+
+     Mesuré sur les deux machines de Gabriel le 2026-09-23 :
+       portable    innerWidth 1280, devicePixelRatio 1.5  -> facteur 0, inchangé
+       grand écran innerWidth 2560, devicePixelRatio 1    -> facteur 1, +25 %
+     DEUX PIÈGES ÉVITÉS ICI, et c'est ce qui dicte l'écriture exacte :
+       · la borne basse est `100%`, jamais une valeur en `px`. Poser
+         `font-size: 16px` sur la racine ANNULE le réglage « taille de police »
+         du navigateur — précisément ce que le lot L-typo avait rétabli, et ce
+         que verrouille `tests/e2e/typographie.spec.ts`. En `%`, la préférence
+         de l'utilisateur reste le point de départ et on ne fait qu'ajouter
+         par-dessus ;
+       · l'interpolation ne divise QUE par un nombre (`/ 160`), jamais une
+         longueur par une longueur. Le quotient de deux longueurs ne donne un
+         nombre qu'avec CSS Values 4, arrivé dans les navigateurs en 2024 —
+         trop récent pour un site public.
+     `(100vw - 1920px) / 160` vaut donc 0px à 1920 et 4px à 2560 (640/160),
+     soit les 4px qui mènent de 16 à 20.
+
+     Le plafond de gouttière de `container-site` reste en px (96) à dessein :
+     la formule `clamp(2rem, 3.75vw, 96px)` est DUPLIQUÉE dans home-hero.astro
+     et service-hero.astro avec des commentaires de synchronisation, et à
+     2560px `3.75vw` vaut 96px de toute façon. */
+  font-size: clamp(100%, calc(100% + (100vw - 1920px) / 160), 125%);
 }
 
 body {

@@ -1,5 +1,7 @@
 {
   "seoH1": "",
+  "seoTitle": "IT Consulting, Cybersecurity, AI & Managed Services",
+  "metaDescription": "Victrix is the IT, cybersecurity, AI, managed services, cloud and custom application development consultancy for the public and private sectors.",
   "sections": [
     {
       "_bookshop_name": "home-hero",
@@ -13,6 +15,14 @@
       "image": "/images/home/hero-accueil.webp",
       "cta2Label": "Talk to an expert",
       "cta2Href": "/en/contact"
+    },
+    {
+      "_bookshop_name": "home-iso",
+      "type": "home-iso",
+      "fond": "blanc",
+      "title": "Certifications",
+      "subtitle": "Victrix is <strong>ISO 27001</strong> and <strong>ISO 9001</strong> certified.",
+      "items": []
     },
     {
       "_bookshop_name": "home-expertises",
@@ -48,7 +58,7 @@
         },
         {
           "number": "04",
-          "title": "Cloud ",
+          "title": "Cloud",
           "accent": "#1a5bff",
           "description": "Modernize your infrastructure and scale your cloud environments at your own pace.",
           "href": "/en/services/cloud-services-provider",
@@ -93,7 +103,7 @@
       "image": "../equipe.jpg",
       "statValue": "24/7/365",
       "statLabel": "Managed Services",
-      "statText": "Proactive support and end-to-end management of your IT environments..",
+      "statText": "Proactive support and end-to-end management of your IT environments.",
       "features": [
         {
           "label": "Microsoft 365",
@@ -125,7 +135,7 @@
           "title": "SEvOC",
           "text": "A traditional SOC hands you alerts and stops there. SEvOC takes them off your hands and keeps your security posture improving, backed by dedicated bilingual analysts and our infrastructure and cloud teams.",
           "image": "/images/home/sevoc.png",
-          "href": "/en/services/cybersecurity",
+          "href": "/en/services/cybersecurity/scalable-security-operations-center",
           "ctaLabel": "Discover SEvOC",
           "icon": "bouclier"
         },
@@ -133,9 +143,78 @@
           "title": "Azure Migration",
           "text": "Victrix accelerates your move to Azure. Our methodology, grounded in Microsoft's Cloud Adoption Framework, de-risks every stage of migrating your application and servers.",
           "image": "/images/home/expertise-infonuagique.jpg",
-          "href": "/en/services/cloud-services-provider",
+          "href": "/en/services/cloud-services-provider/azure-migration",
           "ctaLabel": "Discover Azure",
           "icon": "nuage"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "logo-banner",
+      "type": "logo-banner",
+      "fond": "beige",
+      "title": "Our Technology Partners",
+      "badge": "",
+      "items": [
+        {
+          "name": "Palo Alto Networks",
+          "logo": "/images/logos/paloalto.svg",
+          "description": ""
+        },
+        {
+          "name": "Check Point",
+          "logo": "/images/logos/checkpoint.svg",
+          "description": ""
+        },
+        {
+          "name": "Pulse Secure",
+          "logo": "/images/logos/pulse-secure.svg",
+          "description": ""
+        },
+        {
+          "name": "CrowdStrike",
+          "logo": "/images/logos/crowdstrike.svg",
+          "description": ""
+        },
+        {
+          "name": "Microsoft 365",
+          "logo": "/images/logos/microsoft-365.svg",
+          "description": ""
+        },
+        {
+          "name": "Cisco",
+          "logo": "/images/logos/cisco.svg",
+          "description": ""
+        },
+        {
+          "name": "Aruba",
+          "logo": "/images/logos/aruba.svg",
+          "description": ""
+        },
+        {
+          "name": "AlgoSec",
+          "logo": "/images/logos/algosec.svg",
+          "description": ""
+        },
+        {
+          "name": "Amazon Web Services",
+          "logo": "/images/logos/aws.svg",
+          "description": ""
+        },
+        {
+          "name": "OVHcloud",
+          "logo": "/images/logos/ovhcloud.png",
+          "description": ""
+        },
+        {
+          "name": "ServiceNow",
+          "logo": "/images/logos/servicenow.png",
+          "description": ""
+        },
+        {
+          "name": "Proofpoint",
+          "logo": "/images/logos/proofpoint.png",
+          "description": ""
         }
       ]
     },
@@ -147,7 +226,12 @@
       "subtitle": "Keep up with our experts: articles, webinars, white papers and Victrix news.",
       "readMoreLabel": "View",
       "ctaLabel": "Browse all resources",
-      "ctaHref": "/en/ressources"
+      "ctaHref": "/en/ressources",
+      "vedettes": [
+        "certification-iso-27001-iso-9001",
+        "ia-servicenow",
+        "mise-en-place-soc"
+      ]
     },
     {
       "_bookshop_name": "home-experts",

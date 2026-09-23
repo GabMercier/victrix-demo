@@ -27,7 +27,10 @@
     "build:redirects": "node scripts/build-redirects.mjs",
     "check:redirects": "node scripts/build-redirects.mjs --check",
     "build:brand": "node scripts/build-brand-images.mjs",
-    "check:brand": "node scripts/build-brand-images.mjs --check"
+    "check:brand": "node scripts/build-brand-images.mjs --check",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "check:images": "node scripts/optimize-images.mjs --check",
+    "check:old-urls": "node scripts/check-old-urls.mjs"
   },
   "engines": {
     "node": ">=20.3.0"

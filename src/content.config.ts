@@ -759,6 +759,23 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       readMoreLabel: z.string().default(''),
       ctaLabel: z.string(),
       ctaHref: z.string(),
+      // ARTICLES EN VEDETTE (2026-09-23, demande du marketing pour la démo).
+      // Vide = les 3 articles les PLUS RÉCENTS, comportement historique.
+      // Renseigné = ces articles-là, DANS CET ORDRE.
+      //
+      // La valeur est le NOM DE FICHIER de l'article sans extension
+      // (« certification-iso-27001-iso-9001 »), et non son slug publié : le nom
+      // de fichier est l'identifiant qui APPARIE FR et EN (mécanisme
+      // `postUrlSlug`, cf. le schéma `blog`), donc UNE seule liste suffit pour
+      // les deux langues et elle ne casse pas quand Julie retouche un slug.
+      //
+      // Ce n'est volontairement PAS une liste fermée au sens de la règle 5 du
+      // CLAUDE.md : les articles sont du contenu vivant, une liste `_select_data`
+      // devrait être régénérée à chaque publication. Le filet est ailleurs —
+      // `src/pages/[lang]/index.astro` ignore un identifiant inconnu et le
+      // SIGNALE au build, plutôt que de faire échouer la construction sur une
+      // faute de frappe faite au CMS.
+      vedettes: z.array(z.string()).default([]),
     }),
     // ---- Sections « services » (P-07) — port fidèle de la page expertise IA
     // vers des sections composables GÉNÉRIQUES et réutilisables (partagées
@@ -1247,6 +1264,24 @@ const home = defineCollection({
       // (masqué à l'écran, rendu par component-library/src/shared/astro/
       // page.astro) et le grand titre du héros passe en <h2>, styles inchangés.
       seoH1: z.string().optional(),
+      // SEO de l'accueil OUVERT AU CMS (2026-09-23). Jusque-là la page n'avait
+      // NI titre NI description éditables : `<title>` sortait à « Victrix »
+      // tout court (BaseLayout retombe sur SITE_NAME quand `title` est absent)
+      // et la description était codée en dur dans src/pages/[lang]/index.astro,
+      // hors de portée de l'éditrice. Lighthouse notait quand même 100 — son
+      // audit `document-title` ne juge que la PRÉSENCE de la balise, pas son
+      // contenu.
+      // NOMS DE CHAMPS : `seoTitle` comme partout ailleurs, mais
+      // `metaDescription` (nom des pages système) et NON `description` — dans
+      // cloudcannon.config.yml les `_inputs` sont indexés par NOM DE CHAMP et
+      // cascadent dans les objets imbriqués : une clé `description` à la
+      // racine hériterait du libellé générique « Description » prévu pour les
+      // items de section (cartes, partenaires…). `metaDescription` n'existe
+      // nulle part dans les _inputs de `home` : aucune collision.
+      // `.default('')` + repli au rendu (règle 5 du CLAUDE.md) : un champ vidé
+      // au CMS ne peut pas produire de balise vide.
+      seoTitle: z.string().default(''),
+      metaDescription: z.string().default(''),
       sections: z.array(sectionsSchema(image)),
     }),
 });

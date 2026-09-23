@@ -296,6 +296,32 @@ collections_config:
     # spec, which @bookshop/generate copies onto the palette entries (that
     # "containing structure" level outranks these collection-level fallbacks).
     _inputs:
+      # SEO de l'accueil (2026-09-23) — la page était la SEULE du site sans
+      # titre ni description éditables : `<title>` sortait à « Victrix » tout
+      # court et la description était codée en dur dans la route.
+      # Le champ s'appelle `metaDescription` et non `description` : les
+      # `_inputs` sont indexés par NOM DE CHAMP et cascadent dans les objets
+      # imbriqués, donc une clé `description` à la racine hériterait du libellé
+      # générique des items de section (voir l'entrée `description` plus bas).
+      seoTitle:
+        type: text
+        options:
+          empty_type: string
+        label: Titre SEO (onglet et résultats Google)
+        comment: >-
+          Titre affiché dans l'onglet du navigateur et dans les résultats de
+          recherche. « — Victrix » est ajouté automatiquement à la fin : ne pas
+          l'écrire ici. Viser 50 à 60 caractères. Vide = le titre de repli
+          inscrit dans le code.
+      metaDescription:
+        type: textarea
+        options:
+          empty_type: string
+        label: Description (moteurs de recherche)
+        comment: >-
+          Résumé affiché sous le titre dans les résultats Google et lors des
+          partages. Viser 150 à 160 caractères. Vide = la description de repli
+          inscrite dans le code — jamais de balise vide.
       seoH1:
         type: text
         options:

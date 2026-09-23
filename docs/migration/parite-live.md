@@ -7,8 +7,8 @@
 | | Nombre |
 | --- | --- |
 | URL en ligne examinées | 150 |
-| Retrouvées dans le dépôt | 127 |
-| **Slug différent** (redirection à écrire) | **20** |
+| Retrouvées dans le dépôt | 134 |
+| **Slug différent** (redirection à écrire) | **13** |
 | **Sans équivalent trouvé** | **3** |
 
 ## 1. URL en ligne sans équivalent dans le dépôt
@@ -26,15 +26,8 @@ celle qui circule aujourd'hui (Google, LinkedIn, courriels).
 
 | URL en ligne | Fichier du dépôt | Slug du dépôt |
 | --- | --- | --- |
-| `/en/best-practices-in-operational-security-defense/` | `src/content/blog/en/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense.md` | `part-3-best-practices-in-operational-security-defense` |
-| `/en/best-practices-in-operational-security-monitoring/` | `src/content/blog/en/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance.md` | `part-2-best-practices-in-operational-security-monitoring` |
-| `/meilleures-pratiques-en-securite-operationnelle-la-defense/` | `src/content/blog/fr/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense.md` | `partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense` |
-| `/meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | `src/content/blog/fr/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance.md` | `partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance` |
-| `/meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | `src/content/blog/fr/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance.md` | `partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance` |
-| `/externalisation-du-soc-avantages-inconvenients/` | `src/content/blog/fr/externalisation-soc-avantages-inconvenients.md` | `externalisation-soc-avantages-inconvenients` |
-| `/en/soc-outsourcing-for-smbs-pros-cons/` | `src/content/blog/en/externalisation-soc-avantages-inconvenients.md` | `soc-outsourcing-pros-cons` |
-| `/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` | `src/content/blog/fr/zero-trust-network-access-ztna.md` | `zero-trust-network-access-ztna` |
-| `/en/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` | `src/content/blog/en/zero-trust-network-access-ztna.md` | `zero-trust-network-access-ztna` |
+| `/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` | `src/content/blog/fr/zero-trust-network-access-ztna.md` | `zero-trust-network-access-ztna-modele-de-cybersecurite-optimal` |
+| `/en/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` | `src/content/blog/en/zero-trust-network-access-ztna.md` | `zero-trust-network-access-ztna-ultimate-cybersecurity-model` |
 | `/` | `src/content/home/fr/accueil.json` | `accueil` |
 | `/en/customer-portal/` | `src/pages/[lang]/portail/` | `connexion` |
 | `/en/resources-center/` | `src/pages/[lang]/ressources/` | `ressources` |

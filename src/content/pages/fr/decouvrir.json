@@ -3,7 +3,7 @@
   "title": "Découvrir Victrix",
   "description": "Victrix est le partenaire TI stratégique des grandes entreprises du Québec, spécialisé en cybersécurité, services gérés, IA, infonuagique et services applicatifs.",
   "noindex": false,
-  "seoTitle": "",
+  "seoTitle": "Découvrir Victrix : histoire, missions et écosystème",
   "seoH1": "",
   "slug": "",
   "contactSujet": "",
@@ -80,46 +80,43 @@
       }
     },
     {
-      "_bookshop_name": "benefits",
-      "type": "benefits",
+      "_bookshop_name": "text-photo",
+      "type": "text-photo",
+      "fond": "blanc",
+      "title": "Notre mission",
+      "lead": "Victrix s’est engagée à être l’entreprise de services TI la plus réputée au Canada en matière de productivité d’affaires, en façonnant une culture d’entreprise où ses employés, partenaires et clients peuvent aller au bout de leurs ambitions.",
+      "engagementTitle": "",
+      "engagementText": "En offrant des solutions technologiques de grande qualité et une expérience client de premier ordre, Victrix se distingue en contribuant de façon significative à la performance et la compétitivité de ses clients.",
+      "partners": [],
+      "image": "/wp-content/uploads/2022/02/solution-sevoc-pourquoi.jpg",
+      "imageAlt": "Mise en place d’une équipe SOC chez Victrix"
+    },
+    {
+      "_bookshop_name": "value-tiles",
+      "type": "value-tiles",
+      "eyebrow": "",
       "title": "Nos valeurs",
-      "intro": "",
       "fond": "ivoire",
       "items": [
         {
-          "title": "Excellence",
-          "description": "",
-          "icon": "losange",
-          "image": "",
-          "imageAlt": ""
+          "icon": "etoile",
+          "label": "Excellence"
         },
         {
-          "title": "Collaboration",
-          "description": "",
           "icon": "groupe",
-          "image": "",
-          "imageAlt": ""
+          "label": "Collaboration"
         },
         {
-          "title": "Innovation",
-          "description": "",
           "icon": "ampoule",
-          "image": "",
-          "imageAlt": ""
+          "label": "Innovation"
         },
         {
-          "title": "Engagement",
-          "description": "",
-          "icon": "porteur",
-          "image": "",
-          "imageAlt": ""
+          "icon": "poignee",
+          "label": "Engagement"
         },
         {
-          "title": "Intégrité",
-          "description": "",
-          "icon": "dossier",
-          "image": "",
-          "imageAlt": ""
+          "icon": "coche",
+          "label": "Intégrité"
         }
       ]
     },
@@ -200,22 +197,34 @@
         {
           "year": "2019",
           "title": "Victrix rejoint l'écosystème international Alan Allman Associates",
-          "text": "15 cabinets-conseils · Plus de 3 300 experts",
+          "text": "15 cabinets-conseils · Plus de 3 300 experts · <a href=\"https://alan-allman.com/\" target=\"_blank\" rel=\"noopener\">Découvrir Alan Allman Associates</a>",
           "accent": true
         },
         {
           "year": "2023",
           "title": "La Société Conseil Lambda rejoint Victrix",
-          "text": "",
+          "text": "<a href=\"/fr/ressources/societe-conseil-lambda-victrix\">Lire l’annonce</a>",
           "accent": true
         },
         {
           "year": "2024",
           "title": "En se rapprochant de COMITEM, Victrix étend son offre en France",
-          "text": "",
+          "text": "<a href=\"/fr/ressources/developpement-offre-cybersecurite-france\">Lire l’annonce</a>",
           "accent": false
         }
       ]
+    },
+    {
+      "_bookshop_name": "text-photo",
+      "type": "text-photo",
+      "fond": "beige",
+      "title": "Notre écosystème",
+      "lead": "<a href=\"https://alan-allman.com/\" target=\"_blank\" rel=\"noopener\">Alan Allman Associates</a> est un écosystème dynamique regroupant un portefeuille d’une quinzaine de cabinets de conseil, répartis autour de quatre pôles d’expertises clés : <strong>haute technologie, transformation industrielle, stratégie et gestion, ainsi que marketing numérique.</strong>",
+      "engagementTitle": "",
+      "engagementText": "Avec une communauté de plus de 3 300 experts à la fin de 2024, notre présence s’étend à l’international, notamment en <strong>France, au Benelux, dans la péninsule ibérique, en Asie et en Amérique du Nord.</strong>",
+      "partners": [],
+      "image": "/wp-content/uploads/2024/01/galaxie-v12-bleu-scaled.jpg",
+      "imageAlt": "Galaxie Alan Allman Associates"
     },
     {
       "_bookshop_name": "cta",
@@ -228,6 +237,18 @@
       "cta2Href": "",
       "variant": "nuit",
       "fond": "ivoire"
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "fond": "beige",
+      "title": "Parole d’experts",
+      "tags": [
+        "Nos articles",
+        "Nos actualités"
+      ],
+      "ctaLabel": "Voir toutes les ressources",
+      "ctaHref": "/fr/ressources"
     }
   ]
 }

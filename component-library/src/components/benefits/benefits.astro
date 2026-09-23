@@ -32,9 +32,22 @@ import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
  * longueur des descriptions.
  *
  * Props : { type: "benefits", title, intro?, headingStyle?, fond?,
- *           numerotation?, items: [{ title, description, icon? }] }
+ *           numerotation?, items: [{ title, description, icon?, image?,
+ *           imageAlt? }] }
  * - `icon` : clé de la BANQUE de pictogrammes (shared/icons.ts — toute la
  *   banque est offerte dans l'éditeur depuis le 2026-09-18) ; "" = aucun.
+ * - `image` AJOUTÉ 2026-09-22 (rendu) : LOGO de marque, pour ce que la banque
+ *   de pictogrammes ne peut pas dire (Microsoft, AWS, ServiceNow…). Il GAGNE
+ *   sur `icon` — c'est le contrat écrit dans src/content.config.ts et dans le
+ *   commentaire de l'éditeur. Le champ existait déjà en zod, dans le blueprint
+ *   et dans le rétro-remplissage depuis le 2026-09-22 ; SEUL le rendu
+ *   manquait, donc l'éditrice aurait déposé un logo invisible.
+ *   `imageAlt` vide = image DÉCORATIVE (`alt=""`) : c'est le bon réglage quand
+ *   le nom de la marque est déjà écrit dans le titre de la carte, sinon le
+ *   lecteur d'écran le lit deux fois. Hauteur calée sur celle du pictogramme
+ *   qu'il remplace (48 px en « compact », 36 px en « titre ») et largeur
+ *   libre : les logos sont de rapports très différents, `object-contain` les
+ *   laisse respirer sans déformer.
  * - `numerotation` AJOUTÉ 2026-09-18 : compteur 01, 02, 03… sur les cartes
  *   (vrai par défaut). À décocher quand la grille est un inventaire et non une
  *   démarche ordonnée — c'est le cas des 12 cartes de la page Secteurs.
@@ -57,6 +70,8 @@ interface BenefitItem {
   title: string;
   description: string;
   icon?: IconKey | '';
+  image?: string;
+  imageAlt?: string;
 }
 
 interface Props {
@@ -144,7 +159,11 @@ const tailleIcone = (v: number | undefined) => (v ? v * 2 : 32);
     <ul role="list" class:list={['grid grid-cols-1 md:grid-cols-3 m-0 p-0 list-none', compact ? 'gap-6' : 'gap-8']}>
       {
         items.map((item, i) => {
-          const icon = iconFor(item.icon);
+          // Le LOGO gagne sur le pictogramme (contrat du champ, cf. en-tête) :
+          // on annule `icon` quand il est posé, ce qui laisse intactes toutes
+          // les conditions `icon ?` écrites plus bas.
+          const logo = (item.image ?? '').trim();
+          const icon = logo ? null : iconFor(item.icon);
           return (
             <li
               class:list={[
@@ -156,6 +175,15 @@ const tailleIcone = (v: number | undefined) => (v ? v * 2 : 32);
             >
               {compact ? (
                 <Fragment>
+                  {logo && (
+                    <img
+                      src={logo}
+                      alt={item.imageAlt ?? ''}
+                      class="h-12 w-auto max-w-[9rem] object-contain object-left m-0"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
                   {icon && (
                     <span class="size-12 text-primary flex items-center justify-center rounded-xs bg-primary/10">
                       <svg
@@ -176,13 +204,22 @@ const tailleIcone = (v: number | undefined) => (v ? v * 2 : 32);
                 </Fragment>
               ) : (
                 <Fragment>
-                  {(icon || numerotation) && (
+                  {(logo || icon || numerotation) && (
                     <div
                       class:list={[
                         'flex items-center h-9 pb-8 box-content',
-                        icon ? 'justify-between gap-4' : 'justify-end',
+                        logo || icon ? 'justify-between gap-4' : 'justify-end',
                       ]}
                     >
+                      {logo && (
+                        <img
+                          src={logo}
+                          alt={item.imageAlt ?? ''}
+                          class="h-9 w-auto max-w-[10rem] object-contain object-left m-0 shrink-0"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      )}
                       {icon && (
                         <span class="text-primary flex items-center shrink-0">
                           <svg

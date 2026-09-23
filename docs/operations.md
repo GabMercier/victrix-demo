@@ -73,8 +73,13 @@ push.
 `cms:previews:check` — depuis le 2026-09-21, il compare DEUX listes de fonds :
 `_select_data.fonds` (les 10 fonds clairs, offerts partout) et
 `_select_data.fonds_etendus` (les mêmes + les fonds SOMBRES de
-`FOND_KEYS_SOMBRES`, réservés aux sections qui inversent leurs textes :
-rich-text, callout, stats, logo-banner, faq). Ajouter un fond sombre = une clé
+`FOND_KEYS_SOMBRES`, réservés aux sections qui inversent leurs textes).
+**Elles sont DIX depuis le 2026-09-21**, pas cinq — la liste d'origine
+(rich-text, callout, stats, logo-banner, faq) a été élargie par le lot
+`L-fonds3` à benefits, feature-boxes, home-experts, text-photo et value-tiles.
+La source qui fait foi reste la liste des specs qui référencent
+`_select_data.fonds_etendus` ; ne pas recopier un décompte à la main.
+Ajouter un fond sombre = une clé
 dans `FOND_KEYS_SOMBRES` + sa classe et sa pastille dans `fonds.ts`, une entrée
 en fin de `fonds_etendus`, `npm run cms:previews`, et l'inversion des textes
 dans les composants qui l'offrent (`estFondSombre`).
@@ -103,6 +108,35 @@ bascule se corrige avec `node scripts/migrate-icons-bank.mjs` (rejouable ;
 | `STATIC_ONLY=1 npm run build` | build 100 % statique (aucun `_worker.js`), 23 pages | OK — 23 page(s) built, aucun `_worker.js` dans `dist/` |
 | `npm run check:links` (après le build ; `-- --strict` en CI) | 0 lien interne cassé dans `dist/` | 18 sept. 2026 : 75 cibles fautives à l'introduction (liens d'origine WordPress dans les articles), 0 après `npm run fix:links` |
 | `npm run check:prefill` (après le build) | 0 CTA de contenu qui arrive sur une liste obligatoire vide | 22 sept. 2026 : 171 liens fautifs à l'introduction, 0 après le lot L-prefill — 822 liens vers le Contact, dont 449 de contenu et 373 de chrome (ignorés) |
+| `npm run check:old-urls` (après le build) | rapport seul, code 0 — chaque adresse de l'ancien site arrive sur une page | 23 sept. 2026 : 172 des 173 adresses arrivent (2 sans bouger, 170 en un saut) ; reste `/cache/`, un rebut WordPress |
+| `npm run check:images` | rapport seul, code 0 — aucune image référencée n'est allégeable | 23 sept. 2026 : 0 après la passe (34 fichiers allégés, 3,5 Mo) |
+
+**Adresses de l'ancien site (2026-09-23).** `scripts/check-old-urls.mjs` rejoue
+le PARCOURS d'un lien entrant (Google, LinkedIn, courriel, signet) contre les
+artefacts livrés : `dist/_cloudcannon/routing.json` pour les règles,
+`dist/` pour les pages. C'est le seul garde-fou qui teste le DÉCLENCHEMENT
+d'une règle — `check:redirects` ne valide que la cible, `check:links` que les
+liens internes. Aucun des deux ne pouvait voir le défaut de barre oblique
+finale qui mettait 105 des 184 anciennes adresses en 404 (corrigé par
+`67f9337`). Il écrit `docs/migration/validation-301.md` **et rafraîchit la
+colonne « État mesuré » de `docs/inventaire-pages.md`**, le registre de
+validation de Julie. **Rapport seul, code 0** (comme `check:prefill` à ses
+débuts) : `--strict` le rend bloquant, une fois les cas douteux tranchés.
+Serveur de dev actif → `node scripts/check-old-urls.mjs --dist <copie>/dist`.
+
+**Poids des images (2026-09-23).** `npm run optimize:images` réduit et
+réencode SUR PLACE les images de `public/` — même chemin, même nom, même
+format, donc aucune référence à réécrire et aucun risque pour la médiathèque
+CloudCannon. Il ne redimensionne qu'au-delà de 1 600 px, n'écrit que si le
+gain dépasse 5 % (d'où son idempotence : un second passage ne dégrade rien),
+et ne touche PAS aux images orphelines. `npm run check:images` est le même
+outil en lecture seule. **Deux pièges payés en l'écrivant** : `png({ effort })`
+bascule silencieusement sharp en quantification 256 couleurs (perte réelle et
+visible — l'outil n'utilise donc que du PNG sans perte, et le vrai levier pour
+les photos en PNG reste le WebP, non fait) ; et passer un CHEMIN à sharp fait
+projeter le fichier en mémoire par libvips, si bien que réécrire le même
+chemin échoue en « UNKNOWN: unknown error » sur les JPEG — l'outil lit donc
+le fichier en mémoire d'abord.
 
 **Liens internes (2026-09-18).** `scripts/check-internal-links.mjs` relève chaque
 `<a href>` interne du site CONSTRUIT et vérifie que la cible existe dans
@@ -325,6 +359,42 @@ dans le `@theme` de `theme.css`, donc une classe `text-sm` ecrite demain ne peut
 plus repasser sous 16 px. Seule faille possible : une valeur ARBITRAIRE ecrite
 en dur dans le balisage (`text-[0.875rem]`) — il y en avait 6, toutes relevees.
 Garde-fou : `tests/e2e/typographie.spec.ts`.
+
+**ÉCRANS TRÈS LARGES (2026-09-23).** Au-delà de **1920 px** de large, la racine
+grandit progressivement jusqu'à **+25 %** à 2560 px, et le cadran suit parce
+qu'il est désormais exprimé en `rem` (`--spacing-container-max: 120rem` dans
+`theme.css`, `--container-max` dans `tokens.css`). Mesuré : à 2560 px la bande
+passe de 1920 à **2400 px** et le corps de texte de 16 à **20 px** — la largeur
+utile monte de 67 % à 86 % de l'écran. C'est exactement ce que Gabriel obtenait
+en zoomant son navigateur à 125 %, le zoom dilatant lui aussi la typographie ET
+le cadran.
+
+Trois décisions à ne pas défaire :
+
+1. **Interpolation continue, pas de media query à seuil.** Un seuil dur rend le
+   zoom NON MONOTONE : sur un 2560, zoomer à 125 % donne un viewport de 2048
+   (au-dessus du seuil, texte agrandi) mais zoomer à 150 % donne 1707 (en
+   dessous — la règle se désarme et le texte RÉTRÉCIT quand on zoome).
+   Verrouillé par le test « l'agrandissement des grands écrans est MONOTONE ».
+2. **La borne basse est `100%`, jamais des `px`.** Poser `font-size: 16px` sur
+   la racine annulerait le réglage « taille de police » du navigateur, que le
+   lot L-typo avait justement rétabli.
+3. **Aucune division de longueur par une longueur.** Le quotient de deux
+   longueurs ne donne un nombre qu'avec CSS Values 4 (navigateurs 2024) : la
+   formule ne divise que par un nombre — `(100vw - 1920px) / 160`.
+
+La règle est **strictement sans effet à 1920 px et en dessous** : rien ne bouge
+sur un portable. Mesures de référence des deux machines de Gabriel (2026-09-23) :
+portable `innerWidth 1280, devicePixelRatio 1.5` ; grand écran
+`innerWidth 2560, devicePixelRatio 1`. Garde-fous :
+`tests/e2e/typographie.spec.ts` (paliers 1280 / 1920 / 2560 + monotonie) et
+`tests/e2e/accessibilite.spec.ts` (axe rejoué **à 2560 px** sur 3 gabarits — les
+62 autres specs tournent à 1280 et n'auraient jamais vu ce mode).
+
+**Piège associé** : une hauteur FIGÉE en px qui contient du texte se met à
+rogner quand la racine grandit. Deux corrigés le 2026-09-23
+(`home-expertises`, `home-solutions` : `h-[…]` → `min-h-[…]`). Chercher
+`h-\[[0-9]+px\]` avec `overflow-hidden` avant d'en ajouter un.
 
 **Nettoyer une clé de fond RETIRÉE de la palette :**
 

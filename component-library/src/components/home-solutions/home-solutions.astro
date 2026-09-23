@@ -69,7 +69,16 @@ const { title, ctaLabel, ctaHref, items = [], fond = 'ivoire' } = Astro.props;
           const icon = iconFor(item.icon);
           return (
           <li class="m-0">
-            <article class="group relative h-[500px] rounded overflow-hidden flex flex-col justify-end p-6 sm:p-10 bg-on-primary-fixed isolate">
+            {/* `min-h-[500px]` et NON `h-[500px]` (2026-09-23, même correctif
+                que home-expertises) : la carte pose son texte en bas
+                (`justify-end`), donc un contenu plus long que la hauteur figée
+                débordait PAR LE HAUT et se faisait rogner par
+                `overflow-hidden`, sans barre de défilement — perte de contenu
+                au sens WCAG 1.4.4. Le risque grandit avec le plancher
+                typographique à 16 px et l'agrandissement de la racine sur
+                grand écran. `overflow-hidden` RESTE nécessaire : il contient
+                l'image en `absolute inset-0` et son zoom au survol. */}
+            <article class="group relative min-h-[500px] rounded overflow-hidden flex flex-col justify-end p-6 sm:p-10 bg-on-primary-fixed isolate">
               {item.image && (
                 <img
                   src={item.image}

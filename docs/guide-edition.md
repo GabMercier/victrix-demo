@@ -222,6 +222,39 @@ même nom de fichier — structure vierge, mais champs valides garantis.
 > journal de build les pages qui n'ont **pas encore de traduction** (aucun
 > blocage — un simple rappel).
 
+## Choisir les 3 articles de la page d’accueil
+
+La bande « Ressources et actualités » de l’accueil montre par défaut les
+**trois articles les plus récents**, automatiquement. Depuis le 2026-09-23,
+vous pouvez choisir lesquels.
+
+**Accueil** → section « Ressources et actualités » → champ **« Articles en
+vedette (optionnel) »**. Ajoutez une entrée par article, dans l’ordre où vous
+voulez les voir. La valeur à écrire est le **nom de fichier de l’article, sans
+son extension** — par exemple `certification-iso-27001-iso-9001`. C’est le nom
+qui apparaît dans la liste du **Centre de ressources**, côté français.
+
+Trois choses qui évitent les mauvaises surprises :
+
+- **Une seule liste pour les deux langues.** Le nom de fichier est le même en
+  français et en anglais ; chaque version de l’accueil affiche automatiquement
+  sa propre traduction de l’article, avec son titre et son adresse anglaise.
+  Vous n’avez donc rien à recopier dans l’accueil anglais — mais pensez à y
+  poser la même liste si vous partez d’une page vierge.
+- **Une faute de frappe ne casse rien.** Un nom introuvable est simplement
+  ignoré, et la grille se complète avec les articles les plus récents. Vous
+  aurez toujours trois cartes.
+- **Laissez le champ vide** pour revenir au comportement automatique.
+
+**Les images de couverture.** Ce sont celles de l’article lui-même (champ
+« Image de couverture »). Attention si le visuel porte du **texte** : une
+image fabriquée en français ne convient pas à l’article anglais, il en faut
+une par langue. Les trois visuels posés le 2026-09-23 (certifications ISO,
+IA et ServiceNow, mise en place d’un SOC) sont dans ce cas : ils sont posés
+sur les articles **français** seulement, les anglais gardent leur couverture
+précédente. Le bon format est **1200 × 750** (le cadre des cartes) : une image
+plus large se fait rogner sur les côtés, et le texte avec.
+
 ## Modifier le menu
 
 **Navigation** dans la barre latérale : un fichier par langue (`fr` / `en`).
@@ -571,6 +604,17 @@ Ce que vous contrôlez, page par page :
 - **Redirections** : à chaque changement d'adresse d'une page publiée (voir
   la section suivante).
 
+**La page d'accueil aussi, depuis le 2026-09-23.** Elle était la seule page du
+site sans titre ni description modifiables : son onglet affichait « Victrix »
+tout court, et la description servie à Google était écrite dans le code, hors
+de votre portée. Ouvrez **Accueil** dans CloudCannon : deux champs
+apparaissent en haut, **« Titre SEO (onglet et résultats Google) »** et
+**« Description (moteurs de recherche) »**. Ils sont préremplis avec les
+textes de l'ancien site, pour ne rien perdre du référencement acquis. Comme
+partout, « — Victrix » est ajouté automatiquement à la fin du titre : ne
+l'écrivez pas. Vider un des deux champs ne casse rien — un texte de repli
+prend le relais.
+
 Le reste (balise canonique, hreflang FR/EN, sitemap, données structurées,
 aperçus de partage) est **automatique** — personne n'a à y penser, personne ne
 peut le casser depuis l'éditeur.
@@ -639,7 +683,7 @@ même endroit, et **le logo l'emporte quand les deux sont remplis** :
 | --- | --- |
 | **Cartes numérotées** | N'avait **aucun** visuel — elle en accepte un. C'est la section la plus posée du site (76 sections, 357 cartes). |
 | **Boîtes de domaines** | Chaque boîte avait un simple libellé ; elle devient un vrai bloc avec libellé + pictogramme + logo. |
-| **Cartes à icônes** | Le pictogramme y était déjà ; le logo s'ajoute. |
+| **Cartes à icônes** | Le pictogramme y était déjà ; le logo s'ajoute. **Corrigé le 2026-09-23** : le champ Logo existait dans l'éditeur depuis le 22/09, mais la section ne l'affichait pas — un logo déposé restait invisible sur la page. Il s'affiche maintenant. |
 | **Bento (chiffres clés)** | Sa carte de droite accepte un logo — c'est ce qui manquait à l'insigne HappyIndex® AtWork de la page Découvrir. |
 
 **Les logos de nos partenaires sont déjà là.** 19 fichiers ont été rapatriés de
@@ -647,9 +691,13 @@ l'ancien site dans `/images/logos/` : Microsoft, AWS, Azure, Amazon, Cisco,
 Check Point, CrowdStrike, Palo Alto, Red Hat, OpenShift, Aruba, Imprivata,
 Pulse Secure, ServiceNow, Ø Studio, et les insignes de partenariat Microsoft
 Dynamics, Microsoft FastTrack et AWS. Ils apparaissent dans le sélecteur
-d'image, vous n'avez rien à téléverser. **Manquent encore** : AlgoSec,
-Proofpoint, ZScaler, Juniper, OVH Cloud — ils n'étaient pas dans la
-médiathèque de l'ancien site, il faut les demander au marketing.
+d'image, vous n'avez rien à téléverser.
+
+**Quatre de plus le 2026-09-23** — AlgoSec, Proofpoint, OVHcloud et le logo
+ServiceNow simple (l'insigne de partenariat existait déjà, pas le logo de la
+marque) : ils figuraient bien dans la médiathèque de l'ancien site, sur le
+carrousel de l'accueil, et ont été rapatriés avec lui. **Manquent encore** :
+ZScaler et Juniper — à demander au marketing.
 
 **Le libellé reste toujours affiché**, même avec un logo. C'est voulu : c'est
 le seul texte qu'un lecteur d'écran peut lire, et plusieurs logos ne portent

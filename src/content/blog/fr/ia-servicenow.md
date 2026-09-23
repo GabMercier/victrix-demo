@@ -5,7 +5,7 @@ excerpt: "Découvrez comment accélérer vos opérations et gouverner l'IA avec 
 tags: ["Nos articles"]
 topics: ["Intelligence artificielle", "Services gérés"]
 slug: "ia-servicenow"
-coverImage: "/wp-content/uploads/2025/03/design-sans-titre-2.png"
+coverImage: "/images/ressources/ia-servicenow.jpg"
 seoTitle: "IA et ServiceNow: performance, conformité et gouvernance"
 wpUrl: "/ia-servicenow/"
 ---

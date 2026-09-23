@@ -1,9 +1,9 @@
 {
   "_schema": "default",
   "title": "Discover Victrix",
-  "description": "Victrix is the IT partner of the largest companies in Canada, specializing in cybersecurity, managed services, AI, cloud and application services. ",
+  "description": "Victrix is the IT partner of the largest companies in Canada, specializing in cybersecurity, managed services, AI, cloud and application services.",
   "noindex": false,
-  "seoTitle": "",
+  "seoTitle": "Discover Victrix: history, missions and ecosystem",
   "seoH1": "",
   "slug": "",
   "contactSujet": "",
@@ -80,46 +80,43 @@
       }
     },
     {
-      "_bookshop_name": "benefits",
-      "type": "benefits",
+      "_bookshop_name": "text-photo",
+      "type": "text-photo",
+      "fond": "blanc",
+      "title": "Our Mission",
+      "lead": "Victrix is committed to being Canada’s leading IT services company for business productivity by shaping a corporate culture where employees, partners and clients can achieve their ambitions.",
+      "engagementTitle": "",
+      "engagementText": "By offering high quality technology solutions and a first-class customer experience, Victrix achieves its goals when we contribute significantly to the performance and competitiveness of our customers.",
+      "partners": [],
+      "image": "/wp-content/uploads/2022/02/solution-sevoc-pourquoi.jpg",
+      "imageAlt": "Setting up a SOC team at Victrix"
+    },
+    {
+      "_bookshop_name": "value-tiles",
+      "type": "value-tiles",
+      "eyebrow": "",
       "title": "Our Values",
-      "intro": "",
       "fond": "ivoire",
       "items": [
         {
-          "title": "Excellence",
-          "description": "",
-          "icon": "losange",
-          "image": "",
-          "imageAlt": ""
+          "icon": "etoile",
+          "label": "Excellence"
         },
         {
-          "title": "Collaboration",
-          "description": "",
           "icon": "groupe",
-          "image": "",
-          "imageAlt": ""
+          "label": "Collaboration"
         },
         {
-          "title": "Innovation",
-          "description": "",
           "icon": "ampoule",
-          "image": "",
-          "imageAlt": ""
+          "label": "Innovation"
         },
         {
-          "title": "Commitment",
-          "description": "",
-          "icon": "porteur",
-          "image": "",
-          "imageAlt": ""
+          "icon": "poignee",
+          "label": "Engagement"
         },
         {
-          "title": "Integrity",
-          "description": "",
-          "icon": "dossier",
-          "image": "",
-          "imageAlt": ""
+          "icon": "coche",
+          "label": "Integrity"
         }
       ]
     },
@@ -200,7 +197,7 @@
         {
           "year": "2019",
           "title": "Victrix Joins the Alan Allman Associates International Ecosystem",
-          "text": "15 consulting firms · Over 3,300 experts",
+          "text": "15 consulting firms · Over 3,300 experts · <a href=\"https://alan-allman.com/en/\" target=\"_blank\" rel=\"noopener\">Discover Alan Allman Associates</a>",
           "accent": true
         },
         {
@@ -212,10 +209,22 @@
         {
           "year": "2024",
           "title": "By Joining Forces with Comitem, Victrix Expands Its Offering in France",
-          "text": "",
+          "text": "<a href=\"/en/ressources/expands-cybersecurity-offering-france\">Read the announcement</a>",
           "accent": false
         }
       ]
+    },
+    {
+      "_bookshop_name": "text-photo",
+      "type": "text-photo",
+      "fond": "beige",
+      "title": "Our Ecosystem",
+      "lead": "<a href=\"https://alan-allman.com/en/\" target=\"_blank\" rel=\"noopener\">Alan Allman Associates</a> is a dynamic ecosystem comprising a portfolio of 15 consulting firms, organized around four key areas of expertise: <strong>High-Tech, Industrial Transformation, Strategy and Management, and Digital Marketing.</strong>",
+      "engagementTitle": "",
+      "engagementText": "With a community of over <strong>3,300</strong> experts by the end of 2024, our presence is expanding internationally, particularly in <strong>France, Benelux, the Iberian Peninsula, Asia and North America.</strong>",
+      "partners": [],
+      "image": "/wp-content/uploads/2024/01/galaxie-v12-bleu-1-scaled.jpg",
+      "imageAlt": "Alan Allman Associates Galaxy"
     },
     {
       "_bookshop_name": "cta",
@@ -228,6 +237,18 @@
       "cta2Href": "",
       "variant": "nuit",
       "fond": "ivoire"
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "fond": "beige",
+      "title": "Expert Insights",
+      "tags": [
+        "Our articles",
+        "Our news"
+      ],
+      "ctaLabel": "See all resources",
+      "ctaHref": "/en/ressources"
     }
   ]
 }

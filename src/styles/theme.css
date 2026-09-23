@@ -324,11 +324,21 @@
      Les maquettes sont des planches 1280 où le contenu OCCUPE TOUT le cadre ;
      à 2560 de large, le site plafonné à 1280 flottait dans le blanc. 1920 =
      75 % d'un écran 2560, plein cadre jusqu'au 1080p. C'EST LE CADRAN UNIQUE
-     (container-site + .container legacy via tokens.css) — ajuster ici. */
-  --spacing-container-max: 1920px;
+     (container-site + .container legacy via tokens.css) — ajuster ici.
+
+     EN `rem` DEPUIS LE 2026-09-23 — 120rem vaut EXACTEMENT 1920px tant que la
+     racine est à 16px, donc rien ne bouge en deçà de 1920px de large. Au-delà,
+     la racine grandit (voir « ÉCRANS TRÈS LARGES » plus bas) et le cadran suit
+     : à 2560, racine 20px → cadran 2400px. C'est ce couplage qui reproduit ce
+     que Gabriel obtenait en zoomant son navigateur à 125 % — le zoom dilate la
+     typographie ET le cadran ; relever la seule racine aurait donné du texte
+     plus gros dans un cadre inchangé. `--spacing-section-gap` passe en `rem`
+     pour la même raison : le rythme vertical doit suivre le texte, sinon les
+     sections se tassent quand la typographie grandit. */
+  --spacing-container-max: 120rem;
   --spacing-gutter: 24px;
   --spacing-margin-x: 32px;
-  --spacing-section-gap: 80px;
+  --spacing-section-gap: 5rem;
   --spacing-stack-sm: 8px;
   --spacing-stack-md: 16px;
   --spacing-stack-lg: 32px;

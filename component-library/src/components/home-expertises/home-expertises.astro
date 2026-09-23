@@ -65,7 +65,13 @@ const { sectionTitle, intro, learnMore, ctaLabel, ctaHref, items = [], fond = 'i
 
 // Recettes par peau — la carte entière est cliquable via le lien étiré du CTA.
 // Rayon 4px + lien 14/600 sentence-case avec flèche qui glisse (export2).
-const cardBase = 'group relative h-[300px] rounded overflow-hidden flex flex-col';
+// 2026-09-22 : `h-[300px]` (hauteur FIGÉE) est devenu `min-h-[300px]`. Avec le
+// plancher typographique à 16 px, la réserve sous le texte tombait de 100 à
+// 50 px : une phrase un peu plus longue écrite au CMS était rognée par
+// `overflow-hidden`, sans barre de défilement — perte de contenu au sens
+// WCAG 1.4.4. `overflow-hidden` RESTE nécessaire : c'est lui qui rogne le « V »
+// en filigrane, ancré hors cadre en bas à droite.
+const cardBase = 'group relative min-h-[300px] rounded overflow-hidden flex flex-col';
 const linkBase =
   "inline-flex items-center gap-1 text-sm font-semibold no-underline hover:underline after:content-[''] after:absolute after:inset-0";
 const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';

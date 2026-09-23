@@ -153,8 +153,27 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
       first, Cloudflare Worker fallback (`operations.md` §7ter); set the 6
       keys there; only then set `PUBLIC_FORMS_ENABLED` on the production
       build.
-- [ ] `astro.config.mjs` `site:` → real domain; `public/robots.txt` `Sitemap:`
-      line; re-validate canonical/OG URLs and share cards.
+- [ ] **BLOQUANT — `astro.config.mjs` `site:` → real domain**; `public/robots.txt`
+      `Sitemap:` line; re-validate canonical/OG URLs and share cards.
+
+      **Mesuré le 2026-09-23, et c'est plus grave que « une ligne à changer ».**
+      `site:` vaut `https://victrix-demo.pages.dev` (`astro.config.mjs:835`), et
+      cette copie Cloudflare Pages **répond HTTP 200, publiquement, sans aucun
+      en-tête `x-robots-tag`** — vérifié en direct. Or `site:` alimente TOUS les
+      `canonical`, les `hreflang`, les `og:url` et les `og:image` du site. Tel
+      quel, la production dirait à Google que la version canonique de chaque
+      page est celle qui vit sur un domaine de démonstration, servi depuis un
+      build périmé (`/fr/carrieres` y rend un 404). Une version morte du site
+      s'auto-canonicalise en public.
+
+      Décision de Gabriel le 2026-09-23 : **on documente, on ne change rien
+      maintenant** — le domaine définitif se tranche avec le client (voir aussi
+      la décision 7 du §8 de `docs/migration/plan-redirections.md` : apex ↔
+      `www`, `http` → `https`). Deux gestes le jour J, dans cet ordre :
+      1. `site:` sur le domaine réel AVANT le build de production ;
+      2. désindexer ou fermer le projet Cloudflare Pages `victrix-demo`
+         (ligne « Decommission » plus bas) — tant qu'il répond 200 sans
+         `noindex`, il reste un duplicata indexable du site.
 - [ ] Custom domain on the CloudCannon production site; DNS + 301s from the old
       WordPress URLs (ADO **#1438** — domaine + DNS + rollback).
 - [ ] `REBUILD_HOOK_URL` GitHub secret → production-site build hook

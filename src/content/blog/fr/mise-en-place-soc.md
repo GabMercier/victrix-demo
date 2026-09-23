@@ -5,7 +5,7 @@ excerpt: "La mise en place d'un SOC interne est-elle votre meilleure option? Dé
 tags: ["Nos articles"]
 topics: ["Cybersécurité", "Services gérés"]
 slug: "mise-en-place-soc"
-coverImage: "/wp-content/uploads/2022/02/solution-sevoc-pourquoi.jpg"
+coverImage: "/images/ressources/mise-en-place-soc.jpg"
 seoTitle: "Mise en place d'un SOC adapté à vos opérations TI"
 wpUrl: "/mise-en-place-soc/"
 ---

@@ -14,24 +14,28 @@ site : **si quelqu'un la tape aujourd'hui, où arrive-t-il ?**
 | **URL en ligne** | L'adresse telle qu'elle circule : dans Google, dans LinkedIn, dans les courriels. Avec sa barre oblique finale, parce que c'est sous cette forme qu'elle est indexée. |
 | **Destination** | La page de la refonte qui doit la remplacer. |
 | **Mécanisme** | « page » = même adresse, rien à faire · « redirection 301 » = déménagement définitif · « redirection 302 » = page à recréer · « AUCUNE règle » = rien n'est prévu. |
-| **État mesuré** | Ce que le site **déployé** répond vraiment, mesuré le 2026-09-22 sur `https://vocal-wren.cloudvent.net`. C'est la colonne qui compte. |
+| **État mesuré** | Ce que le parcours donne contre le dernier build, mesuré par `npm run check:old-urls` (rapport détaillé : `docs/migration/validation-301.md`).cloudvent.net`. C'est la colonne qui compte. |
 | **Source du contenu** | Le fichier que l'éditrice ouvre dans CloudCannon pour modifier la page d'arrivée. |
 
 ## Verdict
 
-**105 des 184 adresses de l'ancien site ne mènent nulle part** sur le
-site déployé aujourd'hui. Ce n'est pas parce que les règles manquent — elles
-existent presque toutes — mais parce qu'elles sont écrites **sans la barre
-oblique finale**, alors que l'hébergement compare l'adresse exacte. Le
-détail, et le correctif, sont dans **docs/migration/plan-redirections.md**.
+**1 des 173 adresses de l'ancien site ne mènent nulle part.**
+
+Mesuré par `npm run check:old-urls`, qui rejoue le parcours de chaque
+adresse contre les règles réellement livrées (`dist/_cloudcannon/routing.json`)
+et les pages réellement construites. Rapport détaillé :
+`docs/migration/validation-301.md`.
 
 | | Nombre |
 | --- | --- |
-| Adresses de l'ancien site inventoriées | 184 |
-| Arrivent sur une page (200) | 79 |
-| Ne mènent nulle part | **105** |
-| dont : redirigées vers une page absente | **10** |
-| Pages de la refonte (build du 21/09) | 185 — 94 FR, 91 EN |
+| Adresses de l'ancien site inventoriées | 173 |
+| Arrivent sur une page | **172** |
+| dont sans bouger | 2 |
+| dont par une redirection, en un saut | 170 |
+| Ne mènent nulle part | **1** |
+| dont chaînes de redirections | 0 |
+| dont redirigées vers une page absente | 0 |
+| dont aucune règle | 1 |
 
 ## Le registre, rubrique par rubrique
 
@@ -39,7 +43,7 @@ détail, et le correctif, sont dans **docs/migration/plan-redirections.md**.
 
 | URL en ligne | Langue | Destination | Mécanisme | État mesuré | Source du contenu |
 | --- | --- | --- | --- | --- | --- |
-| `/en/check-point-price-list/` | EN | `/en/services/it-procurement/check-point/` | redirection 302 | **404** | `src/content/services/en/approvisionnement-ti/check-point.json` |
+| `/en/check-point-price-list/` | EN | `/en/services/it-procurement/check-point/` | redirection 302 | **200** en 1 saut | `src/content/services/en/approvisionnement-ti/check-point.json` |
 | `/en/expertise/ai-opportunity-analysis/` | EN | `/en/services/artificial-intelligence/ai-opportunity-analysis/` | redirection 301 | **404** — 301 vers un 404 | `src/content/services/en/intelligence-artificielle/analyse-opportunites-ia.json` |
 | `/en/expertise/artificial-intelligence/` | EN | `/en/services/artificial-intelligence/` | redirection 301 | **200** en 1 saut | `src/content/services/en/intelligence-artificielle.json` |
 | `/en/expertise/artificial-intelligence/ai-opportunity-analysis/` | EN | `/en/services/artificial-intelligence/ai-opportunity-analysis/` | redirection 301 | **200** en 1 saut | `src/content/services/en/intelligence-artificielle/analyse-opportunites-ia.json` |
@@ -108,7 +112,7 @@ détail, et le correctif, sont dans **docs/migration/plan-redirections.md**.
 | `/expertise/productivite/dynamics-365-field-service/` | FR | `/fr/services/productivite/dynamics-365-field-service/` | redirection 301 | **200** en 1 saut | `src/content/services/fr/productivite/dynamics-365-field-service.json` |
 | `/expertise/productivite/o-bureau/` | FR | `/fr/services/productivite/o-bureau/` | redirection 301 | **200** en 1 saut | `src/content/services/fr/productivite/o-bureau.json` |
 | `/expertise/productivite/o-bureau/demo-o-bureau/` | FR | `/fr/services/productivite/o-bureau/demo-o-bureau/` | redirection 301 | **200** en 1 saut | `src/content/services/fr/productivite/o-bureau/demo-o-bureau.json` |
-| `/expertise/productivite/o-bureau/documents-o-bureau/` | FR | `/fr/services/productivite/o-bureau/` | redirection 301 | **404** — 301 vers un 404 | `src/content/services/fr/productivite/o-bureau.json` |
+| `/expertise/productivite/o-bureau/documents-o-bureau/` | FR | `/fr/services/productivite/o-bureau/` | redirection 301 | **200** en 1 saut | `src/content/services/fr/productivite/o-bureau.json` |
 | `/expertise/productivite/o-studio/` | FR | `/fr/services/productivite/o-studio/` | redirection 301 | **200** en 1 saut | `src/content/services/fr/productivite/o-studio.json` |
 | `/expertise/productivite/plateforme-employe-intranet/` | FR | `/fr/services/productivite/plateforme-employe-intranet/` | redirection 301 | **200** en 1 saut | `src/content/services/fr/productivite/plateforme-employe-intranet.json` |
 | `/expertise/productivite/plateforme-employe-microsoft-viva-365/` | FR | `/fr/services/productivite/plateforme-employe-intranet/` | redirection 301 | **404** — 301 vers un 404 | `src/content/services/fr/productivite/plateforme-employe-intranet.json` |
@@ -122,126 +126,126 @@ détail, et le correctif, sont dans **docs/migration/plan-redirections.md**.
 | `/expertise/services-infonuagiques/services-aws/` | FR | `/fr/services/services-infonuagiques/services-aws/` | redirection 301 | **200** en 1 saut | `src/content/services/fr/services-infonuagiques/services-aws.json` |
 | `/expertise/services-ti-geres/` | FR | `/fr/services/services-ti-geres/` | redirection 301 | **200** en 1 saut | `src/content/services/fr/services-ti-geres.json` |
 | `/expertise/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/` | FR | `/fr/services/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/` | redirection 301 | **200** en 1 saut | `src/content/services/fr/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365.json` |
-| `/liste-prix-check-point/` | FR | `/fr/services/approvisionnement-ti/check-point/` | redirection 302 | **404** | `src/content/services/fr/approvisionnement-ti/check-point.json` |
+| `/liste-prix-check-point/` | FR | `/fr/services/approvisionnement-ti/check-point/` | redirection 302 | **200** en 1 saut | `src/content/services/fr/approvisionnement-ti/check-point.json` |
 | `/solution/migration/` | FR | `/fr/services/services-infonuagiques/migration-vers-azure/` | redirection 301 | **404** | `src/content/services/fr/services-infonuagiques/migration-vers-azure.json` |
 
 ### Ressources (articles) — 76 adresses
 
 | URL en ligne | Langue | Destination | Mécanisme | État mesuré | Source du contenu |
 | --- | --- | --- | --- | --- | --- |
-| `/agents-copilot-studio/` | FR | `/fr/ressources/agents-copilot-studio/` | redirection 301 | **404** | `src/content/blog/fr/agents-copilot-studio.md` |
-| `/annonce-nomination-ceo/` | FR | `/fr/ressources/annonce-nomination-ceo/` | redirection 301 | **404** | `src/content/blog/fr/annonce-nomination-ceo.md` |
-| `/applications-microsoft-viva-demystifier-viva/` | FR | `/fr/ressources/applications-microsoft-viva-demystifier-viva/` | redirection 301 | **404** | `src/content/blog/fr/applications-microsoft-viva-demystifier-viva.md` |
-| `/audit-cybersecurite/` | FR | `/fr/ressources/audit-cybersecurite/` | redirection 301 | **404** | `src/content/blog/fr/audit-cybersecurite.md` |
-| `/certification-iso-27001-iso-9001/` | FR | `/fr/ressources/certification-iso-27001-iso-9001/` | redirection 301 | **404** | `src/content/blog/fr/certification-iso-27001-iso-9001.md` |
-| `/copilot-vs-chatgpt/` | FR | `/fr/ressources/copilot-vs-chatgpt/` | redirection 301 | **404** | `src/content/blog/fr/copilot-vs-chatgpt.md` |
-| `/developpement-offre-cybersecurite-france/` | FR | `/fr/ressources/developpement-offre-cybersecurite-france/` | redirection 301 | **404** | `src/content/blog/fr/developpement-offre-cybersecurite-france.md` |
-| `/directive-nis2/` | FR | `/fr/ressources/directive-nis2/` | redirection 301 | **404** | `src/content/blog/fr/directive-nis2.md` |
-| `/document/cybersecurite/` | FR | `/fr/ressources/` | redirection 302 | **404** | (gabarit de page) |
-| `/document/pourquoi-gerez-vous-encore-vos-ti/` | FR | `/fr/ressources/` | redirection 302 | **404** | (gabarit de page) |
-| `/document/webinaire-copilot-buzz-impact/` | FR | `/fr/ressources/` | redirection 302 | **404** | (gabarit de page) |
-| `/en/appointment-ceo/` | EN | `/en/ressources/appointment-ceo/` | redirection 301 | **404** | `src/content/blog/en/annonce-nomination-ceo.md` |
-| `/en/best-practices-in-operational-safety-maintenance/` | EN | `/en/ressources/best-practices-in-operational-safety-maintenance/` | redirection 301 | **404** | `src/content/blog/en/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance.md` |
-| `/en/best-practices-in-operational-security-defense/` | EN | `/en/ressources/best-practices-in-operational-security-defense/` | redirection 301 | **404** | `src/content/blog/en/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense.md` |
-| `/en/best-practices-in-operational-security-monitoring/` | EN | `/en/ressources/best-practices-in-operational-security-monitoring/` | redirection 301 | **404** | `src/content/blog/en/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance.md` |
-| `/en/chatgpt-vs-copilot/` | EN | `/en/ressources/chatgpt-vs-copilot/` | redirection 301 | **404** | `src/content/blog/en/copilot-vs-chatgpt.md` |
-| `/en/copilot-studio-agents/` | EN | `/en/ressources/copilot-studio-agents/` | redirection 301 | **404** | `src/content/blog/en/agents-copilot-studio.md` |
-| `/en/cybersecurity-risk-audit/` | EN | `/en/ressources/cybersecurity-risk-audit/` | redirection 301 | **404** | `src/content/blog/en/audit-cybersecurite.md` |
-| `/en/dominic-lajoie-appointed/` | EN | `/en/ressources/dominic-lajoie-appointed/` | redirection 301 | **404** | `src/content/blog/en/nomination-dominic-lajoie.md` |
-| `/en/dora-regulation/` | EN | `/en/ressources/dora-regulation/` | redirection 301 | **404** | `src/content/blog/en/reglementation-dora.md` |
-| `/en/expands-cybersecurity-offering-france/` | EN | `/en/ressources/expands-cybersecurity-offering-france/` | redirection 301 | **404** | `src/content/blog/en/developpement-offre-cybersecurite-france.md` |
-| `/en/extended-reality-xr-agc-partnership/` | EN | `/en/ressources/extended-reality-xr-agc-partnership/` | redirection 301 | **404** | `src/content/blog/en/realite-etendue-xr-partenariat-agc.md` |
-| `/en/internet-of-things-security/` | EN | `/en/ressources/internet-of-things-security/` | redirection 301 | **404** | `src/content/blog/en/securite-internet-des-objets.md` |
-| `/en/iot-security-challenges/` | EN | `/en/ressources/iot-security-challenges/` | redirection 301 | **404** | `src/content/blog/en/securite-iot-defis.md` |
-| `/en/iso-27001-iso-9001-certifications/` | EN | `/en/ressources/iso-27001-iso-9001-certifications/` | redirection 301 | **404** | `src/content/blog/en/certification-iso-27001-iso-9001.md` |
-| `/en/it-trends/` | EN | `/en/ressources/it-trends/` | redirection 301 | **404** | `src/content/blog/en/tendances-ti.md` |
-| `/en/law-25-personal-data-guide/` | EN | `/en/ressources/law-25-personal-data-guide/` | redirection 301 | **404** | `src/content/blog/en/loi-25-donnees-personnelles-guide.md` |
-| `/en/microsoft-copilot-features/` | EN | `/en/ressources/microsoft-copilot-features/` | redirection 301 | **404** | `src/content/blog/en/fonctionnalites-microsoft-copilot.md` |
-| `/en/microsoft-viva-apps/` | EN | `/en/ressources/microsoft-viva-apps/` | redirection 301 | **404** | `src/content/blog/en/applications-microsoft-viva-demystifier-viva.md` |
-| `/en/migration-windows-11-microsoft-exchange/` | EN | `/en/ressources/migration-windows-11-microsoft-exchange/` | redirection 301 | **404** | `src/content/blog/en/migration-windows-11-microsoft-exchange.md` |
-| `/en/nis2-directive/` | EN | `/en/ressources/nis2-directive/` | redirection 301 | **404** | `src/content/blog/en/directive-nis2.md` |
-| `/en/part-2-best-practices-in-operational-security-monitoring/` | EN | `/en/ressources/best-practices-in-operational-security-monitoring/` | redirection 301 | **404** | `src/content/blog/en/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance.md` |
-| `/en/part-3-best-practices-in-operational-security-defense/` | EN | `/en/ressources/best-practices-in-operational-security-defense/` | redirection 301 | **404** | `src/content/blog/en/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense.md` |
-| `/en/penetration-testing/` | EN | `/en/ressources/penetration-testing/` | redirection 301 | **404** | `src/content/blog/en/pentest-cybersecurite.md` |
-| `/en/power-platform-governance-advice/` | EN | `/en/ressources/power-platform-governance-advice/` | redirection 301 | **404** | `src/content/blog/en/gouvernance-power-platform-conseils.md` |
-| `/en/ransomware-protection-tips/` | EN | `/en/ressources/ransomware-protection-tips/` | redirection 301 | **404** | `src/content/blog/en/ransomware-rancongiciels.md` |
-| `/en/resources-center/` | EN | `/en/ressources/` | redirection 301 | **404** | (gabarit de page) |
-| `/en/sase-cloud/` | EN | `/en/ressources/sase-cloud/` | redirection 301 | **404** | `src/content/blog/en/sase-cloud.md` |
-| `/en/servicenow-ai/` | EN | `/en/ressources/servicenow-ai/` | redirection 301 | **404** | `src/content/blog/en/ia-servicenow.md` |
-| `/en/servicenow-itom/` | EN | `/en/ressources/servicenow-itom/` | redirection 301 | **404** | `src/content/blog/en/servicenow-itom.md` |
-| `/en/servicenow-itsm/` | EN | `/en/ressources/servicenow-itsm/` | redirection 301 | **404** | `src/content/blog/en/servicenow-itsm.md` |
-| `/en/setting-up-a-soc/` | EN | `/en/ressources/setting-up-a-soc/` | redirection 301 | **404** | `src/content/blog/en/mise-en-place-soc.md` |
-| `/en/soc-outsourcing-for-smbs-pros-cons/` | EN | `/en/ressources/soc-outsourcing-for-smbs-pros-cons/` | redirection 301 | **404** | `src/content/blog/en/externalisation-soc-avantages-inconvenients.md` |
-| `/en/soc-outsourcing-pros-cons/` | EN | `/en/ressources/soc-outsourcing-for-smbs-pros-cons/` | redirection 301 | **404** | `src/content/blog/en/externalisation-soc-avantages-inconvenients.md` |
-| `/en/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` | EN | `/en/ressources/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` | redirection 301 | **404** | `src/content/blog/en/zero-trust-network-access-ztna.md` |
-| `/en/zero-trust-network-access-ztna/` | EN | `/en/ressources/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` | redirection 301 | **404** | `src/content/blog/en/zero-trust-network-access-ztna.md` |
-| `/externalisation-du-soc-avantages-inconvenients/` | FR | `/fr/ressources/externalisation-du-soc-avantages-inconvenients/` | redirection 301 | **404** | `src/content/blog/fr/externalisation-soc-avantages-inconvenients.md` |
-| `/externalisation-soc-avantages-inconvenients/` | FR | `/fr/ressources/externalisation-du-soc-avantages-inconvenients/` | redirection 301 | **404** | `src/content/blog/fr/externalisation-soc-avantages-inconvenients.md` |
-| `/fonctionnalites-microsoft-copilot/` | FR | `/fr/ressources/fonctionnalites-microsoft-copilot/` | redirection 301 | **404** | `src/content/blog/fr/fonctionnalites-microsoft-copilot.md` |
-| `/gouvernance-power-platform-conseils/` | FR | `/fr/ressources/gouvernance-power-platform-conseils/` | redirection 301 | **404** | `src/content/blog/fr/gouvernance-power-platform-conseils.md` |
-| `/ia-servicenow/` | FR | `/fr/ressources/ia-servicenow/` | redirection 301 | **404** | `src/content/blog/fr/ia-servicenow.md` |
-| `/loi-25-donnees-personnelles-guide/` | FR | `/fr/ressources/loi-25-donnees-personnelles-guide/` | redirection 301 | **404** | `src/content/blog/fr/loi-25-donnees-personnelles-guide.md` |
-| `/meilleures-pratiques-en-securite-operationnelle-la-defense/` | FR | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-defense/` | redirection 301 | **404** | `src/content/blog/fr/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense.md` |
-| `/meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | FR | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | redirection 301 | **404** | `src/content/blog/fr/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance.md` |
-| `/meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | FR | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | redirection 301 | **404** | `src/content/blog/fr/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance.md` |
-| `/migration-windows-11-microsoft-exchange/` | FR | `/fr/ressources/migration-windows-11-microsoft-exchange/` | redirection 301 | **404** | `src/content/blog/fr/migration-windows-11-microsoft-exchange.md` |
-| `/mise-en-place-soc/` | FR | `/fr/ressources/mise-en-place-soc/` | redirection 301 | **404** | `src/content/blog/fr/mise-en-place-soc.md` |
-| `/nomination-dominic-lajoie/` | FR | `/fr/ressources/nomination-dominic-lajoie/` | redirection 301 | **404** | `src/content/blog/fr/nomination-dominic-lajoie.md` |
-| `/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | FR | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | redirection 301 | **404** | `src/content/blog/fr/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance.md` |
-| `/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | FR | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | redirection 301 | **404** | `src/content/blog/fr/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance.md` |
-| `/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense/` | FR | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-defense/` | redirection 301 | **404** | `src/content/blog/fr/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense.md` |
-| `/pentest-cybersecurite/` | FR | `/fr/ressources/pentest-cybersecurite/` | redirection 301 | **404** | `src/content/blog/fr/pentest-cybersecurite.md` |
-| `/ransomware-rancongiciels/` | FR | `/fr/ressources/ransomware-rancongiciels/` | redirection 301 | **404** | `src/content/blog/fr/ransomware-rancongiciels.md` |
-| `/realite-etendue-xr-partenariat-agc/` | FR | `/fr/ressources/realite-etendue-xr-partenariat-agc/` | redirection 301 | **404** | `src/content/blog/fr/realite-etendue-xr-partenariat-agc.md` |
-| `/reglementation-dora/` | FR | `/fr/ressources/reglementation-dora/` | redirection 301 | **404** | `src/content/blog/fr/reglementation-dora.md` |
-| `/ressources/` | FR | `/fr/ressources/` | redirection 301 | **200** direct | (gabarit de page) |
-| `/sase-cloud/` | FR | `/fr/ressources/sase-cloud/` | redirection 301 | **404** | `src/content/blog/fr/sase-cloud.md` |
-| `/securite-internet-des-objets/` | FR | `/fr/ressources/securite-internet-des-objets/` | redirection 301 | **404** | `src/content/blog/fr/securite-internet-des-objets.md` |
-| `/securite-iot-defis/` | FR | `/fr/ressources/securite-iot-defis/` | redirection 301 | **404** | `src/content/blog/fr/securite-iot-defis.md` |
-| `/servicenow-itom/` | FR | `/fr/ressources/servicenow-itom/` | redirection 301 | **404** | `src/content/blog/fr/servicenow-itom.md` |
-| `/servicenow-itsm/` | FR | `/fr/ressources/servicenow-itsm/` | redirection 301 | **404** | `src/content/blog/fr/servicenow-itsm.md` |
-| `/societe-conseil-lambda-victrix/` | FR | `/fr/ressources/societe-conseil-lambda-victrix/` | redirection 301 | **404** | `src/content/blog/fr/societe-conseil-lambda-victrix.md` |
-| `/tendances-ti/` | FR | `/fr/ressources/tendances-ti/` | redirection 301 | **404** | `src/content/blog/fr/tendances-ti.md` |
-| `/une-journee-dans-la-vie-secops/` | FR | `/fr/ressources/une-journee-dans-la-vie-secops/` | redirection 301 | **404** | `src/content/blog/fr/une-journee-dans-la-vie-secops.md` |
-| `/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` | FR | `/fr/ressources/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` | redirection 301 | **404** | `src/content/blog/fr/zero-trust-network-access-ztna.md` |
-| `/zero-trust-network-access-ztna/` | FR | `/fr/ressources/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` | redirection 301 | **404** | `src/content/blog/fr/zero-trust-network-access-ztna.md` |
+| `/agents-copilot-studio/` | FR | `/fr/ressources/agents-copilot-studio/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/agents-copilot-studio.md` |
+| `/annonce-nomination-ceo/` | FR | `/fr/ressources/annonce-nomination-ceo/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/annonce-nomination-ceo.md` |
+| `/applications-microsoft-viva-demystifier-viva/` | FR | `/fr/ressources/applications-microsoft-viva-demystifier-viva/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/applications-microsoft-viva-demystifier-viva.md` |
+| `/audit-cybersecurite/` | FR | `/fr/ressources/audit-cybersecurite/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/audit-cybersecurite.md` |
+| `/certification-iso-27001-iso-9001/` | FR | `/fr/ressources/certification-iso-27001-iso-9001/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/certification-iso-27001-iso-9001.md` |
+| `/copilot-vs-chatgpt/` | FR | `/fr/ressources/copilot-vs-chatgpt/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/copilot-vs-chatgpt.md` |
+| `/developpement-offre-cybersecurite-france/` | FR | `/fr/ressources/developpement-offre-cybersecurite-france/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/developpement-offre-cybersecurite-france.md` |
+| `/directive-nis2/` | FR | `/fr/ressources/directive-nis2/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/directive-nis2.md` |
+| `/document/cybersecurite/` | FR | `/fr/ressources/` | redirection 302 | **200** en 1 saut | (gabarit de page) |
+| `/document/pourquoi-gerez-vous-encore-vos-ti/` | FR | `/fr/ressources/` | redirection 302 | **200** en 1 saut | (gabarit de page) |
+| `/document/webinaire-copilot-buzz-impact/` | FR | `/fr/ressources/` | redirection 302 | **200** en 1 saut | (gabarit de page) |
+| `/en/appointment-ceo/` | EN | `/en/ressources/appointment-ceo/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/annonce-nomination-ceo.md` |
+| `/en/best-practices-in-operational-safety-maintenance/` | EN | `/en/ressources/best-practices-in-operational-safety-maintenance/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance.md` |
+| `/en/best-practices-in-operational-security-defense/` | EN | `/en/ressources/best-practices-in-operational-security-defense/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense.md` |
+| `/en/best-practices-in-operational-security-monitoring/` | EN | `/en/ressources/best-practices-in-operational-security-monitoring/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance.md` |
+| `/en/chatgpt-vs-copilot/` | EN | `/en/ressources/chatgpt-vs-copilot/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/copilot-vs-chatgpt.md` |
+| `/en/copilot-studio-agents/` | EN | `/en/ressources/copilot-studio-agents/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/agents-copilot-studio.md` |
+| `/en/cybersecurity-risk-audit/` | EN | `/en/ressources/cybersecurity-risk-audit/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/audit-cybersecurite.md` |
+| `/en/dominic-lajoie-appointed/` | EN | `/en/ressources/dominic-lajoie-appointed/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/nomination-dominic-lajoie.md` |
+| `/en/dora-regulation/` | EN | `/en/ressources/dora-regulation/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/reglementation-dora.md` |
+| `/en/expands-cybersecurity-offering-france/` | EN | `/en/ressources/expands-cybersecurity-offering-france/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/developpement-offre-cybersecurite-france.md` |
+| `/en/extended-reality-xr-agc-partnership/` | EN | `/en/ressources/extended-reality-xr-agc-partnership/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/realite-etendue-xr-partenariat-agc.md` |
+| `/en/internet-of-things-security/` | EN | `/en/ressources/internet-of-things-security/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/securite-internet-des-objets.md` |
+| `/en/iot-security-challenges/` | EN | `/en/ressources/iot-security-challenges/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/securite-iot-defis.md` |
+| `/en/iso-27001-iso-9001-certifications/` | EN | `/en/ressources/iso-27001-iso-9001-certifications/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/certification-iso-27001-iso-9001.md` |
+| `/en/it-trends/` | EN | `/en/ressources/it-trends/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/tendances-ti.md` |
+| `/en/law-25-personal-data-guide/` | EN | `/en/ressources/law-25-personal-data-guide/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/loi-25-donnees-personnelles-guide.md` |
+| `/en/microsoft-copilot-features/` | EN | `/en/ressources/microsoft-copilot-features/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/fonctionnalites-microsoft-copilot.md` |
+| `/en/microsoft-viva-apps/` | EN | `/en/ressources/microsoft-viva-apps/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/applications-microsoft-viva-demystifier-viva.md` |
+| `/en/migration-windows-11-microsoft-exchange/` | EN | `/en/ressources/migration-windows-11-microsoft-exchange/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/migration-windows-11-microsoft-exchange.md` |
+| `/en/nis2-directive/` | EN | `/en/ressources/nis2-directive/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/directive-nis2.md` |
+| `/en/part-2-best-practices-in-operational-security-monitoring/` | EN | `/en/ressources/best-practices-in-operational-security-monitoring/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance.md` |
+| `/en/part-3-best-practices-in-operational-security-defense/` | EN | `/en/ressources/best-practices-in-operational-security-defense/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense.md` |
+| `/en/penetration-testing/` | EN | `/en/ressources/penetration-testing/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/pentest-cybersecurite.md` |
+| `/en/power-platform-governance-advice/` | EN | `/en/ressources/power-platform-governance-advice/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/gouvernance-power-platform-conseils.md` |
+| `/en/ransomware-protection-tips/` | EN | `/en/ressources/ransomware-protection-tips/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/ransomware-rancongiciels.md` |
+| `/en/resources-center/` | EN | `/en/ressources/` | redirection 301 | **200** en 1 saut | (gabarit de page) |
+| `/en/sase-cloud/` | EN | `/en/ressources/sase-cloud/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/sase-cloud.md` |
+| `/en/servicenow-ai/` | EN | `/en/ressources/servicenow-ai/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/ia-servicenow.md` |
+| `/en/servicenow-itom/` | EN | `/en/ressources/servicenow-itom/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/servicenow-itom.md` |
+| `/en/servicenow-itsm/` | EN | `/en/ressources/servicenow-itsm/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/servicenow-itsm.md` |
+| `/en/setting-up-a-soc/` | EN | `/en/ressources/setting-up-a-soc/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/mise-en-place-soc.md` |
+| `/en/soc-outsourcing-for-smbs-pros-cons/` | EN | `/en/ressources/soc-outsourcing-for-smbs-pros-cons/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/externalisation-soc-avantages-inconvenients.md` |
+| `/en/soc-outsourcing-pros-cons/` | EN | `/en/ressources/soc-outsourcing-for-smbs-pros-cons/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/externalisation-soc-avantages-inconvenients.md` |
+| `/en/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` | EN | `/en/ressources/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/zero-trust-network-access-ztna.md` |
+| `/en/zero-trust-network-access-ztna/` | EN | `/en/ressources/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` | redirection 301 | **200** en 1 saut | `src/content/blog/en/zero-trust-network-access-ztna.md` |
+| `/externalisation-du-soc-avantages-inconvenients/` | FR | `/fr/ressources/externalisation-du-soc-avantages-inconvenients/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/externalisation-soc-avantages-inconvenients.md` |
+| `/externalisation-soc-avantages-inconvenients/` | FR | `/fr/ressources/externalisation-du-soc-avantages-inconvenients/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/externalisation-soc-avantages-inconvenients.md` |
+| `/fonctionnalites-microsoft-copilot/` | FR | `/fr/ressources/fonctionnalites-microsoft-copilot/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/fonctionnalites-microsoft-copilot.md` |
+| `/gouvernance-power-platform-conseils/` | FR | `/fr/ressources/gouvernance-power-platform-conseils/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/gouvernance-power-platform-conseils.md` |
+| `/ia-servicenow/` | FR | `/fr/ressources/ia-servicenow/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/ia-servicenow.md` |
+| `/loi-25-donnees-personnelles-guide/` | FR | `/fr/ressources/loi-25-donnees-personnelles-guide/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/loi-25-donnees-personnelles-guide.md` |
+| `/meilleures-pratiques-en-securite-operationnelle-la-defense/` | FR | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-defense/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense.md` |
+| `/meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | FR | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance.md` |
+| `/meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | FR | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance.md` |
+| `/migration-windows-11-microsoft-exchange/` | FR | `/fr/ressources/migration-windows-11-microsoft-exchange/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/migration-windows-11-microsoft-exchange.md` |
+| `/mise-en-place-soc/` | FR | `/fr/ressources/mise-en-place-soc/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/mise-en-place-soc.md` |
+| `/nomination-dominic-lajoie/` | FR | `/fr/ressources/nomination-dominic-lajoie/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/nomination-dominic-lajoie.md` |
+| `/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | FR | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance.md` |
+| `/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | FR | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance.md` |
+| `/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense/` | FR | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-defense/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense.md` |
+| `/pentest-cybersecurite/` | FR | `/fr/ressources/pentest-cybersecurite/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/pentest-cybersecurite.md` |
+| `/ransomware-rancongiciels/` | FR | `/fr/ressources/ransomware-rancongiciels/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/ransomware-rancongiciels.md` |
+| `/realite-etendue-xr-partenariat-agc/` | FR | `/fr/ressources/realite-etendue-xr-partenariat-agc/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/realite-etendue-xr-partenariat-agc.md` |
+| `/reglementation-dora/` | FR | `/fr/ressources/reglementation-dora/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/reglementation-dora.md` |
+| `/ressources/` | FR | `/fr/ressources/` | redirection 301 | **200** en 1 saut | (gabarit de page) |
+| `/sase-cloud/` | FR | `/fr/ressources/sase-cloud/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/sase-cloud.md` |
+| `/securite-internet-des-objets/` | FR | `/fr/ressources/securite-internet-des-objets/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/securite-internet-des-objets.md` |
+| `/securite-iot-defis/` | FR | `/fr/ressources/securite-iot-defis/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/securite-iot-defis.md` |
+| `/servicenow-itom/` | FR | `/fr/ressources/servicenow-itom/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/servicenow-itom.md` |
+| `/servicenow-itsm/` | FR | `/fr/ressources/servicenow-itsm/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/servicenow-itsm.md` |
+| `/societe-conseil-lambda-victrix/` | FR | `/fr/ressources/societe-conseil-lambda-victrix/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/societe-conseil-lambda-victrix.md` |
+| `/tendances-ti/` | FR | `/fr/ressources/tendances-ti/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/tendances-ti.md` |
+| `/une-journee-dans-la-vie-secops/` | FR | `/fr/ressources/une-journee-dans-la-vie-secops/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/une-journee-dans-la-vie-secops.md` |
+| `/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` | FR | `/fr/ressources/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/zero-trust-network-access-ztna.md` |
+| `/zero-trust-network-access-ztna/` | FR | `/fr/ressources/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` | redirection 301 | **200** en 1 saut | `src/content/blog/fr/zero-trust-network-access-ztna.md` |
 
 ### Pages uniques — 20 adresses
 
 | URL en ligne | Langue | Destination | Mécanisme | État mesuré | Source du contenu |
 | --- | --- | --- | --- | --- | --- |
 | `/` | FR | `/fr/` | redirection 301 | **200** en 1 saut | `src/content/home/fr/accueil.json` |
-| `/carriere/` | FR | `/fr/carrieres/` | redirection 301 | **404** | `src/content/pages/fr/carrieres.json` |
-| `/conditions-dutilisation/` | FR | `/fr/conditions-utilisation/` | redirection 301 | **404** | `src/content/pages/fr/conditions-utilisation.json` |
-| `/contact/` | FR | `/fr/contact/` | redirection 301 | **200** direct | (gabarit de page) |
-| `/decouvrir-victrix/` | FR | `/fr/decouvrir/` | redirection 301 | **404** | `src/content/pages/fr/decouvrir.json` |
-| `/en/` | EN | `/en/` | page (même URL) | **200** direct | `src/content/home/en/accueil.json` |
-| `/en/careers/` | EN | `/en/carrieres/` | redirection 301 | **404** | `src/content/pages/en/carrieres.json` |
-| `/en/contact/` | EN | `/en/contact/` | page (même URL) | **200** direct | (gabarit de page) |
-| `/en/customer-portal/` | EN | `/en/portail/` | redirection 301 | **200** direct | (gabarit de page) |
-| `/en/discover-victrix/` | EN | `/en/decouvrir/` | redirection 301 | **404** | `src/content/pages/en/decouvrir.json` |
-| `/en/holiday-wishes/` | EN | `/en/` | redirection 301 | **404** | `src/content/home/en/accueil.json` |
-| `/en/no-access/` | EN | `/en/portail/` | redirection 301 | **404** | (gabarit de page) |
-| `/en/privacy-policy/` | EN | `/en/politique-confidentialite/` | redirection 301 | **404** | `src/content/pages/en/politique-confidentialite.json` |
-| `/en/terms-of-use/` | EN | `/en/conditions-utilisation/` | redirection 301 | **404** | `src/content/pages/en/conditions-utilisation.json` |
-| `/en/thank-you-page/` | EN | `/en/merci/` | redirection 301 | **404** | (gabarit de page) |
-| `/mon-portail/` | FR | `/fr/portail/` | redirection 301 | **200** direct | (gabarit de page) |
-| `/no-access/` | FR | `/fr/portail/` | redirection 301 | **404** | (gabarit de page) |
-| `/page-de-remerciement/` | FR | `/fr/merci/` | redirection 301 | **404** | (gabarit de page) |
-| `/politique-de-confidentialite/` | FR | `/fr/politique-confidentialite/` | redirection 301 | **404** | `src/content/pages/fr/politique-confidentialite.json` |
-| `/voeux-des-fetes/` | FR | `/fr/` | redirection 301 | **404** | `src/content/home/fr/accueil.json` |
+| `/carriere/` | FR | `/fr/carrieres/` | redirection 301 | **200** en 1 saut | `src/content/pages/fr/carrieres.json` |
+| `/conditions-dutilisation/` | FR | `/fr/conditions-utilisation/` | redirection 301 | **200** en 1 saut | `src/content/pages/fr/conditions-utilisation.json` |
+| `/contact/` | FR | `/fr/contact/` | redirection 301 | **200** en 1 saut | (gabarit de page) |
+| `/decouvrir-victrix/` | FR | `/fr/decouvrir/` | redirection 301 | **200** en 1 saut | `src/content/pages/fr/decouvrir.json` |
+| `/en/` | EN | `/en/` | page (même URL) | **200** — même adresse | `src/content/home/en/accueil.json` |
+| `/en/careers/` | EN | `/en/carrieres/` | redirection 301 | **200** en 1 saut | `src/content/pages/en/carrieres.json` |
+| `/en/contact/` | EN | `/en/contact/` | page (même URL) | **200** — même adresse | (gabarit de page) |
+| `/en/customer-portal/` | EN | `/en/portail/` | redirection 301 | **200** en 1 saut | (gabarit de page) |
+| `/en/discover-victrix/` | EN | `/en/decouvrir/` | redirection 301 | **200** en 1 saut | `src/content/pages/en/decouvrir.json` |
+| `/en/holiday-wishes/` | EN | `/en/` | redirection 301 | **200** en 1 saut | `src/content/home/en/accueil.json` |
+| `/en/no-access/` | EN | `/en/portail/` | redirection 301 | **200** en 1 saut | (gabarit de page) |
+| `/en/privacy-policy/` | EN | `/en/politique-confidentialite/` | redirection 301 | **200** en 1 saut | `src/content/pages/en/politique-confidentialite.json` |
+| `/en/terms-of-use/` | EN | `/en/conditions-utilisation/` | redirection 301 | **200** en 1 saut | `src/content/pages/en/conditions-utilisation.json` |
+| `/en/thank-you-page/` | EN | `/en/merci/` | redirection 301 | **200** en 1 saut | (gabarit de page) |
+| `/mon-portail/` | FR | `/fr/portail/` | redirection 301 | **200** en 1 saut | (gabarit de page) |
+| `/no-access/` | FR | `/fr/portail/` | redirection 301 | **200** en 1 saut | (gabarit de page) |
+| `/page-de-remerciement/` | FR | `/fr/merci/` | redirection 301 | **200** en 1 saut | (gabarit de page) |
+| `/politique-de-confidentialite/` | FR | `/fr/politique-confidentialite/` | redirection 301 | **200** en 1 saut | `src/content/pages/fr/politique-confidentialite.json` |
+| `/voeux-des-fetes/` | FR | `/fr/` | redirection 301 | **200** en 1 saut | `src/content/home/fr/accueil.json` |
 
 ### Campagnes — 1 adresses
 
 | URL en ligne | Langue | Destination | Mécanisme | État mesuré | Source du contenu |
 | --- | --- | --- | --- | --- | --- |
-| `/document/licences-microsoft-power-platform/` | FR | `/fr/campagnes/licences-power-platform/` | redirection 301 | **404** | `src/content/landing/fr/licences-power-platform.md` |
+| `/document/licences-microsoft-power-platform/` | FR | `/fr/campagnes/licences-power-platform/` | redirection 301 | **200** en 1 saut | `src/content/landing/fr/licences-power-platform.md` |
 
 ### Sans destination — 2 adresses
 
 | URL en ligne | Langue | Destination | Mécanisme | État mesuré | Source du contenu |
 | --- | --- | --- | --- | --- | --- |
-| `/cache/` | FR | — | ignorée (404 assumé) | **404** | — |
+| `/cache/` | FR | — | ignorée (404 assumé) | **404** — aucune règle | — |
 | `/xmlrpc.php/` | FR | — | ignorée (404 assumé) | **404** | — |
 
 ## À part : les adresses sans destination
@@ -253,22 +257,11 @@ détail, et le correctif, sont dans **docs/migration/plan-redirections.md**.
 
 ## À part : les redirections qui mènent à une page absente
 
-Une redirection vers une page absente est **pire** qu'une page absente :
-Google suit la redirection, ne trouve rien, et l'ancienne page perd son
-référencement sans rien transmettre.
-
-| URL en ligne | Aboutit sur | Destination VOULUE |
-| --- | --- | --- |
-| `/en/expertise/ai-opportunity-analysis/` | `/en/services/ai-opportunity-analysis/` | `/en/services/artificial-intelligence/ai-opportunity-analysis/` |
-| `/en/expertise/it-managed-services-provider/` | `/en/services/it-managed-services-provider/` | `/en/services/managed-it-services/` |
-| `/expertise/fournisseur-services-geres-ti/` | `/fr/services/fournisseur-services-geres-ti/` | `/fr/services/services-ti-geres/` |
-| `/expertise/loi-25-etes-vous-en-conformite/` | `/fr/services/loi-25-etes-vous-en-conformite/` | `/fr/services/conseil-strategique/conformite-loi-25/` |
-| `/expertise/productivite/o-bureau/documents-o-bureau/` | `/fr/services/productivite/o-bureau/documents-o-bureau/` | `/fr/services/productivite/o-bureau/` |
-| `/expertise/productivite/plateforme-employe-microsoft-viva-365/` | `/fr/services/productivite/plateforme-employe-microsoft-viva-365/` | `/fr/services/productivite/plateforme-employe-intranet/` |
-| `/expertise/securite-informatique/` | `/fr/services/securite-informatique/` | `/fr/services/cybersecurite/` |
-| `/expertise/securite-informatique/centre-operationnel-de-securite-evolutif/` | `/fr/services/securite-informatique/centre-operationnel-de-securite-evolutif/` | `/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/` |
-| `/expertise/securite-informatique/test-intrusion-pentest/` | `/fr/services/securite-informatique/test-intrusion-pentest/` | `/fr/services/cybersecurite/test-intrusion-pentest/` |
-| `/expertise/securite-informatique/zero-trust/` | `/fr/services/securite-informatique/zero-trust/` | `/fr/services/cybersecurite/zero-trust/` |
+**Aucune.** Les 10 cas relevés le 2026-09-22 — tous des anciennes adresses
+`/expertise/…` que le joker `/expertise/(.*)` avalait avant que leur règle
+précise ne se déclenche — sont réglés depuis le commit `67f9337` (les règles
+exactes sont émises sous leurs deux formes, avec et sans barre finale, et
+passent donc avant le joker).
 
 ## À part : la parité française / anglaise
 
