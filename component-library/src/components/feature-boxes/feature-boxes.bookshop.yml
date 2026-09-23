@@ -104,8 +104,10 @@ _inputs:
       empty_type: string
     label: "Libellé"
     comment: >-
-      Reste affiché même avec un logo : c'est le seul texte lisible par un
-      lecteur d'écran, et tous les logos ne portent pas leur nom.
+      Affiché dans la boîte. Dès qu'un logo est posé ci-dessous, il n'est plus
+      affiché (le logo dit déjà le nom) mais il n'est pas perdu : il devient le
+      texte de remplacement du logo, lu par les lecteurs d'écran et les moteurs
+      de recherche. À remplir dans tous les cas.
   icon:
     type: select
     label: "Pictogramme (optionnel)"
@@ -135,7 +137,8 @@ _inputs:
     type: text
     options:
       empty_type: string
-    label: "Texte de remplacement du logo"
+    label: "Texte de remplacement du logo (optionnel)"
     comment: >-
-      Laisser VIDE quand le libellé dit déjà le nom de la marque — sinon il est
-      annoncé deux fois.
+      À laisser VIDE presque toujours : c'est le libellé ci-dessus qui sert de
+      texte de remplacement. À ne remplir que si le logo montre autre chose que
+      le nom (ex. « Partenaire certifié ServiceNow »).

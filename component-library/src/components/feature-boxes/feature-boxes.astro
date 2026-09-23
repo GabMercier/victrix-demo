@@ -12,6 +12,16 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  *
  * Props : { type: "feature-boxes", sectionTitle, subtitle?, boxes: string[] }
  *
+ * LOGO POSÉ = LOGO SEUL (2026-09-23, demande Gabriel sur « Nos partenaires et
+ * technologies »). Écrire « Palo Alto » sous le logo Palo Alto dit deux fois
+ * la même chose à l'écran, et deux fois au lecteur d'écran si le logo porte
+ * aussi un `alt`. Le libellé devient donc le TEXTE DE REMPLACEMENT du logo :
+ * invisible à l'écran, toujours lu par les lecteurs d'écran et les moteurs.
+ * `imageAlt` reste une surcharge pour le cas où le libellé ne décrit pas bien
+ * l'image (rare). Une boîte sans logo est inchangée — libellé visible.
+ * C'est EXACTEMENT le comportement de `logo-banner` depuis sa création : les
+ * deux sections à logos du site se lisent enfin pareil.
+ *
  * Contraintes / pièges :
  * - <h2> : le <h1> unique appartient au héros.
  * - `boxes = []` en secours pour ne pas planter l'éditeur pendant la saisie.
@@ -122,7 +132,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
                   {box.image ? (
                     <img
                       src={box.image}
-                      alt={box.imageAlt ?? ''}
+                      alt={(box.imageAlt ?? '').trim() || box.label}
                       class="h-8 w-auto max-w-[140px] object-contain m-0"
                       loading="lazy"
                       decoding="async"
@@ -143,10 +153,16 @@ const FONDS: Record<string, string> = FOND_CLASSES;
                   ) : null}
                 </span>
               )}
-              {/* Le libellé RESTE même quand un logo est posé : c'est le seul
-                  texte lisible par un lecteur d'écran, et plusieurs logos de
-                  marque ne portent pas leur nom en toutes lettres. */}
-              <span>{box.label}</span>
+              {/* Le libellé n'est PLUS affiché quand un logo est posé
+                  (2026-09-23, demande Gabriel) : le logo dit déjà le nom, et
+                  l'écrire dessous le répète. Il n'est pas perdu pour autant —
+                  il devient le texte de remplacement du logo (voir l'entête),
+                  donc lecteurs d'écran et moteurs de recherche le lisent
+                  toujours. Une boîte SANS logo garde son libellé visible :
+                  c'est tout le contenu des 22 sections purement textuelles
+                  (« Notre approche », « Ce qui est inclus »…) et des
+                  partenaires dont le logo manque encore. */}
+              {!box.image && <span>{box.label}</span>}
             </li>
           );
         })

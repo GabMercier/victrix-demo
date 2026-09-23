@@ -736,12 +736,24 @@ marque) : ils figuraient bien dans la médiathèque de l'ancien site, sur le
 carrousel de l'accueil, et ont été rapatriés avec lui. **Manquent encore** :
 ZScaler et Juniper — à demander au marketing.
 
-**Le libellé reste toujours affiché**, même avec un logo. C'est voulu : c'est
-le seul texte qu'un lecteur d'écran peut lire, et plusieurs logos ne portent
-pas le nom de la marque en toutes lettres.
+**Boîtes de domaines : un logo posé remplace le libellé à l'écran**
+(2026-09-23). Écrire « Palo Alto » sous le logo Palo Alto disait deux fois la
+même chose. Désormais, dès qu'une boîte a un logo, **seul le logo s'affiche** —
+le libellé devient son **texte de remplacement** : invisible à l'écran,
+toujours lu par les lecteurs d'écran et les moteurs de recherche. **Remplissez
+donc le libellé dans tous les cas.** Une boîte **sans** logo n'a pas changé :
+son libellé reste affiché (c'est le cas d'AlgoSec, Proofpoint, ZScaler et
+Juniper sur la page Cybersécurité, et de toutes les sections purement
+textuelles comme « Notre approche »). C'est déjà ainsi que fonctionne le
+**bandeau de logos** de l'accueil.
 
-**Texte de remplacement** : laissez-le **vide** quand le libellé dit déjà le
-nom de la marque, sinon il est annoncé deux fois.
+Les trois autres sections (cartes numérotées, cartes à icônes, bento)
+n'ont pas changé : leur titre n'est pas le nom de la marque, il porte du sens
+en plus du logo.
+
+**Texte de remplacement** : à laisser **vide** presque toujours — c'est le
+libellé qui sert. Ne le remplissez que si le logo montre autre chose que le nom
+(ex. « Partenaire certifié ServiceNow »).
 
 ### Un seul bleu dans la palette (2026-09-22)
 
