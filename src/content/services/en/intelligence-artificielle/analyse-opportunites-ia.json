@@ -12,7 +12,7 @@
     {
       "_bookshop_name": "service-hero",
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Services",
       "titleAccent": "",
       "title": "Artificial Intelligence Opportunity Analysis",
       "titleHighlight": "Opportunity",
@@ -20,7 +20,12 @@
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2025/10/freepik__adjust__18305-1.png",
-      "imageAlt": ""
+      "imageAlt": "",
+      "eyebrowStyle": "texte",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
@@ -38,7 +43,7 @@
         "icon": "etoile",
         "title": "Not sure how to start with AI?",
         "text": "Our experts support you every step of the way to ensure the success of all your digital transformation projects with AI.",
-        "linkLabel": "Consult a specialist",
+        "linkLabel": "Schedule a consultation",
         "linkHref": "/en/contact",
         "image": "",
         "imageAlt": ""
@@ -100,7 +105,9 @@
           "text": "Defining the vision and mobilizing stakeholders.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
@@ -108,7 +115,9 @@
           "text": "Analysis of the current state and exploration of AI use cases.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
@@ -116,7 +125,9 @@
           "text": "Analysis of opportunities, measuring value, feasibility, and risks.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "04",
@@ -124,14 +135,21 @@
           "text": "Prioritization of projects and structured adoption plan.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Concrete Benefits for Your Organization",
+      "fond": "",
       "paragraphs": [
         "With <strong>Victrix as your strategic partner</strong>, you combine technological expertise and tailored support to optimize the value of artificial intelligence within your organization.",
         "We help you clarify your priorities, identify the most promising AI use cases, and build a strategic roadmap for a secure and profitable adoption of artificial intelligence."
@@ -160,8 +178,7 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": "",
-      "fond": ""
+      "cardText": ""
     },
     {
       "_bookshop_name": "related-posts",

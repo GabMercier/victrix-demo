@@ -1,18 +1,22 @@
 {
-  "title": "Office booking app",
+  "_schema": "default",
+  "title": "O bureau",
   "description": "Manage your workspaces with ease using O bureau, the easiest-to-use office booking app. Request a demo today.",
-  "seoH1": "",
+  "noindex": false,
+  "slug": "productivity-consulting/office-booking",
+  "seoTitle": "Office Booking Application | O bureau | Victrix",
+  "seoH1": "Office Booking App",
   "contactSujet": "",
   "contactService": "",
   "sections": [
     {
       "_bookshop_name": "product-hero",
       "type": "product-hero",
-      "badge": "Microsoft 365 ecosystem",
-      "title": "O bureau, our office booking application",
-      "titleHighlight": "O bureau",
+      "badge": "O bureau",
+      "title": "Office Booking Application",
+      "titleHighlight": "Application",
       "lead": "Discover our office booking application: easy to use and set up, it will help you manage your office space in no time!",
-      "ctaLabel": "Request a consultation",
+      "ctaLabel": "Request a demo",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
@@ -23,7 +27,7 @@
     {
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
-      "sectionTitle": "Benefits",
+      "sectionTitle": "Benefits of O bureau",
       "subtitle": "",
       "fond": "ivoire",
       "boxes": [
@@ -56,7 +60,7 @@
     {
       "_bookshop_name": "offer-cards",
       "type": "offer-cards",
-      "title": "A simple, ergonomic application to manage your workspaces",
+      "title": "A Simple, Ergonomic Application to Manage Your Workspaces",
       "intro": "",
       "fond": "beige",
       "ctaLabel": "",
@@ -124,6 +128,7 @@
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Microsoft technology",
+      "fond": "",
       "paragraphs": [
         "<strong>O bureau integrates with your Microsoft 365 and Power Platform environment.</strong>",
         "Get full visibility for informed decision-making regarding the management of your workspace."
@@ -152,8 +157,7 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": "",
-      "fond": ""
+      "cardText": ""
     },
     {
       "_bookshop_name": "logo-banner",
@@ -192,7 +196,7 @@
     {
       "_bookshop_name": "cta",
       "type": "cta",
-      "title": "Adopt an office application",
+      "title": "Adopt O bureau for your Office Booking Management",
       "body": "Victrix offers a turnkey application to meet your workspace management needs.",
       "ctaLabel": "Request a demo",
       "ctaHref": "/en/contact",
@@ -201,7 +205,5 @@
       "variant": "nuit",
       "fond": "ivoire"
     }
-  ],
-  "slug": "productivity-consulting/office-booking",
-  "seoTitle": "Office Booking Application | Productivity"
+  ]
 }

@@ -14,18 +14,19 @@
       "title": "Copilot Studio: Automate your processes.",
       "titleHighlight": "Automate",
       "lead": "Boost your productivity with next-generation conversational AI, integrated at the heart of your Microsoft ecosystem.",
-      "ctaLabel": "Talk with a Copilot expert",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
       "overlay": "degrade",
       "image": "/wp-content/uploads/2024/08/victrix-scaled.jpg",
-      "imageAlt": "Microsoft Copilot"
+      "imageAlt": "Microsoft Copilot",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
-      "title": "Strategic value",
+      "title": "Strategic Value",
       "paragraphs": [
         "Discover <strong>Copilot Studio</strong>, an innovative solution powered by <a href=\"/en/services/productivity-consulting/copilot-for-microsoft-365/\">Microsoft Copilot</a> <a href=\"/en/services/artificial-intelligence/\">artificial intelligence</a>, transforming the way organisations use their data and optimise their processes.",
         "Integrated with the Microsoft 365 and Power Platform ecosystem, Copilot Studio automates complex tasks, improves decision-making and boosts productivity through intelligent information analysis."
@@ -42,14 +43,19 @@
           "label": "M365 integration"
         }
       ],
-      "fond": "ivoire"
+      "fond": "ivoire",
+      "variant": "produit",
+      "badge": "",
+      "bullets": [],
+      "cardTitle": "",
+      "cardText": ""
     },
     {
       "_bookshop_name": "offer-cards",
       "type": "offer-cards",
-      "title": "Our Copilot Studio offers",
+      "title": "Our Copilot Studio Offers",
       "intro": "A structured approach to guarantee successful adoption and an immediate impact on your operations.",
-      "ctaLabel": "Book an appointment with one of our experts",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "items": [
         {
@@ -102,8 +108,9 @@
     {
       "_bookshop_name": "realisations",
       "type": "realisations",
-      "title": "Copilot Studio success stories",
+      "title": "Copilot Studio Success Stories",
       "intro": "See how Victrix concretely applies generative AI across different industries.",
+      "fond": "ivoire",
       "linkLabel": "Book a demo",
       "linkHref": "/en/contact",
       "items": [
@@ -127,22 +134,23 @@
           "text": "Intelligent automation of document management and analysis.",
           "icon": "marteau"
         }
-      ],
-      "fond": "ivoire"
+      ]
     },
     {
       "_bookshop_name": "cta",
       "type": "cta",
-      "title": "Ready to transform your organisation?",
+      "title": "Ready to Transform Your Organisation?",
       "body": "Deploy Copilot Studio step by step with Victrix. We provide strategic support tailored to your real priorities.",
-      "ctaLabel": "Contact an expert",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
-      "cta2Label": "Deploy with Victrix",
-      "cta2Href": "/en/services/productivity-consulting",
+      "cta2Label": null,
+      "cta2Href": null,
       "variant": "nuit",
       "fond": "ivoire"
     }
   ],
   "slug": "productivity-consulting/copilot-studio",
-  "seoTitle": "Copilot Studio Implementation for Microsoft 365"
+  "seoTitle": "Copilot Studio Implementation for Microsoft 365",
+  "_schema": "default",
+  "noindex": false
 }

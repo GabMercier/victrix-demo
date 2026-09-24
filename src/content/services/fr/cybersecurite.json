@@ -22,7 +22,7 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "overlay": "blanc",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2024/12/modern-urban-architecture-2024-09-18-06-16-04-utc-2-scaled.jpg",
       "imageAlt": "",
       "imagePosition": "centre"
@@ -191,12 +191,7 @@
           "image": "/images/logos/crowdstrike.svg",
           "imageAlt": ""
         },
-        {
-          "label": "Microsoft 365",
-          "icon": "",
-          "image": "/images/logos/microsoft.svg",
-          "imageAlt": ""
-        },
+        "Microsoft",
         {
           "label": "Cisco",
           "icon": "",
@@ -403,6 +398,18 @@
       "contactHref": "/fr/contact",
       "note": "",
       "fond": "beige"
+    },
+    {
+      "_bookshop_name": "form",
+      "type": "form",
+      "title": "Évaluation posture sécurité",
+      "intro": "Obtenez un portrait clair de votre posture de sécurité — un de nos experts vous recontacte rapidement.",
+      "formId": "campagne-evaluation",
+      "submitLabel": "Envoyer ma demande",
+      "consentText": "",
+      "variant": "carte",
+      "fond": "",
+      "fields": []
     },
     {
       "_bookshop_name": "cta",

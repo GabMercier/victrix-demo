@@ -1,6 +1,6 @@
 {
   "title": "Productivity Consulting",
-  "description": "Looking to improve your company’s efficiency? Victrix offers customized productivity consulting and innovative solutions. ",
+  "description": "Looking to improve your company’s efficiency? Victrix offers customized productivity consulting and innovative business solutions. ",
   "slug": "productivity-consulting",
   "seoH1": "",
   "contactSujet": "",
@@ -13,14 +13,16 @@
       "titleAccent": "",
       "title": "Improve business productivity",
       "lead": "Looking for ideas to improve your company's productivity? With years of experience, Victrix offers a human, customer-oriented approach that considers your business needs and focuses on your users.",
-      "ctaLabel": "Let's meet",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "Discover our solutions",
       "cta2Href": "/en/produits",
       "image": "/wp-content/uploads/2023/10/gestion-des-processus-et-productivite.png",
       "imageAlt": "Process management and productivity — Victrix",
       "titleHighlight": "business productivity",
-      "overlay": "blanc"
+      "overlay": "blanc",
+      "eyebrowStyle": "texte",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "benefits",
@@ -50,7 +52,9 @@
           "image": "",
           "imageAlt": ""
         }
-      ]
+      ],
+      "headingStyle": "titre",
+      "numerotation": true
     },
     {
       "_bookshop_name": "rich-text",
@@ -191,6 +195,16 @@
     {
       "_bookshop_name": "rich-text",
       "type": "rich-text",
+      "fond": "ivoire",
+      "title": "Achieve High Productivity With Victrix’s Productivity Consulting and Tools",
+      "paragraphs": [
+        "To ensure your competitiveness, it is critical to <strong>find ways to boost team productivity</strong>, especially now that remote working is a reality for many businesses.",
+        "That is why Victrix has developed its own <strong>productivity apps</strong>. Follow the example of many other businesses and provide your employees with the tools they need, tailored to their requirements and your expectations."
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
       "fond": "beige",
       "title": "Victrix Helps Companies Improve Employee Productivity",
       "paragraphs": [
@@ -201,16 +215,6 @@
       ]
     },
     {
-      "_bookshop_name": "rich-text",
-      "type": "rich-text",
-      "fond": "ivoire",
-      "title": "Achieve High Productivity With Victrix’s Productivity Consulting and Tools",
-      "paragraphs": [
-        "To ensure your competitiveness, it is critical to <strong>find ways to boost team productivity</strong>, especially now that remote working is a reality for many businesses.",
-        "That is why Victrix has developed its own <strong>productivity apps</strong>. Follow the example of many other businesses and provide your employees with the tools they need, tailored to their requirements and your expectations."
-      ]
-    },
-    {
       "_bookshop_name": "cta",
       "type": "cta",
       "title": "Ready to move your organization forward?",
@@ -218,7 +222,9 @@
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "variant": "dark",
-      "fond": "ivoire"
+      "fond": "ivoire",
+      "cta2Label": "",
+      "cta2Href": ""
     },
     {
       "_bookshop_name": "related-posts",
@@ -232,7 +238,7 @@
       "ctaHref": "/en/ressources"
     }
   ],
-  "seoTitle": "Productivity Consulting Firm in Montreal | Expertise Victrix",
+  "seoTitle": "Productivity Consulting Firm in Montreal | Expertise | Victrix",
   "_schema": "default",
   "noindex": false
 }

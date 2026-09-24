@@ -8,20 +8,25 @@
     {
       "_bookshop_name": "service-hero",
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Migration infonuagique",
       "titleAccent": "",
       "title": "Services AWS par des experts infonuagiques",
       "titleHighlight": "AWS",
       "lead": "Profitez d'un modèle de service qui favorise l'évolution et simplifie la gestion grâce à notre expertise AWS. Nos spécialistes en <a href=\"/fr/services/services-infonuagiques/\">solutions infonuagiques</a> conçoivent des stratégies de migration sur mesure pour vous propulser vers la plateforme Amazon Web Services en douceur et en toute sécurité.",
-      "ctaLabel": "Parlons de vos projets",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2023/10/priscilla-du-preez-nnmba7y1ymk-unsplash-1-scaled-e1699542797747.jpg",
-      "imageAlt": ""
+      "imageAlt": "",
+      "eyebrowStyle": "texte",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
-      "title": "Pourquoi choisir la solution infonuagique AWS pour son organisation ?",
+      "title": "Pourquoi choisir la solution infonuagique AWS pour son organisation?",
       "intro": "Amazon Web Services (AWS) est une plateforme infonuagique populaire auprès d'organisations de toutes tailles : infrastructure infonuagique, sécurité, analyse et sauvegarde de données, développement d'applications sur mesure, et bien plus encore.",
       "fond": "ivoire",
       "featured": {
@@ -34,7 +39,7 @@
         "icon": "coche",
         "title": "Partenariat AWS",
         "text": "Faites confiance à notre équipe pour assurer une migration efficace de vos applications vers AWS.",
-        "linkLabel": "Rencontrez un expert AWS",
+        "linkLabel": "Planifiez une consultation",
         "linkHref": "/fr/contact",
         "image": "/wp-content/uploads/2023/10/select-light-partner-150x150.png",
         "imageAlt": "Partenaire AWS — Select Tier Services"
@@ -84,7 +89,9 @@
           "text": "Évaluation de la faisabilité, analyse et optimisation des coûts, fiabilisation des charges de travail et des applications.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
@@ -92,7 +99,9 @@
           "text": "Planification pour une migration fluide (gestion des risques), objectifs d'excellence opérationnelle, de sécurité optimale, de conformité et de performance, respect des 6 R de migration et adaptation aux enjeux selon le contexte de l'organisation.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
@@ -100,9 +109,15 @@
           "text": "Application de correctifs à l'architecture en place, migration et déploiement du premier service identifié, suivi sur le déroulement de la migration et vue globale sur son état.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "tech-columns",
@@ -120,7 +135,11 @@
             "Évaluation des performances et de l'utilisation des ressources",
             "Analyse complète de la posture de sécurité",
             "Visualisation des dépendances et performances des applications de l'environnement sur site"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Analyse de migration",
@@ -131,7 +150,11 @@
             "Évaluation et analyse de l'architecture des charges de travail et applications dans AWS",
             "Analyse, identification et gestion des accès aux ressources AWS",
             "Analyse et évaluation de la préparation à la migration infonuagique"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Stratégie de migration",
@@ -142,7 +165,11 @@
             "Gestion de migrations lift and shift, de serveurs et de centres de données",
             "Solutions de sauvegarde de données et de reprise après sinistre",
             "Migration sécurisée avec AWS CloudEndure et la famille AWS Snow"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Multicloud",
@@ -152,7 +179,11 @@
             "Contrôles de sécurité robustes conçus pour les environnements multi-cloud",
             "Migration fluide, sécurisée et efficace",
             "Simplification de la surveillance, de la conformité et de la gouvernance"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Sécurité infonuagique",
@@ -166,7 +197,11 @@
             "Conception d'un périmètre de sécurité réseau robuste",
             "Conformité avec les exigences de sécurité (ISO, PCI, Loi 25 et RGPD)",
             "Solutions de sécurité « cloud native »"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Transformation organisationnelle",
@@ -178,7 +213,11 @@
             "Gestion des points d'accès",
             "Amélioration de la collaboration avec une gestion de documents sécurisée et gérée (WorkDocs)",
             "Protection des données avec AWS Backup"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         }
       ]
     },
@@ -195,5 +234,8 @@
       "fond": "ivoire"
     }
   ],
-  "seoTitle": "Expertise AWS | Services aux entreprises"
+  "seoTitle": "Expertise AWS | Services aux entreprises",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

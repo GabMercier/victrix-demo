@@ -9,14 +9,19 @@
       "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Maximize the use of your M365 ecosystem",
       "titleHighlight": "M365 ecosystem",
       "lead": "Our Microsoft 365 management solution handles administrative and security tasks to ensure your environment remains compliant.",
-      "ctaLabel": "Let's meet",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2022/05/istock-508289586.jpg",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
@@ -76,7 +81,8 @@
           "image": "",
           "imageAlt": ""
         }
-      ]
+      ],
+      "subtitle": ""
     },
     {
       "_bookshop_name": "numbered-cards",
@@ -94,7 +100,9 @@
           "text": "Allow your team to focus on the core business of your organization.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
@@ -102,7 +110,9 @@
           "text": "Take advantage of our NOC and SOC systems to protect yourself against cyber threats.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
@@ -110,9 +120,16 @@
           "text": "Ensure a fast and efficient service, constant monitoring and the evolution of your environment.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
-      ]
+      ],
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "offer-cards",
@@ -181,5 +198,7 @@
     }
   ],
   "slug": "managed-it-services/maximize-the-use-of-your-m365-ecosystem",
-  "seoTitle": "Microsoft 365 Managed Services | Expertise"
+  "seoTitle": "Microsoft 365 | Services | Victrix",
+  "_schema": "default",
+  "noindex": false
 }

@@ -9,14 +9,19 @@
       "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Service IoT et OT",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Assurez la sécurité des objets connectés ",
       "titleHighlight": "objets connectés",
       "lead": "Sécurisez vos objets connectés (Internet des objets et technologies opérationnelles) avec notre offre complète de cybersécurité pour l’IoT et l’OT. De l’analyse de vos besoins à la surveillance continue en temps réel, nous réduisons le risque d’attaques et garantissons l’intégrité de vos données.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2024/07/istock-1165052026-1.jpg",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
@@ -47,7 +52,7 @@
         "icon": "bouclier",
         "title": "Un service de sécurité de pointe",
         "text": "Élevez le niveau de sécurité des appareils connectés et réduisez le risque de violations de données grâce au soutien de nos experts en cybersécurité.",
-        "linkLabel": "Découvrez notre expertise cybersécurité",
+        "linkLabel": "Explorez nos services de cybersécurité",
         "linkHref": "/fr/services/cybersecurite/",
         "image": "",
         "imageAlt": ""
@@ -147,6 +152,7 @@
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Expertise sectorielle en cybersécurité IoT/OT ",
+      "fond": "",
       "paragraphs": [
         "Notre service IoT sur mesure répond aux défis spécifiques de l’OT et de l’IoT dans votre secteur d’activité. Nos <strong>experts en cybersécurité</strong> maîtrisent les systèmes industriels, ce qui leur permet de contrer les menaces spécifiques à votre industrie, d’assurer la continuité de vos opérations et de garantir la sécurité de vos environnements IoT.",
         "Victrix est votre partenaire stratégique pour un service IoT renforcé et évolutif : <strong>un service personnalisé, robuste et fiable</strong> qui vous assure un niveau de protection inégalé."
@@ -167,8 +173,7 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": "",
-      "fond": ""
+      "cardText": ""
     },
     {
       "_bookshop_name": "related-posts",

@@ -9,14 +9,19 @@
       "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "SEvOC",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Centre opérationnel de sécurité (SOC) évolutif",
       "titleHighlight": "évolutif",
       "lead": "Protégez aujourd’hui. Évoluez demain. Détection, réponse et amélioration continue de votre posture de sécurité avec SEvOC, notre SOC évolutif à visage humain, conçu pour accompagner la croissance et la transformation de votre organisation.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2022/02/solution-sevoc-intro.jpg",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
@@ -47,7 +52,7 @@
         "icon": "bouclier",
         "title": "Les avantages de notre service SOC",
         "text": "Faites face à l’accroissement des menaces avancées (<a href=\"/fr/ressources/ransomware-rancongiciels/\">ransomwares</a>, attaques ciblées, attaques non détectées par les approches classiques), obtenez une prise en charge rapide des alertes de sécurité, complétez votre équipe de sécurité interne avec nos experts pour assurer l’évolution et la maintenance de vos outils (EDR, SIEM, CSPM), simplifiez l’intégration de vos nouvelles entités dans un contexte de croissance ou de fusion, et atteignez vos objectifs stratégiques tout en garantissant votre cybersécurité.",
-        "linkLabel": "Découvrez notre expertise cybersécurité",
+        "linkLabel": "Explorez nos services de cybersécurité",
         "linkHref": "/fr/services/cybersecurite/",
         "image": "",
         "imageAlt": ""
@@ -59,7 +64,7 @@
       "title": "Ce que le SEvOC fait pour votre organisation",
       "intro": "Prise en charge, opérations et évolution : une offre modulaire qui couvre l’ensemble du cycle.",
       "fond": "beige",
-      "ctaLabel": "Parlez à un expert du SEvOC",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "items": [
         {
@@ -144,7 +149,7 @@
       "title": "Des services qui se distinguent de la sécurité gérée traditionnelle",
       "paragraphs": [
         "Victrix n’est pas qu’un <a href=\"/fr/services/services-ti-geres/\">fournisseur de services gérés</a>, et le SEvOC n’est pas un SOC comme les autres. Voici ce qui fait la force de notre équipe.",
-        "<strong>Expertise technologique</strong> — partenariat Microsoft Sentinel, partenariat CrowdStrike ELP (seul MSSP francophone autorisé), <a href=\"/fr/ressources/certification-iso-27001-iso-9001/\">certification ISO/IEC 27001</a> (sécurité de l’information encadrée par les meilleures pratiques internationales) et gestion d’environnements hybrides ou complexes.",
+        "<strong>Expertise technologique</strong> — partenariat Microsoft Sentinel, partenariat CrowdStrike ELP (seul MSSP francophone autorisé), <a href=\"/fr/ressources/certification-iso-27001-iso-9001/\" target=\"_blank\" rel=\"noopener\">certification ISO/IEC 27001:2022 et ISO 9001:2015</a> et gestion d’environnements hybrides ou complexes.",
         "<strong>Service humain, local et enraciné</strong> — surveillance opérée 100 % localement, sans externalisation, avec interaction directe entre vos équipes internes et nos analystes attitrés ; rapports personnalisés, comités de suivi et conseils basés sur la configuration de votre environnement. ",
         "<strong>Approche flexible, collaborative et évolutive</strong> — évolution continue de la posture de sécurité (lignes directrices, revue de configurations, accompagnement dans la maturité) et accès à toute la profondeur de Victrix : appui direct de nos équipes spécialisées en infrastructure, <a href=\"/fr/services/services-infonuagiques/\">infonuagique</a>, gouvernance et réseau, sans sous-traitance externe."
       ],
@@ -191,7 +196,9 @@
           "text": "Complète des activités suspectes et diminution des faux positifs.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
@@ -199,7 +206,9 @@
           "text": "Du temps de détection des menaces et de remédiation.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
@@ -207,7 +216,9 @@
           "text": "De l’intégration des nouvelles technologies.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "04",
@@ -215,7 +226,9 @@
           "text": "Des risques opérationnels et des efforts de gestion de cybersécurité.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "05",
@@ -223,7 +236,9 @@
           "text": "Des tâches routinières pour votre personnel.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "06",
@@ -231,9 +246,16 @@
           "text": "Continue de votre posture de cybersécurité.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
-      ]
+      ],
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "related-posts",

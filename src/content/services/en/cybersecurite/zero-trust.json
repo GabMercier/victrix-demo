@@ -8,15 +8,20 @@
     {
       "_bookshop_name": "service-hero",
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Services",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Move to the Zero Trust Cybersecurity Model",
       "titleHighlight": "Zero Trust",
       "lead": "The Zero Trust model takes a \"never trust, always verify\" approach: each user and device is continuously verified and authorized, minimizing security risks and opportunities for successful attacks. Victrix can help you implement it and improve your security posture.",
-      "ctaLabel": "Schedule a meeting",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2024/05/benjamin-child-gwe0dlvd9e0-unsplash-scaled.jpg",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
@@ -39,7 +44,7 @@
         "icon": "etoile",
         "title": "Harmony Connect, Check Point's SASE solution",
         "text": "Harmony SASE combines workplace security and network optimization in a single cloud-based platform designed for the modern enterprise.",
-        "linkLabel": "Contact us about Harmony Connect",
+        "linkLabel": "Get Harmony Connect",
         "linkHref": "/en/contact",
         "image": "/wp-content/uploads/2024/05/harmony-why-harmony-3-600x400px.png",
         "imageAlt": "Harmony SASE — diagram by Check Point"
@@ -49,7 +54,7 @@
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "fond": "",
-      "sectionTitle": "Benefits of the Zero Trust Model for Your Organization",
+      "sectionTitle": "7 Benefits of the Zero Trust Model for Your Organization",
       "headingStyle": "plain",
       "tone": "default",
       "columns": "3",
@@ -61,7 +66,9 @@
           "text": "",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
@@ -69,7 +76,9 @@
           "text": "",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
@@ -77,7 +86,9 @@
           "text": "",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "04",
@@ -85,7 +96,9 @@
           "text": "",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "05",
@@ -93,7 +106,9 @@
           "text": "",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "06",
@@ -101,7 +116,9 @@
           "text": "",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "07",
@@ -109,9 +126,16 @@
           "text": "",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
-      ]
+      ],
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "feature-boxes",
@@ -167,7 +191,8 @@
           "image": "",
           "imageAlt": ""
         }
-      ]
+      ],
+      "subtitle": ""
     },
     {
       "_bookshop_name": "related-posts",
@@ -185,7 +210,7 @@
       "type": "cta",
       "title": "Continuously Improve Your Security Posture",
       "body": "If you have questions about protecting your cybersecurity or Zero Trust architecture, please contact us: our cybersecurity experts will work with you to implement the best solutions to keep your organization safe.",
-      "ctaLabel": "Contact us",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
@@ -194,5 +219,7 @@
     }
   ],
   "slug": "cybersecurity/zero-trust",
-  "seoTitle": "Move to the Zero Trust Cybersecurity Model"
+  "seoTitle": "Move to the Zero Trust Cybersecurity Model",
+  "_schema": "default",
+  "noindex": false
 }

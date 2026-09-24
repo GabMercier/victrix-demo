@@ -1,18 +1,18 @@
 {
-  "title": "EMPLOYEE EXPERIENCE PLATFORM",
+  "title": "Employee Experience Platform",
   "description": "Leverage Victrix's digital development expertise to build a modern intranet employee platform based on Microsoft 365 and AI.",
-  "seoH1": "",
+  "seoH1": "Modern Intranet",
   "contactSujet": "",
   "contactService": "",
   "sections": [
     {
       "_bookshop_name": "product-hero",
       "type": "product-hero",
-      "badge": "Microsoft 365 ecosystem",
-      "title": "An AI-powered employee experience",
-      "titleHighlight": "employee experience",
+      "badge": "Modern Intranet",
+      "title": "An AI-Powered Employee Experience",
+      "titleHighlight": "Employee Experience",
       "lead": "Streamline internal communications and increase productivity with a modern platform that integrates Microsoft 365 and AI. Offer your employees simplified access to information, smooth onboarding, and enhanced collaboration.",
-      "ctaLabel": "Request a consultation",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
@@ -23,7 +23,7 @@
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
-      "title": "Reinvent your intranet",
+      "title": "Reinvent Your Intranet",
       "intro": "Your intranet project is the perfect opportunity to use AI in a responsible and innovative way.",
       "fond": "ivoire",
       "featured": {
@@ -42,7 +42,7 @@
         "title": "HR conversational agent with AI",
         "text": "Saves time for HR teams by automating responses and reducing human error.",
         "linkLabel": "Schedule a consultation",
-        "linkHref": "/en/contact",
+        "linkHref": "/en/contact/",
         "image": "",
         "imageAlt": ""
       }
@@ -51,7 +51,7 @@
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "fond": "",
-      "sectionTitle": "The platform for a unified, modern employee experience",
+      "sectionTitle": "An Intranet Platform for a Unified, Modern Employee Experience",
       "headingStyle": "underline",
       "intro": "Victrix helps you build an internal communications tool that goes far beyond the traditional intranet. By leveraging the power of Microsoft's <a href=\"/en/services/artificial-intelligence/\">artificial intelligence</a>, we transform your digital environment into a fluid, engaging experience. The pillars of the Victrix Employee Platform offering:",
       "tone": "default",
@@ -64,7 +64,9 @@
           "text": "Designing navigation and architecture that takes into account the employee's entire digital workspace.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
@@ -72,7 +74,9 @@
           "text": "Bridging the gap between the user and the information they are seeking.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
@@ -80,14 +84,20 @@
           "text": "Journeys and content tailored to different user segments.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
-      "title": "Benefits of our modern intranet offering",
+      "title": "Benefits of Our Modern Intranet Offering",
       "paragraphs": [
         "Victrix offers more than a simple corporate intranet solution. We develop a bespoke platform designed to boost productivity and collaboration, powered by AI and perfectly tailored to your organization's needs — a flexible, scalable offering tailored to your digital strategy.",
         "What sets our offering apart: recognized expertise with Microsoft 365 solutions (Teams, SharePoint, Copilot, etc.) and Viva; an intelligent chatbot, integrated into your work environment to answer employees’ common questions; a flexible, scalable offering tailored to your digital strategy; a dedicated team of experts in user experience (UX), interface design (UI), and communication; extensive experience within complex environments and private or public sector organizations.",
@@ -123,9 +133,9 @@
     {
       "_bookshop_name": "cta",
       "type": "cta",
-      "title": "Let’s discuss a modernized version of your employee experience platform",
+      "title": "Let’s Discuss a Modernized Version of Your Employee Experience Platform",
       "body": "Elevate the employee experience with a modern intranet based on Microsoft 365 and Viva.",
-      "ctaLabel": "Let's talk about your project",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
@@ -134,5 +144,7 @@
     }
   ],
   "slug": "productivity-consulting/employee-platform-intranet",
-  "seoTitle": "AI for the employee experience and the intranet"
+  "seoTitle": "Modern Intranet: AI for the Employee Experience | Services | Victrix",
+  "_schema": "default",
+  "noindex": false
 }

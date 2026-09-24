@@ -8,15 +8,20 @@
     {
       "_bookshop_name": "service-hero",
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Cloud Migration Services",
       "titleAccent": "",
       "title": "AWS Services by Cloud Experts",
       "titleHighlight": "AWS",
       "lead": "Take advantage of a service model that promotes scalability and simplifies management with our AWS expertise. Our <a href=\"/en/services/cloud-services-provider/\">cloud solutions</a> specialists design tailored migration strategies to propel you smoothly and securely onto the Amazon Web Services platform.",
-      "ctaLabel": "Let’s talk about your projects",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2023/10/aws2-1.png",
-      "imageAlt": ""
+      "imageAlt": "",
+      "eyebrowStyle": "texte",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
@@ -34,7 +39,7 @@
         "icon": "coche",
         "title": "AWS Partnership",
         "text": "Trust our team to ensure smooth, efficient migration of your applications to AWS.",
-        "linkLabel": "Meet with an AWS expert",
+        "linkLabel": "Schedule a consultation",
         "linkHref": "/en/contact",
         "image": "/wp-content/uploads/2023/10/select-light-partner-150x150.png",
         "imageAlt": "AWS Partner — Select Tier Services"
@@ -84,7 +89,9 @@
           "text": "Feasibility assessment, cost analysis and optimization, and ensuring the reliability of workloads and applications.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
@@ -92,7 +99,9 @@
           "text": "Planning for a smooth migration (risk management), objectives of operational excellence, optimal security, compliance, and performance, compliance with the 6 Rs of migration, and adaptation to migration challenges according to the organization's context.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
@@ -100,9 +109,15 @@
           "text": "Applying fixes to the existing architecture, migrating and deploying the first identified service, monitoring the migration process, and providing an overview of the migration status.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "tech-columns",
@@ -120,7 +135,11 @@
             "Performance and resource utilization assessment",
             "Comprehensive security posture analysis",
             "Visualization of dependencies and performance of on-premises applications"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Migration Analysis",
@@ -131,7 +150,11 @@
             "Assessment and analysis of workload and application architecture in AWS",
             "Analysis, identification and management of access to AWS resources",
             "Analysis and assessment of cloud migration readiness"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Migration Strategy",
@@ -142,7 +165,11 @@
             "Lift-and-shift migration management for servers and data centers",
             "Data backup and disaster recovery solutions",
             "Secure migration with AWS CloudEndure and the AWS Snow family"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Multicloud",
@@ -152,7 +179,11 @@
             "Robust security controls designed for multi-cloud environments",
             "Smooth, secure and efficient migration",
             "Simplified monitoring, compliance and governance"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Cloud Security",
@@ -166,7 +197,11 @@
             "Designing a robust network security perimeter",
             "Compliance with security requirements (ISO, PCI, Law 25, and GDPR)",
             "Cloud-native security solutions"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Organizational Transformation",
@@ -178,16 +213,20 @@
             "Access management",
             "Improved collaboration with secure, managed document management (WorkDocs)",
             "Data protection with AWS Backup"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         }
       ]
     },
     {
       "_bookshop_name": "cta",
       "type": "cta",
-      "title": "Victrix, Your Trusted AWS Service Provider",
+      "title": "Victrix, Your Trusted AWS Services Provider",
       "body": "Start your AWS migration project and ensure its success with Victrix's expertise.",
-      "ctaLabel": "Let's talk about your project",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
@@ -196,5 +235,7 @@
     }
   ],
   "slug": "cloud-services-provider/aws-services",
-  "seoTitle": "AWS Service Provider | AWS Cloud Solution Expertise"
+  "seoTitle": "AWS Service Provider | AWS Cloud Solution Expertise",
+  "_schema": "default",
+  "noindex": false
 }

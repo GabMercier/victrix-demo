@@ -8,15 +8,20 @@
     {
       "_bookshop_name": "service-hero",
       "type": "service-hero",
-      "eyebrow": "",
+      "eyebrow": "Cloud Services",
+      "eyebrowStyle": "texte",
       "titleAccent": "",
-      "title": "Cloud Services for Businesses",
+      "title": "Cloud Services Tailored to Your Business Challenges",
       "titleHighlight": "Cloud Services",
       "lead": "To improve your teams' responsiveness, the flexibility of your infrastructure, and the profitability of your technologies, cloud computing is the first solution to consider. Modernize your IT with a personalized approach based on acceleration, from project start-up to completion.",
-      "ctaLabel": "Let's talk about your projects",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "overlay": "voile",
       "image": "/wp-content/uploads/2022/05/cloud-based-services-provider-for-business.png",
-      "imageAlt": ""
+      "imageAlt": "",
+      "imagePosition": "centre"
     },
     {
       "_bookshop_name": "bento-metrics",
@@ -34,8 +39,8 @@
         "icon": "etoile",
         "title": "Strategic consulting",
         "text": "Take advantage of our expertise in strategic consulting to ensure the success of all your digital transformation projects.",
-        "linkLabel": "Explore strategic consulting",
-        "linkHref": "/en/services/strategic-advice",
+        "linkLabel": "Schedule a consultation",
+        "linkHref": "/en/contact/",
         "image": "",
         "imageAlt": ""
       }
@@ -85,7 +90,9 @@
           "text": "Kick-off meeting: understanding the project, implementation schedule and stakeholder participation, technical and other prerequisites, roles required by workshop and committee.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "02",
@@ -93,7 +100,9 @@
           "text": "Identification, definition, and prioritization of migration opportunities; infrastructure analysis.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "03",
@@ -101,7 +110,9 @@
           "text": "Preparation of the opportunity and feasibility analysis: organizational context, understanding of technological and business challenges, IT asset inventory, mapping of interdependencies, and license analysis.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "04",
@@ -109,7 +120,9 @@
           "text": "Proof of concept: architecture and deployment strategy, implementation, proof of concept realization, and documentation.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "05",
@@ -117,7 +130,9 @@
           "text": "Analysis and proposal of preferred scaling options, then scaling systems.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         },
         {
           "number": "06",
@@ -125,9 +140,15 @@
           "text": "Acceleration in iterative mode: analysis of needs, opportunities, and mapping; implementation (deployment, security, and governance); migration (mapping, classification, migration, and testing); optimization and governance.",
           "icon": "",
           "image": "",
-          "imageAlt": ""
+          "imageAlt": "",
+          "ctaLabel": "",
+          "ctaHref": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "tech-columns",
@@ -143,7 +164,11 @@
             "Outsourcing services",
             "Security audit",
             "Cloud infrastructure validation"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Workload Migration",
@@ -154,7 +179,11 @@
             "Dematerialization and migration of data",
             "Business continuity and disaster recovery",
             "Data backup"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Multicloud",
@@ -164,7 +193,11 @@
             "Monitoring and evolution",
             "Cloud security and compliance",
             "Centralized Identity and Access Management (IAM)"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "AWS/Microsoft Azure Security",
@@ -175,7 +208,11 @@
             "SIEM/SOAR",
             "Protection against cyber threats",
             "Support in the implementation and use of services"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         },
         {
           "title": "Digital Transformation",
@@ -183,7 +220,11 @@
           "items": [
             "Modern desktop VDI/AVD/W365",
             "Migration and automation"
-          ]
+          ],
+          "subgroup": {
+            "label": "",
+            "items": []
+          }
         }
       ]
     },
@@ -259,13 +300,9 @@
           "image": "/images/logos/ovhcloud.png",
           "imageAlt": ""
         },
-        {
-          "label": "Service Now",
-          "icon": "",
-          "image": "/images/logos/servicenow-partner.png",
-          "imageAlt": ""
-        }
-      ]
+        "ServiceNow"
+      ],
+      "subtitle": ""
     },
     {
       "_bookshop_name": "related-posts",
@@ -283,7 +320,7 @@
       "type": "cta",
       "title": "Victrix, Your Strategic Partner for Cloud Services and Solutions",
       "body": "Leverage our expertise for your AWS or Azure migration projects to benefit from secure, flexible, and accessible cloud storage through our multi-cloud practice.",
-      "ctaLabel": "Meet our cloud experts",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "cta2Label": "",
       "cta2Href": "",
@@ -292,5 +329,7 @@
     }
   ],
   "slug": "cloud-services-provider",
-  "seoTitle": "Cloud Services Tailored to Your Challenges | Expertise"
+  "seoTitle": "Cloud Services Tailored to Your Challenges | Services",
+  "_schema": "default",
+  "noindex": false
 }

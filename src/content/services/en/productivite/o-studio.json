@@ -8,11 +8,11 @@
     {
       "_bookshop_name": "product-hero",
       "type": "product-hero",
-      "badge": "Microsoft 365 ecosystem",
-      "title": "Power Platform and Dynamics 365 creation studio",
+      "badge": "Apps Development",
+      "title": "Power Platform and Dynamics 365 Creation Studio",
       "titleHighlight": "Power Platform",
       "lead": "Get tailored advice and bring your ideas to life with Ø Studio, your experts in Power Platform and Dynamics 365 consulting and development — unique digital experiences to boost efficiency and accelerate business growth.",
-      "ctaLabel": "Request a consultation",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "#formulaire",
       "cta2Label": "Browse our applications",
       "cta2Href": "/en/solutions",
@@ -23,11 +23,11 @@
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
-      "title": "Deploy business applications at lightning speed",
+      "title": "Deploy Business Applications at Lightning Speed",
       "intro": "Say goodbye to repetitive tasks with process automation and unlock your teams' potential.",
       "fond": "ivoire",
       "featured": {
-        "title": "Operational optimization",
+        "title": "Operational Optimization",
         "text": "From operations management to the support of your administrative services, the Ø Studio offering meets the requirements of the different branches of your business — with development speed and increased delivery capacity to match. Get support from our <strong>Microsoft certified consultants and application developers</strong> to free up your IT teams, automate your business processes and <a href=\"/en/services/managed-it-services/maximize-the-use-of-your-m365-ecosystem/\">maximize the use of your M365 ecosystem</a>.",
         "watermark": "eclair",
         "stats": [
@@ -43,10 +43,10 @@
       },
       "aside": {
         "icon": "coche",
-        "title": "Microsoft certified",
+        "title": "Microsoft Certified",
         "text": "Our Microsoft certified consultants and developers free up your IT teams and maximize the use of the Microsoft 365 tools already included in your licences.",
-        "linkLabel": "See the Productivity expertise",
-        "linkHref": "/en/services/productivity-consulting",
+        "linkLabel": null,
+        "linkHref": null,
         "image": "",
         "imageAlt": ""
       }
@@ -54,10 +54,10 @@
     {
       "_bookshop_name": "offer-cards",
       "type": "offer-cards",
-      "title": "Consulting, integration and development",
+      "title": "Consulting, Integration and Development",
       "intro": "With Ø Studio by your side, Power Apps development, process automation, and tool governance are all easily achievable goals.",
       "fond": "beige",
-      "ctaLabel": "Discover your options",
+      "ctaLabel": "Schedule a consultation",
       "ctaHref": "#formulaire",
       "items": [
         {
@@ -105,7 +105,8 @@
     {
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
-      "title": "Microsoft Power Platform and Dynamics 365 governance",
+      "title": "Microsoft Power Platform and Dynamics 365 Governance",
+      "fond": "",
       "paragraphs": [
         "<strong>Turn your ideas into innovative digital solutions.</strong> Our Dynamics 365 and Microsoft Power Platform consulting and creation studio allows you to customize and extend the capabilities of your apps and create bespoke digital solutions.",
         "Strengthen security and compliance with complete visibility and continuous monitoring, reduce costs through optimal licence and resource management, and simplify adoption across the organization."
@@ -134,15 +135,14 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": "",
-      "fond": ""
+      "cardText": ""
     },
     {
       "_bookshop_name": "realisations",
       "type": "realisations",
-      "title": "Our portfolio of achievements",
+      "title": "Our Portfolio of Achievements",
       "intro": "More than a simple consulting and application development service, the Ø Studio team excels with Power Platform tools: Power Apps, Power Automate, Power BI and Power Pages — delivering solutions tailored to your organization.",
-      "linkLabel": "Browse our application catalogue",
+      "linkLabel": "Browse our solutions catalogue",
       "linkHref": "/en/solutions",
       "items": [
         {
@@ -171,7 +171,7 @@
     {
       "_bookshop_name": "faq",
       "type": "faq",
-      "title": "FAQ — Dynamics 365 & Microsoft Power Platform development",
+      "title": "FAQ — Dynamics 365 & Microsoft Power Platform Development",
       "fond": "beige",
       "items": [
         {
@@ -202,28 +202,30 @@
     {
       "_bookshop_name": "form",
       "type": "form",
-      "title": "Request a consultation",
+      "title": "Schedule a Consultation",
       "intro": "Tell us about your Power Platform or Dynamics 365 project — a member of the Ø Studio team will get back to you quickly.",
-      "submitLabel": "Request a consultation",
+      "formId": "o-studio",
+      "submitLabel": "Schedule a consultation",
       "consentText": "",
       "variant": "carte",
-      "formId": "o-studio",
       "fond": "",
       "fields": []
     },
     {
       "_bookshop_name": "cta",
       "type": "cta",
-      "title": "Got a project?",
+      "title": "Got a Project?",
       "body": "Let Ø Studio propel you towards Microsoft Power Platform and maximize your Microsoft 365 investment.",
-      "ctaLabel": "Let's meet",
+      "ctaLabel": "Planifiez une consultation",
       "ctaHref": "#formulaire",
-      "cta2Label": "Contact us",
-      "cta2Href": "/en/contact",
+      "cta2Label": null,
+      "cta2Href": null,
       "variant": "nuit",
       "fond": "ivoire"
     }
   ],
   "slug": "productivity-consulting/o-studio",
-  "seoTitle": "Power Platform & Dynamics 365 Creation Studio"
+  "seoTitle": "Apps Development",
+  "_schema": "default",
+  "noindex": false
 }
