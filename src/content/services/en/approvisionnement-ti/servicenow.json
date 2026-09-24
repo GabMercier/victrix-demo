@@ -16,7 +16,7 @@
       "titleAccent": "",
       "title": "ServiceNow: the Platform to Unify and Streamline Workflows",
       "titleHighlight": "",
-      "lead": "ServiceNow connects people, data, and technology to break down silos and automate repetitive tasks.",
+      "lead": "<a href=\"/en/services/productivity-consulting/servicenow/\">ServiceNow</a> connects people, data, and technology to break down silos and automate repetitive tasks.",
       "ctaLabel": "Request a demo",
       "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2022/05/professional-multiethnic-young-businesspeople-work-2024-11-08-01-25-23-utc.jpg",
@@ -82,7 +82,7 @@
         {
           "number": "01",
           "title": "IT Service Management (ITSM)",
-          "text": "<strong>Standardize the intake and resolution of requests, incidents, and changes.</strong><br><br><a href=\"/en/ressources/servicenow-itsm/\"><strong>ServiceNow ITSM</strong></a>centralizes support channels, automates workflows, and keeps the knowledge base continuously up to date.<br><br><strong>Result:</strong> shorter resolution times and predictable service quality.",
+          "text": "<strong>Standardize the intake and resolution of requests, incidents, and changes.</strong><br><br><a href=\"/en/ressources/servicenow-itsm/\"><strong><a href=\"/en/ressources/servicenow-itsm/\">ServiceNow ITSM</a></strong></a>centralizes support channels, automates workflows, and keeps the knowledge base continuously up to date.<br><br><strong>Result:</strong> shorter resolution times and predictable service quality.",
           "ctaLabel": "",
           "ctaHref": "",
           "icon": "",
@@ -92,7 +92,7 @@
         {
           "number": "02",
           "title": "IT Operations Management (ITOM)",
-          "text": "<strong>Monitor infrastructure, detect anomalies, and track the performance of your IT operations.</strong><br><br><a href=\"/en/ressources/servicenow-itom/\"><strong>ServiceNow ITOM</strong></a>discovers dependencies, correlates events, and orchestrates remediation.<br><br><strong>Result: </strong>fewer interruptions and more reliable operations.",
+          "text": "<strong>Monitor infrastructure, detect anomalies, and track the performance of your IT operations.</strong><br><br><a href=\"/en/ressources/servicenow-itom/\"><strong><a href=\"/en/ressources/servicenow-itom/\">ServiceNow ITOM</a></strong></a>discovers dependencies, correlates events, and orchestrates remediation.<br><br><strong>Result: </strong>fewer interruptions and more reliable operations.",
           "ctaLabel": "",
           "ctaHref": "",
           "icon": "",
@@ -195,25 +195,26 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "Used Daily by Organizations Worldwide",
+      "intro": "Overall rating: 4.3⭐⭐⭐⭐ — 2,056 verified reviews as of February 2026 (Gartner Peer Insights)",
       "fond": "ivoire",
       "items": [
         {
           "image": "",
-          "quote": "We have truly been bought into the ServiceNow platform for a number of years and are really reaping the benefits now.",
+          "quote": "We have truly been bought into the ServiceNow platform for a number of years and are really reaping the benefits now. Through automation alone, we have saved 1.5 FTE of service desk time automating routine tasks such as password resets, software provision, access management, asset management, and ticket assignments. We successfully rolled SNOW out to tech, finance, facilities, and travel, delivering efficiencies across all of those directorates.",
           "name": "Gartner Peer Insights",
-          "role": "Head of IT"
+          "role": "Head of IT — ⭐⭐⭐⭐⭐ — November 18, 2025"
         },
         {
           "image": "",
           "quote": "The ServiceNow platform is comprehensive, the CMDB is robust and we are able to integrate CIs and solve our organization's change, incidents, problems, and asset management needs.",
           "name": "Gartner Peer Insights",
-          "role": "Technology Program Manager"
+          "role": "Technology Program Manager — ⭐⭐⭐⭐⭐ — June 12, 2024"
         },
         {
           "image": "",
-          "quote": "The CSM module has made life much easier to connect with the customers and directly resolve the issues they have on their plate.",
+          "quote": "The CSM module has made life much easier to connect with the customers and directly resolve the issues they have on their plate. While the initial phase of learning and alignment takes a bit of time, the long-term team benefits in terms of scalability, automation, and improved customer experience have made the journey worthwhile.",
           "name": "Gartner Peer Insights",
-          "role": "Technical Consultant"
+          "role": "Technical Consultant — ⭐⭐⭐⭐⭐ — September 16, 2025"
         }
       ]
     },

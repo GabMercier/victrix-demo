@@ -15,13 +15,13 @@
       "title": "adaptés à votre organisation",
       "titleHighlight": "",
       "lead": "Adoptez l’intelligence artificielle de façon sécuritaire et responsable, avec une approche qui intègre l'humain, vos processus et la gestion du changement à chaque étape. Profitez de l’accompagnement par nos consultants en IA pour sélectionner et adopter des solutions d’IA qui répondent à vos défis. Grâce à notre expertise multitechnologique, nous assurons une <strong>mise en œuvre et une adoption réussies</strong>, alignées sur vos objectifs d’affaires.",
-      "ctaLabel": "Planifiez une consultation",
+      "ctaLabel": "Échangez avec un expert en IA",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
       "overlay": "voile",
-      "image": "/images/sections/intelligence-artificielle-hero.png",
-      "imageAlt": "",
+      "image": "/wp-content/uploads/2024/08/istock-1494104649-scaled.jpg",
+      "imageAlt": "Intelligence artificielle AI",
       "imagePosition": "centre"
     },
     {
@@ -71,7 +71,7 @@
         {
           "number": "04",
           "title": "Adoption sécurisée de l’IA générative",
-          "text": "Structurez l’adoption de l’IA générative dans votre organisation grâce à un plan solide, du soutien aux utilisateurs et des formations ciblées, en mettant de l’avant les meilleures pratiques.",
+          "text": "Structurez l’adoption de l’IA générative à l’échelle de votre organisation grâce à un plan d’adoption solide, du soutien aux utilisateurs et des formations ciblées, en mettant de l’avant les meilleures pratiques et des recommandations pour le déploiement et l’optimisation de la donnée.",
           "ctaLabel": "",
           "ctaHref": "",
           "icon": "",
@@ -124,7 +124,7 @@
       "fond": "ivoire",
       "title": "Des questions sur un projet en intelligence artificielle?",
       "body": "Nos experts vous accompagnent à chaque étape pour assurer le succès de tous vos projets d’IA.",
-      "ctaLabel": "Planifiez une consultation",
+      "ctaLabel": "Consultez un spécialiste",
       "ctaHref": "/fr/contact",
       "layout": "box"
     },
@@ -207,7 +207,7 @@
           "items": [
             "Copilot Studio",
             "Azure AI Foundry",
-            "ServiceNow AI Platform"
+            "<a href=\"/fr/ressources/ia-servicenow/\">ServiceNow AI Platform</a>"
           ],
           "subgroup": {
             "label": "Sources ouvertes et locales :",
@@ -227,7 +227,7 @@
       "fond": "ivoire",
       "title": "Prêts à démarrer votre projet d’intelligence artificielle ?",
       "body": "",
-      "ctaLabel": "Planifiez une consultation",
+      "ctaLabel": "Consultez nos experts",
       "ctaHref": "/fr/contact",
       "layout": "box"
     },

@@ -12,7 +12,7 @@
       "titleAccent": "",
       "title": "Cybersecurity in the Healthcare Sector",
       "titleHighlight": "Healthcare",
-      "lead": "Victrix offers a customized cybersecurity service for the healthcare sector. Protect patient data, your connected medical devices, and your information systems against all cyber threats.",
+      "lead": "Victrix offers a customized <a href=\"/en/services/cybersecurity/\">cybersecurity service</a> for the healthcare sector. Protect patient data, your connected medical devices, and your information systems against all cyber threats.",
       "ctaLabel": "Strengthen your cybersecurity",
       "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
@@ -192,7 +192,7 @@
         {
           "label": "AlgoSec",
           "icon": "",
-          "image": "",
+          "image": "/images/logos/algosec.svg",
           "imageAlt": ""
         },
         {
@@ -210,7 +210,7 @@
         {
           "label": "Proofpoint",
           "icon": "",
-          "image": "",
+          "image": "/images/logos/proofpoint.png",
           "imageAlt": ""
         }
       ]

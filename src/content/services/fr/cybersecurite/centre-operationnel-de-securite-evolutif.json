@@ -46,7 +46,7 @@
       "aside": {
         "icon": "bouclier",
         "title": "Les avantages de notre service SOC",
-        "text": "Faites face à l’accroissement des menaces avancées, complétez votre équipe de sécurité interne avec nos experts et simplifiez l’intégration de nouvelles entités dans un contexte de croissance ou de fusion.",
+        "text": "Faites face à l’accroissement des menaces avancées (<a href=\"/fr/ressources/ransomware-rancongiciels/\">ransomwares</a>, attaques ciblées, attaques non détectées par les approches classiques), obtenez une prise en charge rapide des alertes de sécurité, complétez votre équipe de sécurité interne avec nos experts pour assurer l’évolution et la maintenance de vos outils (EDR, SIEM, CSPM), simplifiez l’intégration de vos nouvelles entités dans un contexte de croissance ou de fusion, et atteignez vos objectifs stratégiques tout en garantissant votre cybersécurité.",
         "linkLabel": "Découvrez notre expertise cybersécurité",
         "linkHref": "/fr/services/cybersecurite/",
         "image": "",
@@ -144,7 +144,7 @@
       "title": "Des services qui se distinguent de la sécurité gérée traditionnelle",
       "paragraphs": [
         "Victrix n’est pas qu’un <a href=\"/fr/services/services-ti-geres/\">fournisseur de services gérés</a>, et le SEvOC n’est pas un SOC comme les autres. Voici ce qui fait la force de notre équipe.",
-        "<strong>Expertise technologique</strong> — partenariat Microsoft Sentinel, partenariat CrowdStrike ELP (seul MSSP francophone autorisé), <a href=\"/fr/ressources/certification-iso-27001-iso-9001/\">certification ISO/IEC 27001</a> et gestion d’environnements hybrides ou complexes.",
+        "<strong>Expertise technologique</strong> — partenariat Microsoft Sentinel, partenariat CrowdStrike ELP (seul MSSP francophone autorisé), <a href=\"/fr/ressources/certification-iso-27001-iso-9001/\">certification ISO/IEC 27001</a> (sécurité de l’information encadrée par les meilleures pratiques internationales) et gestion d’environnements hybrides ou complexes.",
         "<strong>Service humain, local et enraciné</strong> — surveillance opérée 100 % localement, sans externalisation, avec interaction directe entre vos équipes internes et nos analystes attitrés ; rapports personnalisés, comités de suivi et conseils basés sur la configuration de votre environnement. ",
         "<strong>Approche flexible, collaborative et évolutive</strong> — évolution continue de la posture de sécurité (lignes directrices, revue de configurations, accompagnement dans la maturité) et accès à toute la profondeur de Victrix : appui direct de nos équipes spécialisées en infrastructure, <a href=\"/fr/services/services-infonuagiques/\">infonuagique</a>, gouvernance et réseau, sans sous-traitance externe."
       ],

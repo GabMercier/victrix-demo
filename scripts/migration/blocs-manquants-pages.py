@@ -104,10 +104,15 @@ def part_retrouvee(norme, mots_cible, longueur=4):
 # ------------------------------------------------------------------ images
 
 def cle_image(src):
-    """Nom de fichier comparable : sans dossier, sans suffixe de taille WP, sans extension."""
+    """Nom de fichier comparable : sans dossier, sans suffixe de taille WP, sans
+    extension, sans le mot « logo » ni séparateurs — `logo-paloalto.svg` (WP) et
+    `paloalto.svg` (dépôt) sont la même image ; `algosec_logo.svg` aussi."""
     nom = src.split('?')[0].split('#')[0].rstrip('/').split('/')[-1].lower()
     nom = re.sub(r'\.(jpe?g|png|webp|gif|svg|avif)$', '', nom)
-    return RE_TAILLE_WP.sub('', nom)
+    nom = RE_TAILLE_WP.sub('', nom)
+    nom = re.sub(r'(^|[-_])logo([-_]|$)', r'\1\2', nom)
+    nom = re.sub(r'^\d+px-', '', nom)
+    return re.sub(r'[^a-z0-9]+', '', nom)
 
 
 def images_source(html):

@@ -145,25 +145,26 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "Ils font confiance aux solutions CrowdStrike Falcon",
+      "intro": "Note globale : 4,7⭐⭐⭐⭐— 509 avis vérifiés en date de février 2026 (Gartner Peer Insights)",
       "fond": "ivoire",
       "items": [
         {
           "image": "",
           "quote": "Mon expérience avec CrowdStrike Falcon Cloud Security est très positive. La plateforme est intuitive, offre de solides capacités de détection des menaces et s'intègre bien à notre infrastructure infonuagique existante. Cela a considérablement amélioré notre visibilité et nos temps de réponse.",
           "name": "Gartner Peer Insights",
-          "role": "Responsable sécurité TI et gestion du risque"
+          "role": "Responsable sécurité TI et gestion du risque — ⭐⭐⭐⭐ — 25 novembre 2025"
         },
         {
           "image": "",
           "quote": "Nous sommes très satisfaits des capacités d'Endpoint Detection & Response et du SIEM nouvelle génération. Le produit nous offre une excellente expérience pour collecter les journaux, utiliser Discover afin d'identifier les actifs gérés et non gérés, et renforcer notre visibilité.",
           "name": "Gartner Peer Insights",
-          "role": "Responsable des ventes"
+          "role": "Responsable des ventes — ⭐⭐⭐⭐⭐ — 22 novembre 2025"
         },
         {
           "image": "",
           "quote": "Très bonne expérience avec CrowdStrike. C'est un excellent produit. Ses capacités de surveillance et de réponse figurent parmi les meilleures à l'heure actuelle. Selon moi, le produit fait partie du Top 3 sur le marché.",
           "name": "Gartner Peer Insights",
-          "role": "Associé en sécurité TI et gestion du risque"
+          "role": "Associé en sécurité TI et gestion du risque — ⭐⭐⭐⭐⭐ — 13 novembre 2025"
         }
       ]
     },

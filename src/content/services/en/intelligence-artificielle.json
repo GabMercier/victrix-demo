@@ -16,8 +16,8 @@
       "lead": "Adopt artificial intelligence in a secure and responsible way, with an approach that integrates people, processes, and change management at every step. Benefit from the guidance of our consultants to select and adopt AI solutions that address your challenges. Thanks to our multi-technology expertise, we ensure <strong>successful implementation and adoption</strong>, aligned with your business objectives.",
       "ctaLabel": "Talk to an AI expert",
       "ctaHref": "/en/contact",
-      "image": "/images/sections/intelligence-artificielle-hero.png",
-      "imageAlt": ""
+      "image": "/wp-content/uploads/2024/08/istock-1494104649-scaled.jpg",
+      "imageAlt": "Artificial intelligence AI"
     },
     {
       "_bookshop_name": "numbered-cards",
@@ -35,24 +35,40 @@
       "items": [
         {
           "number": "01",
-          "title": "Exploring and analyzing opportunities",
-          "text": "Identify and prioritize the most promising use cases, then build a clear roadmap to launch your first concrete AI initiatives.",
+          "title": "Strategic and applied AI consulting",
+          "text": "Build a solid foundation to help your organization move forward with AI. We start with your actual business needs, prioritize high-value initiatives, and drive them to success using our core expertise.",
+          "ctaLabel": "Discover the service",
+          "ctaHref": "/en/services/artificial-intelligence/consulting/",
           "icon": "",
           "image": "",
           "imageAlt": ""
         },
         {
           "number": "02",
-          "title": "Developing custom AI agents and solutions",
-          "text": "Design and deploy precise solutions to automate or optimize your priority processes, with end-to-end guidance from prototype to deployment.",
+          "title": "Exploring and analyzing opportunities",
+          "text": "Identify and prioritize the most promising use cases, then build a clear roadmap to launch your first concrete AI initiatives.",
+          "ctaLabel": "Discover the service",
+          "ctaHref": "/en/services/artificial-intelligence/ai-opportunity-analysis/",
           "icon": "",
           "image": "",
           "imageAlt": ""
         },
         {
           "number": "03",
+          "title": "Developing custom AI agents and solutions",
+          "text": "Design and deploy precise solutions to automate or optimize your priority processes, with end-to-end guidance from prototype to deployment.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "04",
           "title": "Secure adoption of generative AI",
-          "text": "Structure the adoption of generative AI across your organization through a solid plan, user support, and targeted training, putting best practices front and centre.",
+          "text": "Structure the adoption of generative AI across your organization through a solid adoption plan, user support, and targeted training, putting best practices front and centre, along with recommendations for data deployment and optimization.",
+          "ctaLabel": "",
+          "ctaHref": "",
           "icon": "",
           "image": "",
           "imageAlt": ""
@@ -161,7 +177,7 @@
           "title": "Integrated agents",
           "href": "",
           "items": [
-            "Copilot 365",
+            "<a href=\"/en/services/productivity-consulting/copilot-for-microsoft-365/\">Copilot 365</a>",
             "Copilot (Dynamics 365)",
             "ChatGPT",
             "NowAssist (ServiceNow)"
@@ -171,9 +187,9 @@
           "title": "Technologies and development environments",
           "href": "",
           "items": [
-            "Copilot Studio",
+            "<a href=\"/en/services/productivity-consulting/copilot-studio/\">Copilot Studio</a>",
             "Azure AI Foundry",
-            "ServiceNow AI Platform"
+            "<a href=\"/en/ressources/servicenow-ai/\">ServiceNow AI Platform</a>"
           ],
           "subgroup": {
             "label": "Open-source and local:",
@@ -247,7 +263,7 @@
       "title": "Victrix accelerates AI adoption in your organization",
       "fond": "ivoire",
       "paragraphs": [
-        "Driven by an <strong>ecosystem of expertise</strong> that spans technology, data governance, cybersecurity, and managed services, Victrix is your strategic partner for managing your AI projects.",
+        "Driven by an <strong>ecosystem of expertise</strong> that spans technology, data governance, <a href=\"/en/services/cybersecurity/\">cybersecurity</a>, and <a href=\"/en/services/managed-it-services/\">managed services</a>, Victrix is your strategic partner for managing your AI projects.",
         "Our artificial intelligence support simplifies deployment, strategy, and your <strong>AI roadmap</strong>, whatever your level of maturity."
       ]
     },

@@ -156,6 +156,40 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "logo-banner",
+      "type": "logo-banner",
+      "fond": "ivoire",
+      "title": "",
+      "badge": "",
+      "items": [
+        {
+          "name": "Power Apps",
+          "logo": "/wp-content/uploads/2023/04/powerapps-e1682653932539.png",
+          "description": ""
+        },
+        {
+          "name": "Power Automate",
+          "logo": "/wp-content/uploads/2023/04/powerautomate-e1682654293739.png",
+          "description": ""
+        },
+        {
+          "name": "Power BI",
+          "logo": "/wp-content/uploads/2023/04/powerbi-e1682654312943.png",
+          "description": ""
+        },
+        {
+          "name": "Microsoft Teams",
+          "logo": "/wp-content/uploads/2022/03/teams.png",
+          "description": ""
+        },
+        {
+          "name": "Microsoft Outlook",
+          "logo": "/wp-content/uploads/2023/04/microsoft_office_outlook_.png",
+          "description": ""
+        }
+      ]
+    },
+    {
       "_bookshop_name": "cta",
       "type": "cta",
       "title": "Adopt an office application",

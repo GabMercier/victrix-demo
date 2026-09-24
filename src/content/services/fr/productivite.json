@@ -16,8 +16,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "Découvrez nos solutions",
       "cta2Href": "/fr/produits",
-      "image": "/images/sections/expertises-hero.jpg",
-      "imageAlt": "",
+      "image": "/wp-content/uploads/2023/11/gestion-des-processus-et-productivite.jpg",
+      "imageAlt": "Gestion de la productivité — concept",
       "titleHighlight": "la productivité",
       "overlay": "blanc"
     },
@@ -52,6 +52,15 @@
       ]
     },
     {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Nos technologies",
+      "fond": "ivoire",
+      "paragraphs": [
+        "Victrix offre plusieurs outils pour augmenter l’efficacité au travail. Nos spécialistes maîtrisent notamment les solutions de productivité suivantes :"
+      ]
+    },
+    {
       "_bookshop_name": "tech-marquee",
       "type": "tech-marquee",
       "ariaLabel": "Technologies maîtrisées",
@@ -63,6 +72,8 @@
         "Sharepoint",
         "PowerApps",
         "PowerAutomate",
+        "Forms",
+        "Planner",
         "OneDrive",
         "Copilot",
         "Dynamics 365"
@@ -105,7 +116,7 @@
       "fond": "ivoire",
       "eyebrow": "Domaines d'expertise",
       "title": "Une vision 360° de votre productivité numérique",
-      "intro": "Des solutions idéales pour simplifier les tâches quotidiennes et bénéficier d'un gain de temps immédiat.",
+      "intro": "Des solutions idéales pour simplifier les tâches quotidiennes et bénéficier d'un gain de temps immédiat. Nos expertises couvrent aussi la recherche (Delve) et la migration de contenu.",
       "items": [
         {
           "title": "Intranet Moderne",
@@ -170,7 +181,9 @@
       "title": "Victrix soutient les entreprises dans l’amélioration de la productivité",
       "paragraphs": [
         "Victrix est spécialisée en <a href=\"/fr/services/conseil-strategique/\">stratégie TI et d'affaires</a>. Nous sommes en mesure de vous offrir les meilleures solutions pour <strong>augmenter votre productivité</strong>, toujours en priorisant vos besoins, vos objectifs et vos utilisateurs.",
-        "Notre méthodologie se veut agile, évolutive et transparente. Tout se déroule dans la collaboration et la synergie, tout en respectant votre image de marque."
+        "Notre méthodologie se veut agile, évolutive et transparente. Tout se déroule dans la collaboration et la synergie, tout en respectant votre image de marque.",
+        "Nous offrons notre expertise pour plusieurs éléments qui influencent la productivité de l’entreprise. Victrix trouve les <strong>solutions idéales pour simplifier les tâches quotidiennes</strong> de vos salariés et vous permettre de bénéficier d’un gain de temps.",
+        "De l’implémentation d’un intranet moderne ou d'une <a href=\"/fr/services/productivite/dynamics-365-field-service/\">solution de gestion des opérations terrain</a> au <a href=\"/fr/services/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/\">développement M365</a>, faites confiance à notre équipe."
       ]
     },
     {

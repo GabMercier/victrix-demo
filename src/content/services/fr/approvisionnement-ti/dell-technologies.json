@@ -155,25 +155,26 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "Une fiabilité reconnue par les utilisateurs",
+      "intro": "Note globale : 4,7 ⭐⭐⭐⭐— 328 avis vérifiés en date de février 2026. La note et le volume d'avis varient selon la catégorie de produits. (Gartner Peer Insights)",
       "fond": "ivoire",
       "items": [
         {
           "image": "",
           "quote": "Dell PowerEdge Blades est un bon produit, durable et bien adapté à nos besoins. Il dure plusieurs années, ce qui permet de réduire les coûts jusqu’au renouvellement. Ce que j’apprécie le plus concerne le produit lui-même, mais le service Dell répond également à de bons standards.",
           "name": "Gartner Peer Insights",
-          "role": "Technicien TI"
+          "role": "Technicien TI — ⭐⭐⭐⭐ — 2 décembre 2025"
         },
         {
           "image": "",
           "quote": "Dell PowerFlex est une solution de stockage définie par logiciel, évolutive, qui offre de solides performances et une grande flexibilité pour les charges de travail de stockage par blocs en entreprise. Elle fonctionne bien dans des environnements à grande échelle, mais nécessite une mise en place et une gestion réalisées par des ressources qualifiées.",
           "name": "Gartner Peer Insights",
-          "role": "Ingénieur stagiaire"
+          "role": "Ingénieur stagiaire — ⭐⭐⭐⭐ — 29 janvier 2026"
         },
         {
           "image": "",
           "quote": "Dell VxRail est une solution fiable pour les infrastructures hyperconvergées. Son intégration fluide avec VMware facilite le déploiement et la gestion des environnements virtualisés. Les performances sont constamment élevées.",
           "name": "Gartner Peer Insights",
-          "role": "Ingénieur"
+          "role": "Ingénieur — ⭐⭐⭐⭐⭐ — 11 février 2026"
         }
       ]
     },

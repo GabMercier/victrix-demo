@@ -16,7 +16,7 @@
       "titleAccent": "",
       "title": "Zscaler: the Cloud Platform that Redefines Trust in Security",
       "titleHighlight": "",
-      "lead": "Zscaler solutions apply the Zero Trust security model to protect access to your applications, regardless of where your teams or workloads operate. They eliminate implicit trust, reduce the attack surface, and strengthen your cybersecurity posture.",
+      "lead": "Zscaler solutions apply the <a href=\"/en/services/cybersecurity/\">Zero Trust security model</a> to protect access to your applications, regardless of where your teams or workloads operate. They eliminate implicit trust, reduce the attack surface, and strengthen your cybersecurity posture.",
       "ctaLabel": "Request a demo",
       "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2022/05/futuristic-technology-concept.jpg",
@@ -155,25 +155,26 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "The Impact of Zscaler Zero Trust Solutions, According to Their Users",
+      "intro": "Overall rating: 4.7⭐⭐⭐⭐— 1,158 verified reviews as of February 2026 (Gartner Peer Insights)",
       "fond": "ivoire",
       "items": [
         {
           "image": "",
           "quote": "A powerful cloud-native security platform that delivers excellent protection and seamless remote access once deployed. Solid zero-trust solution with strong security outcomes. The setup and cost can be demanding but the visibility and risk reduction are worth it for large enterprises.",
           "name": "Gartner Peer Insights",
-          "role": "IT Network Security Associate"
+          "role": "IT Network Security Associate — ⭐⭐⭐⭐⭐ — October 31, 2025"
         },
         {
           "image": "",
           "quote": "Zscaler Internet Access is a cloud-based security solution that provides secure and stable threat protection and web filtering. It effectively safeguards users from malware, phishing and data loss. The integration with the secure access system enhances overall performance, stability and security.",
           "name": "Gartner Peer Insights",
-          "role": "SR. Product Manager"
+          "role": "SR. Product Manager — ⭐⭐⭐⭐ — June 22, 2025"
         },
         {
           "image": "",
           "quote": "Our overall experience with Zscaler Internet Access has been great, we use Zscaler as our proxy and introducing ZIA as the main component where we are able to manage all the policies, track the web insights and FW insights is definitely making the job easy and centralized in one place.",
           "name": "Gartner Peer Insights",
-          "role": "IT Manager"
+          "role": "IT Manager — ⭐⭐⭐⭐⭐ — June 21, 2025"
         }
       ]
     },

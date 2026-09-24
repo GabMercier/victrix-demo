@@ -16,7 +16,7 @@
       "titleAccent": "",
       "title": "Protect Your Business with Check Point Cybersecurity Solutions",
       "titleHighlight": "",
-      "lead": "Check Point solutions, distributed by Victrix, enable organizations to counter the most sophisticated cyber threats with a unified approach that protects the:",
+      "lead": "Check Point solutions, distributed by Victrix, enable organizations to <a href=\"/en/services/cybersecurity/\">counter the most sophisticated cyber threats</a> with a unified approach that protects the:",
       "ctaLabel": "Request a demo",
       "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2022/02/securite-mode-realisation.jpg",
@@ -81,7 +81,7 @@
         {
           "number": "01",
           "title": "Hybrid Mesh",
-          "text": "<strong>Protect your infrastructure and ensure compliance across your data centres, cloud environments, and interconnections. </strong><br><br>Formerly known as Network Security, Quantum Security, and Cloud Guard, <strong>Hybrid Mesh</strong> is a unique architecture that combines unified control, centralized policies, and distributed deployment from data centres to the cloud, branches, and remote users.<br><br><strong>Result:</strong> consistent data protection, enhanced regulatory compliance, and simplified network perimeter management.",
+          "text": "<strong>Protect your infrastructure and ensure compliance across your data centres, <a href=\"/en/services/cloud-services-provider/\">cloud</a> environments, and interconnections. </strong><br><br>Formerly known as Network Security, Quantum Security, and Cloud Guard, <strong>Hybrid Mesh</strong> is a unique architecture that combines unified control, centralized policies, and distributed deployment from data centres to the cloud, branches, and remote users.<br><br><strong>Result:</strong> consistent data protection, enhanced regulatory compliance, and simplified network perimeter management.",
           "ctaLabel": "",
           "ctaHref": "",
           "icon": "",
@@ -121,7 +121,7 @@
         {
           "number": "05",
           "title": "Access and Identity",
-          "text": "<strong>Apply </strong><a href=\"/en/services/cybersecurity/zero-trust/\"><strong>Zero Trust</strong></a><strong> principles across your entire organization. </strong><br><br><strong>CheckPoint SASE </strong>(<a href=\"/en/ressources/sase-cloud/\">Secure Access solutions</a>)control every connection and enforce least privilege based on risk level.<br><br><strong>Result:</strong> controlled access to critical data and applications wherever your users are located.",
+          "text": "<strong>Apply </strong><a href=\"/en/services/cybersecurity/zero-trust/\"><strong><a href=\"/en/services/cybersecurity/zero-trust/\">Zero Trust</a></strong></a><strong> principles across your entire organization. </strong><br><br><strong>CheckPoint SASE </strong>(<a href=\"/en/ressources/sase-cloud/\"><a href=\"/en/ressources/sase-cloud/\">Secure Access solutions</a></a>)control every connection and enforce least privilege based on risk level.<br><br><strong>Result:</strong> controlled access to critical data and applications wherever your users are located.",
           "ctaLabel": "",
           "ctaHref": "",
           "icon": "",
@@ -144,25 +144,26 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "Trusted by 100,000+ organizations across more than 60 industries",
+      "intro": "Overall rating: 4.5⭐⭐⭐⭐½—2,535 verified reviews as of May 2026 (Gartner Peer Insights)",
       "fond": "ivoire",
       "items": [
         {
           "image": "",
           "quote": "Our overall experience with Check Point Hybrid Mesh (Quantum) has been highly reliable. It provided robust perimeter defense and deep packet inspection for our enterprise network.",
           "name": "Gartner Peer Insights",
-          "role": "IT Security & Risk Management Associate"
+          "role": "IT Security & Risk Management Associate — ⭐⭐⭐⭐⭐ — May 5, 2026"
         },
         {
           "image": "",
-          "quote": "It is my overall experience with Check Point Hybrid Mesh (CP cloudGuard, Network Security) has been positive, especially in environments requiring strong, scalable, cloud-native protection.",
+          "quote": "It is my overall experience with Check Point Hybrid Mesh (CP cloudGuard, Network Security) has been positive, especially in environments requiring strong, scalable, cloud-native protection. Hybrid Mesh provides deep visibility, consistent policy enforcement, and robust threat prevention across multi-cloud architectures, which makes it strong choice for organizations with hybrid or complex cloud setups.",
           "name": "Gartner Peer Insights",
-          "role": "IT Security & Risk Management Associate"
+          "role": "IT Security & Risk Management Associate — ⭐⭐⭐⭐ — February 20, 2026"
         },
         {
           "image": "",
           "quote": "Our experience with Check Point Workspace Security Platform (Harmony Endpoint) has been consistently strong. It provides a high level of security without being overly intrusive to end-users.",
           "name": "Gartner Peer Insights",
-          "role": "System Engineer—IT Incharge"
+          "role": "System Engineer—IT Incharge — ⭐⭐⭐⭐ — February 17, 2026"
         }
       ]
     },

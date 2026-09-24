@@ -1208,6 +1208,9 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('testimonial-cards'),
       title: z.string().default(''),
+      // Texte sous le titre (2026-09-24) : la note globale Gartner Peer Insights
+      // des fiches fournisseurs (« Note globale : 4,3 ⭐ — 2 056 avis vérifiés »).
+      intro: z.string().default(''),
       // Défaut « brume » (#e5e7eb) = l'ancien bg-surface-container-high.
       fond: fondClair.default('brume'),
       items: z

@@ -1,5 +1,6 @@
 ---
 import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { inlineHtml } from '../../shared/rich';
 /**
  * Section « Colonnes de technologies » — composant Bookshop (P-07).
  * RE-SKIN DESIGN SYSTEM 2026-08-05 : tête centrée 40/700 + liseré bleu 64×4
@@ -9,6 +10,9 @@ import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
  *
  * Props : { type: "tech-columns", sectionTitle,
  *           groups: [{ title, items: string[], subgroup?: { label, items } }] }
+ *   Un item peut porter un lien en ligne (`<a href="…">…</a>`, rendu via
+ *   inlineHtml) : l'ancien site liait certains outils à leur page ou à un
+ *   article, la remise du 2026-09-24 les rétablit.
  *
  * Contraintes / pièges :
  * - <h2> de section, <h3> par colonne : le <h1> unique appartient au héros.
@@ -57,14 +61,14 @@ const { sectionTitle, groups = [], fond = 'ivoire' } = Astro.props;
             </h3>
             <ul role="list" class="list-disc pl-6 m-0 flex flex-col gap-2 text-base leading-[1.625rem] text-on-surface-variant [&_li]:m-0 [&_li::marker]:text-primary">
               {(group.items ?? []).map((it) => (
-                <li>{it}</li>
+                <li set:html={inlineHtml(it)} />
               ))}
               {group.subgroup && (group.subgroup.label || (group.subgroup.items ?? []).length > 0) && (
                 <li>
                   {group.subgroup.label}
                   <ul role="list" class="list-disc pl-6 mt-2 flex flex-col gap-2">
                     {(group.subgroup.items ?? []).map((s) => (
-                      <li>{s}</li>
+                      <li set:html={inlineHtml(s)} />
                     ))}
                   </ul>
                 </li>

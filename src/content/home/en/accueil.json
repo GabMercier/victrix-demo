@@ -14,7 +14,8 @@
       "ctaHref": "/en/expertises",
       "image": "/images/home/hero-accueil.webp",
       "cta2Label": "Talk to an expert",
-      "cta2Href": "/en/contact"
+      "cta2Href": "/en/contact",
+      "lead": "Improve your cybersecurity and optimize your processes with Victrix. Benefit from our industry-leading expertise in <strong>managed IT</strong>, <strong>cloud</strong>, and <strong>AI governance</strong> to drive your business and stay at the technological forefront of your industry."
     },
     {
       "_bookshop_name": "home-iso",
@@ -62,7 +63,7 @@
           "number": "03",
           "title": "AI and Automation",
           "accent": "#1a5bff",
-          "description": "Put AI to work in your business processes, within a clear governance framework.",
+          "description": "Put AI to work in your business processes, within a clear governance framework: exploration and analysis of opportunities, development of custom AI agents and solutions, secure adoption of generative AI.",
           "href": "/en/services/artificial-intelligence",
           "image": "",
           "variant": "bleue",
@@ -73,7 +74,7 @@
           "number": "04",
           "title": "Cloud",
           "accent": "#1a5bff",
-          "description": "Modernize your infrastructure and scale your cloud environments at your own pace.",
+          "description": "Modernize your infrastructure and scale your cloud environments at your own pace: multi-cloud roadmap, opportunity study (IaaS, PaaS, SaaS), security posture analysis, migration to a cloud platform (AWS, Azure).",
           "href": "/en/services/cloud-services-provider",
           "image": "",
           "variant": "image",
@@ -146,7 +147,7 @@
         },
         {
           "title": "SEvOC",
-          "text": "A traditional SOC hands you alerts and stops there. SEvOC takes them off your hands and keeps your security posture improving, backed by dedicated bilingual analysts and our infrastructure and cloud teams.",
+          "text": "A traditional SOC hands you alerts and stops there. SEvOC takes them off your hands and keeps your security posture improving, backed by dedicated bilingual analysts and our infrastructure and cloud teams. Unlike a traditional SOC, our scalable and modular offering allows you to remain at the forefront of security technologies.",
           "image": "/images/home/sevoc.png",
           "href": "/en/services/cybersecurity/scalable-security-operations-center",
           "ctaLabel": "Discover SEvOC",

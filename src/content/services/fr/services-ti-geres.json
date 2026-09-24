@@ -55,7 +55,7 @@
       "fond": "ivoire",
       "featured": {
         "title": "Une gestion TI sans compromis",
-        "text": "<strong>Réduisez vos coûts d'exploitation, renforcez votre sécurité, accélérez votre transformation numérique et augmentez la productivité de votre équipe TI interne.</strong> Notre offre de services gérés TI permet à vos équipes de se concentrer sur les fonctions essentielles et d'accroître votre efficacité globale.",
+        "text": "<strong>Réduisez vos coûts d'exploitation, <a href=\"/fr/services/cybersecurite/\">renforcez votre sécurité</a>, accélérez votre transformation numérique et augmentez la productivité de votre équipe TI interne.</strong> Notre offre de services gérés TI permet à vos équipes de se concentrer sur les fonctions essentielles et d'accroître votre efficacité globale.",
         "watermark": "engrenage",
         "stats": []
       },
@@ -288,7 +288,7 @@
         },
         {
           "question": "Quelles certifications reconnues possède Victrix?",
-          "answer": "Victrix possède la certification ISO/IEC 27001:2022 et ISO 9001:2015, qui témoignent de notre engagement envers la sécurité de l'information et la qualité de nos systèmes de gestion."
+          "answer": "Victrix possède la <a href=\"/fr/ressources/certification-iso-27001-iso-9001/\">certification ISO/IEC 27001:2022 et ISO 9001:2015</a>, qui témoignent de notre engagement envers la sécurité de l'information et la qualité de nos systèmes de gestion."
         }
       ]
     },

@@ -16,7 +16,7 @@
       "titleAccent": "",
       "title": "Protégez votre entreprise avec les solutions de cybersécurité Check Point",
       "titleHighlight": "",
-      "lead": "Les solutions Check Point, distribuées par Victrix, permettent aux organisations de contrer les cybermenaces les plus sophistiquées grâce à une approche unifiée qui protège",
+      "lead": "Les solutions Check Point, distribuées par Victrix, permettent aux organisations de <a href=\"/fr/services/cybersecurite/\">contrer les cybermenaces</a> les plus sophistiquées grâce à une approche unifiée qui protège",
       "ctaLabel": "Demandez une démo",
       "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2022/02/securite-mode-realisation.jpg",
@@ -81,7 +81,7 @@
         {
           "number": "01",
           "title": "Hybrid Mesh",
-          "text": "<strong>Protégez vos infrastructures et garantissez la conformité de vos centres de données, de vos environnements infonuagiques et de vos interconnexions. </strong><br><br>Anciennement connu sous les noms Network Security, Quantum Security et Cloud Guard, <strong>Hybrid Mesh</strong> est une architecture unique qui allie contrôle unifié, politiques centralisées et déploiement distribué des centres de données au nuage, aux filiales et aux utilisateurs distants.<br><br><strong>Résultat :</strong> une protection uniforme de vos données, une conformité règlementaire renforcée et une gestion simplifiée du périmètre réseau.",
+          "text": "<strong>Protégez vos infrastructures et garantissez la conformité de vos centres de données, de vos environnements infonuagiques et de vos interconnexions. </strong><br><br>Anciennement connu sous les noms Network Security, Quantum Security et Cloud Guard, <strong>Hybrid Mesh</strong> est une architecture unique qui allie contrôle unifié, politiques centralisées et déploiement distribué des centres de données au <a href=\"/fr/services/services-infonuagiques/\">nuage</a>, aux filiales et aux utilisateurs distants.<br><br><strong>Résultat :</strong> une protection uniforme de vos données, une conformité règlementaire renforcée et une gestion simplifiée du périmètre réseau.",
           "ctaLabel": "",
           "ctaHref": "",
           "icon": "",
@@ -121,7 +121,7 @@
         {
           "number": "05",
           "title": "Accès et identité",
-          "text": "<strong>Appliquez les principes du « </strong><a href=\"/fr/services/cybersecurite/zero-trust/\"><strong>Zero Trust</strong></a><strong>» à l'ensemble de votre organisation. </strong><br><br>Les <a href=\"/fr/ressources/sase-cloud/\">solutions d'accès sécurisé</a> <strong>Check Point SASE </strong>contrôlent et applique le principe du moindre privilège en fonction du niveau de risque.<br><br><strong>Résultat :</strong> un accès contrôlé aux données et applications critiques, où que se trouvent vos utilisateurs.",
+          "text": "<strong>Appliquez les principes du « </strong><a href=\"/fr/services/cybersecurite/zero-trust/\"><strong><a href=\"/fr/services/cybersecurite/zero-trust/\">Zero Trust</a></strong></a><strong>» à l'ensemble de votre organisation. </strong><br><br>Les <a href=\"/fr/ressources/sase-cloud/\"><a href=\"/fr/ressources/sase-cloud/\">solutions d'accès sécurisé</a></a> <strong>Check Point SASE </strong>contrôlent et applique le principe du moindre privilège en fonction du niveau de risque.<br><br><strong>Résultat :</strong> un accès contrôlé aux données et applications critiques, où que se trouvent vos utilisateurs.",
           "ctaLabel": "",
           "ctaHref": "",
           "icon": "",
@@ -144,25 +144,26 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "Une fiabilité reconnue par plus de 100 000 organisations réparties dans plus d’une soixantaine de secteurs",
+      "intro": "Note globale : 4,5⭐⭐⭐⭐½ — 2 535 avis vérifiés en date de mai 2026 (Gartner Peer Insights)",
       "fond": "ivoire",
       "items": [
         {
           "image": "",
           "quote": "Notre expérience globale avec Check Point Hybrid Mesh (Quantum) s'est avérée extrêmement fiable. La solution a assuré une défense robuste du périmètre et une inspection approfondie des paquets pour notre réseau d'entreprise",
           "name": "Gartner Peer Insights",
-          "role": "Associé en sécurité TI et gestion des risques"
+          "role": "Associé en sécurité TI et gestion des risques — ⭐⭐⭐⭐⭐ — 5 mai 2026"
         },
         {
           "image": "",
-          "quote": "Mon expérience globale avec Hybrid Mesh (CloudGuard, Network Security) a été positive, en particulier dans les environnements nécessitant une protection solide, évolutive et native du nuage.",
+          "quote": "Mon expérience globale avec Hybrid Mesh (CloudGuard, Network Security) a été positive, en particulier dans les environnements nécessitant une protection solide, évolutive et native du nuage. Hybrid Mesh offre une visibilité approfondie, une application cohérente des politiques et une prévention robuste des menaces dans les architectures multicloud, ce qui en fait un choix idéal pour les organisations disposant d'infrastructures infonuagiques hybrides ou complexes.",
           "name": "Gartner Peer Insights",
-          "role": "Responsable de la sécurité TI et de la gestion des risques"
+          "role": "Responsable de la sécurité TI et de la gestion des risques — ⭐⭐⭐⭐ — 20 février 2026"
         },
         {
           "image": "",
           "quote": "Notre expérience avec Workspace Security Platform (Harmony Endpoint) s'est toujours avérée très positive. La plateforme offre un niveau de sécurité élevé sans pour autant être trop intrusive pour les utilisateurs finaux.",
           "name": "Gartner Peer Insights",
-          "role": "Ingénieur système et responsable TI"
+          "role": "Ingénieur système et responsable TI — ⭐⭐⭐⭐ — 17 février 2026"
         }
       ]
     },

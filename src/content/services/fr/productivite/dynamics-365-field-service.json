@@ -204,6 +204,25 @@
       "fond": ""
     },
     {
+      "_bookshop_name": "logo-banner",
+      "type": "logo-banner",
+      "fond": "ivoire",
+      "title": "Nos certifications et désignations",
+      "badge": "",
+      "items": [
+        {
+          "name": "Microsoft Solutions Partner — Espace de travail moderne",
+          "logo": "/wp-content/uploads/2023/08/espacetravail-1-300x161.png",
+          "description": ""
+        },
+        {
+          "name": "Microsoft Solutions Partner — Sécurité",
+          "logo": "/wp-content/uploads/2026/06/designation-securite-300x276.png",
+          "description": ""
+        }
+      ]
+    },
+    {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
       "fond": "",

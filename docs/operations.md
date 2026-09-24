@@ -240,6 +240,34 @@ widgets, hors décompte. Première passe : 87 pages sur 89 avec un écart —
 Lecture et suites : `docs/migration/statut-import.md`. Il n'écrit rien dans
 `src/content`.
 
+**Première passe de remise (lot L-restaure-pages, 2026-09-24, nuit).** Ordre =
+le classeur de Julie (pages « visible + indexable » d'abord), FR et EN ensemble,
+par lots de 6 à 18 pages, chaque lot = un script Python jetable (scratchpad)
+qui charge/sauve le JSON (`json.dumps(indent=2, ensure_ascii=False)` + saut de
+ligne final) — jamais de réécriture en masse. Résultat sur 89 pages : blocs
+absents 216 → 100 (mots 1 757 → 631), paragraphes amputés 103 → 82, liens
+perdus 106 → 13, images de héros remplacées 17 → 13 (les 13 restantes sont des
+CHOIX de design ou des pages assumées : accueil, Carrières, Découvrir, Ø Studio,
+centre de ressources, Azure, AWS, campagne Licences, démo Ø Bureau EN). Ce qui
+reste dans le rapport est nommé dans `docs/migration/statut-import.md` § 7.
+Trois retouches de composants ont été nécessaires, toutes « browser-safe » :
+`tech-columns` rend ses items via `inlineHtml` (un item peut porter un lien —
+l'ancien site liait « ServiceNow AI Platform » à son article) ;
+`bento-metrics` rend `aside.text` via `inlineHtml` (il l'affichait en texte
+brut : la fiche Copilot 365 FR montrait une balise de lien telle quelle en
+production) ; `testimonial-cards` gagne un champ `intro` (texte sous le titre =
+la note globale Gartner Peer Insights des 18 fiches fournisseurs ; zod +
+bookshop.yml + clé `intro` dans `KEYS` du rétro-remplissage → 66 fichiers
+rétro-remplis). Images : `extract-source-page.py --images` rapatrie TOUT
+(logos compris) sous `public/wp-content/…` ; ne garder que ce que
+`src/content` référence (112 fichiers, 25,6 Mo supprimés cette nuit) puis
+`npm run optimize:images`. Pièges payés : un lien posé par recherche de mot
+doit se limiter à `sections` (le slug de Palo Alto EN et le H1 de ServiceNow
+en ont reçu un — build cassé) ; une date d'avis Gartner contient un chiffre
+(sinon le titre de poste est pris pour une date) ; le heredoc bash dé-échappe
+les barres obliques inverses d'un script Python → écrire le script dans un
+fichier (CLAUDE.md, pièges).
+
 L'outil juge le TEXTE, pas la FORME : un encadré rendu en paragraphe simple,
 une FAQ aplatie en titres ou une bannière devenue un lien nu comptent comme
 présents. C'est un sujet distinct (composants d'article).

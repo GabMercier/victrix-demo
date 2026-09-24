@@ -16,7 +16,7 @@
       "titleAccent": "",
       "title": "Zscaler : la plateforme infonuagique qui redéfinit la confiance en sécurité",
       "titleHighlight": "",
-      "lead": "Les solutions Zscaler appliquent le modèle de sécurité zéro confiance pour protéger l’accès à vos applications, peu importe l’emplacement de vos équipes ou de vos charges de travail. Elles éliminent la confiance implicite, réduisent la surface d’attaque et renforcent votre posture de cybersécurité.",
+      "lead": "Les solutions Zscaler appliquent le <a href=\"/fr/services/cybersecurite/\">modèle de sécurité zéro confiance</a> pour protéger l’accès à vos applications, peu importe l’emplacement de vos équipes ou de vos charges de travail. Elles éliminent la confiance implicite, réduisent la surface d’attaque et renforcent votre posture de cybersécurité.",
       "ctaLabel": "Demandez une démo",
       "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2022/05/futuristic-technology-concept.jpg",
@@ -155,25 +155,26 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "L’impact des solutions zéro confiance de Zscaler selon leurs utilisateurs",
+      "intro": "Note globale : 4,7⭐⭐⭐⭐— 1158 avis vérifiés en février 2026 (Gartner Peer Insights)",
       "fond": "ivoire",
       "items": [
         {
           "image": "",
           "quote": "Une plateforme de sécurité en nuage performante qui offre une excellente protection et un accès à distance fluide une fois déployée. Une solution à zéro confiance solide avec de très bons résultats en sécurité. La configuration et les coûts peuvent être exigeants, mais la visibilité et la réduction du risque en valent la peine pour les grandes entreprises.",
           "name": "Gartner Peer Insights",
-          "role": "Associé sécurité des réseaux TI"
+          "role": "Associé sécurité des réseaux TI — ⭐⭐⭐⭐⭐ — 31 octobre 2025"
         },
         {
           "image": "",
           "quote": "Zscaler Internet Access est une solution en nuage qui fournit une protection fiable contre les menaces et un filtrage web efficace. Elle protège contre les logiciels malveillants, l’hameçonnage et la perte de données. L’intégration au système d’accès sécurisé améliore la performance, la stabilité et la sécurité.",
           "name": "Gartner Peer Insights",
-          "role": "Directeur de produit"
+          "role": "Directeur de produit — ⭐⭐⭐⭐ — 22 juin 2025"
         },
         {
           "image": "",
           "quote": "Notre expérience avec Zscaler Internet Access est très positive. Nous utilisons Zscaler comme proxy, et l’ajout de ZIA pour centraliser la gestion des politiques et suivre les activités web et pare-feu simplifie grandement le travail quotidien. Tout se gère en un seul endroit.",
           "name": "Gartner Peer Insights",
-          "role": "Directeur TI"
+          "role": "Directeur TI — ⭐⭐⭐⭐⭐ — 21 juin 2025"
         }
       ]
     },

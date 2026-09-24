@@ -16,7 +16,7 @@
       "titleAccent": "",
       "title": "ServiceNow : la plateforme pour unifier la gestion des flux de travail",
       "titleHighlight": "",
-      "lead": "ServiceNow connecte les personnes, les données et les technologies pour réduire les silos et automatiser les tâches répétitives.",
+      "lead": "<a href=\"/fr/services/productivite/servicenow/\">ServiceNow</a> connecte les personnes, les données et les technologies pour réduire les silos et automatiser les tâches répétitives.",
       "ctaLabel": "Demandez une démo",
       "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2022/05/professional-multiethnic-young-businesspeople-work-2024-11-08-01-25-23-utc.jpg",
@@ -82,7 +82,7 @@
         {
           "number": "01",
           "title": "Gestion des services informatiques (ITSM)",
-          "text": "<strong>Standardisez la prise en charge des demandes, des incidents et des changements.</strong><br><br><a href=\"/fr/ressources/servicenow-itsm/\"><strong>ServiceNow ITSM</strong></a> centralise les canaux de soutien, automatise les flux de travail et maintient une base de connaissances enrichie en continu.<br><br><strong>Résultat :</strong> des délais de résolution réduits et une qualité de service prévisible..",
+          "text": "<strong>Standardisez la prise en charge des demandes, des incidents et des changements.</strong><br><br><a href=\"/fr/ressources/servicenow-itsm/\"><strong><a href=\"/fr/ressources/servicenow-itsm/\">ServiceNow ITSM</a></strong></a> centralise les canaux de soutien, automatise les flux de travail et maintient une base de connaissances enrichie en continu.<br><br><strong>Résultat :</strong> des délais de résolution réduits et une qualité de service prévisible..",
           "ctaLabel": "",
           "ctaHref": "",
           "icon": "",
@@ -92,7 +92,7 @@
         {
           "number": "02",
           "title": "Gestion des opérations informatiques (ITOM)",
-          "text": "<strong>Supervisez l'infrastructure, détectez les anomalies et suivez la performance de vos opérations TI. </strong><br><br><a href=\"/fr/ressources/servicenow-itom/\"><strong>ServiceNow ITOM</strong></a> découvre les dépendances, corrèle les évènements et orchestre la remédiation.<br><br><strong>Résultat :</strong> moins d'interruptions et une exploitation plus fiable.",
+          "text": "<strong>Supervisez l'infrastructure, détectez les anomalies et suivez la performance de vos opérations TI. </strong><br><br><a href=\"/fr/ressources/servicenow-itom/\"><strong><a href=\"/fr/ressources/servicenow-itom/\">ServiceNow ITOM</a></strong></a> découvre les dépendances, corrèle les évènements et orchestre la remédiation.<br><br><strong>Résultat :</strong> moins d'interruptions et une exploitation plus fiable.",
           "ctaLabel": "",
           "ctaHref": "",
           "icon": "",
@@ -195,25 +195,26 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "Ils utilisent ServiceNow au quotidien",
+      "intro": "Note globale : 4,3 ⭐⭐⭐⭐ — 2 056 avis vérifiés en date de février 2026 (Gartner Peer Insights)",
       "fond": "ivoire",
       "items": [
         {
           "image": "",
-          "quote": "Nous sommes pleinement investis dans la plateforme ServiceNow depuis plusieurs années et nous en récoltons maintenant les bénéfices.",
+          "quote": "Nous sommes pleinement investis dans la plateforme ServiceNow depuis plusieurs années et nous en récoltons maintenant les bénéfices. Nous économisons l'équivalent de 1,5 ETP au centre de services en automatisant des tâches routinières, comme la réinitialisation de mots de passe, l'approvisionnement logiciel, la gestion des accès, des actifs et l'assignation de billets. Nous avons déployé ServiceNow avec succès auprès des équipes TI, finances, installations et voyages, ce qui génère des gains d'efficacité dans chacune de ces directions.",
           "name": "Gartner Peer Insights",
-          "role": "Directeur TI"
+          "role": "Directeur TI — ⭐⭐⭐⭐⭐ — 18 novembre 2025"
         },
         {
           "image": "",
           "quote": "La plateforme ServiceNow est complète ; la CMDB est robuste et nous permet d'intégrer des CI et de répondre aux besoins de notre organisation en gestion des changements, des incidents, des problèmes et des actifs.",
           "name": "Gartner Peer Insights",
-          "role": "Responsable du programme technologique"
+          "role": "Responsable du programme technologique — ⭐⭐⭐⭐⭐ — 12 juin 2024"
         },
         {
           "image": "",
-          "quote": "Le module CSM a grandement facilité la connexion avec les clients et la résolution directe de leurs enjeux.",
+          "quote": "Le module CSM a grandement facilité la connexion avec les clients et la résolution directe de leurs enjeux. La phase initiale d'apprentissage et d'harmonisation prend un peu de temps, mais les bénéfices à long terme pour l'équipe— évolutivité, automatisation et expérience client améliorée— en valent largement la peine.",
           "name": "Gartner Peer Insights",
-          "role": "Consultant technique"
+          "role": "Consultant technique — ⭐⭐⭐⭐⭐ — 16 septembre 2025"
         }
       ]
     },

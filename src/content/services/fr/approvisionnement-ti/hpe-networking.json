@@ -49,7 +49,7 @@
     {
       "_bookshop_name": "rich-text",
       "type": "rich-text",
-      "title": "",
+      "title": "Des réseaux autonomes sécurisés pilotés par l'AIOps",
       "fond": "ivoire",
       "paragraphs": [
         "Les solutions HPE Networking couvrent la connectivité (filaire, sans-fil et WAN), ainsi que la commutation et le routage. Vous profitez d'une gestion centralisée, de capacités d'observabilité (AIOps) et de politiques d'accès cohérentes.",
@@ -187,25 +187,26 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "Une performance validée par les utilisateurs",
+      "intro": "Note globale : 4,7⭐⭐⭐⭐ — 1 399 avis vérifiés en date de février 2026 (Gartner Peer Insights)",
       "fond": "ivoire",
       "items": [
         {
           "image": "",
           "quote": "Les points d'accès sans fil Aruba se sont révélés fiables pour mes clients, avec une configuration simple et une performance stable. Aruba Central facilite la gestion et la rend plus structurée. La plupart de mes clients apprécient la stabilité du réseau, même lorsque tous les utilisateurs sont connectés simultanément.",
           "name": "Gartner Peer Insights",
-          "role": "Responsable du développement des canaux"
+          "role": "Responsable du développement des canaux — ⭐⭐⭐⭐⭐ — 31 janvier 2026"
         },
         {
           "image": "",
           "quote": "Notre expérience avec ce fournisseur a été positive. Les commutateurs Juniper EX Series sont stables, performants en environnement d'entreprise et simples à déployer et à intégrer. La gestion et la visibilité sont solides, ce qui rend les opérations quotidiennes efficaces. Bien que le soutien et certaines fonctionnalités avancées puissent être améliorées, la valeur globale et la fiabilité répondent à nos attentes.",
           "name": "Gartner Peer Insights",
-          "role": "Directeur de l'ingénierie"
+          "role": "Directeur de l'ingénierie — ⭐⭐⭐⭐ — 4 février 2026"
         },
         {
           "image": "",
           "quote": "Dans l'ensemble, Aruba Central a considérablement simplifié la gestion de notre réseau. Disposer d'une interface centralisée pour surveiller les commutateurs, les points d'accès et les passerelles à partir du nuage a transformé notre façon d'opérer. L'interface est intuitive et la possibilité de surveiller la santé du réseau à distance a amélioré l'efficacité de nos opérations.",
           "name": "Gartner Peer Insights",
-          "role": "Directeur TI"
+          "role": "Directeur TI — ⭐⭐⭐⭐ — 11 février 2026"
         }
       ]
     },

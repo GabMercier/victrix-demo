@@ -175,3 +175,50 @@ ci-dessus.
 Le rapport se rejoue après chaque lot : `npm run build` puis
 `python scripts/migration/blocs-manquants-pages.py` — l'objectif est un
 rapport où il ne reste que des écarts assumés et nommés.
+
+## 7. Après la première passe de remise (2026-09-24, nuit)
+
+Gabriel a tranché : « il faut faire ça pour toutes les pages, en suivant les
+priorités du classeur de Julie ». Fait la nuit même, FR et EN ensemble, dans
+l'ordre du classeur (pages « visible + indexable » d'abord).
+
+| | Avant | Après |
+| --- | ---: | ---: |
+| Blocs de texte absents (mots) | 216 (1 757) | **100 (631)** |
+| Paragraphes amputés | 103 | 82 |
+| Liens internes perdus | 106 | **13** |
+| Images de héros remplacées | 17 | 13 |
+| Images absentes (photos + logos) | 369 | 251 |
+
+**Ce qui a été remis** : héros d'origine (IA FR/EN, Productivité FR/EN, Copilot
+Studio FR/EN) ; ~90 liens dans les textes ; les avis Gartner Peer Insights
+complets sur les 18 fiches fournisseurs (note globale, note et date par avis,
+citations entières) ; les 14 badges de certification de Cybersécurité ; les
+désignations Microsoft (Azure, Dynamics 365) ; les logos manquants (AlgoSec,
+Proofpoint, OVH, Zscaler, Juniper, outils M365 d'Ø Bureau) ; les infographies
+Harmony SASE et schéma de la plateforme employé ; la carte « Accompagnement
+stratégique » perdue sur la page IA EN ; les phrases et listes amputées
+(accueil, SEvOC, Loi 25, Carrières, Intranet, Ø Studio, Azure…).
+
+**Ce qui reste dans le rapport, et pourquoi** :
+
+- 13 héros : accueil, Carrières, Découvrir (photos choisies au design),
+  Ø Studio (le « héros » de la source est une maquette MacBook secondaire),
+  centre de ressources et Azure (bannières), AWS, campagne Licences (D18),
+  démo Ø Bureau EN — à trancher par Gabriel, les fichiers sont dans le cache.
+- 13 liens : les catégories WordPress du centre de ressources (10, abandon),
+  Licences → Ø Studio (D18), « lignes d'affaires » d'Accompagnement IA (le mot
+  n'est plus dans le texte).
+- 100 blocs, dont 64 courts « à vérifier » et 36 longs sur 20 pages : Merci
+  (assumée), Découvrir (témoignages déplacés sur Carrières), Licences (D18),
+  « Vie chez Victrix » de Conseil stratégique (assumée), le reste = boutons et
+  intitulés de formulaire.
+- 82 amputés : après relecture, des synonymes (« identifier » → « repérez »).
+- 251 images : logos renommés que la clé ne rattrape pas (pictos M365 du
+  bandeau défilant de Productivité, rendus en texte), photos secondaires sans
+  emplacement dans le gabarit (IoT, Ø Studio, Ø Bureau, D365), logos de
+  fournisseurs en blanc dans les héros des fiches.
+
+Décision à consigner : ces écarts assumés iront dans une clé `blocs_assumes`
+de `correspondance-urls.json` quand Gabriel les aura validés ; le script les
+sortira du décompte.

@@ -33,7 +33,8 @@ import yaml from 'js-yaml';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const CHECK_ONLY = process.argv.includes('--check');
-const KEYS = ['fond', 'image'];
+// `intro` (2026-09-24) : ajouté à testimonial-cards ; suivi comme les autres clés à défaut ''.
+const KEYS = ['fond', 'image', 'intro'];
 
 /**
  * Clés IMBRIQUÉES (2026-09-22) — le script ne descendait QUE d'un niveau, sur

@@ -26,7 +26,7 @@
       "fond": "ivoire",
       "featured": {
         "title": "A planned migration strategy",
-        "text": "A planned migration strategy ensures a smooth transition with minimal impact on your environment. Our mission: <strong>guarantee your operational excellence</strong> using best practices for compliance, data security, and performance — the <strong>Well Architected Framework (WAF)</strong> and <strong>Cloud Adoption Framework (CAF)</strong> guide all your cloud migration projects.",
+        "text": "A planned migration strategy ensures a smooth transition with minimal impact on your environment. Our mission: <strong>guarantee your operational excellence</strong> using best practices for <a href=\"/en/services/strategic-advice/law-25-compliance/\">compliance</a>, <a href=\"/en/services/cybersecurity/\">data security</a>, and performance — the <strong>Well Architected Framework (WAF)</strong> and <strong>Cloud Adoption Framework (CAF)</strong> guide all your cloud migration projects.",
         "watermark": "graphique",
         "stats": []
       },
@@ -49,8 +49,8 @@
         "<strong>Victrix accelerates your migration to Azure.</strong> Our methodology, based on the <strong>Microsoft Cloud Adoption Framework</strong>, enables your organization to take the first steps in migrating your applications and servers — with <strong>secure data storage in Azure and all of Microsoft's innovative features</strong> to optimize your productivity and workspace. <a href=\"/en/services/cloud-services-provider/azure-migration/\">Learn about migrating to Azure</a>",
         "<strong>Leverage the AWS Enterprise platform with Victrix.</strong> Drawing on our expertise in Amazon EC2 (IaaS), AWS Elastic Beanstalk (PaaS), and AWS services (SaaS), we can ensure <strong>efficient migration of applications</strong> to a service model that promotes scalability and simplifies management. <a href=\"/en/services/cloud-services-provider/aws-services/\">Learn about migrating to AWS</a>"
       ],
-      "image": "",
-      "imageAlt": "",
+      "image": "/wp-content/uploads/2023/10/istock-1454530428.png",
+      "imageAlt": "Cloud services employees at Victrix",
       "stats": [
         {
           "value": "Azure",
@@ -244,7 +244,7 @@
         {
           "label": "AlgoSec",
           "icon": "",
-          "image": "",
+          "image": "/images/logos/algosec.svg",
           "imageAlt": ""
         },
         {
@@ -256,7 +256,7 @@
         {
           "label": "OVH Cloud",
           "icon": "",
-          "image": "",
+          "image": "/images/logos/ovhcloud.png",
           "imageAlt": ""
         },
         {

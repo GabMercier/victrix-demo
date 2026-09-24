@@ -49,7 +49,7 @@
     {
       "_bookshop_name": "rich-text",
       "type": "rich-text",
-      "title": "",
+      "title": "Un écosystème fiable, puissant et reconnu mondialement",
       "fond": "ivoire",
       "paragraphs": [
         "Victrix <strong>cible vos besoins</strong>, <strong>sélectionne</strong> et <strong>déploie les solutions Microsoft</strong> adaptées à votre contexte. Nous établissons une gouvernance claire qui rend l’adoption pilotable et mesurable.",
@@ -155,25 +155,26 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "Ils utilisent Microsoft au quotidien",
+      "intro": "Note globale : 4,4⭐⭐⭐⭐— +10 000 avis vérifiés en date de février 2026. La note et le volume d'avis varient selon la catégorie de produits. (Gartner Peer Insights)",
       "fond": "ivoire",
       "items": [
         {
           "image": "",
           "quote": "Microsoft 365 propose de bons produits, un excellent service, une communauté d'utilisateurs solide, un personnel d'assistance réactif et sympathique, et un excellent rapport qualité-prix dans l'ensemble.",
           "name": "Gartner Peer Insights",
-          "role": "Direction"
+          "role": "Direction — ⭐⭐⭐⭐⭐ — 27 octobre 2025"
         },
         {
           "image": "",
           "quote": "Azure offre fiabilité, fonctionnalités de sécurité robustes, facilité d'utilisation, évolutivité et offre infonuagique de pointe. Je suis satisfait du produit.",
           "name": "Gartner Peer Insights",
-          "role": "Responsable de la sécurité TI et de la gestion du risque"
+          "role": "Responsable de la sécurité TI et de la gestion du risque — ⭐⭐⭐⭐ — 23 octobre 2025"
         },
         {
           "image": "",
           "quote": "Microsoft Copilot simplifie nos tâches dans des applications telles que Word, Excel et Teams. Il résume efficacement le contenu, rédige des réponses par e-mail et évalue les données . Son intégration avec d'autres applications Microsoft améliore le flux de travail, réduit les efforts et fait gagner du temps.",
           "name": "Gartner Peer Insights",
-          "role": "Responsable des opérations"
+          "role": "Responsable des opérations — ⭐⭐⭐⭐ — 8 octobre 2025"
         }
       ]
     },

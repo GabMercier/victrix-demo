@@ -46,7 +46,7 @@
       "aside": {
         "icon": "bouclier",
         "title": "Benefits of Our SOC Service",
-        "text": "Deal with the increase in advanced cyber threats, supplement your in-house security team with our experts, and simplify the integration of new entities in a context of growth or merger.",
+        "text": "Deal with the increase in advanced threats (<a href=\"/en/ressources/ransomware-protection-tips/\">ransomware</a>, targeted attacks, attacks undetected by conventional approaches), get fast handling of security alerts, supplement your in-house security team with our experts to keep your tools (EDR, SIEM, CSPM) evolving and maintained, simplify the integration of new entities in a context of growth or merger, and reach your strategic objectives while keeping your organization secure.",
         "linkLabel": "Discover our cybersecurity expertise",
         "linkHref": "/en/services/cybersecurity",
         "image": "",
@@ -144,7 +144,7 @@
       "title": "Services Beyond Traditional Managed Security",
       "paragraphs": [
         "Victrix is not just a <a href=\"/en/services/managed-it-services/\">managed services provider</a>, and SEvOC is not just another SOC. Here's what makes our SOC team so strong.",
-        "<strong>Technological expertise</strong> — Microsoft Sentinel partnership, CrowdStrike ELP partnership (only authorized French-speaking MSSP), <a href=\"/en/ressources/iso-27001-iso-9001-certifications/\">ISO/IEC 27001:2022 and ISO 9001:2015 certification</a>, and management of hybrid or complex environments.",
+        "<strong>Technological expertise</strong> — Microsoft Sentinel partnership, CrowdStrike ELP partnership (only authorized French-speaking MSSP), <a href=\"/en/ressources/iso-27001-iso-9001-certifications/\">ISO/IEC 27001:2022 and ISO 9001:2015 certification</a> (information security backed by international best practices), and management of hybrid or complex environments.",
         "<strong>Local, rooted, human service</strong> — 100% locally operated, non-outsourced monitoring, with direct interaction between your internal teams and our security analysts assigned to your environment; customized reports, monitoring committees, and advice based on your environment's configuration.",
         "<strong>Flexible, collaborative, and evolutive approach</strong> — continuous evolution of the security posture (guidelines, configuration review, maturity coaching) and access to the full depth of Victrix: direct support from our specialized infrastructure, <a href=\"/en/services/cloud-services-provider/\">cloud</a>, governance, and network teams, with no external outsourcing."
       ],

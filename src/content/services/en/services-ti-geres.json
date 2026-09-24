@@ -50,7 +50,7 @@
       "fond": "ivoire",
       "featured": {
         "title": "Uncompromising IT management",
-        "text": "<strong>Lower your operational costs, enhance security, accelerate digital transformation, and boost your internal IT team's productivity.</strong> Our managed IT services empower your teams to focus on core business functions, boosting overall efficiency.",
+        "text": "<strong>Lower your operational costs, <a href=\"/en/services/cybersecurity/\">enhance security</a>, accelerate digital transformation, and boost your internal IT team's productivity.</strong> Our managed IT services empower your teams to focus on core business functions, boosting overall efficiency.",
         "watermark": "engrenage",
         "stats": []
       },
@@ -101,7 +101,7 @@
         {
           "number": "04",
           "title": "Performance, Scalability and Service Excellence",
-          "text": "Rely on a team of versatile experts to advance your IT environments: cloud solutions, cybersecurity, networking, communications, equipment management. Results? Optimized response times, accelerated projects, and assured resilience.",
+          "text": "Rely on a team of versatile experts to advance your IT environments: <a href=\"/en/services/cloud-services-provider/\">cloud solutions</a>, <a href=\"/en/services/cybersecurity/\">cybersecurity</a>, networking, communications, equipment management. Results? Optimized response times, accelerated projects, and assured resilience.",
           "icon": "",
           "image": "",
           "imageAlt": ""
@@ -109,7 +109,7 @@
         {
           "number": "05",
           "title": "Advanced Cybersecurity",
-          "text": "Strengthen your security posture with proactive support, including monitoring, incident response, data management, and compliance with standards and regulations such as Law 25, DORA, NIS2, as well as other sector-specific requirements.",
+          "text": "Strengthen your security posture with proactive support, including monitoring, incident response, data management, and compliance with standards and regulations such as <a href=\"/en/services/strategic-advice/law-25-compliance/\">Law 25</a>, <a href=\"/en/ressources/dora-regulation/\">DORA</a>, <a href=\"/en/ressources/nis2-directive/\">NIS2</a>, as well as other sector-specific requirements.",
           "icon": "",
           "image": "",
           "imageAlt": ""
@@ -256,7 +256,7 @@
         },
         {
           "question": "What recognized certifications does Victrix hold?",
-          "answer": "Victrix holds ISO 27001 and ISO 9001 certifications, guaranteeing the security and quality of our IT services."
+          "answer": "Victrix holds <a href=\"/en/ressources/iso-27001-iso-9001-certifications/\">ISO 27001 and ISO 9001 certifications</a>, guaranteeing the security and quality of our IT services."
         }
       ]
     },

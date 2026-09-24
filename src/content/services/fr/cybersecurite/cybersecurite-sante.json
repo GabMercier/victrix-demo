@@ -12,7 +12,7 @@
       "titleAccent": "",
       "title": "Un service adapté au secteur de la santé",
       "titleHighlight": "santé",
-      "lead": "Victrix offre un service de cybersécurité sur mesure pour le secteur de la santé. Protégez les données des patients, vos appareils médicaux connectés et vos systèmes d’information contre toutes les menaces informatiques.",
+      "lead": "Victrix offre un <a href=\"/fr/services/cybersecurite/\">service de cybersécurité</a> sur mesure pour le secteur de la santé. Protégez les données des patients, vos appareils médicaux connectés et vos systèmes d’information contre toutes les menaces informatiques.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
@@ -204,7 +204,7 @@
         {
           "label": "AlgoSec",
           "icon": "",
-          "image": "",
+          "image": "/images/logos/algosec.svg",
           "imageAlt": ""
         },
         {
@@ -222,7 +222,7 @@
         {
           "label": "Proofpoint",
           "icon": "",
-          "image": "",
+          "image": "/images/logos/proofpoint.png",
           "imageAlt": ""
         }
       ]

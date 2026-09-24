@@ -49,7 +49,7 @@
     {
       "_bookshop_name": "rich-text",
       "type": "rich-text",
-      "title": "",
+      "title": "A reliable, powerful, and globally recognized ecosystem",
       "fond": "ivoire",
       "paragraphs": [
         "Victrix <strong>identifies your needs</strong>, <strong>selects</strong>, and <strong>deploys Microsoft solutions </strong>tailored to your context. We establish clear governance that makes adoption manageable and measurable.",
@@ -155,25 +155,26 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "Trusted Daily by Organizations Worldwide",
+      "intro": "Overall rating: 4.4 ⭐⭐⭐⭐— +10,000 verified reviews as of February 2026. Ratings and review volume vary by product categories. (Gartner Peer Insights)",
       "fond": "ivoire",
       "items": [
         {
           "image": "",
           "quote": "Microsoft 365 offers good products, great service, robust user community, responsive and friendly help support staff, superb value by and large.",
           "name": "Gartner Peer Insights",
-          "role": "Management"
+          "role": "Management — ⭐⭐⭐⭐⭐ — October 27, 2025"
         },
         {
           "image": "",
           "quote": "Azure offers reliability, strong security features, ease of use, scalability, and an industry-leading cloud offering. I am satisfied with the product.",
           "name": "Gartner Peer Insights",
-          "role": "IT Security and Risk Management"
+          "role": "IT Security and Risk Management — ⭐⭐⭐⭐ — October 23 , 2025"
         },
         {
           "image": "",
           "quote": "Microsoft Copilot streamlines our tasks across applications like Word, Excel and Teams. It efficiently summarises content, drafts email responses and evaluates data. Its integration with other Microsoft applications boosts work flow, reduces effort and saves time.",
           "name": "Gartner Peer Insights",
-          "role": "Operations Senior Executive"
+          "role": "Operations Senior Executive — ⭐⭐⭐⭐ — October 8, 2025"
         }
       ]
     },

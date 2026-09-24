@@ -14,7 +14,8 @@
       "ctaHref": "/fr/expertises",
       "image": "/images/home/hero-accueil.webp",
       "cta2Label": "Parlez à un expert",
-      "cta2Href": "/fr/contact"
+      "cta2Href": "/fr/contact",
+      "lead": "Améliorez votre cybersécurité et optimisez vos processus grâce à Victrix. Bénéficiez de notre expertise de pointe en <strong>sécurité informatique</strong> et en <strong>infonuagique</strong>, en <strong>services TI gérés</strong> et en <strong>gouvernance de l’IA</strong> pour propulser votre entreprise et demeurer à l’avant-plan technologique de votre industrie."
     },
     {
       "_bookshop_name": "home-iso",
@@ -73,7 +74,7 @@
           "number": "04",
           "title": "Infonuagique",
           "accent": "#1a5bff",
-          "description": "Modernisez vos infrastructures et faites évoluer vos environnements infonuagiques à votre rythme.",
+          "description": "Modernisez vos infrastructures et faites évoluer vos environnements infonuagiques à votre rythme : feuille de route multinuage, étude d’opportunité (IaaS, PaaS, SaaS), analyse de posture de sécurité, migration vers une plateforme infonuagique (AWS, Azure).",
           "href": "/fr/services/services-infonuagiques",
           "image": "",
           "variant": "image",
@@ -146,7 +147,7 @@
         },
         {
           "title": "SEvOC",
-          "text": "Un SOC traditionnel se limite à livrer des alertes. Le SEvOC les prend en charge et fait évoluer votre posture de sécurité, avec des analystes bilingues attitrés à votre environnement et l'appui direct de nos équipes infrastructure et infonuagique.",
+          "text": "Un SOC traditionnel se limite à livrer des alertes. Le SEvOC les prend en charge et fait évoluer votre posture de sécurité, avec des analystes bilingues attitrés à votre environnement et l'appui direct de nos équipes infrastructure et infonuagique. À la différence d’un SOC classique, notre offre évolutive et modulaire vous permet de rester à la pointe des technologies de sécurité.",
           "image": "/images/home/sevoc.png",
           "href": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
           "ctaLabel": "Découvrez SEvOC",

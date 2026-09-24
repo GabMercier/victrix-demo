@@ -123,6 +123,19 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
    `/fr/services/approvisionnement-ti/cisco/`), le titre devient un lien avec
    une flèche ; vide, rien ne change. C’est ce qui relie la page
    « Approvisionnement TI » à ses neuf pages fournisseurs.
+   **Colonnes de technologies — lien sur un outil (facultatif)** : un item de
+   la liste peut être écrit avec un lien, par exemple
+   `<a href="/fr/ressources/ia-servicenow/">ServiceNow AI Platform</a>` ; le
+   nom de l’outil devient alors cliquable. C’est ainsi que l’ancien site reliait
+   « ServiceNow AI Platform » à son article. Sans balise, rien ne change.
+   **Encart du bloc « Bento » (texte de l’encart)** : il accepte maintenant un
+   lien ou du gras (`<a href="…">…</a>`, `<strong>`), comme le texte de la
+   grande carte. Avant, une balise s’y affichait telle quelle.
+   **Cartes témoignages — texte sous le titre (facultatif)** : une phrase sous
+   le titre de la section ; les fiches fournisseurs y portent la note globale
+   Gartner Peer Insights (« Note globale : 4,3 ⭐⭐⭐⭐ — 2 056 avis vérifiés en
+   date de février 2026 »). La note et la date de chaque avis sont dans le
+   champ « Rôle » de la carte, après le titre de poste.
 5. **Icônes** : tous les champs « Icône » (cartes à icônes, tuiles bento et
    leur filigrane, réalisations, chiffres en style carte, puces d'offre, tuiles
    de valeurs, atouts…) ouvrent **la même liste déroulante** : la **banque de

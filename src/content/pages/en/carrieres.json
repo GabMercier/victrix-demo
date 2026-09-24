@@ -13,7 +13,7 @@
       "_bookshop_name": "photo-hero",
       "type": "photo-hero",
       "title": "Life at Victrix",
-      "sub": "Browse our job openings and find the opportunity you have been waiting for!",
+      "sub": "At Victrix, the well-being and fulfilment of our staff is our top priority. Our employees enjoy a good work-life balance, as well as a range of benefits! Browse our job openings and find the opportunity you have been waiting for!",
       "ctaLabel": "Apply",
       "ctaHref": "/en/contact",
       "image": "/images/carrieres/hero-vie-chez-victrix.jpg",
@@ -95,6 +95,7 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "What our experts say",
+      "intro": "",
       "fond": "brume",
       "items": [
         {

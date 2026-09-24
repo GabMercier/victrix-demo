@@ -26,7 +26,7 @@
       "fond": "ivoire",
       "featured": {
         "title": "Une stratégie de migration planifiée",
-        "text": "Une stratégie de migration planifiée garantit une transition sans heurt, avec un impact minimal sur vos environnements. Notre mission : <strong>garantir votre excellence opérationnelle</strong> en appliquant les meilleures pratiques de conformité, de sécurité des données et de performance. Les modèles <strong>Well Architected Framework (WAF)</strong> et <strong>Cloud Adoption Framework (CAF)</strong> encadrent tous vos projets de migration infonuagique.",
+        "text": "Une stratégie de migration planifiée garantit une transition sans heurt, avec un impact minimal sur vos environnements. Notre mission : <strong>garantir votre excellence opérationnelle</strong> en appliquant les meilleures pratiques <a href=\"/fr/services/conseil-strategique/conformite-loi-25/\">de conformité</a>, <a href=\"/fr/services/cybersecurite/\">de sécurité des données</a> et de performance. Les modèles <strong>Well Architected Framework (WAF)</strong> et <strong>Cloud Adoption Framework (CAF)</strong> encadrent tous vos projets de migration infonuagique.",
         "watermark": "graphique",
         "stats": []
       },
@@ -34,8 +34,8 @@
         "icon": "etoile",
         "title": "Conseil stratégique",
         "text": "Bénéficiez de notre expertise en conseil stratégique pour assurer le succès de tous vos projets de transformation numérique.",
-        "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact/",
+        "linkLabel": "Découvrez le conseil stratégique",
+        "linkHref": "/fr/services/conseil-strategique/",
         "image": "",
         "imageAlt": ""
       }
@@ -49,8 +49,8 @@
         "<strong>Victrix accélère votre migration Microsoft Azure.</strong> Notre méthodologie basée sur le <strong>Cloud Adoption Framework de Microsoft</strong> vous permet de faire vos premiers pas dans la migration de vos applications et serveurs, avec un stockage Azure sécurisé et toutes les fonctions innovantes de Microsoft. <a href=\"/fr/services/services-infonuagiques/migration-vers-azure/\">Découvrez la migration vers Microsoft Azure</a>",
         "<strong>Tirez parti de la plateforme AWS Enterprise grâce à Victrix.</strong> Notre expertise avec Amazon EC2 (IaaS), AWS Elastic Beanstalk (PaaS) et les solutions SaaS AWS nous permet d'assurer <strong>un déplacement efficace des applications</strong> vers un modèle de service qui favorise l'évolution et simplifie la gestion. <a href=\"/fr/services/services-infonuagiques/services-aws/\">Découvrez la migration vers AWS</a>"
       ],
-      "image": "",
-      "imageAlt": "",
+      "image": "/wp-content/uploads/2023/10/istock-1454530428.png",
+      "imageAlt": "Employés des services infonuagiques chez Victrix",
       "stats": [
         {
           "value": "Azure",
@@ -244,7 +244,7 @@
         {
           "label": "AlgoSec",
           "icon": "",
-          "image": "",
+          "image": "/images/logos/algosec.svg",
           "imageAlt": ""
         },
         {
@@ -256,7 +256,7 @@
         {
           "label": "OVH Cloud",
           "icon": "",
-          "image": "",
+          "image": "/images/logos/ovhcloud.png",
           "imageAlt": ""
         },
         {

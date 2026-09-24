@@ -13,7 +13,7 @@
       "_bookshop_name": "photo-hero",
       "type": "photo-hero",
       "title": "La vie chez Victrix",
-      "sub": "Parcourez nos offres d’emploi et trouvez l’opportunité que vous attendiez!",
+      "sub": "Chez Victrix, le bien-être et l’épanouissement de notre personnel est notre priorité. Nos employés bénéficient d’un grand équilibre dans leur temps de travail, ainsi que de nombreux avantages! Parcourez nos offres d’emploi et trouvez l’opportunité que vous attendiez!",
       "ctaLabel": "Postulez",
       "ctaHref": "/fr/contact",
       "image": "/images/carrieres/hero-vie-chez-victrix.jpg",
@@ -95,6 +95,7 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "Ce que nos experts disent",
+      "intro": "",
       "fond": "brume",
       "items": [
         {

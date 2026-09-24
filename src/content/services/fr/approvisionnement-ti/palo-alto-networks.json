@@ -123,7 +123,7 @@
         {
           "number": "05",
           "title": "Série PA: Pare-feux nouvelle génération et matériel réseau spécialisé",
-          "text": "<strong>Assurez une protection réseau performante et résiliente dans les environnements plus exigeants.</strong><br><br><strong>Les pare-feux et le matériel réseau spécialisé de la série PA </strong>assurent la protection du réseau dans les environnements à fort débit et les centres de données complexes.<br><br><strong>Résultat :</strong> des performances élevées et une sécurité avancée, sans compromis.",
+          "text": "<strong>Assurez une protection réseau performante et résiliente dans les environnements plus exigeants.</strong><br><br><strong>Les pare-feux et le matériel réseau spécialisé de la série PA </strong>assurent la <a href=\"/fr/services/cybersecurite/\">protection du réseau</a> dans les environnements à fort débit et les centres de données complexes.<br><br><strong>Résultat :</strong> des performances élevées et une sécurité avancée, sans compromis.",
           "ctaLabel": "",
           "ctaHref": "",
           "icon": "",
@@ -136,25 +136,26 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "Une reconnaissance confirmée par les utilisateurs",
+      "intro": "Note globale : 4,6⭐⭐⭐⭐ — 1 350 avis en date de février 2026 (Gartner Peer Insights)",
       "fond": "ivoire",
       "items": [
         {
           "image": "",
           "quote": "Globalement, Palo Alto est un fournisseur essentiel pour notre organisation. Les pare-feux Palo Alto constituent l’épine dorsale de notre environnement, et la gestion centralisée avec Panorama simplifie grandement les opérations et le dépannage.",
           "name": "Gartner Peer Insights",
-          "role": "Responsable TI"
+          "role": "Responsable TI — ⭐⭐⭐⭐⭐ — 22 janvier 2026"
         },
         {
           "image": "",
           "quote": "La solution Prisma s’est révélé très fiable et a amélioré la performance des connexions à l’échelle mondiale. La gestion centralisée des politiques et l’intégration avec les pare-feux sur site ont été des atouts majeurs.",
           "name": "Gartner Peer Insights",
-          "role": "Gestionnaire TI"
+          "role": "Gestionnaire TI — ⭐⭐⭐⭐⭐ — 16 janvier 2026"
         },
         {
           "image": "",
           "quote": "Le déploiement des pare-feux Palo Alto série 5200 nous a permis d’atteindre un haut niveau de performance et de renforcer significativement notre posture de sécurité grâce à des politiques applicatives et un contrôle granulaire des utilisateurs.",
           "name": "Gartner Peer Insights",
-          "role": "Gestionnaire adjoint"
+          "role": "Gestionnaire adjoint — ⭐⭐⭐⭐⭐ — 30 novembre 2025"
         }
       ]
     },
@@ -162,7 +163,7 @@
       "_bookshop_name": "cta",
       "type": "cta",
       "title": "Victrix : votre partenaire stratégique pour l’acquisition des solutions Palo Alto Networks",
-      "body": "Victrix agit comme distributeur et partenaire stratégique pour l’acquisition des solutions Palo Alto Networks. Nous simplifions l’accès aux produits et veillons à leur intégration cohérente dans vos environnements existants, selon vos besoins. Notre rôle: accélérer le déploiement, faciliter l’adoption et assurer l’alignement entre vos choix technologiques et vos priorités organisationnelles, sans complexifier vos opérations.",
+      "body": "Victrix agit comme distributeur et partenaire stratégique pour l’acquisition des solutions Palo Alto Networks. Nous simplifions l’<a href=\"/fr/services/approvisionnement-ti/\">accès aux produits</a> et veillons à leur intégration cohérente dans vos environnements existants, selon vos besoins. Notre rôle: accélérer le déploiement, faciliter l’adoption et assurer l’alignement entre vos choix technologiques et vos priorités organisationnelles, sans complexifier vos opérations.",
       "ctaLabel": "Demandez une démo",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
