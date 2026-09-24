@@ -401,18 +401,6 @@
       "fond": "beige"
     },
     {
-      "_bookshop_name": "form",
-      "type": "form",
-      "title": "Security Posture Assessment",
-      "intro": "Get a clear picture of your security posture — one of our experts will get back to you shortly.",
-      "formId": "campagne-evaluation",
-      "submitLabel": "Send my request",
-      "consentText": "",
-      "variant": "carte",
-      "fond": "",
-      "fields": []
-    },
-    {
       "_bookshop_name": "cta",
       "type": "cta",
       "title": "Face the growth of cyber risks with confidence",

@@ -405,18 +405,6 @@
       "fond": "beige"
     },
     {
-      "_bookshop_name": "form",
-      "type": "form",
-      "title": "Évaluation posture sécurité",
-      "intro": "Obtenez un portrait clair de votre posture de sécurité — un de nos experts vous recontacte rapidement.",
-      "formId": "campagne-evaluation",
-      "submitLabel": "Envoyer ma demande",
-      "consentText": "",
-      "variant": "carte",
-      "fond": "",
-      "fields": []
-    },
-    {
       "_bookshop_name": "cta",
       "type": "cta",
       "title": "Faites face à la croissance des cyberrisques en toute confiance",
