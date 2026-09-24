@@ -1,14 +1,20 @@
 ---
-title: "Comprendre la directive NIS2 pour assurer sa conformité"
-date: 2024-11-27
-excerpt: "Parcourez le guide de nos experts en cybersécurité sur la directive NIS2 pour découvrir si vous y êtes assujettis et comment assurer votre conformité."
-tags: ["Nos articles"]
-topics: ["Cybersécurité"]
-slug: "directive-nis2"
+_schema: default
+title: Comprendre la directive NIS2 pour assurer sa conformité
+slug: directive-nis2
 draft: false
-coverImage: "/wp-content/uploads/2024/11/design-sans-titre.jpg"
-seoTitle: "Directive NIS2: Assurez votre conformité"
-wpUrl: "/directive-nis2/"
+date: 2024-11-27T00:00:00Z
+excerpt: Parcourez le guide de nos experts en cybersécurité sur la directive
+  NIS2 pour découvrir si vous y êtes assujettis et comment assurer votre
+  conformité.
+coverImage: /wp-content/uploads/2024/11/design-sans-titre.jpg
+tags:
+  - Nos articles
+seoTitle: 'Directive NIS2: Assurez votre conformité'
+noindex: false
+topics:
+  - Cybersécurité
+wpUrl: /directive-nis2/
 ---
 La directive NIS2 **impose de nouvelles exigences de sécurité** aux organisations opérant dans l’Union européenne. Pour les entreprises, il est donc essentiel de savoir si vous y êtes assujettis, et si tel est le cas, les méthodes à votre disposition pour vous y conformer.
 
@@ -28,17 +34,17 @@ La directive NIS2, adoptée le 27 décembre 2022, est **la succession et la refo
 
 [Vincent Strubel, Directeur Général de l’Agence Nationale de la sécurité des systèmes d’information (ANSSI)](https://monespacenis2.cyber.gouv.fr/directive)
 
-### Êtes-vous concerné par la directive NIS2?
-
-**+1000 nombre d’entités visées**
-
-**+18 secteurs d’activités concernés**
-
-La directive s’adresse principalement à deux catégories d’entités, soit **les entités essentielles (EE) et les entités importantes (EI)**. Les organisations dépassant un seuil critique de chiffre d’affaires (10 millions d’euros), d’effectifs (plus de 50 employés) ou d’impact économique sont les principales cibles de cette norme. Référez-vous au tableau ci-bas pour vérifier si votre organisation doit se conformer à la réglementation NIS2.
-
 ### Date d’entrée en vigueur de la directive NIS2
 
 NIS2 est **entrée en vigueur le 16 janvier 2023**. Les États membres devaient transposer ses directions dans leur législation nationale respective **avant le 17 octobre 2024**. L’heure est donc critique pour les organisations, il est temps d’ajuster vos mesures de sécurité pour vous conformer aux nouvelles obligations.
+
+### Êtes-vous concerné par la directive NIS2?
+
+**\+1000 nombre d’entités visées**
+
+**\+18 secteurs d’activités concernés**
+
+La directive s’adresse principalement à deux catégories d’entités, soit **les entités essentielles (EE) et les entités importantes (EI)**. Les organisations dépassant un seuil critique de chiffre d’affaires (10 millions d’euros), d’effectifs (plus de 50 employés) ou d’impact économique sont les principales cibles de cette norme. Référez-vous au tableau ci-bas pour vérifier si votre organisation doit se conformer à la réglementation NIS2.
 
 ## Mise en conformité obligatoire des EE et EI
 
@@ -70,7 +76,7 @@ NIS2 est **entrée en vigueur le 16 janvier 2023**. Les États membres devaient 
 </tr>
 <tr>
 <td><img class="alignnone wp-image-6736 size-full" src="/wp-content/uploads/2024/11/gestion-des-services-ti-et-de-la-communication-interentreprises.png" alt="gestion des services TI et de la communication" width="23" height="23" /> Gestion des services TI et de la communication (interentreprises)</td>
-<td><img class="alignnone wp-image-6747 size-full" src="/wp-content/uploads/2024/11/recherche.png" alt="recherche" width="23" height="21" />   Recherche</td>
+<td><img class="alignnone wp-image-6747 size-full" src="/wp-content/uploads/2024/11/recherche.png" alt="recherche" width="23" height="21" />&nbsp; &nbsp;Recherche</td>
 </tr>
 <tr>
 <td><img class="alignnone wp-image-6737 size-full" src="/wp-content/uploads/2024/11/infrastructures-des-marches-financiers.png" alt="marchés financiers" width="29" height="22" /> Infrastructures des marchés financiers</td>
@@ -85,7 +91,7 @@ NIS2 est **entrée en vigueur le 16 janvier 2023**. Les États membres devaient 
 <td></td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6740 size-full" src="/wp-content/uploads/2024/11/secteur-bancaire.png" alt="secteur bancaire" width="22" height="22" />   Secteur bancaire</td>
+<td><img class="alignnone wp-image-6740 size-full" src="/wp-content/uploads/2024/11/secteur-bancaire.png" alt="secteur bancaire" width="22" height="22" />&nbsp; &nbsp;Secteur bancaire</td>
 <td></td>
 </tr>
 <tr>
@@ -98,35 +104,38 @@ NIS2 est **entrée en vigueur le 16 janvier 2023**. Les États membres devaient 
 
 ### Découvrez notre offre de cybersécurité ciblée pour le secteur de la santé
 
-## Assurez votre conformité aux directives de cybersécurité de l’Union européenne avec Victrix
+<a href="/fr/services/cybersecurite/cybersecurite-sante/" target="_blank" rel="noopener">Explorez le service</a>
 
-Grâce à notre Centre Opérationnel de Sécurité Évolutif (SEvOC), nous aidons les organisations à respecter les normes les plus élevées en matière de cybersécurité (RGPD, [DORA](/fr/ressources/reglementation-dora/), NIS2, [ISO 27001:2022](/fr/ressources/certification-iso-27001-iso-9001/)
+### Assurez votre conformité aux directives de cybersécurité de l’Union européenne avec Victrix
+
+Grâce à notre Centre Opérationnel de Sécurité Évolutif (SEvOC), nous aidons les organisations à respecter les normes les plus élevées en matière de cybersécurité (RGPD, [DORA](/fr/ressources/reglementation-dora/), NIS2, [ISO 27001:2022](/fr/ressources/certification-iso-27001-iso-9001/).
+
 [Découvrez SEvOC](/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/)
 
 ## Les 4 obligations de NIS2 pour les entités essentielles et importantes
 
-- Gouvernance
-- Gestion des risques cybersécurité
-- Obligation d’informer
-- Sécurité des chaînes d’approvisionnement
+* **Gouvernance**&nbsp;: Assumer la responsabilité des stratégies de cybersécurité et intégrer ces dernières dans la gouvernance de l’organisation.
+* **Gestion des risques cybersécurité**&nbsp;: Établir un cadre d’évaluation régulier pour identifier, analyser et limiter les vulnérabilités.
+* **Obligation d’informer**&nbsp;: Signaler tout incident de cybersécurité significatif dans une période de 24h à 72h maximale.
+* **Sécurité des chaînes d’approvisionnement**&nbsp;: S’assurer que les fournisseurs respectent des normes équivalentes en cybersécurité.
 
 ## Risques de non-conformité à NIS2
 
-- Jusqu’à 2% du chiffre d’affaires mondial en amende
-- Mise en place de mesures correctives par les autorités compétentes
-- Suspension des activités critiques jusqu’à la mise en conformité
-- Dommages à la réputation, perte de confiance des clients et partenaires
+* Jusqu’à 2% du chiffre d’affaires mondial en amende
+* Mise en place de mesures correctives par les autorités compétentes
+* Suspension des activités critiques jusqu’à la mise en conformité
+* Dommages à la réputation, perte de confiance des clients et partenaires
 
 <aside class="article-encadre">
 <p class="article-encadre__titre">Le saviez-vous?</p>
-
-**10 Millions d’euros.** C’est l'amende maximale à laquelle vous vous exposez en cas de non-conformité à NIS2.
-
+<p><strong>10 Millions d’euros.</strong> C’est l'amende maximale à laquelle vous vous exposez en cas de non-conformité à NIS2.</p>
 </aside>
-## Votre entreprise est-elle conforme à la directive NIS2?
+
+### Votre entreprise est-elle conforme à la directive NIS2?
 
 Faites évaluer votre conformité par des experts en cybersécurité, gestion du risque et conformité.
-[Consultez un expert](/fr/contact/)
+
+[Planifiez une consultation](/fr/contact/)
 
 ## SEvOC: votre allié pour la conformité
 
@@ -142,17 +151,18 @@ Nous identifions vos lacunes par rapport aux exigences de NIS2 et proposons des 
 
 ### Mise en conformité
 
-- Chiffrement des données sensibles de bout-en-bout (E2EE) pour une sécurité optimale
-- Traçabilité des actions pour répondre aux exigences d’audit
-- Renforcement de votre résilience pour améliorer la gestion des incidents et interruptions
-- Intégrations technologiques: Solutions de protection fiables pour vos systèmes essentiels
+* Chiffrement des données sensibles de bout-en-bout (E2EE) pour une sécurité optimale
+* Traçabilité des actions pour répondre aux exigences d’audit
+* Renforcement de votre résilience pour améliorer la gestion des incidents et interruptions
+* Intégrations technologiques: Solutions de protection fiables pour vos systèmes essentiels
 
 ### Suivi et amélioration continue
 
 Mettre en place des processus de surveillance et d’évaluation régulière.
-[Démarrez votre projet avec Victrix](/fr/contact/)
 
-## Informations supplémentaires sur NIS2
+[Planifiez une consultation](/fr/contact/)
+
+## FAQ&nbsp;– Informations supplémentaires sur la directive NIS2
 
 ### 5 Objectifs principaux de la directive NIS2
 
@@ -162,11 +172,11 @@ Mettre en place des processus de surveillance et d’évaluation régulière.
 4. Affronter les menaces numériques en entreprise plus efficacement
 5. Élever la confiance numérique et la protection des droits fondamentaux
 
-### 6 Différences principales entre NIS (2016) et NIS2 (2022
+### 6 Différences principales entre NIS (2016) et NIS2 (2022)
 
-1. Extension de la couverture : Inclus maintenant les secteurs d’activités des entreprises importantes (EI).
-2. Renforcement des obligations : Des mesures de sécurité plus strictes à tous les niveaux, soit techniques, opérationnels et organisationnels.
-3. Amélioration de la collaboration : Accentue l’importance du partage des informations entre les États membres et les autorités compétentes.
-4. Notification d’incidents : Délais plus courts et informations plus détaillées requises.
-5. Mise en application : Mécanismes d’application plus stricte et des amendes plus importantes en cas de non-respect.
-6. *Nouveau* Chaîne d’approvisionnement : Les entités doivent vérifier le niveau de cybersécurité de leurs fournisseurs.
+1. Extension de la couverture&nbsp;: Inclus maintenant les secteurs d’activités des entreprises importantes (EI).
+2. Renforcement des obligations&nbsp;: Des mesures de sécurité plus strictes à tous les niveaux, soit techniques, opérationnels et organisationnels.
+3. Amélioration de la collaboration&nbsp;: Accentue l’importance du partage des informations entre les États membres et les autorités compétentes.
+4. Notification d’incidents&nbsp;: Délais plus courts et informations plus détaillées requises.
+5. Mise en application&nbsp;: Mécanismes d’application plus stricte et des amendes plus importantes en cas de non-respect.
+6. ***Nouveau!*** Chaîne d’approvisionnement : Les entités doivent vérifier le niveau de cybersécurité de leurs fournisseurs.
