@@ -18,6 +18,8 @@ Nos [experts en cybersécurité](/fr/services/cybersecurite/) vous expliquent to
 
 ## Résumé rapide sur la directive NIS2
 
+![Réponses aux questions fréquentes sur la loi Dora en cybersécurité.](/wp-content/uploads/2024/10/yellow-question-mark-scaled.jpg)
+
 ### Qu’est-ce que la directive NIS2?
 
 La directive NIS2, adoptée le 27 décembre 2022, est **la succession et la refonte majeure de NIS (2016)** concernant les normes européennes en matière de cybersécurité. Cette nouvelle version élargit le champ d’application de NIS et vise à renforcer la sécurité des réseaux et des systèmes d’information et l’[amélioration de la résilience des entreprises](/fr/ressources/pentest-cybersecurite/) face aux menaces informatiques.
@@ -47,47 +49,47 @@ NIS2 est **entrée en vigueur le 16 janvier 2023**. Les États membres devaient 
 </thead>
 <tbody>
 <tr>
-<td><img class="alignnone wp-image-6731 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/administrations-publiques.jpg" alt="administrations publiques" width="32" height="31" /> Administrations publiques</td>
-<td><img class="alignnone wp-image-6742 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/fabrication-production-et-distribution-de-produits-chimiques.png" alt="secteur de la fabrication produits chimiques" width="28" height="29" /> Fabrication, production et distribution de produits chimiques</td>
+<td><img class="alignnone wp-image-6731 size-full" src="/wp-content/uploads/2024/11/administrations-publiques.jpg" alt="administrations publiques" width="32" height="31" /> Administrations publiques</td>
+<td><img class="alignnone wp-image-6742 size-full" src="/wp-content/uploads/2024/11/fabrication-production-et-distribution-de-produits-chimiques.png" alt="secteur de la fabrication produits chimiques" width="28" height="29" /> Fabrication, production et distribution de produits chimiques</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6732 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/eaux-potables.png" alt="eaux potables" width="31" height="24" /> Eaux potables</td>
-<td><img class="alignnone wp-image-6743 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/fournisseurs-de-services-numeriques.png" alt="Fournisseur de services numériques" width="29" height="27" /> Fournisseurs de services numériques</td>
+<td><img class="alignnone wp-image-6732 size-full" src="/wp-content/uploads/2024/11/eaux-potables.png" alt="eaux potables" width="31" height="24" /> Eaux potables</td>
+<td><img class="alignnone wp-image-6743 size-full" src="/wp-content/uploads/2024/11/fournisseurs-de-services-numeriques.png" alt="Fournisseur de services numériques" width="29" height="27" /> Fournisseurs de services numériques</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6733 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/eaux-usees.jpg" alt="eaux usées" width="35" height="30" />Eaux usées</td>
-<td><img class="alignnone wp-image-6744 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/gestion-des-dechets.png" alt="gestion des déchets" width="26" height="20" /> Gestion des déchets</td>
+<td><img class="alignnone wp-image-6733 size-full" src="/wp-content/uploads/2024/11/eaux-usees.jpg" alt="eaux usées" width="35" height="30" />Eaux usées</td>
+<td><img class="alignnone wp-image-6744 size-full" src="/wp-content/uploads/2024/11/gestion-des-dechets.png" alt="gestion des déchets" width="26" height="20" /> Gestion des déchets</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6734 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/secteur-des-energies.png" alt="secteur de l'énergie" width="30" height="24" /> Secteur des énergies</td>
-<td><img class="alignnone wp-image-6745 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/industrie-manufacturiere.png" alt="industrie manufacturière" width="32" height="26" /> Industrie manufacturière</td>
+<td><img class="alignnone wp-image-6734 size-full" src="/wp-content/uploads/2024/11/secteur-des-energies.png" alt="secteur de l'énergie" width="30" height="24" /> Secteur des énergies</td>
+<td><img class="alignnone wp-image-6745 size-full" src="/wp-content/uploads/2024/11/industrie-manufacturiere.png" alt="industrie manufacturière" width="32" height="26" /> Industrie manufacturière</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6735 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/espace.png" alt="aérospatial" width="30" height="26" /> Espace</td>
-<td><img class="alignnone wp-image-6746 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/production-transformation-et-distribution-de-denrees-alimentaires.png" alt="fabrication, production et distribution de denrées alimentaires" width="27" height="30" /> Production, transformation et distribution de denrées alimentaires</td>
+<td><img class="alignnone wp-image-6735 size-full" src="/wp-content/uploads/2024/11/espace.png" alt="aérospatial" width="30" height="26" /> Espace</td>
+<td><img class="alignnone wp-image-6746 size-full" src="/wp-content/uploads/2024/11/production-transformation-et-distribution-de-denrees-alimentaires.png" alt="fabrication, production et distribution de denrées alimentaires" width="27" height="30" /> Production, transformation et distribution de denrées alimentaires</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6736 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/gestion-des-services-ti-et-de-la-communication-interentreprises.png" alt="gestion des services TI et de la communication" width="23" height="23" /> Gestion des services TI et de la communication (interentreprises)</td>
-<td><img class="alignnone wp-image-6747 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/recherche.png" alt="recherche" width="23" height="21" />   Recherche</td>
+<td><img class="alignnone wp-image-6736 size-full" src="/wp-content/uploads/2024/11/gestion-des-services-ti-et-de-la-communication-interentreprises.png" alt="gestion des services TI et de la communication" width="23" height="23" /> Gestion des services TI et de la communication (interentreprises)</td>
+<td><img class="alignnone wp-image-6747 size-full" src="/wp-content/uploads/2024/11/recherche.png" alt="recherche" width="23" height="21" />   Recherche</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6737 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/infrastructures-des-marches-financiers.png" alt="marchés financiers" width="29" height="22" /> Infrastructures des marchés financiers</td>
-<td><img class="alignnone wp-image-6748 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/services-postaux-et-dexpedition.png" alt="services postaux et expédition" width="29" height="27" /> Services postaux et d'expédition</td>
+<td><img class="alignnone wp-image-6737 size-full" src="/wp-content/uploads/2024/11/infrastructures-des-marches-financiers.png" alt="marchés financiers" width="29" height="22" /> Infrastructures des marchés financiers</td>
+<td><img class="alignnone wp-image-6748 size-full" src="/wp-content/uploads/2024/11/services-postaux-et-dexpedition.png" alt="services postaux et expédition" width="29" height="27" /> Services postaux et d'expédition</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6738 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/infrastructures-numeriques.png" alt="infrastructures numériques" width="25" height="25" /> Infrastructures numériques</td>
+<td><img class="alignnone wp-image-6738 size-full" src="/wp-content/uploads/2024/11/infrastructures-numeriques.png" alt="infrastructures numériques" width="25" height="25" /> Infrastructures numériques</td>
 <td></td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6739 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/etablissements-de-sante.png" alt="établissements de santé" width="30" height="31" /> Établissements de santé</td>
+<td><img class="alignnone wp-image-6739 size-full" src="/wp-content/uploads/2024/11/etablissements-de-sante.png" alt="établissements de santé" width="30" height="31" /> Établissements de santé</td>
 <td></td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6740 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/secteur-bancaire.png" alt="secteur bancaire" width="22" height="22" />   Secteur bancaire</td>
+<td><img class="alignnone wp-image-6740 size-full" src="/wp-content/uploads/2024/11/secteur-bancaire.png" alt="secteur bancaire" width="22" height="22" />   Secteur bancaire</td>
 <td></td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6741 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/transports.png" alt="secteurs des transports" width="29" height="25" /> Transports</td>
+<td><img class="alignnone wp-image-6741 size-full" src="/wp-content/uploads/2024/11/transports.png" alt="secteurs des transports" width="29" height="25" /> Transports</td>
 <td></td>
 </tr>
 </tbody>

@@ -78,6 +78,8 @@ As more and more organizations opt for [cloud services](/en/services/cloud-servi
 As an [**emerging cybersecurity model**](/en/services/cybersecurity/), it leaves considerable room for flexibility and scalability. What’s more, each vendor offers its own version of the SASE architecture. Therefore, organizations can gradually transition to this model for a low-impact technological transformation. 
  IT teams and the service provider work hand in hand to **rethink how to connect all the human resources, applications and data centers** of the organization. In this way, they share the burden of responsibility with the vendor through the use of [managed services](/en/services/managed-it-services/) (SaaS, IaaS, PaaS, etc.) within the enterprise.
 
+![Victrix, your cybersecurity partner](/wp-content/uploads/0206/05/victrix-votre-cybersecurite.png)
+
 ### The Victrix Method
 
 At Victrix, we see SASE architecture as the **superior transformational model** for organizations. It is transforming how we used to design enterprise networks for offices and remote workers.

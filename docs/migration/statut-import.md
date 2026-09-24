@@ -239,8 +239,14 @@ hors décompte (choix de forme) ; et **36 `<img>` de NIS2 FR/EN encore servies
 par `https://www.victrix.ca`** (les 18 pictogrammes de secteurs, présents
 localement) qui casseront à la mise hors ligne de l'ancien site.
 
-Remise proposée en option (lot L-images-articles, ≈ 0,5 j, outillée comme
-`restaure-blocs-articles.py` : chaque image posée à la place que lui donne
-l'ordre de la source), **après** la fusion `dev` → `staging` : Julie édite
-déjà des articles sur `staging` (Copilot Studio le 23/09) et chaque article
-touché dans `dev` avant la fusion est un conflit de plus.
+**Remise FAITE le 25/09** (lot L-images-articles, après la fusion
+`dev` → `staging` du matin) : `scripts/migration/restaure-images-articles.py`
+a posé **38 images dans 23 articles** à la place que leur donne l'ordre de la
+source, plus 2 à la main (la bannière « Victrix, votre cybersécurité » des
+articles ZTNA et SASE EN, dont la page source était en français), et
+réécrit les **36 `<img>` de NIS2** en local. Rapport après build : **0 image
+absente, 0 `<img>` de l'ancien domaine**, hors 3 infographies FRANÇAISES que
+l'ancien article ServiceNow ITOM EN affichait (assumées : à refaire en
+anglais, décision Julie). Les textes alternatifs sont ceux de l'ancien site,
+dont deux erreurs d'origine à corriger au CMS : l'illustration de la FAQ de
+NIS2 porte l'alt « … la loi Dora », celle de l'article IoT « … la Loi 25 ».

@@ -22,9 +22,13 @@ Victrix est le partenaire stratégique des organisations du secteur public et pr
 
 Il existe une version gratuite offerte à tous, que vous soyez un particulier ou une entreprise, mais celle-ci est limitée. Les organisations souhaitant utiliser pleinement le pouvoir des fonctionnalités Microsoft Copilot doivent s’abonner pour tirer parti de multiples intégrations.
 
+![Banniere Copilot webinar](/wp-content/uploads/2025/01/webinaire-microsoft-copilot-__banniere-mailing-rediffusion.png)
+
 ## Exploiter l'IA générative dans de multiples applications grâce aux fonctionnalités de Microsoft Copilot
 
 ### Copilot dans ...
+
+![Word](/wp-content/uploads/2025/01/design-sans-titre-1-1-e1737989481531.jpg)
 
 #### Copilot dans Word
 

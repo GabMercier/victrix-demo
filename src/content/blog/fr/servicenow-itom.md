@@ -26,6 +26,8 @@ Choisissez votre créneau et choisissez 15 min pour poser vos questions!
  Avec **ServiceNow IT Operations Management (ITOM)**, vous obtenez une **visibilité en temps réel sur l’ensemble de votre environnement hybride**. Serveurs, applications, ressources infonuagiques; tout est cartographié et surveillé. Et quand un problème survient, vous êtes immédiatement prêt à réagir. Vous n’avez plus à attendre que les utilisateurs se plaignent; vous identifiez les incidents avant qu’ils ne se propagent. 
  Ce système est **conçu pour les organisations qui ont besoin de contrôle**. Il apporte une structure au chaos et transforme les systèmes fragmentés en une plateforme intelligente et unifiée.
 
+![infographic ITOM](/wp-content/uploads/2025/05/victrix_infograhic-itom-servicenow-fr.png)
+
 ## Plus qu'une suite d'outils: ce que les entreprises accomplissent avec ServiceNow ITOM
 
 La solution de gestion des opérations IT de ServiceNow ne se limite pas à une simple suite d’outils; **c’est un véritable facteur de différenciation en matière d’intelligence opérationnelle** et de [prestation de services TI](/fr/services/services-ti-geres/). 
@@ -42,6 +44,8 @@ La solution de gestion des opérations IT de ServiceNow ne se limite pas à une 
 **Lorsqu’un incident survient, chaque seconde compte.** 
  La solution de gestion des opérations informatiques ServiceNow détecte les problèmes à un stade précoce et filtre les alertes inutiles. Au lieu d'être submergée de notifications, votre équipe ne voit que ce qui est pertinent. 
  Grâce à**l’automatisation et à l’AIOps**, vos systèmes réagissent avant même que vos utilisateurs remarquent un problème.
+
+![Statistiques automatisation ITOM](/wp-content/uploads/2025/05/victrix_automation-statistics-fr.png)
 
 ## Les fonctionnalités et modules ITOM de ServiceNow — et ce qu’ils font
 
@@ -127,6 +131,8 @@ Notre équipe accompagne des organisations comme la vôtre pour tirer le meilleu
 
 **ITOM**, quant à lui, **gère l’infrastructure sous-jacente**. Il veille à la santé, l’optimisation et à l’automatisation de l’environnement TI—pour que l'ITSM puisse tenir ses promesses. 
  Lorsqu’ils sont intégrés, **ITSM et ITOM offrent une vue d’ensemble complète**. Il devient possible de remonter à la source d’un problème de service et de le résoudre avant qu’il n’ait un impact sur les utilisateurs.
+
+![Venn Diagramm ITOM vs ITSM](/wp-content/uploads/2025/05/victrix_diagramme-venn-itsmitom-victrix-fr.png)
 
 ## Pourquoi adopter ServiceNow ITOM en entreprise?
 

@@ -18,6 +18,8 @@ Parcourez notre **guide Loi 25 données personnelles**pour comprendre l’impact
 
 ## Résumé Loi 25: Guide rapide par nos experts en cybersécurité
 
+![Questions et réponses sur la Loi 25.](/wp-content/uploads/2024/08/image-2-1-scaled.jpg)
+
 ### Qu’est-ce que la loi 25 au Québec?
 
 La loi 25, c’est quoi? Il s’agit du nom final qui a été donné au projet de loi 64, la « loi modernisant des dispositions législatives en matière de **protection des renseignements personnels »**. Cette loi s’inspire du Règlement Général sur la Protection des Données (RGPD) en Europe.

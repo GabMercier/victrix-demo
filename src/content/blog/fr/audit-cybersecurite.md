@@ -46,6 +46,8 @@ Malgré ces contraintes, la mise en conformité n'est pas une tâche insurmontab
 
 ## Audit et posture de sécurité
 
+![Une séance de questions-réponses entre des consultants en cybersécurité et des clients.](/wp-content/uploads/2024/10/group-successful-business-team-workplace-scaled.jpg)
+
 ### Rôle et bénéfices d’un audit de cybersécurité pour votre organisation
 
 Un audit en cybersécurité vise à **s'assurer que vous avez mis en place les dispositifs et politiques de sécurité appropriés**. Il est essentiel de protéger vos informations sensibles contre toute menace pour éviter de mettre votre organisation en péril. Voici les avantages de procéder à un audit de cybersécurité :

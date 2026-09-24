@@ -185,6 +185,8 @@ We also offer an **exclusive managed security service** based on cooperation and
 
 Benefit from a powerful [outsourced SOC service](/en/ressources/soc-outsourcing-for-smbs-pros-cons/) to ensure superior IT security for your organization. Discover SEvOC, Victrix’s scalable Security Operations Center.
 
+![SEvOC logo](/wp-content/uploads/2023/11/victrix_sevoc-1-e1701322153436.png)
+
 ### SEvOC: a Comprehensive Solution to Fight Off Cybersecurity Threats
 
 With our SEvOC team at your side, your organization is fully equipped to deal with any threat. Our experts provide you with **continuous technological monitoring,** and help you improve and evolve your security infrastructure to support you through all your organizational changes.

@@ -41,9 +41,15 @@ def base(url: str) -> str:
     url = url.split("?")[0].split("#")[0]
     b = os.path.basename(url)
     b = re.sub(r"-\d+x\d+(?=\.\w+$)", "", b)
-    b = re.sub(r"-scaled(?=\.\w+$)", "-scaled", b)
     b = re.sub(r"\.(png|jpe?g|webp|gif|svg)$", "", b, flags=re.I)
     return b.lower()
+
+
+def equivalents(md_imgs: set[str]) -> set[str]:
+    """Même fichier téléversé deux fois dans WordPress : `ztna-victrix-1.jpg`
+    est la copie de `ztna-victrix.jpg` (un chiffre seul en suffixe). Repli
+    seulement, après l'échec du nom exact."""
+    return {re.sub(r"-\d$", "", b) for b in md_imgs}
 
 
 def front_matter(raw: str) -> tuple[str, str]:
@@ -110,7 +116,8 @@ def main() -> int:
         md_imgs, anciennes = images_markdown(body)
         n_compares += 1
         n_ancien += len(anciennes)
-        absentes = [b for b in src if b not in md_imgs]
+        eq = equivalents(md_imgs)
+        absentes = [b for b in src if b not in md_imgs and re.sub(r"-\d$", "", b) not in eq]
         contenu = [b for b in absentes if b not in DECORATIVES]
         deco = [b for b in absentes if b in DECORATIVES]
         n_absentes += len(contenu)

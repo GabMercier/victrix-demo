@@ -39,6 +39,8 @@ The main reason why this model is increasingly in demand is the changing context
  An increasing number of companies opt for a hybrid work environment, where employees can choose between working in the office and remote working. Let's not forget the organizational transformations involving remote offices and [cloud computing](/en/services/cloud-services-provider/), which are becoming more widespread.  
  With the Zero Trust initiative, companies can ensure optimum, continuous protection of their networks, systems, and sensitive data. All this while freeing up access to resources at any time, from any authorized device, **always with cybersecurity as the priority**.
 
+![Victrix, your cybersecurity partner](/wp-content/uploads/0206/05/victrix-votre-cybersecurite.png)
+
 At Victrix, we consider the Zero Trust model to be **one of the most efficient frameworks for cybersecurity**. It's the ideal solution for protecting critical systems and sensitive information.
 
 We assume that access rights granted and transactions concluded are unreliable. Users behind a firewall are, therefore, not automatically considered legitimate users.

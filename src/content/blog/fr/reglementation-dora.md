@@ -18,6 +18,8 @@ Dans cet article, nos [experts en cybersécurité](/fr/services/cybersecurite/) 
 
 <a class="btn" href="/fr/contact/">Soyez accompagné pour votre mise en conformité</a>
 
+![Réponses aux questions fréquentes sur la loi Dora en cybersécurité.](/wp-content/uploads/2024/10/yellow-question-mark-scaled.jpg)
+
 <details class="article-faq">
 <summary>Qu’est-ce que la réglementation DORA?</summary>
 

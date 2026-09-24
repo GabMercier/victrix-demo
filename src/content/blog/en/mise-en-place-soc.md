@@ -32,6 +32,8 @@ Book a consultation and ask any questions you may have about our scalable SOC (S
 
 ## Why Is a SOC Essential for Strengthening Your IT Security Strategy?
 
+![SOC functions](/wp-content/uploads/2025/07/soc-functions-2.png)
+
 A modern SOC is a strategic asset for any organization seeking to strengthen its security posture. The SOC centralizes key operations such as:
 
 - Continuous monitoring (24/7)
@@ -73,6 +75,8 @@ Review your processes (vulnerability management, IT asset management, incident m
 
 ### SOC Team Structure: Roles and Responsibilities
 
+![SOC team](/wp-content/uploads/2025/07/soc-team.png)
+
 If you are looking to build a SOC with limited budget or resources, **outsourcing is most likely the only solution that will meet your constraints.**
 
 Even for SMEs with more modest needs, the idea of **setting up an effective SOC** with limited resources is unrealistic, unless you are prepared to bury your resources under an avalanche of security alerts and tedious tasks.
@@ -104,6 +108,8 @@ Unless your organization has the means and resources to set up a SOC that operat
 > According to the [Cybersecurity Workforce Research Report](https://www.sans.org/mlp/2025-attract-hire-retain-cybersecurity-roles/) published by SANS | GIAC in 2025, this marks the first time since discussions about the cybersecurity talent shortage began that organizations have placed more importance on staff with the required skills than on headcount.**52% of IT security leaders identify “lack of qualified personnel”** as their main challenge, compared to 48% who cite “their workforce.”
 
 This is also why, according to a study by Gartner, **the most common SOC operating model is the hybrid approach**, chosen by nearly two-thirds (63%) of companies.
+
+![SOC target operating models pie chart](/wp-content/uploads/2025/07/soc-target-operating-models-pie-chart.png)
 
 ## How Does a Managed SOC Differ from an Internal SOC?
 

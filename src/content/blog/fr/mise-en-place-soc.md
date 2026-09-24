@@ -9,7 +9,8 @@ draft: false
 coverImage: "/images/ressources/mise-en-place-soc.jpg"
 seoTitle: "Mise en place d'un SOC adapté à vos opérations TI"
 wpUrl: "/mise-en-place-soc/"
----
+---![Mise en place d'une équipe SOC](/wp-content/uploads/2022/02/solution-sevoc-pourquoi.jpg)
+
 Avant d’entrer dans le vif du sujet de la mise en place d’un [SOC (Centre opérationnel de sécurité)](/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/), abordons d'abord un sujet tabou : **ce ne sont pas toutes les compagnies qui ont les moyens et les ressources pour bâtir un SOC interne**.
 
 La réalité, c'est qu’à moins que vous ne soyez responsable des TI d’une organisation large et complexe, il est beaucoup plus avantageux de faire appel à un [fournisseur de services de sécurité gérés (MSSP)](/fr/services/services-ti-geres/). La construction d’un SOC à partir de zéro nécessite des investissements importants et de nombreuses ressources.
@@ -31,6 +32,8 @@ Réservez une consultation et posez toutes vos questions sur notre SOC évolutif
 <a class="btn" href="/fr/contact/">Parlez à un expert</a>
 
 ## Pourquoi un SOC est-il essentiel pour renforcer votre stratégie de sécurité TI?
+
+![Fonctions du SOC](/wp-content/uploads/2025/07/soc-functions-1.png)
 
 Un SOC moderne est un atout stratégique pour toute organisation qui cherche à renforcer sa posture de sécurité. Le SOC centralise des opérations clés comme :
 
@@ -71,6 +74,8 @@ Passez en revue vos processus (gestion des vulnérabilités, gestion des actifs 
 
 ### Structure du SOC : rôles et responsabilités
 
+![équipe SOC](/wp-content/uploads/2025/07/equipe-soc.png)
+
 Si vous cherchez comment construire un SOC avec un budget ou des ressources limités, **l’externalisation est fort probablement la seule solution pour répondre à vos contraintes.**
 
 Même pour des PME avec des besoins plus modestes, l’idée de **mettre en place un SOC efficace** avec des ressources limitées est irréaliste, à moins que vous ne soyez prêt à ensevelir vos ressources sous une avalanche d’alertes de sécurité et de tâches fastidieuses.
@@ -102,6 +107,8 @@ Le [Centre canadien pour la cybersécurité](https://www.cyber.gc.ca/fr/orientat
 > Selon le [Rapport de recherche sur la main-d'œuvre dans le domaine de la cybersécurité](https://www.sans.org/mlp/2025-attract-hire-retain-cybersecurity-roles/) publié par SANS | GIAC en 2025, c’est la première fois depuis le début des discussions sur la pénurie de talents en cybersécurité que les organisations accordent plus d’importance au personnel possédant les compétences requises plutôt qu’aux effectifs.**52% des leaders en sécurité TI identifient le « manque de personnel qualifié »** comme leur défi principal, contre 48% qui citent « leurs effectifs ».
 
 C’est également la raison pourquoi, selon une étude par Gartner, **le modèle opérationnel du SOC le plus commun est l’approche hybride**, choisi par près des deux tiers (63%) des entreprises.
+
+![diagramme modèles opérationnels du soc](/wp-content/uploads/2025/07/diagramme-circulaire-des-modeles-operationnels-du-soc.png)
 
 ## Comment le SOC géré se distingue du SOC interne?
 

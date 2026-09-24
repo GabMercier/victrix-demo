@@ -16,6 +16,8 @@ Avec [57% des appareils IoT d'entreprise vulnérables aux attaques](https://www.
 
 ## Questions fréquentes sur l’Internet des objets (IoT)
 
+![Questions et réponses sur la Loi 25.](/wp-content/uploads/2024/08/image-2-1-scaled.jpg)
+
 ### Que signifie IoT et qu’est-ce que la sécurité IoT?
 
 IoT signifie *Internet of Things* et la sécurité IoT réfère à la protection des appareils connectés au réseau. Ce type de cybersécurité inclut diverses mesures telles que:
