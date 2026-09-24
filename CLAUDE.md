@@ -115,6 +115,9 @@ blocs de l'ancien site absents de chaque article →
 `docs/migration/blocs-manquants-articles.md`) ·
 `python scripts/migration/restaure-blocs-articles.py [--apply] [--only a,b]`
 (les remet à leur place dans `src/content/blog` ; sans `--apply` = diffs) ·
+`python scripts/migration/blocs-manquants-pages.py [--json] [--only a,b]`
+(après un build : blocs, phrases amputées, IMAGES et LIENS de l'ancien site
+absents de chaque PAGE hors articles → `docs/migration/blocs-manquants-pages.md`) ·
 `python scripts/migration/export-prix-check-point.py` (191 SKU FR/EN →
 `src/data/prix/`).
 

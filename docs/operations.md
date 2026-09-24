@@ -220,6 +220,26 @@ retrouvé, donc ignoré. Résultat du 23/09 : **198 blocs remis dans 26
 articles**, puis rapport à 2 blocs (remis à la main), et 4 retouches
 manuelles (un titre vide, une ligne « . », un H2 déplacé, 4 étiquettes → liste).
 
+**Et pour les PAGES (services, pages générales, campagnes) — 2026-09-23, soir.**
+`python scripts/migration/blocs-manquants-pages.py` (après un `npm run build` ;
+`--json`, `--only <slug>,<slug>`, `--dist <chemin>` si le serveur de dev tourne)
+écrit `docs/migration/blocs-manquants-pages.md` : même mécanique que pour les
+articles, sur les 89 pages hors articles, plus TROIS choses que le texte seul ne
+voit pas — les **paragraphes amputés** (retrouvés, mais ≥ 3 mots significatifs
+perdus, nommés : c'est une fin de phrase qui a sauté), les **images** de la
+source absentes de la cible (comparées par nom de fichier, suffixe de taille
+WordPress et extension ignorés ; la première photo = héros ; logos et
+certifications comptés à part) et les **liens internes** que les blocs
+retrouvés ne portent plus (ni tels quels, ni vers leur destination après
+redirection ; articles liés et fil d'Ariane exclus). La consigne de Gabriel
+étant « on reformule, on ne perd rien », un bloc absent dont ≥ 60 % des mots
+sont dans la page est classé « reformulé » et sort du décompte ; le carrousel
+« Rencontrez nos experts » et l'intitulé du formulaire sont listés comme
+widgets, hors décompte. Première passe : 87 pages sur 89 avec un écart —
+17 images de héros remplacées, 106 liens perdus, 216 blocs, 103 amputés.
+Lecture et suites : `docs/migration/statut-import.md`. Il n'écrit rien dans
+`src/content`.
+
 L'outil juge le TEXTE, pas la FORME : un encadré rendu en paragraphe simple,
 une FAQ aplatie en titres ou une bannière devenue un lien nu comptent comme
 présents. C'est un sujet distinct (composants d'article).

@@ -65,6 +65,8 @@ git add -A; git commit -m "merge: staging -> dev"; git push origin dev
 | D15 | **Les 4 pages encore `noindex`** après la passe du 22/09 : Centre de confiance (135 mots — contenu trop mince pour être indexé tel quel), Tarification (attend les prix #1634), politique de confidentialité et conditions d'utilisation (`noindex` aussi sur l'ancien site) | Enrichir le Centre de confiance puis l'indexer ; garder Tarification `noindex` jusqu'à #1634 ; les deux pages légales peuvent rester `noindex` (parité) — Julie confirme | L05 (reste) |
 | D16 | **Pages mères de services trop minces pour être indexées** : `infrastructure` (111 mots), `projets-en-ia` (121), `services-applicatifs` (152) sont `noindex` alors que leurs enfants sont indexés — mauvais pour le silo SEO | Les enrichir (200-300 mots) puis lever le `noindex` ; ne PAS indexer en l'état | L05 (reste), contenu |
 | D17 | **Règle 404 attrape-tout dans `routing.json`** : CloudCannon recommande de router tout sous-chemin inconnu vers la page 404 | À tester sur le site dev AVANT la prod : une règle attrape-tout mal comprise détournerait tout le trafic. Non posée pour l'instant | L15 (reste) |
+| D18 | **Les 4 « documents » WordPress** (réponse à Julie, 23/09) : pages de téléchargement à formulaire. Julie propose de ne remettre QUE le replay du webinaire Copilot (sept. 2025) ; le guide Licences (2024) et les 2 one-pagers (2022-2023) sont périmés | **D'accord.** Webinaire = une page « ressource à télécharger » (L12 réduit, PDF à obtenir de Julie) ; les 3 autres passent de 302 d'attente à 301 définitive (services gérés, page SOC, fiche Ø Studio ou campagne Licences) ; 6 liens d'articles à corriger ; 4 entrées `ALLOW` à retirer. Détail : `docs/migration/statut-import.md` § 5 | L12 |
+| D19 | **7 articles « à supprimer et rediriger » dans le classeur de Julie** (nominations CEO/COO, Meilleures pratiques 1-2-3, Réalité étendue, Une journée SecOps — ce dernier remis par nous le 21/09) : retirer les fichiers FR + EN et poser les 301 qu'elle indique, ou garder en `draft` | Retirer + 301 (elle a tranché dans le classeur) ; Conseil Lambda reste (déjà dans `dev`) | L21 (reste) |
 
 ## 3. Budget des modèles
 
@@ -388,6 +390,42 @@ Aucun changement de contenu ni de rendu. Si le registre révèle des pages à
 produire, tu les LISTES — tu ne les écris pas dans ce lot.
 ```
 
+#### L-restaure-pages — Ce que les PAGES ont perdu à la migration : héros, liens, blocs (1,5–2 j)
+
+> Ouvert le 2026-09-23 sur la demande de Gabriel (« on peut reformuler et
+> formater avec notre gabarit, mais il ne faut rien perdre »). Le rapport
+> `docs/migration/blocs-manquants-pages.md` (nouvel outil rejouable) mesure
+> l'écart page par page ; `docs/migration/statut-import.md` le lit.
+
+```text
+Lot L-restaure-pages de docs/plan-livraison-finale.md. Lis d'abord
+docs/migration/statut-import.md (§ 1 et § 2), puis relance
+`npm run build` et `python scripts/migration/blocs-manquants-pages.py --json`
+(le rapport doit être celui de TON build). Consigne : on reformule si on veut,
+on ne perd RIEN. Aucun fichier de src/content n'est réécrit en masse : chaque
+remise est un diff que tu me montres par page, dans cet ordre :
+1. IMAGES DE HÉROS (17) : rapatrier l'image d'origine (`extract-source-page.py
+   --images`, ou fetch-media.mjs) sous public/wp-content/… (convention du
+   dépôt), la poser dans le champ `image` du héros avec son `alt` d'origine,
+   FR et EN quand la source est la même ; puis `npm run optimize:images`.
+2. LIENS PERDUS (106) : remettre chaque lien dans le texte enrichi, ou dans
+   le `href` de la carte si le bloc est devenu une carte (L06 en prépare le
+   champ ; en attendant, texte enrichi). Cibles = nouvelles URL (CLAUDE.md
+   § Liens). Exclus : /categorie/*, /contact/, les widgets.
+3. BLOCS LONGS ABSENTS (41 pages) puis AMPUTÉS (103) : remettre le texte dans
+   la section qui l'accueille, mot pour mot ou reformulé SANS perte ; quand
+   aucune section ne convient (avis Gartner Peer Insights des fiches Appro
+   TI, témoignages d'employés, questions de la page Loi 25), propose le
+   composant ou l'assume — ne l'invente pas.
+4. LOGOS / CERTIFICATIONS (246) : pose ceux qui existent dans
+   public/images/logos ; liste le reste pour D4 / L07. N'invente aucun logo.
+5. Ce qui est ASSUMÉ (widgets, /fr/merci/, blocs abandonnés) s'écrit dans
+   docs/migration/correspondance-urls.json (clé `blocs_assumes` : page cible
+   → raison), et le script l'exclut du décompte.
+Preuve : chiffres du rapport avant/après ; `check:links --strict` à 0 ;
+`check:parite-texte --strict` vert ; e2e. Rituel.
+```
+
 ### Phase 4 — Mise en ligne (≈ 5–6 j)
 
 #### L15 — `routing.json` : redirections et en-têtes de sécurité (0,5–1 j) · #1503 · #1504
@@ -659,6 +697,7 @@ foreach ($s in $stories) {
 | L24–L26 | Options | 1 j + | — | | |
 | L-articles-blocs | **Contenu manquant dans les articles, REMIS** (urgence Julie, #1762). Rapport `blocs-manquants-articles.py` corrigé dans les deux sens (page source dans l'autre langue écartée ; titres jugés mot pour mot ; blocs courts « à vérifier ») : 158 blocs / 1 536 mots / 27 articles au lieu de 61 / 853 / 11. Remise OUTILLÉE par `scripts/migration/restaure-blocs-articles.py` (ordre de la source → place dans le Markdown) : **198 blocs dans 26 articles** + 4 retouches à la main ; rapport à 0 après build ; `check:parite-texte --strict` inchangé (3 assumées). À relire par Julie : liens non reconstitués dans les blocs remis, FAQ/questions en gras (forme = sujet B) | 0,5 j | — | | 2026-09-23 |
 | R3-1/R3-2 | **Revue R3, constats 1 et 2** : slug des fiches de solutions normalisé (`src/lib/solutions/slug.ts`, une règle pour la route ET le catalogue) et dédoublonné par langue (build en échec nommant les fichiers ; 6 tests) ; rétro-remplissage des 9 fiches EN (`backfill-section-keys.mjs`, 3e passe « clés de page » — 88 clés, `noindex` repris de la jumelle FR ; `check:sections` le garde). Restent : R3-3 à R3-8 (libellés visionneuse, `role="dialog"`, e2e couplés au contenu, id de galerie, repli langue, `String.fromCharCode`) | 2 h | — | | 2026-09-23 |
+| L-statut-import | **Statut de l'importation + validation « on ne perd rien »** (demande de Gabriel, page IA en exemple). NOUVEL OUTIL rejouable `scripts/migration/blocs-manquants-pages.py` : le pendant de l'outil des articles pour les 89 pages hors articles, plus les paragraphes amputés, les IMAGES (par nom de fichier) et les LIENS internes. Première passe : 87/89 pages avec un écart — **17 images de héros remplacées, 106 liens perdus, 216 blocs absents (143 courts), 103 paragraphes amputés, 123 photos + 246 logos absents** ; 340 blocs seulement reformulés (hors décompte). Lecture, réponses à Julie (Lambda déjà dans `dev` ; 4 « documents » → D18 ; 7 articles à retirer → D19 ; `staging` a 42 commits de retard sur `dev` = la vraie cause de ses « non intégrée ») et suites dans `docs/migration/statut-import.md`. Aucun contenu modifié. Lot de remise = L-restaure-pages (prompt en phase 3) | 0,5 j | — | | 2026-09-23 |
 
 **Total Opus ≈ 14–15 jours assistés · Fable : 4 revues + réserve d'urgence.**
 Ordre conseillé si le temps manque : L01 → L06 → L09 → L15 → L16 → L10 → L11,
@@ -669,3 +708,8 @@ qui reste est donc **L14 → L06 → L16 → L10 → L11**, puis la phase 4. L14
 devant parce qu'il est court (0,5 j), qu'il dé-risque la mise en ligne, et que
 son registre peut révéler des pages à produire — mieux vaut le savoir AVANT
 d'ouvrir L06 (1,5 j) que pendant.
+
+**Mise à jour du 2026-09-23 (soir)** — la validation « on ne perd rien » a
+produit `docs/migration/statut-import.md`. L'ordre devient : **PR `dev` →
+`staging`** (Julie valide un site vieux de 3 jours) → D18/D19 → R3-3…8 →
+**L-restaure-pages** (1,5–2 j) → L12 réduit → L08 (reste) → L06 → L16 → phase 4.
