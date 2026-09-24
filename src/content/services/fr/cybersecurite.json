@@ -191,7 +191,12 @@
           "image": "/images/logos/crowdstrike.svg",
           "imageAlt": ""
         },
-        "Microsoft",
+        {
+          "label": "Microsoft",
+          "icon": "",
+          "image": "/images/logos/microsoft.svg",
+          "imageAlt": ""
+        },
         {
           "label": "Cisco",
           "icon": "",

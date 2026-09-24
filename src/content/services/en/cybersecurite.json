@@ -186,7 +186,12 @@
           "image": "/images/logos/crowdstrike.svg",
           "imageAlt": ""
         },
-        "Microsoft",
+        {
+          "label": "Microsoft",
+          "icon": "",
+          "image": "/images/logos/microsoft.svg",
+          "imageAlt": ""
+        },
         {
           "label": "Cisco",
           "icon": "",
@@ -348,11 +353,11 @@
       "title": "Looking for Cybersecurity Services Tailored to the Healthcare Sector?",
       "body": "",
       "ctaLabel": "Discover our offering",
-      "ctaHref": "/en/services/cybersecurity/healthcare/",
+      "ctaHref": "/en/services/cybersecurity/cybersecurity-healthcare/",
       "cta2Label": "",
       "cta2Href": "",
       "variant": "light",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "faq",

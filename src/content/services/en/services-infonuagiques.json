@@ -300,7 +300,12 @@
           "image": "/images/logos/ovhcloud.png",
           "imageAlt": ""
         },
-        "ServiceNow"
+        {
+          "label": "ServiceNow",
+          "icon": "",
+          "image": "/images/logos/servicenow-partner.png",
+          "imageAlt": ""
+        }
       ],
       "subtitle": ""
     },
