@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { conflitsDeSlug, normaliseSlug, slugDeSolution } from './slug';
+import { conflitsDeSlug, langueDeFiche, normaliseSlug, slugDeSolution } from './slug';
 
 /**
  * Revue R3, constat 1 : le slug d'une fiche de solution est saisi au CMS.
@@ -51,5 +51,23 @@ describe('conflitsDeSlug', () => {
         { id: 'en/o-bureau', data: {} },
       ]),
     ).toEqual([]);
+  });
+});
+
+describe('langueDeFiche (revue R3, constat 7)', () => {
+  it('lit la langue dans le dossier du fichier', () => {
+    expect(langueDeFiche({ id: 'fr/o-bureau', data: {} })).toBe('fr');
+    expect(langueDeFiche({ id: 'en/o-bureau', data: {} })).toBe('en');
+  });
+
+  it('refuse un fichier hors de fr/ et en/ au lieu de le publier en français', () => {
+    expect(() => langueDeFiche({ id: 'o-bureau', data: {} })).toThrow(/o-bureau/);
+    expect(() => langueDeFiche({ id: 'de/o-bureau', data: {} })).toThrow(/solutions\/fr/);
+  });
+});
+
+describe('normaliseSlug — diacritiques (revue R3, constat 8)', () => {
+  it('retire tous les accents composés par NFKD, y compris cédille et tréma', () => {
+    expect(normaliseSlug('Façade Noël ÉTÉ')).toBe('facade-noel-ete');
   });
 });

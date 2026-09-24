@@ -5,6 +5,7 @@ excerpt: "Learn how ServiceNow ITOM helps manage services, reduce downtime, and 
 tags: ["Our articles"]
 topics: ["Managed services", "Cloud computing"]
 slug: "servicenow-itom"
+draft: false
 coverImage: "/wp-content/uploads/2024/11/servicenow-victrix.png"
 seoTitle: "ServiceNow ITOM: Improve Visibility, Speed & ROI"
 wpUrl: "/en/ressources/servicenow-itom/"
@@ -49,62 +50,60 @@ Thanks to**automation and AIOps**, your systems can respond before your users no
 ServiceNow ITOM is **modular by design**. Each module delivers specific capabilities—from asset discovery to advanced automation. Together, they provide complete control over your IT service operations. 
  Discover**7 of the best ITOM features** and what they do in the table below.
 
-<table style="min-width: 600px; width: 100%; border-collapse: collapse; border: 1px solid #d1d5db; border-radius: 6px; overflow: hidden; font-family: sans-serif;">
+<div class="article-tableau">
+<table>
 <thead>
-<tr style="background-color: #f0f0f0;">
-<th style="border: 1px solid #d1d5db; padding: 10px 14px;">
-<h3 style="margin: 0;">ServiceNow ITOM Modules</h3>
-</th>
-<th style="border: 1px solid #d1d5db; padding: 10px 14px;">
-<h3 style="margin: 0;">Function</h3>
-</th>
+<tr>
+<th>ServiceNow ITOM Modules</th>
+<th>Function</th>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color: #f5f7f8;">
-<td style="background-color: #e9eef1; border: 1px solid #d1d5db; padding: 10px 14px;">
+<tr>
+<td>
 <h3 style="margin: 0;">Discovery</h3>
 </td>
-<td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">Automatically scans and identifies devices, applications, and services across on-prem and cloud</td>
+<td>Automatically scans and identifies devices, applications, and services across on-prem and cloud</td>
 </tr>
-<tr style="background-color: #ffffff;">
-<td style="background-color: #e9eef1; border: 1px solid #d1d5db; padding: 10px 14px;">
+<tr>
+<td>
 <h3 style="margin: 0;">Service Mapping</h3>
 </td>
-<td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">Creates real-time maps of dependencies between business services and applications to accelerate root cause analysis</td>
+<td>Creates real-time maps of dependencies between business services and applications to accelerate root cause analysis</td>
 </tr>
-<tr style="background-color: #f5f7f8;">
-<td style="background-color: #e9eef1; border: 1px solid #d1d5db; padding: 10px 14px;">
+<tr>
+<td>
 <h3 style="margin: 0;">Event Management</h3>
 </td>
-<td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">Collects, filters, and prioritizes events; suppresses noise; alerts teams; gain insights into service health</td>
+<td>Collects, filters, and prioritizes events; suppresses noise; alerts teams; gain insights into service health</td>
 </tr>
-<tr style="background-color: #ffffff;">
-<td style="background-color: #e9eef1; border: 1px solid #d1d5db; padding: 10px 14px;">
+<tr>
+<td>
 <h3 style="margin: 0;">Cloud Accelerate</h3>
 </td>
-<td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">Simplify cloud management, speed up adoption, and ensure continuous ITOM governance</td>
+<td>Simplify cloud management, speed up adoption, and ensure continuous ITOM governance</td>
 </tr>
-<tr style="background-color: #f5f7f8;">
-<td style="background-color: #e9eef1; border: 1px solid #d1d5db; padding: 10px 14px;">
+<tr>
+<td>
 <h3 style="margin: 0;">Configuration Management Database (CMDB)</h3>
 </td>
-<td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">The central source of truth for all infrastructure and service relationships</td>
+<td>The central source of truth for all infrastructure and service relationships</td>
 </tr>
-<tr style="background-color: #ffffff;">
-<td style="background-color: #e9eef1; border: 1px solid #d1d5db; padding: 10px 14px;">
+<tr>
+<td>
 <h3 style="margin: 0;">Orchestration</h3>
 </td>
-<td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">Automates manual IT tasks like provisioning, resets, and system actions</td>
+<td>Automates manual IT tasks like provisioning, resets, and system actions</td>
 </tr>
-<tr style="background-color: #f5f7f8;">
-<td style="background-color: #e9eef1; border: 1px solid #d1d5db; padding: 10px 14px;">
+<tr>
+<td>
 <h3 style="margin: 0;">AIOps Automation</h3>
 </td>
-<td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">Uses machine learning to detect anomalies, reduce noise, predict issues and reduce costs</td>
+<td>Uses machine learning to detect anomalies, reduce noise, predict issues and reduce costs</td>
 </tr>
 </tbody>
 </table>
+</div>
 
 These modules aren't siloed. For example, **Discovery** feeds data into **Service Mapping**, which supports faster root cause analysis in **Event Management.**
 

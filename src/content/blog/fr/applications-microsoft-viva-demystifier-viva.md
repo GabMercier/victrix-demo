@@ -5,6 +5,7 @@ excerpt: "Explorez les applications Microsoft Viva et découvrez comment cette p
 tags: ["Nos articles"]
 topics: ["Productivité"]
 slug: "applications-microsoft-viva-demystifier-viva"
+draft: false
 coverImage: "/wp-content/uploads/2024/02/microsoft-viva_image-article-1024x623-1.jpg"
 seoTitle: "Applications Microsoft Viva: démystifier Viva"
 wpUrl: "/applications-microsoft-viva-demystifier-viva/"
@@ -25,7 +26,7 @@ Le prix de Microsoft Viva varie en fonction du degré de personnalisation ainsi 
 
 Certaines fonctionnalités de Viva Connections, Engage et Learning sont même accessibles sans frais additionnels à l'intérieur même des licences Microsoft 365 que vous détenez peut-être déjà. Les suites Microsoft offrent beaucoup d’applications et de fonctionnalités, trop souvent non utilisées par les organisations. Nos experts peuvent vous aider à mieux exploiter et rentabiliser les outils Microsoft.
 
-<a class="article-cta" href="/fr/contact/">Contactez nos experts Microsoft</a>
+<a class="btn" href="/fr/contact/">Contactez nos experts Microsoft</a>
 
 ### Comment configurer Microsoft Viva pour une expérience personnalisée?
 

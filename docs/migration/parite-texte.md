@@ -2,7 +2,7 @@
 
 > Généré par `npm run check:parite-texte` — **ne pas modifier à la main.**
 > Mesuré contre le build `./dist` et les pages EN LIGNE de victrix.ca
-> (cache `docs/migration/cache-source/`, 166 pages, téléchargées le 2026-09-23).
+> (cache `docs/migration/cache-source/`, 169 pages, téléchargées du 2026-09-23 au 2026-09-24).
 
 La question posée, page par page : **le texte de l'ancienne page est-il**
 **arrivé sur la page qui la remplace ?** `check:old-urls` prouve que chaque
@@ -12,13 +12,13 @@ adresse mène quelque part ; ce rapport compare les VOLUMES et les TITRES.
 
 | | Nombre |
 | --- | --- |
-| Pages cibles comparées (une ligne par page construite) | 151 |
+| Pages cibles comparées (une ligne par page construite) | 138 |
 | **Signalées** (ratio < 0,7 ou ≥ 1 bloc perdu) | **3** |
 | dont ratio cible / source < 0,7 | 2 |
 | dont ≥ 1 bloc perdu (titre H2/H3 ET son texte absents de la cible) | 1 |
-| Adresses anciennes hors comparaison (décisions, sources illisibles, sans page) | 9 |
+| Adresses anciennes hors comparaison (décisions, sources illisibles, sans page) | 24 |
 
-Et 74 pages où un titre de la source est absent mais son texte retrouvé (≈ titre
+Et 75 pages où un titre de la source est absent mais son texte retrouvé (≈ titre
 reformulé ou raccourci par la refonte) : listées, **non signalées**.
 
 Mots de la source : contenu principal lu par le parseur de `extract-source-page.py`
@@ -64,13 +64,13 @@ est le lot L-restaure.
 |  | `/en/services/strategic-advice/` | `/en/expertise/strategic-advice/` | 296 | 283 | 0,96 | ≈ « Meet our experts » · « Life at Victrix » | `src/content/services/en/conseil-strategique.json` |
 | ☑ assumée — Abandon VOLONTAIRE (lot L-restaure, 2026-09-23). L'ancienne page finissait par deux blocs que la refonte ne reprend pas : « Vie chez Victrix » (18 mots, teaser vers Carrières — la page Carrières porte maintenant ce contenu) et « Ils nous font confiance » (bandeau de logos sans texte, rattaché à la décision D4 sur les logos). La page EN équivalente n'est pas signalée. | `/fr/services/conseil-strategique/` | `/expertise/conseil-strategique/` | 322 | 309 | 0,96 | ✗ « Vie chez Victrix » (30 %)<br>≈ « Rencontrez nos experts » · « Ils nous fontconfiance » · « Assurez le succès de vos projets stratégiques avec Victrix » | `src/content/services/fr/conseil-strategique.json` |
 |  | `/fr/services/approvisionnement-ti/check-point/` | `/expertise/approvisionnement-ti/check-point/` | 993 | 960 | 0,97 | ≈ « Obtenir des solutions Check Point » | `src/content/services/fr/approvisionnement-ti/check-point.json` |
-|  | `/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/` | `/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/` | 637 | 618 | 0,97 | ≈ « Intéressés ? Des questions ? » · « Une offre adaptative » · « Bénéficiez de notre centre opérationnel de sécurité évolu… » | `src/content/services/fr/cybersecurite/centre-operationnel-de-securite-evolutif.json` |
+|  | `/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/` | `/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/` (+1) | 637 | 618 | 0,97 | ≈ « Intéressés ? Des questions ? » · « Une offre adaptative » · « Bénéficiez de notre centre opérationnel de sécurité évolu… » | `src/content/services/fr/cybersecurite/centre-operationnel-de-securite-evolutif.json` |
 |  | `/en/services/cybersecurity/scalable-security-operations-center/` | `/en/expertise/cybersecurity/scalable-security-operations-center/` | 572 | 555 | 0,97 | ≈ « Interested? Have Any Questions? » · « An Adaptative Cybersecurity Solution » | `src/content/services/en/cybersecurite/centre-operationnel-de-securite-evolutif.json` |
 |  | `/en/services/it-procurement/check-point/` | `/en/expertise/it-procurement/check-point/` | 806 | 786 | 0,98 | ≈ « Request Your Check Point Cybersecurity Solutions » | `src/content/services/en/approvisionnement-ti/check-point.json` |
 |  | `/fr/services/intelligence-artificielle/accompagnement/` | `/expertise/intelligence-artificielle/accompagnement/` | 1757 | 1726 | 0,98 | ≈ « Exemples d'initiatives découlant de notre accompagnement … » · « Notre démarche d'accompagnement en intelligence artificie… » · « Un accompagnement en IA où chacun bénéficie de gains conc… » | `src/content/services/fr/intelligence-artificielle/accompagnement.json` |
 |  | `/fr/services/approvisionnement-ti/palo-alto-networks/` | `/expertise/approvisionnement-ti/palo-alto-networks/` | 758 | 748 | 0,99 |  | `src/content/services/fr/approvisionnement-ti/palo-alto-networks.json` |
 |  | `/fr/services/approvisionnement-ti/crowdstrike-falcon/` | `/expertise/approvisionnement-ti/crowdstrike-falcon/` | 920 | 918 | 1,00 | ≈ « Obtenir des solutions CrowdStrike Falcon » | `src/content/services/fr/approvisionnement-ti/crowdstrike-falcon.json` |
-|  | `/fr/services/services-ti-geres/` | `/expertise/services-ti-geres/` | 1023 | 1025 | 1,00 | ≈ « Une couverture de services gérés axée sur la sécurité et … » · « Victrix: une prise en charge qui résout vos défis de gest… » · « En savoir plus sur nos services gérés TI » (+3) | `src/content/services/fr/services-ti-geres.json` |
+|  | `/fr/services/services-ti-geres/` | `/expertise/services-ti-geres/` (+1) | 1023 | 1025 | 1,00 | ≈ « Une couverture de services gérés axée sur la sécurité et … » · « Victrix: une prise en charge qui résout vos défis de gest… » · « En savoir plus sur nos services gérés TI » (+3) | `src/content/services/fr/services-ti-geres.json` |
 |  | `/fr/services/productivite/o-bureau/` | `/expertise/productivite/o-bureau/` | 258 | 259 | 1,00 | ≈ « LES AVANTAGES DE NOTRE APPLICATION DE RÉSERVATION DE BUREAU » | `src/content/services/fr/productivite/o-bureau.json` |
 |  | `/fr/services/approvisionnement-ti/cisco/` | `/expertise/approvisionnement-ti/cisco/` | 931 | 935 | 1,00 | ≈ « Obtenir des solutions Cisco » | `src/content/services/fr/approvisionnement-ti/cisco.json` |
 |  | `/fr/services/approvisionnement-ti/dell-technologies/` | `/expertise/approvisionnement-ti/dell-technologies/` | 1039 | 1044 | 1,00 | ≈ « Obtenir des solutions Dell Technologies » | `src/content/services/fr/approvisionnement-ti/dell-technologies.json` |
@@ -135,24 +135,22 @@ est le lot L-restaure.
 |  | `/en/` | `/en/` | 190 | 515 | 2,71 | ≈ « Meet our experts » | `src/content/home/en/accueil.json` |
 |  | `/fr/portail/` | `/mon-portail/` (+1) | 7 | 20 | 2,86 |  | (gabarit de page) |
 |  | `/fr/` | `/` | 192 | 581 | 3,03 | ≈ « Rencontrez nos experts » | `src/content/home/fr/accueil.json` |
-|  | `/fr/ressources/` | `/ressources/` | 135 | 1290 | 9,56 | ≈ « Webinaire Copilot – Du buzz à l’impact réel » | (gabarit de page) |
-|  | `/en/ressources/` | `/en/resources-center/` | 120 | 1205 | 10,04 |  | (gabarit de page) |
+|  | `/fr/ressources/` | `/ressources/` | 135 | 1044 | 7,73 | ≈ « Un partenariat exclusif avec l’un des plus grands acteurs… » · « Webinaire Copilot – Du buzz à l’impact réel » | (gabarit de page) |
+|  | `/en/ressources/` | `/en/resources-center/` | 120 | 996 | 8,30 | ≈ « An Exclusive Partnership with a Canadian Leader in Extend… » | (gabarit de page) |
 
-## Articles — 62 pages, 0 signalées
+## Articles — 49 pages, 0 signalées
 
 | | Page cible | Adresse source | Mots source | Mots cible | Ratio | Titres H2/H3 absents de la cible | Fichier du dépôt |
 | --- | --- | --- | ---: | ---: | ---: | --- | --- |
 |  | `/en/ressources/servicenow-itsm/` | `/en/servicenow-itsm/` | 1081 | 785 | 0,73 | ≈ « Understanding ITSM: Beyond Simple IT Support » · « Choosing the Right ServiceNow Partner for ITSM Implementa… » · « FAQ — ServiceNow ITSM » | `src/content/blog/en/servicenow-itsm.md` |
 |  | `/en/ressources/sase-cloud/` | `/en/sase-cloud/` | 1041 | 962 | 0,92 | ≈ « What Is a SASE Solution? » · « SASE Architecture Elements in the Cloud » · « The Main Benefits of the Cloud-Based SASE Model » (+3) | `src/content/blog/en/sase-cloud.md` |
-|  | `/en/ressources/best-practices-in-operational-safety-maintenance/` | `/en/best-practices-in-operational-safety-maintenance/` | 18 | 17 | 0,94 |  | `src/content/blog/en/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance.md` |
-|  | `/en/ressources/best-practices-in-operational-security-defense/` | `/en/best-practices-in-operational-security-defense/` (+1) | 18 | 17 | 0,94 |  | `src/content/blog/en/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense.md` |
 |  | `/en/ressources/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` | `/en/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` (+1) | 794 | 757 | 0,95 | ≈ « What Is the Zero Trust Network Access (ZTNA) Model in Cyb… » · « Business Cybersecurity: Why Choose Zero Trust Network Acc… » · « How Victrix Ensures Optimal Network Security with the ZTN… » (+1) | `src/content/blog/en/zero-trust-network-access-ztna.md` |
 |  | `/en/ressources/soc-outsourcing-for-smbs-pros-cons/` | `/en/soc-outsourcing-for-smbs-pros-cons/` (+1) | 866 | 846 | 0,98 | ≈ « What do the acronyms SIEM & SOC stand for? » · « What Is a SOC service? » · « Why Set Up a SOC? » (+1) | `src/content/blog/en/externalisation-soc-avantages-inconvenients.md` |
 |  | `/fr/ressources/externalisation-du-soc-avantages-inconvenients/` | `/externalisation-du-soc-avantages-inconvenients/` (+1) | 971 | 953 | 0,98 | ≈ « Que signifient les acronymes SIEM et SOC? » · « Qu'est-ce qu'un service SOC? » · « Pourquoi opter pour la mise en place d’un SOC dédié? » (+1) | `src/content/blog/fr/externalisation-soc-avantages-inconvenients.md` |
 |  | `/en/ressources/it-trends/` | `/en/it-trends/` | 771 | 762 | 0,99 |  | `src/content/blog/en/tendances-ti.md` |
 |  | `/en/ressources/servicenow-ai/` | `/en/servicenow-ai/` | 1001 | 997 | 1,00 |  | `src/content/blog/en/ia-servicenow.md` |
 |  | `/en/ressources/ransomware-protection-tips/` | `/en/ransomware-protection-tips/` | 2173 | 2179 | 1,00 |  | `src/content/blog/en/ransomware-rancongiciels.md` |
-|  | `/fr/ressources/tendances-ti/` | `/tendances-ti/` | 932 | 935 | 1,00 |  | `src/content/blog/fr/tendances-ti.md` |
+|  | `/fr/ressources/tendances-ti/` | `/tendances-ti/` | 932 | 937 | 1,01 |  | `src/content/blog/fr/tendances-ti.md` |
 |  | `/en/ressources/dora-regulation/` | `/en/dora-regulation/` | 518 | 521 | 1,01 |  | `src/content/blog/en/reglementation-dora.md` |
 |  | `/en/ressources/penetration-testing/` | `/en/penetration-testing/` | 1151 | 1158 | 1,01 |  | `src/content/blog/en/pentest-cybersecurite.md` |
 |  | `/en/ressources/copilot-studio-agents/` | `/en/copilot-studio-agents/` | 1177 | 1185 | 1,01 |  | `src/content/blog/en/agents-copilot-studio.md` |
@@ -160,16 +158,13 @@ est le lot L-restaure.
 |  | `/fr/ressources/ransomware-rancongiciels/` | `/ransomware-rancongiciels/` | 2518 | 2537 | 1,01 |  | `src/content/blog/fr/ransomware-rancongiciels.md` |
 |  | `/fr/ressources/sase-cloud/` | `/sase-cloud/` | 1203 | 1213 | 1,01 |  | `src/content/blog/fr/sase-cloud.md` |
 |  | `/en/ressources/internet-of-things-security/` | `/en/internet-of-things-security/` | 830 | 837 | 1,01 |  | `src/content/blog/en/securite-internet-des-objets.md` |
-|  | `/en/ressources/extended-reality-xr-agc-partnership/` | `/en/extended-reality-xr-agc-partnership/` | 972 | 981 | 1,01 |  | `src/content/blog/en/realite-etendue-xr-partenariat-agc.md` |
 |  | `/en/ressources/migration-windows-11-microsoft-exchange/` | `/en/migration-windows-11-microsoft-exchange/` | 636 | 642 | 1,01 | ≈ « Why Act Now? » | `src/content/blog/en/migration-windows-11-microsoft-exchange.md` |
 |  | `/en/ressources/microsoft-copilot-features/` | `/en/microsoft-copilot-features/` | 833 | 842 | 1,01 |  | `src/content/blog/en/fonctionnalites-microsoft-copilot.md` |
 |  | `/en/ressources/cybersecurity-risk-audit/` | `/en/cybersecurity-risk-audit/` | 705 | 713 | 1,01 |  | `src/content/blog/en/audit-cybersecurite.md` |
 |  | `/en/ressources/microsoft-viva-apps/` | `/en/microsoft-viva-apps/` | 667 | 675 | 1,01 |  | `src/content/blog/en/applications-microsoft-viva-demystifier-viva.md` |
 |  | `/en/ressources/law-25-personal-data-guide/` | `/en/law-25-personal-data-guide/` | 662 | 670 | 1,01 |  | `src/content/blog/en/loi-25-donnees-personnelles-guide.md` |
 |  | `/fr/ressources/gouvernance-power-platform-conseils/` | `/gouvernance-power-platform-conseils/` | 1346 | 1363 | 1,01 |  | `src/content/blog/fr/gouvernance-power-platform-conseils.md` |
-|  | `/en/ressources/dominic-lajoie-appointed/` | `/en/dominic-lajoie-appointed/` | 620 | 628 | 1,01 |  | `src/content/blog/en/nomination-dominic-lajoie.md` |
 |  | `/en/ressources/iot-security-challenges/` | `/en/iot-security-challenges/` | 550 | 558 | 1,01 |  | `src/content/blog/en/securite-iot-defis.md` |
-|  | `/en/ressources/appointment-ceo/` | `/en/appointment-ceo/` | 532 | 540 | 1,02 |  | `src/content/blog/en/annonce-nomination-ceo.md` |
 |  | `/fr/ressources/servicenow-itsm/` | `/servicenow-itsm/` | 1376 | 1397 | 1,02 |  | `src/content/blog/fr/servicenow-itsm.md` |
 |  | `/fr/ressources/agents-copilot-studio/` | `/agents-copilot-studio/` | 1311 | 1335 | 1,02 |  | `src/content/blog/fr/agents-copilot-studio.md` |
 |  | `/fr/ressources/ia-servicenow/` | `/ia-servicenow/` | 1199 | 1222 | 1,02 |  | `src/content/blog/fr/ia-servicenow.md` |
@@ -177,9 +172,7 @@ est le lot L-restaure.
 |  | `/fr/ressources/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` | `/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` (+1) | 923 | 943 | 1,02 |  | `src/content/blog/fr/zero-trust-network-access-ztna.md` |
 |  | `/fr/ressources/securite-internet-des-objets/` | `/securite-internet-des-objets/` | 1015 | 1037 | 1,02 |  | `src/content/blog/fr/securite-internet-des-objets.md` |
 |  | `/fr/ressources/loi-25-donnees-personnelles-guide/` | `/loi-25-donnees-personnelles-guide/` | 824 | 843 | 1,02 |  | `src/content/blog/fr/loi-25-donnees-personnelles-guide.md` |
-|  | `/fr/ressources/realite-etendue-xr-partenariat-agc/` | `/realite-etendue-xr-partenariat-agc/` | 1085 | 1111 | 1,02 |  | `src/content/blog/fr/realite-etendue-xr-partenariat-agc.md` |
 |  | `/fr/ressources/applications-microsoft-viva-demystifier-viva/` | `/applications-microsoft-viva-demystifier-viva/` | 741 | 759 | 1,02 |  | `src/content/blog/fr/applications-microsoft-viva-demystifier-viva.md` |
-|  | `/fr/ressources/nomination-dominic-lajoie/` | `/nomination-dominic-lajoie/` | 631 | 648 | 1,03 |  | `src/content/blog/fr/nomination-dominic-lajoie.md` |
 |  | `/fr/ressources/fonctionnalites-microsoft-copilot/` | `/fonctionnalites-microsoft-copilot/` | 998 | 1026 | 1,03 |  | `src/content/blog/fr/fonctionnalites-microsoft-copilot.md` |
 |  | `/fr/ressources/securite-iot-defis/` | `/securite-iot-defis/` | 663 | 682 | 1,03 |  | `src/content/blog/fr/securite-iot-defis.md` |
 |  | `/en/ressources/expands-cybersecurity-offering-france/` | `/en/expands-cybersecurity-offering-france/` | 270 | 278 | 1,03 |  | `src/content/blog/en/developpement-offre-cybersecurite-france.md` |
@@ -187,7 +180,6 @@ est le lot L-restaure.
 |  | `/fr/ressources/societe-conseil-lambda-victrix/` | `/societe-conseil-lambda-victrix/` | 552 | 572 | 1,04 |  | `src/content/blog/fr/societe-conseil-lambda-victrix.md` |
 |  | `/en/ressources/servicenow-itom/` | `/en/servicenow-itom/` | 1086 | 1127 | 1,04 | ≈ « What Is ITOM in ServiceNow? » · « More Than a Tool Suite: What Can Businesses Do With Servi… » · « ServiceNow ITOM Modules & Features — and What They Do » (+4) | `src/content/blog/en/servicenow-itom.md` |
 |  | `/fr/ressources/migration-windows-11-microsoft-exchange/` | `/migration-windows-11-microsoft-exchange/` | 703 | 732 | 1,04 |  | `src/content/blog/fr/migration-windows-11-microsoft-exchange.md` |
-|  | `/fr/ressources/annonce-nomination-ceo/` | `/annonce-nomination-ceo/` | 540 | 565 | 1,05 |  | `src/content/blog/fr/annonce-nomination-ceo.md` |
 |  | `/fr/ressources/developpement-offre-cybersecurite-france/` | `/developpement-offre-cybersecurite-france/` | 287 | 305 | 1,06 |  | `src/content/blog/fr/developpement-offre-cybersecurite-france.md` |
 |  | `/fr/ressources/certification-iso-27001-iso-9001/` | `/certification-iso-27001-iso-9001/` | 425 | 452 | 1,06 |  | `src/content/blog/fr/certification-iso-27001-iso-9001.md` |
 |  | `/en/ressources/nis2-directive/` | `/en/nis2-directive/` | 680 | 729 | 1,07 |  | `src/content/blog/en/directive-nis2.md` |
@@ -196,14 +188,9 @@ est le lot L-restaure.
 |  | `/fr/ressources/directive-nis2/` | `/directive-nis2/` | 827 | 907 | 1,10 |  | `src/content/blog/fr/directive-nis2.md` |
 |  | `/fr/ressources/pentest-cybersecurite/` | `/pentest-cybersecurite/` | 1157 | 1284 | 1,11 |  | `src/content/blog/fr/pentest-cybersecurite.md` |
 |  | `/en/ressources/chatgpt-vs-copilot/` | `/en/chatgpt-vs-copilot/` | 1172 | 1355 | 1,16 |  | `src/content/blog/en/copilot-vs-chatgpt.md` |
-|  | `/fr/ressources/copilot-vs-chatgpt/` | `/copilot-vs-chatgpt/` | 1292 | 1500 | 1,16 |  | `src/content/blog/fr/copilot-vs-chatgpt.md` |
-|  | `/fr/ressources/une-journee-dans-la-vie-secops/` | `/une-journee-dans-la-vie-secops/` | 107 | 129 | 1,21 |  | `src/content/blog/fr/une-journee-dans-la-vie-secops.md` |
+|  | `/fr/ressources/copilot-vs-chatgpt/` | `/copilot-vs-chatgpt/` (+1) | 1292 | 1505 | 1,16 |  | `src/content/blog/fr/copilot-vs-chatgpt.md` |
 |  | `/en/ressources/setting-up-a-soc/` | `/en/setting-up-a-soc/` | 1313 | 1706 | 1,30 |  | `src/content/blog/en/mise-en-place-soc.md` |
 |  | `/fr/ressources/mise-en-place-soc/` | `/mise-en-place-soc/` | 1511 | 1982 | 1,31 |  | `src/content/blog/fr/mise-en-place-soc.md` |
-|  | `/en/ressources/best-practices-in-operational-security-monitoring/` | `/en/best-practices-in-operational-security-monitoring/` (+1) | 10 | 17 | 1,70 |  | `src/content/blog/en/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance.md` |
-|  | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-defense/` | `/meilleures-pratiques-en-securite-operationnelle-la-defense/` (+1) | 9 | 18 | 2,00 |  | `src/content/blog/fr/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense.md` |
-|  | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | `/meilleures-pratiques-en-securite-operationnelle-la-maintenance/` (+1) | 9 | 18 | 2,00 |  | `src/content/blog/fr/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance.md` |
-|  | `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | `/meilleures-pratiques-en-securite-operationnelle-la-surveillance/` (+1) | 1 | 18 | 18,00 |  | `src/content/blog/fr/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance.md` |
 
 ## Campagnes — 5 pages, 0 signalées
 
@@ -215,24 +202,39 @@ est le lot L-restaure.
 |  | `/fr/services/productivite/o-bureau/demo-o-bureau/` | `/expertise/productivite/o-bureau/demo-o-bureau/` | 90 | 140 | 1,56 |  | `src/content/services/fr/productivite/o-bureau/demo-o-bureau.json` |
 |  | `/en/services/productivity-consulting/office-booking/landing-demo-obureau/` | `/en/expertise/productivity-consulting/office-booking/landing-demo-obureau/` | 75 | 121 | 1,61 |  | `src/content/services/en/productivite/o-bureau/demo-o-bureau.json` |
 
-## Hors comparaison — 9 adresses anciennes
+## Hors comparaison — 24 adresses anciennes
 
 Décisions déjà prises dans `correspondance-urls.json`, sources que le site en
 ligne ne sert plus, adresses sans page construite.
 
 | Adresse de l'ancien site | Pourquoi |
 | --- | --- |
+| `/annonce-nomination-ceo/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
 | `/cache/` | URL de l'ancien CMS sans équivalent (ignorée) |
-| `/document/cybersecurite/` | page à recréer (302 d'attente — L12 / L-prix) |
-| `/document/pourquoi-gerez-vous-encore-vos-ti/` | page à recréer (302 d'attente — L12 / L-prix) |
-| `/document/webinaire-copilot-buzz-impact/` | page à recréer (302 d'attente — L12 / L-prix) |
+| `/en/appointment-ceo/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
+| `/en/best-practices-in-operational-safety-maintenance/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
+| `/en/best-practices-in-operational-security-defense/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
+| `/en/best-practices-in-operational-security-monitoring/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
 | `/en/check-point-price-list/` | page à recréer (302 d'attente — L12 / L-prix) |
+| `/en/dominic-lajoie-appointed/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
+| `/en/extended-reality-xr-agc-partnership/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
 | `/en/holiday-wishes/` | page abandonnée (décision : 301 vers le plus proche) |
+| `/en/part-2-best-practices-in-operational-security-monitoring/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
+| `/en/part-3-best-practices-in-operational-security-defense/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
 | `/expertise/productivite/o-bureau/documents-o-bureau/` | page abandonnée (décision : 301 vers le plus proche) |
 | `/liste-prix-check-point/` | page à recréer (302 d'attente — L12 / L-prix) |
+| `/meilleures-pratiques-en-securite-operationnelle-la-defense/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
+| `/meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
+| `/meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
+| `/nomination-dominic-lajoie/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
+| `/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
+| `/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
+| `/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
+| `/realite-etendue-xr-partenariat-agc/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
+| `/une-journee-dans-la-vie-secops/` | article retiré (D19 : brouillon + 301 vers le plus proche) |
 | `/voeux-des-fetes/` | page abandonnée (décision : 301 vers le plus proche) |
 
-## Adresses regroupées sur une même page cible — 13
+## Adresses regroupées sur une même page cible — 11
 
 Plusieurs anciennes adresses mènent à la même page : la source retenue est
 celle du plan de site en ligne (sinon la plus fournie) ; les autres sont des
@@ -241,15 +243,13 @@ alias, anciens slugs ou pages fusionnées.
 | Page cible | Source retenue | Autres adresses |
 | --- | --- | --- |
 | `/en/portail/` | `/en/customer-portal/` | `/en/no-access/` |
-| `/en/ressources/best-practices-in-operational-security-defense/` | `/en/best-practices-in-operational-security-defense/` | `/en/part-3-best-practices-in-operational-security-defense/` |
-| `/en/ressources/best-practices-in-operational-security-monitoring/` | `/en/best-practices-in-operational-security-monitoring/` | `/en/part-2-best-practices-in-operational-security-monitoring/` |
 | `/en/ressources/soc-outsourcing-for-smbs-pros-cons/` | `/en/soc-outsourcing-for-smbs-pros-cons/` | `/en/soc-outsourcing-pros-cons/` |
 | `/en/ressources/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` | `/en/zero-trust-network-access-ztna-ultimate-cybersecurity-model/` | `/en/zero-trust-network-access-ztna/` |
 | `/en/services/it-procurement/servicenow/` | `/en/expertise/it-procurement/servicenow/` | `/en/expertise/productivity-consulting/servicenow/` |
 | `/fr/portail/` | `/mon-portail/` | `/no-access/` |
+| `/fr/ressources/copilot-vs-chatgpt/` | `/copilot-vs-chatgpt/` | `/document/webinaire-copilot-buzz-impact/` |
 | `/fr/ressources/externalisation-du-soc-avantages-inconvenients/` | `/externalisation-du-soc-avantages-inconvenients/` | `/externalisation-soc-avantages-inconvenients/` |
-| `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-defense/` | `/meilleures-pratiques-en-securite-operationnelle-la-defense/` | `/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense/` |
-| `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | `/meilleures-pratiques-en-securite-operationnelle-la-maintenance/` | `/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance/` |
-| `/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | `/meilleures-pratiques-en-securite-operationnelle-la-surveillance/` | `/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance/` |
 | `/fr/ressources/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` | `/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/` | `/zero-trust-network-access-ztna/` |
 | `/fr/services/approvisionnement-ti/servicenow/` | `/expertise/approvisionnement-ti/servicenow/` | `/expertise/productivite/servicenow/` |
+| `/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/` | `/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/` | `/document/cybersecurite/` |
+| `/fr/services/services-ti-geres/` | `/expertise/services-ti-geres/` | `/document/pourquoi-gerez-vous-encore-vos-ti/` |

@@ -1,5 +1,6 @@
 // @ts-check
 import { promises as fs } from 'node:fs';
+import { filtreRedirectionsSelonMode, resolveBuildMode } from './scripts/lib/build-mode.mjs';
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { auditPages } from './scripts/lib/h1-guard.mjs';
@@ -18,20 +19,31 @@ import tailwindcss from '@tailwindcss/vite';
 // and `astro build` (the deploy path) still gets the adapter + Pages worker.
 const isBuild = process.argv.includes('build');
 
-// STATIC_ONLY mode — a fully-static build for CloudCannon's editing environment.
-// CloudCannon builds the site to drive its visual editor and has no Cloudflare
-// Pages runtime, so in this mode (a) the Cloudflare adapter stays OFF even
-// during `astro build`, and (b) toute route à la demande est force-prérendue
-// pour que le build passe sans adaptateur. Cloudflare Pages production builds
-// are UNCHANGED — STATIC_ONLY is unset there and the adapter still attaches.
+// STATIC_ONLY mode — a fully-static build for CloudCannon (editing AND
+// production sites). CloudCannon has no Cloudflare Pages runtime, so in this
+// mode (a) the Cloudflare adapter stays OFF even during `astro build`, and
+// (b) toute route à la demande est force-prérendue pour que le build passe
+// sans adaptateur. Cloudflare Pages production builds are UNCHANGED —
+// STATIC_ONLY is unset there and the adapter still attaches.
 // Enable with `STATIC_ONLY=1 astro build` (any non-empty value).
+//
+// EDITOR_PREVIEW (lot L16, 2026-09-24) — la politique d'APERÇU D'ÉDITION,
+// séparée de STATIC_ONLY : brouillons et articles programmés construits
+// (src/i18n/blog.ts), fenêtres des bannières ignorées (src/lib/announce.ts),
+// redirections des articles retirés non émises, Bookshop attaché. Posée sur
+// les sites d'ÉDITION CloudCannon seulement — la production (STATIC_ONLY
+// seul) ne publie plus les brouillons. Les combinaisons et ce qu'elles
+// commandent : scripts/lib/build-mode.mjs (+ src/lib/build-mode.test.ts) ;
+// tableau des variables par site : docs/operations.md § 6.
 //
 // Seule route à la demande restante : /api/forms (le portail mock et /auth/*
 // ont été RETIRÉS le 2026-08-18). Force-prérendu, un endpoint ne garde que le
 // CORPS de la réponse (statuts et en-têtes perdus) — d'où la consigne de ne
 // JAMAIS poser PUBLIC_FORMS_ENABLED dans l'environnement de build CloudCannon
 // (docs/formulaires.md).
-const staticOnly = Boolean(process.env.STATIC_ONLY);
+const buildMode = resolveBuildMode(process.env);
+const { staticOnly } = buildMode;
+for (const avertissement of buildMode.avertissements) console.warn(avertissement);
 
 /**
  * STATIC_ONLY inline integration — `astro:route:setup` is the documented hook
@@ -56,18 +68,20 @@ function staticOnlyMode() {
 }
 
 // Bookshop registers the component library (component-library/**) with Astro so
-// CloudCannon's visual editor can live-render sections. STATIC_ONLY builds ONLY:
+// CloudCannon's visual editor can live-render sections. EDITING builds ONLY
+// (STATIC_ONLY + EDITOR_PREVIEW — `attachBookshop` de build-mode.mjs) :
 // Bookshop's Vite plugin (@bookshop/vite-plugin-astro-bookshop) re-parses and
 // REWRITES the compiled JS of every .astro module (prop introspection, injected
 // data-binding paths) — including the on-demand portal routes that ship as the
-// Cloudflare Pages Function. The production build and `astro dev` must stay
+// Cloudflare Pages Function. The production builds (Cloudflare AND the
+// CloudCannon production site, STATIC_ONLY alone) and `astro dev` must stay
 // byte-identical to the pre-Bookshop pipeline, so the integration is gated to
-// the CloudCannon editing build (which always runs with STATIC_ONLY=1 — live
-// editing keeps working). Loaded dynamically and guarded: a static import would
-// crash with ERR_MODULE_NOT_FOUND before `npm install` has brought the package
-// in. Package name comes verbatim from CloudCannon's Astro guide.
+// the CloudCannon editing build. Loaded dynamically and guarded: a static
+// import would crash with ERR_MODULE_NOT_FOUND before `npm install` has
+// brought the package in. Package name comes verbatim from CloudCannon's
+// Astro guide.
 let bookshop;
-if (staticOnly) {
+if (buildMode.attachBookshop) {
   try {
     bookshop = (await import('@bookshop/astro-bookshop')).default;
   } catch {
@@ -340,7 +354,17 @@ function redirectsFile() {
         //    docs/migration/correspondance-urls.json et le contenu. Absente =
         //    pas d'erreur (le dépôt tourne sans).
         const entriesCms = await lireListe('src/data/redirects.json', true);
-        const entriesMigration = await lireListe('src/data/redirects-migration.json', false);
+        // Articles retirés (`retire: true`) : pas de 301 dans un aperçu
+        // d'édition, où le brouillon est encore une page (D19 + lot L16).
+        const { gardees: entriesMigration, retenues } = filtreRedirectionsSelonMode(
+          await lireListe('src/data/redirects-migration.json', false),
+          buildMode.editorPreview
+        );
+        if (retenues > 0) {
+          logger.info(
+            `${retenues} redirection(s) d’articles retirés NON émises (aperçu d’édition : les brouillons restent des pages)`
+          );
+        }
         const entries = [...entriesCms, ...entriesMigration];
 
         /** @type {string[]} */
@@ -953,10 +977,10 @@ export default defineConfig({
     h1Guard(),
     // CloudCannon editing build only — see the STATIC_ONLY block above.
     ...(staticOnly ? [staticOnlyMode()] : []),
-    // Bookshop component library — STATIC_ONLY (CloudCannon) builds only, and
-    // only once the package is installed. Never in the production build (see
-    // the gate above the dynamic import).
-    ...(staticOnly && bookshop ? [bookshop()] : []),
+    // Bookshop component library — CloudCannon EDITING builds only (STATIC_ONLY
+    // + EDITOR_PREVIEW), and only once the package is installed. Never in a
+    // production build (see the gate above the dynamic import).
+    ...(buildMode.attachBookshop && bookshop ? [bookshop()] : []),
     sitemap({
       i18n: {
         defaultLocale: 'fr',

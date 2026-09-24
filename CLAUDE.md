@@ -115,6 +115,12 @@ blocs de l'ancien site absents de chaque article →
 `docs/migration/blocs-manquants-articles.md`) ·
 `python scripts/migration/restaure-blocs-articles.py [--apply] [--only a,b]`
 (les remet à leur place dans `src/content/blog` ; sans `--apply` = diffs) ·
+`python scripts/migration/restaure-forme-articles.py [--apply] [--only a,b]`
+(HTML brut des articles → les 4 patrons de `docs/plan-forme-articles.md` ;
+sans `--apply` = diffs) ·
+`python scripts/migration/rapatrie-images-source.py [--check]` (TOUTES les
+images de l'ancien site depuis le cache → `public/wp-content/`, puis
+`node scripts/optimize-images.mjs --tout`) ·
 `python scripts/migration/blocs-manquants-pages.py [--json] [--only a,b]`
 (après un build : blocs, phrases amputées, IMAGES et LIENS de l'ancien site
 absents de chaque PAGE hors articles → `docs/migration/blocs-manquants-pages.md`) ·

@@ -56,6 +56,7 @@ export const HORS_COLLECTION = new Set([
   'redirects.json', // matrice de redirections, lue par scripts/build-redirects.mjs
   'redirects-migration.json', // idem (décisions de migration WordPress)
   'prix', // liste de prix Check Point (191 SKU) — lot L-prix, non branchée
+  'demo', // article de démonstration des 4 patrons de forme (Markdown, hors CMS) — lot forme-articles 2026-09-24
 ]);
 
 /** `footer.columns[0].links[2].label` → `footer.columns[].links[].label`. */

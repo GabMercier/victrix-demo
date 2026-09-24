@@ -4,6 +4,7 @@ date: 2025-09-03
 excerpt: "Victrix a l'immense honneur d'annoncer son partenariat exclusif avec Auger Groupe Conseil, experts-ingénieurs en réalité étendue (XR) au Canada."
 tags: ["Nos actualités"]
 slug: "realite-etendue-xr-partenariat-agc"
+draft: true
 coverImage: "/wp-content/uploads/2025/08/victrix_agc-press-release-01.png"
 wpUrl: "/realite-etendue-xr-partenariat-agc/"
 ---
@@ -38,7 +39,8 @@ Aujourd’hui, grâce à Auger Groupe Conseil, de nombreux secteurs tirent profi
  • **Transport** : éducation interne sur les règlements de sécurité routière et opérationnelle, réalité virtuelle pour simulation routière, simulations de situations difficiles, exercices de prise de décision. 
  [Découvrez AGC](https://augergroupe.com/)
 
-#### Le saviez-vous ?
+<aside class="article-encadre">
+<p class="article-encadre__titre">Le saviez-vous ?</p>
 
 Le terme réalité étendue provient de l’anglais Extended Reality et englobe 3 types de réalités, soit la **réalité virtuelle (RV)**, la **réalité augmentée (RA)** et la **réalité mixte (RM)**.
 
@@ -49,6 +51,7 @@ Le terme réalité étendue provient de l’anglais Extended Reality et englobe 
 Vous souhaitez en apprendre davantage sur la réalité étendue et ce qu'elle peut apporter à votre organisation?
  [Contactez nos experts](/fr/contact/)
 
+</aside>
 ## Un partenariat qui rallie expertise technique et excellence opérationnelle
 
 En associant l’ingénierie de pointe et la créativité technologique d’AGC à la maîtrise en intégration, en [sécurité](/fr/services/cybersecurite/) et en [accompagnement stratégique](/fr/services/conseil-strategique/) de Victrix, ce partenariat ouvre la voie à des projets immersifs d’une qualité exceptionnelle.

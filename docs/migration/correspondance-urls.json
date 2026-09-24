@@ -8,6 +8,7 @@
     "manuel = renommage voulu · abandonnees = page non reprise (301 vers le plus proche)",
     "temporaires = page à recréer (302, pour ne pas figer une mauvaise cible)",
     "ignorer = URL de l'ancien CMS sans équivalent (flux, archives, rebuts)",
+    "articles_retires = article passé en brouillon (D19, classeur de Julie, 2026-09-24) : 301 depuis son ancienne ET sa nouvelle adresse, émise SEULEMENT hors aperçu d'édition (EDITOR_PREVIEW absent — lot L16), pour que les éditrices voient encore le brouillon.",
     "deja_dans_astro_config = règles déjà écrites dans astro.config.mjs",
     "ignorer contient aussi /en/ et /en/contact/ : ces URL sont DEJA celles du nouveau site (aucune redirection a ecrire).",
     "parite_texte_assumee = page CIBLE dont le texte plus court que l'ancien est un choix, pas une perte (lu par scripts/migration/check-parite-texte.py --strict)."
@@ -36,7 +37,10 @@
     "/solution/migration/": "/fr/services/services-infonuagiques/migration-vers-azure/",
     "/en/expertise/ai-opportunity-analysis/": "/en/services/artificial-intelligence/ai-opportunity-analysis/",
     "/en/expertise/it-managed-services-provider/": "/en/services/managed-it-services/",
-    "/document/licences-microsoft-power-platform/": "/fr/campagnes/licences-power-platform/"
+    "/document/licences-microsoft-power-platform/": "/fr/campagnes/licences-power-platform/",
+    "/document/pourquoi-gerez-vous-encore-vos-ti/": "/fr/services/services-ti-geres/",
+    "/document/cybersecurite/": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/",
+    "/document/webinaire-copilot-buzz-impact/": "/fr/ressources/copilot-vs-chatgpt/"
   },
   "abandonnees": {
     "/voeux-des-fetes/": "/fr/",
@@ -45,10 +49,40 @@
   },
   "temporaires": {
     "/liste-prix-check-point/": "/fr/services/approvisionnement-ti/check-point/",
-    "/en/check-point-price-list/": "/en/services/it-procurement/check-point/",
-    "/document/cybersecurite/": "/fr/ressources/",
-    "/document/pourquoi-gerez-vous-encore-vos-ti/": "/fr/ressources/",
-    "/document/webinaire-copilot-buzz-impact/": "/fr/ressources/"
+    "/en/check-point-price-list/": "/en/services/it-procurement/check-point/"
+  },
+  "articles_retires": {
+    "/annonce-nomination-ceo/": "/fr/decouvrir/",
+    "/fr/ressources/annonce-nomination-ceo/": "/fr/decouvrir/",
+    "/en/appointment-ceo/": "/en/decouvrir/",
+    "/en/ressources/appointment-ceo/": "/en/decouvrir/",
+    "/nomination-dominic-lajoie/": "/fr/decouvrir/",
+    "/fr/ressources/nomination-dominic-lajoie/": "/fr/decouvrir/",
+    "/en/dominic-lajoie-appointed/": "/en/decouvrir/",
+    "/en/ressources/dominic-lajoie-appointed/": "/en/decouvrir/",
+    "/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance/": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/",
+    "/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-maintenance/": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/",
+    "/en/best-practices-in-operational-safety-maintenance/": "/en/services/cybersecurity/scalable-security-operations-center/",
+    "/en/ressources/best-practices-in-operational-safety-maintenance/": "/en/services/cybersecurity/scalable-security-operations-center/",
+    "/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance/": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/",
+    "/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-surveillance/": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/",
+    "/en/part-2-best-practices-in-operational-security-monitoring/": "/en/services/cybersecurity/scalable-security-operations-center/",
+    "/en/ressources/best-practices-in-operational-security-monitoring/": "/en/services/cybersecurity/scalable-security-operations-center/",
+    "/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense/": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/",
+    "/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-defense/": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/",
+    "/en/part-3-best-practices-in-operational-security-defense/": "/en/services/cybersecurity/scalable-security-operations-center/",
+    "/en/ressources/best-practices-in-operational-security-defense/": "/en/services/cybersecurity/scalable-security-operations-center/",
+    "/une-journee-dans-la-vie-secops/": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/",
+    "/fr/ressources/une-journee-dans-la-vie-secops/": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/",
+    "/realite-etendue-xr-partenariat-agc/": "/fr/services/intelligence-artificielle/",
+    "/fr/ressources/realite-etendue-xr-partenariat-agc/": "/fr/services/intelligence-artificielle/",
+    "/en/extended-reality-xr-agc-partnership/": "/en/services/artificial-intelligence/",
+    "/en/ressources/extended-reality-xr-agc-partnership/": "/en/services/artificial-intelligence/",
+    "/meilleures-pratiques-en-securite-operationnelle-la-maintenance/": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/",
+    "/meilleures-pratiques-en-securite-operationnelle-la-surveillance/": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/",
+    "/meilleures-pratiques-en-securite-operationnelle-la-defense/": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/",
+    "/en/best-practices-in-operational-security-monitoring/": "/en/services/cybersecurity/scalable-security-operations-center/",
+    "/en/best-practices-in-operational-security-defense/": "/en/services/cybersecurity/scalable-security-operations-center/"
   },
   "ignorer": [
     "/cache/",

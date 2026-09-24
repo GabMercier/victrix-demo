@@ -5,6 +5,7 @@ excerpt: "Assurez votre conformité et réduisez vos risques grâce à l’audit
 tags: ["Nos articles"]
 topics: ["Cybersécurité"]
 slug: "audit-cybersecurite"
+draft: false
 coverImage: "/wp-content/uploads/2024/10/computationally-intensive-tasks-servers-scaled.jpg"
 seoTitle: "Audit de cybersécurité: Gérer le risque et la conformité"
 wpUrl: "/audit-cybersecurite/"

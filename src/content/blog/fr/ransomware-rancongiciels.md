@@ -5,6 +5,7 @@ excerpt: "Découvrez tout sur les ransomware (rançongiciels) et comment protég
 tags: ["Nos articles"]
 topics: ["Cybersécurité"]
 slug: "ransomware-rancongiciels"
+draft: false
 coverImage: "/wp-content/uploads/2023/11/ransomware-e1701148187185-1024x741-1.jpg"
 seoTitle: "Ransomware (rançongiciels): 8 façons de se protéger"
 wpUrl: "/ransomware-rancongiciels/"
@@ -71,7 +72,7 @@ Chaque année, ce sont des millions de dollars qui sont extorqués aux entrepris
 - Congédiement de responsables de la sécurité (RSSI) et d’employés pour réduire les pertes financières et coûts opérationnels
 - Impact quant à la conformité aux [réglementations sur la protection des données](/fr/services/conseil-strategique/conformite-loi-25/) telles que la loi 25
 
-<a class="article-cta" href="/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez la solution SEvOC</a>
+<a class="btn" href="/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez la solution SEvOC</a>
 
 ### Que faire en cas d’attaque de ransomware?
 
@@ -198,7 +199,7 @@ Vous souhaitez améliorer votre posture de sécurité et éviter les embûches c
  Bénéficiez d’un [service SOC externalisé](/fr/ressources/externalisation-du-soc-avantages-inconvenients/) puissant pour assurer une sécurité informatique de haut niveau à votre organisation. 
  **Découvrez SEvOC, le Centre Opérationnel de Sécurité Évolutif de Victrix.**
 
-<a class="article-cta" href="/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez la solution SEvOC</a>
+<a class="btn" href="/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez la solution SEvOC</a>
 
 ### SEvOC: une solution sur mesure pour contrer les menaces informatiques
 

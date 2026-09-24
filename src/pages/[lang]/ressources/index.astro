@@ -46,7 +46,7 @@ const r = sys.ressources;
  * data-tags : elle reste visible quel que soit le filtre.
  */
 
-// Drafts never reach this listing on the public build; the STATIC_ONLY
+// Drafts never reach this listing on the public build; the EDITOR_PREVIEW
 // (CloudCannon editing) build keeps them so editors can preview.
 const posts = filterPublished(await getPostsByLocale(lang));
 const categories = blogCategories(posts);

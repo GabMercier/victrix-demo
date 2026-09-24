@@ -189,7 +189,10 @@ def decisions():
         d = json.load(fh)
     hors = {}
     for cle, raison in (('abandonnees', 'page abandonnée (décision : 301 vers le plus proche)'),
-                        ('temporaires', 'page à recréer (302 d\'attente — L12 / L-prix)')):
+                        ('temporaires', 'page à recréer (302 d\'attente — L12 / L-prix)'),
+                        # D19 (2026-09-24) : article passé en brouillon, 301 vers la page la
+                        # plus proche — comparer son texte à cette page n'aurait aucun sens.
+                        ('articles_retires', 'article retiré (D19 : brouillon + 301 vers le plus proche)')):
         for chemin in d.get(cle, {}):
             hors[normalise_chemin(chemin)] = raison
     ignorer = {normalise_chemin(c) for c in d.get('ignorer', [])}

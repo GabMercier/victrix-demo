@@ -267,7 +267,7 @@ const blog = defineCollection({
     // filename still pairs the FR/EN translations — see src/i18n/blog.ts.
     slug: z.string().optional(),
     // Draft flag (CloudCannon switch « Brouillon »). Drafts are EXCLUDED from
-    // routes/listings on the public site, but the STATIC_ONLY (CloudCannon
+    // routes/listings on the public site, but the EDITOR_PREVIEW (CloudCannon
     // editing) build keeps them so editors can preview before publishing —
     // the single switch lives in filterPublished() (src/i18n/blog.ts).
     // `.default(false)` keeps every existing post published without touching
@@ -1734,7 +1734,7 @@ const navigation = defineCollection({
  * Fenêtre de diffusion PARTAGÉE [startAt, endAt) évaluée au BUILD
  * (src/lib/schedule.ts) ; une seule bannière s'affiche à la fois — sélection
  * par pickActiveAnnounce (la plus récemment commencée gagne), consommée via
- * src/lib/announce.ts. Le build d'édition (STATIC_ONLY) IGNORE la fenêtre
+ * src/lib/announce.ts. Le build d'édition (EDITOR_PREVIEW) IGNORE la fenêtre
  * pour que l'éditeur voie et modifie toujours une bannière. Un site statique
  * n'applique la fenêtre qu'à la reconstruction : rebuild quotidien planifié —
  * voir operations.md § « Publication planifiée ».

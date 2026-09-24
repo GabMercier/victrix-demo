@@ -5,6 +5,7 @@ excerpt: "Découvrez ce qu’est la gouvernance Power Platform. Maîtrisez le po
 tags: ["Nos articles"]
 topics: ["Productivité", "Conseil stratégique"]
 slug: "gouvernance-power-platform-conseils"
+draft: false
 coverImage: "/wp-content/uploads/2024/05/power_platform_image-article.png"
 seoTitle: "Gouvernance Power Platform: Conseil et accompagnement"
 wpUrl: "/gouvernance-power-platform-conseils/"
@@ -22,7 +23,7 @@ La Power Platform **favorise la collaboration entre les utilisateurs et dévelop
 Simple à utiliser et flexible, Microsoft Power Platform rend la technologie accessible à chaque employé de l'organisation. Chacun fait sa part et contribue à l'innovation et à l'amélioration en continue, tout en ciblant les objectifs d'efficacité opérationnelle.
 
 Il est donc extrêmement avantageux d'investir dans le déploiement de Microsoft Power Platform pour répondre aux objectifs stratégiques de votre organisation.
- [Téléchargez le guide des licences Power Platform](/document/licences-microsoft-power-platform/)
+ [Téléchargez le guide des licences Power Platform](/fr/campagnes/licences-power-platform/)
 
 ## Liste des applications Microsoft Power Apps
 
@@ -64,7 +65,7 @@ Power Automate facilite l'automatisation des processus longs et répétitifs, r�
 
 À cela, si vous ajoutez une Power App avec une interface simplifiée, vos équipes gagneront en productivité. Au-delà de l’aspect business, vous contribuez également à une meilleure satisfaction au travail.
 
-<a class="article-cta" href="/fr/contact/">Contactez nos experts Power Platform</a>
+<a class="btn" href="/fr/contact/">Contactez nos experts Power Platform</a>
 
 ### 2. Intégration et extension de Microsoft 365
 

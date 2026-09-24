@@ -5,6 +5,7 @@ excerpt: "Learn about Power Platform governance. Find out how to maximize the po
 tags: ["Our articles"]
 topics: ["Productivity", "Strategic consulting"]
 slug: "power-platform-governance-advice"
+draft: false
 coverImage: "/wp-content/uploads/2024/08/power_platform_image-article.png"
 seoTitle: ""
 wpUrl: "/en/power-platform-governance-advice/"
@@ -24,7 +25,7 @@ Easy to use and flexible, the Microsoft Power Platform puts technology within re
 
 Investing in the deployment of Microsoft Power Platform to meet your organization's strategic goals is a great investment.
 
-[Download our Power Platform license guide](/document/licences-microsoft-power-platform/) 
+[Download our Power Platform license guide](/fr/campagnes/licences-power-platform/) 
 *available in french only
 
 ## List of Microsoft Power Apps
@@ -58,7 +59,7 @@ Whether for developing Power Apps, creating Power BI reports or automating tasks
 Power Automate makes it easy to automate long, repetitive processes, reducing the risk of errors and freeing up employees for higher value-added tasks. 
  Combine this with a Power App simplified interface, and your teams will gain in productivity. Beyond the business aspect, you also contribute to greater job satisfaction.
 
-<a class="article-cta" href="/en/contact/">Contact our Power Platform experts</a>
+<a class="btn" href="/en/contact/">Contact our Power Platform experts</a>
 
 ### 2. Integration and Extension of Microsoft 365 Capabilities
 

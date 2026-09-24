@@ -5,6 +5,7 @@ excerpt: "Simplifiez la gestion des services, réduisez les temps d'arrêt et ma
 tags: ["Nos articles"]
 topics: ["Services gérés", "Infonuagique"]
 slug: "servicenow-itom"
+draft: false
 coverImage: "/wp-content/uploads/2024/11/servicenow-victrix.png"
 seoTitle: "ServiceNow ITOM: Améliorez votre visibilité, rapidité et ROI"
 wpUrl: "/servicenow-itom/"
@@ -48,58 +49,60 @@ ServiceNow ITOM est **une solution modulaire par conception**. Chaque module app
 
 Découvrez**7 des meilleures fonctionnalités ITOM** et leur rôle dans le tableau ci-dessous.
 
-<table style="min-width: 600px; width: 100%; border-collapse: collapse; border: 1px solid #d1d5db; border-radius: 6px; overflow: hidden; font-family: sans-serif;">
+<div class="article-tableau">
+<table>
     <thead>
-      <tr style="background-color: #f0f0f0;">
-        <th style="border: 1px solid #d1d5db; padding: 10px 14px;"><h3 style="margin: 0;">Modules ServiceNow ITOM</h3></th>
-        <th style="border: 1px solid #d1d5db; padding: 10px 14px;"><h3 style="margin: 0;">Rôle</h3></th>
+      <tr>
+        <th>Modules ServiceNow ITOM</th>
+        <th>Rôle</th>
       </tr>
     </thead>
     <tbody>
-      <tr style="background-color: #f5f7f8;">
-        <td style="background-color: #E9EEF1; border: 1px solid #d1d5db; padding: 10px 14px;"><h3 style="margin: 0;">Discovery</h3></td>
-        <td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">
+      <tr>
+        <td><h3 style="margin: 0;">Discovery</h3></td>
+        <td>
           Analyse et identifie automatiquement les appareils, applications et services sur site et dans le cloud
         </td>
       </tr>
-      <tr style="background-color: #ffffff;">
-        <td style="background-color: #E9EEF1; border: 1px solid #d1d5db; padding: 10px 14px;"><h3 style="margin: 0;">Service Mapping</h3></td>
-        <td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">
+      <tr>
+        <td><h3 style="margin: 0;">Service Mapping</h3></td>
+        <td>
           Crée des cartes en temps réel des dépendances entre les applications et les services de l’entreprise pour accélérer l’analyse des causes profondes
         </td>
       </tr>
-      <tr style="background-color: #f5f7f8;">
-        <td style="background-color: #E9EEF1; border: 1px solid #d1d5db; padding: 10px 14px;"><h3 style="margin: 0;">Event Management</h3></td>
-        <td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">
+      <tr>
+        <td><h3 style="margin: 0;">Event Management</h3></td>
+        <td>
           Collecte, filtre et hiérarchise les événements ; supprime le bruit ; alerte les équipes ; fournit une visibilité sur l’état des services
         </td>
       </tr>
-      <tr style="background-color: #ffffff;">
-        <td style="background-color: #E9EEF1; border: 1px solid #d1d5db; padding: 10px 14px;"><h3 style="margin: 0;">Cloud Accelerate</h3></td>
-        <td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">
+      <tr>
+        <td><h3 style="margin: 0;">Cloud Accelerate</h3></td>
+        <td>
           Simplifie la gestion du cloud, accélère son adoption et garantit une gouvernance ITOM continue
         </td>
       </tr>
-      <tr style="background-color: #f5f7f8;">
-        <td style="background-color: #E9EEF1; border: 1px solid #d1d5db; padding: 10px 14px;"><h3 style="margin: 0;">Configuration Management Database (CMDB)</h3></td>
-        <td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">
+      <tr>
+        <td><h3 style="margin: 0;">Configuration Management Database (CMDB)</h3></td>
+        <td>
           La source centrale de vérité pour toutes les relations entre l'infrastructure et les services
         </td>
       </tr>
-      <tr style="background-color: #ffffff;">
-        <td style="background-color: #E9EEF1; border: 1px solid #d1d5db; padding: 10px 14px;"><h3 style="margin: 0;">Orchestration</h3></td>
-        <td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">
+      <tr>
+        <td><h3 style="margin: 0;">Orchestration</h3></td>
+        <td>
           Automatise les tâches manuelles TI comme le provisionnement, les réinitialisations et les actions système
         </td>
       </tr>
-      <tr style="background-color: #f5f7f8;">
-        <td style="background-color: #E9EEF1; border: 1px solid #d1d5db; padding: 10px 14px;"><h3 style="margin: 0;">AIOps Automation</h3></td>
-        <td style="border: 1px solid #d1d5db; padding: 10px 14px; font-size: 0.95em; line-height: 1.5;">
+      <tr>
+        <td><h3 style="margin: 0;">AIOps Automation</h3></td>
+        <td>
           Utilise l'apprentissage automatique (machine learning) pour détecter les anomalies, réduire le bruit, anticiper les problèmes et réduire les coûts
         </td>
       </tr>
     </tbody>
   </table>
+</div>
 
 Ces modules ne fonctionnent pas en silo. Par exemple, le module **Discovery** alimente **Service Mapping** en données, ce qui accélère l’analyse des causes dans **Event Management.**
 

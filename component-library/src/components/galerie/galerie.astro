@@ -18,6 +18,9 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  * est un LIEN vers l'ancre de sa vue agrandie, et la vue passe de `hidden` à
  * `flex` quand l'URL la désigne. Rien à charger, rien à hydrater, ça marche
  * aussi dans l'éditeur visuel.
+ *   Chaque vue porte `role="dialog"` et un nom accessible (« Image 2 sur 5 :
+ *   … ») — revue R3, constat 4 — SANS `aria-modal` : le focus n'est pas piégé,
+ *   l'annoncer modale serait mentir aux lecteurs d'écran.
  *   Ce que cela ne fait PAS, et qui est assumé : la touche Échap ne ferme pas
  *   (il faut le lien « Fermer », qui est le PREMIER élément focusable de la
  *   vue), le focus n'est pas piégé dans la vue, et la page dessous continue de
@@ -64,9 +67,35 @@ interface Props {
   fond?: FondKey;
   colonnes?: '2' | '3' | '4';
   images?: ImageGalerie[];
+  /** Rang de la section dans la page (posé par page.astro) — voir `uid`. */
+  position?: number;
 }
 
-const { title = '', intro = '', fond = 'ivoire', colonnes = '3', images = [] } = Astro.props;
+const { title = '', intro = '', fond = 'ivoire', colonnes = '3', images = [], position } = Astro.props;
+
+/**
+ * Langue de la page, LUE DANS L'URL (même règle que form.astro, revue R3
+ * constat 3) : les libellés de la visionneuse (« Fermer », « Image
+ * suivante »…) étaient en français sur les pages anglaises. Astro.url est
+ * absent dans le rendu navigateur de l'éditeur → repli français.
+ */
+const langue = (Astro.url?.pathname ?? '').split('/')[1] === 'en' ? 'en' : 'fr';
+const LIBELLES = {
+  fr: {
+    agrandir: (n: number, total: number) => `Agrandir l’image ${n} sur ${total}`,
+    vue: (n: number, total: number) => `Image ${n} sur ${total}`,
+    fermer: 'Fermer',
+    precedente: 'Image précédente',
+    suivante: 'Image suivante',
+  },
+  en: {
+    agrandir: (n: number, total: number) => `Enlarge image ${n} of ${total}`,
+    vue: (n: number, total: number) => `Image ${n} of ${total}`,
+    fermer: 'Close',
+    precedente: 'Previous image',
+    suivante: 'Next image',
+  },
+}[langue];
 
 const FONDS: Record<string, string> = FOND_CLASSES;
 
@@ -84,24 +113,41 @@ const visuels = images.filter((img) => (img?.image ?? '').trim());
 const total = visuels.length;
 
 /**
- * Identifiant STABLE de la section, pour les ancres de la visionneuse. Dérivé
- * du contenu (titre + chemins d'images) : deux galeries d'une même page ont
- * des ancres distinctes, et le même contenu rend toujours le même identifiant
- * — au build comme dans le rendu navigateur de l'éditeur. djb2, écrit ici en
- * clair : pas de `crypto`, qui n'existe pas des deux côtés.
+ * Identifiant STABLE de la section, pour les ancres de la visionneuse.
+ *
+ * Revue R3, constat 6 : l'identifiant était une empreinte du contenu (titre +
+ * chemins d'images) — deux galeries identiques sur une même page (copier-
+ * coller d'une section au CMS) rendaient le MÊME id, donc des ancres en
+ * double et une visionneuse qui ouvrait toujours la première. Il vient
+ * désormais du RANG de la section dans la page (`position`, posé par le
+ * renderer partagé page.astro) : unique par page et lisible (`galerie-3`).
+ * L'empreinte reste le repli quand la section est rendue seule (vignettes du
+ * sélecteur, rendu hors page) — djb2 en clair : pas de `crypto`, qui n'existe
+ * pas des deux côtés (build et navigateur de l'éditeur).
  */
 function empreinte(source: string): string {
   let h = 5381;
   for (let i = 0; i < source.length; i += 1) h = ((h << 5) + h + source.charCodeAt(i)) >>> 0;
   return h.toString(36);
 }
-const uid = `galerie-${empreinte(title + visuels.map((v) => v.image).join('|'))}`;
+const uid =
+  typeof position === 'number'
+    ? `galerie-${position + 1}`
+    : `galerie-${empreinte(title + visuels.map((v) => v.image).join('|'))}`;
 const ancre = (n: number) => `${uid}-${n}`;
 
+/** Texte de l'image (alt, sinon légende) — sert de description dans les libellés. */
+const descriptif = (img: ImageGalerie) => (img.alt ?? '').trim() || (img.legende ?? '').trim();
 /** Libellé du lien d'agrandissement — le `alt` sert de description quand il existe. */
 const libelle = (img: ImageGalerie, n: number) => {
-  const base = `Agrandir l’image ${n} sur ${total}`;
-  const texte = (img.alt ?? '').trim() || (img.legende ?? '').trim();
+  const base = LIBELLES.agrandir(n, total);
+  const texte = descriptif(img);
+  return texte ? `${base} : ${texte}` : base;
+};
+/** Nom accessible de la vue agrandie (revue R3, constat 4 : `role="dialog"`). */
+const nomDeVue = (img: ImageGalerie, n: number) => {
+  const base = LIBELLES.vue(n, total);
+  const texte = descriptif(img);
   return texte ? `${base} : ${texte}` : base;
 };
 ---
@@ -163,6 +209,8 @@ const libelle = (img: ImageGalerie, n: number) => {
       return (
         <div
           id={ancre(n)}
+          role="dialog"
+          aria-label={nomDeVue(img, n)}
           class="hidden [&:target]:flex fixed inset-0 z-[100] bg-nuit/95 p-4 sm:p-8 flex-col items-center justify-center gap-4"
         >
           <div class="w-full max-w-[1100px] flex items-center justify-between gap-4">
@@ -173,7 +221,7 @@ const libelle = (img: ImageGalerie, n: number) => {
               class="inline-flex items-center gap-2 rounded-lg border border-solid border-white/40 px-4 py-2 text-sm font-semibold text-white no-underline hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               href={`#${uid}`}
             >
-              Fermer
+              {LIBELLES.fermer}
               <svg
                 width="16"
                 height="16"
@@ -222,13 +270,13 @@ const libelle = (img: ImageGalerie, n: number) => {
                 >
                   <path d="M19 12H5m0 0 6-6m-6 6 6 6" />
                 </svg>
-                Image précédente
+                {LIBELLES.precedente}
               </a>
               <a
                 class="inline-flex items-center gap-2 rounded-lg border border-solid border-white/40 px-4 py-2 text-sm font-semibold text-white no-underline hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 href={`#${ancre(suivant)}`}
               >
-                Image suivante
+                {LIBELLES.suivante}
                 <svg
                   width="16"
                   height="16"

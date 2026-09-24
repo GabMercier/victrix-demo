@@ -14,6 +14,7 @@
 #    la création (sinon ils n'apparaissent qu'après un premier enregistrement).
 title: "Nouvel article"
 slug: ""
+draft: false
 date: 2026-01-01
 excerpt: ""
 coverImage: ""

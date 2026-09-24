@@ -90,12 +90,33 @@
     "fichier": "directive-nis2.html",
     "octets": 60898
   },
+  "/document/cybersecurite/": {
+    "statut": 200,
+    "url_finale": "/document/cybersecurite/",
+    "telecharge_le": "2026-09-24",
+    "fichier": "document-cybersecurite.html",
+    "octets": 40448
+  },
   "/document/licences-microsoft-power-platform/": {
     "statut": 200,
     "url_finale": "/document/licences-microsoft-power-platform/",
     "telecharge_le": "2026-09-23",
     "fichier": "document-licences-microsoft-power-platform.html",
     "octets": 42559
+  },
+  "/document/pourquoi-gerez-vous-encore-vos-ti/": {
+    "statut": 200,
+    "url_finale": "/document/pourquoi-gerez-vous-encore-vos-ti/",
+    "telecharge_le": "2026-09-24",
+    "fichier": "document-pourquoi-gerez-vous-encore-vos-ti.html",
+    "octets": 40077
+  },
+  "/document/webinaire-copilot-buzz-impact/": {
+    "statut": 200,
+    "url_finale": "/document/webinaire-copilot-buzz-impact/",
+    "telecharge_le": "2026-09-24",
+    "fichier": "document-webinaire-copilot-buzz-impact.html",
+    "octets": 41175
   },
   "/en/": {
     "statut": 200,

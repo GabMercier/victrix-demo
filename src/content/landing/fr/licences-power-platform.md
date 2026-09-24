@@ -28,7 +28,7 @@ sections:
     ctaHref: "#formulaire"
     cta2Label: "Parler à un expert"
     cta2Href: "/fr/contact"
-    image: "/images/services/valeur-copilot-studio.jpg"
+    image: "/wp-content/uploads/2024/03/image-landing-page-victrix.jpg"
   - _bookshop_name: benefits
     type: benefits
     headingStyle: compact

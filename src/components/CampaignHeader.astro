@@ -52,7 +52,7 @@ const cta =
 
 // Bannière d'annonce (personnalisé + interrupteur `showAnnounce`) — même
 // bibliothèque planifiable que Header.astro (collection `annonces`, sélection
-// dans src/lib/announce.ts, build d'édition STATIC_ONLY : toujours visible).
+// dans src/lib/announce.ts, build d'édition EDITOR_PREVIEW : toujours visible).
 const announce = chrome.showAnnounce ? await getActiveAnnounce(lang) : null;
 
 const searchHref = localizePath('/recherche', lang);

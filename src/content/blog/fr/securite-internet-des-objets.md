@@ -5,6 +5,7 @@ excerpt: "Découvrez nos solutions pour répondre aux principaux défis des gran
 tags: ["Nos articles"]
 topics: ["Cybersécurité"]
 slug: "securite-internet-des-objets"
+draft: false
 coverImage: "/wp-content/uploads/2024/12/design-sans-titre-2.jpg"
 seoTitle: "Sécurité Internet des Objets: enjeux et solutions"
 wpUrl: "/securite-internet-des-objets/"
@@ -19,10 +20,12 @@ Pour chaque objet connecté, la surface d’attaque d’une organisation s’él
  La variété des applications IoT peut également rendre complexe **le processus de sécuriser l’Internet des Objets**. Les dispositifs vont de la simple montre intelligente aux voitures connectées et à l’infrastructure complète d’une ville intelligente. 
  Avec plus de 15 milliards d’appareils connectés IoT en 2023, et [une croissance projetée à 18.8 milliards d’ici fin 2024](https://iotbusinessnews.com/2024/09/04/26399-state-of-iot-2024-number-of-connected-iot-devices-growing-13-to-18-8-billion-globally/), la sécurité est alors un enjeu majeur pour les grandes organisations et le secteur public.
 
-#### Le saviez-vous ?
+<aside class="article-encadre">
+<p class="article-encadre__titre">Le saviez-vous ?</p>
 
 Les cyberattaques sur l’IoT ont augmenté [de 400% entre 2023 et 2022](https://iotbusinessnews.com/2024/09/04/26399-state-of-iot-2024-number-of-connected-iot-devices-growing-13-to-18-8-billion-globally/). Si on se fie à cette tangente, les besoins de cybersécurité des organisations ne feront qu’augmenter.
 
+</aside>
 ### Un service IoT & OT adapté à votre secteur
 
 Tirez parti de notre service IoT pour renforcer votre posture avec une solution sur mesure pour votre organisation.

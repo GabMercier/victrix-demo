@@ -14,7 +14,9 @@
 #   4. the schema templates in schemas/ (default front matter for new files).
 #
 # CloudCannon build settings (configured in the CloudCannon UI, NOT here):
-#   - build command runs with STATIC_ONLY=1 (adapter-less, fully static build);
+#   - build command runs with STATIC_ONLY=1 (adapter-less, fully static build)
+#     on BOTH sites, plus EDITOR_PREVIEW=1 on the EDITING sites only (drafts,
+#     scheduled posts, announce windows, Bookshop — lot L16, operations.md § 6);
 #   - `npx @bookshop/generate` runs as the postbuild step so the visual editor
 #     can render the Bookshop components live and populate the sections palette.
 
@@ -110,6 +112,26 @@ collections_config:
         - text: Article sans titre
       subtext:
         - key: excerpt
+      # Statut BROUILLON visible sur la carte (D19, 2026-09-24) : la clé
+      # `draft` est affichée telle quelle (« true » = brouillon, « false » =
+      # publié — les gabarits de carte CloudCannon n'ont pas de conditionnel).
+      # Chaque article porte la clé (rétro-remplie le 24/09 ; gabarits
+      # schemas/blog-*.md aussi), sinon la carte ne montrerait rien.
+      metadata:
+        - icon: edit_note
+          text:
+            - key: draft
+    # Tri « brouillons d'abord » dans le navigateur de fichiers (même clé).
+    sort_options:
+      - key: draft
+        order: descending
+        label: Brouillons d'abord
+      - key: date
+        order: descending
+        label: Date (récents d'abord)
+      - key: title
+        order: ascending
+        label: Titre (A-Z)
     # "+ Ajouter" templates. One schema per locale so a new file ALWAYS lands
     # inside fr/ or en/ (a root-level file would silently map to /fr/ in
     # src/pages/[lang]/ressources/[slug].astro) and always starts with front
@@ -167,8 +189,8 @@ collections_config:
           (l'aperçu de l'éditeur le montre toujours).
       # Matches the `draft` field of the blog Zod schema (default false).
       # Visibility rule lives in src/i18n/blog.ts (filterPublished): drafts
-      # are excluded from the public site but KEPT in STATIC_ONLY builds —
-      # i.e. exactly the CloudCannon editing build — so editors can preview.
+      # are excluded from the public site but KEPT in EDITOR_PREVIEW builds —
+      # i.e. exactly the CloudCannon editing sites — so editors can preview.
       draft:
         type: switch
         label: Brouillon

@@ -426,6 +426,103 @@ Preuve : chiffres du rapport avant/après ; `check:links --strict` à 0 ;
 `check:parite-texte --strict` vert ; e2e. Rituel.
 ```
 
+#### Session de nuit du 2026-09-24 — 4 lots enchaînés (prompt unique)
+
+> Réponses de Gabriel (24/09) : D18 = suivre Julie, mais garder le travail
+> d'hébergement déjà fait (page de campagne Licences + définition de
+> formulaire) ; D19 = `draft`, avec un filtre pour les retrouver ; héros =
+> photo d'origine partout, et on GARDE toutes les photos de l'ancien site pour
+> les réutiliser ; articles = créer ce qu'il faut (composants, HTML, snippets)
+> pour reproduire le style, tableaux compris.
+
+```text
+SESSION DE NUIT — quatre lots à la suite, dans cet ordre, un gate complet entre
+chaque (CLAUDE.md § Gate, chiffres réels). Aucun commit, aucun push, aucun
+merge : je commite le matin. Commence par `git fetch` et
+`git log --oneline HEAD..origin/dev` : s'il y a des commits, ne fusionne pas,
+note-le et continue sur l'état local. Si un lot bloque (décision, fichier
+absent, gate rouge non résolu en 30 min), saute-le, écris pourquoi dans
+docs/migration/nuit-2026-09-24.md et passe au suivant. Termine par ce fichier
+de compte rendu (par lot : fait, chiffres du gate, écarts, questions), la
+mémoire project-status, les lignes § 7 du plan, et les commandes git prêtes
+à coller (une seule série pour toute la nuit).
+
+LOT 1 — Revue R3, constats 3 à 8 (≈ 2 h). Ligne « R3-1/R3-2 » du § 7 du
+plan : libellés de la visionneuse, role="dialog", e2e couplés au contenu, id
+de galerie, repli de langue, String.fromCharCode. Cherche les constats dans
+le composant galerie et la route src/pages/[lang]/solutions/[slug].astro ;
+corrige chacun avec un test quand c'est testable. Rien d'autre.
+
+LOT 2 — L16, statique vs aperçu d'édition (≈ 0,5 j). Prompt L16 du plan,
+tel quel. Il passe AVANT le lot 3 parce que les 301 des articles retirés ne
+doivent s'émettre que dans un build sans aperçu d'édition (les éditrices
+doivent encore voir les brouillons).
+
+LOT 3 — Décisions D18, D19 et héros (≈ 2 h).
+D18 (documents) : les PDF n'ont jamais été récupérés (ils étaient derrière un
+formulaire Gravity). Garde la page de campagne
+src/content/landing/fr/licences-power-platform.md et sa définition de
+formulaire : c'est le gabarit d'hébergement d'un document à formulaire, il
+servira au webinaire Copilot quand Julie fournira le PDF. Passe les 3 autres
+adresses /document/* de `temporaires` à des 301 définitives dans
+docs/migration/correspondance-urls.json : pourquoi-gerez-vous-encore-vos-ti →
+/fr/services/services-ti-geres/, cybersecurite → la page SEvOC,
+webinaire-copilot-buzz-impact → /fr/ressources/copilot-vs-chatgpt/ (en
+attendant le PDF). Corrige les 6 liens d'articles qui pointent vers
+/document/* (grep dans src/content/blog) : guide Licences → la campagne ;
+CTA de tendances-ti → services gérés ; bannière du webinaire dans
+copilot-vs-chatgpt → retire le lien, garde une phrase « replay bientôt
+disponible » ; les 2 liens de une-journee-secops tombent avec l'article
+(D19). Retire les 4 entrées ALLOW de scripts/check-internal-links.mjs ;
+`check:links --strict` et `check:redirects --dist` à 0.
+D19 (7 articles) : draft: true, FR ET EN, sur annonce-nomination-ceo,
+nomination-dominic-lajoie, partie-1/2/3-meilleures-pratiques…,
+realite-etendue-xr-partenariat-agc, une-journee-dans-la-vie-secops. 301
+depuis leurs URL vers les cibles du classeur de Julie (nominations →
+/fr/decouvrir/, parties 1-2-3 et secops → page SEvOC, réalité étendue →
+/fr/services/intelligence-artificielle/ ; équivalents EN), émises seulement
+hors aperçu d'édition (lot 2). Filtre : dans cloudcannon.config.yml, rends le
+statut brouillon visible dans la liste des articles (métadonnée de carte,
+tri par statut si le schéma le permet) — vérifie avec @cloudcannon/reader
+(mémoire cloudcannon-reader-url-check). Le sélecteur de langue et les
+articles liés ne doivent plus proposer un brouillon en production (test).
+HÉROS : remets la photo d'origine sur les 13 pages restantes du rapport
+blocs-manquants-pages.md (accueil FR/EN, Carrières FR/EN, Découvrir FR/EN,
+Ø Studio FR/EN, centre de ressources, Azure, AWS, campagne Licences, démo
+Ø Bureau EN) — pour l'accueil, vérifie la lisibilité du héros (lot
+L-seo-accueil : texte sur photo) et signale si la photo d'origine la casse.
+Ne supprime aucune photo actuelle. Rapatrie TOUTES les photos de l'ancien
+site (`extract-source-page.py --images` sur chaque adresse de
+docs/migration/cache-source/_index.json), garde-les sous public/wp-content/
+pour qu'elles soient dans la médiathèque de CloudCannon, passe
+`npm run optimize:images`, et donne le poids ajouté à dist/ ; si c'est plus
+de 15 Mo, dis-le sans rien retirer.
+
+LOT 4 — Forme des articles, le vrai blocage de Julie (≈ 1 j).
+Mesuré : 49 bannières CTA en HTML brut (class="article-cta") dans 25
+articles, 6 encadrés « Le saviez-vous », les FAQ d'article en gras (remises
+par restaure-blocs-articles.py), 24 <table> dans 14 articles sans style.
+1. Propose 4 patrons rendus par src/styles/global.css sous .prose (jetons
+   de theme.css, contraste AA, border-solid, m-0) : bouton d'appel à
+   l'action (reprend les classes btn / btn-outline de rich.ts), encadré
+   « Le saviez-vous » (aside), FAQ dépliante (details/summary, sans script),
+   tableau lisible (en-tête, zébrage, défilement horizontal sur mobile).
+   Écris-les d'abord dans docs/plan-forme-articles.md avec un exemple HTML
+   de chacun, puis exécute — je relirai le matin.
+2. Snippets CloudCannon (_snippets dans cloudcannon.config.yml, avec
+   `npm run check:bookshop` toujours vert) pour que Julie INSÈRE ces 4
+   patrons dans l'éditeur de texte enrichi ; aperçu vérifié dans un build.
+3. Outil rejouable scripts/migration/restaure-forme-articles.py (essai =
+   diffs, --apply, --only) qui convertit l'existant : chaque
+   <a class="article-cta"> vers le patron bouton, les encadrés, les
+   questions en gras des FAQ vers details/summary, les <table> vers le
+   patron tableau. AUCUN texte modifié, seulement la forme ; rapport
+   article par article.
+4. Un article de démonstration qui use des 4 patrons dans
+   tests/e2e (axe-core : 0 violation) + docs/guide-edition.md
+   (« mettre en forme un article »). Rituel.
+```
+
 ### Phase 4 — Mise en ligne (≈ 5–6 j)
 
 #### L15 — `routing.json` : redirections et en-têtes de sécurité (0,5–1 j) · #1503 · #1504
@@ -686,7 +783,7 @@ foreach ($s in $stories) {
 | L-parite-texte | **Le TEXTE de l'ancien site est-il arrivé ?** — `scripts/migration/check-parite-texte.py` (+ `npm run check:parite-texte`), rejouable : une ligne par page CIBLE construite (151), source = la page EN LIGNE (cache `docs/migration/cache-source/`, 157 pages, 8,6 Mo — la copie de l'ancien site qui survivra à sa mise hors ligne), cible = `<main>` de `dist/` ; ratio de mots et titres H2/H3 absents, en distinguant le **bloc perdu** (titre ET texte absents) du titre seulement reformulé — sans cette distinction, 119 pages sur 151 étaient signalées pour des titres raccourcis. **Résultat : 24 pages signalées** (13 sous le ratio 0,7, 20 avec un bloc perdu), 97 avec des titres reformulés seulement, 9 adresses hors comparaison (décisions). **Perte SYSTÉMATIQUE révélée** : la conversion des articles (juillet) a laissé tomber les FAQ, les encadrés « Le saviez-vous? » et les sous-sections « Copilot dans… » — 9 articles × 2 langues, de 90 à 700 mots chacun, pages en ligne datées d'AVANT l'export (8–14 juillet) ; plus 2 blocs de la page Productivité (FR+EN), un paragraphe de la campagne Licences Power Platform, et deux pages « Merci » volontairement réduites (25 liens de services sur l'ancienne). Liste à trancher dans `docs/journal-nuit-2026-09-23.md` → lot **L-restaure**. Rapport seul, code 0 ; `--strict` bloquant une fois `parite_texte_assumee` écrit dans `correspondance-urls.json` | 0,5 j | arbre commité | | 2026-09-23 |
 | L-restaure | **Contenu perdu a la migration, RESTAURE** — ce que `check:parite-texte` avait revele. **21 fichiers, ~3 500 mots remis mot pour mot depuis le cache de l'ancien site**, jamais reformules : les FAQ en accordeon de 6 articles (Copilot vs ChatGPT, Loi 25, IoT, NIS2, ransomware, SOC), les encadres « Le saviez-vous ? » de 3 articles (agents Copilot Studio, realite etendue, SOC), les sous-sections « Copilot dans Word / PowerPoint / Excel / Teams / Outlook / Copilot Studio » et « Les avantages d'un assistant IA Copilot » — 9 articles x FR/EN — plus 2 blocs de la page Productivite FR et 4 EN (`rich-text`, composant existant, aucun champ neuf) et le paragraphe du guide de la campagne Licences Power Platform (`benefits.intro`, champ existant). L'article `fonctionnalites-microsoft-copilot` est passe de **270 a 998 mots** en FR : il avait perdu les trois quarts de son texte ET tous ses titres. **CAUSE RACINE etablie sans relancer la conversion** (l'editrice a touche des articles depuis) : `extractBlocks` (`lib-wxr.mjs`) ne garde du contenu exporte que les blocs `siteorigin-widget-tinymce textwidget` ; le contenu des widgets TIERS n'est pas rendu en HTML dans l'export mais dort en JSON dans un champ cache de raccourci — accordeons (FAQ, resumes rapides, « Copilot dans... »), encadres vitres (« Le saviez-vous ? ») et widgets de titre (les H2/H3, d'ou un article sans aucun titre). L'abandon a ete **SILENCIEUX** : l'avertissement « widget SiteOrigin non-editeur ignore » cherche une classe `so-widget-sow-…` que seuls les widgets DEJA rendus portent, donc 0 avertissement au rapport de conversion. **3 exceptions assumees** ecrites dans `parite_texte_assumee` (2 pages « Merci » redessinees, Conseil strategique FR) → `check:parite-texte -- --strict` sort en 0 et **entre au gate** (CLAUDE.md + operations.md). Mesure : **24 pages signalees → 3, toutes assumees** ; liens internes 15 446 → 15 467, 0 casse. Aucun composant, aucun champ, aucune image, aucun changement de rendu | 0,5 j | L-parite-texte tranche par Gabriel | | 2026-09-23 |
 | L15 | `routing.json` — **redirections et en-têtes FAITS le 22/09** : l'intégration `victrix:redirects` écrit `dist/_cloudcannon/routing.json` (schéma officiel `routes`/`headers`, forme documentée par CloudCannon pour un fichier généré au build, prioritaire sur le fichier source). 191 routes (13 d'`astro.config` en `forced`, 3 de l'éditrice, 175 de la matrice de migration ; jokers traduits `*`→`(.*)`, `:splat`→`$1`) et 5 règles d'en-têtes dérivées de `public/_headers` SANS RECOUVREMENT (le bloc `/*` est recopié dans chaque règle précise — sinon /fr/ perdrait HSTS ou recevrait `nosniff, nosniff`). **Reste de L15** : vérifier les en-têtes de l'extérieur après le premier déploiement (`curl -I`), et trancher la règle 404 attrape-tout | 1 j | — | | redirections + en-têtes 2026-09-22 |
-| L16 | Statique vs aperçu | 0,5 j | — | **R4** | |
+| L16 | Statique vs aperçu : `EDITOR_PREVIEW` (politique d'aperçu : brouillons, programmés, fenêtres des bannières, 301 des articles retirés, Bookshop) séparé de `STATIC_ONLY` (adaptateur) — `scripts/lib/build-mode.mjs` testé, tableau des variables par site (operations.md § 6). **Reste UI** : poser `EDITOR_PREVIEW=1` sur les sites dev + Édition | 0,5 j | — | **R4** | 2026-09-24 (nuit) |
 | L17 | Formulaires + GA4 | 0,5 j | comptes | | |
 | L18 | QA responsive | 1 j | L06–L11 | | |
 | L19 | Accessibilité — **entamé le 21/09 (L-a11y)** : axe-core dans le gate, 0 violation sur 9 gabarits, contrastes corrigés. Reste : échelle typographique en `rem` (le réglage « grande police » du navigateur n'agit pas — le zoom, si), ordre de tabulation, textes de remplacement, QA lecteur d'écran | 0,5 j restant | L06–L11 | | partiel 2026-09-21 |
@@ -696,7 +793,9 @@ foreach ($s in $stories) {
 | L23 | Jour J | — | tout | | |
 | L24–L26 | Options | 1 j + | — | | |
 | L-articles-blocs | **Contenu manquant dans les articles, REMIS** (urgence Julie, #1762). Rapport `blocs-manquants-articles.py` corrigé dans les deux sens (page source dans l'autre langue écartée ; titres jugés mot pour mot ; blocs courts « à vérifier ») : 158 blocs / 1 536 mots / 27 articles au lieu de 61 / 853 / 11. Remise OUTILLÉE par `scripts/migration/restaure-blocs-articles.py` (ordre de la source → place dans le Markdown) : **198 blocs dans 26 articles** + 4 retouches à la main ; rapport à 0 après build ; `check:parite-texte --strict` inchangé (3 assumées). À relire par Julie : liens non reconstitués dans les blocs remis, FAQ/questions en gras (forme = sujet B) | 0,5 j | — | | 2026-09-23 |
-| R3-1/R3-2 | **Revue R3, constats 1 et 2** : slug des fiches de solutions normalisé (`src/lib/solutions/slug.ts`, une règle pour la route ET le catalogue) et dédoublonné par langue (build en échec nommant les fichiers ; 6 tests) ; rétro-remplissage des 9 fiches EN (`backfill-section-keys.mjs`, 3e passe « clés de page » — 88 clés, `noindex` repris de la jumelle FR ; `check:sections` le garde). Restent : R3-3 à R3-8 (libellés visionneuse, `role="dialog"`, e2e couplés au contenu, id de galerie, repli langue, `String.fromCharCode`) | 2 h | — | | 2026-09-23 |
+| R3-1/R3-2 | **Revue R3, constats 1 et 2** : slug des fiches de solutions normalisé (`src/lib/solutions/slug.ts`, une règle pour la route ET le catalogue) et dédoublonné par langue (build en échec nommant les fichiers ; 6 tests) ; rétro-remplissage des 9 fiches EN (`backfill-section-keys.mjs`, 3e passe « clés de page » — 88 clés, `noindex` repris de la jumelle FR ; `check:sections` le garde). **R3-3 à R3-8 faits le 2026-09-24 (nuit)** : libellés FR/EN de la visionneuse, `role="dialog"` + nom accessible, e2e découplés du contenu (`catalogue-fiche`, nouveau `galerie.spec.ts`), id de galerie par rang de section, repli vers le catalogue + dossier de langue inconnu = erreur de build, échappements `\u` (field-name + slug) | 2 h | — | | 2026-09-23 |
+| D18/D19/héros | **Documents, 7 articles retirés, héros** (nuit du 24/09) : 3 `/document/*` en 301 définitives + 4 liens d'articles corrigés + `ALLOW` vidé ; 13 articles en `draft: true` (+ `draft: false` rétro-rempli sur 49, gabarits), 31 adresses `articles_retires` → 301 émises hors aperçu d'édition, carte + tri « Brouillons d'abord » au CMS, `brouillons.spec.ts` ; photo d'origine remise sur 12 héros (le 13e n'en est pas un), 393 photos rapatriées (`rapatrie-images-source.py`, +37 Mo dans dist — à trancher). Détail : `docs/migration/nuit-2026-09-24.md` | 2 h | L16 | | 2026-09-24 (nuit) |
+| L-forme-articles | **Forme des articles** : 4 patrons sous `.prose` (bouton `btn`, encadré, FAQ `details`, tableau défilant — `docs/plan-forme-articles.md`), `restaure-forme-articles.py` appliqué (32 articles : 49 CTA, 10 encadrés, 6 FAQ, 24 tableaux ; texte inchangé), démo `/fr/style-guide/forme-articles/` (axe 0) + `forme-articles.spec.ts`, guide § « Mettre en forme un article ». **Snippets CloudCannon NON FAITS** (aucun gabarit HTML pour du `.md` — `.mdx` ou modèles collés, à trancher) | 1 j | — | | 2026-09-24 (nuit) |
 | L-statut-import | **Statut de l'importation + validation « on ne perd rien »** (demande de Gabriel, page IA en exemple). NOUVEL OUTIL rejouable `scripts/migration/blocs-manquants-pages.py` : le pendant de l'outil des articles pour les 89 pages hors articles, plus les paragraphes amputés, les IMAGES (par nom de fichier) et les LIENS internes. Première passe : 87/89 pages avec un écart — **17 images de héros remplacées, 106 liens perdus, 216 blocs absents (143 courts), 103 paragraphes amputés, 123 photos + 246 logos absents** ; 340 blocs seulement reformulés (hors décompte). Lecture, réponses à Julie (Lambda déjà dans `dev` ; 4 « documents » → D18 ; 7 articles à retirer → D19 ; `staging` a 42 commits de retard sur `dev` = la vraie cause de ses « non intégrée ») et suites dans `docs/migration/statut-import.md`. Aucun contenu modifié. Lot de remise = L-restaure-pages (prompt en phase 3) | 0,5 j | — | | 2026-09-23 |
 | L-restaure-pages (1re passe) | **Remise du contenu perdu sur les PAGES** — ordre du classeur de Julie (visible + indexable d'abord), FR + EN, 5 lots : IA, accueil/SEvOC/Loi 25/Carrières/Conseil/Cyber, Productivité/Infonuagique/Intranet/Ø Studio/Appro TI/Services gérés, 11 pages enfants, 18 fiches fournisseurs. **Blocs 216 → 100, amputés 103 → 82, liens 106 → 13, héros 17 → 13 (restants = design/assumés).** Remis : 6 héros d'origine, ~90 liens, avis Gartner complets (note globale, note + date par avis, citations entières), 14 badges de certification (Cyber), désignations Microsoft (Azure, D365), logos manquants (AlgoSec, Proofpoint, OVH, Zscaler, Juniper), infographies (Harmony SASE, schéma intranet), phrases amputées. 3 composants retouchés (tech-columns items = liens, bento aside = HTML, testimonial-cards.intro + rétro-remplissage 66 fichiers). Reste (§ 7 de statut-import.md) : logos de la page Productivité (bandeau texte), photos sans emplacement, Licences (D18), Découvrir/Merci/Ressources assumées | 1 j | — | | 2026-09-24 |
 
@@ -719,3 +818,10 @@ produit `docs/migration/statut-import.md`. L'ordre devient : **PR `dev` →
 (voir § 7). Le rapport `blocs-manquants-pages.md` ne contient plus que des
 écarts assumés ou de forme ; ordre inchangé : **PR `dev` → `staging`** → D18/D19
 → R3-3…8 → L12 réduit → L08 (reste) → L06 → L16 → phase 4.
+
+**Mise à jour du 2026-09-24 (nuit, 2e session)** — R3-3…8, L16, D18/D19/héros
+et la forme des articles sont FAITS (compte rendu : `docs/migration/nuit-2026-09-24.md`,
+questions du matin en fin de document). Ordre restant : **commit + PR `dev` →
+`staging`** → `EDITOR_PREVIEW=1` dans l'UI CloudCannon (dev + Édition) → décisions
+du matin (poids des photos, snippets `.mdx` ou modèles, FAQ en titres) → L12
+réduit → L08 (reste) → L06 → phase 4.

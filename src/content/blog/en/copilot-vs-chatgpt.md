@@ -5,6 +5,7 @@ excerpt: "Copilot or ChatGPT? Explore our comparison guide to choose the AI solu
 tags: ["Our articles"]
 topics: ["Artificial intelligence"]
 slug: "chatgpt-vs-copilot"
+draft: false
 coverImage: "/wp-content/uploads/2025/03/linkedin_templates.png"
 seoTitle: "Copilot vs ChatGPT: Adopt the Most Strategic AI for Your Business"
 wpUrl: "/en/chatgpt-vs-copilot/"
@@ -15,25 +16,18 @@ However, one key question remains—which of these two AI models will generate t
 
 This article gives you the insights to confidently select the AI solution that will optimize your team's productivity.
 
-<a class="article-cta" href="/en/contact/">Let's talk about your AI needs</a>
+<a class="btn" href="/en/contact/">Let's talk about your AI needs</a>
 
 ## Free ChatGPT vs Microsoft Copilot (Integrated with M365)
 
 ### Compare Free Versions at a Glance
 
-<table border="1">
+<div class="article-tableau">
+<table>
+<thead>
+<tr><th>Decisive Criteria</th><th>ChatGPT</th><th>Copilot for Microsoft 365</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>
-<h4>Decisive Criteria</h4>
-</td>
-<td>
-<h4>ChatGPT</h4>
-</td>
-<td>
-<h4>Copilot for Microsoft 365</h4>
-</td>
-</tr>
 <tr>
 <td><strong>Native Integration with Microsoft 365</strong></td>
 <td>Not available</td>
@@ -66,6 +60,7 @@ This article gives you the insights to confidently select the AI solution that w
 </tr>
 </tbody>
 </table>
+</div>
 
 Read below for a more detailed explanation of the different free AI models.
 
@@ -91,19 +86,12 @@ The **free version of ChatGPT is better suited for personal, one-off use**, or f
 
 ### Compare Paid Plans at a Glance
 
-<table border="1">
+<div class="article-tableau">
+<table>
+<thead>
+<tr><th>Decisive Criteria</th><th>ChatGPT-4 (Plus)/Enterprise</th><th>Microsoft 365 Copilot</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>
-<h4>Decisive Criteria</h4>
-</td>
-<td>
-<h4>ChatGPT-4 (Plus)/Enterprise</h4>
-</td>
-<td>
-<h4>Microsoft 365 Copilot </h4>
-</td>
-</tr>
 <tr>
 <td><strong>Native Integration with Microsoft 365 </strong></td>
 <td>Not available</td>
@@ -146,6 +134,7 @@ The **free version of ChatGPT is better suited for personal, one-off use**, or f
 </tr>
 </tbody>
 </table>
+</div>
 
 Read below for a more detailed explanation of the different paid AI models.
 
@@ -177,19 +166,12 @@ Choosing an AI tool natively integrated with Microsoft 365 significantly improve
 
 ### Compare Advanced AI Development Environments at a Glance
 
-<table border="1">
+<div class="article-tableau">
+<table>
+<thead>
+<tr><th>Decisive Criteria</th><th>ChatGPT Enterprise</th><th>Copilot Studio</th></tr>
+</thead>
 <tbody>
-<tr>
-<td>
-<h3>Decisive Criteria</h3>
-</td>
-<td>
-<h3>ChatGPT Enterprise</h3>
-</td>
-<td>
-<h3>Copilot Studio</h3>
-</td>
-</tr>
 <tr>
 <td><strong>Business Application Development </strong></td>
 <td>Yes, but API required</td>
@@ -217,6 +199,7 @@ Choosing an AI tool natively integrated with Microsoft 365 significantly improve
 </tr>
 </tbody>
 </table>
+</div>
 
 Read on below for a more detailed explanation of the different advanced AI development environments.
 

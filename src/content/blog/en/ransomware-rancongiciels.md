@@ -5,6 +5,7 @@ excerpt: "Learn all about ransomware and how to protect your organization agains
 tags: ["Our articles"]
 topics: ["Cybersecurity"]
 slug: "ransomware-protection-tips"
+draft: false
 coverImage: "/wp-content/uploads/2023/11/ransomware-e1701148187185-1024x741-1.png"
 seoTitle: "8 Ransomware Protection Tips for Organizations"
 wpUrl: "/en/ressources/ransomware-protection-tips/"

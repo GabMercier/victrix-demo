@@ -5,6 +5,7 @@ excerpt: "Explorez les capacités de l’IA générative avec les fonctionnalit�
 tags: ["Nos articles"]
 topics: ["Intelligence artificielle", "Productivité"]
 slug: "fonctionnalites-microsoft-copilot"
+draft: false
 coverImage: "/wp-content/uploads/2025/01/design-sans-titre-1.jpg"
 seoTitle: "Explorez les fonctionnalités de Microsoft Copilot"
 wpUrl: "/fonctionnalites-microsoft-copilot/"

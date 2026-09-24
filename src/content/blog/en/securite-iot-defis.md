@@ -5,6 +5,7 @@ excerpt: "Discover the top IoT security challenges. Learn how to protect your co
 tags: ["Our articles"]
 topics: ["Cybersecurity"]
 slug: "iot-security-challenges"
+draft: false
 coverImage: "/wp-content/uploads/2024/09/design-sans-titre-7-1.jpg"
 seoTitle: "Understanding IoT Security Challenges"
 wpUrl: "/en/iot-security-challenges/"
@@ -52,7 +53,7 @@ The top 5 challenges are:
 - The complexity of connecting new objects to the Internet and securing them within existing infrastructures
 - Adherence to security and privacy standards
 
-<a class="article-cta" href="/en/services/cybersecurity/internet-of-things-iot/">Ready to assess your IoT security?</a>
+<a class="btn" href="/en/services/cybersecurity/internet-of-things-iot/">Ready to assess your IoT security?</a>
 
 ## How do you secure your IoT systems?
 
@@ -76,7 +77,7 @@ Finally, the final step is to continually audit and improve the system. Regular 
 
 Your employees need to be familiar with best practices to reduce risk and ensure successful security adoption of new technologies.
 
-<a class="article-cta" href="/en/services/cybersecurity/internet-of-things-iot/">Talk to an IoT security expert</a>
+<a class="btn" href="/en/services/cybersecurity/internet-of-things-iot/">Talk to an IoT security expert</a>
 
 ## Victrix, Your IoT Security Consulting Partner
 

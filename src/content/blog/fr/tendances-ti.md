@@ -5,6 +5,7 @@ excerpt: "Découvrez les 8 tendances TI qui invitent à repenser les services TI
 tags: ["Nos articles"]
 topics: ["Conseil stratégique"]
 slug: "tendances-ti"
+draft: false
 coverImage: "/wp-content/uploads/2025/01/optical-fiber-background-scaled.jpg"
 seoTitle: "8 Tendances TI en 2025: Élevez votre efficacité d’affaires"
 wpUrl: "/tendances-ti/"
@@ -56,7 +57,7 @@ Elle continue de transformer la manière dont les entreprises opèrent. Les outi
 
 La pénurie de main-d’œuvre en cybersécurité se poursuit en 2025. Afin de pallier le manque d’expertise, les entreprises doivent donc se tourner davantage vers les fournisseurs de services de cybersécurité.
 
-<a class="article-cta" href="/document/pourquoi-gerez-vous-encore-vos-ti/">Téléchargez le guide</a>
+<a class="btn" href="/fr/services/services-ti-geres/">Découvrez nos services TI gérés</a>
 
 ## Tendance TI géré: comment choisir le fournisseur qui répond à vos défis présents et futurs
 
@@ -81,4 +82,4 @@ En 2025, les entreprises doivent être prêtes à relever les défis technologiq
 
 ### Prêts à élever votre efficacité avec des services gérés TI taillés sur mesure pour votre entreprise?
 
-<a class="article-cta" href="/fr/contact/">Contactez-nous</a>
+<a class="btn" href="/fr/contact/">Contactez-nous</a>

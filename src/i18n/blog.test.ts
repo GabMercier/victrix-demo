@@ -56,19 +56,19 @@ describe('isDraftVisible / filterPublished', () => {
   const draft = post('fr/brouillon', { draft: true });
   const all = [published, explicitlyPublished, draft];
 
-  it('hides drafts on the public build (STATIC_ONLY unset)', () => {
+  it('hides drafts on the public build (EDITOR_PREVIEW unset — including the CloudCannon PRODUCTION site, STATIC_ONLY alone)', () => {
     expect(isDraftVisible(false)).toBe(false);
     expect(filterPublished(all, false)).toEqual([published, explicitlyPublished]);
   });
 
-  it('shows drafts in the STATIC_ONLY (CloudCannon editing) build', () => {
+  it('shows drafts in the EDITOR_PREVIEW (CloudCannon editing) build', () => {
     expect(isDraftVisible(true)).toBe(true);
     expect(filterPublished(all, true)).toEqual(all);
   });
 
   it('shows drafts when DRAFTS_VISIBLE opts a build in (CF Pages Preview env)', () => {
     // The shareable-preview escape hatch: branch previews build WITHOUT
-    // STATIC_ONLY, so without this flag a shared draft link would 404.
+    // EDITOR_PREVIEW, so without this flag a shared draft link would 404.
     expect(isDraftVisible(false, true)).toBe(true);
     expect(filterPublished(all, false, true)).toEqual(all);
   });
@@ -79,7 +79,7 @@ describe('isDraftVisible / filterPublished', () => {
     expect(filterPublished([published], false)).toEqual([published]);
   });
 
-  it('reads the build environment by default (STATIC_ONLY is unset under vitest)', () => {
+  it('reads the build environment by default (EDITOR_PREVIEW is unset under vitest)', () => {
     expect(isDraftVisible()).toBe(false);
     expect(filterPublished(all)).toEqual([published, explicitlyPublished]);
   });
@@ -100,7 +100,7 @@ describe('articles programmés (date future = publication différée)', () => {
     expect(filterPublished([atNow], false, false, now)).toEqual([atNow]);
   });
 
-  it("le build d'édition (STATIC_ONLY) montre les articles programmés", () => {
+  it("le build d'édition (EDITOR_PREVIEW) montre les articles programmés", () => {
     expect(filterPublished(all, true, false, now)).toEqual(all);
   });
 

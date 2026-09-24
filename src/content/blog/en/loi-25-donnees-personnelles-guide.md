@@ -5,6 +5,7 @@ excerpt: "Read our guide and learn how organizations comply with the requirement
 tags: ["Our articles"]
 topics: ["Cybersecurity", "Strategic consulting"]
 slug: "law-25-personal-data-guide"
+draft: false
 coverImage: "/wp-content/uploads/2024/09/law25.jpg"
 seoTitle: "Law 25 Personal Data | Law and Requirements Guide"
 wpUrl: "/en/ressources/law-25-personal-data-guide/"
@@ -83,7 +84,7 @@ Privacy breaches can lead to a loss of trust from customers and business partner
 
 Individuals whose personal information has been disclosed are entitled to sue you for damages, which entails additional costs.
 
-<a class="article-cta" href="/en/contact/">Talk to a law 25 and cybersecurity expert</a>
+<a class="btn" href="/en/contact/">Talk to a law 25 and cybersecurity expert</a>
 
 ## Ensure Law 25 Compliance with Victrix, Your Cybersecurity Expert
 

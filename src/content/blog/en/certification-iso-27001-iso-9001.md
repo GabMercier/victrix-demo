@@ -5,6 +5,7 @@ excerpt: "Victrix renews its ISO 27001 and ISO 9001 certifications, demonstr
 tags: ["Our news"]
 topics: ["Cybersecurity", "Strategic consulting"]
 slug: "iso-27001-iso-9001-certifications"
+draft: false
 coverImage: "/wp-content/uploads/2025/07/cover-article_certification-iso_en-1.png"
 seoTitle: "ISO 27001 and ISO 9001: Victrix Renews Its Certifications"
 wpUrl: "/en/ressources/iso-27001-iso-9001-certifications/"

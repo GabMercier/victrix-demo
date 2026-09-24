@@ -5,6 +5,7 @@ excerpt: "Découvrez tous les bénéfices d’un agent intelligent Copilot sur m
 tags: ["Nos articles"]
 topics: ["Intelligence artificielle", "Productivité"]
 slug: "agents-copilot-studio"
+draft: false
 coverImage: "/wp-content/uploads/2025/07/cover-article-victrix.jpg"
 seoTitle: "L'agent intelligent sur mesure: votre assistant IA de confiance"
 wpUrl: "/agents-copilot-studio/"
@@ -27,7 +28,7 @@ Dans cet article, vous découvrirez comment faire passer votre entreprise au niv
 
 ### Nous vous aidons à bâtir votre premier agent intelligent sur mesure rapidement.
 
-<a class="article-cta" href="/fr/contact/">Consultez un expert Copilot Studio et Azure AI</a>
+<a class="btn" href="/fr/contact/">Consultez un expert Copilot Studio et Azure AI</a>
 
 ## Un agent intelligent qui comprend les gens
 
@@ -75,7 +76,8 @@ Avec une expertise Copilot Studio et Azure OpenAI, Victrix vous accompagne pour 
 - **Stimulation** de l’engagement des collaborateurs grâce aux capacités de déléguer certaines tâches tout en gardant le contrôle
 - **Collaboration** fluide entre l’humain et l’IA, où l’agent intelligent est un partenaire fiable et contextuel, enraciné dans votre environnement organisationnel
 
-#### Le saviez-vous ?
+<aside class="article-encadre">
+<p class="article-encadre__titre">Le saviez-vous ?</p>
 
 Une [étude de l’Université Cornell](https://arxiv.org/abs/2504.11443), menée sur six mois, démontre des gains de temps significatifs sur un large éventail de tâches courantes, et ce, dans de nombreux secteurs d’activité.
 
@@ -86,6 +88,7 @@ Résultats:
 - Moins de temps passé à lire les courriels, et une rédaction de documents effectuée **en moyenne 12 % plus rapidement**.
 - L’agent IA conversationnel permet aux agents du service d'assistance par chat de **résoudre 14 % de problèmes en plus par heure.**
 
+</aside>
 ## La conception d'un agent intelligent sur mesure chez Victrix
 
 Nous créons des outils modernes, comme des**agents intelligents Copilot sur mesure**, qui simplifient l’accès à l’information dispersée dans vos systèmes et documents. Nos agents IA mettent ainsi fin aux pertes de temps consacrées à la recherche au quotidien. 
@@ -102,7 +105,7 @@ Chez Victrix, nous accompagnons des organisations dans la **création d’agents
 
 ### Ces cas vous inspirent, mais vous aimeriez découvrir comment ces agents vous aident à atteindre vos objectifs?
 
-<a class="article-cta" href="/fr/contact/">Demandez une démo</a>
+<a class="btn" href="/fr/contact/">Demandez une démo</a>
 
 ## Donnez les outils à vos équipes pour performer. Créez votre agent Copilot intelligent.
 
@@ -130,4 +133,4 @@ Mais ce n’est pas que – les agents intelligents sur mesure conçus par Victr
 
 ### Consultez nos experts pour découvrir toutes les intégrations possibles d'un agent intelligent sur mesure avec vos systèmes actuels
 
-<a class="article-cta" href="/fr/contact/">Discutez avec un expert Copilot et Azure AI</a>
+<a class="btn" href="/fr/contact/">Discutez avec un expert Copilot et Azure AI</a>

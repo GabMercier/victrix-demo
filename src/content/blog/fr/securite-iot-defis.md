@@ -5,6 +5,7 @@ excerpt: "Découvrez les principaux défis de sécurité IoT. Apprenez comment p
 tags: ["Nos articles"]
 topics: ["Cybersécurité"]
 slug: "securite-iot-defis"
+draft: false
 coverImage: "/wp-content/uploads/2024/09/design-sans-titre-7.jpg"
 seoTitle: "Comprendre les défis de la sécurité IoT"
 wpUrl: "/securite-iot-defis/"
@@ -78,7 +79,7 @@ Enfin, la dernière étape est de revoir et améliorer en continu le dispositif.
 
 Vos employés doivent se familiariser aux meilleures pratiques pour réduire le risque et assurer le succès d’adoption de sécurité des nouvelles technologies.
 
-<a class="article-cta" href="/fr/services/cybersecurite/internet-des-objets-service-iot/">Parlez à un expert sécurité IoT</a>
+<a class="btn" href="/fr/services/cybersecurite/internet-des-objets-service-iot/">Parlez à un expert sécurité IoT</a>
 
 ## Victrix, votre partenaire — conseil en sécurité IoT
 

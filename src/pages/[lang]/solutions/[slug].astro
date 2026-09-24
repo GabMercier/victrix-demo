@@ -1,14 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import {
-  type Locale,
-  defaultLocale,
-  otherLocale,
-  localizePath,
-  isLocale,
-  htmlLang,
-} from '../../../i18n/config';
+import { type Locale, otherLocale, localizePath, htmlLang } from '../../../i18n/config';
 // Le renderer Bookshop partagé mappe chaque section à son composant. Les
 // sections DOIVENT passer par lui — avec la directive `bookshop:live` — pour
 // que l'édition visuelle CloudCannon se branche (voir l'entête du renderer).
@@ -17,7 +10,7 @@ import JsonLd from '../../../components/JsonLd.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { breadcrumbSchema } from '../../../lib/seo/breadcrumb';
 import { useTranslations } from '../../../i18n/ui';
-import { cheminDeFichier, conflitsDeSlug, slugDeSolution } from '../../../lib/solutions/slug';
+import { cheminDeFichier, conflitsDeSlug, langueDeFiche, slugDeSolution } from '../../../lib/solutions/slug';
 
 /**
  * FICHES DU CATALOGUE Ø STUDIO — une page par solution (lot L11, 2026-09-23).
@@ -72,20 +65,24 @@ export async function getStaticPaths() {
 
   const paths = [];
   for (const entry of avecPage) {
-    // ids = "<locale>/<fichier>" — le nom de fichier apparie FR et EN.
-    const seg = entry.id.split('/')[0];
-    const lang: Locale = isLocale(seg) ? seg : defaultLocale;
+    // ids = "<locale>/<fichier>" — le nom de fichier apparie FR et EN. Un
+    // fichier hors de fr/ ou en/ casse le build (revue R3, constat 7) au lieu
+    // de sortir en français par défaut.
+    const lang: Locale = langueDeFiche(entry);
     const filePath = cheminDeFichier(entry);
     const slug = slugDeSolution(entry);
     const other = otherLocale[lang];
 
     // Sélecteur de langue / hreflang : la traduction n'existe que si elle a,
-    // elle aussi, des sections — sinon son URL serait un 404. Repli sur
-    // l'accueil de l'autre langue, comme les services.
+    // elle aussi, des sections — sinon son URL serait un 404. Repli sur le
+    // CATALOGUE de l'autre langue (revue R3, constat 7 : l'accueil, comme les
+    // services, perdait le visiteur ; les articles retombent de même sur leur
+    // index Ressources).
     const counterpart = avecPage.find((e) => e.id === `${other}/${filePath}`);
-    const altLocalePath = counterpart
-      ? localizePath(`/solutions/${slugDeSolution(counterpart)}/`, other)
-      : localizePath('/', other);
+    const altLocalePath = localizePath(
+      counterpart ? `/solutions/${slugDeSolution(counterpart)}/` : '/solutions/',
+      other,
+    );
 
     // Fil d'Ariane : Accueil → Catalogue → fiche. Le libellé du catalogue vient
     // de la page elle-même (elle est éditable au CMS).

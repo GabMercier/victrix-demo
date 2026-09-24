@@ -5,6 +5,7 @@ excerpt: "Victrix - Meilleures pratiques en sécurité opérationnelle : La s
 tags: ["Nos vidéos"]
 topics: ["Cybersécurité", "Services gérés"]
 slug: "meilleures-pratiques-en-securite-operationnelle-la-surveillance"
+draft: true
 coverImage: "/wp-content/uploads/2022/05/cover-artivle_partie-2-surveillance-scaled.jpg"
 seoTitle: "Pratiques en sécurité opérationnelle | La surveillance"
 wpUrl: "/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance/"

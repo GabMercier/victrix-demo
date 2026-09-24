@@ -5,6 +5,7 @@ excerpt: "Voyez pourquoi les entreprises choisissent la plateforme ServiceNow IT
 tags: ["Nos articles"]
 topics: ["Services gérés"]
 slug: "servicenow-itsm"
+draft: false
 coverImage: "/wp-content/uploads/2025/02/victrix.png"
 seoTitle: "ServiceNow ITSM: La stratégie pour croître les opérations TI"
 wpUrl: "/servicenow-itsm/"
@@ -42,7 +43,7 @@ ServiceNow intègre des technologies d’automatisation alimentées par l’[int
 - L’intelligence prédictive: L’apprentissage automatique analyse les données historiques pour suggérer des solutions proactives.
 - Billetterie automatisée: Les billets TI se résolvent automatiquement, réduisant les interruptions de service et améliorant les temps de réponse.
 
-<a class="article-cta" href="/fr/contact/">Contactez-nous</a>
+<a class="btn" href="/fr/contact/">Contactez-nous</a>
 
 #### ITSM infonuagique pour les entreprises modernes
 
@@ -72,21 +73,23 @@ La base de données de gestion de la configuration (CMDB) offre une visibilité 
 
 ## ROI de ServiceNow ITSM pour entreprises
 
-<table border="1">
+<div class="article-tableau">
+<table>
 <tbody>
 <tr>
-<td style="text-align: center;">
+<td>
 <h3>$1.8M</h3>
 D’économies annuelles réalisées grâce à l’automatisation des processus ITSM</td>
-<td style="text-align: center;">
+<td>
 <h3>$7.5M</h3>
 En gains de productivité, avec les responsables TI faisant état d’une plus grande efficacité de leur personnel</td>
-<td style="text-align: center;">
+<td>
 <h3>67%</h3>
 De réduction des incidents hautement prioritaires (P1 et P2), améliorant considérablement la continuité des activités.</td>
 </tr>
 </tbody>
 </table>
+</div>
 
 ## Stratégie d’implémentation ServiceNow ITSM axée affaires pour garantir votre succès
 
@@ -115,7 +118,7 @@ Un partenariat avec des experts assure un **déploiement harmonieux et réussi,*
 - Obtenir un soutien 24/7 pour résoudre tout défi ITSM
 - Bénéficier d'une optimisation et de mises à jour continues pour soutenir la croissance et les besoins de votre entreprise.
 
-<a class="article-cta" href="/fr/contact/">Parlons de votre implémentation ITSM</a>
+<a class="btn" href="/fr/contact/">Parlons de votre implémentation ITSM</a>
 
 ## FAQ — ServiceNow ITSM
 

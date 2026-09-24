@@ -4,6 +4,7 @@ date: 2024-11-14
 excerpt: "Find out more about the arrival of Dominic Lajoie as COO and CIO. Vision, expertise in AI, cybersecurity and ServiceNow: a key appointment for our growth."
 tags: ["Our news"]
 slug: "dominic-lajoie-appointed"
+draft: true
 coverImage: "/wp-content/uploads/2024/11/dominic-lajoie-1.jpg"
 wpUrl: "/en/dominic-lajoie-appointed/"
 ---

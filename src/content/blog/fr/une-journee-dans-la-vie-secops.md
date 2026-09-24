@@ -4,6 +4,7 @@ date: 2022-10-19
 excerpt: "Découvrez le fonctionnement de Microsoft Sentinel dans le format «Une journée dans la vie d’un analyste en sécurité des opérations (SecOps)"
 tags: ["Nos vidéos"]
 slug: "une-journee-dans-la-vie-secops"
+draft: true
 coverImage: "/wp-content/uploads/2022/10/1-scaled-e1666199091480.jpg"
 wpUrl: "/une-journee-dans-la-vie-secops/"
 ---

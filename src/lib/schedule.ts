@@ -48,7 +48,8 @@ export interface AnnounceCandidate {
  * `now`, la plus récemment COMMENCÉE gagne (startAt le plus tardif ; "" =
  * commencée depuis toujours, donc perd contre toute bannière datée). Égalité
  * → id alphabétique, et l'ordre d'entrée est indifférent (l'ordre du loader
- * n'est pas un contrat). `staticOnly` (éditeur visuel CloudCannon) : première
+ * n'est pas un contrat). `editorPreview` (aperçu d'édition CloudCannon,
+ * EDITOR_PREVIEW=1 — lot L16) : première
  * bannière « Affichée » par id, fenêtre IGNORÉE — l'éditeur voit toujours
  * quelque chose à modifier ; `enabled: false` reste exclu (interrupteur
  * maître). `undefined` = aucune bannière (le site n'en rend pas).
@@ -56,12 +57,12 @@ export interface AnnounceCandidate {
 export function pickActiveAnnounce<T extends AnnounceCandidate>(
   entries: readonly T[],
   now: Date,
-  staticOnly = false,
+  editorPreview = false,
 ): T | undefined {
   const enabled = entries
     .filter((e) => e.enabled)
     .sort((a, b) => a.id.localeCompare(b.id));
-  if (staticOnly) return enabled[0];
+  if (editorPreview) return enabled[0];
   const startTime = (e: T) => parseBound(e.startAt ?? '')?.valueOf() ?? -Infinity;
   return enabled
     .filter((e) => isWithinWindow(now, e.startAt, e.endAt))

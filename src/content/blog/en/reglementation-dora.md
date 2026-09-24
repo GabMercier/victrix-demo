@@ -5,6 +5,7 @@ excerpt: "Learn more about the DORA regulation, its requirements, and how Victri
 tags: ["Our articles"]
 topics: ["Cybersecurity"]
 slug: "dora-regulation"
+draft: false
 coverImage: "/wp-content/uploads/2024/10/business-corporate-protection-safety-security-concept-1-scaled.jpg"
 seoTitle: "DORA regulation | Compliance and resilience"
 wpUrl: "/en/ressources/dora-regulation/"
@@ -14,15 +15,22 @@ wpUrl: "/en/ressources/dora-regulation/"
  In this article, our financial [cybersecurity experts](/en/services/cybersecurity/) review the requirements of this standard and guide you on how to **increase your operational resilience and ensure your DORA compliance**. 
  [Get support for your compliance](/en/contact/)
 
-**What is the DORA regulation?**
+<details class="article-faq">
+<summary>What is the DORA regulation?</summary>
 
 DORA stands for the Digital Operational Resilience Act. It is the European Commission’s regulation on the digital operational resilience of financial services in the face of the growing risk of cyber-attacks. The aim of the DORA standard is to harmonize cybersecurity policies in the financial sector.
 
-**Who is covered by DORA?**
+</details>
+
+<details class="article-faq">
+<summary>Who is covered by DORA?</summary>
 
 The DORA Cybersecurity Directive applies to the financial services sector in the European Union. All banks and financial institutions operating in the EU are affected by this regulation.
 
-**When will the DORA regulations go into effect?**
+</details>
+
+<details class="article-faq">
+<summary>When will the DORA regulations go into effect?</summary>
 
 The Digital Operational Resilience Regulation (DORA), which comes into force on January 16, 2023, will take effect on January 17, 2025. Financial services institutions must therefore be compliant before that date.
 
@@ -36,6 +44,7 @@ The European DORA regulation requires financial firms to:
 - Develop business continuity plans
 - Regularly test and update their operational resilience plans
 
+</details>
 ## What are the risks of non-compliance?
 
 Non-compliance exposes companies to EU sanctions: 

@@ -59,8 +59,11 @@ npm run cms:previews:check
 npm run check:bookshop
 npm run type-check
 npm run build
-STATIC_ONLY=1 npm run build
+STATIC_ONLY=1 EDITOR_PREVIEW=1 npm run build
 ```
+
+(Les deux variables ensemble = le build des sites d'ÉDITION CloudCannon ;
+`STATIC_ONLY=1` seul = le site de PRODUCTION CloudCannon — tableau § 6.)
 
 `check:bookshop` (2026-09-17, `scripts/check-bookshop-strip.mjs`) rejoue sur
 chaque composant de `component-library/` l'étape que SEUL le build
@@ -106,6 +109,7 @@ bascule se corrige avec `node scripts/migrate-icons-bank.mjs` (rejouable ;
 | `npm run type-check` | 0 erreur | 0 erreur, 3 indices (`hints`) sans gravité |
 | `npm run build` | build Cloudflare complet (`dist/_worker.js` + `_redirects` + `_routes.json`) | OK — `_worker.js` présent, 1 redirection CMS écrite et exclue du worker |
 | `STATIC_ONLY=1 npm run build` | build 100 % statique (aucun `_worker.js`), 23 pages | OK — 23 page(s) built, aucun `_worker.js` dans `dist/` |
+| `STATIC_ONLY=1 EDITOR_PREVIEW=1 npm run build` (lot L16) | idem + brouillons construits + marqueurs `bookshop-live` | 24 sept. 2026 : 213 pages, 2 marqueurs `bookshop-live` sur la page service ; `STATIC_ONLY=1` seul : 213 pages, 0 marqueur (production CloudCannon) |
 | `npm run check:links` (après le build ; `-- --strict` en CI) | 0 lien interne cassé dans `dist/` | 18 sept. 2026 : 75 cibles fautives à l'introduction (liens d'origine WordPress dans les articles), 0 après `npm run fix:links` |
 | `npm run check:prefill` (après le build) | 0 CTA de contenu qui arrive sur une liste obligatoire vide | 22 sept. 2026 : 171 liens fautifs à l'introduction, 0 après le lot L-prefill — 822 liens vers le Contact, dont 449 de contenu et 373 de chrome (ignorés) |
 | `npm run check:old-urls` (après le build) | rapport seul, code 0 — chaque adresse de l'ancien site arrive sur une page | 23 sept. 2026 : 172 des 173 adresses arrivent (2 sans bouger, 170 en un saut) ; reste `/cache/`, un rebut WordPress |
@@ -359,7 +363,7 @@ doit ouvrir, et interposer une fonction dans
 pas. Il faut rejouer le build de CloudCannon :
 
 ```powershell
-STATIC_ONLY=1 npm run build
+$env:STATIC_ONLY="1"; $env:EDITOR_PREVIEW="1"; npm run build   # (retirer les deux ensuite)
 # puis compter les marqueurs d'édition live sur une page à sections :
 (Select-String -Path distr\services\cybersecurite\index.html -Pattern 'bookshop-live' -AllMatches).Matches.Count
 ```
@@ -433,6 +437,38 @@ le CORPS du document. Même risque pour `<header>`/`<nav>`/`<footer>` et pour un
 > fusionner : sans cette recopie, `/_astro/*` n'aurait aucun en-tête).
 > Ajouter un en-tête = l'ajouter à cette liste **après** l'avoir vérifié dans
 > la documentation CloudCannon.
+
+**Articles retirés (D19, 2026-09-24).** Un article passé en **Brouillon** à
+la demande du marketing (7 articles, classeur de Julie) garde son fichier ;
+ses DEUX adresses (ancienne WordPress et nouvelle `/ressources/…`) sont
+listées dans `articles_retires` de `docs/migration/correspondance-urls.json`
+avec la page la plus proche pour cible. `npm run build:redirects` en fait des
+301 marquées `retire: true` dans `src/data/redirects-migration.json` ;
+`astro.config.mjs` ne les émet PAS dans un build d'aperçu d'édition
+(`EDITOR_PREVIEW`, § 6 — le brouillon y est encore une page). Pour
+republier : décocher Brouillon ET retirer ses adresses d'`articles_retires`
+(sinon `check:redirects --dist` signalera une 301 vers une page qui existe —
+c'est voulu, la décision doit être explicite).
+
+**Forme des articles (2026-09-24).** `python
+scripts/migration/restaure-forme-articles.py [--apply] [--only a,b]` convertit
+le HTML brut hérité de WordPress vers les 4 patrons de
+`docs/plan-forme-articles.md` (bouton `btn`, encadré `article-encadre`, FAQ
+`article-faq`, tableau `article-tableau`) ; sans `--apply` = diffs et rapport
+article par article ; refuse d'écrire si le texte nu changerait ; idempotent.
+Rendu : `src/styles/global.css` § « Forme des articles » ; démonstration :
+`/fr/style-guide/forme-articles/`.
+
+**Photos de l'ancien site (2026-09-24).** `python
+scripts/migration/rapatrie-images-source.py [--check]` relit le cache des
+173 pages sources (`docs/migration/cache-source/`) et télécharge sous
+`public/wp-content/uploads/…` toute image qui n'y est pas encore (même
+chemin, jamais renommée : elles apparaissent telles quelles dans la
+médiathèque CloudCannon). Rejouable, ne supprime rien. Passer ensuite `node
+scripts/optimize-images.mjs --tout` (le `--tout` est nécessaire : ces photos
+ne sont pas encore référencées, le mode par défaut les ignore). Le 24/09 :
+393 photos rapatriées, 53 Mo bruts → voir le poids après optimisation dans
+`docs/migration/nuit-2026-09-24.md`.
 
 **Redirections de la migration (2026-09-22).** Deux listes alimentent
 `_redirects` (et, au lot L15, `.cloudcannon/routing.json`) :
@@ -710,7 +746,7 @@ robocopy "c:\Repo\Victrix\Demo-victrix" "C:\Users\<vous>\vvbuild" /E `
 cd C:\Users\<vous>\vvbuild
 npm run type-check
 npm run build
-STATIC_ONLY=1 npm run build
+STATIC_ONLY=1 EDITOR_PREVIEW=1 npm run build
 
 # 3. Nettoyer une fois la vérification terminée
 Remove-Item -Recurse -Force C:\Users\<vous>\vvbuild
@@ -762,7 +798,7 @@ déclenche le build du site d'édition (§5) ; relecture sur lawful-hare, puis
 ## 5. Ce qui se passe automatiquement après le push
 
 - **CloudCannon — site d'édition (staging)** : tire le nouveau commit et
-  reconstruit le site (`STATIC_ONLY=1 npm run build`, puis
+  reconstruit le site (`STATIC_ONLY=1 EDITOR_PREVIEW=1 npm run build`, puis
   `.cloudcannon/postbuild` → `npx @bookshop/generate`) — c'est l'aperçu des
   éditeurs ET le site servi sur le domaine de test `lawful-hare.cloudvent.net`
   (en-tête `noindex` automatique). Voir §7. Rien ne part en production sans le
@@ -806,8 +842,8 @@ Mise en place (une fois, dans l'UI CloudCannon) :
 
 1. **Créer le site de production** : Add Site → même dépôt GitHub
    (`GabMercier/victrix-demo`) → branche `main`. Recopier les réglages de
-   build du site d'édition : `STATIC_ONLY=1` (obligatoire, §7), sortie
-   `dist`, même version Node. Tant que le premier Publish n'a pas eu lieu, ce
+   build du site d'édition SAUF `EDITOR_PREVIEW` : `STATIC_ONLY=1`
+   (obligatoire, §7), sortie `dist`, même version Node. Tant que le premier Publish n'a pas eu lieu, ce
    site construit la démo pré-spike du 9 juillet (`main` est ~90 commits en
    retard) — apparence datée attendue, ignorer.
 2. **Lier la publication** : sur le site d'édition → Site Settings → Files →
@@ -821,16 +857,31 @@ Au quotidien : **Save = staging ; Publish = production.** Retour arrière =
 `git revert` du commit de fusion sur `main` (une publication CloudCannon est
 une fusion Git ordinaire), puis reconstruction du site de production.
 
-⚠️ **Limite connue tant que `STATIC_ONLY` n'est pas scindé** : ce drapeau
-porte aujourd'hui DEUX choses — « build 100 % statique » ET la politique
-« aperçu d'édition » (brouillons et articles à date future construits,
-`src/i18n/blog.ts` ; fenêtres de dates des barres d'annonce ignorées,
-`src/lib/announce.ts` ; Bookshop attaché). Le site de production CloudCannon
-(construit `STATIC_ONLY=1`) hérite donc de ce comportement d'aperçu.
-Acceptable pendant la transition (URL noindex, pas le vrai site) ;
-**bloquant pour le go-live** — la scission (p. ex. un `EDITOR_PREVIEW=1`
-posé seulement sur le site d'édition) est dans la liste go-live de
-`docs/DEPLOYMENT.md` §7.
+### Variables de build par site (lot L16, 2026-09-24)
+
+Jusqu'au 24 septembre, `STATIC_ONLY` portait DEUX choses — « build 100 %
+statique » ET la politique « aperçu d'édition » — et le site de production
+CloudCannon, construit `STATIC_ONLY=1`, héritait de l'aperçu (brouillons
+publiés). Les deux rôles sont maintenant deux variables ; la logique est dans
+`scripts/lib/build-mode.mjs` (testée : `src/lib/build-mode.test.ts`).
+
+| Site | Branche | `STATIC_ONLY` | `EDITOR_PREVIEW` | `DRAFTS_VISIBLE` | Ce que ça donne |
+|---|---|---|---|---|---|
+| CloudCannon **dev** (relecture Clément) | `dev` | `1` | `1` | — | statique, brouillons et articles programmés visibles, fenêtres des bannières ignorées, redirections des articles retirés NON émises, Bookshop attaché (édition visuelle) |
+| CloudCannon **Édition** (Julie) | `staging` | `1` | `1` | — | idem |
+| CloudCannon **Production** | `main` | `1` | **absent** | — | statique, brouillons et programmés EXCLUS, fenêtres appliquées, redirections des articles retirés émises, pas de Bookshop |
+| Cloudflare Pages (infra héritée) — préversion | branches | — | — | `1` (optionnel) | adaptateur, brouillons visibles seulement si `DRAFTS_VISIBLE` |
+| Cloudflare Pages — production | `main` | — | — | — | adaptateur, politique publique |
+| Gate local / CI (`npm run build`) | — | — | — | — | politique publique (ce que la production sert) |
+
+Où poser une variable : CloudCannon → Site Settings → Build → Environment
+variables. **Étape à faire à la main après le déploiement de L16 : ajouter
+`EDITOR_PREVIEW=1` sur les sites dev et Édition (staging) ; ne rien changer
+sur Production.** Tant qu'elle manque sur un site d'édition, ce site
+construit comme la production : brouillons absents, pas d'édition visuelle
+(le journal de build affiche alors « No live editing connected »). Un
+`EDITOR_PREVIEW=1` sans `STATIC_ONLY` est signalé au build (Bookshop refusé :
+il réécrirait le worker Cloudflare).
 
 ## 7. CloudCannon — où regarder
 
@@ -856,9 +907,10 @@ posé seulement sur le site d'édition) est dans la liste go-live de
   build tant qu'il est actif (rencontré activé par défaut à la connexion
   initiale, voir `spike-cloudcannon.md`) — à vérifier en premier si un push
   ne déclenche aucun build.
-- **Variable d'environnement obligatoire** : `STATIC_ONLY=1` (build settings)
-  — sans elle, CloudCannon construit le worker Cloudflare et Bookshop ne se
-  charge pas.
+- **Variables d'environnement obligatoires** (build settings) : `STATIC_ONLY=1`
+  sur les DEUX sites — sans elle, CloudCannon construit le worker Cloudflare ;
+  `EDITOR_PREVIEW=1` sur les sites d'ÉDITION seulement — sans elle, ni
+  brouillons ni Bookshop (tableau § 6, lot L16).
 - **Téléversements** : chemin global `src/assets/uploads/` (`cloudcannon.
   config.yml`, clé `paths.uploads`, ajouté le 14 juillet 2026) — avant ce
   réglage, tout téléversement sans chemin propre à sa collection atterrissait

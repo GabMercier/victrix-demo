@@ -5,6 +5,7 @@ excerpt: "By joining forces with COMITEM, Victrix is expanding its offering in F
 tags: ["Our news"]
 topics: ["Cybersecurity"]
 slug: "expands-cybersecurity-offering-france"
+draft: false
 coverImage: "/wp-content/uploads/2024/09/image-landing-page-victrix.jpg"
 wpUrl: "/en/expands-cybersecurity-offering-france/"
 ---

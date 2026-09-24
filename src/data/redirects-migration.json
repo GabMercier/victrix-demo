@@ -200,6 +200,42 @@
     "code": 301
   },
   {
+    "de": "/en/ressources/appointment-ceo",
+    "vers": "/en/decouvrir",
+    "code": 301,
+    "retire": true
+  },
+  {
+    "de": "/en/ressources/best-practices-in-operational-safety-maintenance",
+    "vers": "/en/services/cybersecurity/scalable-security-operations-center",
+    "code": 301,
+    "retire": true
+  },
+  {
+    "de": "/en/ressources/best-practices-in-operational-security-defense",
+    "vers": "/en/services/cybersecurity/scalable-security-operations-center",
+    "code": 301,
+    "retire": true
+  },
+  {
+    "de": "/en/ressources/best-practices-in-operational-security-monitoring",
+    "vers": "/en/services/cybersecurity/scalable-security-operations-center",
+    "code": 301,
+    "retire": true
+  },
+  {
+    "de": "/en/ressources/dominic-lajoie-appointed",
+    "vers": "/en/decouvrir",
+    "code": 301,
+    "retire": true
+  },
+  {
+    "de": "/en/ressources/extended-reality-xr-agc-partnership",
+    "vers": "/en/services/artificial-intelligence",
+    "code": 301,
+    "retire": true
+  },
+  {
     "de": "/expertise/approvisionnement-ti/check-point",
     "vers": "/fr/services/approvisionnement-ti/check-point",
     "code": 301
@@ -360,9 +396,51 @@
     "code": 301
   },
   {
+    "de": "/fr/ressources/annonce-nomination-ceo",
+    "vers": "/fr/decouvrir",
+    "code": 301,
+    "retire": true
+  },
+  {
+    "de": "/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-defense",
+    "vers": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
+    "code": 301,
+    "retire": true
+  },
+  {
+    "de": "/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-maintenance",
+    "vers": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
+    "code": 301,
+    "retire": true
+  },
+  {
+    "de": "/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-surveillance",
+    "vers": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
+    "code": 301,
+    "retire": true
+  },
+  {
+    "de": "/fr/ressources/nomination-dominic-lajoie",
+    "vers": "/fr/decouvrir",
+    "code": 301,
+    "retire": true
+  },
+  {
+    "de": "/fr/ressources/realite-etendue-xr-partenariat-agc",
+    "vers": "/fr/services/intelligence-artificielle",
+    "code": 301,
+    "retire": true
+  },
+  {
+    "de": "/fr/ressources/une-journee-dans-la-vie-secops",
+    "vers": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
+    "code": 301,
+    "retire": true
+  },
+  {
     "de": "/document/cybersecurite",
-    "vers": "/fr/ressources",
-    "code": 302
+    "vers": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
+    "code": 301
   },
   {
     "de": "/document/licences-microsoft-power-platform",
@@ -371,33 +449,37 @@
   },
   {
     "de": "/document/pourquoi-gerez-vous-encore-vos-ti",
-    "vers": "/fr/ressources",
-    "code": 302
+    "vers": "/fr/services/services-ti-geres",
+    "code": 301
   },
   {
     "de": "/document/webinaire-copilot-buzz-impact",
-    "vers": "/fr/ressources",
-    "code": 302
+    "vers": "/fr/ressources/copilot-vs-chatgpt",
+    "code": 301
   },
   {
     "de": "/en/appointment-ceo",
-    "vers": "/en/ressources/appointment-ceo",
-    "code": 301
+    "vers": "/en/decouvrir",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/en/best-practices-in-operational-safety-maintenance",
-    "vers": "/en/ressources/best-practices-in-operational-safety-maintenance",
-    "code": 301
+    "vers": "/en/services/cybersecurity/scalable-security-operations-center",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/en/best-practices-in-operational-security-defense",
-    "vers": "/en/ressources/best-practices-in-operational-security-defense",
-    "code": 301
+    "vers": "/en/services/cybersecurity/scalable-security-operations-center",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/en/best-practices-in-operational-security-monitoring",
-    "vers": "/en/ressources/best-practices-in-operational-security-monitoring",
-    "code": 301
+    "vers": "/en/services/cybersecurity/scalable-security-operations-center",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/en/careers",
@@ -431,8 +513,9 @@
   },
   {
     "de": "/en/dominic-lajoie-appointed",
-    "vers": "/en/ressources/dominic-lajoie-appointed",
-    "code": 301
+    "vers": "/en/decouvrir",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/en/dora-regulation",
@@ -446,8 +529,9 @@
   },
   {
     "de": "/en/extended-reality-xr-agc-partnership",
-    "vers": "/en/ressources/extended-reality-xr-agc-partnership",
-    "code": 301
+    "vers": "/en/services/artificial-intelligence",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/en/holiday-wishes",
@@ -506,13 +590,15 @@
   },
   {
     "de": "/en/part-2-best-practices-in-operational-security-monitoring",
-    "vers": "/en/ressources/best-practices-in-operational-security-monitoring",
-    "code": 301
+    "vers": "/en/services/cybersecurity/scalable-security-operations-center",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/en/part-3-best-practices-in-operational-security-defense",
-    "vers": "/en/ressources/best-practices-in-operational-security-defense",
-    "code": 301
+    "vers": "/en/services/cybersecurity/scalable-security-operations-center",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/en/penetration-testing",
@@ -656,8 +742,9 @@
   },
   {
     "de": "/annonce-nomination-ceo",
-    "vers": "/fr/ressources/annonce-nomination-ceo",
-    "code": 301
+    "vers": "/fr/decouvrir",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/applications-microsoft-viva-demystifier-viva",
@@ -741,18 +828,21 @@
   },
   {
     "de": "/meilleures-pratiques-en-securite-operationnelle-la-defense",
-    "vers": "/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-defense",
-    "code": 301
+    "vers": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/meilleures-pratiques-en-securite-operationnelle-la-maintenance",
-    "vers": "/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-maintenance",
-    "code": 301
+    "vers": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/meilleures-pratiques-en-securite-operationnelle-la-surveillance",
-    "vers": "/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-surveillance",
-    "code": 301
+    "vers": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/migration-windows-11-microsoft-exchange",
@@ -771,8 +861,9 @@
   },
   {
     "de": "/nomination-dominic-lajoie",
-    "vers": "/fr/ressources/nomination-dominic-lajoie",
-    "code": 301
+    "vers": "/fr/decouvrir",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/page-de-remerciement",
@@ -781,18 +872,21 @@
   },
   {
     "de": "/partie-1-meilleures-pratiques-en-securite-operationnelle-la-maintenance",
-    "vers": "/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-maintenance",
-    "code": 301
+    "vers": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/partie-2-meilleures-pratiques-en-securite-operationnelle-la-surveillance",
-    "vers": "/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-surveillance",
-    "code": 301
+    "vers": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/partie-3-meilleures-pratiques-en-securite-operationnelle-la-defense",
-    "vers": "/fr/ressources/meilleures-pratiques-en-securite-operationnelle-la-defense",
-    "code": 301
+    "vers": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/pentest-cybersecurite",
@@ -811,8 +905,9 @@
   },
   {
     "de": "/realite-etendue-xr-partenariat-agc",
-    "vers": "/fr/ressources/realite-etendue-xr-partenariat-agc",
-    "code": 301
+    "vers": "/fr/services/intelligence-artificielle",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/reglementation-dora",
@@ -856,8 +951,9 @@
   },
   {
     "de": "/une-journee-dans-la-vie-secops",
-    "vers": "/fr/ressources/une-journee-dans-la-vie-secops",
-    "code": 301
+    "vers": "/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif",
+    "code": 301,
+    "retire": true
   },
   {
     "de": "/voeux-des-fetes",

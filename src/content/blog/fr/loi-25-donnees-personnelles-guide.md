@@ -5,6 +5,7 @@ excerpt: "Lisez notre guide et apprenez comment les organisations se conforment 
 tags: ["Nos articles"]
 topics: ["Cybersécurité", "Conseil stratégique"]
 slug: "loi-25-donnees-personnelles-guide"
+draft: false
 coverImage: "/wp-content/uploads/2024/09/image-1-v2-1-scaled.jpg"
 seoTitle: "Loi 25 données personnelles | Guide loi et exigences"
 wpUrl: "/loi-25-donnees-personnelles-guide/"
@@ -88,7 +89,7 @@ Les violations de la vie privée peuvent entraîner une perte de confiance de la
 
 Les personnes dont les renseignements personnels ont été divulgués sont en droit de vous poursuivre pour dommages et intérêts, ce qui entraîne des coûts supplémentaires.
 
-<a class="article-cta" href="/fr/contact/">Parlez à un expert Loi 25 et cybersécurité</a>
+<a class="btn" href="/fr/contact/">Parlez à un expert Loi 25 et cybersécurité</a>
 
 ## Assurez votre conformité à la Loi 25 avec Victrix, votre expert en cybersécurité
 

@@ -4,6 +4,7 @@ date: 2024-11-14
 excerpt: "Découvrez l’arrivée de Dominic Lajoie en tant que COO/CIO de Victrix. Vision, expertise en IA, cybersécurité et ServiceNow : une nomination clé pour notre croissance."
 tags: ["Nos articles"]
 slug: "nomination-dominic-lajoie"
+draft: true
 coverImage: "/wp-content/uploads/2024/11/dominic-lajoie-1.jpg"
 seoTitle: "Nomination Dominic Lajoie - COO/CIO"
 wpUrl: "/nomination-dominic-lajoie/"

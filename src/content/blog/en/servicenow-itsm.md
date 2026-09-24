@@ -5,6 +5,7 @@ excerpt: "See why companies choose the ServiceNow ITSM platform. Find out how to
 tags: ["Our articles"]
 topics: ["Managed services"]
 slug: "servicenow-itsm"
+draft: false
 coverImage: "/wp-content/uploads/2025/02/victrix.png"
 seoTitle: "ServiceNow ITSM: Business-Led Strategy to Scale IT Operations"
 wpUrl: "/en/ressources/servicenow-itsm/"
@@ -40,7 +41,7 @@ ServiceNow integrates automation technologies powered by [artificial intelligenc
 - **Predictive Intelligence:** Machine learning analyzes historical data to suggest proactive solutions.
 - **Automated Ticketing:** IT tickets are resolved automatically, reducing service interruptions and improving response times.
 
-<a class="article-cta" href="/en/contact/">Contact Us</a>
+<a class="btn" href="/en/contact/">Contact Us</a>
 
 #### Cloud-Based ITSM for Modern Businesses
 
@@ -70,24 +71,26 @@ The Configuration Management Database (CMDB) provides real-time visibility and b
 
 ## ROI of ServiceNow ITSM for Businesses
 
-<table style="border-collapse: collapse; width: 100%; height: 71px;" border="1">
+<div class="article-tableau">
+<table>
 <tbody>
-<tr style="height: 71px;">
-<td style="width: 33.3333%; text-align: center; height: 71px;">
+<tr>
+<td>
 <h3><strong>$1.8M</strong></h3>
 <p>Annual savings achieved through ITSM process automation</p>
 </td>
-<td style="width: 33.3333%; text-align: center; height: 71px;">
+<td>
 <h3><strong>$7.5M</strong></h3>
 <p>In productivity gains, with IT leaders reporting greater efficiency from their staff</p>
 </td>
-<td style="width: 33.3333%; text-align: center; height: 71px;">
+<td>
 <h3><strong>67%</strong></h3>
 <p>Reduction in high-priority incidents (P1 and P2), significantly improving business continuity.</p>
 </td>
 </tr>
 </tbody>
 </table>
+</div>
 
 ## Business-Focused ServiceNow ITSM Implementation Strategy to Ensure Your Success
 
@@ -114,4 +117,4 @@ A partnership with experts ensures a **smooth and successful deployment,** perfe
 - Receive 24/7 support to resolve any ITSM challenges
 - Benefit from ongoing optimization and updates to support your company's growth and evolving needs.
 
-<a class="article-cta" href="/en/contact/">Let’s Discuss Your ITSM Implementation</a>
+<a class="btn" href="/en/contact/">Let’s Discuss Your ITSM Implementation</a>

@@ -5,6 +5,7 @@ excerpt: "Découvrez la solution SASE cloud (Secure Access Service Edge) pour am
 tags: ["Nos articles"]
 topics: ["Cybersécurité", "Infonuagique"]
 slug: "sase-cloud"
+draft: false
 coverImage: "/wp-content/uploads/2023/11/sase-victrix-1024x576-1.jpg"
 seoTitle: "SASE Cloud: Secure Access Service Edge | Cybersécurité"
 wpUrl: "/sase-cloud/"

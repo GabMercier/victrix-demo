@@ -5,6 +5,7 @@ excerpt: "Find out all about the ZTNA (Zero Trust Network Access) model in cyber
 tags: ["Our articles"]
 topics: ["Cybersecurity"]
 slug: "zero-trust-network-access-ztna-ultimate-cybersecurity-model"
+draft: false
 coverImage: "/wp-content/uploads/2023/10/ztna-victrix-1-scaled.jpg"
 seoTitle: "Zero Trust Network Access (ZTNA) | Cybersecurity"
 wpUrl: "/en/zero-trust-network-access-ztna/"

@@ -8,11 +8,11 @@
 | --- | --- |
 | Pages comparées | **89** |
 | Pages avec au moins un écart (bloc, phrase, image ou lien) | **86** |
-| Blocs de texte absents | **100** (631 mots) |
-| … dont blocs courts « à vérifier » | 64 |
+| Blocs de texte absents | **106** (685 mots) |
+| … dont blocs courts « à vérifier » | 66 |
 | Paragraphes retrouvés mais AMPUTÉS (≥ 3 mots significatifs perdus) | **82** |
-| Images de la source absentes de la cible | **251** : 116 photos (dont 13 images de héros) + 135 logos, pictos ou certifications |
-| Liens internes de la source absents de la cible | **13** |
+| Images de la source absentes de la cible | **243** : 104 photos (dont 1 images de héros) + 139 logos, pictos ou certifications |
+| Liens internes de la source absents de la cible | **11** |
 | Blocs seulement REFORMULÉS (≥ 60 % des mots présents) — listés, non comptés | 390 |
 | Widgets de l’ancien thème (carrousel d’équipe, intitulé du formulaire) — hors décompte | 14 |
 
@@ -43,23 +43,23 @@ ni vers sa destination après redirection ; articles liés et fil d’Ariane exc
 | `/en/services/strategic-advice/` | 4 | 28 | 0 | 7 | 0 | `src/content/services/en/conseil-strategique.json` |
 | `/fr/services/conseil-strategique/` | 4 | 24 | 0 | 7 | 0 | `src/content/services/fr/conseil-strategique.json` |
 | `/en/services/cloud-services-provider/` | 3 | 13 | 5 | 4 | 0 | `src/content/services/en/services-infonuagiques.json` |
-| `/en/services/productivity-consulting/o-studio/` | 2 | 15 | 2 | 5 (héros) | 0 | `src/content/services/en/productivite/o-studio.json` |
+| `/en/services/productivity-consulting/o-studio/` | 2 | 15 | 2 | 5 | 0 | `src/content/services/en/productivite/o-studio.json` |
 | `/en/services/cybersecurity/zero-trust/` | 2 | 32 | 0 | 0 | 0 | `src/content/services/en/cybersecurite/zero-trust.json` |
-| `/fr/services/productivite/o-studio/` | 1 | 2 | 6 | 5 (héros) | 0 | `src/content/services/fr/productivite/o-studio.json` |
+| `/fr/services/productivite/o-studio/` | 1 | 2 | 6 | 5 | 0 | `src/content/services/fr/productivite/o-studio.json` |
 | `/en/services/it-procurement/microsoft-solutions/` | 0 | 0 | 0 | 9 | 0 | `src/content/services/en/approvisionnement-ti/solutions-microsoft.json` |
 | `/fr/services/approvisionnement-ti/solutions-microsoft/` | 0 | 0 | 0 | 9 | 0 | `src/content/services/fr/approvisionnement-ti/solutions-microsoft.json` |
-| `/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/` | 3 | 10 | 1 | 5 | 0 | `src/content/services/fr/cybersecurite/centre-operationnel-de-securite-evolutif.json` |
+| `/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/` | 3 | 10 | 1 | 5 | 0 | `(gabarit de page)` |
 | `/fr/services/services-infonuagiques/` | 1 | 3 | 6 | 4 | 0 | `src/content/services/fr/services-infonuagiques.json` |
 | `/en/services/cybersecurity/scalable-security-operations-center/` | 3 | 11 | 0 | 5 | 0 | `src/content/services/en/cybersecurite/centre-operationnel-de-securite-evolutif.json` |
 | `/fr/services/cybersecurite/internet-des-objets-service-iot/` | 2 | 9 | 4 | 2 | 0 | `src/content/services/fr/cybersecurite/internet-des-objets-service-iot.json` |
 | `/fr/services/productivite/copilot-studio/` | 2 | 12 | 2 | 2 | 0 | `src/content/services/fr/productivite/copilot-studio.json` |
-| `/fr/services/services-ti-geres/` | 5 | 20 | 1 | 0 | 0 | `src/content/services/fr/services-ti-geres.json` |
+| `/fr/services/services-ti-geres/` | 5 | 20 | 1 | 0 | 0 | `(gabarit de page)` |
 | `/en/services/it-procurement/` | 3 | 15 | 2 | 0 | 0 | `src/content/services/en/approvisionnement-ti.json` |
 | `/en/services/it-procurement/palo-alto-networks/` | 0 | 0 | 0 | 6 | 0 | `src/content/services/en/approvisionnement-ti/palo-alto-networks.json` |
 | `/fr/services/approvisionnement-ti/palo-alto-networks/` | 0 | 0 | 0 | 6 | 0 | `src/content/services/fr/approvisionnement-ti/palo-alto-networks.json` |
 | `/en/services/cybersecurity/internet-of-things-iot/` | 1 | 4 | 3 | 2 | 0 | `src/content/services/en/cybersecurite/internet-des-objets-service-iot.json` |
 | `/en/services/productivity-consulting/copilot-studio/` | 2 | 8 | 1 | 2 | 0 | `src/content/services/en/productivite/copilot-studio.json` |
-| `/fr/services/services-infonuagiques/migration-vers-azure/` | 0 | 0 | 5 | 2 (héros) | 0 | `src/content/services/fr/services-infonuagiques/migration-vers-azure.json` |
+| `/fr/services/services-infonuagiques/migration-vers-azure/` | 0 | 0 | 5 | 2 | 0 | `src/content/services/fr/services-infonuagiques/migration-vers-azure.json` |
 | `/en/services/it-procurement/hpe-networking/` | 0 | 0 | 0 | 5 | 0 | `src/content/services/en/approvisionnement-ti/hpe-networking.json` |
 | `/fr/services/approvisionnement-ti/hpe-networking/` | 0 | 0 | 0 | 5 | 0 | `src/content/services/fr/approvisionnement-ti/hpe-networking.json` |
 | `/en/services/cloud-services-provider/azure-migration/` | 0 | 0 | 4 | 2 | 0 | `src/content/services/en/services-infonuagiques/migration-vers-azure.json` |
@@ -87,7 +87,7 @@ ni vers sa destination après redirection ; articles liés et fil d’Ariane exc
 | `/en/services/cybersecurity/` | 0 | 0 | 1 | 2 | 0 | `src/content/services/en/cybersecurite.json` |
 | `/fr/services/cybersecurite/` | 0 | 0 | 1 | 2 | 0 | `src/content/services/fr/cybersecurite.json` |
 | `/fr/services/intelligence-artificielle/accompagnement/` | 0 | 0 | 0 | 2 | 1 | `src/content/services/fr/intelligence-artificielle/accompagnement.json` |
-| `/fr/services/services-infonuagiques/services-aws/` | 0 | 0 | 1 | 2 (héros) | 0 | `src/content/services/fr/services-infonuagiques/services-aws.json` |
+| `/fr/services/services-infonuagiques/services-aws/` | 0 | 0 | 1 | 2 | 0 | `src/content/services/fr/services-infonuagiques/services-aws.json` |
 | `/en/services/cloud-services-provider/aws-services/` | 0 | 0 | 0 | 2 | 0 | `src/content/services/en/services-infonuagiques/services-aws.json` |
 | `/en/services/it-procurement/dell-technologies/` | 0 | 0 | 0 | 2 | 0 | `src/content/services/en/approvisionnement-ti/dell-technologies.json` |
 | `/fr/services/approvisionnement-ti/dell-technologies/` | 0 | 0 | 0 | 2 | 0 | `src/content/services/fr/approvisionnement-ti/dell-technologies.json` |
@@ -109,15 +109,15 @@ ni vers sa destination après redirection ; articles liés et fil d’Ariane exc
 | Page cible | Blocs absents | Mots | Amputés | Images absentes | Liens absents | Fichier |
 | --- | ---: | ---: | ---: | ---: | ---: | --- |
 | `/fr/merci/` | 21 | 121 | 0 | 0 | 0 | `(gabarit de page)` |
-| `/fr/decouvrir/` | 2 | 46 | 0 | 3 (héros) | 0 | `src/content/pages/fr/decouvrir.json` |
-| `/en/decouvrir/` | 2 | 41 | 0 | 3 (héros) | 0 | `src/content/pages/en/decouvrir.json` |
-| `/en/` | 1 | 9 | 3 | 8 (héros) | 0 | `src/content/home/en/accueil.json` |
-| `/fr/` | 1 | 10 | 2 | 8 (héros) | 0 | `src/content/home/fr/accueil.json` |
+| `/fr/ressources/` | 3 | 32 | 0 | 6 (héros) | 4 | `(gabarit de page)` |
+| `/fr/decouvrir/` | 2 | 46 | 0 | 2 | 0 | `src/content/pages/fr/decouvrir.json` |
+| `/en/decouvrir/` | 2 | 41 | 0 | 2 | 0 | `src/content/pages/en/decouvrir.json` |
+| `/en/ressources/` | 3 | 22 | 0 | 5 | 4 | `(gabarit de page)` |
+| `/en/` | 1 | 9 | 3 | 7 | 0 | `src/content/home/en/accueil.json` |
+| `/fr/` | 1 | 10 | 2 | 7 | 0 | `src/content/home/fr/accueil.json` |
 | `/en/merci/` | 3 | 34 | 0 | 0 | 0 | `(gabarit de page)` |
-| `/en/carrieres/` | 0 | 0 | 2 | 8 (héros) | 0 | `src/content/pages/en/carrieres.json` |
-| `/fr/ressources/` | 0 | 0 | 0 | 6 (héros) | 5 | `(gabarit de page)` |
-| `/en/ressources/` | 0 | 0 | 0 | 5 | 5 | `(gabarit de page)` |
-| `/fr/carrieres/` | 0 | 0 | 0 | 8 (héros) | 0 | `src/content/pages/fr/carrieres.json` |
+| `/en/carrieres/` | 0 | 0 | 2 | 7 | 0 | `src/content/pages/en/carrieres.json` |
+| `/fr/carrieres/` | 0 | 0 | 0 | 7 | 0 | `src/content/pages/fr/carrieres.json` |
 | `/en/contact/` | 3 | 7 | 0 | 0 | 0 | `(gabarit de page)` |
 | `/fr/contact/` | 2 | 4 | 0 | 0 | 0 | `(gabarit de page)` |
 | `/en/conditions-utilisation/` | 1 | 3 | 0 | 0 | 0 | `src/content/pages/en/conditions-utilisation.json` |
@@ -129,11 +129,11 @@ ni vers sa destination après redirection ; articles liés et fil d’Ariane exc
 
 | Page cible | Blocs absents | Mots | Amputés | Images absentes | Liens absents | Fichier |
 | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| `/fr/campagnes/licences-power-platform/` | 4 | 46 | 5 | 2 (héros) | 1 | `src/content/landing/fr/licences-power-platform.md` |
+| `/fr/campagnes/licences-power-platform/` | 4 | 46 | 5 | 1 | 1 | `src/content/landing/fr/licences-power-platform.md` |
 | `/en/services/artificial-intelligence/landing-ai-consulting/` | 2 | 6 | 0 | 3 | 0 | `src/content/services/en/intelligence-artificielle/accompagnement-ia.json` |
 | `/fr/services/intelligence-artificielle/accompagnement-ia/` | 1 | 5 | 0 | 3 | 0 | `src/content/services/fr/intelligence-artificielle/accompagnement-ia.json` |
-| `/en/services/productivity-consulting/office-booking/landing-demo-obureau/` | 0 | 0 | 0 | 3 (héros) | 0 | `src/content/services/en/productivite/o-bureau/demo-o-bureau.json` |
 | `/fr/services/productivite/o-bureau/demo-o-bureau/` | 1 | 2 | 0 | 2 | 0 | `src/content/services/fr/productivite/o-bureau/demo-o-bureau.json` |
+| `/en/services/productivity-consulting/office-booking/landing-demo-obureau/` | 0 | 0 | 0 | 2 | 0 | `src/content/services/en/productivite/o-bureau/demo-o-bureau.json` |
 
 ## Le détail, page par page (du plus touché au moins touché)
 
@@ -268,9 +268,36 @@ Source : <https://www.victrix.ca/document/licences-microsoft-power-platform/> (1
   > Un processus d’apprentissage continu tout au long du projet, avec des ateliers de partage d’expertise pour vous permettre de tirer le meilleur parti de votre investissement.
 
 - **[LOGO / PICTO]** `/wp-content/uploads/2023/09/bg-o-studio-1-1024x1024.jpg` — alt : « logo o studio »
-- **[IMAGE DE HÉROS]** `/wp-content/uploads/2024/03/image-landing-page-victrix.jpg` — alt : « Présentation du guide Victrix sur les licences Microsoft Power Platform »
 - **[LIEN]** `/fr/services/productivite/o-studio/` — porté par « Ø Studio est le studio de création technologique de Victrix, pour répondre à tous vos beso… »
 - Reformulés (texte là, hors décompte) : [H2] « Découvrez le guide simplifié sur les licences Microsoft Power Platform » · [H3] « Pourquoi télécharger ce guide ? »
+
+### `/fr/ressources/` — `(gabarit de page)`
+
+Source : <https://www.victrix.ca/ressources/> (15 blocs, 6 images)
+
+- **[H3]** (15 mots, 22 % retrouvé)
+
+  > Un partenariat exclusif avec l’un des plus grands acteurs de la réalité étendue au Canada
+
+- **[LI]** (2 mots — court, à vérifier)
+
+  > Nos vidéos
+
+- **[H3]** (15 mots, 22 % retrouvé)
+
+  > Un partenariat exclusif avec l’un des plus grands acteurs de la réalité étendue au Canada
+
+- **[IMAGE DE HÉROS]** `/wp-content/uploads/2025/03/design-sans-titre-2-1024x683.png` — alt : « Intelligence artificielle »
+- **[IMAGE]** `/wp-content/uploads/2025/08/victrix_agc-press-release-01-1024x512.png` — alt : « Partenariat exclusif avec Auger Groupe Conseil AGC »
+- **[IMAGE]** `/wp-content/uploads/2025/08/image-article-exchange-se_01-1-1024x512.png` — alt : « Windows 10 to 11 migration »
+- **[IMAGE]** `/wp-content/uploads/2025/09/copie-de-bannieres-linkedin-8.png` — alt : « bannière webinaire copilot »
+- **[LOGO / PICTO]** `/wp-content/uploads/2025/07/cover-article_certification-iso_fr-1-1024x512.png` — alt : « Bannière communiqué ISO 27001 et ISO 9001 »
+- **[IMAGE]** `/wp-content/uploads/2022/02/solution-sevoc-pourquoi-1024x683.jpg` — alt : « Mise en place d'une équipe SOC »
+- **[LIEN]** `/categorie/nos-actualites/` — porté par « Nos actualités… »
+- **[LIEN]** `/categorie/articles/` — porté par « Nos articles… »
+- **[LIEN]** `/categorie/etudes-de-cas/` — porté par « Nos études de cas… »
+- **[LIEN]** `/categorie/livres-blancs/` — porté par « Nos livres blancs… »
+- Reformulés (texte là, hors décompte) : [LI] « Nos études de cas » · [LI] « Nos livres blancs » · [H3] « Webinaire Copilot – Du buzz à l’impact réel »
 
 ### `/en/services/productivity-consulting/` — `src/content/services/en/productivite.json`
 
@@ -325,11 +352,10 @@ Source : <https://www.victrix.ca/decouvrir-victrix/> (40 blocs, 5 images)
 
   > Victrix me permet de sortir de ma zone de confort et de relever de nouveaux défis sur le plan personnel et professionnel.
 
-- **[P]** (24 mots, 17 % retrouvé)
+- **[P]** (24 mots, 25 % retrouvé)
 
   > Victrix me permet de faire de la formation continue. Le parcours est étonamment bonifié et me permet de devenir encore meilleur dans mon domaine.
 
-- **[IMAGE DE HÉROS]** `/wp-content/uploads/2022/05/istock-996082438-scaled.jpg` — alt : « Victrix- Équipe de développement de logiciels. »
 - **[IMAGE]** `/wp-content/uploads/2022/05/portrait-temoignage-1.png` — alt : « témoignage employé Victrix »
 - **[IMAGE]** `/wp-content/uploads/2022/05/portrait-temoignage-2.png` — alt : « portrait d'un employé Victrix »
 
@@ -366,22 +392,6 @@ Source : <https://www.victrix.ca/expertise/productivite/> (44 blocs, 15 images)
 - Reformulés (texte là, hors décompte) : [H1] « Améliorer la Productivité en entreprise » · [H2] « Nos expertises en productivité » · [P] « Gestion et automatisation des processus » · [P] « Élevez votre taux de productivité avec Ø Studio » · [P] « Déployer un intranet moderne »
 - Widgets de l’ancien thème non repris (hors décompte) : « Rencontrez nos experts »
 
-### `/en/decouvrir/` — `src/content/pages/en/decouvrir.json`
-
-Source : <https://www.victrix.ca/en/discover-victrix/> (39 blocs, 5 images)
-
-- **[P]** (19 mots, 17 % retrouvé)
-
-  > Victrix allows me to step out of my comfort zone and take on new challenges both personally and professionally.
-
-- **[P]** (22 mots, 11 % retrouvé)
-
-  > Victrix allows me to do further training. The course is surprisingly good and allows me to become even better in my field.
-
-- **[IMAGE DE HÉROS]** `/wp-content/uploads/2022/05/istock-996082438-scaled.jpg` — alt : « Victrix- Équipe de développement de logiciels. »
-- **[IMAGE]** `/wp-content/uploads/2022/05/portrait-temoignage-1.png` — alt : « témoignage employé Victrix »
-- **[IMAGE]** `/wp-content/uploads/2022/05/portrait-temoignage-2.png` — alt : « portrait d'un employé Victrix »
-
 ### `/en/services/strategic-advice/` — `src/content/services/en/conseil-strategique.json`
 
 Source : <https://www.victrix.ca/en/expertise/strategic-advice/> (60 blocs, 8 images)
@@ -410,6 +420,48 @@ Source : <https://www.victrix.ca/en/expertise/strategic-advice/> (60 blocs, 8 im
 - **[LOGO / PICTO]** `/wp-content/uploads/2022/02/logo-red-hat.svg` — alt : « Red Hat »
 - **[IMAGE]** `/wp-content/uploads/2022/04/home-a-propos.jpg` — alt : « Victrix, expert cybersécurité, infonuagique et productivité, continue d'innover. »
 - Widgets de l’ancien thème non repris (hors décompte) : « Meet our experts »
+
+### `/en/decouvrir/` — `src/content/pages/en/decouvrir.json`
+
+Source : <https://www.victrix.ca/en/discover-victrix/> (39 blocs, 5 images)
+
+- **[P]** (19 mots, 17 % retrouvé)
+
+  > Victrix allows me to step out of my comfort zone and take on new challenges both personally and professionally.
+
+- **[P]** (22 mots, 11 % retrouvé)
+
+  > Victrix allows me to do further training. The course is surprisingly good and allows me to become even better in my field.
+
+- **[IMAGE]** `/wp-content/uploads/2022/05/portrait-temoignage-1.png` — alt : « témoignage employé Victrix »
+- **[IMAGE]** `/wp-content/uploads/2022/05/portrait-temoignage-2.png` — alt : « portrait d'un employé Victrix »
+
+### `/en/ressources/` — `(gabarit de page)`
+
+Source : <https://www.victrix.ca/en/resources-center/> (15 blocs, 6 images)
+
+- **[H3]** (10 mots, 29 % retrouvé)
+
+  > An Exclusive Partnership with a Canadian Leader in Extended Reality
+
+- **[LI]** (2 mots — court, à vérifier)
+
+  > Our videos
+
+- **[H3]** (10 mots, 29 % retrouvé)
+
+  > An Exclusive Partnership with a Canadian Leader in Extended Reality
+
+- **[LOGO / PICTO]** `/wp-content/uploads/2025/08/victrix_agc-press-release-en-1024x512.png` — alt : « Exclusive partnership announcement with Auger Groupe Conseil »
+- **[IMAGE]** `/wp-content/uploads/2025/08/image-article-exchange-se_01-1-1024x512.png` — alt : « Windows 10 to 11 migration »
+- **[LOGO / PICTO]** `/wp-content/uploads/2025/07/cover-article_certification-iso_en-1-1024x512.png` — alt : « Banner Press Release ISO 27001 and ISO 9001 »
+- **[IMAGE]** `/wp-content/uploads/2022/02/solution-sevoc-pourquoi-1024x683.jpg` — alt : « Mise en place d'une équipe SOC »
+- **[IMAGE]** `/wp-content/uploads/2025/07/cover-article-victrix.jpg` — alt : « agent intelligent Copilot Studio »
+- **[LIEN]** `/en/category/posts/` — porté par « Our articles… »
+- **[LIEN]** `/en/category/case-studies/` — porté par « Our case studies… »
+- **[LIEN]** `/en/category/our-news/` — porté par « Our news… »
+- **[LIEN]** `/en/category/white-papers/` — porté par « Our white papers… »
+- Reformulés (texte là, hors décompte) : [LI] « Our case studies » · [LI] « Our white papers »
 
 ### `/fr/services/conseil-strategique/` — `src/content/services/fr/conseil-strategique.json`
 
@@ -461,7 +513,6 @@ Source : <https://www.victrix.ca/en/> (22 blocs, 17 images)
 
   > Victrix accelerates your transition to Azure. Our methodology based on the Microsoft Cloud Adoption Framework, we help you take your first steps in the migration of your applications and servers.
 
-- **[IMAGE DE HÉROS]** `/wp-content/uploads/2022/11/victrix-est-expert-en-solutions-de-cybersecurite-de-productivite-et-de-services-geres-scaled.jpg` — alt : « Canada's Leading IT Services Company. Victrix »
 - **[LOGO / PICTO]** `/wp-content/uploads/2023/11/certified_iso_eng.png` — alt : « Victrix certified ISO 27001  »
 - **[IMAGE]** `/wp-content/uploads/2022/03/istock-1272592927-1-3-1.png` — alt : « Accélération numérique »
 - **[IMAGE]** `/wp-content/uploads/2022/02/solution-sevoc-intro.jpg` — alt : « Introduction à un système evolutif de gestion de sécurité - Victrix »
@@ -471,33 +522,6 @@ Source : <https://www.victrix.ca/en/> (22 blocs, 17 images)
 - **[IMAGE]** `/wp-content/uploads/2023/11/logo_ovh.png` — alt : « OVH Cloud »
 - Reformulés (texte là, hors décompte) : [H1] « Victrix, Your Trusted IT Consulting and Services Firm »
 - Widgets de l’ancien thème non repris (hors décompte) : « Meet our experts »
-
-### `/fr/` — `src/content/home/fr/accueil.json`
-
-Source : <https://www.victrix.ca/> (21 blocs, 17 images)
-
-- **[P]** (10 mots — court, à vérifier)
-
-  > N’hésitez pas à nous contacter pour parler de vos projets
-
-- **[P AMPUTÉ]** (43 mots ; mots absents : ameliorez, optimisez, grace, beneficiez, expertise, informatique, propulser, demeurer, avant, technologique, industrie)
-
-  > Améliorez votre cybersécurité et optimisez vos processus grâce à Victrix. Bénéficiez de notre expertise de pointe en sécurité informatique et en infonuagique, en services TI gérés et en gouvernance de l’IA pour propulser votre entreprise et demeurer à l’avant-plan technologique de votre industrie.
-
-- **[P AMPUTÉ]** (31 mots ; mots absents : passage, basee, premiers)
-
-  > Victrix accélère votre passage vers Azure. Notre méthodologie basée sur le Cloud Adoption Framework de Microsoft vous permet de faire vos premiers pas dans la migration de vos applications et serveurs.
-
-- **[IMAGE DE HÉROS]** `/wp-content/uploads/2022/11/victrix-est-expert-en-solutions-de-cybersecurite-de-productivite-et-de-services-geres-scaled.jpg` — alt : « Canada's Leading IT Services Company. Victrix »
-- **[LOGO / PICTO]** `/wp-content/uploads/2023/11/victrix_certifie_iso.png` — alt : « Victrix certified ISO 27001  »
-- **[IMAGE]** `/wp-content/uploads/2022/03/istock-1272592927-1-3-1.png` — alt : « Accélération numérique »
-- **[IMAGE]** `/wp-content/uploads/2022/02/solution-sevoc-intro.jpg` — alt : « Introduction à un système evolutif de gestion de sécurité - Victrix »
-- **[IMAGE]** `/wp-content/uploads/2022/02/solution-migration-illus-scaled.jpg` — alt : « Solution TI pour entreprise - Migration - Victrix »
-- **[LOGO / PICTO]** `/wp-content/uploads/2022/05/logo-microsoft.svg` — alt : « Microsoft 365 »
-- **[IMAGE]** `/wp-content/uploads/2023/11/logo_ovh.png` — alt : « OVH Cloud  »
-- **[IMAGE]** `/wp-content/uploads/2024/07/1200px-proofpoint_r_logo.png` — alt : « ProofPoint »
-- Reformulés (texte là, hors décompte) : [P] « Découvrez Ø Studio »
-- Widgets de l’ancien thème non repris (hors décompte) : « Rencontrez nos experts »
 
 ### `/en/services/cloud-services-provider/` — `src/content/services/en/services-infonuagiques.json`
 
@@ -541,6 +565,32 @@ Source : <https://www.victrix.ca/en/expertise/cloud-services-provider/> (110 blo
 - **[IMAGE]** `/wp-content/uploads/2023/11/service-now-logo.png` — alt : « Service Now »
 - Reformulés (texte là, hors décompte) : [P] « Workload Migration to the Cloud » · [P] « Identity Management and Security » · [H3] « Microsoft Azure Cloud Services » · [H3] « Amazon Web Services (AWS) » · [P] « Modern desk VDI/AVD/W365 » · [H3] « Preparation of Opportunity and Feasability Analysis » · [H3] « Scaling the Proof of Concept »
 
+### `/fr/` — `src/content/home/fr/accueil.json`
+
+Source : <https://www.victrix.ca/> (21 blocs, 17 images)
+
+- **[P]** (10 mots — court, à vérifier)
+
+  > N’hésitez pas à nous contacter pour parler de vos projets
+
+- **[P AMPUTÉ]** (43 mots ; mots absents : ameliorez, optimisez, grace, beneficiez, expertise, informatique, propulser, demeurer, avant, technologique, industrie)
+
+  > Améliorez votre cybersécurité et optimisez vos processus grâce à Victrix. Bénéficiez de notre expertise de pointe en sécurité informatique et en infonuagique, en services TI gérés et en gouvernance de l’IA pour propulser votre entreprise et demeurer à l’avant-plan technologique de votre industrie.
+
+- **[P AMPUTÉ]** (31 mots ; mots absents : passage, basee, premiers)
+
+  > Victrix accélère votre passage vers Azure. Notre méthodologie basée sur le Cloud Adoption Framework de Microsoft vous permet de faire vos premiers pas dans la migration de vos applications et serveurs.
+
+- **[LOGO / PICTO]** `/wp-content/uploads/2023/11/victrix_certifie_iso.png` — alt : « Victrix certified ISO 27001  »
+- **[IMAGE]** `/wp-content/uploads/2022/03/istock-1272592927-1-3-1.png` — alt : « Accélération numérique »
+- **[IMAGE]** `/wp-content/uploads/2022/02/solution-sevoc-intro.jpg` — alt : « Introduction à un système evolutif de gestion de sécurité - Victrix »
+- **[IMAGE]** `/wp-content/uploads/2022/02/solution-migration-illus-scaled.jpg` — alt : « Solution TI pour entreprise - Migration - Victrix »
+- **[LOGO / PICTO]** `/wp-content/uploads/2022/05/logo-microsoft.svg` — alt : « Microsoft 365 »
+- **[IMAGE]** `/wp-content/uploads/2023/11/logo_ovh.png` — alt : « OVH Cloud  »
+- **[IMAGE]** `/wp-content/uploads/2024/07/1200px-proofpoint_r_logo.png` — alt : « ProofPoint »
+- Reformulés (texte là, hors décompte) : [P] « Découvrez Ø Studio »
+- Widgets de l’ancien thème non repris (hors décompte) : « Rencontrez nos experts »
+
 ### `/en/merci/` — `(gabarit de page)`
 
 Source : <https://www.victrix.ca/en/thank-you-page/> (9 blocs, 0 images)
@@ -579,8 +629,8 @@ Source : <https://www.victrix.ca/en/expertise/productivity-consulting/o-studio/>
 
   > Our specialists will help you optimize your Dynamics 365 and Power Platform tools so that you can leverage their full potential.
 
+- **[LOGO / PICTO]** `/wp-content/uploads/2023/09/bg-o-studio-1-scaled.jpg` — alt : « O studio logo »
 - **[LOGO / PICTO]** `/wp-content/uploads/2023/09/o-studio-victrix-white-1-300x95.png` — alt : « O studio white logo »
-- **[IMAGE DE HÉROS]** `/wp-content/uploads/2023/09/macbook-mockup-1-scaled.jpg` — alt : « macbook mockup »
 - **[IMAGE]** `/wp-content/uploads/2023/09/victrix-img-02.png` — alt : « consultants chez Victrix au travail »
 - **[IMAGE]** `/wp-content/uploads/2023/09/victrix-img-01.png` — alt : « Développement applicatif O studio »
 - **[IMAGE]** `/wp-content/uploads/2023/09/boook.png` — alt : « o studio book »
@@ -632,51 +682,12 @@ Source : <https://www.victrix.ca/expertise/productivite/o-studio/> (47 blocs, 6 
 
   > Réduction des coûts (gestion des licences et ressources pour minimiser les dépenses inutiles)
 
+- **[LOGO / PICTO]** `/wp-content/uploads/2023/09/bg-o-studio-1-scaled.jpg` — alt : « O studio logo »
 - **[LOGO / PICTO]** `/wp-content/uploads/2023/09/o-studio-victrix-white-1-300x95.png` — alt : « Logo o studio blanc »
-- **[IMAGE DE HÉROS]** `/wp-content/uploads/2023/09/macbook-mockup-1-scaled.jpg` — alt : « macbook mockup »
 - **[IMAGE]** `/wp-content/uploads/2023/09/victrix-img-02.png` — alt : « consultants chez Victrix au travail »
 - **[IMAGE]** `/wp-content/uploads/2023/09/victrix-img-01.png` — alt : « Développement applicatif O studio »
 - **[IMAGE]** `/wp-content/uploads/2023/09/boook.png` — alt : « o studio book »
 - Reformulés (texte là, hors décompte) : [H2] « FAQ — Développement d’applications Microsoft Power Platform & Dynamics… » · [LI] « Présentation d’une démonstration ou preuve de valeurs »
-
-### `/en/carrieres/` — `src/content/pages/en/carrieres.json`
-
-Source : <https://www.victrix.ca/en/careers/> (30 blocs, 8 images)
-
-- **[P AMPUTÉ]** (22 mots ; mots absents : participatory, which, express, themselves, daily)
-
-  > This label is awarded following a participatory survey, which allows employees to express themselves anonymously on their daily experience in the company.
-
-- **[P AMPUTÉ]** (22 mots ; mots absents : further, course, surprisingly, become)
-
-  > Victrix allows me to do further training. The course is surprisingly good and allows me to become even better in my field.
-
-- **[IMAGE DE HÉROS]** `/wp-content/uploads/2022/05/istock-1028705006-scaled.jpg` — alt : « Faites carrière chez Victrix, découvrez nos offres d'emploi »
-- **[IMAGE]** `/wp-content/uploads/2022/03/happy-at-work-index-1.png` — alt : « Happy At Work »
-- **[IMAGE]** `/wp-content/uploads/2022/04/carrieres-nous-rejoindre.jpg` — alt : « rejoindre l'équipe victrix »
-- **[IMAGE]** `/wp-content/uploads/2022/05/portrait-temoignage-1.png` — alt : « témoignage employé Victrix »
-- **[IMAGE]** `/wp-content/uploads/2022/05/portrait-temoignage-2.png` — alt : « portrait d'un employé Victrix »
-- **[IMAGE]** `/wp-content/uploads/2022/04/carrieres-engagement-rse-scaled.jpg` — alt : « une équipe engagée »
-- **[IMAGE]** `/wp-content/uploads/2024/07/avenir_ti_rgb_bleu-fi11915996x314.png` — alt : « Mon Avenir TI »
-- **[IMAGE]** `/wp-content/uploads/2024/06/2560px-logo_cegep_de_la_pocatiere-svg.png` — alt : « Cegep de La Pocathière »
-- Reformulés (texte là, hors décompte) : [P] « Browse our job vacancies and find the opportunity you’ve been waiting … » · [LI] « Personal and Professional Development » · [LI] « Career Development » · [LI] « Well-being in the workplace » · [H3] « Our CSR commitments and activities » · [P] « Drop us a line or schedule a meeting with our teams! »
-
-### `/fr/ressources/` — `(gabarit de page)`
-
-Source : <https://www.victrix.ca/ressources/> (15 blocs, 6 images)
-
-- **[IMAGE DE HÉROS]** `/wp-content/uploads/2025/03/design-sans-titre-2-1024x683.png` — alt : « Intelligence artificielle »
-- **[IMAGE]** `/wp-content/uploads/2025/08/victrix_agc-press-release-01-1024x512.png` — alt : « Partenariat exclusif avec Auger Groupe Conseil AGC »
-- **[IMAGE]** `/wp-content/uploads/2025/08/image-article-exchange-se_01-1-1024x512.png` — alt : « Windows 10 to 11 migration »
-- **[IMAGE]** `/wp-content/uploads/2025/09/copie-de-bannieres-linkedin-8.png` — alt : « bannière webinaire copilot »
-- **[LOGO / PICTO]** `/wp-content/uploads/2025/07/cover-article_certification-iso_fr-1-1024x512.png` — alt : « Bannière communiqué ISO 27001 et ISO 9001 »
-- **[IMAGE]** `/wp-content/uploads/2022/02/solution-sevoc-pourquoi-1024x683.jpg` — alt : « Mise en place d'une équipe SOC »
-- **[LIEN]** `/categorie/nos-actualites/` — porté par « Nos actualités… »
-- **[LIEN]** `/categorie/articles/` — porté par « Nos articles… »
-- **[LIEN]** `/categorie/etudes-de-cas/` — porté par « Nos études de cas… »
-- **[LIEN]** `/categorie/livres-blancs/` — porté par « Nos livres blancs… »
-- **[LIEN]** `/categorie/videos/` — porté par « Nos vidéos… »
-- Reformulés (texte là, hors décompte) : [LI] « Nos études de cas » · [LI] « Nos livres blancs » · [H3] « Webinaire Copilot – Du buzz à l’impact réel »
 
 ### `/en/services/it-procurement/microsoft-solutions/` — `src/content/services/en/approvisionnement-ti/solutions-microsoft.json`
 
@@ -708,7 +719,7 @@ Source : <https://www.victrix.ca/expertise/approvisionnement-ti/solutions-micros
 - **[LOGO / PICTO]** `/wp-content/uploads/2022/05/peer-insights-r-tm-rgb-for-white-bkgrnd.svg` — alt : « gartner peer insights logo »
 - Reformulés (texte là, hors décompte) : [H5] « Note globale de l'utilisateur : ⭐⭐⭐⭐⭐—27 octobre 2025 » · [H5] « Note globale de l'utilisateur : ⭐⭐⭐⭐—23 octobre 2025 » · [H5] « Note globale de l'utilisateur : ⭐⭐⭐⭐—8 octobre 2025 » · [H2] « Obtenir des solutions Microsoft »
 
-### `/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/` — `src/content/services/fr/cybersecurite/centre-operationnel-de-securite-evolutif.json`
+### `/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/` — `(gabarit de page)`
 
 Source : <https://www.victrix.ca/expertise/cybersecurite/centre-operationnel-de-securite-evolutif/> (68 blocs, 6 images)
 
@@ -798,35 +809,26 @@ Source : <https://www.victrix.ca/en/expertise/cybersecurity/scalable-security-op
 - **[LOGO / PICTO]** `/wp-content/uploads/2025/06/sevoc-certification.png` — alt : « SEvOC certification »
 - Reformulés (texte là, hors décompte) : [H1] « Scalable Security Operations Center (SOC) » · [P] « ➜ Respond rapidly to security alerts »
 
-### `/en/ressources/` — `(gabarit de page)`
+### `/en/carrieres/` — `src/content/pages/en/carrieres.json`
 
-Source : <https://www.victrix.ca/en/resources-center/> (15 blocs, 6 images)
+Source : <https://www.victrix.ca/en/careers/> (30 blocs, 8 images)
 
-- **[LOGO / PICTO]** `/wp-content/uploads/2025/08/victrix_agc-press-release-en-1024x512.png` — alt : « Exclusive partnership announcement with Auger Groupe Conseil »
-- **[IMAGE]** `/wp-content/uploads/2025/08/image-article-exchange-se_01-1-1024x512.png` — alt : « Windows 10 to 11 migration »
-- **[LOGO / PICTO]** `/wp-content/uploads/2025/07/cover-article_certification-iso_en-1-1024x512.png` — alt : « Banner Press Release ISO 27001 and ISO 9001 »
-- **[IMAGE]** `/wp-content/uploads/2022/02/solution-sevoc-pourquoi-1024x683.jpg` — alt : « Mise en place d'une équipe SOC »
-- **[IMAGE]** `/wp-content/uploads/2025/07/cover-article-victrix.jpg` — alt : « agent intelligent Copilot Studio »
-- **[LIEN]** `/en/category/posts/` — porté par « Our articles… »
-- **[LIEN]** `/en/category/case-studies/` — porté par « Our case studies… »
-- **[LIEN]** `/en/category/our-news/` — porté par « Our news… »
-- **[LIEN]** `/en/category/videos/` — porté par « Our videos… »
-- **[LIEN]** `/en/category/white-papers/` — porté par « Our white papers… »
-- Reformulés (texte là, hors décompte) : [LI] « Our case studies » · [LI] « Our white papers »
+- **[P AMPUTÉ]** (22 mots ; mots absents : participatory, which, express, themselves, daily)
 
-### `/fr/carrieres/` — `src/content/pages/fr/carrieres.json`
+  > This label is awarded following a participatory survey, which allows employees to express themselves anonymously on their daily experience in the company.
 
-Source : <https://www.victrix.ca/carriere/> (30 blocs, 8 images)
+- **[P AMPUTÉ]** (22 mots ; mots absents : further, course, surprisingly, become)
 
-- **[IMAGE DE HÉROS]** `/wp-content/uploads/2022/05/istock-1028705006-scaled.jpg` — alt : « Faites carrière chez Victrix, découvrez nos offres d'emploi »
+  > Victrix allows me to do further training. The course is surprisingly good and allows me to become even better in my field.
+
 - **[IMAGE]** `/wp-content/uploads/2022/03/happy-at-work-index-1.png` — alt : « Happy At Work »
 - **[IMAGE]** `/wp-content/uploads/2022/04/carrieres-nous-rejoindre.jpg` — alt : « rejoindre l'équipe victrix »
 - **[IMAGE]** `/wp-content/uploads/2022/05/portrait-temoignage-1.png` — alt : « témoignage employé Victrix »
 - **[IMAGE]** `/wp-content/uploads/2022/05/portrait-temoignage-2.png` — alt : « portrait d'un employé Victrix »
 - **[IMAGE]** `/wp-content/uploads/2022/04/carrieres-engagement-rse-scaled.jpg` — alt : « une équipe engagée »
-- **[IMAGE]** `/wp-content/uploads/2024/06/2560px-logo_cegep_de_la_pocatiere-svg.png` — alt : « Cegep de La Pocathière »
 - **[IMAGE]** `/wp-content/uploads/2024/07/avenir_ti_rgb_bleu-fi11915996x314.png` — alt : « Mon Avenir TI »
-- Reformulés (texte là, hors décompte) : [P] « Nous vous offrons: » · [LI] « Développement personnel et professionnel »
+- **[IMAGE]** `/wp-content/uploads/2024/06/2560px-logo_cegep_de_la_pocatiere-svg.png` — alt : « Cegep de La Pocathière »
+- Reformulés (texte là, hors décompte) : [P] « Browse our job vacancies and find the opportunity you’ve been waiting … » · [LI] « Personal and Professional Development » · [LI] « Career Development » · [LI] « Well-being in the workplace » · [H3] « Our CSR commitments and activities » · [P] « Drop us a line or schedule a meeting with our teams! »
 
 ### `/fr/services/cybersecurite/internet-des-objets-service-iot/` — `src/content/services/fr/cybersecurite/internet-des-objets-service-iot.json`
 
@@ -884,7 +886,7 @@ Source : <https://www.victrix.ca/expertise/productivite/copilot-studio/> (25 blo
 - **[LOGO / PICTO]** `/wp-content/uploads/2024/08/evaluation.png` — alt : « logo evaluation »
 - Reformulés (texte là, hors décompte) : [P] « Les réalisations Copilot Studio de Victrix » · [P] « Juridique: automatisation de la gestion documentaire »
 
-### `/fr/services/services-ti-geres/` — `src/content/services/fr/services-ti-geres.json`
+### `/fr/services/services-ti-geres/` — `(gabarit de page)`
 
 Source : <https://www.victrix.ca/expertise/services-ti-geres/> (101 blocs, 1 images)
 
@@ -913,6 +915,19 @@ Source : <https://www.victrix.ca/expertise/services-ti-geres/> (101 blocs, 1 ima
   > Extension de votre équipe avec des experts certifiés ayant des compétences spécialisées en infonuagique, sécurité, infrastructure, productivité et conseil stratégique.
 
 - Reformulés (texte là, hors décompte) : [H4] « Découvrez comment notre offre de services gérés TI permet à vos équipe… » · [H2] « Une couverture de services gérés axée sur la sécurité et l’amélioratio… » · [H2] « Victrix: une prise en charge qui résout vos défis de gestion TI » · [H2] « En savoir plus sur nos services gérés TI » · [H3] « Comparer les services gérés de Victrix à la gestion interne » · [LI] « MOINS DE 24H » · [LI] « CONFORMITÉ ET VEILLE CONTINUE » · [LI] « DÉPENDANCES AUX RESSOURCES INTERNES » · [H2] « Quelles certifications reconnues possèdent Victrix? »
+
+### `/fr/carrieres/` — `src/content/pages/fr/carrieres.json`
+
+Source : <https://www.victrix.ca/carriere/> (30 blocs, 8 images)
+
+- **[IMAGE]** `/wp-content/uploads/2022/03/happy-at-work-index-1.png` — alt : « Happy At Work »
+- **[IMAGE]** `/wp-content/uploads/2022/04/carrieres-nous-rejoindre.jpg` — alt : « rejoindre l'équipe victrix »
+- **[IMAGE]** `/wp-content/uploads/2022/05/portrait-temoignage-1.png` — alt : « témoignage employé Victrix »
+- **[IMAGE]** `/wp-content/uploads/2022/05/portrait-temoignage-2.png` — alt : « portrait d'un employé Victrix »
+- **[IMAGE]** `/wp-content/uploads/2022/04/carrieres-engagement-rse-scaled.jpg` — alt : « une équipe engagée »
+- **[IMAGE]** `/wp-content/uploads/2024/06/2560px-logo_cegep_de_la_pocatiere-svg.png` — alt : « Cegep de La Pocathière »
+- **[IMAGE]** `/wp-content/uploads/2024/07/avenir_ti_rgb_bleu-fi11915996x314.png` — alt : « Mon Avenir TI »
+- Reformulés (texte là, hors décompte) : [P] « Nous vous offrons: » · [LI] « Développement personnel et professionnel »
 
 ### `/en/services/it-procurement/` — `src/content/services/en/approvisionnement-ti.json`
 
@@ -1032,7 +1047,7 @@ Source : <https://www.victrix.ca/expertise/services-infonuagiques/migration-vers
 
   > Victrix possède le statut de Partenaire de solutions Microsoft pour les domaines suivants :
 
-- **[IMAGE DE HÉROS]** `/wp-content/uploads/2023/08/mirosoft_azure.png` — alt : « Experts infonuagique travaillant sur les solutions aws  »
+- **[LOGO / PICTO]** `/wp-content/uploads/2023/08/azure_infonuagique.jpg` — alt : « azure logo »
 - **[LOGO / PICTO]** `/wp-content/uploads/2023/08/microsoftlogo.png` — alt : « Experts infonuagique travaillant sur les solutions aws  »
 - Reformulés (texte là, hors décompte) : [H2] « En savoir plus sur les services infonuagiques Microsoft Azure » · [LI] « D'infrastructure » · [LI] « D’analyse et de sauvegarde de données » · [LI] « De développement d’applications sur mesure » · [H2] « Nos services Microsoft Azure » · [P] « Solutions de migration de données » · [H2] « Partenaire de solutions Microsoft et services Azure gérés » · [H3] « Stratégie — Planification — Déploiement — Gouvernance — Sécurité » · [LI] « Accélération de l’adoption de la plateforme infonuagique » · [LI] « Renforcement des meilleures pratiques (itérations) »
 - Widgets de l’ancien thème non repris (hors décompte) : « Parlons de vos projets »
@@ -1297,15 +1312,6 @@ Source : <https://www.victrix.ca/en/expertise/it-procurement/zscaler/> (65 blocs
 - **[LOGO / PICTO]** `/wp-content/uploads/2022/05/peer-insights-r-tm-rgb-for-white-bkgrnd.svg` — alt : « gartner peer insights logo »
 - Reformulés (texte là, hors décompte) : [H4] « Activate AI-Enhanced Zero Trust Security » · [H5] « Overall user rating: ⭐⭐⭐⭐⭐—October 31, 2025 » · [H5] « Overall user rating: ⭐⭐⭐⭐—June 22, 2025 » · [H5] « Overall user rating: ⭐⭐⭐⭐⭐ » · [H2] « Request Your Zscaler Zero Trust Solutions »
 
-### `/en/services/productivity-consulting/office-booking/landing-demo-obureau/` — `src/content/services/en/productivite/o-bureau/demo-o-bureau.json`
-
-Source : <https://www.victrix.ca/en/expertise/productivity-consulting/office-booking/landing-demo-obureau/> (10 blocs, 3 images)
-
-- **[LOGO / PICTO]** `/wp-content/uploads/2022/05/logo-victrix-english_white.png` — alt : « Logo victrix »
-- **[IMAGE DE HÉROS]** `/wp-content/uploads/2023/08/obureau-mobile-1.png` — alt : « mobile user interface for o'bureau »
-- **[IMAGE]** `/wp-content/uploads/2022/05/obureau-en.png` — alt : « office booking app visualization »
-- Reformulés (texte là, hors décompte) : [LI] « Client: Muliti-Sector »
-
 ### `/en/services/strategic-advice/law-25-compliance/` — `src/content/services/en/conseil-strategique/conformite-loi-25.json`
 
 Source : <https://www.victrix.ca/en/expertise/strategic-advice/law-25-compliance/> (7 blocs, 1 images)
@@ -1427,7 +1433,7 @@ Source : <https://www.victrix.ca/expertise/services-infonuagiques/services-aws/>
 
   > Amazon Web Services (AWS) est une plateforme infonuagique populaire auprès d’organisations de toutes tailles. Elle offre des services et solutions conçus spécifiquement pour répondre aux besoins des entreprises en matière:
 
-- **[IMAGE DE HÉROS]** `/wp-content/uploads/2023/10/priscilla-du-preez-nnmba7y1ymk-unsplash-1-scaled-e1699542797747.jpg` — alt : « Experts infonuagique travaillant sur les solutions aws  »
+- **[LOGO / PICTO]** `/wp-content/uploads/2023/10/aws2-1.jpg` — alt : « aws logo »
 - **[IMAGE]** `/wp-content/uploads/2023/10/public-sector1-150x150.png` — alt : « partenariat secteur public AWS »
 - Reformulés (texte là, hors décompte) : [H2] « En savoir plus sur la solution infonuagique AWS » · [LI] « D'infrastructure infonuagique » · [LI] « D’analyse de données » · [LI] « De développement d’applications sur mesure » · [P] « Sécurisation des appareils, terminaux et des applications » · [H2] « Assurez une migration fluide, sécuritaire et efficace avec Victrix, vo… » · [H3] « Analyse complète — Recommandations basée sur notre expertise AWS — Acc… » · [P] « Fiabilisation des charges de travail et applications » · [P] « Fournir une vue globale sur l’état de la migration » · [P] « Contactez un expert AWS pour en discuter! »
 
@@ -1464,6 +1470,14 @@ Source : <https://www.victrix.ca/en/expertise/it-procurement/dell-technologies/>
 - **[LOGO / PICTO]** `/wp-content/uploads/2022/05/logo-victrix-english_white.png` — alt : « Logo victrix »
 - **[LOGO / PICTO]** `/wp-content/uploads/2022/05/peer-insights-r-tm-rgb-for-white-bkgrnd.svg` — alt : « gartner peer insights logo »
 - Reformulés (texte là, hors décompte) : [H4] « A Coherent Approach to Your Infrastructure and Workstations » · [H5] « Overall user rating:⭐⭐⭐⭐—December 2, 2025 » · [H5] « Overall user rating:⭐⭐⭐⭐—January 29, 2026 » · [H5] « Overall user rating:⭐⭐⭐⭐⭐ » · [H2] « Request Your Dell Technologies Solutions »
+
+### `/en/services/productivity-consulting/office-booking/landing-demo-obureau/` — `src/content/services/en/productivite/o-bureau/demo-o-bureau.json`
+
+Source : <https://www.victrix.ca/en/expertise/productivity-consulting/office-booking/landing-demo-obureau/> (10 blocs, 3 images)
+
+- **[LOGO / PICTO]** `/wp-content/uploads/2022/05/logo-victrix-english_white.png` — alt : « Logo victrix »
+- **[IMAGE]** `/wp-content/uploads/2022/05/obureau-en.png` — alt : « office booking app visualization »
+- Reformulés (texte là, hors décompte) : [LI] « Client: Muliti-Sector »
 
 ### `/fr/services/approvisionnement-ti/dell-technologies/` — `src/content/services/fr/approvisionnement-ti/dell-technologies.json`
 

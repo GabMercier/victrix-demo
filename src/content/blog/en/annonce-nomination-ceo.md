@@ -4,6 +4,7 @@ date: 2025-03-05
 excerpt: "Victrix enters a new milestone in its evolution with the appointment of Dominic Lajoie as CEO."
 tags: ["Our news"]
 slug: "appointment-ceo"
+draft: true
 coverImage: "/wp-content/uploads/2025/03/design-sans-titre-1.png"
 wpUrl: "/en/appointment-ceo/"
 ---

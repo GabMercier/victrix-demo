@@ -63,9 +63,12 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
 ## 3. Environment variables & secrets
 
 - `STATIC_ONLY=1` — mandatory **build** variable on BOTH CloudCannon sites
-  (without it the build attaches the Cloudflare worker and Bookshop never
-  loads). See the §7 caveat: this flag currently also carries the
-  editor-preview content policy.
+  (without it the build attaches the Cloudflare worker).
+- `EDITOR_PREVIEW=1` — **editing sites ONLY** (dev, staging), never on the
+  production site (lot L16, 2026-09-24): drafts + scheduled posts built,
+  announcement-bar windows ignored, retired-article redirects NOT emitted,
+  Bookshop attached (live visual editing). Table of variables per site:
+  `operations.md` § 6. Logic: `scripts/lib/build-mode.mjs`.
 - `PUBLIC_GA4_ID` — may be set on the **production** CloudCannon site once it
   exists (`operations.md` §7ter).
 - The 6 forms keys — backend decided 2026-08-25: CloudCannon Forms spike
@@ -124,13 +127,13 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
   des en-têtes n'étant pas documentée ; et décider de la règle 404 attrape-tout
   que CloudCannon recommande (D17 du plan — à tester sur le site dev d'abord,
   une règle attrape-tout mal comprise détournerait tout le trafic).
-- **`STATIC_ONLY` conflates two roles** — "fully static build" AND
-  "editor-preview content policy" (drafts + future-dated posts visible in
-  `src/i18n/blog.ts`, announcement-bar date windows ignored in
-  `src/lib/announce.ts`, Bookshop attached). The production CloudCannon site
-  inherits the preview policy. Fix before go-live: introduce a separate flag
-  (e.g. `EDITOR_PREVIEW=1`, set only on the *editing* site's build) and key
-  the content policy + Bookshop on it.
+- **`STATIC_ONLY` used to conflate two roles** — "fully static build" AND
+  "editor-preview content policy". **RÉGLÉ le 2026-09-24 (lot L16)** : the
+  preview policy (drafts + future-dated posts in `src/i18n/blog.ts`,
+  announcement-bar windows in `src/lib/announce.ts`, retired-article
+  redirects, Bookshop) is keyed on `EDITOR_PREVIEW`, set on the editing
+  sites only. Remaining manual step: add the variable in the CloudCannon UI
+  of the dev and staging sites (`operations.md` § 6).
 - **Adapter is build-only** (`astro.config.mjs`) so `astro dev` works on
   Node 18; once everyone is on Node 20 this can be simplified.
 - `npm audit` shows highs transitively via `wrangler` (build tooling); the
@@ -139,8 +142,9 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
 
 ## 7. Go-live checklist (DNS cutover day — the real victrix.ca moves here)
 
-- [ ] Split `STATIC_ONLY` from the editor-preview policy (constraint above) and
-      set `EDITOR_PREVIEW=1` on the editing site's build only; verify drafts,
+- [x] Split `STATIC_ONLY` from the editor-preview policy — fait le 2026-09-24
+      (lot L16). **Reste** : set `EDITOR_PREVIEW=1` on the dev and staging
+      sites' build (CloudCannon UI) — NOT on production — then verify drafts,
       scheduled posts, and announcement-bar windows behave on the production URL.
 - [x] Generate `.cloudcannon/routing.json` — fait le 2026-09-22 (généré au
       build dans `dist/_cloudcannon/routing.json` : 189 routes + 5 règles

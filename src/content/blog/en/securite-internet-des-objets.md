@@ -5,6 +5,7 @@ excerpt: "Explore our solutions for addressing the main Internet of Things (IoT)
 tags: ["Our articles"]
 topics: ["Cybersecurity"]
 slug: "internet-of-things-security"
+draft: false
 coverImage: "/wp-content/uploads/2024/12/design-sans-titre-3.jpg"
 seoTitle: "Internet of Things Security: Issues & Solutions"
 wpUrl: "/en/internet-of-things-security/"
@@ -20,10 +21,12 @@ With every connected device, an organization’s attack surface expands. As secu
  The diversity of IoT applications, from smartwatches to connected cars and comprehensive intelligent city infrastructures,**complicates the process of securing IoT**. 
  With over 15 billion devices connected to the Internet in 2023, with [projections exceeding 18.8 billion by the end of 2024](https://iotbusinessnews.com/2024/09/04/26399-state-of-iot-2024-number-of-connected-iot-devices-growing-13-to-18-8-billion-globally/), security is a significant issue for large organizations and the public sector.
 
-#### Did You Know?
+<aside class="article-encadre">
+<p class="article-encadre__titre">Did You Know?</p>
 
 Cyberattacks on IoT [increased by 400% between 2023 and 2022](https://iotbusinessnews.com/2024/09/04/26399-state-of-iot-2024-number-of-connected-iot-devices-growing-13-to-18-8-billion-globally/). If this tangent is anything to go by, organizations’ cybersecurity needs will only increase.
 
+</aside>
 ### IoT & OT Services Tailored to Your Industry
 
 Take advantage of our IoT service to strengthen your posture with a solution tailored to your organization.

@@ -5,6 +5,7 @@ excerpt: "Discover the power of generative AI with Microsoft Copilot features. V
 tags: ["Our articles"]
 topics: ["Artificial intelligence", "Productivity"]
 slug: "microsoft-copilot-features"
+draft: false
 coverImage: "/wp-content/uploads/2025/01/design-sans-titre-1.jpg"
 seoTitle: "Microsoft Copilot Features | Integration with M365 Tools"
 wpUrl: "/en/microsoft-copilot-features/"

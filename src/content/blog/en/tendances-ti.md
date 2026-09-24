@@ -5,6 +5,7 @@ excerpt: "Discover the 8 new trends in IT that call for a rethink of IT services
 tags: ["Our articles"]
 topics: ["Strategic consulting"]
 slug: "it-trends"
+draft: false
 coverImage: "/wp-content/uploads/2025/01/optical-fiber-background-600x600-1.jpg"
 seoTitle: "8 New Trends in IT in 2025: Elevate Your Business Efficiency"
 wpUrl: "/en/it-trends/"

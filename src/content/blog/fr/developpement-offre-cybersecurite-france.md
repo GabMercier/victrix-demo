@@ -5,6 +5,7 @@ excerpt: "En se rapprochant de COMITEM, Victrix étend son offre cybersécurité
 tags: ["Nos actualités"]
 topics: ["Cybersécurité"]
 slug: "developpement-offre-cybersecurite-france"
+draft: false
 coverImage: "/wp-content/uploads/2024/09/image-landing-page-victrix.jpg"
 wpUrl: "/developpement-offre-cybersecurite-france/"
 ---

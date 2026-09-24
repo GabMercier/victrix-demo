@@ -187,6 +187,10 @@ for (const [de, vers] of Object.entries(decisions.manuel)) {
 }
 for (const de of Object.keys(decisions.abandonnees)) ajouteAncienne(de, 'decision:abandon');
 for (const de of Object.keys(decisions.temporaires)) ajouteAncienne(de, 'decision:temporaire');
+// Articles RETIRÉS (D19, 2026-09-24) : leurs deux adresses (ancienne WordPress
+// et nouvelle /ressources/…) — la nouvelle n'est dans aucun export, on l'ajoute.
+const articlesRetires = decisions.articles_retires ?? {};
+for (const de of Object.keys(articlesRetires)) ajouteAncienne(de, 'decision:article-retire');
 
 const regles = [];
 const nonResolues = [];
@@ -200,7 +204,12 @@ for (const { chemin, origine } of [...anciennes.values()].sort((a, b) => a.chemi
   let code = 301;
   let raison = '';
 
-  if (decisions.manuel[chemin]) {
+  if (articlesRetires[chemin]) {
+    // AVANT l'appariement par wpUrl : l'article existe encore (brouillon), son
+    // wpUrl mènerait à une page absente du build public.
+    vers = articlesRetires[chemin];
+    raison = 'article retiré';
+  } else if (decisions.manuel[chemin]) {
     vers = decisions.manuel[chemin];
     raison = 'décision';
   } else if (decisions.abandonnees[chemin]) {
@@ -226,7 +235,16 @@ for (const { chemin, origine } of [...anciennes.values()].sort((a, b) => a.chemi
     continue;
   }
   if (sansBarre(chemin) === sansBarre(vers)) continue; // rien à rediriger
-  regles.push({ de: sansBarre(chemin), vers: sansBarre(vers), code, _raison: raison });
+  // `retire: true` = règle d'un article passé en brouillon : astro.config.mjs
+  // ne l'émet PAS dans un build d'aperçu d'édition (EDITOR_PREVIEW, lot L16),
+  // où la page existe encore — scripts/lib/build-mode.mjs.
+  regles.push({
+    de: sansBarre(chemin),
+    vers: sansBarre(vers),
+    code,
+    _raison: raison,
+    ...(raison === 'article retiré' ? { retire: true } : {}),
+  });
 }
 
 // Ordre : les chemins les plus profonds d'abord (une règle exacte ne doit
@@ -243,7 +261,7 @@ for (const r of regles) doublons.set(r.de, (doublons.get(r.de) ?? 0) + 1);
 const enDouble = [...doublons.entries()].filter(([, n]) => n > 1);
 
 const sortie = `${JSON.stringify(
-  regles.map(({ de, vers, code }) => ({ de, vers, code })),
+  regles.map(({ de, vers, code, retire }) => ({ de, vers, code, ...(retire ? { retire } : {}) })),
   null,
   2
 )}\n`;

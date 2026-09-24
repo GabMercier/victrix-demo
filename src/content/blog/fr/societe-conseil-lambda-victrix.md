@@ -4,6 +4,7 @@ date: 2023-07-05
 excerpt: "La Société Conseil Lambda rejoint Victrix, pour devenir le plus grand cabinet en diagnostic, conseil de solutions en sécurité du Québec"
 tags: ["Nos actualités"]
 slug: "societe-conseil-lambda-victrix"
+draft: false
 coverImage: "/wp-content/uploads/2023/07/victrix-lambda.jpg"
 wpUrl: "/societe-conseil-lambda-victrix/"
 ---

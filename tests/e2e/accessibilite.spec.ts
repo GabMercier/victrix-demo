@@ -30,6 +30,9 @@ const PAGES = [
   { url: '/fr/carrieres', nom: 'carrières' },
   { url: '/fr/expertises', nom: 'expertises' },
   { url: '/en/', nom: 'accueil (anglais)' },
+  // Forme des articles (lot 4, 2026-09-24) : les 4 patrons du corps d'un
+  // article (bouton, encadré, FAQ dépliante, tableau) sur la page interne.
+  { url: '/fr/style-guide/forme-articles/', nom: 'forme des articles (démo)' },
 ];
 
 /** Mêmes familles de règles que Lighthouse : WCAG 2.0 et 2.1, niveaux A et AA. */

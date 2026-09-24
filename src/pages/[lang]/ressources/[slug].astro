@@ -16,7 +16,7 @@ import { coverForCard, coverSmall } from '../../../lib/images/cover-derivative';
 import { breadcrumbSchema } from '../../../lib/seo/breadcrumb';
 
 export async function getStaticPaths() {
-  // Drafts get NO route on the public build; the STATIC_ONLY (CloudCannon
+  // Drafts get NO route on the public build; the EDITOR_PREVIEW (CloudCannon
   // editing) build keeps them so editors can preview an unpublished article.
   // Filtering the WHOLE list before mapping also keeps findCounterpart() from
   // pairing with a draft translation — its language switch falls back to the
@@ -444,22 +444,9 @@ const shareLinks = [
   .article__body :global(h3) {
     color: var(--color-navy);
   }
-  /* CTA : lien autonome marqué au câblage (wire-blog.mjs) → bouton marine,
-     comme les appels à l'action des articles victrix.ca. */
-  .article__body :global(.article-cta) {
-    display: inline-block;
-    background-color: var(--color-navy);
-    color: var(--color-white);
-    text-decoration: none;
-    font-weight: var(--fw-semibold);
-    font-size: var(--fs-200);
-    padding: 0.7em 1.5em;
-    border-radius: var(--radius-pill);
-  }
-  .article__body :global(.article-cta):hover {
-    background-color: var(--color-accent-blue);
-    color: var(--color-white);
-  }
+  /* CTA des articles : <a class="btn"> — rendu dans global.css sous .prose
+     (lot 4, 2026-09-24 ; l'ancienne classe article-cta a été convertie par
+     scripts/migration/restaure-forme-articles.py). */
   .article__tags {
     display: flex;
     flex-wrap: wrap;

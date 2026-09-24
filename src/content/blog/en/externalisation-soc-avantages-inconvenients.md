@@ -5,6 +5,7 @@ excerpt: "Are you considering SOC outsourcing for your company? Find out all abo
 tags: ["Our articles"]
 topics: ["Cybersecurity", "Managed services"]
 slug: "soc-outsourcing-for-smbs-pros-cons"
+draft: false
 coverImage: "/wp-content/uploads/2023/10/istock-1310129244-1.jpg"
 seoTitle: "SOC Outsourcing Services for SMBs: Pros & Cons"
 wpUrl: "/en/soc-outsourcing-pros-cons/"

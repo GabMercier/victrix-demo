@@ -5,6 +5,7 @@ excerpt: "Discover all the benefits of a tailored Copilot intelligent agent that
 tags: ["Our articles"]
 topics: ["Artificial intelligence", "Productivity"]
 slug: "copilot-studio-agents"
+draft: false
 coverImage: "/wp-content/uploads/2025/07/cover-article-victrix.jpg"
 seoTitle: "Personalized Intelligent Agent: Your Trusted Partner | Copilot"
 wpUrl: "/en/copilot-studio-agents/"
@@ -27,7 +28,7 @@ In this article, you will discover how to take your business to the next level b
 
 ### We help you rapidly develop your first tailored intelligent agent.
 
-<a class="article-cta" href="/en/contact/">Consult a Copilot Studio and Azure AI expert</a>
+<a class="btn" href="/en/contact/">Consult a Copilot Studio and Azure AI expert</a>
 
 ## An AI Agent That Gets People
 
@@ -77,7 +78,8 @@ Whether it's **responding to HR requests, automating IT support, or accessing co
 - **Stimulation of employee engagement** through the ability to delegate certain tasks while maintaining control
 - **Seamless collaboration** between humans and AI, where the intelligent agent is a reliable and contextual partner, rooted in your organizational environment
 
-#### Le saviez-vous ?
+<aside class="article-encadre">
+<p class="article-encadre__titre">Le saviez-vous ?</p>
 
 Une [étude de l’Université Cornell](https://arxiv.org/abs/2504.11443), menée sur six mois, démontre des gains de temps significatifs sur un large éventail de tâches courantes, et ce, dans de nombreux secteurs d’activité.
 
@@ -88,6 +90,7 @@ Résultats:
 - Moins de temps passé à lire les courriels, et une rédaction de documents effectuée **en moyenne 12 % plus rapidement**.
 - L’agent IA conversationnel permet aux agents du service d'assistance par chat de **résoudre 14 % de problèmes en plus par heure.**
 
+</aside>
 ## Building a Tailored Intelligent Agent at Victrix
 
 We create modern tools, such as**tailored Copilot intelligent agents**, which simplify access to information scattered across your systems and documents. Our AI agents eliminate the time wasted searching for information on a daily basis.
@@ -105,7 +108,7 @@ At Victrix, we help organizations create high-value, **intelligent Copilot Studi
 
 ### These Cases Are Inspiring, But Would You Like to Discover How These Agents Can Help You Achieve Your Goals?
 
-<a class="article-cta" href="/en/contact/">Request a demo</a>
+<a class="btn" href="/en/contact/">Request a demo</a>
 
 ## Give your teams the tools they need to perform. Create your intelligent Copilot agent.
 
@@ -133,4 +136,4 @@ But that’s not all – the tailored intelligent agents designed by Victrix als
 
 ### Consult Our Experts to Discover All the Possible Integrations of a Tailored Intelligent Agent with Your Current Systems
 
-<a class="article-cta" href="/en/contact/">Talk to a Copilot and Azure AI expert</a>
+<a class="btn" href="/en/contact/">Talk to a Copilot and Azure AI expert</a>

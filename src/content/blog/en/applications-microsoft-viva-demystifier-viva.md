@@ -5,6 +5,7 @@ excerpt: "Explore Microsoft Viva apps and discover how this employee experience 
 tags: ["Our articles"]
 topics: ["Productivity"]
 slug: "microsoft-viva-apps"
+draft: false
 coverImage: "/wp-content/uploads/2024/02/microsoft-viva_image-article-1.png"
 seoTitle: "Microsoft Viva Apps: Demystifying Viva"
 wpUrl: "/en/microsoft-viva-apps/"

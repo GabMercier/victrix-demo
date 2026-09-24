@@ -4,6 +4,7 @@ date: 2025-09-03
 excerpt: "Victrix is extremely proud to announce its exclusive partnership with Auger Groupe Conseil, expert engineers in extended reality (XR) in Canada."
 tags: ["Our news"]
 slug: "extended-reality-xr-agc-partnership"
+draft: true
 coverImage: "/wp-content/uploads/2025/08/victrix_agc-press-release-en.png"
 seoTitle: "An Exclusive Partnership in Extended Reality (XR) for Victrix"
 wpUrl: "/en/extended-reality-xr-agc-partnership/"
@@ -39,7 +40,8 @@ Today, thanks to Auger Groupe Conseil, many sectors are benefiting from immersiv
  • **Transportation**internal education on road safety and operational regulations, virtual reality for road simulation, simulations of difficult situations, decision-making exercises. 
  [Discover AGC](https://augergroupe.com/en/home/)
 
-#### Did You Know?
+<aside class="article-encadre">
+<p class="article-encadre__titre">Did You Know?</p>
 
 The term extended reality encompasses three types of realities: **virtual reality (VR)**, **augmented reality (AR)**, and **mixed reality (MR)**.
 
@@ -50,6 +52,7 @@ The term extended reality encompasses three types of realities: **virtual realit
 Would you like to learn more about extended reality and what it can do for your organization?
  [Contact our experts](/en/contact/)
 
+</aside>
 ## A Partnership That Unites Technical Expertise and Operational Excellence
 
 By combining AGC's pioneer engineering and technological creativity with Victrix's expertise in integration, [security](/en/services/cybersecurity/), and [strategic customer support](/en/services/strategic-advice/), this partnership paves the way for immersive projects of exceptional quality.

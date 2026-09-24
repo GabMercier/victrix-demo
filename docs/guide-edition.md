@@ -27,7 +27,16 @@
    - **Brouillon** : activé = l'article est visible dans l'aperçu CloudCannon
      et sur l'adresse de test du site de travail, mais **absent du site
      public** (voir « Publier et partager un aperçu »). Désactiver pour
-     publier.
+     publier. Depuis le **24 sept. 2026**, le statut se voit **sur la carte**
+     de l'article dans la liste (petite étiquette `true` = brouillon, `false`
+     = publié) et la liste se trie par **« Brouillons d'abord »** (menu de
+     tri en haut de la liste). Sept articles retirés à la demande de
+     l'équipe marketing sont en brouillon (deux nominations, les trois
+     « Meilleures pratiques en sécurité opérationnelle », « Réalité
+     étendue », « Une journée dans la vie SecOps ») : leurs anciennes
+     adresses redirigent vers la page la plus proche (Découvrir, SEvOC,
+     Intelligence artificielle). Désactiver « Brouillon » les republie tels
+     quels — la redirection tombe alors d'elle-même au build suivant.
    - **Image de couverture** : glisser-déposer; l'optimisation (format, tailles,
      compression) est automatique au moment de la publication.
    - **Slug** : l'adresse de la page (`/fr/ressources/<slug>/`). Chaque langue
@@ -221,6 +230,74 @@ pour y glisser le lien vers la politique de confidentialité.
 
 Le corps des articles du centre de ressources garde son éditeur de contenu
 (Markdown), plus complet.
+
+## Mettre en forme un article (bouton, encadré, FAQ, tableau)
+
+Depuis le **24 sept. 2026**, le corps d'un article connaît **quatre formes**
+au-delà du texte courant, toutes rendues par le site (aucun réglage à faire,
+aucune couleur à choisir). Elles se voient sur la page interne
+`/fr/style-guide/forme-articles/` (site de travail). Les articles migrés de
+WordPress ont été convertis à ces quatre formes le 24 sept.
+
+Dans l'éditeur de contenu, chacune s'écrit **comme un bloc HTML** dans le
+texte (l'éditeur l'affiche comme un bloc « HTML » et conserve ce qu'il y a
+dedans). Pour en poser un : se placer sur une ligne vide, passer en
+**source** (ou coller directement), et reprendre l'un des modèles ci-dessous
+en remplaçant le texte. Laisser **une ligne vide** avant et après chaque
+bloc, et une ligne vide entre la balise d'ouverture et le texte : c'est ce
+qui permet de garder du Markdown (gras, liens, listes) à l'intérieur.
+
+**1. Bouton d'appel à l'action** — un lien seul sur sa ligne, avec la
+classe `btn` (plein) ou `btn-outline` (contour) :
+
+```html
+<a class="btn" href="/fr/contact/">Parlez à un expert</a>
+```
+
+**2. Encadré « Le saviez-vous »** :
+
+```html
+<aside class="article-encadre">
+<p class="article-encadre__titre">Le saviez-vous ?</p>
+
+**10 millions d'euros.** C'est l'amende maximale en cas de non-conformité.
+
+</aside>
+```
+
+**3. Question dépliante (FAQ)** — une par question, à la suite :
+
+```html
+<details class="article-faq">
+<summary>Qu'est-ce que la réglementation DORA ?</summary>
+
+La réponse, en Markdown ordinaire.
+
+</details>
+```
+
+**4. Tableau** — toujours dans son conteneur (il défile sur téléphone au lieu
+de casser la page) ; la première ligne est l'en-tête :
+
+```html
+<div class="article-tableau">
+<table>
+<thead>
+<tr><th>Critère</th><th>Option A</th><th>Option B</th></tr>
+</thead>
+<tbody>
+<tr><td>Intégration</td><td>Non</td><td>Oui</td></tr>
+</tbody>
+</table>
+</div>
+```
+
+À ne pas faire : mettre des couleurs ou des `style="…"` dans ces blocs (le
+site les ignore ou les rejette), ou écrire un bouton avec l'ancienne classe
+`article-cta` (convertie, plus stylée). Un bouton « Insérer » dans la barre
+d'outils de l'éditeur (snippets CloudCannon) est à l'étude : CloudCannon
+n'offre pas encore de gabarit de snippet pour du HTML dans un article
+Markdown — voir `docs/plan-forme-articles.md`.
 
 ## Traduire : créer en FR, dupliquer vers EN (et inversement)
 
@@ -979,11 +1056,12 @@ visiteurs). Rien ne part en production tout seul.
   l'aperçu de l'éditeur) ; le lien partagé montre donc exactement ce qui
   attend d'être publié. Au besoin, l'équipe technique peut aussi créer un
   lien de revue restreint (Client Sharing).
-- ⚠️ **Pendant la transition** (tant que le vrai victrix.ca WordPress est en
-  ligne) : le site de production de cette plateforme n'est pas encore public
-  (adresse de test non indexée) et montre lui aussi, temporairement, les
-  brouillons et les contenus à date future — l'équipe technique corrigera ce
-  comportement avant la vraie mise en ligne.
+- **Corrigé le 24 sept. 2026** : le site de production de cette plateforme
+  ne montre plus ni les brouillons ni les contenus à date future (il ne les
+  a d'ailleurs jamais servis publiquement — son adresse de test n'est pas
+  indexée). Seuls l'aperçu de l'éditeur et l'adresse de test du site de
+  travail les montrent. (Reste une case à cocher côté technique dans les
+  réglages de build CloudCannon — voir `docs/operations.md` § 6.)
 
 ## Un champ vidé ne casse plus le site
 

@@ -2,7 +2,7 @@
  * Bannière d'annonce active — colle build entre la collection `annonces`
  * (bibliothèque de bannières planifiables, src/data/annonces/*.json) et ses
  * consommateurs (Header.astro, CampaignHeader.astro, BaseLayout.astro). Un
- * seul endroit lit la collection, le drapeau STATIC_ONLY et « maintenant »,
+ * seul endroit lit la collection, le drapeau EDITOR_PREVIEW et « maintenant »,
  * pour que les trois rendent LA MÊME bannière.
  */
 
@@ -10,13 +10,10 @@ import { getCollection } from 'astro:content';
 import type { Locale } from '../i18n/config';
 import { localizePath } from '../i18n/config';
 import { pickActiveAnnounce } from './schedule';
-
-/**
- * STATIC_ONLY (build d'édition CloudCannon) — même gotcha d'expression membre
- * EXACTE que src/i18n/blog.ts : lire `import.meta.env.STATIC_ONLY` une fois
- * ici, jamais via destructuration ni objet env passé en paramètre.
- */
-const STATIC_ONLY_BUILD = Boolean(import.meta.env.STATIC_ONLY);
+// EDITOR_PREVIEW (build d'édition CloudCannon — lot L16 : auparavant
+// STATIC_ONLY, que la production pose aussi) — lu une fois, expression
+// membre exacte, dans src/lib/editor-preview.ts.
+import { EDITOR_PREVIEW_BUILD } from './editor-preview';
 
 /**
  * Un seul « maintenant » pour TOUT le build : une borne franchie pendant la
@@ -42,7 +39,7 @@ export async function getActiveAnnounce(lang: Locale): Promise<ActiveAnnounce | 
   const active = pickActiveAnnounce(
     entries.map((e) => ({ id: e.id, ...e.data })),
     BUILD_NOW,
-    STATIC_ONLY_BUILD,
+    EDITOR_PREVIEW_BUILD,
   );
   if (!active) return null;
   // `linkHref` de la LANGUE d'abord, lien commun en repli (2026-09-23) : les
@@ -67,7 +64,7 @@ export async function getActiveAnnounceId(): Promise<string | null> {
     pickActiveAnnounce(
       entries.map((e) => ({ id: e.id, ...e.data })),
       BUILD_NOW,
-      STATIC_ONLY_BUILD,
+      EDITOR_PREVIEW_BUILD,
     )?.id ?? null
   );
 }

@@ -5,6 +5,7 @@ excerpt: "Préparez-vous à une transition sécurisée et performante vers Windo
 tags: ["Nos articles"]
 topics: ["Infonuagique", "Services gérés"]
 slug: "migration-windows-11-microsoft-exchange"
+draft: false
 coverImage: "/wp-content/uploads/2025/08/image-article-exchange-se_01-1.png"
 seoTitle: "Migrez à Windows 11 et Exchange SE en toute sécurité"
 wpUrl: "/migration-windows-11-microsoft-exchange/"

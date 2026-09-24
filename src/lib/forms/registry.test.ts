@@ -41,6 +41,12 @@ describe('fieldName', () => {
   it('replie sur un nom positionnel quand le libellé est vide', () => {
     expect(fieldName('', 2)).toBe('champ-3');
   });
+  it('retire toute la plage des diacritiques (revue R3, constat 8 : échappements \\u)', () => {
+    expect(fieldName('Prénom — Nom', 0)).toBe('prenom-nom');
+    expect(fieldName('Façade Noël ÉTÉ', 0)).toBe('facade-noel-ete');
+    // Caractère combinant en bout de plage (U+036F) : détaché par NFD puis retiré.
+    expect(fieldName('a\u036fb', 0)).toBe('ab');
+  });
 });
 
 describe('buildRegistry', () => {

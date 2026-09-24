@@ -5,6 +5,7 @@ excerpt: "Prepare for a secure and successful transition to Windows 11 and Exc
 tags: ["Our articles"]
 topics: ["Cloud computing", "Managed services"]
 slug: "migration-windows-11-microsoft-exchange"
+draft: false
 coverImage: "/wp-content/uploads/2025/08/image-article-exchange-se_01-1.png"
 seoTitle: "Migrate from Windows 10 to 11 and Exchange SE Safely"
 wpUrl: "/en/migration-windows-11-microsoft-exchange/"

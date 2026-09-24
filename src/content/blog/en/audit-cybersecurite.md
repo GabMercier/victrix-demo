@@ -5,6 +5,7 @@ excerpt: "Ensuring compliance and de-risking starts with a cybersecurity risk as
 tags: ["Our articles"]
 topics: ["Cybersecurity"]
 slug: "cybersecurity-risk-audit"
+draft: false
 coverImage: "/wp-content/uploads/2024/10/computationally-intensive-tasks-servers-1-scaled.jpg"
 seoTitle: "Cybersecurity Risk Assessment Audit | Risk & Compliance"
 wpUrl: "/en/ressources/cybersecurity-risk-audit/"
