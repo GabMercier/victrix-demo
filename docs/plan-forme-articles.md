@@ -1,4 +1,4 @@
-# Forme des articles — 4 patrons pour le corps Markdown (lot 4, nuit du 2026-09-24)
+# Forme des articles — 5 patrons pour le corps Markdown (lot 4, nuit du 2026-09-24 ; 5e patron : lot L-cta-articles, 2026-09-24)
 
 > Le vrai blocage de Julie : les articles migrés de WordPress portent leur
 > mise en forme en HTML BRUT (`<a class="article-cta">`, `<table style=…>`),
@@ -121,6 +121,44 @@ première ligne dont TOUTES les cellules ne contiennent qu'un titre
 (`<h3>`/`<h4>`) ou un `<strong>` devient un `<thead>` de `<th>` (le titre
 imbriqué disparaît, son texte reste). Le tout est enveloppé dans le
 conteneur défilant.
+
+## 5. Bandeau d'appel à l'action — `<div class="article-cta">` (lot L-cta-articles, 2026-09-24)
+
+Le panneau complet des pages (composant `cta`) transposé dans le corps d'un
+article — « plus de design pour ce genre de bannière » (Julie, #1762,
+23/09) : surtitre facultatif, titre, texte Markdown, un ou deux boutons
+(classes `btn` / `btn-outline` du patron 1) posés sur un fond. Deux peaux,
+choisies par une seconde classe : **ivoire** (défaut ; filet
+`--color-contour`, le canevas des articles étant ivoire lui aussi) et
+**marine** (`article-cta--marine` : aplat bleu nuit `--color-nuit`, textes
+inversés, bouton plein blanc/texte bleu et contour blanc comme la variante
+« dark » du composant). Contrastes mesurés : encre sur ivoire 17:1, bleu nuit
+sur ivoire 18:1, surtitre bleu électrique sur ivoire 6,2:1 ; blanc sur bleu
+nuit 19:1, surtitre `--color-primary-fixed-dim` sur bleu nuit 11:1, bouton
+plein blanc/texte bleu 6,5:1 — axe-core le confirme sur la page de démo.
+Titre et surtitre = `<p>` (pas un `<h2>` : comme l'encadré, le bandeau n'est
+pas une section du plan de l'article). Les boutons sur UNE ligne du Markdown
+forment une rangée qui replie sur téléphone (`p:has(> a.btn)`, sans script ;
+sans `:has`, ils restent côte à côte en ligne).
+
+```html
+<div class="article-cta">
+<p class="article-cta__surtitre">Cybersécurité</p>
+<p class="article-cta__titre">Évaluez votre posture de sécurité</p>
+
+Nos experts analysent vos pratiques et vous remettent un plan d'action priorisé.
+
+<a class="btn" href="/fr/contact/">Parlez à un expert</a> <a class="btn-outline" href="/fr/services/cybersecurite/">Voir le service</a>
+
+</div>
+```
+
+Variante marine : `<div class="article-cta article-cta--marine">`, même
+contenu. **Aucune conversion** : aucun article existant n'est touché, Julie
+pose le bandeau elle-même (guide § « Mettre en forme un article », modèle 5).
+Le nom `article-cta` désignait l'ANCRE WordPress (convertie en `btn` par le
+patron 1, 0 occurrence restante) ; il vit désormais sur un `<div>`, et
+`restaure-forme-articles.py` ne reconnaît que l'ancre (`<a class="article-cta"`).
 
 ## Exécution (dans l'ordre)
 

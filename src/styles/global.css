@@ -461,7 +461,7 @@ a.btn-outline:hover {
   border-radius: var(--radius-s);
 }
 
-/* ---------- Forme des articles : 4 patrons (lot 4, 2026-09-24) ----------
+/* ---------- Forme des articles : 5 patrons (lot 4, 2026-09-24 ; 5e = L-cta-articles) ----------
    Le corps Markdown des articles porte sa mise en forme en HTML brut
    (docs/plan-forme-articles.md). Un seul rendu par patron, ICI, sous .prose :
    bouton (a.btn / a.btn-outline — classes déjà admises par rich.ts), encadré
@@ -613,3 +613,91 @@ a.btn-outline:hover {
   margin: 0;
 }
 
+/* 5. Bandeau d'appel à l'action — <div class="article-cta"> (lot
+   L-cta-articles, 2026-09-24) : surtitre facultatif, titre, texte Markdown,
+   un ou deux boutons (a.btn / a.btn-outline) sur un fond, comme le composant
+   `cta` des pages. Deux peaux : ivoire (défaut, filet contour — le canevas des
+   articles est ivoire lui aussi) et `article-cta--marine` (bleu nuit, textes
+   inversés). Contrastes : encre sur ivoire 17:1, nuit sur ivoire 18:1,
+   surtitre bleu électrique sur ivoire 6,2:1 ; blanc sur nuit 19:1, surtitre
+   primary-fixed-dim #bac3ff sur nuit 11:1, bouton plein blanc/texte bleu
+   6,5:1. Titre et surtitre = <p> (pas des titres du plan). Aucun script :
+   la rangée de boutons = le paragraphe qui les porte (`:has`, repli inline). */
+.prose .article-cta {
+  margin: 0;
+  padding: var(--space-6) var(--space-5);
+  border: 1px solid var(--color-contour, #c4c5d9);
+  border-radius: var(--radius-m, 8px);
+  background-color: var(--color-ivoire, #fcf9f5);
+  color: var(--color-encre, #21242a);
+}
+.prose .article-cta > * + * {
+  margin-top: var(--space-3);
+}
+.prose .article-cta__surtitre {
+  margin: 0;
+  font-size: var(--fs-200);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary, #1d46f3);
+}
+.prose .article-cta__titre {
+  margin: 0;
+  font-size: var(--fs-600);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-nuit, #000d2e);
+  text-wrap: balance;
+}
+.prose .article-cta__surtitre + .article-cta__titre {
+  margin-top: var(--space-2);
+}
+.prose .article-cta > p:has(> a.btn),
+.prose .article-cta > p:has(> a.btn-outline) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+.prose .article-cta a.btn,
+.prose .article-cta a.btn-outline {
+  margin: 0;
+}
+/* Peau marine — textes inversés ; boutons comme la variante « dark » du
+   composant cta : plein = blanc/texte bleu, contour = blanc. */
+.prose .article-cta--marine {
+  border-color: var(--color-nuit, #000d2e);
+  background-color: var(--color-nuit, #000d2e);
+  color: #fff;
+}
+.prose .article-cta--marine .article-cta__surtitre {
+  color: var(--color-primary-fixed-dim, #bac3ff);
+}
+.prose .article-cta--marine .article-cta__titre {
+  color: #fff;
+}
+.prose .article-cta--marine a:not(.btn):not(.btn-outline) {
+  color: #fff;
+}
+.prose .article-cta--marine a.btn {
+  border-color: #fff;
+  background: #fff;
+  color: var(--color-primary, #1d46f3);
+}
+.prose .article-cta--marine a.btn:hover {
+  background: var(--color-primary-fixed, #dee0ff);
+  color: var(--color-primary, #1d46f3);
+  filter: none;
+}
+.prose .article-cta--marine a.btn-outline {
+  border-color: #fff;
+  background: transparent;
+  color: #fff;
+}
+.prose .article-cta--marine a.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  filter: none;
+}

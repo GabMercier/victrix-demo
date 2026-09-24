@@ -231,9 +231,9 @@ pour y glisser le lien vers la politique de confidentialité.
 Le corps des articles du centre de ressources garde son éditeur de contenu
 (Markdown), plus complet.
 
-## Mettre en forme un article (bouton, encadré, FAQ, tableau)
+## Mettre en forme un article (bouton, encadré, FAQ, tableau, bandeau)
 
-Depuis le **24 sept. 2026**, le corps d'un article connaît **quatre formes**
+Depuis le **24 sept. 2026**, le corps d'un article connaît **cinq formes**
 au-delà du texte courant, toutes rendues par le site (aucun réglage à faire,
 aucune couleur à choisir). Elles se voient sur la page interne
 `/fr/style-guide/forme-articles/` (site de travail). Les articles migrés de
@@ -292,9 +292,31 @@ de casser la page) ; la première ligne est l'en-tête :
 </div>
 ```
 
+**5. Bandeau d'appel à l'action** — un panneau complet (surtitre
+facultatif, titre, texte, un ou deux boutons) sur un fond, comme la section
+« Appel à l'action » des pages. Le surtitre et le titre restent des `<p>` (pas
+des titres) ; les boutons vont sur UNE seule ligne, séparés par une espace :
+
+```html
+<div class="article-cta">
+<p class="article-cta__surtitre">Cybersécurité</p>
+<p class="article-cta__titre">Évaluez votre posture de sécurité</p>
+
+Nos experts analysent vos pratiques et vous remettent un plan d'action priorisé.
+
+<a class="btn" href="/fr/contact/">Parlez à un expert</a> <a class="btn-outline" href="/fr/services/cybersecurite/">Voir le service</a>
+
+</div>
+```
+
+Pour le fond **bleu nuit** (textes en blanc, choisis par le site) : remplacer
+la première ligne par `<div class="article-cta article-cta--marine">`. Pas de
+surtitre = supprimer sa ligne ; un seul bouton = un seul lien.
+
 À ne pas faire : mettre des couleurs ou des `style="…"` dans ces blocs (le
 site les ignore ou les rejette), ou écrire un bouton avec l'ancienne classe
-`article-cta` (convertie, plus stylée). Un bouton « Insérer » dans la barre
+`article-cta` sur un lien (`<a class="article-cta">` : convertie en `btn`, plus
+stylée — ce nom désigne maintenant le bandeau du modèle 5, sur un `<div>`). Un bouton « Insérer » dans la barre
 d'outils de l'éditeur (snippets CloudCannon) est à l'étude : CloudCannon
 n'offre pas encore de gabarit de snippet pour du HTML dans un article
 Markdown — voir `docs/plan-forme-articles.md`.

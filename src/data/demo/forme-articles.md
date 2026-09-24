@@ -1,8 +1,8 @@
 ---
-title: "Forme des articles — les quatre patrons"
+title: "Forme des articles — les cinq patrons"
 ---
 
-Cet article de démonstration use des quatre patrons de mise en forme du corps
+Cet article de démonstration use des cinq patrons de mise en forme du corps
 d'un article (`docs/plan-forme-articles.md`). Il est rendu sur la page interne
 `/fr/style-guide/forme-articles/` (noindex, hors plan de site), scanné par
 axe-core dans `tests/e2e/accessibilite.spec.ts` et verrouillé par
@@ -75,5 +75,37 @@ Entré en vigueur le 16 janvier 2023, le règlement s'applique depuis le
 </table>
 </div>
 
-Un paragraphe de conclusion, pour vérifier le rythme vertical après le
+Un paragraphe de transition, pour vérifier le rythme vertical après le
 tableau.
+
+## 5. Bandeau d'appel à l'action
+
+Un panneau complet — surtitre facultatif, titre, texte, un ou deux boutons —
+comme la section « Appel à l'action » des pages. Peau ivoire (défaut) :
+
+<div class="article-cta">
+<p class="article-cta__surtitre">Cybersécurité</p>
+<p class="article-cta__titre">Évaluez votre posture de sécurité</p>
+
+Nos experts analysent vos pratiques et vous remettent un plan d'action
+priorisé — le texte reste du Markdown, avec [un lien](/fr/services/cybersecurite/).
+
+<a class="btn" href="/fr/contact/">Parlez à un expert</a> <a class="btn-outline" href="/fr/services/cybersecurite/">Voir le service</a>
+
+</div>
+
+Peau marine (`article-cta--marine`, textes inversés) :
+
+<div class="article-cta article-cta--marine">
+<p class="article-cta__surtitre">Accompagnement</p>
+<p class="article-cta__titre">Prêt à passer à l'action ?</p>
+
+Un seul bouton suffit ; le surtitre est facultatif et [les liens](/fr/contact/)
+du texte passent au blanc.
+
+<a class="btn" href="/fr/contact/">Planifiez une consultation</a> <a class="btn-outline" href="/fr/services/cybersecurite/">Voir le service</a>
+
+</div>
+
+Un paragraphe de conclusion, pour vérifier le rythme vertical après le
+bandeau.
