@@ -1,14 +1,20 @@
 ---
-title: "Audit de cybersécurité: Gérer le risque et la conformité"
-date: 2024-10-08
-excerpt: "Assurez votre conformité et réduisez vos risques grâce à l’audit de cybersécurité. Découvrez les avantages de l’audit de votre organisation avec Victrix."
-tags: ["Nos articles"]
-topics: ["Cybersécurité"]
-slug: "audit-cybersecurite"
+_schema: default
+title: 'Audit de cybersécurité: gérer le risque et la conformité'
+slug: audit-cybersecurite
 draft: false
-coverImage: "/wp-content/uploads/2024/10/computationally-intensive-tasks-servers-scaled.jpg"
-seoTitle: "Audit de cybersécurité: Gérer le risque et la conformité"
-wpUrl: "/audit-cybersecurite/"
+date: 2024-10-08T00:00:00Z
+excerpt: Assurez votre conformité et réduisez vos risques grâce à l’audit de
+  cybersécurité. Découvrez les avantages de l’audit de votre organisation avec
+  Victrix.
+coverImage: /wp-content/uploads/2024/10/computationally-intensive-tasks-servers-scaled.jpg
+tags:
+  - Nos articles
+seoTitle: 'Audit de cybersécurité: gérer le risque et la conformité'
+noindex: false
+topics:
+  - Cybersécurité
+wpUrl: /audit-cybersecurite/
 ---
 ![Un consultant en cybersécurité de Victrix effectuant un audit d'évaluation des risques de cybersécurité.](/wp-content/uploads/2024/10/computationally-intensive-tasks-servers.jpg) Réaliser un audit de cybersécurité est la première étape vers une gestion des risques et de la conformité efficace. Le non-respect des réglementations et des bonnes pratiques en matière de cybersécurité **augmente le risque de violation de données, de sanctions sévères, d'actions en justice et d'atteinte à la réputation**, entre autres.
 
