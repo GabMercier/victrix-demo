@@ -72,6 +72,47 @@ for (const { url, nom } of PAGES) {
 }
 
 /**
+ * LE TIROIR MOBILE OUVERT (L-menu-mobile, 2026-09-24) — un gabarit de plus :
+ * à 390 px, le menu est un tiroir dont chaque entrée à sous-menu est un
+ * accordéon natif <details>. Fermés, leurs liens sont hors du DOM rendu et
+ * axe ne les verrait pas : on ouvre le tiroir, puis TOUS ses accordéons, et
+ * on scanne (contrastes des têtes de colonne, des liens de second niveau, du
+ * chevron ; cibles tactiles ; noms accessibles). Le comportement du tiroir
+ * lui-même est dans menu-mobile.spec.ts.
+ */
+for (const { url, nom } of [
+  { url: '/fr/', nom: 'tiroir mobile ouvert (390px)' },
+  { url: '/en/', nom: 'tiroir mobile ouvert (390px, anglais)' },
+]) {
+  test(`aucune violation d'accessibilité — ${nom}`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto(url);
+    await page.waitForLoadState('networkidle');
+    await page.evaluate(() => document.fonts.ready);
+
+    await page.locator('[data-nav-toggle]').click();
+    const tiroir = page.locator('#mobile-nav');
+    await expect(tiroir).toBeVisible();
+    // Garde-fou du garde-fou : sans accordéon, ce test scannerait l'ancien
+    // tiroir à un niveau en croyant tester le nouveau.
+    const accordeons = tiroir.locator('details');
+    expect(await accordeons.count(), 'le tiroir doit porter des accordéons').toBeGreaterThan(0);
+    await accordeons.evaluateAll((els) => els.forEach((el) => ((el as HTMLDetailsElement).open = true)));
+    await expect(tiroir.locator('details:not([open])')).toHaveCount(0);
+
+    const { violations } = await new AxeBuilder({ page }).withTags(NORMES).analyze();
+    const detail = violations
+      .map((v) => {
+        const cible = v.nodes[0]?.target?.join(' ') ?? '?';
+        return `  • [${v.impact}] ${v.id} — ${v.help}\n      ${v.nodes.length} élément(s), p. ex. ${cible}`;
+      })
+      .join('\n');
+    expect(violations.length, `${nom} (${url}) :\n${detail}`).toBe(0);
+  });
+}
+
+/**
  * LE MODE « GRAND ÉCRAN » (2026-09-23) — au-delà de 1920px la racine grandit
  * jusqu'à 20px et le cadran jusqu'à 2400px (global.css, theme.css).
  *

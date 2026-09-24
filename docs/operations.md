@@ -602,7 +602,11 @@ Lighthouse : **ce que ce test laisse passer, Lighthouse le note 100**.
 L'inverse n'est pas vrai — Lighthouse n'exécute qu'un sous-ensemble des
 règles — donc le garde-fou est volontairement plus strict que le score visé.
 Il tourne avec les autres e2e (`npm run test:e2e`). Un échec nomme la règle,
-son impact et le premier élément fautif.
+son impact et le premier élément fautif. Depuis le 2026-09-24 (lot
+L-menu-mobile) le **tiroir mobile ouvert** (390 px, FR et EN, tous ses
+accordéons `<details>` dépliés) est un gabarit de plus dans le même fichier ;
+le comportement du tiroir (déplier « Services », atteindre une page de
+service, clavier, `aria-current`) est dans `tests/e2e/menu-mobile.spec.ts`.
 
 Deux limites à connaître, qu'aucun outil ne mesure :
 

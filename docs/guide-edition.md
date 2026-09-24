@@ -365,6 +365,14 @@ plus large se fait rogner sur les côtés, et le texte avec.
   identifiant (champ « Service ») au lieu d'une adresse : le site calcule
   l'adresse et refuse de publier si la page n'existe pas.
 - **Bouton « Portail client »** : libellé et visibilité.
+- **Sur téléphone** (depuis le 2026-09-24), le menu est un tiroir où chaque
+  entrée qui a un sous-menu (Expertises, Services, Produits, Ressources) se
+  déplie d'un toucher : d'abord le lien de la page elle-même, puis les liens
+  de sa colonne du méga-menu ; Ressources déplie le lien vers le centre puis
+  les catégories du blogue. Rien à configurer — ce sont les mêmes colonnes
+  et les mêmes libellés que sur grand écran. Seule différence : la carte
+  « mise en avant » et le bandeau du bas du méga-menu ne sont pas repris sur
+  téléphone.
 
 La barre d'annonce (bandeau bleu) a sa propre collection — voir ci-dessous.
 

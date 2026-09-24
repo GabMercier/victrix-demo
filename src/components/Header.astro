@@ -192,6 +192,57 @@ const isCurrent = (href: string) => {
   const h = href.replace(/\/+$/, '') || '/';
   return h === '/' ? path === '/' : path === h || path.startsWith(h + '/');
 };
+// Correspondance EXACTE (sans le préfixe) — pour les liens de second niveau du
+// tiroir mobile : « Services » reste courant sur toute la rubrique (isCurrent,
+// comme au bureau), mais « Cybersécurité » ne l'est que sur sa page.
+const isExact = (href: string) => (href.replace(/\/+$/, '') || '/') === path;
+
+// TIROIR MOBILE — second niveau (L-menu-mobile, 2026-09-24). Sur téléphone,
+// chaque entrée à `megaKey` devient un accordéon natif <details>/<summary>
+// (aucun script) qui reprend les liens de SON panneau :
+// - panneau « main », PARTAGÉ au bureau entre Expertises·Services·Produits :
+//   chaque entrée n'affiche que la (les) colonne(s) dont le lien de tête est
+//   le sien — trois accordéons de 4-5 liens plutôt que trois fois les 14 ; le
+//   lien de la page mère (le libellé de l'entrée) tient lieu de tête de
+//   colonne. Si aucune colonne ne lui correspond (tête de colonne réécrite au
+//   CMS), l'entrée reprend TOUT le panneau, têtes de colonne comprises — rien
+//   ne disparaît en silence ;
+// - panneau Ressources : le lien vers le centre (`ctaLabel`) en tête, puis
+//   les catégories du blogue sous leur titre (`categoriesTitle`).
+// La carte vedette et le bandeau bas du méga-menu ne sont pas repris (visuels
+// de bureau) ; les entrées sans `megaKey` restent des liens simples.
+interface MobileSection {
+  /** Tête de colonne ('' = aucune : la page mère en tient lieu). */
+  title: string;
+  /** Lien de la tête de colonne (absent = simple intertitre). */
+  href?: string;
+  links: { label: string; href: string }[];
+}
+const mobileColumns = nav.mega.columns.map((col) => ({
+  title: col.title,
+  href: localizePath(col.href, lang),
+  links: col.links.map((link) => ({ label: link.label, href: resolveNavHref(link, lang, serviceSlugs) })),
+}));
+const mobileGroups = navItems.map((item) => {
+  let head: { label: string; href: string } | undefined;
+  let sections: MobileSection[] = [];
+  if (item.megaKey === 'main') {
+    const own = mobileColumns.filter((col) => col.href === item.href);
+    head = { label: item.label, href: item.href };
+    sections = (own.length > 0 ? own : mobileColumns).map((col) => ({
+      title: col.href === item.href ? '' : col.title,
+      href: col.href,
+      links: col.links,
+    }));
+  } else if (item.megaKey === 'ressources' && megaRes && megaResParentHref) {
+    head = { label: megaRes.ctaLabel.trim() || item.label, href: megaResParentHref };
+    sections = [{ title: megaRes.categoriesTitle, links: resCategories }];
+  }
+  // Déplié d'office quand la page courante est dans la rubrique (l'entrée
+  // elle-même, ou l'un de ses liens) — l'éditeur voit où il est.
+  const open = !!head && (isCurrent(item.href) || sections.some((s) => s.links.some((l) => isExact(l.href))));
+  return { ...item, head, sections, open };
+});
 
 // Language switch targets: current page stays put; the other links across.
 const alt = altLocalePath ?? swapLocale(Astro.url.pathname, otherLocale[lang]);
@@ -622,17 +673,79 @@ const langLinkClass = 'no-underline p-1 text-sm';
 
     <ul role="list" class="flex flex-col gap-1">
       {
-        navItems.map((item) => (
-          <li>
-            <a
-              class="mobile-nav__link block px-2 py-3 rounded text-lg font-medium text-on-primary-fixed no-underline hover:bg-surface-container-low hover:text-primary aria-[current=page]:text-primary aria-[current=page]:font-semibold"
-              href={item.href}
-              aria-current={isCurrent(item.href) ? 'page' : undefined}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))
+        mobileGroups.map((item) =>
+          item.head ? (
+            /* Entrée à sous-menu : accordéon natif, aucun script. Le marqueur
+               natif du <summary> est masqué (list-none + Safari) et remplacé
+               par un chevron CSS (deux bords d'un carré pivoté) qui tourne à
+               l'ouverture (group-open). Le focus visible vient de la règle
+               globale :focus-visible (global.css). */
+            <li>
+              <details class="group/tiroir mobile-nav__group" open={item.open || undefined}>
+                <summary class="mobile-nav__summary flex items-center justify-between gap-3 px-2 py-3 rounded text-lg font-medium text-on-primary-fixed cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-surface-container-low hover:text-primary">
+                  <span>{item.label}</span>
+                  <span
+                    class="mobile-nav__chevron shrink-0 mr-1.5 size-2.5 border-0 border-r-2 border-b-2 border-solid border-current rotate-45 -translate-y-0.5 transition-transform group-open/tiroir:-rotate-135 group-open/tiroir:translate-y-0.5 motion-reduce:transition-none"
+                    aria-hidden="true"
+                  />
+                </summary>
+                <ul role="list" class="m-0 ml-2 mb-2 pl-3 flex flex-col gap-0.5 border-0 border-l-2 border-solid border-surface-container-high">
+                  <li>
+                    <a
+                      class="mobile-nav__link block px-2 py-2 rounded text-base font-semibold text-on-primary-fixed no-underline hover:bg-surface-container-low hover:text-primary aria-[current=page]:text-primary"
+                      href={item.head.href}
+                      aria-current={isCurrent(item.href) ? 'page' : undefined}
+                    >
+                      {item.head.label}
+                    </a>
+                  </li>
+                  {item.sections.map((section) => (
+                    <>
+                      {section.title &&
+                        (section.href ? (
+                          <li>
+                            <a
+                              class="mobile-nav__link block px-2 pt-3 pb-1 text-sm font-semibold uppercase tracking-[0.5px] text-neutral-800 no-underline hover:text-primary"
+                              href={section.href}
+                            >
+                              {section.title}
+                            </a>
+                          </li>
+                        ) : (
+                          <li>
+                            <p class="m-0 max-w-none px-2 pt-3 pb-1 text-sm font-semibold uppercase tracking-[0.5px] text-neutral-800">
+                              {section.title}
+                            </p>
+                          </li>
+                        ))}
+                      {section.links.map((link) => (
+                        <li>
+                          <a
+                            class="mobile-nav__link block px-2 py-2 rounded text-base text-neutral-700 no-underline hover:bg-surface-container-low hover:text-primary aria-[current=page]:text-primary aria-[current=page]:font-semibold"
+                            href={link.href}
+                            aria-current={isExact(link.href) ? 'page' : undefined}
+                          >
+                            {link.label}
+                          </a>
+                        </li>
+                      ))}
+                    </>
+                  ))}
+                </ul>
+              </details>
+            </li>
+          ) : (
+            <li>
+              <a
+                class="mobile-nav__link block px-2 py-3 rounded text-lg font-medium text-on-primary-fixed no-underline hover:bg-surface-container-low hover:text-primary aria-[current=page]:text-primary aria-[current=page]:font-semibold"
+                href={item.href}
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ),
+        )
       }
       <li>
         <a
