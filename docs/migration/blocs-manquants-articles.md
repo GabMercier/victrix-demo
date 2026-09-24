@@ -7,13 +7,14 @@
 | | |
 | --- | --- |
 | Articles comparés | **43** |
-| Articles avec au moins un bloc absent | **1** |
-| Blocs absents au total | **1** |
-| Mots concernés | **3** |
+| Articles avec au moins un bloc absent | **2** |
+| Blocs absents au total | **3** |
+| Mots concernés | **19** |
 | Articles sans source comparable | 7 |
 | Articles absents de `dist/` (build à refaire ?) | 8 |
-| … dont blocs courts « à vérifier » | 1 |
+| … dont blocs courts « à vérifier » | 2 |
 | Articles écartés — source entière dans l’autre langue | 4 |
+| Blocs écartés — écrits dans l’autre langue | 1 |
 
 **Comment lire.** Un paragraphe ou un item de liste est « absent » quand moins
 de 50 % de ses mots significatifs (≥ 5 lettres) se retrouvent dans la page
@@ -33,9 +34,23 @@ mise en forme de ces éléments est un sujet distinct.
 
 | Article | Langue | Blocs absents | Mots | Source |
 | --- | --- | --- | --- | --- |
+| `agents-copilot-studio` | FR | **2** | 16 | [/agents-copilot-studio/](https://www.victrix.ca/agents-copilot-studio/) |
 | `tendances-ti` | FR | **1** | 3 | [/tendances-ti/](https://www.victrix.ca/tendances-ti/) |
 
 ## Le détail, prêt à coller
+
+### `src/content/blog/fr/agents-copilot-studio.md` — Votre agent intelligent sur mesure: votre assistant IA de confiance
+
+Source : <https://www.victrix.ca/agents-copilot-studio/>
+
+- **[H2]** (13 mots, 100 % retrouvé)
+
+  > Donnez les outils à vos équipes pour performer. Créez votre agent Copilot intelligent.
+
+- **[P]** (3 mots — court, à vérifier)
+
+  > Planifier une consultation
+
 
 ### `src/content/blog/fr/tendances-ti.md` — 8 Tendances TI en 2025: Repenser vos services TI pour plus d'efficacité
 

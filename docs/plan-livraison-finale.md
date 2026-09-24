@@ -825,3 +825,24 @@ questions du matin en fin de document). Ordre restant : **commit + PR `dev` →
 `staging`** → `EDITOR_PREVIEW=1` dans l'UI CloudCannon (dev + Édition) → décisions
 du matin (poids des photos, snippets `.mdx` ou modèles, FAQ en titres) → L12
 réduit → L08 (reste) → L06 → phase 4.
+
+**Mise à jour du 2026-09-25 (matin)** — la nuit est commitée et poussée
+(`f897438`). Revérification du contenu des articles sur l'arbre poussé : texte
+à 0 bloc perdu (hors D18 et reformulations de Julie), parité 3 assumées,
+188/188 redirections, 13 brouillons D19, Lambda présent. **Deux trous
+trouvés** : (1) les IMAGES du corps des articles n'ont jamais été mesurées ni
+remises — nouvel outil `images-manquantes-articles.py` : 44 images de contenu
+absentes dans 26 articles (infographies ServiceNow ITOM et SOC, bannières
+Copilot Studio et webinaire, photos), toutes déjà sous `public/wp-content/`,
+plus 36 `<img>` de NIS2 FR/EN encore servies par `https://www.victrix.ca`
+(casseront à la mise hors ligne) → lot **L-images-articles** proposé en
+option (≈ 0,5 j, outillé comme `restaure-blocs-articles.py`), À FAIRE APRÈS la
+fusion dans `staging` (Julie édite déjà des articles là-bas). (2) Julie a
+réécrit elle-même `agents-copilot-studio.md` sur `staging` le 23/09 (coquilles,
+« Planifiez une consultation », bannière, titre FAQ) — sa version porte
+l'ancienne classe `article-cta` supprimée cette nuit, un lien vers l'ancien
+site et une image sous `/src/assets/uploads/` que le build ne sert pas ; ses
+retouches sont **absorbées dans `dev`** (17 remplacements, non commité), à
+retenir côté `dev` au moment de résoudre le conflit de la PR (25 autres
+conflits = JSON de services → `node scripts/merge-content-json.mjs`). Au
+passage : titre d'encadré français dans l'article EN corrigé. Ordre inchangé.

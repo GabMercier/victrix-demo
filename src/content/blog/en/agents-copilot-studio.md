@@ -79,7 +79,7 @@ Whether it's **responding to HR requests, automating IT support, or accessing co
 - **Seamless collaboration** between humans and AI, where the intelligent agent is a reliable and contextual partner, rooted in your organizational environment
 
 <aside class="article-encadre">
-<p class="article-encadre__titre">Le saviez-vous ?</p>
+<p class="article-encadre__titre">Did You Know?</p>
 
 Une [étude de l’Université Cornell](https://arxiv.org/abs/2504.11443), menée sur six mois, démontre des gains de temps significatifs sur un large éventail de tâches courantes, et ce, dans de nombreux secteurs d’activité.
 

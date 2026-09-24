@@ -470,6 +470,23 @@ ne sont pas encore référencées, le mode par défaut les ignore). Le 24/09 :
 393 photos rapatriées, 53 Mo bruts → voir le poids après optimisation dans
 `docs/migration/nuit-2026-09-24.md`.
 
+**Les images des ARTICLES sont-elles arrivées ? (2026-09-25).** Les outils
+ci-dessus jugent le texte des articles ; `python
+scripts/migration/images-manquantes-articles.py [--json]` fait pour les
+articles ce que `blocs-manquants-pages.py` fait pour les pages : pour chaque
+article publié dont la source est dans le cache, les `<img>` du corps de
+l'ancien article (zone `<article>`, sans les cartes d'articles liés, sans la
+vignette ni la couverture) cherchées par NOM DE FICHIER dans le Markdown
+(suffixe de vignette WordPress ignoré). Le rapport
+`docs/migration/images-manquantes-articles.md` dit si le fichier est déjà sous
+`public/wp-content/` (il ne reste qu'à le poser dans le texte) et compte les
+`<img src="https://www.victrix.ca/…">` encore servies par l'ancien domaine
+(elles casseront à sa mise hors ligne). Les icônes décoratives des encadrés
+(`idea`, `ampoule`, point d'interrogation) sont comptées à part : leur absence
+est un choix de forme. Rapport seul, rien n'est modifié, code 0. Première
+mesure le 25/09 : **44 images de contenu absentes dans 26 articles (toutes
+déjà rapatriées), 36 `<img>` de l'ancien domaine (NIS2 FR + EN)**.
+
 **Redirections de la migration (2026-09-22).** Deux listes alimentent
 `_redirects` (et, au lot L15, `.cloudcannon/routing.json`) :
 

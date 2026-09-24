@@ -13,7 +13,8 @@
 | --- | --- | --- |
 | Chaque ADRESSE de l'ancien site mène à une page | `npm run check:old-urls`, `check:redirects --dist` | 175 redirections, 0 vers un 404 |
 | Chaque PAGE a son texte (volume + titres H2/H3) | `npm run check:parite-texte -- --strict` | 151 pages, 3 assumées, 0 signalée |
-| Chaque BLOC des ARTICLES est là | `blocs-manquants-articles.py` + `restaure-blocs-articles.py` | **0 bloc absent** (198 remis le 23/09) |
+| Chaque BLOC des ARTICLES est là | `blocs-manquants-articles.py` + `restaure-blocs-articles.py` | **0 bloc absent** (198 remis le 23/09 ; revérifié le 25/09 sur `f897438` : 1 libellé remplacé volontairement par D18 + 2 reformulations de Julie) |
+| Chaque IMAGE du corps des ARTICLES est là | `images-manquantes-articles.py` — **NOUVEAU (25/09)** | **44 images absentes dans 26 articles** (toutes déjà sous `public/wp-content/`) + **36 `<img>` servies par l'ancien domaine** (NIS2 FR/EN) — à remettre, voir § 8 |
 | Chaque BLOC, IMAGE et LIEN des PAGES est là | **`blocs-manquants-pages.py` — NOUVEAU (cette session)** | **87 pages sur 89 ont un écart** — tableau ci-dessous |
 
 Donc : aucune page de l'ancien site n'a été oubliée, et aucun article n'a plus
@@ -222,3 +223,24 @@ stratégique » perdue sur la page IA EN ; les phrases et listes amputées
 Décision à consigner : ces écarts assumés iront dans une clé `blocs_assumes`
 de `correspondance-urls.json` quand Gabriel les aura validés ; le script les
 sortira du décompte.
+
+## 8. Les images des articles (2026-09-25)
+
+Aucun outil ne mesurait les IMAGES du corps des articles : `blocs-manquants-
+articles.py` juge le texte, `blocs-manquants-pages.py` juge les pages hors
+articles. `scripts/migration/images-manquantes-articles.py` comble le trou
+(rapport `docs/migration/images-manquantes-articles.md`, rejouable). Première
+mesure sur `f897438` : **44 images de contenu absentes dans 26 articles**
+(infographies ServiceNow ITOM ×3 FR/EN, SOC ×4-5 FR/EN, ZTNA, SASE ; bannières
+Copilot Studio ×4 et webinaire Copilot ; photos des articles pentest, audit,
+Loi 25, IoT, Windows 11, DORA, rançongiciels) — toutes déjà rapatriées sous
+`public/wp-content/` par la nuit du 24/09 ; 6 icônes décoratives d'encadrés
+hors décompte (choix de forme) ; et **36 `<img>` de NIS2 FR/EN encore servies
+par `https://www.victrix.ca`** (les 18 pictogrammes de secteurs, présents
+localement) qui casseront à la mise hors ligne de l'ancien site.
+
+Remise proposée en option (lot L-images-articles, ≈ 0,5 j, outillée comme
+`restaure-blocs-articles.py` : chaque image posée à la place que lui donne
+l'ordre de la source), **après** la fusion `dev` → `staging` : Julie édite
+déjà des articles sur `staging` (Copilot Studio le 23/09) et chaque article
+touché dans `dev` avant la fusion est un conflit de plus.
