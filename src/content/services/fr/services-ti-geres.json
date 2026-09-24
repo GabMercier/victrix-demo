@@ -1,6 +1,10 @@
 {
+  "_schema": "default",
   "title": "Services Gérés",
   "description": "Sécurisez, optimisez et gouvernez vos TI avec nos services gérés adaptés. Surveillance, support et automatisation, pour une performance sans compromis.",
+  "noindex": false,
+  "slug": "",
+  "seoTitle": "Services TI gérés | Gestion, Sécurité et Performance | Victrix",
   "seoH1": "Services TI gérés",
   "contactSujet": "",
   "contactService": "",
@@ -18,7 +22,7 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "",
       "cta2Href": "",
-      "overlay": "voile",
+      "overlay": "blanc",
       "image": "/wp-content/uploads/2022/03/fournisseur-de-services-geres-ti.jpg",
       "imageAlt": "",
       "imagePosition": "centre"
@@ -61,12 +65,12 @@
       },
       "aside": {
         "icon": "etoile",
+        "image": "",
+        "imageAlt": "",
         "title": "Un accompagnement personnalisé",
         "text": "Avec notre accompagnement personnalisé, maximisez votre retour sur investissement et faites évoluer votre environnement technologique en toute confiance.",
         "linkLabel": "Obtenez un accord de service sur mesure",
-        "linkHref": "/fr/contact",
-        "image": "",
-        "imageAlt": ""
+        "linkHref": "/fr/contact"
       }
     },
     {
@@ -75,6 +79,11 @@
       "fond": "",
       "sectionTitle": "L'externalisation, votre avantage stratégique pour rester compétitifs face aux défis actuels",
       "headingStyle": "plain",
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -129,12 +138,7 @@
           "image": "",
           "imageAlt": ""
         }
-      ],
-      "intro": "",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      }
+      ]
     },
     {
       "_bookshop_name": "cta",
@@ -315,9 +319,5 @@
       "variant": "nuit",
       "fond": "ivoire"
     }
-  ],
-  "seoTitle": "Services TI gérés | Gestion, Sécurité et Performance | Victrix",
-  "_schema": "default",
-  "noindex": false,
-  "slug": ""
+  ]
 }
