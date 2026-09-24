@@ -124,6 +124,9 @@ images de l'ancien site depuis le cache → `public/wp-content/`, puis
 `python scripts/migration/images-manquantes-articles.py [--json]` (les IMAGES
 du corps de chaque article de l'ancien site absentes du Markdown + les `<img>`
 encore servies par l'ancien domaine → `docs/migration/images-manquantes-articles.md`) ·
+`python scripts/migration/restaure-images-articles.py [--apply] [--only a,b]`
+(les remet à leur place en Markdown depuis `public/wp-content/`, réécrit les
+`<img>` de l'ancien domaine ; sans `--apply` = diffs) ·
 `python scripts/migration/blocs-manquants-pages.py [--json] [--only a,b]`
 (après un build : blocs, phrases amputées, IMAGES et LIENS de l'ancien site
 absents de chaque PAGE hors articles → `docs/migration/blocs-manquants-pages.md`) ·

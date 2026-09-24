@@ -18,6 +18,8 @@ Browse through our **guide to Law 25 and personal data protection**to understand
 
 ### What is Law 25 in Quebec?
 
+![Question mark](/wp-content/uploads/2024/09/faq-law-25.jpg)
+
 Law 25 is the final name given to Law 64, the « Act to modernize legislative provisions respecting the **protection of personal information»**. This law is inspired by the General Data Protection Regulation (GDPR) in Europe.
 
 ### To Which Organizations Does Law 25 Apply?

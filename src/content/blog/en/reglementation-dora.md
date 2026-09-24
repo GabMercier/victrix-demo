@@ -15,6 +15,8 @@ wpUrl: "/en/ressources/dora-regulation/"
  In this article, our financial [cybersecurity experts](/en/services/cybersecurity/) review the requirements of this standard and guide you on how to **increase your operational resilience and ensure your DORA compliance**. 
  [Get support for your compliance](/en/contact/)
 
+![Answers to frequently asked questions about the Dora Law in cybersecurity.](/wp-content/uploads/2024/10/yellow-question-mark-1-scaled.jpg)
+
 <details class="article-faq">
 <summary>What is the DORA regulation?</summary>
 

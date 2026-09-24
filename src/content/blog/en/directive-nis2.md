@@ -18,6 +18,8 @@ Our [cybersecurity experts](/en/services/cybersecurity/) explain everything you 
 
 ## Quick Overview of the NIS2 Directive
 
+![Réponses aux questions fréquentes sur la loi Dora en cybersécurité.](/wp-content/uploads/2024/10/yellow-question-mark-scaled.jpg)
+
 ### What Is the NIS2 Directive?
 
 The NIS2 Directive, adopted on December 27, 2022, is a major overhaul of the 2016 original NIS directive concerning European cybersecurity standards. This updated regulation extends the scope of NIS and aims to strengthen the security of networks and information systems while [improving organizational resilience](/en/ressources/penetration-testing/) against cyber threats.
@@ -51,47 +53,47 @@ NIS2 came into force on January 16, 2023. EU member states had to transpose its 
 </thead>
 <tbody>
 <tr>
-<td><img class="alignnone wp-image-6731 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/administrations-publiques.jpg" alt="Public administration" width="32" height="31" /> Public administration</td>
-<td><img class="alignnone wp-image-6742 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/fabrication-production-et-distribution-de-produits-chimiques.png" alt="chemical manufacturing" width="28" height="29" />  Chemical manufacturing</td>
+<td><img class="alignnone wp-image-6731 size-full" src="/wp-content/uploads/2024/11/administrations-publiques.jpg" alt="Public administration" width="32" height="31" /> Public administration</td>
+<td><img class="alignnone wp-image-6742 size-full" src="/wp-content/uploads/2024/11/fabrication-production-et-distribution-de-produits-chimiques.png" alt="chemical manufacturing" width="28" height="29" />  Chemical manufacturing</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6732 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/eaux-potables.png" alt="drinking water" width="31" height="24" /> Drinking water</td>
-<td><img class="alignnone wp-image-6743 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/fournisseurs-de-services-numeriques.png" alt="digital services providers" width="29" height="27" /> Digital services providers</td>
+<td><img class="alignnone wp-image-6732 size-full" src="/wp-content/uploads/2024/11/eaux-potables.png" alt="drinking water" width="31" height="24" /> Drinking water</td>
+<td><img class="alignnone wp-image-6743 size-full" src="/wp-content/uploads/2024/11/fournisseurs-de-services-numeriques.png" alt="digital services providers" width="29" height="27" /> Digital services providers</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6733 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/eaux-usees.jpg" alt="waste water" width="35" height="30" />Wastewater</td>
-<td><img class="alignnone wp-image-6744 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/gestion-des-dechets.png" alt="waste management" width="26" height="20" />  Waste management</td>
+<td><img class="alignnone wp-image-6733 size-full" src="/wp-content/uploads/2024/11/eaux-usees.jpg" alt="waste water" width="35" height="30" />Wastewater</td>
+<td><img class="alignnone wp-image-6744 size-full" src="/wp-content/uploads/2024/11/gestion-des-dechets.png" alt="waste management" width="26" height="20" />  Waste management</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6734 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/secteur-des-energies.png" alt="energy" width="30" height="24" /> Energy sector</td>
-<td><img class="alignnone wp-image-6745 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/industrie-manufacturiere.png" alt="manufacturing industry" width="32" height="26" /> Manufacturing industry</td>
+<td><img class="alignnone wp-image-6734 size-full" src="/wp-content/uploads/2024/11/secteur-des-energies.png" alt="energy" width="30" height="24" /> Energy sector</td>
+<td><img class="alignnone wp-image-6745 size-full" src="/wp-content/uploads/2024/11/industrie-manufacturiere.png" alt="manufacturing industry" width="32" height="26" /> Manufacturing industry</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6735 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/espace.png" alt="Aerospace" width="30" height="26" /> Aerospace industry</td>
-<td><img class="alignnone wp-image-6746 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/production-transformation-et-distribution-de-denrees-alimentaires.png" alt="food production" width="27" height="30" />  Food production, processing and distribution</td>
+<td><img class="alignnone wp-image-6735 size-full" src="/wp-content/uploads/2024/11/espace.png" alt="Aerospace" width="30" height="26" /> Aerospace industry</td>
+<td><img class="alignnone wp-image-6746 size-full" src="/wp-content/uploads/2024/11/production-transformation-et-distribution-de-denrees-alimentaires.png" alt="food production" width="27" height="30" />  Food production, processing and distribution</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6736 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/gestion-des-services-ti-et-de-la-communication-interentreprises.png" alt="IT and communication services" width="23" height="23" />  IT and communications services</td>
-<td><img class="alignnone wp-image-6747 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/recherche.png" alt="research" width="23" height="21" />   Research</td>
+<td><img class="alignnone wp-image-6736 size-full" src="/wp-content/uploads/2024/11/gestion-des-services-ti-et-de-la-communication-interentreprises.png" alt="IT and communication services" width="23" height="23" />  IT and communications services</td>
+<td><img class="alignnone wp-image-6747 size-full" src="/wp-content/uploads/2024/11/recherche.png" alt="research" width="23" height="21" />   Research</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6737 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/infrastructures-des-marches-financiers.png" alt="financial markets" width="29" height="22" /> Financial market infrastructure</td>
-<td><img class="alignnone wp-image-6748 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/services-postaux-et-dexpedition.png" alt="postal and shipping" width="29" height="27" />  Postal and shipping services</td>
+<td><img class="alignnone wp-image-6737 size-full" src="/wp-content/uploads/2024/11/infrastructures-des-marches-financiers.png" alt="financial markets" width="29" height="22" /> Financial market infrastructure</td>
+<td><img class="alignnone wp-image-6748 size-full" src="/wp-content/uploads/2024/11/services-postaux-et-dexpedition.png" alt="postal and shipping" width="29" height="27" />  Postal and shipping services</td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6738 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/infrastructures-numeriques.png" alt="digital infrastructure" width="25" height="25" />  Digital infrastructure</td>
+<td><img class="alignnone wp-image-6738 size-full" src="/wp-content/uploads/2024/11/infrastructures-numeriques.png" alt="digital infrastructure" width="25" height="25" />  Digital infrastructure</td>
 <td></td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6739 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/etablissements-de-sante.png" alt="healthcare" width="30" height="31" /> Healthcare</td>
+<td><img class="alignnone wp-image-6739 size-full" src="/wp-content/uploads/2024/11/etablissements-de-sante.png" alt="healthcare" width="30" height="31" /> Healthcare</td>
 <td></td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6740 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/secteur-bancaire.png" alt="banking sector" width="22" height="22" />   Banking sector</td>
+<td><img class="alignnone wp-image-6740 size-full" src="/wp-content/uploads/2024/11/secteur-bancaire.png" alt="banking sector" width="22" height="22" />   Banking sector</td>
 <td></td>
 </tr>
 <tr>
-<td><img class="alignnone wp-image-6741 size-full" src="https://www.victrix.ca/wp-content/uploads/2024/11/transports.png" alt="transportation" width="29" height="25" /> Transportation</td>
+<td><img class="alignnone wp-image-6741 size-full" src="/wp-content/uploads/2024/11/transports.png" alt="transportation" width="29" height="25" /> Transportation</td>
 <td></td>
 </tr>
 </tbody>

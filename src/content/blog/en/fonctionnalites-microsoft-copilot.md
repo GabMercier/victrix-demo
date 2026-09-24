@@ -49,6 +49,8 @@ Microsoft Copilot’s AI features in PowerPoint go far beyond creating visually 
 
 Do you know **how to use Copilot in Excel** to analyze and visualize your data efficiently? Among Microsoft Copilot tools, its integration with Excel is one of the most practical features for streamlining complex workflows.
 
+![Word](/wp-content/uploads/2025/01/design-sans-titre-1-1-e1737989481531.jpg)
+
 **Key Features:**
 
 - Automation of data analysis and visualization

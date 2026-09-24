@@ -32,6 +32,8 @@ In this article, you will discover how to take your business to the next level b
 
 ## An AI Agent That Gets People
 
+![Victrix Intelligent Agent Offer](/wp-content/uploads/2025/03/banniere-article-victrix.png)
+
 ### Save Time
 
 - Makes it easier to search for information using your own expressions and terms
@@ -48,9 +50,13 @@ In this article, you will discover how to take your business to the next level b
 
 **And we haven't even touched on the potential savings of using such a solution, in addition to ways of compensating for the lack of manpower.**
 
+![offre agent intelligent](/wp-content/uploads/2025/03/mailing-offre-victrix_agent-intelligent-05.png)
+
 In specific sectors, such as customer service, the addition of tailored **intelligent conversational agents** reduces the need for a larger workforce and improves the customer experience by handling common requests.
 
 In industrial sectors, **AI-assisted predictive maintenance** reduces costs associated with equipment breakdowns and frees your teams from monitoring tasks, allowing them to be more efficient and focus on higher value-added tasks.
+
+![automatisation AI journaux maintenance (logs)](/wp-content/uploads/2025/03/mailing-offre-victrix_agent-intelligent-04-2.png)
 
 These are just a few examples among many others where a **tailored, intelligent AI agent** can transform your organization.
 
@@ -60,6 +66,8 @@ Offer them a customized intelligent agent, a true *copilot* capable of boosting 
 [Create your intelligent agent with Victrix](/en/contact/)
 
 ## Transform Your Organizations with Custom Copilot Studio Agents
+
+![Logo Microsoft Copilot, Azure Open AI et Microsoft Power Platform](/wp-content/uploads/2025/03/mailing-offre-victrix_agent-intelligent-03.png)
 
 With expertise in Copilot Studio and Azure OpenAI, Victrix supports organizations in designing and **implementing customized Copilot intelligent agents**.
 

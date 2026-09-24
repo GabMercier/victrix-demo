@@ -32,6 +32,8 @@ Dans cet article, vous découvrirez comment faire passer votre entreprise au niv
 
 ## Un agent intelligent qui comprend les gens
 
+![offre victrix agent intelligent](/wp-content/uploads/2025/03/mailing-offre-victrix_agent-intelligent-01.png)
+
 ### Gagner du temps
 
 - Facilite la recherche d’information avec vos propres expressions et termes
@@ -48,9 +50,13 @@ Dans cet article, vous découvrirez comment faire passer votre entreprise au niv
 
 **Et nous n’avons même pas encore frôlé le sujet des économies potentielles à utiliser une telle solution, en plus des façons de pallier le manque de main-d’œuvre.**
 
+![offre agent intelligent](/wp-content/uploads/2025/03/mailing-offre-victrix_agent-intelligent-05.png)
+
 Dans certains secteurs d’activité, tels que le service à la clientèle, l’ajout d’**agents conversationnels intelligents** sur mesure réduit le besoin d’une main-d’œuvre plus importante et améliore l’expérience client en prenant en charge les demandes courantes.
 
 Dans les secteurs industriels, la **maintenance prédictive assistée par intelligence artificielle** réduit les coûts liés aux bris d’équipements et libère vos équipes de cette tâche de surveillance, ce qui lui permet d’être plus efficace et de se concentrer sur des tâches à plus grande valeur ajoutée.
+
+![automatisation AI journaux maintenance (logs)](/wp-content/uploads/2025/03/mailing-offre-victrix_agent-intelligent-04-2.png)
 
 Ce ne sont que quelques exemples parmi tant d’autres, où un **agent IA intelligent sur mesure** intervient pour transformer votre organisation.
 

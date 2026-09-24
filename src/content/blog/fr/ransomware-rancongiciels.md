@@ -199,6 +199,8 @@ Vous souhaitez améliorer votre posture de sécurité et éviter les embûches c
  Bénéficiez d’un [service SOC externalisé](/fr/ressources/externalisation-du-soc-avantages-inconvenients/) puissant pour assurer une sécurité informatique de haut niveau à votre organisation. 
  **Découvrez SEvOC, le Centre Opérationnel de Sécurité Évolutif de Victrix.**
 
+![SEvOC logo](/wp-content/uploads/2023/11/victrix_sevoc-1-e1701322153436.png)
+
 <a class="btn" href="/fr/services/cybersecurite/centre-operationnel-de-securite-evolutif/">Découvrez la solution SEvOC</a>
 
 ### SEvOC: une solution sur mesure pour contrer les menaces informatiques

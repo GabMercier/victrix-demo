@@ -487,6 +487,26 @@ est un choix de forme. Rapport seul, rien n'est modifié, code 0. Première
 mesure le 25/09 : **44 images de contenu absentes dans 26 articles (toutes
 déjà rapatriées), 36 `<img>` de l'ancien domaine (NIS2 FR + EN)**.
 
+**La remise est OUTILLÉE (2026-09-25) :** `python
+scripts/migration/restaure-images-articles.py` (essai = diffs, `--apply`
+écrit `src/content/blog`, `--only <slug>,<slug>`). Même mécanique que
+`restaure-blocs-articles.py` : les blocs de la source sont marchés dans
+l'ordre (le parseur de la parité garde les images), chaque bloc de texte
+retrouvé fixe la position courante, une image absente est insérée après la
+dernière ligne repérée, en Markdown `![alt de l'ancien site](/wp-content/…)`
+sur l'ORIGINAL plein format (le suffixe de vignette `-1024x683` est retiré si
+l'original est là). Garde-fous : jamais à l'intérieur d'un tableau, d'un
+encadré ou d'une FAQ HTML (la position glisse après la balise fermante),
+jamais entre deux items d'une liste, texte nu vérifié identique avant
+d'écrire, rejouable (une image présente est ignorée). Les `<img
+src="https://www.victrix.ca/wp-content/…">` sont réécrites en local si le
+fichier est là. Les 4 articles EN dont la page source était en français ne
+sont PAS traités (aucun bloc repérable) : leurs images sortent « à poser à la
+main ». Résultat du 25/09 : **38 images posées dans 23 articles + 2 à la main
+(bannière Victrix des articles ZTNA et SASE EN) ; 36 `<img>` réécrites** ;
+restent 3 infographies FRANÇAISES que l'ancien article ServiceNow ITOM EN
+affichait — non posées, à refaire en anglais (décision Julie).
+
 **Redirections de la migration (2026-09-22).** Deux listes alimentent
 `_redirects` (et, au lot L15, `.cloudcannon/routing.json`) :
 
