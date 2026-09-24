@@ -736,6 +736,86 @@ foreach ($s in $stories) {
 }
 ```
 
+### Lots du 2026-09-25 (après-midi) — trois constats de Gabriel, un prompt chacun, une session neuve par lot
+
+#### L-edition-visuelle — L'édition visuelle CloudCannon ne répond plus (BLOQUANT, en premier)
+
+```text
+Lot L-edition-visuelle de docs/plan-livraison-finale.md. Lis d'abord la
+mémoire project-status, puis docs/operations.md § 6 (variables par site,
+journal de build, « No live editing connected ») et scripts/lib/build-mode.mjs.
+Constat (25/09) : dans CloudCannon, sur le site Édition (staging,
+lawful-hare) ET le site dev (vocal-wren), on ne peut plus cliquer une
+section pour ouvrir son éditeur ni déplacer les sections. Mesuré :
+`curl https://lawful-hare.cloudvent.net/fr/services/cybersecurite/ | grep -c bookshop`
+= 0 (idem vocal-wren, idem /fr/) alors qu'un build local
+`STATIC_ONLY=1 EDITOR_PREVIEW=1 npm run build` doit poser 2 marqueurs
+`bookshop-live` sur cette page (operations.md § 6). Gabriel a posé
+EDITOR_PREVIEW=1 sur le site Édition le 25/09 (STATIC_ONLY et EDITOR_PREVIEW
+apparaissent tous deux dans Site Settings → Build → Environment Variables).
+1. Reproduis en local dans une copie isolée si le port 4321 écoute
+   (operations.md § 3.1) : `STATIC_ONLY=1 EDITOR_PREVIEW=1 npm run build`
+   puis compte les marqueurs ; puis `npx @bookshop/generate` comme
+   `.cloudcannon/postbuild` le fait. Dis si le code livre encore Bookshop
+   (astro.config.mjs `attachBookshop`, page.astro `bookshop:live`,
+   .cloudcannon/postbuild, cloudcannon.config.yml `_structures.sections`).
+2. Si le local est sain : le problème est côté site CloudCannon — donne-moi
+   la liste EXACTE des choses à vérifier dans l'UI (valeur des variables,
+   commande de build, output path, ligne « Added live editing to N pages » /
+   « No live editing connected » du journal de build, site dev sans la
+   variable), une par ligne, avec ce que je dois te rapporter.
+3. Si le local est cassé : corrige, gate complet, rituel.
+Ne modifie pas la fusion staging/dev ; Gabriel commite lui-même.
+```
+
+#### L-menu-mobile — Le méga-menu n'a qu'un niveau sur mobile (0,5 j)
+
+```text
+Lot L-menu-mobile de docs/plan-livraison-finale.md. Lis la mémoire
+project-status puis src/components/Header.astro (§ « Mobile drawer », vers la
+ligne 591) et src/data/navigation/fr.json + en.json.
+Bug (25/09) : le tiroir mobile ne rend que navItems (6 entrées + Recherche)
+— aucune des 3 colonnes de nav.mega (Expertises / Services / Produits,
+14 liens), ni la carte featured, ni les catégories de nav.megaRessources.
+Sur téléphone, un seul niveau.
+Fais : dans le tiroir, chaque entrée qui porte un megaKey devient un
+accordéon natif <details>/<summary> SANS script (le lien de la page mère en
+tête, puis les liens de ses colonnes avec leurs têtes de colonne ; Ressources
+= ses catégories + le lien vers le centre) ; les entrées sans megaKey restent
+des liens. Jetons de src/styles/theme.css, contraste AA, focus visible,
+chevron CSS, aria-current conservé, fermeture du tiroir au clic d'un lien
+inchangée (script existant). Même contenu FR/EN (navigation JSON, rien de
+codé en dur). Ajoute tests/e2e/menu-mobile.spec.ts (390 px : ouvrir le
+tiroir, déplier « Services », atteindre /fr/services/cybersecurite/ ; idem
+EN) et le tiroir ouvert comme gabarit dans tests/e2e/accessibilite.spec.ts
+(axe 0). Vérifie au passage le lien « Intelligence artificielle » de la
+colonne Expertises (href absent dans navigation/fr.json) et dis-moi ce
+qu'il en est. Aucun champ CMS nouveau. Gate complet, rituel.
+```
+
+#### L-cta-articles — Un bandeau CTA dans les articles (0,25 j)
+
+```text
+Lot L-cta-articles de docs/plan-livraison-finale.md. Lis la mémoire
+project-status, docs/plan-forme-articles.md et le § « Mettre en forme un
+article » de docs/guide-edition.md. Les 4 patrons (bouton, encadré, FAQ,
+tableau) rendent bien ; il manque le 5e : un BANDEAU d'appel à l'action
+complet (surtitre facultatif, titre, texte, un ou deux boutons) posé sur un
+fond, comme le composant `cta` des pages — c'est ce que Julie appelle
+« plus de design pour ce genre de bannière » (#1762, 23/09).
+Fais : <div class="article-cta"> (variante fond ivoire, variante fond marine
+avec textes inversés — contraste AA 4,5:1 vérifié), 100 % CSS sous .prose
+dans src/styles/global.css, zéro script, boutons = classes btn/btn-outline
+existantes, marges cohérentes avec les autres patrons. Ajoute-le à
+docs/plan-forme-articles.md (HTML de référence), à la démo
+src/data/demo/forme-articles.md rendue sur /fr/style-guide/forme-articles/
+(axe 0), au guide (modèle à coller, une ligne vide avant/après), et étends
+tests/e2e/forme-articles.spec.ts. NE TOUCHE À AUCUN ARTICLE existant : Julie
+posera le bandeau elle-même. Rappelle en fin de réponse la décision toujours
+ouverte : snippets CloudCannon = passer en .mdx (≈ 0,5 j) ou garder les
+modèles collés. Gate complet, rituel.
+```
+
 ## 7. Suivi
 
 | Lot | Titre | Estimé | Dépend de | Revue | Fait le |
@@ -799,6 +879,7 @@ foreach ($s in $stories) {
 | L-images-articles | **Images des articles, REMISES** (règle du 25/09 : le nouveau se conserve, l'oublié se ramène). Mesure `images-manquantes-articles.py` (nouveau, 25/09 matin) : 44 images de contenu absentes dans 26 articles + 36 `<img>` de NIS2 servies par l'ancien domaine. Remise outillée `restaure-images-articles.py` (ordre de la source → place dans le Markdown, alt de l'ancien site, original plein format, jamais dans un tableau/encadré/FAQ ni entre deux items, texte nu vérifié) : **38 posées dans 23 articles + 2 à la main** (ZTNA et SASE EN, source en français) ; 36 `<img>` réécrites en `/wp-content/`. Rapport à 0 (hors 3 infographies FR de l'article ITOM EN, à refaire en anglais — Julie). 2 alt hérités faux à corriger au CMS (NIS2 « loi Dora », IoT « Loi 25 »). Fait APRÈS la fusion `dev` → `staging` pour ne pas rouvrir de conflit avec les sauvegardes de Julie | 0,5 j | fusion staging | | 2026-09-25 |
 | L-statut-import | **Statut de l'importation + validation « on ne perd rien »** (demande de Gabriel, page IA en exemple). NOUVEL OUTIL rejouable `scripts/migration/blocs-manquants-pages.py` : le pendant de l'outil des articles pour les 89 pages hors articles, plus les paragraphes amputés, les IMAGES (par nom de fichier) et les LIENS internes. Première passe : 87/89 pages avec un écart — **17 images de héros remplacées, 106 liens perdus, 216 blocs absents (143 courts), 103 paragraphes amputés, 123 photos + 246 logos absents** ; 340 blocs seulement reformulés (hors décompte). Lecture, réponses à Julie (Lambda déjà dans `dev` ; 4 « documents » → D18 ; 7 articles à retirer → D19 ; `staging` a 42 commits de retard sur `dev` = la vraie cause de ses « non intégrée ») et suites dans `docs/migration/statut-import.md`. Aucun contenu modifié. Lot de remise = L-restaure-pages (prompt en phase 3) | 0,5 j | — | | 2026-09-23 |
 | L-restaure-pages (1re passe) | **Remise du contenu perdu sur les PAGES** — ordre du classeur de Julie (visible + indexable d'abord), FR + EN, 5 lots : IA, accueil/SEvOC/Loi 25/Carrières/Conseil/Cyber, Productivité/Infonuagique/Intranet/Ø Studio/Appro TI/Services gérés, 11 pages enfants, 18 fiches fournisseurs. **Blocs 216 → 100, amputés 103 → 82, liens 106 → 13, héros 17 → 13 (restants = design/assumés).** Remis : 6 héros d'origine, ~90 liens, avis Gartner complets (note globale, note + date par avis, citations entières), 14 badges de certification (Cyber), désignations Microsoft (Azure, D365), logos manquants (AlgoSec, Proofpoint, OVH, Zscaler, Juniper), infographies (Harmony SASE, schéma intranet), phrases amputées. 3 composants retouchés (tech-columns items = liens, bento aside = HTML, testimonial-cards.intro + rétro-remplissage 66 fichiers). Reste (§ 7 de statut-import.md) : logos de la page Productivité (bandeau texte), photos sans emplacement, Licences (D18), Découvrir/Merci/Ressources assumées | 1 j | — | | 2026-09-24 |
+| L-edition-visuelle | **Édition visuelle CloudCannon morte — diagnostic : le CODE est sain, la variable ne prend pas côté site Édition.** Local (`STATIC_ONLY=1 EDITOR_PREVIEW=1`) : 213 pages, 2 marqueurs `bookshop-live` sur Cyber, 128 pages avec marqueurs ; `npx @bookshop/generate` rejoué (stub `info.json`, recette operations.md § 8) : « Added live editing to 128 pages », bundle 2,1 Mo, 42 structures ; `check:bookshop` 43/43, `build-mode.test` 7/7. Sondes en ligne : **lawful-hare = 0 marqueur, 137 URL au sitemap, brouillon en 301 → construit SANS `EDITOR_PREVIEW`** (pas de rebuild depuis la variable, ou variable inopérante) ; **vocal-wren = 5 marqueurs + connecteur + bundle, 150 URL, brouillon en 200 → construit AVEC** (reconstruit depuis la mesure du 25/09 — l'édition y est à retester). Différence de chemin de liaison `<!--databinding:#-->` (vs `#sections` en prod) = préfixe commun des DEUX liaisons `sections` + `seoH1`, en place depuis le 16/09 (e4197c4), pas une régression. Aucun code changé ; liste de vérifications UI remise à Gabriel | 0,5 h | — | | 2026-09-25 (diagnostic ; UI à vérifier) |
 
 **Total Opus ≈ 14–15 jours assistés · Fable : 4 revues + réserve d'urgence.**
 Ordre conseillé si le temps manque : L01 → L06 → L09 → L15 → L16 → L10 → L11,
