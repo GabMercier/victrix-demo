@@ -1,7 +1,7 @@
 import { defineCollection as astroDefineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { sanitizeRichHtml } from '../component-library/src/shared/rich';
-import { FOND_KEYS } from '../component-library/src/shared/fonds';
+import { FOND_KEYS, FOND_KEYS_ETENDUS, FOND_KEYS_LEGACY } from '../component-library/src/shared/fonds';
 import { ICON_KEYS, LEGACY_ICON_KEYS } from '../component-library/src/shared/icons';
 import { CONTACT_SERVICE_KEYS, CONTACT_SUJET_KEYS } from './lib/contact/presets';
 
@@ -22,6 +22,53 @@ import { CONTACT_SERVICE_KEYS, CONTACT_SUJET_KEYS } from './lib/contact/presets'
  * propre repli ci-dessous. Ceinture et bretelles côté CMS :
  * `empty_type: string` sur les entrées texte de cloudcannon.config.yml.
  */
+/**
+ * QUAND GARDER `.min(1)` — la règle, tranchée par le lot L01 (2026-09-22).
+ *
+ * `nullsToEmpty` ci-dessus règle le `null` du CMS ; il ne règle PAS le champ
+ * vidé qu'un `.min(1)` refuse ensuite. C'est la récidive du 18 sept. 2026 :
+ * `merci.metaDescription`, vidée dans l'éditeur, a mis `staging` au rouge
+ * pendant 20 sauvegardes d'affilée — plus rien de ce que Julie enregistrait
+ * n'était publié, pour une méta description. Un `.min(1)` sur un champ éditable
+ * est un build rouge en attente ; il ne se justifie que si le vide casse
+ * VRAIMENT la page.
+ *
+ * `.min(1)` GARDÉ seulement quand le champ vide produirait un élément SANS NOM
+ * ACCESSIBLE ou SANS DESTINATION :
+ *  1. les destinations (`href`, `navHref`, `phoneHref`) ;
+ *  2. les intitulés de commandes — liens, boutons, entrées de menu, options de
+ *     liste blanche — y compris ceux qui n'en ont pas l'air : `footer.phone`
+ *     est le TEXTE du lien `tel:`, `ressources.searchPlaceholder` et
+ *     `newsletter.emailPlaceholder` sont rendus en `sr-only` et servent de
+ *     LIBELLÉ à leur champ de saisie, `ressources.eyebrow` est le nom du fil
+ *     d'Ariane des articles, `contact.consentText` est le libellé de la case
+ *     de consentement (obligatoire) ;
+ *  3. les `aria-label` — dont `footer.columns[].title` et `footer.contactTitle`,
+ *     qui nomment chacun un repère `<nav>` en plus d'être un `<h2>` ;
+ *  4. le titre visible de la page (son `<h1>`) et son `<title>` (`metaTitle`) ;
+ *  5. `contact.labels.*` : le `name` HTML du champ en est DÉRIVÉ
+ *     (src/lib/forms/field-name.ts) et deux garde-fous de build comparent la
+ *     page à la définition du formulaire — vidé, le champ casse le build de
+ *     toute façon, mais avec un message qui dit quoi réaligner ;
+ *  6. `annonces.title` : l'identifiant de la bannière dans la LISTE du CMS.
+ *     Vide, l'éditrice ne sait plus laquelle elle modifie.
+ *
+ * Tout le reste — méta descriptions, surtitres, chapeaux, corps de texte,
+ * intitulés de colonne décoratifs, textes de substitution, confirmations —
+ * prend `.default('')`, et le gabarit fait le repli : soit il n'affiche pas
+ * l'élément (`{valeur && …}`, pour un titre ou un bloc décoré, sinon le vide
+ * laisse un trou), soit il rend une chaîne vide, ce qui ne produit rien.
+ *
+ * Les `.min(1)` de TABLEAU (« au moins un élément ») restent : supprimer toutes
+ * les lignes d'une liste est un autre geste que vider un champ, et une liste
+ * entièrement vide est en général une vraie panne (un menu, un pied de page,
+ * les sorties de la 404). Les tableaux de texte LIBRE (`formBullets`,
+ * `offices[].lines`) acceptent en revanche un élément vide : le rendu le filtre.
+ *
+ * Le test `src/content.config.champs-vides.test.ts` vide tour à tour CHAQUE
+ * chaîne de src/data et src/content/pages et échoue en nommant le champ ; la
+ * liste des champs structurels y est explicite, et c'est la même que celle-ci.
+ */
 function nullsToEmpty(value: unknown): unknown {
   if (value === null) return '';
   // Texte enrichi (Phase 1, 2026-09-16) : toute chaîne portant du HTML passe le
@@ -39,14 +86,131 @@ function nullsToEmpty(value: unknown): unknown {
   return value;
 }
 
+/**
+ * LISTES FERMÉES VIDÉES AU CMS (2026-09-22, lot L-selects) — la même panne par
+ * l'autre porte.
+ *
+ * `nullsToEmpty` règle le `null`, la règle « QUAND GARDER `.min(1)` » règle le
+ * texte vidé ; restait la TROISIÈME porte : un `select` effacé dans CloudCannon
+ * écrit `''`, et un `z.enum([...]).default('ivoire')` REFUSE `''` — build rouge
+ * identique à l'incident du 18 sept., pour un menu déroulant remis à blanc.
+ * Huit sélecteurs de section (`callout.layout`, `cta.variant`, `form.variant`,
+ * les quatre de `numbered-cards`, `timeline.tone`) et cinq champs hors sections
+ * étaient atteignables : leur `allow_empty` du CMS vaut `true` (absent = true).
+ * Les 38 autres sont bornés par `allow_empty: false` côté CloudCannon — une
+ * garde d'interface, du même genre que `empty_type: string` qui n'avait pas
+ * suffi le 18/09 : le schéma ne doit pas en dépendre.
+ *
+ * L'ARBITRAGE, tranché par Gabriel : `.catch('<défaut>')` réparerait le vide en
+ * une ligne par champ, mais avalerait AUSSI une clé mal orthographiée
+ * (`fond: "beig"` deviendrait silencieusement le défaut, et personne ne verrait
+ * jamais que la section n'a pas le fond demandé). On ne veut que la moitié du
+ * comportement : VIDE → le défaut ; INCONNU → toujours refusé, bruyamment.
+ *
+ * D'où cette normalisation, guidée par le schéma lui-même et posée EN UN SEUL
+ * ENDROIT comme `nullsToEmpty` : avant validation, on descend le schéma et la
+ * donnée EN PARALLÈLE et on EFFACE la clé dont la valeur est `''` quand son
+ * schéma est une liste fermée qui n'accepte pas `''` et qu'un `.default(…)` (ou
+ * `.optional()`) peut absorber l'absence. Zod applique alors le défaut du champ
+ * — celui qui est écrit à côté, jamais un défaut inventé ici. Deux propriétés
+ * qui en découlent, et que le test `content.config.listes-fermees.test.ts`
+ * vérifie dans les deux sens :
+ *  - aucune liste à déclarer ici : elle est LUE dans le schéma, donc un `z.enum`
+ *    ajouté demain est couvert le jour même, sans rien à penser ;
+ *  - les listes où `''` est une valeur LÉGITIME (`fondClairOuVide` = « défaut
+ *    historique du bloc », `pictogramme` = « aucune icône ») ne sont pas
+ *    touchées : `''` y est dans la liste, donc jamais effacé.
+ */
+type DefZod = {
+  typeName?: string;
+  innerType?: z.ZodTypeAny;
+  schema?: z.ZodTypeAny;
+  type?: z.ZodTypeAny;
+  shape?: () => Record<string, z.ZodTypeAny>;
+  values?: readonly string[];
+  discriminator?: string;
+  optionsMap?: Map<unknown, z.ZodTypeAny>;
+};
+const defDe = (schema: z.ZodTypeAny | undefined): DefZod =>
+  ((schema as unknown as { _def?: DefZod } | undefined)?._def ?? {}) as DefZod;
+
+const estObjetSimple = (valeur: unknown): valeur is Record<string, unknown> =>
+  typeof valeur === 'object' &&
+  valeur !== null &&
+  Object.getPrototypeOf(valeur) === Object.prototype;
+
+/**
+ * `true` si effacer la clé vaut mieux que laisser `''` : liste fermée SANS `''`
+ * parmi ses valeurs, sous une enveloppe (`.default()` / `.optional()`) capable
+ * d'absorber l'absence. Sinon on ne touche à rien — une liste fermée SANS repli
+ * doit continuer à échouer, avec son message d'origine.
+ */
+function videEffacable(schema: z.ZodTypeAny): boolean {
+  let courant: z.ZodTypeAny | undefined = schema;
+  let absorbe = false;
+  for (;;) {
+    const def = defDe(courant);
+    if (def.typeName === 'ZodDefault' || def.typeName === 'ZodOptional') {
+      absorbe = true;
+      courant = def.innerType;
+    } else if (def.typeName === 'ZodNullable') courant = def.innerType;
+    else if (def.typeName === 'ZodEffects') courant = def.schema;
+    else break;
+    if (!courant) return false;
+  }
+  const def = defDe(courant);
+  return absorbe && def.typeName === 'ZodEnum' && !(def.values ?? []).includes('');
+}
+
+/** Descend schéma et donnée en parallèle ; renvoie une COPIE nettoyée. */
+function videsVersDefauts(schema: z.ZodTypeAny | undefined, valeur: unknown): unknown {
+  const def = defDe(schema);
+  switch (def.typeName) {
+    case 'ZodDefault':
+    case 'ZodOptional':
+    case 'ZodNullable':
+      return videsVersDefauts(def.innerType, valeur);
+    case 'ZodEffects':
+      return videsVersDefauts(def.schema, valeur);
+    case 'ZodArray':
+      return Array.isArray(valeur)
+        ? valeur.map((element) => videsVersDefauts(def.type, element))
+        : valeur;
+    case 'ZodDiscriminatedUnion': {
+      if (!estObjetSimple(valeur)) return valeur;
+      // Sections : le discriminant (`type`) désigne le seul membre à descendre.
+      const option = def.optionsMap?.get(valeur[def.discriminator as string]);
+      return option ? videsVersDefauts(option, valeur) : valeur;
+    }
+    case 'ZodObject': {
+      if (!estObjetSimple(valeur)) return valeur;
+      const shape = def.shape?.() ?? {};
+      const sortie: Record<string, unknown> = { ...valeur };
+      for (const [cle, sousSchema] of Object.entries(shape)) {
+        if (!(cle in sortie)) continue;
+        if (sortie[cle] === '' && videEffacable(sousSchema)) delete sortie[cle];
+        else sortie[cle] = videsVersDefauts(sousSchema, sortie[cle]);
+      }
+      return sortie;
+    }
+    default:
+      // Unions non discriminées (`z.union([image(), z.string()])`) : on ne
+      // devine pas quel membre s'applique — la donnée passe telle quelle.
+      return valeur;
+  }
+}
+
 type CollectionConfig = Parameters<typeof astroDefineCollection>[0];
 const defineCollection = ((config: CollectionConfig) => {
   const { schema } = config;
+  /** Les deux tolérances, dans l'ordre : `null` → `''`, puis `''` → le défaut. */
+  const tolerer = (resolu: z.ZodTypeAny) =>
+    z.preprocess((brut) => videsVersDefauts(resolu, nullsToEmpty(brut)), resolu);
   const tolerant =
     typeof schema === 'function'
-      ? (ctx: Parameters<typeof schema>[0]) => z.preprocess(nullsToEmpty, schema(ctx))
+      ? (ctx: Parameters<typeof schema>[0]) => tolerer(schema(ctx))
       : schema
-        ? z.preprocess(nullsToEmpty, schema)
+        ? tolerer(schema)
         : schema;
   return astroDefineCollection({ ...config, schema: tolerant } as CollectionConfig);
 }) as typeof astroDefineCollection;
@@ -103,7 +267,7 @@ const blog = defineCollection({
     // filename still pairs the FR/EN translations — see src/i18n/blog.ts.
     slug: z.string().optional(),
     // Draft flag (CloudCannon switch « Brouillon »). Drafts are EXCLUDED from
-    // routes/listings on the public site, but the STATIC_ONLY (CloudCannon
+    // routes/listings on the public site, but the EDITOR_PREVIEW (CloudCannon
     // editing) build keeps them so editors can preview before publishing —
     // the single switch lives in filterPublished() (src/i18n/blog.ts).
     // `.default(false)` keeps every existing post published without touching
@@ -149,7 +313,12 @@ const FORM_FIELD_TYPES = [
 
 const formFieldCore = z.object({
   label: z.string(),
-  type: z.enum(FORM_FIELD_TYPES),
+  // Défaut AJOUTÉ 2026-09-22 (L-selects) : ce select est vidable dans CloudCannon
+  // (`allow_empty` absent = true) et, sans repli, un champ remis à blanc
+  // mettait le build au rouge. « text » est le type le plus inoffensif — le
+  // champ reste saisissable, son `name` HTML vient de son LIBELLÉ (inchangé)
+  // et les deux garde-fous de build continuent de comparer page et définition.
+  type: z.enum(FORM_FIELD_TYPES).default('text'),
   required: z.boolean(),
   // PRÉSENTATION seulement (re-skin formulaires 2026-08-04, maquettes Figma
   // form1/form2) : « demi » = le champ occupe une demi-rangée (deux champs
@@ -273,9 +442,20 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
   // churn visuel sur l'existant. Palette ÉTENDUE à 10 fonds le 2026-09-17 —
   // source unique component-library/src/shared/fonds.ts (clés, classes,
   // pastilles) ; « sable » ré-accordé, gris/bleus/« pierre » ajoutés.
-  const fondClair = z.enum(FOND_KEYS);
+  // FOND_KEYS_LEGACY : clés RETIRÉES de la palette mais encore acceptées —
+  // une sauvegarde CloudCannon peut porter l'ancienne valeur (c'est arrivé
+  // le 2026-09-22, 4 h après la fusion des deux bleus). Elles ne sont plus
+  // offertes au sélecteur ; `fondCanonique` les résout au rendu.
+  const fondClair = z.enum([...FOND_KEYS, ...FOND_KEYS_LEGACY]);
   // Variante « '' = défaut historique du bloc » (form, faq) — même liste.
-  const fondClairOuVide = z.enum(['', ...FOND_KEYS]);
+  const fondClairOuVide = z.enum(['', ...FOND_KEYS, ...FOND_KEYS_LEGACY]);
+  // Palette ÉTENDUE (2026-09-21, demande Gabriel) : les 10 fonds clairs + les
+  // fonds SOMBRES (« bleu électrique » = l'aplat Bleu Victrix). Réservée aux
+  // sections qui INVERSENT leurs textes sur fond sombre — rich-text, callout,
+  // stats, logo-banner, faq ; les autres gardent `fondClair`, sinon l'éditrice
+  // pourrait produire du texte marine sur aplat bleu. Même liste que
+  // `_select_data.fonds_etendus` (garde-fou : npm run cms:previews:check).
+  const fondEtendu = z.enum([...FOND_KEYS_ETENDUS, ...FOND_KEYS_LEGACY]);
   // Pictogramme de la BANQUE partagée (2026-09-18) — source unique
   // component-library/src/shared/icons.ts : toutes les sections à icône
   // acceptent toutes les clés ('' = aucune). Les anciennes listes fermées
@@ -302,13 +482,13 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       ctaIcon: z.enum(['telechargement', '']).default(''),
       // « Fond de section » ÉTENDU 2026-08-18 (landing-pagefinal.txt : héros
       // IVOIRE) ; défaut « givre » = rendu historique (surface-container-low).
-      fond: fondClair.default('givre'),
+      fond: fondClair.default('beige'),
     }),
     z.object({
       type: z.literal('benefits'),
       title: z.string(),
       intro: z.string().optional(),
-      fond: fondClair.default('blanc'),
+      fond: fondEtendu.default('ivoire'),
       // « compact » AJOUTÉ 2026-08-05 (landing-page.css §Guide Benefits) :
       // tête réduite 16/24 + liseré bleu, cartes compactes.
       headingStyle: z.enum(['titre', 'compact']).default('titre'),
@@ -326,6 +506,10 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           // organisation/porteur/destinataire AJOUTÉES 2026-08-17 (page
           // Expertises — SVG pleins fournis, docs/design/export2/Images).
           icon: pictogramme.default(''),
+          // LOGO de marque (2026-09-22) — pour ce que la banque de
+          // pictogrammes ne peut pas dire. Gagne sur `icon`.
+          image: z.string().default(''),
+          imageAlt: z.string().default(''),
         }),
       ),
     }),
@@ -346,7 +530,23 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // majuscules — `fond` sans effet dans cette variante.
       variant: z.enum(['light', 'dark', 'nuit', 'primaire']).default('light'),
       // Fond de la SECTION derrière le panneau (le panneau garde sa `variant`).
-      fond: fondClair.default('blanc'),
+      fond: fondClair.default('ivoire'),
+    }),
+    // « Renvoi vers le contact (qualification) » — 2026-09-21. Un SEUL
+    // formulaire de demande sur le site : cette section pose la question de
+    // qualification (tranche d'effectif) et renvoie vers /contact déjà
+    // rempli. Les tranches ne sont PAS dans le contenu — elles voyagent dans
+    // l'URL et viennent de shared/tailles-entreprise.ts.
+    z.object({
+      type: z.literal('contact-qualifier'),
+      title: z.string(),
+      intro: z.string().default(''),
+      question: z.string(),
+      // URL FINALE, préfixe de langue inclus : elle fixe aussi la langue des
+      // tranches affichées.
+      contactHref: z.string(),
+      note: z.string().default(''),
+      fond: fondClair.default('beige'),
     }),
     z.object({
       type: z.literal('form'),
@@ -377,7 +577,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('faq'),
       title: z.string(),
-      fond: fondClair.default('blanc'),
+      fond: fondEtendu.default('ivoire'),
       items: z.array(z.object({ question: z.string(), answer: z.string() })),
     }),
     // ---- Palette additions (17 juil., P-02) — shared like everything else.
@@ -386,6 +586,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     // browser-safe (no astro:assets), and "" means "no image" everywhere. ----
     z.object({
       type: z.literal('testimonial'),
+      fond: fondClair.default('beige'),
       quote: z.string(),
       name: z.string(),
       role: z.string().optional(),
@@ -394,6 +595,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('logo-banner'),
+      fond: fondEtendu.default('ivoire'),
       title: z.string().optional(),
       badge: z.string().optional(),
       items: z.array(
@@ -410,7 +612,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       // « carte » (2026-09-16) : carte centrée qui chevauche le héros, 3 chiffres
       // avec pictogramme (parité WordPress, page Services gérés). Défaut = bande.
       style: z.enum(['bande', 'carte']).default('bande'),
-      fond: fondClair.default('givre'),
+      fond: fondEtendu.default('beige'),
       items: z.array(
         z.object({
           number: z.string(),
@@ -421,6 +623,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('video'),
+      fond: fondClair.default('ivoire'),
       title: z.string(),
       intro: z.string().optional(),
       // "" until the editor pastes the URL — the facade renders disabled.
@@ -447,14 +650,25 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('home-iso'),
+      fond: fondClair.default('blanc'),
       title: z.string(),
       subtitle: z.string(),
+      // LOGO de la bande (2026-09-23) — chemin public servi tel quel (le logo
+      // ISO). Vide = aucun logo. `imageAlt` vide = décoratif : le bon réglage
+      // quand les items disent déjà « ISO 27001 » / « ISO 9001 ».
+      image: z.string().default(''),
+      imageAlt: z.string().default(''),
       // Re-skin 2026-08-04 — barre de confiance (patron Trust Bar) : items
       // {value,label} ; tableau vide = ancien rendu titre + sous-titre.
-      items: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
+      // `icon` (2026-09-23) : clé de la banque partagée ; vide = la coche
+      // d'origine, donc les bandes déjà posées ne changent pas d'aspect.
+      items: z
+        .array(z.object({ value: z.string(), label: z.string(), icon: pictogramme.default('') }))
+        .default([]),
     }),
     z.object({
       type: z.literal('home-expertises'),
+      fond: fondClair.default('ivoire'),
       sectionTitle: z.string(),
       // Re-skin 2026-08-04 — paragraphe d'appui (maquette bento : SOUS le titre).
       intro: z.string().default(''),
@@ -489,6 +703,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('home-solution'),
+      fond: fondClair.default('beige'),
       eyebrow: z.string(),
       title: z.string(),
       body: z.string(),
@@ -510,6 +725,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     // chemins PUBLICS servis tels quels (browser-safe, règle des sections).
     z.object({
       type: z.literal('home-solutions'),
+      fond: fondClair.default('ivoire'),
       title: z.string(),
       // Lien en haut à droite (« Voir toutes nos solutions → ») ; vides = absent.
       ctaLabel: z.string().default(''),
@@ -529,11 +745,13 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('home-partners'),
+      fond: fondClair.default('ivoire'),
       title: z.string(),
       names: z.array(z.string()),
     }),
     z.object({
       type: z.literal('home-experts'),
+      fond: fondEtendu.default('sable'),
       title: z.string(),
       subtitle: z.string(),
       ctaLabel: z.string(),
@@ -541,6 +759,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('home-latest'),
+      fond: fondClair.default('ivoire'),
       title: z.string(),
       // Fidélité maquette accueil.css — sous-titre sous le titre de section.
       subtitle: z.string().default(''),
@@ -549,6 +768,23 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       readMoreLabel: z.string().default(''),
       ctaLabel: z.string(),
       ctaHref: z.string(),
+      // ARTICLES EN VEDETTE (2026-09-23, demande du marketing pour la démo).
+      // Vide = les 3 articles les PLUS RÉCENTS, comportement historique.
+      // Renseigné = ces articles-là, DANS CET ORDRE.
+      //
+      // La valeur est le NOM DE FICHIER de l'article sans extension
+      // (« certification-iso-27001-iso-9001 »), et non son slug publié : le nom
+      // de fichier est l'identifiant qui APPARIE FR et EN (mécanisme
+      // `postUrlSlug`, cf. le schéma `blog`), donc UNE seule liste suffit pour
+      // les deux langues et elle ne casse pas quand Julie retouche un slug.
+      //
+      // Ce n'est volontairement PAS une liste fermée au sens de la règle 5 du
+      // CLAUDE.md : les articles sont du contenu vivant, une liste `_select_data`
+      // devrait être régénérée à chaque publication. Le filet est ailleurs —
+      // `src/pages/[lang]/index.astro` ignore un identifiant inconnu et le
+      // SIGNALE au build, plutôt que de faire échouer la construction sur une
+      // faute de frappe faite au CMS.
+      vedettes: z.array(z.string()).default([]),
     }),
     // ---- Sections « services » (P-07) — port fidèle de la page expertise IA
     // vers des sections composables GÉNÉRIQUES et réutilisables (partagées
@@ -619,7 +855,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       cta2Href: z.string().default(''),
       image: z.string().default(''),
       imageAlt: z.string().default(''),
-      fond: fondClair.default('givre'),
+      fond: fondClair.default('beige'),
     }),
     // Bento métriques : tête centrée + carte Bleu nuit (titre, texte,
     // puces-métriques « verre », pictogramme filigrane) + carte claire (tuile
@@ -630,7 +866,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('bento-metrics'),
       title: z.string(),
       intro: z.string().default(''),
-      fond: fondClair.default('blanc'),
+      fond: fondClair.default('ivoire'),
       featured: z.object({
         title: z.string(),
         text: z.string().default(''),
@@ -641,6 +877,11 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       aside: z
         .object({
           icon: pictogramme.default(''),
+          // LOGO de la carte latérale (2026-09-22) — cas d'usage d'origine :
+          // l'insigne HappyIndex® AtWork sur Découvrir, qui ne pouvait pas
+          // s'afficher faute de champ et retombait sur une coche générique.
+          image: z.string().default(''),
+          imageAlt: z.string().default(''),
           title: z.string(),
           text: z.string().default(''),
           linkLabel: z.string().default(''),
@@ -656,6 +897,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     // large 2×1, petite 1×1).
     z.object({
       type: z.literal('expertise-bento'),
+      fond: fondClair.default('ivoire'),
       eyebrow: z.string().default(''),
       title: z.string(),
       intro: z.string().default(''),
@@ -682,6 +924,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     // + cartes outils (tuile icône, titre, texte, lien).
     z.object({
       type: z.literal('exclusive-tools'),
+      fond: fondClair.default('beige'),
       title: z.string(),
       intro: z.string().default(''),
       featured: z
@@ -739,7 +982,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('offer-cards'),
       title: z.string(),
       intro: z.string().default(''),
-      fond: fondClair.default('givre'),
+      fond: fondClair.default('beige'),
       ctaLabel: z.string().default(''),
       ctaHref: z.string().default(''),
       items: z.array(
@@ -761,7 +1004,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('realisations'),
       title: z.string(),
       intro: z.string().default(''),
-      fond: fondClair.default('blanc'),
+      fond: fondClair.default('ivoire'),
       linkLabel: z.string().default(''),
       linkHref: z.string().default(''),
       items: z.array(
@@ -772,8 +1015,37 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
         }),
       ),
     }),
+    // Galerie d'images (2026-09-23, lot L10 — catalogue Ø Studio) : grille de
+    // visuels que le visiteur agrandit d'un clic. Première section à accepter
+    // une LISTE d'images libre ; l'agrandissement se fait par ancres `:target`,
+    // sans script (les composants Bookshop sont browser-safe). Tous les champs
+    // sauf la liste sont optionnels : une galerie fraîchement posée au CMS ne
+    // casse rien, elle ne rend rien.
+    z.object({
+      type: z.literal('galerie'),
+      title: z.string().default(''),
+      intro: z.string().default(''),
+      fond: fondClair.default('ivoire'),
+      // Colonnes sur grand écran ; chaîne, parce que c'est une valeur de
+      // select CloudCannon (comme numbered-cards.columns).
+      colonnes: z.enum(['2', '3', '4']).default('3'),
+      images: z
+        .array(
+          z.object({
+            // Chemin PUBLIC servi tel quel ; vide = vignette non rendue.
+            image: z.string().default(''),
+            // Texte de remplacement — vide = image décorative pour les lecteurs
+            // d'écran. Les 75 images importées de Ø Studio en ont un provisoire,
+            // à réécrire au CMS (docs/migration/catalogue-ostudio.md).
+            alt: z.string().default(''),
+            legende: z.string().default(''),
+          }),
+        )
+        .default([]),
+    }),
     z.object({
       type: z.literal('numbered-cards'),
+      fond: fondClairOuVide.default(''),
       sectionTitle: z.string(),
       // 'plain' = titre centré simple ; 'underline' = titre + liseré vert.
       headingStyle: z.enum(['plain', 'underline']).default('plain'),
@@ -792,6 +1064,13 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
           // CTA par carte (optionnel — rendu seulement si libellé ET lien).
           ctaLabel: z.string().optional(),
           ctaHref: z.string().optional(),
+          // VISUEL de la carte (2026-09-22) — `icon` puise dans la banque
+          // partagée, `image` accepte un LOGO de marque que la banque n'a pas
+          // (Microsoft, AWS, ServiceNow…). `image` gagne quand les deux sont
+          // remplis. Les deux vides = comportement d'avant.
+          icon: pictogramme.default(''),
+          image: z.string().default(''),
+          imageAlt: z.string().default(''),
         }),
       ),
     }),
@@ -799,18 +1078,35 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('feature-boxes'),
       sectionTitle: z.string(),
       subtitle: z.string().optional(),
-      fond: fondClair.default('givre'),
-      // Liste de libellés simples (boîtes bordées) — tableau de chaînes.
-      boxes: z.array(z.string()),
+      fond: fondEtendu.default('beige'),
+      // Boîtes bordées. DEUX formes acceptées depuis le 2026-09-22 : la
+      // CHAÎNE historique (aucune section migrée ne casse) et l'OBJET, qui
+      // seul permet à CloudCannon d'offrir une icône et un logo — un tableau
+      // de chaînes n'a pas de sous-champ affichable.
+      boxes: z.array(
+        z.union([
+          z.string(),
+          z.object({
+            label: z.string(),
+            icon: pictogramme.default(''),
+            image: z.string().default(''),
+            imageAlt: z.string().default(''),
+          }),
+        ]),
+      ),
     }),
     z.object({
       type: z.literal('tech-columns'),
+      fond: fondClair.default('ivoire'),
       sectionTitle: z.string(),
       // Chaque groupe = une colonne (titre + liste), avec un sous-groupe
       // étiqueté optionnel (ex. « Sources ouvertes et locales : » + sa liste).
       groups: z.array(
         z.object({
           title: z.string(),
+          // Lien optionnel du titre de colonne (2026-09-21) : pages fournisseurs
+          // d'Approvisionnement TI. URL FINALE (/fr/…) ; vide = titre sans lien.
+          href: z.string().default(''),
           items: z.array(z.string()),
           subgroup: z.object({ label: z.string(), items: z.array(z.string()) }).optional(),
         }),
@@ -818,6 +1114,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     }),
     z.object({
       type: z.literal('callout'),
+      fond: fondEtendu.default('ivoire'),
       title: z.string(),
       body: z.string().optional(),
       ctaLabel: z.string().optional(),
@@ -829,12 +1126,13 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('rich-text'),
       title: z.string().optional(),
-      fond: fondClair.default('blanc'),
+      fond: fondEtendu.default('ivoire'),
       // Chaque paragraphe rendu en <p set:html> (peut contenir des <strong>).
       paragraphs: z.array(z.string()),
     }),
     z.object({
       type: z.literal('related-posts'),
+      fond: fondClair.default('beige'),
       title: z.string(),
       ctaLabel: z.string().optional(),
       ctaHref: z.string().optional(),
@@ -868,6 +1166,9 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       title: z.string(),
       lead: z.string().default(''),
       quote: z.string().default(''),
+      // Insigne officiel de la distinction (2026-09-21) — chemin PUBLIC servi
+      // tel quel ; vide = tracé « étoile lauréate » du composant.
+      image: z.string().default(''),
       // Défaut « perle » (#f3f4f7) = l'ancien bg-surface-container de la page.
       fond: fondClair.default('perle'),
     }),
@@ -875,7 +1176,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       type: z.literal('value-tiles'),
       eyebrow: z.string().default(''),
       title: z.string(),
-      fond: fondClair.default('blanc'),
+      fond: fondEtendu.default('ivoire'),
       items: z
         .array(
           z.object({
@@ -893,7 +1194,7 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       cardText: z.string().default(''),
       image: z.string().default(''),
       imageAlt: z.string().default(''),
-      fond: fondClair.default('blanc'),
+      fond: fondClair.default('ivoire'),
       items: z
         .array(
           z.object({
@@ -907,6 +1208,9 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
     z.object({
       type: z.literal('testimonial-cards'),
       title: z.string().default(''),
+      // Texte sous le titre (2026-09-24) : la note globale Gartner Peer Insights
+      // des fiches fournisseurs (« Note globale : 4,3 ⭐ — 2 056 avis vérifiés »).
+      intro: z.string().default(''),
       // Défaut « brume » (#e5e7eb) = l'ancien bg-surface-container-high.
       fond: fondClair.default('brume'),
       items: z
@@ -931,10 +1235,11 @@ function sectionsSchema(image: () => z.ZodTypeAny) {
       partners: z.array(z.string()).default([]),
       image: z.string().default(''),
       imageAlt: z.string().default(''),
-      fond: fondClair.default('blanc'),
+      fond: fondEtendu.default('ivoire'),
     }),
     z.object({
       type: z.literal('timeline'),
+      fond: fondClairOuVide.default(''),
       title: z.string(),
       intro: z.string().optional(),
       tone: z.enum(['default', 'tint']).default('default'),
@@ -999,6 +1304,24 @@ const home = defineCollection({
       // (masqué à l'écran, rendu par component-library/src/shared/astro/
       // page.astro) et le grand titre du héros passe en <h2>, styles inchangés.
       seoH1: z.string().optional(),
+      // SEO de l'accueil OUVERT AU CMS (2026-09-23). Jusque-là la page n'avait
+      // NI titre NI description éditables : `<title>` sortait à « Victrix »
+      // tout court (BaseLayout retombe sur SITE_NAME quand `title` est absent)
+      // et la description était codée en dur dans src/pages/[lang]/index.astro,
+      // hors de portée de l'éditrice. Lighthouse notait quand même 100 — son
+      // audit `document-title` ne juge que la PRÉSENCE de la balise, pas son
+      // contenu.
+      // NOMS DE CHAMPS : `seoTitle` comme partout ailleurs, mais
+      // `metaDescription` (nom des pages système) et NON `description` — dans
+      // cloudcannon.config.yml les `_inputs` sont indexés par NOM DE CHAMP et
+      // cascadent dans les objets imbriqués : une clé `description` à la
+      // racine hériterait du libellé générique « Description » prévu pour les
+      // items de section (cartes, partenaires…). `metaDescription` n'existe
+      // nulle part dans les _inputs de `home` : aucune collision.
+      // `.default('')` + repli au rendu (règle 5 du CLAUDE.md) : un champ vidé
+      // au CMS ne peut pas produire de balise vide.
+      seoTitle: z.string().default(''),
+      metaDescription: z.string().default(''),
       sections: z.array(sectionsSchema(image)),
     }),
 });
@@ -1159,10 +1482,17 @@ const services = defineCollection({
  * complète). Une entrée JSON par solution, ids "<locale>/<fichier>" (même
  * patron que blog/landing/services : le nom de fichier apparie FR/EN).
  *
- * PAS de pages de détail pour l'instant — `href`/`docHref` pointent vers une
- * cible existante (ex. /contact) ou restent vides (lien masqué). Les valeurs
- * de `sector` et `solutionType` sont LIBRES : la page catalogue construit ses
- * filtres à partir des valeurs distinctes rencontrées (ordre d'apparition).
+ * DEPUIS LE LOT L11 (2026-09-23), une fiche peut porter des `sections` : elle a
+ * alors sa PAGE (/<langue>/solutions/<slug>/, route
+ * src/pages/[lang]/solutions/[slug].astro) et « Découvrir » y mène. Sans
+ * `sections`, rien ne change : aucune page n'est générée et la carte garde son
+ * lien `href` — c'est l'état des 9 fiches EN, dont la traduction est un travail
+ * de contenu. `href` reste une SURCHARGE : rempli, il l'emporte sur la fiche
+ * (ex. `o-bureau`, qui a déjà une page de service plus riche).
+ *
+ * Les valeurs de `sector` et `solutionType` sont LIBRES : la page catalogue
+ * construit ses filtres à partir des valeurs distinctes rencontrées (ordre
+ * d'apparition) — d'où la règle éditoriale « reprendre la graphie exacte ».
  */
 const solutions = defineCollection({
   loader: glob({
@@ -1170,30 +1500,52 @@ const solutions = defineCollection({
     base: './src/content/solutions',
     generateId: ({ entry }) => entry.replace(/\\/g, '/').replace(/\.[^/.]+$/, ''),
   }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    // Chemin PUBLIC servi tel quel ("" = vignette de remplacement grise).
-    image: z.string().default(''),
-    // Chip du haut de vignette (filtre « Secteurs d'activité »).
-    sector: z.string(),
-    // Chip du pied de carte (filtre « Types de solution »).
-    solutionType: z.string(),
-    // true → l'entrée alimente le panneau vedette (bleu nuit) en tête de
-    // catalogue (la première trouvée dans l'ordre `order` gagne).
-    featured: z.boolean().default(false),
-    // Ordre d'affichage dans la grille (croissant).
-    // Seul nombre du CMS : un champ vidé arrive en `""` (voir nullsToEmpty) →
-    // retombe sur le défaut plutôt que de casser le build.
-    order: z.preprocess((v) => (v === '' ? undefined : v), z.number().default(999)),
-    href: z.string().default(''),
-    docHref: z.string().default(''),
-    // Service présélectionné sur Contact quand `href` y mène (2026-09-18 : le
-    // champ OBLIGATOIRE « Service » restait vide en arrivant du catalogue).
-    // Clé neutre (src/lib/contact/presets.ts) ; '' = repli sur le
-    // `contactService` de la page qui porte le catalogue.
-    contactService: z.enum(['', ...CONTACT_SERVICE_KEYS]).default(''),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      // Chemin PUBLIC servi tel quel ("" = vignette de remplacement grise).
+      image: z.string().default(''),
+      // Chip du haut de vignette (filtre « Secteurs d'activité »).
+      sector: z.string(),
+      // Chip du pied de carte (filtre « Types de solution »).
+      solutionType: z.string(),
+      // true → l'entrée alimente le panneau vedette (bleu nuit) en tête de
+      // catalogue (la première trouvée dans l'ordre `order` gagne).
+      featured: z.boolean().default(false),
+      // Ordre d'affichage dans la grille (croissant).
+      // Seul nombre du CMS : un champ vidé arrive en `""` (voir nullsToEmpty) →
+      // retombe sur le défaut plutôt que de casser le build.
+      order: z.preprocess((v) => (v === '' ? undefined : v), z.number().default(999)),
+      href: z.string().default(''),
+      docHref: z.string().default(''),
+      // Service présélectionné sur Contact quand `href` y mène (2026-09-18 : le
+      // champ OBLIGATOIRE « Service » restait vide en arrivant du catalogue).
+      // Clé neutre (src/lib/contact/presets.ts) ; '' = repli sur le
+      // `contactService` de la page qui porte le catalogue.
+      contactService: z.enum(['', ...CONTACT_SERVICE_KEYS]).default(''),
+
+      // ---- FICHE DE SOLUTION (2026-09-23, lot L11) ------------------------
+      // Une entrée n'est plus seulement une CARTE du catalogue : dès qu'elle
+      // porte des `sections`, elle a sa propre page /<langue>/solutions/<slug>/
+      // (route src/pages/[lang]/solutions/[slug].astro) et « Découvrir » y mène.
+      // `sections` VIDE = comportement d'avant, à la lettre : aucune page n'est
+      // générée, la carte garde son lien. C'est le cas des 9 fiches EN, dont la
+      // traduction est un travail de contenu — rien ne casse en attendant.
+      sections: z.array(sectionsSchema(image)).default([]),
+      // Surcharge du slug d'URL (patron services) : le nom de FICHIER apparie
+      // FR et EN, ce champ permet à l'anglais de porter son URL à lui.
+      slug: z.string().default(''),
+      // `noindex` : les 16 fiches importées de Ø Studio sont générées à `true`
+      // — elles affichent des fourchettes de prix que Ø Studio doit valider
+      // (ADO #1634). À décocher fiche par fiche au CMS une fois validées.
+      noindex: z.boolean().default(false),
+      seoTitle: z.string().default(''),
+      seoH1: z.string().default(''),
+      // Préremplissage du Contact DEPUIS la fiche (le `contactService`
+      // ci-dessus sert aussi au bouton de la CARTE, dans le catalogue).
+      contactSujet: z.enum(['', ...CONTACT_SUJET_KEYS]).default(''),
+    }),
 });
 
 /**
@@ -1320,7 +1672,10 @@ const navigation = defineCollection({
           href: navHref,
           // Hérité : plus rendu depuis le re-skin chrome 2026-08-04 (les têtes
           // de colonne Figma sont textuelles) — champ conservé au contrat.
-          icon: z.enum(['strategy', 'cloud', 'security', 'productivity', 'managed']),
+          // Défaut AJOUTÉ 2026-09-22 (L-selects) : le select reste offert dans
+          // CloudCannon et vidable ; sans repli, effacer un pictogramme qui ne
+          // s'affiche même plus aurait suffi à faire tomber le build.
+          icon: z.enum(['strategy', 'cloud', 'security', 'productivity', 'managed']).default('strategy'),
           links: z.array(navLink),
         }),
       ),
@@ -1330,7 +1685,7 @@ const navigation = defineCollection({
       // (convention navigation, localisés au rendu).
       featured: z
         .object({
-          title: z.string().min(1),
+          title: z.string().default(''),
           body: z.string().default(''),
           ctaLabel: z.string().min(1),
           href: navHref,
@@ -1340,7 +1695,7 @@ const navigation = defineCollection({
         .optional(),
       stripe: z
         .object({
-          text: z.string().min(1),
+          text: z.string().default(''),
           links: z
             .array(z.object({ label: z.string().min(1), href: navHref }))
             .max(2)
@@ -1363,8 +1718,8 @@ const navigation = defineCollection({
         // (le bouton pointe parentHref — le centre de ressources).
         intro: z.string(),
         ctaLabel: z.string().min(1),
-        categoriesTitle: z.string().min(1),
-        latestTitle: z.string().min(1),
+        categoriesTitle: z.string().default(''),
+        latestTitle: z.string().default(''),
       })
       .optional(),
   }),
@@ -1379,7 +1734,7 @@ const navigation = defineCollection({
  * Fenêtre de diffusion PARTAGÉE [startAt, endAt) évaluée au BUILD
  * (src/lib/schedule.ts) ; une seule bannière s'affiche à la fois — sélection
  * par pickActiveAnnounce (la plus récemment commencée gagne), consommée via
- * src/lib/announce.ts. Le build d'édition (STATIC_ONLY) IGNORE la fenêtre
+ * src/lib/announce.ts. Le build d'édition (EDITOR_PREVIEW) IGNORE la fenêtre
  * pour que l'éditeur voie et modifie toujours une bannière. Un site statique
  * n'applique la fenêtre qu'à la reconstruction : rebuild quotidien planifié —
  * voir operations.md § « Publication planifiée ».
@@ -1389,6 +1744,15 @@ const annonceText = z.object({
   strong: z.string(),
   after: z.string(),
   linkLabel: z.string().min(1),
+  // LIEN PROPRE À LA LANGUE (2026-09-23) — vide = le `linkHref` commun.
+  // Pourquoi : le lien commun suppose que les deux langues partagent l'URL, ce
+  // qui est vrai pour /solutions ou /contact, mais FAUX dès qu'on vise une page
+  // de service — leurs slugs anglais sont traduits. La campagne d'accompagnement
+  // IA vit sous `intelligence-artificielle/accompagnement-ia` en français et
+  // `artificial-intelligence/landing-ai-consulting` en anglais : avec le seul
+  // lien commun, le bandeau anglais tombait sur un 404.
+  // SANS préfixe de langue, comme le lien commun (convention navigation).
+  linkHref: z.union([navHref, z.literal('')]).default(''),
 });
 const annonces = defineCollection({
   loader: glob({ pattern: '*.json', base: './src/data/annonces' }),
@@ -1530,7 +1894,7 @@ const site = defineCollection({
       phone: z.string().min(1),
       // Numéro composable (tel:), sans espaces ni ponctuation.
       phoneHref: z.string().min(1),
-      socialLabel: z.string().min(1),
+      socialLabel: z.string().default(''),
       // Puce du pied de page = accès au portail client.
       contactCta: z.object({ label: z.string().min(1), href: navHref }),
       // Liens sociaux TEXTE. '#' hérité tant que les URLs réelles ne sont pas
@@ -1541,7 +1905,7 @@ const site = defineCollection({
     // Bandeau de consentement Loi 25 (P-10) — visible sur toutes les pages via
     // BaseLayout. Formulation à portée légale : éditable sans développeur.
     consent: z.object({
-      text: z.string().min(1),
+      text: z.string().default(''),
       policyLabel: z.string().min(1),
       policyHref: navHref,
       accept: z.string().min(1),
@@ -1553,11 +1917,11 @@ const site = defineCollection({
     }),
     notFound: z.object({
       metaTitle: z.string().min(1),
-      metaDescription: z.string().min(1),
-      eyebrow: z.string().min(1),
+      metaDescription: z.string().default(''),
+      eyebrow: z.string().default(''),
       title: z.string().min(1),
-      text: z.string().min(1),
-      requestedLabel: z.string().min(1),
+      text: z.string().default(''),
+      requestedLabel: z.string().default(''),
       // Mêmes règles que la nav : liens internes SANS préfixe de langue
       // (la page 404 localise via localizePath).
       links: z
@@ -1586,16 +1950,20 @@ const contact = defineCollection({
   loader: glob({ pattern: '*.json', base: './src/data/contact' }),
   schema: z.object({
     metaTitle: z.string().min(1),
-    metaDescription: z.string().min(1),
+    metaDescription: z.string().default(''),
+    // Surtitre du héros — rétabli par la maquette « contact redesign »
+    // (2026-09-21) après avoir été retiré en août. FACULTATIF : vidé au CMS,
+    // il disparaît simplement du rendu.
+    heroEyebrow: z.string().default(''),
     heroTitle: z.string().min(1),
-    heroSub: z.string().min(1),
-    infoTitle: z.string().min(1),
+    heroSub: z.string().default(''),
+    infoTitle: z.string().default(''),
     // Libellés de la carte Coordonnées (les numéros vivent dans le gabarit).
     // Maquette finale 2026-08-18 : 2 rangées seulement (sans frais + courriel)
     // — l'eyebrow du héros et la mini-grille des villes sont supprimés.
     infoLabels: z.object({
-      tollFree: z.string().min(1),
-      email: z.string().min(1),
+      tollFree: z.string().default(''),
+      email: z.string().default(''),
     }),
     // Cartes bureaux. Le gabarit apparie les téléphones PAR POSITION (Québec,
     // Montréal, Paris) — conserver cet ordre. Image = chemin PUBLIC servi tel
@@ -1603,25 +1971,31 @@ const contact = defineCollection({
     offices: z
       .array(
         z.object({
-          city: z.string().min(1),
-          lines: z.array(z.string().min(1)).min(1),
+          city: z.string().default(''),
+          lines: z.array(z.string()).min(1),
           image: z.string().default(''),
         }),
       )
       .min(1),
-    formTitle: z.string().min(1),
-    formIntro: z.string().min(1),
-    formBullets: z.array(z.string().min(1)),
-    reqNote: z.string().min(1),
+    formTitle: z.string().default(''),
+    formIntro: z.string().default(''),
+    formBullets: z.array(z.string()),
+    reqNote: z.string().default(''),
     labels: z.object({
       firstName: z.string().min(1),
       lastName: z.string().min(1),
       email: z.string().min(1),
       phone: z.string().min(1),
       subject: z.string().min(1),
-      subjectPlaceholder: z.string().min(1),
+      subjectPlaceholder: z.string().default(''),
       expertise: z.string().min(1),
-      expertisePlaceholder: z.string().min(1),
+      expertisePlaceholder: z.string().default(''),
+      // Qualification « Taille de l'entreprise » (2026-09-21) — champ
+      // FACULTATIF du contrat : vidé au CMS, il disparaît du formulaire au
+      // lieu de casser le build (règle « le contenu est édité par des
+      // non-développeurs »). Idem companySizeOptions plus bas.
+      companySize: z.string().default(''),
+      companySizePlaceholder: z.string().default(''),
       request: z.string().min(1),
       message: z.string().min(1),
     }),
@@ -1629,20 +2003,24 @@ const contact = defineCollection({
     // « votre@courriel.com », « Écrire… »…) — les selects gardent leurs
     // placeholders dans `labels` (première option).
     placeholders: z.object({
-      firstName: z.string().min(1),
-      lastName: z.string().min(1),
-      email: z.string().min(1),
-      phone: z.string().min(1),
-      request: z.string().min(1),
-      message: z.string().min(1),
+      firstName: z.string().default(''),
+      lastName: z.string().default(''),
+      email: z.string().default(''),
+      phone: z.string().default(''),
+      request: z.string().default(''),
+      message: z.string().default(''),
     }),
     subjectOptions: z.array(z.string().min(1)).min(1),
     expertiseOptions: z.array(z.string().min(1)).min(1),
+    // Tranches d'effectif — liste vide = champ retiré du formulaire (voir
+    // labels.companySize). Doit rester IDENTIQUE à celle de la définition
+    // src/data/forms/<lang>/contact.json : contact.astro les compare au build.
+    companySizeOptions: z.array(z.string().min(1)).default([]),
     // HTML restreint ({privacy} = lien vers la politique, localisé au rendu) —
     // même politique que le consentText des formulaires (contenu de dépôt).
     consentText: z.string().min(1),
     submit: z.string().min(1),
-    statusMessage: z.string().min(1),
+    statusMessage: z.string().default(''),
   }),
 });
 
@@ -1667,29 +2045,27 @@ const pagesSysteme = defineCollection({
       // Fin de titre en bleu (maquette « ressources parent » 2026-08-18 :
       // « Perspectives et **expertises TI** ») — vide = titre d'un seul tenant.
       titleAccent: z.string().default(''),
-      intro: z.string().min(1),
+      intro: z.string().default(''),
       filterAll: z.string().min(1),
       // Refonte « Centre de ressources » (maquette export2, 2026-08-18) —
-      // textes du héros, de la barre de recherche, des cartes et du bandeau
-      // d'appel à l'action. Tous éditables au CMS (collection Pages système).
-      subscribeLabel: z.string().min(1),
+      // textes de la barre de recherche, des cartes et du bandeau d'appel à
+      // l'action. Tous éditables au CMS (collection Pages système).
+      // RETIRÉS le 2026-09-21 avec l'ancien héros : `subscribeLabel` (bouton
+      // « S'abonner à l'infolettre ») et `expertCard` (carte vitrée décorative)
+      // — plus rien ne les affichait.
       searchPlaceholder: z.string().min(1),
       readMore: z.string().min(1),
       byline: z.string().default(''),
-      expertCard: z.object({
-        title: z.string().min(1),
-        subtitle: z.string().min(1),
-      }),
       newsletter: z.object({
-        title: z.string().min(1),
-        text: z.string().min(1),
+        title: z.string().default(''),
+        text: z.string().default(''),
         emailPlaceholder: z.string().min(1),
         submitLabel: z.string().min(1),
-        confirmation: z.string().min(1),
+        confirmation: z.string().default(''),
       }),
       cta: z.object({
-        title: z.string().min(1),
-        text: z.string().min(1),
+        title: z.string().default(''),
+        text: z.string().default(''),
         primaryLabel: z.string().min(1),
         // Liens internes SANS préfixe de langue (même règle que `merci.links`).
         primaryHref: navHref,
@@ -1701,10 +2077,10 @@ const pagesSysteme = defineCollection({
       metaTitle: z.string().min(1),
       // TOLÉRANT (2026-09-18) : voir `merci.metaDescription` ci-dessous.
       metaDescription: z.string().default(''),
-      eyebrow: z.string().min(1),
+      eyebrow: z.string().default(''),
       title: z.string().min(1),
-      intro: z.string().min(1),
-      noscript: z.string().min(1),
+      intro: z.string().default(''),
+      noscript: z.string().default(''),
     }),
     merci: z.object({
       metaTitle: z.string().min(1),
@@ -1715,7 +2091,7 @@ const pagesSysteme = defineCollection({
       // vide = repli sur la description par défaut du site (BaseLayout).
       metaDescription: z.string().default(''),
       title: z.string().min(1),
-      text: z.string().min(1),
+      text: z.string().default(''),
       // Mêmes règles que la 404 : liens internes SANS préfixe de langue.
       links: z
         .array(

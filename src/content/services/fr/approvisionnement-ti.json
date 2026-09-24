@@ -31,8 +31,8 @@
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Un approvisionnement TI stratégique, sécurisé et géré",
-      "intro": "De la cybersécurité à l’infonuagique, en passant par l’automatisation, le réseau et la connectivité, Victrix vous aide à bâtir une infrastructure performante, cohérente et sécurisée.",
-      "fond": "blanc",
+      "intro": "De <a href=\"/fr/services/cybersecurite/\">la cybersécurité</a> à <a href=\"/fr/services/services-infonuagiques/\">l’infonuagique</a>, en passant par l’automatisation, le réseau et la connectivité, Victrix vous aide à bâtir une infrastructure performante, cohérente et sécurisée.",
+      "fond": "ivoire",
       "featured": {
         "title": "Revendeur à valeur ajoutée",
         "text": "Victrix agit comme revendeur à valeur ajoutée auprès des organisations et agences gouvernementales. Nous sommes votre partenaire capable de conjuguer <strong>expertise technique, sécurité et gouvernance</strong>.",
@@ -44,7 +44,9 @@
         "title": "Un processus simple, sécurisé, adapté a vos besoins TI réels",
         "text": "Nos experts évaluent vos besoins, comparent les offres du marché et recommandent l'acquisition du matériel informatique qui s'aligne parfaitement avec vos priorités de performances et de sécurité.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/contact/"
+        "linkHref": "/fr/contact/",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -52,7 +54,7 @@
       "type": "offer-cards",
       "title": "Approvisionnement TI, gestion et renouvellement",
       "intro": "Profitez d’un accompagnement sur mesure pour l’achat, la gestion et le renouvellement de vos licences et matériels.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "",
       "ctaHref": "",
       "items": [
@@ -123,10 +125,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Cybersécurité et protection des identités",
       "groups": [
         {
           "title": "Check Point",
+          "href": "/fr/services/approvisionnement-ti/check-point/",
           "items": [
             "Sécurité IA : IA générative, applications IA, agents autonomes et prévention des fuites de données via les prompts et modèles",
             "Contrôle unifié et politiques centralisées",
@@ -144,6 +148,7 @@
         },
         {
           "title": "CrowdStrike",
+          "href": "/fr/services/approvisionnement-ti/crowdstrike-falcon/",
           "items": [
             "Protection des terminaux",
             "Intelligence des menaces",
@@ -159,6 +164,7 @@
         },
         {
           "title": "Palo Alto Networks",
+          "href": "/fr/services/approvisionnement-ti/palo-alto-networks/",
           "items": [
             "Sécurité réseau",
             "Accès sécurisé",
@@ -174,6 +180,7 @@
         },
         {
           "title": "Zscaler",
+          "href": "/fr/services/approvisionnement-ti/zscaler/",
           "items": [
             "Sécurité infonuagique",
             "Architecture zéro confiance (Zero Trust)",
@@ -189,8 +196,9 @@
         },
         {
           "title": "Microsoft",
+          "href": "/fr/services/approvisionnement-ti/solutions-microsoft/",
           "items": [
-            "Microsoft 365 E5 Security",
+            "<a href=\"/fr/services/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/\">Microsoft 365</a> E5 Security",
             "Microsoft Defender",
             "Microsoft Sentinel",
             "Microsoft Entra ID",
@@ -206,10 +214,12 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Réseau et connectivité",
       "groups": [
         {
           "title": "Cisco",
+          "href": "/fr/services/approvisionnement-ti/cisco/",
           "items": [
             "Infrastructure réseau et connectivité",
             "Sécurité réseau",
@@ -224,6 +234,7 @@
         },
         {
           "title": "HPE Networking",
+          "href": "/fr/services/approvisionnement-ti/hpe-networking/",
           "items": [
             "Routeurs et commutateurs",
             "Systèmes d’exploitation",
@@ -243,17 +254,19 @@
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Infonuagique, automatisation et virtualisation",
       "groups": [
         {
           "title": "Microsoft",
+          "href": "/fr/services/approvisionnement-ti/solutions-microsoft/",
           "items": [
-            "Microsoft 365 : Teams, Outlook, SharePoint, OneDrive",
-            "Dynamics 365 : Sales, Customer Service, Customer Insights, Field Service et Contact Center",
+            "<a href=\"/fr/services/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/\">Microsoft 365</a> : Teams, Outlook, SharePoint, OneDrive",
+            "Dynamics 365 : Sales, Customer Service, Customer Insights, <a href=\"/fr/services/productivite/dynamics-365-field-service/\">Field Service</a> et Contact Center",
             "Power Platform : Power Apps, Power Automate, Power BI et Power Pages",
             "Azure : Active Directory, Virtual Desktop, OpenAI/AI Services et Storage/VPN/Compute",
-            "Copilot pour M365",
-            "Copilot Studio",
+            "<a href=\"/fr/services/productivite/copilot-microsoft-365/\">Copilot pour M365</a>",
+            "<a href=\"/fr/services/productivite/copilot-studio/\">Copilot Studio</a>",
             "Sécurité : Microsoft 365 E5 Security, Microsoft Defender, Microsoft Sentinel, Microsoft Entra ID et Microsoft Purview"
           ],
           "subgroup": {
@@ -263,6 +276,7 @@
         },
         {
           "title": "ServiceNow",
+          "href": "/fr/services/approvisionnement-ti/servicenow/",
           "items": [
             "Gestion des services, opérations et ressources informatiques (ITSM/ITOM/ITAM)",
             "Gestion des portefeuilles (SPM/APM)",
@@ -280,13 +294,14 @@
         },
         {
           "title": "Dell Technologies",
+          "href": "/fr/services/approvisionnement-ti/dell-technologies/",
           "items": [
             "Serveurs et infrastructures",
             "Protection des terminaux",
             "Stockage et protection des données",
             "Hyperconvergence et virtualisation",
             "Postes de travail (ordinateurs portables et de bureau, tablettes, moniteurs professionnels et autres accessoires)",
-            "Initiatives liées à l’intelligence artificielle"
+            "Initiatives liées à <a href=\"/fr/services/intelligence-artificielle/\">l’intelligence artificielle</a>"
           ],
           "subgroup": {
             "label": "",
@@ -340,7 +355,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

@@ -20,9 +20,18 @@
     "cms:previews:check": "node scripts/design/generate-cms-previews.mjs --check",
     "check:bookshop": "node scripts/check-bookshop-strip.mjs",
     "check:links": "node scripts/check-internal-links.mjs",
+    "check:prefill": "node scripts/check-contact-prefill.mjs",
     "check:sections": "node scripts/backfill-section-keys.mjs --check",
     "fix:sections": "node scripts/backfill-section-keys.mjs",
-    "fix:links": "node scripts/fix-internal-links.mjs"
+    "fix:links": "node scripts/fix-internal-links.mjs",
+    "build:redirects": "node scripts/build-redirects.mjs",
+    "check:redirects": "node scripts/build-redirects.mjs --check",
+    "build:brand": "node scripts/build-brand-images.mjs",
+    "check:brand": "node scripts/build-brand-images.mjs --check",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "check:images": "node scripts/optimize-images.mjs --check",
+    "check:old-urls": "node scripts/check-old-urls.mjs",
+    "check:parite-texte": "python scripts/migration/check-parite-texte.py"
   },
   "engines": {
     "node": ">=20.3.0"
@@ -37,11 +46,13 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "@axe-core/playwright": "^4.13.0",
     "@bookshop/astro-engine": "3.19.0-rc1",
     "@bookshop/browser": "3.19.0-rc1",
     "@bookshop/generate": "3.19.0-rc1",
     "@playwright/test": "^1.61.0",
     "@tailwindcss/vite": "^4.3.3",
+    "axe-core": "^4.13.0",
     "eslint": "^9.39.4",
     "eslint-plugin-astro": "^1.7.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",

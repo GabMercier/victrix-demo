@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Cybersécurité dans le secteur de la santé",
   "description": "Découvrez notre offre de cybersécurité sur mesure pour le secteur de la santé. Protégez les données des patients et systèmes d’information contre toute attaque.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Cybersécurité : secteur de la santé | Services | Victrix",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -13,18 +9,18 @@
       "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Services de cybersécurité",
-      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Un service adapté au secteur de la santé",
       "titleHighlight": "santé",
-      "lead": "Victrix offre un service de cybersécurité sur mesure pour le secteur de la santé. Protégez les données des patients, vos appareils médicaux connectés et vos systèmes d’information contre toutes les menaces informatiques.",
+      "lead": "Victrix offre un <a href=\"/fr/services/cybersecurite/\">service de cybersécurité</a> sur mesure pour le secteur de la santé. Protégez les données des patients, vos appareils médicaux connectés et vos systèmes d’information contre toutes les menaces informatiques.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
+      "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
+      "imageAlt": "",
+      "eyebrowStyle": "texte",
       "cta2Label": "",
       "cta2Href": "",
       "overlay": "voile",
-      "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
-      "imageAlt": "",
       "imagePosition": "centre"
     },
     {
@@ -32,7 +28,7 @@
       "type": "bento-metrics",
       "title": "Une cybersécurité et une confidentialité de premier ordre pour les organismes de santé",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Une expérience approfondie du domaine de la santé",
         "text": "Nos consultants cyber comprennent les exigences auxquelles font face les prestataires de soins de santé au quotidien. Nous usons des meilleures pratiques de cybersécurité pour <strong>protéger vos renseignements personnels</strong> et <strong>renforcer la sécurité des systèmes</strong> de votre établissement de santé.",
@@ -44,19 +40,17 @@
         "title": "Un accompagnement personnalisé",
         "text": "Pour garantir un niveau de sécurité optimal à votre organisme de soins de santé, il est essentiel d’atteindre et de maintenir les normes les plus élevées — c’est là où l’accompagnement professionnel devient indispensable.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Les enjeux de cybersécurité des établissements de santé",
       "headingStyle": "plain",
-      "intro": "",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "2",
       "cardStyle": "default",
@@ -65,6 +59,9 @@
           "number": "01",
           "title": "Gouvernance et résilience",
           "text": "Préparer l’établissement de santé à faire face aux cybermenaces et être en mesure de réaliser une auto-évaluation des cyberrisques.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -72,6 +69,9 @@
           "number": "02",
           "title": "Ressources et mutualisation",
           "text": "Identifier et augmenter le nombre de professionnels, assurer un budget suffisant pour renforcer la cybersécurité et le numérique, et trouver un service de cybersécurité adapté aux besoins spécifiques et prioritaires.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -79,6 +79,9 @@
           "number": "03",
           "title": "Sensibilisation à la cybersécurité en santé",
           "text": "Sensibiliser les hauts dirigeants, sensibiliser et former l’ensemble des employés, et mettre en place des exercices de crise en cas d’attaque par hameçonnage ou autres menaces.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -86,10 +89,18 @@
           "number": "04",
           "title": "Sécurité opérationnelle",
           "text": "Sécuriser les annuaires d’établissements (AD) et les équipements médicaux (IoT), gérer les risques d’exposition et les accès, et développer un plan de reprise des activités et relève.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         }
-      ]
+      ],
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "strategic-value",
@@ -131,15 +142,17 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "L’écosystème de la santé",
       "groups": [
         {
           "title": "Agences",
+          "href": "",
           "items": [
             "Agence du numérique en santé (ANS – France)",
             "Dossier de santé numérique (Québec)",
@@ -152,6 +165,7 @@
         },
         {
           "title": "Ministères",
+          "href": "",
           "items": [
             "Ministère de la Santé et des Services sociaux du Québec",
             "CISSS (centres intégrés de santé et de services sociaux) et déclinaisons régionales"
@@ -163,6 +177,7 @@
         },
         {
           "title": "Centres et établissements",
+          "href": "",
           "items": [
             "Centres intégrés universitaires",
             "Établissements privés"
@@ -178,20 +193,70 @@
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Nos technologies",
-      "subtitle": "",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
-        "Palo Alto",
-        "Checkpoint",
-        "Pulse Secure",
-        "CrowdStrike",
-        "Microsoft 365",
-        "Cisco",
-        "AlgoSec",
-        "AWS",
-        "ServiceNow",
-        "Proofpoint"
-      ]
+        {
+          "label": "Palo Alto",
+          "icon": "",
+          "image": "/images/logos/paloalto.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Checkpoint",
+          "icon": "",
+          "image": "/images/logos/checkpoint.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Pulse Secure",
+          "icon": "",
+          "image": "/images/logos/pulse-secure.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "CrowdStrike",
+          "icon": "",
+          "image": "/images/logos/crowdstrike.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Microsoft 365",
+          "icon": "",
+          "image": "/images/logos/microsoft.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Cisco",
+          "icon": "",
+          "image": "/images/logos/cisco.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AlgoSec",
+          "icon": "",
+          "image": "/images/logos/algosec.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AWS",
+          "icon": "",
+          "image": "/images/logos/aws.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "ServiceNow",
+          "icon": "",
+          "image": "/images/logos/servicenow-partner.png",
+          "imageAlt": ""
+        },
+        {
+          "label": "Proofpoint",
+          "icon": "",
+          "image": "/images/logos/proofpoint.png",
+          "imageAlt": ""
+        }
+      ],
+      "subtitle": ""
     },
     {
       "_bookshop_name": "cta",
@@ -203,7 +268,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "seoTitle": "Cybersécurité : secteur de la santé | Services | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

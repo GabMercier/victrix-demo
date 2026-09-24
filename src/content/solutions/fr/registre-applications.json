@@ -1,0 +1,106 @@
+{
+  "_schema": "default",
+  "title": "Registre des applications organisationnelles",
+  "description": "Découvrez notre application de gestion des applications organisationnelles. Centralisée et complète, elle répertorie toutes vos applications, gère les licences, les accès utilisateurs et assure une gestion optimisée des ressources.",
+  "image": "/images/solutions/registre-applications/01.jpg",
+  "sector": "Gouvernance",
+  "solutionType": "Power Platform",
+  "featured": false,
+  "order": 20,
+  "href": "",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": [
+    {
+      "_bookshop_name": "product-hero",
+      "type": "product-hero",
+      "badge": "Solution Ø Studio",
+      "title": "Registre des applications organisationnelles",
+      "titleHighlight": "",
+      "lead": "Découvrez notre application de gestion des applications organisationnelles. Centralisée et complète, elle répertorie toutes vos applications, gère les licences, les accès utilisateurs et assure une gestion optimisée des ressources.",
+      "ctaLabel": "Parler à un expert",
+      "ctaHref": "#formulaire",
+      "cta2Label": "Voir le catalogue",
+      "cta2Href": "/fr/solutions/",
+      "image": "/images/solutions/registre-applications/01.jpg",
+      "imageAlt": "Maquette de présentation — Registre des applications organisationnelles",
+      "fond": "beige"
+    },
+    {
+      "_bookshop_name": "bento-metrics",
+      "type": "bento-metrics",
+      "title": "En bref",
+      "intro": "",
+      "fond": "ivoire",
+      "featured": {
+        "title": "Registre des applications organisationnelles",
+        "text": "",
+        "watermark": "eclair",
+        "stats": [
+          {
+            "value": "Secteur Industriel",
+            "label": "Client"
+          },
+          {
+            "value": "Entre 25.000 et 50.000 $ CAD",
+            "label": "Coût"
+          },
+          {
+            "value": "Entre 1 et 3 mois",
+            "label": "Délai"
+          },
+          {
+            "value": "Power Platform, SharePoint",
+            "label": "Technologies"
+          }
+        ]
+      },
+      "aside": {
+        "icon": "coche",
+        "image": "",
+        "imageAlt": "",
+        "title": "Conçue par Ø Studio",
+        "text": "Notre studio de création Power Platform et Dynamics 365 personnalise la solution à vos processus.",
+        "linkLabel": "Découvrir Ø Studio",
+        "linkHref": "/fr/services/productivite/o-studio/"
+      }
+    },
+    {
+      "_bookshop_name": "galerie",
+      "type": "galerie",
+      "title": "Aperçu de l’application",
+      "intro": "",
+      "colonnes": "2",
+      "fond": "ivoire",
+      "images": [
+        {
+          "image": "/images/solutions/registre-applications/02.png",
+          "alt": "Capture d’écran de l’application — Registre des applications organisationnelles",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/registre-applications/03.png",
+          "alt": "Capture d’écran de l’application — Registre des applications organisationnelles",
+          "legende": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "form",
+      "type": "form",
+      "title": "Parlez-nous de votre projet",
+      "intro": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+      "submitLabel": "Demander une consultation",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "o-studio",
+      "fond": "",
+      "fields": []
+    }
+  ]
+}

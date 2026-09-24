@@ -79,11 +79,11 @@ const TitleTag = h1Taken ? 'h2' : 'h1';
   <div class="relative z-10 w-full container-site py-24">
     <div class="max-w-[672px] flex flex-col items-start gap-4">
       <TitleTag
-        class="text-[40px] leading-[1.2] lg:text-[56px] lg:leading-[70px] font-extrabold tracking-[-1.12px] text-on-primary m-0"
+        class="text-[2.5rem] leading-[1.2] lg:text-[3.5rem] lg:leading-[4.375rem] font-extrabold tracking-[-1.12px] text-on-primary m-0"
       >
         {title}
       </TitleTag>
-      {hasRichText(sub) && <p class="text-lg leading-[29px] text-on-primary/90 m-0 max-w-none" set:html={inlineHtml(sub)} />}
+      {hasRichText(sub) && <p class="text-lg leading-[1.8125rem] text-on-primary/90 m-0 max-w-none" set:html={inlineHtml(sub)} />}
       {
         ctaLabel && ctaHref && (
           <a

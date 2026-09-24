@@ -5,6 +5,7 @@ excerpt: "Explore the SASE cloud solution (Secure Access Service Edge) to enhanc
 tags: ["Our articles"]
 topics: ["Cybersecurity", "Cloud computing"]
 slug: "sase-cloud"
+draft: false
 coverImage: "/wp-content/uploads/2023/11/sase-victrix-1.png"
 seoTitle: "SASE Cloud: Secure Access Service Edge | Cybersecurity"
 wpUrl: "/en/ressources/sase-cloud/"
@@ -23,7 +24,7 @@ This cloud architecture model combines network access protection, also known as 
 
 The main objective of the Secure Access Service Edge (SASE) model is to **provide remote workers and branch offices with a secure connection** to corporate data centers and SaaS applications. SASE is the fusion of [information security and connectivity](/en/services/cybersecurity/) for organizations that keep up with the pace of change (teleworking, new branches, etc.).
 
-This model unites the software-defined wide area networking (SD-WAN) or another wide area networking (WAN) with several native security models or functions. We’re talking about [Zero Trust Network Access (ZTNA)](/en/ressources/zero-trust-network-access-ztna/), SWG, CASB, and FWaaS, all driven by the cloud to secure network traffic.
+This model unites the software-defined wide area networking (SD-WAN) or another wide area networking (WAN) with several native security models or functions. We’re talking about [Zero Trust Network Access (ZTNA)](/en/ressources/zero-trust-network-access-ztna-ultimate-cybersecurity-model/), SWG, CASB, and FWaaS, all driven by the cloud to secure network traffic.
 
 ### Why Is Adopting SASE Important?
 
@@ -46,7 +47,7 @@ SASE delivers reduced complexity and simplified management of the network, impro
 - Secure Web Gateway (SWG)
 - Cloud Access Security Broker (CASB)
 - Firewall as a Service (FWaaS)
-- [Zero Trust Network Access (ZTNA)](/en/ressources/zero-trust-network-access-ztna/)
+- [Zero Trust Network Access (ZTNA)](/en/ressources/zero-trust-network-access-ztna-ultimate-cybersecurity-model/)
 
 ### SASE Services Capabilities
 

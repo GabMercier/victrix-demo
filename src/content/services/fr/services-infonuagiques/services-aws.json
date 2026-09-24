@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Services AWS par des experts infonuagiques",
   "description": "Bénéficiez de l'expertise AWS de Victrix pour améliorer l'architecture, la productivité et la performance opérationnelle de votre entreprise.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Expertise AWS | Services aux entreprises",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -13,18 +9,18 @@
       "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Migration infonuagique",
-      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Services AWS par des experts infonuagiques",
       "titleHighlight": "AWS",
-      "lead": "Profitez d'un modèle de service qui favorise l'évolution et simplifie la gestion grâce à notre expertise AWS. Nos spécialistes en solutions infonuagiques conçoivent des stratégies de migration sur mesure pour vous propulser vers la plateforme Amazon Web Services en douceur et en toute sécurité.",
+      "lead": "Profitez d'un modèle de service qui favorise l'évolution et simplifie la gestion grâce à notre expertise AWS. Nos spécialistes en <a href=\"/fr/services/services-infonuagiques/\">solutions infonuagiques</a> conçoivent des stratégies de migration sur mesure pour vous propulser vers la plateforme Amazon Web Services en douceur et en toute sécurité.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
+      "image": "/wp-content/uploads/2023/10/priscilla-du-preez-nnmba7y1ymk-unsplash-1-scaled-e1699542797747.jpg",
+      "imageAlt": "",
+      "eyebrowStyle": "texte",
       "cta2Label": "",
       "cta2Href": "",
       "overlay": "voile",
-      "image": "/wp-content/uploads/2023/10/aws2-1.jpg",
-      "imageAlt": "",
       "imagePosition": "centre"
     },
     {
@@ -32,7 +28,7 @@
       "type": "bento-metrics",
       "title": "Pourquoi choisir la solution infonuagique AWS pour son organisation?",
       "intro": "Amazon Web Services (AWS) est une plateforme infonuagique populaire auprès d'organisations de toutes tailles : infrastructure infonuagique, sécurité, analyse et sauvegarde de données, développement d'applications sur mesure, et bien plus encore.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Flexibilité, sécurité et évolutivité",
         "text": "La <strong>plateforme AWS</strong> offre aux organisations toute la flexibilité, la sécurité, l'accessibilité et l'évolutivité nécessaires pour améliorer leur performance opérationnelle. Nos spécialistes possèdent une expertise AWS de pointe avec <strong>Amazon EC2 (IaaS)</strong>, <strong>Amazon Elastic Beanstalk (PaaS)</strong> et toutes les <strong>solutions SaaS d'AWS</strong>.",
@@ -44,14 +40,15 @@
         "title": "Partenariat AWS",
         "text": "Faites confiance à notre équipe pour assurer une migration efficace de vos applications vers AWS.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "/wp-content/uploads/2023/10/select-light-partner-150x150.png",
+        "imageAlt": "Partenaire AWS — Select Tier Services"
       }
     },
     {
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Assurez une migration fluide, sécuritaire et efficace",
-      "fond": "givre",
       "paragraphs": [
         "<strong>Analyse complète — Recommandations basées sur notre expertise AWS — Accompagnement sur mesure</strong>",
         "Victrix va bien au-delà de l'<a href=\"/fr/services/services-ti-geres/\">offre de services gérés</a> traditionnelle avec ses <strong>services spécialisés AWS</strong>. Nous offrons aux organisations la possibilité de développer une plateforme de productivité évolutive qui simplifie la gestion des charges de travail, sécurise les données et améliore la performance opérationnelle en général."
@@ -72,18 +69,16 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": ""
+      "cardText": "",
+      "fond": "beige"
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Notre méthodologie éprouvée",
       "headingStyle": "plain",
       "intro": "Découvrez notre méthodologie éprouvée pour assurer le succès de votre projet de transformation numérique avec la <strong>plateforme infonuagique AWS</strong>.",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -92,6 +87,9 @@
           "number": "01",
           "title": "Analyse et évaluation de la situation technologique",
           "text": "Évaluation de la faisabilité, analyse et optimisation des coûts, fiabilisation des charges de travail et des applications.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -99,6 +97,9 @@
           "number": "02",
           "title": "Préparation de la stratégie et recommandations",
           "text": "Planification pour une migration fluide (gestion des risques), objectifs d'excellence opérationnelle, de sécurité optimale, de conformité et de performance, respect des 6 R de migration et adaptation aux enjeux selon le contexte de l'organisation.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -106,18 +107,27 @@
           "number": "03",
           "title": "Accompagnement personnalisé",
           "text": "Application de correctifs à l'architecture en place, migration et déploiement du premier service identifié, suivi sur le déroulement de la migration et vue globale sur son état.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Nos services AWS",
       "groups": [
         {
           "title": "Analyse et optimisation",
+          "href": "",
           "items": [
             "OLA : optimisation et évaluation de la conformité des licences",
             "Analyse et optimisation des coûts",
@@ -133,6 +143,7 @@
         },
         {
           "title": "Analyse de migration",
+          "href": "",
           "items": [
             "Évaluation et analyse de faisabilité",
             "Analyse des défis de migration de bases de données",
@@ -147,6 +158,7 @@
         },
         {
           "title": "Stratégie de migration",
+          "href": "",
           "items": [
             "Respect des 6 R de la migration",
             "Migration IaaS, PaaS et SaaS",
@@ -161,6 +173,7 @@
         },
         {
           "title": "Multicloud",
+          "href": "",
           "items": [
             "Stratégie personnalisée en fonction des besoins et objectifs spécifiques",
             "Contrôles de sécurité robustes conçus pour les environnements multi-cloud",
@@ -174,6 +187,7 @@
         },
         {
           "title": "Sécurité infonuagique",
+          "href": "",
           "items": [
             "Stratégie de sécurité sur mesure",
             "Protection contre les menaces sur les identités",
@@ -191,6 +205,7 @@
         },
         {
           "title": "Transformation organisationnelle",
+          "href": "",
           "items": [
             "Modernisation d'environnement avec postes de travail virtuels (AWS WorkSpaces)",
             "Gestion centralisée des applications depuis n'importe quel appareil",
@@ -216,7 +231,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "seoTitle": "Expertise AWS | Services aux entreprises",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Scalable Security Operations Center",
   "description": "Detect, respond, and continuously improve your security posture with SEvOC, our scalable Security Operations Center (SOC).",
-  "noindex": false,
-  "slug": "cybersecurity/scalable-security-operations-center",
-  "seoTitle": "Security Operations Center | Scalable SOC",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -32,7 +28,7 @@
       "type": "bento-metrics",
       "title": "What Victrix's SEvOC Has to Offer",
       "intro": "A 24/7, bilingual SOC service with experts dedicated to your environment.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Continuous monitoring, accelerated response",
         "text": "Accelerate your cybersecurity and optimize all your security tools. Unlike a traditional SOC, <strong>our scalable, modular offering</strong> keeps you at the forefront of security technologies.",
@@ -55,9 +51,11 @@
       "aside": {
         "icon": "bouclier",
         "title": "Benefits of Our SOC Service",
-        "text": "Deal with the increase in advanced cyber threats, supplement your in-house security team with our experts, and simplify the integration of new entities in a context of growth or merger.",
+        "text": "Deal with the increase in advanced threats (<a href=\"/en/ressources/ransomware-protection-tips/\">ransomware</a>, targeted attacks, attacks undetected by conventional approaches), get fast handling of security alerts, supplement your in-house security team with our experts to keep your tools (EDR, SIEM, CSPM) evolving and maintained, simplify the integration of new entities in a context of growth or merger, and reach your strategic objectives while keeping your organization secure.",
         "linkLabel": "Explore our cybersecurity services",
-        "linkHref": "/en/services/cybersecurity"
+        "linkHref": "/en/services/cybersecurity",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -65,7 +63,7 @@
       "type": "offer-cards",
       "title": "What SEvOC Brings to Your Organization",
       "intro": "Support, operations, and evolution: a modular offering that covers the full cycle.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "items": [
@@ -149,10 +147,9 @@
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Services Beyond Traditional Managed Security",
-      "fond": "",
       "paragraphs": [
         "Victrix is not just a <a href=\"/en/services/managed-it-services/\">managed services provider</a>, and SEvOC is not just another SOC. Here's what makes our SOC team so strong.",
-        "<strong>Technological expertise</strong> — Microsoft Sentinel partnership, CrowdStrike ELP partnership (only authorized French-speaking MSSP), <a href=\"/en/ressources/iso-27001-iso-9001-certifications/\">ISO/IEC 27001:2022 and ISO 9001:2015 certification</a>, and management of hybrid or complex environments.",
+        "<strong>Technological expertise</strong> — Microsoft Sentinel partnership, CrowdStrike ELP partnership (only authorized French-speaking MSSP), <a href=\"/en/ressources/iso-27001-iso-9001-certifications/\">ISO/IEC 27001:2022 and ISO 9001:2015 certification</a> (information security backed by international best practices), and management of hybrid or complex environments.",
         "<strong>Local, rooted, human service</strong> — 100% locally operated, non-outsourced monitoring, with direct interaction between your internal teams and our security analysts assigned to your environment; customized reports, monitoring committees, and advice based on your environment's configuration.",
         "<strong>Flexible, collaborative, and evolutive approach</strong> — continuous evolution of the security posture (guidelines, configuration review, maturity coaching) and access to the full depth of Victrix: direct support from our specialized infrastructure, <a href=\"/en/services/cloud-services-provider/\">cloud</a>, governance, and network teams, with no external outsourcing."
       ],
@@ -180,18 +177,15 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": ""
+      "cardText": "",
+      "fond": ""
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Concrete Benefits of SEvOC",
       "headingStyle": "plain",
-      "intro": "",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -200,6 +194,9 @@
           "number": "01",
           "title": "Visualization",
           "text": "Of suspicious activity, with fewer false positives.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -207,6 +204,9 @@
           "number": "02",
           "title": "Reduction",
           "text": "In threat detection and remediation time.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -214,6 +214,9 @@
           "number": "03",
           "title": "Acceleration",
           "text": "Of new technology integration.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -221,6 +224,9 @@
           "number": "04",
           "title": "Minimization",
           "text": "Of operational risks and the burden of cybersecurity management.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -228,6 +234,9 @@
           "number": "05",
           "title": "Elimination",
           "text": "Of repetitive tasks for your staff.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -235,14 +244,23 @@
           "number": "06",
           "title": "Consolidation",
           "text": "And continuous strengthening of your security posture.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         }
-      ]
+      ],
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Cybersecurity",
@@ -261,7 +279,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "slug": "cybersecurity/scalable-security-operations-center",
+  "seoTitle": "Security Operations Center | Scalable SOC",
+  "_schema": "default",
+  "noindex": false
 }

@@ -119,14 +119,26 @@ const selectData = config._select_data ?? {};
 const errors = [];
 const listed = (name) => (selectData[name] ?? []).map((v) => v.cle);
 
-const fondsListed = listed('fonds');
-const fondsDrawn = [...swatches.keys()];
-if (fondsListed.join() !== fondsDrawn.join()) {
-  errors.push(`_select_data.fonds = [${fondsListed}] ≠ FOND_SWATCHES = [${fondsDrawn}] (même ordre attendu)`);
-}
-for (const v of selectData.fonds ?? []) {
-  if (v.apercu !== `/images/cms/fonds/${v.cle}.svg`) errors.push(`fonds.${v.cle}: apercu attendu /images/cms/fonds/${v.cle}.svg`);
-  if (v.couleur !== swatches.get(v.cle)) errors.push(`fonds.${v.cle}: couleur ${v.couleur} ≠ fonds.ts ${swatches.get(v.cle)}`);
+// DEUX listes depuis le 2026-09-21 : `fonds` = palette claire (toutes les
+// sections), `fonds_etendus` = palette claire + fonds SOMBRES (les sections
+// qui savent inverser leurs textes). Les clés sombres sont lues dans fonds.ts.
+const sombresDrawn = [...(fondsSrc.match(/FOND_KEYS_SOMBRES = \[([^\]]*)\]/)?.[1] ?? '').matchAll(/'([a-z-]+)'/g)].map(
+  (m) => m[1],
+);
+const fondsDrawn = [...swatches.keys()].filter((c) => !sombresDrawn.includes(c));
+const etendusDrawn = [...swatches.keys()];
+for (const [nom, attendu] of [
+  ['fonds', fondsDrawn],
+  ['fonds_etendus', etendusDrawn],
+]) {
+  const listee = listed(nom);
+  if (listee.join() !== attendu.join()) {
+    errors.push(`_select_data.${nom} = [${listee}] ≠ fonds.ts = [${attendu}] (même ordre attendu)`);
+  }
+  for (const v of selectData[nom] ?? []) {
+    if (v.apercu !== `/images/cms/fonds/${v.cle}.svg`) errors.push(`${nom}.${v.cle}: apercu attendu /images/cms/fonds/${v.cle}.svg`);
+    if (v.couleur !== swatches.get(v.cle)) errors.push(`${nom}.${v.cle}: couleur ${v.couleur} ≠ fonds.ts ${swatches.get(v.cle)}`);
+  }
 }
 
 const iconsListed = listed('icones');

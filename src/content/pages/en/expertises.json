@@ -2,7 +2,7 @@
   "_schema": "default",
   "title": "Our expertise",
   "description": "Recognized certifications, technology partnerships and specialized teams. Expertise you can verify, not just read about.",
-  "noindex": true,
+  "noindex": false,
   "seoTitle": "",
   "seoH1": "",
   "slug": "",
@@ -32,33 +32,43 @@
       "type": "benefits",
       "title": "Five Areas of Expertise, Proof in Each",
       "intro": "Our expertise does not rest on claims. It rests on certifications, senior technology partnerships and the teams who carry them day to day. Detailed pages for each domain are coming soon.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "headingStyle": "titre",
       "items": [
         {
           "title": "Cybersecurity",
           "description": "ISO/IEC 27001:2022, CrowdStrike and Microsoft Sentinel partnerships, dedicated analysts.",
-          "icon": "dossier"
+          "icon": "dossier",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Artificial Intelligence",
           "description": "Governed adoption, data protection and human oversight at every step.",
-          "icon": "ampoule"
+          "icon": "ampoule",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Infrastructure and Cloud",
           "description": "Microsoft's adoption framework, network and security partnerships, complex hybrid environments.",
-          "icon": "dossier"
+          "icon": "dossier",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Business Solutions and Productivity",
           "description": "Microsoft-certified consultants and developers, Power Platform, Dynamics 365 and Microsoft 365.",
-          "icon": "croissance"
+          "icon": "croissance",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "IT Consulting and Governance",
           "description": "Governance frameworks, roadmaps and IT cost optimization, since 2003.",
-          "icon": "organisation"
+          "icon": "organisation",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -72,11 +82,12 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "light",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "home-partners",
       "type": "home-partners",
+      "fond": "ivoire",
       "title": "Our Technology Partnerships",
       "names": [
         "Partenaire 1"
@@ -109,7 +120,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "dark",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

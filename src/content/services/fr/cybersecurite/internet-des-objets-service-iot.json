@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Service IoT et OT — Internet des objets",
   "description": "Renforcez la sécurité des objets connectés de votre organisation avec le service IoT et OT conçu par les experts en cybersécurité chez Victrix.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Service IoT & OT — Internet des Objets | Cybersécurité | Victrix",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -32,7 +28,7 @@
       "type": "bento-metrics",
       "title": "Pourquoi assurer la sécurité des objets connectés de votre organisation?",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Réduisez votre surface d’attaque",
         "text": "La <strong>cybersécurité IoT et OT</strong> est un enjeu majeur pour les sociétés canadiennes. Le nombre grandissant d’objets et d’appareils connectés au réseau élargit votre surface d’attaque et augmente votre vulnérabilité.",
@@ -57,7 +53,9 @@
         "title": "Un service de sécurité de pointe",
         "text": "Élevez le niveau de sécurité des appareils connectés et réduisez le risque de violations de données grâce au soutien de nos experts en cybersécurité.",
         "linkLabel": "Explorez nos services de cybersécurité",
-        "linkHref": "/fr/services/cybersecurite/"
+        "linkHref": "/fr/services/cybersecurite/",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -65,13 +63,38 @@
       "type": "feature-boxes",
       "sectionTitle": "Notre approche",
       "subtitle": "Victrix réalise une analyse complète de votre infrastructure pour identifier les vulnérabilités de votre système et améliorer la sécurité de vos environnements IoT.",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
-        "Évaluation des besoins et de la stratégie",
-        "Inventaire et évaluation des risques",
-        "Mise en œuvre de la sécurité",
-        "Surveillance et réponse aux incidents",
-        "Revue et amélioration continue"
+        {
+          "label": "Évaluation des besoins et de la stratégie",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Inventaire et évaluation des risques",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Mise en œuvre de la sécurité",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Surveillance et réponse aux incidents",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Revue et amélioration continue",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {
@@ -79,7 +102,7 @@
       "type": "offer-cards",
       "title": "Victrix assure la sécurité de vos systèmes IoT et OT",
       "intro": "Un accompagnement complet, de l’évaluation de vos réseaux IoT à l’adoption des nouvelles technologies par vos équipes.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "items": [
@@ -155,6 +178,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Cybersécurité"
@@ -172,7 +196,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "seoTitle": "Service IoT & OT — Internet des Objets | Cybersécurité | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

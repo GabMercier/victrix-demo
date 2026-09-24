@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Ø Studio",
   "description": "Optimisez votre infrastructure TI avec nos experts en développement applicatif Power Platform. Ø Studio, solution innovante exclusive à Victrix.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Développement applicatif Power Platform | Ø Studio",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -20,19 +16,19 @@
       "ctaHref": "#formulaire",
       "cta2Label": "Découvrez nos applications",
       "cta2Href": "/fr/solutions",
-      "image": "/wp-content/uploads/2023/09/bg-o-studio-1-scaled.jpg",
+      "image": "/wp-content/uploads/2023/09/macbook-mockup-1-scaled.jpg",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Déployez des applications à la vitesse grand V",
       "intro": "Dites adieu aux tâches répétitives grâce à l'automatisation des processus et libérez le potentiel de vos équipes.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Optimisation opérationnelle",
-        "text": "De la gestion de vos opérations au soutien à vos services administratifs, l'offre Ø Studio répond aux exigences de vos différents secteurs d'activités — rapidité de développement et gain en capacité de livraison à la clé.",
+        "text": "De la gestion de vos opérations au soutien à vos services administratifs, l'offre Ø Studio répond aux exigences de vos différents secteurs d'activités — rapidité de développement et gain en capacité de livraison à la clé. Obtenez le soutien de nos <strong>conseillers et développeurs certifiés Microsoft</strong> pour libérer vos équipes TI, automatiser vos processus d’entreprise et <a href=\"/fr/services/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/\">maximiser l’utilisation de votre écosystème M365</a>.",
         "watermark": "eclair",
         "stats": [
           {
@@ -50,7 +46,9 @@
         "title": "Certifiés Microsoft",
         "text": "Nos conseillers et développeurs certifiés Microsoft libèrent vos équipes TI et maximisent l'utilisation des outils Microsoft 365 intégrés à vos licences.",
         "linkLabel": null,
-        "linkHref": null
+        "linkHref": null,
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -58,7 +56,7 @@
       "type": "offer-cards",
       "title": "Conseil, intégration et développement",
       "intro": "Avec le Ø Studio à vos côtés, le développement Power Apps, l'automatisation de processus et la gouvernance de vos outils sont des objectifs facilement réalisables.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "#formulaire",
       "items": [
@@ -144,7 +142,6 @@
       "type": "realisations",
       "title": "Notre book de réalisations",
       "intro": "Plus qu'une simple offre de conseil et de développement d'applications, l'équipe Ø Studio maîtrise parfaitement Power Apps, Power Automate, Power BI et Power Pages — pour des solutions adaptées aux besoins de votre organisation.",
-      "fond": "blanc",
       "linkLabel": "Découvrez notre catalogue de solutions",
       "linkHref": "/fr/solutions",
       "items": [
@@ -168,17 +165,18 @@
           "text": "Migration d'applications vieillissantes vers Power Apps et Dataverse.",
           "icon": "trousse"
         }
-      ]
+      ],
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "FAQ — Développement d'applications Power Platform et Dynamics 365",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "Est-ce qu'Ø Studio offre le développement d'applications mobiles?",
-          "answer": "Oui. Notre service de développement considère l'accessibilité depuis les appareils mobiles et la cybersécurité comme des éléments clés du développement applicatif. Si vous souhaitez créer une application web ou mobile depuis Microsoft Power Platform ou Dynamics 365, nous pouvons vous aider."
+          "answer": "Oui. Notre service de développement considère l'accessibilité depuis les appareils mobiles et <a href=\"/fr/services/cybersecurite/\">la cybersécurité</a> comme des éléments clés du développement applicatif. Si vous souhaitez créer une application web ou mobile depuis Microsoft Power Platform ou Dynamics 365, nous pouvons vous aider."
         },
         {
           "question": "Quelles sont les étapes de création d'une application?",
@@ -193,6 +191,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Productivité"
@@ -222,7 +221,11 @@
       "cta2Label": null,
       "cta2Href": null,
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "seoTitle": "Développement applicatif Power Platform | Ø Studio",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

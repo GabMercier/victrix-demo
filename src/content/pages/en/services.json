@@ -2,7 +2,7 @@
   "_schema": "default",
   "title": "Our Services",
   "description": "Cybersecurity, AI, application services, cloud and managed services. Our teams take charge of your IT environments, from assessment through to daily operations.",
-  "noindex": true,
+  "noindex": false,
   "seoTitle": "",
   "seoH1": "",
   "slug": "",
@@ -30,6 +30,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "What We Cover",
       "headingStyle": "underline",
       "intro": "Complementary services, deployed together or on their own, around what your teams already cover.",
@@ -46,35 +47,50 @@
           "title": "Cybersecurity",
           "text": "Protect your digital assets and prove regulatory compliance: SEvOC (SOC), penetration testing, OT and IoT security, identity and access management.",
           "ctaLabel": "Explore our cybersecurity services",
-          "ctaHref": "/en/services/cybersecurity"
+          "ctaHref": "/en/services/cybersecurity",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "AI and Automation",
           "text": "Put AI to work in your business processes with clear governance in place: opportunity assessment, custom agents, Copilot for Microsoft 365.",
           "ctaLabel": "Explore our AI services",
-          "ctaHref": "/en/services/intelligence-artificielle/"
+          "ctaHref": "/en/services/artificial-intelligence/",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Cloud ",
           "text": "Modernize your infrastructure at your own pace: migration, multicloud, hybrid environments, backup and disaster recovery.",
           "ctaLabel": "Explore our cloud services",
-          "ctaHref": "/en/services/cloud-services-provider"
+          "ctaHref": "/en/services/cloud-services-provider",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Application Services",
           "text": "Build, modernize and maintain your business applications: Ø Studio (Power Platform and Dynamics 365 development), Microsoft 365, ServiceNow.",
           "ctaLabel": "Explore our application services",
-          "ctaHref": "/en/services/services-applicatifs/"
+          "ctaHref": "/en/services/application-services/",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Managed Services",
           "text": "Simplify day-to-day IT management: IT governance, outsourcing, technical support, infrastructure, network and systems management.",
           "ctaLabel": "Explore our managed services",
-          "ctaHref": "/en/services/managed-it-services/"
+          "ctaHref": "/en/services/managed-it-services/",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -82,7 +98,7 @@
       "_bookshop_name": "rich-text",
       "type": "rich-text",
       "title": "What Stands Behind Every Service",
-      "fond": "blanc",
+      "fond": "ivoire",
       "paragraphs": [
         "Our services are backed by recognized certifications, top-tier technology partnerships and teams who know what your industry demands. All of it is documented.",
         "<a class=\"btn\" href=\"/en/expertises/\" target=\"_blank\" rel=\"noopener\">View our expertise</a> <a class=\"btn\" href=\"/en/secteurs/\" target=\"_blank\" rel=\"noopener\">View our industries</a><p></p><p></p>"
@@ -98,7 +114,7 @@
       "cta2Label": null,
       "cta2Href": null,
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

@@ -1,0 +1,93 @@
+# =============================================================================
+# Spec Bookshop — section « Renvoi vers le contact (qualification) ».
+# Voir hero.bookshop.yml pour les conventions communes (structures `sections`,
+# discriminant `type` masqué, libellés français pour la palette CloudCannon).
+#
+# Les tranches d'effectif NE SONT PAS éditables ici : elles voyagent dans
+# l'adresse et doivent rester identiques à celles du formulaire Contact
+# (source unique component-library/src/shared/tailles-entreprise.ts).
+# =============================================================================
+spec:
+  structures:
+    - sections
+  label: "Renvoi vers le contact (qualification)"
+  description: "Une question de qualification — la taille de l'entreprise — puis un lien par tranche vers le formulaire Contact, déjà rempli (sujet, service et tranche)."
+  icon: contact_page
+  picker_preview:
+    image: "/_cloudcannon/bookshop_thumbs/contact-qualifier/contact-qualifier.preview.png"
+    text: Renvoi vers le contact
+    subtext: Question de qualification puis formulaire Contact prérempli
+  preview:
+    icon: contact_page
+    text:
+      - key: title
+      - text: Renvoi vers le contact
+
+blueprint:
+  type: contact-qualifier
+  title: "Obtenez un portrait clair de votre posture de sécurité"
+  intro: ""
+  question: "Quelle est la taille de votre entreprise ?"
+  contactHref: "/fr/contact/"
+  note: ""
+  fond: beige
+
+preview:
+
+_inputs:
+  type:
+    hidden: true
+    comment: "Discriminant technique du contrat landing — ne pas modifier."
+  title:
+    label: "Titre"
+    comment: "Sert aussi d'objet de la demande dans le formulaire Contact (champ « Précisez votre demande »)."
+  intro:
+    type: html
+    label: "Texte"
+    comment: "Paragraphe d'appui sous le titre (optionnel)."
+    options:
+      format: p h3 h4
+      styles: /styles/editor-styles.css
+      bulletedlist: true
+      numberedlist: true
+      blockquote: true
+      bold: true
+      italic: true
+      link: true
+      undo: true
+      redo: true
+      underline: false
+      strike: false
+      image: false
+      table: false
+      code: false
+      embed: false
+      horizontalrule: false
+      snippet: false
+      remove_custom_markup: true
+      empty_type: string
+  question:
+    label: "Question posée"
+    comment: "Question affichée au-dessus des tranches d'effectif."
+  contactHref:
+    label: "Lien du formulaire Contact"
+    comment: "URL FINALE, préfixe de langue inclus (p. ex. /fr/contact/) — c'est elle qui fixe la langue des tranches affichées."
+  note:
+    label: "Note sous les tranches (optionnel)"
+    comment: "Précision rassurante, p. ex. le délai de réponse. Vide = absente."
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      values: _select_data.fonds
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+        icon: square
+        icon_color:
+          - key: couleur
+    comment: "Couleur de fond de la section, bornée à la palette officielle (pastilles dans la liste)."

@@ -2,7 +2,7 @@
   "_schema": "default",
   "title": "Nos expertises",
   "description": "Certifications reconnues, partenariats technologiques et équipes spécialisées. Notre expertise se vérifie plutôt qu'elle ne se proclame.",
-  "noindex": true,
+  "noindex": false,
   "seoTitle": "",
   "seoH1": "",
   "slug": "",
@@ -32,33 +32,44 @@
       "type": "benefits",
       "title": "Cinq domaines, des preuves dans chacun",
       "intro": "Nos expertises s'appuient sur des certifications, des partenariats stratégiques et des équipes qui les portent au quotidien. Les pages détaillées par domaine arrivent bientôt.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "headingStyle": "titre",
+      "numerotation": true,
       "items": [
         {
           "title": "Cybersécurité",
           "description": "Certification ISO/IEC 27001:2022, partenariats CrowdStrike et Microsoft Sentinel, analystes attitrés.",
-          "icon": "organisation"
+          "icon": "organisation",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Intelligence artificielle",
           "description": "Adoption encadrée, protection des données et supervision humaine à chaque étape.",
-          "icon": "ampoule"
+          "icon": "ampoule",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Infrastructure et infonuagique",
           "description": "Cadre d'adoption Microsoft, partenariats réseau et sécurité, environnements hybrides complexes.",
-          "icon": "dossier"
+          "icon": "dossier",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Solutions d'affaires et productivité",
           "description": "Conseillers et développeurs certifiés Microsoft, Power Platform, Dynamics 365 et Microsoft 365.",
-          "icon": "croissance"
+          "icon": "croissance",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "Conseil et gouvernance TI",
           "description": "Cadres de gouvernances, feuilles de route et optimisation des coûts, depuis 2003.",
-          "icon": "organisation"
+          "icon": "organisation",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -71,16 +82,8 @@
       "ctaHref": "/fr/secteurs",
       "cta2Label": "",
       "cta2Href": "",
-      "variant": "light",
-      "fond": "blanc"
-    },
-    {
-      "_bookshop_name": "home-partners",
-      "type": "home-partners",
-      "title": "Nos partenaires technologiques",
-      "names": [
-        "Partenaire 1"
-      ]
+      "variant": "nuit",
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "tech-marquee",
@@ -109,7 +112,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "dark",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

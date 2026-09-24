@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Cybersecurity in the Healthcare Sector",
   "description": "Discover our customized cybersecurity offering for the healthcare sector. Protect patient data and information systems against any attack.",
-  "noindex": false,
-  "slug": "cybersecurity/cybersecurity-healthcare",
-  "seoTitle": "Cybersecurity | Healthcare Sector",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -13,18 +9,18 @@
       "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Cybersecurity Services",
-      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Cybersecurity for the Healthcare Sector",
       "titleHighlight": "Healthcare",
-      "lead": "Victrix offers a customized cybersecurity service for the healthcare sector. Protect patient data, your connected medical devices, and your information systems against all cyber threats.",
+      "lead": "Victrix offers a customized <a href=\"/en/services/cybersecurity/\">cybersecurity service</a> for the healthcare sector. Protect patient data, your connected medical devices, and your information systems against all cyber threats.",
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
+      "imageAlt": "",
+      "eyebrowStyle": "texte",
       "cta2Label": "",
       "cta2Href": "",
       "overlay": "voile",
-      "image": "/wp-content/uploads/2024/07/istock-114321879-scaled.jpg",
-      "imageAlt": "",
       "imagePosition": "centre"
     },
     {
@@ -32,7 +28,7 @@
       "type": "bento-metrics",
       "title": "First-Class Cybersecurity and Confidentiality for Healthcare Organizations",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Extensive experience in the healthcare sector",
         "text": "Our cybersecurity consultants understand the challenges healthcare providers face on a daily basis. We use cybersecurity best practices to <strong>protect your personal information</strong> and <strong>strengthen the security of your healthcare facility's systems</strong>.",
@@ -44,19 +40,17 @@
         "title": "Personalized support",
         "text": "To ensure optimal security for your healthcare organization, it is essential to achieve and maintain the highest standards — this is where professional support becomes indispensable.",
         "linkLabel": "Schedule a consultation",
-        "linkHref": "/en/contact"
+        "linkHref": "/en/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Cybersecurity Priorities for Healthcare Institutions",
       "headingStyle": "plain",
-      "intro": "",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "2",
       "cardStyle": "default",
@@ -65,6 +59,9 @@
           "number": "01",
           "title": "Governance and Resilience",
           "text": "Prepare healthcare facilities to deal with cyber threats and be able to conduct a cyber risk self-assessment.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -72,6 +69,9 @@
           "number": "02",
           "title": "Resources and Sharing",
           "text": "Identify and increase the number of professionals, ensure sufficient budget to strengthen cybersecurity and digital technology, and find a cybersecurity service tailored to specific and priority needs.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -79,6 +79,9 @@
           "number": "03",
           "title": "Raising Awareness of Cybersecurity in Healthcare",
           "text": "Raise awareness among senior management, raise awareness and train all employees, and implement cybersecurity crisis drills in case of phishing attacks or other threats.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -86,10 +89,18 @@
           "number": "04",
           "title": "Operational Security",
           "text": "Secure facility directories (AD) and medical equipment (IoT), manage exposure risks and access, and develop a business continuity and disaster recovery plan.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         }
-      ]
+      ],
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "strategic-value",
@@ -131,15 +142,17 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "The Healthcare Ecosystem",
       "groups": [
         {
           "title": "Agencies",
+          "href": "",
           "items": [
             "Digital Health Agency (ANS – France)",
             "Digital Health Record (Quebec)",
@@ -152,6 +165,7 @@
         },
         {
           "title": "Ministries",
+          "href": "",
           "items": [
             "Quebec Ministry of Health and Social Services",
             "CISSS (integrated health and social services centers) and regional variations"
@@ -163,6 +177,7 @@
         },
         {
           "title": "Centers and Institutions",
+          "href": "",
           "items": [
             "Integrated university centers",
             "Private establishments"
@@ -178,20 +193,70 @@
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Technologies",
-      "subtitle": "",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
-        "Palo Alto",
-        "Checkpoint",
-        "Pulse Secure",
-        "CrowdStrike",
-        "Microsoft 365",
-        "Cisco",
-        "AlgoSec",
-        "AWS",
-        "ServiceNow",
-        "Proofpoint"
-      ]
+        {
+          "label": "Palo Alto",
+          "icon": "",
+          "image": "/images/logos/paloalto.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Checkpoint",
+          "icon": "",
+          "image": "/images/logos/checkpoint.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Pulse Secure",
+          "icon": "",
+          "image": "/images/logos/pulse-secure.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "CrowdStrike",
+          "icon": "",
+          "image": "/images/logos/crowdstrike.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Microsoft 365",
+          "icon": "",
+          "image": "/images/logos/microsoft.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Cisco",
+          "icon": "",
+          "image": "/images/logos/cisco.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AlgoSec",
+          "icon": "",
+          "image": "/images/logos/algosec.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AWS",
+          "icon": "",
+          "image": "/images/logos/aws.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "ServiceNow",
+          "icon": "",
+          "image": "/images/logos/servicenow-partner.png",
+          "imageAlt": ""
+        },
+        {
+          "label": "Proofpoint",
+          "icon": "",
+          "image": "/images/logos/proofpoint.png",
+          "imageAlt": ""
+        }
+      ],
+      "subtitle": ""
     },
     {
       "_bookshop_name": "cta",
@@ -203,7 +268,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "slug": "cybersecurity/cybersecurity-healthcare",
+  "seoTitle": "Cybersecurity | Healthcare Sector",
+  "_schema": "default",
+  "noindex": false
 }

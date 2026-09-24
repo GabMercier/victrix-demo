@@ -1,5 +1,5 @@
 ---
-import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { FOND_CLASSES, estFondSombre, type FondEtenduKey } from '../../shared/fonds';
 import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
 import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
@@ -32,9 +32,22 @@ import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
  * longueur des descriptions.
  *
  * Props : { type: "benefits", title, intro?, headingStyle?, fond?,
- *           numerotation?, items: [{ title, description, icon? }] }
+ *           numerotation?, items: [{ title, description, icon?, image?,
+ *           imageAlt? }] }
  * - `icon` : clé de la BANQUE de pictogrammes (shared/icons.ts — toute la
  *   banque est offerte dans l'éditeur depuis le 2026-09-18) ; "" = aucun.
+ * - `image` AJOUTÉ 2026-09-22 (rendu) : LOGO de marque, pour ce que la banque
+ *   de pictogrammes ne peut pas dire (Microsoft, AWS, ServiceNow…). Il GAGNE
+ *   sur `icon` — c'est le contrat écrit dans src/content.config.ts et dans le
+ *   commentaire de l'éditeur. Le champ existait déjà en zod, dans le blueprint
+ *   et dans le rétro-remplissage depuis le 2026-09-22 ; SEUL le rendu
+ *   manquait, donc l'éditrice aurait déposé un logo invisible.
+ *   `imageAlt` vide = image DÉCORATIVE (`alt=""`) : c'est le bon réglage quand
+ *   le nom de la marque est déjà écrit dans le titre de la carte, sinon le
+ *   lecteur d'écran le lit deux fois. Hauteur calée sur celle du pictogramme
+ *   qu'il remplace (48 px en « compact », 36 px en « titre ») et largeur
+ *   libre : les logos sont de rapports très différents, `object-contain` les
+ *   laisse respirer sans déformer.
  * - `numerotation` AJOUTÉ 2026-09-18 : compteur 01, 02, 03… sur les cartes
  *   (vrai par défaut). À décocher quand la grille est un inventaire et non une
  *   démarche ordonnée — c'est le cas des 12 cartes de la page Secteurs.
@@ -57,13 +70,15 @@ interface BenefitItem {
   title: string;
   description: string;
   icon?: IconKey | '';
+  image?: string;
+  imageAlt?: string;
 }
 
 interface Props {
   title: string;
   intro?: string;
   headingStyle?: 'titre' | 'compact';
-  fond?: FondKey;
+  fond?: FondEtenduKey;
   numerotation?: boolean;
   items: BenefitItem[];
 }
@@ -72,7 +87,7 @@ const {
   title,
   intro,
   headingStyle = 'titre',
-  fond = 'blanc',
+  fond = 'ivoire',
   numerotation = true,
   items = [],
 } = Astro.props;
@@ -81,6 +96,11 @@ const compact = headingStyle === 'compact';
 // « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
 // de la palette officielle (aucune couleur libre — esprit P-16). 5 fonds
 // CLAIRS seulement ; défaut = rendu historique du bloc (blanc).
+// Fonds SOMBRES ouverts le 2026-09-21 : seuls le titre et le chapeau de
+// section sont posés sur le fond — les cartes d'atouts sont blanches et
+// gardent leur contraste, quelle que soit la couleur derrière elles.
+const sombre = estFondSombre(fond);
+
 const FONDS: Record<string, string> = FOND_CLASSES;
 
 // Compteur « 01 » — deux chiffres jusqu'à 99, puis le rang brut.
@@ -101,23 +121,49 @@ const tailleIcone = (v: number | undefined) => (v ? v * 2 : 32);
     {
       compact ? (
         <div class="mx-auto text-center flex flex-col items-center gap-4 mb-16">
-          <h2 class="text-[32px] leading-[39px] font-bold text-on-surface m-0">{title}</h2>
+          <h2
+            class:list={[
+              'text-[2rem] leading-[2.4375rem] font-bold m-0',
+              sombre ? 'text-white' : 'text-on-surface',
+            ]}
+          >
+            {title}
+          </h2>
           <span class="w-16 h-1 bg-primary" aria-hidden="true" />
-          {hasRichText(intro) && <div class="rich text-base leading-6 text-on-surface-variant max-w-[672px]" set:html={blockHtml(intro)} />}
+          {hasRichText(intro) && (
+            <div
+              class:list={['rich text-base leading-6 max-w-[672px]', sombre ? 'text-white/90' : 'text-on-surface-variant']}
+              set:html={blockHtml(intro)}
+            />
+          )}
         </div>
       ) : (
         <div class="max-w-[768px] mx-auto text-center flex flex-col gap-4 mb-16">
-          <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
+          <h2
+            class:list={[
+              'text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] m-0',
+              sombre ? 'text-white' : 'text-on-surface',
+            ]}
+          >
             {title}
           </h2>
-          {hasRichText(intro) && <div class="rich text-lg leading-[29px] text-on-surface-variant max-w-none" set:html={blockHtml(intro)} />}
+          {hasRichText(intro) && (
+            <div
+              class:list={['rich text-lg leading-[1.8125rem] max-w-none', sombre ? 'text-white/90' : 'text-on-surface-variant']}
+              set:html={blockHtml(intro)}
+            />
+          )}
         </div>
       )
     }
     <ul role="list" class:list={['grid grid-cols-1 md:grid-cols-3 m-0 p-0 list-none', compact ? 'gap-6' : 'gap-8']}>
       {
         items.map((item, i) => {
-          const icon = iconFor(item.icon);
+          // Le LOGO gagne sur le pictogramme (contrat du champ, cf. en-tête) :
+          // on annule `icon` quand il est posé, ce qui laisse intactes toutes
+          // les conditions `icon ?` écrites plus bas.
+          const logo = (item.image ?? '').trim();
+          const icon = logo ? null : iconFor(item.icon);
           return (
             <li
               class:list={[
@@ -129,6 +175,15 @@ const tailleIcone = (v: number | undefined) => (v ? v * 2 : 32);
             >
               {compact ? (
                 <Fragment>
+                  {logo && (
+                    <img
+                      src={logo}
+                      alt={item.imageAlt ?? ''}
+                      class="h-12 w-auto max-w-[9rem] object-contain object-left m-0"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
                   {icon && (
                     <span class="size-12 text-primary flex items-center justify-center rounded-xs bg-primary/10">
                       <svg
@@ -149,13 +204,22 @@ const tailleIcone = (v: number | undefined) => (v ? v * 2 : 32);
                 </Fragment>
               ) : (
                 <Fragment>
-                  {(icon || numerotation) && (
+                  {(logo || icon || numerotation) && (
                     <div
                       class:list={[
                         'flex items-center h-9 pb-8 box-content',
-                        icon ? 'justify-between gap-4' : 'justify-end',
+                        logo || icon ? 'justify-between gap-4' : 'justify-end',
                       ]}
                     >
+                      {logo && (
+                        <img
+                          src={logo}
+                          alt={item.imageAlt ?? ''}
+                          class="h-9 w-auto max-w-[10rem] object-contain object-left m-0 shrink-0"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      )}
                       {icon && (
                         <span class="text-primary flex items-center shrink-0">
                           <svg
@@ -173,7 +237,7 @@ const tailleIcone = (v: number | undefined) => (v ? v * 2 : 32);
                       )}
                       {numerotation && (
                         <span
-                          class="text-xs leading-[14px] font-bold tracking-[1.2px] text-neutral-500"
+                          class="text-sm leading-[0.875rem] font-bold tracking-[1.2px] text-on-surface-variant"
                           aria-hidden="true"
                         >
                           {rang(i)}
@@ -183,10 +247,10 @@ const tailleIcone = (v: number | undefined) => (v ? v * 2 : 32);
                   )}
                   <div class="flex flex-col gap-3">
                     <span class="w-8 h-1 rounded-xl bg-primary" aria-hidden="true" />
-                    <h3 class="text-2xl leading-[31px] font-bold tracking-[0.6px] uppercase text-on-surface m-0 pt-1">
+                    <h3 class="text-2xl leading-[1.9375rem] font-bold tracking-[0.6px] uppercase text-on-surface m-0 pt-1">
                       {item.title}
                     </h3>
-                    <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(item.description)} />
+                    <p class="text-base leading-[1.625rem] text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(item.description)} />
                   </div>
                 </Fragment>
               )}

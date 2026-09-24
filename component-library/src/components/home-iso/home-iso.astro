@@ -1,5 +1,7 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml } from '../../shared/rich';
+import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
  * Section « Barre de confiance » (ex-bandeau ISO) — composant Bookshop.
  * RE-SKIN 2026-08-04 (lot accueil, Phase 5) : patron « Trust Bar » de la
@@ -7,8 +9,16 @@ import { blockHtml } from '../../shared/rich';
  * pastilles rondes ivoire à icône, chiffres en headline-md, libellés en
  * label-caps. La certification ISO historique devient l'un des items.
  *
- * Props : { type: "home-iso", title, subtitle, items? }.
- * `items` (NOUVEAU, optionnel — tableau vide = absent) : [{ value, label }].
+ * Props : { type: "home-iso", title, subtitle, image?, imageAlt?, items? }.
+ * `image` (2026-09-23) : LOGO de la bande — chemin public servi tel quel
+ * (ex. le logo ISO, /images/logos/iso.png). Vide = aucun logo, rendu d'avant.
+ * Il se place en tête de la bande avec les items, et au-dessus du titre dans
+ * le rendu sans items. `imageAlt` vide = logo DÉCORATIF, et c'est le bon
+ * réglage quand les items disent déjà « ISO 27001 » et « ISO 9001 » : sinon le
+ * lecteur d'écran l'annonce deux fois.
+ * `items` (optionnel — tableau vide = absent) : [{ value, label, icon? }].
+ * `icon` : clé de la banque partagée ; vide = la coche d'origine, donc une
+ * bande déjà posée ne change pas d'aspect.
  * Sans items, la bande retombe sur l'ancien rendu titre + sous-titre —
  * l'ancien contenu reste valide tel quel. `title` sert de titre de section
  * masqué (a11y) quand les items sont présents.
@@ -19,41 +29,79 @@ import { blockHtml } from '../../shared/rich';
 interface Item {
   value: string;
   label: string;
+  /** Clé de la banque partagée (shared/icons.ts) ; vide = la coche d'origine. */
+  icon?: IconKey | '';
 }
 
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   title: string;
   subtitle: string;
+  /** LOGO de la bande (2026-09-23) — chemin public, ex. /images/logos/iso.png. */
+  image?: string;
+  imageAlt?: string;
   items?: Item[];
 }
 
-const { title, subtitle, items = [] } = Astro.props;
+const { title, subtitle, image = '', imageAlt = '', items = [], fond = 'blanc' } = Astro.props;
 ---
 
-<section class="w-full bg-surface-container-lowest border-0 border-y border-solid border-outline-variant py-8">
+<section class:list={['w-full border-0 border-y border-solid border-outline-variant py-8', FOND_CLASSES[fond as FondKey] ?? 'bg-surface-container-lowest']}>
   <div class="container-site">
     {
       items.length > 0 ? (
         <>
           <h2 class="sr-only">{title}</h2>
           <div class="flex flex-wrap items-center justify-between gap-8">
-            {items.map((item) => (
-              <div class="flex items-center gap-4">
-                <span class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" focusable="false">
-                    <path d="m5 13 4 4 10-11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </span>
-                <span>
-                  <span class="block font-headline-md text-headline-md text-on-surface">{item.value}</span>
-                  <span class="block font-label-caps text-label-caps uppercase text-on-surface-variant">{item.label}</span>
-                </span>
-              </div>
-            ))}
+            {image && (
+              <img
+                class="h-14 w-auto object-contain m-0 shrink-0"
+                src={image}
+                alt={imageAlt}
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+            {items.map((item) => {
+              /* `icon` vide = la coche d'origine : les bandes déjà posées ne
+                 changent pas d'aspect. */
+              const icon = iconFor(item.icon || 'coche');
+              return (
+                <div class="flex items-center gap-4">
+                  <span class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center shrink-0" aria-hidden="true">
+                    {icon ? (
+                      <svg width="20" height="20" {...iconSvgAttrs(icon, 2.4)} focusable="false">
+                        {icon.paths.map((d) => (
+                          <path d={d} />
+                        ))}
+                      </svg>
+                    ) : (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" focusable="false">
+                        <path d="m5 13 4 4 10-11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    )}
+                  </span>
+                  <span>
+                    <span class="block font-headline-md text-headline-md text-on-surface">{item.value}</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-on-surface-variant">{item.label}</span>
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </>
       ) : (
-        <div class="text-center">
+        <div class="text-center flex flex-col items-center">
+          {image && (
+            <img
+              class="h-14 w-auto object-contain m-0 mb-4"
+              src={image}
+              alt={imageAlt}
+              loading="lazy"
+              decoding="async"
+            />
+          )}
           <h2 class="font-headline-md text-headline-md text-on-surface m-0">{title}</h2>
           <div class="rich font-body-md text-body-md text-on-surface-variant mt-2" set:html={blockHtml(subtitle)} />
         </div>

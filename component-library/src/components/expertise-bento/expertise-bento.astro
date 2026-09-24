@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, inlineHtml } from '../../shared/rich';
 import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
@@ -32,13 +33,15 @@ interface BentoItem {
 }
 
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   eyebrow?: string;
   title: string;
   intro?: string;
   items: BentoItem[];
 }
 
-const { eyebrow, title, intro, items = [] } = Astro.props;
+const { eyebrow, title, intro, items = [], fond = 'ivoire' } = Astro.props;
 
 const skins = {
   blanche: {
@@ -47,7 +50,7 @@ const skins = {
     text: 'text-on-surface-variant',
     icon: 'text-primary',
   },
-  bleue: { card: 'bg-primary', title: 'text-white', text: 'text-white/80', icon: 'text-white' },
+  bleue: { card: 'bg-primary', title: 'text-white', text: 'text-white/90', icon: 'text-white' },
   ardoise: { card: 'bg-secondary', title: 'text-white', text: 'text-white/80', icon: 'text-white' },
 };
 
@@ -59,16 +62,16 @@ const sizes = {
 };
 ---
 
-<section class="py-20 bg-surface">
+<section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? 'bg-surface']}>
   <div class="container-site">
     <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
       <div class="flex flex-col gap-2 max-w-[600px]">
         {
           eyebrow && (
-            <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary m-0 max-w-none">{eyebrow}</p>
+            <p class="text-sm font-bold uppercase tracking-[1.2px] text-primary m-0 max-w-none">{eyebrow}</p>
           )
         }
-        <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-balance">
+        <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 text-balance">
           {title}
         </h2>
       </div>

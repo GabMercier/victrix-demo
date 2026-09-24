@@ -1,0 +1,974 @@
+{
+  "source": "https://www.victrix.ca/liste-prix-check-point/",
+  "devise": "CAD",
+  "titre": "Liste de prix officielle pour les licences Check Point*",
+  "intro": [],
+  "note": "",
+  "groupes": [
+    {
+      "titre": "Liste de prix des composantes",
+      "lignes": [
+        {
+          "sku": "CPAC-TR-10SR-D",
+          "description": "SFP+ transceiver for 10G Fiber Ports- short range (10GBase-SR)- for 2500/9000/19000/29000 and Smart-1 700/7000 series appliances",
+          "prix": 219.09
+        },
+        {
+          "sku": "CPAC-TR-10LR-D",
+          "description": "SFP+ transceiver for 10G Fiber ports- long range (10GBase-LR)- for 2500/9000/19000/29000 and Smart-1 700/7000 series appliances",
+          "prix": 455.69
+        },
+        {
+          "sku": "CPAC-TR-25SR-DM",
+          "description": "SFP28 transceiver module for 25G Fiber ports- short range (25GBase-SR)- for 9000/19000/29000 and Smart-1 700/7000 series appliances",
+          "prix": 813.23
+        },
+        {
+          "sku": "CPAC-TR-1T-D",
+          "description": "SFP transceiver for 1000 Base-T RJ45 (Copper)- for 9000/19000/29000 and Smart-1 700/7000 series appliances",
+          "prix": 590.65
+        },
+        {
+          "sku": "CPAC-TR-1LX-D",
+          "description": "SFP transceiver for 1G Fiber ports- long range (1000Base-LX)- for 2500/9000/19000/29000 and Smart-1 700/7000 series appliances",
+          "prix": 192.79
+        },
+        {
+          "sku": "CPAC-TR-1SX-D",
+          "description": "SFP transceiver for 1G Fiber ports- short range (1000Base-SX)- for 2500/9000/19000/29000 and Smart-1 700/7000 series appliances",
+          "prix": 184.03
+        },
+        {
+          "sku": "CPAC-TR-BX10-C",
+          "description": "SFP transceiver for 1G Fiber ports- Downstream Bidirectional Single Fiber",
+          "prix": 389.48
+        },
+        {
+          "sku": "CPAC-TR-25LR-D",
+          "description": "SFP28 transceiver module for 25G fiber ports - long range (25GBase-LR) for 9000/19000/29000 and Smart-1 700/7000 series appliances",
+          "prix": 2324.03
+        },
+        {
+          "sku": "CPAC-TR-40SR-QSFP-100m-D",
+          "description": "QSFP+ transceiver for 40G Fiber Ports- short range (40GBase-SR) OM3 Fiber 100m, OM4 Fiber 150m(Short)- for 9000/19000/29000 and Smart-1 700/7000 series applicances",
+          "prix": 1509.05
+        },
+        {
+          "sku": "CPAC-TR-100SR-D",
+          "description": "QSFP28 transceiver module for 100G Fiber ports- short range (100GBase-SR4)- for 9000/19000/29000 and Smart-1 700/7000 series appliances",
+          "prix": 1917.41
+        },
+        {
+          "sku": "CPAP-SG1595R5G-SNBT",
+          "description": "1595R5G ruggedized appliance. Includes SandBlast subscription package for 1 year.",
+          "prix": 8167.1
+        },
+        {
+          "sku": "CPAC-1575R/1595R-PSU",
+          "description": "AC to DC Power Supply for 1575R and 1595R wired/wireless models",
+          "prix": 384.99
+        },
+        {
+          "sku": "CPSB-SDWAN-1595R5G-3Y",
+          "description": "QUANTUM SD Wan subscription for 3 years for 1595R5G Wired Base appliance",
+          "prix": 4260.31
+        },
+        {
+          "sku": "CPSB-SDWAN-1595R5G-2Y",
+          "description": "QUANTUM SD Wan subscription for 2 years for 1595R5G Wired Base appliance",
+          "prix": 2840.21
+        },
+        {
+          "sku": "CPSB-SNBT-1595R5G-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 1595R5G Base Appliance",
+          "prix": 8520.62
+        },
+        {
+          "sku": "CPSB-SNBT-1595R5G-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 1595R5G Base Appliance",
+          "prix": 2840.21
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-1595R5G-ADD",
+          "description": "Premium Direct Enterprise Support for 1 year for 1595R5G Security Appliance",
+          "prix": 6059.41
+        },
+        {
+          "sku": "CPAP-SG2530-SNBT",
+          "description": "2530 appliance. Includes SandBlast subscription package for 1 year.",
+          "prix": 1562.41
+        },
+        {
+          "sku": "CPSB-SDWAN-2530-3Y",
+          "description": "QUANTUM SD Wan subscription for 3 years for 2530 appliance",
+          "prix": 737.02
+        },
+        {
+          "sku": "CPSB-SDWAN-2530-2Y",
+          "description": "QUANTUM SD Wan subscription for 2 years for 2530 appliance",
+          "prix": 491.34
+        },
+        {
+          "sku": "CPSB-SNBT-2530-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 2530 Base Appliance",
+          "prix": 1478.53
+        },
+        {
+          "sku": "CPSB-SNBT-2530-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 2530 Base Appliance",
+          "prix": 492.84
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-2530-ADD",
+          "description": "Premium Direct Enterprise Support for 2530 Security Appliance",
+          "prix": 1048.6
+        },
+        {
+          "sku": "CPAP-SG1600-SNBT",
+          "description": "1600 Base Appliance with SandBlast subscription package for 1 year",
+          "prix": 6937.24
+        },
+        {
+          "sku": "CPSB-SDWAN-1600-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 1600 Base appliance",
+          "prix": 4152.46
+        },
+        {
+          "sku": "CPSB-SDWAN-1600-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 1600 Base appliance",
+          "prix": 2768.3
+        },
+        {
+          "sku": "CPSB-SNBT-1600-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 year for 1600 Base Appliance",
+          "prix": 8327.38
+        },
+        {
+          "sku": "CPSB-SNBT-1600-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 1600 Base Appliance",
+          "prix": 2775.79
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-1600-ADD",
+          "description": "Premium Direct Enterprise Support for 1600 Security Appliance",
+          "prix": 5902.12
+        },
+        {
+          "sku": "CPAP-SG1800-SNBT",
+          "description": "1800 Base Appliance with SandBlast subscription package for 1 year",
+          "prix": 9248.65
+        },
+        {
+          "sku": "CPSB-SDWAN-1800-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 1800 Base appliance",
+          "prix": 5545.6
+        },
+        {
+          "sku": "CPSB-SDWAN-1800-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 1800 Base appliance",
+          "prix": 3697.06
+        },
+        {
+          "sku": "CPSB-SNBT-1800-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 1800 Base Appliance",
+          "prix": 11091.19
+        },
+        {
+          "sku": "CPSB-SNBT-1800-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 1800 Base Appliance",
+          "prix": 3697.06
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-1800-ADD",
+          "description": "Premium Direct Enterprise Support for 1800 Security Appliance",
+          "prix": 7864.5
+        },
+        {
+          "sku": "CPAP-SG1900-SNBT",
+          "description": "1900 Base Appliance with SandBlast subscription package for 1 year",
+          "prix": 11876.14
+        },
+        {
+          "sku": "CPSB-SDWAN-1900-3Y",
+          "description": "QUANTUM SD Wan subscription for 3 years for 1900 Base appliance",
+          "prix": 7127.48
+        },
+        {
+          "sku": "CPSB-SDWAN-1900-2Y",
+          "description": "QUANTUM SD Wan subscription for 2 years for 1900 Base appliance",
+          "prix": 4751.66
+        },
+        {
+          "sku": "CPSB-SNBT-1900-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 1900 Base Appliance",
+          "prix": 14250.47
+        },
+        {
+          "sku": "CPSB-SNBT-1900-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 1900 Base Appliance",
+          "prix": 4750.16
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-1900-ADD",
+          "description": "Premium Direct Enterprise Support for 1900 Security Appliance",
+          "prix": 10104.01
+        },
+        {
+          "sku": "CPAP-SG9700-PLUS-SNBT",
+          "description": "Quantum Force 9700 Plus Appliance with 2 Virtual Systems and SandBlast subscription package for 1 year",
+          "prix": 213627.26
+        },
+        {
+          "sku": "CPAC-4-10/25F-DA-INSTALL",
+          "description": "4 Ports 10GBase-F SFP+ / 25GBase-F SFP28 interface card with Acceleration for 9000/19000/29000 appliances",
+          "prix": 9909.27
+        },
+        {
+          "sku": "CPSB-SDWAN-9700-PLUS-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 9700 Plus appliance",
+          "prix": 80447.09
+        },
+        {
+          "sku": "CPSB-SDWAN-9700-PLUS-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 9700 Plus appliance",
+          "prix": 53631.4
+        },
+        {
+          "sku": "CPSB-SNBT-9700-PLUS-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 9700 PLUS Appliance",
+          "prix": 170461.91
+        },
+        {
+          "sku": "CPSB-SNBT-9700-PLUS-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 9700 PLUS Appliance",
+          "prix": 56820.64
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-9700-ADD",
+          "description": "Premium Direct Enterprise Support for 9700 Security Appliance",
+          "prix": 127947.55
+        },
+        {
+          "sku": "CPAP-SG19100-PLUS-SNBT",
+          "description": "Quantum Force 19100 Plus Appliance with 5 Virtual Systems and SandBlast subscription package for 1 year",
+          "prix": 380973.29
+        },
+        {
+          "sku": "CPSB-SDWAN-19100-PLUS-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 19100 Plus appliance",
+          "prix": 137588.3
+        },
+        {
+          "sku": "CPSB-SDWAN-19100-PLUS-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 19100 Plus appliance",
+          "prix": 91725.54
+        },
+        {
+          "sku": "CPSB-SNBT-19100-PLUS-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 19100 PLUS Appliance",
+          "prix": 250904.51
+        },
+        {
+          "sku": "CPSB-SNBT-19100-PLUS-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 19100 PLUS Appliance",
+          "prix": 83634.84
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-19100-ADD",
+          "description": "Premium Direct Enterprise Support for 19100 Security Appliance",
+          "prix": 204421.95
+        },
+        {
+          "sku": "CPAP-SG19200-PLUS-SNBT",
+          "description": "Quantum Force 19200 Plus Appliance with SandBlast subscription package for 1 year",
+          "prix": 331420.32
+        },
+        {
+          "sku": "CPAC-2-40/100F-D-INSTALL",
+          "description": "2 Port 40GBase QSFP+ / 100GBase QSFP28 interface card, with Acceleration, for 9000/19000/29000 appliances",
+          "prix": 11208.04
+        },
+        {
+          "sku": "CPSB-SDWAN-19200-PLUS-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 19200 Plus appliance",
+          "prix": 153133.05
+        },
+        {
+          "sku": "CPSB-SDWAN-19200-PLUS-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 19200 Plus appliance",
+          "prix": 102088.7
+        },
+        {
+          "sku": "CPSB-SNBT-19200-PLUS-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 19200 PLUS Appliance",
+          "prix": 254185.13
+        },
+        {
+          "sku": "CPSB-SNBT-19200-PLUS-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 19200 PLUS Appliance",
+          "prix": 84728.38
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-19200-ADD",
+          "description": "Premium Direct Enterprise Support for 19200 Security Appliance",
+          "prix": 237880.45
+        },
+        {
+          "sku": "CPAP-NGSM700S-PLUS-PREMIUM",
+          "description": "Smart-1 700-S Plus Security Management, Log and SmartEvent appliance for 10 gateways (SmartEvent & Compliance 1 year)",
+          "prix": 37203.94
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-NGSM700S-ADD",
+          "description": "Premium Direct Enterprise Support for Smart-1 700-S Plus Security Management",
+          "prix": 25634.07
+        },
+        {
+          "sku": "CPAP-NGSM7000L-PLUS-PREMIUM",
+          "description": "Smart-1 7000-L Plus Security Management, Log and SmartEvent appliance for 150 gateways (SmartEvent & Compliance 1 year)",
+          "prix": 220725.12
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-NGSM7000L-ADD",
+          "description": "Premium Direct Enterprise Support for Smart-1 7000-L Plus Security Management",
+          "prix": 152082.95
+        },
+        {
+          "sku": "CPAP-NGSM7000UL-PLUS-PREMIUM",
+          "description": "Smart-1 7000-UL Plus Security Management, Log and SmartEvent Appliance for 500 GWs (SmartEvent & Compliance 1 year)",
+          "prix": 546049.63
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-NGSM7000UL-ADD",
+          "description": "Premium Direct Enterprise Support for Smart-1 7000-UL Plus Security Management",
+          "prix": 353894.63
+        },
+        {
+          "sku": "CPSM-NGSM150-PREMIUM",
+          "description": "Next Generation Security Management Software for 150 gateways (SmartEvent & Compliance 1 year)",
+          "prix": 117389.27
+        },
+        {
+          "sku": "CPSB-GW-EXT-500",
+          "description": "500 gateways extension for Next Generation Security Management Server to: Smart-1 6000XL Plus / Smart-1 7000XL Plus / Smart-1 7000UL Plus / Smart-1 5150 / NGSM-150",
+          "prix": 66061.8
+        },
+        {
+          "sku": "CPSB-GW-EXT-1000",
+          "description": "1,000 gateways extension for Next Generation Security Management Server to: Smart-1 6000XL Plus / Smart-1 7000XL Plus / Smart-1 7000UL Plus / Smart-1 5150 / NGSM-150",
+          "prix": 82577.25
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-EXT-500-ADD",
+          "description": "Premium Direct Enterprise Support for 500 gateways extension for Next Generation Security Management",
+          "prix": 123865.88
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-EXT-1000-ADD",
+          "description": "Premium Direct Enterprise Support for 1,000 gateways extension for Next Generation Security Management",
+          "prix": 132123.6
+        },
+        {
+          "sku": "CPSM-CLOUD-GW-5Y",
+          "description": "Smart-1 Cloud to manage gateway and with up to 1 GB daily logs and 3 months retention for 5 years",
+          "prix": 11910.82
+        },
+        {
+          "sku": "CPSM-NGSM5",
+          "description": "Next Generation Security Management Software for 5 gateways (SmartEvent & Compliance 1 year)",
+          "prix": 38131.59
+        },
+        {
+          "sku": "CPSM-CLOUD-5GW-PREM-5Y",
+          "description": "Smart-1 Cloud to manage up to 5 gateways and with up to 5 GB daily logs and 3 months retention for 5 years",
+          "prix": 68075.11
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-CLOUD-5GW-5Y-ADD",
+          "description": "Premium Direct Enterprise Support for Smart-1 Cloud to manage up to 5 gateways and with up to 5 GB",
+          "prix": 4765.28
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-NGSM150-ADD",
+          "description": "Premium Direct Enterprise Support for Next Generation Security Management Software for 150 gateways",
+          "prix": 193692.3
+        }
+      ]
+    },
+    {
+      "titre": "Liste de prix des composantes de remplacements",
+      "lignes": [
+        {
+          "sku": "CPAP-SG29200-PLUS-SNBT",
+          "description": "Quantum Force 29200 Plus Appliance with SandBlast subscription package for 1 year",
+          "prix": 482185.2
+        },
+        {
+          "sku": "CPSB-SNBT-29200-PLUS-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 29200 PLUS Appliance",
+          "prix": 456144.24
+        },
+        {
+          "sku": "CPSB-SNBT-29200-PLUS-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 29200 PLUS Appliance",
+          "prix": 152048.08
+        },
+        {
+          "sku": "CPSB-SDWAN-29200-PLUS-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 29200 Plus appliance",
+          "prix": 274843.92
+        },
+        {
+          "sku": "CPSB-SDWAN-29200-PLUS-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 29200 Plus appliance",
+          "prix": 183229.28
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-29200-ADD",
+          "description": "Premium Direct Enterprise Support for 29200 Plus Appliance",
+          "prix": 409857.42
+        },
+        {
+          "sku": "CPAP-SG29100-PLUS-SNBT",
+          "description": "Quantum Force 29100 Plus Appliance with SandBlast subscription package for 1 year",
+          "prix": 315606.9
+        },
+        {
+          "sku": "CPSB-SNBT-29100-PLUS-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 29100 PLUS Appliance",
+          "prix": 298538.07
+        },
+        {
+          "sku": "CPSB-SNBT-29100-PLUS-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 29100 PLUS Appliance",
+          "prix": 99512.69
+        },
+        {
+          "sku": "CPSB-SDWAN-29100-PLUS-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 29100 Plus appliance",
+          "prix": 179894.7
+        },
+        {
+          "sku": "CPSB-SDWAN-29100-PLUS-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 29100 Plus appliance",
+          "prix": 119929.8
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-29100-ADD",
+          "description": "Premium Direct Enterprise Support for 29100 Plus Appliance",
+          "prix": 268265.87
+        },
+        {
+          "sku": "CPAP-SG9800-PLUS-SNBT",
+          "description": "Quantum Force 9800 Plus Appliance with 2 Virtual Systems and SandBlast subscription package for 1 year",
+          "prix": 150754.8
+        },
+        {
+          "sku": "CPSB-SNBT-9800-PLUS-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 9800 PLUS Appliance",
+          "prix": 179763.18
+        },
+        {
+          "sku": "CPSB-SNBT-9800-PLUS-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 9800 PLUS Appliance",
+          "prix": 59921.06
+        },
+        {
+          "sku": "CPSB-SDWAN-9800-PLUS-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 9800 Plus appliance",
+          "prix": 86244.24
+        },
+        {
+          "sku": "CPSB-SDWAN-9800-PLUS-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 9800 Plus appliance",
+          "prix": 57496.16
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-SG9800-ADD",
+          "description": "Premium Direct Enterprise Support for 9800 Plus Appliance",
+          "prix": 128141.58
+        },
+        {
+          "sku": "CPAP-SG9400-PLUS-SNBT",
+          "description": "Quantum Force 9400 Plus Appliance with 2 Virtual Systems and SandBlast subscription package for 1 year",
+          "prix": 91776.3
+        },
+        {
+          "sku": "CPSB-SNBT-9400-PLUS-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 9400 PLUS Appliance",
+          "prix": 110682.3
+        },
+        {
+          "sku": "CPSB-SNBT-9400-PLUS-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 9400 PLUS Appliance",
+          "prix": 36894.1
+        },
+        {
+          "sku": "CPSB-SDWAN-9400-PLUS-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 9400 Plus appliance",
+          "prix": 52505.25
+        },
+        {
+          "sku": "CPSB-SDWAN-9400-PLUS-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 9400 Plus appliance",
+          "prix": 35003.5
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-9400-ADD",
+          "description": "Premium Direct Enterprise Support for 9400 Plus Appliance",
+          "prix": 78009.86
+        },
+        {
+          "sku": "CPAP-SG9300-PLUS-SNBT",
+          "description": "Quantum Force 9300 Plus Appliance with 2 Virtual Systems and SandBlast subscription package for 1 year",
+          "prix": 72788.1
+        },
+        {
+          "sku": "CPSB-SNBT-9300-PLUS-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 9300 PLUS Appliance",
+          "prix": 88233.48
+        },
+        {
+          "sku": "CPSB-SNBT-9300-PLUS-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 9300 PLUS Appliance",
+          "prix": 29411.16
+        },
+        {
+          "sku": "CPSB-SDWAN-9300-PLUS-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 9300 Plus appliance",
+          "prix": 41638.41
+        },
+        {
+          "sku": "CPSB-SDWAN-9300-PLUS-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 9300 Plus appliance",
+          "prix": 27758.94
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-9300-ADD",
+          "description": "Premium Direct Enterprise Support for 9300 Plus Appliance",
+          "prix": 61869.89
+        },
+        {
+          "sku": "CPAP-SG9200-PLUS-SNBT",
+          "description": "Quantum Force 9200 Plus Appliance with 2 Virtual Systems and SandBlast subscription package for 1 year",
+          "prix": 54806.85
+        },
+        {
+          "sku": "CPSB-SNBT-9200-PLUS-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 9200 PLUS Appliance",
+          "prix": 66409.38
+        },
+        {
+          "sku": "CPSB-SNBT-9200-PLUS-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 9200 PLUS Appliance",
+          "prix": 22136.46
+        },
+        {
+          "sku": "CPSB-SDWAN-9200-PLUS-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 9200 Plus appliance",
+          "prix": 31355.19
+        },
+        {
+          "sku": "CPSB-SDWAN-9200-PLUS-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 9200 Plus appliance",
+          "prix": 20903.46
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-9200-ADD",
+          "description": "Premium Direct Enterprise Support for 9200 Plus Appliance",
+          "prix": 46585.82
+        },
+        {
+          "sku": "CPAP-SG9100-PLUS-SNBT",
+          "description": "Quantum Force 9100 Plus Appliance with 2 Virtual Systems and SandBlast subscription package for 1 year",
+          "prix": 42723.45
+        },
+        {
+          "sku": "CPSB-SNBT-9100-PLUS-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 9100 PLUS Appliance",
+          "prix": 51806.55
+        },
+        {
+          "sku": "CPSB-SNBT-9100-PLUS-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 9100 PLUS Appliance",
+          "prix": 17268.85
+        },
+        {
+          "sku": "CPSB-SDWAN-9100-PLUS-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 9100 Plus appliance",
+          "prix": 24442.17
+        },
+        {
+          "sku": "CPSB-SDWAN-9100-PLUS-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 9100 Plus appliance",
+          "prix": 16294.78
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-9100-ADD",
+          "description": "Premium Direct Enterprise Support for 9100 Plus Appliance",
+          "prix": 36314.93
+        },
+        {
+          "sku": "CPAP-SG3920-SNBT",
+          "description": "Quantum Force 3920 Appliance with SandBlast subscription",
+          "prix": 8976.24
+        },
+        {
+          "sku": "CPSB-SNBT-3920-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 3920 Base Appliance",
+          "prix": 24655.89
+        },
+        {
+          "sku": "CPSB-SNBT-3920-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 3920 Base Appliance",
+          "prix": 8218.63
+        },
+        {
+          "sku": "CPSB-SDWAN-3920-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 3920 Base appliance",
+          "prix": 5137.5
+        },
+        {
+          "sku": "CPSB-SDWAN-3920-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 3920 Base appliance",
+          "prix": 3425.0
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-3920-ADD",
+          "description": "Premium Direct Enterprise Support for 3920 Appliance",
+          "prix": 7629.8
+        },
+        {
+          "sku": "CPAP-SG3950-SNBT",
+          "description": "Quantum Force 3950 Appliance with SandBlast subscription",
+          "prix": 17981.25
+        },
+        {
+          "sku": "CPSB-SNBT-3950-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 3950 Base Appliance",
+          "prix": 26932.83
+        },
+        {
+          "sku": "CPSB-SNBT-3950-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 3950 Base Appliance",
+          "prix": 8977.61
+        },
+        {
+          "sku": "CPSB-SDWAN-3950-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 3950 Base appliance",
+          "prix": 10287.33
+        },
+        {
+          "sku": "CPSB-SDWAN-3950-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 3950 Base appliance",
+          "prix": 6858.22
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-3950-ADD",
+          "description": "Premium Direct Enterprise Support for 3950 Appliance",
+          "prix": 15284.06
+        },
+        {
+          "sku": "CPAP-SG3970-SNBT",
+          "description": "Quantum Force 3970 Appliance with SandBlast subscription",
+          "prix": 30208.5
+        },
+        {
+          "sku": "CPSB-SNBT-3970-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 3970 Base Appliance",
+          "prix": 45251.1
+        },
+        {
+          "sku": "CPSB-SNBT-3970-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 3970 Base Appliance",
+          "prix": 15083.7
+        },
+        {
+          "sku": "CPSB-SDWAN-3970-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 3970 Base appliance",
+          "prix": 17282.55
+        },
+        {
+          "sku": "CPSB-SDWAN-3970-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 3970 Base appliance",
+          "prix": 11521.7
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-3970-ADD",
+          "description": "Premium Direct Enterprise Support for 3970 Appliance",
+          "prix": 25677.23
+        },
+        {
+          "sku": "CPAP-SG3980-SNBT",
+          "description": "Quantum Force 3980 Appliance with SandBlast subscription",
+          "prix": 42723.45
+        },
+        {
+          "sku": "CPSB-SNBT-3980-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 3980 Base Appliance",
+          "prix": 64000.92
+        },
+        {
+          "sku": "CPSB-SNBT-3980-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 3980 Base Appliance",
+          "prix": 21333.64
+        },
+        {
+          "sku": "CPSB-SDWAN-3980-3Y",
+          "description": "Quantum SD Wan subscription for 3 years for 3980 Base appliance",
+          "prix": 24442.17
+        },
+        {
+          "sku": "CPSB-SDWAN-3980-2Y",
+          "description": "Quantum SD Wan subscription for 2 years for 3980 Base appliance",
+          "prix": 16294.78
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-3980-ADD",
+          "description": "Premium Direct Enterprise Support for 3980 Appliance",
+          "prix": 36314.93
+        },
+        {
+          "sku": "CPAP-SG2550-SNBT",
+          "description": "2550 appliance. Includes SandBlast subscription package for 1 year.",
+          "prix": 1819.36
+        },
+        {
+          "sku": "CPSB-SNBT-2550-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 2550 Base Appliance",
+          "prix": 2182.41
+        },
+        {
+          "sku": "CPSB-SNBT-2550-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 2550 Base Appliance",
+          "prix": 727.47
+        },
+        {
+          "sku": "CPSB-SDWAN-2550-3Y",
+          "description": "QUANTUM SD Wan subscription for 3 years for 2550 appliance",
+          "prix": 1093.26
+        },
+        {
+          "sku": "CPSB-SDWAN-2550-2Y",
+          "description": "QUANTUM SD Wan subscription for 2 years for 2550 appliance",
+          "prix": 728.84
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-2550-ADD",
+          "description": "Premium Direct Enterprise Support for 2550 Security Appliance",
+          "prix": 1548.1
+        },
+        {
+          "sku": "CPAP-SG2560-SNBT",
+          "description": "2560 appliance. Includes SandBlast subscription package for 1 year.",
+          "prix": 2460.52
+        },
+        {
+          "sku": "CPSB-SNBT-2560-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 2560 Base Appliance",
+          "prix": 2950.98
+        },
+        {
+          "sku": "CPSB-SNBT-2560-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 2560 Base Appliance",
+          "prix": 983.66
+        },
+        {
+          "sku": "CPSB-SDWAN-2560-3Y",
+          "description": "QUANTUM SD Wan subscription for 3 years for 2560 appliance",
+          "prix": 1475.49
+        },
+        {
+          "sku": "CPSB-SDWAN-2560-2Y",
+          "description": "QUANTUM SD Wan subscription for 2 years for 2560 appliance",
+          "prix": 983.66
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-2560-ADD",
+          "description": "Premium Direct Enterprise Support for 2560 Security Appliance",
+          "prix": 2096.1
+        },
+        {
+          "sku": "CPAP-SG2570-SNBT",
+          "description": "2570 appliance. Includes SandBlast subscription package for 1 year.",
+          "prix": 4919.67
+        },
+        {
+          "sku": "CPSB-SNBT-2570-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 2570 Base Appliance",
+          "prix": 5901.96
+        },
+        {
+          "sku": "CPSB-SNBT-2570-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 2570 Base Appliance",
+          "prix": 1967.32
+        },
+        {
+          "sku": "CPSB-SDWAN-2570-3Y",
+          "description": "QUANTUM SD Wan subscription for 3 years for 2570 appliance",
+          "prix": 2950.98
+        },
+        {
+          "sku": "CPSB-SDWAN-2570-2Y",
+          "description": "QUANTUM SD Wan subscription for 2 years for 2570 appliance",
+          "prix": 1967.32
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-2570-ADD",
+          "description": "Premium Direct Enterprise Support for 2570 Security Appliance",
+          "prix": 4178.5
+        },
+        {
+          "sku": "CPAP-SG2580-SNBT",
+          "description": "2580 appliance. Includes SandBlast subscription package for 1 year.",
+          "prix": 7006.18
+        },
+        {
+          "sku": "CPSB-SNBT-2580-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 2580 Base Appliance",
+          "prix": 8404.95
+        },
+        {
+          "sku": "CPSB-SNBT-2580-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 2580 Base Appliance",
+          "prix": 2801.65
+        },
+        {
+          "sku": "CPSB-SDWAN-2580-3Y",
+          "description": "QUANTUM SD Wan subscription for 3 years for 2580 appliance",
+          "prix": 4204.53
+        },
+        {
+          "sku": "CPSB-SDWAN-2580-2Y",
+          "description": "QUANTUM SD Wan subscription for 2 years for 2580 appliance",
+          "prix": 2803.02
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-2580-ADD",
+          "description": "Premium Direct Enterprise Support for 2580 Security Appliance",
+          "prix": 5952.65
+        },
+        {
+          "sku": "CPAP-SG2000-SNBT",
+          "description": "2000 Base Appliance with SandBlast subscription package for 1 year",
+          "prix": 12371.1
+        },
+        {
+          "sku": "CPSB-SNBT-2000-3Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 3 years for 2000 Base Appliance",
+          "prix": 14845.32
+        },
+        {
+          "sku": "CPSB-SNBT-2000-1Y",
+          "description": "Next Generation Threat Prevention and Sandblast for additional 1 year for 2000 Base Appliance",
+          "prix": 4948.44
+        },
+        {
+          "sku": "CPSB-SDWAN-2000-3Y",
+          "description": "QUANTUM SD Wan subscription for 3 years for 2000 Base appliance",
+          "prix": 7422.66
+        },
+        {
+          "sku": "CPSB-SDWAN-2000-2Y",
+          "description": "QUANTUM SD Wan subscription for 2 years for 2000 Base appliance",
+          "prix": 4948.44
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-2000-ADD",
+          "description": "Premium Direct Enterprise Support for 2000 Security Appliance",
+          "prix": 10501.05
+        },
+        {
+          "sku": "CPSM-NGSM10",
+          "description": "Next Generation Security Management Software for 10 gateways (SmartEvent & Compliance 1 year)",
+          "prix": 20362.31
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-NGSM10-ADD",
+          "description": "Premium Direct Enterprise Support for Next Generation Security Management Software for 10 gateways",
+          "prix": 36652.16
+        },
+        {
+          "sku": "CPSM-NGSM25",
+          "description": "Next Generation Security Management Software for 25 gateways (SmartEvent & Compliance 1 year)",
+          "prix": 39027.19
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-NGSM25-ADD",
+          "description": "Premium Direct Enterprise Support for Next Generation Security Management Software for 25 gateways",
+          "prix": 70248.94
+        },
+        {
+          "sku": "CPSM-NGSM50",
+          "description": "Next Generation Security Management Software for 50 gateways (SmartEvent & Compliance 1 year)",
+          "prix": 59388.13
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-NGSM50-ADD",
+          "description": "Premium Direct Enterprise Support for Next Generation Security Management Software for 50 gateways",
+          "prix": 106898.63
+        },
+        {
+          "sku": "CPAP-NGSM700M-BASE",
+          "description": "Smart-1 700-M Base Security Management- Log and SmartEvent appliance for 25 gateways (SmartEvent & Compliance 1 year)",
+          "prix": 63581.7
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-NGSM700M-ADD",
+          "description": "Premium Direct Enterprise Support for Smart-1 700-M Base Security Management",
+          "prix": 54044.45
+        },
+        {
+          "sku": "CPAP-NGSM700M-PLUS",
+          "description": "Smart-1 700-M Plus Security Management- Log and SmartEvent appliance for 50 gateways (SmartEvent & Compliance 1 year)",
+          "prix": 79117.5
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-NGSM700M-ADD",
+          "description": "Premium Direct Enterprise Support for Smart-1 700-M Plus Security Management",
+          "prix": 67249.88
+        },
+        {
+          "sku": "CPAP-NGSM7000L-BASE",
+          "description": "Smart-1 7000-L Base Security Management- Log and SmartEvent appliance for 75 gateways (SmartEvent & Compliance 1 year)",
+          "prix": 102133.5
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-NGSM7000L-ADD",
+          "description": "Premium Direct Enterprise Support for Smart-1 7000-L Base Security Management",
+          "prix": 86813.48
+        },
+        {
+          "sku": "CPAP-NGSM7000XL-BASE",
+          "description": "Smart-1 7000-XL Base Security Management- Log and SmartEvent Appliance for 200 GWs (SmartEvent & Compliance 1 year)",
+          "prix": 244545.0
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-NGSM7000XL-ADD",
+          "description": "Premium Direct Enterprise Support for Smart-1 7000-XL Base Security Management",
+          "prix": 207863.25
+        },
+        {
+          "sku": "CPAP-NGSM7000XL-PLUS",
+          "description": "Smart-1 7000-XL Plus Security Management- Log and SmartEvent Appliance for 400 GWs (SmartEvent & Compliance 1 year)",
+          "prix": 309277.5
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-NGSM7000XL-ADD",
+          "description": "Premium Direct Enterprise Support for Smart-1 7000-XL Plus Security Management",
+          "prix": 262885.88
+        },
+        {
+          "sku": "CPAP-NGSM7000UL-BASE",
+          "description": "Smart-1 7000-UL Base Security Management- Log and SmartEvent Appliance for 250 GWs (SmartEvent & Compliance 1 year)",
+          "prix": 316470.0
+        },
+        {
+          "sku": "CPES-SS-PREMIUM-NGSM7000UL-ADD",
+          "description": "Premium Direct Enterprise Support for Smart-1 7000-UL Base Security Management",
+          "prix": 268999.5
+        }
+      ]
+    }
+  ]
+}

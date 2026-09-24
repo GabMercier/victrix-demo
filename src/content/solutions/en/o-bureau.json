@@ -1,4 +1,5 @@
 {
+  "_schema": "default",
   "title": "Ø Bureau — Desk booking",
   "description": "Easy to run and easy to roll out, our application helps you manage your desks in an instant. Optimize space and make hybrid work simple for your teams.",
   "image": "/images/solutions/hero-catalogue.jpg",
@@ -7,5 +8,12 @@
   "featured": true,
   "order": 0,
   "href": "/services/productivity-consulting/office-booking",
-  "docHref": "/contact"
+  "docHref": "/contact",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": []
 }

@@ -1,0 +1,54 @@
+{
+  "_genere_par": "scripts/migration/export-catalogue-ostudio.mjs",
+  "_lire_aussi": "docs/migration/catalogue-ostudio.md (rapport) · docs/plan-import-catalogue-ostudio.md (cible)",
+  "slug": "comptes-depenses",
+  "nouvelle": true,
+  "source": {
+    "slug": "gestion-des-comptes-de-depenses",
+    "id": 251,
+    "url": "https://o-studio-catalogue.victrix.ca/gestion-des-comptes-de-depenses/",
+    "modifiee": "2025-07-11T22:26:16"
+  },
+  "titre": "Gestion des comptes de dépenses",
+  "intro": "Découvrez notre application de gestion des comptes de dépenses. Simple et automatisée, elle permet aux employés de soumettre leurs reçus, tandis que les gestionnaires valident les demandes et génèrent des rapports, le tout dans un processus fluide et rapide grâce à Power Automate.",
+  "introMarkdown": "**Découvrez notre application de gestion des comptes de dépenses. Simple et automatisée, elle permet aux employés de soumettre leurs reçus, tandis que les gestionnaires valident les demandes et génèrent des rapports, le tout dans un processus fluide et rapide grâce à Power Automate.**",
+  "faits": [
+    {
+      "cle": "client",
+      "libelle": "Client",
+      "libelleSource": "Client",
+      "valeur": "Secteur Construction"
+    },
+    {
+      "cle": "cout",
+      "libelle": "Coût",
+      "libelleSource": "Coût",
+      "valeur": "Entre 25k et 50k $CAD"
+    },
+    {
+      "cle": "delai",
+      "libelle": "Délai",
+      "libelleSource": "Délais de personnalisation",
+      "valeur": "Entre 1 et 3 mois"
+    },
+    {
+      "cle": "technologies",
+      "libelle": "Technologies",
+      "libelleSource": "Technologies utilisées",
+      "valeur": "Power Platform, SharePoint"
+    }
+  ],
+  "invitation": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+  "images": [
+    {
+      "fichier": "/images/solutions/comptes-depenses/01.jpg",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2024/08/warehouse-workers-checking-inventory-using-digital-2024-10-17-19-26-26-utc.jpg",
+      "nature": "banque",
+      "alt": "Photographie d’illustration — Gestion des comptes de dépenses",
+      "altSource": "",
+      "largeur": 1600,
+      "hauteur": 1067,
+      "octets": 138584
+    }
+  ]
+}

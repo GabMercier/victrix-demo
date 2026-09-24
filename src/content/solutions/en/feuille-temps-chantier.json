@@ -1,9 +1,19 @@
 {
+  "_schema": "default",
   "title": "Job site timesheet",
   "description": "Lets your crews log their work hours in a few taps and simplifies project billing.",
   "image": "/images/solutions/feuille-temps-chantier.jpg",
   "sector": "Construction",
   "solutionType": "Productivity",
+  "featured": false,
   "order": 70,
-  "href": "/contact"
+  "href": "/contact",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": []
 }

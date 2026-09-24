@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { Content as Demo, frontmatter } from '../../../data/demo/forme-articles.md';
+
+/**
+ * FORME DES ARTICLES — page de démonstration interne /fr/style-guide/forme-articles/
+ * (lot 4, 2026-09-24). Rend src/data/demo/forme-articles.md dans le MÊME
+ * conteneur que les articles (`.prose article__body`) : c'est ici que les
+ * quatre patrons de docs/plan-forme-articles.md se contrôlent à l'œil, que
+ * axe-core les scanne (tests/e2e/accessibilite.spec.ts) et que leur
+ * comportement est verrouillé (tests/e2e/forme-articles.spec.ts).
+ *
+ * Pourquoi pas un vrai article : un article de la collection `blog`
+ * apparaîtrait dans le centre de ressources, sur l'accueil (3 derniers) et
+ * dans le flux RSS. Cette page est noindex et hors plan de site comme le
+ * reste du style guide (scripts/lib/sitemap-filter.mjs, préfixe
+ * `/style-guide`). Français seulement, comme /fr/style-guide/.
+ */
+export function getStaticPaths() {
+  return [{ params: { lang: 'fr' } }];
+}
+---
+
+<BaseLayout lang="fr" title={frontmatter.title} noindex={true} altLocalePath="/en/">
+  <main id="main-content" class="container-site py-16">
+    <header class="max-w-[68ch] mb-10">
+      <p class="text-sm font-semibold uppercase tracking-wide text-primary m-0">Style guide — interne</p>
+      <h1 class="text-[2.5rem] leading-[1.1] font-bold text-on-surface m-0 mt-2">{frontmatter.title}</h1>
+    </header>
+    <div class="prose article__body">
+      <Demo />
+    </div>
+  </main>
+</BaseLayout>

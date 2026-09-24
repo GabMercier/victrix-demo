@@ -1,0 +1,244 @@
+{
+  "_schema": "default",
+  "title": "ServiceNow : la plateforme pour unifier la gestion des flux de travail",
+  "description": "Tirez parti des avantages de l’automatisation avec les solutions ServiceNow distribuées par Victrix. Déploiement accéléré. Évaluation sur demande.",
+  "noindex": false,
+  "slug": "",
+  "seoTitle": "ServiceNow | Automatisez vos processus | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
+  "sections": [
+    {
+      "_bookshop_name": "service-hero",
+      "type": "service-hero",
+      "eyebrow": "Approvisionnement TI",
+      "titleAccent": "",
+      "title": "ServiceNow : la plateforme pour unifier la gestion des flux de travail",
+      "titleHighlight": "",
+      "lead": "<a href=\"/fr/services/productivite/servicenow/\">ServiceNow</a> connecte les personnes, les données et les technologies pour réduire les silos et automatiser les tâches répétitives.",
+      "ctaLabel": "Demandez une démo",
+      "ctaHref": "/fr/contact",
+      "image": "/wp-content/uploads/2022/05/professional-multiethnic-young-businesspeople-work-2024-11-08-01-25-23-utc.jpg",
+      "imageAlt": "professional multiethnic young businesspeople working with digital devices in open space office"
+    },
+    {
+      "_bookshop_name": "stats",
+      "type": "stats",
+      "title": "ServiceNow, la plateforme de référence pour la gouvernance et l'automatisation des processus",
+      "style": "carte",
+      "fond": "beige",
+      "items": [
+        {
+          "number": "+ 20",
+          "label": "ans d'innovation continue",
+          "icon": ""
+        },
+        {
+          "number": "# 1",
+          "label": "pour les cas d'utilisation d'agents IA (Gartner)",
+          "icon": ""
+        },
+        {
+          "number": "X6",
+          "label": "années consécutives en tant que leader du Gartner Magic Quadrant en plateformes d’applications low-code d’entreprise",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "",
+      "fond": "ivoire",
+      "paragraphs": [
+        "Victrix <strong>cadre vos priorités</strong> et <strong>accélère le déploiement des solutions ServiceNow </strong>adaptées à votre contexte. Consolidez vos processus, gagnez en visibilité et pilotez vos résultats sur une plateforme gouvernable et évolutive.",
+        "<strong>Standardisez les processus, réduisez les silos et automatisez les tâches où cela génère le plus de valeur grâce aux solutions ServiceNow.</strong>",
+        "La plateforme ServiceNow est reconnue et utilisée par des milliers d'organisations privées et d'organismes publics. Les solutions ServiceNow alignent les TI, les opérations, le service à la clientèle, les ressources humaines et la sécurité pour accélérer l'exécution et renforcer la gouvernance.",
+        "Son architecture modulaire s'intègre aux environnements les plus complexes. ServiceNow permet des déploiements à grande échelle, du bureau au terrain."
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "fond": "ivoire",
+      "title": "Standardisez, automatisez et gouvernez",
+      "body": "<p>Tirez parti d'un accompagnement sur mesure par nos consultants ServiceNow. Nous définirons un plan de déploiement et de gouvernance adapté à votre organisation.</p>",
+      "ctaLabel": "Demandez une estimation",
+      "ctaHref": "/fr/contact",
+      "layout": "box"
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "fond": "beige",
+      "sectionTitle": "Automatisez et gouvernez vos processus avec ServiceNow",
+      "headingStyle": "plain",
+      "intro": "Adoptez les solutions d'automatisation de processusde ServiceNow distribuées par Victrix. Transformez vos processus dispersés en flux de travail automatisés qui couvrent les <strong>TI</strong>, les <strong>opérations</strong>, les <strong>RH</strong>, le <strong>service client</strong> et la <strong>sécurité</strong>. Les modules ServiceNow permettent à vos employés de se concentrer sur des tâches à plus forte valeur ajoutée et vous aident à prendre des décisions plus rapidement.",
+      "tone": "tint",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Gestion des services informatiques (ITSM)",
+          "text": "<strong>Standardisez la prise en charge des demandes, des incidents et des changements.</strong><br><br><a href=\"/fr/ressources/servicenow-itsm/\"><strong><a href=\"/fr/ressources/servicenow-itsm/\">ServiceNow ITSM</a></strong></a> centralise les canaux de soutien, automatise les flux de travail et maintient une base de connaissances enrichie en continu.<br><br><strong>Résultat :</strong> des délais de résolution réduits et une qualité de service prévisible..",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "02",
+          "title": "Gestion des opérations informatiques (ITOM)",
+          "text": "<strong>Supervisez l'infrastructure, détectez les anomalies et suivez la performance de vos opérations TI. </strong><br><br><a href=\"/fr/ressources/servicenow-itom/\"><strong><a href=\"/fr/ressources/servicenow-itom/\">ServiceNow ITOM</a></strong></a> découvre les dépendances, corrèle les évènements et orchestre la remédiation.<br><br><strong>Résultat :</strong> moins d'interruptions et une exploitation plus fiable.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "03",
+          "title": "Gestion des actifs TI (ITAM)",
+          "text": "<strong>Maîtrisez le cycle de vie de vos actifs logiciels et matériels. </strong><br><br><strong>ServiceNow ITAM</strong> fiabilise les inventaires, optimise la gestion des licences et automatise la conformité.<br><br><strong>Résultat :</strong> des coûts contrôlés et des risques d'audits réduits.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "04",
+          "title": "Gestion de portefeuille stratégique (SPM)",
+          "text": "<strong>Alignez vos investissements, vos projets et vos ressources avec vos objectifs d'affaires. </strong><br><br><strong>ServiceNow SPM</strong> apporte une visibilité sur les portefeuilles de projets, permet de prioriser, de simuler des scénarios et de mesurer la valeur livrée avec des indicateurs partagés.<br><br><strong>Résultat :</strong> des investissements axés sur l'impact et des arbitrages plus rapides.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "05",
+          "title": "Gestion du portefeuille d'applications (APM)",
+          "text": "<strong>Cartographiez, analysez, rationalisez et modernisez votre portefeuille d'applications.</strong><br><br><strong>ServiceNow APM</strong> mesure la valeur, identifie les redondances et évalue les risques liés et recommande des trajectoires (conserver, moderniser, retirer).<br><br><strong>Résultat : </strong>une complexité réduite et un budget mieux alloué.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "06",
+          "title": "Gestion du service à la clientèle (CSM)",
+          "text": "<strong>Unifiez l'expérience client, du portail libre-service aux canaux de support multiples.</strong><br><br><strong>ServiceNow CSM</strong> orchestre les cas, automatise le traitement et connecte le service, les opérations et le terrain.<br><br><strong>Résultat :</strong> des agents plus efficaces, une satisfaction accrue et un meilleur taux de résolution au premier contact.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "07",
+          "title": "Prestation de services RH (HRSD)",
+          "text": "<strong>Automatisez les services RH et améliorez l'expérience employé.</strong><br><br><strong>ServiceNow HRSD </strong>offre un portail employé, simplifie la gestion des cas RH (gestion des dossiers, soutien aux intégrations et départs) et orchestre les parcours.<br><br><strong>Résultat :</strong> une expérience employé qui favorise la rétention du personnel et une charge administrative réduite.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "08",
+          "title": "Moteur d'automatisation (Automation Engine)",
+          "text": "<strong>Automatisez à grande échelle pour minimiser les efforts manuels et améliorer l'efficacité.</strong><br><br><strong>ServiceNow Automation Engine</strong> combine l'<a href=\"/fr/services/intelligence-artificielle/\">intelligence artificielle</a>, l'automatisation robotisée des processus, les intégrations et les politiques opérationnelles pour remplacer les processus manuels par des flux automatisés.<br><br><strong>Résultat :</strong> des gains de productivité mesurables et une réduction des erreurs humaines.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "09",
+          "title": "Opérations de sécurité (SecOps)",
+          "text": "<strong>Accélérez la détection et la réponse.</strong><br><br><strong>ServiceNow SecOps</strong> unifie la gestion des vulnérabilités, la détection des menaces et l'orchestration de réponse (SOAR) avec une priorisation basée sur l'impact.<br><br><strong>Résultat :</strong> un délai de réponse raccourci et des risques opérationnels maîtrisés.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "10",
+          "title": "Gouvernance, risque et conformité (GRC)",
+          "text": "<strong>Gouvernez par les contrôles, pas les tableurs.</strong><br><br><strong>ServiceNow GRC</strong> automatise les évaluations, centralise les preuves et suit les obligations grâce à une cartographie risques-contrôles-exigences.<br><br><strong>Résultat :</strong> une conformité démontrable et des audits simplifiées.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "11",
+          "title": "Gestion des services sur le terrain (FSM)",
+          "text": "<strong>Optimisez la planification, l'assignation et le suivi des interventions sur le terrain.</strong><br><br><strong>ServiceNow FSM</strong> planifie, assigne et suit les travaux avec gestion des pièces, SLA et mobilité intégrés.<br><br><strong>Résultat :</strong> des délais d'intervention maîtrisés et des coûts opérationnels optimisés..",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "testimonial-cards",
+      "type": "testimonial-cards",
+      "title": "Ils utilisent ServiceNow au quotidien",
+      "intro": "Note globale : 4,3 ⭐⭐⭐⭐ — 2 056 avis vérifiés en date de février 2026 (Gartner Peer Insights)",
+      "fond": "ivoire",
+      "items": [
+        {
+          "image": "",
+          "quote": "Nous sommes pleinement investis dans la plateforme ServiceNow depuis plusieurs années et nous en récoltons maintenant les bénéfices. Nous économisons l'équivalent de 1,5 ETP au centre de services en automatisant des tâches routinières, comme la réinitialisation de mots de passe, l'approvisionnement logiciel, la gestion des accès, des actifs et l'assignation de billets. Nous avons déployé ServiceNow avec succès auprès des équipes TI, finances, installations et voyages, ce qui génère des gains d'efficacité dans chacune de ces directions.",
+          "name": "Gartner Peer Insights",
+          "role": "Directeur TI — ⭐⭐⭐⭐⭐ — 18 novembre 2025"
+        },
+        {
+          "image": "",
+          "quote": "La plateforme ServiceNow est complète ; la CMDB est robuste et nous permet d'intégrer des CI et de répondre aux besoins de notre organisation en gestion des changements, des incidents, des problèmes et des actifs.",
+          "name": "Gartner Peer Insights",
+          "role": "Responsable du programme technologique — ⭐⭐⭐⭐⭐ — 12 juin 2024"
+        },
+        {
+          "image": "",
+          "quote": "Le module CSM a grandement facilité la connexion avec les clients et la résolution directe de leurs enjeux. La phase initiale d'apprentissage et d'harmonisation prend un peu de temps, mais les bénéfices à long terme pour l'équipe— évolutivité, automatisation et expérience client améliorée— en valent largement la peine.",
+          "name": "Gartner Peer Insights",
+          "role": "Consultant technique — ⭐⭐⭐⭐⭐ — 16 septembre 2025"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Victrix : votre partenaire stratégique pour l'acquisition et le déploiement des solutions ServiceNow",
+      "fond": "beige",
+      "paragraphs": [
+        "En tant que <strong>partenaire ServiceNow certifié</strong>, Victrix vous accompagne de bout en bout pour l'<a href=\"/fr/services/approvisionnement-ti/\">acquisition et le déploiement de vos solutions TI</a>: cadrage, intégration, gouvernance et transfert. Nous offrons un service de déploiement accéléré et bilingue qui répond aux besoins des organisations d'ici.",
+        "Nos experts ServiceNow structurent la gouvernance et alignent les TI, les opérations, les RH, le service client et la sécurité. Nous assurons également une intégration fluide à vos systèmes existants. Cela vous garantit des opérations prévisibles, une adoption mesurable et un ROI plus rapide."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Unifiez vos processus clés avec les solutions ServiceNow",
+      "body": "Ciblez vos priorités et remplacez les tâches manuelles par des flux de travail automatisés et mesurables.",
+      "ctaLabel": "Demandez une démo",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit",
+      "fond": "ivoire"
+    }
+  ]
+}

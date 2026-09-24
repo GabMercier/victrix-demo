@@ -16,8 +16,8 @@
       "ctaHref": "/fr/contact",
       "cta2Label": "Découvrez nos solutions",
       "cta2Href": "/fr/produits",
-      "image": "/images/sections/expertises-hero.jpg",
-      "imageAlt": "",
+      "image": "/wp-content/uploads/2023/11/gestion-des-processus-et-productivite.jpg",
+      "imageAlt": "Gestion de la productivité — concept",
       "titleHighlight": "la productivité",
       "overlay": "blanc"
     },
@@ -26,23 +26,38 @@
       "type": "benefits",
       "title": "Notre approche humaine",
       "intro": "Nos spécialistes utilisent une approche proactive pour vous aider à tirer le maximum des heures travaillées en conciliant les réalités des trois grands acteurs.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "items": [
         {
           "title": "L'ORGANISATION",
           "description": "Votre vision, votre image, votre message. Nous alignons les outils technologiques sur vos objectifs stratégiques globaux.",
-          "icon": "organisation"
+          "icon": "organisation",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "LE PORTEUR",
           "description": "Ses responsabilités, ses capacités, son initiative. Nous valorisons l'humain qui déploie et maintient vos solutions.",
-          "icon": "porteur"
+          "icon": "porteur",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "title": "LE DESTINATAIRE",
           "description": "Ses outils, son appartenance, ses intérêts. Nous optimisons l'expérience utilisateur finale pour maximiser l'adoption.",
-          "icon": "destinataire"
+          "icon": "destinataire",
+          "image": "",
+          "imageAlt": ""
         }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Nos technologies",
+      "fond": "ivoire",
+      "paragraphs": [
+        "Victrix offre plusieurs outils pour augmenter l’efficacité au travail. Nos spécialistes maîtrisent notamment les solutions de productivité suivantes :"
       ]
     },
     {
@@ -57,6 +72,8 @@
         "Sharepoint",
         "PowerApps",
         "PowerAutomate",
+        "Forms",
+        "Planner",
         "OneDrive",
         "Copilot",
         "Dynamics 365"
@@ -65,6 +82,7 @@
     {
       "_bookshop_name": "exclusive-tools",
       "type": "exclusive-tools",
+      "fond": "beige",
       "title": "Nos solutions de productivité exclusives",
       "intro": "Victrix développe ses propres applications pour répondre aux défis spécifiques du travail moderne.",
       "featured": {
@@ -95,9 +113,10 @@
     {
       "_bookshop_name": "expertise-bento",
       "type": "expertise-bento",
+      "fond": "ivoire",
       "eyebrow": "Domaines d'expertise",
       "title": "Une vision 360° de votre productivité numérique",
-      "intro": "Des solutions idéales pour simplifier les tâches quotidiennes et bénéficier d'un gain de temps immédiat.",
+      "intro": "Des solutions idéales pour simplifier les tâches quotidiennes et bénéficier d'un gain de temps immédiat. Nos expertises couvrent aussi la recherche (Delve) et la migration de contenu.",
       "items": [
         {
           "title": "Intranet Moderne",
@@ -156,6 +175,28 @@
       ]
     },
     {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "fond": "beige",
+      "title": "Victrix soutient les entreprises dans l’amélioration de la productivité",
+      "paragraphs": [
+        "Victrix est spécialisée en <a href=\"/fr/services/conseil-strategique/\">stratégie TI et d'affaires</a>. Nous sommes en mesure de vous offrir les meilleures solutions pour <strong>augmenter votre productivité</strong>, toujours en priorisant vos besoins, vos objectifs et vos utilisateurs.",
+        "Notre méthodologie se veut agile, évolutive et transparente. Tout se déroule dans la collaboration et la synergie, tout en respectant votre image de marque.",
+        "Nous offrons notre expertise pour plusieurs éléments qui influencent la productivité de l’entreprise. Victrix trouve les <strong>solutions idéales pour simplifier les tâches quotidiennes</strong> de vos salariés et vous permettre de bénéficier d’un gain de temps.",
+        "De l’implémentation d’un intranet moderne ou d'une <a href=\"/fr/services/productivite/dynamics-365-field-service/\">solution de gestion des opérations terrain</a> au <a href=\"/fr/services/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/\">développement M365</a>, faites confiance à notre équipe."
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "fond": "ivoire",
+      "title": "Gagnez du temps grâce aux meilleures applications de productivité sur le marché",
+      "paragraphs": [
+        "Afin d'assurer votre compétitivité, il est important de <strong>trouver des solutions pour améliorer la productivité</strong> des équipes, surtout dans un contexte où le télétravail fait maintenant partie de la réalité de plusieurs entreprises.",
+        "C'est pourquoi Victrix a développé ses propres <strong>applications de productivité</strong>. Faites comme de nombreuses entreprises et offrez à vos employés les outils nécessaires adaptés à leurs besoins et à vos attentes."
+      ]
+    },
+    {
       "_bookshop_name": "cta",
       "type": "cta",
       "title": "Prêt à faire évoluer votre organisation?",
@@ -163,11 +204,12 @@
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "variant": "dark",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Productivité"

@@ -5,6 +5,7 @@ excerpt: "Découvrez la solution SASE cloud (Secure Access Service Edge) pour am
 tags: ["Nos articles"]
 topics: ["Cybersécurité", "Infonuagique"]
 slug: "sase-cloud"
+draft: false
 coverImage: "/wp-content/uploads/2023/11/sase-victrix-1024x576-1.jpg"
 seoTitle: "SASE Cloud: Secure Access Service Edge | Cybersécurité"
 wpUrl: "/sase-cloud/"
@@ -13,13 +14,15 @@ wpUrl: "/sase-cloud/"
  Pour assurer une posture de sécurité impeccable, l’utilisation d’une plateforme SASE cloud est l’une des meilleures solutions de sécurité informatique. Avec de plus en plus d’organisations se tournant vers l’infonuagique, il est donc nécessaire de développer des [stratégies de sécurité infonuagique](/fr/services/cybersecurite/) robustes. 
  C’est l’une des raisons pour lesquelles le modèle SASE gagne en popularité. La centralisation des services de sécurité offre de nombreux avantages. Nous vous invitons à parcourir **notre guide complet sur le SASE** pour prendre une décision éclairée quant à l’avenir de votre sécurité réseau.
 
+## Une solution SASE, c’est quoi?
+
 Par définition, SASE est l’acronyme de Secure Access Service Edge. Il s’agit d’un **concept de cybersécurité émergent** décrit par Gartner dans son rapport d'août 2019 intitulé «[L’avenir de la sécurité réseau est dans le cloud](https://www.gartner.com/en/documents/3957375) ». 
  Ce modèle d’architecture cloud combine la protection d'accès réseau, aussi appelée Secure Service Edge (SSE) et la fonction Security as a Service.
 
 ### L’objectif principal de l'architecture SASE en informatique
 
 L’objectif premier du modèle Secure Access Service Edge (SASE) est de **connecter sécuritairement les travailleurs à distance et les succursales** aux centres de données et applications SAAS corporatives. Le SASE est la fusion de la sécurité de l'information et de la connectivité pour les organisations qui suivent le rythme de l’évolution (télétravail, nouvelles succursales, etc.). 
- Ce modèle combine le réseau étendu défini par logiciel (SD-WAN) ou un autre réseau étendu (WAN) avec plusieurs modèles ou fonctions de sécurité natives. On parle ici du [modèle ZTNA (Zero Trust Network Access)](/fr/ressources/zero-trust-network-access-ztna/), SWG, CASB, FWaaS, le tout, piloté par le cloud afin de sécuriser le trafic réseau.
+ Ce modèle combine le réseau étendu défini par logiciel (SD-WAN) ou un autre réseau étendu (WAN) avec plusieurs modèles ou fonctions de sécurité natives. On parle ici du [modèle ZTNA (Zero Trust Network Access)](/fr/ressources/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/), SWG, CASB, FWaaS, le tout, piloté par le cloud afin de sécuriser le trafic réseau.
 
 ### Pourquoi l'adoption du SASE est-elle importante?
 
@@ -33,6 +36,8 @@ Les méthodes de sécurisation de réseau traditionnelles considèrent que les u
 - Systèmes de préventions contre les pertes de données
 
 SASE réduit la complexité du réseau et simplifie sa gestion, améliore la vitesse et l'agilité. Grâce à cette approche, il est aussi possible de mettre en place un réseau multicloud et de **sécuriser la nouvelle architecture** basée sur le SD-WAN.
+
+## Les éléments de l'architecture SASE dans le cloud
 
 ### Les composants technologiques
 
@@ -54,6 +59,8 @@ Les capacités SASE sont fournies sous forme de services en fonction:
 
 Les identités des entités correspondent aux utilisateurs, groupes d’utilisateurs (sites distants), équipements, applications, services, systèmes IoT et aux différents points qui se trouvent au « Edge Computing ».
 
+## Les principaux avantages du modèle SASE basé sur le nuage
+
 ### Pourquoi les entreprises adoptent de plus en plus le service en nuage SASE?
 
 Puisque de plus en plus d’organisations optent pour des [services infonuagiques](/fr/services/services-infonuagiques/), le besoin d’améliorer leur sécurité informatique augmente. SASE est non seulement un modèle d’architecture infonuagique qui permet de **renforcer la sécurité et l’accès au réseau**, mais aussi de centraliser tous les services nécessaires pour assurer une saine gestion de la cybersécurité.
@@ -65,11 +72,19 @@ Puisque de plus en plus d’organisations optent pour des [services infonuagique
 - Performances élevées et mobilité constante
 - Centralisation et optimisation des applications en temps réel
 - Réduction des coûts et simplification de la gestion
+- Expérience utilisateur supérieure et adaptée à la réalité des organisations modernes
+- Réduction des risques grâce à une sécurité cloud native
+- Gestion simplifiée de vos infrastructures et des éléments de sécurité qui s’y rattachent
+- Service de sécurité infonuagique moderne, flexible et évolutif
+
+## Quelques questions à se poser avant d'adopter l'architecture SASE
 
 ### Quels sont les défis à relever pour adopter ce modèle de sécurité dans le cloud?
 
 Comme il s'agit d'un modèle de cybersécurité émergent, il laisse **beaucoup de place à la flexibilité et l'évolutivité**. De plus, chaque fournisseur propose sa propre version de l'architecture SASE. Les organisations ont donc la chance de transitionner progressivement vers ce modèle pour une transformation technologique avec impact réduit. 
  **Les équipes TI et le fournisseur travaillent donc main dans la main** pour repenser la façon de connecter connecter l'ensemble des ressources humaines, des applications et des centres de données de l'organisation. Ils partagent ainsi la charge de responsabilité avec le fournisseur grâce à l'utilisation de [services gérés](/fr/services/services-ti-geres/) (SaaS, IaaS, PaaS, etc) au sein de l'entreprise.
+
+## Comment Victrix vous aide à améliorer la sécurité du nuage et des réseaux informatiques
 
 ![victrix-votre-cybersécurité](/wp-content/uploads/0206/05/victrix-votre-cybersecurite.png)
 
@@ -91,6 +106,8 @@ Chez Victrix, nous considérons l'architecture SASE comme **le modèle transform
 - Intégration du nouveau modèle permettant de sécuriser les données, les applications et les utilisateurs
 - Acceptation des livrables
 - Transfert de connaissance et aide à la gestion de la solution en mode service géré au besoin
+
+## Victrix, votre partenaire stratégique pour l'amélioration continue et l'évolution de votre posture de sécurité
 
 Des questions sur la sécurité en matière de cloud computing ou sur l’approche SASE? N’hésitez pas à entrer en contact avec l’un de nos ** experts en stratégie de cybersécurité ** . Nous prendrons le temps de vous écouter pour trouver des solutions modernes et évolutives qui répondront à tous vos besoins.   
  [Parlez à un expert SASE chez Victrix](/fr/contact/)

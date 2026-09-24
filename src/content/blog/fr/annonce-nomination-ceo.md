@@ -4,6 +4,7 @@ date: 2025-03-05
 excerpt: "Victrix franchit une nouvelle étape clé de son développement avec la nomination de Dominic Lajoie au poste de CEO."
 tags: ["Nos actualités"]
 slug: "annonce-nomination-ceo"
+draft: true
 coverImage: "/wp-content/uploads/2025/03/design-sans-titre-1.png"
 wpUrl: "/annonce-nomination-ceo/"
 ---

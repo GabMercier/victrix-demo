@@ -28,7 +28,7 @@
       "type": "offer-cards",
       "title": "Ce que nous prenons en charge",
       "intro": "Un aperçu de nos interventions types — le détail de l’offre sera publié prochainement.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "",
       "ctaHref": "",
       "items": [
@@ -82,6 +82,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Infonuagique"
@@ -99,7 +100,7 @@
       "cta2Label": "Services TI gérés",
       "cta2Href": "/fr/services/services-ti-geres",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": ""

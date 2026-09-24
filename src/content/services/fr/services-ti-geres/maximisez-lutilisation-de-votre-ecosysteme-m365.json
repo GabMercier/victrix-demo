@@ -32,7 +32,7 @@
       "type": "bento-metrics",
       "title": "Comment la gestion Microsoft 365 peut vous aider",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Mieux utiliser vos ressources internes",
         "text": "Accédez à des compétences qui ne sont pas disponibles, améliorez votre sécurité, augmentez votre capacité d'innovation et réduisez vos coûts.",
@@ -44,7 +44,9 @@
         "title": "Un complément évolutif",
         "text": "Notre offre vous permet de rester à la fine pointe des technologies avec notre volet Vigie et évolution.",
         "linkLabel": "",
-        "linkHref": ""
+        "linkHref": "",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -54,16 +56,42 @@
       "subtitle": "",
       "fond": "ivoire",
       "boxes": [
-        "Support technique et conseil",
-        "Gestion opérationnelle",
-        "Optimisation des coûts",
-        "Vigie et évolution",
-        "Sécurité et conformité"
+        {
+          "label": "Support technique et conseil",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Gestion opérationnelle",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Optimisation des coûts",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Vigie et évolution",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Sécurité et conformité",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Les avantages du service de gestion M365 de Victrix",
       "headingStyle": "plain",
       "intro": "",
@@ -80,21 +108,30 @@
           "title": "Proactivité",
           "text": "Permettre à votre équipe de se concentrer sur ce qui fait avancer votre organisation.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Sécurité",
           "text": "Tirer profit de nos systèmes NOC et SOC pour vous protéger contre les cybermenaces.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Vigie et évolution",
           "text": "Garantir un service rapide et efficace, une vigie constante et une évolution de votre environnement.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -103,7 +140,7 @@
       "type": "offer-cards",
       "title": "Notre méthodologie",
       "intro": "",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "",
       "ctaHref": "",
       "items": [
@@ -161,7 +198,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

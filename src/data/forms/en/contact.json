@@ -84,12 +84,30 @@
         "Cloud",
         "Application services",
         "Managed services",
+        "Human resources",
         "Other"
       ],
       "value": "",
       "showIf": {
         "field": "",
         "equals": ""
+      }
+    },
+    {
+      "label": "Company size",
+      "type": "select",
+      "required": false,
+      "width": "demi",
+      "options": [
+        "Fewer than 50 employees",
+        "50 to 249 employees",
+        "250 to 999 employees",
+        "1,000 employees or more"
+      ],
+      "value": "",
+      "showIf": {
+        "field": "Service",
+        "equals": "Cybersecurity"
       }
     },
     {

@@ -3,7 +3,6 @@
   "title": "Accompagnement en intelligence artificielle",
   "description": "Structurez, gouvernez et concrétisez vos initiatives IA avec notre accompagnement en intelligence artificielle. Planifiez une consultation.",
   "noindex": false,
-  "slug": "",
   "seoTitle": "Accompagnement en intelligence artificielle | Services | Victrix",
   "seoH1": "Accompagnement en intelligence artificielle",
   "contactSujet": "",
@@ -32,7 +31,7 @@
       "type": "bento-metrics",
       "title": "Les enjeux de l’IA pour les organisations québécoises",
       "intro": "L’intelligence artificielle progresse rapidement au sein de votre organisation, souvent plus vite que le cadre censé l’encadrer. En lançant cette réflexion, vous vous distinguez déjà de la concurrence.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Des angles morts qui deviennent coûteux",
         "text": "L’adoption de l’IA se fait rarement de manière coordonnée. Les outils se multiplient, les usages se dispersent et les décisions manquent de direction. À mesure que les demandes augmentent, les angles morts s’accumulent&nbsp;: initiatives dispersées difficiles à prioriser, manque de visibilité sur ce que vos équipes font déjà, demandes croissantes d’outils et de licences sans démarche d’approbation, préoccupations réelles de confidentialité, de fiabilité et d’imputabilité, attentes qui confondent gains rapides et transformation durable, et gouvernance à définir avant d’investir davantage.",
@@ -42,9 +41,11 @@
       "aside": {
         "icon": "etoile",
         "title": "Vos équipes ont déjà commencé",
-        "text": "Plusieurs de vos employés sont familiers avec l’intelligence artificielle. Ils ont déjà testé divers outils et intégré l’IA générative à leurs processus. Il ne s’agit pas tant de surmonter la résistance au changement que de convertir ce potentiel en réalisations tangibles et de structurer l'approche autour de la génération de valeur.",
+        "text": "Plusieurs de vos employés sont familiers avec l’<a href=\"/fr/services/intelligence-artificielle/\">intelligence artificielle</a>. Ils ont déjà testé divers outils et intégré l’IA générative à leurs processus. Il ne s’agit pas tant de surmonter la résistance au changement que de convertir ce potentiel en réalisations tangibles et de structurer l'approche autour de la génération de valeur.",
         "linkLabel": null,
-        "linkHref": null
+        "linkHref": null,
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -58,8 +59,8 @@
         "Nous mobilisons notre équipe multidisciplinaire : <strong>chef de pratique IA, conseiller stratégique sénior, architecte IA, experts de solutions, analyste d’affaires, gestion du changement, développeur et chargé de projets</strong>, en fonction de vos besoins.",
         "Nos certifications et désignations : AIGP (<em>Artificial Intelligence Governance Professional</em>, IAPP), AAIA (<em>Advanced in AI Audit</em>, ISACA), <a href=\"/fr/ressources/certification-iso-27001-iso-9001/\">ISO/IEC 27001:2022 (sécurité de l’information) et ISO 9001:2015</a> (gestion de la qualité)."
       ],
-      "image": "",
-      "imageAlt": "",
+      "image": "/wp-content/uploads/2026/07/happy-colleagues-at-modern-office-workplace-lookin-2026-01-09-09-28-57-utc-1-scaled.jpg",
+      "imageAlt": "Des consultants en intelligence artificielle chez Victrix, mobilisés chez un client.",
       "stats": [
         {
           "value": "Affaires d’abord",
@@ -89,7 +90,6 @@
       "type": "realisations",
       "title": "Exemples d’initiatives",
       "intro": "Des initiatives concrètes découlant de notre accompagnement stratégique et appliqué en IA.",
-      "fond": "givre",
       "linkLabel": "",
       "linkHref": "",
       "items": [
@@ -118,18 +118,16 @@
           "text": "Création de plateforme collaborative, développement applicatif intégré à vos systèmes, entrainement de modèles personnalisés, mise en place de lacs de données.",
           "icon": ""
         }
-      ]
+      ],
+      "fond": "beige"
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Notre démarche d'accompagnement en IA : de la vision aux initiatives appliquées",
       "headingStyle": "plain",
       "intro": "Nous proposons un parcours simple pour vous accompagner de la réflexion au déploiement. Chaque étape rapproche votre organisation d’une adoption de l’IA maîtrisée et créatrice de valeur, en gardant l’humain au cœur de vos décisions. La collaboration s’étend généralement sur environ 12 mois et s’ajuste à votre contexte; le budget et l’échéancier sont confirmés après analyse.",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -139,58 +137,110 @@
           "title": "Vision",
           "text": "Clarifier votre ambition IA et votre maturité actuelle.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Gouvernance",
           "text": "Encadrer les décisions, les responsabilités et les usages, en gardant l’humain au cœur des décisions.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Analyse des processus",
           "text": "Identifier où se trouve la valeur dans vos opérations.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Priorisation",
           "text": "Bâtir une feuille de route claire et réaliste.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Démonstration rapide de la valeur",
           "text": "Démontrer la valeur par de premières initiatives concrètes (<em>quick wins</em>).",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Déploiement et évolution",
           "text": "Déployer les initiatives et faire évoluer la démarche.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Ce qui est inclus dans notre accompagnement",
       "subtitle": "Que vous soyez à l’évaluation des outils d’IA, ayez un cas d’usage précis ou souhaitiez un plan complet avec une feuille de route, une gouvernance et des initiatives concrètes, Victrix est votre partenaire pour un accompagnement stratégique en IA.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "boxes": [
-        "Des ateliers thématiques pour clarifier votre ambition et votre maturité IA",
-        "La documentation de votre vision à court et moyen terme",
-        "Une liste d’initiatives documentées, évaluées et priorisées en fonction de vos besoins réels",
-        "Un accompagnement pour concrétiser les initiatives sélectionnées",
-        "Des ressources expertes mobilisées selon vos besoins",
-        "Un cadre de gouvernance pour encadrer les décisions et les usages"
+        {
+          "label": "Des ateliers thématiques pour clarifier votre ambition et votre maturité IA",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "La documentation de votre vision à court et moyen terme",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Une liste d’initiatives documentées, évaluées et priorisées en fonction de vos besoins réels",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Un accompagnement pour concrétiser les initiatives sélectionnées",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Des ressources expertes mobilisées selon vos besoins",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Un cadre de gouvernance pour encadrer les décisions et les usages",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {
@@ -280,13 +330,13 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "light",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "rich-text",
       "type": "rich-text",
       "title": "L’opportunité de l’IA pour les organisations canadiennes",
-      "fond": "blanc",
+      "fond": "ivoire",
       "paragraphs": [
         "L’écart entre expérimenter avec l’IA, <a href=\"/fr/services/intelligence-artificielle/analyse-opportunites-ia/\">explorer et analyser les opportunités</a> et la déployer avec méthode reste important. C’est précisément là où se joue la valeur, et là que notre accompagnement devient un facteur décisif de succès.",
         "<ul><li><p><strong>60 %&nbsp;</strong>: cible d’adoption de l’IA par les entreprises canadiennes d’ici 2034, contre 12 % aujourd’hui.</p></li><li><p><strong>78 % </strong>des entreprises qui n’ont pas adopté l’IA ne perçoivent pas encore en quoi elle améliorerait leurs produits ou services.</p></li><li><p><strong>1 sur 8&nbsp;</strong>: entreprises ayant formellement intégré l’IA, alors que près de la moitié des dirigeants d’entreprise l’ont déjà expérimentée.</p></li><li><p><strong>187 G$&nbsp;</strong>: contribution annuelle projetée de l’IA générative à l’économie canadienne d’ici 2030.</p></li><li><p><strong>+3 % du PIB&nbsp;</strong>: gains économiques visés grâce à la productivité liée à l’IA, soit près de 200 G$.</p></li></ul>",
@@ -307,13 +357,13 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "light",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "Questions fréquentes sur l’accompagnement en intelligence artificielle",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "Qu’est-ce qu’un accompagnement stratégique en IA?",
@@ -337,7 +387,7 @@
         },
         {
           "question": "Comment gérez-vous la sécurité et la conformité?",
-          "answer": "L’intelligence artificielle demeure assujettie au cadre juridique applicable, dont la Loi 25. Notre ADN de cybersécurité et d’infrastructure nous permet d’encadrer les usages, de protéger vos données et de garder l’humain au cœur des décisions. Nous alignons la démarche sur les principes reconnus d’une IA responsable : respect des droits et libertés, protection de la vie privée et gouvernance des données, gouvernance et dialogue social, surveillance humaine et transparence, développement durable."
+          "answer": "L’intelligence artificielle demeure assujettie au cadre juridique applicable, dont la <a href=\"/fr/services/conseil-strategique/conformite-loi-25/\">Loi 25</a>. Notre ADN de cybersécurité et d’infrastructure nous permet d’encadrer les usages, de protéger vos données et de garder l’humain au cœur des décisions. Nous alignons la démarche sur les principes reconnus d’une IA responsable : respect des droits et libertés, protection de la vie privée et gouvernance des données, gouvernance et dialogue social, surveillance humaine et transparence, développement durable."
         },
         {
           "question": "Quel est l’investissement requis?",
@@ -352,6 +402,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Intelligence artificielle"
@@ -369,7 +420,8 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "slug": ""
 }

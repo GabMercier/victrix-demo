@@ -1,6 +1,7 @@
 {
   "metaTitle": "Contact",
   "metaDescription": "Get in touch with Victrix: our offices in Montréal, Québec, and Paris, by phone, by email, or through our form.",
+  "heroEyebrow": "Get in touch",
   "heroTitle": "Contact Us!",
   "heroSub": "Have a question or a project? Don’t hesitate to reach out. Our experts will respond to your request promptly.",
   "infoTitle": "Contact Information",
@@ -59,6 +60,8 @@
     "subjectPlaceholder": "Select a subject",
     "expertise": "Service",
     "expertisePlaceholder": "Select a service",
+    "companySize": "Company size",
+    "companySizePlaceholder": "Select a size",
     "request": "Tell us more about your request",
     "message": "Message"
   },
@@ -75,9 +78,16 @@
     "Cloud",
     "Application services",
     "Managed services",
+    "Human resources",
     "Other"
   ],
+  "companySizeOptions": [
+    "Fewer than 50 employees",
+    "50 to 249 employees",
+    "250 to 999 employees",
+    "1,000 employees or more"
+  ],
   "consentText": "By submitting this form, you consent to receiving communications from Victrix and accept its <a href=\"{privacy}\">privacy policy</a>.",
-  "submit": "Submit",
+  "submit": "Send message",
   "statusMessage": "Thank you! Your message has been received. (Demo form — nothing is actually sent.)"
 }

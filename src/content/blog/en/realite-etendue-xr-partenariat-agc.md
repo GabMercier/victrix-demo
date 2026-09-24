@@ -4,14 +4,19 @@ date: 2025-09-03
 excerpt: "Victrix is extremely proud to announce its exclusive partnership with Auger Groupe Conseil, expert engineers in extended reality (XR) in Canada."
 tags: ["Our news"]
 slug: "extended-reality-xr-agc-partnership"
+draft: true
 coverImage: "/wp-content/uploads/2025/08/victrix_agc-press-release-en.png"
 seoTitle: "An Exclusive Partnership in Extended Reality (XR) for Victrix"
 wpUrl: "/en/extended-reality-xr-agc-partnership/"
 ---
+## A Commitment to Innovation That Expands into Immersive Technologies
+
 **MONTREAL, AUGUST 5, 2025** — Victrix is proud to announce its exclusive partnership with [Auger Groupe Conseil](https://augergroupe.com/en/home/),**Canadian experts in extended reality (XR)**. This partnership reaffirms our commitment to innovation and excellence, enabling us to offer our customers state-of-the-art equipment and solutions that transform their operations and drive business growth.
 
 Victrix maintains its position as an innovation leader by offering **remote assistance technologies** that improve learning, communication, security, culture, and performance within organizations.
  [Contact our experts](/en/contact/)
+
+## Auger Groupe Conseil, Expert Engineers in Extended Reality
 
 Founded in 1985, AGC was quickly recognized as an **expert in industrial engineering**, a position that has been reinforced over the decades. In 2016, the Trois-Rivières-based company embarked on skills development projects using mixed reality (MR) and, following resounding success, partnered with leading providers such as Microsoft, Digilens, and Meta.
 
@@ -24,6 +29,8 @@ Today, AGC is a global leader in extended reality with its **XR Toolbox applicat
  • And more 
 Auger Groupe Conseil is also one of the largest **distributors of extended reality devices** such as DigiLens Argo, Oculus Quest Pro, MetaLens 2, and others.
 
+### Extended Reality at the Service of Various Industries
+
 Today, thanks to Auger Groupe Conseil, many sectors are benefiting from immersive technologies to meet specific needs. Here are a few examples:
  • **Healthcare**: remote assistance, immersive training, expert teleportation, virtual screens — AGC already serves 5 of the 29 CISSS, CIUSS, and university centers. 
  • **Industrial**: step-by-step training, expert consultation, safety memos, lockout assistance. 
@@ -33,11 +40,28 @@ Today, thanks to Auger Groupe Conseil, many sectors are benefiting from immersiv
  • **Transportation**internal education on road safety and operational regulations, virtual reality for road simulation, simulations of difficult situations, decision-making exercises. 
  [Discover AGC](https://augergroupe.com/en/home/)
 
+<aside class="article-encadre">
+<p class="article-encadre__titre">Did You Know?</p>
+
+The term extended reality encompasses three types of realities: **virtual reality (VR)**, **augmented reality (AR)**, and **mixed reality (MR)**.
+
+- **Virtual reality**: the users find themselves in a 360-degree computer-generated virtual world. More widely recognized in the world of video games, VR experiences are particularly immersive. The use of a VR headset and controllers to navigate within the virtual environment allows the user to be truly immersed in this new environment.
+- **Augmented reality**: augmented reality enriches our perception by superimposing elements of the physical and virtual worlds in 3D. This reduces the cognitive effort involved in 2D/3D conversion and paves the way for natural interactions, such as voice or eye tracking, going beyond the methods inherited from touch screens and virtual reality.
+- **Mixed reality**: mixed reality combines real and virtual elements in a single environment where both interact in real time. Using cutting-edge technologies such as holographic technology, it allows physical objects to influence digital elements and vice versa. This immersive experience surpasses augmented reality and requires a high-performance reality headset to function.
+
+Would you like to learn more about extended reality and what it can do for your organization?
+ [Contact our experts](/en/contact/)
+
+</aside>
+## A Partnership That Unites Technical Expertise and Operational Excellence
+
 By combining AGC's pioneer engineering and technological creativity with Victrix's expertise in integration, [security](/en/services/cybersecurity/), and [strategic customer support](/en/services/strategic-advice/), this partnership paves the way for immersive projects of exceptional quality.
 
 AGC continues to focus **on researching and developing innovative XR solutions**, while Victrix enhances the offering by **ensuring their deployment**,**secure integration**, and **optimal adoption** within companies.
 
 Together, we offer organizations solutions that redefine remote assistance, skills development, user and customer experience, collaboration, and team performance.
+
+### A Word from Our Management
 
 > *“In a world where speed and precision dictate success, extended reality is an essential lever for transformation. With Auger Groupe Conseil, we give industries the means to rethink their working methods and become more agile. We are convinced that those who adopt it first will gain a decisive advantage over their competitors.”*
 
@@ -54,10 +78,14 @@ Director of Innovation, Les Solutions Victrix
 Mélanie Di Stefano
 Director of Business Solutions, Les Solutions Victrix
 
+### What AGC Has to Say
+
 > *“With Victrix at our side, our solutions are taking on a new dimension. Their deployment strength, combined with our engineering expertise, is propelling us to new heights. Already validated by the trust of our customers, our solutions are gaining momentum and paving the way for a tangible transformation of the industry. Extended reality is no longer a futuristic concept: it will soon become as natural and indispensable as your everyday phone.”*
 
 Marcel Lafontaine
 President, AGC
+
+## To Learn More
 
 Would you like to discover how immersive technologies**improve culture**, **conditions**, **communication**, **quality**, **security**, and **performance**? Feel free to contact Victrix, your experts in information technology and innovation.
  [Talk to our experts](/en/contact/)

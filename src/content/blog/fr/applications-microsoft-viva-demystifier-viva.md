@@ -5,6 +5,7 @@ excerpt: "Explorez les applications Microsoft Viva et découvrez comment cette p
 tags: ["Nos articles"]
 topics: ["Productivité"]
 slug: "applications-microsoft-viva-demystifier-viva"
+draft: false
 coverImage: "/wp-content/uploads/2024/02/microsoft-viva_image-article-1024x623-1.jpg"
 seoTitle: "Applications Microsoft Viva: démystifier Viva"
 wpUrl: "/applications-microsoft-viva-demystifier-viva/"
@@ -15,6 +16,8 @@ Connaissez-vous bien les **applications Microsoft Viva**et savez-vous comment me
 
 Avec une suite d’applications performantes et une équipe spécialisée dans les solutions de productivité pour entreprise, votre organisation bénéficiera d'**une voie claire vers le succès**.
 
+## Qu’est-ce que la suite Microsoft Viva?
+
 Microsoft Viva offre bien plus que l’expérience traditionnelle d’un intranet d’entreprise. Au-delà de ses fonctions de communications, Viva offre une suite innovante d’applications pour **transformer la façon dont les organisations gèrent les communications, la collaboration et le bien-être** des employés.
 
 ### Combien coûtent les applications Microsoft Viva?
@@ -23,13 +26,15 @@ Le prix de Microsoft Viva varie en fonction du degré de personnalisation ainsi 
 
 Certaines fonctionnalités de Viva Connections, Engage et Learning sont même accessibles sans frais additionnels à l'intérieur même des licences Microsoft 365 que vous détenez peut-être déjà. Les suites Microsoft offrent beaucoup d’applications et de fonctionnalités, trop souvent non utilisées par les organisations. Nos experts peuvent vous aider à mieux exploiter et rentabiliser les outils Microsoft.
 
-<a class="article-cta" href="/fr/contact/">Contactez nos experts Microsoft</a>
+<a class="btn" href="/fr/contact/">Contactez nos experts Microsoft</a>
 
 ### Comment configurer Microsoft Viva pour une expérience personnalisée?
 
 Comme tous les produits Microsoft, Viva **bénéficie d’une certaine familiarité**. Il est cependant nécessaire d’user des bonnes pratiques d’intégration pour préparer le lancement et l'adoption par les utilisateurs finaux.
 
 Nous recommandons donc de faire appel à une équipe spécialisée dans les solutions Microsoft pour **simplifier le processus d’adoption et personnaliser les applications** en fonction des rôles et utilisateurs.
+
+## Des applications Microsoft sur mesure pour gérer vos communications internes, accroître la productivité et stimuler l'engagement et le bien-être au travail
 
 ![Logo Viva Connections, Logo Viva Engage, Logo Viva Amplify, Logo Viva Learning, Logo Viva Insight, Glint et Pulse, Logo Viva Goals](/wp-content/uploads/2024/02/apps-microsoft-viva.png)
 
@@ -73,6 +78,8 @@ Nous recommandons donc de faire appel à une équipe spécialisée dans les solu
 - Aligner les équipes et leur travail avec les priorités stratégiques de l’entreprise
 - Suivi de la progression et des performances
 
+## Les nombreux avantages des applications Microsoft Viva
+
 Avec une série d’applications complète pour **gérer l’engagement,**[**améliorer la productivité**](/fr/services/productivite/)**et simplifier les communications**, Viva est une ressource puissante pour toute entreprise moderne. Voici d’ailleurs quelques-uns des principaux avantages d’intégrer les outils Viva à vos flux de travail.
 
 - Une stratégie de communication interne bidirectionnelle efficace
@@ -83,6 +90,8 @@ Avec une série d’applications complète pour **gérer l’engagement,**[**am�
 - Encourager le partage des connaissances et le développement en continu
 - Accès à des données exploitables pour simplifier le travail des gestionnaires
 - Des outils de planification et d’automatisation pour vos communications importantes
+
+## Les applications Microsoft Viva au service de votre communauté d’entreprise et de vos objectifs d’affaires
 
 Pour offrir la meilleure plateforme expérience employé à vos équipes, choisissez la suite Microsoft Viva. Les experts en solutions Microsoft chez Victrix **vous accompagnent à toutes les étapes de votre projet d’intégration de Viva**. 
  Faites confiance à notre équipe pour développer les outils qui simplifieront le flux de travail quotidien de vos employés. 

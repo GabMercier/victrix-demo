@@ -5,6 +5,7 @@ excerpt: "Découvrez ce qu’est la gouvernance Power Platform. Maîtrisez le po
 tags: ["Nos articles"]
 topics: ["Productivité", "Conseil stratégique"]
 slug: "gouvernance-power-platform-conseils"
+draft: false
 coverImage: "/wp-content/uploads/2024/05/power_platform_image-article.png"
 seoTitle: "Gouvernance Power Platform: Conseil et accompagnement"
 wpUrl: "/gouvernance-power-platform-conseils/"
@@ -13,6 +14,8 @@ wpUrl: "/gouvernance-power-platform-conseils/"
  Microsoft Power Platform est une solution Microsoft conçue pour répondre à ces enjeux. Elle permet aux grandes entreprises de développer des applications métier rapidement, et ce même sans expertise approfondie en développement. 
  Toutefois, son utilisation et la gouvernance de l’outil Microsoft Power Platform peuvent devenir un défi pour les organisations. Nous vous invitons donc à parcourir cet article rédigé par un [consultant Power Platform](/fr/services/productivite/o-studio/) pour découvrir comment exploiter le potentiel de cet outil innovant.
 
+## Qu'est-ce que Microsoft Power Platform?
+
 Microsoft Power Platform est une solution intégrée dans la [suite Microsoft 365](/fr/services/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/).  Cet outil performant suit la tendance des plateformes de développement low-code et no-code.  C'est la solution idéale pour simplifier la création et le développement d'applications sur mesure, avec ou sans expertise de programmation approfondie.
 
 La Power Platform **favorise la collaboration entre les utilisateurs et développeurs.** Lorsque déployée en interne, elle permet d'automatiser certains processus d'entreprise complexes et lourds.
@@ -20,7 +23,9 @@ La Power Platform **favorise la collaboration entre les utilisateurs et dévelop
 Simple à utiliser et flexible, Microsoft Power Platform rend la technologie accessible à chaque employé de l'organisation. Chacun fait sa part et contribue à l'innovation et à l'amélioration en continue, tout en ciblant les objectifs d'efficacité opérationnelle.
 
 Il est donc extrêmement avantageux d'investir dans le déploiement de Microsoft Power Platform pour répondre aux objectifs stratégiques de votre organisation.
- [Téléchargez le guide des licences Power Platform](/document/licences-microsoft-power-platform/)
+ [Téléchargez le guide des licences Power Platform](/fr/campagnes/licences-power-platform/)
+
+## Liste des applications Microsoft Power Apps
 
 ![Liste des applications Microsoft Power Platform avec leurs logos.](/wp-content/uploads/2024/05/powerplatform.jpg)
 
@@ -39,6 +44,10 @@ Il est donc extrêmement avantageux d'investir dans le déploiement de Microsoft
 ****
 - Interagir avec vos partenaires externes et vos clients avec **Power Pages**
 
+Au-delà de ces applications la Power Platform soutient aussi des solutions d'affaires complètes comme Dynamics 365 Field Service, qui s'appuie sur elle pour orchestrer la gestion des opérations terrain.
+
+## Pourquoi utiliser Microsoft Power Platform?
+
 L'utilisation de la Power Platform se justifie par **plusieurs aspects essentiels pour la transformation numérique et l'efficacité opérationnelle** des entreprises modernes.
 
 ### 1. Accélération du développement Microsoft Power Platform
@@ -56,7 +65,7 @@ Power Automate facilite l'automatisation des processus longs et répétitifs, r�
 
 À cela, si vous ajoutez une Power App avec une interface simplifiée, vos équipes gagneront en productivité. Au-delà de l’aspect business, vous contribuez également à une meilleure satisfaction au travail.
 
-<a class="article-cta" href="/fr/contact/">Contactez nos experts Power Platform</a>
+<a class="btn" href="/fr/contact/">Contactez nos experts Power Platform</a>
 
 ### 2. Intégration et extension de Microsoft 365
 
@@ -73,9 +82,13 @@ Power BI transforme les données brutes en rapports visuels et intuitifs, permet
 Avec la montée des préoccupations relatives à la sécurité des données, la Power Platform offre de nombreuses fonctionnalités robustes aux grandes entreprises. Vous y découvrirez ainsi tout ce dont vous avez besoin pour assurer la sécurité des donnés, gérer le contrôle d’accès et garantir la conformité. 
  Les organisations sont ainsi capables d’automatiser leurs processus en toute confiance, sachant que leurs données sont protégées et que les meilleures pratiques de gouvernance sont en place.
 
+## Les avantages d'une gouvernance Power Platform
+
 L’intégration d’une gouvernance de la Power Platform est un levier stratégique qui sécurise et dynamise l’innovation dans les entreprises. 
  Elle assure que les initiatives de développement low code/no code sont en adéquation parfaite avec les objectifs stratégiques tout en **améliorant la sécurité et la gestion des données, ainsi que la conformité aux réglementations**. 
  Cette synergie optimise les moyens, accélère le déploiement des solutions et favorise l’adoption des normes de qualité élevées grâce à la création de solutions performantes et évolutives. En fin de compte, il faut retenir que c’est grâce à cette gouvernance que le potentiel du low code/no code s’exploite efficacement pour assurer une transformation numérique alignée et sécurisée.
+
+## Comment mettre en œuvre la gouvernance Microsoft Power Platform?
 
 ### 1 - Positionnement des outils Power Platform dans les organisations
 
@@ -110,6 +123,9 @@ Les administrateurs et les membres de l'équipe de gouvernance doivent être for
 - **L'intégration du COE Toolkit dans les processus de gouvernance**
 
 Finalement, il est essentiel d'intégrer l'utilisation du COE Toolkit dans les routines de gouvernance de l'organisation. En utilisant les données fournies par le toolkit, vous prendrez des décisions plus éclairées sur l'utilisation de la Power Platform au sein de votre organisation. 
+
+## Ø Studio, un studio de création spécialisé Microsoft Power Platform
+
  ![Exemple de configuration du centre d'excellence des outils Microsoft Power Platform.](/wp-content/uploads/2024/05/toolkit-powerplatform.png)
 
 Ø Studio est un [studio de créations technologiques](/fr/services/productivite/o-studio/) au sein de Victrix. Nos consultants Microsoft Power Platform vous accompagnent dans l’exploitation du logiciel et le développement d’applications métiers pour augmenter la productivité de vos équipes. 

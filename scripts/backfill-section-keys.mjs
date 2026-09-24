@@ -19,7 +19,8 @@
  * — celui que le build appliquait déjà en silence. Un composant dont le
  * défaut n'est pas lisible est ignoré et signalé, jamais deviné.
  *
- * Portée : la liste `KEYS` ci-dessous (aujourd'hui `fond`). Y ajouter une clé
+ * Portée : la liste `KEYS` ci-dessous (`fond`, et `image` depuis le
+ * 2026-09-21 — insigne de la carte distinction). Y ajouter une clé
  * quand un champ à défaut LITTÉRAL est ajouté à des sections existantes — le
  * lot « CTA de section » devra y passer. La clé est insérée à la place que lui
  * donne le `blueprint` du composant (l'éditeur affiche les champs dans l'ordre
@@ -32,7 +33,103 @@ import yaml from 'js-yaml';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const CHECK_ONLY = process.argv.includes('--check');
-const KEYS = ['fond'];
+// `intro` (2026-09-24) : ajouté à testimonial-cards ; suivi comme les autres clés à défaut ''.
+const KEYS = ['fond', 'image', 'intro'];
+
+/**
+ * Clés IMBRIQUÉES (2026-09-22) — le script ne descendait QUE d'un niveau, sur
+ * la section elle-même. Or CloudCannon n'affiche un champ que si sa clé
+ * existe : un champ ajouté à un ITEM de tableau ou à un sous-objet restait
+ * donc invisible dans toutes les sections déjà posées, quoi qu'on écrive dans
+ * le blueprint. C'est ce qui s'est passé avec l'icône des cartes numérotées et
+ * le logo de la carte « Happy At Work » de Découvrir.
+ *
+ * `chemin` = clé du tableau OU du sous-objet à l'intérieur de la section.
+ * Défaut toujours '' : ces champs sont des chaînes optionnelles.
+ */
+const KEYS_IMBRIQUEES = [
+  { type: 'numbered-cards', chemin: 'items', cles: ['icon', 'image', 'imageAlt'] },
+  { type: 'benefits', chemin: 'items', cles: ['image', 'imageAlt'] },
+  { type: 'feature-boxes', chemin: 'boxes', cles: ['icon', 'image', 'imageAlt'] },
+  { type: 'bento-metrics', chemin: 'aside', cles: ['image', 'imageAlt'] },
+  // 2026-09-23 : pictogramme par élément de la barre de confiance (le logo ISO
+  // de l'accueil). Vide = la coche d'origine.
+  { type: 'home-iso', chemin: 'items', cles: ['icon'] },
+];
+
+/**
+ * Clés DE PAGE des fiches du catalogue de solutions (revue R3, constat 2 —
+ * 2026-09-23). Le lot L11 a ajouté `sections`, `slug`, `noindex`, le SEO et
+ * le préremplissage du Contact au schéma `solutions`, et les a écrits dans
+ * les 16 fiches FR — pas dans les 9 fiches EN. Or CloudCannon n'affiche un
+ * champ que si sa clé existe : sans ces clés, l'éditrice ne peut ni poser des
+ * sections sur une fiche EN (donc lui donner une page), ni saisir son
+ * adresse anglaise — le flux de traduction promis était impossible sans un
+ * développeur.
+ *
+ * Valeur = le défaut EXACT du zod (src/content.config.ts, collection
+ * `solutions`), donc aucun changement de rendu ; `_schema` = le gabarit
+ * CloudCannon que portent les fiches FR. Une exception, documentée :
+ * `noindex` reprend la valeur du fichier HOMONYME en FR quand il existe — les
+ * 16 fiches importées sont `noindex: true` tant que Ø Studio n'a pas validé
+ * leurs prix (ADO #1634), et une traduction posée plus tard ne doit pas
+ * s'indexer par défaut là où l'original se cache. Ordre des clés = celui des
+ * fiches FR (l'éditeur affiche les champs dans l'ordre du fichier).
+ */
+const CLES_FICHE_SOLUTION = [
+  ['_schema', 'default'],
+  ['title'],
+  ['description'],
+  ['image', ''],
+  ['sector'],
+  ['solutionType'],
+  ['featured', false],
+  ['order', 999],
+  ['href', ''],
+  ['docHref', ''],
+  ['contactService', ''],
+  ['noindex', false],
+  ['seoTitle', ''],
+  ['seoH1', ''],
+  ['contactSujet', ''],
+  ['slug', ''],
+  ['sections', []],
+];
+
+/**
+ * Complète une fiche de solution ; renvoie (fiche réordonnée, nb d'ajouts).
+ * `jumelle` = la fiche homonyme de l'autre langue, si elle existe.
+ */
+function completerFicheSolution(fiche, jumelle) {
+  let n = 0;
+  const sortie = {};
+  for (const [cle, defaut] of CLES_FICHE_SOLUTION) {
+    if (cle in fiche) {
+      sortie[cle] = fiche[cle];
+      continue;
+    }
+    if (defaut === undefined) continue; // champ obligatoire absent : pas à nous d'inventer
+    sortie[cle] = cle === 'noindex' && jumelle && typeof jumelle.noindex === 'boolean' ? jumelle.noindex : defaut;
+    n += 1;
+  }
+  // Clés que le schéma ne connaît pas : conservées, à la fin, telles quelles.
+  for (const [cle, valeur] of Object.entries(fiche)) {
+    if (!(cle in sortie)) sortie[cle] = valeur;
+  }
+  return [sortie, n];
+}
+
+/** Ajoute les clés manquantes dans un objet ; renvoie le nombre d'ajouts. */
+function completer(cible, cles) {
+  if (!cible || typeof cible !== 'object' || Array.isArray(cible)) return 0;
+  let n = 0;
+  for (const cle of cles) {
+    if (cle in cible) continue;
+    cible[cle] = '';
+    n += 1;
+  }
+  return n;
+}
 
 function walk(dir, out = []) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
@@ -124,6 +221,20 @@ for (const file of files) {
       added += 1;
       changed = true;
     }
+
+    // Deuxième passe : les clés imbriquées (items de tableau, sous-objets).
+    for (const regle of KEYS_IMBRIQUEES) {
+      if ((next.type ?? name) !== regle.type) continue;
+      const cible = next[regle.chemin];
+      const ajouts = Array.isArray(cible)
+        ? cible.reduce((somme, entree) => somme + completer(entree, regle.cles), 0)
+        : completer(cible, regle.cles);
+      if (ajouts > 0) {
+        added += ajouts;
+        changed = true;
+      }
+    }
+
     return next;
   });
   if (!changed) continue;
@@ -132,8 +243,44 @@ for (const file of files) {
   if (!CHECK_ONLY) writeFileSync(file, out);
 }
 
+// ---- Troisième passe : les clés de page des fiches de solutions ---------------------------
+const SOLUTIONS = join(ROOT, 'src/content/solutions');
+const fichesSolutions = existsSync(SOLUTIONS) ? walk(SOLUTIONS).filter((f) => f.endsWith('.json')) : [];
+const parChemin = new Map(fichesSolutions.map((f) => [relative(SOLUTIONS, f).replace(/\\/g, '/'), f]));
+let fichesTouchees = 0;
+let clesFiches = 0;
+for (const [rel, file] of parChemin) {
+  let fiche;
+  try {
+    fiche = JSON.parse(readFileSync(file, 'utf8'));
+  } catch {
+    continue;
+  }
+  if (!fiche || typeof fiche !== 'object' || Array.isArray(fiche)) continue;
+  // Homonyme de l'autre langue : fr/x.json ↔ en/x.json.
+  const [langue, ...reste] = rel.split('/');
+  const autre = langue === 'fr' ? 'en' : 'fr';
+  const cheminJumelle = parChemin.get([autre, ...reste].join('/'));
+  let jumelle = null;
+  if (cheminJumelle) {
+    try {
+      jumelle = JSON.parse(readFileSync(cheminJumelle, 'utf8'));
+    } catch {
+      jumelle = null;
+    }
+  }
+  const [sortie, n] = completerFicheSolution(fiche, jumelle);
+  if (n === 0) continue;
+  fichesTouchees += 1;
+  clesFiches += n;
+  if (!CHECK_ONLY) writeFileSync(file, JSON.stringify(sortie, null, 2) + '\n');
+  else console.log(`  fiche ${rel} : ${n} clé(s) de page manquante(s)`);
+}
+added += clesFiches;
+touched += fichesTouchees;
+
 console.log(
-  `[backfill] ${added} clé(s) ${CHECK_ONLY ? 'manquante(s)' : 'ajoutée(s)'} dans ${touched} fichier(s) — clés suivies : ${KEYS.join(', ')}.`,
+  `[backfill] ${added} clé(s) ${CHECK_ONLY ? 'manquante(s)' : 'ajoutée(s)'} dans ${touched} fichier(s) — clés suivies : ${KEYS.join(', ')} ; imbriquées : ${KEYS_IMBRIQUEES.map((r) => `${r.type}.${r.chemin}[${r.cles.join('/')}]`).join(', ')} ; fiches de solutions : ${clesFiches} clé(s) de page dans ${fichesTouchees} fiche(s).`,
 );
 for (const [what, n] of skipped) console.log(`  ⚠ ${what} : défaut du schéma illisible — ${n} section(s) laissée(s) telles quelles.`);
 if (thumbErrors.length) {

@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Copilot for Microsoft 365",
   "description": "Get personalized, secure support to accelerate the implementation and adoption of Copilot for Microsoft 365 in your organization.",
-  "noindex": false,
-  "slug": "productivity-consulting/copilot-for-microsoft-365",
-  "seoTitle": "",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -22,14 +18,14 @@
       "cta2Href": "",
       "image": "/wp-content/uploads/2024/10/m365copilot_herobanner_apps_blog-feature-1.jpg",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Structured, Secure, and Personalized Support",
       "intro": "Choose the right Copilot for Microsoft 365 licenses for your organization with help from Victrix.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Defining the project scope",
         "text": "Target priority departments to maximize the impact of your Microsoft Copilot implementation — <strong>a gradual adoption strategy is key</strong>. Continuously analyze user experiences and identify customization opportunities to increase productivity and maximize Copilot’s ROI.",
@@ -39,21 +35,20 @@
       "aside": {
         "icon": "etoile",
         "title": "Tailored Copilots",
-        "text": "Victrix designs customized intelligent AI companions tailored to your organization’s specific needs — transform your ideas and requirements into real value drivers with artificial intelligence.",
+        "text": "Victrix designs customized intelligent AI companions tailored to your organization’s specific needs — transform your ideas and requirements into real value drivers with <a href=\"/en/services/artificial-intelligence/\">artificial intelligence</a>.",
         "linkLabel": "Discover our Copilot Studio offer",
-        "linkHref": "/en/services/productivity-consulting/copilot-studio"
+        "linkHref": "/en/services/productivity-consulting/copilot-studio",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our Structured Adoption Strategy",
       "headingStyle": "underline",
       "intro": "Our 4-step Copilot support framework ensures your success with Copilot for Microsoft 365 and helps you maximize your investment.",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "2",
       "cardStyle": "default",
@@ -62,6 +57,9 @@
           "number": "01",
           "title": "Secure and govern",
           "text": "Environment audit, technical validation and parameterization, governance and personalized recommendations.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -69,6 +67,9 @@
           "number": "02",
           "title": "Define scenarios and deploy",
           "text": "Winning scenarios and target users, success criteria, training.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -76,6 +77,9 @@
           "number": "03",
           "title": "Monitor and measure",
           "text": "Testing of scenarios, continuous supervision, analysis and evaluation of experiments.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -83,10 +87,17 @@
           "number": "04",
           "title": "Amplify and adapt",
           "text": "Continuity plan and customization opportunities.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "strategic-value",
@@ -129,7 +140,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "slug": "productivity-consulting/copilot-for-microsoft-365",
+  "_schema": "default",
+  "noindex": false,
+  "seoTitle": ""
 }

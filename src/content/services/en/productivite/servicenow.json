@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "ServiceNow",
   "description": "Victrix is your ServiceNow partner from purchasing to managed services. Get tailored professional services and maximize the value of your service platform.",
-  "noindex": false,
-  "slug": "productivity-consulting/servicenow",
-  "seoTitle": "ServiceNow Partner | Consulting & Services",
   "seoH1": "ServiceNow Partner",
   "contactSujet": "",
   "contactService": "",
@@ -22,14 +18,14 @@
       "cta2Href": "",
       "image": "/wp-content/uploads/2024/11/servicenow-banniere-.png",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Our ServiceNow Expertise",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Accelerate your digital transformation",
         "text": "Our expertise in strategy development and technological support enables organizations across various sectors to <strong>accelerate their digital transformation</strong> and focus on their long-term business objectives and growth.",
@@ -41,19 +37,18 @@
         "title": "End-to-end support",
         "text": "Licensing, deployment, support, and evolution services: accelerated development with added value and bilingual service, in French and English.",
         "linkLabel": "Schedule a consultation",
-        "linkHref": "/en/contact"
+        "linkHref": "/en/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Accelerated Deployment of Your ServiceNow Platform",
       "headingStyle": "underline",
       "intro": "Our ServiceNow experts focus on the elements that bring the most value to your service platform implementation. As a result, we propose an <strong>efficient deployment formula</strong> tailored to your organization’s specific needs.",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "2",
       "cardStyle": "default",
@@ -62,6 +57,9 @@
           "number": "01",
           "title": "Identification of your organization’s key business processes",
           "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -69,6 +67,9 @@
           "number": "02",
           "title": "Faster project planning",
           "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -76,6 +77,9 @@
           "number": "03",
           "title": "Implementation, co-development, and quality assurance",
           "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -83,17 +87,24 @@
           "number": "04",
           "title": "Operation and adoption",
           "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "End-to-End Services, from Acquisition to Deployment",
       "intro": "Let our ServiceNow experts guide you through every stage of your digital transformation project. Our specialists simplify your ServiceNow journey by implementing best practices for this automation and services platform, recognized as a market leader.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "items": [
@@ -179,14 +190,44 @@
       "type": "feature-boxes",
       "sectionTitle": "A Partnership that Delivers Value",
       "subtitle": "ServiceNow focuses entirely on developing its product, and relies on its network of trusted partners for all its implementations. Working with a partner like Victrix is therefore crucial for implementing your service platform, so that you can reap all its benefits. Victrix is a certified ServiceNow Partner:",
-      "fond": "blanc",
+      "fond": "ivoire",
       "boxes": [
-        "Purchase, integration, and customization of your ServiceNow solution",
-        "Diverse team working on the platform’s modules for extensive deployment expertise",
-        "Integration of the cloud offering catalog for professional services",
-        "Victrix is qualified by the ministère de la Cybersécurité et du Numérique (MCN)",
-        "Strong partnerships to complement our expertise",
-        "Cross-functional expertise: cybersecurity, cloud solutions, artificial intelligence, and application deployment"
+        {
+          "label": "Purchase, integration, and customization of your ServiceNow solution",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Diverse team working on the platform’s modules for extensive deployment expertise",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Integration of the cloud offering catalog for professional services",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Victrix is qualified by the ministère de la Cybersécurité et du Numérique (MCN)",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Strong partnerships to complement our expertise",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Cross-functional expertise: cybersecurity, cloud solutions, artificial intelligence, and application deployment",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {
@@ -199,7 +240,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "slug": "productivity-consulting/servicenow",
+  "seoTitle": "ServiceNow Partner | Consulting & Services",
+  "_schema": "default",
+  "noindex": false
 }

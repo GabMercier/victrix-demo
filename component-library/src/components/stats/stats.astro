@@ -1,5 +1,5 @@
 ---
-import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { FOND_CLASSES, estFondSombre, type FondEtenduKey } from '../../shared/fonds';
 import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
  * Section « Victrix en chiffres » — composant Bookshop (palette partagée).
@@ -44,12 +44,15 @@ interface StatItem {
 interface Props {
   title?: string;
   style?: 'bande' | 'carte';
-  fond?: FondKey;
+  fond?: FondEtenduKey;
   items: StatItem[];
 }
 
-const { title = '', style = 'bande', fond = 'givre', items = [] } = Astro.props;
+const { title = '', style = 'bande', fond = 'beige', items = [] } = Astro.props;
 const carte = style === 'carte';
+// Fond SOMBRE (« bleu électrique », 2026-09-21) : seul le titre de section
+// s'inverse — les tuiles et la carte restent blanches sur l'aplat.
+const sombre = estFondSombre(fond);
 
 // « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
 // de la palette officielle (aucune couleur libre — esprit P-16). Défaut =
@@ -83,14 +86,19 @@ const FONDS: Record<string, string> = FOND_CLASSES;
                   ))}
                 </svg>
               )}
-              <p class="text-[28px] leading-8 font-bold text-primary m-0">{item.number}</p>
+              <p class="text-[1.75rem] leading-8 font-bold text-primary m-0">{item.number}</p>
               <p class="text-lg leading-7 text-on-surface-variant m-0 max-w-[280px]">{item.label}</p>
             </li>
             );
           })}
         </ul>
         {title !== '' && (
-          <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
+          <h2
+            class:list={[
+              'text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] m-0 text-center',
+              sombre ? 'text-white' : 'text-on-surface',
+            ]}
+          >
             {title}
           </h2>
         )}
@@ -100,15 +108,20 @@ const FONDS: Record<string, string> = FOND_CLASSES;
     <section class:list={['py-20', FONDS[fond] ?? FONDS.givre]}>
       <div class="container-site flex flex-col gap-12">
         {title !== '' && (
-          <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
+          <h2
+            class:list={[
+              'text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] m-0 text-center',
+              sombre ? 'text-white' : 'text-on-surface',
+            ]}
+          >
             {title}
           </h2>
         )}
         <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 m-0 p-0 list-none">
           {items.map((item) => (
             <li class="m-0 bg-white border-0 border-l-4 border-solid border-primary p-6 flex flex-col gap-3 shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
-              <p class="text-[40px] leading-[48px] font-bold text-primary m-0">{item.number}</p>
-              <p class="text-xs font-bold uppercase tracking-[1.2px] text-on-surface-variant m-0 max-w-none">{item.label}</p>
+              <p class="text-[2.5rem] leading-[3rem] font-bold text-primary m-0">{item.number}</p>
+              <p class="text-sm font-bold uppercase tracking-[1.2px] text-on-surface-variant m-0 max-w-none">{item.label}</p>
             </li>
           ))}
         </ul>

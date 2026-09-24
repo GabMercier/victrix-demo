@@ -23,10 +23,10 @@
       "type": "bento-metrics",
       "title": "Solutions et services infonuagiques",
       "intro": "Nos services infonuagiques sont conçus pour répondre aux défis uniques de votre organisation. De la sélection de votre solution infonuagique à la migration des charges et l'optimisation continue de votre environnement, Victrix est là pour vous.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Une stratégie de migration planifiée",
-        "text": "Une stratégie de migration planifiée garantit une transition sans heurt, avec un impact minimal sur vos environnements. Notre mission : <strong>garantir votre excellence opérationnelle</strong> en appliquant les meilleures pratiques de conformité, de sécurité des données et de performance. Les modèles <strong>Well Architected Framework (WAF)</strong> et <strong>Cloud Adoption Framework (CAF)</strong> encadrent tous vos projets de migration infonuagique.",
+        "text": "Une stratégie de migration planifiée garantit une transition sans heurt, avec un impact minimal sur vos environnements. Notre mission : <strong>garantir votre excellence opérationnelle</strong> en appliquant les meilleures pratiques <a href=\"/fr/services/conseil-strategique/conformite-loi-25/\">de conformité</a>, <a href=\"/fr/services/cybersecurite/\">de sécurité des données</a> et de performance. Les modèles <strong>Well Architected Framework (WAF)</strong> et <strong>Cloud Adoption Framework (CAF)</strong> encadrent tous vos projets de migration infonuagique.",
         "watermark": "graphique",
         "stats": []
       },
@@ -34,8 +34,10 @@
         "icon": "etoile",
         "title": "Conseil stratégique",
         "text": "Bénéficiez de notre expertise en conseil stratégique pour assurer le succès de tous vos projets de transformation numérique.",
-        "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact/"
+        "linkLabel": "Découvrez le conseil stratégique",
+        "linkHref": "/fr/services/conseil-strategique/",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -47,8 +49,8 @@
         "<strong>Victrix accélère votre migration Microsoft Azure.</strong> Notre méthodologie basée sur le <strong>Cloud Adoption Framework de Microsoft</strong> vous permet de faire vos premiers pas dans la migration de vos applications et serveurs, avec un stockage Azure sécurisé et toutes les fonctions innovantes de Microsoft. <a href=\"/fr/services/services-infonuagiques/migration-vers-azure/\">Découvrez la migration vers Microsoft Azure</a>",
         "<strong>Tirez parti de la plateforme AWS Enterprise grâce à Victrix.</strong> Notre expertise avec Amazon EC2 (IaaS), AWS Elastic Beanstalk (PaaS) et les solutions SaaS AWS nous permet d'assurer <strong>un déplacement efficace des applications</strong> vers un modèle de service qui favorise l'évolution et simplifie la gestion. <a href=\"/fr/services/services-infonuagiques/services-aws/\">Découvrez la migration vers AWS</a>"
       ],
-      "image": "",
-      "imageAlt": "",
+      "image": "/wp-content/uploads/2023/10/istock-1454530428.png",
+      "imageAlt": "Employés des services infonuagiques chez Victrix",
       "stats": [
         {
           "value": "Azure",
@@ -64,11 +66,12 @@
       "bullets": [],
       "cardTitle": "",
       "cardText": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Notre stratégie d'accélération : services IaaS — SaaS — PaaS",
       "headingStyle": "plain",
       "intro": "Intégration et livraison en mode continu : identification des opportunités (planification, vision, calcul des coûts), preuve de concept (expérimentation et validation), puis accélération de la migration vers l'infonuagique.",
@@ -79,42 +82,62 @@
         {
           "number": "01",
           "title": "Démarrage",
-          "text": "Rencontre de démarrage : compréhension du projet, calendrier de réalisation et participation des parties prenantes, prérequis techniques, rôles requis par atelier et par comité."
+          "text": "Rencontre de démarrage : compréhension du projet, calendrier de réalisation et participation des parties prenantes, prérequis techniques, rôles requis par atelier et par comité.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Définition",
-          "text": "Identification, définition et priorisation des opportunités de migration ; analyse de l'infrastructure."
+          "text": "Identification, définition et priorisation des opportunités de migration ; analyse de l'infrastructure.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Faisabilité",
-          "text": "Préparation de l'analyse d'opportunité et de faisabilité : contexte organisationnel, compréhension des enjeux technologiques et d'affaires, inventaire des actifs TI, cartographie des interdépendances et analyse des licences."
+          "text": "Préparation de l'analyse d'opportunité et de faisabilité : contexte organisationnel, compréhension des enjeux technologiques et d'affaires, inventaire des actifs TI, cartographie des interdépendances et analyse des licences.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Concept",
-          "text": "Preuve de concept : architecture et stratégie de déploiement, mise en place, réalisation et documentation."
+          "text": "Preuve de concept : architecture et stratégie de déploiement, mise en place, réalisation et documentation.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Gradation",
-          "text": "Analyse et proposition des options de gradation à privilégier, puis gradation des systèmes."
+          "text": "Analyse et proposition des options de gradation à privilégier, puis gradation des systèmes.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Itérations",
-          "text": "Accélération en mode itératif : analyse des besoins, des opportunités et de la cartographie ; mise en place (déploiement, sécurisation et gouvernance) ; migration (cartographie, classification, migration et test) ; optimisation et gouvernance."
+          "text": "Accélération en mode itératif : analyse des besoins, des opportunités et de la cartographie ; mise en place (déploiement, sécurisation et gouvernance) ; migration (cartographie, classification, migration et test) ; optimisation et gouvernance.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Nos expertises et services infonuagiques",
       "groups": [
         {
           "title": "Analyse",
+          "href": "",
           "items": [
             "Analyse d'opportunité et de faisabilité",
             "Externalisation des services",
@@ -124,6 +147,7 @@
         },
         {
           "title": "Migration des charges",
+          "href": "",
           "items": [
             "Engagement sur le respect des 6 R de migration appropriés",
             "PaaS, SaaS, IaaS",
@@ -134,6 +158,7 @@
         },
         {
           "title": "Multicloud",
+          "href": "",
           "items": [
             "Infrastructure hybride",
             "Vigie et évolution",
@@ -143,6 +168,7 @@
         },
         {
           "title": "Sécurité Azure/AWS Enterprise",
+          "href": "",
           "items": [
             "Gestion et sécurité de l'identité",
             "Gestion de la conformité",
@@ -153,6 +179,7 @@
         },
         {
           "title": "Transformation numérique",
+          "href": "",
           "items": [
             "Bureau moderne VDI/AVD/W365",
             "Migration et automatisation"
@@ -164,25 +191,86 @@
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Nos partenaires",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
-        "Palo Alto",
-        "Checkpoint",
-        "Pulse Secure",
-        "CrowdStrike",
-        "Microsoft 365",
-        "Cisco",
-        "Aruba",
-        "Imprivata",
-        "AlgoSec",
-        "AWS",
-        "OVH Cloud",
-        "ServiceNow"
+        {
+          "label": "Palo Alto",
+          "icon": "",
+          "image": "/images/logos/paloalto.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Checkpoint",
+          "icon": "",
+          "image": "/images/logos/checkpoint.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Pulse Secure",
+          "icon": "",
+          "image": "/images/logos/pulse-secure.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "CrowdStrike",
+          "icon": "",
+          "image": "/images/logos/crowdstrike.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Microsoft 365",
+          "icon": "",
+          "image": "/images/logos/microsoft.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Cisco",
+          "icon": "",
+          "image": "/images/logos/cisco.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Aruba",
+          "icon": "",
+          "image": "/images/logos/aruba.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Imprivata",
+          "icon": "",
+          "image": "/images/logos/imprivata.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AlgoSec",
+          "icon": "",
+          "image": "/images/logos/algosec.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AWS",
+          "icon": "",
+          "image": "/images/logos/aws.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "OVH Cloud",
+          "icon": "",
+          "image": "/images/logos/ovhcloud.png",
+          "imageAlt": ""
+        },
+        {
+          "label": "ServiceNow",
+          "icon": "",
+          "image": "/images/logos/servicenow-partner.png",
+          "imageAlt": ""
+        }
       ]
     },
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Infonuagique"
@@ -200,7 +288,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": "Services infonuagiques adaptés à vos enjeux | Services",

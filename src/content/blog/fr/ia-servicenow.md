@@ -5,7 +5,8 @@ excerpt: "Découvrez comment accélérer vos opérations et gouverner l'IA avec 
 tags: ["Nos articles"]
 topics: ["Intelligence artificielle", "Services gérés"]
 slug: "ia-servicenow"
-coverImage: "/wp-content/uploads/2025/03/design-sans-titre-2.png"
+draft: false
+coverImage: "/images/ressources/ia-servicenow.jpg"
 seoTitle: "IA et ServiceNow: performance, conformité et gouvernance"
 wpUrl: "/ia-servicenow/"
 ---
@@ -19,6 +20,8 @@ En tant que **partenaire certifié ServiceNow**, Victrix aide les directions TI 
 
 Découvrez **comment l’IA et ServiceNow optimise vos flux de travail**, **convertit la productivité en valeur mesurable** et **sécurise votre transformation numérique**.
  [Consultez un expert IA et ServiceNow](/fr/contact/)
+
+## IA et ServiceNow : des résultats concrets, plutôt que des promesses
 
 ### Les ambitions
 
@@ -58,15 +61,17 @@ Intégrée à la plateforme IA de ServiceNow, ***Now Assist*** est une suite d�
 - Réduction du temps de résolution et de la charge des agents grâce à la synthèse des cas et demandes.
 - Amélioration de la gestion des connaissances et recherche intelligente grâce à l’extraction des informations clés des documents.
 
-<table class="alignleft" style="width: 100%; border-collapse: collapse; border-style: solid; border-color: #002c46; background-color: #f0f0f0;" border="1" cellpadding="12">
+<div class="article-tableau">
+<table>
 <tbody>
 <tr>
-<td style="width: 100%;">
+<td>
 <h4><span style="display:block; text-align:left; padding-left:10px; padding-right:10px;">À retenir</span></h4>
 <p><span style="display:block; text-align:left; padding-left:10px; padding-right:10px;">ServiceNow rapporte que <a href="https://www.servicenow.com/blogs/2024/support-agent-productivity-genai" target="_blank" rel="noopener">les agents gagnent en moyenne entre 12 et 17 minutes par cas </a>— soit 80 à 110 minutes de lecture et d’écriture par jour.</span></p></td>
 </tr>
 </tbody>
 </table>
+</div>
 
 ServiceNow ***Intelligent Automation*** et **IA ITSM** associe l’IA, l’automatisation et la prédiction pour **analyser les tendances**, **anticiper les problèmes** et **déclencher des actions**. Ses capacités permettent l’orchestration de bout en bout des processus TI, RH et sécurité.
 
@@ -76,15 +81,17 @@ ServiceNow ***Intelligent Automation*** et **IA ITSM** associe l’IA, l’autom
 - Réduction des coûts d’exploitation et renforcement de la conformité en garantissant des processus cohérents et traçables.
 - Amélioration de l’expérience client grâce à des portails en libre-service pilotés par l’IA.
 
-<table class="alignleft" style="width: 100%; border-collapse: collapse; border-style: solid; border-color: #002c46; background-color: #f0f0f0;" border="1" cellpadding="8">
+<div class="article-tableau">
+<table>
 <tbody>
 <tr>
-<td style="width: 100%;">
+<td>
 <h4><span style="display:block; text-align:left; padding-left:10px; padding-right:10px;">À retenir</span></h4>
 <p><span style="display:block; text-align:left; padding-left:10px; padding-right:10px;">Avec ServiceNow <strong><em>AI Service Desk Contact</em></strong>, les entreprises <a href="https://www.servicenow.com/community/intelligence-ml-articles/case-study-how-servicenow-support-uses-machine-learning-to/ta-p/2895321" target="_blank" rel="noopener">atteignent jusqu’à 96 % d’efficacité de résolution</a> — une augmentation considérable par rapport à la moyenne précédente de 81 %. </span></p></td>
 </tr>
 </tbody>
 </table>
+</div>
 
 Les **agents IA de ServiceNow** sont des systèmes autonomes, intégrés au cœur de la recherche intelligente (*AI Search*) et **capables d’accomplir des tâches complexes** qui vont bien au-delà des robots conversationnels traditionnels.
 
@@ -94,16 +101,18 @@ Les **agents IA de ServiceNow** sont des systèmes autonomes, intégrés au cœu
 - Amélioration continue en apprenant des requêtes précédentes pour affiner la précision des recherches.
 - Amélioration de l’expérience client et employé.
 
-<table class="alignleft" style="width: 100%; border-collapse: collapse; border-style: solid; border-color: #002c46; background-color: #f0f0f0;" border="1" cellpadding="12">
+<div class="article-tableau">
+<table>
 <tbody>
 <tr>
-<td style="width: 100%;">
+<td>
 <h4><span style="display:block; text-align:left; padding-left:10px; padding-right:10px;">Cas d’usage des agents IA et de la recherche intelligente ServiceNow </span></h4>
 <p><span style="display:block; text-align:left; padding-left:10px; padding-right:10px;"><strong>ASML</strong>, un fabricant d’équipements de pointe pour la production de microprocesseurs, a <strong>connecté 6 000 employés en quelques semaines</strong> et <strong>obtenu un taux de satisfaction des utilisateurs de 80 %</strong>.</span></p>
 <p><span style="display:block; text-align:left; padding-left:10px; padding-right:10px;">De plus, <strong>Violet</strong>, l’agent IA, a atteint<a href="https://www.servicenow.com/customers/asml.html" target="_blank" rel="noopener"> un taux de prédictibilité remarquable de 90 %</a>, ce qui démontre de <strong>sa capacité à diagnostiquer correctement l’intention des utilisateurs</strong> et à <strong>les rediriger vers la bonne section</strong> dès les premiers mots.  </span></p></td>
 </tr>
 </tbody>
 </table>
+</div>
 
 ***Predictive Intelligence*** de ServiceNow exploite l’apprentissage automatique (*machine learning*) pour **catégoriser**, **attribuer** et **résoudre les problèmes** avant qu’ils ne s’aggravent.
 
@@ -113,16 +122,18 @@ Les **agents IA de ServiceNow** sont des systèmes autonomes, intégrés au cœu
 - Automatisation de la catégorisation des billets.
 - Suggestion de résolution pour accélérer le temps de réponse.
 
-<table class="alignleft" style="width: 100%; border-collapse: collapse; border-style: solid; border-color: #002c46; background-color: #f0f0f0;" border="1" cellpadding="8">
+<div class="article-tableau">
+<table>
 <tbody>
 <tr>
-<td style="width: 100%;">
+<td>
 <h4><span style="display:block; text-align:left; padding-left:10px; padding-right:10px;">Cas d’usage de l’intelligence prédictive avec ServiceNow </span></h4>
 <p><span style="display:block; text-align:left; padding-left:10px; padding-right:10px;">Un cas partagé sur les forums de la communauté ServiceNow a révélé qu’après la mise en place de Predictive Intelligence, une organisation a pu interagir avec des centaines de clients supplémentaires chaque année — <a href="https://www.servicenow.com/community/intelligence-ml-articles/case-study-how-servicenow-support-uses-machine-learning-to/ta-p/2895321" target="_blank" rel="noopener">faisant passer les interactions proactives de 11 % à 68 % </a>.</span></p>
 <p><span style="display:block; text-align:left; padding-left:10px; padding-right:10px;">Cette évolution démontre que l’IA ServiceNow <strong>améliore l’expérience client</strong>, <strong>prévient l’escalade des incidents</strong> et <strong>réduit la charge du support</strong>.</span></p>   </td>
 </tr>
 </tbody>
 </table>
+</div>
 
 ## Intégrez l’IA à vos modules ServiceNow pour accroître l’efficacité, améliorer l’expérience client et employé et réduire vos coûts.
 
@@ -132,6 +143,14 @@ Ces capacités accélèrent vos processus et sont de véritables leviers de vale
 
 Les capacités de l’IA ServiceNow peuvent vous procurer de la valeur durable, à condition d’être gouvernées rigoureusement. Avec la **tour de contrôle IA** (*AI Control Tower*), ServiceNow offre une **vue centralisée sur tous vos modèles**, **ensembles de données** et **flux de travail IA**.
 
+**IA générative et Now Assist**
+
+**Automatisation intelligente et IA ITSM**
+
+**Agents IA et recherche intelligente**
+
+## Gouvernance et fiabilité : encadrer l’intelligence artificielle avec la tour de contrôle IA de ServiceNow
+
 - Inventaire et suivi des modèles IA
 - Gestion automatisée des risques et des audits
 - Alignement des projets IA sur vos objectifs d’affaires
@@ -140,7 +159,9 @@ Les capacités de l’IA ServiceNow peuvent vous procurer de la valeur durable, 
 
 ## Victrix aide les organisations à déployer la tour de contrôle IA pour concilier innovation et conformité.
 
-<a class="article-cta" href="/fr/contact/">Consultez nos experts IA et ServiceNow</a>
+<a class="btn" href="/fr/contact/">Consultez nos experts IA et ServiceNow</a>
+
+## De la performance à la gouvernance : maîtrisez l’IA et ServiceNow avec Victrix
 
 L’**IA de ServiceNow** améliore la performance, la conformité et la visibilité tout en éliminant la complexité des intégrations tierces. 
  **Victrix vous aide à la gouverner et à l’adapter à votre réalité organisationnelle.** 
@@ -153,4 +174,4 @@ L’**IA de ServiceNow** améliore la performance, la conformité et la visibili
 
 ### Pour tirer le maximum de valeur de vos projets IA et ServiceNow, nos experts vous accompagnent de la stratégie à l’adoption.
 
-<a class="article-cta" href="/fr/contact/">Planifiez vore projet IA et ServiceNow</a>
+<a class="btn" href="/fr/contact/">Planifiez vore projet IA et ServiceNow</a>

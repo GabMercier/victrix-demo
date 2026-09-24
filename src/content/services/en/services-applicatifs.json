@@ -1,6 +1,6 @@
 {
   "title": "Application services",
-  "slug": "services-applicatifs",
+  "slug": "application-services",
   "description": "Design, modernize and maintain your business applications.",
   "noindex": true,
   "seoH1": "",
@@ -29,7 +29,7 @@
       "type": "offer-cards",
       "title": "What we take care of",
       "intro": "An overview of our typical engagements — the detailed offering will be published soon.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "",
       "ctaHref": "",
       "items": [
@@ -83,6 +83,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our approach",
       "headingStyle": "underline",
       "intro": "",
@@ -93,17 +94,26 @@
         {
           "number": "01",
           "title": "Understand",
-          "text": "Your processes, your systems and your business priorities come first."
+          "text": "Your processes, your systems and your business priorities come first.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Deliver",
-          "text": "Short milestones, concrete and measurable deliverables."
+          "text": "Short milestones, concrete and measurable deliverables.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Evolve",
-          "text": "Support that lasts well beyond go-live."
+          "text": "Support that lasts well beyond go-live.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -117,7 +127,7 @@
       "cta2Label": "Discover Victrix",
       "cta2Href": "/en/decouvrir",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": ""

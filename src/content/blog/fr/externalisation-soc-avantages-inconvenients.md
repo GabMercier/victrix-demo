@@ -4,7 +4,8 @@ date: 2023-10-04
 excerpt: "Vous considérez l’externalisation du SOC de votre entreprise? Découvrez tous les avantages et inconvénients d’un SOC externe ainsi que l’offre exclusive de Victrix."
 tags: ["Nos articles"]
 topics: ["Cybersécurité", "Services gérés"]
-slug: "externalisation-soc-avantages-inconvenients"
+slug: "externalisation-du-soc-avantages-inconvenients"
+draft: false
 coverImage: "/wp-content/uploads/2023/10/istock-1310129244-1.jpg"
 seoTitle: "Externalisation du SOC: avantages & inconvénients"
 wpUrl: "/externalisation-soc-avantages-inconvenients/"
@@ -56,7 +57,7 @@ Victrix propose un service externe avec des offres exclusives, tel que l’accè
 L’externalisation du SOC vous permet ainsi d’obtenir le support, les conseils et la montée en expertise dont vous avez besoin pour rester au-devant des menaces informatiques, ce qui est plus difficile et dispendieux à l’interne.
 Quant aux défis à relever, il s'agit de s'assurer qu'une communication fluide et efficace est établie avec le fournisseur afin que celui-ci comprenne bien vos enjeux et qu’ils puissent vous conseiller efficacement en matière de cybersécurité.
 
-<a class="article-cta" href="/fr/contact/">Discutez avec un expert en cybersécurité</a>
+<a class="btn" href="/fr/contact/">Discutez avec un expert en cybersécurité</a>
 
 ### Comment bien choisir son service SOC externalisé?
 

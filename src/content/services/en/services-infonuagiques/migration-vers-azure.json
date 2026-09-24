@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Acceleration of Your Azure Migration",
   "description": "Strengthen your security posture, improve productivity, and boost performance by migrating to Microsoft Azure, supported by Victrix’s cloud expertise.",
-  "noindex": false,
-  "slug": "cloud-services-provider/azure-migration",
-  "seoTitle": "Microsoft Azure Migration and Services for Businesses",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -13,18 +9,18 @@
       "_bookshop_name": "service-hero",
       "type": "service-hero",
       "eyebrow": "Cloud Migration Services",
-      "eyebrowStyle": "texte",
       "titleAccent": "",
       "title": "Acceleration of Your Azure Migration",
       "titleHighlight": "Azure Migration",
-      "lead": "Accelerate your transition to the Azure platform with the support of our cloud solutions experts: increased agility and accessibility, enhanced security. Our Microsoft Solutions Partner-certified cloud experts ensure a secure migration process, with a customized strategy.",
+      "lead": "Accelerate your transition to the Azure platform with the support of our <a href=\"/en/services/cloud-services-provider/\">cloud solutions</a> experts: increased agility and accessibility, enhanced security. Our Microsoft Solutions Partner-certified cloud experts ensure a secure migration process, with a customized strategy.",
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2023/08/azure_infonuagique-300x225-2.png",
+      "imageAlt": "",
+      "eyebrowStyle": "texte",
       "cta2Label": "",
       "cta2Href": "",
       "overlay": "voile",
-      "image": "/wp-content/uploads/2023/08/azure_infonuagique-300x225-2.png",
-      "imageAlt": "",
       "imagePosition": "centre"
     },
     {
@@ -32,7 +28,7 @@
       "type": "bento-metrics",
       "title": "Why Choose Azure Migration for Your Organization?",
       "intro": "Microsoft Azure is a cloud computing platform offering comprehensive services for deploying, managing, and optimizing your enterprise applications and IT resources: infrastructure, security, data analysis and backup, custom application development, and much more.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "An end-to-end cloud solution",
         "text": "Recognized worldwide for its effective response to a variety of technological needs, the Azure platform puts <strong>flexibility and cost-effectiveness</strong> at the top of its list of benefits. The portal leverages the <strong>familiarity of Microsoft products</strong>, which are widely used in businesses, making it <strong>easy for users to learn and adopt</strong>; its user-friendly, graphical interface simplifies the management of cloud resources.",
@@ -44,18 +40,39 @@
         "title": "Microsoft-Recognized Specializations",
         "text": "Victrix meets Microsoft's highest standards for cloud security and threat protection: Microsoft Solution Partner for Modern Workplace and for Security.",
         "linkLabel": "Schedule a consultation",
-        "linkHref": "/en/contact"
+        "linkHref": "/en/contact",
+        "image": "",
+        "imageAlt": ""
       }
+    },
+    {
+      "_bookshop_name": "logo-banner",
+      "type": "logo-banner",
+      "fond": "ivoire",
+      "title": "Our Microsoft designations",
+      "badge": "",
+      "items": [
+        {
+          "name": "Microsoft Solutions Partner — Modern Work",
+          "logo": "/wp-content/uploads/2023/08/espacetravail-1-300x161.png",
+          "description": ""
+        },
+        {
+          "name": "Microsoft Solutions Partner — Security",
+          "logo": "/wp-content/uploads/2026/06/designation-securite-300x276.png",
+          "description": ""
+        }
+      ]
     },
     {
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Benefits of the Azure Cloud Environment",
-      "fond": "givre",
       "paragraphs": [
-        "With Microsoft Azure, create custom business applications, manage complex workloads, secure your data centers and benefit from the latest <a href=\"/en/services/intelligence-artificielle/\">artificial intelligence (AI)</a> and <a href=\"/en/services/cybersecurity/internet-of-things-iot/\">IoT</a> applications.",
+        "With Microsoft Azure, create custom business applications, manage complex workloads, secure your data centers and benefit from the latest <a href=\"/en/services/artificial-intelligence/\">artificial intelligence (AI)</a> and <a href=\"/en/services/cybersecurity/internet-of-things-iot/\">IoT</a> applications.",
         "With unrivalled flexibility and scalability, Azure enables organizations to evolve while staying ahead of change, without ever sacrificing <a href=\"/en/services/cybersecurity/\">security and compliance</a>.",
-        "If you’re looking to <strong>migrate your Windows server to Microsoft Azure</strong>, our team offers <strong>personalized support</strong> with a roadmap and total transparency on the migration process."
+        "If you’re looking to <strong>migrate your Windows server to Microsoft Azure</strong>, our team offers <strong>personalized support</strong> with a roadmap and total transparency on the migration process.",
+        "Victrix specializes in <a href=\"/en/services/managed-it-services/\">managed services</a> and cloud solutions. As an IT managed services provider, we offer our clients the assurance of operational excellence, a robust security posture and compliance."
       ],
       "image": "",
       "imageAlt": "",
@@ -73,18 +90,16 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": ""
+      "cardText": "",
+      "fond": "beige"
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our Cloud Adoption Framework Methodology",
       "headingStyle": "plain",
       "intro": "Victrix specializes in <strong>managed services</strong> and <strong>cloud solutions</strong>: operational excellence, a robust security posture, compliance, and performance for your cloud infrastructure. Trust our Microsoft Azure migration experts to help you <strong>build a scalable productivity platform</strong> that makes it easier to manage your workloads, strengthens your data security, and drives your business forward.",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -93,6 +108,9 @@
           "number": "01",
           "title": "Strategy",
           "text": "Accelerating the cloud platform adoption strategy: organizational motivation, expected results, financial and technical considerations.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -100,6 +118,9 @@
           "number": "02",
           "title": "Planning",
           "text": "Introducing the concepts, estimating costs per workload, designing the cloud foundation, prioritizing workloads to migrate, aligning with business priorities, and planning for the new roles required.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -107,6 +128,9 @@
           "number": "03",
           "title": "Deployment",
           "text": "Accelerating the migration of workloads to Azure, implementing minimal governance, and scaling the proof of concept into production.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -114,6 +138,9 @@
           "number": "04",
           "title": "Governance",
           "text": "Governance tools, strengthening best practices through iterations, cost management, basic security, and resource consistency.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -121,18 +148,27 @@
           "number": "05",
           "title": "Security",
           "text": "Continuous improvement of security in Microsoft Azure: mapping of roles and responsibilities, security strategy, information management, risk management, and compliance.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Our Azure Migration and Managed Services",
       "groups": [
         {
           "title": "Analysis and Optimization",
+          "href": "",
           "items": [
             "Advanced architecture analysis",
             "Total cost of ownership (TCO) estimation",
@@ -147,6 +183,7 @@
         },
         {
           "title": "Migration Analysis",
+          "href": "",
           "items": [
             "Feasibility analysis of migration",
             "Assessment of migration challenges",
@@ -161,6 +198,7 @@
         },
         {
           "title": "Migration Strategy",
+          "href": "",
           "items": [
             "Application of the 6 Rs of successful migration",
             "IaaS (Azure VM), PaaS (App Service), and SaaS migration",
@@ -176,6 +214,7 @@
         },
         {
           "title": "Multicloud",
+          "href": "",
           "items": [
             "Compliance with CAF (Cloud Adoption Framework) and WAF (Well-Architected Framework) principles",
             "Acceleration, simplification, automation, and optimization of your multicloud deployments",
@@ -192,6 +231,7 @@
         },
         {
           "title": "Cloud Security",
+          "href": "",
           "items": [
             "Secure, centralized, and fully managed remote access model",
             "Cloud identity consolidation and secure, centralized authentication model (access management)",
@@ -206,6 +246,7 @@
         },
         {
           "title": "Organizational Transformation",
+          "href": "",
           "items": [
             "Modernization of environment with Azure Virtual Desktop: Azure-based DaaS workstation",
             "Adoption of Windows 365 for secure remote access to the organization's network, data, and applications"
@@ -220,6 +261,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Cloud computing"
@@ -237,7 +279,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "slug": "cloud-services-provider/azure-migration",
+  "seoTitle": "Microsoft Azure Migration and Services for Businesses",
+  "_schema": "default",
+  "noindex": false
 }

@@ -1,0 +1,54 @@
+{
+  "_genere_par": "scripts/migration/export-catalogue-ostudio.mjs",
+  "_lire_aussi": "docs/migration/catalogue-ostudio.md (rapport) · docs/plan-import-catalogue-ostudio.md (cible)",
+  "slug": "onboarding-employe",
+  "nouvelle": true,
+  "source": {
+    "slug": "gestion-du-onboarding-dun-nouvel-employe",
+    "id": 233,
+    "url": "https://o-studio-catalogue.victrix.ca/gestion-du-onboarding-dun-nouvel-employe/",
+    "modifiee": "2025-07-11T22:29:32"
+  },
+  "titre": "Gestion du onboarding d’un nouvel employé",
+  "intro": "Découvrez notre application d’onboarding. Centralisée et automatisée, elle coordonne vos équipes pour assurer une intégration fluide des nouveaux employés, de la gestion des documents à la mise en place du matériel et des formations.",
+  "introMarkdown": "**Découvrez notre application d’onboarding. Centralisée et automatisée, elle coordonne vos équipes pour assurer une intégration fluide des nouveaux employés, de la gestion des documents à la mise en place du matériel et des formations.**",
+  "faits": [
+    {
+      "cle": "client",
+      "libelle": "Client",
+      "libelleSource": "Client",
+      "valeur": "Secteur manufacturier"
+    },
+    {
+      "cle": "cout",
+      "libelle": "Coût",
+      "libelleSource": "Coût",
+      "valeur": "Entre 25.000 et 50.000 $CAD"
+    },
+    {
+      "cle": "delai",
+      "libelle": "Délai",
+      "libelleSource": "Délais de personnalisation",
+      "valeur": "Entre 2 et 4 mois"
+    },
+    {
+      "cle": "technologies",
+      "libelle": "Technologies",
+      "libelleSource": "Technologies utilisées",
+      "valeur": "Power Platform, SharePoint, Active Directory, Microsoft 365, Outlook"
+    }
+  ],
+  "invitation": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+  "images": [
+    {
+      "fichier": "/images/solutions/onboarding-employe/01.jpg",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2024/08/engineer-or-architect-team-collaboration-working-i-2024-10-18-06-54-21-utc.jpg",
+      "nature": "banque",
+      "alt": "Photographie d’illustration — Gestion du onboarding d’un nouvel employé",
+      "altSource": "",
+      "largeur": 1600,
+      "hauteur": 1067,
+      "octets": 182515
+    }
+  ]
+}

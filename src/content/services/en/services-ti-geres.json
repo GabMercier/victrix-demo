@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Managed Services",
   "description": "Secure, optimize, and manage your IT infrastructure with our tailored managed services. Monitoring, support, and automation for uncompromising performance.",
-  "noindex": false,
-  "slug": "managed-it-services",
-  "seoTitle": "Managed IT Services | Security & Performance",
   "seoH1": "Managed IT Services",
   "contactSujet": "",
   "contactService": "",
@@ -32,7 +28,7 @@
       "type": "stats",
       "title": "",
       "style": "carte",
-      "fond": "blanc",
+      "fond": "ivoire",
       "items": [
         {
           "number": "+225 000",
@@ -56,10 +52,10 @@
       "type": "bento-metrics",
       "title": "Why Choose Victrix for Your Managed IT Services",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Uncompromising IT management",
-        "text": "<strong>Lower your operational costs, enhance security, accelerate digital transformation, and boost your internal IT team's productivity.</strong> Our managed IT services empower your teams to focus on core business functions, boosting overall efficiency.",
+        "text": "<strong>Lower your operational costs, <a href=\"/en/services/cybersecurity/\">enhance security</a>, accelerate digital transformation, and boost your internal IT team's productivity.</strong> Our managed IT services empower your teams to focus on core business functions, boosting overall efficiency.",
         "watermark": "engrenage",
         "stats": []
       },
@@ -68,19 +64,17 @@
         "title": "Personalized support",
         "text": "With our personalized support, maximize your return on investment and confidently advance your technological environment.",
         "linkLabel": "Get your personalized SLA",
-        "linkHref": "/en/contact"
+        "linkHref": "/en/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Outsourcing is Your Strategic Advantage to Remain Competitive Against Today's Challenges",
       "headingStyle": "plain",
-      "intro": "",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -89,6 +83,9 @@
           "number": "01",
           "title": "IT Talent Shortage",
           "text": "Quickly address immediate or evolving IT requirements without recruitment. Our experts step in seamlessly, giving you the flexibility to maintain smooth operational continuity.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -96,6 +93,9 @@
           "number": "02",
           "title": "Cost Optimization and IT Budget Control",
           "text": "Benefit from predictable pricing through our predefined time banks. No surprises: you know exactly how much your IT services cost. Eliminate unexpected expenses and achieve savings without sacrificing quality.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -103,24 +103,38 @@
           "number": "03",
           "title": "Support and Acceleration of Technology Projects",
           "text": "Entrust us with the management or implementation of your critical digital initiatives. Victrix acts as a catalyst to realize your projects on schedule, without burdening your internal teams.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
         {
           "number": "04",
           "title": "Performance, Scalability and Service Excellence",
-          "text": "Rely on a team of versatile experts to advance your IT environments: cloud solutions, cybersecurity, networking, communications, equipment management. Results? Optimized response times, accelerated projects, and assured resilience.",
+          "text": "Rely on a team of versatile experts to advance your IT environments: <a href=\"/en/services/cloud-services-provider/\">cloud solutions</a>, <a href=\"/en/services/cybersecurity/\">cybersecurity</a>, networking, communications, equipment management. Results? Optimized response times, accelerated projects, and assured resilience.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
         {
           "number": "05",
           "title": "Advanced Cybersecurity",
-          "text": "Strengthen your security posture with proactive support, including monitoring, incident response, data management, and compliance with standards and regulations such as Law 25, DORA, NIS2, as well as other sector-specific requirements.",
+          "text": "Strengthen your security posture with proactive support, including monitoring, incident response, data management, and compliance with standards and regulations such as <a href=\"/en/services/strategic-advice/law-25-compliance/\">Law 25</a>, <a href=\"/en/ressources/dora-regulation/\">DORA</a>, <a href=\"/en/ressources/nis2-directive/\">NIS2</a>, as well as other sector-specific requirements.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         }
-      ]
+      ],
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "cta",
@@ -132,14 +146,14 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "light",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Comprehensive Managed Services Focused on Security and Continuous Improvement",
       "intro": "Ensure continuity, security, and optimization of your IT environment while reducing the burden on your internal teams. As your managed service provider, Victrix handles administration, monitoring, and the ongoing evolution of your infrastructure.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "items": [
@@ -262,7 +276,7 @@
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "Learn More About Our Managed IT Services",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "What are the main benefits of outsourcing your managed IT services to Victrix?",
@@ -274,13 +288,14 @@
         },
         {
           "question": "What recognized certifications does Victrix hold?",
-          "answer": "Victrix holds ISO 27001 and ISO 9001 certifications, guaranteeing the security and quality of our IT services."
+          "answer": "Victrix holds <a href=\"/en/ressources/iso-27001-iso-9001-certifications/\">ISO 27001 and ISO 9001 certifications</a>, guaranteeing the security and quality of our IT services."
         }
       ]
     },
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Managed services"
@@ -298,7 +313,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "slug": "managed-it-services",
+  "seoTitle": "Managed IT Services | Security & Performance",
+  "_schema": "default",
+  "noindex": false
 }

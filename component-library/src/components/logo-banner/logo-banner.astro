@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, estFondSombre, type FondEtenduKey } from '../../shared/fonds';
 import { inlineHtml } from '../../shared/rich';
 /**
  * Section « Bandeau logos partenaires » — composant Bookshop (palette
@@ -28,17 +29,24 @@ interface LogoItem {
 }
 
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondEtenduKey | '';
   title?: string;
   badge?: string;
   items: LogoItem[];
 }
 
-const { title = '', badge = '', items = [] } = Astro.props;
+const { title = '', badge = '', items = [], fond = 'ivoire' } = Astro.props;
+// Fond SOMBRE (« bleu électrique », 2026-09-21) : titre, pastilles de nom et
+// descriptifs passent en blanc ; le badge garde sa pilule bleu pâle.
+const sombre = estFondSombre(fond);
 ---
 
-<section class="py-20 bg-surface">
+<section class:list={['py-20', FOND_CLASSES[fond as FondEtenduKey] ?? 'bg-surface']}>
   <div class="container-site text-center">
-    {title !== '' && <h2 class="text-2xl leading-8 font-bold text-on-surface m-0">{title}</h2>}
+    {title !== '' && (
+      <h2 class:list={['text-2xl leading-8 font-bold m-0', sombre ? 'text-white' : 'text-on-surface']}>{title}</h2>
+    )}
     {
       badge !== '' && (
         <p class="inline-block m-0 max-w-none mt-4 px-4 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-sm font-semibold">
@@ -53,12 +61,23 @@ const { title = '', badge = '', items = [] } = Astro.props;
             {item.logo ? (
               <img class="max-h-12 max-w-40 object-contain border-0" src={item.logo} alt={item.name} loading="lazy" />
             ) : (
-              <span class="inline-flex items-center min-h-12 text-lg font-semibold text-on-surface tracking-[0.02em]">
+              <span
+                class:list={[
+                  'inline-flex items-center min-h-12 text-lg font-semibold tracking-[0.02em]',
+                  sombre ? 'text-white' : 'text-on-surface',
+                ]}
+              >
                 {item.name}
               </span>
             )}
             {item.description && (
-              <p class="text-sm leading-5 text-on-surface-variant m-0 max-w-none" set:html={inlineHtml(item.description)} />
+              <p
+                class:list={[
+                  'text-sm leading-5 m-0 max-w-none',
+                  sombre ? 'text-white/90' : 'text-on-surface-variant',
+                ]}
+                set:html={inlineHtml(item.description)}
+              />
             )}
           </li>
         ))

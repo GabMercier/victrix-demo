@@ -1,0 +1,151 @@
+{
+  "_schema": "default",
+  "title": "Gouvernance des outils Power Platform",
+  "description": "Notre offre de gouvernance Power Platform permet de surveiller l’utilisation des applications et des flux Power Automate au sein de l’organisation. Elle fournit des outils pour gérer les permissions, s’assurer du respect des règles de sécurité, et générer des rapports sur l’utilisation des ressources. Elle facilite aussi la mise en place de bonnes pratiques pour l’utilisation des outils, tout en assurant une conformité avec les politiques internes.",
+  "image": "/images/solutions/gouvernance-power-platform/01.jpg",
+  "sector": "Gouvernance",
+  "solutionType": "Power Platform",
+  "featured": false,
+  "order": 10,
+  "href": "",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": [
+    {
+      "_bookshop_name": "product-hero",
+      "type": "product-hero",
+      "badge": "Solution Ø Studio",
+      "title": "Gouvernance des outils Power Platform",
+      "titleHighlight": "",
+      "lead": "Notre offre de gouvernance Power Platform permet de surveiller l’utilisation des applications et des flux Power Automate au sein de l’organisation. Elle fournit des outils pour gérer les permissions, s’assurer du respect des règles de sécurité, et générer des rapports sur l’utilisation des ressources. Elle facilite aussi la mise en place de bonnes pratiques pour l’utilisation des outils, tout en assurant une conformité avec les politiques internes.",
+      "ctaLabel": "Parler à un expert",
+      "ctaHref": "#formulaire",
+      "cta2Label": "Voir le catalogue",
+      "cta2Href": "/fr/solutions/",
+      "image": "/images/solutions/gouvernance-power-platform/01.jpg",
+      "imageAlt": "Maquette de présentation — Gouvernance des outils Power Platform",
+      "fond": "beige"
+    },
+    {
+      "_bookshop_name": "bento-metrics",
+      "type": "bento-metrics",
+      "title": "En bref",
+      "intro": "",
+      "fond": "ivoire",
+      "featured": {
+        "title": "Gouvernance des outils Power Platform",
+        "text": "",
+        "watermark": "eclair",
+        "stats": [
+          {
+            "value": "Multi-Secteur (Municipal, Public, Industriel, etc.)",
+            "label": "Client"
+          },
+          {
+            "value": "Entre 25.000 et 50.000 $CAD",
+            "label": "Coût"
+          },
+          {
+            "value": "Entre 1 et 3 mois",
+            "label": "Délai"
+          },
+          {
+            "value": "Power Platform, CoE Toolkit",
+            "label": "Technologies"
+          }
+        ]
+      },
+      "aside": {
+        "icon": "coche",
+        "image": "",
+        "imageAlt": "",
+        "title": "Conçue par Ø Studio",
+        "text": "Notre studio de création Power Platform et Dynamics 365 personnalise la solution à vos processus.",
+        "linkLabel": "Découvrir Ø Studio",
+        "linkHref": "/fr/services/productivite/o-studio/"
+      }
+    },
+    {
+      "_bookshop_name": "galerie",
+      "type": "galerie",
+      "title": "Aperçu de l’application",
+      "intro": "",
+      "colonnes": "3",
+      "fond": "ivoire",
+      "images": [
+        {
+          "image": "/images/solutions/gouvernance-power-platform/02.png",
+          "alt": "Capture d’écran de l’application — Gouvernance des outils Power Platform",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gouvernance-power-platform/03.png",
+          "alt": "Capture d’écran de l’application — Gouvernance des outils Power Platform",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gouvernance-power-platform/04.png",
+          "alt": "Capture d’écran de l’application — Gouvernance des outils Power Platform",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gouvernance-power-platform/05.png",
+          "alt": "Capture d’écran de l’application — Gouvernance des outils Power Platform",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gouvernance-power-platform/06.png",
+          "alt": "Capture d’écran de l’application — Gouvernance des outils Power Platform",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gouvernance-power-platform/07.png",
+          "alt": "Capture d’écran de l’application — Gouvernance des outils Power Platform",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gouvernance-power-platform/08.png",
+          "alt": "Capture d’écran de l’application — Gouvernance des outils Power Platform",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gouvernance-power-platform/09.png",
+          "alt": "Capture d’écran de l’application — Gouvernance des outils Power Platform",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gouvernance-power-platform/10.png",
+          "alt": "Capture d’écran de l’application — Gouvernance des outils Power Platform",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gouvernance-power-platform/11.png",
+          "alt": "Capture d’écran de l’application — Gouvernance des outils Power Platform",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gouvernance-power-platform/12.png",
+          "alt": "Capture d’écran de l’application — Gouvernance des outils Power Platform",
+          "legende": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "form",
+      "type": "form",
+      "title": "Parlez-nous de votre projet",
+      "intro": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+      "submitLabel": "Demander une consultation",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "o-studio",
+      "fond": "",
+      "fields": []
+    }
+  ]
+}

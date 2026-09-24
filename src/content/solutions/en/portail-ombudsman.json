@@ -1,9 +1,19 @@
 {
+  "_schema": "default",
   "title": "Ombudsman portal",
   "description": "Lets citizens submit their requests while staff follow up in a secure workspace.",
   "image": "/images/solutions/portail-ombudsman.jpg",
   "sector": "Governance",
   "solutionType": "Power Platform",
+  "featured": false,
   "order": 20,
-  "href": "/contact"
+  "href": "/contact",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": []
 }

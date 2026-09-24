@@ -29,6 +29,26 @@
  * les sections déjà posées suivent ; sable/pierre restent des accents plus
  * soutenus. Ce fichier est browser-safe
  * (aucune dépendance) : il est aussi compilé dans le bundle d'édition live.
+ *
+ * FONDS SOMBRES : UN SEUL aplat bleu depuis le 2026-09-22 — « Bleu électrique »
+ * #1D46F3 (clé `bleu-electrique`) = `bg-primary`. Les codes officiels de la
+ * marque (BLEU NUIT #000D2E, BLEU ÉLECTRIQUE #1D46F3) ont montré que la
+ * maquette du 21/09 était fautive : les deux aplats qu'elle avait fait naître,
+ * « Bleu Victrix » #002fc7 et « Bleu électrique » #1a5bff, portaient deux
+ * valeurs erronées du MÊME bleu. Ils fusionnent donc, et la clé `bleu-profond`
+ * est SUPPRIMÉE — sans risque : aucune section du contenu ne portait l'un ou
+ * l'autre (0 occurrence mesurée avant le retrait).
+ * Un fond sombre EXIGE que le composant inverse
+ * ses textes — il n'est donc offert QUE dans les sections qui savent le faire
+ * (`_select_data.fonds_etendus`). Elles sont DIX depuis le 2026-09-21 :
+ * rich-text, callout, stats, logo-banner, faq (première vague) puis
+ * home-experts, benefits, value-tiles, feature-boxes, text-photo (sections
+ * d'accroche, demande Gabriel). Les autres gardent `_select_data.fonds`, la
+ * palette claire. Sur fond sombre, tout passe au BLANC : les accents clairs du
+ * Design System (`primary-fixed-dim`) ne donnent que 3,1:1 sur le bleu
+ * électrique, sous le seuil AA. Le BLEU NUIT est proscrit comme texte sur le
+ * bleu électrique et réciproquement : 2,94:1, mesuré le 22/09. Le garde-fou de scripts/design/generate-cms-previews.mjs compare les
+ * DEUX listes à ce fichier.
  */
 
 /** Clés fermées, dans l'ORDRE d'affichage du sélecteur (blancs/gris, bleus, chauds). */
@@ -47,8 +67,56 @@ export const FOND_KEYS = [
 
 export type FondKey = (typeof FOND_KEYS)[number];
 
+/**
+ * Fonds SOMBRES — texte INVERSÉ par le composant (voir `estFondSombre`).
+ * Réservés aux sections qui gèrent l'inversion ; jamais dans `FOND_KEYS`.
+ */
+export const FOND_KEYS_SOMBRES = ['bleu-electrique'] as const;
+
+export type FondSombreKey = (typeof FOND_KEYS_SOMBRES)[number];
+
+/**
+ * Clés RETIRÉES de la palette, tolérées à la lecture (2026-09-22).
+ *
+ * POURQUOI. Retirer une valeur d'une liste fermée n'a AUCUN filet : le build
+ * casse dès qu'un contenu la porte encore. C'est arrivé le jour même — la
+ * fusion « Bleu Victrix » + « Bleu électrique » a été poussée à 15 h 07, et à
+ * 19 h 36 une sauvegarde CloudCannon a écrit `bleu-profond` : l'éditeur avait
+ * encore l'option en session. Vérifier « 0 occurrence » AVANT le retrait ne
+ * protège de rien, puisque l'éditrice écrit en continu.
+ *
+ * Même mécanisme que `LEGACY_ICON_ALIASES` (shared/icons.ts) : la clé reste
+ * ACCEPTÉE par le schéma et se résout vers sa remplaçante au rendu. Elle n'est
+ * PAS réofferte dans le sélecteur. `scripts/migrate-fonds-bleus.mjs` nettoie
+ * le contenu — à rejouer après chaque fusion `staging` → `dev`.
+ */
+export const FOND_ALIAS: Record<string, FondSombreKey | FondKey> = {
+  // « Bleu Victrix » #002fc7 — valeur fautive de la maquette du 21/09, fondue
+  // dans « Bleu électrique » #1D46F3 quand les codes officiels sont arrivés.
+  'bleu-profond': 'bleu-electrique',
+};
+
+/** Clés retirées, pour les enums de schéma (elles doivent rester valides). */
+export const FOND_KEYS_LEGACY = Object.keys(FOND_ALIAS) as [string, ...string[]];
+
+/** Résout une clé de contenu vers la clé EN VIGUEUR (alias compris). */
+export function fondCanonique(fond?: string | null): string {
+  const cle = fond ?? '';
+  return FOND_ALIAS[cle] ?? cle;
+}
+
+/** Palette claire + fonds sombres — l'ordre du sélecteur « étendu ». */
+export const FOND_KEYS_ETENDUS = [...FOND_KEYS, ...FOND_KEYS_SOMBRES] as const;
+
+export type FondEtenduKey = FondKey | FondSombreKey;
+
+/** Vrai si la clé demande des textes clairs (repli : fond clair). */
+export function estFondSombre(fond?: string | null): boolean {
+  return (FOND_KEYS_SOMBRES as readonly string[]).includes(fondCanonique(fond));
+}
+
 /** Clé → utilitaire Tailwind (classes LITTÉRALES : le JIT ne voit que ce qui est écrit). */
-export const FOND_CLASSES: Record<FondKey, string> = {
+const FOND_CLASSES_BASE: Record<FondEtenduKey, string> = {
   blanc: 'bg-white',
   givre: 'bg-givre',
   perle: 'bg-neutral-100',
@@ -59,6 +127,24 @@ export const FOND_CLASSES: Record<FondKey, string> = {
   beige: 'bg-beige',
   sable: 'bg-sable',
   pierre: 'bg-pierre',
+  // 2026-09-22 : un seul aplat bleu, sur le jeton de marque `primary`.
+  'bleu-electrique': 'bg-primary',
+};
+
+/**
+ * Table de rendu, alias COMPRIS. Les 36 composants lisent `FOND_CLASSES[fond]`
+ * en direct : faire résoudre l'alias ICI évite de les toucher un par un, et
+ * surtout évite qu'un composant oublié rende un fond blanc par défaut là où
+ * l'éditrice avait posé un aplat bleu.
+ */
+export const FOND_CLASSES: Record<string, string> = {
+  ...FOND_CLASSES_BASE,
+  ...Object.fromEntries(
+    Object.entries(FOND_ALIAS).map(([perimee, vigueur]) => [
+      perimee,
+      FOND_CLASSES_BASE[vigueur as FondEtenduKey],
+    ]),
+  ),
 };
 
 /**
@@ -66,7 +152,7 @@ export const FOND_CLASSES: Record<FondKey, string> = {
  * Sert aux pastilles de l'éditeur et à la documentation, PAS au rendu (le
  * rendu passe par les classes ci-dessus, donc par les jetons CSS).
  */
-export const FOND_SWATCHES: Record<FondKey, { libelle: string; couleur: string }> = {
+export const FOND_SWATCHES: Record<FondEtenduKey, { libelle: string; couleur: string }> = {
   blanc: { libelle: 'Blanc', couleur: '#ffffff' },
   givre: { libelle: 'Givre (gris très pâle)', couleur: '#f9fafb' },
   perle: { libelle: 'Perle (gris pâle)', couleur: '#f3f4f7' },
@@ -77,4 +163,5 @@ export const FOND_SWATCHES: Record<FondKey, { libelle: string; couleur: string }
   beige: { libelle: 'Beige (gris chaud)', couleur: '#f6f3ef' },
   sable: { libelle: 'Sable (grège)', couleur: '#e9e2d9' },
   pierre: { libelle: 'Pierre (grège soutenu)', couleur: '#dcd5cc' },
+  'bleu-electrique': { libelle: 'Bleu électrique (texte blanc)', couleur: '#1d46f3' },
 };

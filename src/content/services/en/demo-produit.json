@@ -20,14 +20,14 @@
       "cta2Href": "/en/solutions",
       "image": "/images/solutions/legacy-vers-power-apps.jpg",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Ship applications at full speed",
       "intro": "Say goodbye to repetitive tasks with process automation and unlock your teams' potential.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Operational optimization",
         "text": "From operations management to administrative support, the Ø Studio offering meets the requirements of every line of business.",
@@ -48,7 +48,9 @@
         "title": "Microsoft certified",
         "text": "Our certified advisors maximize your integrated M365 tools for immediate return on investment.",
         "linkLabel": "See the expertise",
-        "linkHref": "/en/services/productivity-consulting"
+        "linkHref": "/en/services/productivity-consulting",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -56,7 +58,7 @@
       "type": "offer-cards",
       "title": "Two practices, one team",
       "intro": "From needs assessment to application delivery, Ø Studio covers the full cycle.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "",
       "ctaHref": "",
       "items": [
@@ -161,7 +163,7 @@
           "icon": "casque"
         }
       ],
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "cta",
@@ -173,7 +175,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": "Demo — product page recipe"

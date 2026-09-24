@@ -1,5 +1,7 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
+import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
  * Section « Cartes numérotées » — composant Bookshop (P-07).
  *
@@ -38,8 +40,24 @@ interface CardItem {
   text: string;
   ctaLabel?: string;
   ctaHref?: string;
+  /**
+   * VISUEL de la carte (2026-09-22) — la section n'en avait AUCUN alors
+   * qu'elle est la plus posée du site (76 sections, 357 cartes). Deux voies,
+   * même emplacement, à gauche du numéro :
+   *  - `icon`  : clé de la banque partagée (shared/icons.ts) ;
+   *  - `image` : un fichier, pour un LOGO de marque que la banque n'a pas
+   *              (Microsoft, AWS, ServiceNow…).
+   * `image` GAGNE sur `icon` quand les deux sont remplis : elle est le choix
+   * le plus spécifique. Aucun des deux = la carte garde son numéro seul,
+   * comportement d'avant.
+   */
+  icon?: IconKey | '';
+  image?: string;
+  imageAlt?: string;
 }
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts) ; vide = suit `tone`. */
+  fond?: FondKey | '';
   sectionTitle: string;
   headingStyle?: 'plain' | 'underline';
   intro?: string;
@@ -59,6 +77,7 @@ const {
   columns = '3',
   cardStyle = 'default',
   items = [],
+  fond = '',
 } = Astro.props;
 
 const centered = cardStyle === 'center';
@@ -67,19 +86,24 @@ const centered = cardStyle === 'center';
 // (benefits, refonte 2026-09-18) : le numéro saisi est complété à deux
 // chiffres quand c'en est un, et laissé tel quel sinon (« I », « A »…).
 const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2, '0') : n);
+
+// Taille du pictogramme — même calibre que `benefits` (refonte du 18/09) :
+// les icônes de la banque sortent au DOUBLE de leur taille propre, et celles
+// qui n'en déclarent pas (viewBox 24) sortent à 32 px, le calibre médian.
+const tailleIcone = (v: number | undefined) => (v ? v * 2 : 32);
 ---
 
-<section class:list={['py-20', tone === 'tint' ? 'bg-surface-container-low' : 'bg-surface']}>
+<section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? (tone === 'tint' ? 'bg-surface-container-low' : 'bg-surface')]}>
   <div class="container-site">
     <div class="mx-auto text-center flex flex-col items-center gap-4">
-      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
+      <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
         {sectionTitle}
       </h2>
       {headingStyle === 'underline' && <span class="w-16 h-1 bg-primary" aria-hidden="true"></span>}
       {
         hasRichText(intro) && (
           <div
-            class="rich text-lg leading-[29px] text-on-surface-variant max-w-[80ch] [&_strong]:text-on-surface"
+            class="rich text-lg leading-[1.8125rem] text-on-surface-variant max-w-[80ch] [&_strong]:text-on-surface"
             set:html={blockHtml(intro)}
           />
         )
@@ -90,7 +114,7 @@ const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2
         <div class="max-w-[760px] mx-auto mt-8 mb-4 p-8 text-center bg-white border-solid border-t-4 border-x border-b border-contour border-t-primary rounded-lg shadow-[0_1px_2px_rgba(0,0,0,0.05)] flex flex-col gap-3">
           {leadCard.title && <h3 class="text-2xl leading-8 font-bold text-on-surface m-0">{leadCard.title}</h3>}
           {leadCard.text && (
-            <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-[65ch] mx-auto">{leadCard.text}</p>
+            <p class="text-base leading-[1.625rem] text-on-surface-variant m-0 max-w-[65ch] mx-auto">{leadCard.text}</p>
           )}
         </div>
       )
@@ -103,16 +127,47 @@ const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2
       ]}
     >
       {
-        items.map((item) => (
+        items.map((item) => {
+          const icon = iconFor(item.icon);
+          const visuel = Boolean(item.image) || Boolean(icon);
+          return (
           <li
             class:list={[
               'm-0 bg-white border border-solid border-contour rounded-lg p-8 flex flex-col gap-3',
               centered && 'text-center items-center',
             ]}
           >
-            <div class:list={['flex w-full pb-5', centered ? 'justify-center' : 'justify-end']}>
+            <div
+              class:list={[
+                'flex w-full pb-5 items-center',
+                visuel ? 'justify-between gap-4' : centered ? 'justify-center' : 'justify-end',
+              ]}
+            >
+              {item.image ? (
+                <img
+                  src={item.image}
+                  alt={item.imageAlt ?? ''}
+                  class="h-9 w-auto max-w-[160px] object-contain shrink-0 m-0"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : icon ? (
+                <span class="text-primary flex items-center shrink-0">
+                  <svg
+                    width={tailleIcone(icon.w)}
+                    height={tailleIcone(icon.h)}
+                    {...iconSvgAttrs(icon, 2)}
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    {icon.paths.map((d) => (
+                      <path d={d} />
+                    ))}
+                  </svg>
+                </span>
+              ) : null}
               <span
-                class="text-xs leading-[14px] font-bold tracking-[1.2px] text-neutral-500"
+                class="text-sm leading-[0.875rem] font-bold tracking-[1.2px] text-on-surface-variant"
                 aria-hidden="true"
               >
                 {rang(item.number)}
@@ -120,7 +175,7 @@ const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2
             </div>
             <span class="w-8 h-1 rounded-xl bg-primary" aria-hidden="true" />
             <h3 class="text-2xl leading-8 font-bold text-on-surface m-0 pt-1">{item.title}</h3>
-            <p class="text-base leading-[26px] text-on-surface-variant m-0 max-w-none grow" set:html={inlineHtml(item.text)} />
+            <p class="text-base leading-[1.625rem] text-on-surface-variant m-0 max-w-none grow" set:html={inlineHtml(item.text)} />
             {item.ctaLabel && item.ctaHref && (
               <a
                 class:list={[
@@ -133,7 +188,8 @@ const rang = (n: string) => (/^\d+$/.test(n?.trim() ?? '') ? n.trim().padStart(2
               </a>
             )}
           </li>
-        ))
+          );
+        })
       }
     </ul>
   </div>

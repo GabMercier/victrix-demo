@@ -1,9 +1,19 @@
 {
+  "_schema": "default",
   "title": "Student schedule management",
   "description": "Makes timetables easy to consult and gives teachers a centralized view of their groups.",
   "image": "/images/solutions/gestion-horaires.jpg",
   "sector": "Education",
   "solutionType": "Academic",
+  "featured": false,
   "order": 50,
-  "href": "/contact"
+  "href": "/contact",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": []
 }

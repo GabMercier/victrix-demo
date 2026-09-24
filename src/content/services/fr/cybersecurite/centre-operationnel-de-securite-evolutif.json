@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Centre opérationnel de sécurité (SOC) évolutif",
   "description": "Détection, réponse et amélioration continue de votre posture de sécurité avec SEvOC, notre centre opérationnel de sécurité (SOC) évolutif.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Centre opérationnel de sécurité : SOC évolutif | Services | Victrix",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -32,7 +28,7 @@
       "type": "bento-metrics",
       "title": "Ce que vous offre le SEvOC de Victrix",
       "intro": "Un service SOC disponible en tout temps, bilingue, avec des experts attitrés à votre environnement.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Surveillance continue, réponse accélérée",
         "text": "Accélérez votre cybersécurité et optimisez l’ensemble de vos outils de sécurité. À la différence d’un SOC classique, notre <strong>offre évolutive et modulaire</strong> vous permet de rester à la fine pointe des technologies de sécurité.",
@@ -55,9 +51,11 @@
       "aside": {
         "icon": "bouclier",
         "title": "Les avantages de notre service SOC",
-        "text": "Faites face à l’accroissement des menaces avancées, complétez votre équipe de sécurité interne avec nos experts et simplifiez l’intégration de nouvelles entités dans un contexte de croissance ou de fusion.",
+        "text": "Faites face à l’accroissement des menaces avancées (<a href=\"/fr/ressources/ransomware-rancongiciels/\">ransomwares</a>, attaques ciblées, attaques non détectées par les approches classiques), obtenez une prise en charge rapide des alertes de sécurité, complétez votre équipe de sécurité interne avec nos experts pour assurer l’évolution et la maintenance de vos outils (EDR, SIEM, CSPM), simplifiez l’intégration de vos nouvelles entités dans un contexte de croissance ou de fusion, et atteignez vos objectifs stratégiques tout en garantissant votre cybersécurité.",
         "linkLabel": "Explorez nos services de cybersécurité",
-        "linkHref": "/fr/services/cybersecurite/"
+        "linkHref": "/fr/services/cybersecurite/",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -65,7 +63,7 @@
       "type": "offer-cards",
       "title": "Ce que le SEvOC fait pour votre organisation",
       "intro": "Prise en charge, opérations et évolution : une offre modulaire qui couvre l’ensemble du cycle.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "items": [
@@ -149,7 +147,6 @@
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Des services qui se distinguent de la sécurité gérée traditionnelle",
-      "fond": "",
       "paragraphs": [
         "Victrix n’est pas qu’un <a href=\"/fr/services/services-ti-geres/\">fournisseur de services gérés</a>, et le SEvOC n’est pas un SOC comme les autres. Voici ce qui fait la force de notre équipe.",
         "<strong>Expertise technologique</strong> — partenariat Microsoft Sentinel, partenariat CrowdStrike ELP (seul MSSP francophone autorisé), <a href=\"/fr/ressources/certification-iso-27001-iso-9001/\" target=\"_blank\" rel=\"noopener\">certification ISO/IEC 27001:2022 et ISO 9001:2015</a> et gestion d’environnements hybrides ou complexes.",
@@ -180,18 +177,15 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": ""
+      "cardText": "",
+      "fond": ""
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Vos bénéfices concrets avec SEvOC",
       "headingStyle": "plain",
-      "intro": "",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -200,6 +194,9 @@
           "number": "01",
           "title": "Visualisation",
           "text": "Complète des activités suspectes et diminution des faux positifs.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -207,6 +204,9 @@
           "number": "02",
           "title": "Réduction",
           "text": "Du temps de détection des menaces et de remédiation.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -214,6 +214,9 @@
           "number": "03",
           "title": "Accélération",
           "text": "De l’intégration des nouvelles technologies.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -221,6 +224,9 @@
           "number": "04",
           "title": "Diminution",
           "text": "Des risques opérationnels et des efforts de gestion de cybersécurité.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -228,6 +234,9 @@
           "number": "05",
           "title": "Libération",
           "text": "Des tâches routinières pour votre personnel.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -235,14 +244,23 @@
           "number": "06",
           "title": "Amélioration",
           "text": "Continue de votre posture de cybersécurité.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         }
-      ]
+      ],
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Cybersécurité",
@@ -261,7 +279,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "seoTitle": "Centre opérationnel de sécurité : SOC évolutif | Services | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

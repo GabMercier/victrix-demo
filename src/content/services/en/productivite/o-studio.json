@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Ø Studio",
   "description": "Deploy business applications at lightning speed with Ø Studio, your consulting and application development studio for Microsoft Power Platform and Dynamics 365.",
-  "noindex": false,
-  "slug": "productivity-consulting/o-studio",
-  "seoTitle": "Apps Development",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -20,19 +16,19 @@
       "ctaHref": "#formulaire",
       "cta2Label": "Browse our applications",
       "cta2Href": "/en/solutions",
-      "image": "/wp-content/uploads/2023/09/bg-o-studio-1-scaled.jpg",
+      "image": "/wp-content/uploads/2023/09/macbook-mockup-1-scaled.jpg",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Deploy Business Applications at Lightning Speed",
       "intro": "Say goodbye to repetitive tasks with process automation and unlock your teams' potential.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Operational Optimization",
-        "text": "From operations management to the support of your administrative services, the Ø Studio offering meets the requirements of the different branches of your business — with development speed and increased delivery capacity to match.",
+        "text": "From operations management to the support of your administrative services, the Ø Studio offering meets the requirements of the different branches of your business — with development speed and increased delivery capacity to match. Get support from our <strong>Microsoft certified consultants and application developers</strong> to free up your IT teams, automate your business processes and <a href=\"/en/services/managed-it-services/maximize-the-use-of-your-m365-ecosystem/\">maximize the use of your M365 ecosystem</a>.",
         "watermark": "eclair",
         "stats": [
           {
@@ -50,7 +46,9 @@
         "title": "Microsoft Certified",
         "text": "Our Microsoft certified consultants and developers free up your IT teams and maximize the use of the Microsoft 365 tools already included in your licences.",
         "linkLabel": null,
-        "linkHref": null
+        "linkHref": null,
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -58,7 +56,7 @@
       "type": "offer-cards",
       "title": "Consulting, Integration and Development",
       "intro": "With Ø Studio by your side, Power Apps development, process automation, and tool governance are all easily achievable goals.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "#formulaire",
       "items": [
@@ -144,7 +142,6 @@
       "type": "realisations",
       "title": "Our Portfolio of Achievements",
       "intro": "More than a simple consulting and application development service, the Ø Studio team excels with Power Platform tools: Power Apps, Power Automate, Power BI and Power Pages — delivering solutions tailored to your organization.",
-      "fond": "blanc",
       "linkLabel": "Browse our solutions catalogue",
       "linkHref": "/en/solutions",
       "items": [
@@ -168,17 +165,18 @@
           "text": "Migration of aging applications to Power Apps and Dataverse.",
           "icon": "trousse"
         }
-      ]
+      ],
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "FAQ — Dynamics 365 & Microsoft Power Platform Development",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "Does Ø Studio offer mobile application development?",
-          "answer": "Yes. Our Microsoft application development services consider accessibility from mobile devices and cybersecurity as core components of the app development process. If you want a web or mobile application designed with Microsoft Power Platform or Dynamics 365, we can help."
+          "answer": "Yes. Our Microsoft application development services consider accessibility from mobile devices and <a href=\"/en/services/cybersecurity/\">cybersecurity</a> as core components of the app development process. If you want a web or mobile application designed with Microsoft Power Platform or Dynamics 365, we can help."
         },
         {
           "question": "What are the steps to creating an application?",
@@ -193,6 +191,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Productivity"
@@ -222,7 +221,11 @@
       "cta2Label": null,
       "cta2Href": null,
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "slug": "productivity-consulting/o-studio",
+  "seoTitle": "Apps Development",
+  "_schema": "default",
+  "noindex": false
 }

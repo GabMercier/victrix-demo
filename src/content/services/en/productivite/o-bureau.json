@@ -22,19 +22,39 @@
       "cta2Href": "",
       "image": "/wp-content/uploads/2023/08/obureau-mobile-1.png",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Benefits of O bureau",
       "subtitle": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "boxes": [
-        "Simplify reservations",
-        "Improve office management",
-        "Access relevant reports",
-        "Track office attendance"
+        {
+          "label": "Simplify reservations",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Improve office management",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Access relevant reports",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Track office attendance",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {
@@ -42,7 +62,7 @@
       "type": "offer-cards",
       "title": "A Simple, Ergonomic Application to Manage Your Workspaces",
       "intro": "",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "",
       "ctaHref": "",
       "items": [
@@ -140,6 +160,40 @@
       "cardText": ""
     },
     {
+      "_bookshop_name": "logo-banner",
+      "type": "logo-banner",
+      "fond": "ivoire",
+      "title": "",
+      "badge": "",
+      "items": [
+        {
+          "name": "Power Apps",
+          "logo": "/wp-content/uploads/2023/04/powerapps-e1682653932539.png",
+          "description": ""
+        },
+        {
+          "name": "Power Automate",
+          "logo": "/wp-content/uploads/2023/04/powerautomate-e1682654293739.png",
+          "description": ""
+        },
+        {
+          "name": "Power BI",
+          "logo": "/wp-content/uploads/2023/04/powerbi-e1682654312943.png",
+          "description": ""
+        },
+        {
+          "name": "Microsoft Teams",
+          "logo": "/wp-content/uploads/2022/03/teams.png",
+          "description": ""
+        },
+        {
+          "name": "Microsoft Outlook",
+          "logo": "/wp-content/uploads/2023/04/microsoft_office_outlook_.png",
+          "description": ""
+        }
+      ]
+    },
+    {
       "_bookshop_name": "cta",
       "type": "cta",
       "title": "Adopt O bureau for your Office Booking Management",
@@ -149,7 +203,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

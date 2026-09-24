@@ -10,7 +10,7 @@ spec:
   structures:
     - sections
   label: "Accueil — Derniers articles"
-  description: "Bloc « derniers articles » : titre, lien vers le blogue, et grille des 3 articles les plus récents (alimentée automatiquement au build)."
+  description: "Bloc « derniers articles » : titre, lien vers le blogue, et grille de 3 articles — les plus récents par défaut, ou ceux que vous choisissez."
   icon: article
   picker_preview:
     # Vignette du sélecteur « Add Section » (2026-08-17) : CloudCannon ne
@@ -19,7 +19,7 @@ spec:
     # reloge le preview.png du composant au postbuild.
     image: "/_cloudcannon/bookshop_thumbs/home-latest/home-latest.preview.png"
     text: "Accueil — Derniers articles"
-    subtext: Titre + lien + 3 articles récents (automatique)
+    subtext: Titre + lien + 3 articles (récents, ou choisis)
   preview:
     icon: article
     text:
@@ -28,11 +28,13 @@ spec:
 
 blueprint:
   type: home-latest
+  fond: ivoire
   title: "Nos derniers articles"
   subtitle: ""
   readMoreLabel: "Lire la suite"
   ctaLabel: "Voir toutes les ressources"
   ctaHref: "/fr/ressources"
+  vedettes: []
 
 preview:
 
@@ -40,6 +42,24 @@ _inputs:
   type:
     hidden: true
     comment: "Discriminant technique du contrat sections — ne pas modifier."
+  # « Fond de section » (2026-09-21) : choix BORNÉ à la palette officielle,
+  # jamais de couleur libre — même champ que les autres sections.
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      values: _select_data.fonds
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+        icon: square
+        icon_color:
+          - key: couleur
+    comment: "Couleur de fond de la section, bornée à la palette officielle (pastilles dans la liste)."
   title:
     label: "Titre"
   subtitle:
@@ -75,3 +95,22 @@ _inputs:
   ctaHref:
     label: "Lien"
     comment: "URL finale, préfixe de langue inclus (ex. /fr/ressources)."
+
+  # ARTICLES EN VEDETTE (2026-09-23, demande du marketing pour la démo).
+  # Volontairement un tableau de TEXTES et non une liste fermée : les articles
+  # sont du contenu vivant, un `_select_data` devrait être regénéré à chaque
+  # publication. Le filet est au build (src/pages/[lang]/index.astro), qui
+  # ignore un identifiant inconnu et le signale au lieu d'échouer.
+  vedettes:
+    type: array
+    label: "Articles en vedette (optionnel)"
+    comment: >-
+      Vide = les 3 articles les plus récents, automatiquement. Pour choisir :
+      ajoutez le NOM DE FICHIER de l'article, sans son extension — par exemple
+      « certification-iso-27001-iso-9001 ». C'est le nom qui apparaît dans la
+      liste des Ressources côté français ; le même identifiant sert aux deux
+      langues, chacune affichant sa propre version de l'article. Un nom
+      introuvable est simplement ignoré et la grille se complète avec les
+      articles les plus récents.
+    options:
+      empty_type: string

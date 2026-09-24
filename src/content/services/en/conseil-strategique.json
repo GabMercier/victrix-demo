@@ -16,7 +16,7 @@
       "titleAccent": "",
       "title": "Strategic Consulting",
       "titleHighlight": "Strategic",
-      "lead": "Our strategic consulting services span across all of our areas of expertise: Cybersecurity, Artificial Intelligence, Cloud, IT Governance, Application Services and Productivity. The involvement of our leaders and our multidisciplinary expertise will ensure the success of your strategic projects.",
+      "lead": "Our strategic consulting services span across all of our areas of expertise: <a href=\"/en/services/cybersecurity/\">Cybersecurity</a>, <a href=\"/en/services/artificial-intelligence/\">Artificial Intelligence</a>, <a href=\"/en/services/cloud-services-provider/\">Cloud</a>, IT Governance, <a href=\"/en/services/managed-it-services/\">Managed Services</a>, Application Services and <a href=\"/en/services/productivity-consulting/\">Productivity</a>. The involvement of our leaders and our multidisciplinary expertise will ensure the success of your strategic projects.",
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "image": "/wp-content/uploads/2022/05/strategic-advice.png",
@@ -27,7 +27,7 @@
       "type": "bento-metrics",
       "title": "What Sets Us Apart",
       "intro": "We offer a strategic and innovative approach.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Digital Transformation",
         "text": "Our goal is to accelerate your project with <strong>tangible and measurable results</strong>.",
@@ -39,7 +39,9 @@
         "title": "Multidisciplinary Team",
         "text": "Our seasoned strategy and technology consultants will help you achieve your goals. ",
         "linkLabel": null,
-        "linkHref": null
+        "linkHref": null,
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -47,7 +49,7 @@
       "type": "offer-cards",
       "title": "Our Strategic Consulting Expertise",
       "intro": "",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "",
       "ctaHref": "",
       "items": [
@@ -138,6 +140,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our Methodology",
       "headingStyle": "underline",
       "intro": "Our methodology involves our executive team throughout the project and peer review to present you with the approach best suited to your needs.",
@@ -148,27 +151,42 @@
         {
           "number": "01",
           "title": "Understand",
-          "text": "Assessment and discovery workshops, questionnaires: business, IT and users' needs, systems used, contracts, expertise, constraints, initiatives, issues, and guiding principles."
+          "text": "Assessment and discovery workshops, questionnaires: business, IT and users' needs, systems used, contracts, expertise, constraints, initiatives, issues, and guiding principles.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Prioritize",
-          "text": "Scope review, policy and strategy workshops: trends, comparables, best practices, and presentation to management."
+          "text": "Scope review, policy and strategy workshops: trends, comparables, best practices, and presentation to management.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Plan",
-          "text": "Timeframe for implementation, priorities, availability, internal and external resources."
+          "text": "Timeframe for implementation, priorities, availability, internal and external resources.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Budget",
-          "text": "Sequence, efforts, timeline and costs, technology choices."
+          "text": "Sequence, efforts, timeline and costs, technology choices.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Activate",
-          "text": "Resource allocation, project launch, change management, communication, and continuous feedback."
+          "text": "Resource allocation, project launch, change management, communication, and continuous feedback.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -209,6 +227,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Strategic consulting"
@@ -226,7 +245,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

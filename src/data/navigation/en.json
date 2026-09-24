@@ -30,10 +30,10 @@
         "href": "/services",
         "icon": "cloud",
         "links": [
-          { "label": "Application services", "href": "/services/services-applicatifs" },
+          { "label": "Application services", "href": "/services/application-services" },
           { "label": "Cloud computing", "href": "/services/cloud-services-provider" },
           { "label": "Cybersecurity", "href": "/services/cybersecurity" },
-          { "label": "AI projects", "href": "/services/projets-en-ia" },
+          { "label": "AI projects", "href": "/services/ai-projects" },
           { "label": "Managed services", "href": "/services/managed-it-services" }
         ]
       },
@@ -54,7 +54,7 @@
       "title": "AI projects",
       "body": "See how we turn data into strategic advantage through artificial intelligence.",
       "ctaLabel": "See the projects",
-      "href": "/services/intelligence-artificielle",
+      "href": "/services/artificial-intelligence",
       "image": "/images/home/expertise-intelligence-artificielle.jpg"
     },
     "stripe": {

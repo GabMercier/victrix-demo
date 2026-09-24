@@ -32,11 +32,16 @@ export interface NavLinkLike {
  *   slug absent lève une erreur nommant la langue et le fichier attendu — le
  *   build échoue, rien de cassé n'atteint le site.
  * - sinon : localizePath(href) — comportement historique inchangé.
+ *
+ * `serviceSlugs` peut être une Map identifiant → SLUG D’URL (2026-09-21) : en
+ * anglais le fichier `intelligence-artificielle.json` est publié sous
+ * `/en/services/artificial-intelligence` (champ `slug` de la page). L’identifiant
+ * du lien reste le nom du fichier ; l’URL suit le slug de la page.
  */
 export function resolveNavHref(
   link: NavLinkLike,
   lang: Locale,
-  serviceSlugs: ReadonlySet<string>,
+  serviceSlugs: ReadonlySet<string> | ReadonlyMap<string, string>,
 ): string {
   const service = (link.service ?? '').trim();
   if (service !== '') {
@@ -47,7 +52,8 @@ export function resolveNavHref(
           `Corriger l'identifiant du lien, ou créer le service.`,
       );
     }
-    return localizePath(`/${SERVICE_URL_PREFIX}/${service}`, lang);
+    const urlSlug = serviceSlugs instanceof Map ? serviceSlugs.get(service) || service : service;
+    return localizePath(`/${SERVICE_URL_PREFIX}/${urlSlug}`, lang);
   }
   return localizePath(link.href ?? '', lang);
 }

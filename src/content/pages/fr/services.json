@@ -2,7 +2,7 @@
   "_schema": "default",
   "title": "Nos services ",
   "description": "Cybersécurité, IA, services applicatifs, infonuagique et services gérés. Nos équipes prennent en charge vos environnements TI du diagnostic à l'exploitation.",
-  "noindex": true,
+  "noindex": false,
   "seoTitle": "",
   "seoH1": "",
   "slug": "",
@@ -30,6 +30,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Ce que nous prenons en charge",
       "headingStyle": "underline",
       "intro": "Nos services se déploient ensemble ou séparément, selon ce que vos équipes couvrent déjà.",
@@ -46,35 +47,50 @@
           "title": "Cybersécurité",
           "text": "Protégez vos actifs numériques et démontrez votre conformité : SEvOC (SOC), tests d'intrusion, sécurité OT et IoT, gestion des identités et accès.",
           "ctaLabel": "Découvrez nos services de cybersécurité",
-          "ctaHref": "/fr/services/cybersecurite"
+          "ctaHref": "/fr/services/cybersecurite",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "IA et automatisation",
           "text": "Exploitez l'IA dans vos processus d'affaires avec un cadre de gouvernance clair : analyse d'opportunités, agents sur mesure, Copilot pour Microsoft 365.",
           "ctaLabel": "Découvrez nos services en IA",
-          "ctaHref": "/fr/services/intelligence-artificielle"
+          "ctaHref": "/fr/services/intelligence-artificielle",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Infonuagique",
           "text": "Modernisez vos infrastructures à votre rythme : migration, multinuage, environnements hybrides, sauvegarde et relève.",
           "ctaLabel": "Découvrez nos services infonuagiques",
-          "ctaHref": "/fr/services/services-infonuagiques"
+          "ctaHref": "/fr/services/services-infonuagiques",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Services applicatifs",
           "text": "Concevez, modernisez et maintenez vos applications d'affaires : Ø Studio (Développement Power Platform et Dynamics 365), Microsoft 365, ServiceNow.",
           "ctaLabel": "Découvrez nos services applicatifs",
-          "ctaHref": "/fr/services/services-applicatifs"
+          "ctaHref": "/fr/services/services-applicatifs",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Services gérés",
           "text": "Simplifiez la gestion de vos TI au quotidien : gouvernance TI, impartition, soutien technique, gestion des infrastructures, du réseau et des systèmes.",
           "ctaLabel": "Découvrez nos services gérés",
-          "ctaHref": "/fr/services/services-ti-geres/"
+          "ctaHref": "/fr/services/services-ti-geres/",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -82,7 +98,7 @@
       "_bookshop_name": "rich-text",
       "type": "rich-text",
       "title": "Derrière chaque service, des équipes et des preuves",
-      "fond": "blanc",
+      "fond": "ivoire",
       "paragraphs": [
         "Nos services s'appuient sur des certifications reconnues, des partenariats technologiques de premier plan et des équipes qui connaissent les contraintes de votre industrie. Tout est documenté.",
         "<a class=\"btn\" href=\"/fr/expertises/\" target=\"_blank\" rel=\"noopener\">Découvrez nos expertises</a>  <a class=\"btn\" href=\"/fr/secteurs/\" target=\"_blank\" rel=\"noopener\">Découvrez nos secteurs d'activité</a>"
@@ -98,7 +114,7 @@
       "cta2Label": null,
       "cta2Href": null,
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

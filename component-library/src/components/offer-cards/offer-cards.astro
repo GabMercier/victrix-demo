@@ -52,7 +52,7 @@ interface Props {
   items: OfferItem[];
 }
 
-const { title, intro, fond = 'givre', ctaLabel, ctaHref, items = [] } = Astro.props;
+const { title, intro, fond = 'beige', ctaLabel, ctaHref, items = [] } = Astro.props;
 
 // Compteur « 01 » — langage visuel COMMUN avec la section Approche
 // (benefits, refonte 2026-09-18) : le numéro saisi est complété à deux
@@ -69,10 +69,10 @@ const FONDS: Record<string, string> = FOND_CLASSES;
 <section class:list={['py-20', FONDS[fond] ?? FONDS.givre]}>
   <div class="container-site flex flex-col gap-8">
     <div class="max-w-[672px] mx-auto text-center flex flex-col gap-4">
-      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0">
+      <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0">
         {title}
       </h2>
-      {hasRichText(intro) && <div class="rich text-base leading-[26px] text-on-surface-variant max-w-none" set:html={blockHtml(intro)} />}
+      {hasRichText(intro) && <div class="rich text-base leading-[1.625rem] text-on-surface-variant max-w-none" set:html={blockHtml(intro)} />}
     </div>
     <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-6 m-0 p-0 list-none">
       {
@@ -80,7 +80,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
           <li class="m-0 bg-white/80 border border-solid border-contour backdrop-blur-[6px] rounded-lg p-8 flex flex-col gap-3">
             <div class="flex w-full justify-end pb-5">
               <span
-                class="text-xs leading-[14px] font-bold tracking-[1.2px] text-neutral-500"
+                class="text-sm leading-[0.875rem] font-bold tracking-[1.2px] text-on-surface-variant"
                 aria-hidden="true"
               >
                 {rang(item.number)}

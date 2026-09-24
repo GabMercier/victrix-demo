@@ -2,7 +2,7 @@
   "_schema": "default",
   "title": "Nos produits ",
   "description": "Des solutions conçues, déployées et soutenues par nos équipes pour accélérer la productivité de votre organisation.",
-  "noindex": true,
+  "noindex": false,
   "seoTitle": "",
   "seoH1": "",
   "slug": "",
@@ -22,11 +22,12 @@
       "cta2Href": "/fr/solutions",
       "image": "",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Nos solutions phares",
       "headingStyle": "underline",
       "intro": "La présentation détaillée de la gamme sera publiée prochainement — les pages produit sont déjà en ligne.",
@@ -39,28 +40,40 @@
           "title": "O bureau",
           "text": "La réservation de bureaux et d’espaces pensée pour le travail hybride.",
           "ctaLabel": "Découvrez O bureau",
-          "ctaHref": "/fr/services/productivite/o-bureau"
+          "ctaHref": "/fr/services/productivite/o-bureau",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Plateforme employé Intranet",
           "text": "Un intranet moderne qui centralise l’information et rapproche vos équipes.",
           "ctaLabel": "Découvrez la plateforme",
-          "ctaHref": "/fr/services/productivite/plateforme-employe-intranet"
+          "ctaHref": "/fr/services/productivite/plateforme-employe-intranet",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "01",
           "title": "Approvisionnement TI",
           "text": "Acquisition et gestion de licences et d’équipements informatiques, en partenariat avec les plus grands éditeurs et fabricants mondiaux.",
           "ctaLabel": "Découvrez les produits",
-          "ctaHref": "/fr/services/approvisionnement-ti"
+          "ctaHref": "/fr/services/approvisionnement-ti",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "",
           "title": "Catalogue de solutions",
           "text": "Solutions personnalisées développées par nos experts pour répondre aux défis uniques de nos clients.",
           "ctaLabel": "Découvrez nos solutions",
-          "ctaHref": "/fr/solutions/"
+          "ctaHref": "/fr/solutions/",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -74,7 +87,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

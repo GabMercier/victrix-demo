@@ -149,10 +149,21 @@ démo seulement.
 
 - `site:` dans `astro.config.mjs` et `Sitemap:` de `public/robots.txt` →
   domaine réel (aujourd'hui `victrix-demo.pages.dev`).
-- `.cloudcannon/routing.json` en place : redirections 301 (matrice #1503)
-  et en-têtes de sécurité ; vérifier `curl.exe -I https://victrix.ca/fr/` :
-  **aucun** `X-Robots-Tag: noindex`, un `Content-Security-Policy` présent.
-- Tester la matrice 301 (ancienne URL → nouvelle) par script, pas à la main.
+- `routing.json` : **généré au build depuis le 22/09** dans
+  `dist/_cloudcannon/routing.json` (189 routes + 5 règles d'en-têtes) — il n'y
+  a plus rien à mettre en place, seulement à VÉRIFIER de l'extérieur :
+  `curl.exe -I https://victrix.ca/fr/` → **aucun** `X-Robots-Tag: noindex`, un
+  `Content-Security-Policy` et un `Strict-Transport-Security` présents.
+- Tester la matrice 301 par script, pas à la main : `npm run check:redirects`
+  (matrice à jour, aucune ancienne URL sans cible) puis, après le build,
+  `node scripts/build-redirects.mjs --dist` (**aucune 301 vers un 404** —
+  175/175 cibles vérifiées le 22/09). Sur le domaine réel, rejouer un
+  échantillon avec `curl -I` : une page, un article renommé, une ancienne URL
+  de service (`/expertise/securite-informatique/`), une page abandonnée.
+- Plan de site : **150 URL** annoncées depuis le correctif du 22/09 (72 avant
+  — la page mère `services` étant `noindex`, un `includes` retirait du plan de
+  site les ~100 pages de services). Vérifier le compte après chaque levée de
+  `noindex`.
 - Soumettre `sitemap-index.xml` dans Google Search Console et Bing Webmaster
   Tools ; demander l'indexation de l'accueil FR/EN.
 - Lighthouse sur le domaine réel : SEO 100 attendu.
@@ -211,10 +222,11 @@ d'écran, bandeau non bloquant.
 | # | Scénario | Attendu |
 |---|---|---|
 | 1 | Première visite, aucun choix | bandeau visible ; onglet Réseau : **aucune** requête `googletagmanager.com` ni `google-analytics.com` |
-| 2 | Clic « Accepter » | bandeau disparaît ; requêtes `gtag/js` puis `collect` ; `localStorage.victrix-consent = accepted` |
+| 2 | Clic « Accepter » | bandeau disparaît ; requêtes `gtag/js` puis `collect` ; `localStorage.victrix-consent` = `{"choice":"accepted","date":…,"revision":1}` |
 | 3 | Rechargement puis navigation interne | bandeau absent ; `collect` à chaque page (suivi SPA) |
 | 4 | Clic « Refuser » (autre navigateur/privé) | bandeau disparaît ; **aucune** requête analytique, même après navigation |
-| 5 | « Gérer mes témoins » (après le lot 1 ci-dessus) | bandeau revient ; refus → plus de `collect` après rechargement |
+| 5 | « Gérer mes témoins » | bandeau revient ; refus → page rechargée, plus de `collect`, témoins `_ga*` EFFACÉS (Application → Cookies) |
+| 5 bis | Choix vieux de plus de 182 jours (modifier `date` dans le stockage local) | bandeau redemandé, aucune requête analytique avant un nouveau choix |
 | 6 | JavaScript désactivé | rien ne se charge ; le site reste lisible |
 | 7 | Clavier + lecteur d'écran | région annoncée, deux boutons atteignables, pas de piège de focus |
 | 8 | Page Merci après un envoi de formulaire (accepté) | événement `generate_lead` dans GA4 DebugView ; rien si refusé |

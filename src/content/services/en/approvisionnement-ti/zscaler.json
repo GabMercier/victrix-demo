@@ -1,0 +1,204 @@
+{
+  "_schema": "default",
+  "title": "Zscaler: the Cloud Platform that Redefines Trust in Security",
+  "description": "Strengthen access controls and improve operational resilience. Adopt Zscaler’s Zero Trust solutions, distributed by Victrix. Assessment on request.",
+  "noindex": false,
+  "slug": "it-procurement/zscaler",
+  "seoTitle": "Zscaler | Zero Trust Security Powered by AI | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
+  "sections": [
+    {
+      "_bookshop_name": "service-hero",
+      "type": "service-hero",
+      "eyebrow": "IT Procurement",
+      "titleAccent": "",
+      "title": "Zscaler: the Cloud Platform that Redefines Trust in Security",
+      "titleHighlight": "",
+      "lead": "Zscaler solutions apply the <a href=\"/en/services/cybersecurity/\">Zero Trust security model</a> to protect access to your applications, regardless of where your teams or workloads operate. They eliminate implicit trust, reduce the attack surface, and strengthen your cybersecurity posture.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2022/05/futuristic-technology-concept.jpg",
+      "imageAlt": "Un expert en cybersécurité qui utilise les solutions Zscaler"
+    },
+    {
+      "_bookshop_name": "stats",
+      "type": "stats",
+      "title": "Zscaler, the Global Reference in AI-Driven Zero Trust Security",
+      "style": "carte",
+      "fond": "beige",
+      "items": [
+        {
+          "number": "40%",
+          "label": "of Global 2000 protect their operations with Zscaler",
+          "icon": ""
+        },
+        {
+          "number": "+ 7,700",
+          "label": "customers worldwide",
+          "icon": ""
+        },
+        {
+          "number": "+ 500",
+          "label": "billion transactions secured daily",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "",
+      "fond": "ivoire",
+      "paragraphs": [
+        "Victrix distributes and accelerates the adoption of Zscaler solutions to deliver <strong>consistent protection</strong>, <strong>optimized access</strong>, and <strong>centralized visibility</strong>.",
+        "<strong>Approach every connection without implicit trust.</strong>",
+        "Zscaler’s <a href=\"/en/ressources/zero-trust-network-access-ztna-ultimate-cybersecurity-model/\">Zero Trust security solutions</a> adopt a cloud-native architecture that replaces traditional network-centric security methods. No connection is trusted by default. Zscaler <strong>inspects, controls, and optimizes</strong> every access request to reduce intrusion risk.",
+        "Through the integration of <a href=\"/en/services/artificial-intelligence/\"><strong>artificial intelligence</strong></a> and <strong>deep traffic analysis</strong>, Zscaler increases visibility, detects suspicious behaviour earlier, and enables more proactive operational security."
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "fond": "ivoire",
+      "title": "Strengthen Your Security Posture with Strict Access Control",
+      "body": "<p>Opt for a more rigourous security architecture to improve visibility, reduce risk, and enhance resilience.</p>",
+      "ctaLabel": "Request a quote",
+      "ctaHref": "/en/contact",
+      "layout": "box"
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "fond": "beige",
+      "sectionTitle": "Transform Your Environment with Zscaler Security Solutions",
+      "headingStyle": "plain",
+      "intro": "<strong>Zscaler solutions</strong> combine <strong>cloud security</strong>, the <strong>Zero Trust principle</strong>, and <strong>artificial intelligence</strong> to reduce the attack surface and simplify IT operations. Each module contributes to consistent protection—wherever your users or applications are.",
+      "tone": "tint",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "Zscaler Internet Access (ZIA)",
+          "text": "<strong>Provide safer, higher-performing Internet access for all your teams.</strong><br><br><strong>Zscaler Internet Access (ZIA) </strong>delivers secure access to the Internet and SaaS applications with traffic analysis, threat prevention, filtering, data loss prevention (DLP), and Cloud Access Security Broker (CASB) capabilities.<br><br><strong>Result: </strong>secure Internet access, tangible risk reduction, and faster threat detection.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "02",
+          "title": "Zscaler Private Access (ZPA)",
+          "text": "<strong>Secure access to private applications without the constraints of a virtual private network (VPN).</strong><br><br><strong>Zscaler Private Access (ZPA) </strong>connects users to your internal applications without exposing the network. Access is granted on an application-by-application basis, following strict Zero Trust principles instead of network segmentation.<br><br><strong>Result:</strong> controlled access to private applications, reduced exposure to threats, and improved user experience.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "03",
+          "title": "Zscaler Client Connector",
+          "text": "<strong>Enforce your security policies automatically on every device.</strong><br><br><strong>Zscaler Client Connector</strong> is a lightweight agent installed on devices to provide secure connectivity to the Zscaler platform. It unifies protection across all your devices—computers, mobile devices, and more—by activating ZIA and ZPA services.<br><br><strong>Result:</strong> increased access control and reduced risks from unmanaged devices.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "04",
+          "title": "Zscaler Digital Experience (ZDX)",
+          "text": "<strong>Accelerate problem diagnosis with detailed end-to-end user experience insights.</strong><br><br><strong>Zscaler Digital Experience (ZDX) </strong>continuously monitors application performance, connectivity, and network quality. It offers diagnostic tools to quickly identify issues and accelerate resolution.<br><br><strong>Result: </strong>stable application performance, reduced resolution time, and a better experience for all users.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "05",
+          "title": "Data Security",
+          "text": "<strong>Protect your data across all channels. </strong><br><br><strong>Zscaler’s data security solutions </strong>protect information in transit or at rest across cloud and private environments. They strengthen regulatory compliance and improve the control of cloud application use—whether sanctioned or unsanctioned.<br><br><strong>Result:</strong> stronger data governance and a more robust compliance posture.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "06",
+          "title": "Cyberthreat Protection",
+          "text": "<strong>Stop attacks before they disrupt your operations.</strong><br><br><strong>Zscaler’s AI-enhanced cyberthreat protection solutions</strong> continuously analyze traffic and detect suspicious behaviour sooner. They defend against phishing, malware, botnets, zero-day attacks, and ransomware.<br><br><strong>Result:</strong> reduced exposure to threats and proactive detection of suspicious activity.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "07",
+          "title": "Security Operations (SecOps) and Risk Management",
+          "text": "<strong>Strengthen your security operations with complete visibility over risks and threats.</strong><br><br><strong>The Zscaler security operations platform </strong>brings together tools for risk management, threat exposure analysis, attack surface control, and early detection. It centralizes data and correlates events to accelerate investigation and improve response.<br><br><strong>Result:</strong> deeper risk understanding, less operational noise, and more effective detection and response capabilities.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "testimonial-cards",
+      "type": "testimonial-cards",
+      "title": "The Impact of Zscaler Zero Trust Solutions, According to Their Users",
+      "intro": "Overall rating: 4.7⭐⭐⭐⭐— 1,158 verified reviews as of February 2026 (Gartner Peer Insights)",
+      "fond": "ivoire",
+      "items": [
+        {
+          "image": "",
+          "quote": "A powerful cloud-native security platform that delivers excellent protection and seamless remote access once deployed. Solid zero-trust solution with strong security outcomes. The setup and cost can be demanding but the visibility and risk reduction are worth it for large enterprises.",
+          "name": "Gartner Peer Insights",
+          "role": "IT Network Security Associate — ⭐⭐⭐⭐⭐ — October 31, 2025"
+        },
+        {
+          "image": "",
+          "quote": "Zscaler Internet Access is a cloud-based security solution that provides secure and stable threat protection and web filtering. It effectively safeguards users from malware, phishing and data loss. The integration with the secure access system enhances overall performance, stability and security.",
+          "name": "Gartner Peer Insights",
+          "role": "SR. Product Manager — ⭐⭐⭐⭐ — June 22, 2025"
+        },
+        {
+          "image": "",
+          "quote": "Our overall experience with Zscaler Internet Access has been great, we use Zscaler as our proxy and introducing ZIA as the main component where we are able to manage all the policies, track the web insights and FW insights is definitely making the job easy and centralized in one place.",
+          "name": "Gartner Peer Insights",
+          "role": "IT Manager — ⭐⭐⭐⭐⭐ — June 21, 2025"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Victrix: Your Strategic Partner for the Acquisition of Zscaler Zero Trust Solutions",
+      "fond": "beige",
+      "paragraphs": [
+        "Victrix <a href=\"/en/services/it-procurement/\">simplifies the acquisition</a> and accelerates the adoption of <strong>Zscaler solutions</strong> to <strong>strengthen access controls</strong>, <strong>improve visibility</strong>, and <strong>support more rigorous security governance</strong>. We help you deploy the modules that match your priorities and your current architecture.",
+        "Our approach ensures fast activation, tailored configuration, and consistent protection for all your users, devices, and applications."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Adopt Zscaler Zero Trust Solutions to Evolve Toward a More Rigorous Security Posture",
+      "body": "Implement more consistent protection to secure your access points and improve the resilience of your operations.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit",
+      "fond": "ivoire"
+    }
+  ]
+}

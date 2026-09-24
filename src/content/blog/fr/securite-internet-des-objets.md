@@ -5,6 +5,7 @@ excerpt: "Découvrez nos solutions pour répondre aux principaux défis des gran
 tags: ["Nos articles"]
 topics: ["Cybersécurité"]
 slug: "securite-internet-des-objets"
+draft: false
 coverImage: "/wp-content/uploads/2024/12/design-sans-titre-2.jpg"
 seoTitle: "Sécurité Internet des Objets: enjeux et solutions"
 wpUrl: "/securite-internet-des-objets/"
@@ -13,13 +14,23 @@ wpUrl: "/securite-internet-des-objets/"
  Apprenez-en davantage sur **les enjeux de la sécurité** **IoT** ainsi que les meilleures **stratégies à adopter en fonction de votre secteur**, que vous soyez une grande entreprise privée ou un établissement issu du secteur public. Découvrez nos solutions pour réduire les coûts, protéger les données personnelles et sécuriser vos systèmes connectés. 
  [Sécurisez votre IoT avec Victrix](/fr/services/cybersecurite/internet-des-objets-service-iot/)
 
+## Internet des Objets (IoT): un catalyseur pour la transformation, mais aussi de risques
+
 Pour chaque objet connecté, la surface d’attaque d’une organisation s’élargit. Faire appel à un [service cybersécurité IoT](/fr/services/cybersecurite/internet-des-objets-service-iot/) professionnel est crucial pour assurer la protection de vos systèmes embarqués et appareils connectés. 
  La variété des applications IoT peut également rendre complexe **le processus de sécuriser l’Internet des Objets**. Les dispositifs vont de la simple montre intelligente aux voitures connectées et à l’infrastructure complète d’une ville intelligente. 
  Avec plus de 15 milliards d’appareils connectés IoT en 2023, et [une croissance projetée à 18.8 milliards d’ici fin 2024](https://iotbusinessnews.com/2024/09/04/26399-state-of-iot-2024-number-of-connected-iot-devices-growing-13-to-18-8-billion-globally/), la sécurité est alors un enjeu majeur pour les grandes organisations et le secteur public.
 
-#### Le saviez-vous ?
+<aside class="article-encadre">
+<p class="article-encadre__titre">Le saviez-vous ?</p>
 
 Les cyberattaques sur l’IoT ont augmenté [de 400% entre 2023 et 2022](https://iotbusinessnews.com/2024/09/04/26399-state-of-iot-2024-number-of-connected-iot-devices-growing-13-to-18-8-billion-globally/). Si on se fie à cette tangente, les besoins de cybersécurité des organisations ne feront qu’augmenter.
+
+</aside>
+### Un service IoT & OT adapté à votre secteur
+
+Tirez parti de notre service IoT pour renforcer votre posture avec une solution sur mesure pour votre organisation.
+
+## Le risque majeur en matière de sécurité Internet des Objets
 
 Le risque le plus important de l’Internet of Things est l’exploitation des failles de sécurité dans vos appareils connectés. Les pirates informatiques s'attaquent à l'IdO et tentent la **prise de contrôle à distance de systèmes critiques**, tels que les systèmes industriels, les appareils médicaux et l'infrastructure IoT des villes intelligentes.
 
@@ -30,6 +41,8 @@ En 2024, il en [coûte en moyenne plus de 4 millions USD pour une violation de d
 Profitez du service de cybersécurité dédié au secteur de la santé chez Victrix. Sécurisez vos objets connectés et vos systèmes d’information contre le piratage avec nos experts en cybersécurité.
  [Offre cybersécurité pour la santé](/fr/services/cybersecurite/cybersecurite-sante/)
 
+## Les 3 grands défis de la sécurité de l’Internet des Objets
+
 **Lacunes au niveau de la gestion des mises à jour:** 
  Trop d’organisations publiques et privées oublient de mettre à jour leurs logiciels et systèmes. Négliger les patchs (correctifs) augmente le risque d’exposition de vos appareils connectés à long terme.
 
@@ -38,6 +51,8 @@ Profitez du service de cybersécurité dédié au secteur de la santé chez Vict
 
 **Complexité des réseaux:** 
  Plus votre organisation a d’appareils connectés, plus il est difficile de sécuriser l’ensemble de votre système. L’ajout de nouveaux appareils dans les infrastructures existantes rend également complexe le processus de connexion et sécurisation de ces nouveaux appareils.
+
+## 5 solutions stratégiques pour réduire le risque IoT du secteur public et privé
 
 ### 1. Assurer la sécurité des appareils connectés
 
@@ -58,6 +73,28 @@ Une équipe alerte a une valeur inestimable pour les organisations. La sensibili
 ### 4. Adopter les cadres de conformité les plus élevés
 
 Victrix est en mesure de vous accompagner dans votre conformité aux normes de sécurité telles que la [réglementation DORA](/fr/ressources/reglementation-dora/) dans l’Union européenne et la [Loi 25 au Québec](/fr/ressources/loi-25-donnees-personnelles-guide/). Nous sommes également [certifiés ISO 27001:2022 et ISO 9001:2015](/fr/ressources/certification-iso-27001-iso-9001/).
+
+**Internet des Objets — Santé**
+
+Une cyberattaque sur l’Internet des Objets médicaux est parfois un risque de vie ou de mort. Une firme de cybersécurité spécialisée dans la cybersécurité du secteur de la santé a révélé une étude qui rapportait que plus de 53% des appareils médicaux connectés dans les hôpitaux avaient des vulnérabilités critiques. Parmi ces appareils vulnérables aux cyberattaques, l’on retrouve :
+
+- Les pompes à insulines connectées
+- Les défibrillateurs intracardiaques
+- La télémétrie cardiaque mobile
+- Les stimulateurs cardiaques
+- Les pompes antidouleur intrathécales
+
+Les acteurs malveillants peuvent compromettre ces appareils médicaux pour leur faire donner des relevés et mesures inexactes, administrer des surdoses de médicaments et mettre la santé des patients en danger.
+
+**IoT villes intelligentes**
+
+Les villes utilisent l’IoT pour la gestion des réseaux énergétiques, les feux de signalisation et les transports publics. Une cyberattaque sur ces infrastructures peut donc provoquer des paralysies majeures.
+
+**Internet des Objets industriels**
+
+Les systèmes embarqués IoT dans les usines assurent un haut niveau d’efficience opérationnelle et facilitent la collecte des données en temps réel. Cependant, cette connectivité expose les chaînes d’approvisionnement et de production à des interruptions coûteuses en cas d’intrusion.
+
+## Maximisez le potentiel de l’IoT tout en préservant votre cybersécurité
 
 Victrix est à votre disposition pour vous aider à bénéficier du moteur d’innovation qu’est l’IoT, sans toutefois vous exposer aux risques qu’il apporte. Soyez prêts à prendre le contrôle de vos objets connectés avec un service IoT qui répond aux besoins de votre secteur.
  [Démarrez votre projet IoT](/fr/contact/)

@@ -24,6 +24,7 @@ spec:
 blueprint:
   type: testimonial-cards
   title: "Ce que nos experts disent"
+  intro: ""
   fond: brume
   items:
     - image: ""
@@ -39,6 +40,10 @@ _inputs:
     comment: "Discriminant technique du contrat de sections — ne pas modifier."
   title:
     label: "Titre (optionnel)"
+  intro:
+    label: "Texte sous le titre (optionnel)"
+    type: textarea
+    comment: "Une phrase, par exemple la note globale Gartner Peer Insights d’une fiche fournisseur."
   fond:
     type: select
     label: "Fond de section"

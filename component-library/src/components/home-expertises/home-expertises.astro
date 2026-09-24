@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
 /**
  * Section « Expertises » (bento « Nos services ») — composant Bookshop.
@@ -7,7 +8,8 @@ import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
  * grille 3 colonnes × N rangées de cartes 300px rayon 4, QUATRE PEAUX par
  * carte (`items[].variant`) —
  *  - image  : photo + fond navy (mix-blend overlay 60 %), titre 30/700 blanc
- *             ancré en bas ;
+ *             ancré en bas + CTA blanc (2026-09-21 : la tuile n'affichait
+ *             aucun libellé, seule la carte était cliquable) ;
  *  - claire : carte services export2 — blanche bordée neutral-200, ombre
  *             ambiante, icône bleue 32, titre 20/700 neutral-900, texte 14
  *             neutral-600, lien « En voir plus » 14/600 bleu + flèche ;
@@ -49,6 +51,8 @@ interface ExpertiseItem {
 }
 
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   sectionTitle: string;
   intro?: string;
   learnMore: string;
@@ -57,11 +61,17 @@ interface Props {
   items: ExpertiseItem[];
 }
 
-const { sectionTitle, intro, learnMore, ctaLabel, ctaHref, items = [] } = Astro.props;
+const { sectionTitle, intro, learnMore, ctaLabel, ctaHref, items = [], fond = 'ivoire' } = Astro.props;
 
 // Recettes par peau — la carte entière est cliquable via le lien étiré du CTA.
 // Rayon 4px + lien 14/600 sentence-case avec flèche qui glisse (export2).
-const cardBase = 'group relative h-[300px] rounded overflow-hidden flex flex-col';
+// 2026-09-22 : `h-[300px]` (hauteur FIGÉE) est devenu `min-h-[300px]`. Avec le
+// plancher typographique à 16 px, la réserve sous le texte tombait de 100 à
+// 50 px : une phrase un peu plus longue écrite au CMS était rognée par
+// `overflow-hidden`, sans barre de défilement — perte de contenu au sens
+// WCAG 1.4.4. `overflow-hidden` RESTE nécessaire : c'est lui qui rogne le « V »
+// en filigrane, ancré hors cadre en bas à droite.
+const cardBase = 'group relative min-h-[300px] rounded overflow-hidden flex flex-col';
 const linkBase =
   "inline-flex items-center gap-1 text-sm font-semibold no-underline hover:underline after:content-[''] after:absolute after:inset-0";
 const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
@@ -69,14 +79,14 @@ const arrow = 'M5 12h14m0 0-6-6m6 6-6 6';
 // glyphe Hanken 340px, ancré à droite et rogné par overflow-hidden. Blanc 10 %
 // sur les aplat foncés ; gris sur le placeholder clair (image manquante).
 const watermarkBase =
-  'absolute -right-12 -bottom-20 text-[340px] leading-none font-black select-none -z-10';
+  'absolute -right-12 -bottom-20 text-[21.25rem] leading-none font-black select-none -z-10';
 ---
 
-<section class="py-24 bg-white">
+<section class:list={['py-24', FOND_CLASSES[fond as FondKey] ?? 'bg-ivoire']}>
   <div class="container-site">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
       <div class="max-w-xl flex flex-col gap-6">
-        <h2 class="text-[48px] leading-none font-bold tracking-[-0.96px] text-on-primary-fixed m-0">
+        <h2 class="text-[3rem] leading-none font-bold tracking-[-0.96px] text-on-primary-fixed m-0">
           {sectionTitle}
         </h2>
         {hasRichText(intro) && <div class="rich text-base leading-6 text-neutral-600 max-w-none" set:html={blockHtml(intro)} />}
@@ -84,7 +94,7 @@ const watermarkBase =
       {
         ctaLabel && ctaHref && (
           <a
-            class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
+            class="inline-flex items-center gap-1 text-sm font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
             href={ctaHref}
           >
             {ctaLabel}
@@ -103,13 +113,18 @@ const watermarkBase =
           return (
             <li class:list={['m-0', item.wide && 'md:col-span-2']}>
               {variant === 'image' ? (
-                <a
+                /* CTA VISIBLE (2026-09-21, demande Gabriel) : la peau « image »
+                   n'affichait aucun libellé — seule la carte entière était
+                   cliquable, donc Cybersécurité et Infonuagique n'avaient pas
+                   de « Découvrez le service » alors que les autres tuiles en
+                   avaient un. La carte reste cliquable en entier (lien étiré
+                   `after:inset-0` du CTA), comme les peaux bleue et nuit. */
+                <div
                   class:list={[
                     cardBase,
-                    'justify-end p-8 no-underline isolate',
-                    item.image ? 'bg-on-primary-fixed' : 'bg-neutral-100',
+                    'justify-end p-8 isolate',
+                    item.image ? 'bg-on-primary-fixed' : 'bg-beige',
                   ]}
-                  href={item.href}
                 >
                   {item.image ? (
                     <img
@@ -126,7 +141,7 @@ const watermarkBase =
                   )}
                   <span
                     class:list={[
-                      'block text-[30px] leading-9 font-bold tracking-[-0.6px]',
+                      'block text-[1.875rem] leading-9 font-bold tracking-[-0.6px]',
                       item.image ? 'text-white' : 'text-on-primary-fixed',
                     ]}
                   >
@@ -141,7 +156,24 @@ const watermarkBase =
                       set:html={inlineHtml(item.description)}
                     />
                   )}
-                </a>
+                  <a
+                    class:list={[linkBase, 'mt-4', item.image ? 'text-white' : 'text-primary']}
+                    href={item.href}
+                  >
+                    {label}
+                    <svg
+                      class="transition-transform duration-200 group-hover:translate-x-0.5"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d={arrow} stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                </div>
               ) : variant === 'bleue' ? (
                 <div class:list={[cardBase, 'justify-between p-10 bg-primary isolate']}>
                   <span class:list={[watermarkBase, 'text-white/10']} aria-hidden="true">

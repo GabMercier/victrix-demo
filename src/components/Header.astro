@@ -50,10 +50,15 @@ const nav = navEntry.data;
 // la source de vérité des URLs. Tant qu'aucun lien ne porte de `service` (cas
 // actuel), le rendu du header est identique à l'octet.
 const serviceEntries = await getCollection('services');
-const serviceSlugs = new Set(
+// Map identifiant de fichier → slug d’URL (le champ `slug` de la page quand il
+// est rempli — pages EN aux slugs traduits —, sinon l’identifiant lui-même).
+const serviceSlugs = new Map(
   serviceEntries
     .filter((entry) => entry.id.startsWith(`${lang}/`))
-    .map((entry) => entry.id.slice(lang.length + 1)),
+    .map((entry) => {
+      const id = entry.id.slice(lang.length + 1);
+      return [id, (entry.data.slug ?? '').trim() || id] as const;
+    }),
 );
 
 // L'entrée qui PORTE le méga-menu est celle dont l'URL RÉSOLUE égale le
@@ -177,7 +182,7 @@ const headerCta = nav.cta
 const searchHref = localizePath('/recherche', lang);
 
 // Bannière d'annonce : bibliothèque planifiable (collection `annonces`) — la
-// sélection (fenêtre, priorité, STATIC_ONLY) vit dans src/lib/announce.ts.
+// sélection (fenêtre, priorité, EDITOR_PREVIEW) vit dans src/lib/announce.ts.
 // `null` = aucune bannière active ce build.
 const announce = await getActiveAnnounce(lang);
 
@@ -213,7 +218,7 @@ const megaPanelClass =
 // Tête de colonne (export mega-menu .overline + .divider) : 12/600 uppercase
 // ls 0.5px neutral-800, filet appuyé neutral-500.
 const megaHeadClass =
-  'block text-xs font-semibold uppercase tracking-[0.5px] text-neutral-800 no-underline pb-2 border-0 border-b border-solid border-outline hover:text-primary';
+  'block text-sm font-semibold uppercase tracking-[0.5px] text-neutral-800 no-underline pb-2 border-0 border-b border-solid border-outline hover:text-primary';
 // Lien de colonne (export .menu-list) : 14px neutral-800, hauteur 40px,
 // indicateur bleu 6px à gauche au survol (remplace l'ancienne flèche).
 const megaLinkClass =
@@ -232,7 +237,11 @@ const langLinkClass = 'no-underline p-1 text-sm';
       <div class="container-site flex items-center justify-center gap-4 py-2">
         <p class="m-0 max-w-none text-center">
           {announce.before}<strong class="font-semibold">{announce.strong}</strong>{announce.after}
-          <a class="text-on-primary font-semibold underline whitespace-nowrap" href={announce.href}>
+          {/* `ml-3` et non une espace : entre deux expressions, Astro (comme
+              JSX) n'insère AUCUN blanc — le lien se collait au point final
+              (« …productivité.En savoir plus → »). La marge tient aussi quand
+              le bandeau passe à la ligne, ce qu'une espace ne garantit pas. */}
+          <a class="text-on-primary font-semibold underline whitespace-nowrap ml-3" href={announce.href}>
             {announce.linkLabel}
           </a>
         </p>
@@ -260,11 +269,11 @@ const langLinkClass = 'no-underline p-1 text-sm';
 <header class="site-header sticky top-0 z-50 bg-white shadow-controle">
   <div class="container-site flex items-center justify-between gap-6 min-h-[72px]">
     <a
-      class="site-header__brand inline-flex items-center shrink-0 [--logo-height:40px]"
+      class="site-header__brand inline-flex items-center shrink-0 [--logo-height:44px]"
       href={localizePath('/', lang)}
       aria-label={t.nav.brandAria}
     >
-      <Logo variant="dark" />
+      <Logo variant="dark" lang={lang} />
     </a>
 
     <nav class="primary-nav hidden lg:block" aria-label="Navigation">
@@ -325,9 +334,11 @@ const langLinkClass = 'no-underline p-1 text-sm';
                             />
                           </svg>
                         </span>
-                        <p class="text-base font-bold text-on-surface pt-3 m-0 max-w-none">
-                          {megaFeatured.title}
-                        </p>
+                        {megaFeatured.title && (
+                          <p class="text-base font-bold text-on-surface pt-3 m-0 max-w-none">
+                            {megaFeatured.title}
+                          </p>
+                        )}
                         {megaFeatured.body && (
                           <p class="text-sm leading-normal text-neutral-700 m-0 max-w-none">
                             {megaFeatured.body}
@@ -385,9 +396,11 @@ const langLinkClass = 'no-underline p-1 text-sm';
                   {megaStripe && (
                     <div class="mt-auto bg-surface-container border-0 border-t border-solid border-neutral-300/10 py-4">
                       <div class="container-site flex flex-wrap items-center justify-between gap-4">
-                        <p class="text-sm font-semibold text-neutral-700 m-0 max-w-none">
-                          {megaStripe.text}
-                        </p>
+                        {megaStripe.text && (
+                          <p class="text-sm font-semibold text-neutral-700 m-0 max-w-none">
+                            {megaStripe.text}
+                          </p>
+                        )}
                         {megaStripe.links.length > 0 && (
                           <div class="flex items-center gap-6">
                             {megaStripe.links.map((l) => (
@@ -422,9 +435,11 @@ const langLinkClass = 'no-underline p-1 text-sm';
                       </a>
                     </div>
                     <div>
-                      <p class:list={[megaHeadClass, 'm-0 max-w-none']}>
-                        {megaRes.categoriesTitle}
-                      </p>
+                      {megaRes.categoriesTitle && (
+                        <p class:list={[megaHeadClass, 'm-0 max-w-none']}>
+                          {megaRes.categoriesTitle}
+                        </p>
+                      )}
                       <ul role="list" class="mt-4 flex flex-col gap-2">
                         {resCategories.map((cat) => (
                           <li>
@@ -436,9 +451,11 @@ const langLinkClass = 'no-underline p-1 text-sm';
                       </ul>
                     </div>
                     <div>
-                      <p class:list={[megaHeadClass, 'm-0 max-w-none']}>
-                        {megaRes.latestTitle}
-                      </p>
+                      {megaRes.latestTitle && (
+                        <p class:list={[megaHeadClass, 'm-0 max-w-none']}>
+                          {megaRes.latestTitle}
+                        </p>
+                      )}
                       <ul role="list" class="mt-4 grid grid-cols-2 gap-6 max-w-[640px]">
                         {resLatest.map((article) => (
                           <li>
@@ -578,13 +595,13 @@ const langLinkClass = 'no-underline p-1 text-sm';
     class="absolute inset-y-0 right-0 h-full w-[min(86vw,360px)] overflow-y-auto bg-surface-container-lowest shadow-surelevee p-6 flex flex-col gap-6"
     aria-label="Navigation"
   >
-    <div class="flex items-center justify-between [--logo-height:34px]">
+    <div class="flex items-center justify-between [--logo-height:38px]">
       <a
         class="site-header__brand inline-flex items-center"
         href={localizePath('/', lang)}
         aria-label={t.nav.brandAria}
       >
-        <Logo variant="dark" />
+        <Logo variant="dark" lang={lang} />
       </a>
       <button
         type="button"

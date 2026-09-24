@@ -14,7 +14,11 @@ import { type Locale, defaultLocale, otherLocale, htmlLang, swapLocale } from '.
 import { useTranslations } from '../i18n/ui';
 import { getActiveAnnounceId } from '../lib/announce';
 import { getLocaleData } from '../i18n/locale-data';
-import { resolveContactPreset, type ContactPresetKeys } from '../lib/contact/presets';
+import {
+  CONTACT_SUJET_DEFAULT,
+  resolveContactPreset,
+  type ContactPresetKeys,
+} from '../lib/contact/presets';
 
 interface Props {
   /** Page locale. Required so chrome, <html lang>, and hreflang are correct. */
@@ -60,7 +64,9 @@ interface Props {
    * réelles de la page Contact, puis posées sur <body data-contact-sujet /
    * data-contact-service>. Le script « provenance des CTA » ci-dessous les
    * ajoute (?sujet= / ?expertise=) à tout lien vers Contact hors chrome.
-   * Absent ou vide → rien de posé, comportement historique.
+   * ABSENT (gabarit qui ne dit rien) → repli CONTACT_SUJET_DEFAULT ci-dessous,
+   * depuis le 2026-09-22 : deux listes obligatoires vides étaient pires.
+   * Objet VIDE (`{{}}`) → rien de posé, comportement historique.
    */
   contactPreset?: ContactPresetKeys;
 }
@@ -79,9 +85,19 @@ const {
   contactPreset,
 } = Astro.props;
 
+// Repli GÉNÉRAL (2026-09-22, lot L-prefill) : un gabarit qui ne passe RIEN
+// prérempli quand même. Sinon ses CTA arrivent sur deux listes obligatoires
+// vides — c'était le cas de l'accueil, des campagnes, des articles et du centre
+// de ressources, quatre gabarits qui portent à eux seuls une bonne partie des
+// liens /contact du site et n'ont aucun champ d'éditeur pour le dire. Les
+// routes qui ONT ce champ (services, pages générales) posent leur propre repli :
+// la valeur du CMS doit gagner, ce repli-ci ne les voit jamais. Un gabarit qui
+// veut explicitement ne rien préremplir passe `contactPreset={{}}`.
+// Le garde-fou scripts/check-contact-prefill.mjs vérifie le résultat sur dist/.
+const presetKeys: ContactPresetKeys = contactPreset ?? { sujet: CONTACT_SUJET_DEFAULT };
 const contactLabels =
-  contactPreset && (contactPreset.sujet || contactPreset.service)
-    ? resolveContactPreset(lang, contactPreset, await getLocaleData('contact', lang))
+  presetKeys.sujet || presetKeys.service
+    ? resolveContactPreset(lang, presetKeys, await getLocaleData('contact', lang))
     : { sujet: '', service: '' };
 
 const t = useTranslations(lang);
@@ -112,11 +128,12 @@ const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
 // Organization JSON-LD — the ONE sitewide structured-data block, emitted on
 // every page (frozen contract). Absolute URLs are required by schema.org
 // consumers, hence `new URL(..., Astro.site)` like the canonical/OG URLs above.
-// `logo` = public/images/logo-victrix.png (1200×379, fond blanc), rendu du
-// SVG de marque src/assets/victrix-logo.svg avec les fills de la charte
-// (.lv-mark #0b1334 / .lv-tag #7b889d — le SVG source n'a pas de couleurs,
-// elles sont injectées par Logo.astro à l'affichage). Régénérer via sharp si
-// le logo change.
+// `logo` = public/images/logo-victrix.png (1200×422, fond blanc), rendu du
+// logo de marque FR (src/assets/victrix-logo-fr.svg) en bleu nuit de charte
+// #000d2e. Le SVG source n'a pas de couleur : elle est injectée par Logo.astro
+// à l'affichage, et par le script pour ce rendu. NE PAS retoucher le PNG à la
+// main — `npm run build:brand` le réécrit (avec le favicon et l'image de
+// partage), et `npm run check:brand` refuse une dérive.
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -169,16 +186,28 @@ const ga4Bootstrap = GA4_ID
       href={new URL(`/${lang}/rss.xml`, Astro.site)}
     />
 
-    {/* Icons + theme — official Victrix favicon */}
+    {/* Icônes — symbole « V » du logo de marque officiel, sur aplat Bleu
+        Victrix. Tout le jeu est FABRIQUÉ par `npm run build:favicons` depuis
+        un seul tracé : ne pas retoucher les fichiers de public/ à la main.
+        Le SVG passe en premier : les navigateurs qui le comprennent le
+        préfèrent (net à toute taille), les autres tombent sur les PNG. */}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    {/* = --color-nuit (un <meta> ne peut pas consommer var()) — audit P-16. */}
-    <meta name="theme-color" content="#0d1430" />
+    {/* = --color-navy (un <meta> ne peut pas consommer var()) — audit P-16.
+        Réaligné le 22/09 sur le BLEU NUIT officiel ; il traînait à #0d1430,
+        une TROISIÈME valeur que plus rien ne portait. */}
+    <meta name="theme-color" content="#000d2e" />
 
     {/* Preload the primary font to cut layout shift on first paint —
         Hanken Grotesk variable couvre 100-900 en un seul fichier. */}
-    <link rel="preload" href="/fonts/InterVariable-subset.woff2" as="font" type="font/woff2" crossorigin />
+    {/* Seul le sous-ensemble `latin` est préchargé : il couvre la totalité du
+        français et de l'anglais, donc tout le texte visible au premier rendu.
+        Les trois autres fichiers (latin-ext, italiques) sont chargés à la
+        demande par `unicode-range` — les précharger gaspillerait 75 Ko sur
+        chaque page. */}
+    <link rel="preload" href="/fonts/HankenGrotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <title>{fullTitle}</title>
     <meta name="description" content={metaDescription} />

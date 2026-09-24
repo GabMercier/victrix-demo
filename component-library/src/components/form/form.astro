@@ -553,7 +553,7 @@ const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surf
                 ) : field.type === 'select' ? (
                   <span class="relative block">
                     <select
-                      class:list={[inputClass, 'appearance-none pr-10 h-[50px]']}
+                      class:list={[inputClass, 'appearance-none pr-10 min-h-[3.125rem]']}
                       id={id}
                       name={formsEnabled ? fieldNames[i] : id}
                       required={field.required && !activeShowIf(field)}
@@ -582,7 +582,7 @@ const fondClass = FONDS[fond] ?? (isCard ? 'bg-surface-container-low' : 'bg-surf
                   </span>
                 ) : (
                   <input
-                    class:list={[inputClass, 'h-[50px]']}
+                    class:list={[inputClass, 'min-h-[3.125rem]']}
                     id={id}
                     name={formsEnabled ? fieldNames[i] : id}
                     type={field.type}

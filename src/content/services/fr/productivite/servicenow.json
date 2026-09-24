@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "ServiceNow",
   "description": "Choisissez Victrix, partenaire ServiceNow, pour être accompagné de l’achat aux services gérés. La plateforme de services la plus puissante renforcée par l’expertise.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Partenaire ServiceNow | Services-conseils | Victrix",
   "seoH1": "Partenaire ServiceNow",
   "contactSujet": "",
   "contactService": "",
@@ -22,14 +18,14 @@
       "cta2Href": "",
       "image": "/wp-content/uploads/2024/11/servicenow-banniere-.png",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Notre expertise ServiceNow",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Accélérez votre transformation numérique",
         "text": "Notre maîtrise du développement de stratégies et de l’accompagnement technologique permet aux organisations de divers secteurs d’activité d’<strong>accélérer leur transformation numérique</strong> et de se concentrer sur leurs objectifs de croissance à long terme.",
@@ -41,19 +37,18 @@
         "title": "Accompagnement de bout en bout",
         "text": "Licences, déploiement, soutien et services d’évolution : un développement accéléré à valeur ajoutée et un service bilingue, en français et en anglais.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Déploiement accéléré de votre plateforme ServiceNow",
       "headingStyle": "underline",
       "intro": "Nos experts ServiceNow se concentrent sur les éléments qui apportent le plus de valeur lors de la mise en place de votre plateforme de services. Nous proposons <strong>une formule de déploiement efficace et personnalisée</strong> en fonction des besoins spécifiques de votre organisation.",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "2",
       "cardStyle": "default",
@@ -63,37 +58,53 @@
           "title": "Identification des processus d’affaires clés de votre organisation",
           "text": "",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Planification rapide du projet",
           "text": "",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Réalisation, codéveloppement et assurance qualité",
           "text": "",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Exploitation et adoption",
           "text": "",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Services de bout en bout, de l’acquisition au déploiement",
       "intro": "Laissez nos experts ServiceNow vous accompagner à toutes les étapes de votre projet de transformation numérique. Nos spécialistes simplifient votre parcours ServiceNow à travers la mise en œuvre des meilleures pratiques de cette plateforme de services et d’automatisation reconnue comme une référence du marché.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "items": [
@@ -179,14 +190,44 @@
       "type": "feature-boxes",
       "sectionTitle": "Un partenariat de valeur",
       "subtitle": "ServiceNow se concentre entièrement sur le développement de son produit et fait appel à son réseau de partenaires fiables pour toutes ses implantations. Passer par un partenaire ServiceNow certifié comme Victrix s’avère donc crucial pour la mise en place de votre plateforme de services afin de profiter de tous ses avantages. ",
-      "fond": "blanc",
+      "fond": "ivoire",
       "boxes": [
-        "Achat, intégration et personnalisation de votre solution ServiceNow",
-        "Équipe diversifiée sur les modules de la plateforme pour une expertise de déploiement étendue",
-        "Intégration du catalogue d’offres infonuagiques pour les services professionnels",
-        "Victrix est qualifiée auprès du ministère de la Cybersécurité et du Numérique (MCN)",
-        "Partenariats solides pour compléter notre expertise",
-        "Expertises transverses : cybersécurité, infonuagique, intelligence artificielle, services gérés et développement applicatif"
+        {
+          "label": "Achat, intégration et personnalisation de votre solution ServiceNow",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Équipe diversifiée sur les modules de la plateforme pour une expertise de déploiement étendue",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Intégration du catalogue d’offres infonuagiques pour les services professionnels",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Victrix est qualifiée auprès du ministère de la Cybersécurité et du Numérique (MCN)",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Partenariats solides pour compléter notre expertise",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Expertises transverses : cybersécurité, infonuagique, intelligence artificielle, services gérés et développement applicatif",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {
@@ -199,7 +240,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "seoTitle": "Partenaire ServiceNow | Services-conseils | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

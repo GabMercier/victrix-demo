@@ -1,0 +1,121 @@
+{
+  "_schema": "default",
+  "title": "Automatisation du processus de gestion contractuelle",
+  "description": "Découvrez notre solution d’automatisation de la gestion contractuelle. Elle facilite la rédaction, l’approbation et le suivi des contrats, tout en assurant une gestion documentaire fluide et une collaboration optimale entre les parties prenantes.",
+  "image": "/images/solutions/gestion-contractuelle/01.jpg",
+  "sector": "Santé",
+  "solutionType": "Automatisation",
+  "featured": false,
+  "order": 30,
+  "href": "",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": [
+    {
+      "_bookshop_name": "product-hero",
+      "type": "product-hero",
+      "badge": "Solution Ø Studio",
+      "title": "Automatisation du processus de gestion contractuelle",
+      "titleHighlight": "",
+      "lead": "Découvrez notre solution d’automatisation de la gestion contractuelle. Elle facilite la rédaction, l’approbation et le suivi des contrats, tout en assurant une gestion documentaire fluide et une collaboration optimale entre les parties prenantes.",
+      "ctaLabel": "Parler à un expert",
+      "ctaHref": "#formulaire",
+      "cta2Label": "Voir le catalogue",
+      "cta2Href": "/fr/solutions/",
+      "image": "/images/solutions/gestion-contractuelle/01.jpg",
+      "imageAlt": "Maquette de présentation — Automatisation du processus de gestion contractuelle",
+      "fond": "beige"
+    },
+    {
+      "_bookshop_name": "bento-metrics",
+      "type": "bento-metrics",
+      "title": "En bref",
+      "intro": "",
+      "fond": "ivoire",
+      "featured": {
+        "title": "Automatisation du processus de gestion contractuelle",
+        "text": "",
+        "watermark": "eclair",
+        "stats": [
+          {
+            "value": "Secteur de la Santé",
+            "label": "Client"
+          },
+          {
+            "value": "Entre 25k et 50k $CAD",
+            "label": "Coût"
+          },
+          {
+            "value": "Entre 1 et 3 mois",
+            "label": "Délai"
+          },
+          {
+            "value": "Power Platform, SharePoint, Adobe Sign",
+            "label": "Technologies"
+          }
+        ]
+      },
+      "aside": {
+        "icon": "coche",
+        "image": "",
+        "imageAlt": "",
+        "title": "Conçue par Ø Studio",
+        "text": "Notre studio de création Power Platform et Dynamics 365 personnalise la solution à vos processus.",
+        "linkLabel": "Découvrir Ø Studio",
+        "linkHref": "/fr/services/productivite/o-studio/"
+      }
+    },
+    {
+      "_bookshop_name": "galerie",
+      "type": "galerie",
+      "title": "Aperçu de l’application",
+      "intro": "",
+      "colonnes": "2",
+      "fond": "ivoire",
+      "images": [
+        {
+          "image": "/images/solutions/gestion-contractuelle/02.jpg",
+          "alt": "Capture d’écran de l’application — Automatisation du processus de gestion contractuelle",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gestion-contractuelle/03.jpg",
+          "alt": "Capture d’écran de l’application — Automatisation du processus de gestion contractuelle",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gestion-contractuelle/04.jpg",
+          "alt": "Capture d’écran de l’application — Automatisation du processus de gestion contractuelle",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gestion-contractuelle/05.jpg",
+          "alt": "Capture d’écran de l’application — Automatisation du processus de gestion contractuelle",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gestion-contractuelle/06.jpg",
+          "alt": "Capture d’écran de l’application — Automatisation du processus de gestion contractuelle",
+          "legende": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "form",
+      "type": "form",
+      "title": "Parlez-nous de votre projet",
+      "intro": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+      "submitLabel": "Demander une consultation",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "o-studio",
+      "fond": "",
+      "fields": []
+    }
+  ]
+}

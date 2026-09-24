@@ -8,7 +8,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 // relative imports above src/ without any alias.
 import Page from '../../../component-library/src/shared/astro/page.astro';
 import { locales, type Locale, htmlLang, localizePath } from '../../i18n/config';
-import { getPostsByLocale, postUrlSlug } from '../../i18n/blog';
+import { getPostsByLocale, postUrlSlug, postKey } from '../../i18n/blog';
 
 /**
  * Home page — composed from the `home` collection's `sections` array (the same
@@ -56,10 +56,49 @@ export async function getStaticPaths() {
       };
     }
 
-    // home-latest cards → 3 newest posts. Couvertures = chemins publics servis
-    // tels quels (contenu migré de WordPress — voir le schéma blog) : plus de
-    // getImage, le composant omet srcset/dimensions quand absents.
-    const posts = (await getPostsByLocale(lang)).slice(0, 3);
+    // home-latest : les 3 articles à afficher. Couvertures = chemins publics
+    // servis tels quels (contenu migré de WordPress — voir le schéma blog) :
+    // plus de getImage, le composant omet srcset/dimensions quand absents.
+    //
+    // ARTICLES EN VEDETTE (2026-09-23, demande du marketing pour la démo) — la
+    // section accepte désormais une liste `vedettes` de NOMS DE FICHIERS
+    // d'articles (`postKey`, l'identifiant commun à FR et EN). Vide = les 3
+    // plus récents, comme avant.
+    //
+    // Trois garde-fous, parce que cette liste est saisie au CMS :
+    //  - un identifiant inconnu est IGNORÉ et signalé au build, jamais fatal
+    //    (une faute de frappe ne doit pas mettre la branche d'édition au rouge
+    //    — mémoire cloudcannon-null-build-break) ;
+    //  - la liste est COMPLÉTÉE par les articles les plus récents jusqu'à 3,
+    //    pour qu'une vedette manquante ne laisse pas une grille trouée ;
+    //  - au-delà de 3, le surplus est coupé : la maquette a trois cartes.
+    const tousLesPosts = await getPostsByLocale(lang);
+    const vedettes = (
+      sections.find((s) => s.type === 'home-latest')?.vedettes ?? []
+    ).filter((v) => typeof v === 'string' && v.trim() !== '');
+
+    const posts = [];
+    if (vedettes.length > 0) {
+      const parIdentifiant = new Map(tousLesPosts.map((p) => [postKey(p), p]));
+      const inconnus = [];
+      for (const v of vedettes) {
+        const trouve = parIdentifiant.get(v.trim());
+        if (trouve) posts.push(trouve);
+        else inconnus.push(v);
+      }
+      if (inconnus.length > 0) {
+        console.warn(
+          `[accueil/${lang}] « Articles en vedette » : ${inconnus.length} identifiant(s) sans article — ` +
+            `${inconnus.join(', ')}. Attendu : le NOM DE FICHIER sans extension ` +
+            `(ex. « certification-iso-27001-iso-9001 »). Complété par les plus récents.`,
+        );
+      }
+    }
+    for (const p of tousLesPosts) {
+      if (posts.length >= 3) break;
+      if (!posts.includes(p)) posts.push(p);
+    }
+    posts.length = Math.min(posts.length, 3);
     const dateFmt = new Intl.DateTimeFormat(htmlLang[lang], { dateStyle: 'long', timeZone: 'UTC' });
     const cards = await Promise.all(
       posts.map(async (post) => {
@@ -90,17 +129,39 @@ export async function getStaticPaths() {
 
 const { lang, frontmatter, enrich } = Astro.props as {
   lang: Locale;
-  frontmatter: { sections: unknown[]; seoH1?: string };
+  frontmatter: { sections: unknown[]; seoH1?: string; seoTitle?: string; metaDescription?: string };
   enrich: Record<string, Record<string, unknown>>;
 };
 
-const description =
-  lang === 'fr'
-    ? 'Victrix — services-conseils en TI : cybersécurité, infonuagique, intelligence artificielle, productivité et services gérés pour les entreprises et organisations publiques.'
-    : 'Victrix — IT consulting services: cybersecurity, cloud computing, artificial intelligence, productivity and managed services for businesses and public organizations.';
+/**
+ * SEO de l'accueil — ÉDITABLE AU CMS depuis le 2026-09-23 (`seoTitle` et
+ * `metaDescription` de la collection `home`). Les deux constantes ci-dessous ne
+ * sont plus la valeur servie : ce sont les REPLIS, au cas où l'éditrice vide
+ * le champ (règle 5 du CLAUDE.md — un champ vidé arrive en `''`).
+ *
+ * Avant ce lot la page n'avait AUCUN titre : BaseLayout retombait sur
+ * SITE_NAME et `<title>` sortait à « Victrix » tout court, alors que la page
+ * en ligne annonce « Cabinet Conseil TI, Cybersécurité, IA & Services Gérés |
+ * Victrix ». BaseLayout suffixe lui-même « — Victrix » : le champ ne contient
+ * donc QUE la partie descriptive, sans la marque, comme sur toutes les autres
+ * pages du site.
+ */
+const TITRE_REPLI = {
+  fr: 'Cabinet conseil TI, cybersécurité, IA et services gérés',
+  en: 'IT Consulting, Cybersecurity, AI & Managed Services',
+} as const;
+
+const DESCRIPTION_REPLI = {
+  fr: 'Victrix — services-conseils en TI : cybersécurité, infonuagique, intelligence artificielle, productivité et services gérés pour les entreprises et organisations publiques.',
+  en: 'Victrix — IT consulting services: cybersecurity, cloud computing, artificial intelligence, productivity and managed services for businesses and public organizations.',
+} as const;
+
+// `||` et non `??` : c'est la chaîne VIDE qu'il faut rattraper, pas `undefined`.
+const title = frontmatter.seoTitle || TITRE_REPLI[lang];
+const description = frontmatter.metaDescription || DESCRIPTION_REPLI[lang];
 ---
 
-<BaseLayout lang={lang} description={description} contentType="Page">
+<BaseLayout lang={lang} title={title} description={description} contentType="Page">
   {
     /* One `bookshop:live` boundary around the whole section loop — this binds
        clicks on the page to the `sections` array in the entry's data file (via

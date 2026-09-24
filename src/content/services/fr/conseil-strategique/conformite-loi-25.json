@@ -25,8 +25,8 @@
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Pourquoi choisir Victrix?",
-      "intro": "Victrix est votre cabinet-conseil TI de confiance. Notre expertise en cybersécurité et nos connaissances approfondies des exigences de votre secteur nous permettent de vous offrir un accompagnement de bout en bout pour votre mise en conformité à la Loi 25.",
-      "fond": "blanc",
+      "intro": "Victrix est votre cabinet-conseil TI de confiance. Notre expertise en cybersécurité et nos connaissances approfondies des exigences de votre secteur nous permettent de vous offrir un accompagnement de bout en bout pour votre mise en conformité à la Loi 25. Victrix, une des plus importantes firmes de services TI au Québec, vous accompagne dans la mise en œuvre de solutions en matière de <a href=\"/fr/services/productivite/\">productivité</a>, d’efficacité et de <a href=\"/fr/services/cybersecurite/\">cybersécurité</a>, afin d’améliorer vos performances dans un contexte de transformation numérique, et ainsi assurer la pérennité de votre organisation.",
+      "fond": "ivoire",
       "featured": {
         "title": "Transformer les défis réglementaires en avantages compétitifs",
         "text": "Face aux risques de sanctions et aux attentes accrues de vos clients, la conformité est désormais indissociable de votre réputation.",
@@ -38,12 +38,15 @@
         "title": "Évaluation personnalisée",
         "text": "Nous offrons une évaluation complète et personnalisée de votre conformité à la Loi 25.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Cybersécurité",
@@ -62,7 +65,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "slug": ""

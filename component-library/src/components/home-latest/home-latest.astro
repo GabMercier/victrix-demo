@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Derniers articles » — composant Bookshop (accueil composable).
@@ -27,7 +28,9 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  * « Ressources et perspectives ») : fond #F9FAFB, rangée de tête (titre 48/800
  * + `subtitle` NOUVEAU optionnel, lien 12/700 majuscules bleu à droite),
  * cartes blanches rayon 12 ombre 1px — image 16/10, catégorie 10/900 ls 1px
- * #9CA3AF (première étiquette, texte nu — plus de pastilles), titre 20/700
+ * on-surface-variant (première étiquette, texte nu — plus de pastilles ;
+ * la maquette posait #9CA3AF, 2,53:1 sur blanc — contraste AA insuffisant,
+ * corrigé le 2026-09-21), titre 20/700
  * ls -0.4 navy, extrait 14/20 #6B7280, « LIRE LA SUITE » 12/700 majuscules
  * bleu + flèche ↗. La date n'est plus rendue (conservée aux données).
  * Neutres froids maquette tels quels ; bleus/navy = tokens (décision méga).
@@ -51,6 +54,8 @@ interface Card {
   img: CardImage;
 }
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   title: string;
   subtitle?: string;
   /** Libellé « Lire la suite » des cartes — champ de contenu (browser-safe). */
@@ -60,7 +65,7 @@ interface Props {
   cards?: Card[];
 }
 
-const { title, subtitle, readMoreLabel, ctaLabel, ctaHref, cards } = Astro.props;
+const { title, subtitle, readMoreLabel, ctaLabel, ctaHref, cards, fond = 'ivoire' } = Astro.props;
 
 // Repli éditeur : 3 cartes factices quand aucune donnée n'est injectée (rendu
 // dans le navigateur par l'éditeur visuel). Jamais utilisées au build.
@@ -69,28 +74,28 @@ const isLive = !Array.isArray(cards);
 
 const cardClass =
   'group relative flex flex-col h-full bg-white rounded-xl overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-[box-shadow,transform] duration-150 hover:shadow-survol hover:-translate-y-0.5 motion-reduce:transition-none';
-const chipClass = 'text-[10px] leading-[15px] font-black uppercase tracking-[1px] text-[#9CA3AF] m-0 max-w-none';
+const chipClass = 'text-base leading-[1.0625rem] font-black uppercase tracking-[1px] text-on-surface-variant m-0 max-w-none';
 const titleClass = 'text-xl leading-7 font-bold tracking-[-0.4px] m-0';
 const titleLinkClass =
   "text-on-primary-fixed no-underline group-hover:text-primary after:content-[''] after:absolute after:inset-0";
 const excerptClass = 'm-0 text-sm leading-5 text-[#6B7280] max-w-none';
 const readMoreClass =
-  'inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline mt-auto pt-4';
+  'inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[1.2px] text-primary no-underline mt-auto pt-4';
 ---
 
 {/* Fond IVOIRE #FAF7F4 (export2 homepage.css §ResourcesSection,
     « Secondaire/Ivoire », 2026-08-17) — remplace le gris froid provisoire. */}
-<section class="py-24 bg-ivoire">
+<section class:list={['py-24', FOND_CLASSES[fond as FondKey] ?? 'bg-ivoire']}>
   <div class="container-site">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
       <div class="max-w-2xl flex flex-col gap-4">
-        <h2 class="text-[48px] leading-none font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0">
+        <h2 class="text-[3rem] leading-none font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0">
           {title}
         </h2>
         {hasRichText(subtitle) && <div class="rich text-base leading-6 text-[#545F71] max-w-none" set:html={blockHtml(subtitle)} />}
       </div>
       <a
-        class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
+        class="inline-flex items-center gap-1 text-sm font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
         href={ctaHref}
       >
         {ctaLabel}

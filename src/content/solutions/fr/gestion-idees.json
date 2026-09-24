@@ -1,9 +1,106 @@
 {
+  "_schema": "default",
   "title": "Gestion des idées",
   "description": "Favorise l'innovation au sein des organisations. Les employés peuvent proposer, commenter et voter les idées.",
   "image": "/images/solutions/gestion-idees.jpg",
   "sector": "Innovation",
   "solutionType": "Collaboratif",
-  "order": 40,
-  "href": "/contact"
+  "featured": false,
+  "order": 110,
+  "href": "",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": [
+    {
+      "_bookshop_name": "product-hero",
+      "type": "product-hero",
+      "badge": "Solution Ø Studio",
+      "title": "Gestion des idées",
+      "titleHighlight": "",
+      "lead": "Découvrez notre application de gestion d’idées pour favoriser l’innovation au sein des organisations. Les employés peuvent soumettre, commenter et valoriser les idées.",
+      "ctaLabel": "Parler à un expert",
+      "ctaHref": "#formulaire",
+      "cta2Label": "Voir le catalogue",
+      "cta2Href": "/fr/solutions/",
+      "image": "/images/solutions/gestion-idees/01.jpg",
+      "imageAlt": "Maquette de présentation — Gestion des idées",
+      "fond": "beige"
+    },
+    {
+      "_bookshop_name": "bento-metrics",
+      "type": "bento-metrics",
+      "title": "En bref",
+      "intro": "",
+      "fond": "ivoire",
+      "featured": {
+        "title": "Gestion des idées",
+        "text": "",
+        "watermark": "eclair",
+        "stats": [
+          {
+            "value": "Multi-Secteur",
+            "label": "Client"
+          },
+          {
+            "value": "Entre 10k et 25k $CAD",
+            "label": "Coût"
+          },
+          {
+            "value": "1 mois",
+            "label": "Délai"
+          },
+          {
+            "value": "Power Platform, SharePoint",
+            "label": "Technologies"
+          }
+        ]
+      },
+      "aside": {
+        "icon": "coche",
+        "image": "",
+        "imageAlt": "",
+        "title": "Conçue par Ø Studio",
+        "text": "Notre studio de création Power Platform et Dynamics 365 personnalise la solution à vos processus.",
+        "linkLabel": "Découvrir Ø Studio",
+        "linkHref": "/fr/services/productivite/o-studio/"
+      }
+    },
+    {
+      "_bookshop_name": "galerie",
+      "type": "galerie",
+      "title": "Aperçu de l’application",
+      "intro": "",
+      "colonnes": "2",
+      "fond": "ivoire",
+      "images": [
+        {
+          "image": "/images/solutions/gestion-idees/02.png",
+          "alt": "Capture d’écran de l’application — Gestion des idées",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gestion-idees/03.png",
+          "alt": "Capture d’écran de l’application — Gestion des idées",
+          "legende": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "form",
+      "type": "form",
+      "title": "Parlez-nous de votre projet",
+      "intro": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+      "submitLabel": "Demander une consultation",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "o-studio",
+      "fond": "",
+      "fields": []
+    }
+  ]
 }

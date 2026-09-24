@@ -52,7 +52,7 @@ const cta =
 
 // Bannière d'annonce (personnalisé + interrupteur `showAnnounce`) — même
 // bibliothèque planifiable que Header.astro (collection `annonces`, sélection
-// dans src/lib/announce.ts, build d'édition STATIC_ONLY : toujours visible).
+// dans src/lib/announce.ts, build d'édition EDITOR_PREVIEW : toujours visible).
 const announce = chrome.showAnnounce ? await getActiveAnnounce(lang) : null;
 
 const searchHref = localizePath('/recherche', lang);
@@ -113,11 +113,11 @@ const langLinkClass = 'no-underline p-1 text-sm';
 <header class="campaign-header sticky top-0 z-50 bg-white shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
   <div class="container-site flex flex-wrap items-center justify-between gap-x-6 gap-y-3 min-h-20 py-2">
     <a
-      class="campaign-header__brand inline-flex items-center shrink-0 [--logo-height:40px]"
+      class="campaign-header__brand inline-flex items-center shrink-0 [--logo-height:44px]"
       href={localizePath('/', lang)}
       aria-label={t.nav.brandAria}
     >
-      <Logo variant="dark" />
+      <Logo variant="dark" lang={lang} />
     </a>
 
     {

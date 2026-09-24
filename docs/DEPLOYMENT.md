@@ -63,9 +63,12 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
 ## 3. Environment variables & secrets
 
 - `STATIC_ONLY=1` — mandatory **build** variable on BOTH CloudCannon sites
-  (without it the build attaches the Cloudflare worker and Bookshop never
-  loads). See the §7 caveat: this flag currently also carries the
-  editor-preview content policy.
+  (without it the build attaches the Cloudflare worker).
+- `EDITOR_PREVIEW=1` — **editing sites ONLY** (dev, staging), never on the
+  production site (lot L16, 2026-09-24): drafts + scheduled posts built,
+  announcement-bar windows ignored, retired-article redirects NOT emitted,
+  Bookshop attached (live visual editing). Table of variables per site:
+  `operations.md` § 6. Logic: `scripts/lib/build-mode.mjs`.
 - `PUBLIC_GA4_ID` — may be set on the **production** CloudCannon site once it
   exists (`operations.md` §7ter).
 - The 6 forms keys — backend decided 2026-08-25: CloudCannon Forms spike
@@ -104,20 +107,33 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
 
 - **CloudCannon hosting ignores `_redirects` and `_headers`** (they are
   Netlify/Cloudflare conventions). CloudCannon reads
-  **`.cloudcannon/routing.json`** (repo root; `headers` + `routes` arrays —
-  see cloudcannon.com/documentation/articles/configure-custom-routing/).
-  Consequence today, on the cloudvent URLs: the CMS-edited redirects
-  (`src/data/redirects.json` → `dist/_redirects`) and the security headers
-  (CSP/HSTS in `public/_headers`) are **not applied**. To close before
-  go-live: emit `routing.json` from those same sources (extend the
-  `victrix:redirects` integration in `astro.config.mjs`).
-- **`STATIC_ONLY` conflates two roles** — "fully static build" AND
-  "editor-preview content policy" (drafts + future-dated posts visible in
-  `src/i18n/blog.ts`, announcement-bar date windows ignored in
-  `src/lib/announce.ts`, Bookshop attached). The production CloudCannon site
-  inherits the preview policy. Fix before go-live: introduce a separate flag
-  (e.g. `EDITOR_PREVIEW=1`, set only on the *editing* site's build) and key
-  the content policy + Bookshop on it.
+  **`.cloudcannon/routing.json`** (`headers` + `routes` arrays — see
+  cloudcannon.com/documentation/developer-articles/configure-custom-routing/
+  and the official schema in CloudCannon/configuration-types `src/routing.ts`).
+  **RÉGLÉ le 2026-09-22** : l'intégration `victrix:redirects`
+  (`astro.config.mjs`) écrit `dist/_cloudcannon/routing.json` à chaque build —
+  la forme que CloudCannon documente pour un fichier GÉNÉRÉ, et qui prime sur
+  le fichier source. Rien à committer. Elle y met les **189 routes** (les 13
+  d'`astro.config` en `forced: true` — Astro écrit à ces chemins une page de
+  rafraîchissement méta, donc un fichier existe ; les 3 de l'éditrice ; les 175
+  de la matrice de migration) et **5 règles d'en-têtes** dérivées de
+  `public/_headers`. Deux traductions faites au passage : les jokers
+  (`/expertise/*` → `/expertise/(.*)`, `:splat` → `$1`) et des règles
+  d'en-têtes **sans recouvrement** (le bloc `/*` est recopié dans chaque règle
+  précise : selon que CloudCannon fusionne les règles ou garde la première,
+  une page de `/fr/` perdrait HSTS ou recevrait `nosniff, nosniff`).
+  **Reste à faire** : vérifier de l'extérieur après le premier déploiement
+  (`docs/operations.md`, § Redirections — commande `curl -I`), la sémantique
+  des en-têtes n'étant pas documentée ; et décider de la règle 404 attrape-tout
+  que CloudCannon recommande (D17 du plan — à tester sur le site dev d'abord,
+  une règle attrape-tout mal comprise détournerait tout le trafic).
+- **`STATIC_ONLY` used to conflate two roles** — "fully static build" AND
+  "editor-preview content policy". **RÉGLÉ le 2026-09-24 (lot L16)** : the
+  preview policy (drafts + future-dated posts in `src/i18n/blog.ts`,
+  announcement-bar windows in `src/lib/announce.ts`, retired-article
+  redirects, Bookshop) is keyed on `EDITOR_PREVIEW`, set on the editing
+  sites only. Remaining manual step: add the variable in the CloudCannon UI
+  of the dev and staging sites (`operations.md` § 6).
 - **Adapter is build-only** (`astro.config.mjs`) so `astro dev` works on
   Node 18; once everyone is on Node 20 this can be simplified.
 - `npm audit` shows highs transitively via `wrangler` (build tooling); the
@@ -126,18 +142,42 @@ First-time setup of the production site + Publishing link: `operations.md` §6.
 
 ## 7. Go-live checklist (DNS cutover day — the real victrix.ca moves here)
 
-- [ ] Split `STATIC_ONLY` from the editor-preview policy (constraint above) and
-      set `EDITOR_PREVIEW=1` on the editing site's build only; verify drafts,
+- [x] Split `STATIC_ONLY` from the editor-preview policy — fait le 2026-09-24
+      (lot L16). **Reste** : set `EDITOR_PREVIEW=1` on the dev and staging
+      sites' build (CloudCannon UI) — NOT on production — then verify drafts,
       scheduled posts, and announcement-bar windows behave on the production URL.
-- [ ] Generate `.cloudcannon/routing.json` (redirects from
-      `src/data/redirects.json` + headers mirroring `public/_headers`) and
-      verify 301s + CSP/HSTS on the production URL.
+- [x] Generate `.cloudcannon/routing.json` — fait le 2026-09-22 (généré au
+      build dans `dist/_cloudcannon/routing.json` : 189 routes + 5 règles
+      d'en-têtes). **Reste la vérification EXTERNE** : sur le site dev
+      (`vocal-wren.cloudvent.net`) puis en production —
+      `curl -sI <url>/fr/ | grep -i "strict-transport\|content-security\|x-content-type"`
+      et `curl -sI <url>/decouvrir-victrix/` doit rendre un **301** vers
+      `/fr/decouvrir`.
 - [ ] Wire the forms backend — decided 2026-08-25: CloudCannon Forms spike
       first, Cloudflare Worker fallback (`operations.md` §7ter); set the 6
       keys there; only then set `PUBLIC_FORMS_ENABLED` on the production
       build.
-- [ ] `astro.config.mjs` `site:` → real domain; `public/robots.txt` `Sitemap:`
-      line; re-validate canonical/OG URLs and share cards.
+- [ ] **BLOQUANT — `astro.config.mjs` `site:` → real domain**; `public/robots.txt`
+      `Sitemap:` line; re-validate canonical/OG URLs and share cards.
+
+      **Mesuré le 2026-09-23, et c'est plus grave que « une ligne à changer ».**
+      `site:` vaut `https://victrix-demo.pages.dev` (`astro.config.mjs:835`), et
+      cette copie Cloudflare Pages **répond HTTP 200, publiquement, sans aucun
+      en-tête `x-robots-tag`** — vérifié en direct. Or `site:` alimente TOUS les
+      `canonical`, les `hreflang`, les `og:url` et les `og:image` du site. Tel
+      quel, la production dirait à Google que la version canonique de chaque
+      page est celle qui vit sur un domaine de démonstration, servi depuis un
+      build périmé (`/fr/carrieres` y rend un 404). Une version morte du site
+      s'auto-canonicalise en public.
+
+      Décision de Gabriel le 2026-09-23 : **on documente, on ne change rien
+      maintenant** — le domaine définitif se tranche avec le client (voir aussi
+      la décision 7 du §8 de `docs/migration/plan-redirections.md` : apex ↔
+      `www`, `http` → `https`). Deux gestes le jour J, dans cet ordre :
+      1. `site:` sur le domaine réel AVANT le build de production ;
+      2. désindexer ou fermer le projet Cloudflare Pages `victrix-demo`
+         (ligne « Decommission » plus bas) — tant qu'il répond 200 sans
+         `noindex`, il reste un duplicata indexable du site.
 - [ ] Custom domain on the CloudCannon production site; DNS + 301s from the old
       WordPress URLs (ADO **#1438** — domaine + DNS + rollback).
 - [ ] `REBUILD_HOOK_URL` GitHub secret → production-site build hook

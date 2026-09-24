@@ -1,19 +1,35 @@
 ---
-import logoSvg from '../assets/victrix-logo.svg?raw';
+import { defaultLocale, type Locale } from '../i18n/config';
+import logoFr from '../assets/victrix-logo-fr.svg?raw';
+import logoEn from '../assets/victrix-logo-en.svg?raw';
 
+/**
+ * Logo de marque Victrix — kit officiel du 2026-09-22.
+ *
+ * DEUX FICHIERS, UN PAR LANGUE : la signature du logo est TRADUITE.
+ * FR = « Une marque / Alan Allman Associates », EN = « Powered by / Alan
+ * Allman Associates ». Le site servait un seul SVG anglais dans les deux
+ * langues — c'est le bogue « logo FR » relevé par Julie (#1762).
+ *
+ * MONOCHROME. Le kit n'a qu'une couleur de remplissage ; `.lv-mark`
+ * (mot-symbole) et `.lv-sign` (signature) prennent donc la MÊME teinte. Le
+ * logo précédent teintait une branche du X en gris : c'était un artefact,
+ * pas la charte. Deux classes sont conservées pour garder l'option ouverte.
+ */
 interface Props {
   /**
-   * 'dark'  → navy wordmark for light backgrounds (header).
-   * 'light' → white wordmark for dark backgrounds (footer).
-   * The SVG is the real Victrix logo extracted from the site; its two fills
-   * (wordmark + "Powered by Alan Allman Associates" tagline) are recolored
-   * here via the .lv-mark / .lv-tag classes.
+   * 'dark'  → mot-symbole bleu nuit, pour un fond clair (en-tête).
+   * 'light' → mot-symbole blanc, pour un fond sombre.
    */
   variant?: 'light' | 'dark';
+  /** Langue de la page — décide de la signature affichée. */
+  lang?: Locale;
   class?: string;
 }
 
-const { variant = 'dark', class: className } = Astro.props;
+const { variant = 'dark', lang = defaultLocale, class: className } = Astro.props;
+
+const logoSvg = lang === 'en' ? logoEn : logoFr;
 ---
 
 <span class:list={['logo', `logo--${variant}`, className]} set:html={logoSvg} />
@@ -24,23 +40,25 @@ const { variant = 'dark', class: className } = Astro.props;
   }
   .logo :global(svg.logo-victrix) {
     display: block;
+    /* Le viewBox des deux fichiers est calé sur le CONTENU (voir l'en-tête des
+       SVG) : `--logo-height` est donc bien la hauteur ENCRÉE du logo, comme
+       avec l'ancien fichier. Les hauteurs posées par les en-têtes n'ont pas
+       eu à bouger. */
     height: var(--logo-height, 38px);
     width: auto;
   }
 
-  /* Dark variant — light backgrounds (header). */
-  .logo--dark :global(.lv-mark) {
+  /* Variante sombre — fonds clairs (en-tête). */
+  .logo--dark :global(.lv-mark),
+  .logo--dark :global(.lv-sign) {
     fill: var(--color-navy);
   }
-  .logo--dark :global(.lv-tag) {
-    fill: var(--color-grey-500);
-  }
 
-  /* Light variant — dark backgrounds (footer). */
-  .logo--light :global(.lv-mark) {
+  /* Variante claire — fonds sombres. Blanc PLEIN sur les deux groupes : c'est
+     la déclinaison « Blanc » du kit, pas un blanc atténué. Une signature à
+     70 % d'opacité tomberait sous le seuil AA sur plusieurs de nos fonds. */
+  .logo--light :global(.lv-mark),
+  .logo--light :global(.lv-sign) {
     fill: var(--color-white);
-  }
-  .logo--light :global(.lv-tag) {
-    fill: rgba(255, 255, 255, 0.7);
   }
 </style>

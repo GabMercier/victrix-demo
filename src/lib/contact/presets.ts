@@ -29,12 +29,17 @@ import type { Locale } from '../../i18n/config';
 export const CONTACT_SUJET_KEYS = ['projet', 'solution', 'expertise', 'carriere', 'autre'] as const;
 export type ContactSujetKey = (typeof CONTACT_SUJET_KEYS)[number];
 
+// « ressources-humaines » AJOUTÉE 2026-09-21 (demande Gabriel) : « Service »
+// est OBLIGATOIRE et les CTA de carrière (« Postuler ») arrivaient dessus à
+// vide — aucune option ne correspondait à une candidature. Voir
+// SUJET_SERVICE_FALLBACK plus bas : le sujet « carrière » la choisit seul.
 export const CONTACT_SERVICE_KEYS = [
   'cybersecurite',
   'intelligence-artificielle',
   'infonuagique',
   'services-applicatifs',
   'services-geres',
+  'ressources-humaines',
   'autre',
 ] as const;
 export type ContactServiceKey = (typeof CONTACT_SERVICE_KEYS)[number];
@@ -65,6 +70,7 @@ export const CONTACT_SERVICE_LABELS: Record<Locale, Record<ContactServiceKey, st
     infonuagique: 'Infonuagique',
     'services-applicatifs': 'Services applicatifs',
     'services-geres': 'Services gérés',
+    'ressources-humaines': 'Ressources humaines',
     autre: 'Autre',
   },
   en: {
@@ -73,15 +79,47 @@ export const CONTACT_SERVICE_LABELS: Record<Locale, Record<ContactServiceKey, st
     infonuagique: 'Cloud',
     'services-applicatifs': 'Application services',
     'services-geres': 'Managed services',
+    'ressources-humaines': 'Human resources',
     autre: 'Other',
   },
 };
 
 /**
+ * Sujet posé quand RIEN ne l'indique (2026-09-22, lot L-prefill).
+ *
+ * Pourquoi une constante et pas un littéral recopié : « De quoi souhaitez-vous
+ * parler ? » et « Service » sont tous deux OBLIGATOIRES, et le repli n'existait
+ * que dans la route des services (`|| 'projet'`). La route des pages générales
+ * posait `page.data.contactSujet` nu : les 9 pages sur 11 qui n'ont pas rempli
+ * ce champ au CMS ne posaient aucun `data-contact-*` sur <body>, donc leurs
+ * 18 liens vers /contact arrivaient sur DEUX listes obligatoires vides
+ * (constaté par Gabriel le 21/09 sur la page Secteurs). Même trou sur
+ * l'accueil, les campagnes, les articles et le centre de ressources, qui ne
+ * passent aucun préremplissage du tout — d'où le repli général de BaseLayout.
+ *
+ * « projet » plutôt qu'autre chose : c'est le sujet le plus large de la liste,
+ * déjà le repli choisi pour les services en septembre, et il entraîne le
+ * service « Autre » par SUJET_SERVICE_FALLBACK ci-dessous — jamais une famille
+ * de services devinée à la place de l'éditrice.
+ */
+export const CONTACT_SUJET_DEFAULT: ContactSujetKey = 'projet';
+
+/**
+ * Sujet → service DÉDUIT quand la page n'en fixe aucun (2026-09-21) : une
+ * candidature ne relève d'aucune famille de services, mais « Service » est
+ * obligatoire. Tout sujet absent de cette table retombe sur « autre » (voir
+ * resolveContactPreset) — plus jamais de liste obligatoire vide sur un CTA.
+ */
+export const SUJET_SERVICE_FALLBACK: Partial<Record<ContactSujetKey, ContactServiceKey>> = {
+  carriere: 'ressources-humaines',
+};
+
+/**
  * Famille de service (1er segment du chemin de fichier, identique FR/EN) →
  * clé de service. Familles ABSENTES à dessein (aucune option du formulaire ne
- * leur correspond — l'éditeur peut fixer `contactService` sur la page) :
- * conseil-strategique, approvisionnement-ti, demo-*.
+ * leur correspond) : conseil-strategique, approvisionnement-ti, demo-* — elles
+ * arrivent sur « Autre » par le repli ci-dessus, sauf si l'éditeur fixe
+ * `contactService` sur la page.
  */
 export const SERVICE_FAMILY_PRESET: Record<string, ContactServiceKey> = {
   cybersecurite: 'cybersecurite',
@@ -128,7 +166,13 @@ export function resolveContactPreset(
   options: ContactOptions,
 ): ContactPresetLabels {
   const sujetLabel = keys.sujet ? (CONTACT_SUJET_LABELS[lang][keys.sujet] ?? '') : '';
-  const serviceLabel = keys.service ? (CONTACT_SERVICE_LABELS[lang][keys.service] ?? '') : '';
+  // Service : celui de la page, sinon celui que le SUJET implique (carrière →
+  // RH), sinon « autre ». Le repli ne s'applique QUE si un préremplissage a
+  // lieu (sujet résolu) : arriver sur /contact sans CTA ne présélectionne
+  // toujours rien.
+  const serviceKey: ContactServiceKey | '' =
+    keys.service || (keys.sujet ? (SUJET_SERVICE_FALLBACK[keys.sujet] ?? 'autre') : '');
+  const serviceLabel = serviceKey ? (CONTACT_SERVICE_LABELS[lang][serviceKey] ?? '') : '';
   return {
     sujet: options.subjectOptions.includes(sujetLabel) ? sujetLabel : '',
     service: options.expertiseOptions.includes(serviceLabel) ? serviceLabel : '',

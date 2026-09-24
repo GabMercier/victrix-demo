@@ -1,9 +1,19 @@
 {
+  "_schema": "default",
   "title": "Grant management portal",
   "description": "Centralizes applications, automates approvals, and simplifies reporting.",
   "image": "/images/solutions/gestion-subventions.jpg",
   "sector": "Finance",
   "solutionType": "Automation",
+  "featured": false,
   "order": 30,
-  "href": "/contact"
+  "href": "/contact",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": []
 }

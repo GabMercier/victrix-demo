@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Cloud Services for Businesses",
   "description": "Migrate to a cloud solution tailored to your business reality. Victrix accelerates and simplifies your transition with customized cloud services.",
-  "noindex": false,
-  "slug": "cloud-services-provider",
-  "seoTitle": "Cloud Services Tailored to Your Challenges | Services",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -32,10 +28,10 @@
       "type": "bento-metrics",
       "title": "Cloud Solutions and Services",
       "intro": "Our cloud services are designed to meet the unique challenges of your organization — from selecting your cloud solution to migrating workloads and continuously optimizing your cloud environment.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "A planned migration strategy",
-        "text": "A planned migration strategy ensures a smooth transition with minimal impact on your environment. Our mission: <strong>guarantee your operational excellence</strong> using best practices for compliance, data security, and performance — the <strong>Well Architected Framework (WAF)</strong> and <strong>Cloud Adoption Framework (CAF)</strong> guide all your cloud migration projects.",
+        "text": "A planned migration strategy ensures a smooth transition with minimal impact on your environment. Our mission: <strong>guarantee your operational excellence</strong> using best practices for <a href=\"/en/services/strategic-advice/law-25-compliance/\">compliance</a>, <a href=\"/en/services/cybersecurity/\">data security</a>, and performance — the <strong>Well Architected Framework (WAF)</strong> and <strong>Cloud Adoption Framework (CAF)</strong> guide all your cloud migration projects.",
         "watermark": "graphique",
         "stats": []
       },
@@ -44,21 +40,22 @@
         "title": "Strategic consulting",
         "text": "Take advantage of our expertise in strategic consulting to ensure the success of all your digital transformation projects.",
         "linkLabel": "Schedule a consultation",
-        "linkHref": "/en/contact/"
+        "linkHref": "/en/contact/",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Our Cloud Solutions",
-      "fond": "givre",
       "paragraphs": [
         "From <strong>hosting sensitive files and data</strong> to <strong>deploying a customized enterprise cloud server</strong>, Victrix is here for you. Our cloud computing experts offer <strong>trusted cloud solutions</strong> to modernize and grow your business.",
         "<strong>Victrix accelerates your migration to Azure.</strong> Our methodology, based on the <strong>Microsoft Cloud Adoption Framework</strong>, enables your organization to take the first steps in migrating your applications and servers — with <strong>secure data storage in Azure and all of Microsoft's innovative features</strong> to optimize your productivity and workspace. <a href=\"/en/services/cloud-services-provider/azure-migration/\">Learn about migrating to Azure</a>",
         "<strong>Leverage the AWS Enterprise platform with Victrix.</strong> Drawing on our expertise in Amazon EC2 (IaaS), AWS Elastic Beanstalk (PaaS), and AWS services (SaaS), we can ensure <strong>efficient migration of applications</strong> to a service model that promotes scalability and simplifies management. <a href=\"/en/services/cloud-services-provider/aws-services/\">Learn about migrating to AWS</a>"
       ],
-      "image": "",
-      "imageAlt": "",
+      "image": "/wp-content/uploads/2023/10/istock-1454530428.png",
+      "imageAlt": "Cloud services employees at Victrix",
       "stats": [
         {
           "value": "Azure",
@@ -73,18 +70,16 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": ""
+      "cardText": "",
+      "fond": "beige"
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our Acceleration Strategy: IaaS — SaaS — PaaS Services",
       "headingStyle": "plain",
       "intro": "Continuous integration and delivery: identification of opportunities (planning, vision, costing), proof of concept (experimentation and validation), then acceleration of the migration to the cloud.",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -93,6 +88,9 @@
           "number": "01",
           "title": "Project Kick-Off",
           "text": "Kick-off meeting: understanding the project, implementation schedule and stakeholder participation, technical and other prerequisites, roles required by workshop and committee.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -100,6 +98,9 @@
           "number": "02",
           "title": "Definition",
           "text": "Identification, definition, and prioritization of migration opportunities; infrastructure analysis.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -107,6 +108,9 @@
           "number": "03",
           "title": "Feasibility",
           "text": "Preparation of the opportunity and feasibility analysis: organizational context, understanding of technological and business challenges, IT asset inventory, mapping of interdependencies, and license analysis.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -114,6 +118,9 @@
           "number": "04",
           "title": "Concept",
           "text": "Proof of concept: architecture and deployment strategy, implementation, proof of concept realization, and documentation.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -121,6 +128,9 @@
           "number": "05",
           "title": "Scaling",
           "text": "Analysis and proposal of preferred scaling options, then scaling systems.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -128,18 +138,27 @@
           "number": "06",
           "title": "Iterations",
           "text": "Acceleration in iterative mode: analysis of needs, opportunities, and mapping; implementation (deployment, security, and governance); migration (mapping, classification, migration, and testing); optimization and governance.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Our Cloud Services and Expertise",
       "groups": [
         {
           "title": "Analysis",
+          "href": "",
           "items": [
             "Opportunity and feasibility",
             "Outsourcing services",
@@ -153,6 +172,7 @@
         },
         {
           "title": "Workload Migration",
+          "href": "",
           "items": [
             "Commitment to the 6 Rs of successful migration",
             "PaaS, SaaS, IaaS",
@@ -167,6 +187,7 @@
         },
         {
           "title": "Multicloud",
+          "href": "",
           "items": [
             "Hybrid infrastructure",
             "Monitoring and evolution",
@@ -180,6 +201,7 @@
         },
         {
           "title": "AWS/Microsoft Azure Security",
+          "href": "",
           "items": [
             "Identity security and management",
             "Compliance management",
@@ -194,6 +216,7 @@
         },
         {
           "title": "Digital Transformation",
+          "href": "",
           "items": [
             "Modern desktop VDI/AVD/W365",
             "Migration and automation"
@@ -209,26 +232,87 @@
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Our Partners",
-      "subtitle": "",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
-        "Palo Alto",
-        "Checkpoint",
-        "Pulse Secure",
-        "CrowdStrike",
-        "Microsoft 365",
-        "Cisco",
-        "Aruba",
-        "Imprivata",
-        "AlgoSec",
-        "AWS",
-        "OVH Cloud",
-        "ServiceNow"
-      ]
+        {
+          "label": "Palo Alto",
+          "icon": "",
+          "image": "/images/logos/paloalto.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Checkpoint",
+          "icon": "",
+          "image": "/images/logos/checkpoint.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Pulse Secure",
+          "icon": "",
+          "image": "/images/logos/pulse-secure.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "CrowdStrike",
+          "icon": "",
+          "image": "/images/logos/crowdstrike.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Microsoft 365",
+          "icon": "",
+          "image": "/images/logos/microsoft.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Cisco",
+          "icon": "",
+          "image": "/images/logos/cisco.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Aruba",
+          "icon": "",
+          "image": "/images/logos/aruba.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Imprivata",
+          "icon": "",
+          "image": "/images/logos/imprivata.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AlgoSec",
+          "icon": "",
+          "image": "/images/logos/algosec.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AWS",
+          "icon": "",
+          "image": "/images/logos/aws.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "OVH Cloud",
+          "icon": "",
+          "image": "/images/logos/ovhcloud.png",
+          "imageAlt": ""
+        },
+        {
+          "label": "ServiceNow",
+          "icon": "",
+          "image": "/images/logos/servicenow-partner.png",
+          "imageAlt": ""
+        }
+      ],
+      "subtitle": ""
     },
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Cloud computing"
@@ -246,7 +330,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "slug": "cloud-services-provider",
+  "seoTitle": "Cloud Services Tailored to Your Challenges | Services",
+  "_schema": "default",
+  "noindex": false
 }

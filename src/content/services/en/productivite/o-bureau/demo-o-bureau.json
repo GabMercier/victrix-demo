@@ -1,0 +1,59 @@
+{
+  "_schema": "default",
+  "title": "O bureau — Office Booking Solution",
+  "description": "Make returning to the office easier with O bureau, the connected workspace reservation solution. Request a demo today.",
+  "noindex": true,
+  "slug": "productivity-consulting/office-booking/landing-demo-obureau",
+  "seoTitle": "O bureau | Workspace Reservation | Request a demo | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
+  "sections": [
+    {
+      "_bookshop_name": "service-hero",
+      "type": "service-hero",
+      "eyebrow": "O bureau",
+      "titleAccent": "",
+      "title": "Office Booking Solution",
+      "titleHighlight": "",
+      "lead": "A connected solution to facilitate office work, integrated into your Microsoft 365 environment.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2023/08/obureau-mobile-1.png",
+      "imageAlt": "O bureau mobile user interface"
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "A connected solution to facilitate office work",
+      "fond": "ivoire",
+      "paragraphs": [
+        "Discover our workspace booking solution integrated into your <a href=\"/en/services/managed-it-services/maximize-the-use-of-your-m365-ecosystem/\">Microsoft 365 environment</a>.",
+        "Easy to set up and manage, our solution will help you improve office attendance by providing a seamless, enjoyable experience aligned with your attendance policies.",
+        "<ul><li><strong>Client:</strong> multi-sector</li><li><strong>Cost:</strong> starting at $25,000 CAD</li><li><strong>Customization time:</strong> 1 month</li><li><strong>Technologies used:</strong> Power Platform, SharePoint, Teams, Forms, Bookings, Microsoft 365</li></ul>"
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "fond": "beige",
+      "title": "Want to see more before the demo?",
+      "body": "",
+      "ctaLabel": "Learn more about O bureau",
+      "ctaHref": "/en/services/productivity-consulting/office-booking/",
+      "layout": "box"
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Request a Demo of O bureau",
+      "body": "See O bureau in action with one of our experts, in your Microsoft 365 context.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit",
+      "fond": "ivoire"
+    }
+  ]
+}

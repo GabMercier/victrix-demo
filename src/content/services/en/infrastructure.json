@@ -29,7 +29,7 @@
       "type": "offer-cards",
       "title": "What we take care of",
       "intro": "An overview of our typical engagements — the detailed offering will be published soon.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "",
       "ctaHref": "",
       "items": [
@@ -83,6 +83,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Cloud computing"
@@ -100,7 +101,7 @@
       "cta2Label": "Managed IT services",
       "cta2Href": "/en/services/managed-it-services",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": ""

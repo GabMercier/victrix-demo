@@ -1,0 +1,21 @@
+{
+  "title": "Promo Accompagnement IA (campagne)",
+  "enabled": true,
+  "startAt": "",
+  "endAt": "",
+  "fr": {
+    "before": "",
+    "strong": "Réussissez votre virage IA de manière durable",
+    "after": " — accompagnement stratégique, cadrage et mise en œuvre.",
+    "linkLabel": "En savoir plus →",
+    "linkHref": "/services/intelligence-artificielle/accompagnement-ia"
+  },
+  "en": {
+    "before": "",
+    "strong": "Make your AI shift a lasting success",
+    "after": " — strategic guidance, framing and delivery.",
+    "linkLabel": "Learn more →",
+    "linkHref": "/services/artificial-intelligence/landing-ai-consulting"
+  },
+  "linkHref": "/contact"
+}

@@ -15,45 +15,48 @@
 
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { type Locale, otherLocale } from './config';
+import { EDITOR_PREVIEW_BUILD } from '../lib/editor-preview';
 
 export type BlogPost = CollectionEntry<'blog'>;
 
 /**
- * STATIC_ONLY (the CloudCannon editing build — see astro.config.mjs) read ONCE
- * at module scope, as a direct static member expression. GOTCHA: Astro only
- * substitutes non-PUBLIC_ env vars for the exact `import.meta.env.NAME` form in
- * server code — the bare `import.meta.env` object never carries them, so
- * destructuring or passing the env object around would silently read
- * `undefined` even with STATIC_ONLY=1 set. Under vitest the var is unset, so
- * the default is `false` (production behaviour); tests inject the flag instead.
+ * EDITOR_PREVIEW (la politique d'aperçu des sites d'ÉDITION CloudCannon — lot
+ * L16, 2026-09-24 ; auparavant portée par STATIC_ONLY, que le site de
+ * PRODUCTION pose aussi : il publiait les brouillons) — lue UNE fois dans
+ * src/lib/editor-preview.ts, en expression membre exacte. GOTCHA : Astro ne
+ * substitue les variables non PUBLIC_ que pour la forme exacte
+ * `import.meta.env.NOM` dans le code serveur — jamais via destructuration ni
+ * objet env passé en paramètre. Sous vitest la variable est absente : `false`
+ * (comportement production), les tests injectent le drapeau en paramètre.
  */
-const STATIC_ONLY_BUILD = Boolean(import.meta.env.STATIC_ONLY);
 
 /**
- * DRAFTS_VISIBLE — same exact-member-expression gotcha as STATIC_ONLY above.
- * Opt-in escape hatch for SHAREABLE draft previews: the STATIC_ONLY
- * (CloudCannon) editing build shows drafts, but Cloudflare Pages branch
- * previews build WITHOUT STATIC_ONLY, so a « Brouillon » article would 404 on
- * the https://<branche>.victrix-demo.pages.dev link an editor shares for
- * review. Set DRAFTS_VISIBLE=1 (any non-empty value) as a build variable on
- * the Cloudflare Pages *Preview* environment ONLY — NEVER on Production, or
- * drafts go public. Unset everywhere by default (see .env.example).
+ * DRAFTS_VISIBLE — same exact-member-expression gotcha as EDITOR_PREVIEW.
+ * Opt-in escape hatch for SHAREABLE draft previews: the CloudCannon editing
+ * build (EDITOR_PREVIEW=1) shows drafts, but Cloudflare Pages branch previews
+ * build WITHOUT it, so a « Brouillon » article would 404 on the
+ * https://<branche>.victrix-demo.pages.dev link an editor shares for review.
+ * Set DRAFTS_VISIBLE=1 (any non-empty value) as a build variable on the
+ * Cloudflare Pages *Preview* environment ONLY — NEVER on Production, or drafts
+ * go public. Unset everywhere by default (see .env.example).
  */
 const DRAFTS_VISIBLE_BUILD = Boolean(import.meta.env.DRAFTS_VISIBLE);
 
 /**
- * Are draft posts visible in this build? True for the STATIC_ONLY
- * (CloudCannon) editing build, so editors can preview a draft in the visual
+ * Are draft posts visible in this build? True for the EDITOR_PREVIEW
+ * (CloudCannon editing) build, so editors can preview a draft in the visual
  * editor, and for builds that opt in via DRAFTS_VISIBLE (Cloudflare Pages
- * Preview environment — see above); the public production build never routes
- * or lists drafts. The parameters exist for unit tests (import.meta.env is
- * baked at build/module load — it can't be flipped from inside a test).
+ * Preview environment — see above); the public production build — INCLUDING
+ * the CloudCannon production site, built STATIC_ONLY=1 WITHOUT EDITOR_PREVIEW
+ * — never routes or lists drafts. The parameters exist for unit tests
+ * (import.meta.env is baked at build/module load — it can't be flipped from
+ * inside a test).
  */
 export function isDraftVisible(
-  staticOnly: boolean = STATIC_ONLY_BUILD,
+  editorPreview: boolean = EDITOR_PREVIEW_BUILD,
   draftsVisible: boolean = DRAFTS_VISIBLE_BUILD,
 ): boolean {
-  return staticOnly || draftsVisible;
+  return editorPreview || draftsVisible;
 }
 
 /**
@@ -72,14 +75,14 @@ export function isDraftVisible(
  */
 export function filterPublished(
   posts: BlogPost[],
-  staticOnly: boolean = STATIC_ONLY_BUILD,
+  editorPreview: boolean = EDITOR_PREVIEW_BUILD,
   draftsVisible: boolean = DRAFTS_VISIBLE_BUILD,
   now: Date = new Date(),
 ): BlogPost[] {
   // `?? 0` : zod garantit `date` sur toute vraie entrée; les doublures de test
   // et données historiques sans date restent « publiées » (même tolérance que
   // pour `draft` absent).
-  return isDraftVisible(staticOnly, draftsVisible)
+  return isDraftVisible(editorPreview, draftsVisible)
     ? posts
     : posts.filter(
         (post) => !post.data.draft && (post.data.date?.valueOf() ?? 0) <= now.valueOf(),

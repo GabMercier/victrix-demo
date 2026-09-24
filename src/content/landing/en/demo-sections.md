@@ -29,7 +29,7 @@ sections:
     cta2Href: ''
     eyebrowIcon: ''
     ctaIcon: ''
-    fond: givre
+    fond: beige
   - _bookshop_name: testimonial
     type: testimonial
     quote: Victrix transformed our security posture in a few months — a rigorous
@@ -58,7 +58,7 @@ sections:
   - _bookshop_name: stats
     type: stats
     title: Victrix in numbers
-    fond: givre
+    fond: beige
     items:
       - number: 25+
         label: years of experience
@@ -76,7 +76,7 @@ sections:
   - _bookshop_name: faq
     type: faq
     title: Frequently asked questions
-    fond: blanc
+    fond: ivoire
     items:
       - question: How long does a security assessment take?
         answer: Two to four weeks depending on the size of the environment, executive

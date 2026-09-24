@@ -1,0 +1,244 @@
+{
+  "_schema": "default",
+  "title": "ServiceNow: the Platform to Unify and Streamline Workflows",
+  "description": "Harness the full benefits of automation with ServiceNow solutions distributed by Victrix. Accelerated deployment. Personalized assessment on request.",
+  "noindex": false,
+  "slug": "it-procurement/servicenow",
+  "seoTitle": "ServiceNow | Automate Your Processes | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
+  "sections": [
+    {
+      "_bookshop_name": "service-hero",
+      "type": "service-hero",
+      "eyebrow": "IT Procurement",
+      "titleAccent": "",
+      "title": "ServiceNow: the Platform to Unify and Streamline Workflows",
+      "titleHighlight": "",
+      "lead": "<a href=\"/en/services/productivity-consulting/servicenow/\">ServiceNow</a> connects people, data, and technology to break down silos and automate repetitive tasks.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "image": "/wp-content/uploads/2022/05/professional-multiethnic-young-businesspeople-work-2024-11-08-01-25-23-utc.jpg",
+      "imageAlt": "professional multiethnic young businesspeople working with digital devices in open space office"
+    },
+    {
+      "_bookshop_name": "stats",
+      "type": "stats",
+      "title": "ServiceNow, the Leading Platform for Process Governance and Automation",
+      "style": "carte",
+      "fond": "beige",
+      "items": [
+        {
+          "number": "+ 20",
+          "label": "years of continuous innovation",
+          "icon": ""
+        },
+        {
+          "number": "#1",
+          "label": "for AI agent use cases (Gartner)",
+          "icon": ""
+        },
+        {
+          "number": "6X",
+          "label": "consecutive years as leader in the Gartner Magic Quadrant for Enterprise Low-Code Application Platforms",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "",
+      "fond": "ivoire",
+      "paragraphs": [
+        "Victrix <strong>aligns your priorities</strong> and <strong>accelerates the deployment of ServiceNow solutions</strong> tailored to your organization. Consolidate your processes, gain visibility, and drive measurable results on a governed, scalable platform.",
+        "<strong>Standardize processes, reduce silos, and automate tasks where they create the most value with ServiceNow solutions.</strong>",
+        "The ServiceNow platform is recognized and used by thousands of private organizations and public-sector agencies. ServiceNow solutions align IT, operations, customer service, human resources, and security to accelerate execution and strengthen governance.",
+        "Its modular architecture integrates with the most complex environments. ServiceNow also allows for large-scale deployment, from headquarters to the field."
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "fond": "ivoire",
+      "title": "Standardize, Automate, and Govern",
+      "body": "<p>Work with our ServiceNow consultants to get a tailored roadmap—deployment, governance, and adoption—built around your business priorities.</p>",
+      "ctaLabel": "Request a quote",
+      "ctaHref": "/en/contact",
+      "layout": "box"
+    },
+    {
+      "_bookshop_name": "numbered-cards",
+      "type": "numbered-cards",
+      "fond": "beige",
+      "sectionTitle": "Automate and Govern Your Processes with ServiceNow",
+      "headingStyle": "plain",
+      "intro": "Adopt ServiceNow process automation solutions available through Victrix. Turn disparate processes into automated workflows across <strong>IT</strong>, <strong>operations</strong>, <strong>HR</strong>, <strong>customer service</strong>, and <strong>security</strong>. ServiceNow modules enable your teams to focus on higher-value tasks and help leaders make faster, better decisions.",
+      "tone": "tint",
+      "columns": "3",
+      "cardStyle": "default",
+      "items": [
+        {
+          "number": "01",
+          "title": "IT Service Management (ITSM)",
+          "text": "<strong>Standardize the intake and resolution of requests, incidents, and changes.</strong><br><br><a href=\"/en/ressources/servicenow-itsm/\"><strong><a href=\"/en/ressources/servicenow-itsm/\">ServiceNow ITSM</a></strong></a>centralizes support channels, automates workflows, and keeps the knowledge base continuously up to date.<br><br><strong>Result:</strong> shorter resolution times and predictable service quality.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "02",
+          "title": "IT Operations Management (ITOM)",
+          "text": "<strong>Monitor infrastructure, detect anomalies, and track the performance of your IT operations.</strong><br><br><a href=\"/en/ressources/servicenow-itom/\"><strong><a href=\"/en/ressources/servicenow-itom/\">ServiceNow ITOM</a></strong></a>discovers dependencies, correlates events, and orchestrates remediation.<br><br><strong>Result: </strong>fewer interruptions and more reliable operations.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "03",
+          "title": "IT Asset Management (ITAM)",
+          "text": "<strong>Control the lifecycle of your software and hardware assets.</strong><br><br><strong>ServiceNow ITAM </strong>maintains accurate and up-to-date inventories, optimizes license management, and automates compliance.<br><br><strong>Result: </strong>managed costs and reduced audit risk.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "04",
+          "title": "Strategic Portfolio Management (SPM)",
+          "text": "<strong>Align investment, projects, and resources with your business objectives.</strong><br><br><strong>ServiceNow SPM</strong>provides visibility into project portfolios, enables prioritization and scenario simulation, and measures delivered value with shared KPIs.<br><br><strong>Result: </strong>impact-driven investments and faster trade-offs.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "05",
+          "title": "Application Portfolio Management (APM)",
+          "text": "<strong>Map, analyze, rationalize, and modernize your application portfolio.</strong><br><br><strong>ServiceNow APM</strong> measures business value, identifies redundancies and related risks, then recommends roadmaps (retain, modernize, retire).<br><br><strong>Result:</strong> lower complexity and better-allocated budget.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "06",
+          "title": "Customer Service Management (CSM)",
+          "text": "<strong>Unify the customer experience, from the self-service portal to multiple support channels.</strong><br><br><strong>ServiceNow CSM</strong> orchestrates cases, automates handling, and connects service, operations, and field teams<br><br><strong>Result :</strong> more efficient agents, higher satisfaction, and a better first-contact resolution rate.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "07",
+          "title": "HR Service Delivery (HRSD)",
+          "text": "<strong>Automate HR services and improve the employee experience. </strong><br><br><strong>ServiceNow HRSD </strong>provides an employee portal, streamlines HR case management (records, onboarding and offboarding), and orchestrates journeys.<br><br><strong>Result:</strong> an employee experience that supports retention and reduced administrative workload.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "08",
+          "title": "Automation Engine",
+          "text": "<strong>Automate at scale to cut manual effort and improve efficiency. </strong><br><br><strong>ServiceNow Automation Engine </strong>brings together <a href=\"/en/services/artificial-intelligence/\">artificial intelligence</a>, RPA, integrations, and operational policies to replace manual processes with automated flows.<br><br><strong>Result:</strong> measurable productivity gains and fewer human errors.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "09",
+          "title": "Security Operations (SecOps)",
+          "text": "<strong>Accelerate detection and response. </strong><br><br><strong>ServiceNow SecOps </strong>unifies vulnerability management, threat detection, and response orchestration (SOAR) with impact-based prioritization.<br><br><strong>Result:</strong> shorter response times and controlled operational risks.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "10",
+          "title": "Governance, Risk, and Compliance (GRC)",
+          "text": "<strong>Govern through controls, not spreadsheets. </strong><br><br><strong>ServiceNow GRC </strong>automates assessments, centralizes evidence, and tracks obligations through risk-control-requirements mapping.<br><br><strong>Result:</strong> clear adherence to regulations and simplified audits.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "number": "11",
+          "title": "Field Service Management (FSM)",
+          "text": "<strong>Optimize planning, assignment, and tracking of field work.</strong><br><br><strong>ServiceNow FSM </strong>plans, assigns, and tracks work with integrated parts management, SLAs, and mobility.<br><br><strong>Result:</strong> controlled response times and lower operating costs.",
+          "ctaLabel": "",
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "testimonial-cards",
+      "type": "testimonial-cards",
+      "title": "Used Daily by Organizations Worldwide",
+      "intro": "Overall rating: 4.3⭐⭐⭐⭐ — 2,056 verified reviews as of February 2026 (Gartner Peer Insights)",
+      "fond": "ivoire",
+      "items": [
+        {
+          "image": "",
+          "quote": "We have truly been bought into the ServiceNow platform for a number of years and are really reaping the benefits now. Through automation alone, we have saved 1.5 FTE of service desk time automating routine tasks such as password resets, software provision, access management, asset management, and ticket assignments. We successfully rolled SNOW out to tech, finance, facilities, and travel, delivering efficiencies across all of those directorates.",
+          "name": "Gartner Peer Insights",
+          "role": "Head of IT — ⭐⭐⭐⭐⭐ — November 18, 2025"
+        },
+        {
+          "image": "",
+          "quote": "The ServiceNow platform is comprehensive, the CMDB is robust and we are able to integrate CIs and solve our organization's change, incidents, problems, and asset management needs.",
+          "name": "Gartner Peer Insights",
+          "role": "Technology Program Manager — ⭐⭐⭐⭐⭐ — June 12, 2024"
+        },
+        {
+          "image": "",
+          "quote": "The CSM module has made life much easier to connect with the customers and directly resolve the issues they have on their plate. While the initial phase of learning and alignment takes a bit of time, the long-term team benefits in terms of scalability, automation, and improved customer experience have made the journey worthwhile.",
+          "name": "Gartner Peer Insights",
+          "role": "Technical Consultant — ⭐⭐⭐⭐⭐ — September 16, 2025"
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Victrix: Your Strategic Partner for Acquiring and Deploying ServiceNow Solutions",
+      "fond": "beige",
+      "paragraphs": [
+        "As a <strong>certified ServiceNow Partner</strong>, Victrix provides end-to-end support for the <a href=\"/en/services/it-procurement/\">acquisition and deployment of IT solutions</a>: project scope, integration, governance, and handover. We deliver accelerated, bilingual deployment services tailored to the needs of Canadian organizations.",
+        "Our ServiceNow experts structure governance and align IT, operations, HR, customer service, and security. We also ensure seamless integration with your existing systems for predictable operations, measurable adoption, and a faster ROI."
+      ]
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Unify Your Key Processes with ServiceNow Solutions",
+      "body": "Prioritize what matters and replace manual work with automated, measurable workflows.",
+      "ctaLabel": "Request a demo",
+      "ctaHref": "/en/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit",
+      "fond": "ivoire"
+    }
+  ]
+}

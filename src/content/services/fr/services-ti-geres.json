@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Services Gérés",
   "description": "Sécurisez, optimisez et gouvernez vos TI avec nos services gérés adaptés. Surveillance, support et automatisation, pour une performance sans compromis.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Services TI gérés | Gestion, Sécurité et Performance | Victrix",
   "seoH1": "Services TI gérés",
   "contactSujet": "",
   "contactService": "",
@@ -32,7 +28,7 @@
       "type": "stats",
       "title": "",
       "style": "carte",
-      "fond": "blanc",
+      "fond": "ivoire",
       "items": [
         {
           "number": "+225 000",
@@ -56,10 +52,10 @@
       "type": "bento-metrics",
       "title": "Pourquoi choisir Victrix pour vos services gérés",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Une gestion TI sans compromis",
-        "text": "<strong>Réduisez vos coûts d'exploitation, renforcez votre sécurité, accélérez votre transformation numérique et augmentez la productivité de votre équipe TI interne.</strong> Notre offre de services gérés TI permet à vos équipes de se concentrer sur les fonctions essentielles et d'accroître votre efficacité globale.",
+        "text": "<strong>Réduisez vos coûts d'exploitation, <a href=\"/fr/services/cybersecurite/\">renforcez votre sécurité</a>, accélérez votre transformation numérique et augmentez la productivité de votre équipe TI interne.</strong> Notre offre de services gérés TI permet à vos équipes de se concentrer sur les fonctions essentielles et d'accroître votre efficacité globale.",
         "watermark": "engrenage",
         "stats": []
       },
@@ -68,19 +64,17 @@
         "title": "Un accompagnement personnalisé",
         "text": "Avec notre accompagnement personnalisé, maximisez votre retour sur investissement et faites évoluer votre environnement technologique en toute confiance.",
         "linkLabel": "Obtenez un accord de service sur mesure",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "L'externalisation, votre avantage stratégique pour rester compétitifs face aux défis actuels",
       "headingStyle": "plain",
-      "intro": "",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -90,37 +84,57 @@
           "title": "La pénurie de main-d'œuvre qualifiée en TI",
           "text": "Répondez rapidement à vos besoins ponctuels ou évolutifs en TI sans avoir à recruter. Nos experts prennent le relais, vous assurant la flexibilité dont vous avez besoin pour votre bonne continuité opérationnelle.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "L'optimisation des coûts et le contrôle du budget TI",
           "text": "Bénéficiez d'une tarification prévisible grâce à nos banques de temps définies à l'avance. Pas de surprise&nbsp;: vous savez exactement combien coûtent vos services TI. Nous éliminons les imprévus et vous réalisez des économies sans sacrifier la qualité.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "La prise en charge et l'accélération des projets technologiques",
           "text": "Confiez-nous la gestion ou la réalisation de vos initiatives numériques critiques. Victrix agit comme catalyseur pour concrétiser vos projets dans les délais, sans alourdir vos équipes internes.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Performances, évolutivité et excellence des services",
           "text": "Appuyez-vous sur une équipe d'experts polyvalents pour faire évoluer vos environnements TI&nbsp;: <a href=\"/fr/services/services-infonuagiques/\" target=\"_blank\" rel=\"noopener\">solutions infonuagiques</a>, <a href=\"/fr/services/cybersecurite/\" target=\"_blank\" rel=\"noopener\">cybersécurité</a>, réseau, communication, gestion d'équipements. Résultat? Un temps de réponse optimisé, des projets accélérés et une résilience assurée.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "La cybersécurité avancée",
           "text": "Renforcez votre posture de sécurité avec un accompagnement proactif couvrant la surveillance, la réponse aux incidents, la gestion des données et la conformité aux normes et réglementations comme la <a href=\"/fr/services/conseil-strategique/conformite-loi-25/\" target=\"_blank\" rel=\"noopener\">Loi 25</a>, <a href=\"/fr/ressources/reglementation-dora/\" target=\"_blank\" rel=\"noopener\">DORA</a>, <a href=\"/fr/ressources/directive-nis2/\" target=\"_blank\" rel=\"noopener\">NIS2</a> et autres exigences sectorielles.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
-      ]
+      ],
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "cta",
@@ -132,14 +146,14 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "light",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "offer-cards",
       "type": "offer-cards",
       "title": "Une couverture de services TI gérés axée sur la sécurité et l'amélioration continue",
       "intro": "Assurez la continuité, la sécurité et l'optimisation de votre environnement TI et allégez la charge de vos équipes internes. En tant que fournisseur de services gérés, Victrix prend en charge l'administration, la surveillance et l'évolution de vos infrastructures. Une approche globale pour une gestion TI sans compromis.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "items": [
@@ -262,7 +276,7 @@
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "En savoir plus sur nos services TI gérés",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "Quels sont les principaux avantages de l'externalisation des services TI gérés avec Victrix?",
@@ -274,13 +288,14 @@
         },
         {
           "question": "Quelles certifications reconnues possède Victrix?",
-          "answer": "Victrix possède la certification ISO/IEC 27001:2022 et ISO 9001:2015, qui témoignent de notre engagement envers la sécurité de l'information et la qualité de nos systèmes de gestion."
+          "answer": "Victrix possède la <a href=\"/fr/ressources/certification-iso-27001-iso-9001/\">certification ISO/IEC 27001:2022 et ISO 9001:2015</a>, qui témoignent de notre engagement envers la sécurité de l'information et la qualité de nos systèmes de gestion."
         }
       ]
     },
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Services gérés"
@@ -298,7 +313,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "seoTitle": "Services TI gérés | Gestion, Sécurité et Performance | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

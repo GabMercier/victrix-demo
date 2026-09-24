@@ -40,6 +40,45 @@ html {
   scroll-behavior: smooth;
   /* Account for the sticky header (80px) when jumping to #anchors. */
   scroll-padding-top: 96px;
+
+  /* ÉCRANS TRÈS LARGES (2026-09-23) — au-delà de 1920px de large, la racine
+     grandit PROGRESSIVEMENT jusqu'à +25 % à 2560px. Combiné au cadran passé en
+     `rem` (`--spacing-container-max`, theme.css), c'est exactement ce que
+     Gabriel obtenait en zoomant son navigateur à 125 % sur son écran 2560 :
+     bande de 2400px et corps de texte à 20px, au lieu de 1920px et 16px.
+     Relever la SEULE racine n'aurait pas suffi — on aurait eu du texte plus
+     gros dans un cadre inchangé.
+
+     Pourquoi une INTERPOLATION et non une media query à seuil. Un seuil dur
+     est non monotone dès qu'on le combine au zoom du navigateur : sur un
+     2560, zoomer à 125 % donne un viewport de 2048 (au-dessus du seuil, texte
+     agrandi) mais zoomer à 150 % donne 1707 (en dessous — la règle se désarme
+     et le texte RÉTRÉCIT quand on zoome). L'interpolation n'a pas de palier :
+     elle vaut exactement 0 à 1920px et en dessous, donc elle est strictement
+     sans effet sur tout ce qui existait avant.
+
+     Mesuré sur les deux machines de Gabriel le 2026-09-23 :
+       portable    innerWidth 1280, devicePixelRatio 1.5  -> facteur 0, inchangé
+       grand écran innerWidth 2560, devicePixelRatio 1    -> facteur 1, +25 %
+     DEUX PIÈGES ÉVITÉS ICI, et c'est ce qui dicte l'écriture exacte :
+       · la borne basse est `100%`, jamais une valeur en `px`. Poser
+         `font-size: 16px` sur la racine ANNULE le réglage « taille de police »
+         du navigateur — précisément ce que le lot L-typo avait rétabli, et ce
+         que verrouille `tests/e2e/typographie.spec.ts`. En `%`, la préférence
+         de l'utilisateur reste le point de départ et on ne fait qu'ajouter
+         par-dessus ;
+       · l'interpolation ne divise QUE par un nombre (`/ 160`), jamais une
+         longueur par une longueur. Le quotient de deux longueurs ne donne un
+         nombre qu'avec CSS Values 4, arrivé dans les navigateurs en 2024 —
+         trop récent pour un site public.
+     `(100vw - 1920px) / 160` vaut donc 0px à 1920 et 4px à 2560 (640/160),
+     soit les 4px qui mènent de 16 à 20.
+
+     Le plafond de gouttière de `container-site` reste en px (96) à dessein :
+     la formule `clamp(2rem, 3.75vw, 96px)` est DUPLIQUÉE dans home-hero.astro
+     et service-hero.astro avec des commentaires de synchronisation, et à
+     2560px `3.75vw` vaut 96px de toute façon. */
+  font-size: clamp(100%, calc(100% + (100vw - 1920px) / 160), 125%);
 }
 
 body {
@@ -49,7 +88,9 @@ body {
   font-weight: var(--fw-regular);
   line-height: var(--lh-normal);
   color: var(--color-text);
-  background-color: var(--color-bg);
+  /* Canevas = ivoire (maquette 2026-09-21). `--color-bg` reste BLANC : c'est
+     le fond des cartes (BlogCard, portail, encarts d'article). */
+  background-color: var(--color-ivoire);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -325,13 +366,13 @@ a.btn-outline {
   font-weight: 600;
   line-height: 1.2;
   text-decoration: none;
-  border: 2px solid var(--color-primary, #1a5bff);
-  background: var(--color-primary, #1a5bff);
+  border: 2px solid var(--color-primary, #1d46f3);
+  background: var(--color-primary, #1d46f3);
   color: #fff;
 }
 a.btn-outline {
   background: transparent;
-  color: var(--color-primary, #1a5bff);
+  color: var(--color-primary, #1d46f3);
 }
 a.btn:hover,
 a.btn-outline:hover {
@@ -419,3 +460,156 @@ a.btn-outline:hover {
   padding: 0.15em 0.4em;
   border-radius: var(--radius-s);
 }
+
+/* ---------- Forme des articles : 4 patrons (lot 4, 2026-09-24) ----------
+   Le corps Markdown des articles porte sa mise en forme en HTML brut
+   (docs/plan-forme-articles.md). Un seul rendu par patron, ICI, sous .prose :
+   bouton (a.btn / a.btn-outline — classes déjà admises par rich.ts), encadré
+   <aside class="article-encadre">, FAQ <details class="article-faq"> (sans
+   script) et tableau <div class="article-tableau"><table>. Jetons de
+   theme.css ; contrastes : encre #21242a sur beige/blanc ≥ 12:1, blanc sur
+   --color-primary 7,4:1. Pas de preflight : border-style explicite. */
+
+/* 1. Bouton — le rendu global a.btn s'applique ; .prose a (couleur + souligné)
+   passerait devant : on neutralise ici. */
+.prose a.btn,
+.prose a.btn-outline {
+  text-decoration: none;
+  margin-top: 0;
+  border-style: solid;
+}
+.prose a.btn {
+  color: #fff;
+}
+.prose a.btn-outline {
+  color: var(--color-primary, #1d46f3);
+}
+.prose a.btn:hover,
+.prose a.btn-outline:hover {
+  filter: brightness(0.92);
+}
+.prose a.btn-outline:hover {
+  color: var(--color-primary, #1d46f3);
+}
+
+/* 2. Encadré « Le saviez-vous » */
+.prose .article-encadre {
+  margin: 0;
+  padding: var(--space-4) var(--space-5);
+  border-left: 4px solid var(--color-primary, #1d46f3);
+  border-radius: var(--radius-m, 8px);
+  background-color: var(--color-surface-container, #f6f3ef);
+  color: var(--color-encre, #21242a);
+}
+.prose .article-encadre > * + * {
+  margin-top: var(--space-3);
+}
+.prose .article-encadre__titre {
+  margin: 0;
+  font-size: var(--fs-200);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-nuit, #000d2e);
+}
+
+/* 3. FAQ dépliante — <details> natif, chevron en CSS, aucun script. */
+.prose .article-faq {
+  margin: 0;
+  border: 1px solid var(--color-contour, #c4c5d9);
+  border-radius: var(--radius-m, 8px);
+  background-color: #fff;
+}
+.prose .article-faq + .article-faq {
+  margin-top: var(--space-2);
+}
+.prose .article-faq > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  margin: 0;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--color-nuit, #000d2e);
+  list-style: none;
+}
+.prose .article-faq > summary::-webkit-details-marker {
+  display: none;
+}
+.prose .article-faq > summary::after {
+  content: '';
+  flex: none;
+  width: 0.6em;
+  height: 0.6em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+}
+.prose .article-faq[open] > summary::after {
+  transform: rotate(-135deg);
+}
+.prose .article-faq > summary:hover {
+  background-color: var(--color-surface-variant, #f3f4f7);
+}
+.prose .article-faq > summary:focus-visible {
+  outline: 2px solid var(--color-primary, #1d46f3);
+  outline-offset: 2px;
+  border-radius: var(--radius-m, 8px);
+}
+.prose .article-faq > :not(summary) {
+  margin: 0;
+  padding: 0 var(--space-4) var(--space-4);
+}
+.prose .article-faq > :not(summary) + :not(summary) {
+  padding-top: 0;
+  margin-top: var(--space-3);
+}
+
+/* 4. Tableau lisible — le CONTENEUR défile, pas la page. */
+.prose .article-tableau {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--color-contour, #c4c5d9);
+  border-radius: var(--radius-m, 8px);
+  -webkit-overflow-scrolling: touch;
+}
+.prose .article-tableau table {
+  width: 100%;
+  min-width: 480px;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: var(--fs-300);
+  line-height: 1.45;
+}
+.prose .article-tableau th,
+.prose .article-tableau td {
+  padding: var(--space-3) var(--space-4);
+  border: 0;
+  border-bottom: 1px solid var(--color-contour, #c4c5d9);
+  text-align: left;
+  vertical-align: top;
+}
+.prose .article-tableau th {
+  background-color: var(--color-surface-container, #f6f3ef);
+  color: var(--color-nuit, #000d2e);
+  font-weight: 700;
+}
+.prose .article-tableau thead th {
+  border-bottom-width: 2px;
+}
+.prose .article-tableau tbody tr:nth-child(even) td {
+  background-color: var(--color-surface-variant, #f3f4f7);
+}
+.prose .article-tableau tbody tr:last-child td,
+.prose .article-tableau tbody tr:last-child th {
+  border-bottom: 0;
+}
+.prose .article-tableau th > *,
+.prose .article-tableau td > * {
+  margin: 0;
+}
+

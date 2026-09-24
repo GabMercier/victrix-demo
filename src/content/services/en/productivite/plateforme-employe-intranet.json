@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Employee Experience Platform",
   "description": "Leverage Victrix's digital development expertise to build a modern intranet employee platform based on Microsoft 365 and AI.",
-  "noindex": false,
-  "slug": "productivity-consulting/employee-platform-intranet",
-  "seoTitle": "Modern Intranet: AI for the Employee Experience | Services | Victrix",
   "seoH1": "Modern Intranet",
   "contactSujet": "",
   "contactService": "",
@@ -22,17 +18,17 @@
       "cta2Href": "",
       "image": "/wp-content/uploads/2023/08/vackground-com-aguc-v_d1ii-unsplash-3-scaled.jpg",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Reinvent Your Intranet",
       "intro": "Your intranet project is the perfect opportunity to use AI in a responsible and innovative way.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
-        "title": "Waste of time and inefficiency",
-        "text": "Ineffective internal communication leads to low tool adoption and lack of team commitment. Employees juggle multiple platforms, making access to resources more complex — and without quick access to the right information, they get stuck.",
+        "title": "Your concerns: an outdated intranet unable to meet employees’ needs",
+        "text": "<strong>Waste of time and inefficiency</strong> — on average, employees spend 30% of their time searching for information. <strong>Lack of engagement</strong> — ineffective internal communication leads to low tool adoption and lack of team commitment. <strong>Information overload</strong> — employees juggle multiple platforms, making access to resources more complex. <strong>Lack of real-time support</strong> — without quick access to the right information, employees get stuck.",
         "watermark": "engrenage",
         "stats": [
           {
@@ -46,19 +42,18 @@
         "title": "HR conversational agent with AI",
         "text": "Saves time for HR teams by automating responses and reducing human error.",
         "linkLabel": "Schedule a consultation",
-        "linkHref": "/en/contact/"
+        "linkHref": "/en/contact/",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "An Intranet Platform for a Unified, Modern Employee Experience",
       "headingStyle": "underline",
-      "intro": "Victrix helps you build an internal communications tool that goes far beyond the traditional intranet. By leveraging the power of Microsoft's <a href=\"/en/services/intelligence-artificielle/\">artificial intelligence</a>, we transform your digital environment into a fluid, engaging experience. The pillars of the Victrix Employee Platform offering:",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
+      "intro": "Victrix helps you build an internal communications tool that goes far beyond the traditional intranet. By leveraging the power of Microsoft's <a href=\"/en/services/artificial-intelligence/\">artificial intelligence</a>, we transform your digital environment into a fluid, engaging experience. The pillars of the Victrix Employee Platform offering:",
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -67,6 +62,9 @@
           "number": "01",
           "title": "Comprehensive and accessible digital environment",
           "text": "Designing navigation and architecture that takes into account the employee's entire digital workspace.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -74,6 +72,9 @@
           "number": "02",
           "title": "Simplified information retrieval and knowledge sharing",
           "text": "Bridging the gap between the user and the information they are seeking.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -81,22 +82,29 @@
           "number": "03",
           "title": "Personalized experience",
           "text": "Journeys and content tailored to different user segments.",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Benefits of Our Modern Intranet Offering",
-      "fond": "",
       "paragraphs": [
         "Victrix offers more than a simple corporate intranet solution. We develop a bespoke platform designed to boost productivity and collaboration, powered by AI and perfectly tailored to your organization's needs — a flexible, scalable offering tailored to your digital strategy.",
+        "What sets our offering apart: recognized expertise with Microsoft 365 solutions (Teams, SharePoint, Copilot, etc.) and Viva; an intelligent chatbot, integrated into your work environment to answer employees’ common questions; a flexible, scalable offering tailored to your digital strategy; a dedicated team of experts in user experience (UX), interface design (UI), and communication; extensive experience within complex environments and private or public sector organizations.",
         "With Victrix's <a href=\"/en/services/productivity-consulting/\">productivity experts</a> by your side, improving the employee experience becomes an accessible and effective reality."
       ],
-      "image": "/wp-content/uploads/2023/08/vackground-com-aguc-v_d1ii-unsplash-3-scaled.jpg",
-      "imageAlt": "",
+      "image": "/wp-content/uploads/2023/08/microsoftteams-image-10.png",
+      "imageAlt": "Diagram of the employee platform designed by Victrix",
       "stats": [
         {
           "value": "M365 + Viva",
@@ -119,7 +127,8 @@
       "badge": "",
       "bullets": [],
       "cardTitle": "",
-      "cardText": ""
+      "cardText": "",
+      "fond": ""
     },
     {
       "_bookshop_name": "cta",
@@ -131,7 +140,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "slug": "productivity-consulting/employee-platform-intranet",
+  "seoTitle": "Modern Intranet: AI for the Employee Experience | Services | Victrix",
+  "_schema": "default",
+  "noindex": false
 }

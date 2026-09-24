@@ -1,0 +1,86 @@
+{
+  "_schema": "default",
+  "title": "Gestion du onboarding d’un nouvel employé",
+  "description": "Découvrez notre application d’onboarding. Centralisée et automatisée, elle coordonne vos équipes pour assurer une intégration fluide des nouveaux employés, de la gestion des documents à la mise en place du matériel et des formations.",
+  "image": "/images/solutions/onboarding-employe/01.jpg",
+  "sector": "RH",
+  "solutionType": "Automatisation",
+  "featured": false,
+  "order": 50,
+  "href": "",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": [
+    {
+      "_bookshop_name": "product-hero",
+      "type": "product-hero",
+      "badge": "Solution Ø Studio",
+      "title": "Gestion du onboarding d’un nouvel employé",
+      "titleHighlight": "",
+      "lead": "Découvrez notre application d’onboarding. Centralisée et automatisée, elle coordonne vos équipes pour assurer une intégration fluide des nouveaux employés, de la gestion des documents à la mise en place du matériel et des formations.",
+      "ctaLabel": "Parler à un expert",
+      "ctaHref": "#formulaire",
+      "cta2Label": "Voir le catalogue",
+      "cta2Href": "/fr/solutions/",
+      "image": "/images/solutions/onboarding-employe/01.jpg",
+      "imageAlt": "Photographie d’illustration — Gestion du onboarding d’un nouvel employé",
+      "fond": "beige"
+    },
+    {
+      "_bookshop_name": "bento-metrics",
+      "type": "bento-metrics",
+      "title": "En bref",
+      "intro": "",
+      "fond": "ivoire",
+      "featured": {
+        "title": "Gestion du onboarding d’un nouvel employé",
+        "text": "",
+        "watermark": "eclair",
+        "stats": [
+          {
+            "value": "Secteur manufacturier",
+            "label": "Client"
+          },
+          {
+            "value": "Entre 25.000 et 50.000 $CAD",
+            "label": "Coût"
+          },
+          {
+            "value": "Entre 2 et 4 mois",
+            "label": "Délai"
+          },
+          {
+            "value": "Power Platform, SharePoint, Active Directory, Microsoft 365, Outlook",
+            "label": "Technologies"
+          }
+        ]
+      },
+      "aside": {
+        "icon": "coche",
+        "image": "",
+        "imageAlt": "",
+        "title": "Conçue par Ø Studio",
+        "text": "Notre studio de création Power Platform et Dynamics 365 personnalise la solution à vos processus.",
+        "linkLabel": "Découvrir Ø Studio",
+        "linkHref": "/fr/services/productivite/o-studio/"
+      }
+    },
+    {
+      "_bookshop_name": "form",
+      "type": "form",
+      "title": "Parlez-nous de votre projet",
+      "intro": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+      "submitLabel": "Demander une consultation",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "o-studio",
+      "fond": "",
+      "fields": []
+    }
+  ]
+}

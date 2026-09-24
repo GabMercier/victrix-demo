@@ -81,8 +81,22 @@ _inputs:
     label: "Lien du bouton"
     comment: "URL finale, préfixe de langue inclus (ex. /fr/decouvrir)."
   image:
+    type: image
     label: "Photo de fond"
-    comment: "Chemin public (ex. /images/home/hero-accueil.jpg) — voilée d'ivoire pour la lisibilité. Vide = fond uni."
+    comment: >-
+      Visuel de fond du heros, voile d'ivoire pour la lisibilite. Vide = fond
+      uni. Le fichier televerse atterrit dans public/images/home/ (adresse
+      servie telle quelle, /images/...).
+    options:
+      empty_type: string
+      paths:
+        # PIEGE 2026-09-21 : sans `paths`, un televersement depuis l'editeur
+        # visuel tombait sur le repli global (paths.uploads =
+        # src/assets/uploads) et enregistrait une adresse qu'Astro NE SERT
+        # PAS -> image invisible apres reconstruction. Meme correctif que les
+        # cartes du mega-menu (cloudcannon.config.yml) et strategic-value.
+        static: public
+        uploads: public/images/home
   cta2Label:
     label: "Libellé du second bouton"
     comment: "Bouton contour à droite du principal (optionnel — vide = absent)."

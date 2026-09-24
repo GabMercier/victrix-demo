@@ -27,6 +27,7 @@ spec:
 
 blueprint:
   type: home-expertises
+  fond: ivoire
   sectionTitle: "Nos expertises"
   intro: ""
   learnMore: "En savoir plus"
@@ -51,6 +52,24 @@ _inputs:
   type:
     hidden: true
     comment: "Discriminant technique du contrat sections — ne pas modifier."
+  # « Fond de section » (2026-09-21) : choix BORNÉ à la palette officielle,
+  # jamais de couleur libre — même champ que les autres sections.
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      values: _select_data.fonds
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+        icon: square
+        icon_color:
+          - key: couleur
+    comment: "Couleur de fond de la section, bornée à la palette officielle (pastilles dans la liste)."
   sectionTitle:
     label: "Titre de section"
   intro:

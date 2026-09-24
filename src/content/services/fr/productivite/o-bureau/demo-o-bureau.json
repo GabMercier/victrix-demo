@@ -1,0 +1,59 @@
+{
+  "_schema": "default",
+  "title": "O bureau — Solution de réservation d’espace de travail",
+  "description": "Facilitez le retour au bureau avec O bureau, la solution connectée de réservation d’espace de travail. Demandez une démonstration dès aujourd’hui.",
+  "noindex": true,
+  "slug": "",
+  "seoTitle": "O bureau | Réservation d’espace de travail | Demandez une démo | Victrix",
+  "seoH1": "",
+  "contactSujet": "",
+  "contactService": "",
+  "sections": [
+    {
+      "_bookshop_name": "service-hero",
+      "type": "service-hero",
+      "eyebrow": "O bureau",
+      "titleAccent": "",
+      "title": "Solution de réservation d’espace de travail",
+      "titleHighlight": "",
+      "lead": "Une solution connectée pour faciliter le travail au bureau, intégrée à votre environnement Microsoft 365.",
+      "ctaLabel": "Demandez une démo",
+      "ctaHref": "/fr/contact",
+      "image": "/wp-content/uploads/2023/08/obureau-mobile.png",
+      "imageAlt": "Interface utilisateur mobile d’O bureau"
+    },
+    {
+      "_bookshop_name": "rich-text",
+      "type": "rich-text",
+      "title": "Une solution connectée pour faciliter le travail au bureau",
+      "fond": "ivoire",
+      "paragraphs": [
+        "Découvrez notre solution de réservation d’espace de travail intégrée à votre <a href=\"/fr/services/services-ti-geres/maximisez-lutilisation-de-votre-ecosysteme-m365/\">environnement Microsoft 365</a>.",
+        "Simple à piloter et à mettre en place, notre solution vous aidera à faciliter la présence au bureau en offrant une expérience fluide, agréable et alignée avec vos politiques de présentiel.",
+        "<ul><li><strong>Client :</strong> multisecteur</li><li><strong>Coût :</strong> à partir de 25 000 $ CAD</li><li><strong>Délai de personnalisation :</strong> 1 mois</li><li><strong>Technologies utilisées :</strong> Power Platform, SharePoint, Teams, Forms, Bookings, Microsoft 365</li></ul>"
+      ]
+    },
+    {
+      "_bookshop_name": "callout",
+      "type": "callout",
+      "fond": "beige",
+      "title": "Envie d’en voir plus avant la démo ?",
+      "body": "",
+      "ctaLabel": "En savoir plus sur O bureau",
+      "ctaHref": "/fr/services/productivite/o-bureau/",
+      "layout": "box"
+    },
+    {
+      "_bookshop_name": "cta",
+      "type": "cta",
+      "title": "Demande de démo O bureau",
+      "body": "Voyez O bureau en action avec l’un de nos experts, dans votre contexte Microsoft 365.",
+      "ctaLabel": "Demandez une démo",
+      "ctaHref": "/fr/contact",
+      "cta2Label": "",
+      "cta2Href": "",
+      "variant": "nuit",
+      "fond": "ivoire"
+    }
+  ]
+}

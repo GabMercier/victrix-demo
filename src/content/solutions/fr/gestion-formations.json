@@ -1,9 +1,121 @@
 {
+  "_schema": "default",
   "title": "Gestion des formations",
   "description": "Permet aux employés de s'inscrire et de suivre leurs formations, tandis que les gestionnaires suivent la progression.",
   "image": "/images/solutions/gestion-formations.jpg",
   "sector": "RH",
   "solutionType": "Formation",
-  "order": 80,
-  "href": "/contact"
+  "featured": false,
+  "order": 150,
+  "href": "",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": [
+    {
+      "_bookshop_name": "product-hero",
+      "type": "product-hero",
+      "badge": "Solution Ø Studio",
+      "title": "Gestion des formations pour les employés",
+      "titleHighlight": "",
+      "lead": "Découvrez notre application de gestion des formations internes. Centralisée et automatisée, elle permet aux employés de consulter, s’inscrire et suivre leurs formations, tandis que les gestionnaires organisent et suivent les sessions avec des rappels automatiques.",
+      "ctaLabel": "Parler à un expert",
+      "ctaHref": "#formulaire",
+      "cta2Label": "Voir le catalogue",
+      "cta2Href": "/fr/solutions/",
+      "image": "/images/solutions/gestion-formations/01.jpg",
+      "imageAlt": "Maquette de présentation — Gestion des formations pour les employés",
+      "fond": "beige"
+    },
+    {
+      "_bookshop_name": "bento-metrics",
+      "type": "bento-metrics",
+      "title": "En bref",
+      "intro": "",
+      "fond": "ivoire",
+      "featured": {
+        "title": "Gestion des formations pour les employés",
+        "text": "",
+        "watermark": "eclair",
+        "stats": [
+          {
+            "value": "Secteur industriel",
+            "label": "Client"
+          },
+          {
+            "value": "35.000 $CAD",
+            "label": "Coût"
+          },
+          {
+            "value": "1 mois",
+            "label": "Délai"
+          },
+          {
+            "value": "Power Platform, SharePoint, Teams",
+            "label": "Technologies"
+          }
+        ]
+      },
+      "aside": {
+        "icon": "coche",
+        "image": "",
+        "imageAlt": "",
+        "title": "Conçue par Ø Studio",
+        "text": "Notre studio de création Power Platform et Dynamics 365 personnalise la solution à vos processus.",
+        "linkLabel": "Découvrir Ø Studio",
+        "linkHref": "/fr/services/productivite/o-studio/"
+      }
+    },
+    {
+      "_bookshop_name": "galerie",
+      "type": "galerie",
+      "title": "Aperçu de l’application",
+      "intro": "",
+      "colonnes": "2",
+      "fond": "ivoire",
+      "images": [
+        {
+          "image": "/images/solutions/gestion-formations/02.png",
+          "alt": "Capture d’écran de l’application — Gestion des formations pour les employés",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gestion-formations/03.png",
+          "alt": "Capture d’écran de l’application — Gestion des formations pour les employés",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gestion-formations/04.png",
+          "alt": "Capture d’écran de l’application — Gestion des formations pour les employés",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gestion-formations/05.png",
+          "alt": "Capture d’écran de l’application — Gestion des formations pour les employés",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/gestion-formations/06.png",
+          "alt": "Capture d’écran de l’application — Gestion des formations pour les employés",
+          "legende": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "form",
+      "type": "form",
+      "title": "Parlez-nous de votre projet",
+      "intro": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+      "submitLabel": "Demander une consultation",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "o-studio",
+      "fond": "",
+      "fields": []
+    }
+  ]
 }

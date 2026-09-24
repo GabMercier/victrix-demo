@@ -1,0 +1,74 @@
+{
+  "_genere_par": "scripts/migration/export-catalogue-ostudio.mjs",
+  "_lire_aussi": "docs/migration/catalogue-ostudio.md (rapport) · docs/plan-import-catalogue-ostudio.md (cible)",
+  "slug": "legacy-vers-power-apps",
+  "nouvelle": false,
+  "source": {
+    "slug": "application-legacy-vers-power-apps",
+    "id": 275,
+    "url": "https://o-studio-catalogue.victrix.ca/application-legacy-vers-power-apps/",
+    "modifiee": "2025-07-11T19:28:24"
+  },
+  "titre": "Application Legacy vers Power Apps",
+  "intro": "Découvrez notre solution de migration d’application vers Power Apps. Nous modernisons vos applications héritées tout en préservant leurs fonctionnalités critiques, avec une intégration fluide et une formation pour une transition réussie vers une interface moderne et interopérable.",
+  "introMarkdown": "**Découvrez notre solution de migration d’application vers Power Apps. Nous modernisons vos applications héritées tout en préservant leurs fonctionnalités critiques, avec une intégration fluide et une formation pour une transition réussie vers une interface moderne et interopérable.**",
+  "faits": [
+    {
+      "cle": "client",
+      "libelle": "Client",
+      "libelleSource": "Client",
+      "valeur": "Multi-Secteur (Municipal, Public, Industriel, etc.)"
+    },
+    {
+      "cle": "cout",
+      "libelle": "Coût",
+      "libelleSource": "Coût",
+      "valeur": "Entre 100k et 500k $ CAD"
+    },
+    {
+      "cle": "delai",
+      "libelle": "Délai",
+      "libelleSource": "Délais de réalisation",
+      "valeur": "Entre 3 et 12 mois"
+    },
+    {
+      "cle": "technologies",
+      "libelle": "Technologies",
+      "libelleSource": "Technologies utilisées",
+      "valeur": "Power Platform, SharePoint, Teams, Forms, Bookings, Microsoft 365"
+    }
+  ],
+  "invitation": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+  "images": [
+    {
+      "fichier": "/images/solutions/legacy-vers-power-apps/01.jpg",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2024/08/1.-main-file-1.jpg",
+      "nature": "maquette",
+      "alt": "Maquette de présentation — Application Legacy vers Power Apps",
+      "altSource": "",
+      "largeur": 1600,
+      "hauteur": 1067,
+      "octets": 253877
+    },
+    {
+      "fichier": "/images/solutions/legacy-vers-power-apps/02.png",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2025/01/capex2.png",
+      "nature": "capture",
+      "alt": "Capture d’écran de l’application — Application Legacy vers Power Apps",
+      "altSource": "",
+      "largeur": 1917,
+      "hauteur": 865,
+      "octets": 87581
+    },
+    {
+      "fichier": "/images/solutions/legacy-vers-power-apps/03.png",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2025/01/capex.png",
+      "nature": "capture",
+      "alt": "Capture d’écran de l’application — Application Legacy vers Power Apps",
+      "altSource": "",
+      "largeur": 828,
+      "hauteur": 1792,
+      "octets": 91890
+    }
+  ]
+}

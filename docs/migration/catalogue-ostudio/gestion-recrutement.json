@@ -1,0 +1,54 @@
+{
+  "_genere_par": "scripts/migration/export-catalogue-ostudio.mjs",
+  "_lire_aussi": "docs/migration/catalogue-ostudio.md (rapport) · docs/plan-import-catalogue-ostudio.md (cible)",
+  "slug": "gestion-recrutement",
+  "nouvelle": true,
+  "source": {
+    "slug": "gestion-du-processus-de-recrutement",
+    "id": 230,
+    "url": "https://o-studio-catalogue.victrix.ca/gestion-du-processus-de-recrutement/",
+    "modifiee": "2025-07-11T22:30:04"
+  },
+  "titre": "Gestion du processus de recrutement",
+  "intro": "Une application qui améliorer votre processus de recrutement. Elle centralise vos offres, facilite le suivi des candidatures et optimise chaque étape du processus pour une expérience simplifiée et efficace.",
+  "introMarkdown": "**Une application qui améliorer votre processus de recrutement. Elle centralise vos offres, facilite le suivi des candidatures et optimise chaque étape du processus pour une expérience simplifiée et efficace.**",
+  "faits": [
+    {
+      "cle": "client",
+      "libelle": "Client",
+      "libelleSource": "Client",
+      "valeur": "Secteur public"
+    },
+    {
+      "cle": "cout",
+      "libelle": "Coût",
+      "libelleSource": "Coût",
+      "valeur": "50.000 à 100.000 $CAD"
+    },
+    {
+      "cle": "delai",
+      "libelle": "Délai",
+      "libelleSource": "Délais de personnalisation",
+      "valeur": "Entre 2 et 4 mois"
+    },
+    {
+      "cle": "technologies",
+      "libelle": "Technologies",
+      "libelleSource": "Technologies utilisées",
+      "valeur": "Power Platform, SharePoint, Bookings"
+    }
+  ],
+  "invitation": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+  "images": [
+    {
+      "fichier": "/images/solutions/gestion-recrutement/01.jpg",
+      "source": "https://o-studio-catalogue.victrix.ca/wp-content/uploads/2024/08/the-interviewer-is-submitting-the-resume-document-2024-11-26-04-46-55-utc.jpg",
+      "nature": "banque",
+      "alt": "Photographie d’illustration — Gestion du processus de recrutement",
+      "altSource": "",
+      "largeur": 1600,
+      "hauteur": 1016,
+      "octets": 127717
+    }
+  ]
+}

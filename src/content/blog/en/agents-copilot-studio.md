@@ -5,6 +5,7 @@ excerpt: "Discover all the benefits of a tailored Copilot intelligent agent that
 tags: ["Our articles"]
 topics: ["Artificial intelligence", "Productivity"]
 slug: "copilot-studio-agents"
+draft: false
 coverImage: "/wp-content/uploads/2025/07/cover-article-victrix.jpg"
 seoTitle: "Personalized Intelligent Agent: Your Trusted Partner | Copilot"
 wpUrl: "/en/copilot-studio-agents/"
@@ -21,13 +22,15 @@ Deploying a tailored intelligent agent means providing your employees with a too
 - Anticipates your needs and easily adapts to new tasks
 - Responds quickly to your requests, regardless of the date or time you contact it
 
-The generative AI functions offered by Large Language Models (LLMs) such as ChatGPT and [Copilot for Microsoft 365](/en/services/productivity-consulting/copilot-for-microsoft-365/) are just a **small part of what [artificial intelligence](/en/services/intelligence-artificielle/) can do to improve your organization's productivity** while enhancing the experience of your employees and customers.
+The generative AI functions offered by Large Language Models (LLMs) such as ChatGPT and [Copilot for Microsoft 365](/en/services/productivity-consulting/copilot-for-microsoft-365/) are just a **small part of what [artificial intelligence](/en/services/artificial-intelligence/) can do to improve your organization's productivity** while enhancing the experience of your employees and customers.
 
 In this article, you will discover how to take your business to the next level by [deploying an intelligent AI agent](/en/services/productivity-consulting/copilot-studio/), **trained on your knowledge bases and developed specifically for your organizational context.**
 
 ### We help you rapidly develop your first tailored intelligent agent.
 
-<a class="article-cta" href="/en/contact/">Consult a Copilot Studio and Azure AI expert</a>
+<a class="btn" href="/en/contact/">Consult a Copilot Studio and Azure AI expert</a>
+
+## An AI Agent That Gets People
 
 ### Save Time
 
@@ -56,11 +59,15 @@ These are just a few examples among many others where a **tailored, intelligent 
 Offer them a customized intelligent agent, a true *copilot* capable of boosting their productivity. 
 [Create your intelligent agent with Victrix](/en/contact/)
 
+## Transform Your Organizations with Custom Copilot Studio Agents
+
 With expertise in Copilot Studio and Azure OpenAI, Victrix supports organizations in designing and **implementing customized Copilot intelligent agents**.
 
 Start building intelligent agents capable of **interacting, responding**, and above all, **acting**, while integrating with your business processes and data.
 
 Whether it's **responding to HR requests, automating IT support, or accessing complex sources of information** such as legal or regulatory databases, your tailored intelligent agent is your best partner.
+
+### Concrete Benefits of a Tailored Intelligent Agent
 
 - **Significant reduction** in time spent searching for information
 - **Strengthened adoption** of internal policies
@@ -71,9 +78,26 @@ Whether it's **responding to HR requests, automating IT support, or accessing co
 - **Stimulation of employee engagement** through the ability to delegate certain tasks while maintaining control
 - **Seamless collaboration** between humans and AI, where the intelligent agent is a reliable and contextual partner, rooted in your organizational environment
 
+<aside class="article-encadre">
+<p class="article-encadre__titre">Did You Know?</p>
+
+Une [étude de l’Université Cornell](https://arxiv.org/abs/2504.11443), menée sur six mois, démontre des gains de temps significatifs sur un large éventail de tâches courantes, et ce, dans de nombreux secteurs d’activité.
+
+Parmi les travailleurs ayant eu accès à cette technologie, **près de 40 % l’ont utilisée régulièrement dans le cadre de leur emploi**.
+
+Résultats:
+
+- Moins de temps passé à lire les courriels, et une rédaction de documents effectuée **en moyenne 12 % plus rapidement**.
+- L’agent IA conversationnel permet aux agents du service d'assistance par chat de **résoudre 14 % de problèmes en plus par heure.**
+
+</aside>
+## Building a Tailored Intelligent Agent at Victrix
+
 We create modern tools, such as**tailored Copilot intelligent agents**, which simplify access to information scattered across your systems and documents. Our AI agents eliminate the time wasted searching for information on a daily basis.
 
 We also provide upstream support to promote the adoption of AI, improve your teams' skills, and develop their autonomy.
+
+### Practical Use Cases by Victrix
 
 At Victrix, we help organizations create high-value, **intelligent Copilot Studio agents**. Here are some concrete examples of what can be implemented.
 
@@ -84,7 +108,7 @@ At Victrix, we help organizations create high-value, **intelligent Copilot Studi
 
 ### These Cases Are Inspiring, But Would You Like to Discover How These Agents Can Help You Achieve Your Goals?
 
-<a class="article-cta" href="/en/contact/">Request a demo</a>
+<a class="btn" href="/en/contact/">Request a demo</a>
 
 ## Give your teams the tools they need to perform. Create your intelligent Copilot agent.
 
@@ -92,6 +116,24 @@ At Victrix, we support you every step of the way. From identifying use cases to 
  
  [Schedule a consultation](/en/contact/)
 
+### What Is an Intelligent Agent in Artificial Intelligence?
+
+An intelligent agent in AI is a customized system tailored to your environment and data. These systems are capable of interacting, responding, and acting by designing their own workflows and using existing tools.
+
+### What Is the Difference Between a Tailored Copilot Agent and a Traditional Chatbot?
+
+Traditional chatbots **answer questions**. Copilot agents **take action**.
+
+Copilot agents trigger workflows, query databases, or connect multiple systems via Microsoft Graph or Power Platform connectors, with little or no human intervention. Traditional chatbots are limited in terms of knowledge and reasoning capabilities without human intervention at every step.
+
+The Copilot agent is therefore a **truly intelligent assistant**, capable of interpreting intentions, contextualizing its responses, and providing real operational value.
+
+### Is It Compatible With Dynamics 365 and Microsoft 365?
+
+Yes. Copilot Studio agents [integrate natively with Microsoft 365](/en/ressources/microsoft-copilot-features/), including **Microsoft Teams, SharePoint, Outlook, Word, and Excel** apps. They can also interact with Microsoft Dynamics 365 using Microsoft Graph connectors or Power Automate, depending on your permission settings. A good example: in [Dynamics 365 Field Service](/en/services/productivity-consulting/dynamics-365-field-service/), for instance, an intelligent scheduling assistant supports your dispatchers in managing field operations.
+
+But that’s not all – the tailored intelligent agents designed by Victrix also integrate with your other internal systems to search for information or complete tasks directly within them.
+
 ### Consult Our Experts to Discover All the Possible Integrations of a Tailored Intelligent Agent with Your Current Systems
 
-<a class="article-cta" href="/en/contact/">Talk to a Copilot and Azure AI expert</a>
+<a class="btn" href="/en/contact/">Talk to a Copilot and Azure AI expert</a>

@@ -58,8 +58,21 @@ jobs:
       - name: Sections (clés attendues par l'éditeur + vignettes)
         run: npm run check:sections
 
+      # Redirections de la migration (2026-09-22) : la matrice
+      # src/data/redirects-migration.json est GÉNÉRÉE — elle doit rester à jour
+      # avec le contenu (un slug changé sans redirection = un 404 sur une URL
+      # que Google a indexée). Réparation : npm run build:redirects.
+      - name: Redirections (matrice à jour, aucune URL sans cible)
+        run: npm run check:redirects
+
       - name: Build
         run: npm run build
+
+      # Cibles des redirections (2026-09-22) : une 301 vers un 404 est PIRE
+      # qu'un 404 — la page d'origine perd son référencement sans rien
+      # transmettre. Se joue après le build, sur dist/.
+      - name: Redirections (les cibles existent bien)
+        run: node scripts/build-redirects.mjs --dist
 
       # Liens internes (2026-09-18) : tout <a href> interne du site construit
       # doit mener à une page de dist/ — deux incidents de liens cassés saisis
@@ -68,6 +81,14 @@ jobs:
       # (.cloudcannon/postbuild). Réparation mécanique : npm run fix:links.
       - name: Liens internes
         run: npm run check:links -- --strict
+
+      # Préremplissage des CTA (2026-09-22, lot L-prefill) : les deux listes du
+      # formulaire Contact sont OBLIGATOIRES. Un CTA qui y arrive sans les
+      # remplir redemande au visiteur ce que la page savait déjà — c'était le
+      # cas de 171 liens de contenu avant ce lot. Se joue sur dist/, comme les
+      # liens internes : seul le HTML final dit ce que le visiteur reçoit.
+      - name: Préremplissage des CTA vers le Contact
+        run: npm run check:prefill
 
       # Non-blocking for now: the current highs are transitive via wrangler
       # (build-time tooling), and the fix requires the @astrojs/cloudflare v14 /

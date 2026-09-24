@@ -1,9 +1,146 @@
 {
+  "_schema": "default",
   "title": "Portail de gestion des subventions",
   "description": "Centralise vos demandes, automatise les approbations et simplifie la reddition de comptes.",
   "image": "/images/solutions/gestion-subventions.jpg",
   "sector": "Finance",
   "solutionType": "Automatisation",
-  "order": 30,
-  "href": "/contact"
+  "featured": false,
+  "order": 100,
+  "href": "",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": [
+    {
+      "_bookshop_name": "product-hero",
+      "type": "product-hero",
+      "badge": "Solution Ø Studio",
+      "title": "Portail de gestion des subventions",
+      "titleHighlight": "",
+      "lead": "Découvrez notre portail de gestion des subventions. Intuitif et puissant, il centralise vos demandes, automatise les approbations et simplifie la gestion pour un suivi optimal en toute transparence.",
+      "ctaLabel": "Parler à un expert",
+      "ctaHref": "#formulaire",
+      "cta2Label": "Voir le catalogue",
+      "cta2Href": "/fr/solutions/",
+      "image": "/images/solutions/portail-subventions/01.jpg",
+      "imageAlt": "Maquette de présentation — Portail de gestion des subventions",
+      "fond": "beige"
+    },
+    {
+      "_bookshop_name": "bento-metrics",
+      "type": "bento-metrics",
+      "title": "En bref",
+      "intro": "",
+      "fond": "ivoire",
+      "featured": {
+        "title": "Portail de gestion des subventions",
+        "text": "",
+        "watermark": "eclair",
+        "stats": [
+          {
+            "value": "Secteur public, secteur bancaire",
+            "label": "Client"
+          },
+          {
+            "value": "Entre 200.000 et 300.000 $CAD",
+            "label": "Coût"
+          },
+          {
+            "value": "Entre 3 et 12 mois",
+            "label": "Délai"
+          },
+          {
+            "value": "Power Platform, Power Pages, Copilot Studio, SharePoint",
+            "label": "Technologies"
+          }
+        ]
+      },
+      "aside": {
+        "icon": "coche",
+        "image": "",
+        "imageAlt": "",
+        "title": "Conçue par Ø Studio",
+        "text": "Notre studio de création Power Platform et Dynamics 365 personnalise la solution à vos processus.",
+        "linkLabel": "Découvrir Ø Studio",
+        "linkHref": "/fr/services/productivite/o-studio/"
+      }
+    },
+    {
+      "_bookshop_name": "galerie",
+      "type": "galerie",
+      "title": "Aperçu de l’application",
+      "intro": "",
+      "colonnes": "3",
+      "fond": "ivoire",
+      "images": [
+        {
+          "image": "/images/solutions/portail-subventions/02.png",
+          "alt": "Capture d’écran de l’application — Portail de gestion des subventions",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/portail-subventions/03.png",
+          "alt": "Capture d’écran de l’application — Portail de gestion des subventions",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/portail-subventions/04.png",
+          "alt": "Capture d’écran de l’application — Portail de gestion des subventions",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/portail-subventions/05.png",
+          "alt": "Capture d’écran de l’application — Portail de gestion des subventions",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/portail-subventions/06.png",
+          "alt": "Capture d’écran de l’application — Portail de gestion des subventions",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/portail-subventions/07.png",
+          "alt": "Capture d’écran de l’application — Portail de gestion des subventions",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/portail-subventions/08.png",
+          "alt": "Capture d’écran de l’application — Portail de gestion des subventions",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/portail-subventions/09.png",
+          "alt": "Capture d’écran de l’application — Portail de gestion des subventions",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/portail-subventions/10.png",
+          "alt": "Capture d’écran de l’application — Portail de gestion des subventions",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/portail-subventions/11.png",
+          "alt": "Capture d’écran de l’application — Portail de gestion des subventions",
+          "legende": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "form",
+      "type": "form",
+      "title": "Parlez-nous de votre projet",
+      "intro": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+      "submitLabel": "Demander une consultation",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "o-studio",
+      "fond": "",
+      "fields": []
+    }
+  ]
 }

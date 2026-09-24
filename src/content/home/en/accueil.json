@@ -1,5 +1,7 @@
 {
   "seoH1": "",
+  "seoTitle": "IT Consulting, Cybersecurity, AI & Managed Services",
+  "metaDescription": "Victrix is the IT, cybersecurity, AI, managed services, cloud and custom application development consultancy for the public and private sectors.",
   "sections": [
     {
       "_bookshop_name": "home-hero",
@@ -10,13 +12,36 @@
       "subtitle": "Turn technology challenges into solutions built to last. From cybersecurity to AI, with cloud, managed services and application services along the way, Victrix takes charge of what drives you forward.",
       "ctaLabel": "Explore our expertise",
       "ctaHref": "/en/expertises",
-      "image": "/images/home/hero-accueil.jpg",
+      "image": "/images/home/hero-accueil.webp",
       "cta2Label": "Talk to an expert",
-      "cta2Href": "/en/contact"
+      "cta2Href": "/en/contact",
+      "lead": "Improve your cybersecurity and optimize your processes with Victrix. Benefit from our industry-leading expertise in <strong>managed IT</strong>, <strong>cloud</strong>, and <strong>AI governance</strong> to drive your business and stay at the technological forefront of your industry."
+    },
+    {
+      "_bookshop_name": "home-iso",
+      "type": "home-iso",
+      "fond": "ivoire",
+      "title": "Certifications",
+      "subtitle": "Victrix is <strong>ISO 27001</strong> and <strong>ISO 9001</strong> certified.",
+      "image": "/images/logos/iso.png",
+      "imageAlt": "",
+      "items": [
+        {
+          "value": "ISO 27001",
+          "label": "Information security",
+          "icon": "insigne"
+        },
+        {
+          "value": "ISO 9001",
+          "label": "Quality management",
+          "icon": "insigne"
+        }
+      ]
     },
     {
       "_bookshop_name": "home-expertises",
       "type": "home-expertises",
+      "fond": "ivoire",
       "sectionTitle": "Our Services",
       "intro": "Complementary IT services that work together or stand alone, covering all of your technology needs.",
       "learnMore": "Discover",
@@ -38,8 +63,8 @@
           "number": "03",
           "title": "AI and Automation",
           "accent": "#1a5bff",
-          "description": "Put AI to work in your business processes, within a clear governance framework.",
-          "href": "/en/services/intelligence-artificielle",
+          "description": "Put AI to work in your business processes, within a clear governance framework: exploration and analysis of opportunities, development of custom AI agents and solutions, secure adoption of generative AI.",
+          "href": "/en/services/artificial-intelligence",
           "image": "",
           "variant": "bleue",
           "linkLabel": "Discover",
@@ -47,9 +72,9 @@
         },
         {
           "number": "04",
-          "title": "Cloud ",
+          "title": "Cloud",
           "accent": "#1a5bff",
-          "description": "Modernize your infrastructure and scale your cloud environments at your own pace.",
+          "description": "Modernize your infrastructure and scale your cloud environments at your own pace: multi-cloud roadmap, opportunity study (IaaS, PaaS, SaaS), security posture analysis, migration to a cloud platform (AWS, Azure).",
           "href": "/en/services/cloud-services-provider",
           "image": "",
           "variant": "image",
@@ -61,7 +86,7 @@
           "title": "Application Services",
           "accent": "#1a5bff",
           "description": "Build, modernize and maintain the applications that run your operations.",
-          "href": "/en/services/services-applicatifs",
+          "href": "/en/services/application-services",
           "image": "",
           "variant": "claire",
           "linkLabel": "",
@@ -83,6 +108,7 @@
     {
       "_bookshop_name": "home-solution",
       "type": "home-solution",
+      "fond": "beige",
       "eyebrow": "",
       "title": "Free Your Team from Day-to-Day Operations",
       "body": "Your team focus on what moves the business forward. Our experts handle performance and uptime.",
@@ -91,7 +117,7 @@
       "image": "../equipe.jpg",
       "statValue": "24/7/365",
       "statLabel": "Managed Services",
-      "statText": "Proactive support and end-to-end management of your IT environments..",
+      "statText": "Proactive support and end-to-end management of your IT environments.",
       "features": [
         {
           "label": "Microsoft 365",
@@ -106,6 +132,7 @@
     {
       "_bookshop_name": "home-solutions",
       "type": "home-solutions",
+      "fond": "ivoire",
       "title": "Our Signature Solutions",
       "ctaLabel": "",
       "ctaHref": "",
@@ -120,9 +147,9 @@
         },
         {
           "title": "SEvOC",
-          "text": "A traditional SOC hands you alerts and stops there. SEvOC takes them off your hands and keeps your security posture improving, backed by dedicated bilingual analysts and our infrastructure and cloud teams.",
+          "text": "A traditional SOC hands you alerts and stops there. SEvOC takes them off your hands and keeps your security posture improving, backed by dedicated bilingual analysts and our infrastructure and cloud teams. Unlike a traditional SOC, our scalable and modular offering allows you to remain at the forefront of security technologies.",
           "image": "/images/home/sevoc.png",
-          "href": "/en/services/cybersecurity",
+          "href": "/en/services/cybersecurity/scalable-security-operations-center",
           "ctaLabel": "Discover SEvOC",
           "icon": "bouclier"
         },
@@ -130,24 +157,100 @@
           "title": "Azure Migration",
           "text": "Victrix accelerates your move to Azure. Our methodology, grounded in Microsoft's Cloud Adoption Framework, de-risks every stage of migrating your application and servers.",
           "image": "/images/home/expertise-infonuagique.jpg",
-          "href": "/en/services/cloud-services-provider",
+          "href": "/en/services/cloud-services-provider/azure-migration",
           "ctaLabel": "Discover Azure",
           "icon": "nuage"
         }
       ]
     },
     {
+      "_bookshop_name": "logo-banner",
+      "type": "logo-banner",
+      "fond": "beige",
+      "title": "Our Technology Partners",
+      "badge": "",
+      "items": [
+        {
+          "name": "Palo Alto Networks",
+          "logo": "/images/logos/paloalto.svg",
+          "description": ""
+        },
+        {
+          "name": "Check Point",
+          "logo": "/images/logos/checkpoint.svg",
+          "description": ""
+        },
+        {
+          "name": "Pulse Secure",
+          "logo": "/images/logos/pulse-secure.svg",
+          "description": ""
+        },
+        {
+          "name": "CrowdStrike",
+          "logo": "/images/logos/crowdstrike.svg",
+          "description": ""
+        },
+        {
+          "name": "Microsoft 365",
+          "logo": "/images/logos/microsoft-365.svg",
+          "description": ""
+        },
+        {
+          "name": "Cisco",
+          "logo": "/images/logos/cisco.svg",
+          "description": ""
+        },
+        {
+          "name": "Aruba",
+          "logo": "/images/logos/aruba.svg",
+          "description": ""
+        },
+        {
+          "name": "AlgoSec",
+          "logo": "/images/logos/algosec.svg",
+          "description": ""
+        },
+        {
+          "name": "Amazon Web Services",
+          "logo": "/images/logos/aws.svg",
+          "description": ""
+        },
+        {
+          "name": "OVHcloud",
+          "logo": "/images/logos/ovhcloud.png",
+          "description": ""
+        },
+        {
+          "name": "ServiceNow",
+          "logo": "/images/logos/servicenow.png",
+          "description": ""
+        },
+        {
+          "name": "Proofpoint",
+          "logo": "/images/logos/proofpoint.png",
+          "description": ""
+        }
+      ]
+    },
+    {
       "_bookshop_name": "home-latest",
       "type": "home-latest",
+      "fond": "ivoire",
       "title": "Resources and News",
       "subtitle": "Keep up with our experts: articles, webinars, white papers and Victrix news.",
       "readMoreLabel": "View",
       "ctaLabel": "Browse all resources",
-      "ctaHref": "/en/ressources"
+      "ctaHref": "/en/ressources",
+      "vedettes": [
+        "certification-iso-27001-iso-9001",
+        "ia-servicenow",
+        "mise-en-place-soc"
+      ]
     },
     {
       "_bookshop_name": "home-experts",
       "type": "home-experts",
+      "fond": "sable",
       "title": "Ready to Take the Next Step?",
       "subtitle": "Let's talk about your challenges and how Victrix can advance your digital transformation.",
       "ctaLabel": "Schedule a consultation",

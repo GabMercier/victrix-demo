@@ -1,0 +1,301 @@
+---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { blockHtml, hasRichText } from '../../shared/rich';
+/**
+ * Section « Galerie d'images » — composant Bookshop, NOUVEAU 2026-09-23
+ * (lot L10, catalogue Ø Studio). Grille de visuels + agrandissement.
+ *
+ * POURQUOI ELLE EXISTE : aucune section n'acceptait jusqu'ici une LISTE
+ * d'images libre (le texte enrichi n'autorise pas l'image, `benefits` et
+ * `numbered-cards` n'en prennent qu'une par carte, en logo). Les 16 fiches du
+ * catalogue Ø Studio portent chacune 1 à 12 captures d'écran de l'application
+ * qu'elles présentent : c'est leur démonstration, et sans elles il ne reste
+ * qu'un texte de 50 mots.
+ *
+ * AGRANDISSEMENT SANS UNE LIGNE DE SCRIPT. Les composants Bookshop sont
+ * browser-safe (aucun `<script>`, le moteur d'édition CloudCannon les
+ * recompile sans) : la visionneuse repose donc sur `:target` — chaque vignette
+ * est un LIEN vers l'ancre de sa vue agrandie, et la vue passe de `hidden` à
+ * `flex` quand l'URL la désigne. Rien à charger, rien à hydrater, ça marche
+ * aussi dans l'éditeur visuel.
+ *   Chaque vue porte `role="dialog"` et un nom accessible (« Image 2 sur 5 :
+ *   … ») — revue R3, constat 4 — SANS `aria-modal` : le focus n'est pas piégé,
+ *   l'annoncer modale serait mentir aux lecteurs d'écran.
+ *   Ce que cela ne fait PAS, et qui est assumé : la touche Échap ne ferme pas
+ *   (il faut le lien « Fermer », qui est le PREMIER élément focusable de la
+ *   vue), le focus n'est pas piégé dans la vue, et la page dessous continue de
+ *   défiler. Une visionneuse en règle (Échap, piège de focus, verrou de
+ *   défilement) demande ~15 lignes de JS — décision de périmètre, pas un
+ *   oubli : voir docs/guide-edition.md § Galerie d'images.
+ *
+ * Props : { type: "galerie", title?, intro?, fond?, colonnes?,
+ *           images: [{ image, alt, legende }] }
+ * - `image` : chemin PUBLIC servi tel quel (public/images/solutions/<fiche>/),
+ *   comme partout ailleurs — pas d'astro:assets, qui n'existe pas dans le
+ *   navigateur de l'éditeur. Vide = la vignette est sautée (une image
+ *   fraîchement ajoutée au CMS n'affiche pas un cadre cassé) ;
+ * - `alt` : texte alternatif. Les 75 images importées de Ø Studio n'en avaient
+ *   AUCUN : l'import en a posé un provisoire, à réécrire au CMS ;
+ * - `legende` : légende visible sous la vignette (optionnelle).
+ *
+ * Cadrage `object-contain` sur fond blanc, DÉLIBÉRÉ : ces images sont des
+ * captures d'écran, souvent en format portrait (828 × 1792 px sur certaines
+ * fiches). Un `object-cover` régulier rognerait l'interface qu'elles montrent
+ * — donc on garde l'image entière, quitte à laisser des marges.
+ *
+ * Contraintes / pièges :
+ * - UN SEUL élément racine : la visionneuse vit DANS la <section> (elle en
+ *   sort visuellement par `fixed`). Un deuxième élément racine casserait le
+ *   comptage de scripts/design/generate-section-previews.mjs.
+ * - `z-[100]` : au-dessus du header collant (z-50) et du bandeau de
+ *   consentement (z-60), sous le tiroir de navigation mobile (z-200).
+ * - <h2> de section ; les vignettes n'ont pas de titre (légende = <figcaption>).
+ * - `images = []` en secours (édition en direct CloudCannon).
+ * - Pas de preflight : `border-solid` et `m-0` explicites.
+ * - Browser-safe : aucun import non partagé, aucun script.
+ * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
+ */
+interface ImageGalerie {
+  image?: string;
+  alt?: string;
+  legende?: string;
+}
+
+interface Props {
+  title?: string;
+  intro?: string;
+  fond?: FondKey;
+  colonnes?: '2' | '3' | '4';
+  images?: ImageGalerie[];
+  /** Rang de la section dans la page (posé par page.astro) — voir `uid`. */
+  position?: number;
+}
+
+const { title = '', intro = '', fond = 'ivoire', colonnes = '3', images = [], position } = Astro.props;
+
+/**
+ * Langue de la page, LUE DANS L'URL (même règle que form.astro, revue R3
+ * constat 3) : les libellés de la visionneuse (« Fermer », « Image
+ * suivante »…) étaient en français sur les pages anglaises. Astro.url est
+ * absent dans le rendu navigateur de l'éditeur → repli français.
+ */
+const langue = (Astro.url?.pathname ?? '').split('/')[1] === 'en' ? 'en' : 'fr';
+const LIBELLES = {
+  fr: {
+    agrandir: (n: number, total: number) => `Agrandir l’image ${n} sur ${total}`,
+    vue: (n: number, total: number) => `Image ${n} sur ${total}`,
+    fermer: 'Fermer',
+    precedente: 'Image précédente',
+    suivante: 'Image suivante',
+  },
+  en: {
+    agrandir: (n: number, total: number) => `Enlarge image ${n} of ${total}`,
+    vue: (n: number, total: number) => `Image ${n} of ${total}`,
+    fermer: 'Close',
+    precedente: 'Previous image',
+    suivante: 'Next image',
+  },
+}[langue];
+
+const FONDS: Record<string, string> = FOND_CLASSES;
+
+// Classes LITTÉRALES : le JIT Tailwind ne voit que ce qui est écrit en toutes
+// lettres dans le fichier (une classe construite par concaténation n'existe
+// pas dans le CSS produit).
+const COLONNES: Record<string, string> = {
+  '2': 'sm:grid-cols-2',
+  '3': 'sm:grid-cols-2 lg:grid-cols-3',
+  '4': 'sm:grid-cols-2 lg:grid-cols-4',
+};
+
+// Une image sans chemin n'est pas une vignette cassée : elle n'est pas rendue.
+const visuels = images.filter((img) => (img?.image ?? '').trim());
+const total = visuels.length;
+
+/**
+ * Identifiant STABLE de la section, pour les ancres de la visionneuse.
+ *
+ * Revue R3, constat 6 : l'identifiant était une empreinte du contenu (titre +
+ * chemins d'images) — deux galeries identiques sur une même page (copier-
+ * coller d'une section au CMS) rendaient le MÊME id, donc des ancres en
+ * double et une visionneuse qui ouvrait toujours la première. Il vient
+ * désormais du RANG de la section dans la page (`position`, posé par le
+ * renderer partagé page.astro) : unique par page et lisible (`galerie-3`).
+ * L'empreinte reste le repli quand la section est rendue seule (vignettes du
+ * sélecteur, rendu hors page) — djb2 en clair : pas de `crypto`, qui n'existe
+ * pas des deux côtés (build et navigateur de l'éditeur).
+ */
+function empreinte(source: string): string {
+  let h = 5381;
+  for (let i = 0; i < source.length; i += 1) h = ((h << 5) + h + source.charCodeAt(i)) >>> 0;
+  return h.toString(36);
+}
+const uid =
+  typeof position === 'number'
+    ? `galerie-${position + 1}`
+    : `galerie-${empreinte(title + visuels.map((v) => v.image).join('|'))}`;
+const ancre = (n: number) => `${uid}-${n}`;
+
+/** Texte de l'image (alt, sinon légende) — sert de description dans les libellés. */
+const descriptif = (img: ImageGalerie) => (img.alt ?? '').trim() || (img.legende ?? '').trim();
+/** Libellé du lien d'agrandissement — le `alt` sert de description quand il existe. */
+const libelle = (img: ImageGalerie, n: number) => {
+  const base = LIBELLES.agrandir(n, total);
+  const texte = descriptif(img);
+  return texte ? `${base} : ${texte}` : base;
+};
+/** Nom accessible de la vue agrandie (revue R3, constat 4 : `role="dialog"`). */
+const nomDeVue = (img: ImageGalerie, n: number) => {
+  const base = LIBELLES.vue(n, total);
+  const texte = descriptif(img);
+  return texte ? `${base} : ${texte}` : base;
+};
+---
+
+<section class:list={['py-20 scroll-mt-28', FONDS[fond] ?? FONDS.ivoire]} id={uid}>
+  <div class="container-site flex flex-col gap-10">
+    {
+      (title || hasRichText(intro)) && (
+        <div class="max-w-[720px] flex flex-col gap-2">
+          {title && (
+            <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0">
+              {title}
+            </h2>
+          )}
+          {hasRichText(intro) && (
+            <div
+              class="rich text-base leading-[1.625rem] text-on-surface-variant max-w-none"
+              set:html={blockHtml(intro)}
+            />
+          )}
+        </div>
+      )
+    }
+
+    <ul role="list" class:list={['grid grid-cols-1 gap-6 m-0 p-0 list-none', COLONNES[colonnes] ?? COLONNES['3']]}>
+      {
+        visuels.map((img, i) => (
+          <li class="m-0">
+            <figure class="m-0 flex flex-col gap-2">
+              <a
+                class="block rounded-lg border border-solid border-contour bg-white p-2 no-underline transition-shadow hover:shadow-surelevee focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                href={`#${ancre(i + 1)}`}
+                aria-label={libelle(img, i + 1)}
+              >
+                <img
+                  class="w-full aspect-[4/3] object-contain m-0"
+                  src={img.image}
+                  alt={img.alt ?? ''}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              {img.legende && (
+                <figcaption class="text-sm leading-[1.375rem] text-on-surface-variant m-0">{img.legende}</figcaption>
+              )}
+            </figure>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  {/* Visionneuse : une vue par image, révélée par `:target` (voir l'entête). */}
+  {
+    visuels.map((img, i) => {
+      const n = i + 1;
+      const precedent = n === 1 ? total : n - 1;
+      const suivant = n === total ? 1 : n + 1;
+      return (
+        <div
+          id={ancre(n)}
+          role="dialog"
+          aria-label={nomDeVue(img, n)}
+          class="hidden [&:target]:flex fixed inset-0 z-[100] bg-nuit/95 p-4 sm:p-8 flex-col items-center justify-center gap-4"
+        >
+          <div class="w-full max-w-[1100px] flex items-center justify-between gap-4">
+            <p class="text-sm font-semibold text-white m-0">
+              {n} / {total}
+            </p>
+            <a
+              class="inline-flex items-center gap-2 rounded-lg border border-solid border-white/40 px-4 py-2 text-sm font-semibold text-white no-underline hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              href={`#${uid}`}
+            >
+              {LIBELLES.fermer}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            </a>
+          </div>
+
+          <img
+            class="max-h-[70vh] max-w-full w-auto object-contain rounded-lg bg-white m-0"
+            src={img.image}
+            alt={img.alt ?? ''}
+            loading="lazy"
+            decoding="async"
+          />
+
+          {img.legende && (
+            <p class="max-w-[1100px] text-center text-sm leading-[1.375rem] text-white m-0">{img.legende}</p>
+          )}
+
+          {total > 1 && (
+            <div class="flex items-center gap-3">
+              <a
+                class="inline-flex items-center gap-2 rounded-lg border border-solid border-white/40 px-4 py-2 text-sm font-semibold text-white no-underline hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                href={`#${ancre(precedent)}`}
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19 12H5m0 0 6-6m-6 6 6 6" />
+                </svg>
+                {LIBELLES.precedente}
+              </a>
+              <a
+                class="inline-flex items-center gap-2 rounded-lg border border-solid border-white/40 px-4 py-2 text-sm font-semibold text-white no-underline hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                href={`#${ancre(suivant)}`}
+              >
+                {LIBELLES.suivante}
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M5 12h14m0 0-6-6m6 6-6 6" />
+                </svg>
+              </a>
+            </div>
+          )}
+        </div>
+      );
+    })
+  }
+</section>

@@ -17,16 +17,21 @@
 :root {
   /* ---------------------------------------------------------------------------
      Brand palette — export2 anchors (2026-08-14, remplace les ancres planche)
-     - nuit:    #0b1334  semantic.background.bleu — headings, dark UI
-     - victrix: #1a5bff  bleu-500 — actions, links, brand accents
+     - nuit:    #000d2e  BLEU NUIT officiel — titres, surfaces sombres
+     - victrix: #1d46f3  BLEU ÉLECTRIQUE officiel — actions, liens, accents
   --------------------------------------------------------------------------- */
-  --color-navy: #0b1334; /* Bleu nuit (export2 semantic.background) — was #0d1430 */
-  --color-navy-700: #142052; /* hover tint (dérivé) — was #16244d */
-  --color-navy-900: #070c22; /* deeper (dérivé) — was #080d1f */
-  --color-accent-blue: #1a5bff; /* Bleu Victrix (bleu-500) — unchanged */
-  --color-accent-blue-600: #0043eb; /* hover (bleu-600 export2) — was #1348d6 */
-  --color-accent-green: #1a5bff; /* green retired → Bleu Victrix — was #24fb8e */
-  --color-grey-dark: #0b1334; /* dark band background → Bleu nuit */
+  --color-navy: #000d2e; /* BLEU NUIT officiel (22/09) — was #0b1334 */
+  --color-navy-700: #001855; /* survol (dérivé : même écart de luminosité qu'avant) — was #142052 */
+  --color-navy-900: #000718; /* plus profond (dérivé) — was #070c22 */
+  /* Ré-ancrés sur le Design System Figma le 2026-09-21, en même temps que
+     --color-primary de theme.css : la couche héritée doit porter le MÊME bleu
+     que les composants re-peaufinés, sinon deux bleus cohabitent à l'écran.
+     L'ancien #1a5bff survit comme --color-bleu-500 (theme.css) et reste
+     offert à l'éditrice sous « Bleu électrique ». */
+  --color-accent-blue: #1d46f3; /* BLEU ÉLECTRIQUE officiel (22/09) — was #002fc7 */
+  --color-accent-blue-600: #1738c2; /* survol — was #1d46f3, devenu la couleur de BASE */
+  --color-accent-green: #1d46f3; /* vert retiré → Bleu électrique — was #1a5bff */
+  --color-grey-dark: #000d2e; /* bande sombre → Bleu nuit officiel — was #0b1334 */
 
   /* Neutrals — COOL scale (export2 color.neutral.* ; l'échelle chaude v2 est
      retirée — ivoire/beige/sable survivent comme accents dans theme.css) */
@@ -41,7 +46,7 @@
   --color-ink: #21242a; /* neutral-900 — was #1a1f28 anthracite */
 
   /* Semantic aliases — prefer these in components */
-  --color-bg: #ffffff; /* page canvas = blanc (export2) — was ivoire #faf7f3 */
+  --color-bg: #ffffff; /* fond des CARTES (blanc) — le canevas de page est ivoire, voir global.css body */
   --color-band: var(--color-grey-50); /* light section band (ex --color-surface) */
   --color-text: var(--color-ink);
   --color-text-muted: var(--color-grey-700);
@@ -68,10 +73,12 @@
   --space-10: 8rem;     /* 128 */
 
   /* ---------------------------------------------------------------------------
-     Typography — Inter site-wide (variable font, @font-face in theme.css —
-     export2, 2026-08-14). Hanken Grotesk retired with the v2 system.
+     Typographie — HANKEN GROTESK sur tout le site (variable, @font-face dans
+     theme.css). Elle avait ete retiree au profit d'Inter le 2026-08-14 puis
+     RETABLIE le 2026-09-22 (decision Gabriel, cloture de D9) : c'est la police
+     des maquettes finales. Auto-hebergee — Loi 25.
   --------------------------------------------------------------------------- */
-  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto,
+  --font-sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif;
 
   --fw-regular: 400;
@@ -85,8 +92,8 @@
   --lh-normal: 1.6;
 
   /* Fluid type scale (clamp: min, preferred, max) */
-  --fs-100: 0.8125rem;                              /* 13px — fine print */
-  --fs-200: 0.9375rem;                              /* 15px — small */
+  --fs-100: 1rem;                                   /* plancher 16 px — etait 13px */
+  --fs-200: 1rem;                                   /* plancher 16 px — etait 15px */
   --fs-300: 1rem;                                   /* 16px — body */
   --fs-400: clamp(1.125rem, 0.2vw + 1.05rem, 1.25rem);   /* lead */
   --fs-500: clamp(1.375rem, 0.6vw + 1.2rem, 1.75rem);    /* h4 */
@@ -106,7 +113,7 @@
   --shadow-2: 0 4px 16px rgba(11, 19, 52, 0.1);
   --shadow-3: 0 12px 32px rgba(11, 19, 52, 0.14);
 
-  --container-max: 1920px; /* ÉLARGI 2026-08-17 (remplir le viewport) — suit --spacing-container-max de theme.css (was 1280px) */
+  --container-max: 120rem; /* ÉLARGI 2026-08-17 (remplir le viewport) — suit --spacing-container-max de theme.css (was 1280px, puis 1920px). En `rem` depuis le 2026-09-23 : 120rem = 1920px tant que la racine vaut 16px, et le cadran suit l'agrandissement de la racine au-delà de 1920px de large (voir global.css). */
   --container-pad: 16px; /* gouttière mobile — proportionnelle ≥768px ci-dessous (was 24px fixe) */
 }
 

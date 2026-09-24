@@ -35,9 +35,15 @@ puis **`docs/plan-livraison-finale.md`** (lots restants, un prompt par lot).
    fermée (fonds, icônes, sujets de contact) a UNE source dans
    `component-library/src/shared/` ou `src/lib/` + un `_select_data` aligné
    dans `cloudcannon.config.yml`, avec un garde-fou qui compare les deux.
+   Fonds : DEUX listes — `fonds` (10 clairs, toutes les sections) et
+   `fonds_etendus` (+ les sombres, seulement les 5 sections qui inversent
+   leurs textes : rich-text, callout, stats, logo-banner, faq).
 6. **Composants Bookshop** : 100 % utilitaires Tailwind, zéro CSS scopé, aucun
    `<script>` ni import non « browser-safe » ; couleurs = jetons de
-   `src/styles/theme.css` (bordure de carte = `border-contour`, rayon 8) ;
+   `src/styles/theme.css` (bordure de carte = `border-contour`, rayon 8) —
+   tout texte doit tenir le contraste AA 4,5:1 (3:1 en ≥ 24px ou ≥ 18,66px
+   gras), y compris sous une opacité de conteneur : `tests/e2e/accessibilite.spec.ts`
+   (axe-core, 9 gabarits) le vérifie et c'est ce que Lighthouse note ;
    pas de preflight → toujours `border-solid` et `m-0` explicites. Un champ
    ajouté = composant + `*.bookshop.yml` + zod (`src/content.config.ts`) **+
    rétro-remplissage** : CloudCannon n'affiche un champ que si sa CLÉ existe
@@ -52,8 +58,12 @@ puis **`docs/plan-livraison-finale.md`** (lots restants, un prompt par lot).
 
 `npm run lint` · `npm test` · `npm run type-check` · `npm run build` ·
 `npm run check:links -- --strict` · `npm run check:sections` · `npm run test:e2e` ·
-`npm run check:bookshop` · `npm run cms:previews:check`. Rapporter les chiffres
-réels ; si une étape n'a pas pu tourner, le dire.
+`npm run check:bookshop` · `npm run cms:previews:check` ·
+`npm run check:redirects` (+ `node scripts/build-redirects.mjs --dist` après le
+build) · `npm run check:parite-texte -- --strict` (après le build ; BLOQUANT
+depuis le lot L-restaure — une page signalée de plus se restaure, ou s'assume
+dans `parite_texte_assumee` de `docs/migration/correspondance-urls.json`).
+Rapporter les chiffres réels ; si une étape n'a pas pu tourner, le dire.
 
 ## Rituel de fin de lot
 
@@ -89,8 +99,36 @@ réels ; si une étape n'a pas pu tourner, le dire.
 (clés de section manquantes pour l'éditeur) ·
 `node scripts/merge-content-json.mjs` (conflits JSON d'une fusion
 `staging`↔`dev`) · `node scripts/migrate-icons-bank.mjs [--check]` ·
+`node scripts/migrate-fonds-chauds.mjs [--check]` (blanc → ivoire, givre →
+beige ; à rejouer après une fusion `staging` → `dev`) ·
 `npm run cms:previews` (pastilles + vignettes d'icônes) ·
-`npm run design:previews` (vignettes des sections, serveur de dev requis).
+`npm run design:previews` (vignettes des sections, serveur de dev requis) ·
+`npm run build:redirects` (matrice WordPress → refonte, décisions dans
+`docs/migration/correspondance-urls.json` ; `check:redirects` en CI,
+`--dist` après un build pour refuser une 301 vers un 404) ·
+`python scripts/migration/check-parite-live.py` (compare le site EN LIGNE au
+dépôt → `docs/migration/parite-live.md`) ·
+`python scripts/migration/extract-source-page.py <url>` (contenu d'une page
+source, bloc par bloc, `--images` pour rapatrier) ·
+`python scripts/migration/blocs-manquants-articles.py` (après un build : les
+blocs de l'ancien site absents de chaque article →
+`docs/migration/blocs-manquants-articles.md`) ·
+`python scripts/migration/restaure-blocs-articles.py [--apply] [--only a,b]`
+(les remet à leur place dans `src/content/blog` ; sans `--apply` = diffs) ·
+`python scripts/migration/restaure-forme-articles.py [--apply] [--only a,b]`
+(HTML brut des articles → les 4 patrons de `docs/plan-forme-articles.md` ;
+sans `--apply` = diffs) ·
+`python scripts/migration/rapatrie-images-source.py [--check]` (TOUTES les
+images de l'ancien site depuis le cache → `public/wp-content/`, puis
+`node scripts/optimize-images.mjs --tout`) ·
+`python scripts/migration/images-manquantes-articles.py [--json]` (les IMAGES
+du corps de chaque article de l'ancien site absentes du Markdown + les `<img>`
+encore servies par l'ancien domaine → `docs/migration/images-manquantes-articles.md`) ·
+`python scripts/migration/blocs-manquants-pages.py [--json] [--only a,b]`
+(après un build : blocs, phrases amputées, IMAGES et LIENS de l'ancien site
+absents de chaque PAGE hors articles → `docs/migration/blocs-manquants-pages.md`) ·
+`python scripts/migration/export-prix-check-point.py` (191 SKU FR/EN →
+`src/data/prix/`).
 
 ## Économie de contexte
 

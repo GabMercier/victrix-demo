@@ -24,6 +24,7 @@ blueprint:
   title: "Happy At Work"
   lead: "Victrix est certifiée HappyIndex® AtWork des entreprises « où l'on est heureux de travailler »."
   quote: "Cette distinction est décernée à la suite d'une enquête participative auprès des salariés."
+  image: ""
   fond: perle
 
 preview:
@@ -34,6 +35,19 @@ _inputs:
     comment: "Discriminant technique du contrat de sections — ne pas modifier."
   title:
     label: "Titre"
+  image:
+    type: image
+    label: "Insigne de la distinction (optionnel)"
+    comment: >-
+      Logo officiel de la distinction, affiché à gauche de la carte. Vide =
+      pictogramme « étoile lauréate » dessiné par le gabarit. Le fichier
+      téléversé atterrit dans public/images/carrieres/ (adresse servie telle
+      quelle, /images/…).
+    options:
+      empty_type: string
+      paths:
+        static: public
+        uploads: public/images/carrieres
   lead:
     type: html
     label: "Chapeau (optionnel)"

@@ -43,7 +43,7 @@ const banner = (id: string, extra: Partial<Parameters<typeof pickActiveAnnounce>
 });
 
 describe('pickActiveAnnounce', () => {
-  it('liste vide ou tout désactivé : aucune bannière (normal ET staticOnly)', () => {
+  it('liste vide ou tout désactivé : aucune bannière (normal ET aperçu d’édition)', () => {
     expect(pickActiveAnnounce([], now)).toBeUndefined();
     expect(pickActiveAnnounce([], now, true)).toBeUndefined();
     const offs = [banner('a', { enabled: false }), banner('b', { enabled: false })];
@@ -88,7 +88,7 @@ describe('pickActiveAnnounce', () => {
     expect(pickActiveAnnounce([...entries].reverse(), now)?.id).toBe('alpha');
   });
 
-  it('staticOnly (éditeur visuel) : fenêtre ignorée, mais pas l’interrupteur', () => {
+  it('editorPreview (aperçu d’édition, EDITOR_PREVIEW=1) : fenêtre ignorée, mais pas l’interrupteur', () => {
     const entries = [
       banner('future', { startAt: '2030-01-01' }),
       banner('eteinte', { enabled: false }),

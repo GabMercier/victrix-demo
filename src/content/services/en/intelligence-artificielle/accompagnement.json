@@ -27,7 +27,7 @@
       "type": "bento-metrics",
       "title": "The AI Challenges Facing Canadian Organizations",
       "intro": "Artificial intelligence is moving fast inside your organization, usually faster than the rules meant to govern it. Simply starting this conversation puts you ahead of competitors who haven't.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Blind Spots That Start to Cost You",
         "text": "Adoption happens in pockets — tools pile up, use cases scatter, and decisions lack direction. As the requests keep coming, the blind spots add up: scattered initiatives that are hard to prioritize and rarely tied to business goals, little visibility into your teams’ current use of AI, a rising tide of tool and licence requests with no way to vet or approve them, real questions about privacy, reliability, and accountability, expectations that blur the line between quick wins and lasting change, and governance you need to define before you invest further.",
@@ -37,9 +37,11 @@
       "aside": {
         "icon": "etoile",
         "title": "Your people already know AI",
-        "text": "They have tried the tools and folded generative AI into their day-to-day. The real work isn’t overcoming resistance but turning that momentum into tangible results and building your approach around the value it creates.",
+        "text": "Your people already know <a href=\"/en/services/artificial-intelligence/\">artificial intelligence</a>. They have tried the tools and folded generative AI into their day-to-day. The real work isn’t overcoming resistance but turning that momentum into tangible results and building your approach around the value it creates.",
         "linkLabel": null,
-        "linkHref": null
+        "linkHref": null,
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -52,8 +54,8 @@
         "We bring in the right people at the right time: <strong>AI practice leads, senior strategy advisors, AI architects, solution experts, business analysts, change management, developers, and project managers</strong>.",
         "Our certifications and designations: AIGP (<em>Artificial Intelligence Governance Professional</em>, IAPP), AAIA (<em>Advanced in AI Audit</em>, ISACA), <a href=\"/en/ressources/iso-27001-iso-9001-certifications/\">ISO/IEC 27001:2022 (information security) and ISO 9001:2015</a> (quality management)."
       ],
-      "image": "",
-      "imageAlt": "",
+      "image": "/wp-content/uploads/2026/07/happy-colleagues-at-modern-office-workplace-lookin-2026-01-09-09-28-57-utc-1-scaled.jpg",
+      "imageAlt": "Victrix artificial intelligence consultants on site at a client.",
       "stats": [
         {
           "value": "Business first",
@@ -113,11 +115,12 @@
           "icon": ""
         }
       ],
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our AI Consulting Process: from Vision to Applied Initiatives",
       "headingStyle": "plain",
       "intro": "One clear path takes you from first ideas to live initiatives: every step moves you toward governed, value-creating AI, with people firmly in the loop. Engagements typically run about 12 months and flex to your context, with budget and timeline confirmed after the analysis. ",
@@ -128,32 +131,50 @@
         {
           "number": "01",
           "title": "Vision",
-          "text": "Pin down your AI ambition and where you stand today."
+          "text": "Pin down your AI ambition and where you stand today.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Governance",
-          "text": "Set the rules for decisions, ownership, and use, with people in the loop."
+          "text": "Set the rules for decisions, ownership, and use, with people in the loop.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Process analysis",
-          "text": "Find where the real value sits in your operations."
+          "text": "Find where the real value sits in your operations.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Prioritization",
-          "text": "Build a clear, realistic roadmap."
+          "text": "Build a clear, realistic roadmap.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Proof of value",
-          "text": "Prove it fast with the first concrete initiatives (quick wins)."
+          "text": "Prove it fast with the first concrete initiatives (quick wins).",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "06",
           "title": "Deployment and evolution",
-          "text": "Roll out initiatives and grow from there."
+          "text": "Roll out initiatives and grow from there.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -162,14 +183,44 @@
       "type": "feature-boxes",
       "sectionTitle": "What Our Artificial Intelligence Consulting Includes",
       "subtitle": "Whether you’re sizing up AI tools, working from a specific use case, or want the full picture — roadmap, governance, and concrete initiatives — Victrix is your partner for strategic AI consulting.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "boxes": [
-        "Focused workshops to sharpen your AI ambition and maturity",
-        "A written short- and medium-term vision",
-        "A documented, assessed, and prioritized list of initiatives built around your real needs",
-        "Hands-on support to bring the chosen initiatives to life",
-        "Expert resources on tap as you need them",
-        "A governance framework for decisions and day-to-day use"
+        {
+          "label": "Focused workshops to sharpen your AI ambition and maturity",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "A written short- and medium-term vision",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "A documented, assessed, and prioritized list of initiatives built around your real needs",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Hands-on support to bring the chosen initiatives to life",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Expert resources on tap as you need them",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "A governance framework for decisions and day-to-day use",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
       ]
     },
     {
@@ -227,7 +278,7 @@
         },
         {
           "number": "03",
-          "title": "Business lines",
+          "title": "<a href=\"/en/services/productivity-consulting/\">Business lines</a>",
           "bullets": [
             {
               "text": "Renewed ownership of business processes",
@@ -259,13 +310,13 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "light",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "rich-text",
       "type": "rich-text",
       "title": "The AI Opportunity for Canadian Organizations",
-      "fond": "blanc",
+      "fond": "ivoire",
       "paragraphs": [
         "There is still a wide gap between experimenting with AI, <a href=\"/en/services/artificial-intelligence/ai-opportunity-analysis/\">exploring opportunities</a> and actually deploying it with method. That gap is where the value is won, and where our artificial intelligence consulting service makes the difference.",
         "<strong>78% of businesses that haven’t adopted AI don’t yet see how it would improve their products or services.</strong> <em>Source: <a href=\"https://ised-isde.canada.ca/site/ised/en/canadas-national-artificial-intelligence-strategy-ai-all\">Canada's National Artificial Intelligence Strategy</a></em>",
@@ -285,13 +336,13 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "light",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "Frequently Asked Questions About AI Consulting",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "What Is Strategic Artificial Intelligence Consulting?",
@@ -315,7 +366,7 @@
         },
         {
           "question": "How Do You Handle Security and Compliance?",
-          "answer": "AI remains bound by the laws that already apply, including Canadian privacy laws such as Quebec's Law 25. Our cybersecurity and infrastructure DNA lets us govern how AI is used, protect your data, and keep people at the heart of every decision. We build on the recognized principles of responsible AI: respect for rights and freedoms, privacy protection and data governance, governance and social dialogue, human oversight and transparency, sustainable development."
+          "answer": "AI remains bound by the laws that already apply, including <a href=\"/en/services/strategic-advice/law-25-compliance/\">Canadian privacy law</a>s such as Quebec's Law 25. Our cybersecurity and infrastructure DNA lets us govern how AI is used, protect your data, and keep people at the heart of every decision. We build on the recognized principles of responsible AI: respect for rights and freedoms, privacy protection and data governance, governance and social dialogue, human oversight and transparency, sustainable development."
         },
         {
           "question": "What Is the Required Investment?",
@@ -330,6 +381,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Artificial intelligence"
@@ -347,7 +399,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

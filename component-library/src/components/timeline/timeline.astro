@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { blockHtml, hasRichText, inlineHtml } from '../../shared/rich';
 /**
  * Section « Ligne du temps » — composant Bookshop (demande user 2026-09-10 :
@@ -41,6 +42,8 @@ interface TimelineItem {
   accent?: boolean;
 }
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts) ; vide = suit `tone`. */
+  fond?: FondKey | '';
   title: string;
   intro?: string;
   tone?: 'default' | 'tint';
@@ -61,7 +64,7 @@ interface MobileCell {
   vLineClass: string;
 }
 
-const { title, intro, tone = 'default', items = [] } = Astro.props;
+const { title, intro, tone = 'default', items = [], fond = '' } = Astro.props;
 
 // Serpentin : 4 colonnes ; rangées paires G→D, impaires D→G (colonne visuelle
 // inversée). Classes littérales uniquement — d'où le plafond de 6 rangées.
@@ -115,18 +118,18 @@ const mobile: MobileCell[] = capped.map((item: TimelineItem, i: number) => ({
 }));
 ---
 
-<section class:list={['py-20', tone === 'tint' ? 'bg-surface-container-low' : 'bg-surface']}>
+<section class:list={['py-20', FOND_CLASSES[fond as FondKey] ?? (tone === 'tint' ? 'bg-surface-container-low' : 'bg-surface')]}>
   <div class="container-site">
     <div class="mx-auto text-center flex flex-col items-center gap-4">
       <h2
-        class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance"
+        class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance"
       >
         {title}
       </h2>
       {
         hasRichText(intro) && (
           <div
-            class="rich text-lg leading-[29px] text-on-surface-variant max-w-[80ch] [&_strong]:text-on-surface"
+            class="rich text-lg leading-[1.8125rem] text-on-surface-variant max-w-[80ch] [&_strong]:text-on-surface"
             set:html={blockHtml(intro)}
           />
         )
@@ -172,7 +175,7 @@ const mobile: MobileCell[] = capped.map((item: TimelineItem, i: number) => ({
                 <span
                   class:list={[
                     'block font-extrabold tracking-[-0.4px]',
-                    cell.item.accent ? 'text-[26px] leading-8 text-white' : 'text-xl leading-7 text-primary',
+                    cell.item.accent ? 'text-[1.625rem] leading-8 text-white' : 'text-xl leading-7 text-primary',
                   ]}
                 >
                   {cell.item.year}
@@ -191,7 +194,7 @@ const mobile: MobileCell[] = capped.map((item: TimelineItem, i: number) => ({
               {cell.item.text && (
                 <p
                   class:list={[
-                    'm-0 max-w-none text-[13px] leading-[19px]',
+                    'm-0 max-w-none text-base leading-[1.35rem]',
                     cell.item.accent ? 'text-white/70' : 'text-on-surface-variant',
                   ]}
                   set:html={inlineHtml(cell.item.text)}
@@ -249,7 +252,7 @@ const mobile: MobileCell[] = capped.map((item: TimelineItem, i: number) => ({
               {m.item.text && (
                 <p
                   class:list={[
-                    'm-0 max-w-none text-[13px] leading-[19px]',
+                    'm-0 max-w-none text-base leading-[1.35rem]',
                     m.item.accent ? 'text-white/70' : 'text-on-surface-variant',
                   ]}
                   set:html={inlineHtml(m.item.text)}

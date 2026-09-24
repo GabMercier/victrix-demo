@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
 import { inlineHtml } from '../../shared/rich';
 import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 /**
@@ -30,26 +31,28 @@ interface SolutionItem {
 }
 
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondKey | '';
   title: string;
   ctaLabel?: string;
   ctaHref?: string;
   items: SolutionItem[];
 }
 
-const { title, ctaLabel, ctaHref, items = [] } = Astro.props;
+const { title, ctaLabel, ctaHref, items = [], fond = 'ivoire' } = Astro.props;
 
 ---
 
-<section class="py-24 bg-white">
+<section class:list={['py-24', FOND_CLASSES[fond as FondKey] ?? 'bg-ivoire']}>
   <div class="container-site">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-      <h2 class="text-[48px] leading-none font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0">
+      <h2 class="text-[3rem] leading-none font-extrabold tracking-[-0.96px] text-on-primary-fixed m-0">
         {title}
       </h2>
       {
         ctaLabel && ctaHref && (
           <a
-            class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
+            class="inline-flex items-center gap-1 text-sm font-bold uppercase tracking-[1.2px] text-primary no-underline whitespace-nowrap hover:text-primary-container"
             href={ctaHref}
           >
             {ctaLabel}
@@ -66,7 +69,16 @@ const { title, ctaLabel, ctaHref, items = [] } = Astro.props;
           const icon = iconFor(item.icon);
           return (
           <li class="m-0">
-            <article class="group relative h-[500px] rounded overflow-hidden flex flex-col justify-end p-6 sm:p-10 bg-on-primary-fixed isolate">
+            {/* `min-h-[500px]` et NON `h-[500px]` (2026-09-23, même correctif
+                que home-expertises) : la carte pose son texte en bas
+                (`justify-end`), donc un contenu plus long que la hauteur figée
+                débordait PAR LE HAUT et se faisait rogner par
+                `overflow-hidden`, sans barre de défilement — perte de contenu
+                au sens WCAG 1.4.4. Le risque grandit avec le plancher
+                typographique à 16 px et l'agrandissement de la racine sur
+                grand écran. `overflow-hidden` RESTE nécessaire : il contient
+                l'image en `absolute inset-0` et son zoom au survol. */}
+            <article class="group relative min-h-[500px] rounded overflow-hidden flex flex-col justify-end p-6 sm:p-10 bg-on-primary-fixed isolate">
               {item.image && (
                 <img
                   src={item.image}

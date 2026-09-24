@@ -2,7 +2,7 @@
   "_schema": "default",
   "title": "Our Products",
   "description": "Solutions designed, deployed and supported by our teams to accelerate your organization's productivity.",
-  "noindex": true,
+  "noindex": false,
   "seoTitle": "",
   "seoH1": "",
   "slug": "",
@@ -22,11 +22,12 @@
       "cta2Href": "/en/solutions",
       "image": "",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Our Flagship Solutions",
       "headingStyle": "underline",
       "intro": "The detailed presentation of the range will be published soon — the product pages are already online.",
@@ -39,28 +40,40 @@
           "title": "O bureau",
           "text": "Desk and space booking designed for hybrid work.",
           "ctaLabel": "Discover O bureau",
-          "ctaHref": "/en/services/productivity-consulting/office-booking"
+          "ctaHref": "/en/services/productivity-consulting/office-booking",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Employee Platform Intranet",
           "text": "A modern intranet that centralizes information and brings your teams closer.",
           "ctaLabel": "Discover the platform",
-          "ctaHref": "/en/services/productivity-consulting/employee-platform-intranet"
+          "ctaHref": "/en/services/productivity-consulting/employee-platform-intranet",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "01",
           "title": "IT Procurement",
           "text": "Acquisition and management of software licences and equipment,  in partnership with the world’s leading software publishers and hardware manufacturers.",
           "ctaLabel": "Discover the products",
-          "ctaHref": "/en/services/productivity-consulting/o-studio"
+          "ctaHref": "/en/services/productivity-consulting/o-studio",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "",
           "title": "Solutions Catalogue",
           "text": "Custom solutions developed by our experts to address our clients' unique challenges.",
           "ctaLabel": "Discover our solutions",
-          "ctaHref": "/en/solutions/"
+          "ctaHref": "/en/solutions/",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -74,7 +87,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

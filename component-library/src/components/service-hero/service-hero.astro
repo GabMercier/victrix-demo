@@ -88,6 +88,15 @@ const {
 const gradient = overlay === 'degrade';
 const blanc = overlay === 'blanc';
 
+// SURTITRE : il suit la variante, comme le grand titre juste en dessous
+// (2026-09-23, signalé par Gabriel — « beaucoup trop pâle »).
+// `primary-fixed` (#dee0ff) est un bleu de PASTILLE, pensé pour se détacher
+// d'un fond sombre ; posé sur le héros BLANC, il tombait à ~1,3:1 sur l'ivoire
+// — illisible, et très loin du seuil AA de 4,5:1 qu'un texte de 14 px exige.
+// `primary` (#1D46F3) donne 6,5:1. Le contrôle axe du gate ne l'avait pas vu :
+// le surtitre est posé sur une IMAGE, et axe classe alors le contraste en
+// « incomplete » (couleur de fond indéterminable) plutôt qu'en violation.
+
 // ZONE LISIBLE DU VOILE (2026-09-18, retour user sur /expertises en mobile).
 // Les voiles « blanc » et « degrade » s'estompent vers la droite en % de la
 // LARGEUR DU HÉROS, alors que la colonne de texte faisait 688 px quoi qu'il
@@ -179,16 +188,23 @@ const titleParts =
       {
         eyebrow &&
           (badge ? (
-            <p class="inline-flex items-center bg-primary text-white text-xs font-bold uppercase tracking-[1.2px] px-3 py-1 rounded-sm m-0 max-w-none">
+            <p class="inline-flex items-center bg-primary text-white text-sm font-bold uppercase tracking-[1.2px] px-3 py-1 rounded-sm m-0 max-w-none">
               {eyebrow}
             </p>
           ) : (
-            <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary-fixed m-0 max-w-none">{eyebrow}</p>
+            <p
+              class:list={[
+                'text-sm font-bold uppercase tracking-[1.2px] m-0 max-w-none',
+                blanc ? 'text-primary' : 'text-primary-fixed',
+              ]}
+            >
+              {eyebrow}
+            </p>
           ))
       }
       <TitleTag
         class:list={[
-          'text-[36px] leading-[1.25] lg:text-[56px] lg:leading-[70px] font-extrabold tracking-[-1.12px] m-0 text-balance',
+          'text-[2.25rem] leading-[1.25] lg:text-[3.5rem] lg:leading-[4.375rem] font-extrabold tracking-[-1.12px] m-0 text-balance',
           blanc ? 'text-neutral-900' : 'text-white',
         ]}
       >
@@ -210,7 +226,7 @@ const titleParts =
       {hasRichText(lead) && (
         <div
           class:list={[
-            'rich text-lg leading-[29px] max-w-[672px] pt-1',
+            'rich text-lg leading-[1.8125rem] max-w-[672px] pt-1',
             blanc ? 'text-neutral-600' : 'text-surface-container-low',
           ]}
           set:html={blockHtml(lead)}

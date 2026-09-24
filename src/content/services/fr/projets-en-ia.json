@@ -28,7 +28,7 @@
       "type": "offer-cards",
       "title": "Nos interventions types",
       "intro": "Le détail de l’offre sera publié prochainement — voici comment nous intervenons.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "",
       "ctaHref": "",
       "items": [
@@ -82,6 +82,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Intelligence artificielle"
@@ -99,7 +100,7 @@
       "cta2Label": "Découvrir Victrix",
       "cta2Href": "/fr/decouvrir",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": ""

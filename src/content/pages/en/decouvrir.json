@@ -1,9 +1,9 @@
 {
   "_schema": "default",
   "title": "Discover Victrix",
-  "description": "Victrix is the IT partner of the largest companies in Canada, specializing in cybersecurity, managed services, AI, cloud and application services. ",
-  "noindex": true,
-  "seoTitle": "",
+  "description": "Victrix is the IT partner of the largest companies in Canada, specializing in cybersecurity, managed services, AI, cloud and application services.",
+  "noindex": false,
+  "seoTitle": "Discover Victrix: history, missions and ecosystem",
   "seoH1": "",
   "slug": "",
   "contactSujet": "",
@@ -23,7 +23,7 @@
       "cta2Label": "Join our team",
       "cta2Href": "/en/carrieres",
       "overlay": "blanc",
-      "image": "/images/sections/decouvrir-hero.jpg",
+      "image": "/wp-content/uploads/2022/05/istock-996082438-scaled.jpg",
       "imageAlt": "",
       "imagePosition": "haut"
     },
@@ -49,7 +49,7 @@
       "type": "bento-metrics",
       "title": "Victrix at a Glance",
       "intro": "We are committed to being Canada's leading IT consulting firm by shaping a corporate culture where employees, partners and clients can achieve their ambitions.",
-      "fond": "givre",
+      "fond": "beige",
       "featured": {
         "title": "A Local IT Force with International Reach",
         "text": "Founded in 2003, Victrix grew through successive acquisitions and joined the Alan Allman Associates international ecosystem in 2019.",
@@ -74,46 +74,56 @@
         "title": "Happy At Work",
         "text": "Victrix is HappyIndex® AtWork certified as a company \"where people are happy to work\".",
         "linkLabel": "Life at Victrix",
-        "linkHref": "/en/carrieres"
+        "linkHref": "/en/carrieres",
+        "image": "/images/carrieres/happy-at-work.png",
+        "imageAlt": ""
       }
     },
     {
-      "_bookshop_name": "benefits",
-      "type": "benefits",
+      "_bookshop_name": "text-photo",
+      "type": "text-photo",
+      "fond": "ivoire",
+      "title": "Our Mission",
+      "lead": "Victrix is committed to being Canada’s leading IT services company for business productivity by shaping a corporate culture where employees, partners and clients can achieve their ambitions.",
+      "engagementTitle": "",
+      "engagementText": "By offering high quality technology solutions and a first-class customer experience, Victrix achieves its goals when we contribute significantly to the performance and competitiveness of our customers.",
+      "partners": [],
+      "image": "/wp-content/uploads/2022/02/solution-sevoc-pourquoi.jpg",
+      "imageAlt": "Setting up a SOC team at Victrix"
+    },
+    {
+      "_bookshop_name": "value-tiles",
+      "type": "value-tiles",
+      "eyebrow": "",
       "title": "Our Values",
-      "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "items": [
         {
-          "title": "Excellence",
-          "description": "",
-          "icon": "losange"
+          "icon": "etoile",
+          "label": "Excellence"
         },
         {
-          "title": "Collaboration",
-          "description": "",
-          "icon": "groupe"
+          "icon": "groupe",
+          "label": "Collaboration"
         },
         {
-          "title": "Innovation",
-          "description": "",
-          "icon": "ampoule"
+          "icon": "ampoule",
+          "label": "Innovation"
         },
         {
-          "title": "Commitment",
-          "description": "",
-          "icon": "porteur"
+          "icon": "poignee",
+          "label": "Engagement"
         },
         {
-          "title": "Integrity",
-          "description": "",
-          "icon": "dossier"
+          "icon": "coche",
+          "label": "Integrity"
         }
       ]
     },
     {
       "_bookshop_name": "timeline",
       "type": "timeline",
+      "fond": "",
       "title": "Our History",
       "intro": "More than twenty years of growth, acquisitions and international expansion.",
       "tone": "default",
@@ -187,7 +197,7 @@
         {
           "year": "2019",
           "title": "Victrix Joins the Alan Allman Associates International Ecosystem",
-          "text": "15 consulting firms · Over 3,300 experts",
+          "text": "15 consulting firms · Over 3,300 experts · <a href=\"https://alan-allman.com/en/\" target=\"_blank\" rel=\"noopener\">Discover Alan Allman Associates</a>",
           "accent": true
         },
         {
@@ -199,10 +209,22 @@
         {
           "year": "2024",
           "title": "By Joining Forces with Comitem, Victrix Expands Its Offering in France",
-          "text": "",
+          "text": "<a href=\"/en/ressources/expands-cybersecurity-offering-france\">Read the announcement</a>",
           "accent": false
         }
       ]
+    },
+    {
+      "_bookshop_name": "text-photo",
+      "type": "text-photo",
+      "fond": "beige",
+      "title": "Our Ecosystem",
+      "lead": "<a href=\"https://alan-allman.com/en/\" target=\"_blank\" rel=\"noopener\">Alan Allman Associates</a> is a dynamic ecosystem comprising a portfolio of 15 consulting firms, organized around four key areas of expertise: <strong>High-Tech, Industrial Transformation, Strategy and Management, and Digital Marketing.</strong>",
+      "engagementTitle": "",
+      "engagementText": "With a community of over <strong>3,300</strong> experts by the end of 2024, our presence is expanding internationally, particularly in <strong>France, Benelux, the Iberian Peninsula, Asia and North America.</strong>",
+      "partners": [],
+      "image": "/wp-content/uploads/2024/01/galaxie-v12-bleu-1-scaled.jpg",
+      "imageAlt": "Alan Allman Associates Galaxy"
     },
     {
       "_bookshop_name": "cta",
@@ -214,7 +236,19 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
+    },
+    {
+      "_bookshop_name": "related-posts",
+      "type": "related-posts",
+      "fond": "beige",
+      "title": "Expert Insights",
+      "tags": [
+        "Our articles",
+        "Our news"
+      ],
+      "ctaLabel": "See all resources",
+      "ctaHref": "/en/ressources"
     }
   ]
 }

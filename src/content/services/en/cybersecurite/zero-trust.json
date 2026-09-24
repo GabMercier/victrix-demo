@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Move to the Zero Trust Cybersecurity Model",
   "description": "Adopt the Zero Trust cybersecurity model with Victrix. Reduce the risk of attack and simplify identity management for your organization.",
-  "noindex": false,
-  "slug": "cybersecurity/zero-trust",
-  "seoTitle": "Move to the Zero Trust Cybersecurity Model",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -32,10 +28,10 @@
       "type": "bento-metrics",
       "title": "Why Adopt the Zero Trust Model?",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "The ideal solution for critical systems and data",
-        "text": "At Victrix, we consider the Zero Trust model to be <strong>one of the most popular cybersecurity frameworks</strong> for protecting critical systems and data.",
+        "text": "At Victrix, we consider the Zero Trust model to be <strong>one of the most popular <a href=\"/en/services/cybersecurity/\">cybersecurity frameworks</a></strong> for protecting critical systems and data.",
         "watermark": "graphique",
         "stats": [
           {
@@ -49,19 +45,17 @@
         "title": "Harmony Connect, Check Point's SASE solution",
         "text": "Harmony SASE combines workplace security and network optimization in a single cloud-based platform designed for the modern enterprise.",
         "linkLabel": "Get Harmony Connect",
-        "linkHref": "/en/contact"
+        "linkHref": "/en/contact",
+        "image": "/wp-content/uploads/2024/05/harmony-why-harmony-3-600x400px.png",
+        "imageAlt": "Harmony SASE — diagram by Check Point"
       }
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "7 Benefits of the Zero Trust Model for Your Organization",
       "headingStyle": "plain",
-      "intro": "",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -70,6 +64,9 @@
           "number": "01",
           "title": "Seamless user experience",
           "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -77,6 +74,9 @@
           "number": "02",
           "title": "Continuous auditing",
           "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -84,6 +84,9 @@
           "number": "03",
           "title": "Least privilege principle",
           "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -91,6 +94,9 @@
           "number": "04",
           "title": "Micro-segmentation",
           "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -98,6 +104,9 @@
           "number": "05",
           "title": "Monitoring and analysis",
           "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -105,6 +114,9 @@
           "number": "06",
           "title": "Granular security policies",
           "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         },
@@ -112,31 +124,80 @@
           "number": "07",
           "title": "Dynamic trust",
           "text": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": "",
           "ctaLabel": "",
           "ctaHref": ""
         }
-      ]
+      ],
+      "intro": "",
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "feature-boxes",
       "type": "feature-boxes",
       "sectionTitle": "Victrix: Secure Your Data with the Zero Trust Model",
-      "subtitle": "",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
-        "Sensitive data identification",
-        "ZTNA solutions selection",
-        "Segmentation and isolation of the network, restriction of access",
-        "Least privilege data access",
-        "Continuous verification of confidence level",
-        "In-session traffic control",
-        "Data and application protection",
-        "Threat detection"
-      ]
+        {
+          "label": "Sensitive data identification",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "ZTNA solutions selection",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Segmentation and isolation of the network, restriction of access",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Least privilege data access",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Continuous verification of confidence level",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "In-session traffic control",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Data and application protection",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "label": "Threat detection",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
+        }
+      ],
+      "subtitle": ""
     },
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Cybersecurity"
@@ -154,7 +215,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "slug": "cybersecurity/zero-trust",
+  "seoTitle": "Move to the Zero Trust Cybersecurity Model",
+  "_schema": "default",
+  "noindex": false
 }

@@ -1,5 +1,6 @@
 ---
-import { FOND_CLASSES, type FondKey } from '../../shared/fonds';
+import { FOND_CLASSES, estFondSombre, type FondEtenduKey } from '../../shared/fonds';
+import { iconFor, iconSvgAttrs, type IconKey } from '../../shared/icons';
 import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Boîtes de domaines » — composant Bookshop (P-07).
@@ -11,20 +12,74 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  *
  * Props : { type: "feature-boxes", sectionTitle, subtitle?, boxes: string[] }
  *
+ * LOGO POSÉ = LOGO SEUL (2026-09-23, demande Gabriel sur « Nos partenaires et
+ * technologies »). Écrire « Palo Alto » sous le logo Palo Alto dit deux fois
+ * la même chose à l'écran, et deux fois au lecteur d'écran si le logo porte
+ * aussi un `alt`. Le libellé devient donc le TEXTE DE REMPLACEMENT du logo :
+ * invisible à l'écran, toujours lu par les lecteurs d'écran et les moteurs.
+ * `imageAlt` reste une surcharge pour le cas où le libellé ne décrit pas bien
+ * l'image (rare). Une boîte sans logo est inchangée — libellé visible.
+ * C'est EXACTEMENT le comportement de `logo-banner` depuis sa création : les
+ * deux sections à logos du site se lisent enfin pareil.
+ *
  * Contraintes / pièges :
  * - <h2> : le <h1> unique appartient au héros.
  * - `boxes = []` en secours pour ne pas planter l'éditeur pendant la saisie.
  * - Browser-safe : aucun import, aucun script.
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
+/**
+ * Une boîte (2026-09-22). Elle n'était qu'une CHAÎNE : impossible d'y mettre
+ * quoi que ce soit d'autre qu'un libellé, et CloudCannon ne sait pas offrir
+ * de sous-champ sur un tableau de chaînes — d'où l'absence totale de contrôle
+ * signalée sur la section « Nos partenaires et technologies ».
+ *
+ * La forme CHAÎNE reste acceptée : les sections non encore migrées continuent
+ * de se rendre, et une saisie en cours au CMS ne casse pas l'aperçu.
+ */
+type Box =
+  | string
+  | {
+      label: string;
+      /** Clé de la banque de pictogrammes partagée (shared/icons.ts). */
+      icon?: IconKey | '';
+      /** Fichier — pour un LOGO de marque que la banque n'a pas. */
+      image?: string;
+      imageAlt?: string;
+    };
+
 interface Props {
   sectionTitle: string;
   subtitle?: string;
-  fond?: FondKey;
-  boxes: string[];
+  fond?: FondEtenduKey;
+  boxes: Box[];
 }
 
-const { sectionTitle, subtitle, fond = 'givre', boxes = [] } = Astro.props;
+const { sectionTitle, subtitle, fond = 'beige', boxes = [] } = Astro.props;
+
+/** Normalise les deux formes en une seule, pour ne traiter qu'un cas au rendu. */
+const boitesNormalisees = (boxes ?? []).map((b) =>
+  typeof b === 'string' ? { label: b, icon: '' as const, image: '', imageAlt: '' } : b,
+);
+
+/**
+ * Au moins une boîte porte-t-elle un visuel ?
+ *
+ * Si OUI, TOUTES réservent la place du logo — même vide. Sans ça, les boîtes
+ * sans logo remontent leur libellé : mesuré le 2026-09-22 sur « Nos
+ * partenaires et technologies », le texte se posait à TROIS hauteurs
+ * différentes (69, 47 et 36 px), et les rangées faisaient 118 ou 96 px selon
+ * qu'elles contenaient un logo. La grille paraissait cassée.
+ *
+ * Si NON, rien n'est réservé : les sections purement textuelles (126 boîtes
+ * sur le site — « Stratégie et gouvernance », « Architecture et intégration »…)
+ * gardent leur mise en page compacte, sans bandeau vide au-dessus du texte.
+ */
+const reserveVisuel = boitesNormalisees.some((b) => Boolean(b.image) || Boolean(b.icon));
+// Fonds SOMBRES ouverts le 2026-09-21 : seuls le titre, le liseré et le
+// chapeau sont posés sur le fond de section — les boîtes, elles, sont
+// blanches et gardent leur contraste quoi qu'il arrive.
+const sombre = estFondSombre(fond);
 
 // « Fond de section » (2026-08-17, pilote 6 blocs) : clé fermée → utilitaire
 // de la palette officielle (aucune couleur libre — esprit P-16). Défaut =
@@ -35,19 +90,82 @@ const FONDS: Record<string, string> = FOND_CLASSES;
 <section class:list={['py-20', FONDS[fond] ?? FONDS.givre]}>
   <div class="container-site">
     <div class="mx-auto text-center flex flex-col items-center gap-4 mb-12">
-      <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 max-w-[24ch] text-balance">
+      <h2
+        class:list={[
+          'text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] m-0 max-w-[24ch] text-balance',
+          sombre ? 'text-white' : 'text-on-surface',
+        ]}
+      >
         {sectionTitle}
       </h2>
-      <span class="w-16 h-1 bg-primary" aria-hidden="true"></span>
-      {hasRichText(subtitle) && <div class="rich text-base leading-[26px] text-on-surface-variant max-w-[672px]" set:html={blockHtml(subtitle)} />}
+      <span class:list={['w-16 h-1', sombre ? 'bg-white' : 'bg-primary']} aria-hidden="true"></span>
+      {hasRichText(subtitle) && (
+        <div
+          class:list={[
+            'rich text-base leading-[1.625rem] max-w-[672px]',
+            sombre ? 'text-white/90' : 'text-on-surface-variant',
+          ]}
+          set:html={blockHtml(subtitle)}
+        />
+      )}
     </div>
     <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-0 p-0 list-none">
       {
-        boxes.map((box) => (
-          <li class="m-0 min-h-24 flex items-center justify-center text-center p-6 bg-white border border-solid border-contour rounded-lg text-base font-semibold text-on-surface hover:border-primary transition-colors">
-            {box}
-          </li>
-        ))
+        boitesNormalisees.map((box) => {
+          const icon = iconFor(box.icon);
+          return (
+            <li class="m-0 min-h-24 flex flex-col items-center justify-center text-center gap-3 p-6 bg-white border border-solid border-contour rounded-lg text-base font-semibold text-on-surface hover:border-primary transition-colors">
+              {reserveVisuel && (
+                <span class="h-8 flex items-center justify-center shrink-0">
+                  {/*
+                    `h-8` et NON `max-h-8` : plusieurs logos officiels
+                    (checkpoint, microsoft, aruba…) n'ont QUE `viewBox`, sans
+                    `width`/`height` — ils n'ont donc pas de taille intrinsèque,
+                    seulement un rapport. Sans hauteur DÉFINIE, leur mise en
+                    page s'effondre à 0×0 (mesuré le 2026-09-22). Avec `h-8` +
+                    `object-contain`, la boîte fait 32 px de haut et le tracé
+                    s'y loge sans déformation, quel que soit le fichier.
+                    L'import normalise aussi les fichiers (width/height déduits
+                    du viewBox), mais le gabarit ne doit pas en dépendre :
+                    l'éditrice peut téléverser n'importe quel SVG.
+                  */}
+                  {box.image ? (
+                    <img
+                      src={box.image}
+                      alt={(box.imageAlt ?? '').trim() || box.label}
+                      class="h-8 w-auto max-w-[140px] object-contain m-0"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : icon ? (
+                    <svg
+                      class="text-primary"
+                      width={icon.w ?? 24}
+                      height={icon.h ?? 24}
+                      {...iconSvgAttrs(icon, 2)}
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      {icon.paths.map((d) => (
+                        <path d={d} />
+                      ))}
+                    </svg>
+                  ) : null}
+                </span>
+              )}
+              {/* Le libellé n'est PLUS affiché quand un logo est posé
+                  (2026-09-23, demande Gabriel) : le logo dit déjà le nom, et
+                  l'écrire dessous le répète. Il n'est pas perdu pour autant —
+                  il devient le texte de remplacement du logo (voir l'entête),
+                  donc lecteurs d'écran et moteurs de recherche le lisent
+                  toujours. Une boîte SANS logo garde son libellé visible :
+                  c'est tout le contenu des 22 sections purement textuelles
+                  (« Notre approche », « Ce qui est inclus »…) et des
+                  partenaires dont le logo manque encore. */}
+              {!box.image && <span>{box.label}</span>}
+            </li>
+          );
+        })
       }
     </ul>
   </div>

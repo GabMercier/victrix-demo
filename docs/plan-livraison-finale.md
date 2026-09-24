@@ -38,6 +38,7 @@ n'a pas** (serveur de dev arrêté) :
 ```powershell
 git fetch origin; git merge --no-commit --no-ff origin/staging
 node scripts/merge-content-json.mjs      # « VRAIS CONFLITS » listés = à relire
+node scripts/migrate-fonds-chauds.mjs    # depuis le 21/09 : blanc → ivoire, givre → beige revenus de staging
 npm run build; npm run fix:links; npm run build; npm run check:links -- --strict
 git add -A; git commit -m "merge: staging -> dev"; git push origin dev
 ```
@@ -55,6 +56,17 @@ git add -A; git commit -m "merge: staging -> dev"; git push origin dev
 | D7 | 3 pages « document » de WordPress (2 livres blancs, 1 webinaire) citées par 3 articles, non migrées | Les recréer avec le gating de #1465 ; d'ici là, exceptions du garde-fou | L12 |
 | D8 | Espace client (#1691) : page de connexion visuelle livrée ; implémentation réelle (Entra + Dataverse, `docs/portail-auth.md`) | Hors périmètre du lancement → fermer #1691 avec une story de suite | L13 |
 | — | Déjà prises le 18/09 : catalogue Ø Studio (fiches par sections, formulaire `o-studio`, sujet dédié, prix en `noindex` jusqu'à #1634, FR d'abord) | | L10, L11 |
+| D9 | **Police** : Inter (en place) / Montserrat (site actuel) / Nunito / Hanken (maquettes) — banc d'essai `?police=…` sur toutes les pages | Banc d'essai RETIRÉ le 2026-09-22 (lot L-polices) ; il reste à trancher la police, puis à appliquer la recette de `docs/design/polices-et-bleu.md`. Si une police Google est retenue, la rapatrier en LOCAL avant la prod (Loi 25 — pas d'appel à fonts.google.com) | design, puis retrait du banc |
+| D10 | Libellé du champ : **« Expertise » (maquette) ou « Service » (site, Julie)** | Une seule source : le libellé de la définition de formulaire. Julie tranche | Contact, L06 |
+| D11 | **Formulaires orphelins** : `campagne-evaluation` (plus utilisé depuis le lot « un seul formulaire »), `campagne-guide-licences` (jamais utilisé), et le sort d'`o-studio` (3ᵉ formulaire de demande) | Supprimer les deux orphelins ; garder `o-studio` tant que L10/L11 ne l'ont pas remplacé | L12, L17 |
+| D12 | **Liste de prix Check Point** : les 191 SKU restent-ils **éditables au CMS** (`src/data/prix/`, remplacés par un export du marketing) ou **figés côté code** ? Et la mention de bas de page (validité des prix, PDSF) reste à rédiger — l'astérisque du titre n'est expliqué nulle part sur la page source | Éditables : c'est une donnée qui change sans développeur. Mention obligatoire avant d'indexer la page | L-prix |
+| D13 | **2 articles FR sans traduction EN** (`societe-conseil-lambda-victrix`, `une-journee-dans-la-vie-secops`) — avertissement à chaque build | Assumer (le sélecteur de langue retombe sur l'index EN) ou faire traduire. Décision de contenu | — |
+| D14 | **Pictogramme du bouton** : la page Contact a un bouton sans avion en papier, la section « form » en a un | Uniformiser dans un sens ou l'autre — écart assumé aujourd'hui | L06 |
+| D15 | **Les 4 pages encore `noindex`** après la passe du 22/09 : Centre de confiance (135 mots — contenu trop mince pour être indexé tel quel), Tarification (attend les prix #1634), politique de confidentialité et conditions d'utilisation (`noindex` aussi sur l'ancien site) | Enrichir le Centre de confiance puis l'indexer ; garder Tarification `noindex` jusqu'à #1634 ; les deux pages légales peuvent rester `noindex` (parité) — Julie confirme | L05 (reste) |
+| D16 | **Pages mères de services trop minces pour être indexées** : `infrastructure` (111 mots), `projets-en-ia` (121), `services-applicatifs` (152) sont `noindex` alors que leurs enfants sont indexés — mauvais pour le silo SEO | Les enrichir (200-300 mots) puis lever le `noindex` ; ne PAS indexer en l'état | L05 (reste), contenu |
+| D17 | **Règle 404 attrape-tout dans `routing.json`** : CloudCannon recommande de router tout sous-chemin inconnu vers la page 404 | À tester sur le site dev AVANT la prod : une règle attrape-tout mal comprise détournerait tout le trafic. Non posée pour l'instant | L15 (reste) |
+| D18 | **Les 4 « documents » WordPress** (réponse à Julie, 23/09) : pages de téléchargement à formulaire. Julie propose de ne remettre QUE le replay du webinaire Copilot (sept. 2025) ; le guide Licences (2024) et les 2 one-pagers (2022-2023) sont périmés | **D'accord.** Webinaire = une page « ressource à télécharger » (L12 réduit, PDF à obtenir de Julie) ; les 3 autres passent de 302 d'attente à 301 définitive (services gérés, page SOC, fiche Ø Studio ou campagne Licences) ; 6 liens d'articles à corriger ; 4 entrées `ALLOW` à retirer. Détail : `docs/migration/statut-import.md` § 5 | L12 |
+| D19 | **7 articles « à supprimer et rediriger » dans le classeur de Julie** (nominations CEO/COO, Meilleures pratiques 1-2-3, Réalité étendue, Une journée SecOps — ce dernier remis par nous le 21/09) : retirer les fichiers FR + EN et poser les 301 qu'elle indique, ou garder en `draft` | Retirer + 301 (elle a tranché dans le classeur) ; Conseil Lambda reste (déjà dans `dev`) | L21 (reste) |
 
 ## 3. Budget des modèles
 
@@ -242,6 +254,11 @@ Rituel. Pas de story : répondre dans #1762.
 
 #### L09 — Consentement Loi 25, remplacement d'Axeptio (1 j) · D6 → revue R2
 
+> **NE PAS LANCER CE PROMPT — fait autrement le 2026-09-21** : bandeau maison
+> fini sans bibliothèque (`src/lib/consent/record.ts`, décision en tête de
+> `docs/plan-consentement-loi25.md`). Le prompt ci-dessous ne redevient utile
+> que si un deuxième traceur revient (ZoomInfo, Clarity).
+
 ```text
 Lot L09 de docs/plan-livraison-finale.md. Lis EN ENTIER
 docs/plan-consentement-loi25.md (dont § 5, ma revue R1–R7) et
@@ -321,16 +338,189 @@ Lot L13 de docs/plan-livraison-finale.md. Aucun développement sans mon accord.
 Livrable : docs/cloture-1690-1691.md + commandes az prêtes. Rituel allégé.
 ```
 
-#### L14 — Inventaire des pages et contenus (1–2 h) · #1765
+#### L14 — Parité avec le site actuel : registre + garde-fou (0,5 j) · #1765 · #1503
+
+> **ÉLARGI le 2026-09-22, à la demande de Gabriel, et REMONTÉ avant L06.** La
+> version d'origine ne produisait qu'un document. Elle absorbe désormais la
+> moitié MACHINE de L21 (`check-old-urls.mjs`), parce que c'est la même
+> question posée deux fois : « chaque page de l'ancien site a-t-elle un
+> remplaçant, et son URL y mène-t-elle ? ». Le document seul vieillit dès la
+> semaine suivante ; le script, lui, se rejoue. Le reste de L21 (hreflang,
+> plan de site, balayage du jour J) RESTE en phase 4.
+>
+> **Ce qui est déjà prouvé** (ne pas le refaire) : aucune des 175 redirections
+> ne mène à un 404 (`npm run check:redirects -- --dist`, en CI) et 0 lien
+> interne cassé sur 15 431 (`check:links --strict`). **Ce qui ne l'est pas** :
+> le SENS INVERSE — qu'une URL de l'ancien site soit couverte par une page ou
+> une règle — les chaînes 301 → 301, et le sort des 20 slugs dérivés / 3 URL
+> orphelines du rapport de parité (dernière passe le 21/09, avant L05 et L15).
 
 ```text
-Lot L14 de docs/plan-livraison-finale.md.
-Génère docs/inventaire-pages.md à partir de dist/ (après un build) et de
-docs/content-inventory.md + docs/migration/ : une ligne par URL de l'ancien
-site → nouvelle URL (ou redirection, ou « abandonnée »), état FR/EN, texte
-provisoire ou validé si détectable. Signale : pages de l'ancien site sans
-destination, pages EN manquantes, pages démo à retirer avant le lancement.
-C'est le support de validation de Julie pour #1765. Aucun changement de code.
+Lot L14 de docs/plan-livraison-finale.md. PÉRIMÈTRE tranché par Gabriel le
+22/09 : l'UNION des 150 URL du plan de site en ligne (docs/migration/
+urls-live.csv) et des 174 contenus de l'export WordPress (urls-contenus.csv)
+— les deux jeux existent déjà, et l'union attrape les pages non indexées
+encore en circulation (les 2 `/document/*` orphelins en sont). Les 943
+médias sont HORS périmètre de cette passe.
+
+Lis d'abord : docs/migration/parite-live.md, docs/migration/
+correspondance-urls.json (les décisions déjà prises : manuel, abandonnees,
+temporaires, ignorer, deja_dans_astro_config), docs/content-inventory.md et
+scripts/build-redirects.mjs. Ne redécouvre pas ce qui y est écrit.
+
+1. scripts/check-old-urls.mjs — garde-fou REJOUABLE. Pour chaque URL du
+   périmètre, contre `dist/` et la matrice de redirections : elle finit sur
+   une page qui EXISTE, en UNE SEULE redirection (signaler les chaînes
+   301 → 301). Sortie : docs/migration/validation-301.md.
+   PREMIÈRE PASSE = RAPPORT SEUL, code de sortie 0 même s'il reste des cas :
+   Gabriel tranche d'abord les douteux, la liste d'exceptions assumées
+   s'écrit ensuite, et le script passe bloquant au gate + CI dans un second
+   temps (même marche que check:prefill).
+2. docs/inventaire-pages.md — le REGISTRE, support de validation de Julie
+   (#1765) : une ligne par URL ancienne → nouvelle URL, ou redirection, ou
+   « abandonnée » AVEC SA RAISON. Colonnes : URL en ligne, destination,
+   mécanisme (page / 301 / abandon), FR, EN, source du contenu. Trié pour
+   qu'une éditrice s'y retrouve, pas pour qu'un script le relise.
+   Signale à part : pages sans destination, pages EN manquantes, pages de
+   DÉMO à retirer avant le lancement.
+3. Rejoue `python scripts/migration/check-parite-live.py` (le rapport date du
+   21/09, donc d'avant L05 et L15) et dis ce qui a bougé.
+
+Aucun changement de contenu ni de rendu. Si le registre révèle des pages à
+produire, tu les LISTES — tu ne les écris pas dans ce lot.
+```
+
+#### L-restaure-pages — Ce que les PAGES ont perdu à la migration : héros, liens, blocs (1,5–2 j)
+
+> Ouvert le 2026-09-23 sur la demande de Gabriel (« on peut reformuler et
+> formater avec notre gabarit, mais il ne faut rien perdre »). Le rapport
+> `docs/migration/blocs-manquants-pages.md` (nouvel outil rejouable) mesure
+> l'écart page par page ; `docs/migration/statut-import.md` le lit.
+
+```text
+Lot L-restaure-pages de docs/plan-livraison-finale.md. Lis d'abord
+docs/migration/statut-import.md (§ 1 et § 2), puis relance
+`npm run build` et `python scripts/migration/blocs-manquants-pages.py --json`
+(le rapport doit être celui de TON build). Consigne : on reformule si on veut,
+on ne perd RIEN. Aucun fichier de src/content n'est réécrit en masse : chaque
+remise est un diff que tu me montres par page, dans cet ordre :
+1. IMAGES DE HÉROS (17) : rapatrier l'image d'origine (`extract-source-page.py
+   --images`, ou fetch-media.mjs) sous public/wp-content/… (convention du
+   dépôt), la poser dans le champ `image` du héros avec son `alt` d'origine,
+   FR et EN quand la source est la même ; puis `npm run optimize:images`.
+2. LIENS PERDUS (106) : remettre chaque lien dans le texte enrichi, ou dans
+   le `href` de la carte si le bloc est devenu une carte (L06 en prépare le
+   champ ; en attendant, texte enrichi). Cibles = nouvelles URL (CLAUDE.md
+   § Liens). Exclus : /categorie/*, /contact/, les widgets.
+3. BLOCS LONGS ABSENTS (41 pages) puis AMPUTÉS (103) : remettre le texte dans
+   la section qui l'accueille, mot pour mot ou reformulé SANS perte ; quand
+   aucune section ne convient (avis Gartner Peer Insights des fiches Appro
+   TI, témoignages d'employés, questions de la page Loi 25), propose le
+   composant ou l'assume — ne l'invente pas.
+4. LOGOS / CERTIFICATIONS (246) : pose ceux qui existent dans
+   public/images/logos ; liste le reste pour D4 / L07. N'invente aucun logo.
+5. Ce qui est ASSUMÉ (widgets, /fr/merci/, blocs abandonnés) s'écrit dans
+   docs/migration/correspondance-urls.json (clé `blocs_assumes` : page cible
+   → raison), et le script l'exclut du décompte.
+Preuve : chiffres du rapport avant/après ; `check:links --strict` à 0 ;
+`check:parite-texte --strict` vert ; e2e. Rituel.
+```
+
+#### Session de nuit du 2026-09-24 — 4 lots enchaînés (prompt unique)
+
+> Réponses de Gabriel (24/09) : D18 = suivre Julie, mais garder le travail
+> d'hébergement déjà fait (page de campagne Licences + définition de
+> formulaire) ; D19 = `draft`, avec un filtre pour les retrouver ; héros =
+> photo d'origine partout, et on GARDE toutes les photos de l'ancien site pour
+> les réutiliser ; articles = créer ce qu'il faut (composants, HTML, snippets)
+> pour reproduire le style, tableaux compris.
+
+```text
+SESSION DE NUIT — quatre lots à la suite, dans cet ordre, un gate complet entre
+chaque (CLAUDE.md § Gate, chiffres réels). Aucun commit, aucun push, aucun
+merge : je commite le matin. Commence par `git fetch` et
+`git log --oneline HEAD..origin/dev` : s'il y a des commits, ne fusionne pas,
+note-le et continue sur l'état local. Si un lot bloque (décision, fichier
+absent, gate rouge non résolu en 30 min), saute-le, écris pourquoi dans
+docs/migration/nuit-2026-09-24.md et passe au suivant. Termine par ce fichier
+de compte rendu (par lot : fait, chiffres du gate, écarts, questions), la
+mémoire project-status, les lignes § 7 du plan, et les commandes git prêtes
+à coller (une seule série pour toute la nuit).
+
+LOT 1 — Revue R3, constats 3 à 8 (≈ 2 h). Ligne « R3-1/R3-2 » du § 7 du
+plan : libellés de la visionneuse, role="dialog", e2e couplés au contenu, id
+de galerie, repli de langue, String.fromCharCode. Cherche les constats dans
+le composant galerie et la route src/pages/[lang]/solutions/[slug].astro ;
+corrige chacun avec un test quand c'est testable. Rien d'autre.
+
+LOT 2 — L16, statique vs aperçu d'édition (≈ 0,5 j). Prompt L16 du plan,
+tel quel. Il passe AVANT le lot 3 parce que les 301 des articles retirés ne
+doivent s'émettre que dans un build sans aperçu d'édition (les éditrices
+doivent encore voir les brouillons).
+
+LOT 3 — Décisions D18, D19 et héros (≈ 2 h).
+D18 (documents) : les PDF n'ont jamais été récupérés (ils étaient derrière un
+formulaire Gravity). Garde la page de campagne
+src/content/landing/fr/licences-power-platform.md et sa définition de
+formulaire : c'est le gabarit d'hébergement d'un document à formulaire, il
+servira au webinaire Copilot quand Julie fournira le PDF. Passe les 3 autres
+adresses /document/* de `temporaires` à des 301 définitives dans
+docs/migration/correspondance-urls.json : pourquoi-gerez-vous-encore-vos-ti →
+/fr/services/services-ti-geres/, cybersecurite → la page SEvOC,
+webinaire-copilot-buzz-impact → /fr/ressources/copilot-vs-chatgpt/ (en
+attendant le PDF). Corrige les 6 liens d'articles qui pointent vers
+/document/* (grep dans src/content/blog) : guide Licences → la campagne ;
+CTA de tendances-ti → services gérés ; bannière du webinaire dans
+copilot-vs-chatgpt → retire le lien, garde une phrase « replay bientôt
+disponible » ; les 2 liens de une-journee-secops tombent avec l'article
+(D19). Retire les 4 entrées ALLOW de scripts/check-internal-links.mjs ;
+`check:links --strict` et `check:redirects --dist` à 0.
+D19 (7 articles) : draft: true, FR ET EN, sur annonce-nomination-ceo,
+nomination-dominic-lajoie, partie-1/2/3-meilleures-pratiques…,
+realite-etendue-xr-partenariat-agc, une-journee-dans-la-vie-secops. 301
+depuis leurs URL vers les cibles du classeur de Julie (nominations →
+/fr/decouvrir/, parties 1-2-3 et secops → page SEvOC, réalité étendue →
+/fr/services/intelligence-artificielle/ ; équivalents EN), émises seulement
+hors aperçu d'édition (lot 2). Filtre : dans cloudcannon.config.yml, rends le
+statut brouillon visible dans la liste des articles (métadonnée de carte,
+tri par statut si le schéma le permet) — vérifie avec @cloudcannon/reader
+(mémoire cloudcannon-reader-url-check). Le sélecteur de langue et les
+articles liés ne doivent plus proposer un brouillon en production (test).
+HÉROS : remets la photo d'origine sur les 13 pages restantes du rapport
+blocs-manquants-pages.md (accueil FR/EN, Carrières FR/EN, Découvrir FR/EN,
+Ø Studio FR/EN, centre de ressources, Azure, AWS, campagne Licences, démo
+Ø Bureau EN) — pour l'accueil, vérifie la lisibilité du héros (lot
+L-seo-accueil : texte sur photo) et signale si la photo d'origine la casse.
+Ne supprime aucune photo actuelle. Rapatrie TOUTES les photos de l'ancien
+site (`extract-source-page.py --images` sur chaque adresse de
+docs/migration/cache-source/_index.json), garde-les sous public/wp-content/
+pour qu'elles soient dans la médiathèque de CloudCannon, passe
+`npm run optimize:images`, et donne le poids ajouté à dist/ ; si c'est plus
+de 15 Mo, dis-le sans rien retirer.
+
+LOT 4 — Forme des articles, le vrai blocage de Julie (≈ 1 j).
+Mesuré : 49 bannières CTA en HTML brut (class="article-cta") dans 25
+articles, 6 encadrés « Le saviez-vous », les FAQ d'article en gras (remises
+par restaure-blocs-articles.py), 24 <table> dans 14 articles sans style.
+1. Propose 4 patrons rendus par src/styles/global.css sous .prose (jetons
+   de theme.css, contraste AA, border-solid, m-0) : bouton d'appel à
+   l'action (reprend les classes btn / btn-outline de rich.ts), encadré
+   « Le saviez-vous » (aside), FAQ dépliante (details/summary, sans script),
+   tableau lisible (en-tête, zébrage, défilement horizontal sur mobile).
+   Écris-les d'abord dans docs/plan-forme-articles.md avec un exemple HTML
+   de chacun, puis exécute — je relirai le matin.
+2. Snippets CloudCannon (_snippets dans cloudcannon.config.yml, avec
+   `npm run check:bookshop` toujours vert) pour que Julie INSÈRE ces 4
+   patrons dans l'éditeur de texte enrichi ; aperçu vérifié dans un build.
+3. Outil rejouable scripts/migration/restaure-forme-articles.py (essai =
+   diffs, --apply, --only) qui convertit l'existant : chaque
+   <a class="article-cta"> vers le patron bouton, les encadrés, les
+   questions en gras des FAQ vers details/summary, les <table> vers le
+   patron tableau. AUCUN texte modifié, seulement la forme ; rapport
+   article par article.
+4. Un article de démonstration qui use des 4 patrons dans
+   tests/e2e (axe-core : 0 violation) + docs/guide-edition.md
+   (« mettre en forme un article »). Rituel.
 ```
 
 ### Phase 4 — Mise en ligne (≈ 5–6 j)
@@ -550,33 +740,109 @@ foreach ($s in $stories) {
 
 | Lot | Titre | Estimé | Dépend de | Revue | Fait le |
 | --- | --- | --- | --- | --- | --- |
-| H1–H5 | Actions humaines | — | — | | |
+| H1–H5 | Actions humaines | — | — | | H2 fait le 21/09 (PR #1 fusionnée, `staging` = `64e58e4`) |
+| L-fonds | Fonds chauds : canevas ivoire, bandes ivoire/beige, blanc réservé aux cartes (maquette « page produit - enfant ») | 0,5 j | — | | 2026-09-21 |
+| L-fond2 | « Fond de section » sur les 17 sections qui ne l’avaient pas (accueil comprise) + 138 clés rétro-remplies | 2 h | — | | 2026-09-21 |
+| L-pages | Pages de l’ancien site jamais reprises : 18 pages fournisseurs (Approvisionnement TI, FR+EN), campagne « Accompagnement en IA » (FR+EN), campagne « Démo O bureau » (FR+EN), 2 articles FR sans traduction ; lien du titre sur `tech-columns` | 1 j | — | **R3 élargie** | 2026-09-21 |
+| L-bleu | Fond « bleu électrique » (5 sections qui inversent leurs textes), en-tête du centre de ressources retiré + palette chaude sur la page, CTA visible sur les tuiles « image » de « Nos services » | 0,5 j | — | | 2026-09-21 |
+| L-contact | UN SEUL formulaire de demande : le formulaire « évaluation de sécurité » de la page Cybersécurité devient une section de qualification (tranche d'effectif) qui renvoie vers le Contact prérempli ; option de service « Ressources humaines » + repli « Autre » (« Service », obligatoire, n'arrive plus vide) ; champ « Taille de l'entreprise » conditionnel dans le Contact | 0,5 j | — | | 2026-09-21 |
+| L-a11y | Accessibilité mesurée : `@axe-core/playwright` sur 9 gabarits dans le gate (WCAG 2.0/2.1 AA) + 4 familles de contrastes corrigées (pastilles 10px, compteurs 01–05, blanc 80 % sur l'aplat bleu, pastilles partenaires). **Avance L19** ; reste hors lot : conversion de l'échelle typographique en `rem`, ordre de tabulation, QA responsive | 0,5 j | — | | 2026-09-21 |
+| L-typo | Typographie : plancher 14px (plus de 10/12px) et échelle en `rem` — le réglage « taille de police » du navigateur agit enfin (`scripts/migrate-typo-rem.mjs`, 219 occurrences / 40 fichiers + 9 jetons de theme.css) ; champs de saisie en `min-h` ; garde-fou `tests/e2e/typographie.spec.ts`. **Achève L19** côté typo | 0,5 j | — | | 2026-09-21 |
+| L-banc | **BANC D'ESSAI TEMPORAIRE** — `?police=inter\|montserrat\|nunito\|hanken` et `?bleu=export2\|figma` sur toutes les pages, pour trancher deux écarts maquettes/site : le bleu (`#002fc7` du Design System et de TOUTES les maquettes vs `#1a5bff` du site, remappé en août « à confirmer avec le designer », jamais confirmé) et la police (Hanken des maquettes, Montserrat du site actuel, Inter en place). Inerte sans paramètre. **RETIRÉ le 2026-09-22** (lot L-polices) — la recette d'application survit dans `docs/design/polices-et-bleu.md` | 2 h | **décision designer + client** | | 2026-09-21 |
+| L-polices | **Banc d'essai RETIRÉ** : `src/styles/banc-essai.css`, son import et son script en ligne de `BaseLayout`, `tests/e2e/banc-essai.spec.ts` et `docs/design/banc-essai.md` — **3 268 octets de script en moins sur chacune des 186 pages** (1 293 o compressés ; 594 Ko à l'échelle du site), plus 5,3 Ko de CSS hors du paquet. La MÉTHODE survit dans `docs/design/polices-et-bleu.md` (3 piles `--font-sans` prêtes à coller, `@font-face` + `preload` à changer ensemble, rapatriement local obligatoire pour la Loi 25, 2 specs à rejouer) + l'historique de l'écart de bleu. **D9 reste à trancher** : la police. 0 trace dans `dist/` (`data-police`, `data-bleu`, `.banc-essai-etiquette`, `victrix-banc-essai`, `fonts.googleapis.com`) | 1 h | D9 (partiel) | | 2026-09-22 |
+| L-bleu2 | **BLEU DE MARQUE TRANCHÉ** : `--color-primary` passe au `#002fc7` du Design System Figma (famille complète + couche héritée `tokens.css`). L'ancien `#1a5bff` est CONSERVÉ — primitive `bleu-500` et fond « Bleu électrique » ; nouveau fond « Bleu Victrix ». Révélé et corrigé au passage : `global.css` force `color: navy` sur les h1-h4, qui bat la couleur héritée d'un parent (titre 1,9:1 sur aplat bleu dans `photo-features`) | 2 h | — | | 2026-09-21 |
+| L-contact2 | **Page Contact redessinée** d'après `contact maquette redesign.txt` : surtitre rétabli (champ CMS `heroEyebrow`), H1 au `#00105B` exact de la maquette, bande beige / cartes blanches (inversé), grille des numéros par bureau rétablie, champs à bordure `contour` rayon 4, bouton en largeur auto sans pictogramme, libellé du bouton réaligné (« Soumettre » → « Envoyer le message », il contredisait la définition) | 3 h | L-bleu2 | | 2026-09-21 |
+| L-fonds3 | Fonds bleus ouverts à 5 sections d'accroche de plus (10 au total) : `home-experts` (rien à inverser, son texte vit dans un panneau), `benefits`, `feature-boxes` (cartes blanches → seuls titre/chapeau), `value-tiles` et `text-photo` (tout sur le fond : titres, icônes, bordures). Inversion vers le BLANC — `primary-fixed-dim` ne donne que 3,1:1 sur le bleu électrique. Vérifié par un essai axe sur les deux aplats, contenu d'essai restauré | 2 h | L-bleu2 | | 2026-09-21 |
+| L-prix | **À FAIRE** — Liste de prix Check Point (`/liste-prix-check-point/`, `/en/check-point-price-list/`) : c’est un OUTIL (tableaux de prix + « ajouter à ma commande » + formulaire), pas une page de contenu → décision : le reprendre, le remplacer par un PDF + formulaire, ou le retirer | ? | décision marketing | | |
+| L-prefill | **Chaque CTA arrive sur un formulaire prérempli.** Bogue confirmé (Gabriel, 21/09, page Secteurs) : la route des pages générales pose `sujet: page.data.contactSujet` SANS repli, contrairement à celle des services (`|| 'projet'`) → 9 pages générales sur 11 n'ont pas de `contactSujet`, soit 18 liens vers /contact qui arrivent vides. (1) repli de sujet dans `src/pages/[lang]/[...slug].astro` ; (2) GARDE-FOU rejouable : parcourir tous les liens `/contact` du site CONSTRUIT et vérifier que chacun porte `sujet=` et `expertise=` (même esprit que `check-internal-links.mjs`), exceptions documentées pour en-tête/nav/pied de page, volontairement exclus ; (3) le formulaire SURLIGNE les champs obligatoires encore VIDES à l'arrivée — 4 quand on vient d'un CTA, les 6 quand on arrive par le menu, le pied de page ou une URL tapée (le script ignore volontairement les liens de chrome, donc les deux listes sont alors vides et le comportement dynamique est le bon) | 0,5 j | — | **R1** | 2026-09-22 |
+| L-bleu3 | **CODES OFFICIELS DE LA MARQUE** (Gabriel : « il y avait une erreur dans la maquette ») — BLEU NUIT `#000D2E`, BLEU ÉLECTRIQUE `#1D46F3`. Clôt une valse de TROIS valeurs : `#1a5bff` (bascule export2 d'août) et `#002fc7` (lu sur les maquettes le 21/09, lot L-bleu2) étaient tous deux faux ; `#1D46F3` était déjà dans le dépôt mais comme couleur de SURVOL. `--color-primary`, `--color-accent-blue`, `--color-bleu-500`, `--color-royal` et `--color-surface-tint` passent à `#1D46F3` ; nouveau survol `#1738c2` (assombrissement 0,8, 8,82:1). `--color-navy` s'aligne sur `#000D2E` (+ navy-700 `#001855`, navy-900 `#000718`, `--color-nuit`, `--color-grey-dark`), donc `--color-logo-nuit` — créé la veille — est SUPPRIMÉ : un seul bleu nuit. `theme-color` corrigé (`#0d1430`, une TROISIÈME valeur orpheline). **Les deux fonds bleus FUSIONNENT** : `bleu-profond` disparaît de `fonds.ts` et du `_select_data`, sans risque — 0 section du contenu en portait (mesuré). Contrastes : 6,52:1 sur blanc (AA ; mieux que les 5,27:1 de l'ancien fond, moins bien que les 9,41:1 de #002fc7). **INTERDIT : bleu électrique en texte sur bleu nuit = 2,94:1.** | 3 h | — | | 2026-09-22 |
 | L00 | Réponses #1762 + PR | 0,5 h | H2 | | |
-| L01 | Tolérance aux champs vidés | 1,5 h | — | | |
+| L01 | Tolérance aux champs vidés — 39 champs passés de `.min(1)` à `.default('')` + 18 replis au rendu ; test `content.config.champs-vides` (vide CHAQUE chaîne de src/data et src/content/pages, 94 champs structurels listés avec leur raison, détecte aussi les entrées périmées). La question laissée ouverte (listes fermées) est **tranchée par L-selects**, ci-dessous | 1,5 h | — | | 2026-09-22 |
+| L-selects | **Un select effacé au CMS ne casse plus le build.** Troisième porte de l'incident du 18/09, mesurée : sans correctif, **220 occurrences** de listes fermées refusent la chaîne vide, et **13 sélecteurs sont effaçables** dans l'éditeur (8 de section — `callout.layout`, `cta.variant`, `form.variant`, les 4 de `numbered-cards`, `timeline.tone` — plus `mode`, `footerMode`, `icon` du méga-menu, `type` et `width` des formulaires) ; les 38 autres ne tiennent que par `allow_empty: false`, une garde d'interface du même genre qu'`empty_type: string`, qui n'avait pas suffi. **L'arbitrage** : pas de `.catch('<défaut>')` — il aurait AUSSI avalé une clé mal orthographiée. Normalisation guidée par le schéma, en un seul endroit comme `nullsToEmpty` : le champ vide est EFFACÉ avant validation, donc zod applique `.default(…)` — le sien, écrit à côté de lui — tandis qu'une valeur inconnue reste refusée. Aucune liste à tenir à jour : elle est lue dans le schéma. Test `content.config.listes-fermees` (298 occurrences sans vide, 136 où le vide est une valeur : le défaut appliqué est bien celui du champ, `fond: "beig"` échoue toujours, `''` de « aucune icône » n'est pas écrasé) | 2 h | — | | 2026-09-22 |
 | L02 | Rétro-remplissage générique des clés | 2 h | — | | |
-| L03 | Slugs EN | 2 h | D1 | | |
+| L03 | Slugs EN — FAIT le 21/09 (D1 : `artificial-intelligence`, `application-services`, `ai-projects` ; `infrastructure` inchangé ; le méga-menu suit le champ `slug` de la page) | 2 h | D1 | | 2026-09-21 |
 | L04 | H1 | 1 h | D2 | | |
-| L05 | `noindex` | 1 h | D3 | | |
+| L05 | `noindex` — **FAIT le 22/09** : levé sur Découvrir, Expertises, Nos services, Secteurs, Produits (FR+EN, 10 fichiers). **Et un trou majeur trouvé et corrigé** : la page mère `pages/*/services.json` étant `noindex`, son chemin `/fr/services/` était CONTENU dans celui de chacun de ses enfants → le filtre du plan de site (`includes`) retirait les ~100 pages de services, **72 URL annoncées sur 186 pages** ; correspondance devenue exacte + parcours récursif (les campagnes cachées imbriquées ne filent plus au sitemap). Restent `noindex` en attente de Julie : Centre de confiance, Tarification (prix #1634), politique de confidentialité et conditions d'utilisation (parité : `noindex` sur l'ancien site) | 1 h | D3 | | 2026-09-22 |
 | L06 | CTA, cartes cliquables, boutons | 1,5 j | — | **R1** | |
 | L07 | Lucide, logos, bandeau | 1 j | D4 | | |
 | L08 | Petits retours de Julie | 0,5 j | D5 | | |
-| L09 | Consentement Loi 25 | 1 j | D6 | **R2** | |
-| L10 | Catalogue A — export, galerie | 1 j | — | | |
-| L11 | Catalogue B — fiches, route | 1,5 j | L10 | **R3** | |
-| L12 | Livres blancs | 1 j | D7, #1633 | | |
+| L09 | Consentement Loi 25 — FAIT AUTREMENT : bandeau maison fini, sans bibliothèque (D6 tranchée : mesure d'audience seule, 182 jours, rechargement au retrait, sans registre serveur). Reste : texte de la politique (Julie + juridique), `PUBLIC_GA4_ID` | 2 h | — | R2 facultative | 2026-09-21 |
+| L10 | **Catalogue Ø Studio A — export + galerie.** (1) `scripts/migration/export-catalogue-ostudio.mjs`, rejouable et idempotent : **16 fiches, 70 images (9,8 Mo), 2 pages de texte libre** (accueil du catalogue 746 mots, « À propos » 209) rapatriées de `o-studio-catalogue.victrix.ca`. Écrit `docs/migration/catalogue-ostudio/` (un JSON par fiche + le **cache brut de l'API**, la copie qui survivra au démantèlement du sous-domaine, même raisonnement que `cache-source/`), le rapport `docs/migration/catalogue-ostudio.md` et `public/images/solutions/<fiche>/NN.ext` (allégées avec les réglages d'`optimize:images` — 1 600 px, JPEG q80, **PNG sans perte**). **Il n'écrit RIEN dans `src/content/`** : L11 génère les fiches à partir de l'export, pas du réseau — l'import reste donc rejouable sans écraser ce que l'éditrice aura retouché. **Leçon L-restaure appliquée** : toute structure inattendue (H1 absent, ≠ 4 faits, libellé de fait inconnu, page hors table) sort en code 1 ; les pages Markdown ont un garde-fou de déperdition à 2 % des mots. Pièges payés : `<strong><strong>X</strong>.</strong>` de Gutenberg casse une regex non gourmande (balayage équilibré, comme les `<ul>` de `lib-wxr`), et l'API répond 403 sans User-Agent de navigateur. **4 anomalies de contenu relevées** : 3 images partagées par `gestion-idees` et `legacy-vers-power-apps` (connu), **`macbook-mockup2-1.jpg` partagée par `registre-applications` et `portail-requetes-citoyennes`** (NOUVEAU) et l'introduction de `portail-requetes-citoyennes` qui est **celle des horaires étudiants**, copiée-collée — à trancher avec Ø Studio. (2) Composant Bookshop **`galerie`** (+ spec, vignette, zod, `_structures.galerie_items`) : grille 2/3/4 colonnes, image montrée ENTIÈRE (`object-contain` — les captures sont souvent en portrait, 828 × 1792), légende et `alt` par image. **Agrandissement SANS une ligne de script** : ancres `:target`, donc compatible avec la règle browser-safe et avec l'éditeur visuel. Vérifié au navigateur : ouverture/fermeture/suivant-précédent, premier `Tab` sur « Fermer », **axe-core 0 violation** la visionneuse ouverte. Limites assumées et écrites dans le guide : pas de fermeture par Échap, focus non piégé, la page défile derrière (~15 lignes de JS les lèveraient — décision de périmètre) | 1 j | — | | 2026-09-23 |
+| L11 | **Catalogue Ø Studio B — les 16 fiches ont leur page.** La collection `solutions` accepte des `sections` : une entrée qui en porte a sa page (`/fr/solutions/<slug>/`, route `src/pages/[lang]/solutions/[slug].astro`, patron exact des services — variable LITTÉRALE `frontmatter`, seam `enrich`, garde-fou de `formId`, `altLocalePath`) ; une entrée sans sections reste une simple carte, **c’est l’état des 9 fiches EN** (traduction = travail de contenu) et rien ne casse. **« Découvrir » mène à la fiche** ; `href` devient une SURCHARGE — celui qui valait `/contact` est vidé, celui d’`o-bureau` (page de service plus riche) est gardé. Les 16 fiches FR sont générées par `scripts/migration/genere-fiches-solutions.mjs`, rejouable et **create-only** : une fiche déjà composée est SAUTÉE (`--force` pour écraser, ce qui efface les retouches du CMS). Composition : `product-hero` + `bento-metrics` (« En bref », les 4 faits en pastilles — vérifié sur le pire cas, « Dynamics 365, Power Platform, Power Pages, Copilot Studio, SharePoint » s’enroule proprement) + `galerie` + `form` (`o-studio`). **Le champ caché « Page d’origine » nomme la solution dans le courriel sans qu’un seul champ ait été ajouté** — c’est ce que verrouille le nouveau `tests/e2e/catalogue-fiche.spec.ts` (6 cas : catalogue → fiche, un seul H1 + fil d’Ariane vers le catalogue, bouton → ancre `#formulaire`, champ caché, `noindex` maintenu, cartes EN toujours vers le Contact prérempli). CloudCannon : la collection `solutions` est SCINDÉE en `solutions_fr` (éditeur visuel rouvert, `url: /fr/solutions/[full_slug]/`) et `solutions_en` (données seules, aperçu sur le catalogue tant qu’aucune fiche EN n’existe) — templates vérifiés hors ligne au `@cloudcannon/reader`, même forme que `services_fr` qui marche en production. **16 fiches en `noindex`** jusqu’à la validation des prix (#1634). 7 secteurs/types proposés à relire, « Santé » = seule valeur de filtre nouvelle | 1,5 j | L10 | **R3** | 2026-09-23 |
+| L12 | Livres blancs — **4 pages** `/document/*` (pas 3 : + `/document/cybersecurite/`, livre blanc SEvOC) ; `licences-microsoft-power-platform` existe déjà en campagne | 1 j | D7, #1633 | | |
 | L13 | Prix + Espace client | 1 h | D8 | | |
-| L14 | Inventaire des pages | 2 h | — | | |
-| L15 | `routing.json` | 1 j | — | | |
-| L16 | Statique vs aperçu | 0,5 j | — | **R4** | |
+| L14 | **FAIT le 23/09** — Parité avec le site actuel. `scripts/check-old-urls.mjs` (+ `npm run check:old-urls`) rejoue le PARCOURS de chaque adresse entrante contre les artefacts livrés — `dist/_cloudcannon/routing.json` (375 routes) et `dist/` — et non plus seulement les règles écrites : c'est le premier garde-fou qui teste le DÉCLENCHEMENT d'une règle. **172 des 173 adresses du périmètre arrivent sur une page** (2 sans bouger, 170 en un saut, 0 chaîne, 0 cible absente) ; le seul reste est `/cache/`, un rebut WordPress sans destination. Les 10 « redirections vers une page absente » du 22/09 sont closes par `67f9337` (les règles exactes, émises sous leurs deux formes, passent désormais avant le joker `/expertise/(.*)`). **Deux nuances mesurées** : les 170 cibles sans barre finale ne coûtent AUCUN saut de plus (vérifié au `curl` sur vocal-wren : 200 direct — la décision 6 du §8 de `plan-redirections.md` est donc « ne rien changer ») ; 0 arrivée générique par joker. Livrables : `docs/migration/validation-301.md` + le registre `docs/inventaire-pages.md` dont la colonne « État mesuré » est maintenant RÉGÉNÉRÉE par le script (108 mentions de 404 → 15). `check-parite-live.py` rejoué : retrouvées 127 → **134**, slugs dérivés 20 → **13**, 3 sans équivalent (`/cache/` + les 2 `/document/*` en 302 d'attente, L12). Rapport seul, code 0 — `--strict` le rendra bloquant une fois les douteux tranchés | 0,5 j | — | | 2026-09-23 |
+| L-seo-accueil | **SEO de l'accueil OUVERT AU CMS** — c'était la seule page du site sans titre ni description éditables : le schéma `home` n'avait que `seoH1` + `sections`, la route ne passait aucun `title` (donc `<title>Victrix</title>` tout court) et la description était codée en dur dans `index.astro`, hors de portée de l'éditrice. Lighthouse notait pourtant 100 — son audit `document-title` ne juge que la PRÉSENCE de la balise. Ajout de `seoTitle` + `metaDescription` (et NON `description` : les `_inputs` de `cloudcannon.config.yml` sont indexés par nom de champ et cascadent, une clé `description` à la racine aurait hérité du libellé générique des items de section), préremplis avec le titre et la méta description du site EN LIGNE (continuité SEO). `.default('')` + repli au rendu. 4 `seoTitle` vides remplis au passage (Carrières et Découvrir, FR+EN) — `/fr/decouvrir` rendait « Découvrir Victrix — Victrix » | 1 h | — | | 2026-09-23 |
+| L-perf-images | **Poids des images** — `scripts/optimize-images.mjs` (+ `optimize:images` / `check:images`), rejouable et idempotent. **34 fichiers allégés, 7,3 Mo → 3,7 Mo.** Réduction et réencodage SUR PLACE (même chemin, même nom, même format) : aucune référence à réécrire, aucun risque pour la médiathèque CloudCannon. Deux pièges payés : `png({ effort })` bascule sharp en quantification 256 couleurs SANS le dire (97 % des pixels opaques modifiés sur `sevoc.png`, écart max 130/255, visible à l'œil) — l'outil ne fait donc que du PNG sans perte, et le gain PNG vient du seul redimensionnement ; et passer un CHEMIN à sharp fait mmap le fichier par libvips, si bien que réécrire le même chemin échoue en « UNKNOWN » sur les 30 JPEG (l'outil annonçait « 4 allégées » sans dire que le reste avait été refusé — d'où le décompte des échecs au bilan). **NON FAIT, chiffré** : la conversion en WebP vaudrait ~81 % au lieu de ~49 %, mais exige de réécrire ~165 références de contenu — décision de périmètre | 2 h | — | | 2026-09-23 |
+| L-contenu-perdu | **Contenu perdu à la migration, restauré** (source : les pages EN LIGNE via `extract-source-page.py`). Découvrir FR+EN : « Notre mission » et « Notre écosystème » (les 72 mots sur Alan Allman Associates, introuvables ailleurs dans `src/content`) en `text-photo`, « Parole d'experts » en `related-posts` (recalculé à chaque build, 3 cartes rendues), et les **3 liens de la frise** rétablis sans champ nouveau (`items[].text` passe déjà par `inlineHtml`, liste blanche `<a>` comprise ; le `title`, lui, est rendu en texte brut). « Nos valeurs » passe de `benefits` à `value-tiles` : les 5 items n'ont aucune description, `benefits` rendait donc 5 grandes cartes vides numérotées « 01 » à « 05 », alors que `value-tiles` sert DÉJÀ aux mêmes 5 valeurs sur Carrières. Accueil FR+EN : bandeau ISO (`home-iso`) et carrousel de **12 logos partenaires** (`logo-banner` — `home-partners` ne rend que des pastilles de TEXTE) ; 4 logos rapatriés de l'ancien site (AlgoSec, Proofpoint, OVHcloud, ServiceNow simple) | 3 h | — | | 2026-09-23 |
+| L-grand-ecran | **ÉCRANS TRÈS LARGES** (mesures fournies par Gabriel : portable `innerWidth 1280 / dpr 1.5`, grand écran `innerWidth 2560 / dpr 1` — donc à zoom 100 %, et non 125 % comme le rapport du 22/09 le supposait). Au-delà de 1920 px la racine grandit progressivement jusqu'à +25 %, et le cadran suit parce qu'il passe en `rem` (`--spacing-container-max: 120rem`, `--container-max`). Mesuré : à 2560 la bande passe de 1920 à **2400 px**, le corps de 16 à **20 px**, la largeur utile de 67 % à **86 %**. **Strictement sans effet à 1920 px et en dessous** — le portable de Gabriel ne bouge pas. Variante à INTERPOLATION CONTINUE et non media query : un seuil dur rend le zoom non monotone (sur un 2560, zoomer à 150 % repasse sous le seuil et RÉTRÉCIT le texte). Deux pièges d'écriture évités : borne basse en `100%` et jamais en px (sinon le réglage « taille de police » du navigateur est annulé — acquis du lot L-typo), et aucune division longueur ÷ longueur (CSS Values 4, navigateurs 2024). Régression associée corrigée : `home-solutions` passait aussi en `h-[500px] overflow-hidden` avec son texte en bas. Garde-fous NEUFS : 4 tests de paliers + monotonie dans `typographie.spec.ts`, et **axe rejoué à 2560 px** sur 3 gabarits — les 62 specs existantes tournent à 1280 et n'auraient jamais vu ce mode | 2 h | mesures de Gabriel | | 2026-09-23 |
+| L-articles-accueil | **Choisir les 3 articles de l'accueil** (demande du marketing pour une démo). La bande « Ressources et actualités » prenait les 3 articles les PLUS RÉCENTS, sans moyen de choisir autrement qu'en trafiquant les dates. Nouveau champ `vedettes` sur `home-latest` : une liste de NOMS DE FICHIERS (`postKey`), l'identifiant qui APPARIE FR et EN — **une seule liste sert aux deux langues**, chacune affichant sa traduction et son slug. Vide = comportement historique. Trois garde-fous parce que c'est saisi au CMS : un identifiant inconnu est ignoré ET signalé au build (jamais fatal — mémoire `cloudcannon-null-build-break`), la grille est complétée par les plus récents, le surplus est coupé à 3. Volontairement PAS une liste fermée au sens de la règle 5 : les articles sont du contenu vivant, un `_select_data` devrait être régénéré à chaque publication. Posé : certifications ISO, IA et ServiceNow, mise en place d'un SOC. Les 3 visuels fournis par Gabriel sont rapatriés dans `public/images/ressources/` en **1200 × 750** (le ratio des cartes : en 2:1 `object-cover` rognait les côtés et coupait le texte) — sur les articles **FR seulement**, les visuels portant du texte français | 2 h | — | | 2026-09-23 |
+| L-cartes-chiffres | **Cartes de chiffres qui débordaient sous la photo** (signalé par Gabriel, capture à 1280). Piège flexbox classique : les cartes étaient en `flex-1`, donc `flex: 1 1 0%`, mais `min-width` vaut `auto` par défaut — une carte ne peut pas rétrécir sous son mot le plus long. Avec 4 cartes dans la demi-colonne de texte (≈ 460 px dès `lg`), la part tombe à ≈ 100 px alors que « SÉCURISATION » en `uppercase tracking-[1.2px]` en mesure ≈ 105 : la rangée sortait de sa colonne et passait sous l'image. **Pas propre à la page Cybersécurité : 41 sections portent ces cartes, dont 20 avec QUATRE cartes ET une image.** Correctif au COMPOSANT : grille à 2 colonnes au plus quand une image occupe l'autre moitié, 4 seulement en pleine largeur, `min-w-0` en filet (`min-w-0` seul n'aurait pas suffi — le mot aurait débordé DANS la carte). Vérifié à 390/768/1024/1280/1440/1920/2560 sur 4 pages : débordement 0 partout. Au passage, le 4ᵉ paragraphe de la section FR RÉPÉTAIT les trois premiers (liste WordPress aplatie en un bloc de `<li>` dans un champ `paragraphs` ; la version EN était saine) — cas unique du dépôt, vérifié sur les 41 sections | 1 h | — | | 2026-09-23 |
+| L-logos | **Un logo posé remplace le libellé à l’écran** (demande Gabriel sur « Nos partenaires et technologies », page Cybersécurité). Écrire « Palo Alto » sous le logo Palo Alto disait deux fois la même chose ; le libellé devient le **texte de remplacement** du logo — invisible à l’écran, toujours lu par les lecteurs d’écran et les moteurs (`alt = imageAlt || label`), donc **aucune perte d’accessibilité ni de SEO** : `check:parite-texte` reste à 3 pages signalées, inchangé. Une boîte SANS logo est intacte — c’est tout le contenu des 22 sections purement textuelles (« Notre approche », « Ce qui est inclus »…) et des partenaires dont le logo manque (ZScaler, Juniper). **Portée mesurée : 50 tuiles à logo dans 6 sections** (cybersécurité, cybersécurité santé, services infonuagiques × FR/EN) sur 28 sections `feature-boxes`. `feature-boxes` était le SEUL composant à afficher les deux : `logo-banner` fait déjà exactement cela depuis sa création, et `benefits` / `numbered-cards` / `bento-metrics` ne sont pas concernés — leur titre porte du sens en plus du logo, pas le nom d’une marque (0 carte à logo dans le contenu aujourd’hui). Vérifié au navigateur sur les deux sections à logos : grille régulière, **axe-core 0 violation**. **Non fait, signalé** : `algosec.svg`, `proofpoint.png` et `ovhcloud.png` sont dans `/images/logos/` mais ne sont posés sur aucune des deux pages — 3 tuiles restent en texte alors que le logo existe (contenu, donc décision/CMS) | 1 h | — | | 2026-09-23 |
+| L-correctifs | **Correctifs vérifiés** — (1) `benefits.astro` ne rendait JAMAIS le champ `image` : il existait en zod, dans le blueprint, dans `_structures.benefit_items` et dans le rétro-remplissage depuis le 22/09, et le guide de l'éditrice l'annonçait — seul le rendu manquait, Julie aurait déposé un logo invisible. (2) `home-expertises.astro:68` `h-[300px]` → `min-h-[300px]` : avec le plancher typographique à 16 px la réserve tombait de 100 à 50 px, une phrase un peu longue était rognée par `overflow-hidden` sans barre de défilement (WCAG 1.4.4). (3) Carrières EN : les deux témoignages portaient la MÊME photo. (4) Accueil EN : « Cloud », « environments.. », et 2 cartes qui pointaient sur la page mère générique alors que la page dédiée existe et répond 200 | 1 h | — | | 2026-09-23 |
+| L-parite-texte | **Le TEXTE de l'ancien site est-il arrivé ?** — `scripts/migration/check-parite-texte.py` (+ `npm run check:parite-texte`), rejouable : une ligne par page CIBLE construite (151), source = la page EN LIGNE (cache `docs/migration/cache-source/`, 157 pages, 8,6 Mo — la copie de l'ancien site qui survivra à sa mise hors ligne), cible = `<main>` de `dist/` ; ratio de mots et titres H2/H3 absents, en distinguant le **bloc perdu** (titre ET texte absents) du titre seulement reformulé — sans cette distinction, 119 pages sur 151 étaient signalées pour des titres raccourcis. **Résultat : 24 pages signalées** (13 sous le ratio 0,7, 20 avec un bloc perdu), 97 avec des titres reformulés seulement, 9 adresses hors comparaison (décisions). **Perte SYSTÉMATIQUE révélée** : la conversion des articles (juillet) a laissé tomber les FAQ, les encadrés « Le saviez-vous? » et les sous-sections « Copilot dans… » — 9 articles × 2 langues, de 90 à 700 mots chacun, pages en ligne datées d'AVANT l'export (8–14 juillet) ; plus 2 blocs de la page Productivité (FR+EN), un paragraphe de la campagne Licences Power Platform, et deux pages « Merci » volontairement réduites (25 liens de services sur l'ancienne). Liste à trancher dans `docs/journal-nuit-2026-09-23.md` → lot **L-restaure**. Rapport seul, code 0 ; `--strict` bloquant une fois `parite_texte_assumee` écrit dans `correspondance-urls.json` | 0,5 j | arbre commité | | 2026-09-23 |
+| L-restaure | **Contenu perdu a la migration, RESTAURE** — ce que `check:parite-texte` avait revele. **21 fichiers, ~3 500 mots remis mot pour mot depuis le cache de l'ancien site**, jamais reformules : les FAQ en accordeon de 6 articles (Copilot vs ChatGPT, Loi 25, IoT, NIS2, ransomware, SOC), les encadres « Le saviez-vous ? » de 3 articles (agents Copilot Studio, realite etendue, SOC), les sous-sections « Copilot dans Word / PowerPoint / Excel / Teams / Outlook / Copilot Studio » et « Les avantages d'un assistant IA Copilot » — 9 articles x FR/EN — plus 2 blocs de la page Productivite FR et 4 EN (`rich-text`, composant existant, aucun champ neuf) et le paragraphe du guide de la campagne Licences Power Platform (`benefits.intro`, champ existant). L'article `fonctionnalites-microsoft-copilot` est passe de **270 a 998 mots** en FR : il avait perdu les trois quarts de son texte ET tous ses titres. **CAUSE RACINE etablie sans relancer la conversion** (l'editrice a touche des articles depuis) : `extractBlocks` (`lib-wxr.mjs`) ne garde du contenu exporte que les blocs `siteorigin-widget-tinymce textwidget` ; le contenu des widgets TIERS n'est pas rendu en HTML dans l'export mais dort en JSON dans un champ cache de raccourci — accordeons (FAQ, resumes rapides, « Copilot dans... »), encadres vitres (« Le saviez-vous ? ») et widgets de titre (les H2/H3, d'ou un article sans aucun titre). L'abandon a ete **SILENCIEUX** : l'avertissement « widget SiteOrigin non-editeur ignore » cherche une classe `so-widget-sow-…` que seuls les widgets DEJA rendus portent, donc 0 avertissement au rapport de conversion. **3 exceptions assumees** ecrites dans `parite_texte_assumee` (2 pages « Merci » redessinees, Conseil strategique FR) → `check:parite-texte -- --strict` sort en 0 et **entre au gate** (CLAUDE.md + operations.md). Mesure : **24 pages signalees → 3, toutes assumees** ; liens internes 15 446 → 15 467, 0 casse. Aucun composant, aucun champ, aucune image, aucun changement de rendu | 0,5 j | L-parite-texte tranche par Gabriel | | 2026-09-23 |
+| L15 | `routing.json` — **redirections et en-têtes FAITS le 22/09** : l'intégration `victrix:redirects` écrit `dist/_cloudcannon/routing.json` (schéma officiel `routes`/`headers`, forme documentée par CloudCannon pour un fichier généré au build, prioritaire sur le fichier source). 191 routes (13 d'`astro.config` en `forced`, 3 de l'éditrice, 175 de la matrice de migration ; jokers traduits `*`→`(.*)`, `:splat`→`$1`) et 5 règles d'en-têtes dérivées de `public/_headers` SANS RECOUVREMENT (le bloc `/*` est recopié dans chaque règle précise — sinon /fr/ perdrait HSTS ou recevrait `nosniff, nosniff`). **Reste de L15** : vérifier les en-têtes de l'extérieur après le premier déploiement (`curl -I`), et trancher la règle 404 attrape-tout | 1 j | — | | redirections + en-têtes 2026-09-22 |
+| L16 | Statique vs aperçu : `EDITOR_PREVIEW` (politique d'aperçu : brouillons, programmés, fenêtres des bannières, 301 des articles retirés, Bookshop) séparé de `STATIC_ONLY` (adaptateur) — `scripts/lib/build-mode.mjs` testé, tableau des variables par site (operations.md § 6). **Reste UI** : poser `EDITOR_PREVIEW=1` sur les sites dev + Édition | 0,5 j | — | **R4** | 2026-09-24 (nuit) |
 | L17 | Formulaires + GA4 | 0,5 j | comptes | | |
 | L18 | QA responsive | 1 j | L06–L11 | | |
-| L19 | Accessibilité | 1 j | L06–L11 | | |
+| L19 | Accessibilité — **entamé le 21/09 (L-a11y)** : axe-core dans le gate, 0 violation sur 9 gabarits, contrastes corrigés. Reste : échelle typographique en `rem` (le réglage « grande police » du navigateur n'agit pas — le zoom, si), ordre de tabulation, textes de remplacement, QA lecteur d'écran | 0,5 j restant | L06–L11 | | partiel 2026-09-21 |
 | L20 | Performance | 1 j | — | | |
-| L21 | Zéro 404 | 0,5 j | L03, L15 | | |
+| L21 | Zéro 404 — **l'essentiel est fait le 22/09** (matrice de 175 redirections, cibles vérifiées dans `dist/` en CI, 9 slugs d'articles alignés sur le site en ligne, 10 anciennes URL de services qui répondaient encore 200). `check-old-urls.mjs` est **passé à L14** le 22/09 (même question, et le registre de Julie en dépend). Reste ici : `hreflang`, plan de site après la levée des `noindex`, et le balayage final du jour J | 0,5 j → 2 h | L03, L15, L14 | | partiel 2026-09-22 |
 | L22 | Doc + formation | 0,5 j | tout | | |
 | L23 | Jour J | — | tout | | |
 | L24–L26 | Options | 1 j + | — | | |
+| L-articles-blocs | **Contenu manquant dans les articles, REMIS** (urgence Julie, #1762). Rapport `blocs-manquants-articles.py` corrigé dans les deux sens (page source dans l'autre langue écartée ; titres jugés mot pour mot ; blocs courts « à vérifier ») : 158 blocs / 1 536 mots / 27 articles au lieu de 61 / 853 / 11. Remise OUTILLÉE par `scripts/migration/restaure-blocs-articles.py` (ordre de la source → place dans le Markdown) : **198 blocs dans 26 articles** + 4 retouches à la main ; rapport à 0 après build ; `check:parite-texte --strict` inchangé (3 assumées). À relire par Julie : liens non reconstitués dans les blocs remis, FAQ/questions en gras (forme = sujet B) | 0,5 j | — | | 2026-09-23 |
+| R3-1/R3-2 | **Revue R3, constats 1 et 2** : slug des fiches de solutions normalisé (`src/lib/solutions/slug.ts`, une règle pour la route ET le catalogue) et dédoublonné par langue (build en échec nommant les fichiers ; 6 tests) ; rétro-remplissage des 9 fiches EN (`backfill-section-keys.mjs`, 3e passe « clés de page » — 88 clés, `noindex` repris de la jumelle FR ; `check:sections` le garde). **R3-3 à R3-8 faits le 2026-09-24 (nuit)** : libellés FR/EN de la visionneuse, `role="dialog"` + nom accessible, e2e découplés du contenu (`catalogue-fiche`, nouveau `galerie.spec.ts`), id de galerie par rang de section, repli vers le catalogue + dossier de langue inconnu = erreur de build, échappements `\u` (field-name + slug) | 2 h | — | | 2026-09-23 |
+| D18/D19/héros | **Documents, 7 articles retirés, héros** (nuit du 24/09) : 3 `/document/*` en 301 définitives + 4 liens d'articles corrigés + `ALLOW` vidé ; 13 articles en `draft: true` (+ `draft: false` rétro-rempli sur 49, gabarits), 31 adresses `articles_retires` → 301 émises hors aperçu d'édition, carte + tri « Brouillons d'abord » au CMS, `brouillons.spec.ts` ; photo d'origine remise sur 12 héros (le 13e n'en est pas un), 393 photos rapatriées (`rapatrie-images-source.py`, +37 Mo dans dist — à trancher). Détail : `docs/migration/nuit-2026-09-24.md` | 2 h | L16 | | 2026-09-24 (nuit) |
+| L-forme-articles | **Forme des articles** : 4 patrons sous `.prose` (bouton `btn`, encadré, FAQ `details`, tableau défilant — `docs/plan-forme-articles.md`), `restaure-forme-articles.py` appliqué (32 articles : 49 CTA, 10 encadrés, 6 FAQ, 24 tableaux ; texte inchangé), démo `/fr/style-guide/forme-articles/` (axe 0) + `forme-articles.spec.ts`, guide § « Mettre en forme un article ». **Snippets CloudCannon NON FAITS** (aucun gabarit HTML pour du `.md` — `.mdx` ou modèles collés, à trancher) | 1 j | — | | 2026-09-24 (nuit) |
+| L-statut-import | **Statut de l'importation + validation « on ne perd rien »** (demande de Gabriel, page IA en exemple). NOUVEL OUTIL rejouable `scripts/migration/blocs-manquants-pages.py` : le pendant de l'outil des articles pour les 89 pages hors articles, plus les paragraphes amputés, les IMAGES (par nom de fichier) et les LIENS internes. Première passe : 87/89 pages avec un écart — **17 images de héros remplacées, 106 liens perdus, 216 blocs absents (143 courts), 103 paragraphes amputés, 123 photos + 246 logos absents** ; 340 blocs seulement reformulés (hors décompte). Lecture, réponses à Julie (Lambda déjà dans `dev` ; 4 « documents » → D18 ; 7 articles à retirer → D19 ; `staging` a 42 commits de retard sur `dev` = la vraie cause de ses « non intégrée ») et suites dans `docs/migration/statut-import.md`. Aucun contenu modifié. Lot de remise = L-restaure-pages (prompt en phase 3) | 0,5 j | — | | 2026-09-23 |
+| L-restaure-pages (1re passe) | **Remise du contenu perdu sur les PAGES** — ordre du classeur de Julie (visible + indexable d'abord), FR + EN, 5 lots : IA, accueil/SEvOC/Loi 25/Carrières/Conseil/Cyber, Productivité/Infonuagique/Intranet/Ø Studio/Appro TI/Services gérés, 11 pages enfants, 18 fiches fournisseurs. **Blocs 216 → 100, amputés 103 → 82, liens 106 → 13, héros 17 → 13 (restants = design/assumés).** Remis : 6 héros d'origine, ~90 liens, avis Gartner complets (note globale, note + date par avis, citations entières), 14 badges de certification (Cyber), désignations Microsoft (Azure, D365), logos manquants (AlgoSec, Proofpoint, OVH, Zscaler, Juniper), infographies (Harmony SASE, schéma intranet), phrases amputées. 3 composants retouchés (tech-columns items = liens, bento aside = HTML, testimonial-cards.intro + rétro-remplissage 66 fichiers). Reste (§ 7 de statut-import.md) : logos de la page Productivité (bandeau texte), photos sans emplacement, Licences (D18), Découvrir/Merci/Ressources assumées | 1 j | — | | 2026-09-24 |
 
 **Total Opus ≈ 14–15 jours assistés · Fable : 4 revues + réserve d'urgence.**
 Ordre conseillé si le temps manque : L01 → L06 → L09 → L15 → L16 → L10 → L11,
 puis la phase 4 ; L03/L04/L05/L08 se glissent entre deux gros lots.
+
+**Mise à jour du 2026-09-22** — L01, L09 et le gros de L15 sont faits. L'ordre
+qui reste est donc **L14 → L06 → L16 → L10 → L11**, puis la phase 4. L14 passe
+devant parce qu'il est court (0,5 j), qu'il dé-risque la mise en ligne, et que
+son registre peut révéler des pages à produire — mieux vaut le savoir AVANT
+d'ouvrir L06 (1,5 j) que pendant.
+
+**Mise à jour du 2026-09-23 (soir)** — la validation « on ne perd rien » a
+produit `docs/migration/statut-import.md`. L'ordre devient : **PR `dev` →
+`staging`** (Julie valide un site vieux de 3 jours) → D18/D19 → R3-3…8 →
+**L-restaure-pages** (1,5–2 j) → L12 réduit → L08 (reste) → L06 → L16 → phase 4.
+
+**Mise à jour du 2026-09-24 (nuit)** — L-restaure-pages : première passe FAITE
+(voir § 7). Le rapport `blocs-manquants-pages.md` ne contient plus que des
+écarts assumés ou de forme ; ordre inchangé : **PR `dev` → `staging`** → D18/D19
+→ R3-3…8 → L12 réduit → L08 (reste) → L06 → L16 → phase 4.
+
+**Mise à jour du 2026-09-24 (nuit, 2e session)** — R3-3…8, L16, D18/D19/héros
+et la forme des articles sont FAITS (compte rendu : `docs/migration/nuit-2026-09-24.md`,
+questions du matin en fin de document). Ordre restant : **commit + PR `dev` →
+`staging`** → `EDITOR_PREVIEW=1` dans l'UI CloudCannon (dev + Édition) → décisions
+du matin (poids des photos, snippets `.mdx` ou modèles, FAQ en titres) → L12
+réduit → L08 (reste) → L06 → phase 4.
+
+**Mise à jour du 2026-09-25 (matin)** — la nuit est commitée et poussée
+(`f897438`). Revérification du contenu des articles sur l'arbre poussé : texte
+à 0 bloc perdu (hors D18 et reformulations de Julie), parité 3 assumées,
+188/188 redirections, 13 brouillons D19, Lambda présent. **Deux trous
+trouvés** : (1) les IMAGES du corps des articles n'ont jamais été mesurées ni
+remises — nouvel outil `images-manquantes-articles.py` : 44 images de contenu
+absentes dans 26 articles (infographies ServiceNow ITOM et SOC, bannières
+Copilot Studio et webinaire, photos), toutes déjà sous `public/wp-content/`,
+plus 36 `<img>` de NIS2 FR/EN encore servies par `https://www.victrix.ca`
+(casseront à la mise hors ligne) → lot **L-images-articles** proposé en
+option (≈ 0,5 j, outillé comme `restaure-blocs-articles.py`), À FAIRE APRÈS la
+fusion dans `staging` (Julie édite déjà des articles là-bas). (2) Julie a
+réécrit elle-même `agents-copilot-studio.md` sur `staging` le 23/09 (coquilles,
+« Planifiez une consultation », bannière, titre FAQ) — sa version porte
+l'ancienne classe `article-cta` supprimée cette nuit, un lien vers l'ancien
+site et une image sous `/src/assets/uploads/` que le build ne sert pas ; ses
+retouches sont **absorbées dans `dev`** (17 remplacements, non commité), à
+retenir côté `dev` au moment de résoudre le conflit de la PR (25 autres
+conflits = JSON de services → `node scripts/merge-content-json.mjs`). Au
+passage : titre d'encadré français dans l'article EN corrigé. Ordre inchangé.

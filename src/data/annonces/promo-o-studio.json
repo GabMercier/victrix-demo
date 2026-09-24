@@ -1,11 +1,11 @@
 {
   "title": "Promo Ø Studio (catalogue)",
-  "enabled": true,
+  "enabled": false,
   "startAt": "",
   "endAt": "",
   "fr": {
-    "before": "Découvrez ",
-    "strong": "Ø Studio",
+    "before": "Découvrez le ",
+    "strong": "Studio de création",
     "after": ", notre catalogue d’applications et de services pour accélérer votre productivité.",
     "linkLabel": "En savoir plus →"
   },
@@ -15,5 +15,5 @@
     "after": ", our catalogue of apps and services to accelerate your productivity.",
     "linkLabel": "Learn more →"
   },
-  "linkHref": "/produits"
+  "linkHref": "/solutions"
 }

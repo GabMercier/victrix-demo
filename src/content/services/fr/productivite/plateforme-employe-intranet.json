@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Plateforme Expérience Employé",
   "description": "Bénéficiez de l'expertise en développement de Victrix pour bâtir un intranet moderne basé sur Microsoft 365 et l'IA.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Intranet moderne : l'IA pour l'expérience employé | Services | Victrix",
   "seoH1": "Intranet moderne",
   "contactSujet": "",
   "contactService": "",
@@ -22,17 +18,17 @@
       "cta2Href": "",
       "image": "/wp-content/uploads/2023/08/vackground-com-aguc-v_d1ii-unsplash-3-scaled.jpg",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Réinventez votre intranet",
       "intro": "Votre projet d’intranet est l’occasion parfaite pour exploiter l’IA de manière responsable et innovante. Rehaussez l'expérience de vos employés avec un intranet moderne basé sur Microsoft 365 et Viva.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
-        "title": "Perte de temps et inefficacité",
-        "text": "Une communication interne inefficace entraîne un faible taux d’adoption des outils et un manque d’engagement des équipes. Les employés jonglent entre plusieurs plateformes, rendant l’accès aux ressources plus complexe. Sans un accès rapide aux bonnes informations, ils se retrouvent bloqués.",
+        "title": "Vos préoccupations : un intranet dépassé face aux besoins des employés",
+        "text": "<strong>Perte de temps et inefficacité</strong> — les employés passent en moyenne 30 % de leur temps à chercher des informations. <strong>Manque d’engagement</strong> — une communication interne inefficace entraîne un faible taux d’adoption des outils et un manque d’engagement des équipes. <strong>Surcharge d’informations</strong> — les employés jonglent entre plusieurs plateformes, rendant l’accès aux ressources plus complexe. <strong>Manque de support en temps réel</strong> — sans un accès rapide aux bonnes informations, les employés se retrouvent bloqués.",
         "watermark": "engrenage",
         "stats": [
           {
@@ -46,19 +42,18 @@
         "title": "Agent conversationnel pour les ressources humaines",
         "text": "Faites gagner du temps à vos équipes RH grâce à l’automatisation des réponses et une réduction des erreurs humaines. Contactez-nous pour découvrir notre Bot RH.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/contact/"
+        "linkHref": "/fr/contact/",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Une plateforme intranet pour une expérience employé unifiée et moderne",
       "headingStyle": "underline",
       "intro": "Victrix vous aide à développer un outil de communication interne qui va bien au-delà de l’intranet traditionnel. En exploitant les capacités de l’<a href=\"/fr/services/intelligence-artificielle/\">intelligence artificielle</a> de Microsoft, nous transformons votre environnement numérique en une expérience fluide et engageante. Les piliers de l’offre Plateforme employé de Victrix&nbsp;:",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "3",
       "cardStyle": "default",
@@ -68,23 +63,36 @@
           "title": "Environnement global accessible et complet",
           "text": "Création d’une navigation et d’une architecture tenant compte de l’ensemble de l’espace de travail numérique de l’employé.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Recherche d’information et partage de connaissances simplifiés",
           "text": "Réduire la distance entre l’utilisateur et l’information recherchée.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Expérience personnalisée",
           "text": "Parcours et contenus adaptés aux différents segments d’utilisateurs.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "strategic-value",
@@ -93,10 +101,11 @@
       "fond": "",
       "paragraphs": [
         "Victrix ne se limite pas à l’intégration d’un simple intranet d’entreprise. Nous développons une plateforme personnalisée pour favoriser la productivité et la collaboration, propulsée par l’IA et parfaitement adaptée à vos besoins organisationnels — une offre flexible, évolutive, adaptée à votre stratégie numérique.",
+        "Ce qui distingue notre offre : une expertise reconnue avec les solutions Microsoft 365 (Teams, SharePoint, Copilot, etc.) et Viva ; un agent conversationnel intelligent, intégré à votre environnement de travail pour répondre aux questions courantes des employés ; une offre flexible, évolutive, adaptée à votre stratégie numérique ; une équipe permanente et experte en expérience utilisateur (UX), design d’interface (UI) et communication ; une vaste expérience au sein d’environnements complexes et d’organisations privées ou publiques.",
         "Avec les <a href=\"/fr/services/productivite/\">experts en productivité</a> chez Victrix à vos côtés, améliorer l’expérience employé devient une réalité accessible et efficace."
       ],
-      "image": "/wp-content/uploads/2023/08/vackground-com-aguc-v_d1ii-unsplash-3-scaled.jpg",
-      "imageAlt": "",
+      "image": "/wp-content/uploads/2025/03/plan-de-travail-1.jpg",
+      "imageAlt": "Schéma de la plateforme employé conçue par Victrix",
       "stats": [
         {
           "value": "M365 + Viva",
@@ -131,7 +140,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "seoTitle": "Intranet moderne : l'IA pour l'expérience employé | Services | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

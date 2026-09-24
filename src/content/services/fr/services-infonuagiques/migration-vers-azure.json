@@ -12,10 +12,10 @@
       "titleAccent": "",
       "title": "Accélérez votre migration vers Microsoft Azure",
       "titleHighlight": "Microsoft Azure",
-      "lead": "Accélérez votre passage vers la plateforme Azure avec le soutien de nos experts en solutions infonuagiques : agilité et accessibilité accrues, posture de sécurité rehaussée. Nos experts certifiés Microsoft Solutions Partner vous assurent un processus de migration sécuritaire, avec une stratégie sur mesure.",
+      "lead": "Accélérez votre passage vers la plateforme Azure avec le soutien de nos experts en <a href=\"/fr/services/services-infonuagiques/\">solutions infonuagiques</a> : agilité et accessibilité accrues, posture de sécurité rehaussée. Nos experts certifiés Microsoft Solutions Partner vous assurent un processus de migration sécuritaire, avec une stratégie sur mesure.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
-      "image": "/wp-content/uploads/2023/08/azure_infonuagique.jpg",
+      "image": "/wp-content/uploads/2023/08/mirosoft_azure.png",
       "imageAlt": ""
     },
     {
@@ -23,7 +23,7 @@
       "type": "bento-metrics",
       "title": "Pourquoi choisir la migration vers Azure pour son organisation?",
       "intro": "Microsoft Azure est une plateforme infonuagique proposant de nombreux services pour déployer, gérer et optimiser vos applications et ressources technologiques : infrastructure, sécurité infonuagique, analyse et sauvegarde de données, développement d'applications sur mesure, et bien plus encore.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Une solution infonuagique de bout en bout",
         "text": "Réputée mondialement pour sa réponse efficace à divers besoins technologiques, la plateforme Azure place la <strong>flexibilité et la rentabilité</strong> en tête de liste de ses avantages. Le portail tire profit de la popularité de la gamme de produits Microsoft, très répandue en entreprise, <strong>facilitant l'apprentissage et l'adoption pour les utilisateurs</strong> ; son interface conviviale et graphique simplifie la gestion des ressources infonuagiques.",
@@ -35,8 +35,29 @@
         "title": "Spécialisations reconnues par Microsoft",
         "text": "Victrix répond aux normes les plus strictes de Microsoft en matière de sécurité infonuagique et de protection contre les menaces : Partenaire Solutions pour Espace de travail moderne et Partenaire Solutions pour Sécurité.",
         "linkLabel": "Planifiez une consultation",
-        "linkHref": "/fr/contact"
+        "linkHref": "/fr/contact",
+        "image": "",
+        "imageAlt": ""
       }
+    },
+    {
+      "_bookshop_name": "logo-banner",
+      "type": "logo-banner",
+      "fond": "ivoire",
+      "title": "Nos désignations Microsoft",
+      "badge": "",
+      "items": [
+        {
+          "name": "Microsoft Solutions Partner — Espace de travail moderne",
+          "logo": "/wp-content/uploads/2023/08/espacetravail-1-300x161.png",
+          "description": ""
+        },
+        {
+          "name": "Microsoft Solutions Partner — Sécurité",
+          "logo": "/wp-content/uploads/2026/06/designation-securite-300x276.png",
+          "description": ""
+        }
+      ]
     },
     {
       "_bookshop_name": "strategic-value",
@@ -45,7 +66,8 @@
       "paragraphs": [
         "Avec le service Azure, créez des applications sur mesure, gérez des charges de travail complexes, sécurisez vos centres de données et bénéficiez des dernières applications d'<a href=\"/fr/services/intelligence-artificielle/\">intelligence artificielle (IA)</a> et d'<a href=\"/fr/services/cybersecurite/internet-des-objets-service-iot/\">IoT</a>.",
         "Avec une flexibilité et une évolutivité sans égal, Azure permet aux organisations d'évoluer en restant au-devant des changements, sans jamais sacrifier la <a href=\"/fr/services/cybersecurite/\">sécurité et la conformité</a>.",
-        "Si vous souhaitez <strong>migrer votre environnement Windows vers Azure</strong>, notre équipe vous offre un <strong>accompagnement personnalisé</strong> avec une feuille de route et une visibilité sur le déroulement de la migration."
+        "Si vous souhaitez <strong>migrer votre environnement Windows vers Azure</strong>, notre équipe vous offre un <strong>accompagnement personnalisé</strong> avec une feuille de route et une visibilité sur le déroulement de la migration.",
+        "Victrix se spécialise dans les <a href=\"/fr/services/services-ti-geres/\">services gérés</a> et les solutions infonuagiques. En tant que fournisseur de services gérés TI, nous offrons à nos clients la garantie d’une excellence opérationnelle, d’une posture de sécurité robuste et de la conformité."
       ],
       "image": "",
       "imageAlt": "",
@@ -64,11 +86,12 @@
       "bullets": [],
       "cardTitle": "",
       "cardText": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Notre méthodologie Cloud Adoption Framework",
       "headingStyle": "plain",
       "intro": "Victrix se spécialise dans les <strong>services gérés</strong> et les <strong>solutions infonuagiques</strong> : excellence opérationnelle, posture de sécurité robuste, conformité et performance de votre infrastructure. Faites confiance à nos experts pour <strong>bâtir une plateforme de productivité évolutive</strong> qui facilite la gestion de vos charges de travail, renforce la sécurité de vos données et propulse vos affaires.",
@@ -79,37 +102,54 @@
         {
           "number": "01",
           "title": "Stratégie",
-          "text": "Accélération de la stratégie d'adoption de la plateforme infonuagique : motivation organisationnelle, résultats attendus, considérations financières et techniques."
+          "text": "Accélération de la stratégie d'adoption de la plateforme infonuagique : motivation organisationnelle, résultats attendus, considérations financières et techniques.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Planification",
-          "text": "Présentation des concepts, estimation des coûts projetés par charge, design de la fondation infonuagique, priorisation des charges de travail à migrer, alignement avec les priorités d'affaires et planification des nouveaux rôles requis."
+          "text": "Présentation des concepts, estimation des coûts projetés par charge, design de la fondation infonuagique, priorisation des charges de travail à migrer, alignement avec les priorités d'affaires et planification des nouveaux rôles requis.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Déploiement",
-          "text": "Accélération de la migration des charges de travail vers Azure, mise en place d'une gouvernance minimale et gradation de la preuve de concept en production."
+          "text": "Accélération de la migration des charges de travail vers Azure, mise en place d'une gouvernance minimale et gradation de la preuve de concept en production.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Gouvernance",
-          "text": "Outils de gouvernance, renforcement des meilleures pratiques par itérations, gestion des coûts, sécurité de base et cohérence des ressources."
+          "text": "Outils de gouvernance, renforcement des meilleures pratiques par itérations, gestion des coûts, sécurité de base et cohérence des ressources.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Sécurité",
-          "text": "Amélioration continue de la sécurité dans Microsoft Azure : cartographie des rôles et responsabilités, stratégie de sécurité, gestion de l'information, gestion des risques et conformité."
+          "text": "Amélioration continue de la sécurité dans Microsoft Azure : cartographie des rôles et responsabilités, stratégie de sécurité, gestion de l'information, gestion des risques et conformité.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
     {
       "_bookshop_name": "tech-columns",
       "type": "tech-columns",
+      "fond": "ivoire",
       "sectionTitle": "Nos services de migration et de gestion Azure",
       "groups": [
         {
           "title": "Analyse et optimisation",
+          "href": "",
           "items": [
             "Analyse avancée de l'architecture",
             "Estimation du coût total de possession (TCO)",
@@ -121,6 +161,7 @@
         },
         {
           "title": "Analyse de migration",
+          "href": "",
           "items": [
             "Analyse de faisabilité",
             "Évaluation des défis de migration",
@@ -131,6 +172,7 @@
         },
         {
           "title": "Stratégie de migration",
+          "href": "",
           "items": [
             "Application des 6 R de migration appropriés",
             "Migration IaaS (VM Azure), PaaS (App Service) et SaaS",
@@ -142,6 +184,7 @@
         },
         {
           "title": "Multicloud",
+          "href": "",
           "items": [
             "Respect des principes des modèles CAF (Cloud Adoption Framework) et WAF (Well-Architected Framework)",
             "Accélération, simplification, automatisation et optimisation de vos déploiements multicloud",
@@ -154,6 +197,7 @@
         },
         {
           "title": "Sécurité infonuagique",
+          "href": "",
           "items": [
             "Modèle d'accès distant sécurisé, centralisé et complètement géré",
             "Consolidation d'identité infonuagique et modèle d'authentification sécurisé et centralisé (gestion des accès)",
@@ -164,6 +208,7 @@
         },
         {
           "title": "Transformation organisationnelle",
+          "href": "",
           "items": [
             "Modernisation d'environnement avec Azure Virtual Desktop : poste de travail DaaS basé sur Azure",
             "Adoption de Windows 365 pour un accès à distance sécurisé au réseau de l'organisation, à ses données et applications"
@@ -174,6 +219,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Infonuagique"
@@ -191,7 +237,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": "Migration Microsoft Azure | Services | Victrix",

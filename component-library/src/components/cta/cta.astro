@@ -7,7 +7,8 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  * FIDÉLITÉ MAQUETTE 2026-08-05 (docs/design/expertise-mere.css §CTA Section) :
  * PANNEAU arrondi 8 dans le conteneur —
  *  - variant "dark"  : aplat Bleu Victrix, titre 40/700 blanc, corps 18/29
- *    blanc 80 %, bouton BLANC texte bleu rayon 2, décor cercles (plein +
+ *    blanc 90 % (la maquette disait 80 % : 3,92:1 sur l'aplat bleu, sous le
+ *    seuil AA — relevé 2026-09-21), bouton BLANC texte bleu rayon 2, décor cercles (plein +
  *    tireté) en filigrane à droite ;
  *  - variant "light" : panneau beige (surface-container), titre navy, bouton
  *    primaire — même géométrie ;
@@ -54,7 +55,7 @@ const {
   cta2Label,
   cta2Href,
   variant = 'light',
-  fond = 'blanc',
+  fond = 'ivoire',
 } = Astro.props;
 const dark = variant === 'dark';
 const nuit = variant === 'nuit';
@@ -73,11 +74,11 @@ const FONDS: Record<string, string> = FOND_CLASSES;
     <section class="bg-primary py-20">
       <div class="container-site">
         <div class="max-w-[768px] mx-auto flex flex-col items-center text-center gap-4">
-          <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-primary m-0">
+          <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-primary m-0">
             {title}
           </h2>
           {hasRichText(body) && (
-            <div class="rich text-lg leading-[29px] text-on-primary/90 max-w-none" set:html={blockHtml(body)} />
+            <div class="rich text-lg leading-[1.8125rem] text-on-primary/90 max-w-none" set:html={blockHtml(body)} />
           )}
           <div class="flex flex-wrap items-center justify-center gap-4 mt-4">
             <a
@@ -135,7 +136,7 @@ const FONDS: Record<string, string> = FOND_CLASSES;
       >
         <h2
           class:list={[
-            'text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] m-0 text-balance',
+            'text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] m-0 text-balance',
             dark || nuit ? 'text-white' : 'text-on-surface',
           ]}
         >
@@ -145,8 +146,8 @@ const FONDS: Record<string, string> = FOND_CLASSES;
           hasRichText(body) && (
             <div
               class:list={[
-                'rich text-lg leading-[29px] max-w-none',
-                dark || nuit ? 'text-white/80' : 'text-on-surface-variant',
+                'rich text-lg leading-[1.8125rem] max-w-none',
+                dark || nuit ? 'text-white/90' : 'text-on-surface-variant',
               ]}
               set:html={blockHtml(body)}
             />

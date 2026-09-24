@@ -2,7 +2,7 @@
   "_schema": "default",
   "title": "Secteurs d’activité",
   "description": "Victrix possède une expertise sectorielle approfondie. Découvrez tous les secteurs d'activité pris en charge par nos experts.",
-  "noindex": true,
+  "noindex": false,
   "seoTitle": "",
   "seoH1": "",
   "slug": "",
@@ -31,69 +31,93 @@
       "type": "benefits",
       "title": "Des réalités différentes, une même exigence",
       "intro": "Approvisionnement encadré, pression sur les coûts, rareté des talents et exigences de conformité : chaque secteur impose ses propres règles. Nous partons des vôtres. Les pages détaillées par secteur arrivent bientôt.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "headingStyle": "titre",
       "numerotation": false,
       "items": [
         {
           "icon": "organisation",
           "title": "Secteur public et parapublic",
-          "description": "Appels d'offres, souveraineté des données et continuité du service aux citoyens."
+          "description": "Appels d'offres, souveraineté des données et continuité du service aux citoyens.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "organisation",
           "title": "Santé",
-          "description": "Données cliniques protégées, systèmes interopérables et disponibilité sans interruption."
+          "description": "Données cliniques protégées, systèmes interopérables et disponibilité sans interruption.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "croissance",
           "title": "Services financiers",
-          "description": "Surveillance des régulateurs, prévention del a fraude et disponibilité des transactions."
+          "description": "Surveillance des régulateurs, prévention del a fraude et disponibilité des transactions.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "losange",
           "title": "Défense",
-          "description": "Habilitations, marchandises contrôlées et environnements cloisonnées en territoire souverain."
+          "description": "Habilitations, marchandises contrôlées et environnements cloisonnées en territoire souverain.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "losange",
           "title": "Énergie",
-          "description": "Technologies opérationnelles, infrastructures essentielles et exploitation qui ne s'arrête jamais."
+          "description": "Technologies opérationnelles, infrastructures essentielles et exploitation qui ne s'arrête jamais.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "losange",
           "title": "Télécommunications",
-          "description": "Réseaux à grande échelle, disponibilité de niveau opérateur et volumes en hausse."
+          "description": "Réseaux à grande échelle, disponibilité de niveau opérateur et volumes en hausse.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "organisation",
           "title": "Industrie et fabrication",
-          "description": "Équipements connectés, lignes de production continues et sécurité des environnements industriels."
+          "description": "Équipements connectés, lignes de production continues et sécurité des environnements industriels.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "losange",
           "title": "Agroalimentaire",
-          "description": "Traçabilité des lots, salubrité et chaîne de froid, où tout arrêt coûte cher."
+          "description": "Traçabilité des lots, salubrité et chaîne de froid, où tout arrêt coûte cher.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "losange",
           "title": "Transport et logistique",
-          "description": "Flottes, entrepôts et suivi en temps réel sur toute la chaîne d'approvisionnement."
+          "description": "Flottes, entrepôts et suivi en temps réel sur toute la chaîne d'approvisionnement.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "organisation",
           "title": "Commerce de détail",
-          "description": "Points de vente, commerce en ligne, pointes saisonnières et sécurité des paiements."
+          "description": "Points de vente, commerce en ligne, pointes saisonnières et sécurité des paiements.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "losange",
           "title": "Ingénierie et construction",
-          "description": "Chantiers connectés, main-d'œuvre mobile et fichiers de conception lourds à partager."
+          "description": "Chantiers connectés, main-d'œuvre mobile et fichiers de conception lourds à partager.",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "icon": "organisation",
           "title": "Services professionnels",
-          "description": "Confidentialité des dossiers clients, collaboration sécurisée et mobilité des équipes."
+          "description": "Confidentialité des dossiers clients, collaboration sécurisée et mobilité des équipes.",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -107,7 +131,7 @@
       "cta2Label": "Découvrez Victrix",
       "cta2Href": "/fr/decouvrir",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

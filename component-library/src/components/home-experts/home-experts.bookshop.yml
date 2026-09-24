@@ -24,6 +24,7 @@ spec:
 
 blueprint:
   type: home-experts
+  fond: sable
   title: "Rencontrez nos experts"
   subtitle: ""
   ctaLabel: "Nous joindre"
@@ -35,6 +36,24 @@ _inputs:
   type:
     hidden: true
     comment: "Discriminant technique du contrat sections — ne pas modifier."
+  # « Fond de section » (2026-09-21) : choix BORNÉ à la palette officielle,
+  # jamais de couleur libre — même champ que les autres sections.
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: false
+      values: _select_data.fonds_etendus
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+        icon: square
+        icon_color:
+          - key: couleur
+    comment: "Couleur de fond de la section, bornée à la palette officielle (pastilles dans la liste)."
   title:
     label: "Titre"
   subtitle:

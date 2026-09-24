@@ -17,7 +17,7 @@
       "titleAccent": "",
       "title": "La cybersécurité au service de vos affaires",
       "titleHighlight": "cybersécurité",
-      "lead": "Sécurisation des actifs, gestion des risques et mise en conformité réglementaire : Victrix vous accompagne dans la mise en place d’une stratégie de cybersécurité adaptée à votre réalité organisationnelle et aux exigences réglementaires de votre secteur.",
+      "lead": "Sécurisation des actifs, gestion des risques et mise en conformité réglementaire&nbsp;: Victrix vous accompagne dans la mise en place d’une stratégie de cybersécurité adaptée à votre réalité organisationnelle et aux exigences réglementaires de votre secteur.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "cta2Label": "",
@@ -32,7 +32,7 @@
       "type": "bento-metrics",
       "title": "La cybersécurité, un atout stratégique intégré à tous nos projets",
       "intro": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Victrix, votre fournisseur de services de cybersécurité",
         "text": "Faites confiance à Victrix pour <strong>protéger vos données sensibles</strong>, <strong>assurer la sécurité de vos systèmes</strong> et <strong>prendre en charge le déploiement de solutions technologiques</strong> qui protégeront votre entreprise contre les cybermenaces.",
@@ -54,8 +54,10 @@
       },
       "aside": {
         "icon": "bouclier",
+        "image": "",
+        "imageAlt": "",
         "title": "Certification ISO/IEC 27001:2022",
-        "text": "Nous détenons la certification ISO/IEC 27001:2022, attestant que nos pratiques respectent les plus hauts standards internationaux en gestion de la sécurité de l’information.",
+        "text": "Nous détenons la <a href=\"/fr/ressources/certification-iso-27001-iso-9001/\">certification ISO/IEC 27001:2022</a>, attestant que nos pratiques respectent les plus hauts standards internationaux en gestion de la sécurité de l’information.",
         "linkLabel": "Planifiez une consultation",
         "linkHref": "/fr/contact"
       }
@@ -63,6 +65,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Notre service de cybersécurité : la réponse à tous vos enjeux",
       "headingStyle": "plain",
       "intro": "",
@@ -79,35 +82,50 @@
           "title": "L’évolution des menaces informatiques",
           "text": "Des cyberattaques de plus en plus sophistiquées et ciblées.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "bouclier",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Manque de ressources spécialisées",
           "text": "Équipes internes débordées et pénurie d’expertises.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Complexité croissante des TI",
           "text": "Environnements hybrides difficiles à sécuriser efficacement.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Pression réglementaire",
           "text": "Complexité de la mise en conformité et sanctions coûteuses infligées en cas de non-respect.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Impacts des incidents de cybersécurité",
           "text": "Interruptions des opérations, pertes financières et dommages à la réputation.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -120,7 +138,7 @@
         "<a href=\"/fr/services/services-infonuagiques/\">Services infonuagiques</a> avec un niveau de protection renforcé.",
         "Accompagnement pour la mise en conformité aux normes ISO 27001/2, <a href=\"/fr/ressources/directive-nis2/\">NIS2</a>, SOC2, <a href=\"/fr/services/conseil-strategique/conformite-loi-25/\">Loi 25</a>, RGPD, PCI, <a href=\"/fr/ressources/reglementation-dora/\">DORA</a> et plus encore.",
         "<a href=\"/fr/services/conseil-strategique/\">Services-conseils</a> en sécurité adaptés à vos besoins et votre croissance.",
-        "<li><a href=\"/fr/services/conseil-strategique/\">Services-conseils</a> en sécurité adaptés à vos besoins et votre croissance.</li><li>Accompagnement pour la mise en conformité aux normes ISO/IEC 27001/2, <a href=\"/fr/ressources/directive-nis2/\">NIS2</a>, SOC2, <a href=\"/fr/services/conseil-strategique/conformite-loi-25/\">Loi 25</a>, RGPD, PCI, <a href=\"/fr/ressources/reglementation-dora/\">DORA</a> et plus encore. </li><li><a href=\"/fr/services/services-infonuagiques/\">Services infonuagiques</a> avec un niveau de protection renforcé.</li><li>Évolution de votre posture de sécurité et mise en œuvre d’un plan de reprise et continuité (PCA/PRA) pour une réponse aux incidents rapide et efficace.</li>"
+        "Évolution de votre posture de sécurité et mise en œuvre d’un plan de reprise et continuité (PCA/PRA) pour une réponse aux incidents rapide et efficace."
       ],
       "image": "/wp-content/uploads/2024/12/modern-urban-architecture-2024-09-18-06-16-04-utc-2-scaled.jpg",
       "imageAlt": "",
@@ -153,19 +171,74 @@
       "type": "feature-boxes",
       "sectionTitle": "Nos partenaires et technologies",
       "subtitle": "",
-      "fond": "givre",
+      "fond": "beige",
       "boxes": [
-        "Palo Alto",
-        "Checkpoint",
-        "CrowdStrike",
-        "Microsoft",
-        "Cisco",
-        "AlgoSec",
-        "AWS",
-        "ServiceNow",
-        "Proofpoint",
-        "ZScaler",
-        "Juniper"
+        {
+          "label": "Palo Alto",
+          "icon": "",
+          "image": "/images/logos/paloalto.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Checkpoint",
+          "icon": "",
+          "image": "/images/logos/checkpoint.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "CrowdStrike",
+          "icon": "",
+          "image": "/images/logos/crowdstrike.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Microsoft",
+          "icon": "",
+          "image": "/images/logos/microsoft.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Cisco",
+          "icon": "",
+          "image": "/images/logos/cisco.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AlgoSec",
+          "icon": "",
+          "image": "/images/logos/algosec.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "AWS",
+          "icon": "",
+          "image": "/images/logos/aws.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "ServiceNow",
+          "icon": "",
+          "image": "/images/logos/servicenow-partner.png",
+          "imageAlt": ""
+        },
+        {
+          "label": "Proofpoint",
+          "icon": "",
+          "image": "/images/logos/proofpoint.png",
+          "imageAlt": ""
+        },
+        {
+          "label": "ZScaler",
+          "icon": "",
+          "image": "/wp-content/uploads/2024/07/zscaler-logo.svg",
+          "imageAlt": ""
+        },
+        {
+          "label": "Juniper",
+          "icon": "",
+          "image": "/wp-content/uploads/2024/07/juniper-logo.png",
+          "imageAlt": ""
+        }
       ]
     },
     {
@@ -173,7 +246,7 @@
       "type": "realisations",
       "title": "Une expertise sectorielle pour vos services de cybersécurité",
       "intro": "Nous aidons les organisations du secteur privé et public à atteindre leurs objectifs de sécurité de l’information.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "linkLabel": null,
       "linkHref": null,
       "items": [
@@ -200,6 +273,85 @@
       ]
     },
     {
+      "_bookshop_name": "logo-banner",
+      "type": "logo-banner",
+      "fond": "ivoire",
+      "title": "Nos professionnels sont certifiés",
+      "badge": "",
+      "items": [
+        {
+          "name": "Gestion certifiée de la sécurité de l'information (ISACA)",
+          "logo": "/wp-content/uploads/2024/07/cism-2.svg",
+          "description": ""
+        },
+        {
+          "name": "Professionnel certifié en sécurité des systèmes d'information (ISC2)",
+          "logo": "/wp-content/uploads/2024/07/isc2_cissp_rgb_badge-600x600-1.png",
+          "description": ""
+        },
+        {
+          "name": "Professionnel certifié en sécurité infonuagique",
+          "logo": "/wp-content/uploads/2024/07/image.png",
+          "description": ""
+        },
+        {
+          "name": "Gouvernance certifiée des technologies de l'information d'entreprise",
+          "logo": "/wp-content/uploads/2024/07/cgeit.png",
+          "description": ""
+        },
+        {
+          "name": "Certifié en gestion des risques et contrôle des systèmes d'information",
+          "logo": "/wp-content/uploads/2024/07/crisc.png",
+          "description": ""
+        },
+        {
+          "name": "Auditeur certifié en systèmes d'information",
+          "logo": "/wp-content/uploads/2024/07/cisa.png",
+          "description": ""
+        },
+        {
+          "name": "Certificat de connaissances en matière de sécurité infonuagique",
+          "logo": "/wp-content/uploads/2024/07/ccsk.png",
+          "description": ""
+        },
+        {
+          "name": "ISO 27001 — Responsable de la mise en œuvre",
+          "logo": "/wp-content/uploads/2024/07/iso27001.png",
+          "description": ""
+        },
+        {
+          "name": "ISO 27005 — Gestionnaire des risques",
+          "logo": "/wp-content/uploads/2024/07/iso27005.png",
+          "description": ""
+        },
+        {
+          "name": "ISO 27034 — Responsable de la sécurité des applications",
+          "logo": "/wp-content/uploads/2024/07/iso27034.png",
+          "description": ""
+        },
+        {
+          "name": "Piratage éthique certifié (CEH)",
+          "logo": "/wp-content/uploads/2024/07/616dd9d2cbea0f25d4b95837_ceh-small.png",
+          "description": ""
+        },
+        {
+          "name": "CompTIA Sécurité+",
+          "logo": "/wp-content/uploads/2024/07/comptia_security_2bce-1.png",
+          "description": ""
+        },
+        {
+          "name": "Expert en gestion des risques liés aux tiers",
+          "logo": "/wp-content/uploads/2024/07/grc.png",
+          "description": ""
+        },
+        {
+          "name": "Professionnel GRC (Gouvernance, risque et conformité)",
+          "logo": "/wp-content/uploads/2024/07/grcprofessional.png",
+          "description": ""
+        }
+      ]
+    },
+    {
       "_bookshop_name": "cta",
       "type": "cta",
       "title": "À la recherche d'un service de cybersécurité adapté au secteur de la santé?",
@@ -209,21 +361,21 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "light",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "faq",
       "type": "faq",
       "title": "En savoir plus sur nos services de cybersécurité",
-      "fond": "givre",
+      "fond": "beige",
       "items": [
         {
           "question": "Quelles sont les offres de cybersécurité de Victrix?",
-          "answer": "La cybersécurité est inscrite dans l’ADN de Victrix. Nous accompagnons les organisations grâce à un accompagnement stratégique et créateur de valeur. Parmi nos offres : tests d’intrusion (Pentest), audit GRC (gestion du risque et de la conformité), développement de plan de continuité et de relève (PCA/PRA), mise en place du modèle Zero Trust, mise en conformité à la Loi 25, au RGPD, à DORA et aux autres normes en matière de protection des données personnelles, évaluation et sécurisation de votre inventaire IoT (Internet des objets), et gestion des identités et accès avec le modèle SASE."
+          "answer": "La cybersécurité est inscrite dans l’ADN de Victrix. Nous accompagnons les organisations grâce à un accompagnement stratégique et créateur de valeur. Parmi nos offres : <a href=\"/fr/services/cybersecurite/test-intrusion-pentest/\">tests d’intrusion (Pentest)</a>, <a href=\"/fr/ressources/audit-cybersecurite/\">audit GRC</a> (gestion du risque et de la conformité), développement de plan de continuité et de relève (PCA/PRA), mise en place du <a href=\"/fr/ressources/zero-trust-network-access-ztna-modele-de-cybersecurite-optimal/\">modèle Zero Trust</a>, mise en conformité à la Loi 25, au RGPD, à DORA et aux autres normes en matière de protection des données personnelles, évaluation et sécurisation de votre <a href=\"/fr/services/cybersecurite/internet-des-objets-service-iot/\">inventaire IoT (Internet des objets)</a>, et gestion des identités et accès avec le <a href=\"/fr/ressources/sase-cloud/\">modèle SASE</a>."
         },
         {
           "question": "Que fait Victrix pour assurer la sécurité opérationnelle?",
-          "answer": "Victrix supporte les efforts de cybersécurité du secteur public et privé à travers l’évaluation de la posture et de la maturité de sécurité, le déploiement de contrôles (EDR-XDR-MDR), la gestion des identités et accès (IDaaS) et la gestion opérationnelle, incluant des audits de cybersécurité et des services gérés 24/7."
+          "answer": "Victrix supporte les efforts de cybersécurité du secteur public et privé à travers l’évaluation de la posture et de la maturité de sécurité, le déploiement de contrôles (EDR-XDR-MDR), la gestion des identités et accès (IDaaS) et la gestion opérationnelle, incluant des audits de cybersécurité et des <a href=\"/fr/services/services-ti-geres/\">services gérés 24/7</a>."
         },
         {
           "question": "Est-ce que Victrix peut aider mon organisation à sécuriser l’infonuagique?",
@@ -234,6 +386,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Cybersécurité"
@@ -242,16 +395,14 @@
       "ctaHref": "/fr/ressources"
     },
     {
-      "_bookshop_name": "form",
-      "type": "form",
-      "title": "Évaluation posture sécurité",
-      "intro": "Obtenez un portrait clair de votre posture de sécurité — un de nos experts vous recontacte rapidement.",
-      "formId": "campagne-evaluation",
-      "submitLabel": "Envoyer ma demande",
-      "consentText": "",
-      "variant": "carte",
-      "fond": "",
-      "fields": []
+      "_bookshop_name": "contact-qualifier",
+      "type": "contact-qualifier",
+      "title": "Évaluation de votre posture de sécurité",
+      "intro": "<p>Obtenez un portrait clair de votre posture de sécurité — un de nos experts vous recontacte rapidement.</p>",
+      "question": "Quelle est la taille de votre entreprise ?",
+      "contactHref": "/fr/contact",
+      "note": "",
+      "fond": "beige"
     },
     {
       "_bookshop_name": "cta",
@@ -263,7 +414,7 @@
       "cta2Label": "Planifiez une consultation",
       "cta2Href": "/fr/contact",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

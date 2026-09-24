@@ -1,9 +1,19 @@
 {
+  "_schema": "default",
   "title": "Idea management",
   "description": "Fosters innovation across the organization. Employees can submit, comment on, and vote for ideas.",
   "image": "/images/solutions/gestion-idees.jpg",
   "sector": "Innovation",
   "solutionType": "Collaboration",
+  "featured": false,
   "order": 40,
-  "href": "/contact"
+  "href": "/contact",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": []
 }

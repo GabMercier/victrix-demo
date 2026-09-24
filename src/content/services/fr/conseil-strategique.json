@@ -16,7 +16,7 @@
       "titleAccent": "",
       "title": "Conseil stratégique",
       "titleHighlight": "stratégique",
-      "lead": "Notre savoir-faire en conseil stratégique est transversal à nos domaines d’expertise : cybersécurité, intelligence artificielle, infonuagique, gouvernance TI, applications d'affaires et productivité. L’implication de nos dirigeants et nos expertises multidisciplinaires sont mises à votre service pour assurer le succès de vos projets stratégiques.",
+      "lead": "Notre savoir-faire en conseil stratégique est transversal à nos domaines d’expertise : <a href=\"/fr/services/cybersecurite/\">cybersécurité</a>, <a href=\"/fr/services/intelligence-artificielle/\">intelligence artificielle</a>, <a href=\"/fr/services/services-infonuagiques/\">infonuagique</a>, gouvernance TI, <a href=\"/fr/services/services-ti-geres/\">services gérés</a>, applications d'affaires et <a href=\"/fr/services/productivite/\">productivité</a>. L’implication de nos dirigeants et nos expertises multidisciplinaires sont mises à votre service pour assurer le succès de vos projets stratégiques.",
       "ctaLabel": "Planifiez une consultation",
       "ctaHref": "/fr/contact",
       "image": "/wp-content/uploads/2022/02/conseil-strategique-victrix-scaled.jpg",
@@ -27,7 +27,7 @@
       "type": "bento-metrics",
       "title": "Notre différenciateur",
       "intro": "Nous vous offrons une approche stratégique innovante.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Transformation numérique",
         "text": "Notre objectif est d’accélérer la réalisation de votre projet avec des <strong>résultats tangibles et mesurables</strong>.",
@@ -39,7 +39,9 @@
         "title": "Équipe pluridisciplinaire ",
         "text": "Nos conseillers chevronnés en stratégie et technologie vous aideront à atteindre vos objectifs. ",
         "linkLabel": null,
-        "linkHref": null
+        "linkHref": null,
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
@@ -47,7 +49,7 @@
       "type": "offer-cards",
       "title": "Nos expertises en conseil stratégique",
       "intro": "",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "",
       "ctaHref": "",
       "items": [
@@ -138,6 +140,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Notre méthodologie",
       "headingStyle": "underline",
       "intro": "Notre méthodologie implique notre équipe de direction en cours de projet et un challenge des pairs afin de vous présenter l’approche la mieux adaptée à vos besoins.",
@@ -148,27 +151,42 @@
         {
           "number": "01",
           "title": "Comprendre",
-          "text": "Ateliers d’évaluation et de découverte, questionnaires, besoins d’affaires, TI et utilisateurs, systèmes utilisés, contrats, expertise, contraintes, initiatives, problèmes et principes directeurs."
+          "text": "Ateliers d’évaluation et de découverte, questionnaires, besoins d’affaires, TI et utilisateurs, systèmes utilisés, contrats, expertise, contraintes, initiatives, problèmes et principes directeurs.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Prioriser",
-          "text": "Révision de l’étendue, ateliers d’orientation et de stratégie, tendances, comparables, meilleures pratiques et présentation à la direction."
+          "text": "Révision de l’étendue, ateliers d’orientation et de stratégie, tendances, comparables, meilleures pratiques et présentation à la direction.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Planifier",
-          "text": "Calendrier de réalisation, priorités, disponibilités, ressources internes et externes."
+          "text": "Calendrier de réalisation, priorités, disponibilités, ressources internes et externes.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Budgéter",
-          "text": "Séquence, efforts, échéancier et coûts, choix technologiques."
+          "text": "Séquence, efforts, échéancier et coûts, choix technologiques.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "05",
           "title": "Activer",
-          "text": "Affectation des ressources, lancement des projets, gestion du changement, communication et rétroaction en continu."
+          "text": "Affectation des ressources, lancement des projets, gestion du changement, communication et rétroaction en continu.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -209,6 +227,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Ressources liées",
       "tags": [
         "Conseil stratégique"
@@ -226,7 +245,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

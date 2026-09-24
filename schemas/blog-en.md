@@ -15,6 +15,7 @@
 #    (otherwise they only appear after a first save).
 title: "New article"
 slug: ""
+draft: false
 date: 2026-01-01
 excerpt: ""
 coverImage: ""

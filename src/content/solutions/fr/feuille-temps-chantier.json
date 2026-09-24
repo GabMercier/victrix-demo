@@ -1,9 +1,116 @@
 {
+  "_schema": "default",
   "title": "Feuille de temps chantier",
   "description": "Permet à vos équipes d'enregistrer leur temps de travail en quelques clics et simplifie la facturation des projets.",
   "image": "/images/solutions/feuille-temps-chantier.jpg",
   "sector": "Chantier",
   "solutionType": "Productivité",
-  "order": 70,
-  "href": "/contact"
+  "featured": false,
+  "order": 140,
+  "href": "",
+  "docHref": "",
+  "contactService": "",
+  "noindex": true,
+  "seoTitle": "",
+  "seoH1": "",
+  "contactSujet": "",
+  "slug": "",
+  "sections": [
+    {
+      "_bookshop_name": "product-hero",
+      "type": "product-hero",
+      "badge": "Solution Ø Studio",
+      "title": "Feuille de temps chantier",
+      "titleHighlight": "",
+      "lead": "Découvrez notre application de suivi des heures de chantier. Elle permet à vos équipes d’enregistrer leur temps de travail en quelques clics et à vos gestionnaires d’optimiser la gestion des ressources et le suivi de la productivité.",
+      "ctaLabel": "Parler à un expert",
+      "ctaHref": "#formulaire",
+      "cta2Label": "Voir le catalogue",
+      "cta2Href": "/fr/solutions/",
+      "image": "/images/solutions/feuille-temps-chantier/01.jpg",
+      "imageAlt": "Maquette de présentation — Feuille de temps chantier",
+      "fond": "beige"
+    },
+    {
+      "_bookshop_name": "bento-metrics",
+      "type": "bento-metrics",
+      "title": "En bref",
+      "intro": "",
+      "fond": "ivoire",
+      "featured": {
+        "title": "Feuille de temps chantier",
+        "text": "",
+        "watermark": "eclair",
+        "stats": [
+          {
+            "value": "Secteur construction",
+            "label": "Client"
+          },
+          {
+            "value": "Entre 50.000 et 100.000 $CAD",
+            "label": "Coût"
+          },
+          {
+            "value": "Entre 1 et 3 mois",
+            "label": "Délai"
+          },
+          {
+            "value": "Power Platform, SharePoint, Outlook",
+            "label": "Technologies"
+          }
+        ]
+      },
+      "aside": {
+        "icon": "coche",
+        "image": "",
+        "imageAlt": "",
+        "title": "Conçue par Ø Studio",
+        "text": "Notre studio de création Power Platform et Dynamics 365 personnalise la solution à vos processus.",
+        "linkLabel": "Découvrir Ø Studio",
+        "linkHref": "/fr/services/productivite/o-studio/"
+      }
+    },
+    {
+      "_bookshop_name": "galerie",
+      "type": "galerie",
+      "title": "Aperçu de l’application",
+      "intro": "",
+      "colonnes": "2",
+      "fond": "ivoire",
+      "images": [
+        {
+          "image": "/images/solutions/feuille-temps-chantier/02.png",
+          "alt": "Capture d’écran de l’application — Feuille de temps chantier",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/feuille-temps-chantier/03.png",
+          "alt": "Capture d’écran de l’application — Feuille de temps chantier",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/feuille-temps-chantier/04.png",
+          "alt": "Capture d’écran de l’application — Feuille de temps chantier",
+          "legende": ""
+        },
+        {
+          "image": "/images/solutions/feuille-temps-chantier/05.png",
+          "alt": "Capture d’écran de l’application — Feuille de temps chantier",
+          "legende": ""
+        }
+      ]
+    },
+    {
+      "_bookshop_name": "form",
+      "type": "form",
+      "title": "Parlez-nous de votre projet",
+      "intro": "Afin que cette application réponde parfaitement à vos besoins, un expert va vous recontacter…",
+      "submitLabel": "Demander une consultation",
+      "consentText": "",
+      "variant": "carte",
+      "formId": "o-studio",
+      "fond": "",
+      "fields": []
+    }
+  ]
 }

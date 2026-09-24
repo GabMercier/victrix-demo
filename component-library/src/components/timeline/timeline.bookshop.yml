@@ -30,6 +30,7 @@ spec:
 
 blueprint:
   type: timeline
+  fond: ""
   title: "Notre histoire"
   intro: ""
   tone: default
@@ -53,6 +54,24 @@ _inputs:
   type:
     hidden: true
     comment: "Discriminant technique du contrat de sections — ne pas modifier."
+  # « Fond de section » (2026-09-21) : choix BORNÉ à la palette officielle,
+  # jamais de couleur libre — même champ que les autres sections.
+  fond:
+    type: select
+    label: "Fond de section"
+    options:
+      allow_empty: true
+      values: _select_data.fonds
+      value_key: cle
+      preview:
+        text:
+          - key: libelle
+        image:
+          - key: apercu
+        icon: square
+        icon_color:
+          - key: couleur
+    comment: "Couleur de fond de la section, bornée à la palette officielle. Vide = le fond suit le champ « Ton »."
   title:
     label: "Titre de la section"
   intro:

@@ -5,6 +5,7 @@ excerpt: "Victrix - Best Practices in Operational Safety : Maintenance and how t
 tags: ["Our videos"]
 topics: ["Cybersecurity", "Managed services"]
 slug: "best-practices-in-operational-safety-maintenance"
+draft: true
 coverImage: "/wp-content/uploads/2022/05/cover-artivle_partie-1-maintenance-scaled.jpg"
 seoTitle: "Best Practices in Operational Safety : Maintenance"
 wpUrl: "/en/best-practices-in-operational-safety-maintenance/"

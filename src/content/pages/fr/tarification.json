@@ -29,6 +29,7 @@
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Comment nous bâtissons une proposition",
       "headingStyle": "underline",
       "intro": "Les détails de nos modèles de tarification seront publiés prochainement.",
@@ -39,17 +40,26 @@
         {
           "number": "01",
           "title": "Comprendre le mandat",
-          "text": "Portée, échéancier, contraintes : un cadrage clair avant toute chose."
+          "text": "Portée, échéancier, contraintes : un cadrage clair avant toute chose.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Proposer le bon modèle",
-          "text": "Forfait, régie ou service récurrent — le modèle suit la nature du travail."
+          "text": "Forfait, régie ou service récurrent — le modèle suit la nature du travail.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Suivre en toute transparence",
-          "text": "Des jalons et des rapports qui montrent où va chaque dollar."
+          "text": "Des jalons et des rapports qui montrent où va chaque dollar.",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
       ]
     },
@@ -63,7 +73,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

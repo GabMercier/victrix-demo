@@ -1,4 +1,5 @@
 ---
+import { FOND_CLASSES, type FondEtenduKey } from '../../shared/fonds';
 import { blockHtml, hasRichText } from '../../shared/rich';
 /**
  * Section « Encadré d'appel à l'action » — composant Bookshop (P-07).
@@ -12,6 +13,10 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  *   La CLÉ 'banner-green' est conservée telle quelle (contrat gelé — le vert
  *   n'existe plus dans le système, seule la peau change).
  *
+ * `fond` accepte AUSSI les fonds sombres (« bleu électrique », 2026-09-21) :
+ * le lavis de section passe en aplat bleu, le PANNEAU garde sa peau beige et
+ * ses textes foncés — rien à inverser, c'est déjà un panneau posé sur un lavis.
+ *
  * Props : { type: "callout", title, body?, ctaLabel?, ctaHref?, layout? }
  *
  * Contraintes / pièges :
@@ -22,6 +27,8 @@ import { blockHtml, hasRichText } from '../../shared/rich';
  * RÈGLE no-hybride : 100 % utilitaires Tailwind, zéro CSS scopé.
  */
 interface Props {
+  /** « Fond de section » — clé fermée de la palette (shared/fonds.ts). */
+  fond?: FondEtenduKey | '';
   title: string;
   body?: string;
   ctaLabel?: string;
@@ -29,7 +36,7 @@ interface Props {
   layout?: 'box' | 'banner-green';
 }
 
-const { title, body, ctaLabel, ctaHref, layout = 'box' } = Astro.props;
+const { title, body, ctaLabel, ctaHref, layout = 'box', fond = 'ivoire' } = Astro.props;
 const isBanner = layout === 'banner-green';
 const hasCta = Boolean(ctaLabel && ctaHref);
 ---
@@ -53,13 +60,13 @@ const hasCta = Boolean(ctaLabel && ctaHref);
       </div>
     </section>
   ) : (
-    <section class="py-20 bg-surface">
+    <section class:list={['py-20', FOND_CLASSES[fond as FondEtenduKey] ?? 'bg-surface']}>
       <div class="container-site">
         <div class="max-w-[860px] mx-auto bg-surface-container rounded-lg p-8 lg:p-12 text-center flex flex-col items-center gap-4">
-          <h2 class="text-[28px] leading-[1.2] lg:text-[32px] lg:leading-10 font-bold tracking-[-0.4px] text-on-surface m-0">
+          <h2 class="text-[1.75rem] leading-[1.2] lg:text-[2rem] lg:leading-10 font-bold tracking-[-0.4px] text-on-surface m-0">
             {title}
           </h2>
-          {hasRichText(body) && <div class="rich text-base leading-[26px] text-on-surface-variant max-w-[60ch]" set:html={blockHtml(body)} />}
+          {hasRichText(body) && <div class="rich text-base leading-[1.625rem] text-on-surface-variant max-w-[60ch]" set:html={blockHtml(body)} />}
           {hasCta && (
             <a
               class="mt-2 inline-flex items-center justify-center bg-primary text-on-primary px-8 py-4 rounded-xs text-base leading-6 no-underline hover:bg-primary-container transition-colors"

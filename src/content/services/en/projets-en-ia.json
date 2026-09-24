@@ -1,6 +1,6 @@
 {
   "title": "AI projects",
-  "slug": "projets-en-ia",
+  "slug": "ai-projects",
   "description": "From ideation to deployment: artificial intelligence projects that deliver value.",
   "noindex": true,
   "seoH1": "",
@@ -19,7 +19,7 @@
       "ctaLabel": "Let’s talk about your use cases",
       "ctaHref": "/en/contact",
       "cta2Label": "See the AI expertise",
-      "cta2Href": "/en/services/intelligence-artificielle",
+      "cta2Href": "/en/services/artificial-intelligence",
       "overlay": "voile",
       "image": "",
       "imageAlt": ""
@@ -29,7 +29,7 @@
       "type": "offer-cards",
       "title": "Our typical engagements",
       "intro": "The detailed offering will be published soon — here is how we work.",
-      "fond": "givre",
+      "fond": "beige",
       "ctaLabel": "",
       "ctaHref": "",
       "items": [
@@ -83,6 +83,7 @@
     {
       "_bookshop_name": "related-posts",
       "type": "related-posts",
+      "fond": "beige",
       "title": "Related resources",
       "tags": [
         "Artificial intelligence"
@@ -100,7 +101,7 @@
       "cta2Label": "Discover Victrix",
       "cta2Href": "/en/decouvrir",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ],
   "seoTitle": ""

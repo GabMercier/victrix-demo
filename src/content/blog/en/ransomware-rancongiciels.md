@@ -5,6 +5,7 @@ excerpt: "Learn all about ransomware and how to protect your organization agains
 tags: ["Our articles"]
 topics: ["Cybersecurity"]
 slug: "ransomware-protection-tips"
+draft: false
 coverImage: "/wp-content/uploads/2023/11/ransomware-e1701148187185-1024x741-1.png"
 seoTitle: "8 Ransomware Protection Tips for Organizations"
 wpUrl: "/en/ressources/ransomware-protection-tips/"
@@ -133,6 +134,47 @@ Unless you routinely use macros in your work, receiving legitimate files with a 
 - Never disclose personal information
 - Do not use an unknown USB key
 
+## Frequently asked questions about ransomware attacks in the workplace
+
+### Why Has the Number of Ransomware Attacks Increased?
+
+Modern organizations have been facing many challenges in recent years, some of them reinforced by the pandemic. With the work environment increasingly moving towards flexible models (remote and in-office) also comes **a wider attack surface**.
+
+This creates vulnerabilities in cyberdefenses that cybercriminals exploit to spread ransomware.
+
+### What Are the Most Common Cyberattacks?
+
+The most common cyberattacks are blocker or encryption attacks. These attacks either block important system functions or encrypt files and data. Hackers then demand a ransom to unlock or obtain a key to decrypt the data.
+
+### How Does Ransomware Work?
+
+**Stage 1: Infection, distribution and means of transmission.** Downloading from a phishing email, malicious ads, self-propagation, visiting infected websites that redirect to a site containing an exploitation kit, and so on. An exploitation kit reveals the victim computer’s weaknesses, and then the ransomware is stealthily downloaded using malware.
+
+**Step 2: Data encryption.** Data encryption is built into the operating system. Cybercriminals, therefore, only need to access the files to encrypt them. They then replace the original files with their encrypted versions. Some ransomware groups also delete backups and ghost copies to make data recovery more difficult without the decryption key.
+
+**Step 3: The ransom note.** A ransom note appears on the screen of the victim’s computer or when a text file is downloaded. This note may also be attached to various encrypted files.
+
+### How to Tell If You’re Vulnerable to Ransomware?
+
+Not all ransomware attacks are targeted. Indeed, an organization could also fall victim to an opportunistic attack. This type of attack doesn’t target a specific person or organization but rather a group. The more organizations or individuals affected, the more successful it is.
+
+Here are just a few of the **factors that increase your vulnerability** to opportunistic and targeted attacks:
+
+- Computers use antiquated systems and technologies
+- Devices with obsolete software
+- Operating systems or browsers no longer updated
+- No backup plan in place within the organization
+- Cybersecurity has received too little attention, and no concrete plans have been implemented.
+
+### Safe Ransomware Removal Tips
+
+- Device quarantine: Limit the spread of ransomware by eliminating access to other targets.
+- While switching off machines when not in use is advisable, **this is not the case for infected devices**. Leave the terminals switched on, as file encryption is a risk of instability. Switching off may cause volatile memory loss. Keep the machine switched on to maximize your chances of recovery.
+- Back up your data.
+- Check whether you can access a decryptor. There are some free decryptors available—however, we advise you to let a team of experts take care of it to avoid downloading malicious software.
+- If available, restore your device to an earlier date through a clean backup or operating system installation. This will ensure that malware is no longer on your device.
+- The best solution, however, is to seek [help from cybersecurity experts](/en/services/cybersecurity/).
+
 ## How Victrix Helps Organizations Protect Themselves Against Ransomware
 
 Would you like to improve your security posture and avoid the damage caused by ransomware? Victrix is a true expert in digital transformation and cybersecurity.
@@ -141,7 +183,7 @@ Trust our team to implement the most robust security system for your organizatio
 
 We also offer an **exclusive managed security service** based on cooperation and knowledge sharing. More than just a managed service, we’re an extension of your IT team.
 
-Benefit from a powerful [outsourced SOC service](/en/ressources/soc-outsourcing-pros-cons/) to ensure superior IT security for your organization. Discover SEvOC, Victrix’s scalable Security Operations Center.
+Benefit from a powerful [outsourced SOC service](/en/ressources/soc-outsourcing-for-smbs-pros-cons/) to ensure superior IT security for your organization. Discover SEvOC, Victrix’s scalable Security Operations Center.
 
 ### SEvOC: a Comprehensive Solution to Fight Off Cybersecurity Threats
 

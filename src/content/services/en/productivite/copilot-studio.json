@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Copilot Studio",
   "description": "Take advantage of our personalized, secure support for Microsoft Copilot Studio implementation. Accelerate adoption with Victrix.",
-  "noindex": false,
-  "slug": "productivity-consulting/copilot-studio",
-  "seoTitle": "Copilot Studio Implementation for Microsoft 365",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -23,17 +19,16 @@
       "cta2Label": "",
       "cta2Href": "",
       "overlay": "degrade",
-      "image": "/images/sections/produit-enfant-hero.jpg",
-      "imageAlt": "",
+      "image": "/wp-content/uploads/2024/08/victrix-scaled.jpg",
+      "imageAlt": "Microsoft Copilot",
       "imagePosition": "centre"
     },
     {
       "_bookshop_name": "strategic-value",
       "type": "strategic-value",
       "title": "Strategic Value",
-      "fond": "ivoire",
       "paragraphs": [
-        "Discover <strong>Copilot Studio</strong>, an innovative solution powered by Microsoft Copilot artificial intelligence, transforming the way organisations use their data and optimise their processes.",
+        "Discover <strong>Copilot Studio</strong>, an innovative solution powered by <a href=\"/en/services/productivity-consulting/copilot-for-microsoft-365/\">Microsoft Copilot</a> <a href=\"/en/services/artificial-intelligence/\">artificial intelligence</a>, transforming the way organisations use their data and optimise their processes.",
         "Integrated with the Microsoft 365 and Power Platform ecosystem, Copilot Studio automates complex tasks, improves decision-making and boosts productivity through intelligent information analysis."
       ],
       "image": "/images/services/valeur-copilot-studio.jpg",
@@ -48,6 +43,7 @@
           "label": "M365 integration"
         }
       ],
+      "fond": "ivoire",
       "variant": "produit",
       "badge": "",
       "bullets": [],
@@ -59,7 +55,6 @@
       "type": "offer-cards",
       "title": "Our Copilot Studio Offers",
       "intro": "A structured approach to guarantee successful adoption and an immediate impact on your operations.",
-      "fond": "beige",
       "ctaLabel": "Schedule a consultation",
       "ctaHref": "/en/contact",
       "items": [
@@ -87,19 +82,28 @@
           "bullets": [
             {
               "text": "Analysis of existing infrastructure",
-              "icon": "document"
+              "icon": "coche"
+            },
+            {
+              "text": "Identify use cases",
+              "icon": "coche"
             },
             {
               "text": "Defining priorities and objectives",
-              "icon": "cible"
+              "icon": "coche"
+            },
+            {
+              "text": "Tailored recommendations",
+              "icon": "coche"
             },
             {
               "text": "Tailored implementation roadmap",
-              "icon": "carte"
+              "icon": "coche"
             }
           ]
         }
-      ]
+      ],
+      "fond": "beige"
     },
     {
       "_bookshop_name": "realisations",
@@ -142,7 +146,11 @@
       "cta2Label": null,
       "cta2Href": null,
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "slug": "productivity-consulting/copilot-studio",
+  "seoTitle": "Copilot Studio Implementation for Microsoft 365",
+  "_schema": "default",
+  "noindex": false
 }

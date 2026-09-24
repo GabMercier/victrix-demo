@@ -50,15 +50,11 @@ const JSON_OUT = process.argv.includes('--json');
 // recherche généré après coup) : jamais vérifiés.
 const SKIP_PREFIXES = ['/api/', '/pagefind/', '/_cloudcannon/', '/cdn-cgi/'];
 // Cibles connues et assumées (une par ligne, avec la raison).
-const ALLOW = new Set([
-  // Pages « document » (livres blancs / webinaires à formulaire) de l'ancien
-  // WordPress, citées par trois articles : non migrées. DÉCISION DE CONTENU
-  // attendue (recréer comme ressource, pointer ailleurs, ou retirer le lien) —
-  // à retirer d'ici dès qu'elle est prise.
-  '/document/licences-microsoft-power-platform/',
-  '/document/webinaire-copilot-buzz-impact/',
-  '/document/pourquoi-gerez-vous-encore-vos-ti/',
-]);
+// Liens tolérés (vide depuis le 2026-09-24 : les 4 pages « document » de
+// l'ancien WordPress ont été tranchées — D18 — et les articles corrigés).
+// N'y mettre une adresse que le temps d'une décision de contenu, jamais pour
+// faire passer le gate.
+const ALLOW = new Set([]);
 
 if (!existsSync(DIST)) {
   console.error('[check:links] dist/ introuvable — lancer `npm run build` d\'abord.');

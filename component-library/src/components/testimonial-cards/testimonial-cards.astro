@@ -14,7 +14,7 @@ import { hasRichText, inlineHtml } from '../../shared/rich';
  * DISTINCT de `testimonial` (UNE citation d'un client, mise en page
  * éditoriale) : ici PLUSIEURS cartes en grille (2 par rangée).
  *
- * Props : { type: "testimonial-cards", title?, fond?,
+ * Props : { type: "testimonial-cards", title?, intro? (texte sous le titre — ex. note globale Gartner), fond?,
  *           items: [{ image, quote, name, role }] }
  * - `image` = chemin PUBLIC du portrait (uploads public/images/carrieres) ;
  *   vide = pastille grise (la carte garde sa forme).
@@ -38,11 +38,12 @@ interface TestimonialCard {
 
 interface Props {
   title?: string;
+  intro?: string;
   fond?: FondKey;
   items?: TestimonialCard[];
 }
 
-const { title = '', fond = 'brume', items = [] } = Astro.props;
+const { title = '', intro = '', fond = 'brume', items = [] } = Astro.props;
 
 // « Fond de section » : clé fermée → utilitaire de la palette officielle ;
 // défaut = rendu historique de la page Carrières (bande surface-container-high).
@@ -59,15 +60,20 @@ const QUOTE_PATHS = [
   <div class="container-site flex flex-col gap-12 lg:gap-20">
     {
       title !== '' && (
-        <h2 class="text-[32px] leading-[1.2] lg:text-[40px] lg:leading-[48px] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
+        <h2 class="text-[2rem] leading-[1.2] lg:text-[2.5rem] lg:leading-[3rem] font-bold tracking-[-0.4px] text-on-surface m-0 text-center">
           {title}
         </h2>
+      )
+    }
+    {
+      intro !== '' && (
+        <p class="text-base leading-6 text-on-surface-variant m-0 text-center max-w-[672px] mx-auto -mt-6 lg:-mt-12">{intro}</p>
       )
     }
     <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-6 m-0 p-0 list-none">
       {
         items.map((card) => (
-          <li class="m-0 relative bg-surface rounded-lg p-8 lg:p-12 flex flex-col items-center text-center border border-solid border-contour">
+          <li class="m-0 relative bg-white rounded-lg p-8 lg:p-12 flex flex-col items-center text-center border border-solid border-contour">
             <svg
               class="absolute top-8 left-8 text-primary/20 opacity-50"
               width="42"
@@ -83,22 +89,21 @@ const QUOTE_PATHS = [
             </svg>
             {/* Pas de fond de secours DERRIÈRE une image : les portraits PNG peuvent
                 être transparents (fond blanc de la carte visible, comme avant). */}
-            <span
-              class:list={[
-                'block size-24 rounded-xl overflow-hidden border-4 border-solid border-primary/10 mb-6',
-                !card.image && 'bg-surface-container-high',
-              ]}
-            >
-              {card.image && <img class="w-full h-full object-cover border-0" src={card.image} alt="" loading="lazy" decoding="async" />}
-            </span>
+            {/* Sans portrait (avis d'utilisateurs anonymes des pages fournisseurs,
+                2026-09-21) : pas de cadre vide — la citation remonte. */}
+            {card.image && (
+              <span class="block size-24 rounded-xl overflow-hidden border-4 border-solid border-primary/10 mb-6">
+                <img class="w-full h-full object-cover border-0" src={card.image} alt="" loading="lazy" decoding="async" />
+              </span>
+            )}
             <blockquote class="m-0 mb-8 relative z-10">
               {hasRichText(card.quote) && (
-                <p class="text-lg leading-[29px] italic text-on-surface m-0 max-w-none" set:html={inlineHtml(card.quote)} />
+                <p class="text-lg leading-[1.8125rem] italic text-on-surface m-0 max-w-none" set:html={inlineHtml(card.quote)} />
               )}
             </blockquote>
             <div class="mt-auto">
               <h3 class="text-2xl leading-8 font-bold text-on-surface m-0">{card.name}</h3>
-              {card.role && <p class="text-xs font-bold uppercase tracking-[1.2px] text-primary m-0 mt-1 max-w-none">{card.role}</p>}
+              {card.role && <p class="text-sm font-bold uppercase tracking-[1.2px] text-primary m-0 mt-1 max-w-none">{card.role}</p>}
             </div>
           </li>
         ))

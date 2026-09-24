@@ -4,6 +4,7 @@ date: 2025-03-05
 excerpt: "Victrix enters a new milestone in its evolution with the appointment of Dominic Lajoie as CEO."
 tags: ["Our news"]
 slug: "appointment-ceo"
+draft: true
 coverImage: "/wp-content/uploads/2025/03/design-sans-titre-1.png"
 wpUrl: "/en/appointment-ceo/"
 ---
@@ -11,7 +12,7 @@ wpUrl: "/en/appointment-ceo/"
 
 Victrix enters a new milestone in its evolution with the appointment of **Dominic Lajoie** as CEO. With a rich background in consulting and the technology industry, Dominic embodies the acceleration that Victrix intends to bring to its future.
 
-Dominic has worked in companies similar to Victrix and then with a major software publisher in the field of [artificial intelligence](/en/services/intelligence-artificielle/), where he perfected best practices in the IT sector. With 30 years of professional experience, he has also worked internationally with European and American clients, giving him the agility and adaptability that is essential today. Dominic returns to the consulting world with a clear vision: **to build on Victrix's excellence and growth momentum**.
+Dominic has worked in companies similar to Victrix and then with a major software publisher in the field of [artificial intelligence](/en/services/artificial-intelligence/), where he perfected best practices in the IT sector. With 30 years of professional experience, he has also worked internationally with European and American clients, giving him the agility and adaptability that is essential today. Dominic returns to the consulting world with a clear vision: **to build on Victrix's excellence and growth momentum**.
 
 *"What motivates me is building and optimizing. I like to take on challenges, bring in new energy and optimize what can be optimized. Victrix has a strong DNA, a unique proximity to its customers and partners, and immense additional potential. My ambition is to increase this momentum by accelerating our growth and developing our expertise in collaboration with all my colleagues,*" says Dominic.
 

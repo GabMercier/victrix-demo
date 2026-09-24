@@ -14,7 +14,9 @@
 #   4. the schema templates in schemas/ (default front matter for new files).
 #
 # CloudCannon build settings (configured in the CloudCannon UI, NOT here):
-#   - build command runs with STATIC_ONLY=1 (adapter-less, fully static build);
+#   - build command runs with STATIC_ONLY=1 (adapter-less, fully static build)
+#     on BOTH sites, plus EDITOR_PREVIEW=1 on the EDITING sites only (drafts,
+#     scheduled posts, announce windows, Bookshop — lot L16, operations.md § 6);
 #   - `npx @bookshop/generate` runs as the postbuild step so the visual editor
 #     can render the Bookshop components live and populate the sections palette.
 
@@ -55,7 +57,8 @@ collection_groups:
       - pages
       - services_fr
       - services_en
-      - solutions
+      - solutions_fr
+      - solutions_en
       - blog
       - contact
       - navigation
@@ -109,6 +112,26 @@ collections_config:
         - text: Article sans titre
       subtext:
         - key: excerpt
+      # Statut BROUILLON visible sur la carte (D19, 2026-09-24) : la clé
+      # `draft` est affichée telle quelle (« true » = brouillon, « false » =
+      # publié — les gabarits de carte CloudCannon n'ont pas de conditionnel).
+      # Chaque article porte la clé (rétro-remplie le 24/09 ; gabarits
+      # schemas/blog-*.md aussi), sinon la carte ne montrerait rien.
+      metadata:
+        - icon: edit_note
+          text:
+            - key: draft
+    # Tri « brouillons d'abord » dans le navigateur de fichiers (même clé).
+    sort_options:
+      - key: draft
+        order: descending
+        label: Brouillons d'abord
+      - key: date
+        order: descending
+        label: Date (récents d'abord)
+      - key: title
+        order: ascending
+        label: Titre (A-Z)
     # "+ Ajouter" templates. One schema per locale so a new file ALWAYS lands
     # inside fr/ or en/ (a root-level file would silently map to /fr/ in
     # src/pages/[lang]/ressources/[slug].astro) and always starts with front
@@ -166,8 +189,8 @@ collections_config:
           (l'aperçu de l'éditeur le montre toujours).
       # Matches the `draft` field of the blog Zod schema (default false).
       # Visibility rule lives in src/i18n/blog.ts (filterPublished): drafts
-      # are excluded from the public site but KEPT in STATIC_ONLY builds —
-      # i.e. exactly the CloudCannon editing build — so editors can preview.
+      # are excluded from the public site but KEPT in EDITOR_PREVIEW builds —
+      # i.e. exactly the CloudCannon editing sites — so editors can preview.
       draft:
         type: switch
         label: Brouillon
@@ -296,6 +319,32 @@ collections_config:
     # spec, which @bookshop/generate copies onto the palette entries (that
     # "containing structure" level outranks these collection-level fallbacks).
     _inputs:
+      # SEO de l'accueil (2026-09-23) — la page était la SEULE du site sans
+      # titre ni description éditables : `<title>` sortait à « Victrix » tout
+      # court et la description était codée en dur dans la route.
+      # Le champ s'appelle `metaDescription` et non `description` : les
+      # `_inputs` sont indexés par NOM DE CHAMP et cascadent dans les objets
+      # imbriqués, donc une clé `description` à la racine hériterait du libellé
+      # générique des items de section (voir l'entrée `description` plus bas).
+      seoTitle:
+        type: text
+        options:
+          empty_type: string
+        label: Titre SEO (onglet et résultats Google)
+        comment: >-
+          Titre affiché dans l'onglet du navigateur et dans les résultats de
+          recherche. « — Victrix » est ajouté automatiquement à la fin : ne pas
+          l'écrire ici. Viser 50 à 60 caractères. Vide = le titre de repli
+          inscrit dans le code.
+      metaDescription:
+        type: textarea
+        options:
+          empty_type: string
+        label: Description (moteurs de recherche)
+        comment: >-
+          Résumé affiché sous le titre dans les résultats Google et lors des
+          partages. Viser 150 à 160 caractères. Vide = la description de repli
+          inscrite dans le code — jamais de balise vide.
       seoH1:
         type: text
         options:
@@ -1223,40 +1272,37 @@ collections_config:
       type:
         hidden: true
 
-  # Catalogue de solutions (/fr|en/solutions) — fiches JSON à plat, une carte
-  # du catalogue par fiche (suite n°1 du plan
-  # docs/design/solutions-catalogue-plan.md §3). Éditeur de données : la fiche
-  # n'a PAS de page propre (le catalogue est une page unique avec filtres) —
-  # les pages de détail /solutions/<slug> restent une suite planifiée.
-  # Depuis le 2026-09-17, la PAGE catalogue est une page générale
+  # Catalogue de solutions Ø Studio — SCINDÉ PAR LANGUE le 2026-09-23 (lot
+  # L11), patron exact des collections Services. Jusque-là une seule collection
+  # `solutions` couvrait fr/ et en/ : impossible de donner une URL d'aperçu par
+  # langue, et l'éditeur visuel devait rester fermé (une fiche n'avait pas de
+  # `sections`, donc l'aperçu se vidait — commentaire du 2026-09-18).
+  #
+  # Depuis L11, une fiche FR porte ses sections et a SA page
+  # (/fr/solutions/<slug>/, route src/pages/[lang]/solutions/[slug].astro) :
+  # l'édition visuelle est donc rouverte, par fiche, comme annoncé.
+  #
+  # La PAGE catalogue elle-même (chrome : titre, recherche, filtres, panneau
+  # vedette, message vide, appel à l'action) reste une page générale
   # (src/content/pages/{fr,en}/solutions.json, section « Catalogue de
-  # solutions ») : son chrome (titre, recherche, filtres, vedette, message
-  # vide, appel à l'action) s'édite dans « Pages générales » ; seules les
-  # FICHES vivent ici.
-  solutions:
-    path: src/content/solutions
-    name: Solutions
+  # solutions ») et s'édite dans « Pages générales ».
+  solutions_fr:
+    path: src/content/solutions/fr
+    name: Solutions (FR)
     singular_name: Solution
     description: >-
-      Fiches du catalogue de solutions (page /solutions). Les dossiers fr/ et
-      en/ contiennent les deux langues ; le même nom de fichier relie une
-      traduction à l'autre. Chaque fiche est une carte du catalogue.
+      Fiches du catalogue de solutions Ø Studio, en français. Chaque fiche est
+      à la fois une CARTE du catalogue (/fr/solutions) et, dès qu'elle porte
+      des sections, une PAGE à elle (/fr/solutions/<nom-du-fichier>/) où mène
+      le bouton « Découvrir ». Le même nom de fichier dans « Solutions (EN) »
+      relie la traduction.
     icon: apps
-    # Pas de page par fiche — l'URL d'aperçu pointe le CATALOGUE de la langue
-    # (2026-08-17, demande user : préversion partout) : la carte éditée s'y
-    # trouve. [relative_base_path] = fr|en (sous-dossier).
-    url: /[relative_base_path]/solutions/
-    # ÉDITEUR DE DONNÉES SEULEMENT (2026-09-18, retour user : « seulement l'en-tête
-    # et le pied de page dans l'édition en direct »). Depuis que le catalogue est
-    # une SECTION Bookshop (17/09), l'éditeur visuel re-rend la page à partir du
-    # fichier OUVERT : une fiche de solution n'a pas de `sections`, donc le
-    # contenu de la page disparaissait — l'aperçu ne pouvait qu'être vide. Le
-    # formulaire de données édite la fiche ; le rendu se vérifie sur la page
-    # « Solutions » (collection Pages). L'édition visuelle reviendra, par fiche,
-    # quand chaque solution aura sa propre page (docs/plan-livraison-finale.md,
-    # lots L10–L11).
+    # Éditeur visuel par défaut (première valeur — voir la collection blog) ;
+    # Data en second pour les champs de carte et le SEO.
     _enabled_editors:
+      - visual
       - data
+    url: /fr/solutions/[full_slug]/
     preview:
       icon: apps
       text:
@@ -1264,10 +1310,6 @@ collections_config:
         - text: Solution sans titre
       subtext:
         - key: description
-    # « + Ajouter » : un gabarit par langue pour que le fichier atterrisse dans
-    # fr/ ou en/ avec un JSON valide (même logique que services/forms). Flux de
-    # traduction : créer (ou Dupliquer) le même nom de fichier dans l'autre
-    # dossier.
     schemas:
       default:
         name: Solution (FR)
@@ -1275,15 +1317,8 @@ collections_config:
         path: schemas/solution-fr.json
         remove_extra_inputs: false
         create:
-          path: 'fr/{title|slugify}.json'
-      en:
-        name: Solution (EN)
-        icon: apps
-        path: schemas/solution-en.json
-        remove_extra_inputs: false
-        create:
-          path: 'en/{title|slugify}.json'
-    _inputs:
+          path: '{title|slugify}.json'
+    _inputs: &solutions_inputs
       title:
         type: text
         options:
@@ -1358,12 +1393,14 @@ collections_config:
         type: text
         options:
           empty_type: string
-        label: Lien de la carte
+        label: Lien de la carte (surcharge)
         comment: >-
-          SANS préfixe de langue (ex. /contact ou
-          /services/productivite/o-bureau) — le site ajoute /fr ou /en
-          automatiquement (convention navigation, l'INVERSE des sections de
-          page). Vide = carte sans lien.
+          VIDE = « Découvrir » mène à la fiche de la solution : c'est le cas
+          normal depuis 2026-09-23. Ne remplir que pour envoyer ailleurs (ex.
+          /services/productivite/o-bureau, dont la page de service est plus
+          riche que la fiche). SANS préfixe de langue — le site ajoute /fr ou
+          /en (convention navigation, l'INVERSE des sections de page). Vide et
+          sans fiche = carte sans lien.
       docHref:
         type: text
         options:
@@ -1372,15 +1409,64 @@ collections_config:
         comment: >-
           Panneau vedette seulement. Sans préfixe de langue, comme le lien de
           la carte.
+      noindex:
+        type: switch
+        label: Masquer des moteurs de recherche
+        comment: >-
+          ACTIVÉ sur les 16 fiches importées de Ø Studio : elles affichent des
+          fourchettes de prix que Ø Studio doit encore valider. À désactiver
+          fiche par fiche une fois le contenu validé.
+      slug:
+        type: text
+        options:
+          empty_type: string
+        label: Adresse de la page (slug)
+        comment: >-
+          Dernier segment de l'adresse. Vide = le nom du fichier. Sert surtout
+          à l'anglais, dont le fichier porte le nom français.
+      seoTitle:
+        type: text
+        options:
+          empty_type: string
+        label: Titre SEO (surcharge)
+        comment: >-
+          Remplace le titre dans l'onglet du navigateur et les résultats
+          Google. Vide = le titre de la fiche.
+      seoH1:
+        type: text
+        options:
+          empty_type: string
+        label: H1 SEO (optionnel)
+        comment: >-
+          Le titre H1 lu par les moteurs de recherche. Vide = le grand titre du
+          héros est le H1 (défaut). Renseigné = ce texte devient le H1 de la
+          page (invisible à l'écran, lu par Google et les lecteurs d'écran) et
+          le grand titre passe en H2 : rien ne change visuellement. Un seul H1
+          par page.
+      contactSujet:
+        type: select
+        label: Contact — sujet présélectionné
+        comment: >-
+          Choix prérempli dans « De quoi souhaitez-vous parler ? » quand un
+          visiteur clique un bouton de cette fiche vers Contact. Vide = « Une
+          solution du catalogue ».
+        options:
+          empty_type: string
+          allow_empty: true
+          values: _select_data.contact_sujets
+          value_key: cle
+          preview:
+            text:
+              - key: libelle
       contactService:
         # 2026-09-18 — le bouton « Découvrir » arrivait sur un formulaire de
         # contact dont le champ OBLIGATOIRE « Service » restait vide.
         type: select
         label: Contact — service présélectionné
         comment: >-
-          Quand le lien de la carte mène à Contact : choix prérempli dans la
-          liste « Service ». Vide = le service réglé sur la page du catalogue
-          (« Services applicatifs »).
+          Choix prérempli dans la liste « Service », pour les boutons de la
+          carte ET de la fiche. Vide = le service réglé sur la page du
+          catalogue (« Services applicatifs »).
         options:
           empty_type: string
           allow_empty: true
@@ -1389,6 +1475,54 @@ collections_config:
           preview:
             text:
               - key: libelle
+      sections:
+        type: array
+        label: Sections de la fiche
+        comment: >-
+          La page de la solution est construite uniquement à partir de ces
+          sections. Garder le héros en PREMIÈRE position : il porte le seul
+          <h1> de la page. Aucune section = pas de page ; la carte reste dans
+          le catalogue et son lien doit alors être rempli.
+        options:
+          structures: _structures.sections
+      # `type` = discriminant de section (défini par la palette) — jamais édité.
+      type:
+        hidden: true
+
+  solutions_en:
+    path: src/content/solutions/en
+    name: Solutions (EN)
+    singular_name: Solution
+    description: >-
+      English catalogue cards. They have NO page of their own yet: the 16
+      Ø Studio fiches exist in French only, and translating them is a content
+      task. Until then each card keeps its own link (Contact, prefilled). The
+      same file name in « Solutions (FR) » links the translation.
+    icon: apps
+    # PAS d'éditeur visuel tant qu'une fiche EN n'a pas de `sections` : l'aperçu
+    # re-rend la page à partir du fichier ouvert et resterait vide (c'est la
+    # leçon du 2026-09-18). L'URL pointe donc le CATALOGUE anglais, où la carte
+    # éditée se trouve. Le jour où les fiches EN sont traduites : passer l'URL à
+    # /en/solutions/{slug}/ et remettre `visual` en tête, comme le FR.
+    _enabled_editors:
+      - data
+    url: /en/solutions/
+    preview:
+      icon: apps
+      text:
+        - key: title
+        - text: Solution sans titre
+      subtext:
+        - key: description
+    schemas:
+      default:
+        name: Solution (EN)
+        icon: apps
+        path: schemas/solution-en.json
+        remove_extra_inputs: false
+        create:
+          path: '{title|slugify}.json'
+    _inputs: *solutions_inputs
 
   # Textes du site (2026-08-11) — chaînes d'interface éditables (un JSON par
   # langue dans src/data/site, patron de la collection navigation). Premier
@@ -1618,6 +1752,12 @@ collections_config:
         options:
           empty_type: string
         label: Description (moteurs de recherche)
+      heroEyebrow:
+        type: text
+        options:
+          empty_type: string
+        label: Surtitre (au-dessus du titre)
+        comment: Petite ligne bleue en majuscules. Vide = absente.
       heroTitle:
         type: text
         options:
@@ -1792,6 +1932,28 @@ collections_config:
         options:
           empty_type: string
         label: Choix
+      # Qualification « Taille de l'entreprise » (2026-09-21) — visible dans le
+      # formulaire seulement quand « Service » vaut Cybersécurité. Vider le
+      # libellé RETIRE le champ du formulaire (aucun build cassé).
+      companySize:
+        type: text
+        options:
+          empty_type: string
+        label: Libellé « Taille de l'entreprise »
+        comment: Vide = le champ disparaît du formulaire.
+      companySizePlaceholder:
+        type: text
+        options:
+          empty_type: string
+        label: Texte d'invite de la liste « Taille de l'entreprise »
+      companySizeOptions:
+        # NON ÉDITABLE : ces libellés voyagent dans l'adresse (?taille=) entre la
+        # section « Renvoi vers le contact » et ce formulaire. Les reformuler ici
+        # seulement couperait le préremplissage en silence. Source unique :
+        # component-library/src/shared/tailles-entreprise.ts (garde-fou :
+        # src/lib/contact/tailles-entreprise.test.ts).
+        hidden: true
+        label: Tranches d'effectif (gérées dans le code)
       consentText:
         # Texte enrichi (2026-09-16, hors sections) : gras · italique · lien, un paragraphe.
         type: html
@@ -1867,12 +2029,10 @@ collections_config:
         comment: >-
           Suite du titre affichée en bleu sur la ligne suivante (ex. «
           expertises TI »). Vide = titre d'un seul tenant.
-      subscribeLabel:
-        type: text
-        options:
-          empty_type: string
-        label: Bouton « S'abonner à l'infolettre »
-        comment: Le bouton du héros — il mène à la carte infolettre de la page.
+      # RETIRÉS le 2026-09-21 avec l'ancien héros du centre de ressources :
+      # `subscribeLabel` (bouton « S'abonner à l'infolettre »), `expertCard`
+      # (carte vitrée décorative) et son `subtitle` — le contenu et le schéma
+      # ne les portent plus.
       searchPlaceholder:
         type: text
         options:
@@ -1890,15 +2050,6 @@ collections_config:
           empty_type: string
         label: Signature de l'article vedette
         comment: Ex. « Par Victrix Expertise ». Vide = pas de signature.
-      expertCard:
-        type: object
-        label: Carte décorative du héros
-        comment: La carte vitrée à droite du héros (ex. « 500+ Experts »).
-      subtitle:
-        type: text
-        options:
-          empty_type: string
-        label: Sous-titre
       newsletter:
         type: object
         label: Carte infolettre
@@ -2339,11 +2490,20 @@ collections_config:
           empty_type: string
         label: Libellé du lien
       linkHref:
+        # Le même champ existe à DEUX niveaux — les `_inputs` sont indexés par
+        # nom de champ et cascadent, donc ce réglage sert aux deux, d'où un
+        # libellé qui vaut dans les deux cas.
         type: text
         options:
           empty_type: string
         label: Lien de l'annonce
-        comment: Sans préfixe de langue (ex. /produits). Commun aux deux langues.
+        comment: >-
+          Sans préfixe de langue (ex. /solutions) — le site ajoute /fr ou /en.
+          Celui du haut vaut pour les DEUX langues ; celui placé sous « Français »
+          ou « English » ne vaut que pour cette langue et l'emporte. À remplir par
+          langue dès que la page visée a une adresse traduite (c'est le cas des
+          pages de service : /services/intelligence-artificielle/… en français,
+          /services/artificial-intelligence/… en anglais).
 
   # Navigation du site (menu principal, méga-menu, bouton
   # portail) — un JSON par langue dans src/data/navigation, consommé par
@@ -2594,6 +2754,62 @@ _select_data:
       libelle: Pierre (grège soutenu)
       couleur: '#dcd5cc'
       apercu: /images/cms/fonds/pierre.svg
+  # Palette ÉTENDUE (2026-09-21) : les 10 fonds clairs + les fonds SOMBRES.
+  # Réservée aux sections qui inversent leurs textes (texte enrichi, encadré,
+  # chiffres, bandeau de logos, FAQ) — voir FOND_KEYS_SOMBRES dans
+  # component-library/src/shared/fonds.ts. Même ordre que FOND_KEYS_ETENDUS.
+  fonds_etendus:
+    - cle: blanc
+      libelle: Blanc
+      couleur: '#ffffff'
+      apercu: /images/cms/fonds/blanc.svg
+    - cle: givre
+      libelle: Givre (gris très pâle)
+      couleur: '#f9fafb'
+      apercu: /images/cms/fonds/givre.svg
+    - cle: perle
+      libelle: Perle (gris pâle)
+      couleur: '#f3f4f7'
+      apercu: /images/cms/fonds/perle.svg
+    - cle: brume
+      libelle: Brume (gris clair)
+      couleur: '#e5e7eb'
+      apercu: /images/cms/fonds/brume.svg
+    - cle: bleu-pale
+      libelle: Bleu pâle
+      couleur: '#f2f5fd'
+      apercu: /images/cms/fonds/bleu-pale.svg
+    - cle: bleu-clair
+      libelle: Bleu clair
+      couleur: '#dfe7fb'
+      apercu: /images/cms/fonds/bleu-clair.svg
+    - cle: ivoire
+      libelle: Ivoire (chaud)
+      couleur: '#fcf9f5'
+      apercu: /images/cms/fonds/ivoire.svg
+    - cle: beige
+      libelle: Beige (gris chaud)
+      couleur: '#f6f3ef'
+      apercu: /images/cms/fonds/beige.svg
+    - cle: sable
+      libelle: Sable (grège)
+      couleur: '#e9e2d9'
+      apercu: /images/cms/fonds/sable.svg
+    - cle: pierre
+      libelle: Pierre (grège soutenu)
+      couleur: '#dcd5cc'
+      apercu: /images/cms/fonds/pierre.svg
+    # UN SEUL aplat bleu depuis le 2026-09-22 : les codes officiels de la marque
+    # (BLEU NUIT #000D2E, BLEU ÉLECTRIQUE #1D46F3) ont montré que la maquette du
+    # 21/09 était fautive. « Bleu Victrix » #002fc7 et « Bleu électrique »
+    # #1a5bff portaient deux valeurs erronées du MÊME bleu : ils fusionnent, et
+    # la clé `bleu-profond` disparaît (aucune section ne la portait).
+    # Miroir de component-library/src/shared/fonds.ts — garde-fou :
+    # npm run cms:previews:check.
+    - cle: bleu-electrique
+      libelle: Bleu électrique (texte blanc)
+      couleur: '#1d46f3'
+      apercu: /images/cms/fonds/bleu-electrique.svg
   # Préremplissage du formulaire Contact (2026-09-17) — clés neutres, libellés
   # résolus par langue dans src/lib/contact/presets.ts (test : chaque clé
   # existe dans les options réelles de la page Contact fr/en).
@@ -2619,6 +2835,11 @@ _select_data:
       libelle: Services applicatifs / Application services
     - cle: services-geres
       libelle: Services gérés / Managed services
+    # 2026-09-21 : les CTA de carrière (« Postuler ») arrivaient sur un
+    # « Service » vide — le champ est obligatoire. Le sujet « Une carrière »
+    # choisit cette valeur tout seul (SUJET_SERVICE_FALLBACK, presets.ts).
+    - cle: ressources-humaines
+      libelle: Ressources humaines / Human resources
     - cle: autre
       libelle: Autre / Other
   # BANQUE DE PICTOGRAMMES — liste UNIQUE de tous les sélecteurs d'icône
@@ -2774,7 +2995,29 @@ _structures:
           title: ''
           description: ''
           icon: ''
+          image: ''
+          imageAlt: ''
         _inputs:
+          image:
+            type: image
+            label: Logo (optionnel)
+            options:
+              empty_type: string
+              paths:
+                static: public
+                uploads: public/images/logos
+            comment: >-
+              Pour un logo de marque que la banque de pictogrammes ne peut pas
+              rendre (Microsoft, AWS, ServiceNow…). Remplace l'icône. Les logos
+              déjà rapatriés de l'ancien site sont dans /images/logos/.
+          imageAlt:
+            type: text
+            label: Texte de remplacement du logo
+            options:
+              empty_type: string
+            comment: >-
+              Décrit le logo pour les lecteurs d'écran. Laisser VIDE si le nom
+              de la marque est déjà écrit à côté — sinon il est lu deux fois.
           icon:
             type: select
             label: Icône (optionnelle)
@@ -3090,6 +3333,57 @@ _structures:
                 image:
                   - key: apercu
             comment: "Toute la banque de pictogrammes du site (ex. trousse = santé ; casque = services ; groupe = RH ; marteau = juridique). Vide = aucune."
+
+  # Images de la section « Galerie d'images » ({image, alt, legende}), NOUVELLE
+  # 2026-09-23 (lot L10 — catalogue Ø Studio). Même logique que benefit_items.
+  # Les images importées vivent dans public/images/solutions/<fiche>/ ; le
+  # dossier d'envoi pointe donc là, et l'éditrice peut en déposer d'autres.
+  galerie_items:
+    values:
+      - label: Image
+        icon: image
+        preview:
+          icon: image
+          text:
+            - key: legende
+            - key: alt
+            - text: Image
+          image:
+            - key: image
+        value:
+          image: ''
+          alt: ''
+          legende: ''
+        _inputs:
+          image:
+            type: image
+            label: Image
+            options:
+              empty_type: string
+              paths:
+                static: public
+                uploads: public/images/solutions
+            comment: >-
+              Capture d'écran ou photo. Le visiteur l'agrandit d'un clic.
+              L'image est montrée ENTIÈRE (jamais rognée) : un format portrait
+              passe aussi bien qu'un paysage.
+          alt:
+            type: text
+            label: Texte de remplacement (alt)
+            options:
+              empty_type: string
+            comment: >-
+              Ce que l'image MONTRE, en une phrase, pour qui ne la voit pas
+              (lecteur d'écran, image non chargée) — sans répéter le titre de
+              la page. À laisser VIDE seulement si l'image est purement
+              décorative. Les images du catalogue Ø Studio portent un texte
+              provisoire, à réécrire.
+          legende:
+            type: text
+            label: Légende (optionnelle)
+            options:
+              empty_type: string
+            comment: "Texte affiché SOUS l'image, pour tout le monde. Vide = aucune légende."
 
   # Cartes d'expertise ({number,title,accent,description,href}) pour la section
   # « Accueil — Expertises ». Même logique que benefit_items : une structure à
@@ -3626,7 +3920,46 @@ _structures:
           text: ''
           ctaLabel: ''
           ctaHref: ''
+          icon: ''
+          image: ''
+          imageAlt: ''
         _inputs:
+          icon:
+            type: select
+            label: Icône (optionnelle)
+            options:
+              empty_type: string
+              allow_empty: true
+              values: _select_data.icones
+              value_key: cle
+              preview:
+                text:
+                  - key: libelle
+                image:
+                  - key: apercu
+            comment: >-
+              Pictogramme en haut de la carte. Vide = aucun. Toute la banque du
+              site est offerte. Un LOGO posé ci-dessous prend le dessus.
+          image:
+            type: image
+            label: Logo (optionnel)
+            options:
+              empty_type: string
+              paths:
+                static: public
+                uploads: public/images/logos
+            comment: >-
+              Pour un logo de marque que la banque de pictogrammes ne peut pas
+              rendre (Microsoft, AWS, ServiceNow…). Remplace l'icône. Les logos
+              déjà rapatriés de l'ancien site sont dans /images/logos/.
+          imageAlt:
+            type: text
+            label: Texte de remplacement du logo
+            options:
+              empty_type: string
+            comment: >-
+              Décrit le logo pour les lecteurs d'écran. Laisser VIDE si le nom
+              de la marque est déjà écrit à côté — sinon il est lu deux fois.
           number:
             type: text
             options:
@@ -3746,6 +4079,7 @@ _structures:
             - text: Colonne
         value:
           title: ''
+          href: ''
           items: []
           subgroup:
             label: ''
@@ -3756,6 +4090,12 @@ _structures:
             options:
               empty_type: string
             label: Titre de la colonne
+          href:
+            type: text
+            options:
+              empty_type: string
+            label: Lien du titre (facultatif)
+            comment: "Adresse complète de la page, ex. /fr/services/approvisionnement-ti/cisco/ — vide = titre sans lien."
           items:
             type: array
             label: Éléments

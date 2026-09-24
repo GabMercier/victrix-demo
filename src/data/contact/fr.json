@@ -1,6 +1,7 @@
 {
   "metaTitle": "Contact",
   "metaDescription": "Contactez Victrix : nos adresses à Montréal, Québec et Paris, téléphone, courriel ou via notre formulaire.",
+  "heroEyebrow": "Nous joindre",
   "heroTitle": "Contactez-nous!",
   "heroSub": "Vous avez une question ou un projet? N’hésitez pas à nous contacter. Nos experts prendront en charge votre demande rapidement.",
   "infoTitle": "Coordonnées",
@@ -51,6 +52,8 @@
     "subjectPlaceholder": "Sélectionnez un sujet",
     "expertise": "Service",
     "expertisePlaceholder": "Sélectionnez un service",
+    "companySize": "Taille de l'entreprise",
+    "companySizePlaceholder": "Sélectionnez une taille",
     "request": "Précisez votre demande",
     "message": "Message"
   },
@@ -75,9 +78,16 @@
     "Infonuagique",
     "Services applicatifs",
     "Services gérés",
+    "Ressources humaines",
     "Autre"
   ],
+  "companySizeOptions": [
+    "Moins de 50 employés",
+    "50 à 249 employés",
+    "250 à 999 employés",
+    "1 000 employés et plus"
+  ],
   "consentText": "En soumettant ce formulaire, vous consentez à recevoir des communications de Victrix et acceptez sa <a href=\"{privacy}\">politique de confidentialité</a>.",
-  "submit": "Soumettre",
+  "submit": "Envoyer le message",
   "statusMessage": "Merci ! Votre message a bien été reçu. (Formulaire de démonstration — aucun envoi réel.)"
 }

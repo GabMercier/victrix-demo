@@ -1,10 +1,6 @@
 {
-  "_schema": "default",
   "title": "Copilot pour Microsoft 365",
   "description": "Bénéficiez d'un accompagnement personnalisé et sécurisé pour accélérer la mise en œuvre et l’adoption de Copilot pour Microsoft 365 dans votre organisation.",
-  "noindex": false,
-  "slug": "",
-  "seoTitle": "Copilot pour Microsoft 365 : déploiement et adoption | Services | Victrix",
   "seoH1": "",
   "contactSujet": "",
   "contactService": "",
@@ -22,14 +18,14 @@
       "cta2Href": "",
       "image": "/wp-content/uploads/2024/10/m365copilot_herobanner_apps_blog-feature-1.jpg",
       "imageAlt": "",
-      "fond": "givre"
+      "fond": "beige"
     },
     {
       "_bookshop_name": "bento-metrics",
       "type": "bento-metrics",
       "title": "Un accompagnement personnalisé, sécurisé et structuré",
       "intro": "Nous comprenons les enjeux liés à l'adoption de Copilot pour Microsoft&nbsp;365. Nos consultants vous accompagne dans le choix de licences adaptées à votre organisation.",
-      "fond": "blanc",
+      "fond": "ivoire",
       "featured": {
         "title": "Définir le périmètre du projet",
         "text": "Nous ciblons les départements prioritaires pour maximiser l’impact de votre mise en œuvre de Copilot. <strong>L’adoption graduelle est clé</strong>. Pour justifier l'investissement, nous analysons les expériences en continu et identifions les opportunités de personnalisation qui augmenteront la productivité et maximiseront le ROI de Copilot.",
@@ -41,19 +37,18 @@
         "title": "Des Copilots personnalisés",
         "text": "Victrix conçoit des assistants intelligents spécialisés sur mesure pour répondre aux besoins spécifiques de votre organisation. Transformez vos idées et vos impératifs en véritables leviers de valeur avec l’<a href=\"/fr/services/intelligence-artificielle/\" target=\"_blank\" rel=\"noopener\">intelligence artificielle</a>.",
         "linkLabel": "Découvrez notre offre Copilot Studio",
-        "linkHref": "/fr/services/productivite/copilot-studio"
+        "linkHref": "/fr/services/productivite/copilot-studio",
+        "image": "",
+        "imageAlt": ""
       }
     },
     {
       "_bookshop_name": "numbered-cards",
       "type": "numbered-cards",
+      "fond": "",
       "sectionTitle": "Notre stratégie d’adoption structurée",
       "headingStyle": "underline",
       "intro": "Assurez votre réussite avec Copilot pour Microsoft 365. Notre cadre d’accompagnement en 4 étapes garantit le succès de vos initiatives et vous permet de maximiser votre investissement.",
-      "leadCard": {
-        "title": "",
-        "text": ""
-      },
       "tone": "default",
       "columns": "2",
       "cardStyle": "default",
@@ -63,30 +58,46 @@
           "title": "Sécuriser et gouverner",
           "text": "Audit de l’environnement, validations techniques et paramétrisation, gouvernance et recommandations personnalisées.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "02",
           "title": "Définir les scénarios et déployer",
           "text": "Scénarios gagnants et utilisateurs ciblés, critères de succès, formation.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "03",
           "title": "Suivre et mesurer",
           "text": "Mise à l’épreuve des scénarios, supervision continue, analyse et évaluation de l’expérimentation.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "number": "04",
           "title": "Amplifier et adapter",
           "text": "Plan de continuité et opportunités de personnalisation.",
           "ctaLabel": "",
-          "ctaHref": ""
+          "ctaHref": "",
+          "icon": "",
+          "image": "",
+          "imageAlt": ""
         }
-      ]
+      ],
+      "leadCard": {
+        "title": "",
+        "text": ""
+      }
     },
     {
       "_bookshop_name": "strategic-value",
@@ -129,7 +140,11 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "nuit",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
-  ]
+  ],
+  "seoTitle": "Copilot pour Microsoft 365 : déploiement et adoption | Services | Victrix",
+  "_schema": "default",
+  "noindex": false,
+  "slug": ""
 }

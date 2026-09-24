@@ -3,7 +3,7 @@
   "title": "Carrières",
   "description": "Rejoignez Victrix : une équipe passionnée, un environnement de travail certifié Happy At Work et de réelles opportunités de carrière en TI.",
   "noindex": false,
-  "seoTitle": "",
+  "seoTitle": "Offres d’emploi et opportunités de carrière en TI",
   "seoH1": "",
   "slug": "",
   "contactSujet": "carriere",
@@ -13,10 +13,10 @@
       "_bookshop_name": "photo-hero",
       "type": "photo-hero",
       "title": "La vie chez Victrix",
-      "sub": "Parcourez nos offres d’emploi et trouvez l’opportunité que vous attendiez!",
+      "sub": "Chez Victrix, le bien-être et l’épanouissement de notre personnel est notre priorité. Nos employés bénéficient d’un grand équilibre dans leur temps de travail, ainsi que de nombreux avantages! Parcourez nos offres d’emploi et trouvez l’opportunité que vous attendiez!",
       "ctaLabel": "Postulez",
       "ctaHref": "/fr/contact",
-      "image": "/images/carrieres/hero-vie-chez-victrix.jpg",
+      "image": "/wp-content/uploads/2022/05/istock-1028705006-scaled.jpg",
       "imageAlt": "",
       "imagePosition": "haut"
     },
@@ -26,6 +26,7 @@
       "title": "Happy At Work",
       "lead": "Victrix est certifiée HappyIndex® AtWork 2024 des entreprises « où l’on est heureux de travailler ».",
       "quote": "Cette distinction est décernée à la suite d’une enquête participative, qui permet aux salariés de s’exprimer anonymement sur leur expérience au quotidien dans l’entreprise.",
+      "image": "/images/carrieres/happy-at-work.png",
       "fond": "perle"
     },
     {
@@ -33,7 +34,7 @@
       "type": "value-tiles",
       "eyebrow": "Culture",
       "title": "Nos valeurs",
-      "fond": "blanc",
+      "fond": "ivoire",
       "items": [
         {
           "icon": "etoile",
@@ -66,7 +67,7 @@
       "cardText": "Contribuez à notre succès et épanouissez-vous au sein d’une équipe passionnée.",
       "image": "/images/carrieres/equipe-environnement.jpg",
       "imageAlt": "",
-      "fond": "blanc",
+      "fond": "ivoire",
       "items": [
         {
           "icon": "croissance-pleine",
@@ -94,6 +95,7 @@
       "_bookshop_name": "testimonial-cards",
       "type": "testimonial-cards",
       "title": "Ce que nos experts disent",
+      "intro": "",
       "fond": "brume",
       "items": [
         {
@@ -123,7 +125,7 @@
       ],
       "image": "/images/carrieres/responsabilite-sociale.jpg",
       "imageAlt": "",
-      "fond": "blanc"
+      "fond": "ivoire"
     },
     {
       "_bookshop_name": "cta",
@@ -135,7 +137,7 @@
       "cta2Label": "",
       "cta2Href": "",
       "variant": "primaire",
-      "fond": "blanc"
+      "fond": "ivoire"
     }
   ]
 }

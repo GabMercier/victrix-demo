@@ -5,12 +5,15 @@ excerpt: "Explore Microsoft Viva apps and discover how this employee experience 
 tags: ["Our articles"]
 topics: ["Productivity"]
 slug: "microsoft-viva-apps"
+draft: false
 coverImage: "/wp-content/uploads/2024/02/microsoft-viva_image-article-1.png"
 seoTitle: "Microsoft Viva Apps: Demystifying Viva"
 wpUrl: "/en/microsoft-viva-apps/"
 ---
  Are you familiar with all **Microsoft Viva apps**, and do you know how to capitalize on their features? Organizations looking for solutions to improve internal communications, productivity, and employee engagement have much to gain from [integrating an employee experience platform](/en/services/productivity-consulting/employee-platform-intranet/) as powerful as Viva. 
  With a powerful suite of applications and a team specialized in enterprise productivity solutions, your organization will have**a clear path to success**.
+
+## The Microsoft Viva Suite: What Is It?
 
 Microsoft Viva offers much more than the traditional corporate intranet experience. Beyond its communications capabilities, Viva provides an innovative suite of applications to transform how organizations **manage communications, collaboration and employee well-being**.
 
@@ -28,6 +31,8 @@ Microsoft suites offer **a host of applications and functionalities** that are t
 Like all Microsoft products, Viva **benefits from a certain familiarity**. However, it is essential to use good integration practices to prepare for launch and adoption by end-users.
 
 We strongly recommend enlisting the help of a team specializing in Microsoft solutions to **simplify the adoption process and customize applications** for specific roles and users.
+
+## Bespoke Microsoft Applications to Manage Your Internal Communications, Increase Productivity and Boost Workplace Engagement and Well-Being
 
 ![Viva Connections logo, Viva Engage logo, Viva Amplify logo, Viva Learning, Logo Viva Insight logo, Glint et Pulse logo, Viva Goals Logo](/wp-content/uploads/2024/02/apps-microsoft-viva-1.png)
 
@@ -71,6 +76,8 @@ We strongly recommend enlisting the help of a team specializing in Microsoft sol
 - Align the flow of work between teams and the company's strategic priorities
 - Monitoring progress and performance
 
+## The Many Benefits of Microsoft Viva Applications
+
 With a comprehensive suite of applications to **help manage engagement,**[**improve focus time and productivity**](/en/services/productivity-consulting/)**, and simplify communications**, Viva is a powerful resource for any modern enterprise. Here are some key benefits of integrating Viva tools into your workflow.
 
 - An effective two-way internal communications strategy
@@ -81,6 +88,8 @@ With a comprehensive suite of applications to **help manage engagement,**[**impr
 - Encourage knowledge sharing and continuous development
 - Access to usable data to simplify managers' work
 - Planning and automation tools for your important communications
+
+## Microsoft Viva Apps to Support Your Corporate Community and Business Objectives
 
 To offer your teams the best possible employee experience platform, choose the Microsoft Viva suite. Victrix's Microsoft solutions experts will **support you at every stage of your Viva integration project**.
 

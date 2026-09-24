@@ -27,7 +27,16 @@
    - **Brouillon** : activé = l'article est visible dans l'aperçu CloudCannon
      et sur l'adresse de test du site de travail, mais **absent du site
      public** (voir « Publier et partager un aperçu »). Désactiver pour
-     publier.
+     publier. Depuis le **24 sept. 2026**, le statut se voit **sur la carte**
+     de l'article dans la liste (petite étiquette `true` = brouillon, `false`
+     = publié) et la liste se trie par **« Brouillons d'abord »** (menu de
+     tri en haut de la liste). Sept articles retirés à la demande de
+     l'équipe marketing sont en brouillon (deux nominations, les trois
+     « Meilleures pratiques en sécurité opérationnelle », « Réalité
+     étendue », « Une journée dans la vie SecOps ») : leurs anciennes
+     adresses redirigent vers la page la plus proche (Découvrir, SEvOC,
+     Intelligence artificielle). Désactiver « Brouillon » les republie tels
+     quels — la redirection tombe alors d'elle-même au build suivant.
    - **Image de couverture** : glisser-déposer; l'optimisation (format, tailles,
      compression) est automatique au moment de la publication.
    - **Slug** : l'adresse de la page (`/fr/ressources/<slug>/`). Chaque langue
@@ -91,7 +100,51 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
    18 sept. 2026, la palette a été raffinée** : « ivoire » et « beige » sont
    désormais LES deux fonds chauds de la charte — un chaud très clair et un
    gris chaud. Là encore, les pages qui les utilisaient ont suivi toutes
-   seules ; rien à refaire dans l'éditeur.
+   seules ; rien à refaire dans l'éditeur. **Le 21 sept. 2026, le site est
+   passé aux fonds chauds** (maquette du designer) : la page elle-même est
+   ivoire, les sections alternent **ivoire** et **beige**, et le **blanc est
+   réservé aux cartes** posées sur ces fonds. Toutes les sections qui étaient
+   « blanc » sont devenues « ivoire », toutes les « givre » sont devenues
+   « beige » — rien à refaire. Règle simple pour une nouvelle section : laisser
+   le fond proposé, ou alterner ivoire / beige avec la section voisine. Les dix
+   teintes restent offertes, mais « blanc » et les gris froids (givre, perle,
+   brume) tranchent maintenant sur le reste de la page : à réserver aux cas
+   voulus. **Depuis le 21 sept. 2026, le sélecteur « Fond de section » existe
+   sur TOUTES les sections à bande**, y compris celles de la page d’accueil
+   (Nos services, Solution, Solutions phares, Ressources, Partenaires, Experts,
+   bandeau ISO) et les cartes numérotées, colonnes de technologies, ligne du
+   temps, encadré, outils exclusifs, grille d’expertise, ressources liées,
+   bandeau de logos, vidéo et témoignage. Sur « cartes numérotées » et « ligne
+   du temps », le fond peut rester vide : il suit alors le champ « Ton ».
+   Seuls les héros (photo plein cadre), le bandeau défilant (sombre) et le
+   catalogue de solutions n’en ont pas.
+   **Bleu électrique (mis à jour le 22 sept. 2026 — `#1D46F3`, le code
+   officiel de la marque)** : une onzième pastille, le bleu vif de
+   la marque, s’ajoute — mais **seulement dans cinq sections** : texte enrichi,
+   encadré, chiffres, bandeau de logos et FAQ. C’est un fond SOMBRE : ces cinq
+   sections passent alors leurs titres et leurs textes en blanc toutes seules
+   (les cartes, tuiles et panneaux posés dessus restent clairs). Les autres
+   sections ne l’offrent pas, faute de savoir inverser leurs textes — demander
+   à l’équipe technique pour en ajouter une. À utiliser comme un accent : une
+   section bleue dans une page, pas trois.
+   **Colonnes de technologies — lien du titre (facultatif)** : chaque colonne a
+   un champ « Lien du titre ». Rempli (adresse complète, ex.
+   `/fr/services/approvisionnement-ti/cisco/`), le titre devient un lien avec
+   une flèche ; vide, rien ne change. C’est ce qui relie la page
+   « Approvisionnement TI » à ses neuf pages fournisseurs.
+   **Colonnes de technologies — lien sur un outil (facultatif)** : un item de
+   la liste peut être écrit avec un lien, par exemple
+   `<a href="/fr/ressources/ia-servicenow/">ServiceNow AI Platform</a>` ; le
+   nom de l’outil devient alors cliquable. C’est ainsi que l’ancien site reliait
+   « ServiceNow AI Platform » à son article. Sans balise, rien ne change.
+   **Encart du bloc « Bento » (texte de l’encart)** : il accepte maintenant un
+   lien ou du gras (`<a href="…">…</a>`, `<strong>`), comme le texte de la
+   grande carte. Avant, une balise s’y affichait telle quelle.
+   **Cartes témoignages — texte sous le titre (facultatif)** : une phrase sous
+   le titre de la section ; les fiches fournisseurs y portent la note globale
+   Gartner Peer Insights (« Note globale : 4,3 ⭐⭐⭐⭐ — 2 056 avis vérifiés en
+   date de février 2026 »). La note et la date de chaque avis sont dans le
+   champ « Rôle » de la carte, après le titre de poste.
 5. **Icônes** : tous les champs « Icône » (cartes à icônes, tuiles bento et
    leur filigrane, réalisations, chiffres en style carte, puces d'offre, tuiles
    de valeurs, atouts…) ouvrent **la même liste déroulante** : la **banque de
@@ -136,6 +189,16 @@ C'est la grande nouveauté : des pages construites par assemblage de sections.
 
 ## Mettre en forme un texte (gras, italique, liens, listes)
 
+**Les espaces insécables, c'est le site qui s'en occupe** (2026-09-23). En
+français, on met une espace avant `: ; ! ?` et autour des guillemets `« »`.
+Avec une espace ordinaire, le navigateur a le droit de couper la ligne juste
+avant le signe — et un « : » se retrouve seul en début de ligne, ce qui se voit
+surtout dans les grands titres. **Tapez normalement, une espace simple** : au
+moment d'afficher la page, le site la remplace par une espace insécable. Ça
+vaut pour les titres et les textes des sections, et pour les articles du centre
+de ressources. Rien à faire de votre côté, et rien à changer dans ce que vous
+avez déjà écrit.
+
 Depuis le 16 septembre 2026, **les textes des sections se mettent en forme
 sans HTML** : chapeau d'un héros, introduction d'une section, texte d'une
 carte, citation, réponse de FAQ, paragraphes d'un bloc « Texte riche »… Le
@@ -168,6 +231,74 @@ pour y glisser le lien vers la politique de confidentialité.
 Le corps des articles du centre de ressources garde son éditeur de contenu
 (Markdown), plus complet.
 
+## Mettre en forme un article (bouton, encadré, FAQ, tableau)
+
+Depuis le **24 sept. 2026**, le corps d'un article connaît **quatre formes**
+au-delà du texte courant, toutes rendues par le site (aucun réglage à faire,
+aucune couleur à choisir). Elles se voient sur la page interne
+`/fr/style-guide/forme-articles/` (site de travail). Les articles migrés de
+WordPress ont été convertis à ces quatre formes le 24 sept.
+
+Dans l'éditeur de contenu, chacune s'écrit **comme un bloc HTML** dans le
+texte (l'éditeur l'affiche comme un bloc « HTML » et conserve ce qu'il y a
+dedans). Pour en poser un : se placer sur une ligne vide, passer en
+**source** (ou coller directement), et reprendre l'un des modèles ci-dessous
+en remplaçant le texte. Laisser **une ligne vide** avant et après chaque
+bloc, et une ligne vide entre la balise d'ouverture et le texte : c'est ce
+qui permet de garder du Markdown (gras, liens, listes) à l'intérieur.
+
+**1. Bouton d'appel à l'action** — un lien seul sur sa ligne, avec la
+classe `btn` (plein) ou `btn-outline` (contour) :
+
+```html
+<a class="btn" href="/fr/contact/">Parlez à un expert</a>
+```
+
+**2. Encadré « Le saviez-vous »** :
+
+```html
+<aside class="article-encadre">
+<p class="article-encadre__titre">Le saviez-vous ?</p>
+
+**10 millions d'euros.** C'est l'amende maximale en cas de non-conformité.
+
+</aside>
+```
+
+**3. Question dépliante (FAQ)** — une par question, à la suite :
+
+```html
+<details class="article-faq">
+<summary>Qu'est-ce que la réglementation DORA ?</summary>
+
+La réponse, en Markdown ordinaire.
+
+</details>
+```
+
+**4. Tableau** — toujours dans son conteneur (il défile sur téléphone au lieu
+de casser la page) ; la première ligne est l'en-tête :
+
+```html
+<div class="article-tableau">
+<table>
+<thead>
+<tr><th>Critère</th><th>Option A</th><th>Option B</th></tr>
+</thead>
+<tbody>
+<tr><td>Intégration</td><td>Non</td><td>Oui</td></tr>
+</tbody>
+</table>
+</div>
+```
+
+À ne pas faire : mettre des couleurs ou des `style="…"` dans ces blocs (le
+site les ignore ou les rejette), ou écrire un bouton avec l'ancienne classe
+`article-cta` (convertie, plus stylée). Un bouton « Insérer » dans la barre
+d'outils de l'éditeur (snippets CloudCannon) est à l'étude : CloudCannon
+n'offre pas encore de gabarit de snippet pour du HTML dans un article
+Markdown — voir `docs/plan-forme-articles.md`.
+
 ## Traduire : créer en FR, dupliquer vers EN (et inversement)
 
 La règle unique : **même nom de fichier dans `fr/` et `en/` = même page dans
@@ -190,6 +321,39 @@ même nom de fichier — structure vierge, mais champs valides garantis.
 > 💡 Filet de sécurité : à chaque publication, le système signale dans le
 > journal de build les pages qui n'ont **pas encore de traduction** (aucun
 > blocage — un simple rappel).
+
+## Choisir les 3 articles de la page d’accueil
+
+La bande « Ressources et actualités » de l’accueil montre par défaut les
+**trois articles les plus récents**, automatiquement. Depuis le 2026-09-23,
+vous pouvez choisir lesquels.
+
+**Accueil** → section « Ressources et actualités » → champ **« Articles en
+vedette (optionnel) »**. Ajoutez une entrée par article, dans l’ordre où vous
+voulez les voir. La valeur à écrire est le **nom de fichier de l’article, sans
+son extension** — par exemple `certification-iso-27001-iso-9001`. C’est le nom
+qui apparaît dans la liste du **Centre de ressources**, côté français.
+
+Trois choses qui évitent les mauvaises surprises :
+
+- **Une seule liste pour les deux langues.** Le nom de fichier est le même en
+  français et en anglais ; chaque version de l’accueil affiche automatiquement
+  sa propre traduction de l’article, avec son titre et son adresse anglaise.
+  Vous n’avez donc rien à recopier dans l’accueil anglais — mais pensez à y
+  poser la même liste si vous partez d’une page vierge.
+- **Une faute de frappe ne casse rien.** Un nom introuvable est simplement
+  ignoré, et la grille se complète avec les articles les plus récents. Vous
+  aurez toujours trois cartes.
+- **Laissez le champ vide** pour revenir au comportement automatique.
+
+**Les images de couverture.** Ce sont celles de l’article lui-même (champ
+« Image de couverture »). Attention si le visuel porte du **texte** : une
+image fabriquée en français ne convient pas à l’article anglais, il en faut
+une par langue. Les trois visuels posés le 2026-09-23 (certifications ISO,
+IA et ServiceNow, mise en place d’un SOC) sont dans ce cas : ils sont posés
+sur les articles **français** seulement, les anglais gardent leur couverture
+précédente. Le bon format est **1200 × 750** (le cadre des cartes) : une image
+plus large se fait rogner sur les côtés, et le texte avec.
 
 ## Modifier le menu
 
@@ -284,9 +448,10 @@ exactement comme les pages Services.
   version EN d'avoir son propre segment d'URL (ex. `discover`) sans rompre
   l'appariement.
 - Mêmes réglages de page que les Services (Titre SEO, H1 SEO, **Contact —
-  sujet / service présélectionné**) ; sur une page générale, les deux champs
-  Contact sont vides par défaut = aucun choix prérempli dans les listes (le
-  libellé du bouton et la page d'origine, eux, sont toujours transmis).
+  sujet / service présélectionné**) ; laissés vides, ils donnent depuis le
+  22 sept. 2026 le repli « Un projet » + « Autre » — et non plus deux listes
+  vides, alors qu'elles sont obligatoires (le libellé du bouton et la page
+  d'origine, eux, ont toujours été transmis).
 
 ## Modifier les textes du site (pied de page, bandeau de consentement)
 
@@ -362,16 +527,26 @@ puce plus bas).
   de solutions « Un projet » + le nom de la solution. Deux champs de page,
   **« Contact — sujet présélectionné »** et **« Contact — service
   présélectionné »** (réglages de la page, à côté du H1 SEO — pages Services
-  et Pages générales), permettent de forcer un autre choix ; vides = les
-  défauts ci-dessus (aucun choix sur une page générale). Si une option des
+  et Pages générales), permettent de forcer un autre choix. Si une option des
   listes est renommée sur la page Contact, le préremplissage correspondant
   cesse silencieusement (jamais d'erreur) — prévenir l'équipe technique pour
   réaligner.
+  **Les deux listes n'arrivent plus jamais vides** (depuis le 22 sept. 2026) :
+  laisser ces deux champs vides ne donne plus un formulaire à moitié rempli,
+  mais le repli « Un projet » + « Autre » — c'est vrai partout, y compris sur
+  l'accueil, une campagne, un article et le centre de ressources, qui n'ont pas
+  ces champs. Vous n'avez donc rien à faire pour qu'un bouton fonctionne ; les
+  remplir sert à faire MIEUX que le repli, pas à le réparer. Un contrôle
+  automatique (`npm run check:prefill`, à chaque build) refuse désormais tout
+  bouton du site qui arriverait sur une liste obligatoire vide.
 - **Carrières** — depuis le 17 sept. 2026, une page de **Pages générales**
   (`fr/carrieres`, `en/carrieres`) composée de sept sections, éditables dans
   l'éditeur visuel comme les autres pages : **héros photo** (photo, titre,
   sous-titre, bouton « Postulez »), **carte distinction** (Happy At Work :
-  insigne, titre, chapeau, citation à liseré), **tuiles de valeurs** (surtitre,
+  insigne, titre, chapeau, citation à liseré ; depuis le 21 sept. 2026 le
+  champ **« Insigne de la distinction »** accepte le VRAI logo de la
+  certification — téléversé dans `images/carrieres`. Laissé vide, la carte
+  retombe sur le pictogramme « étoile » dessiné par le gabarit), **tuiles de valeurs** (surtitre,
   titre, tuiles icône à liste fermée + libellé), **photo + atouts** (photo,
   carte flottante bleue, titre, chapeau, grille 2×2 d'atouts icône + titre +
   texte), **cartes témoignages** (portrait, citation, prénom, rôle), **texte +
@@ -386,6 +561,33 @@ puce plus bas).
   la page Contact avec ce sujet déjà choisi (le changer ou le vider ici
   suffit). Les fonds gris des sections (carte distinction, témoignages) sont
   des « Fond de section » de la palette — modifiables, comme partout.
+
+**Accueil, « Nos services » — un lien visible sur CHAQUE tuile (21 sept.
+2026).** Les tuiles en peau « image » (Cybersécurité, Infonuagique) affichent
+désormais le même lien que les autres (« Découvrez le service → ») : il vient
+du champ **« Libellé du bouton des cartes »** de la section, ou du champ
+**« Libellé du lien (surcharge) »** de la tuile quand il est rempli. Comme
+avant, toute la tuile reste cliquable.
+
+**Centre de ressources — en-tête allégé (21 sept. 2026).** La page
+`/ressources` n'a plus de grande bannière : il reste le titre (dont la fin
+passe en bleu) et le chapeau, sur le fond ivoire, puis les filtres et la
+grille d'articles. Deux champs ont disparu de « Pages système → Centre de
+ressources » parce que plus rien ne les affichait : le bouton **« S'abonner à
+l'infolettre »** (l'inscription se fait dans la carte infolettre de la grille,
+toujours là) et la **carte décorative** (« 500+ Experts »). Le reste — titre,
+fin de titre en bleu, chapeau, recherche, carte infolettre, bandeau d'appel à
+l'action — s'édite comme avant. Les gris froids de la page ont été remplacés
+par les fonds chauds de la charte (ivoire, beige) et les cadres par le
+contour standard.
+
+**Bannière de l'accueil — « Photo de fond » (corrigé le 21 sept. 2026).**
+Jusqu'à cette date, une photo téléversée sur la bannière de l'accueil (ou sur
+la section « Accueil — Solution ») était rangée à un endroit que le site ne
+sert pas : l'éditeur affichait bien la nouvelle image, mais la page publiée
+gardait l'ancienne, même après reconstruction. Les téléversements atterrissent
+désormais dans `images/home`, comme pour les autres sections. Une photo
+téléversée AVANT le correctif est à re-téléverser une fois.
 
 Comme partout : liens internes **sans préfixe de langue**, et une valeur
 invalide (ex. une icône hors liste) **bloque la publication** avec un message
@@ -447,10 +649,82 @@ Le catalogue est en deux morceaux :
   la solution — le visiteur arrive sur un formulaire où le sujet (« Un
   projet ») et le champ « Précisez votre demande » sont déjà remplis. Rien à
   configurer : c'est automatique dès que le lien est `/contact`.
-- Une fiche n'a pas (encore) de page propre : « Découvrir » mène au lien de la
-  carte. Les pages de détail sont une suite planifiée.
+
+### Chaque solution a maintenant sa page (2026-09-23)
+
+« Découvrir » ne saute plus au formulaire de contact : il mène à la **page de
+la solution** (`/fr/solutions/<nom-du-fichier>/`), où le visiteur trouve la
+présentation, les informations clés, les captures d'écran et le formulaire.
+
+- **La page se compose comme les autres**, dans **Solutions (FR)** → une fiche
+  → éditeur visuel. Elle est faite de sections : héros produit, « En bref »
+  (client, coût, délai, technologies), galerie d'images, formulaire.
+- **Le champ « Lien de la carte » est maintenant une SURCHARGE.** Laissez-le
+  **vide** : « Découvrir » ira sur la page de la solution. Ne le remplissez que
+  pour envoyer ailleurs — c'est le cas d'**Ø Bureau**, dont la page de service
+  est plus riche que sa fiche.
+- **Une fiche sans section n'a pas de page** : sa carte reste dans le
+  catalogue, et son lien doit alors être rempli (sinon la carte n'a pas de
+  bouton). C'est l'état des **9 fiches anglaises** : elles continuent de mener
+  au formulaire de contact prérempli, en attendant leur traduction. Depuis le
+  23 septembre, ces fiches (**Solutions (EN)**) affichent les mêmes champs que
+  les françaises — sections, adresse de la page, SEO, préremplissage du
+  Contact : la traduction se fait donc au CMS, sans développeur, en posant des
+  sections sur la fiche anglaise.
+- **Adresse de la page (slug)** : minuscules, chiffres et traits d'union. Ce
+  que vous tapez est normalisé automatiquement (accents retirés, espaces et
+  majuscules converties) ; vide = le nom du fichier. **Deux fiches d'une même
+  langue ne peuvent pas partager la même adresse** : la publication est
+  bloquée avec un message qui nomme les deux fiches — corriger l'une des deux.
+- **Les 16 fiches françaises sont masquées des moteurs de recherche**
+  (« Masquer des moteurs de recherche » activé) : elles affichent des
+  fourchettes de prix que Ø Studio doit valider. À décocher fiche par fiche
+  quand le contenu est validé.
+- **Le formulaire de la page dit de quelle solution il s'agit** : son champ
+  caché « Page d'origine » porte le nom de la solution et l'adresse de sa page.
+  Rien à configurer.
+- **Les textes de remplacement des images sont provisoires** (voir « Galerie
+  d'images ») : la liste à réécrire est dans
+  `docs/migration/catalogue-ostudio.md`.
 - Le catalogue est accessible aux visiteurs par **« Catalogue de solutions »**
   dans la colonne Produits du méga-menu et du pied de page.
+
+## Galerie d'images (nouvelle section, 2026-09-23)
+
+**« Galerie d'images »** dans le sélecteur « Ajouter une section » : une grille
+de visuels que le visiteur **agrandit d'un clic**. C'est la seule section qui
+accepte une liste d'images libre — elle est faite pour montrer des captures
+d'écran d'application (les fiches du catalogue Ø Studio), mais elle marche sur
+n'importe quelle page à sections.
+
+Ce que vous remplissez :
+
+- **Titre** et **Introduction** : optionnels. Vides, la grille commence
+  directement.
+- **Colonnes (grand écran)** : 2, 3 ou 4 images par rangée. Sur téléphone, la
+  grille passe toujours à **une seule colonne** — inutile de s'en occuper.
+- **Fond de section** : la palette habituelle.
+- **Images** : autant que vous voulez, dans l'ordre d'affichage. Pour chacune :
+  - **Image** — le visuel. Il est toujours montré **en entier**, jamais rogné :
+    une capture en format portrait passe aussi bien qu'un paysage.
+  - **Texte de remplacement (alt)** — ce que l'image **montre**, en une phrase,
+    pour qui ne la voit pas (lecteur d'écran, image qui ne charge pas). Ne pas
+    répéter le titre de la page. À laisser vide **seulement** si l'image est
+    purement décorative.
+  - **Légende** — optionnelle, affichée sous l'image pour tout le monde.
+
+**Les images importées du catalogue Ø Studio ont un texte de remplacement
+provisoire** (« Capture d'écran de l'application — … ») : la source n'en avait
+aucun. La liste complète à réécrire est dans
+`docs/migration/catalogue-ostudio.md` ; chacune se corrige directement dans la
+section, au CMS.
+
+**L'agrandissement, et ce qu'il ne fait pas.** Un clic sur une vignette ouvre
+l'image en grand par-dessus la page, avec « Image précédente / suivante » et un
+bouton **« Fermer »**. C'est fait sans une ligne de script (le site n'en charge
+aucun pour cela) — en contrepartie : la touche **Échap ne ferme pas**, il faut
+le bouton « Fermer » (qui est le premier élément atteignable au clavier), et la
+page continue de défiler derrière. C'est un choix assumé, pas un oubli.
 
 ## Médias et images
 
@@ -502,6 +776,17 @@ Ce que vous contrôlez, page par page :
 - **Redirections** : à chaque changement d'adresse d'une page publiée (voir
   la section suivante).
 
+**La page d'accueil aussi, depuis le 2026-09-23.** Elle était la seule page du
+site sans titre ni description modifiables : son onglet affichait « Victrix »
+tout court, et la description servie à Google était écrite dans le code, hors
+de votre portée. Ouvrez **Accueil** dans CloudCannon : deux champs
+apparaissent en haut, **« Titre SEO (onglet et résultats Google) »** et
+**« Description (moteurs de recherche) »**. Ils sont préremplis avec les
+textes de l'ancien site, pour ne rien perdre du référencement acquis. Comme
+partout, « — Victrix » est ajouté automatiquement à la fin du titre : ne
+l'écrivez pas. Vider un des deux champs ne casse rien — un texte de repli
+prend le relais.
+
 Le reste (balise canonique, hreflang FR/EN, sitemap, données structurées,
 aperçus de partage) est **automatique** — personne n'a à y penser, personne ne
 peut le casser depuis l'éditeur.
@@ -521,6 +806,19 @@ destination` avec le type (301 permanente / 302 temporaire).
 - Une entrée invalide (boucle, URL mal formée) **bloque la publication avec un
   message clair** — c'est un garde-fou, pas un bogue : le site en ligne reste
   intact tant que l'erreur n'est pas corrigée.
+
+**Les anciennes adresses du site WordPress sont déjà couvertes** (2026-09-22) :
+175 redirections ont été écrites automatiquement, une par ancienne URL —
+articles, pages, expertises, anciennes adresses encore en ligne. Vous n'avez
+rien à saisir pour elles, et elles n'apparaissent pas dans votre liste (elles
+sont maintenues par l'équipe technique). Votre liste reste **prioritaire** : si
+vous saisissez une règle pour une adresse déjà couverte, c'est la vôtre qui
+s'applique.
+
+Neuf articles ont aussi retrouvé l'adresse qu'ils ont **aujourd'hui sur
+victrix.ca** (les « Meilleures pratiques en sécurité opérationnelle », le SOC
+externalisé et le ZTNA) : leur adresse sur le nouveau site est désormais la
+même, et les deux anciennes versions redirigent vers elle.
 
 ## Formulaires
 
@@ -544,6 +842,142 @@ la clé affichée par CloudCannon dans la boîte visée.
 barre latérale — recommandé) : un fichier = un formulaire, avec son
 destinataire et son objet de courriel; les pages y font référence par le champ
 « Formulaire lié » de la section.
+
+### Icône ou logo sur les cartes (2026-09-22)
+
+Quatre sections acceptent désormais un **visuel** par carte. Deux voies, au
+même endroit, et **le logo l'emporte quand les deux sont remplis** :
+
+- **Pictogramme** — une liste fermée, toute la banque du site.
+- **Logo** — un fichier, pour une marque que la banque ne peut pas dessiner.
+
+| Section | Ce qui a changé |
+| --- | --- |
+| **Cartes numérotées** | N'avait **aucun** visuel — elle en accepte un. C'est la section la plus posée du site (76 sections, 357 cartes). |
+| **Boîtes de domaines** | Chaque boîte avait un simple libellé ; elle devient un vrai bloc avec libellé + pictogramme + logo. |
+| **Cartes à icônes** | Le pictogramme y était déjà ; le logo s'ajoute. **Corrigé le 2026-09-23** : le champ Logo existait dans l'éditeur depuis le 22/09, mais la section ne l'affichait pas — un logo déposé restait invisible sur la page. Il s'affiche maintenant. |
+| **Bento (chiffres clés)** | Sa carte de droite accepte un logo — c'est ce qui manquait à l'insigne HappyIndex® AtWork de la page Découvrir. |
+
+**Les logos de nos partenaires sont déjà là.** 19 fichiers ont été rapatriés de
+l'ancien site dans `/images/logos/` : Microsoft, AWS, Azure, Amazon, Cisco,
+Check Point, CrowdStrike, Palo Alto, Red Hat, OpenShift, Aruba, Imprivata,
+Pulse Secure, ServiceNow, Ø Studio, et les insignes de partenariat Microsoft
+Dynamics, Microsoft FastTrack et AWS. Ils apparaissent dans le sélecteur
+d'image, vous n'avez rien à téléverser.
+
+**Quatre de plus le 2026-09-23** — AlgoSec, Proofpoint, OVHcloud et le logo
+ServiceNow simple (l'insigne de partenariat existait déjà, pas le logo de la
+marque) : ils figuraient bien dans la médiathèque de l'ancien site, sur le
+carrousel de l'accueil, et ont été rapatriés avec lui. **Manquent encore** :
+ZScaler et Juniper — à demander au marketing.
+
+**Boîtes de domaines : un logo posé remplace le libellé à l'écran**
+(2026-09-23). Écrire « Palo Alto » sous le logo Palo Alto disait deux fois la
+même chose. Désormais, dès qu'une boîte a un logo, **seul le logo s'affiche** —
+le libellé devient son **texte de remplacement** : invisible à l'écran,
+toujours lu par les lecteurs d'écran et les moteurs de recherche. **Remplissez
+donc le libellé dans tous les cas.** Une boîte **sans** logo n'a pas changé :
+son libellé reste affiché (c'est le cas d'AlgoSec, Proofpoint, ZScaler et
+Juniper sur la page Cybersécurité, et de toutes les sections purement
+textuelles comme « Notre approche »). C'est déjà ainsi que fonctionne le
+**bandeau de logos** de l'accueil.
+
+Les trois autres sections (cartes numérotées, cartes à icônes, bento)
+n'ont pas changé : leur titre n'est pas le nom de la marque, il porte du sens
+en plus du logo.
+
+**Texte de remplacement** : à laisser **vide** presque toujours — c'est le
+libellé qui sert. Ne le remplissez que si le logo montre autre chose que le nom
+(ex. « Partenaire certifié ServiceNow »).
+
+### Un seul bleu dans la palette (2026-09-22)
+
+Les codes officiels de la marque sont arrivés : **bleu nuit `#000D2E`** et
+**bleu électrique `#1D46F3`**. Ils ont montré que la maquette de la veille
+était fautive — les deux aplats bleus qu'elle avait fait apparaître dans votre
+liste, « Bleu Victrix » et « Bleu électrique », étaient deux versions
+**erronées du même bleu**.
+
+Il n'en reste donc qu'un : **Bleu électrique**. « Bleu Victrix » a disparu de
+la liste « Fond de section ». **Aucune de vos pages n'est touchée** : aucune
+section n'utilisait l'un ou l'autre. Le bleu vif du site — boutons, liens,
+pictogrammes — a légèrement changé de teinte au passage ; c'est normal, c'est
+la bonne couleur de marque.
+
+**Pourquoi les bleus n'apparaissent pas dans toutes les listes ?** Parce qu'un
+fond sombre oblige la section à écrire ses textes en blanc, et toutes ne
+savent pas le faire. Dix sections l'acceptent aujourd'hui :
+
+| Depuis le 21/09 matin | Ajoutées le 21/09 soir |
+|---|---|
+| Texte enrichi · Encadré · Chiffres · Bandeau de logos · FAQ | Nos experts · Atouts · Tuiles de valeurs · Encadrés à puces · Texte & photo |
+
+Les autres n'offrent que les dix teintes claires. Si vous en voulez une de
+plus en bleu, demandez-le : c'est une petite intervention par section, jamais
+un réglage à faire vous-même.
+
+Les boutons, les liens et les icônes de tout le site suivent le nouveau bleu
+automatiquement : vous n'avez rien à faire.
+
+### La page Contact a été redessinée (2026-09-21)
+
+D'après la maquette du designer. Trois choses y reviennent :
+
+- un **surtitre** au-dessus du titre (« Nous joindre ») — nouveau champ dans
+  Textes du site → Contact, vide = pas de surtitre ;
+- les **numéros de chaque bureau** sous les coordonnées générales ; ils sont
+  repris automatiquement des fiches de bureaux, rien à saisir ;
+- les cartes sont **blanches sur une bande beige** (c'était l'inverse).
+
+Le bouton du formulaire affiche maintenant « Envoyer le message » partout : il
+disait « Soumettre » sur la page alors que le formulaire lui-même annonçait
+« Envoyer le message ».
+
+### Un seul formulaire de demande (2026-09-21)
+
+Toutes les demandes passent désormais par **la page Contact**. La page
+Cybersécurité hébergeait un second formulaire (« évaluation de posture de
+sécurité ») : deux collectes séparées, deux consentements, et des
+renseignements qu'on ne retrouvait nulle part ailleurs. Il a été remplacé par
+la section **« Renvoi vers le contact (qualification) »**.
+
+Cette section pose UNE question — la taille de l'entreprise — sous forme de
+boutons. Le visiteur en choisit un et arrive sur le formulaire Contact **déjà
+rempli** : le sujet, le service, sa tranche d'effectif et l'objet de sa
+demande. Vous y réglez le titre, le texte, la question, le fond et le lien
+vers la page Contact. **Les tranches d'effectif, elles, ne sont pas
+modifiables** : leurs libellés voyagent dans l'adresse et doivent rester
+identiques à ceux du formulaire — les reformuler d'un seul côté couperait le
+préremplissage sans que rien ne le signale. Pour les faire changer, passez
+par l'équipe technique.
+
+Vous pouvez poser cette section sur n'importe quelle page. Pensez à mettre le
+**lien du formulaire Contact** dans la bonne langue (`/fr/contact` ou
+`/en/contact`) : c'est lui qui décide de la langue des tranches affichées.
+
+**« Taille de l'entreprise » dans le formulaire Contact** : ce champ
+n'apparaît que lorsque le visiteur choisit le service **Cybersécurité** — le
+formulaire reste court pour tout le monde. Il est **facultatif** : il qualifie
+la demande sans retenir quelqu'un qui pose une simple question. Vider son
+libellé (Textes du site → Contact) le retire complètement du formulaire.
+
+**« Service » n'arrive plus jamais vide.** C'est un champ obligatoire, et
+certains boutons y menaient sans rien présélectionner — « Postuler », depuis
+la page Carrières, en particulier. Désormais : le sujet « Une carrière »
+choisit tout seul le service **Ressources humaines** (option ajoutée le même
+jour), et toute page sans correspondance arrive sur **Autre**. Vous n'avez
+rien à faire ; si une page mérite un service précis, fixez-le dans son champ
+« Service (préremplissage du Contact) ».
+
+**Le formulaire montre ce qui reste à remplir** (depuis le 22 sept. 2026).
+À l'arrivée, les champs **obligatoires encore vides** portent un halo bleu
+discret, qui s'éteint dès que le champ est rempli. Ce n'est pas un message
+d'erreur : rien n'est signalé comme fautif, on indique simplement le chemin.
+Concrètement, un visiteur venu d'un bouton du site voit **quatre** champs
+surlignés (prénom, nom, courriel, message — les deux listes étant déjà
+choisies) et un visiteur arrivé par le menu ou le pied de page en voit
+**six**. Rien à régler au CMS : le halo suit la valeur des champs, pas le
+chemin d'arrivée.
 
 **Objet des notifications (mode boîte CloudCannon)** : chaque message reçoit
 un objet **unique**, préfixé d'une clé entre crochets, par exemple
@@ -622,11 +1056,60 @@ visiteurs). Rien ne part en production tout seul.
   l'aperçu de l'éditeur) ; le lien partagé montre donc exactement ce qui
   attend d'être publié. Au besoin, l'équipe technique peut aussi créer un
   lien de revue restreint (Client Sharing).
-- ⚠️ **Pendant la transition** (tant que le vrai victrix.ca WordPress est en
-  ligne) : le site de production de cette plateforme n'est pas encore public
-  (adresse de test non indexée) et montre lui aussi, temporairement, les
-  brouillons et les contenus à date future — l'équipe technique corrigera ce
-  comportement avant la vraie mise en ligne.
+- **Corrigé le 24 sept. 2026** : le site de production de cette plateforme
+  ne montre plus ni les brouillons ni les contenus à date future (il ne les
+  a d'ailleurs jamais servis publiquement — son adresse de test n'est pas
+  indexée). Seuls l'aperçu de l'éditeur et l'adresse de test du site de
+  travail les montrent. (Reste une case à cocher côté technique dans les
+  réglages de build CloudCannon — voir `docs/operations.md` § 6.)
+
+## Un champ vidé ne casse plus le site
+
+Depuis le **22 sept. 2026**, effacer le contenu d'un champ ne fait plus échouer
+la publication : le texte disparaît simplement du site, et la page se
+réorganise autour de lui — un titre de bloc vidé retire le titre, pas
+l'espace ; une méta description vidée retombe sur celle du site ; une puce ou
+une ligne d'adresse vidée n'apparaît plus dans sa liste. Vous pouvez donc vider
+un champ pour voir, et revenir en arrière.
+
+**Pourquoi c'est écrit ici.** Le 18 sept., une méta description effacée sur la
+page de confirmation a bloqué la publication pendant **20 sauvegardes
+d'affilée** : plus rien de ce que vous enregistriez n'arrivait sur le site, et
+le message d'erreur ne disait pas quel champ était en cause. Un test
+automatique vide maintenant, à chaque intégration, **chaque champ de chaque
+fichier** et refuse tout champ qui ne supporterait pas le vide.
+
+**Les champs qui refusent encore le vide** — et c'est voulu, parce que sans eux
+l'élément n'existe plus vraiment :
+
+| Ce que vous videz | Ce qui se passe |
+|---|---|
+| L'**adresse** d'un lien (menu, pied de page, bouton) | Refusé : un lien sans destination ne mène nulle part. |
+| Le **texte** d'un lien ou d'un bouton | Refusé : le bouton deviendrait invisible pour un lecteur d'écran. Y compris le numéro de téléphone du pied de page, qui EST le texte de son lien. |
+| Le **titre de la page** ou son **titre d'onglet** | Refusé : c'est ce que voient Google et les onglets du navigateur. |
+| Les **intitulés du formulaire Contact** et les **options de ses listes** | Refusé : ils forment le contrat avec le serveur qui reçoit les messages. |
+| Le **nom d'une barre d'annonce** | Refusé : c'est ce qui vous permet de la retrouver dans la liste. |
+
+Dans tous ces cas, CloudCannon vous le dit **à la sauvegarde**, en nommant le
+champ — et rien n'est publié à moitié.
+
+**Et les menus déroulants ?** (22 sept. 2026) Même tranquillité. Effacer un
+choix dans une liste — « Fond de section », « Variante », « Ton », « Nombre de
+colonnes », « Style de titre », le type d'un champ de formulaire — **remet la
+section à son réglage d'origine**, celui qu'elle avait avant que quelqu'un y
+touche. Rien ne casse, rien n'est publié de travers : la section revient
+simplement à son apparence par défaut, et vous pouvez rechoisir ensuite.
+
+Deux exceptions à connaître :
+
+- **Le pictogramme et le fond « au choix du bloc »** ne changent pas de
+  comportement : chez eux, « vide » est un vrai choix (« aucune icône »,
+  « le fond habituel de ce bloc »), et il est respecté tel quel.
+- **Le type d'un champ de formulaire qui en commande un autre** (par exemple
+  « Votre besoin », dont dépend l'affichage de « Précisez votre besoin ») ne
+  peut pas être vidé : un champ qui en commande un autre doit rester une liste
+  déroulante ou une case à cocher. CloudCannon vous le dira en nommant le champ
+  et la condition à réajuster.
 
 ## Les pièges connus (et pourquoi ce n'est pas grave)
 

@@ -52,7 +52,7 @@ const links = sys.merci.links.map((l) => ({ ...l, href: localizePath(l.href, lan
       </span>
 
       <h1 class="merci__title">{sys.merci.title}</h1>
-      <p class="merci__text" set:html={inlineHtml(sys.merci.text)} />
+      {sys.merci.text && <p class="merci__text" set:html={inlineHtml(sys.merci.text)} />}
 
       <nav class="merci__actions" aria-label="Pages">
         {

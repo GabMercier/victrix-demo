@@ -13,14 +13,13 @@
  *
  * Dérivation : accents décomposés puis retirés (NFD), minuscules, tout le
  * reste → tirets. Libellé vide → repli positionnel (« champ-N »). La plage
- * des diacritiques (U+0300 à U+036F, détachés par NFD) est construite via
- * fromCharCode plutôt qu'écrite en littéral : des caractères combinants
- * invisibles dans la source seraient trop faciles à corrompre.
+ * des diacritiques (U+0300 à U+036F, détachés par NFD) est écrite en
+ * échappements `\u` — visibles dans la source, contrairement à des
+ * caractères combinants littéraux qu'un éditeur peut corrompre sans que rien
+ * ne se voie ; et sans `String.fromCharCode` + `new RegExp`, détour inutile
+ * (revue R3, constat 8 ; même règle dans src/lib/solutions/slug.ts).
  */
-const DIACRITIQUES = new RegExp(
-  `[${String.fromCharCode(0x0300)}-${String.fromCharCode(0x036f)}]`,
-  'g',
-);
+const DIACRITIQUES = /[\u0300-\u036f]/g;
 
 export function fieldName(label: string, index: number): string {
   const slug = (label ?? '')
